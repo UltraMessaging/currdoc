@@ -63,17 +63,17 @@ $(document).ready(function(){initNavTree('conceptsandfeatures.html','');});
 <p><br />
  </p>
 <h1><a class="anchor" id="brokeredcontext"></a>
-Brokered Context</h1>
+Brokered Context&nbsp;&nbsp;<small><a href="#brokeredcontext">&lt;-</a></small></h1>
 <p>The brokered context establishes the environment for an Ultra Messaging queuing system.</p>
 <p>When you build an Ultra Messaging queuing system, you must create a context and define the broker for the context. You can have multiple brokered contexts in a queuing system.</p>
 <p>You can define the broker for the context in the client configuration file or in the application code. When you define the broker for a context, you must specify the IP address of the machine that hosts the broker and the Advanced Message Queuing Protocol (AMQP) listening port.</p>
-<p>To define the broker for a brokered context in a configuration file, the option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UMQ/config.tag:../Config/" href="../Config/grpmajoroptions.html#brokercontext">broker (context)</a> as follows:</p>
+<p>To define the broker for a brokered context in a configuration file, the option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/config.tag:../Config/" href="../Config/grpmajoroptions.html#brokercontext">broker (context)</a> as follows:</p>
 <pre class="fragment">context broker broker_ip_address:port
-</pre><p>For more information about the Ultra Messaging context, see <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UMQ/design.tag:../Design/" href="../Design/umobjects.html#contextobject">Context Object</a>.</p>
+</pre><p>For more information about the Ultra Messaging context, see <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/design.tag:../Design/" href="../Design/fundamentalconcepts.html#contextobject">Context Object</a>.</p>
 <p><br />
  </p>
 <h1><a class="anchor" id="brokeredsource"></a>
-Brokered Source</h1>
+Brokered Source&nbsp;&nbsp;<small><a href="#brokeredsource">&lt;-</a></small></h1>
 <p>In an Ultra Messaging queuing system, the source is the component that sends messages to a broker.</p>
 <p>In a client application, you must create a source object that connects and sends messages to the broker. You can include metadata with a message through message properties. The client application can listen for events to determine the state of the source, message, or broker.</p>
 <p>When you create a source, you must specify the name of a message destination. The broker creates a queue destination with the specified name. If you create multiple sources, specify a different message destination for each source. A source sends messages to the message destination associated with it.</p>
@@ -83,7 +83,7 @@ Brokered Source</h1>
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="sourceeventconcepts"></a>
-Source Event Concepts</h2>
+Source Event Concepts&nbsp;&nbsp;<small><a href="#sourceeventconcepts">&lt;-</a></small></h2>
 <p>Ultra Messaging generates source events that you can listen for and respond to based on your requirements.</p>
 <p>You can use source events to determine the state of the source and the messages sent by the source. For example, when you write a callback function to respond to source events, you can check for a registration complete event and start sending messages only after you receive the event. You can also check events to determine whether a message is stable or whether the memory allocated to the message is reclaimed.</p>
 <p>Ultra Messaging provides other events that you can check to manage the message queuing process, including events such as a registration error and flight size change.</p>
@@ -91,7 +91,7 @@ Source Event Concepts</h2>
 <p><br />
  </p>
 <h1><a class="anchor" id="brokeredreceiver"></a>
-Brokered Receiver</h1>
+Brokered Receiver&nbsp;&nbsp;<small><a href="#brokeredreceiver">&lt;-</a></small></h1>
 <p>A receiver is the component in an Ultra Messaging queuing system that consumes the messages that are sent by a source. The source sends messages to a broker and the broker assigns messages to the receiver. The receiver does not directly access messages from the source.</p>
 <p>In a client application, you must create a receiver object that connects to and gets messages from a broker. The receiver connects to the broker defined in the context. When you create a receiver, you must specify the message destination in the broker from which to receive messages.</p>
 <p>A receiver must be registered with a broker before the receiver can receive messages from the broker. When you create a receiver, you trigger a receiver registration. A receiver registration complete event is a receiver event that indicates that the receiver is registered and can receive messages from the broker.</p>
@@ -99,7 +99,7 @@ Brokered Receiver</h1>
 <p><br />
  </p>
 <h1><a class="anchor" id="thebroker"></a>
-The Broker</h1>
+The Broker&nbsp;&nbsp;<small><a href="#thebroker">&lt;-</a></small></h1>
 <p>The message broker manages the transfer of messages from the source to a receiver. The broker receives messages from the source and assigns them to a receiver based on the message queue configuration.</p>
 <p>The Ultra Messaging message broker provides the following services:</p>
 <ul>
@@ -116,27 +116,27 @@ High availability services. The broker defines a high availability process that 
 <p><br />
  </p>
 <h2><a class="anchor" id="messagedestination"></a>
-Message Destination</h2>
+Message Destination&nbsp;&nbsp;<small><a href="#messagedestination">&lt;-</a></small></h2>
 <p>The message destination is the location on the broker where a message is stored before the broker assigns the message to the receiver.</p>
 <p>When you create a source, you must specify the name of the message destination to which the source sends messages. When you create a receiver, you must specify the message destination from which the receiver consumes messages.</p>
 <dl class="section note"><dt>Note</dt><dd>Ultra Messaging uses the term topic to refer to the message destination. However, the message destination created in an Ultra Messaging queuing system is a queue, not a topic.</dd></dl>
 <p><br />
  </p>
 <h2><a class="anchor" id="messagestore"></a>
-Message Store</h2>
+Message Store&nbsp;&nbsp;<small><a href="#messagestore">&lt;-</a></small></h2>
 <p>You can configure the Ultra Messaging broker to use the Ultra Messaging persistence adapter that replicates events generated by the active broker to the standby brokers. When you use the Ultra Messaging persistence adapter, each broker maintains an independent message store.</p>
 <p>The Ultra Messaging broker uses Ultra Messaging Persistence (UMP) functionality to manage events generated within the Ultra Messaging queuing system. The active broker uses a UMP source to replicate events to the standby brokers. A standby broker uses a UMP receiver to receive events from the active broker. If a broker fails, it uses a UMP store daemon to recover events that it missed when it was down.</p>
 <p>After a standby broker receives events from the active broker, the standby broker stores the messages locally in the default long-term storage.</p>
 <p><br />
  </p>
 <h1><a class="anchor" id="flightsizeconcepts"></a>
-Flight Size Concepts</h1>
+Flight Size Concepts&nbsp;&nbsp;<small><a href="#flightsizeconcepts">&lt;-</a></small></h1>
 <p>When a source sends a message, the message is considered to be in-flight until the broker generates a message stable event. Flight size is the number of messages that are in-flight at any point in time.</p>
 <p>You can set a maximum flight size for a source to control the message load on the broker. Set the flight size based on the requirements of the queuing system and the capacity of the network. In an Ultra Messaging queuing system, setting the flight size flight size is the only method available to limit the volume of messages from the source.</p>
 <p><br />
  </p>
 <h1><a class="anchor" id="highavailabilityconcepts"></a>
-High Availability Concepts</h1>
+High Availability Concepts&nbsp;&nbsp;<small><a href="#highavailabilityconcepts">&lt;-</a></small></h1>
 <p>You can install and configure brokers on multiple nodes to implement high availability in an Ultra Messaging queuing system.</p>
 <p>When you configure the context for a multi-node queuing system, you must specify the number of brokers and the IP address and port number of each broker. A queuing system set up for high availability has one active broker and multiple standby brokers.</p>
 <p>The source sends messages to the active broker and the active broker assigns messages to the receiver. If the active broker fails, Ultra Messaging elects one of the standby brokers as an active broker. When the failed broker restarts, it runs as a standby broker and synchronizes with other brokers to recover events that it missed while it was down.</p>
@@ -145,7 +145,7 @@ High Availability Concepts</h1>
 <p><br />
  </p>
 <h1><a class="anchor" id="indexedqueuing"></a>
-Indexed Queuing</h1>
+Indexed Queuing&nbsp;&nbsp;<small><a href="#indexedqueuing">&lt;-</a></small></h1>
 <p>Indexed queuing is a way to group messages and ensure that one receiver processes all messages in the group in the order that they are sent. The source uses an index to specify the messages in a group. The Ultra Messaging broker uses the ActiveMQ message group functionality to implement indexed queuing.</p>
 <p>If a set of messages must be processed in order, it can be more efficient for one receiver to process all the messages. For example, if the messages represent bids in an auction, you might want to assign all bids for an item to one receiver to ensure that the bids are processed in the right order. Include the same index in all messages that relate to an item to ensure that all bids for the item go to one receiver.</p>
 <p>To set up indexed queuing, define an index with a string value and add the index to the message as metadata. By default, the broker checks the index of a message before it assigns the message to a receiver. The broker designates a receiver to process messages with a specific index. When the source sends a message with the index, the broker assigns the message to the designated receiver. The broker assigns all messages with the same index to the same receiver.</p>
@@ -153,7 +153,7 @@ Indexed Queuing</h1>
 <p><br />
  </p>
 <h1><a class="anchor" id="compositedestinations"></a>
-Composite Destinations</h1>
+Composite Destinations&nbsp;&nbsp;<small><a href="#compositedestinations">&lt;-</a></small></h1>
 <p>A composite destination is a virtual message destination that represents a collection of physical message destinations.</p>
 <p>You can create a source that sends messages to a virtual queue destination in the broker. In the broker configuration, you associate the virtual queue destination to multiple physical queue destinations. You can then create a receiver to receive messages from one of the physical queue destinations.</p>
 <p>The following image shows an example of a broker configured with a composite destination:</p>
@@ -168,7 +168,7 @@ Composite Destinations</h1>
 <p><br />
  </p>
 <h2><a class="anchor" id="compositedestinationconfiguration"></a>
-Composite Destination Configuration</h2>
+Composite Destination Configuration&nbsp;&nbsp;<small><a href="#compositedestinationconfiguration">&lt;-</a></small></h2>
 <p>You configure the composite destination in the Ultra Messaging message broker. Use the broker configuration file to set up the logical and physical queues for the composite destination.</p>
 <p>The following XML code shows an example of a configuration for a composite destination:</p>
 <pre class="fragment">&lt;destinationInterceptors&gt;
@@ -187,13 +187,13 @@ Composite Destination Configuration</h2>
 </pre><p><br />
  </p>
 <h1><a class="anchor" id="messagelifetime"></a>
-Message Lifetime</h1>
+Message Lifetime&nbsp;&nbsp;<small><a href="#messagelifetime">&lt;-</a></small></h1>
 <p>The message lifetime is the length of time within which the broker must assign a message to a receiver before the message expires. The message lifetime starts when the broker receives the message and expires after a length of time that you can configure. When the lifetime of a message expires, you can configure the broker to discard the message or send the message to the dead letter queue (DLQ).</p>
 <p>You can set the message lifetime when you send a message or you can set the message lifetime as a configuration option. By default, if you do not set a message lifetime, a message does not expire and can be redelivered to a receiver indefinitely.</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="deadletterqueue"></a>
-Dead Letter Queue</h2>
+Dead Letter Queue&nbsp;&nbsp;<small><a href="#deadletterqueue">&lt;-</a></small></h2>
 <p>The dead letter queue (DLQ) refers to a message destination for messages that cannot be delivered to a receiver.</p>
 <p>The Ultra Messaging broker contains a default DLQ message destination for all undeliverable messages. When the lifetime of a message expires or the maximum number of redelivery attempts is reached, the broker sends the message to the DLQ.</p>
 <p>You can set up a separate DLQ for each message destination. In the broker configuration file, you can set up a dead letter strategy for a destination and create a DLQ associated with the destination. The broker sends the undeliverable messages to the DLQ associated with a message destination.</p>

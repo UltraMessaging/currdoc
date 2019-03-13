@@ -12,7 +12,7 @@ import java.util.concurrent.Semaphore;
 import org.openmdx.uses.gnu.getopt.*;
 
 /*
-  Copyright (c) 2005-2018 Informatica Corporation  Permission is granted to licensees to use
+  Copyright (c) 2005-2019 Informatica Corporation  Permission is granted to licensees to use
   or alter this software for any purpose, including commercial applications,
   according to the terms laid out in the Software License Agreement.
 
@@ -40,6 +40,8 @@ class umessrc
 	private static int stats_sec = 0;
 	private static int verbose = 0;
 	private static boolean sequential = true;
+	private static boolean usrbuff = false;
+    private static boolean prntds = false;
 	private static boolean dereg = false;
 	public static int flightsz = 0;
 	public static int appsent = 0;
@@ -54,6 +56,8 @@ class umessrc
 	private static String usage =
 "Usage: umessrc [options] topic\n"+ 
 "Available options:\n"+ 
+"  -a available-data-space = print the length of available data space\n"+
+"  -b user-supplied-buffer =  send messages using a user-supplied buffer\n"+
 "  -c filename = read config parameters from filename\n"+ 
 "  -C filename = read context config parameters from filename\n"+ 
 "  -D = Send deregistration after sending 1000 messages\n"+ 
@@ -61,14 +65,17 @@ class umessrc
 "  -f NUM = allow NUM unstabilized messages in flight (determines message rate)"+ 
 "  --flight-size = See -f above"+ 
 "  -h = help\n"+ 
+"  -i msg_prop = send message property as integer value with string key\n"+
+"                Example:  '-i 1,prop1'\n"+
 "  -j = turn on UME late join\n"+ 
 "  -l len = send messages of len bytes\n"+ 
 "  -L linger = linger for linger seconds before closing context\n"+ 
 "  -m NUM = send at NUM messages per second (trumped by -f)"+ 
 "  --message-rate = See -m above"+ 
 "  -M msgs = send msgs number of messages\n"+ 
-"  -N = display sequence number information source events\n"+ 
+"  -N chn = send messages on channel chn\n"+
 "  -P msec = pause after each send msec milliseconds\n"+ 
+"  -Q = display sequence number information source events\n"+ 
 "  -S ip:port = use UME store at the specified address and port\n"+ 
 "  -s sec = print stats every sec seconds\n"+ 
 "  -t storename = use UME store with name storename\n"+ 
@@ -104,6 +111,11 @@ class umessrc
 		StringTokenizer tokens;
 		boolean seqnum_info = false;
 		boolean stability = false;
+		long channel = -1;
+		int mprop_int_cnt = 0;
+		String[] mprop_int_keys;
+		long[] mprop_int_vals;
+		String[] optList;
 		LBMObjectRecycler objRec = new LBMObjectRecycler();
 
 		LBM lbm = null;
@@ -144,12 +156,15 @@ class umessrc
 		longopts[6] = new LongOpt("monitor-appid", LongOpt.REQUIRED_ARGUMENT, null, OPTION_MONITOR_APPID);
 		longopts[7] = new LongOpt("flight-size", LongOpt.REQUIRED_ARGUMENT, null, OPTION_FLIGHT_SIZE);
 		longopts[8] = new LongOpt("message-rate", LongOpt.REQUIRED_ARGUMENT, null, OPTION_MESSAGE_RATE);
-		Getopt gopt = new Getopt("umessrc", args, "+C:Dec:f:hjL:l:m:M:P:S:s:t:vN", longopts);
+		Getopt gopt = new Getopt("umessrc", args, "+C:Dec:f:hi:jL:l:m:M:N:P:S:s:t:vabQ", longopts);
 		int c = -1;
 		int msglen = 25;
 		long bytes_sent = 0;
 		boolean error = false;
 		boolean block = true;
+		mprop_int_vals = new long[16];
+		mprop_int_keys = new String[16];
+		optList = new String[2];
 		while ((c = gopt.getopt()) != -1)
 		{
 			try
@@ -222,14 +237,22 @@ class umessrc
 					case 'h':
 						print_help_exit(0);
 						break;
+					case 'i':
+						if (mprop_int_cnt > 15) {
+							System.err.println("Error - more than the maximum allowed 16 message properties specified.");
+							System.exit(1);
+						}
+						optList = gopt.getOptarg().split(",");
+						mprop_int_vals[mprop_int_cnt] = Integer.parseInt(optList[0]);
+						mprop_int_keys[mprop_int_cnt] = optList[1];
+						mprop_int_cnt++;
+						System.out.println("Property #" + mprop_int_cnt + ": " + mprop_int_keys[mprop_int_cnt - 1] + " = " + mprop_int_vals[mprop_int_cnt - 1]);
+						break;
 					case 'j':
 						latejoin = true;
 						break;
 					case 'l':
 						msglen = Integer.parseInt(gopt.getOptarg());
-						break;
-					case 'N':
-						seqnum_info = true;
 						break;
 					case 'L':
 						linger = Integer.parseInt(gopt.getOptarg());
@@ -238,12 +261,17 @@ class umessrc
 					case OPTION_MESSAGE_RATE:
 						msgs_per_sec = Integer.parseInt(gopt.getOptarg());
 						break;
-
 					case 'M':
 						msgs = Integer.parseInt(gopt.getOptarg());
 						break;
+					case 'N':
+						channel = Long.parseLong(gopt.getOptarg());
+						break;
 					case 'P':
 						pause_ivl = Integer.parseInt(gopt.getOptarg());
+						break;
+					case 'Q':
+						seqnum_info = true;
 						break;
 					case 'S':
 						tokens = new StringTokenizer(gopt.getOptarg(), ":");
@@ -275,6 +303,12 @@ class umessrc
 						break;
 					case 'v':
 						verbose++;
+						break;
+					case 'a':
+						prntds = true;
+						break;
+					case 'b':
+						usrbuff = true;
 						break;
 					default:
 						error = true;
@@ -342,6 +376,14 @@ class umessrc
 			System.err.println("Error creating source attributes: " + ex.toString());
 			System.exit(1);
 		}
+	
+		if (channel != -1) {
+			sattr.setProperty("smart_src_enable_spectrum_channel", "1");
+		}
+		if (mprop_int_cnt > 0) {
+			sattr.setProperty("smart_src_message_property_int_count", Integer.toString(mprop_int_cnt));
+		}
+
 		LongObject cd = new LongObject();
 		sattr.setMessageReclamationCallback(ssrccb, cd);
 
@@ -610,6 +652,45 @@ class umessrc
 		long start_time = System.currentTimeMillis();
 		boolean regProblem = false;
 		LBMSSourceSendExInfo exinfo = new LBMSSourceSendExInfo();
+		ByteBuffer usrbuffmsg = null;
+
+        if ((channel != -1) || (mprop_int_cnt > 0) || usrbuff) {
+            if (channel != -1) {
+                exinfo.setChannel(channel);
+            }
+            if (mprop_int_cnt > 0) {
+                exinfo.setMessageProperties(mprop_int_cnt, mprop_int_keys, mprop_int_vals);
+            }
+
+			if (usrbuff) {
+				System.out.println("Getting bytebuffer of size " + msglen);
+				/* need to alloc a bytebuffer and fill it with data */
+				usrbuffmsg = ByteBuffer.allocateDirect(msglen);
+				try {
+					exinfo.setUserSuppliedBuffer(usrbuffmsg);
+				}
+				catch (LBMEInvalException e) {
+					System.err.println("umessrc: setUserSuppliedBuffer error\n" + e);
+				}
+			}
+
+        }
+
+		/*
+		 * if -a was specified, print the maximum allowable message payload size.  This
+		 * is the maximum allowable size based on using all of the configured message properties
+		 * and spectrum.
+		 */
+		if (prntds) {
+			System.out.println("The length of available data space: " + mySmartSource.getAvailableDataSpace());
+		}
+
+		ByteBuffer fillmessage = message;
+		if (usrbuff) {
+			fillmessage = usrbuffmsg;
+		}
+
+
 		for (long count = 0; count < msgs; )
 		{
 			if( ( count == 1000) && (dereg == true))

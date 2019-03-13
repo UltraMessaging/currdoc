@@ -58,17 +58,18 @@ $(document).ready(function(){initNavTree('grphotfailoveroperation.html','');});
 <p><br />
  </p>
 <h1><a class="anchor" id="hotfailoveroperationref"></a>
-Reference</h1>
+Reference&nbsp;&nbsp;<small><a href="#hotfailoveroperationref">&lt;-</a></small></h1>
 <p><br />
  </p>
 <h2><a class="anchor" id="deliverycontrollosscheckintervalhfx"></a>
-delivery_control_loss_check_interval (hfx)</h2>
-<dl class="section user"><dt></dt><dd>The interval between periodic forced loss checks. This option defaults to 0, indicating that loss checks should only be made when a new message arrives.</dd></dl>
+delivery_control_loss_check_interval (hfx)&nbsp;&nbsp;<small><a href="#deliverycontrollosscheckintervalhfx">&lt;-</a></small></h2>
+<dl class="section user"><dt></dt><dd>The interval between periodic forced loss checks. </dd></dl>
+<dl class="section user"><dt></dt><dd>This option defaults to 0, indicating that loss checks should only be made when a new message arrives.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>hfx </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
 <tr>
 <td><em>Units:</em> </td><td>msec </td></tr>
 <tr>
@@ -82,13 +83,14 @@ delivery_control_loss_check_interval (hfx)</h2>
 <p><br />
  </p>
 <h2><a class="anchor" id="deliverycontrolmaxdelayhfx"></a>
-delivery_control_max_delay (hfx)</h2>
-<dl class="section user"><dt></dt><dd>The minimum interval that must expire before the HFX Receiver declares a message unrecoverable and delivers an unrecoverable loss message the application. By default, the HFX Receiver only checks loss when it receives new messages. To enable periodic loss checks, set the <a class="el" href="grphotfailoveroperation.html#deliverycontrollosscheckintervalhfx">delivery_control_loss_check_interval (hfx)</a> option.</dd></dl>
+delivery_control_max_delay (hfx)&nbsp;&nbsp;<small><a href="#deliverycontrolmaxdelayhfx">&lt;-</a></small></h2>
+<dl class="section user"><dt></dt><dd>The minimum interval that must expire before the HFX Receiver declares a message unrecoverable and delivers an unrecoverable loss message the application. </dd></dl>
+<dl class="section user"><dt></dt><dd>By default, the HFX Receiver only checks loss when it receives new messages. To enable periodic loss checks, set the <a class="el" href="grphotfailoveroperation.html#deliverycontrollosscheckintervalhfx">delivery_control_loss_check_interval (hfx)</a> option.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>hfx </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
 <tr>
 <td><em>Units:</em> </td><td>msec </td></tr>
 <tr>
@@ -102,17 +104,18 @@ delivery_control_max_delay (hfx)</h2>
 <p><br />
  </p>
 <h2><a class="anchor" id="deliverycontrolmaximumburstlosshfx"></a>
-delivery_control_maximum_burst_loss (hfx)</h2>
+delivery_control_maximum_burst_loss (hfx)&nbsp;&nbsp;<small><a href="#deliverycontrolmaximumburstlosshfx">&lt;-</a></small></h2>
 <dl class="section user"><dt></dt><dd>This controls the size of a topic sequence number gap past which the gap is declared a "burst loss". </dd></dl>
 <dl class="section user"><dt></dt><dd>Note that the default value for HFX is different than for non-HFX receivers. </dd></dl>
 <dl class="section user"><dt></dt><dd>See <a class="el" href="grpdeliverycontrol.html#burstloss">Burst Loss</a> for a detailed explanation of burst loss and its semantics. </dd></dl>
 <dl class="section user"><dt></dt><dd></dd></dl>
-<dl class="section note"><dt>Note</dt><dd>the burst loss control takes priority over all recovery methods. For example, if the receiver is reading a persistent stream and OTR is enabled, a gap longer than delivery_control_maximum_burst_loss will immediately declare the gap as unrecoverable without even trying to use OTR to recover. If message integrity is a high priority, delivery_control_maximum_burst_loss should be set to a very large value.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>the burst loss control takes priority over all recovery methods. For example, if the receiver is reading a persistent stream and OTR is enabled, a gap longer than delivery_control_maximum_burst_loss will immediately declare the gap as unrecoverable without even trying to use OTR to recover. If message integrity is a high priority, delivery_control_maximum_burst_loss should be set to a very large value. </dd></dl>
+<dl class="section user"><dt></dt><dd>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Config/design.tag:../Design/" href="../Design/umobjects.html#hotfailoveracrossmultiplecontexts">Hot Failover Across Multiple Contexts</a>.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>hfx </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#abdb96b55cc467a75e1f9ec0036dbc14b">lbm_uint_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#abdb96b55cc467a75e1f9ec0036dbc14b">lbm_uint_t</a></b> </td></tr>
 <tr>
 <td><em>Units:</em> </td><td>number of messages (fragments) </td></tr>
 <tr>
@@ -126,8 +129,9 @@ delivery_control_maximum_burst_loss (hfx)</h2>
 <p><br />
  </p>
 <h2><a class="anchor" id="deliverycontrolmaximumtotalmapentrieshfx"></a>
-delivery_control_maximum_total_map_entries (hfx)</h2>
-<dl class="section user"><dt></dt><dd>The maximum number of map entries for the HFX order and loss maps. This is a soft limit. When the sum of the number of loss records and the number of messages held for ordering (messages that will be delivered once all prior messages have been delivered) is greater than this value, the oldest consecutive sequence of loss records will be declared lost immediately to reduce the number of outstanding map entries. A value of 0 indicates that the map should be allowed to grow without bound.</dd></dl>
+delivery_control_maximum_total_map_entries (hfx)&nbsp;&nbsp;<small><a href="#deliverycontrolmaximumtotalmapentrieshfx">&lt;-</a></small></h2>
+<dl class="section user"><dt></dt><dd>The maximum number of map entries for the HFX order and loss maps. </dd></dl>
+<dl class="section user"><dt></dt><dd>This is a soft limit. When the sum of the number of loss records and the number of messages held for ordering (messages that will be delivered once all prior messages have been delivered) is greater than this value, the oldest consecutive sequence of loss records will be declared lost immediately to reduce the number of outstanding map entries. A value of 0 indicates that the map should be allowed to grow without bound.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>hfx </td></tr>
@@ -146,8 +150,9 @@ delivery_control_maximum_total_map_entries (hfx)</h2>
 <p><br />
  </p>
 <h2><a class="anchor" id="duplicatedeliveryhfx"></a>
-duplicate_delivery (hfx)</h2>
-<dl class="section user"><dt></dt><dd>Flag indicating whether duplicate messages should be discarded or simply marked as duplicates. Setting this to 1 overrides the <a class="el" href="grphotfailoveroperation.html#hfduplicatedeliveryreceiver">hf_duplicate_delivery (receiver)</a> setting on all underlying HFX Receivers.</dd></dl>
+duplicate_delivery (hfx)&nbsp;&nbsp;<small><a href="#duplicatedeliveryhfx">&lt;-</a></small></h2>
+<dl class="section user"><dt></dt><dd>Flag indicating whether duplicate messages should be discarded or simply marked as duplicates. </dd></dl>
+<dl class="section user"><dt></dt><dd>Setting this to 1 overrides the <a class="el" href="grphotfailoveroperation.html#hfduplicatedeliveryreceiver">hf_duplicate_delivery (receiver)</a> setting on all underlying HFX Receivers.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>hfx </td></tr>
@@ -174,8 +179,10 @@ duplicate_delivery (hfx)</h2>
 <p><br />
  </p>
 <h2><a class="anchor" id="hfduplicatedeliveryreceiver"></a>
-hf_duplicate_delivery (receiver)</h2>
-<dl class="section user"><dt></dt><dd>Flag indicating if the Hot Failover receiver delivers duplicate messages or not.</dd></dl>
+hf_duplicate_delivery (receiver)&nbsp;&nbsp;<small><a href="#hfduplicatedeliveryreceiver">&lt;-</a></small></h2>
+<dl class="section user"><dt></dt><dd>Flag indicating if the Hot Failover receiver delivers duplicate messages or not. </dd></dl>
+<dl class="section user"><dt></dt><dd>In normal operation, Hot Failover only delivers the first copy received of a message. </dd></dl>
+<dl class="section user"><dt></dt><dd>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Config/design.tag:../Design/" href="../Design/umobjects.html#hotfailoverhf">Hot Failover (HF)</a> for more information.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>receiver </td></tr>
@@ -200,8 +207,9 @@ hf_duplicate_delivery (receiver)</h2>
 <p><br />
  </p>
 <h2><a class="anchor" id="hfoptionalmessagesreceiver"></a>
-hf_optional_messages (receiver)</h2>
-<dl class="section user"><dt></dt><dd>Indicates if a Hot Failover receiver can receive optional messages. See also <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Config/design.tag:../Design/" href="../Design/umfeatures.html#hotfailoverhf">Hot Failover (HF)</a> in the Ultra Messaging Concepts Guide.</dd></dl>
+hf_optional_messages (receiver)&nbsp;&nbsp;<small><a href="#hfoptionalmessagesreceiver">&lt;-</a></small></h2>
+<dl class="section user"><dt></dt><dd>Indicates if a Hot Failover receiver can receive optional messages. </dd></dl>
+<dl class="section user"><dt></dt><dd>See also <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Config/design.tag:../Design/" href="../Design/umobjects.html#hotfailoverhf">Hot Failover (HF)</a>.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>receiver </td></tr>
@@ -228,8 +236,9 @@ hf_optional_messages (receiver)</h2>
 <p><br />
  </p>
 <h2><a class="anchor" id="hfreceiverwildcardreceiver"></a>
-hf_receiver (wildcard_receiver)</h2>
-<dl class="section user"><dt></dt><dd>Specifies whether to create hot failover receivers for each topic that maps to the wildcard receiver pattern.</dd></dl>
+hf_receiver (wildcard_receiver)&nbsp;&nbsp;<small><a href="#hfreceiverwildcardreceiver">&lt;-</a></small></h2>
+<dl class="section user"><dt></dt><dd>Specifies whether to create hot failover receivers for each topic that maps to the wildcard receiver pattern. </dd></dl>
+<dl class="section user"><dt></dt><dd>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Config/design.tag:../Design/" href="../Design/umobjects.html#hotfailoverhf">Hot Failover (HF)</a> for more information.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>wildcard_receiver </td></tr>
@@ -256,8 +265,9 @@ hf_receiver (wildcard_receiver)</h2>
 <p><br />
  </p>
 <h2><a class="anchor" id="ordereddeliveryhfx"></a>
-ordered_delivery (hfx)</h2>
-<dl class="section user"><dt></dt><dd>Flag indicating if the HFX Receiver orders messages before delivery.</dd></dl>
+ordered_delivery (hfx)&nbsp;&nbsp;<small><a href="#ordereddeliveryhfx">&lt;-</a></small></h2>
+<dl class="section user"><dt></dt><dd>Flag indicating if the HFX Receiver orders messages before delivery. </dd></dl>
+<dl class="section user"><dt></dt><dd>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Config/design.tag:../Design/" href="../Design/umobjects.html#hotfailoveracrossmultiplecontexts">Hot Failover Across Multiple Contexts</a>.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>hfx </td></tr>

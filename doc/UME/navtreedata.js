@@ -82,8 +82,13 @@ var NAVTREE =
       [ "Designing Persistent Receivers", "designingpersistenceapplications.html#designingpersistentreceivers", [
         [ "Receiver RegID Management", "designingpersistenceapplications.html#receiverregidmanagement", null ],
         [ "Recovery Management", "designingpersistenceapplications.html#recoverymanagement", null ],
+        [ "Duplicate Message Delivery", "designingpersistenceapplications.html#duplicatmessagedelivery", null ],
+        [ "Setting Callback Function to Set Recovery Sequence Number", "designingpersistenceapplications.html#settingcallbackfunctiontosetrecoverysequencenumber", null ],
         [ "Persistence Message Consumption", "designingpersistenceapplications.html#persistencemessageconsumption", null ],
+        [ "Immediate Message Consumption", "designingpersistenceapplications.html#immediatemessageconsumption", null ],
+        [ "Delayed Message Processing", "designingpersistenceapplications.html#delayedmessageprocessing", null ],
         [ "Batching Acknowledgments", "designingpersistenceapplications.html#batchingacknowledgments", null ],
+        [ "ACK Ordering", "designingpersistenceapplications.html#ackordering", null ],
         [ "Explicit Acknowledgments", "designingpersistenceapplications.html#explicitacknowledgments", null ],
         [ "Object-free Explicit Acknowledgments", "designingpersistenceapplications.html#objectfreeexplicitacknowledgments", null ]
       ] ],
@@ -114,9 +119,9 @@ var NAVTREE =
         [ "Proactive Retransmissions", "persistencefaulttolerance.html#proactiveretransmissions", null ]
       ] ]
     ] ],
-    [ "Persistence Man Pages", "persistencemanpages.html", [
-      [ "umestored Man Page", "persistencemanpages.html#umestoredmanpage", null ],
-      [ "umestoreds Man Page", "persistencemanpages.html#umestoredsmanpage", null ]
+    [ "Man Pages for Store", "manpagesforstore.html", [
+      [ "Umestored Man Page", "manpagesforstore.html#umestoredmanpage", null ],
+      [ "Umestoreds Man Page", "manpagesforstore.html#umestoredsmanpage", null ]
     ] ],
     [ "Configuration Reference for Umestored", "configurationreferenceforumestored.html", [
       [ "Daemon Element", "configurationreferenceforumestored.html#daemonelement", [

@@ -1,5 +1,8 @@
 var NAVTREEINDEX20 =
 {
+"functions_vars_p.html":[2,2,2,9],
+"functions_vars_s.html":[2,2,2,10],
+"functions_vars_t.html":[2,2,2,11],
 "functions_vars_u.html":[2,2,2,12],
 "functions_vars_v.html":[2,2,2,13],
 "functions_vars_w.html":[2,2,2,14],
@@ -11,8 +14,8 @@ var NAVTREEINDEX20 =
 "interfacecom_1_1latencybusters_1_1lbm_1_1LBMObjectDisposer.html#a20c38bcdb477baa91c213dca8d2c7a66":[2,0,0,0,0,53,0],
 "interfacecom_1_1latencybusters_1_1lbm_1_1LBMObjectFactory.html":[2,0,0,0,0,54],
 "interfacecom_1_1latencybusters_1_1lbm_1_1LBMObjectFactory.html#a82a9b7e8b5e140f4ccafe035bac7ad8a":[2,0,0,0,0,54,0],
-"namespacecom.html":[1,0,0],
 "namespacecom.html":[2,0,0],
+"namespacecom.html":[1,0,0],
 "namespacecom_1_1latencybusters.html":[2,0,0,0],
 "namespacecom_1_1latencybusters.html":[1,0,0,0],
 "namespacecom_1_1latencybusters_1_1lbm.html":[2,0,0,0,0],

@@ -40,7 +40,7 @@ var NAVTREE =
       ] ],
       [ "Securing UMM Daemon Communication with SSL", "index.html#securingummdaemoncommunicationwithssl", null ]
     ] ],
-    [ "Manpage for ummd", "index.html#manpageforummd", null ]
+    [ "Man Page for ummd", "index.html#manpageforummd", null ]
   ] ]
 ];
 

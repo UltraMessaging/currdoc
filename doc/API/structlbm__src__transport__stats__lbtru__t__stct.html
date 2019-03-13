@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">UM C API
-   &#160;<span id="projectnumber">6.11.1</span>
+   &#160;<span id="projectnumber">6.12</span>
    </div>
   </td>
  </tr>
@@ -103,7 +103,8 @@ Data Fields</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Structure that holds datagram statistics for source LBT-RU transports. </p>
-<p>Note that when stats are sampled, the fields in the structure are not necessarily from the same instant in time. The structure might be updated concurrently with it being sampled, and while each structure field is atomically read, the field values can be skewed slightly across time. </p>
+<p>Note that when stats are sampled, the fields in the structure are not necessarily from the same instant in time. The structure might be updated concurrently with it being sampled, and while each structure field is atomically read, the field values can be skewed slightly across time.</p>
+<p>See <a class="el" href="structlbm__src__transport__stats__lbtru__t__stct.html">lbm_src_transport_stats_lbtru_t_stct</a> for field definitions. </p>
 </div><h2 class="groupheader">Field Documentation</h2>
 <a class="anchor" id="a9851cc6a90ccb8e318b022818ea57c58"></a>
 <div class="memitem">
@@ -127,7 +128,7 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Number of LBT-RU datagrams sent. Depending on batching settings, a single LBT-RU datagram may contain one or more messages, or a fragment of a larger message. With LBT-RU, larger messages are split into fragment sizes limited by configuration option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/API/config.tag:../Config/" href="../Config/grptransportlbtruoperation.html#transportlbtrudatagrammaxsizecontext">transport_lbtru_datagram_max_size (context)</a> (default 8KB). </p>
+<p>Number of LBT-RU datagrams sent. Depending on batching settings, a single LBT-RU datagram may contain one or more messages, or a fragment of a larger message. With LBT-RU, larger messages are split into fragment sizes limited by configuration option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/API/config.tag:../Config/" href="../Config/grptransportlbtruoperation.html#transportlbtrudatagrammaxsizecontext">transport_lbtru_datagram_max_size (context)</a> (default 8KB). </p>
 
 </div>
 </div>
@@ -153,7 +154,7 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Number of NAKs this source transport ignored and sent an NCF with reason code "ignored". A source transport ignores a NAK for a datagram it has already recently retransmitted. How "recently" is determined by the configuration option source <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/API/config.tag:../Config/" href="../Config/grptransportlbtrureliability.html#transportlbtruignoreintervalsource">transport_lbtru_ignore_interval (source)</a> (default 500ms). If this count is high, a receiver transport may be having trouble receiving retransmissions, or the ignore interval may be set too long. </p>
+<p>Number of NAKs this source transport ignored and sent an NCF with reason code "ignored". A source transport ignores a NAK for a datagram it has already recently retransmitted. How "recently" is determined by the configuration option source <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/API/config.tag:../Config/" href="../Config/grptransportlbtrureliability.html#transportlbtruignoreintervalsource">transport_lbtru_ignore_interval (source)</a> (default 500ms). If this count is high, a receiver transport may be having trouble receiving retransmissions, or the ignore interval may be set too long. </p>
 
 </div>
 </div>
@@ -166,7 +167,7 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Number of individual NAKs received by the source transport. When a source transport receives a NAK from a receiver transport, it may respond by re-transmitting the requested LBT-RU datagram, or it may send an NCF. The NAKing receiver transport responds to the NCF by waiting (timeout set by <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/API/config.tag:../Config/" href="../Config/grptransportlbtrureliability.html#transportlbtrunaksuppressintervalreceiver">transport_lbtru_nak_suppress_interval (receiver)</a>, default 1000 ms), then re-sending the NAK. </p>
+<p>Number of individual NAKs received by the source transport. When a source transport receives a NAK from a receiver transport, it may respond by re-transmitting the requested LBT-RU datagram, or it may send an NCF. The NAKing receiver transport responds to the NCF by waiting (timeout set by <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/API/config.tag:../Config/" href="../Config/grptransportlbtrureliability.html#transportlbtrunaksuppressintervalreceiver">transport_lbtru_nak_suppress_interval (receiver)</a>, default 1000 ms), then re-sending the NAK. </p>
 
 </div>
 </div>
@@ -179,7 +180,7 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Number of NAKs this source transport has not yet processed because doing so would exceed its retransmit rate limit (set by configuration option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/API/config.tag:../Config/" href="../Config/grptransportlbtruoperation.html#transportlbtruretransmitratelimitcontext">transport_lbtru_retransmit_rate_limit (context)</a>, default 5Mbps). For each of these NAKs, the source transport immediately sends an NFC rx_delay, then queues the retransmission for a later send within the rate limit. If this count is high, one or more crybaby receiver transports may be clogging the source transport's retransmit queue. </p>
+<p>Number of NAKs this source transport has not yet processed because doing so would exceed its retransmit rate limit (set by configuration option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/API/config.tag:../Config/" href="../Config/grptransportlbtruoperation.html#transportlbtruretransmitratelimitcontext">transport_lbtru_retransmit_rate_limit (context)</a>, default 5Mbps). For each of these NAKs, the source transport immediately sends an NFC rx_delay, then queues the retransmission for a later send within the rate limit. If this count is high, one or more crybaby receiver transports may be clogging the source transport's retransmit queue. </p>
 
 </div>
 </div>

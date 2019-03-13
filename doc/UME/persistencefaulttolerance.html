@@ -57,7 +57,7 @@ $(document).ready(function(){initNavTree('persistencefaulttolerance.html','');})
 <div class="textblock"><p><br />
  </p>
 <h1><a class="anchor" id="messagelossrecovery"></a>
-Message Loss Recovery</h1>
+Message Loss Recovery&nbsp;&nbsp;<small><a href="#messagelossrecovery">&lt;-</a></small></h1>
 <p>Persistence offers the following message recovery mechanisms:</p>
 <table class="doxtable">
 <tr>
@@ -69,7 +69,7 @@ Message Loss Recovery</h1>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>Late Join </td><td>UMS, UMP, UMQ </td><td>All </td><td><p class="starttd">Retransmits messages via unicast to receivers joining the stream after the messages were originally sent. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UME/design.tag:../Design/" href="../Design/umfeatures.html#usinglatejoin">Using Late Join</a>.</p>
+<td>Late Join </td><td>UMS, UMP, UMQ </td><td>All </td><td><p class="starttd">Retransmits messages via unicast to receivers joining the stream after the messages were originally sent. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UME/design.tag:../Design/" href="../Design/umfeatures.html#usinglatejoin">Using Late Join</a>.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
@@ -77,7 +77,7 @@ Message Loss Recovery</h1>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>Off Transport Recovery </td><td>UMS, UMP, UMQ </td><td>All </td><td><p class="starttd">Recovers lost topic messages. Receiver detects lost sequence number and requests retransmission from the source or persistent stores (if applicable). UM unicasts retransmissions. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UME/design.tag:../Design/" href="../Design/umfeatures.html#offtransportrecoveryotr">Off-Transport Recovery (OTR)</a>.</p>
+<td>Off Transport Recovery </td><td>UMS, UMP, UMQ </td><td>All </td><td><p class="starttd">Recovers lost topic messages. Receiver detects lost sequence number and requests retransmission from the source or persistent stores (if applicable). UM unicasts retransmissions. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UME/design.tag:../Design/" href="../Design/umfeatures.html#offtransportrecoveryotr">Off-Transport Recovery (OTR)</a>.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
@@ -86,7 +86,7 @@ Message Loss Recovery</h1>
 <p><br />
  </p>
 <h1><a class="anchor" id="configuringforpersistenceandrecovery"></a>
-Configuring for Persistence and Recovery</h1>
+Configuring for Persistence and Recovery&nbsp;&nbsp;<small><a href="#configuringforpersistenceandrecovery">&lt;-</a></small></h1>
 <p>Deployment decisions play a huge role in the success of any persistent system. Configuration in UM has a number of options that aid in performance, fault recovery, and overall system stability. It is not possible, or at least not wise, to totally divorce configuration from application development for high performance systems. This is true not only for persistent systems, but for practically all distributed systems. When designing systems, deployment considerations need to be taken into account for the following:</p>
 <ul>
 <li>
@@ -103,7 +103,7 @@ Store Configuration Considerations </li>
 <p><br />
  </p>
 <h2><a class="anchor" id="sourceconsiderations"></a>
-Source Considerations</h2>
+Source Considerations&nbsp;&nbsp;<small><a href="#sourceconsiderations">&lt;-</a></small></h2>
 <p>Performance of sources is heavily impacted by:</p>
 <ul>
 <li>
@@ -123,19 +123,19 @@ the throughput and latency requirements of the data </li>
 <p><br />
  </p>
 <h2><a class="anchor" id="receiverconsiderations"></a>
-Receiver Considerations</h2>
+Receiver Considerations&nbsp;&nbsp;<small><a href="#receiverconsiderations">&lt;-</a></small></h2>
 <p>In addition to the following, receiver performance shares the same considerations as receivers during normal operation.</p>
 <p><b>Acknowledgement Generation</b></p>
-<p>Persistent receivers send a message consumption acknowledgement to stores and the message source. Some applications may want to control this acknowledgement explicitly themselves. In this case, <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeexplicitackonlyreceiver">ume_explicit_ack_only (receiver)</a> can be used.</p>
+<p>Persistent receivers send a message consumption acknowledgement to stores and the message source. Some applications may want to control this acknowledgement explicitly themselves. In this case, <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeexplicitackonlyreceiver">ume_explicit_ack_only (receiver)</a> can be used.</p>
 <p><b>Controlling Retransmission</b></p>
 <p>Persistent receivers during fault recovery are another matter entirely. Receivers send retransmission requests and receive and process retransmissions. Control over this process is crucial when handling very long recoveries, such as hundreds of thousands or millions of messages. A receiver only sends a certain number of retransmission requests at a time.</p>
-<p>This means that a receiver will not, unless configured to with <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grplatejoin.html#retransmitrequestoutstandingmaximumreceiver">retransmit_request_outstanding_maximum (receiver)</a>, request everything at once. The value of the low sequence number (<a class="el" href="designingpersistenceapplications.html#persistentreceiverrecovery">Persistent Receiver Recovery</a>) has a direct impact on how many requests need to be handled. A receiving application can decide to only handle the last X number of messages instead of recovering them all using the option, <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grplatejoin.html#retransmitrequestmaximumreceiver">retransmit_request_maximum (receiver)</a>. The timeout used between requests, if the retransmission does not arrive, is totally controllable with <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grplatejoin.html#retransmitrequestintervalreceiver">retransmit_request_interval (receiver)</a>. And the total time given to recover all messages is also controllable.</p>
+<p>This means that a receiver will not, unless configured to with <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UME/config.tag:../Config/" href="../Config/grplatejoin.html#retransmitrequestoutstandingmaximumreceiver">retransmit_request_outstanding_maximum (receiver)</a>, request everything at once. The value of the low sequence number (<a class="el" href="designingpersistenceapplications.html#persistentreceiverrecovery">Persistent Receiver Recovery</a>) has a direct impact on how many requests need to be handled. A receiving application can decide to only handle the last X number of messages instead of recovering them all using the option, <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UME/config.tag:../Config/" href="../Config/grplatejoin.html#retransmitrequestmaximumreceiver">retransmit_request_maximum (receiver)</a>. The timeout used between requests, if the retransmission does not arrive, is totally controllable with <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UME/config.tag:../Config/" href="../Config/grplatejoin.html#retransmitrequestintervalreceiver">retransmit_request_interval (receiver)</a>. And the total time given to recover all messages is also controllable.</p>
 <p><b>Recovery Process</b></p>
 <p>Theoretically, receivers can handle up to roughly 2 billion messages during recovery. This limit is implied from the sequence number arithmetic and not from any other limitation. For recovery, the crucial limiting factor is how a receiver processes and handles retransmissions which come in as fast as UM can request them and a store can retransmit them. This is perhaps much faster than an application can handle them. In this case, it is crucial to realize that as recovery progresses, the source may still be transmitting new data. This data will be buffered until recovery is complete and then handed to the application. It is prudent to understand application processing load when planning on how much recovery is going to be needed and how it may need to be configured within UM.</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="storeconfigurationconsiderations"></a>
-Store Configuration Considerations</h2>
+Store Configuration Considerations&nbsp;&nbsp;<small><a href="#storeconfigurationconsiderations">&lt;-</a></small></h2>
 <p>UM stores have numerous configuration options. See <a class="el" href="configurationreferenceforumestored.html">Configuration Reference for Umestored</a> for details.</p>
 <p><b>Configuring Store Usage per Source</b></p>
 <p>A store handles persisted state on a per topic per source basis. Based on the load of topics and sources, it may be prudent to spread the topic space, or just source space, across stores as a way to handle large loads. As configuration of store usage is per source, this is extremely easy to do. It is easy to spread CPU load via multi-threading as well as hard disk usage across stores. A single store process can have a set of virtual stores within it, each with their own thread.</p>
@@ -166,7 +166,7 @@ Flight Size - Maximum number of messages sent but not stable which is determined
 <p class="endli"></p>
 </li>
 <li>
-Set Intergroup Stability to all-active. This setting for <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeretentionintergroupstabilitybehaviorsource">ume_retention_intergroup_stability_behavior (source)</a> provides a more immediate evaluation of your store configuration. Active groups must have at least a quorum of active stores, registered with the source and sending stability acknowledgements for persisted messages. By default, if a store becomes unresponsive, a store group could lose quorum and therefore messages in-flight cannot be stabilized by the unresponsive store's group until the store's <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umestoreactivitytimeoutsource">ume_store_activity_timeout (source)</a> expires and the store restarts. However, with all-active, the source does not wait for the unresponsive store's <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umestoreactivitytimeoutsource">ume_store_activity_timeout (source)</a> to expire. The source removes the unresponsive store's group from the list of stores from which the source uses to determine that messages in-flight are stable. An inactive store with a running activity timeout does not impede message stabilization. </li>
+Set Intergroup Stability to all-active. This setting for <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeretentionintergroupstabilitybehaviorsource">ume_retention_intergroup_stability_behavior (source)</a> provides a more immediate evaluation of your store configuration. Active groups must have at least a quorum of active stores, registered with the source and sending stability acknowledgements for persisted messages. By default, if a store becomes unresponsive, a store group could lose quorum and therefore messages in-flight cannot be stabilized by the unresponsive store's group until the store's <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umestoreactivitytimeoutsource">ume_store_activity_timeout (source)</a> expires and the store restarts. However, with all-active, the source does not wait for the unresponsive store's <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umestoreactivitytimeoutsource">ume_store_activity_timeout (source)</a> to expire. The source removes the unresponsive store's group from the list of stores from which the source uses to determine that messages in-flight are stable. An inactive store with a running activity timeout does not impede message stabilization. </li>
 </ol>
 <p><b>Store Configuration Practices to Avoid</b></p>
 <p>Informatica does not support the following store configuration practices:</p>
@@ -176,12 +176,12 @@ Set Intergroup Stability to all-active. This setting for <a class="elRef" doxyge
 <p class="endli"></p>
 </li>
 <li>
-Do not use backup stores. The configuration option, <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umestoregroupsource">ume_store_group (source)</a> allows you to identify a store group and its size in number of stores. Setting the group size in this option to a number of stores less than the number of stores configured with the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umestoresource">ume_store (source)</a> option can lead to messages that were reported stable to the source being unavailable for receivers to recover, in the event that multiple stores became unresponsive and were replaced by backup stores. For example, setting <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umestoregroupsource">ume_store_group (source)</a> with a size of 3 stores, but configuring ume_store with 5 stores is not supported. </li>
+Do not use backup stores. The configuration option, <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umestoregroupsource">ume_store_group (source)</a> allows you to identify a store group and its size in number of stores. Setting the group size in this option to a number of stores less than the number of stores configured with the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umestoresource">ume_store (source)</a> option can lead to messages that were reported stable to the source being unavailable for receivers to recover, in the event that multiple stores became unresponsive and were replaced by backup stores. For example, setting <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umestoregroupsource">ume_store_group (source)</a> with a size of 3 stores, but configuring ume_store with 5 stores is not supported. </li>
 </ul>
 <p><br />
  </p>
 <h1><a class="anchor" id="persistenceproxysources"></a>
-Persistence Proxy Sources</h1>
+Persistence Proxy Sources&nbsp;&nbsp;<small><a href="#persistenceproxysources">&lt;-</a></small></h1>
 <p>By default, UM expects persistent sources to be running concurrently with persistent receivers. If a source exits, any persistent receivers will disconnect from that source's transport and will wait for the source to come back. More significantly, if a new receiver starts while the source is absent, the receiver will be unable to discover the stores where the old source's previous messages are stored. So that late-joining receiver will not recover messages until the source finally restarts.</p>
 <p>The Proxy Source feature allows you to configure stores to automatically continue sending the source's topic advertisements which allow new receivers to join the source's transport session and request Source Registration Information (SRI) to register with the store and request retransmissions. After the source returns, the store automatically stops acting as a proxy source. Stores can be located across a UM Router or within the same LAN as the failed source.</p>
 <p>Some other features of Proxy Sources include:</p>
@@ -205,7 +205,7 @@ A store can be running multiple proxy sources for the same topic, each one corre
 <p><br />
  </p>
 <h2><a class="anchor" id="howproxysourcesoperate"></a>
-How Proxy Sources Operate</h2>
+How Proxy Sources Operate&nbsp;&nbsp;<small><a href="#howproxysourcesoperate">&lt;-</a></small></h2>
 <p>The following sequence illustrates the life of a proxy source:</p>
 <ol>
 <li>
@@ -217,7 +217,7 @@ How Proxy Sources Operate</h2>
 <p class="endli"></p>
 </li>
 <li>
-<p class="startli">The source's <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeactivitytimeoutsource">ume_activity_timeout (source)</a> or the store's <a class="el" href="configurationreferenceforumestored.html#umecfgsourceactivitytimeout">source-activity-timeout</a> expires.</p>
+<p class="startli">The source's <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeactivitytimeoutsource">ume_activity_timeout (source)</a> or the store's <a class="el" href="configurationreferenceforumestored.html#umecfgsourceactivitytimeout">source-activity-timeout</a> expires.</p>
 <p class="endli"></p>
 </li>
 <li>
@@ -240,41 +240,41 @@ The store deletes the proxy source and the original source resumes activity. </l
 <p><br />
  </p>
 <h2><a class="anchor" id="activitytimeoutandstatelifetimes"></a>
-Activity Timeout and State Lifetimes</h2>
+Activity Timeout and State Lifetimes&nbsp;&nbsp;<small><a href="#activitytimeoutandstatelifetimes">&lt;-</a></small></h2>
 <p>UM provides activity and state lifetime timers for sources and receivers that operate in conjunction with the proxy source option or independently. This section explains how these timers work together and how they work with proxy sources.</p>
-<p>The <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeactivitytimeoutsource">ume_activity_timeout (source)</a> and <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeactivitytimeoutreceiver">ume_activity_timeout (receiver)</a> options determine how long a source or receiver must be inactive before a store allows another source or receiver to register using that RegID. This prevents a second source or receiver from stealing a RegID from an existing source or receiver. An activity timeout can be configured for the source/receiver with the UM Configuration Option cited above or with a topic's <a class="el" href="configurationreferenceforumestored.html#umecfgumeattributes">ume-attribute</a> configured in the umestored XML configuration file. The following diagram illustrates the default activity timeout behavior, which uses <a class="el" href="configurationreferenceforumestored.html#umecfgsourcestatelifetime">source-state-lifetime</a> in the umestored XML configuration file.</p>
+<p>The <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeactivitytimeoutsource">ume_activity_timeout (source)</a> and <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeactivitytimeoutreceiver">ume_activity_timeout (receiver)</a> options determine how long a source or receiver must be inactive before a store allows another source or receiver to register using that RegID. This prevents a second source or receiver from stealing a RegID from an existing source or receiver. An activity timeout can be configured for the source/receiver with the UM Configuration Option cited above or with a topic's <a class="el" href="configurationreferenceforumestored.html#umecfgumeattributes">ume-attribute</a> configured in the umestored XML configuration file. The following diagram illustrates the default activity timeout behavior, which uses <a class="el" href="configurationreferenceforumestored.html#umecfgsourcestatelifetime">source-state-lifetime</a> in the umestored XML configuration file.</p>
 <div class="image">
 <img src="source_act_timeout_def.png" alt="source_act_timeout_def.png"/>
 </div>
  <p>In addition to the activity timeout, you can also configure sources and receivers with a state lifetime timer using the following options.</p>
 <ul>
 <li>
-<p class="startli"><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umestatelifetimesource">ume_state_lifetime (source)</a></p>
+<p class="startli"><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umestatelifetimesource">ume_state_lifetime (source)</a></p>
 <p class="endli"></p>
 </li>
 <li>
-<p class="startli"><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umestatelifetimereceiver">ume_state_lifetime (receiver)</a></p>
+<p class="startli"><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umestatelifetimereceiver">ume_state_lifetime (receiver)</a></p>
 <p class="endli"></p>
 </li>
 <li>
 The topic's ume-attributes options, <a class="el" href="configurationreferenceforumestored.html#umecfgsourcestatelifetime">source-state-lifetime</a> and <a class="el" href="configurationreferenceforumestored.html#umecfgreceiverstatelifetime">receiver-state-lifetime</a>. </li>
 </ul>
-<p>The <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umestatelifetimesource">ume_state_lifetime (source)</a> and <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umestatelifetimereceiver">ume_state_lifetime (receiver)</a> options, when used in conjunction with the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeactivitytimeoutsource">ume_activity_timeout (source)</a> and <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeactivitytimeoutreceiver">ume_activity_timeout (receiver)</a> options, determines at what point UM removes the source or receiver state files. UM does not check the state lifetime until the activity timeout expires. The following diagram illustrates this behavior:</p>
+<p>The <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umestatelifetimesource">ume_state_lifetime (source)</a> and <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umestatelifetimereceiver">ume_state_lifetime (receiver)</a> options, when used in conjunction with the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeactivitytimeoutsource">ume_activity_timeout (source)</a> and <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeactivitytimeoutreceiver">ume_activity_timeout (receiver)</a> options, determines at what point UM removes the source or receiver state files. UM does not check the state lifetime until the activity timeout expires. The following diagram illustrates this behavior:</p>
 <div class="image">
 <img src="source_state_lifetime.png" alt="source_state_lifetime.png"/>
 </div>
- <p>If you have enabled the Proxy Source option, the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeactivitytimeoutsource">ume_activity_timeout (source)</a> triggers the creation of the proxy source. The following diagram illustrates this behavior:</p>
+ <p>If you have enabled the Proxy Source option, the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeactivitytimeoutsource">ume_activity_timeout (source)</a> triggers the creation of the proxy source. The following diagram illustrates this behavior:</p>
 <div class="image">
 <img src="src_act_and_state_timers.png" alt="src_act_and_state_timers.png"/>
 </div>
  <p><br />
  </p>
 <h2><a class="anchor" id="enablingtheproxysources"></a>
-Enabling the Proxy Sources</h2>
+Enabling the Proxy Sources&nbsp;&nbsp;<small><a href="#enablingtheproxysources">&lt;-</a></small></h2>
 <p>You must configure both the source and the stores to enable the Proxy Source option.</p>
 <ul>
 <li>
-<p class="startli">Configure the source in a UM Configuration File with the source configuration option, <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeproxysourcesource">ume_proxy_source (source)</a>.</p>
+<p class="startli">Configure the source in a UM Configuration File with the source configuration option, <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeproxysourcesource">ume_proxy_source (source)</a>.</p>
 <p class="endli"></p>
 </li>
 <li>
@@ -283,13 +283,13 @@ Configure the stores in the umestored XML configuration file with the Store Elem
 <p><br />
  </p>
 <h2><a class="anchor" id="proxysourceelections"></a>
-Proxy Source Elections</h2>
-<p>When multiple stores in a Quorum/Consensus configuration notice the loss of a registered source (expiration of the source's <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeactivitytimeoutsource">ume_activity_timeout (source)</a>) configured for proxy sources, only one of the stores needs to create a proxy source to continue sending topic advertisements.</p>
+Proxy Source Elections&nbsp;&nbsp;<small><a href="#proxysourceelections">&lt;-</a></small></h2>
+<p>When multiple stores in a Quorum/Consensus configuration notice the loss of a registered source (expiration of the source's <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeactivitytimeoutsource">ume_activity_timeout (source)</a>) configured for proxy sources, only one of the stores needs to create a proxy source to continue sending topic advertisements.</p>
 <p>The proxy source election process determines which store creates the proxy source. Each store starts by waiting a randomized amount of time based on its <a class="el" href="configurationreferenceforumestored.html#umecfgproxyelectioninterval">proxy-election-interval</a> option setting. The store creates a proxy source if it has not received a persistent registration request (PREG) from a proxy on a different store. The proxy source then sends a PREG containing a unique random value to the other stores. This value determines which store deletes it's proxy source in the case that any two stores independently determine they should create a proxy source. The nature of the random values ensures that only one store within the Q/C group or configuration of groups keeps its proxy source.</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="proactiveretransmissions"></a>
-Proactive Retransmissions</h2>
+Proactive Retransmissions&nbsp;&nbsp;<small><a href="#proactiveretransmissions">&lt;-</a></small></h2>
 <p>Proactive Retransmissions, which is enabled by default, address two types of loss:</p>
 <ul>
 <li>
@@ -300,9 +300,9 @@ Proactive Retransmissions</h2>
 loss of stability acknowledgments (ACK) between the store and the source </li>
 </ul>
 <p>The store sends message stability acknowledgments to the source after the store persists the message data.</p>
-<p>With Proactive Retransmissions, the source maintains an unstable message queue for those messages sent but not acknowledged by the store. The source checks this queue at the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umemessagestabilitytimeoutsource">ume_message_stability_timeout (source)</a>. If a message in this queue exceeds its <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umemessagestabilitytimeoutsource">ume_message_stability_timeout (source)</a>, the source retransmits the message and puts it back on the unstabilized message queue, restarting the message's <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umemessagestabilitytimeoutsource">ume_message_stability_timeout (source)</a>.</p>
-<p>The source continues to retransmit and check the message's stability timeout until the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umemessagestabilitylifetimesource">ume_message_stability_lifetime (source)</a> expires or it receives a stability acknowledgment from the store. If the source has not received a stability acknowledgment when the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umemessagestabilitylifetimesource">ume_message_stability_lifetime (source)</a> expires, the source sends a Store Message Not Stable source event notification to the application. When the store discards the message because it has not met stability requirements, the store sends a Store Forced Reclaim source event notification to the application.</p>
-<p>To disable Proactive Retransmissions, set <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umemessagestabilitytimeoutsource">ume_message_stability_timeout (source)</a> to 0 (zero). As a result, sources do not create an unstable message queue.</p>
+<p>With Proactive Retransmissions, the source maintains an unstable message queue for those messages sent but not acknowledged by the store. The source checks this queue at the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umemessagestabilitytimeoutsource">ume_message_stability_timeout (source)</a>. If a message in this queue exceeds its <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umemessagestabilitytimeoutsource">ume_message_stability_timeout (source)</a>, the source retransmits the message and puts it back on the unstabilized message queue, restarting the message's <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umemessagestabilitytimeoutsource">ume_message_stability_timeout (source)</a>.</p>
+<p>The source continues to retransmit and check the message's stability timeout until the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umemessagestabilitylifetimesource">ume_message_stability_lifetime (source)</a> expires or it receives a stability acknowledgment from the store. If the source has not received a stability acknowledgment when the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umemessagestabilitylifetimesource">ume_message_stability_lifetime (source)</a> expires, the source sends a Store Message Not Stable source event notification to the application. When the store discards the message because it has not met stability requirements, the store sends a Store Forced Reclaim source event notification to the application.</p>
+<p>To disable Proactive Retransmissions, set <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umemessagestabilitytimeoutsource">ume_message_stability_timeout (source)</a> to 0 (zero). As a result, sources do not create an unstable message queue.</p>
 <p>The following applies whether you enable or disable Proactive Retransmissions.</p>
 <ul>
 <li>

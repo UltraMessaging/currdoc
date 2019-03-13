@@ -10,23 +10,37 @@
 #
 # Sample usage:
 # 
-#       make -f Makefile.unix TARGET_PLATFORM=<platform>
+#       make -f Makefile.unix TARGET_PLATFORM=<platform> PRODUCT=<product>
 #
 # where <platform> is one of:
 #
 #       AIX-5-powerpc64
 #       Darwin-9.8.0-x86_64
-#       Linux-glibc-2.5-x86_64
+#       Linux-glibc-2.17-x86_64
 #       Linux-glibc-2.12-i686
 #       SunOS-5.10-amd64
 #       SunOS-5.10-i386
 #       SunOS-5.10-sparc
 #       SunOS-5.10-sparcv9
 #
+#      <product> is one of:
+#
+#      UMS
+#      UMP
+#      UMQ
+#
 # For example:
 # 
 #       make -f Makefile.unix clean
-#       make -f Makefile.unix TARGET_PLATFORM=Linux-glibc-2.5-x86_64
+#
+#   for UMS only examples:
+#       make -f Makefile.unix TARGET_PLATFORM=Linux-glibc-2.17-x86_64
+#
+#   for UMS and UMP examples:
+#       make -f Makefile.unix TARGET_PLATFORM=Linux-glibc-2.17-x86_64 PRODUCT=UMP
+#
+#   for UMS, UMP and UMQ examples:
+#       make -f Makefile.unix TARGET_PLATFORM=Linux-glibc-2.17-x86_64 PRODUCT=UMQ
 #
 #
 # Additionally, if the directory containing this make file and example source
@@ -69,7 +83,7 @@ Darwin-9.8.0-x86_64.flgs         =  -m64
 
 Linux-glibc-2.12-i686.flgs    = -m32 
 
-Linux-glibc-2.5-x86_64.flgs  =
+Linux-glibc-2.17-x86_64.flgs  =
 
 ##                                    -DSOLARIS    
 ##                                    -DSOLARIS64  
@@ -104,6 +118,8 @@ AIX_LIBS            =  -lnsl \
 					   -lm
 
 LINUX_LIBS          =  -lrt \
+					   -lm \
+					   -ldl \
                        -lnsl
 
 
@@ -117,14 +133,14 @@ SUN_LIBS            =  -lsocket \
 # Values for the LBM libraries and include files.  Do not modify.
 
 
-LBM_LIBS            =  -llbm -llbmsdm -llbmutl
+LBM_LIBS            =  -llbm -llbmsdm -llbmutl -lrsock -lqpid-proton
 
 
 
 # The example source files.  Do not modify.
 
 
-EXAMPLE_SRC         =  lbmhtrcv.c lbmhfrcv.c lbmhfrcvq.c              \
+EXAMPLE_SRC_UMS     =  lbmhtrcv.c lbmhfrcv.c lbmhfrcvq.c              \
                        lbmhfsrc.c lbmimsg.c lbmireq.c                 \
                        lbmmon.c lbmmoncache.c lbmmondata.c            \
                        lbmmonudp.c lbmmrcv.c lbmmrcvq.c lbmmreq.c     \
@@ -132,22 +148,43 @@ EXAMPLE_SRC         =  lbmhtrcv.c lbmhfrcv.c lbmhfrcvq.c              \
                        lbmrcvq.c lbmreq.c lbmresp.c lbmresping.c      \
                        lbmrespq.c lbmspike.c lbmsrc.c lbmssrc.c       \
                        lbmstrm.c lbmwrcv.c lbmwrcvq.c lbmtrreq.c      \
-                       umercv.c umesrc.c umestored_example.c          \
-                       umqrcv.c umqsrc.c lbmhfxrcv.c
+					   tnwgdmon.c tnwgdcmd.c umedmon.c umedcmd.c      \
+					   srs_cmd.c srs_monitor_info_receiver.c
+
+EXAMPLE_SRC_UMP     = umercv.c umesrc.c
+
+EXAMPLE_SRC_UMQ     = umqrcv.c umqsrc.c lbmhfxrcv.c
+
+ifeq ($(PRODUCT),)
+PRODUCT=UMS
+endif
+
+ifeq ($(PRODUCT),UMS)
+EXAMPLE_SRC = $(EXAMPLE_SRC_UMS)
+
+else ifeq ($(PRODUCT),UMP)
+EXAMPLE_SRC = $(EXAMPLE_SRC_UMS) $(EXAMPLE_SRC_UMP)
+ifeq ($(TARGET_PLATFORM),Linux-glibc-2.17-x86_64)
+EXAMPLE_EXE_EXTRA = umestored_example
+endif
+
+else ifeq ($(PRODUCT),UMQ)
+EXAMPLE_SRC = $(EXAMPLE_SRC_UMS) $(EXAMPLE_SRC_UMP) $(EXAMPLE_SRC_UMQ)
+ifeq ($(TARGET_PLATFORM),Linux-glibc-2.17-x86_64)
+EXAMPLE_EXE_EXTRA = umestored_example
+endif
+else
+$(error Invalid product: '$(PRODUCT)' entered.  Please specify a valid product (UMS, UMP, UMQ))
+endif
 
 EXAMPLE_INC         =  monmodopts.h replgetopt.h verifymsg.h
 
 OTHER_SRC           =  getopt.c verifymsg.c
 
-EXAMPLE_EXE         =  $(EXAMPLE_SRC:.c=)
-
-
+EXAMPLE_EXE         =  $(EXAMPLE_SRC:.c=) $(EXAMPLE_EXE_EXTRA)
 
 # Targets.  Do not modify.
-
-
-
-all:  $(TARGET_PLATFORM)
+all: $(TARGET_PLATFORM) 
 	@if [ -z "$(TARGET_PLATFORM)" ]; then $(MAKE) -f Makefile.unix unspecified; fi
 
 
@@ -159,10 +196,6 @@ unspecified:
 	@echo
 
 
-AIX-5-powerpc64:
-	@$(MAKE) -f Makefile.unix CFLAGS="$($(TARGET_PLATFORM).flgs)" EXTRA_LIBS="$(AIX_LIBS)" examples 
-
-
 Darwin-9.8.0-x86_64:
 	@$(MAKE) -f Makefile.unix CFLAGS="$($(TARGET_PLATFORM).flgs)" examples
 
@@ -171,7 +204,7 @@ Linux-glibc-2.12-i686:
 	@$(MAKE) -f Makefile.unix CFLAGS="$($(TARGET_PLATFORM).flgs)" EXTRA_LIBS="$(LINUX_LIBS)" examples 
 
 
-Linux-glibc-2.5-x86_64:
+Linux-glibc-2.17-x86_64:
 	@$(MAKE) -f Makefile.unix CFLAGS="$($(TARGET_PLATFORM).flgs)" EXTRA_LIBS="$(LINUX_LIBS)" examples 
 
 SunOS-5.10-amd64:
@@ -298,5 +331,23 @@ umqrcv:  umqrcv.c $(OTHER_SRC) $(EXAMPLE_INC)
 umqsrc:  umqsrc.c $(OTHER_SRC) $(EXAMPLE_INC)
 	$(CC) umqsrc.c $(OTHER_SRC) -o  $@  $(GEN_CFLAGS) $(CFLAGS) -I$(LBM_INCLUDE_DIRS) -L$(LBM_LIB_DIRS) $(LBM_LIBS) $(GEN_LIBS) $(EXTRA_LIBS)
 
+tnwgdmon:  tnwgdmon.c $(OTHER_SRC) $(EXAMPLE_INC)
+	$(CC) tnwgdmon.c $(OTHER_SRC) -o  $@  $(GEN_CFLAGS) $(CFLAGS) -I$(LBM_INCLUDE_DIRS) -L$(LBM_LIB_DIRS) $(LBM_LIBS) $(GEN_LIBS) $(EXTRA_LIBS)
+
+tnwgdcmd:  tnwgdcmd.c $(OTHER_SRC) $(EXAMPLE_INC)
+	$(CC) tnwgdcmd.c $(OTHER_SRC) -o  $@  $(GEN_CFLAGS) $(CFLAGS) -I$(LBM_INCLUDE_DIRS) -L$(LBM_LIB_DIRS) $(LBM_LIBS) $(GEN_LIBS) $(EXTRA_LIBS)
+
+umedmon:  umedmon.c $(OTHER_SRC) $(EXAMPLE_INC)
+	$(CC) umedmon.c $(OTHER_SRC) -o  $@  $(GEN_CFLAGS) $(CFLAGS) -I$(LBM_INCLUDE_DIRS) -L$(LBM_LIB_DIRS) $(LBM_LIBS) $(GEN_LIBS) $(EXTRA_LIBS)
+
+umedcmd:  umedcmd.c $(OTHER_SRC) $(EXAMPLE_INC)
+	$(CC) umedcmd.c $(OTHER_SRC) -o  $@  $(GEN_CFLAGS) $(CFLAGS) -I$(LBM_INCLUDE_DIRS) -L$(LBM_LIB_DIRS) $(LBM_LIBS) $(GEN_LIBS) $(EXTRA_LIBS)
+
+srs_cmd:  srs_cmd.c $(OTHER_SRC) $(EXAMPLE_INC)
+	$(CC) srs_cmd.c srs_cmd_msg.c $(OTHER_SRC) -o  $@  $(GEN_CFLAGS) $(CFLAGS) -I$(LBM_INCLUDE_DIRS) -L$(LBM_LIB_DIRS) $(LBM_LIBS) $(GEN_LIBS) $(EXTRA_LIBS)
+
+srs_monitor_info_receiver:  srs_monitor_info_receiver.c $(OTHER_SRC) $(EXAMPLE_INC)
+	$(CC) srs_monitor_info_receiver.c $(OTHER_SRC) -o  $@  $(GEN_CFLAGS) $(CFLAGS) -I$(LBM_INCLUDE_DIRS) -L$(LBM_LIB_DIRS) $(LBM_LIBS) $(GEN_LIBS) $(EXTRA_LIBS)
+
 clean:
-	@rm -rf $(EXAMPLE_EXE) *.o *.core a.out *.dSYM
+	@rm -rf $(EXAMPLE_EXE) $(EXAMPLE_SRC_UMP:.c=) $(EXAMPLE_SRC_UMQ:.c=) umestored_example *.o *.core a.out *.dSYM

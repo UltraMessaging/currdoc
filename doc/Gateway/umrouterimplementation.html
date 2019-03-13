@@ -57,18 +57,18 @@ $(document).ready(function(){initNavTree('umrouterimplementation.html','');});
 <div class="textblock"><p><br />
  </p>
 <h1><a class="anchor" id="umrouterconfigurationoverview"></a>
-UM Router Configuration Overview</h1>
+UM Router Configuration Overview&nbsp;&nbsp;<small><a href="#umrouterconfigurationoverview">&lt;-</a></small></h1>
 <p>When the UM Router daemon launches, it uses configuration option settings to determine its behavior and expectations. You specify option values in an XML configuration file, and reference the file from a command line argument.</p>
 <p>Typically, you have a separate XML configuration file for each UM Router, which contains structured configuration elements that describe aspects of the UM Router. Within this XML configuration file, each endpoint portal definition points to a UM configuration file, which allow the portal to properly connect to its TRD.</p>
 <p><br />
  </p>
 <h1><a class="anchor" id="creatingapplicationsforumroutercompatibility"></a>
-Creating Applications for UM Router Compatibility</h1>
+Creating Applications for UM Router Compatibility&nbsp;&nbsp;<small><a href="#creatingapplicationsforumroutercompatibility">&lt;-</a></small></h1>
 <p>When developing messaging applications that use Ultra Messaging and, in particular, the UM Router, please observe the following guidelines.</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="namingandidentification"></a>
-Naming and Identification</h2>
+Naming and Identification&nbsp;&nbsp;<small><a href="#namingandidentification">&lt;-</a></small></h2>
 <p>An important part to successfully implementing UM Routers is prudent and error-free naming of TRDs, UM Routers, portals, etc., as well as correct identification of IP addresses and ports. It is good practice to first design the UM Router network by defining all connections and uniquely naming all UM Routers, portals, and TRDs. This works well as a diagram similar to some examples presented in this document. Include the following names and parameters in your design diagram:</p>
 <ul>
 <li>
@@ -87,13 +87,13 @@ Portal costs </li>
  <p><br />
  </p>
 <h2><a class="anchor" id="portalcosts"></a>
-Portal Costs</h2>
+Portal Costs&nbsp;&nbsp;<small><a href="#portalcosts">&lt;-</a></small></h2>
 <p>A network of UM Routers uses forwarding cost as the criterion for determining the best (lowest cost) path over which to resolve a topic and route data. Forwarding cost is simply the sum of all portal costs along a multi-UM Router path. Thus, total cost for the single path in the above example is 34. (Note that this is a non-real-world example, since costs are pointless without alternate routes to compare to.) You assign portal costs via the <code>&lt;cost&gt;</code> configuration option.</p>
 <p>After the UM Router network calculates its paths, if a new lower-cost source becomes available, receivers switch to that path.</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="accesscontrollistsacl"></a>
-Access Control Lists (ACL)</h2>
+Access Control Lists (ACL)&nbsp;&nbsp;<small><a href="#accesscontrollistsacl">&lt;-</a></small></h2>
 <p>You can apply Access Control Lists (ACL) to a UM Router's portals to filter traffic by certain topics, transports, topic patterns, multicast groups, etc. You configure ACLs in a UM Router's XML configuration file, as children of an <code>&lt;endpoint&gt;</code> or <code>&lt;peer&gt;</code> portal. As traffic arrives at the portal, the portal either forwards it or rejects it per ACL criteria.</p>
 <p>Inbound ACLs determine what information to forward to other portals in the UM Router, while Outbound ACLs determine (by topic) what information from other portals that this portal can send out the UM Router. Each portal (endpoint or peer) can have up to one inbound ACL and one outbound ACL.</p>
 <div class="image">
@@ -190,18 +190,18 @@ Access Control Lists (ACL)</h2>
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="timersandintervals"></a>
-Timers and Intervals</h2>
+Timers and Intervals&nbsp;&nbsp;<small><a href="#timersandintervals">&lt;-</a></small></h2>
 <p>The UM Router offers a wide choice of timer and interval options to fine tune its behavior and performance. There are interactions and dependencies between some of these, and if misconfigured, they may cause race or failure conditions.</p>
 <p>This manual's description of configuration options (see <a class="el" href="xmlconfigurationreference.html">XML Configuration Reference</a>), includes identification of such relationships. Please heed them.</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="multicastimmediatemessagingconsiderations"></a>
-Multicast Immediate Messaging Considerations</h2>
-<p>Multicast Immediate Messages (MIMs) may pass through the UM Router. You cannot filter MIMs with Access Control Lists (ACL)-MIMs are forwarded to all TRDs. Informatica does not recommend using MIM for messaging traffic across the UM Router. MIM is intended for short-lived topics and applications that cannot tolerate a delay between source creation and the sending of the first message. See also <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Gateway/design.tag:../Design/" href="../Design/umfeatures.html#multicastimmediatemessaging">Multicast Immediate Messaging</a>.</p>
+Multicast Immediate Messaging Considerations&nbsp;&nbsp;<small><a href="#multicastimmediatemessagingconsiderations">&lt;-</a></small></h2>
+<p>Multicast Immediate Messages (MIMs) may pass through the UM Router. You cannot filter MIMs with Access Control Lists (ACL)-MIMs are forwarded to all TRDs. Informatica does not recommend using MIM for messaging traffic across the UM Router. MIM is intended for short-lived topics and applications that cannot tolerate a delay between source creation and the sending of the first message. See also <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Gateway/design.tag:../Design/" href="../Design/umfeatures.html#multicastimmediatemessaging">Multicast Immediate Messaging</a>.</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="persistenceovertheumrouter"></a>
-Persistence Over the UM Router</h2>
+Persistence Over the UM Router&nbsp;&nbsp;<small><a href="#persistenceovertheumrouter">&lt;-</a></small></h2>
 <p>The UM Router supports UMP persistence by routing all necessary control and retransmission channels along with transport and topic resolution traffic. A typical implementation places the UMP persistent store in the same TRD as its registered source, as shown in the following figure.</p>
 <div class="image">
 <img src="persist_1.png" alt="persist_1.png"/>
@@ -214,28 +214,38 @@ Persistence Over the UM Router</h2>
 <p><br />
  </p>
 <h2><a class="anchor" id="latejoinandofftransportrecovery"></a>
-Late Join and Off-Transport Recovery</h2>
+Late Join and Off-Transport Recovery&nbsp;&nbsp;<small><a href="#latejoinandofftransportrecovery">&lt;-</a></small></h2>
 <p>The UM Router supports sources and receivers configured for Late Join and/or Off-Transport Recovery (OTR). Retransmission requests and subsequent retransmissions are conducted across the entire path through the UM Router network. A UM Router's proxy sources do not have Late-Join/OTR retention buffers and hence, are not able to provide recovered messages.</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="topicresolutionreliability"></a>
-Topic Resolution Reliability</h2>
+Topic Resolution Reliability&nbsp;&nbsp;<small><a href="#topicresolutionreliability">&lt;-</a></small></h2>
 <p>Topic resolution can sometimes remain in a quiescent phase due to link interruption, preventing needed re-subscription topic resolution activity. Two ways you can address this are:</p>
 <ul>
 <li>
-For isolated incidents, call <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Gateway/api.tag:../API/" href="../API/lbm_8h.html#ae6dd7c56acf916ef66658cc1ebc7a525">lbm_context_topic_resolution_request()</a> (see example lbmtrreq.c). This restarts the sustaining phase. </li>
+For isolated incidents, call <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Gateway/api.tag:../API/" href="../API/lbm_8h.html#ae6dd7c56acf916ef66658cc1ebc7a525">lbm_context_topic_resolution_request()</a> (see example lbmtrreq.c). This restarts the sustaining phase. </li>
 <li>
-For more chronic problems, such as a UM Router link (especially an endpoint link) over a WAN of questionable reliability, consider configuring Topic resolution to stay in the sustaining phase (options <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Gateway/config.tag:../Config/" href="../Config/grpresolveroperation.html#resolveradvertisementminimumsustaindurationsource">resolver_advertisement_minimum_sustain_duration (source)</a> and <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Gateway/config.tag:../Config/" href="../Config/grpresolveroperation.html#resolverqueryminimumsustaindurationreceiver">resolver_query_minimum_sustain_duration (receiver)</a>). </li>
+For more chronic problems, such as a UM Router link (especially an endpoint link) over a WAN of questionable reliability, consider configuring Topic resolution to stay in the sustaining phase (options <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Gateway/config.tag:../Config/" href="../Config/grpudpbasedresolveroperation.html#resolveradvertisementminimumsustaindurationsource">resolver_advertisement_minimum_sustain_duration (source)</a> and <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Gateway/config.tag:../Config/" href="../Config/grpudpbasedresolveroperation.html#resolverqueryminimumsustaindurationreceiver">resolver_query_minimum_sustain_duration (receiver)</a>). </li>
 </ul>
 <p><br />
  </p>
 <h2><a class="anchor" id="bosandeosbehaviorovertheumrouter"></a>
-BOS and EOS Behavior Over the UM Router</h2>
+BOS and EOS Behavior Over the UM Router&nbsp;&nbsp;<small><a href="#bosandeosbehaviorovertheumrouter">&lt;-</a></small></h2>
 <p>Through a network of UM Routers, a topic traverses a separate session for each link along its path. Thus, the UM Router reports BOS/EOSs based on the activity between the proxy source transport and its associated receiver. There is no end-to-end, application-to-application reporting of the data path state. Also, in the case of multiple topics being assigned to multiple sessions, topics may find themselves with different session mates from hop to hop. Of course, this all influences when, and for which transport session, a topic's BOSs and EOSs are issued.</p>
 <p><br />
  </p>
+<h2><a class="anchor" id="umrouterreliableloss"></a>
+UM Router Reliable Loss&nbsp;&nbsp;<small><a href="#umrouterreliableloss">&lt;-</a></small></h2>
+<p>The UM router can create a situation where a "reliable" transport (TCP or LBT-IPC) can experience out-of-order message delivery.</p>
+<p>The UM router can perform a "protocol conversion" function. I.e. an originating source can use a UDP-based protocol (LBT-RM or LBT-RU), but the proxy source for a remote receiver can use a "reliable" protocol (TCP or LBT-IPC). With a UDP-based protocol, messages can arrive to the UM Router network out of order, usually due to packet loss and recovery. However, when those out-of-order messages are forwarded across a "reliable" protocol (TCP or LBT-IPC), the receiver does not expect the sequence number gap, and immediately declares the out-of-order messages as unrecoverable loss. This, in spite of the fact that the missing message arrives shortly thereafter.</p>
+<p>Starting in UM version 6.12, there are two new configuration options: <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Gateway/config.tag:../Config/" href="../Config/grptransporttcpoperation.html#transporttcpdrolossrecoverytimeoutreceiver">transport_tcp_dro_loss_recovery_timeout (receiver)</a> and <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Gateway/config.tag:../Config/" href="../Config/grptransportlbtipcoperation.html#transportlbtipcdrolossrecoverytimeoutreceiver">transport_lbtipc_dro_loss_recovery_timeout (receiver)</a>, which modify the receiver's behavior. Instead of declaring a gap immediately unrecoverable, a delay is introduced which is similar to what a UDP-based receiver uses to wait for lost and retransmitted datagrams. If the missing message arrives within the delay time, the messages are delivered to application without loss.</p>
+<p>Be aware that this functionality is only used with "reliable" protocols published by a UM Router's proxy source. If this delay feature is enabled, it will <em>not</em> apply to a "reliable" protocol that is received directly from the originating source.</p>
+<p>Note however that you can get genuine gaps in the "reliable" data stream <em>without</em> recovery. For example, an overloaded UM Router can drop messages. Or a UM Router's proxy receiver can experience unrecoverable loss. In that case, the delay will have to expire before the missing messages are declared unrecoverable and subsequent data is delivered.</p>
+<dl class="section attention"><dt>Attention</dt><dd>The delay times default to 0, which retains the pre-6.12 behavior of immediately declaring sequence number gaps unrecoverable. If you want this new behavior, you must configure the appropriate option.</dd></dl>
+<p><br />
+ </p>
 <h1><a class="anchor" id="topologyconfigurationexamples"></a>
-Topology Configuration Examples</h1>
+Topology Configuration Examples&nbsp;&nbsp;<small><a href="#topologyconfigurationexamples">&lt;-</a></small></h1>
 <p>Following are example configurations for a variety of UM Router topologies. These are the topology examples presented <a class="el" href="umrouterconcepts.html#routingtopologies">Routing Topologies</a>.</p>
 <p>In a real-world situation, you would have UM Router XML configuration files with their portal interfaces referencing complete UM configuration files. However, for these examples, the referred domain configuration files are simplified to contain only information relevant to the applicable UM Router. As part of this simplification, domain configuration files show interfaces for only one or two transport types.</p>
 <p>Also, IP addresses are provided in some cases and omitted in other cases. This is because initiator peer portals need to know the IP addresses (and port numbers) of their corresponding acceptor portals to establish connections, whereas endpoint portals communicate via topic resolution and thus, do not need to know IP addresses.</p>
@@ -243,7 +253,7 @@ Topology Configuration Examples</h1>
 <p><br />
  </p>
 <h2><a class="anchor" id="directlinkconfiguration"></a>
-Direct Link Configuration</h2>
+Direct Link Configuration&nbsp;&nbsp;<small><a href="#directlinkconfiguration">&lt;-</a></small></h2>
 <p>This example uses a UM Router to connect two topic resolution domain LANs.</p>
 <div class="image">
 <img src="cfg_direct_link.png" alt="cfg_direct_link.png"/>
@@ -291,7 +301,7 @@ context resolver_multicast_address 225.2.37.85
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="peerlinkconfiguration"></a>
-Peer Link Configuration</h2>
+Peer Link Configuration&nbsp;&nbsp;<small><a href="#peerlinkconfiguration">&lt;-</a></small></h2>
 <p>In cases where the UM Router connection between two TRDs must tunnel through a WAN or TCP/IP network, you can implement a UM Router at each end, as shown in the example below.</p>
 <div class="image">
 <img src="cfg_single_link.png" alt="cfg_single_link.png"/>
@@ -357,7 +367,7 @@ context resolver_multicast_port 13965
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="transittrdlinkconfiguration"></a>
-Transit TRD Link Configuration</h2>
+Transit TRD Link Configuration&nbsp;&nbsp;<small><a href="#transittrdlinkconfiguration">&lt;-</a></small></h2>
 <p>This example, like the previous one, configures two localized UM Routers tunneling a connection between two TRDs, however, the UM Routers in this example are tunneling through an intermediate TRD. This has the added effect of connecting three TRDs.</p>
 <div class="image">
 <img src="cfg_transit_trd.png" alt="cfg_transit_trd.png"/>
@@ -422,7 +432,7 @@ context resolver_multicast_address 225.3.37.85
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="parallellinksconfiguration"></a>
-Parallel Links Configuration</h2>
+Parallel Links Configuration&nbsp;&nbsp;<small><a href="#parallellinksconfiguration">&lt;-</a></small></h2>
 <p>This example is similar in purpose to the single link, peer-to-peer example, except that a second pair of UM Routers is added as a backup route. You can set one of these as a secondary route by assigning a higher cost to portals along the path. In this case we set G3 and G4's portal costs to 5, forcing the lower route to be selected only if the upper (G1, G2) route fails.</p>
 <p>Also note that we have configured the peer portals for the leftmost or odd-numbered UM Routers as initiators, and the rightmost or even-numbered UM Router peers as acceptors.</p>
 <div class="image">
@@ -545,7 +555,7 @@ context resolver_multicast_address 225.2.37.85
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="loopandspurconfiguration"></a>
-Loop and Spur Configuration</h2>
+Loop and Spur Configuration&nbsp;&nbsp;<small><a href="#loopandspurconfiguration">&lt;-</a></small></h2>
 <div class="image">
 <img src="cfg_loop_spur.png" alt="cfg_loop_spur.png"/>
 </div>
@@ -737,7 +747,7 @@ context resolver_multicast_address 225.5.37.85
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="starconfiguration"></a>
-Star Configuration</h2>
+Star Configuration&nbsp;&nbsp;<small><a href="#starconfiguration">&lt;-</a></small></h2>
 <p>This network consists of four TRDs. Within each TRD, full multicast connectivity exists. However, no multicast connectivity exists between the four TRDs.</p>
 <div class="image">
 <img src="cfg_star.png" alt="cfg_star.png"/>
@@ -805,7 +815,7 @@ context resolver_multicast_address 225.4.37.85
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="meshconfiguration"></a>
-Mesh Configuration</h2>
+Mesh Configuration&nbsp;&nbsp;<small><a href="#meshconfiguration">&lt;-</a></small></h2>
 <p>The mesh topology utilizes many connections between many nodes, to provide a variety of alternate routes. However, meshes are not the best solution in many cases, as unneeded complexity can increase the chance for configuration errors or make it more difficult to trace problems.</p>
 <div class="image">
 <img src="cfg_mesh.png" alt="cfg_mesh.png"/>
@@ -1054,7 +1064,7 @@ context resolver_multicast_address 225.3.37.85
 </pre><p><br />
  </p>
 <h1><a class="anchor" id="usingumconfigurationfileswiththeumrouter"></a>
-Using UM Configuration Files with the UM Router</h1>
+Using UM Configuration Files with the UM Router&nbsp;&nbsp;<small><a href="#usingumconfigurationfileswiththeumrouter">&lt;-</a></small></h1>
 <p>Within the UM Router configuration file, the endpoint portal's <code>&lt;lbm-config&gt;</code> element lets you import configurations from either a plain text or XML UM configuration file. However, using the XML type of UM configuration files provides the following advantages over plain text UM configuration files:</p>
 <ul>
 <li>
@@ -1067,7 +1077,7 @@ Using UM XML templates to set options for individual portals lets the UM Router 
 <p><br />
  </p>
 <h2><a class="anchor" id="settingindividualendpointoptions"></a>
-Setting Individual Endpoint Options</h2>
+Setting Individual Endpoint Options&nbsp;&nbsp;<small><a href="#settingindividualendpointoptions">&lt;-</a></small></h2>
 <p>When setting endpoint options, first name the context of each endpoint in the UM Router's XML configuration file.</p>
 <pre class="fragment">&lt;portals&gt;
   &lt;endpoint&gt;
@@ -1088,7 +1098,7 @@ Setting Individual Endpoint Options</h2>
   &lt;/endpoint&gt;
 &lt;/portals&gt;
 </pre><p>Then assign configuration templates to those contexts in the UM XML configuration file.</p>
-<pre class="fragment">&lt;application name="tnwgd" template="global"&gt;
+<pre class="fragment">&lt;application name="dro1" template="global"&gt;
   &lt;contexts&gt;
     &lt;context name="G1_E1" template="G1-E1-options"&gt;
       &lt;sources /&gt;
@@ -1102,7 +1112,7 @@ Setting Individual Endpoint Options</h2>
 <p><br />
  </p>
 <h2><a class="anchor" id="umrouterandumxmlconfigurationusecases"></a>
-UM Router and UM XML Configuration Use Cases</h2>
+UM Router and UM XML Configuration Use Cases&nbsp;&nbsp;<small><a href="#umrouterandumxmlconfigurationusecases">&lt;-</a></small></h2>
 <p>One advantage of using UM XML configuration files with the UM Router is the ability to assign unique UM attributes to the topics and contexts used for the proxy sources and receivers (which plain text UM configuration files cannot do). The following example shows how to assign a different LBTRM multicast address to a source based on its topic.</p>
 <p>Create a new UM XML configuration template for the desired topic name.</p>
 <pre class="fragment">&lt;template name="AAA-template"&gt;
@@ -1112,7 +1122,7 @@ UM Router and UM XML Configuration Use Cases</h2>
   &lt;/options&gt;
 &lt;/template&gt;
 </pre><p>Then include this template in the <code>&lt;application&gt;</code> element associated with the UM Router.</p>
-<pre class="fragment">&lt;application name="tnwgd" template="global-options"&gt;
+<pre class="fragment">&lt;application name="dro1" template="global-options"&gt;
   &lt;contexts&gt;
     &lt;context&gt;
       &lt;sources template="source-options"&gt;
@@ -1122,7 +1132,7 @@ UM Router and UM XML Configuration Use Cases</h2>
   &lt;/contexts&gt;
 &lt;/application&gt;
 </pre><p>It is also possible to assign UM attributes directly in the <code>&lt;application&gt;</code> tag. For example, the following specifies that a particular topic should use an LBT-RU transport.</p>
-<pre class="fragment">&lt;application name="tnwgd" template="tnwgd-common"&gt;
+<pre class="fragment">&lt;application name="dro1" template="dro1-common"&gt;
   &lt;contexts&gt;
     &lt;context&gt;
       &lt;sources template="source-template"&gt;
@@ -1138,16 +1148,16 @@ UM Router and UM XML Configuration Use Cases</h2>
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="sampleconfiguration"></a>
-Sample Configuration</h2>
+Sample Configuration&nbsp;&nbsp;<small><a href="#sampleconfiguration">&lt;-</a></small></h2>
 <p>The following sample configuration incorporates many of the examples mentioned above. The UM Router applies options to all UM objects created. The UM XML configuration file overwrites these options for two specific topics. The first topic, LBTRM_TOPIC, uses a different template to change its transport from TCP to LBTRM, and to set an additional property. The second topic, LBTRU_TOPIC, also changes its transport from TCP to a new value. However, its new attributes are applied directly in its associated topic tag, instead of referencing a template. In addition, this sample configuration assigns the rm-source template to all sources and receivers associated with the context endpt_1.</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="xmlumconfigurationfile"></a>
-XML UM Configuration File</h2>
+XML UM Configuration File&nbsp;&nbsp;<small><a href="#xmlumconfigurationfile">&lt;-</a></small></h2>
 <pre class="fragment">&lt;?xml version="1.0" encoding="UTF-8" ?&gt;
 &lt;um-configuration version="1.0"&gt;
   &lt;templates&gt;
-    &lt;template name="tnwgd-common"&gt;
+    &lt;template name="dro1-common"&gt;
       &lt;options type="source"&gt;
         &lt;option name="transport" default-value="tcp" /&gt;
       &lt;/options&gt;
@@ -1166,7 +1176,7 @@ XML UM Configuration File</h2>
     &lt;/template&gt;
   &lt;/templates&gt;
   &lt;applications&gt;
-    &lt;application name="tnwgd" template="tnwgd-common"&gt;
+    &lt;application name="dro1" template="dro1-common"&gt;
      &lt;contexts&gt;
         &lt;context&gt;
           &lt;sources&gt;
@@ -1189,7 +1199,7 @@ XML UM Configuration File</h2>
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="xmlumrouterconfigurationfile"></a>
-XML UM Router Configuration File</h2>
+XML UM Router Configuration File&nbsp;&nbsp;<small><a href="#xmlumrouterconfigurationfile">&lt;-</a></small></h2>
 <p>This UM Router uses the above XML UM configuration file, sample-config.xml, to set its UM options. It has three endpoints, one of which has the context endpt_1.</p>
 <pre class="fragment">&lt;?xml version="1.0" encoding="UTF-8" ?&gt;
 &lt;tnw-gateway version="1.0"&gt;
@@ -1228,7 +1238,7 @@ XML UM Router Configuration File</h2>
 </pre><p><br />
  </p>
 <h1><a class="anchor" id="runningtheumrouterdaemon"></a>
-Running the UM Router Daemon</h1>
+Running the UM Router Daemon&nbsp;&nbsp;<small><a href="#runningtheumrouterdaemon">&lt;-</a></small></h1>
 <p>To run the UM Router, ensure the following:</p>
 <ul>
 <li>
@@ -1240,25 +1250,10 @@ The configuration file is error free. </li>
 </ul>
 <p>Typically, you run the UM Router with one configuration file argument, for example:</p>
 <pre class="fragment">tnwgd gw1-config.xml
-</pre><p>The UM Router logs version information on startup. The following is an example of this information:</p>
+</pre><p> (FYI: "tnwgd" stands for "Twenty Nine West Gateway Daemon", a historical name for the UM Router.)</p>
+<p>The UM Router logs version information on startup. The following is an example of this information:</p>
 <pre class="fragment">Version 6.0 Build: Sep 26 2012, 00:31:33 (UMS 6.0 [UMP-6.0] [UMQ-6.0] [64-bit] Build: Sep 26 2012, 00:27:17 ( DEBUG license LBT-RM LBT-RU LBT-IPC LBT-RDMA ) WC[PCRE 7.4 2007-09-21, regex, appcb] HRT[gettimeofday()])
-</pre><p><br />
- </p>
-<h2><a class="anchor" id="tnwgd"></a>
-tnwgd</h2>
-<p><b>Name</b> </p>
-<p>tnwgd - UM Router Daemon</p>
-<p><b>Synopsis</b> </p>
-<pre class="fragment">tnwgd [-d] [--dump-dtd] [-h] [--help] [-f] [--detach] [-v] [--validate] configfile
-</pre><p><b>Description</b> </p>
-<p>UM Router services are provided by tnwgd. A UM Router configuration file is required. The contents and format of the configuration file are documented separately.</p>
-<p>The DTD used to validate a configuration file is dumped to standard output with <code>-d</code> or <code>--dump-dtd</code>. After dumping the DTD, tnwgd exits instead of providing UM Router services as usual. See <a class="el" href="xmlconfigurationreference.html#umrouterconfigurationdtd">UM Router Configuration DTD</a> for the DTD with comments removed.</p>
-<p>To validate the configuration file, use either the <code>-v</code> or <code>--validate</code> options. After attempting validation, tnwgd exits instead of providing UM Router services as usual. The exit status will be 0 for a configuration file successfully validated by the DTD, and non-zero otherwise.</p>
-<p>tnwgd normally remains attached to the controlling terminal and runs until interrupted. If the <code>-f</code> or <code>--detach</code> options are given, tnwgd instead forks, detaches the child from the controlling terminal, and the parent exits immediately.</p>
-<p>Command line help is available with <code>-h</code> or <code>--help</code>.</p>
-<p><b>Exit</b> <b>Status</b> </p>
-<p>The exit status from tnwgd is 0 for success and some non-zero value for failure. </p>
-</div></div><!-- contents -->
+</pre> </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.8.11-->
 </body>

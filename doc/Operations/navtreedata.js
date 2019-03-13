@@ -1,33 +1,46 @@
 var NAVTREE =
 [
   [ "Operations Guide", "index.html", [
-    [ "Monitoring", "index.html", [
-      [ "Monitoring Transport Statistics", "index.html#monitoringtransportstatistics", [
-        [ "LBT-RM and LBT-RU Receiver Statistics", "index.html#lbtrmandlbtrureceiverstatistics", null ],
-        [ "LBT-RM and LBT-RU Source Statistics", "index.html#lbtrmandlbtrusourcestatistics", null ],
-        [ "TCP Statistics", "index.html#tcpstatistics", null ],
-        [ "LBT-IPC Statistics", "index.html#lbtipcstatistics", null ]
+    [ "Introduction", "index.html", null ],
+    [ "UM Installation", "uminstallation.html", [
+      [ "UM Package Installer", "uminstallation.html#umpackageinstaller", [
+        [ "Unix Package Installer", "uminstallation.html#unixpackageinstaller", null ],
+        [ "Windows Package Installer", "uminstallation.html#windowspackageinstaller", null ],
+        [ "Other Package Installers", "uminstallation.html#otherpackageinstallers", null ]
       ] ],
-      [ "Monitoring Event Queues", "index.html#monitoringeventqueues", null ],
-      [ "Monitoring Application Log Messages", "index.html#monitoringapplicationlogmessages", null ],
-      [ "Monitoring the Persistent Store Daemon (umestored)", "index.html#monitoringthepersistentstoredaemonumestored", [
-        [ "Monitoring Store Log File", "index.html#monitoringstorelogfile", null ],
-        [ "Monitoring a Store's Internal Transport Statistics", "index.html#monitoringastoresinternaltransportstatistics", null ],
-        [ "Persistent Store Web Monitor", "index.html#persistentstorewebmonitor", null ],
-        [ "Persistent Store Daemon Statistics", "index.html#persistentstoredaemonstatistics", null ],
-        [ "Detecting Persistent Store Failures", "index.html#detectingpersistentstorefailures", null ]
+      [ "Copy UM Runtime Files", "uminstallation.html#copyumruntimefiles", [
+        [ "Copy Unix Runtime Files", "uminstallation.html#copyunixruntimefiles", null ],
+        [ "Copy Windows Runtime Files", "uminstallation.html#copywindowsruntimefiles", null ]
       ] ],
-      [ "Monitoring the UM Router Daemon (tnwgd)", "index.html#monitoringtheumrouterdaemontnwgd", [
-        [ "Monitoring UM Router Log File", "index.html#monitoringumrouterlogfile", null ],
-        [ "UM Router Transport Statistics", "index.html#umroutertransportstatistics", null ],
-        [ "UM Router Web Monitor", "index.html#umrouterwebmonitor", null ],
-        [ "UM Router Daemon Statistics", "index.html#op-umrouterdaemonstatistics", null ],
-        [ "Detecting UM Router Failures", "index.html#detectingumrouterfailures", null ]
+      [ "Application Installer", "uminstallation.html#applicationinstaller", null ]
+    ] ],
+    [ "Monitoring", "monitoring.html", [
+      [ "Monitoring Transport Statistics", "monitoring.html#monitoringtransportstatistics", [
+        [ "LBT-RM and LBT-RU Receiver Statistics", "monitoring.html#lbtrmandlbtrureceiverstatistics", null ],
+        [ "LBT-RM and LBT-RU Source Statistics", "monitoring.html#lbtrmandlbtrusourcestatistics", null ],
+        [ "TCP Statistics", "monitoring.html#tcpstatistics", null ],
+        [ "LBT-IPC Statistics", "monitoring.html#lbtipcstatistics", null ]
       ] ],
-      [ "Monitoring Messaging System Resources", "index.html#monitoringmessagingsystemresources", [
-        [ "Persistent Store System Considerations", "index.html#persistentstoresystemconsiderations", null ],
-        [ "Sources of Latency", "index.html#sourcesoflatency", null ],
-        [ "Runtime Diagnostics", "index.html#runtimediagnostics", null ]
+      [ "Monitoring Event Queues", "monitoring.html#monitoringeventqueues", null ],
+      [ "Monitoring Application Log Messages", "monitoring.html#monitoringapplicationlogmessages", null ],
+      [ "Monitoring the Persistent Store Daemon (umestored)", "monitoring.html#monitoringthepersistentstoredaemonumestored", [
+        [ "Monitoring Store Log File", "monitoring.html#monitoringstorelogfile", null ],
+        [ "Monitoring a Store's Internal Transport Statistics", "monitoring.html#monitoringastoresinternaltransportstatistics", null ],
+        [ "Persistent Store Web Monitoring", "monitoring.html#persistentstorewebmonitoring", null ],
+        [ "Persistent Store Daemon Statistics", "monitoring.html#persistentstoredaemonstatistics", null ],
+        [ "Detecting Persistent Store Failures", "monitoring.html#detectingpersistentstorefailures", null ]
+      ] ],
+      [ "Monitoring the UM Router Daemon (tnwgd)", "monitoring.html#monitoringtheumrouterdaemontnwgd", [
+        [ "Monitoring UM Router Log File", "monitoring.html#monitoringumrouterlogfile", null ],
+        [ "UM Router Transport Statistics", "monitoring.html#umroutertransportstatistics", null ],
+        [ "UM Router Web Monitoring", "monitoring.html#umrouterwebmonitoring", null ],
+        [ "UM Router Daemon Statistics", "monitoring.html#op-umrouterdaemonstatistics", null ],
+        [ "Detecting UM Router Failures", "monitoring.html#detectingumrouterfailures", null ]
+      ] ],
+      [ "Monitoring Messaging System Resources", "monitoring.html#monitoringmessagingsystemresources", [
+        [ "Persistent Store System Considerations", "monitoring.html#persistentstoresystemconsiderations", null ],
+        [ "Sources of Latency", "monitoring.html#sourcesoflatency", null ],
+        [ "Runtime Diagnostics", "monitoring.html#runtimediagnostics", null ]
       ] ]
     ] ],
     [ "Startup/Shutdown Procedures", "startupshutdownprocedures.html", [
@@ -43,6 +56,13 @@ var NAVTREE =
       [ "UM Router (tnwgd)", "startupshutdownprocedures.html#umroutertnwgd", [
         [ "Starting a UM Router", "startupshutdownprocedures.html#startingaumrouter", null ],
         [ "Restarting a UM Router", "startupshutdownprocedures.html#restartingaumrouter", null ]
+      ] ],
+      [ "UM Daemons as Windows Services", "startupshutdownprocedures.html#umdaemonsaswindowsservices", [
+        [ "Install the Windows Service", "startupshutdownprocedures.html#installthewindowsservice", null ],
+        [ "Configure the Daemon", "startupshutdownprocedures.html#configurethedaemon", null ],
+        [ "Configure the Windows Service", "startupshutdownprocedures.html#configurethewindowsservice", null ],
+        [ "Start the Windows Service", "startupshutdownprocedures.html#startthewindowsservice", null ],
+        [ "Remove the Windows Service", "startupshutdownprocedures.html#removethewindowsservice", null ]
       ] ],
       [ "UM Analysis Tools", "startupshutdownprocedures.html#umanalysistools", [
         [ "Packet Capture Tools", "startupshutdownprocedures.html#packetcapturetools", null ],
@@ -118,6 +138,7 @@ var NAVTREE =
     [ "UM Log Messages", "umlogmessages.html", [
       [ "UM Core Messages", "umlogmessages.html#umcoremessages", null ],
       [ "UM Core API Messages", "umlogmessages.html#umcoreapimessages", null ],
+      [ "UM SRS Log Messages", "umlogmessages.html#umsrslogmessages", null ],
       [ "UM Dynamic Routing Log Messages", "umlogmessages.html#umdynamicroutinglogmessages", null ],
       [ "UM Lbmrd Log Messages", "umlogmessages.html#umlbmrdlogmessages", null ],
       [ "UM Persistent Store Log Messages", "umlogmessages.html#umpersistentstorelogmessages", null ],

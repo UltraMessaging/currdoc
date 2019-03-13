@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">UM C API
-   &#160;<span id="projectnumber">6.11.1</span>
+   &#160;<span id="projectnumber">6.12</span>
    </div>
   </td>
  </tr>
@@ -132,7 +132,8 @@ Data Fields</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Structure that holds statistics for a context. </p>
 <p>This structure holds general context statistics for things like topic resolution and interaction with transports and applications.</p>
-<p>Note that when stats are sampled, the fields in the structure are not necessarily from the same instant in time. The structure might be updated concurrently with it being sampled, and while each structure field is atomically read, the field values can be skewed slightly across time. </p>
+<p>Note that when stats are sampled, the fields in the structure are not necessarily from the same instant in time. The structure might be updated concurrently with it being sampled, and while each structure field is atomically read, the field values can be skewed slightly across time.</p>
+<p>See <a class="el" href="structlbm__context__stats__t__stct.html">lbm_context_stats_t_stct</a> for field definitions. </p>
 </div><h2 class="groupheader">Field Documentation</h2>
 <a class="anchor" id="ad80f9f30910a7468de9863238cdf126d"></a>
 <div class="memitem">
@@ -182,7 +183,7 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Number of datagrams received that do not belong to a currently-subscribed LBT-RU transport session. This is typically due to improper or suboptimal UM configuration, or to interference from non-UM network applications. Steady increases in this statistic indicate a waste in CPU resources to read and discard the datagrams. One possible cause is if a subscribing application exits and a new application starts with the same IP address and port for reception of LBT-RU traffic. The source can continue to send messages to that IP:port until the source times out the previous receiver (10 seconds by default; see source option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/API/config.tag:../Config/" href="../Config/grptransportlbtruoperation.html#transportlbtruclientactivitytimeoutsource">transport_lbtru_client_activity_timeout (source)</a>). </p>
+<p>Number of datagrams received that do not belong to a currently-subscribed LBT-RU transport session. This is typically due to improper or suboptimal UM configuration, or to interference from non-UM network applications. Steady increases in this statistic indicate a waste in CPU resources to read and discard the datagrams. One possible cause is if a subscribing application exits and a new application starts with the same IP address and port for reception of LBT-RU traffic. The source can continue to send messages to that IP:port until the source times out the previous receiver (10 seconds by default; see source option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/API/config.tag:../Config/" href="../Config/grptransportlbtruoperation.html#transportlbtruclientactivitytimeoutsource">transport_lbtru_client_activity_timeout (source)</a>). </p>
 
 </div>
 </div>

@@ -65,7 +65,7 @@ Receiver-paced Persistence (RPP) - optional mode - the rate of message consumpti
 <p><br />
  </p>
 <h1><a class="anchor" id="persistentstoreconcept"></a>
-Persistent Store Concept</h1>
+Persistent Store Concept&nbsp;&nbsp;<small><a href="#persistentstoreconcept">&lt;-</a></small></h1>
 <p>UM uses a daemon to persist source and receiver state outside the actual sources and receivers themselves. This daemon is the Persistent Store. The store can persist state in memory as well as on disk. State is persisted on a per-topic, per-source basis by the store. Persistent stores need not be a single entity. For fault tolerance purposes, it is possible to configure multiple stores in various ways.</p>
 <p>For more information, see:</p>
 <ul>
@@ -76,14 +76,14 @@ Persistent Store Concept</h1>
 <li>
 <a class="el" href="persistencefaulttolerance.html#storeconfigurationconsiderations">Store Configuration Considerations</a>, </li>
 <li>
-<a class="el" href="persistencemanpages.html#umestoredmanpage">umestored Man Page</a>, </li>
+<a class="el" href="manpagesforstore.html#umestoredmanpage">Umestored Man Page</a>, </li>
 <li>
 <a class="el" href="configurationreferenceforumestored.html">Configuration Reference for Umestored</a>. </li>
 </ul>
 <p><br />
  </p>
 <h1><a class="anchor" id="registrationidentifierconcept"></a>
-Registration Identifier Concept</h1>
+Registration Identifier Concept&nbsp;&nbsp;<small><a href="#registrationidentifierconcept">&lt;-</a></small></h1>
 <p>UM persistence identifies sources and receivers with Registration Identifiers, also called Registration IDs or RegIDs. A RegID is a 32-bit number that uniquely identifies a source or a receiver to a store. This means that RegIDs are also specific to a store and can be reused between individual stores, if needed. No two active sources or receivers can share a RegID or use the same RegID at the same time. This point is critical: since UM enables your application to use and handle RegIDs very freely, you must use RegIDs carefully to avoid destructive results.</p>
 <p>For more information, see:</p>
 <ul>
@@ -98,33 +98,33 @@ Registration Identifier Concept</h1>
 </li>
 </ul>
 <h1><a class="anchor" id="deliveryconfirmationconcept"></a>
-Delivery Confirmation Concept</h1>
+Delivery Confirmation Concept&nbsp;&nbsp;<small><a href="#deliveryconfirmationconcept">&lt;-</a></small></h1>
 <p>A persistent receiver provides confirmation (acknowledgement) to the persistent store as it consumes (processes) messages. This is fundamental to the design of UM persistence.</p>
 <p>The receiver can optionally provide this confirmation (acknowledgment) to the persistent source. These confirmations are turned off by default, but can be requested through either or both two configuration options: </p><ul>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeconfirmeddeliverynotificationsource">ume_confirmed_delivery_notification (source)</a> - deliver a source event to the application indicating message consumption. </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeconfirmeddeliverynotificationsource">ume_confirmed_delivery_notification (source)</a> - deliver a source event to the application indicating message consumption. </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeretentionuniqueconfirmationssource">ume_retention_unique_confirmations (source)</a> - include receiver consumption as part of source flight size calculation. </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeretentionuniqueconfirmationssource">ume_retention_unique_confirmations (source)</a> - include receiver consumption as part of source flight size calculation. </li>
 </ul>
-<p>These two options are unrelated to each other, except that they both request the receiver to send delivery confirmations. Note that when either or both of the options are set, the persistent source <em>requests</em> that the persistent receiver supply delivery confirmations. The persistent receiver has the option to decline the request by setting the option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeallowconfirmeddeliveryreceiver">ume_allow_confirmed_delivery (receiver)</a> to 0.</p>
-<dl class="section note"><dt>Note</dt><dd><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UME/design.tag:../Design/" href="../Design/umfeatures.html#smartsources">Smart Sources</a> do not support either form of delivery confirmation.</dd></dl>
-<p>The latter option, <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeretentionuniqueconfirmationssource">ume_retention_unique_confirmations (source)</a>, can provide a form of receiver-pacing; the source will not be allowed to exceed <a class="el" href="operationalview.html#persistenceflightsize">Persistence Flight Size</a> beyond receiving applications. For more information, see: <a class="el" href="designingpersistenceapplications.html#confirmeddelivery">Confirmed Delivery</a></p>
+<p>These two options are unrelated to each other, except that they both request the receiver to send delivery confirmations. Note that when either or both of the options are set, the persistent source <em>requests</em> that the persistent receiver supply delivery confirmations. The persistent receiver has the option to decline the request by setting the option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeallowconfirmeddeliveryreceiver">ume_allow_confirmed_delivery (receiver)</a> to 0.</p>
+<dl class="section note"><dt>Note</dt><dd><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UME/design.tag:../Design/" href="../Design/advancedoptimizations.html#smartsources">Smart Sources</a> do not support either form of delivery confirmation.</dd></dl>
+<p>The latter option, <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeretentionuniqueconfirmationssource">ume_retention_unique_confirmations (source)</a>, can provide a form of receiver-pacing; the source will not be allowed to exceed <a class="el" href="operationalview.html#persistenceflightsize">Persistence Flight Size</a> beyond receiving applications. For more information, see: <a class="el" href="designingpersistenceapplications.html#confirmeddelivery">Confirmed Delivery</a></p>
 <p><br />
  </p>
 <h1><a class="anchor" id="releasepolicy"></a>
-Release Policy</h1>
+Release Policy&nbsp;&nbsp;<small><a href="#releasepolicy">&lt;-</a></small></h1>
 <p>Sources and persistent stores retain data according to a release policy, which is a set of rules that specifies when a message can be reclaimed. Each rule would allow any message that complies with the rule to be reclaimed. However, a message must comply with all rules before it can be reclaimed. Conversely, any message not complying with all rules will not be reclaimed. A source or store retains messages until its retention policy dictates the message may be removed. Sources and stores use slightly different retention policies based on their individual roles.</p>
 <p>For more information, see <a class="el" href="designingpersistenceapplications.html#sourcemessageretentionandrelease">Source Message Retention and Release</a>.</p>
 <p><br />
  </p>
 <h1><a class="anchor" id="messagestabilityconcept"></a>
-Message Stability Concept</h1>
+Message Stability Concept&nbsp;&nbsp;<small><a href="#messagestabilityconcept">&lt;-</a></small></h1>
 <p>Sources send messages to both receivers and to stores. Messages become stable once the message has been persisted at the store or a set of stores, and those stores acknowledge stability to the sources. Since it takes time to write messages to disk and signal stability, the source is allowed to continue sending messages while waiting for stability acknowledgements. Any messages sent but not yet acknowledged are said to be "&lt;i&gt;in flight&lt;/i&gt;". The number of in-flight messages is normally limited. For more information, see <a class="el" href="operationalview.html#persistenceflightsize">Persistence Flight Size</a>.</p>
 <p>In addition, UM informs the application when messages are stabilized. Until that stability acknowledgement is received, the source can not assume the messages will be successfully delivered. The message stability acknowledgement is vital to ensuring that messages will not be lost. For more information, see <a class="el" href="designingpersistenceapplications.html#sourcemessageretentionandrelease">Source Message Retention and Release</a>.</p>
 <p><br />
  </p>
 <h1><a class="anchor" id="quorumconsensusstorefailover"></a>
-Quorum/Consensus Store Failover</h1>
+Quorum/Consensus Store Failover&nbsp;&nbsp;<small><a href="#quorumconsensusstorefailover">&lt;-</a></small></h1>
 <p>Typically, multiple stores are deployed for simultaneous redundant operation. In this configuration, one or more stores (or the hosts they run on) can fail without impacting the message flow from sources to receivers, as long as a <em>quorum</em> of the configured stores is operational. UM defines a quorum as a majority of the configured stores. E.g. if 3 stores are configured, messaging can continue as long as at least 2 are operational. If 5 stores are configured, messaging can continue if at least 3 are operational. (Quorum/Consensus requires that an odd number of stores be configured.) </p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->

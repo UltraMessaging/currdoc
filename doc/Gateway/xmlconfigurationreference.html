@@ -59,7 +59,7 @@ $(document).ready(function(){initNavTree('xmlconfigurationreference.html','');})
 <p><br />
  </p>
 <h1><a class="anchor" id="filestructure"></a>
-File Structure</h1>
+File Structure&nbsp;&nbsp;<small><a href="#filestructure">&lt;-</a></small></h1>
 <p>An XML UM Router configuration file generally comprises two primary elements: <code>&lt;daemon&gt;</code> and <code>&lt;portals&gt;</code>. Organized and contained within these are option value assignments. <code>&lt;daemon&gt;</code> sub-containers let you set options global to the UM Router. <code>&lt;portals&gt;</code> sub-containers let you configure each portal in the UM Router individually.</p>
 <p>XML UM Router configuration files use the high-level structure shown in the following example. This example includes only some container elements, and only some options.</p>
 <pre class="fragment">&lt;?xml version="1.0" encoding="UTF-8" ?&gt;
@@ -167,12 +167,12 @@ File Structure</h1>
 </pre><p><br />
  </p>
 <h1><a class="anchor" id="elementsreference"></a>
-Elements Reference</h1>
+Elements Reference&nbsp;&nbsp;<small><a href="#elementsreference">&lt;-</a></small></h1>
 <p>Following are descriptions of the XML UM Router configuration file elements. For the children listings, + designates 1 or more, designates 0 or more, and ? designates 0 or 1. You must insert children in the order presented.</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="drocfg_tnw-gateway"></a>
-&lt;tnw-gateway&gt;</h2>
+&lt;tnw-gateway&gt;&nbsp;&nbsp;<small><a href="#drocfg_tnw-gateway">&lt;-</a></small></h2>
 <p>The <code>&lt;tnw-gateway&gt;</code> element is a required container for all options residing in the XML UM Router configuration file. This is the top-level element.</p>
 <ul>
 <li>
@@ -204,7 +204,7 @@ Elements Reference</h1>
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="drocfg_daemon"></a>
-&lt;daemon&gt;</h2>
+&lt;daemon&gt;&nbsp;&nbsp;<small><a href="#drocfg_daemon">&lt;-</a></small></h2>
 <p>The <code>&lt;daemon&gt;</code> element is a container for options common to the entire UM Router.</p>
 <ul>
 <li>
@@ -227,7 +227,7 @@ Elements Reference</h1>
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="drocfg_name"></a>
-&lt;name&gt;</h2>
+&lt;name&gt;&nbsp;&nbsp;<small><a href="#drocfg_name">&lt;-</a></small></h2>
 <p>The <code>&lt;name&gt;</code> element lets you set a name for this UM Router (do not duplicate for any other known UM Routers), or for the name of an endpoint or peer portal. Each portal name must be unique within the UM Router.</p>
 <ul>
 <li>
@@ -254,7 +254,7 @@ Elements Reference</h1>
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="drocfg_log"></a>
-&lt;log&gt;</h2>
+&lt;log&gt;&nbsp;&nbsp;<small><a href="#drocfg_log">&lt;-</a></small></h2>
 <p>The <code>&lt;log&gt;</code> element specifies the destination for UM Router log messages. If you set the type for file, use this element to contain the full pathname/filename.</p>
 <ul>
 <li>
@@ -280,7 +280,7 @@ Elements Reference</h1>
 &#160;&#160;<code>disable</code> - Do not roll log file by frequency. <br />
 Only applicable for <code>type="file"</code> </td><td><code>disable</code> </td></tr>
 <tr>
-<td>xml:space </td><td>How whitespace is handled. default trims leading and trailing whitespace (e.g., tabs, spaces, linefeeds, etc.), and compresses multiple whitespace characters into a single space character. preserve preserves the whitespace exactly as read. </td><td>default </td></tr>
+<td>xml:space </td><td>How whitespace is handled. <b>"default"</b>. trims leading and trailing whitespace (e.g., tabs, spaces, linefeeds, etc.), and compresses multiple whitespace characters into a single space character. <b>"preserve"</b>. preserves the whitespace exactly as read. </td><td><b>"default"</b> </td></tr>
 </table>
 <p><b>Example:</b> </p>
 <pre class="fragment">&lt;tnw-gateway version="1.0"&gt;
@@ -293,7 +293,7 @@ Only applicable for <code>type="file"</code> </td><td><code>disable</code> </td>
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="drocfg_uid"></a>
-&lt;uid&gt;</h2>
+&lt;uid&gt;&nbsp;&nbsp;<small><a href="#drocfg_uid">&lt;-</a></small></h2>
 <p>The <code>&lt;uid&gt;</code> element specifies a User ID (UID) for the daemon process (if run as root).</p>
 <ul>
 <li>
@@ -315,7 +315,7 @@ Only applicable for <code>type="file"</code> </td><td><code>disable</code> </td>
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="drocfg_gid"></a>
-&lt;gid&gt;</h2>
+&lt;gid&gt;&nbsp;&nbsp;<small><a href="#drocfg_gid">&lt;-</a></small></h2>
 <p>The <code>&lt;gid&gt;</code> element specifies a Group ID (GID) for daemon process (if run as root).</p>
 <ul>
 <li>
@@ -337,7 +337,7 @@ Only applicable for <code>type="file"</code> </td><td><code>disable</code> </td>
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="drocfg_pidfile"></a>
-&lt;pidfile&gt;</h2>
+&lt;pidfile&gt;&nbsp;&nbsp;<small><a href="#drocfg_pidfile">&lt;-</a></small></h2>
 <p>The <code>&lt;pidfile&gt;</code> element contains the pathname for daemon process ID (PID) file.</p>
 <ul>
 <li>
@@ -352,7 +352,7 @@ Only applicable for <code>type="file"</code> </td><td><code>disable</code> </td>
 <tr>
 <th>XML Attribute </th><th>Description </th><th>Default Value </th></tr>
 <tr>
-<td>xml:space </td><td>How whitespace is handled. default trims leading and trailing whitespace (e.g., tabs, spaces, linefeeds, etc.), and compresses multiple whitespace characters into a single space character. preserve preserves the whitespace exactly as read. </td><td>default </td></tr>
+<td>xml:space </td><td>How whitespace is handled. <b>"default"</b> trims leading and trailing whitespace (e.g., tabs, spaces, linefeeds, etc.), and compresses multiple whitespace characters into a single space character. <b>"preserve"</b> preserves the whitespace exactly as read. </td><td><b>"default"</b> </td></tr>
 </table>
 <p><b>Example:</b> </p>
 <pre class="fragment">&lt;tnw-gateway version="1.0"&gt;
@@ -365,7 +365,7 @@ Only applicable for <code>type="file"</code> </td><td><code>disable</code> </td>
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="drocfg_lbm-license-file"></a>
-&lt;lbm-license-file&gt;</h2>
+&lt;lbm-license-file&gt;&nbsp;&nbsp;<small><a href="#drocfg_lbm-license-file">&lt;-</a></small></h2>
 <p>The <code>&lt;lbm-license-file&gt;</code> element specifies the UM license file's pathname/filename.</p>
 <ul>
 <li>
@@ -380,7 +380,7 @@ Only applicable for <code>type="file"</code> </td><td><code>disable</code> </td>
 <tr>
 <th>XML Attribute </th><th>Description </th><th>Default Value </th></tr>
 <tr>
-<td>xml:space </td><td>How whitespace is handled. default trims leading and trailing whitespace (e.g., tabs, spaces, linefeeds, etc.), and compresses multiple whitespace characters into a single space character. preserve preserves the whitespace exactly as read. </td><td>default </td></tr>
+<td>xml:space </td><td>How whitespace is handled. <b>"default"</b> trims leading and trailing whitespace (e.g., tabs, spaces, linefeeds, etc.), and compresses multiple whitespace characters into a single space character. <b>"preserve"</b> preserves the whitespace exactly as read. </td><td><b>"default"</b> </td></tr>
 </table>
 <p><b>Example:</b> </p>
 <pre class="fragment">&lt;tnw-gateway version="1.0"&gt;
@@ -395,7 +395,7 @@ Only applicable for <code>type="file"</code> </td><td><code>disable</code> </td>
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="drocfg_topicmap"></a>
-&lt;topicmap/&gt;</h2>
+&lt;topicmap/&gt;&nbsp;&nbsp;<small><a href="#drocfg_topicmap">&lt;-</a></small></h2>
 <p>The <code>&lt;topicmap&gt;</code> element specifies characteristics of the internal topic maps.</p>
 <ul>
 <li>
@@ -430,7 +430,7 @@ Only applicable for <code>type="file"</code> </td><td><code>disable</code> </td>
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="drocfg_patternmap"></a>
-&lt;patternmap/&gt;</h2>
+&lt;patternmap/&gt;&nbsp;&nbsp;<small><a href="#drocfg_patternmap">&lt;-</a></small></h2>
 <p>The <code>&lt;patternmap&gt;</code> element determines characteristics of the internal pattern maps.</p>
 <ul>
 <li>
@@ -464,7 +464,7 @@ murmur2 - Good all-around hash function by Austin Appleby. Best for medium to lo
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="drocfg_monitor"></a>
-&lt;monitor&gt;</h2>
+&lt;monitor&gt;&nbsp;&nbsp;<small><a href="#drocfg_monitor">&lt;-</a></small></h2>
 <p>The <code>&lt;monitor&gt;</code> element is a container for monitoring configuration elements.</p>
 <ul>
 <li>
@@ -495,7 +495,7 @@ murmur2 - Good all-around hash function by Austin Appleby. Best for medium to lo
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="drocfg_transport-module"></a>
-&lt;transport-module/&gt;</h2>
+&lt;transport-module/&gt;&nbsp;&nbsp;<small><a href="#drocfg_transport-module">&lt;-</a></small></h2>
 <p>The <code>&lt;transport-module&gt;</code> element specifies characteristics about the monitoring transport module used.</p>
 <ul>
 <li>
@@ -525,10 +525,23 @@ murmur2 - Good all-around hash function by Austin Appleby. Best for medium to lo
       . . .
       . . .
 &lt;/tnw-gateway&gt;
+</pre><p><b>Example</b> 2:</p>
+<p>Monitoring configuration options can be supplied directly in the XML.</p>
+<pre class="fragment">&lt;tnw-gateway version="1.0"&gt;
+  &lt;daemon&gt;
+    &lt;monitor interval=30&gt;
+      &lt;transport-module module="lbm"
+        options="config=/cfgs/TD1.cfg;context|request_tcp_interface=192.168.135.131"/&gt;
+      &lt;format-module options="config=/cfgs/TD1.cfg;separator=|"/&gt;
+    &lt;/monitor&gt;  
+  &lt;/daemon&gt;
+      . . .
+      . . .
+&lt;/tnw-gateway&gt;
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="drocfg_format-module"></a>
-&lt;format-module/&gt;</h2>
+&lt;format-module/&gt;&nbsp;&nbsp;<small><a href="#drocfg_format-module">&lt;-</a></small></h2>
 <p>The <code>&lt;format-module&gt;</code> element provides specifics about the monitoring format module.</p>
 <ul>
 <li>
@@ -561,8 +574,10 @@ murmur2 - Good all-around hash function by Austin Appleby. Best for medium to lo
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="drocfg_web-monitor"></a>
-&lt;web-monitor&gt;</h2>
+&lt;web-monitor&gt;&nbsp;&nbsp;<small><a href="#drocfg_web-monitor">&lt;-</a></small></h2>
 <p>The <code>&lt;web-monitor&gt;</code> element identifies the address for the web monitor, in the form of interface:port. You can use "*" to specify the local host.</p>
+<p>Omit this element to disable the web monitor.</p>
+<p>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Gateway/design.tag:../Design/" href="../Design/fundamentalconcepts.html#webmonsecurity">Webmon Security</a> for important security information.</p>
 <ul>
 <li>
 <b>Cardinality:</b> 0 or 1 </li>
@@ -576,7 +591,7 @@ murmur2 - Good all-around hash function by Austin Appleby. Best for medium to lo
 <tr>
 <th>XML Attribute </th><th>Description </th><th>Default Value </th></tr>
 <tr>
-<td>xml:space </td><td>How whitespace is handled. default trims leading and trailing whitespace (e.g., tabs, spaces, linefeeds, etc.), and compresses multiple whitespace characters into a single space character. preserve preserves the whitespace exactly as read. </td><td>default </td></tr>
+<td>xml:space </td><td>How whitespace is handled. <b>"default"</b> trims leading and trailing whitespace (e.g., tabs, spaces, linefeeds, etc.), and compresses multiple whitespace characters into a single space character. <b>"preserve"</b> preserves the whitespace exactly as read. </td><td><b>"default"</b> </td></tr>
 </table>
 <p><b>Example:</b> </p>
 <pre class="fragment">&lt;tnw-gateway version="1.0"&gt;
@@ -589,8 +604,8 @@ murmur2 - Good all-around hash function by Austin Appleby. Best for medium to lo
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="drocfg_daemon-monitor"></a>
-&lt;daemon-monitor&gt;</h2>
-<p>The <code>&lt;daemon-monitor&gt;</code> element configures the Daemon Statistics feature. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Gateway/design.tag:../Design/" href="../Design/umfeatures.html#daemonstatistics">Daemon Statistics</a> for general information on Daemon Statistics.</p>
+&lt;daemon-monitor&gt;&nbsp;&nbsp;<small><a href="#drocfg_daemon-monitor">&lt;-</a></small></h2>
+<p>The <code>&lt;daemon-monitor&gt;</code> element configures the Daemon Statistics feature. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Gateway/design.tag:../Design/" href="../Design/umobjects.html#daemonstatistics">Daemon Statistics</a> for general information on Daemon Statistics.</p>
 <ul>
 <li>
 <b>Cardinality:</b> 0 or 1 </li>
@@ -624,8 +639,8 @@ murmur2 - Good all-around hash function by Austin Appleby. Best for medium to lo
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="drocfg_remote-snapshot-request"></a>
-&lt;remote-snapshot-request&gt;</h2>
-<p>The <code>&lt;remote-snapshot-request&gt;</code> element configures whether the UM Router will respond to monitoring apps requests to send on-demand snapshots of daemon statistics. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Gateway/design.tag:../Design/" href="../Design/umfeatures.html#daemonstatistics">Daemon Statistics</a> for general information on Daemon Statistics.</p>
+&lt;remote-snapshot-request&gt;&nbsp;&nbsp;<small><a href="#drocfg_remote-snapshot-request">&lt;-</a></small></h2>
+<p>The <code>&lt;remote-snapshot-request&gt;</code> element configures whether the UM Router will respond to monitoring apps requests to send on-demand snapshots of daemon statistics. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Gateway/design.tag:../Design/" href="../Design/umobjects.html#daemonstatistics">Daemon Statistics</a> for general information on Daemon Statistics.</p>
 <ul>
 <li>
 <b>Cardinality:</b> 0 or 1 </li>
@@ -659,8 +674,8 @@ murmur2 - Good all-around hash function by Austin Appleby. Best for medium to lo
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="drocfg_remote-config-changes-request"></a>
-&lt;remote-config-changes-request&gt;</h2>
-<p>The <code>&lt;remote-config-changes-request&gt;</code> element configures whether the UM Router will respond to monitoring apps requests to change the rate at which Daemon Statistics messages are published. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Gateway/design.tag:../Design/" href="../Design/umfeatures.html#daemonstatistics">Daemon Statistics</a> for general information on Daemon Statistics.</p>
+&lt;remote-config-changes-request&gt;&nbsp;&nbsp;<small><a href="#drocfg_remote-config-changes-request">&lt;-</a></small></h2>
+<p>The <code>&lt;remote-config-changes-request&gt;</code> element configures whether the UM Router will respond to monitoring apps requests to change the rate at which Daemon Statistics messages are published. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Gateway/design.tag:../Design/" href="../Design/umobjects.html#daemonstatistics">Daemon Statistics</a> for general information on Daemon Statistics.</p>
 <ul>
 <li>
 <b>Cardinality:</b> 0 or 1 </li>
@@ -694,7 +709,7 @@ murmur2 - Good all-around hash function by Austin Appleby. Best for medium to lo
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="drocfg_xml-config"></a>
-&lt;xml-config&gt;</h2>
+&lt;xml-config&gt;&nbsp;&nbsp;<small><a href="#drocfg_xml-config">&lt;-</a></small></h2>
 <p>The <code>&lt;xml-config&gt;</code> element specifies the UM XML configuration file.</p>
 <ul>
 <li>
@@ -709,7 +724,7 @@ murmur2 - Good all-around hash function by Austin Appleby. Best for medium to lo
 <tr>
 <th>XML Attribute </th><th>Description </th><th>Default Value </th></tr>
 <tr>
-<td>xml:space </td><td>How whitespace is handled. default trims leading and trailing whitespace (e.g., tabs, spaces, linefeeds, etc.), and compresses multiple whitespace characters into a single space character. preserve preserves the whitespace exactly as read. </td><td>default </td></tr>
+<td>xml:space </td><td>How whitespace is handled. <b>"default"</b> trims leading and trailing whitespace (e.g., tabs, spaces, linefeeds, etc.), and compresses multiple whitespace characters into a single space character. <b>"preserve"</b> preserves the whitespace exactly as read. </td><td><b>"default"</b> </td></tr>
 </table>
 <p><b>Example:</b> </p>
 <pre class="fragment">&lt;tnw-gateway version="1.0"&gt;
@@ -719,12 +734,10 @@ murmur2 - Good all-around hash function by Austin Appleby. Best for medium to lo
       . . .
       . . .
 &lt;/tnw-gateway&gt;
-&lt;route-info propagation-interval="1000" check-interval="750" timeout="4000" max-hop-count="100"/&gt;
-&lt;route-recalculation backoff-interval="5000" warning-interval="10000"/&gt;
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="drocfg_route-info"></a>
-&lt;route-info&gt;</h2>
+&lt;route-info&gt;&nbsp;&nbsp;<small><a href="#drocfg_route-info">&lt;-</a></small></h2>
 <p>The <code>&lt;route-info&gt;</code> element lets you set control parameters for UM Router initial route setup (or reroute) behavior.</p>
 <ul>
 <li>
@@ -747,7 +760,7 @@ murmur2 - Good all-around hash function by Austin Appleby. Best for medium to lo
 <tr>
 <td>max-hop-count </td><td>The maximum number of UM Routers a route information message can traverse before being discarded. </td><td>100 </td></tr>
 <tr>
-<td>xml:space </td><td>How whitespace is handled. default trims leading and trailing whitespace (e.g., tabs, spaces, linefeeds, etc.), and compresses multiple whitespace characters into a single space character. preserve preserves the whitespace exactly as read. </td><td>default </td></tr>
+<td>xml:space </td><td>How whitespace is handled. <b>"default"</b> trims leading and trailing whitespace (e.g., tabs, spaces, linefeeds, etc.), and compresses multiple whitespace characters into a single space character. <b>"preserve"</b> preserves the whitespace exactly as read. </td><td><b>"default"</b> </td></tr>
 </table>
 <p><b>Example:</b> </p>
 <pre class="fragment">&lt;tnw-gateway version="1.0"&gt;
@@ -760,7 +773,7 @@ murmur2 - Good all-around hash function by Austin Appleby. Best for medium to lo
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="drocfg_route-recalculation"></a>
-&lt;route-recalculation&gt;</h2>
+&lt;route-recalculation&gt;&nbsp;&nbsp;<small><a href="#drocfg_route-recalculation">&lt;-</a></small></h2>
 <p>The <code>&lt;route-recalculation&gt;</code> element lets you set timing parameters for UM Router rerouting route calculation behavior.</p>
 <ul>
 <li>
@@ -779,7 +792,7 @@ murmur2 - Good all-around hash function by Austin Appleby. Best for medium to lo
 <tr>
 <td>warning-interval </td><td>How long, in milliseconds, the UM Router waits before warning that a route recalculation is being held up due to a non-converging topology. </td><td>10000 </td></tr>
 <tr>
-<td>xml:space </td><td>How whitespace is handled. default trims leading and trailing whitespace (e.g., tabs, spaces, linefeeds, etc.), and compresses multiple whitespace characters into a single space character. preserve preserves the whitespace exactly as read. </td><td>default </td></tr>
+<td>xml:space </td><td>How whitespace is handled. <b>"default"</b> trims leading and trailing whitespace (e.g., tabs, spaces, linefeeds, etc.), and compresses multiple whitespace characters into a single space character. <b>"preserve"</b> preserves the whitespace exactly as read. </td><td><b>"default"</b> </td></tr>
 </table>
 <p><b>Example:</b> </p>
 <pre class="fragment">&lt;tnw-gateway version="1.0"&gt;
@@ -792,7 +805,7 @@ murmur2 - Good all-around hash function by Austin Appleby. Best for medium to lo
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="drocfg_portals"></a>
-&lt;portals&gt;</h2>
+&lt;portals&gt;&nbsp;&nbsp;<small><a href="#drocfg_portals">&lt;-</a></small></h2>
 <p>The <code>&lt;portals&gt;</code> element is a container for all endpoint and peer portal configuration information.</p>
 <ul>
 <li>
@@ -817,7 +830,7 @@ murmur2 - Good all-around hash function by Austin Appleby. Best for medium to lo
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="drocfg_endpoint"></a>
-&lt;endpoint&gt;</h2>
+&lt;endpoint&gt;&nbsp;&nbsp;<small><a href="#drocfg_endpoint">&lt;-</a></small></h2>
 <p>The <code>&lt;endpoint&gt;</code> element is a container element for all configuration options of a single endpoint portal.</p>
 <ul>
 <li>
@@ -847,7 +860,7 @@ murmur2 - Good all-around hash function by Austin Appleby. Best for medium to lo
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="drocfg_domain-id"></a>
-&lt;domain-id&gt;</h2>
+&lt;domain-id&gt;&nbsp;&nbsp;<small><a href="#drocfg_domain-id">&lt;-</a></small></h2>
 <p>The <code>&lt;domain-id&gt;</code> element identifies the TRD for this endpoint portal. It must be unique within the UM Router (which means that for any TRD, you can assign only one endpoint portal per UM Router). Also, all endpoints interfacing a given TRD must have the same <code>&lt;domain-id&gt;</code> value.</p>
 <ul>
 <li>
@@ -877,7 +890,7 @@ murmur2 - Good all-around hash function by Austin Appleby. Best for medium to lo
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="drocfg_cost"></a>
-&lt;cost&gt;</h2>
+&lt;cost&gt;&nbsp;&nbsp;<small><a href="#drocfg_cost">&lt;-</a></small></h2>
 <p>The <code>&lt;cost&gt;</code> element assigns a positive non-zero integer cost to the portal. The default value is 1.</p>
 <ul>
 <li>
@@ -907,7 +920,7 @@ murmur2 - Good all-around hash function by Austin Appleby. Best for medium to lo
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="drocfg_source-deletion-delay"></a>
-&lt;source-deletion-delay&gt;</h2>
+&lt;source-deletion-delay&gt;&nbsp;&nbsp;<small><a href="#drocfg_source-deletion-delay">&lt;-</a></small></h2>
 <p>The <code>&lt;source-deletion-delay&gt;</code> element sets the time in milliseconds to wait after a route map change occurs before deleting a proxy source. Such a route map change could be due to failure of a UM Router or link within a network.</p>
 <ul>
 <li>
@@ -937,7 +950,7 @@ murmur2 - Good all-around hash function by Austin Appleby. Best for medium to lo
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="drocfg_max-queue"></a>
-&lt;max-queue&gt;</h2>
+&lt;max-queue&gt;&nbsp;&nbsp;<small><a href="#drocfg_max-queue">&lt;-</a></small></h2>
 <p>The <code>&lt;max-queue&gt;</code> element sets the maximum buffer size for blocking messages. If not specified, this defaults to 1000000 bytes.</p>
 <ul>
 <li>
@@ -967,7 +980,7 @@ murmur2 - Good all-around hash function by Austin Appleby. Best for medium to lo
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="drocfg_lbm-config"></a>
-&lt;lbm-config&gt;</h2>
+&lt;lbm-config&gt;&nbsp;&nbsp;<small><a href="#drocfg_lbm-config">&lt;-</a></small></h2>
 <p>The <code>&lt;lbm-config&gt;</code> element specifies the UM configuration file that contains configuration options associated with this portal.</p>
 <ul>
 <li>
@@ -982,7 +995,7 @@ murmur2 - Good all-around hash function by Austin Appleby. Best for medium to lo
 <tr>
 <th>XML Attribute </th><th>Description </th><th>Default Value </th></tr>
 <tr>
-<td>xml:space </td><td>How whitespace is handled. default trims leading and trailing whitespace (e.g., tabs, spaces, linefeeds, etc.), and compresses multiple whitespace characters into a single space character. preserve preserves the whitespace exactly as read. </td><td>default </td></tr>
+<td>xml:space </td><td>How whitespace is handled. <b>"default"</b> trims leading and trailing whitespace (e.g., tabs, spaces, linefeeds, etc.), and compresses multiple whitespace characters into a single space character. <b>"preserve"</b> preserves the whitespace exactly as read. </td><td><b>"default"</b> </td></tr>
 </table>
 <p><b>Example:</b> </p>
 <pre class="fragment">&lt;tnw-gateway version="1.0"&gt;
@@ -1001,7 +1014,7 @@ murmur2 - Good all-around hash function by Austin Appleby. Best for medium to lo
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="drocfg_lbm-attributes"></a>
-&lt;lbm-attributes&gt;</h2>
+&lt;lbm-attributes&gt;&nbsp;&nbsp;<small><a href="#drocfg_lbm-attributes">&lt;-</a></small></h2>
 <p>The <code>&lt;lbm-attributes&gt;</code> element is a container for individual UM-option-setting elements. It lets you set individual UM attributes without referencing a UM configuration file. These values override any values set via files referenced by <code>&lt;lbm-config&gt;</code>.</p>
 <ul>
 <li>
@@ -1031,7 +1044,7 @@ murmur2 - Good all-around hash function by Austin Appleby. Best for medium to lo
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="drocfg_option"></a>
-&lt;option/&gt;</h2>
+&lt;option/&gt;&nbsp;&nbsp;<small><a href="#drocfg_option">&lt;-</a></small></h2>
 <p>The <code>&lt;option&gt;</code> element lets you set an individual UM configuration option without referencing a UM configuration file. This value overrides any values set via files referenced by <code>&lt;lbm-config&gt;</code>.</p>
 <ul>
 <li>
@@ -1052,7 +1065,7 @@ murmur2 - Good all-around hash function by Austin Appleby. Best for medium to lo
 <tr>
 <td>value </td><td>The value of the option. </td><td>none </td></tr>
 </table>
-<dl class="section note"><dt>Note</dt><dd>Some UM options specify interfaces, which can be done by supplying the device name of the interface. Special care must be taken when supplying device names. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Gateway/config.tag:../Config/" href="../Config/generalconfigurationguidelines.html#interfacedevicenamesandxml">Interface Device Names and XML</a> for details.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Some UM options specify interfaces, which can be done by supplying the device name of the interface. Special care must be taken when supplying device names. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Gateway/config.tag:../Config/" href="../Config/generalconfigurationguidelines.html#interfacedevicenamesandxml">Interface Device Names and XML</a> for details.</dd></dl>
 <p><b>Example:</b> </p>
 <pre class="fragment">&lt;tnw-gateway version="1.0"&gt;
       . . .
@@ -1072,7 +1085,7 @@ murmur2 - Good all-around hash function by Austin Appleby. Best for medium to lo
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="drocfg_acl"></a>
-&lt;acl&gt;</h2>
+&lt;acl&gt;&nbsp;&nbsp;<small><a href="#drocfg_acl">&lt;-</a></small></h2>
 <p>The <code>&lt;acl&gt;</code> element contains elements (inbound and outbound ACEs) that describe how an ACL (Access Control List) filters messages.</p>
 <ul>
 <li>
@@ -1102,7 +1115,7 @@ murmur2 - Good all-around hash function by Austin Appleby. Best for medium to lo
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="drocfg_inbound"></a>
-&lt;inbound&gt;</h2>
+&lt;inbound&gt;&nbsp;&nbsp;<small><a href="#drocfg_inbound">&lt;-</a></small></h2>
 <p>The <code>&lt;inbound&gt;</code> element is a container for ACE elements, to separate inbound ACEs from outbound ACEs.</p>
 <ul>
 <li>
@@ -1132,7 +1145,7 @@ murmur2 - Good all-around hash function by Austin Appleby. Best for medium to lo
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="drocfg_outbound"></a>
-&lt;outbound&gt;</h2>
+&lt;outbound&gt;&nbsp;&nbsp;<small><a href="#drocfg_outbound">&lt;-</a></small></h2>
 <p>The <code>&lt;outbound&gt;</code> element is a container for ACE elements, to separate outbound ACEs from inbound ACEs.</p>
 <ul>
 <li>
@@ -1162,7 +1175,7 @@ murmur2 - Good all-around hash function by Austin Appleby. Best for medium to lo
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="drocfg_ace"></a>
-&lt;ace&gt;</h2>
+&lt;ace&gt;&nbsp;&nbsp;<small><a href="#drocfg_ace">&lt;-</a></small></h2>
 <p>Within an inbound or outbound ACL, you can have one or more <code>&lt;ace&gt;</code> elements. Each ACE (Access Control Entry). lets you match and accept or reject messages based on access control condition elements, which are the elements contained within an <code>&lt;ace&gt;</code> element.</p>
 <ul>
 <li>
@@ -1206,7 +1219,7 @@ murmur2 - Good all-around hash function by Austin Appleby. Best for medium to lo
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="drocfg_topic"></a>
-&lt;topic&gt;</h2>
+&lt;topic&gt;&nbsp;&nbsp;<small><a href="#drocfg_topic">&lt;-</a></small></h2>
 <p>The <code>&lt;topic&gt;</code> element defines a condition used in an ACE. Specifically, this is a match pattern for a topic name.</p>
 <ul>
 <li>
@@ -1221,7 +1234,7 @@ murmur2 - Good all-around hash function by Austin Appleby. Best for medium to lo
 <tr>
 <th>XML Attribute </th><th>Description </th><th>Default Value </th></tr>
 <tr>
-<td>xml:space </td><td>How whitespace is handled. default trims leading and trailing whitespace (e.g., tabs, spaces, linefeeds, etc.), and compresses multiple whitespace characters into a single space character. preserve preserves the whitespace exactly as read. </td><td>default </td></tr>
+<td>xml:space </td><td>How whitespace is handled. <b>"default"</b> trims leading and trailing whitespace (e.g., tabs, spaces, linefeeds, etc.), and compresses multiple whitespace characters into a single space character. <b>"preserve"</b> preserves the whitespace exactly as read. </td><td><b>"default"</b> </td></tr>
 </table>
 <p><b>Example:</b> </p>
 <pre class="fragment">            &lt;ace match="accept"&gt;
@@ -1230,7 +1243,7 @@ murmur2 - Good all-around hash function by Austin Appleby. Best for medium to lo
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="drocfg_pcre-pattern"></a>
-&lt;pcre-pattern&gt;</h2>
+&lt;pcre-pattern&gt;&nbsp;&nbsp;<small><a href="#drocfg_pcre-pattern">&lt;-</a></small></h2>
 <p>The <code>&lt;pcre-pattern&gt;</code> element defines a condition used in an ACE. Specifically, this is a match pattern for a PCRE regular expression matched in the message.</p>
 <ul>
 <li>
@@ -1245,7 +1258,7 @@ murmur2 - Good all-around hash function by Austin Appleby. Best for medium to lo
 <tr>
 <th>XML Attribute </th><th>Description </th><th>Default Value </th></tr>
 <tr>
-<td>xml:space </td><td>How whitespace is handled. default trims leading and trailing whitespace (e.g., tabs, spaces, linefeeds, etc.), and compresses multiple whitespace characters into a single space character. preserve preserves the whitespace exactly as read. </td><td>default </td></tr>
+<td>xml:space </td><td>How whitespace is handled. <b>"default"</b> trims leading and trailing whitespace (e.g., tabs, spaces, linefeeds, etc.), and compresses multiple whitespace characters into a single space character. <b>"preserve"</b> preserves the whitespace exactly as read. </td><td><b>"default"</b> </td></tr>
 </table>
 <p><b>Example:</b> </p>
 <pre class="fragment">            &lt;ace match="accept"&gt;
@@ -1254,7 +1267,7 @@ murmur2 - Good all-around hash function by Austin Appleby. Best for medium to lo
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="drocfg_regex-pattern"></a>
-&lt;regex-pattern&gt;</h2>
+&lt;regex-pattern&gt;&nbsp;&nbsp;<small><a href="#drocfg_regex-pattern">&lt;-</a></small></h2>
 <p>The <code>&lt;regex-pattern&gt;</code> element defines a condition used in an ACE. Specifically, this is a match pattern for a RegEx regular expression matched in the message.</p>
 <p>This element is deprecated.</p>
 <ul>
@@ -1270,7 +1283,7 @@ murmur2 - Good all-around hash function by Austin Appleby. Best for medium to lo
 <tr>
 <th>XML Attribute </th><th>Description </th><th>Default Value </th></tr>
 <tr>
-<td>xml:space </td><td>How whitespace is handled. default trims leading and trailing whitespace (e.g., tabs, spaces, linefeeds, etc.), and compresses multiple whitespace characters into a single space character. preserve preserves the whitespace exactly as read. </td><td>default </td></tr>
+<td>xml:space </td><td>How whitespace is handled. <b>"default"</b> trims leading and trailing whitespace (e.g., tabs, spaces, linefeeds, etc.), and compresses multiple whitespace characters into a single space character. <b>"preserve"</b> preserves the whitespace exactly as read. </td><td><b>"default"</b> </td></tr>
 </table>
 <p><b>Example:</b> </p>
 <pre class="fragment">            &lt;ace match="accept"&gt;
@@ -1279,7 +1292,7 @@ murmur2 - Good all-around hash function by Austin Appleby. Best for medium to lo
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="drocfg_transport"></a>
-&lt;transport/&gt;</h2>
+&lt;transport/&gt;&nbsp;&nbsp;<small><a href="#drocfg_transport">&lt;-</a></small></h2>
 <p>The <code>&lt;transport&gt;</code> element defines a condition used in an ACE. Specifically, this is a match pattern for a UM transport type.</p>
 <ul>
 <li>
@@ -1305,7 +1318,7 @@ murmur2 - Good all-around hash function by Austin Appleby. Best for medium to lo
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="drocfg_source-ip"></a>
-&lt;source-ip/&gt;</h2>
+&lt;source-ip/&gt;&nbsp;&nbsp;<small><a href="#drocfg_source-ip">&lt;-</a></small></h2>
 <p>The <code>&lt;source-ip&gt;</code> element defines a condition used in an ACE. Specifically, this is a match pattern for the message source IP address. This applies only to TCP, LBT-RM, and LBT-RU transports.</p>
 <ul>
 <li>
@@ -1331,7 +1344,7 @@ murmur2 - Good all-around hash function by Austin Appleby. Best for medium to lo
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="drocfg_multicast-group"></a>
-&lt;multicast-group/&gt;</h2>
+&lt;multicast-group/&gt;&nbsp;&nbsp;<small><a href="#drocfg_multicast-group">&lt;-</a></small></h2>
 <p>The <code>&lt;multicast-group&gt;</code> element defines a condition used in an ACE. Specifically, this is a match pattern for the message's multicast group address. This applies only to LBT-RM transports.</p>
 <ul>
 <li>
@@ -1357,7 +1370,7 @@ murmur2 - Good all-around hash function by Austin Appleby. Best for medium to lo
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="drocfg_udp-source-port"></a>
-&lt;udp-source-port/&gt;</h2>
+&lt;udp-source-port/&gt;&nbsp;&nbsp;<small><a href="#drocfg_udp-source-port">&lt;-</a></small></h2>
 <p>The <code>&lt;udp-source-port&gt;</code> element defines a condition used in an ACE. Specifically, this is a match pattern for the message's UDP source port number. This applies only to LBT-RM and LBT-RU transports.</p>
 <ul>
 <li>
@@ -1383,7 +1396,7 @@ murmur2 - Good all-around hash function by Austin Appleby. Best for medium to lo
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="drocfg_udp-destination-port"></a>
-&lt;udp-destination-port/&gt;</h2>
+&lt;udp-destination-port/&gt;&nbsp;&nbsp;<small><a href="#drocfg_udp-destination-port">&lt;-</a></small></h2>
 <p>The <code>&lt;udp-destination-port&gt;</code> element defines a condition used in an ACE. Specifically, this is a match pattern for the message's UDP destination port number. This applies only to LBT-RM transports.</p>
 <ul>
 <li>
@@ -1409,7 +1422,7 @@ murmur2 - Good all-around hash function by Austin Appleby. Best for medium to lo
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="drocfg_tcp-source-port"></a>
-&lt;tcp-source-port/&gt;</h2>
+&lt;tcp-source-port/&gt;&nbsp;&nbsp;<small><a href="#drocfg_tcp-source-port">&lt;-</a></small></h2>
 <p>The <code>&lt;tcp-source-port&gt;</code> element defines a condition used in an ACE. Specifically, this is a match pattern for the message's TCP source port number. This applies only to TCP transports.</p>
 <ul>
 <li>
@@ -1435,7 +1448,7 @@ murmur2 - Good all-around hash function by Austin Appleby. Best for medium to lo
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="drocfg_xport-id"></a>
-&lt;xport-id/&gt;</h2>
+&lt;xport-id/&gt;&nbsp;&nbsp;<small><a href="#drocfg_xport-id">&lt;-</a></small></h2>
 <p>The <code>&lt;xport-id&gt;</code> element defines a condition used in an ACE. Specifically, this is a match pattern for the message's xport ID number. This applies only to LBT-IPC transports.</p>
 <ul>
 <li>
@@ -1461,7 +1474,7 @@ murmur2 - Good all-around hash function by Austin Appleby. Best for medium to lo
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="drocfg_topic-resolution"></a>
-&lt;topic-resolution&gt;</h2>
+&lt;topic-resolution&gt;&nbsp;&nbsp;<small><a href="#drocfg_topic-resolution">&lt;-</a></small></h2>
 <p>The <code>&lt;topic-resolution&gt;</code> element is a container for UM Router topic resolution behavior options.</p>
 <ul>
 <li>
@@ -1489,7 +1502,7 @@ murmur2 - Good all-around hash function by Austin Appleby. Best for medium to lo
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="drocfg_initial-request"></a>
-&lt;initial-request/&gt;</h2>
+&lt;initial-request/&gt;&nbsp;&nbsp;<small><a href="#drocfg_initial-request">&lt;-</a></small></h2>
 <p>The <code>&lt;initial-request&gt;</code> element sets interval and duration for initial topic resolution requests.</p>
 <ul>
 <li>
@@ -1524,7 +1537,7 @@ murmur2 - Good all-around hash function by Austin Appleby. Best for medium to lo
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="drocfg_topic-use-query"></a>
-&lt;topic-use-query&gt;</h2>
+&lt;topic-use-query&gt;&nbsp;&nbsp;<small><a href="#drocfg_topic-use-query">&lt;-</a></small></h2>
 <p>The <code>&lt;topic-use-query&gt;</code> element sets parameters for when and how often this endpoint portal sends topic use queries.</p>
 <ul>
 <li>
@@ -1562,7 +1575,7 @@ murmur2 - Good all-around hash function by Austin Appleby. Best for medium to lo
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="drocfg_rate-limit"></a>
-&lt;rate-limit/&gt;</h2>
+&lt;rate-limit/&gt;&nbsp;&nbsp;<small><a href="#drocfg_rate-limit">&lt;-</a></small></h2>
 <p>The <code>&lt;rate-limit&gt;</code> element sets rate limits for topic resolution data sent over the network.</p>
 <p>You can set rate limits individually for each of the following topic resolution message types:</p>
 <ul>
@@ -1614,7 +1627,7 @@ For domain route messages: 50 </td></tr>
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="drocfg_pattern-use-query"></a>
-&lt;pattern-use-query&gt;</h2>
+&lt;pattern-use-query&gt;&nbsp;&nbsp;<small><a href="#drocfg_pattern-use-query">&lt;-</a></small></h2>
 <p>The <code>&lt;pattern-use-query&gt;</code> element sets parameters for when and how often this endpoint portal sends pattern use queries.</p>
 <ul>
 <li>
@@ -1652,7 +1665,7 @@ For domain route messages: 50 </td></tr>
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="drocfg_remote-topic-interest"></a>
-&lt;remote-topic-interest&gt;</h2>
+&lt;remote-topic-interest&gt;&nbsp;&nbsp;<small><a href="#drocfg_remote-topic-interest">&lt;-</a></small></h2>
 <p>The <code>&lt;remote-topic-interest&gt;</code> element sets parameters for when and how often this endpoint portal sends topic interest messages.</p>
 <ul>
 <li>
@@ -1688,7 +1701,7 @@ For domain route messages: 50 </td></tr>
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="drocfg_remote-pattern-interest"></a>
-&lt;remote-pattern-interest&gt;</h2>
+&lt;remote-pattern-interest&gt;&nbsp;&nbsp;<small><a href="#drocfg_remote-pattern-interest">&lt;-</a></small></h2>
 <p>The <code>&lt;remote-pattern-interest&gt;</code> element sets parameters for when and how often this endpoint portal sends pattern interest messages.</p>
 <ul>
 <li>
@@ -1724,7 +1737,7 @@ For domain route messages: 50 </td></tr>
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="drocfg_domain-route"></a>
-&lt;domain-route&gt;</h2>
+&lt;domain-route&gt;&nbsp;&nbsp;<small><a href="#drocfg_domain-route">&lt;-</a></small></h2>
 <p>The <code>&lt;domain-route&gt;</code> element sets maximum and minimum limits for the interval between periodic domain route messages being sent for each remote domain that the portal is servicing.</p>
 <ul>
 <li>
@@ -1760,7 +1773,7 @@ For domain route messages: 50 </td></tr>
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="drocfg_remote-topic"></a>
-&lt;remote-topic/&gt;</h2>
+&lt;remote-topic/&gt;&nbsp;&nbsp;<small><a href="#drocfg_remote-topic">&lt;-</a></small></h2>
 <p>The <code>&lt;remote-topic&gt;</code> element determines timings and limits for determination of continued topic interest at this portal.</p>
 <ul>
 <li>
@@ -1779,7 +1792,7 @@ For domain route messages: 50 </td></tr>
 <tr>
 <td>max-topics </td><td>Maximum number of topics to check at a time. Before changing the value of this option, please contact Informatica Support. </td><td>100 </td></tr>
 <tr>
-<td>timeout </td><td>Minimum time (in milliseconds) remote interest for a topic must be unrefreshed before interest is removed for that domain. Before changing the value of this option, please contact Informatica Support. </td><td>300000 </td></tr>
+<td>timeout </td><td>Minimum time (in milliseconds) remote interest for a topic must be refreshed before interest is removed for that domain. Before changing the value of this option, please contact Informatica Support. </td><td>300000 </td></tr>
 </table>
 <p><b>Example:</b> </p>
 <pre class="fragment">&lt;tnw-gateway version="1.0"&gt;
@@ -1794,7 +1807,7 @@ For domain route messages: 50 </td></tr>
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="drocfg_remote-pattern"></a>
-&lt;remote-pattern/&gt;</h2>
+&lt;remote-pattern/&gt;&nbsp;&nbsp;<small><a href="#drocfg_remote-pattern">&lt;-</a></small></h2>
 <p>The <code>&lt;remote-pattern&gt;</code> element determines timings and limits for determination of continued pattern interest at this portal.</p>
 <ul>
 <li>
@@ -1813,7 +1826,7 @@ For domain route messages: 50 </td></tr>
 <tr>
 <td>max-topics </td><td>Maximum number of patterns to check at a time. Before changing the value of this option, please contact Informatica Support. </td><td>100 </td></tr>
 <tr>
-<td>timeout </td><td>Minimum time (in milliseconds) remote interest for a pattern must be unrefreshed before interest is removed for that domain. Before changing the value of this option, please contact Informatica Support. </td><td>300000 </td></tr>
+<td>timeout </td><td>Minimum time (in milliseconds) remote interest for a pattern must be refreshed before interest is removed for that domain. Before changing the value of this option, please contact Informatica Support. </td><td>300000 </td></tr>
 </table>
 <p><b>Example:</b> </p>
 <pre class="fragment">&lt;tnw-gateway version="1.0"&gt;
@@ -1828,7 +1841,7 @@ For domain route messages: 50 </td></tr>
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="drocfg_source-context-name"></a>
-&lt;source-context-name&gt;</h2>
+&lt;source-context-name&gt;&nbsp;&nbsp;<small><a href="#drocfg_source-context-name">&lt;-</a></small></h2>
 <p>The <code>&lt;source-context-name&gt;</code> element specifies the portal source context name.</p>
 <ul>
 <li>
@@ -1843,7 +1856,7 @@ For domain route messages: 50 </td></tr>
 <tr>
 <th>XML Attribute </th><th>Description </th><th>Default Value </th></tr>
 <tr>
-<td>xml:space </td><td>How whitespace is handled. default trims leading and trailing whitespace (e.g., tabs, spaces, linefeeds, etc.), and compresses multiple whitespace characters into a single space character. preserve preserves the whitespace exactly as read. </td><td>default </td></tr>
+<td>xml:space </td><td>How whitespace is handled. <b>"default"</b> trims leading and trailing whitespace (e.g., tabs, spaces, linefeeds, etc.), and compresses multiple whitespace characters into a single space character. <b>"preserve"</b> preserves the whitespace exactly as read. </td><td><b>"default"</b> </td></tr>
 </table>
 <p><b>Example:</b> </p>
 <pre class="fragment">&lt;tnw-gateway version="1.0"&gt;
@@ -1858,7 +1871,7 @@ For domain route messages: 50 </td></tr>
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="drocfg_receiver-context-name"></a>
-&lt;receiver-context-name&gt;</h2>
+&lt;receiver-context-name&gt;&nbsp;&nbsp;<small><a href="#drocfg_receiver-context-name">&lt;-</a></small></h2>
 <p>The <code>&lt;receiver-context-name&gt;</code> element specifies the portal receiver context name.</p>
 <ul>
 <li>
@@ -1873,7 +1886,7 @@ For domain route messages: 50 </td></tr>
 <tr>
 <th>XML Attribute </th><th>Description </th><th>Default Value </th></tr>
 <tr>
-<td>xml:space </td><td>How whitespace is handled. default trims leading and trailing whitespace (e.g., tabs, spaces, linefeeds, etc.), and compresses multiple whitespace characters into a single space character. preserve preserves the whitespace exactly as read. </td><td>default </td></tr>
+<td>xml:space </td><td>How whitespace is handled. <b>"default"</b> trims leading and trailing whitespace (e.g., tabs, spaces, linefeeds, etc.), and compresses multiple whitespace characters into a single space character. <b>"preserve"</b> preserves the whitespace exactly as read. </td><td><b>"default"</b> </td></tr>
 </table>
 <p><b>Example:</b> </p>
 <pre class="fragment">&lt;tnw-gateway version="1.0"&gt;
@@ -1888,7 +1901,7 @@ For domain route messages: 50 </td></tr>
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="drocfg_sqn-window"></a>
-&lt;sqn-window/&gt;</h2>
+&lt;sqn-window/&gt;&nbsp;&nbsp;<small><a href="#drocfg_sqn-window">&lt;-</a></small></h2>
 <p>The <code>&lt;sqn-window&gt;</code> (sequence number window) element specifies the portal's awareness of received message sequence numbers, for the purpose of detecting duplicates.</p>
 <ul>
 <li>
@@ -1920,7 +1933,7 @@ For domain route messages: 50 </td></tr>
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="drocfg_context-query"></a>
-&lt;context-query/&gt;</h2>
+&lt;context-query/&gt;&nbsp;&nbsp;<small><a href="#drocfg_context-query">&lt;-</a></small></h2>
 <p>The <code>&lt;context-query&gt;</code> element determines timing characteristics for context name queries generated at this portal.</p>
 <ul>
 <li>
@@ -1956,7 +1969,7 @@ For domain route messages: 50 </td></tr>
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="drocfg_peer"></a>
-&lt;peer&gt;</h2>
+&lt;peer&gt;&nbsp;&nbsp;<small><a href="#drocfg_peer">&lt;-</a></small></h2>
 <p>The <code>&lt;peer&gt;</code> element is a container element for all configuration options of a single peer portal.</p>
 <ul>
 <li>
@@ -1985,7 +1998,7 @@ For domain route messages: 50 </td></tr>
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="drocfg_sourcemap"></a>
-&lt;sourcemap/&gt;</h2>
+&lt;sourcemap/&gt;&nbsp;&nbsp;<small><a href="#drocfg_sourcemap">&lt;-</a></small></h2>
 <p>The <code>&lt;sourcemap&gt;</code> element sets the size of the peer portal's source map.</p>
 <ul>
 <li>
@@ -2017,7 +2030,7 @@ For domain route messages: 50 </td></tr>
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="drocfg_tcp"></a>
-&lt;tcp&gt;</h2>
+&lt;tcp&gt;&nbsp;&nbsp;<small><a href="#drocfg_tcp">&lt;-</a></small></h2>
 <p>DEPRECATED AS OF UM 6.10. DO NOT USE. The <code>&lt;tcp&gt;</code> element contains elements for a peer portal's "dual TCP" settings. As of UM 6.10, dual TCP is no longer supported. Please use <code>&lt;single-tcp&gt;</code> instead.</p>
 <ul>
 <li>
@@ -2046,7 +2059,7 @@ For domain route messages: 50 </td></tr>
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="drocfg_interface"></a>
-&lt;interface&gt;</h2>
+&lt;interface&gt;&nbsp;&nbsp;<small><a href="#drocfg_interface">&lt;-</a></small></h2>
 <p>The <code>&lt;interface&gt;</code> element contains the IP host or network address for this peer portal, specified in dotted-decimal or CIDR format.</p>
 <ul>
 <li>
@@ -2074,7 +2087,7 @@ For domain route messages: 50 </td></tr>
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="drocfg_listen-port"></a>
-&lt;listen-port&gt;</h2>
+&lt;listen-port&gt;&nbsp;&nbsp;<small><a href="#drocfg_listen-port">&lt;-</a></small></h2>
 <p>The <code>&lt;listen-port&gt;</code> element contains port number on which an acceptor peer portal listens for connections from the initiating peer portal. The initiating peer portal configuration must specify this port as its initiator port.</p>
 <ul>
 <li>
@@ -2104,7 +2117,7 @@ For domain route messages: 50 </td></tr>
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="drocfg_receive-buffer"></a>
-&lt;receive-buffer&gt;</h2>
+&lt;receive-buffer&gt;&nbsp;&nbsp;<small><a href="#drocfg_receive-buffer">&lt;-</a></small></h2>
 <p>The <code>&lt;receive-buffer&gt;</code> element contains the size of the TCP receive buffer. If not specified, the UM Router uses the system default size.</p>
 <ul>
 <li>
@@ -2132,7 +2145,7 @@ For domain route messages: 50 </td></tr>
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="drocfg_send-buffer"></a>
-&lt;send-buffer&gt;</h2>
+&lt;send-buffer&gt;&nbsp;&nbsp;<small><a href="#drocfg_send-buffer">&lt;-</a></small></h2>
 <p>The <code>&lt;send-buffer&gt;</code> element contains the size of the TCP send buffer. If not specified, the UM Router uses the system default size.</p>
 <ul>
 <li>
@@ -2160,7 +2173,7 @@ For domain route messages: 50 </td></tr>
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="drocfg_keepalive"></a>
-&lt;keepalive/&gt;</h2>
+&lt;keepalive/&gt;&nbsp;&nbsp;<small><a href="#drocfg_keepalive">&lt;-</a></small></h2>
 <p>The <code>&lt;keepalive&gt;</code> element, when present, enables a TCP keepalive signal transmission, which is disabled by default.</p>
 <ul>
 <li>
@@ -2188,7 +2201,7 @@ For domain route messages: 50 </td></tr>
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="drocfg_nodelay"></a>
-&lt;nodelay/&gt;</h2>
+&lt;nodelay/&gt;&nbsp;&nbsp;<small><a href="#drocfg_nodelay">&lt;-</a></small></h2>
 <p>The <code>&lt;nodelay&gt;</code> element, when present, allows immediate sending of messages without waiting for the batching send buffer to fill. This is disabled by default.</p>
 <ul>
 <li>
@@ -2216,7 +2229,7 @@ For domain route messages: 50 </td></tr>
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="drocfg_compression"></a>
-&lt;compression&gt;</h2>
+&lt;compression&gt;&nbsp;&nbsp;<small><a href="#drocfg_compression">&lt;-</a></small></h2>
 <p>The <code>&lt;compression&gt;</code> element enables compression and sets the desired data compression algorithm for the peer link. Currently, only LZ4 lossless data compression is supported.</p>
 <ul>
 <li>
@@ -2244,7 +2257,7 @@ For domain route messages: 50 </td></tr>
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="drocfg_tls"></a>
-&lt;tls&gt;</h2>
+&lt;tls&gt;&nbsp;&nbsp;<small><a href="#drocfg_tls">&lt;-</a></small></h2>
 <p>The <code>&lt;tls&gt;</code> element contains elements to configure peer link encryption.</p>
 <ul>
 <li>
@@ -2280,7 +2293,7 @@ For domain route messages: 50 </td></tr>
 <p><br />
  </p>
 <h2><a class="anchor" id="drocfg_certificate"></a>
-&lt;certificate&gt;</h2>
+&lt;certificate&gt;&nbsp;&nbsp;<small><a href="#drocfg_certificate">&lt;-</a></small></h2>
 <p>The <code>&lt;certificate&gt;</code> element specifies the path to a file containing an OpenSSL-compatible PEM-formatted certificate that will be presented as the TLS server certificate when a TLS connection is established by a client.</p>
 <ul>
 <li>
@@ -2312,7 +2325,7 @@ For domain route messages: 50 </td></tr>
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="drocfg_certificate-key"></a>
-&lt;certificate-key&gt;</h2>
+&lt;certificate-key&gt;&nbsp;&nbsp;<small><a href="#drocfg_certificate-key">&lt;-</a></small></h2>
 <p>The <code>&lt;certificate-key&gt;</code> element specifies the path to a file containing the private key associated with the "server" certificate specified by <code>&lt;certificate&gt;</code>. Note that this private key must be protected from intruders. For that reason, when the certificate and private key files are generated, the private key file is typically encrypted with a passphrase. The passphrase is supplied using <code>&lt;certificate-key-password&gt;</code>.</p>
 <ul>
 <li>
@@ -2344,7 +2357,7 @@ For domain route messages: 50 </td></tr>
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="drocfg_certificate-key-password"></a>
-&lt;certificate-key-password&gt;</h2>
+&lt;certificate-key-password&gt;&nbsp;&nbsp;<small><a href="#drocfg_certificate-key-password">&lt;-</a></small></h2>
 <p>The <code>&lt;certificate-key-password&gt;</code> element specifies the passphrase needed to decrypt the server private key file specified by <code>&lt;tls-certificate-key&gt;</code>.</p>
 <ul>
 <li>
@@ -2378,7 +2391,7 @@ For domain route messages: 50 </td></tr>
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="drocfg_trusted-certificates"></a>
-&lt;trusted-certificates&gt;</h2>
+&lt;trusted-certificates&gt;&nbsp;&nbsp;<small><a href="#drocfg_trusted-certificates">&lt;-</a></small></h2>
 <p>The <code>&lt;trusted-certificates&gt;</code> element specifies the path to a file containing one or more OpenSSL-compatible PEM-formatted TLS client certificates and certificate authorities. If this element is not supplied, the default behavior is to use the system-level trusted certificates and certificate authorities (operating-system dependent). The TLS server uses these trusted certificates to verify the identity of connecting clients. If a client connects and presents a certificate which is not in the server's trusted certificates file, the connection will be canceled.</p>
 <ul>
 <li>
@@ -2410,7 +2423,7 @@ For domain route messages: 50 </td></tr>
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="drocfg_cipher-suites"></a>
-&lt;cipher-suites&gt;</h2>
+&lt;cipher-suites&gt;&nbsp;&nbsp;<small><a href="#drocfg_cipher-suites">&lt;-</a></small></h2>
 <p>The <code>&lt;cipher-suites&gt;</code> element defines the list of one or more (comma separated) names of cipher suites that are acceptable to this context. The names are in OpenSSL format; see <a href="https://www.openssl.org/docs/manmaster/apps/ciphers.html#TLS-v1.2-cipher-suites">https://www.openssl.org/docs/manmaster/apps/ciphers.html#TLS-v1.2-cipher-suites</a> for a list of valid suite names (the ones with dashes) and the equivalent IANA names (with underscores). If more than suite name one is supplied, they should be in descending order of preference. When a remote context negotiates encrypted TCP, the two sides must find a cipher suite in common, otherwise the connection will be canceled. The default, TLS_DHE_RSA_WITH_AES_256_GCM_SHA384, is highly secure and is recommended.</p>
 <ul>
 <li>
@@ -2442,7 +2455,7 @@ For domain route messages: 50 </td></tr>
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="drocfg_companion"></a>
-&lt;companion&gt;</h2>
+&lt;companion&gt;&nbsp;&nbsp;<small><a href="#drocfg_companion">&lt;-</a></small></h2>
 <p>DEPRECATED AS OF UM 6.10. DO NOT USE. The <code>&lt;companion&gt;</code> element contains the IP address and the port of the companion peer portal on another UM Router, to which this peer is connected via "dual TCP". As of UM 6.10, dual TCP (<code>&lt;tcp&gt;</code>) is no longer supported. Please use <code>&lt;single-tcp&gt;</code> instead.</p>
 <ul>
 <li>
@@ -2473,7 +2486,7 @@ For domain route messages: 50 </td></tr>
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="drocfg_address"></a>
-&lt;address&gt;</h2>
+&lt;address&gt;&nbsp;&nbsp;<small><a href="#drocfg_address">&lt;-</a></small></h2>
 <p>The <code>&lt;address&gt;</code> element contains the IP address of the acceptor peer portal on another UM Router, to which this initiator peer is connected via "single TCP". (As of UM 6.10, dual TCP (<code>&lt;tcp&gt;</code>) is no longer supported.)</p>
 <ul>
 <li>
@@ -2504,7 +2517,7 @@ For domain route messages: 50 </td></tr>
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="drocfg_port"></a>
-&lt;port&gt;</h2>
+&lt;port&gt;&nbsp;&nbsp;<small><a href="#drocfg_port">&lt;-</a></small></h2>
 <p>The <code>&lt;port&gt;</code> element contains the IP port of the acceptor peer portal on another UM Router, to which this initiator peer is connected. (As of UM 6.10, dual TCP (<code>&lt;tcp&gt;</code>) is no longer supported.)</p>
 <ul>
 <li>
@@ -2535,7 +2548,7 @@ For domain route messages: 50 </td></tr>
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="drocfg_single-tcp"></a>
-&lt;single-tcp&gt;</h2>
+&lt;single-tcp&gt;&nbsp;&nbsp;<small><a href="#drocfg_single-tcp">&lt;-</a></small></h2>
 <p>The <code>&lt;single-tcp&gt;</code> element contains elements for a peer portal's tcp settings, when configuring the peer for single-tcp operation.</p>
 <ul>
 <li>
@@ -2566,7 +2579,7 @@ For domain route messages: 50 </td></tr>
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="drocfg_initiator"></a>
-&lt;initiator&gt;</h2>
+&lt;initiator&gt;&nbsp;&nbsp;<small><a href="#drocfg_initiator">&lt;-</a></small></h2>
 <p>The <code>&lt;initiator&gt;</code> element contains the IP address and the port of the corresponding acceptor peer portal on another UM Router, to which this peer is connected. This element is used in single-tcp configurations.</p>
 <ul>
 <li>
@@ -2603,7 +2616,7 @@ For domain route messages: 50 </td></tr>
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="drocfg_acceptor"></a>
-&lt;acceptor&gt;</h2>
+&lt;acceptor&gt;&nbsp;&nbsp;<small><a href="#drocfg_acceptor">&lt;-</a></small></h2>
 <p>The <code>&lt;acceptor&gt;</code> element contains the listen port address of the corresponding acceptor peer portal on another UM Router, to which this peer is connected. This element is used in single-tcp configurations.</p>
 <ul>
 <li>
@@ -2633,7 +2646,7 @@ For domain route messages: 50 </td></tr>
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="drocfg_max-datagram"></a>
-&lt;max-datagram&gt;</h2>
+&lt;max-datagram&gt;&nbsp;&nbsp;<small><a href="#drocfg_max-datagram">&lt;-</a></small></h2>
 <p>The <code>&lt;max-datagram&gt;</code> element specifies the maximum size a peer portal will allow an outgoing datagram to be before fragmenting it.</p>
 <ul>
 <li>
@@ -2657,7 +2670,7 @@ For domain route messages: 50 </td></tr>
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="drocfg_smart-batch"></a>
-&lt;smart-batch&gt;</h2>
+&lt;smart-batch&gt;&nbsp;&nbsp;<small><a href="#drocfg_smart-batch">&lt;-</a></small></h2>
 <p>The <code>&lt;smart-batch&gt;</code> element enables the smart batching algorithm used by the UM Router when forwarding messages from one portal to another. In general, batching algorithms are used to increase throughput, but many such algorithms can produce latency outliers. The Smart Batching algorithm is designed to ensure low latencies by flushing the batching buffer when no more messages are waiting to be sent out the portal. Smart batching works with both endpoint and peer portals. For endpoint portals, a UM configuration file may be provided to set the implicit_batching_minimum_length (source) option to a large value. For peer portals, the <code>&lt;batching&gt;</code> element may be used to set the <code>&lt;min-length&gt;</code> to a large value. In either case, large values are recommended and will not produce significant latency outliers.</p>
 <ul>
 <li>
@@ -2684,7 +2697,7 @@ For domain route messages: 50 </td></tr>
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="drocfg_batching"></a>
-&lt;batching&gt;</h2>
+&lt;batching&gt;&nbsp;&nbsp;<small><a href="#drocfg_batching">&lt;-</a></small></h2>
 <p>The <code>&lt;batching&gt;</code> element contains batching size and timing parameters for peer link implicit batching. This applies to data messages only: the UM Router sends control messages immediately (flushing any batched data messages). Note: worst-case latency can be dramatically reduced by combining batching with <code>&lt;smart-batch&gt;</code>.</p>
 <ul>
 <li>
@@ -2711,7 +2724,7 @@ For domain route messages: 50 </td></tr>
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="drocfg_min-length"></a>
-&lt;min-length&gt;</h2>
+&lt;min-length&gt;&nbsp;&nbsp;<small><a href="#drocfg_min-length">&lt;-</a></small></h2>
 <p>The <code>&lt;min-length&gt;</code> element specifies the minimum length of a set of batched messages. When the total length of the batched messages reaches or exceeds this value, the batch is sent. If not specified, it defaults to 8192 bytes.</p>
 <ul>
 <li>
@@ -2738,7 +2751,7 @@ For domain route messages: 50 </td></tr>
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="drocfg_batch-interval"></a>
-&lt;batch-interval&gt;</h2>
+&lt;batch-interval&gt;&nbsp;&nbsp;<small><a href="#drocfg_batch-interval">&lt;-</a></small></h2>
 <p>The <code>&lt;batch-interval&gt;</code> element specifies the maximum interval (in milliseconds) between when the first message of a batch is queued until the batch is sent. A message stays in the batch queue until this value or <code>&lt;min-length&gt;</code> is met or exceeded (whichever occurs first). If not specified, it defaults to 200 milliseconds. The minimum allowed value is 3 milliseconds.</p>
 <ul>
 <li>
@@ -2765,7 +2778,7 @@ For domain route messages: 50 </td></tr>
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="drocfg_gateway-keepalive"></a>
-&lt;gateway-keepalive/&gt;</h2>
+&lt;gateway-keepalive/&gt;&nbsp;&nbsp;<small><a href="#drocfg_gateway-keepalive">&lt;-</a></small></h2>
 <p>The <code>&lt;gateway-keepalive&gt;</code> element contains parameters for the keepalive signals sent from this peer portal. This is a UM Router-level keepalive, not to be confused with the TCP-level <code>&lt;keepalive&gt;</code> element.</p>
 <ul>
 <li>
@@ -2799,12 +2812,12 @@ For domain route messages: 50 </td></tr>
 </pre><p><br />
  </p>
 <h1><a class="anchor" id="deprecatedelements"></a>
-Deprecated Elements</h1>
+Deprecated Elements&nbsp;&nbsp;<small><a href="#deprecatedelements">&lt;-</a></small></h1>
 <p>The following option elements are deprecated, and provided only for UM Gateway configuration file backward compatibility. Values assigned to them have no effect on the operation of the UM Router.</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="propagation-delay"></a>
-&lt;propagation-delay/&gt;</h2>
+&lt;propagation-delay/&gt;&nbsp;&nbsp;<small><a href="#propagation-delay">&lt;-</a></small></h2>
 <p>The <code>&lt;propagation-delay&gt;</code> element specifies the difference between the shortest and longest propagation delays in the network.</p>
 <p>This element is deprecated.</p>
 <ul>
@@ -2833,7 +2846,7 @@ Deprecated Elements</h1>
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="late-join"></a>
-&lt;late-join/&gt;</h2>
+&lt;late-join/&gt;&nbsp;&nbsp;<small><a href="#late-join">&lt;-</a></small></h2>
 <p>The <code>&lt;late-join&gt;</code> element determines how Late Join is handled by this endpoint portal.</p>
 <p>This element is deprecated.</p>
 <ul>
@@ -2871,7 +2884,7 @@ The UM configuration specified for the portal determines the late join configura
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="topic-purge"></a>
-&lt;topic-purge/&gt;</h2>
+&lt;topic-purge/&gt;&nbsp;&nbsp;<small><a href="#topic-purge">&lt;-</a></small></h2>
 <p>The <code>&lt;topic-purge&gt;</code> element determines when this portal's proxy receivers can purge topics. This element is deprecated.</p>
 <ul>
 <li>
@@ -2901,7 +2914,7 @@ The UM configuration specified for the portal determines the late join configura
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="topic-interest-generate"></a>
-&lt;topic-interest-generate/&gt;</h2>
+&lt;topic-interest-generate/&gt;&nbsp;&nbsp;<small><a href="#topic-interest-generate">&lt;-</a></small></h2>
 <p>The <code>&lt;topic-interest-generate&gt;</code> element determines timing characteristics for interest message generation at this portal.</p>
 <p>This element is deprecated.</p>
 <ul>
@@ -2936,7 +2949,7 @@ The UM configuration specified for the portal determines the late join configura
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="topic-domain-activity"></a>
-&lt;topic-domain-activity/&gt;</h2>
+&lt;topic-domain-activity/&gt;&nbsp;&nbsp;<small><a href="#topic-domain-activity">&lt;-</a></small></h2>
 <p>The <code>&lt;topic-domain-activity&gt;</code> element determines how long a domain remains quiescent until it is determined inactive.</p>
 <p>This element is deprecated.</p>
 <ul>
@@ -2952,7 +2965,7 @@ The UM configuration specified for the portal determines the late join configura
 <tr>
 <th>XML Attribute </th><th>Description </th><th>Default Value </th></tr>
 <tr>
-<td>timeout </td><td>Minimum time (in seconds) domain interest for a topic must be unrefreshed before interest is removed for that domain. </td><td>900 </td></tr>
+<td>timeout </td><td>Minimum time (in seconds) domain interest for a topic must be refreshed before interest is removed for that domain. </td><td>900 </td></tr>
 </table>
 <p><b>Example:</b> </p>
 <pre class="fragment">&lt;tnw-gateway version="1.0"&gt;
@@ -2967,7 +2980,7 @@ The UM configuration specified for the portal determines the late join configura
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="pattern-purge"></a>
-&lt;pattern-purge/&gt;</h2>
+&lt;pattern-purge/&gt;&nbsp;&nbsp;<small><a href="#pattern-purge">&lt;-</a></small></h2>
 <p>The <code>&lt;pattern-purge&gt;</code> element determines when this portal's proxy receivers can purge pattern.</p>
 <p>This element is deprecated.</p>
 <ul>
@@ -2998,7 +3011,7 @@ The UM configuration specified for the portal determines the late join configura
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="pattern-interest-generate"></a>
-&lt;pattern-interest-generate/&gt;</h2>
+&lt;pattern-interest-generate/&gt;&nbsp;&nbsp;<small><a href="#pattern-interest-generate">&lt;-</a></small></h2>
 <p>The <code>&lt;pattern-interest-generate&gt;</code> element determines timing characteristics for interest message generation at this portal.</p>
 <p>This element is deprecated.</p>
 <ul>
@@ -3033,7 +3046,7 @@ The UM configuration specified for the portal determines the late join configura
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="pattern-domain-activity"></a>
-&lt;pattern-domain-activity/&gt;</h2>
+&lt;pattern-domain-activity/&gt;&nbsp;&nbsp;<small><a href="#pattern-domain-activity">&lt;-</a></small></h2>
 <p>The <code>&lt;pattern-domain-activity&gt;</code> element determines how long a domain remains quiescent until it is determined inactive.</p>
 <p>This element is deprecated.</p>
 <ul>
@@ -3049,7 +3062,7 @@ The UM configuration specified for the portal determines the late join configura
 <tr>
 <th>XML Attribute </th><th>Description </th><th>Default Value </th></tr>
 <tr>
-<td>timeout </td><td>Minimum time (in seconds) domain interest for a pattern must be unrefreshed before interest is removed for that domain. </td><td>900 </td></tr>
+<td>timeout </td><td>Minimum time (in seconds) domain interest for a pattern must be refreshed before interest is removed for that domain. </td><td>900 </td></tr>
 </table>
 <p><b>Example:</b> </p>
 <pre class="fragment">&lt;tnw-gateway version="1.0"&gt;
@@ -3064,7 +3077,7 @@ The UM configuration specified for the portal determines the late join configura
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="topic-use-check"></a>
-&lt;topic-use-check/&gt;</h2>
+&lt;topic-use-check/&gt;&nbsp;&nbsp;<small><a href="#topic-use-check">&lt;-</a></small></h2>
 <p>The <code>&lt;topic-use-check&gt;</code> element checks for interest in topics at periodic intervals.</p>
 <p>This element is deprecated.</p>
 <ul>
@@ -3095,7 +3108,7 @@ The UM configuration specified for the portal determines the late join configura
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="pattern-use-check"></a>
-&lt;pattern-use-check/&gt;</h2>
+&lt;pattern-use-check/&gt;&nbsp;&nbsp;<small><a href="#pattern-use-check">&lt;-</a></small></h2>
 <p>The <code>&lt;pattern-use-check&gt;</code> element checks for interest in patterns at periodic intervals.</p>
 <p>This element is deprecated.</p>
 <ul>
@@ -3126,8 +3139,8 @@ The UM configuration specified for the portal determines the late join configura
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="drocfg_publishing-interval"></a>
-&lt;publishing-interval&gt;</h2>
-<p>The <code>&lt;publishing-interval&gt;</code> element configures the rate at which Daemon Statistics messages are published. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Gateway/design.tag:../Design/" href="../Design/umfeatures.html#daemonstatistics">Daemon Statistics</a> for general information on Daemon Statistics.</p>
+&lt;publishing-interval&gt;&nbsp;&nbsp;<small><a href="#drocfg_publishing-interval">&lt;-</a></small></h2>
+<p>The <code>&lt;publishing-interval&gt;</code> element configures the rate at which Daemon Statistics messages are published. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Gateway/design.tag:../Design/" href="../Design/umobjects.html#daemonstatistics">Daemon Statistics</a> for general information on Daemon Statistics.</p>
 <ul>
 <li>
 <b>Cardinality:</b> 0 or 1 </li>
@@ -3156,8 +3169,8 @@ The UM configuration specified for the portal determines the late join configura
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="drocfg_group"></a>
-&lt;group&gt;</h2>
-<p>The <code>&lt;group&gt;</code> element configures the rate at which one particular grouping of Daemon Statistics messages are published. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Gateway/design.tag:../Design/" href="../Design/umfeatures.html#daemonstatistics">Daemon Statistics</a> for general information on Daemon Statistics.</p>
+&lt;group&gt;&nbsp;&nbsp;<small><a href="#drocfg_group">&lt;-</a></small></h2>
+<p>The <code>&lt;group&gt;</code> element configures the rate at which one particular grouping of Daemon Statistics messages are published. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Gateway/design.tag:../Design/" href="../Design/umobjects.html#daemonstatistics">Daemon Statistics</a> for general information on Daemon Statistics.</p>
 <ul>
 <li>
 <b>Cardinality:</b> 0 or 1 </li>
@@ -3186,7 +3199,7 @@ The UM configuration specified for the portal determines the late join configura
 </pre><p><br />
  </p>
 <h1><a class="anchor" id="umrouterconfigurationdtd"></a>
-UM Router Configuration DTD</h1>
+UM Router Configuration DTD&nbsp;&nbsp;<small><a href="#umrouterconfigurationdtd">&lt;-</a></small></h1>
 <p>Here is the XML configuration DTD with the comments removed. To see the DTD with comments included, enter <code>tnwgd --dump-dtd</code>.</p>
 <pre class="fragment">&lt;!ELEMENT tnw-gateway (daemon?, portals)&gt;
 &lt;!ATTLIST tnw-gateway
@@ -3197,7 +3210,7 @@ UM Router Configuration DTD</h1>
 &lt;!ATTLIST log
           type (file | syslog | console) "console"
           frequency (disable | daily | hourly | test) "disable"
-          size CDATA " 0 "
+          size CDATA "0"
           xml:space (default | preserve) "default"
 &gt;
 &lt;!ELEMENT pidfile ( #PCDATA )&gt;
@@ -3209,12 +3222,12 @@ UM Router Configuration DTD</h1>
 &lt;!ELEMENT topicmap EMPTY&gt;
 &lt;!ATTLIST topicmap
           hash-function ( classic | djb2 | sdbm | murmur2 ) "murmur2"
-          size CDATA " 131111 "
+          size CDATA "131111"
 &gt;
 &lt;!ELEMENT patternmap EMPTY&gt;
 &lt;!ATTLIST patternmap
           hash-function ( classic | djb2 | sdbm | murmur2 ) "murmur2"
-          size CDATA " 131111 "
+          size CDATA "131111"
 &gt;
 &lt;!ELEMENT portals (endpoint | peer)+&gt;
 &lt;!ELEMENT endpoint (name, domain-id, cost?, source-deletion-delay?, max-queue?, smart-batch?, lbm-config?, lbm-attributes?, acl?, topic-resolution?, late-join?, topic-purge?, topic-interest-generate?, topic-domain-activity?, pattern-purge?, pattern-interest-generate?, pattern-domain-activity?, remote-topic?, remote-pattern?, source-context-name?, receiver-context-name?, sqn-window?, context-query?, publishing-interval? )&gt;
@@ -3226,7 +3239,7 @@ UM Router Configuration DTD</h1>
 &lt;!ELEMENT source-deletion-delay ( #PCDATA )&gt;
 &lt;!ELEMENT sourcemap EMPTY&gt;
 &lt;!ATTLIST sourcemap
-          size CDATA " 131072 "
+          size CDATA "131072"
 &gt;
 &lt;!ELEMENT tcp (interface?, listen-port, receive-buffer?, send-buffer?, keepalive?, nodelay?, compression?, tls?, companion )&gt;
 &lt;!ELEMENT interface ( #PCDATA )&gt;
@@ -3244,14 +3257,14 @@ UM Router Configuration DTD</h1>
 &lt;!ELEMENT trusted-certificates ( #PCDATA )&gt;
 &lt;!ELEMENT cipher-suites ( #PCDATA )&gt;
 &lt;!ATTLIST companion
-          reconnect-interval CDATA " 5000 "
+          reconnect-interval CDATA "5000"
 &gt;
 &lt;!ELEMENT address ( #PCDATA )&gt;
 &lt;!ELEMENT port ( #PCDATA )&gt;
 &lt;!ELEMENT single-tcp (interface?, receive-buffer?, send-buffer?, keepalive?, nodelay?, compression?, tls?, (initiator | acceptor ) )&gt;
 &lt;!ELEMENT initiator (address, port)&gt;
 &lt;!ATTLIST initiator
-          reconnect-interval CDATA " 5000 "
+          reconnect-interval CDATA "5000"
 &gt;
 &lt;!ELEMENT acceptor (listen-port)&gt;
 &lt;!ELEMENT max-queue ( #PCDATA )&gt;
@@ -3324,30 +3337,30 @@ UM Router Configuration DTD</h1>
 &lt;!ELEMENT topic-resolution (topic-use-query?, pattern-use-query?, remote-topic-interest?, remote-pattern-interest?, domain-route?, initial-request? )&gt;
 &lt;!ELEMENT topic-use-query (rate-limit? ) &gt;
 &lt;!ATTLIST topic-use-query
-          timeout CDATA " 3000 "
-          max CDATA " 5 "
-          periodic-interval CDATA " 300000 "
+          timeout CDATA "3000"
+          max CDATA "5"
+          periodic-interval CDATA "300000"
 &gt;
 &lt;!ELEMENT pattern-use-query (rate-limit? ) &gt;
 &lt;!ATTLIST pattern-use-query
-          timeout CDATA " 3000 "
-          max CDATA " 5 "
-          periodic-interval CDATA " 300000 "
+          timeout CDATA "3000"
+          max CDATA "5"
+          periodic-interval CDATA "300000"
 &gt;
 &lt;!ELEMENT remote-topic-interest (rate-limit? ) &gt;
 &lt;!ATTLIST remote-topic-interest
-          min-interval CDATA " 1000 "
-          max-interval CDATA " 60000 "
+          min-interval CDATA "1000"
+          max-interval CDATA "60000"
 &gt;
 &lt;!ELEMENT remote-pattern-interest (rate-limit? ) &gt;
 &lt;!ATTLIST remote-pattern-interest
-          min-interval CDATA " 1000 "
-          max-interval CDATA " 60000 "
+          min-interval CDATA "1000"
+          max-interval CDATA "60000"
 &gt;
 &lt;!ELEMENT domain-route (rate-limit? ) &gt;
 &lt;!ATTLIST domain-route
-          min-interval CDATA " 100 "
-          max-interval CDATA " 1000 "
+          min-interval CDATA "100"
+          max-interval CDATA "1000"
 &gt;
 &lt;!ELEMENT rate-limit EMPTY&gt;
 &lt;!ATTLIST rate-limit
@@ -3356,8 +3369,8 @@ UM Router Configuration DTD</h1>
 &gt;
 &lt;!ELEMENT initial-request EMPTY&gt;
 &lt;!ATTLIST initial-request
-          periodic-interval CDATA " 1000 "
-          duration CDATA " 10 "
+          periodic-interval CDATA "1000"
+          duration CDATA "10"
 &gt;
 &lt;!ELEMENT late-join EMPTY&gt;
 &lt;!ATTLIST late-join
@@ -3386,15 +3399,15 @@ UM Router Configuration DTD</h1>
 &lt;!ATTLIST pattern-domain-activity timeout CDATA #IMPLIED&gt;
 &lt;!ELEMENT remote-topic EMPTY&gt;
 &lt;!ATTLIST remote-topic
-          check-interval CDATA " 90000 "
-          max-topics CDATA " 100 "
-          timeout CDATA " 300000 "
+          check-interval CDATA "90000"
+          max-topics CDATA "100"
+          timeout CDATA "300000"
 &gt;
 &lt;!ELEMENT remote-pattern EMPTY&gt;
 &lt;!ATTLIST remote-pattern
-          check-interval CDATA " 90000 "
-          max-patterns CDATA " 100 "
-          timeout CDATA " 300000 "
+          check-interval CDATA "90000"
+          max-patterns CDATA "100"
+          timeout CDATA "300000"
 &gt;
 &lt;!ELEMENT topic-use-check EMPTY&gt;
 &lt;!ATTLIST topic-use-check periodic-interval CDATA #IMPLIED&gt;
@@ -3402,7 +3415,7 @@ UM Router Configuration DTD</h1>
 &lt;!ATTLIST pattern-use-check periodic-interval CDATA #IMPLIED&gt;
 &lt;!ELEMENT monitor (transport-module?, format-module?)&gt;
 &lt;!ATTLIST monitor
-          interval CDATA " 0 "
+          interval CDATA "0"
 &gt;
 &lt;!ELEMENT transport-module EMPTY&gt;
 &lt;!ATTLIST transport-module
@@ -3426,8 +3439,8 @@ UM Router Configuration DTD</h1>
 &lt;!ATTLIST receiver-context-name xml:space (default | preserve) "default"&gt;
 &lt;!ELEMENT sqn-window EMPTY&gt;
 &lt;!ATTLIST sqn-window
-          size CDATA " 16384 "
-          increment CDATA " 2048 "
+          size CDATA "16384"
+          increment CDATA "2048"
 &gt;
 &lt;!ELEMENT context-query EMPTY&gt;
 &lt;!ATTLIST context-query
@@ -3439,23 +3452,23 @@ UM Router Configuration DTD</h1>
 &lt;!ELEMENT gateway-keepalive EMPTY&gt;
 &lt;!ATTLIST gateway-keepalive
           idle ( yes | no ) "yes"
-          interval CDATA " 5000 "
-          timeout CDATA " 15000 "
+          interval CDATA "5000"
+          timeout CDATA "15000"
 &gt;
 &lt;!ELEMENT route-info EMPTY&gt;
 &lt;!ATTLIST route-info
-          propagation-interval CDATA " 1000 "
-          check-interval CDATA " 750 "
-          timeout CDATA " 4000 "
-          max-hop-count CDATA " 100 "
+          propagation-interval CDATA "1000"
+          check-interval CDATA "750"
+          timeout CDATA "4000"
+          max-hop-count CDATA "100"
 &gt;
 &lt;!ELEMENT route-recalculation EMPTY&gt;
 &lt;!ATTLIST route-recalculation
-          backoff-interval CDATA " 5000 "
-          warning-interval CDATA " 10000 "
+          backoff-interval CDATA "5000"
+          warning-interval CDATA "10000"
 &gt;
 &lt;!ELEMENT daemon-monitor (lbm-config?, publishing-interval?, remote-snapshot-request?, remote-config-changes-request?)&gt;
-&lt;!ATTLIST daemon-monitor topic CDATA " tnwgd.monitor "&gt;
+&lt;!ATTLIST daemon-monitor topic CDATA "tnwgd.monitor"&gt;
 &lt;!ELEMENT publishing-interval (group+)&gt;
 &lt;!ELEMENT group EMPTY&gt;
 &lt;!ATTLIST group name (default | gateway-config | route-manager-topology | malloc-info | portal-config | portal-stats ) #REQUIRED&gt;

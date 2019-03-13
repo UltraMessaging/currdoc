@@ -56,22 +56,22 @@ $(document).ready(function(){initNavTree('index.html','');});
 <div class="contents">
 <div class="textblock"><p> 
 <img src="infa_logo.png" width="400" height="138" alt="Informatica"/><br/><br/>
-<big><b>Ultra Messaging</b></big> <small>(Version 6.11.1)</small><br/>
+<big><b>Ultra Messaging</b></big> <small>(Version 6.12)</small><br/>
 <br/><br/><br/>
 <center class="mytitle">Guide to Queuing</center>
-<center>Copyright (C) 2004-2018, Informatica Corporation.  All Rights Reserved.</center>
+<center>Copyright (C) 2004-2019, Informatica Corporation.  All Rights Reserved.</center>
 <br/><br/><br/>
 [&nbsp;<a href="../index.html">Multi-page HTML</a>&nbsp;]&nbsp;&nbsp;|&nbsp;&nbsp;[&nbsp;<a href="../UM_Guide_for_Queuing=en.pdf">PDF</a>&nbsp;]
 <br/><br/>
  </p>
 <h1><a class="anchor" id="firstsect"></a>
-Introduction</h1>
+Introduction&nbsp;&nbsp;<small><a href="#firstsect">&lt;-</a></small></h1>
 <p>This document describes the queuing functionality of the Ultra Messaging UMQ product.</p>
 <dl class="section attention"><dt>Attention</dt><dd><b>See the <a href="../../DocIntro=en.pdf">Documentation Introduction</a> for important information on copyright, patents, information resources (including Knowledge Base, and How To articles), Marketplace, Support, and other information about Informatica and its products.</b></dd></dl>
 <p><br />
  </p>
 <h2><a class="anchor" id="umqoverview"></a>
-UMQ Overview</h2>
+UMQ Overview&nbsp;&nbsp;<small><a href="#umqoverview">&lt;-</a></small></h2>
 <p>Ultra Messaging Queuing Edition (UMQ) is an extension of the functionality of UMS and UMP that provides message queuing functionality. Applications access UMQ features through the Ultra Messaging Application Programming Interface (API).</p>
 <p>UMQ sources can send messages to a queue and receivers can retrieve messages from a queue asynchronously. UMQ includes the following functionality:</p>
 <ul>
@@ -90,12 +90,12 @@ JMS (Java Message Service) support </li>
 <p><br />
  </p>
 <h2><a class="anchor" id="umqarchitecture"></a>
-UMQ Architecture</h2>
+UMQ Architecture&nbsp;&nbsp;<small><a href="#umqarchitecture">&lt;-</a></small></h2>
 <p>An Ultra Messaging queuing system on a single node consists of client applications and a broker. An Ultra Messaging queuing system configured for high availability consists of client applications and three brokers.</p>
 <p><br />
  </p>
 <h3><a class="anchor" id="singnode"></a>
-Single Node</h3>
+Single Node&nbsp;&nbsp;<small><a href="#singnode">&lt;-</a></small></h3>
 <p>A single-node queuing system consists of client applications and a broker.</p>
 <p>The following image shows the components of a single-node queuing system:</p>
 <div class="image">
@@ -111,7 +111,7 @@ Single Node</h3>
 <p><br />
  </p>
 <h3><a class="anchor" id="introductiontohighavailability"></a>
-Introduction to High Availability</h3>
+Introduction to High Availability&nbsp;&nbsp;<small><a href="#introductiontohighavailability">&lt;-</a></small></h3>
 <p>A high availability queuing system consists of client applications, three nodes, each with a broker, and three UMP stores. The UMP stores enable broker replication and failover functionality.</p>
 <p>Client source and receiver applications connect to the active node only. The standby nodes receive a stream of replication updates from the active node, but the standby nodes do not generate any traffic except heartbeats and acknowledgments to the UMP stores.</p>
 <p>The following image shows the components of a high-availability queuing system:</p>
@@ -131,17 +131,17 @@ Introduction to High Availability</h3>
 <p><br />
  </p>
 <h3><a class="anchor" id="clientapplications"></a>
-Client Applications</h3>
+Client Applications&nbsp;&nbsp;<small><a href="#clientapplications">&lt;-</a></small></h3>
 <p>Client applications for queuing systems contain at least one brokered context. Client applications can contain Ultra Messaging sources or receivers, or both. Client applications can also include both standard contexts and brokered contexts.</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="securityandauthentication"></a>
-Security and Authentication</h2>
+Security and Authentication&nbsp;&nbsp;<small><a href="#securityandauthentication">&lt;-</a></small></h2>
 <p>Ultra Messaging message security depends on enterprise network security. Informatica does not support security and authentication features for ActiveMQ.</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="jms"></a>
-JMS</h2>
+JMS&nbsp;&nbsp;<small><a href="#jms">&lt;-</a></small></h2>
 <p>You can use a UMQ broker as a JMS provider for your JMS applications. You can write JMS message producer and message consumer applications that connect to and use a UMQ broker as a JMS provider.</p>
 <p>You can write Ultra Messaging and JMS applications that interoperate in the following ways:</p>
 <ul>
@@ -156,7 +156,7 @@ Use a JMS message producer application to send messages to topics or queues in a
 <p><br />
  </p>
 <h1><a class="anchor" id="gettingstarted"></a>
-Getting Started</h1>
+Getting Started&nbsp;&nbsp;<small><a href="#gettingstarted">&lt;-</a></small></h1>
 <p>To install Ultra Messaging and Ultra Messaging options, download the Ultra Messaging installation files for your specific operating system and platform.</p>
 <p>Ultra Messaging Queuing Edition installation files include the following files:</p>
 <dl class="section user"><dt><b>Core</b> <b>installation</b> <b>script</b> </dt><dd>The core installation program or script is a self-extracting executable file you run to extract Ultra Messaging files to a host system. Use the core installation script that matches your operating system, version, and chip set combination.</dd></dl>
@@ -168,23 +168,23 @@ Getting Started</h1>
 <p><br />
  </p>
 <h2><a class="anchor" id="requirements"></a>
-Requirements</h2>
+Requirements&nbsp;&nbsp;<small><a href="#requirements">&lt;-</a></small></h2>
 <p>Ultra Messaging runs on a variety of current operating systems and chip sets.</p>
 <p><br />
  </p>
 <h3><a class="anchor" id="minimumsystemrequirements"></a>
-Minimum System Requirements</h3>
+Minimum System Requirements&nbsp;&nbsp;<small><a href="#minimumsystemrequirements">&lt;-</a></small></h3>
 <p>For Ultra Messaging, there are no strict requirements for hardware computing capacity and storage capacity. Such requirements depend on client applications and on configuration of clients and brokers.</p>
 <p><br />
  </p>
 <h3><a class="anchor" id="softwarerequirements"></a>
-Software Requirements</h3>
+Software Requirements&nbsp;&nbsp;<small><a href="#softwarerequirements">&lt;-</a></small></h3>
 <p>UMQ brokers require Java SE Development Kit 6 or later. Informatica recommends Java SE Development Kit 7.</p>
 <p>UMQ on UNIX requires an installation of a libstdc++ Standard C++ Library.</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="singlenodeinstallation"></a>
-Single Node Installation</h2>
+Single Node Installation&nbsp;&nbsp;<small><a href="#singlenodeinstallation">&lt;-</a></small></h2>
 <p>To install UMQ on a host for a single-node deployment, perform the following steps. All examples are Linux examples.</p>
 <ol>
 <li>
@@ -193,7 +193,7 @@ Consult your Informatica sales engineer for the download procedure and appropria
 Download the installation files to the installation directory and run the installation script. </li>
 <li>
 <p class="startli">Locate the documentation .zip package and unzip it into the installation directory. For example:</p>
-<pre class="fragment">unzip UMQ_6.11.1_doc.zip -d &lt;InstallDir&gt;/
+<pre class="fragment">unzip UMQ_6.12_doc.zip -d &lt;InstallDir&gt;/
 </pre> </li>
 <li>
 Copy the license file into a location that is accessible to the Ultra Messaging library. </li>
@@ -202,25 +202,25 @@ Copy the license file into a location that is accessible to the Ultra Messaging 
 </pre><p class="endli"></p>
 </li>
 <li>
-Add the library to the library path. For example, use the following line: <pre class="fragment">export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:&lt;InstallDir&gt;/UMQ_6.11.1/&lt;platform&gt;/lib
+Add the library to the library path. For example, use the following line: <pre class="fragment">export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:&lt;InstallDir&gt;/UMQ_6.12/&lt;platform&gt;/lib
 </pre> </li>
 </ol>
 <p><br />
  </p>
 <h2><a class="anchor" id="startingasinglenodequeuingsystem"></a>
-Starting a Single-Node Queuing System</h2>
+Starting a Single-Node Queuing System&nbsp;&nbsp;<small><a href="#startingasinglenodequeuingsystem">&lt;-</a></small></h2>
 <p>After you have installed Ultra Messaging, run the daemons and sample applications to verify successful installation.</p>
 <ol>
 <li>
-<p class="startli">Start the broker with the following command: </p><pre class="fragment">&lt;InstallDir&gt;/UMQ_6.11.1/&lt;platform&gt;/broker/apache-activemq-5.10.0/bin/activemq start
+<p class="startli">Start the broker with the following command: </p><pre class="fragment">&lt;InstallDir&gt;/UMQ_6.12/&lt;platform&gt;/broker/apache-activemq-5.10.0/bin/activemq start
 </pre><p class="endli"></p>
 </li>
 <li>
-<p class="startli">Start the sample receiving application with the following commands: </p><pre class="fragment">&lt;InstallDir&gt;/UMQ_6.11.1/&lt;platform&gt;/bin/umqrcv -B &lt;brokerIP:port&gt; -r 10 QueueDestA
+<p class="startli">Start the sample receiving application with the following commands: </p><pre class="fragment">&lt;InstallDir&gt;/UMQ_6.12/&lt;platform&gt;/bin/umqrcv -B &lt;brokerIP:port&gt; -r 10 QueueDestA
 </pre><p class="endli"></p>
 </li>
 <li>
-<p class="startli">In a second command window, start the sample sending application with the following command: </p><pre class="fragment">&lt;InstallDir&gt;/UMQ_6.11.1/&lt;platform&gt;/bin/umqsrc -B &lt;brokerIP:port&gt; -M 10 QueueDestA
+<p class="startli">In a second command window, start the sample sending application with the following command: </p><pre class="fragment">&lt;InstallDir&gt;/UMQ_6.12/&lt;platform&gt;/bin/umqsrc -B &lt;brokerIP:port&gt; -M 10 QueueDestA
 </pre><p>In the sending application window, you see output similar to the following example display: </p><pre class="fragment">0 msgs/sec -&gt; 1 msgs/ivl, 0 msec ivl
 Using flight size of 1000
 Not using UME Late Join.
@@ -250,14 +250,14 @@ Quitting.... received 10 messages (0 reassigned, 0 resubmitted)
 </li>
 </ol>
 <h2><a class="anchor" id="shuttingdownasinglenodebroker"></a>
-Shutting Down a Single-Node Broker</h2>
-<p>Shut down the broker with the following command: </p><pre class="fragment">&lt;InstallDir&gt;/UMQ_6.11.1/&lt;platform&gt;/broker/apache-activemq-5.10.0/bin/activemq stop
+Shutting Down a Single-Node Broker&nbsp;&nbsp;<small><a href="#shuttingdownasinglenodebroker">&lt;-</a></small></h2>
+<p>Shut down the broker with the following command: </p><pre class="fragment">&lt;InstallDir&gt;/UMQ_6.12/&lt;platform&gt;/broker/apache-activemq-5.10.0/bin/activemq stop
 Kmsgs/sec. 0 Kmsgs/sec. 0 Kmsgs/sec. 0 Kmsgs/sec. 0 Kmsgs/sec. 0
 Kbps Kbps Kbps Kbps Kbps 1.998 Kbps
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="highavailabilityinstallation"></a>
-High Availability Installation</h2>
+High Availability Installation&nbsp;&nbsp;<small><a href="#highavailabilityinstallation">&lt;-</a></small></h2>
 <p>A high-availability queuing system requires an Ultra Messaging installation on three hosts. To install UMQ on hosts for a high-availability queuing system, perform the following steps. All examples are Linux examples.</p>
 <dl class="section note"><dt>Note</dt><dd>Each node has a unique configuration file, but these configuration files are each in the same path- named directory. Therefore, the three installations must not be on the same NFS mounted disk.</dd></dl>
 <ol>
@@ -266,7 +266,7 @@ Consult your Informatica sales engineer for the download procedure and appropria
 <li>
 Download the installation files to the installation directory of the first broker host and run the installation script. </li>
 <li>
-<p class="startli">Locate the documentation .zip package and unzip it into the installation directory. For example: </p><pre class="fragment">unzip UMQ_6.11.1_doc.zip -d &lt;InstallDir&gt;/
+<p class="startli">Locate the documentation .zip package and unzip it into the installation directory. For example: </p><pre class="fragment">unzip UMQ_6.12_doc.zip -d &lt;InstallDir&gt;/
 </pre><p class="endli"></p>
 </li>
 <li>
@@ -276,19 +276,19 @@ Copy the license file into a location that is accessible to the Ultra Messaging 
 </pre><p class="endli"></p>
 </li>
 <li>
-<p class="startli">Add the library to the library path. For example, use the following line: </p><pre class="fragment">export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:&lt;InstallDir&gt;/UMQ_6.11.1/&lt;platform&gt;/lib
+<p class="startli">Add the library to the library path. For example, use the following line: </p><pre class="fragment">export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:&lt;InstallDir&gt;/UMQ_6.12/&lt;platform&gt;/lib
 </pre><p class="endli"></p>
 </li>
 <li>
 <p class="startli">A high availability broker node contains a working configuration directory and a default configuration directory for each unique node in a multiple node arrangement.</p>
-<p>Create the store repository directories. Then, depending on which host you are configuring, copy the default broker1, broker2, or broker3 configuration file to the working configuration directory with the following example commands: </p><pre class="fragment">mkdir &lt;InstallDir&gt;/UMQ_6.11.1/&lt;platform&gt;/broker/store/
-mkdir &lt;InstallDir&gt;/UMQ_6.11.1/&lt;platform&gt;/broker/store/cache
-mkdir &lt;InstallDir&gt;/UMQ_6.11.1/&lt;platform&gt;/broker/store/state
-cp &lt;InstallDir&gt;/UMQ_6.11.1/&lt;platform&gt;/broker/deployments/three_replicating_brokers/broker1/um.xml &lt;InstallDir&gt;/UMQ_6.11.1/&lt;platform&gt;/broker
+<p>Create the store repository directories. Then, depending on which host you are configuring, copy the default broker1, broker2, or broker3 configuration file to the working configuration directory with the following example commands: </p><pre class="fragment">mkdir &lt;InstallDir&gt;/UMQ_6.12/&lt;platform&gt;/broker/store/
+mkdir &lt;InstallDir&gt;/UMQ_6.12/&lt;platform&gt;/broker/store/cache
+mkdir &lt;InstallDir&gt;/UMQ_6.12/&lt;platform&gt;/broker/store/state
+cp &lt;InstallDir&gt;/UMQ_6.12/&lt;platform&gt;/broker/deployments/three_replicating_brokers/broker1/um.xml &lt;InstallDir&gt;/UMQ_6.12/&lt;platform&gt;/broker
 </pre><p class="endli"></p>
 </li>
 <li>
-<p class="startli">Edit the um.xml configuration file that is in &lt;InstallDir&gt;/UMQ_6.11.1/&lt;platform&gt;/broker/ to set the resolver IP addresses and ports for all three nodes, as shown in the following example: </p><pre class="fragment">&lt;option name="resolver_unicast_daemon" default-value="10.33.200.201:21212"/&gt;
+<p class="startli">Edit the um.xml configuration file that is in &lt;InstallDir&gt;/UMQ_6.12/&lt;platform&gt;/broker/ to set the resolver IP addresses and ports for all three nodes, as shown in the following example: </p><pre class="fragment">&lt;option name="resolver_unicast_daemon" default-value="10.33.200.201:21212"/&gt;
 &lt;option name="resolver_unicast_daemon" default-value="10.33.200.202:21212"/&gt;
 &lt;option name="resolver_unicast_daemon" default-value="10.33.200.203:21212"/&gt;
 </pre><p> Also, set the local broker host interface addresses to the IP address of a network interface on the current broker host that has connectivity to the other broker hosts, and to the servers where the clients run, as shown in the following example: </p><pre class="fragment">&lt;option name="resolver_multicast_interface" default-value="10.33.200.201"/&gt;
@@ -298,11 +298,11 @@ cp &lt;InstallDir&gt;/UMQ_6.11.1/&lt;platform&gt;/broker/deployments/three_repli
 </pre><dl class="section note"><dt>Note</dt><dd>Do not change any values in the broker um.xml configuration file other than interfaces and addresses shown in this step.</dd></dl>
 </li>
 <li>
-<p class="startli">Depending on which host you are configuring, copy the default broker1, broker2, or broker3 stored.xml configuration file to the working configuration directory with the following broker1 example command: </p><pre class="fragment">cp &lt;InstallDir&gt;/UMQ_6.11.1/&lt;platform&gt;/broker/deployments/three_replicating_brokers/broker1/store/stored.xml &lt;InstallDir&gt;/UMQ_6.11.1/&lt;platform&gt;/broker/store
+<p class="startli">Depending on which host you are configuring, copy the default broker1, broker2, or broker3 stored.xml configuration file to the working configuration directory with the following broker1 example command: </p><pre class="fragment">cp &lt;InstallDir&gt;/UMQ_6.12/&lt;platform&gt;/broker/deployments/three_replicating_brokers/broker1/store/stored.xml &lt;InstallDir&gt;/UMQ_6.12/&lt;platform&gt;/broker/store
 </pre><p class="endli"></p>
 </li>
 <li>
-Depending on which host you are configuring, copy the default broker1, broker2, or broker3 ActiveMQ configuration file to the working configuration directory with the following broker1 example command: <pre class="fragment">cp &lt;InstallDir&gt;/UMQ_6.11.1/&lt;platform&gt;/broker/deployments/three_replicating_brokers/broker1/apache-activemq-5.10.0/conf/activemq.xml &lt;InstallDir&gt;/UMQ_6.11.1/&lt;platform&gt;/broker/apache-activemq-5.10.0/conf
+Depending on which host you are configuring, copy the default broker1, broker2, or broker3 ActiveMQ configuration file to the working configuration directory with the following broker1 example command: <pre class="fragment">cp &lt;InstallDir&gt;/UMQ_6.12/&lt;platform&gt;/broker/deployments/three_replicating_brokers/broker1/apache-activemq-5.10.0/conf/activemq.xml &lt;InstallDir&gt;/UMQ_6.12/&lt;platform&gt;/broker/apache-activemq-5.10.0/conf
 </pre> </li>
 <li>
 <p class="startli">Repeat steps 1-10 for the second broker host, and again for the third broker host, making sure to copy the configuration files from ...three_replication_brokers/broker2/... or ...three_replication_brokers/broker3/... as needed.</p>
@@ -311,27 +311,27 @@ Depending on which host you are configuring, copy the default broker1, broker2, 
 </li>
 </ol>
 <h2><a class="anchor" id="startingahighavailabilityqueuingsystem"></a>
-Starting a High Availability Queuing System</h2>
+Starting a High Availability Queuing System&nbsp;&nbsp;<small><a href="#startingahighavailabilityqueuingsystem">&lt;-</a></small></h2>
 <p>After you have installed Ultra Messaging, run the daemons and sample applications to verify successful installation.</p>
 <ol>
 <li>
-On the first host, start the lbmrd resolver daemon with the following example command: <pre class="fragment">&lt;InstallDir&gt;/UMQ_6.11.1/&lt;platform&gt;/bin/lbmrd -i 10.33.200.201 -p 21212 &amp;
+On the first host, start the lbmrd resolver daemon with the following example command: <pre class="fragment">&lt;InstallDir&gt;/UMQ_6.12/&lt;platform&gt;/bin/lbmrd -i 10.33.200.201 -p 21212 &amp;
 </pre> </li>
 <li>
-Start the umestored daemon with the following example commands: <pre class="fragment">cd &lt;InstallDir&gt;/UMQ_6.11.1/&lt;platform&gt;/broker/store
-&lt;InstallDir&gt;/UMQ_6.11.1/&lt;platform&gt;/bin/umestored stored.xml &amp;
+Start the umestored daemon with the following example commands: <pre class="fragment">cd &lt;InstallDir&gt;/UMQ_6.12/&lt;platform&gt;/broker/store
+&lt;InstallDir&gt;/UMQ_6.12/&lt;platform&gt;/bin/umestored stored.xml &amp;
 </pre> </li>
 <li>
-Start the broker with the following example commands: <pre class="fragment">cd &lt;InstallDir&gt;/UMQ_6.11.1/&lt;platform&gt;/broker/apache-activemq-5.10.0
-&lt;InstallDir&gt;/UMQ_6.11.1/&lt;platform&gt;/broker/apache-activemq-5.10.0/bin/activemq start
+Start the broker with the following example commands: <pre class="fragment">cd &lt;InstallDir&gt;/UMQ_6.12/&lt;platform&gt;/broker/apache-activemq-5.10.0
+&lt;InstallDir&gt;/UMQ_6.12/&lt;platform&gt;/broker/apache-activemq-5.10.0/bin/activemq start
 </pre> </li>
 <li>
 Repeat steps 1-3 on the second and third host. </li>
 <li>
-Start the sample receiving application with the following commands: <pre class="fragment">&lt;InstallDir&gt;/UMQ_6.11.1/&lt;platform&gt;/bin/umqrcv -B &lt;broker1IP:port1,broker2IP:port2,broker3IP:port3&gt; -r 10 QueueDestA
+Start the sample receiving application with the following commands: <pre class="fragment">&lt;InstallDir&gt;/UMQ_6.12/&lt;platform&gt;/bin/umqrcv -B &lt;broker1IP:port1,broker2IP:port2,broker3IP:port3&gt; -r 10 QueueDestA
 </pre> </li>
 <li>
-<p class="startli">In a second command window, start the sample sending application with the following command: </p><pre class="fragment">&lt;InstallDir&gt;/UMQ_6.11.1/&lt;platform&gt;/bin/umqsrc -B &lt;broker1IP:port1,broker2IP:port2,broker3IP:port3&gt; -M 10 QueueDestA
+<p class="startli">In a second command window, start the sample sending application with the following command: </p><pre class="fragment">&lt;InstallDir&gt;/UMQ_6.12/&lt;platform&gt;/bin/umqsrc -B &lt;broker1IP:port1,broker2IP:port2,broker3IP:port3&gt; -M 10 QueueDestA
 </pre><p>In the sending application window, you see output similar to the following example display: </p><pre class="fragment">0 msgs/sec -&gt; 1 msgs/ivl, 0 msec ivl
 Using flight size of 1000
 Not using UME Late Join.
@@ -361,11 +361,11 @@ Quitting.... received 10 messages (0 reassigned, 0 resubmitted)
 </li>
 </ol>
 <h2><a class="anchor" id="shuttingdownhighavailabilitynodes"></a>
-Shutting Down High Availability Nodes</h2>
+Shutting Down High Availability Nodes&nbsp;&nbsp;<small><a href="#shuttingdownhighavailabilitynodes">&lt;-</a></small></h2>
 <p>To shut down a high availability queuing system node, perform the following steps:</p>
 <ol>
 <li>
-Shut down the broker with the following command: <pre class="fragment">&lt;InstallDir&gt;/UMQ_6.11.1/&lt;platform&gt;/broker/apache-activemq-5.10.0/bin/activemq stop
+Shut down the broker with the following command: <pre class="fragment">&lt;InstallDir&gt;/UMQ_6.12/&lt;platform&gt;/broker/apache-activemq-5.10.0/bin/activemq stop
 </pre> </li>
 <li>
 Shut down the umestored process. </li>
@@ -378,13 +378,13 @@ Shut down the lbmrd process. </li>
 </li>
 </ol>
 <h2><a class="anchor" id="queuingupgradeconsiderations"></a>
-Queuing Upgrade Considerations</h2>
+Queuing Upgrade Considerations&nbsp;&nbsp;<small><a href="#queuingupgradeconsiderations">&lt;-</a></small></h2>
 <p>When UMQ 6.8 was released, it added some capabilities and deprecated others, when compared with pre-6.8 UMQ. You might need to change how you set configuration options or change function calls in your application code.</p>
 <p>If the application does not use UMQ-specific features other than Ultra Load Balancing (ULB), ignore this section. This section is a supplement to upgrade guidelines in the Release Notes and does not repeat the guidelines therein.</p>
 <p><br />
  </p>
 <h3><a class="anchor" id="configurationoptions"></a>
-Configuration Options</h3>
+Configuration Options&nbsp;&nbsp;<small><a href="#configurationoptions">&lt;-</a></small></h3>
 <p>When you upgrade client applications from versions prior to 6.8, you must change the following configuration settings:</p>
 <ul>
 <li>
@@ -396,7 +396,7 @@ Contexts that contain queue sources or receivers must specify a list of brokers 
 </li>
 </ul>
 <h3><a class="anchor" id="applicationcode"></a>
-Application Code</h3>
+Application Code&nbsp;&nbsp;<small><a href="#applicationcode">&lt;-</a></small></h3>
 <p>You might need to make changes to client application source code.</p>
 <p>You do not need to change any API calls unless the functions are deprecated. However, you must recompile client applications from versions prior to 6.8.</p>
 <p>UMQ client applications from versions prior to 6.8 might use the same context for both queue sources or receivers and topic sources or receivers. In such cases, you must create separate contexts for queue applications and non-queue applications.</p>
@@ -404,7 +404,7 @@ Application Code</h3>
 <p><br />
  </p>
 <h1><a class="anchor" id="conceptsandfeatures"></a>
-Concepts and Features</h1>
+Concepts and Features&nbsp;&nbsp;<small><a href="#conceptsandfeatures">&lt;-</a></small></h1>
 <p>An Ultra Messaging queuing system uses a broker to manage the transfer of messages from a source to a receiver. When you build an Ultra Messaging queuing system, identify the broker to use and write a client application that defines the behavior of the source and the receiver.</p>
 <p>You can configure the broker to use the Ultra Messaging persistence adapter. When you use the Ultra Messaging persistence adapter, the broker uses Ultra Messaging Persistence (UMP) functionality to manage the event stream and save messages to long-term storage.</p>
 <p>To implement high availability, you can install and configure brokers on multiple nodes. A high availability queuing system includes an active broker and multiple standby brokers. Each broker maintains a copy of the messages and event stream.</p>
@@ -414,17 +414,17 @@ Concepts and Features</h1>
 <p><br />
  </p>
 <h2><a class="anchor" id="brokeredcontext"></a>
-Brokered Context</h2>
+Brokered Context&nbsp;&nbsp;<small><a href="#brokeredcontext">&lt;-</a></small></h2>
 <p>The brokered context establishes the environment for an Ultra Messaging queuing system.</p>
 <p>When you build an Ultra Messaging queuing system, you must create a context and define the broker for the context. You can have multiple brokered contexts in a queuing system.</p>
 <p>You can define the broker for the context in the client configuration file or in the application code. When you define the broker for a context, you must specify the IP address of the machine that hosts the broker and the Advanced Message Queuing Protocol (AMQP) listening port.</p>
-<p>To define the broker for a brokered context in a configuration file, the option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UMQ/config.tag:../../Config/" href="../../Config/grpmajoroptions.html#brokercontext">broker (context)</a> as follows:</p>
+<p>To define the broker for a brokered context in a configuration file, the option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/config.tag:../../Config/" href="../../Config/grpmajoroptions.html#brokercontext">broker (context)</a> as follows:</p>
 <pre class="fragment">context broker broker_ip_address:port
-</pre><p>For more information about the Ultra Messaging context, see <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UMQ/design.tag:../../Design/" href="../../Design/umobjects.html#contextobject">Context Object</a>.</p>
+</pre><p>For more information about the Ultra Messaging context, see <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/design.tag:../../Design/" href="../../Design/fundamentalconcepts.html#contextobject">Context Object</a>.</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="brokeredsource"></a>
-Brokered Source</h2>
+Brokered Source&nbsp;&nbsp;<small><a href="#brokeredsource">&lt;-</a></small></h2>
 <p>In an Ultra Messaging queuing system, the source is the component that sends messages to a broker.</p>
 <p>In a client application, you must create a source object that connects and sends messages to the broker. You can include metadata with a message through message properties. The client application can listen for events to determine the state of the source, message, or broker.</p>
 <p>When you create a source, you must specify the name of a message destination. The broker creates a queue destination with the specified name. If you create multiple sources, specify a different message destination for each source. A source sends messages to the message destination associated with it.</p>
@@ -434,7 +434,7 @@ Brokered Source</h2>
 </pre><p><br />
  </p>
 <h3><a class="anchor" id="sourceeventconcepts"></a>
-Source Event Concepts</h3>
+Source Event Concepts&nbsp;&nbsp;<small><a href="#sourceeventconcepts">&lt;-</a></small></h3>
 <p>Ultra Messaging generates source events that you can listen for and respond to based on your requirements.</p>
 <p>You can use source events to determine the state of the source and the messages sent by the source. For example, when you write a callback function to respond to source events, you can check for a registration complete event and start sending messages only after you receive the event. You can also check events to determine whether a message is stable or whether the memory allocated to the message is reclaimed.</p>
 <p>Ultra Messaging provides other events that you can check to manage the message queuing process, including events such as a registration error and flight size change.</p>
@@ -442,7 +442,7 @@ Source Event Concepts</h3>
 <p><br />
  </p>
 <h2><a class="anchor" id="brokeredreceiver"></a>
-Brokered Receiver</h2>
+Brokered Receiver&nbsp;&nbsp;<small><a href="#brokeredreceiver">&lt;-</a></small></h2>
 <p>A receiver is the component in an Ultra Messaging queuing system that consumes the messages that are sent by a source. The source sends messages to a broker and the broker assigns messages to the receiver. The receiver does not directly access messages from the source.</p>
 <p>In a client application, you must create a receiver object that connects to and gets messages from a broker. The receiver connects to the broker defined in the context. When you create a receiver, you must specify the message destination in the broker from which to receive messages.</p>
 <p>A receiver must be registered with a broker before the receiver can receive messages from the broker. When you create a receiver, you trigger a receiver registration. A receiver registration complete event is a receiver event that indicates that the receiver is registered and can receive messages from the broker.</p>
@@ -450,7 +450,7 @@ Brokered Receiver</h2>
 <p><br />
  </p>
 <h2><a class="anchor" id="thebroker"></a>
-The Broker</h2>
+The Broker&nbsp;&nbsp;<small><a href="#thebroker">&lt;-</a></small></h2>
 <p>The message broker manages the transfer of messages from the source to a receiver. The broker receives messages from the source and assigns them to a receiver based on the message queue configuration.</p>
 <p>The Ultra Messaging message broker provides the following services:</p>
 <ul>
@@ -467,27 +467,27 @@ High availability services. The broker defines a high availability process that 
 <p><br />
  </p>
 <h3><a class="anchor" id="messagedestination"></a>
-Message Destination</h3>
+Message Destination&nbsp;&nbsp;<small><a href="#messagedestination">&lt;-</a></small></h3>
 <p>The message destination is the location on the broker where a message is stored before the broker assigns the message to the receiver.</p>
 <p>When you create a source, you must specify the name of the message destination to which the source sends messages. When you create a receiver, you must specify the message destination from which the receiver consumes messages.</p>
 <dl class="section note"><dt>Note</dt><dd>Ultra Messaging uses the term topic to refer to the message destination. However, the message destination created in an Ultra Messaging queuing system is a queue, not a topic.</dd></dl>
 <p><br />
  </p>
 <h3><a class="anchor" id="messagestore"></a>
-Message Store</h3>
+Message Store&nbsp;&nbsp;<small><a href="#messagestore">&lt;-</a></small></h3>
 <p>You can configure the Ultra Messaging broker to use the Ultra Messaging persistence adapter that replicates events generated by the active broker to the standby brokers. When you use the Ultra Messaging persistence adapter, each broker maintains an independent message store.</p>
 <p>The Ultra Messaging broker uses Ultra Messaging Persistence (UMP) functionality to manage events generated within the Ultra Messaging queuing system. The active broker uses a UMP source to replicate events to the standby brokers. A standby broker uses a UMP receiver to receive events from the active broker. If a broker fails, it uses a UMP store daemon to recover events that it missed when it was down.</p>
 <p>After a standby broker receives events from the active broker, the standby broker stores the messages locally in the default long-term storage.</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="flightsizeconcepts"></a>
-Flight Size Concepts</h2>
+Flight Size Concepts&nbsp;&nbsp;<small><a href="#flightsizeconcepts">&lt;-</a></small></h2>
 <p>When a source sends a message, the message is considered to be in-flight until the broker generates a message stable event. Flight size is the number of messages that are in-flight at any point in time.</p>
 <p>You can set a maximum flight size for a source to control the message load on the broker. Set the flight size based on the requirements of the queuing system and the capacity of the network. In an Ultra Messaging queuing system, setting the flight size flight size is the only method available to limit the volume of messages from the source.</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="highavailabilityconcepts"></a>
-High Availability Concepts</h2>
+High Availability Concepts&nbsp;&nbsp;<small><a href="#highavailabilityconcepts">&lt;-</a></small></h2>
 <p>You can install and configure brokers on multiple nodes to implement high availability in an Ultra Messaging queuing system.</p>
 <p>When you configure the context for a multi-node queuing system, you must specify the number of brokers and the IP address and port number of each broker. A queuing system set up for high availability has one active broker and multiple standby brokers.</p>
 <p>The source sends messages to the active broker and the active broker assigns messages to the receiver. If the active broker fails, Ultra Messaging elects one of the standby brokers as an active broker. When the failed broker restarts, it runs as a standby broker and synchronizes with other brokers to recover events that it missed while it was down.</p>
@@ -496,7 +496,7 @@ High Availability Concepts</h2>
 <p><br />
  </p>
 <h2><a class="anchor" id="indexedqueuing"></a>
-Indexed Queuing</h2>
+Indexed Queuing&nbsp;&nbsp;<small><a href="#indexedqueuing">&lt;-</a></small></h2>
 <p>Indexed queuing is a way to group messages and ensure that one receiver processes all messages in the group in the order that they are sent. The source uses an index to specify the messages in a group. The Ultra Messaging broker uses the ActiveMQ message group functionality to implement indexed queuing.</p>
 <p>If a set of messages must be processed in order, it can be more efficient for one receiver to process all the messages. For example, if the messages represent bids in an auction, you might want to assign all bids for an item to one receiver to ensure that the bids are processed in the right order. Include the same index in all messages that relate to an item to ensure that all bids for the item go to one receiver.</p>
 <p>To set up indexed queuing, define an index with a string value and add the index to the message as metadata. By default, the broker checks the index of a message before it assigns the message to a receiver. The broker designates a receiver to process messages with a specific index. When the source sends a message with the index, the broker assigns the message to the designated receiver. The broker assigns all messages with the same index to the same receiver.</p>
@@ -504,7 +504,7 @@ Indexed Queuing</h2>
 <p><br />
  </p>
 <h2><a class="anchor" id="compositedestinations"></a>
-Composite Destinations</h2>
+Composite Destinations&nbsp;&nbsp;<small><a href="#compositedestinations">&lt;-</a></small></h2>
 <p>A composite destination is a virtual message destination that represents a collection of physical message destinations.</p>
 <p>You can create a source that sends messages to a virtual queue destination in the broker. In the broker configuration, you associate the virtual queue destination to multiple physical queue destinations. You can then create a receiver to receive messages from one of the physical queue destinations.</p>
 <p>The following image shows an example of a broker configured with a composite destination:</p>
@@ -519,7 +519,7 @@ Composite Destinations</h2>
 <p><br />
  </p>
 <h3><a class="anchor" id="compositedestinationconfiguration"></a>
-Composite Destination Configuration</h3>
+Composite Destination Configuration&nbsp;&nbsp;<small><a href="#compositedestinationconfiguration">&lt;-</a></small></h3>
 <p>You configure the composite destination in the Ultra Messaging message broker. Use the broker configuration file to set up the logical and physical queues for the composite destination.</p>
 <p>The following XML code shows an example of a configuration for a composite destination:</p>
 <pre class="fragment">&lt;destinationInterceptors&gt;
@@ -538,13 +538,13 @@ Composite Destination Configuration</h3>
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="messagelifetime"></a>
-Message Lifetime</h2>
+Message Lifetime&nbsp;&nbsp;<small><a href="#messagelifetime">&lt;-</a></small></h2>
 <p>The message lifetime is the length of time within which the broker must assign a message to a receiver before the message expires. The message lifetime starts when the broker receives the message and expires after a length of time that you can configure. When the lifetime of a message expires, you can configure the broker to discard the message or send the message to the dead letter queue (DLQ).</p>
 <p>You can set the message lifetime when you send a message or you can set the message lifetime as a configuration option. By default, if you do not set a message lifetime, a message does not expire and can be redelivered to a receiver indefinitely.</p>
 <p><br />
  </p>
 <h3><a class="anchor" id="deadletterqueue"></a>
-Dead Letter Queue</h3>
+Dead Letter Queue&nbsp;&nbsp;<small><a href="#deadletterqueue">&lt;-</a></small></h3>
 <p>The dead letter queue (DLQ) refers to a message destination for messages that cannot be delivered to a receiver.</p>
 <p>The Ultra Messaging broker contains a default DLQ message destination for all undeliverable messages. When the lifetime of a message expires or the maximum number of redelivery attempts is reached, the broker sends the message to the DLQ.</p>
 <p>You can set up a separate DLQ for each message destination. In the broker configuration file, you can set up a dead letter strategy for a destination and create a DLQ associated with the destination. The broker sends the undeliverable messages to the DLQ associated with a message destination.</p>
@@ -552,18 +552,18 @@ Dead Letter Queue</h3>
 <p><br />
  </p>
 <h1><a class="anchor" id="bestpractices"></a>
-Best Practices</h1>
+Best Practices&nbsp;&nbsp;<small><a href="#bestpractices">&lt;-</a></small></h1>
 <p>When you use queuing, you should follow best practices to ensure optimal performance, reliability, and efficient use of resources.</p>
 <p>When you write client applications, consider how you create and use contexts, how you time connection initiation, and the use of message persistence. When you set configuration options, consider whether to do this with configuration files or programmatically. Configuration options can help you tune applications for the appropriate balance between performance and reliability. When you deploy a queuing system, consider using a high availability deployment.</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="applicationdevelopmentbestpractices"></a>
-Application Development Best Practices</h2>
+Application Development Best Practices&nbsp;&nbsp;<small><a href="#applicationdevelopmentbestpractices">&lt;-</a></small></h2>
 <p>To ensure reliable operation of UMQ source and receiver applications, consider the following best practices.</p>
 <p><br />
  </p>
 <h3><a class="anchor" id="usetheappropriatenumberofcontexts"></a>
-Use the Appropriate Number of Contexts</h3>
+Use the Appropriate Number of Contexts&nbsp;&nbsp;<small><a href="#usetheappropriatenumberofcontexts">&lt;-</a></small></h3>
 <p>Usually a client application needs only one context. However, a client application might need more than one context, as in the following examples:</p>
 <ul>
 <li>
@@ -575,35 +575,35 @@ Because a brokered context can make only one connection to a broker, you might w
 <p><br />
  </p>
 <h3><a class="anchor" id="ifperformanceisimportantconsidernotpersistingmessages"></a>
-If Performance Is Important, Consider Not Persisting Messages</h3>
+If Performance Is Important, Consider Not Persisting Messages&nbsp;&nbsp;<small><a href="#ifperformanceisimportantconsidernotpersistingmessages">&lt;-</a></small></h3>
 <p>By default, source applications flag messages to the broker as persisted messages. You can unset this flag to send the messages as non-persisted. Non-persisted messages do not provide as much reliability, but tend to reach their destination faster because they do not need to wait for persistence operations to complete. Thus, the decision to persist messages or not can be a choice of performance versus reliability.</p>
 <p><br />
  </p>
 <h3><a class="anchor" id="waitforregistration"></a>
-Wait for Registration</h3>
+Wait for Registration&nbsp;&nbsp;<small><a href="#waitforregistration">&lt;-</a></small></h3>
 <p>To avoid start-up errors, do not start sending messages immediately after source creation. Instead, wait for sources to register with the broker.</p>
-<p>After you create the source, wait for the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#aa409add379c0380b2efa63f4095d69e4">LBM_SRC_EVENT_UMQ_REGISTRATION_COMPLETE_EX</a> event before sending messages.</p>
+<p>After you create the source, wait for the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#aa409add379c0380b2efa63f4095d69e4">LBM_SRC_EVENT_UMQ_REGISTRATION_COMPLETE_EX</a> event before sending messages.</p>
 <p><br />
  </p>
 <h3><a class="anchor" id="planforpossibleconnectioninterruptions"></a>
-Plan For Possible Connection Interruptions</h3>
+Plan For Possible Connection Interruptions&nbsp;&nbsp;<small><a href="#planforpossibleconnectioninterruptions">&lt;-</a></small></h3>
 <p>A broker might stop or lose connection to a client application while an operation is in progress. Plan for this possibility when writing source or receiver applications.</p>
 <p>If a broker stops and then restarts, a source application might not receive stability acknowledgements for in-flight messages. In this situation the source application must resend the message if needed, and possibly mark the message as previously sent.</p>
 <p>If a broker or a receiver stops and then restarts, a receiver application might receive duplicate redelivered messages, and must handle these appropriately.</p>
 <p><br />
  </p>
 <h3><a class="anchor" id="javaandcreceiverscalldispose"></a>
-Java and C# Receivers: Call dispose()</h3>
+Java and C# Receivers: Call dispose()&nbsp;&nbsp;<small><a href="#javaandcreceiverscalldispose">&lt;-</a></small></h3>
 <p>For Java and C# applications, when you complete processing a message, call the dispose() method to reuse the LBMMessage object. This can significantly increase performance.</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="configurationbestpractices"></a>
-Configuration Best Practices</h2>
+Configuration Best Practices&nbsp;&nbsp;<small><a href="#configurationbestpractices">&lt;-</a></small></h2>
 <p>You can configure queuing application attributes by setting default values in a configuration file, then, if needed, setting values in the code to override these defaults.</p>
 <p><br />
  </p>
 <h3><a class="anchor" id="useconfigurationfiles"></a>
-Use Configuration Files</h3>
+Use Configuration Files&nbsp;&nbsp;<small><a href="#useconfigurationfiles">&lt;-</a></small></h3>
 <p>Ultra Messaging configuration files set attributes for contexts, sources, or receivers. As a client application launches, it reads these files. Within client application code you can set attribute values to override those set by the configuration file. For non-default attributes within objects, you must decide whether to set them in a configuration file or within the client application code.</p>
 <p>Use a UM configuration file to set attributes with the following characteristics:</p>
 <ul>
@@ -612,35 +612,35 @@ settings that are generic or common to most objects </li>
 <li>
 settings that are likely to change, such as broker IP address and port number </li>
 </ul>
-<p>When using configuration files to set attributes for client applications, you can use either plain text configuration files or XML configuration files. Become familiar with the advantages of both types before deciding which type to use. For complete information about how to use both types of configuration files, see <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UMQ/config.tag:../../Config/" href="../../Config/index.html#configurationoverview">Configuration Overview</a>.</p>
+<p>When using configuration files to set attributes for client applications, you can use either plain text configuration files or XML configuration files. Become familiar with the advantages of both types before deciding which type to use. For complete information about how to use both types of configuration files, see <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/config.tag:../../Config/" href="../../Config/index.html#configurationoverview">Configuration Overview</a>.</p>
 <p>The plain text configuration file, when invoked, writes option values into Ultra Messaging current default attributes. Ultra Messaging then uses these values in the creation of all objects. The format is simple, and Ultra Messaging does not validate the file syntax.</p>
 <p>XML configuration files override default attributes and have more flexibility than a plain text configuration file. A single XML file can contain options for multiple client applications. For a single application, you can configure multiple named contexts, event queues, and so on, with different values for the same options. Also, Ultra Messaging Manager (UMM) can manage XML configuration files.</p>
 <p><br />
  </p>
 <h3><a class="anchor" id="setpermanentattributeswithinthecode"></a>
-Set Permanent Attributes Within the Code</h3>
+Set Permanent Attributes Within the Code&nbsp;&nbsp;<small><a href="#setpermanentattributeswithinthecode">&lt;-</a></small></h3>
 <p>Use function calls in the client application to set attributes that are not expected to change. Also use function calls in the client application to set attributes that are unique to the object.</p>
 <p><br />
  </p>
 <h3><a class="anchor" id="considernonblockingsources"></a>
-Consider Nonblocking Sources</h3>
+Consider Nonblocking Sources&nbsp;&nbsp;<small><a href="#considernonblockingsources">&lt;-</a></small></h3>
 <p>Decide if you want client application sources to be blocking or nonblocking.</p>
 <p>Problems with the broker or transport, such as when flight size is exceeded, can cause sources to block, and to stop sending messages. You can configure client applications such that when Ultra Messaging instructs a source to block, the source does not block or send, but instead returns with an LBM_EWOULDBLOCK error.</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="deploymentbestpractices"></a>
-Deployment Best Practices</h2>
+Deployment Best Practices&nbsp;&nbsp;<small><a href="#deploymentbestpractices">&lt;-</a></small></h2>
 <p>When deploying a UMQ queuing, consider such things as whether to use a high-availability system and how to manage configuration files.</p>
 <p><br />
  </p>
 <h3><a class="anchor" id="useathreenodesystemforgreaterreliability"></a>
-Use a Three-Node System for Greater Reliability</h3>
+Use a Three-Node System for Greater Reliability&nbsp;&nbsp;<small><a href="#useathreenodesystemforgreaterreliability">&lt;-</a></small></h3>
 <p>If persisted or queued data is critical, or if continuity of service is critical, use a three-broker high availability deployment. The high-availability configuration can protect against such problems as a host restart, hard- drive failure or entire system failure.</p>
 <dl class="section note"><dt>Note</dt><dd>A high availability UMQ queuing system is available in only a three-node configuration.</dd></dl>
 <p><br />
  </p>
 <h3><a class="anchor" id="keeptrackofconfigurationfiles"></a>
-Keep Track of Configuration Files</h3>
+Keep Track of Configuration Files&nbsp;&nbsp;<small><a href="#keeptrackofconfigurationfiles">&lt;-</a></small></h3>
 <p>Brokered client application configuration file management is more complex than for non-brokered client applications. Queuing systems might require some or all of the following configuration files:</p>
 <ul>
 <li>
@@ -654,23 +654,23 @@ An Ultra Messaging configuration file for each broker. The ActiveMQ configuratio
 <p><br />
  </p>
 <h2><a class="anchor" id="memoryusage"></a>
-Memory Usage</h2>
+Memory Usage&nbsp;&nbsp;<small><a href="#memoryusage">&lt;-</a></small></h2>
 <p>Many UM users need to modify ActiveMQ's default memory allocations.</p>
 <p><br />
  </p>
 <h3><a class="anchor" id="jvmsize"></a>
-JVM Size</h3>
+JVM Size&nbsp;&nbsp;<small><a href="#jvmsize">&lt;-</a></small></h3>
 <p>The ActiveMQ broker defaults to having a minimum and maximum JVM size of 1GB. Many UM users will find that this size restriction is inadequate. This can be configured by overriding the ACTIVEMQ_OPTS_MEMORY environment variable. For example, to set it to 1GB minimum and 2GB maximum, set the following prior to invoking ActiveMQ's startup script:</p>
 <pre class="fragment">export ACTIVEMQ_OPTS_MEMORY="-Xms1G -Xmx2G"
 </pre><p><br />
  </p>
 <h3><a class="anchor" id="jvmreservedspace"></a>
-JVM Reserved Space</h3>
+JVM Reserved Space&nbsp;&nbsp;<small><a href="#jvmreservedspace">&lt;-</a></small></h3>
 <p>By default, ActiveMQ is allowed to use 70% of the JVM heap space, with the remaining reserved for headroom. You can modify the activemq.xml file's systemUsage element to modify that percentage. See below for advice on setting reserved space.</p>
 <p><br />
  </p>
 <h3><a class="anchor" id="messagepaging"></a>
-Message Paging</h3>
+Message Paging&nbsp;&nbsp;<small><a href="#messagepaging">&lt;-</a></small></h3>
 <p>When a destination is initialized, ActiveMQ defaults to paging in 200 messages for that destination. If your messages are so large that paging in 200 messages from a destination will cause you to exceed the configured JVM limit, you should lower the number of messages to page in per destination. This can be done by adding the following attribute to any policy entries that have large messages in the activemq.xml file:</p>
 <pre class="fragment">&lt;policyEntry queue="&gt;" persistJMSRedelivered="true" maxPageSize="20"&gt;&lt;/policyEntry&gt;
 </pre><p>The values you use will depend on your maximum message size. Using the default configured values, the JVM gets 1GB of memory and ActiveMQ is allowed to use 70% of that memory (700MB) with 300MB reserved for headroom. Knowing that ActiveMQ could page in 200 messages on startup, you need to make sure that your 200 messages will fit inside the 30% headroom. This is because when ActiveMQ begins paging in messages it does a one time memory check. If you were at 69% of the JVM limit, it will see that you have space and then page in 200 pages. If the 200 messages it pages in don't fit in the remaining headroom space, you will encounter memory errors.</p>
@@ -686,7 +686,7 @@ Increasing the JVM size to 8GB will allow you to page in all 200 messages, becau
 <p><br />
  </p>
 <h1><a class="anchor" id="developingtheclientapplication"></a>
-Developing the Client Application</h1>
+Developing the Client Application&nbsp;&nbsp;<small><a href="#developingtheclientapplication">&lt;-</a></small></h1>
 <p>A queuing client application can have a combination of sources and receivers.</p>
 <p>To write queuing client applications, use standard Ultra Messaging programming practices. A UMQ queuing context must be able to establish broker connections. If the client application contains non-brokered sources or receivers, these sources or receivers must use a separate, non-brokered context.</p>
 <p>Writing UMQ source and receiver applications includes creating brokered contexts, creating sources, creating receivers, and setting attributes by configuration files or other methods.</p>
@@ -694,7 +694,7 @@ Developing the Client Application</h1>
 <p><br />
  </p>
 <h2><a class="anchor" id="beforeyoustart"></a>
-Before You Start</h2>
+Before You Start&nbsp;&nbsp;<small><a href="#beforeyoustart">&lt;-</a></small></h2>
 <p>Before starting to develop client applications, decide on a language, verify that the Ultra Messaging libraries work with your development environment, and determine a general approach for setting configuration options.</p>
 <dl class="section user"><dt><b>Decide</b> <b>on</b> <b>the</b> <b>language</b> <b>to</b> <b>write</b> <b>sending</b> <b>and</b> <b>receiving</b> <b>client</b> <b>applications</b>.</dt><dd>You can use C, Java, or for the .NET framework, C#. To use Java or .NET, you must install the optional Java or .NET Ultra Messaging APIs.</dd></dl>
 <dl class="section user"><dt><b>Decide</b> <b>how</b> <b>to</b> <b>set</b> <b>configuration</b> <b>options</b>.</dt><dd>For options that are unique to the application and which are not expected to change, you might want to use attribute-setting functions or methods. To be able to select and set option values without recompiling, use configuration files.</dd></dl>
@@ -710,7 +710,7 @@ For Java or .NET, the appropriate Ultra Messaging Java or .NET API </li>
 <p><br />
  </p>
 <h2><a class="anchor" id="createthecontext"></a>
-Create the Context</h2>
+Create the Context&nbsp;&nbsp;<small><a href="#createthecontext">&lt;-</a></small></h2>
 <p>A client application that sends or receives messages must have one or more context objects.</p>
 <p>When you create a brokered context, set the IP address and port of the broker, and configure the attributes in a context attribute object. After you create the context, you can delete the context attribute object. The following code fragments show context coding concepts.</p>
 <p>Create a context attribute object with the current default configuration.</p>
@@ -733,7 +733,7 @@ Create the Context</h2>
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="createthesources"></a>
-Create the Sources</h2>
+Create the Sources&nbsp;&nbsp;<small><a href="#createthesources">&lt;-</a></small></h2>
 <p>A client application that sends messages must have at least one source object.</p>
 <p>When you create a source, configure the attributes in a topic attribute object. After you create the source, you can delete the topic attribute object. The following code fragments show source coding concepts.</p>
 <p>Create a topic attribute object with the current default configuration.</p>
@@ -802,7 +802,7 @@ lbm_msg_properties_delete(info.properties);
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="createthereceivers"></a>
-Create the Receivers</h2>
+Create the Receivers&nbsp;&nbsp;<small><a href="#createthereceivers">&lt;-</a></small></h2>
 <p>A client application that receives messages must have at least one receiver object.</p>
 <p>When you create a receiver, configure the attributes in a topic attribute object. The following code fragments show receiver coding concepts.</p>
 <p>Create a receiver topic object using the context object with the current default configuration. The topic string is the queue name.</p>
@@ -857,7 +857,7 @@ int app_rcv_callback(lbm_rcv_t *rcv, lbm_msg_t *msg, void *clientd) {
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="clientconfiguration"></a>
-Client Configuration</h2>
+Client Configuration&nbsp;&nbsp;<small><a href="#clientconfiguration">&lt;-</a></small></h2>
 <p>Ultra Messaging has multiple ways to set configuration options. Determine which methods are most appropriate for your application.</p>
 <p>You can set configuration options programmatically or with configuration files. You can set configuration options in the following ways:</p>
 <ul>
@@ -868,11 +868,11 @@ Use an XML configuration file for a more flexible approach to setting configurat
 <li>
 Set configuration options individually using function or method calls. You can use this technique to override options set from configuration files. </li>
 </ul>
-<p>For detailed information about setting configuration options, see <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UMQ/config.tag:../../Config/" href="../../Config/index.html#configurationoverview">Configuration Overview</a>.</p>
+<p>For detailed information about setting configuration options, see <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/config.tag:../../Config/" href="../../Config/index.html#configurationoverview">Configuration Overview</a>.</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="sampleapplications"></a>
-Sample Applications</h2>
+Sample Applications&nbsp;&nbsp;<small><a href="#sampleapplications">&lt;-</a></small></h2>
 <p>The UMQ package includes sample applications for testing and educational purposes.</p>
 <ul>
 <li>
@@ -886,14 +886,14 @@ umqsrc (source at <a href="../../example/umqsrc.c">umqsrc.c</a>) </li>
 <p><br />
  </p>
 <h2><a class="anchor" id="developingclientapplicationsforjms"></a>
-Developing Client Applications for JMS</h2>
+Developing Client Applications for JMS&nbsp;&nbsp;<small><a href="#developingclientapplicationsforjms">&lt;-</a></small></h2>
 <p>You can write messaging applications with the Java Message Service (JMS) API and programming model.</p>
 <p>Use the Oracle JMS API to develop or port Java messaging applications written according to the JMS specification. The Oracle JMS Specification 1.1 contains requirements and guidelines for developing JMS- based Java messaging applications.</p>
 <p>You can write Ultra Messaging and JMS applications that interoperate through the broker by setting and getting message properties.</p>
 <p><br />
  </p>
 <h3><a class="anchor" id="messagetypes"></a>
-Message Types</h3>
+Message Types&nbsp;&nbsp;<small><a href="#messagetypes">&lt;-</a></small></h3>
 <p>The JMS message consists of a header and body. You can set a JMS body type in the application and optionally identify the body type in a header field.</p>
 <p>The following table shows JMS message types and their Ultra Messaging message property JMS_UM_MessageType numeric values:</p>
 <center> <table class="doxtable">
@@ -918,7 +918,7 @@ Message Types</h3>
 <p><br />
  </p>
 <h2><a class="anchor" id="messagecomponents"></a>
-Message Components</h2>
+Message Components&nbsp;&nbsp;<small><a href="#messagecomponents">&lt;-</a></small></h2>
 <p>When a broker delivers a message to an Ultra Messaging receiver, Ultra Messaging maps JMS message properties and header fields to Ultra Messaging message properties. When an Ultra Messaging source application sends a message to a broker, Ultra Messaging maps message properties to JMS message properties and header fields.</p>
 <p>JMS header fields, JMS-defined properties, provider-specific properties, and user properties map to message properties in an Ultra Messaging message. JMS message data in the message body maps to data in an Ultra Messaging message.</p>
 <p>The following figure shows how a JMS message maps to an Ultra Messaging message:</p>
@@ -951,17 +951,17 @@ JMSPriority </li>
 <p><br />
  </p>
 <h2><a class="anchor" id="jmsmessageproperties"></a>
-JMS Message Properties</h2>
+JMS Message Properties&nbsp;&nbsp;<small><a href="#jmsmessageproperties">&lt;-</a></small></h2>
 <p>Ultra Messaging transports JMS message properties of the following categories:</p>
 <p><br />
  </p>
 <h3><a class="anchor" id="jmsdefinedproperties"></a>
-JMS-defined Properties</h3>
+JMS-defined Properties&nbsp;&nbsp;<small><a href="#jmsdefinedproperties">&lt;-</a></small></h3>
 <p>The JMS Specification defines these properties and reserves the use of their names. JMS-defined properties use a "JMSX" prefix.</p>
 <p><br />
  </p>
 <h3><a class="anchor" id="providerspecificproperties"></a>
-Provider-specific Properties</h3>
+Provider-specific Properties&nbsp;&nbsp;<small><a href="#providerspecificproperties">&lt;-</a></small></h3>
 <p>Ultra messaging defines and reserves the following provider-specific properties:</p>
 <ul>
 <li>
@@ -976,38 +976,38 @@ JMS_UM_SQN </li>
 <p><br />
  </p>
 <h3><a class="anchor" id="userproperties"></a>
-User Properties</h3>
+User Properties&nbsp;&nbsp;<small><a href="#userproperties">&lt;-</a></small></h3>
 <p>Properties that you define for applications. You can use User Properties as Message Selectors.</p>
 <p><br />
  </p>
 <h1><a class="anchor" id="faulttolerance"></a>
-Fault Tolerance</h1>
+Fault Tolerance&nbsp;&nbsp;<small><a href="#faulttolerance">&lt;-</a></small></h1>
 <p>UMQ uses multiple techniques to ensure that messages reach their destinations. These techniques include the storage and verification of messages and node redundancy.</p>
 <p>Ultra Messaging queuing systems use message persistence to confirm to the source application that a message is stored on a broker queue. The source no longer needs to hold a copy of that message. Message durability holds the message in the queue until the receiver application sends a consumption acknowledgement to the queue. These techniques help ensure messages reach their destination if a connection, source, or receiver fails.</p>
 <p>An Ultra Messaging high-availability queuing system uses three broker nodes, which can all reside on separate machines. One broker actively handles message traffic while the other two serve as hot standby brokers. If the active broker or broker host fails, messaging can continue relatively uninterrupted.</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="messagereliability"></a>
-Message Reliability</h2>
+Message Reliability&nbsp;&nbsp;<small><a href="#messagereliability">&lt;-</a></small></h2>
 <p>To ensure that messages reach receiver applications, Ultra Messaging uses message stability, persistence, and consumption reporting.</p>
 <p><br />
  </p>
 <h3><a class="anchor" id="messagestability"></a>
-Message Stability</h3>
+Message Stability&nbsp;&nbsp;<small><a href="#messagestability">&lt;-</a></small></h3>
 <p>Message stability is an indication that the broker has received a message from the source.</p>
 <p>The broker confirms receipt of each message it receives from the sending client application. When at least two nodes acknowledge message stability, the active broker sends a stability acknowledgment back to the source.</p>
 <p>Typically, after a source sends a message, it retains that message because it might need to retransmit the message. When the source receives a stability acknowledgment, it can then discard the message. During the period after the source sends the message until the source receives the stability acknowledgment, the message status is in flight. If a broker or broker connection fails, the source application can retain the in-flight messages for retransmission.</p>
 <p><br />
  </p>
 <h3><a class="anchor" id="messageconsumption"></a>
-Message Consumption</h3>
+Message Consumption&nbsp;&nbsp;<small><a href="#messageconsumption">&lt;-</a></small></h3>
 <p>Message consumption is an indication that the receiving client application has processed a message from the broker.</p>
 <p>The receiving client application receives and processes each message from the broker. After the callback delivers the message and returns, Ultra Messaging automatically tells the broker that the message is consumed.</p>
 <p>After a broker sends a message, it retains that message because it might need to retransmit the message if the receiver application or connection to the receiver application fails. When the broker receives a message consumption acknowledgment, it can then discard the message.</p>
 <p><br />
  </p>
 <h3><a class="anchor" id="messagepersistence"></a>
-Message Persistence</h3>
+Message Persistence&nbsp;&nbsp;<small><a href="#messagepersistence">&lt;-</a></small></h3>
 <p>By default, queuing sources set all messages to be persisted. When the broker receives a message that is set for persistence, the broker holds that message in long-term storage until the receiving client application consumes the message.</p>
 <p>To set persistence in a message, you must set the JMSDeliveryMode message property for the message. The following example shows a way that you can set a message property to persistent:</p>
 <pre class="fragment">/* setup */
@@ -1024,12 +1024,12 @@ assert(ret==LBM_OK);
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="noderedundancy"></a>
-Node Redundancy</h2>
+Node Redundancy&nbsp;&nbsp;<small><a href="#noderedundancy">&lt;-</a></small></h2>
 <p>A high availability queuing system uses three host machines on which to run the components of a node. This deployment uses redundancy for processes and for persistence storage.</p>
 <p><br />
  </p>
 <h3><a class="anchor" id="highavailability"></a>
-High Availability</h3>
+High Availability&nbsp;&nbsp;<small><a href="#highavailability">&lt;-</a></small></h3>
 <p>To use configure an Ultra Messaging queuing system for high availability, you must use the queuing three-node deployment. Each node resides on a different host, to eliminate any broker single point of failure.</p>
 <p>The following image shows a high-availability queuing system with one source application, one receiver application, and three brokers:</p>
 <div class="image">
@@ -1070,7 +1070,7 @@ The active broker removes the message from its queue in memory. </li>
 <p><br />
  </p>
 <h3><a class="anchor" id="highavailabilitysysteminitiation"></a>
-High Availability System Initiation</h3>
+High Availability System Initiation&nbsp;&nbsp;<small><a href="#highavailabilitysysteminitiation">&lt;-</a></small></h3>
 <p>A high availability queuing system follows an initiation procedure when you first start the system.</p>
 <p>When a high availability queuing system first starts, it must determine which node is the active node and which nodes are the standby nodes. The brokers do this through an active-broker election process. The queuing system performs the following initiation actions:</p>
 <ol>
@@ -1088,7 +1088,7 @@ Client applications initiate and complete registration with the active broker. <
 <p><br />
  </p>
 <h2><a class="anchor" id="nodefailover"></a>
-Node Failover</h2>
+Node Failover&nbsp;&nbsp;<small><a href="#nodefailover">&lt;-</a></small></h2>
 <p>If an active broker fails, Ultra Messaging starts a reelection process to elect a new active broker.</p>
 <p>The following image shows the change after an active broker fails and the queuing system elects a new active broker:</p>
 <div class="image">
@@ -1101,39 +1101,40 @@ Node Failover</h2>
 <p><br />
  </p>
 <h1><a class="anchor" id="ultraloadbalancingulb"></a>
-Ultra Load Balancing (ULB)</h1>
+Ultra Load Balancing (ULB)&nbsp;&nbsp;<small><a href="#ultraloadbalancingulb">&lt;-</a></small></h1>
 <p>Use Ultra Load Balancing (ULB) to evenly distribute a message load to receiving applications without a broker between sending and receiving applications.</p>
 <p>A ULB source sends messages on a UM topic. The source also sends receiver assignment control information. This control information identifies which receiver is to process each message. Receivers unicast message consumption reports back to the source.</p>
 <p>ULB sources and receivers use standard Ultra Messaging contexts and do not connect to brokers.</p>
-<p>For information on ULB configuration options, see <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html">Ultra Messaging Queuing Options</a>, paying special attention to options with "ulb" in the name.</p>
+<p>For information on ULB configuration options, see <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html">Ultra Messaging Queuing Options</a>, paying special attention to options with "ulb" in the name.</p>
+<dl class="section attention"><dt>Attention</dt><dd>The ULB feature is not compatible with setting <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/config.tag:../../Config/" href="../../Config/grpmajoroptions.html#ordereddeliveryreceiver">ordered_delivery (receiver)</a> to <code>"0"</code> (arrival order without reassembly).</dd></dl>
 <p><br />
  </p>
 <h2><a class="anchor" id="applicationsetsandreceivertypeids"></a>
-Application Sets and Receiver Type IDs</h2>
+Application Sets and Receiver Type IDs&nbsp;&nbsp;<small><a href="#applicationsetsandreceivertypeids">&lt;-</a></small></h2>
 <p>You must group ULB receivers into one or more groups called application sets. Within an application set, a ULB source assigns each sent message to only one receiver. If multiple applications sets are defined, then each message is assigned to one receiver <em>in each set</em>. I.e. multiple copies of each message are sent, one for each application set.</p>
 <p>The following diagram shows how an ULB source disseminates messages to receivers in application sets:</p>
 <div class="image">
 <img src="ulb_psd_appsets.png" alt="ulb_psd_appsets.png"/>
 </div>
- <p>Subscribing applications create ULB receivers that register with a ULB source. The source adds each receiver to an application set according to a <em>receiver type ID</em> which is supplied by the subscribing application. The source's configuration defines which receivers are added to which application sets using the configuration option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqulbapplicationsetsource">umq_ulb_application_set (source)</a>.</p>
+ <p>Subscribing applications create ULB receivers that register with a ULB source. The source adds each receiver to an application set according to a <em>receiver type ID</em> which is supplied by the subscribing application. The source's configuration defines which receivers are added to which application sets using the configuration option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqulbapplicationsetsource">umq_ulb_application_set (source)</a>.</p>
 <p><b>Application Sets</b> are identified with an integer between 0 and 65535. The sets must be numbered consecutively, starting from 0. In the diagram above, application set "A" would be 0, and "B" would be 1.</p>
 <p><b>Receiver Type IDs</b> are arbitrary 32-bit integers selected and managed by the application designer. There is no requirement for these IDs to be consecutively numbered. When a receiver registers with the source, the ID is used by the source to determine various configuration options to be associated with that receiver, such as which application set the receiver belongs in. Here are the configuration options that the source associates with receivers by their type IDs: </p><ul>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqulbapplicationsetsource">umq_ulb_application_set (source)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqulbapplicationsetsource">umq_ulb_application_set (source)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqulbreceiverportionsource">umq_ulb_receiver_portion (source)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqulbreceiverportionsource">umq_ulb_receiver_portion (source)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqulbreceiverprioritysource">umq_ulb_receiver_priority (source)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqulbreceiverprioritysource">umq_ulb_receiver_priority (source)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqulbreceivereventssource">umq_ulb_receiver_events (source)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqulbreceivereventssource">umq_ulb_receiver_events (source)</a> </li>
 </ul>
 <p>For example, in the diagram above the source might be an order entry system, load balancing orders across a set of three execution engines (application set A), and also load balancing those same orders across a set of two logger processes (application set B). We could define execution engines to be type 10 and the loggers to be type 20. The source would be configured as: </p><pre class="fragment">source umq_ulb_application_set 0:10;1:20
-</pre><p> Three execution engines would start up, each setting <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqreceivertypeidreceiver">umq_receiver_type_id (receiver)</a> to 10. Two logger processes would start up, each setting <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqreceivertypeidreceiver">umq_receiver_type_id (receiver)</a> to 20. Thus, each order will be sent to two receivers: one of the execution engines and one of the loggers.</p>
+</pre><p> Three execution engines would start up, each setting <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqreceivertypeidreceiver">umq_receiver_type_id (receiver)</a> to 10. Two logger processes would start up, each setting <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqreceivertypeidreceiver">umq_receiver_type_id (receiver)</a> to 20. Thus, each order will be sent to two receivers: one of the execution engines and one of the loggers.</p>
 <p>A ULB source sends both the message data and the assignment control information on the same transport session to all receivers. The source also sends assignment data so that the assigned receiver in each application set processes the message. The receivers not assigned ignore the message. When the assigned receivers process their messages, they unicast Consumed reports back to the source.</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="loadbalancing"></a>
-Load Balancing</h2>
+Load Balancing&nbsp;&nbsp;<small><a href="#loadbalancing">&lt;-</a></small></h2>
 <p>ULB differs from brokered queues regarding assignment uniformity (fairness). Multiple ULB sources to the same topic do not coordinate their assignments with each other. It is possible for multiple ULB sources to all send their next message to the same receiver.</p>
 <p>Ultra Load Balancing governs fairness between sources by using the following information:</p>
 <ul>
@@ -1142,14 +1143,24 @@ receiver feedback information </li>
 <li>
 receiver portion size </li>
 <li>
-configuration option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqulbapplicationsetloadfactorbehaviorsource">umq_ulb_application_set_load_factor_behavior (source)</a> </li>
+configuration option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqulbapplicationsetloadfactorbehaviorsource">umq_ulb_application_set_load_factor_behavior (source)</a> </li>
 </ul>
 <p><br />
  </p>
+<h3><a class="anchor" id="ulbperformance"></a>
+ULB Performance&nbsp;&nbsp;<small><a href="#ulbperformance">&lt;-</a></small></h3>
+<p>ULB is built on top of standard UM sources and receivers. As such, all receivers receive all messages sent to the topic, even ULB receivers. The normal load-balancing queuing semantics are implemented above the transport, so that only the assigned receiver delivers a particular message to the application; the other un-assigned receivers discard the message.</p>
+<p>For multicast-based data transport (LBT-RM), there is no performance penalty to sending each message to all receivers. However, for unicast-based data transports (e.g. LBT-RU, LBT-TCP), the normal source semantic of delivering each message to all receivers represents an inefficiency and limits the maximum sustainable throughput. As receivers are added to a ULB topic, the efficiency continues to drop due to unnecessary sends of messages to unassigned receivers, thus lowering the maximum sustainable throughput further with each added receiver.</p>
+<p><b>ULB Source-Side Filtering</b></p>
+<p>Starting with UM version 6.12, the Source-Side Filtering feature has been enhanced to support load-balancing queue semantics. Configure the ULB source with the option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/config.tag:../../Config/" href="../../Config/grpmajoroptions.html#transportsourcesidefilteringbehaviorsource">transport_source_side_filtering_behavior (source)</a> set to <code>"ulb"</code>. This causes the unicast source to send a particular message to <em>only</em> the assigned receiver. This reduces work for both the unicast source and for the un-assigned receivers. As receivers are added, the maximum sustainable throughput does not significantly drop.</p>
+<p>To benefit from this feature, receivers <em>must</em> be configured for arrival order delivery by setting <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/config.tag:../../Config/" href="../../Config/grpmajoroptions.html#ordereddeliveryreceiver">ordered_delivery (receiver)</a> to <code>-1</code>. Receivers without that setting will work correctly with the source, but will not benefit from the ULB Source-Side Filtering feature. I.e. receivers configured for ordered delivery value <code>1</code> (the default) will continue to receive all messages sent, and discard the non-assigned messages.</p>
+<p>A ULB source must be at UM version 6.12 or beyond to enable ULB Source Side Filtering. That source is fully interoperable with receivers at UM versions before 6.12, but the older receivers will not benefit from the ULB Source-Side Filtering feature. I.e. pre-6.12 receivers will continue to receive all messages sent, and discard the non-assigned messages.</p>
+<p><br />
+ </p>
 <h2><a class="anchor" id="ultraloadbalancingflightsize"></a>
-Ultra Load Balancing Flight Size</h2>
-<p>Ultra Load Balancing uses a flight size mechanism to limit the number of messages sent but not consumed, and blocks a source or warns when a send exceeds the configured flight size. Set Ultra Load Balancing with configuration option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqulbflightsizesource">umq_ulb_flight_size (source)</a>.</p>
-<p>You can set configuration option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqulbflightsizebehaviorsource">umq_ulb_flight_size_behavior (source)</a> to either of the following behaviors:</p>
+Ultra Load Balancing Flight Size&nbsp;&nbsp;<small><a href="#ultraloadbalancingflightsize">&lt;-</a></small></h2>
+<p>Ultra Load Balancing uses a flight size mechanism to limit the number of messages sent but not consumed, and blocks a source or warns when a send exceeds the configured flight size. Set Ultra Load Balancing with configuration option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqulbflightsizesource">umq_ulb_flight_size (source)</a>.</p>
+<p>You can set configuration option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqulbflightsizebehaviorsource">umq_ulb_flight_size_behavior (source)</a> to either of the following behaviors:</p>
 <ul>
 <li>
 Block any sends that would exceed the flight size. </li>
@@ -1160,31 +1171,31 @@ Continue to allow sends while notifying the sending application. </li>
 <p><br />
  </p>
 <h2><a class="anchor" id="indexedultraloadbalancing"></a>
-Indexed Ultra Load Balancing</h2>
+Indexed Ultra Load Balancing&nbsp;&nbsp;<small><a href="#indexedultraloadbalancing">&lt;-</a></small></h2>
 <p>Indexed Ultra Load Balancing is a way to group messages and ensure that one receiver processes all messages in the group in the order they are sent. The source uses an index to assign the messages in a group. An index is an application-defined 64-bit unsigned number or free-form string.</p>
 <p>If you must process a set of messages in order, it can be more efficient for one receiver to process the messages. You can set the same index in all related messages to ensure that they all go to one receiver.</p>
-<p>Send messages with an index using send call <b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#a4d883eaaa22baf81abf21d495f471c8b">lbm_src_sendv_ex()</a></b> that includes a pointer to <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#af038a0415aaf7dc4285a944bc93e5ea2">lbm_umq_index_info_t</a> in <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#a21504de56612c7c6e4be655402b47a37">lbm_src_send_ex_info_t</a>.</p>
+<p>Send messages with an index using send call <b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#a4d883eaaa22baf81abf21d495f471c8b">lbm_src_sendv_ex()</a></b> that includes a pointer to <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#af038a0415aaf7dc4285a944bc93e5ea2">lbm_umq_index_info_t</a> in <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#a21504de56612c7c6e4be655402b47a37">lbm_src_send_ex_info_t</a>.</p>
 <p>By default, all receivers are eligible for index assignment. When the source assigns the first message with a particular index to a receiver in each application set, the source assigns subsequent messages with that same index to those same receivers.</p>
 <p>Note that because Ultra Load Balancing sources make assignment decisions independently, multiple sources that send on the same index might assign the index to different receivers.</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="totalmessagelifetimesforultraloadbalancing"></a>
-Total Message Lifetimes for Ultra Load Balancing</h2>
+Total Message Lifetimes for Ultra Load Balancing&nbsp;&nbsp;<small><a href="#totalmessagelifetimesforultraloadbalancing">&lt;-</a></small></h2>
 <p>You can set a total message lifetime for Ultra Load Balancing applications in different ways.</p>
 <p>An Ultra Load Balancing message total lifetime starts when the source sends the message, and ends when the source receives a consumption report or times out. In each case, you set the timeout to a value in milliseconds. If the message times out, the source reclaims the memory.</p>
 <p>By default, there is no message lifetime limit. Messages must be consumed.</p>
-<p>A timeout can be set with the configuration option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqulbapplicationsetmessagelifetimesource">umq_ulb_application_set_message_lifetime (source)</a>.</p>
-<p>Also, it is possible to set a timeout on a per-message basis using the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#a091b5806bf18d10ebd0d9117e0c70229">lbm_src_send_ex()</a> API. Set <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UMQ/api.tag:../../API/" href="../../API/structlbm__src__send__ex__info__t__stct.html#a5335e2eb3550544263d7be7f690837d9">lbm_src_send_ex_info_t_stct::umq_total_lifetime</a> to point at a <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#ab8b20fc8f822cdc1b8e78960b59d5739">lbm_umq_msg_total_lifetime_info_t</a> structure, and fill in the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UMQ/api.tag:../../API/" href="../../API/structlbm__umq__msg__total__lifetime__info__t__stct.html#a1773d754611aada145ee2077d008a473">lbm_umq_msg_total_lifetime_info_t_stct::umq_msg_total_lifetime</a> field.</p>
+<p>A timeout can be set with the configuration option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqulbapplicationsetmessagelifetimesource">umq_ulb_application_set_message_lifetime (source)</a>.</p>
+<p>Also, it is possible to set a timeout on a per-message basis using the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#a091b5806bf18d10ebd0d9117e0c70229">lbm_src_send_ex()</a> API. Set <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/api.tag:../../API/" href="../../API/structlbm__src__send__ex__info__t__stct.html#a5335e2eb3550544263d7be7f690837d9">lbm_src_send_ex_info_t_stct::umq_total_lifetime</a> to point at a <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#ab8b20fc8f822cdc1b8e78960b59d5739">lbm_umq_msg_total_lifetime_info_t</a> structure, and fill in the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/api.tag:../../API/" href="../../API/structlbm__umq__msg__total__lifetime__info__t__stct.html#a1773d754611aada145ee2077d008a473">lbm_umq_msg_total_lifetime_info_t_stct::umq_msg_total_lifetime</a> field.</p>
 <p>If you set a timeout using both the configuration option and the API, the API overrides the configured setting.</p>
 <p><br />
  </p>
 <h1><a class="anchor" id="umqevents"></a>
-UMQ Events</h1>
+UMQ Events&nbsp;&nbsp;<small><a href="#umqevents">&lt;-</a></small></h1>
 <p>Ultra Messaging queuing applications generate context, source, and receiver events based on specific actions or results.</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="contextevents"></a>
-Context Events</h2>
+Context Events&nbsp;&nbsp;<small><a href="#contextevents">&lt;-</a></small></h2>
 <p>Ultra Messaging generates context events that your client application can listen for and respond to.</p>
 <p>You can use context events to determine the state of the context connection.</p>
 <p>Ultra Messaging generates the following brokered context events:</p>
@@ -1194,7 +1205,7 @@ When a context connects to a broker, Ultra Messaging generates these events.</dd
 <p><br />
  </p>
 <h2><a class="anchor" id="sourceevents"></a>
-Source Events</h2>
+Source Events&nbsp;&nbsp;<small><a href="#sourceevents">&lt;-</a></small></h2>
 <p>Ultra Messaging generates source events that the client application can listen for and respond to.</p>
 <p>You can use source events to determine the state of the source and messages. For example, when you write a callback function to respond to source events, you can check for a registration complete event and start sending messages only after you receive the event.</p>
 <p>When you use a brokered context, Ultra Messaging generates the following source events:</p>
@@ -1206,21 +1217,21 @@ Source Events</h2>
 <dl class="section user"><dt><b>Registration</b> <b>error</b> <b></b>(LBM_SRC_EVENT_UMQ_REGISTRATION_ERROR)</dt><dd>If the source is disconnected from the broker, Ultra Messaging generates a registration error event to indicate that the source is no longer registered with the broker. For example, if the broker shuts down and the source loses its connection to the broker, Ultra Messaging generates a registration error event and any message that you send or is in flight does not reach the broker. You must wait for a registration complete event before you send more messages to the broker.</dd></dl>
 <p>In a high availability multi-node deployment, if the active broker shuts down, Ultra Messaging elects one of the standby brokers as the new active broker. The source connects to the new active broker by default. Ultra Messaging generates a registration error event when the source loses connection to the previous active broker and a registration complete event when the source successfully registers with the new active broker.</p>
 <dl class="section user"><dt><b>Message</b> <b>ID</b> <b></b>(LBM_SRC_EVENT_UMQ_MESSAGE_ID_INFO)</dt><dd>For each message a source sends, Ultra Messaging generates an event that contains the message ID. </dd></dl>
-<dl class="section user"><dt></dt><dd>To enable this event, set the <b>LBM_SRC_SEND_EX_FLAG_UMQ_MESSAGE_ID_INFO</b> flag of the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#a21504de56612c7c6e4be655402b47a37">lbm_src_send_ex_info_t</a> object passed on the send call.</dd></dl>
+<dl class="section user"><dt></dt><dd>To enable this event, set the <b>LBM_SRC_SEND_EX_FLAG_UMQ_MESSAGE_ID_INFO</b> flag of the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#a21504de56612c7c6e4be655402b47a37">lbm_src_send_ex_info_t</a> object passed on the send call.</dd></dl>
 <dl class="section user"><dt><b>Message</b> <b>Sequence</b> <b>Number</b> <b></b>(LBM_SRC_EVENT_SEQUENCE_NUMBER_INFO)</dt><dd>For each message a source sends, Ultra Messaging generates an event that contains the message sequence number. </dd></dl>
-<dl class="section user"><dt></dt><dd>To enable this event, set the <b>LBM_SRC_SEND_EX_FLAG_SEQUENCE_NUMBER_INFO</b> flag of the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#a21504de56612c7c6e4be655402b47a37">lbm_src_send_ex_info_t</a> object passed on the send call.</dd></dl>
-<dl class="section user"><dt><b>Flight</b> <b>Size</b> <b>Notification</b> <b></b>(LBM_SRC_EVENT_FLIGHT_SIZE_NOTIFICATION)</dt><dd>Ultra Messaging can generate a flight size event when the number of in-flight messages exceeds or drops under the configured flight size. To enable this event, set configuration option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UMQ/config.tag:../../Config/" href="../../Config/grpdeprecated.html#umqflightsizebehaviorcontext">umq_flight_size_behavior (context)</a> to <b>notify</b>. Also, recast the event data pointer as type <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#a1c4371e4c1113403ea0fb11bce39491f">lbm_src_event_flight_size_notification_t</a>. </dd></dl>
-<dl class="section user"><dt></dt><dd>If the number of in-flight messages exceeds the configured flight size, the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UMQ/api.tag:../../API/" href="../../API/structlbm__src__event__flight__size__notification__t__stct.html#a4805e12cbac941f189ea511d48d02445">lbm_src_event_flight_size_notification_t::state</a> value is <b>LBM_SRC_EVENT_FLIGHT_SIZE_NOTIFICATION_STATE_OVER</b>. If the number of in-flight messages drops below the configured flight size, the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UMQ/api.tag:../../API/" href="../../API/structlbm__src__event__flight__size__notification__t__stct.html#a4805e12cbac941f189ea511d48d02445">lbm_src_event_flight_size_notification_t::state</a> value is <b>LBM_SRC_EVENT_FLIGHT_SIZE_NOTIFICATION_STATE_UNDER</b>.</dd></dl>
-<dl class="section user"><dt><b>Source</b> <b>Wakeup</b> <b>Notification</b> <b></b>(LBM_SRC_EVENT_WAKEUP)</dt><dd>Ultra Messaging can generate a wakeup event when a source send operation, blocked because the number of in-flight messages exceeded the configured flight size, is able to send again. To enable this event, set configuration option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UMQ/config.tag:../../Config/" href="../../Config/grpdeprecated.html#umqflightsizebehaviorcontext">umq_flight_size_behavior (context)</a> to <b>block</b>. Also, recast the event data pointer as pointer type <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#a4a090ffb298662b540d2fbd4f8add876">lbm_src_event_wakeup_t</a> *. </dd></dl>
-<dl class="section user"><dt></dt><dd>When a source becomes unblocked, the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UMQ/api.tag:../../API/" href="../../API/structlbm__src__event__wakeup__t__stct.html#acb8fe53ff49e0813bb4837b6131afc45">lbm_src_event_wakeup_t::flags</a> value is <b>LBM_SRC_EVENT_WAKEUP_FLAG_NORMAL</b>.</dd></dl>
+<dl class="section user"><dt></dt><dd>To enable this event, set the <b>LBM_SRC_SEND_EX_FLAG_SEQUENCE_NUMBER_INFO</b> flag of the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#a21504de56612c7c6e4be655402b47a37">lbm_src_send_ex_info_t</a> object passed on the send call.</dd></dl>
+<dl class="section user"><dt><b>Flight</b> <b>Size</b> <b>Notification</b> <b></b>(LBM_SRC_EVENT_FLIGHT_SIZE_NOTIFICATION)</dt><dd>Ultra Messaging can generate a flight size event when the number of in-flight messages exceeds or drops under the configured flight size. To enable this event, set configuration option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/config.tag:../../Config/" href="../../Config/grpdeprecated.html#umqflightsizebehaviorcontext">umq_flight_size_behavior (context)</a> to <b>notify</b>. Also, recast the event data pointer as type <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#a1c4371e4c1113403ea0fb11bce39491f">lbm_src_event_flight_size_notification_t</a>. </dd></dl>
+<dl class="section user"><dt></dt><dd>If the number of in-flight messages exceeds the configured flight size, the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/api.tag:../../API/" href="../../API/structlbm__src__event__flight__size__notification__t__stct.html#a4805e12cbac941f189ea511d48d02445">lbm_src_event_flight_size_notification_t::state</a> value is <b>LBM_SRC_EVENT_FLIGHT_SIZE_NOTIFICATION_STATE_OVER</b>. If the number of in-flight messages drops below the configured flight size, the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/api.tag:../../API/" href="../../API/structlbm__src__event__flight__size__notification__t__stct.html#a4805e12cbac941f189ea511d48d02445">lbm_src_event_flight_size_notification_t::state</a> value is <b>LBM_SRC_EVENT_FLIGHT_SIZE_NOTIFICATION_STATE_UNDER</b>.</dd></dl>
+<dl class="section user"><dt><b>Source</b> <b>Wakeup</b> <b>Notification</b> <b></b>(LBM_SRC_EVENT_WAKEUP)</dt><dd>Ultra Messaging can generate a wakeup event when a source send operation, blocked because the number of in-flight messages exceeded the configured flight size, is able to send again. To enable this event, set configuration option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/config.tag:../../Config/" href="../../Config/grpdeprecated.html#umqflightsizebehaviorcontext">umq_flight_size_behavior (context)</a> to <b>block</b>. Also, recast the event data pointer as pointer type <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#a4a090ffb298662b540d2fbd4f8add876">lbm_src_event_wakeup_t</a> *. </dd></dl>
+<dl class="section user"><dt></dt><dd>When a source becomes unblocked, the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/api.tag:../../API/" href="../../API/structlbm__src__event__wakeup__t__stct.html#acb8fe53ff49e0813bb4837b6131afc45">lbm_src_event_wakeup_t::flags</a> value is <b>LBM_SRC_EVENT_WAKEUP_FLAG_NORMAL</b>.</dd></dl>
 <p><br />
  </p>
 <h2><a class="anchor" id="receiverevents"></a>
-Receiver Events</h2>
+Receiver Events&nbsp;&nbsp;<small><a href="#receiverevents">&lt;-</a></small></h2>
 <p>Ultra Messaging generates receiver events that the client application can listen for and respond to.</p>
 <p>You can use receiver events to determine the state of the receiver and messages.</p>
 <p>When you use brokered contexts, Ultra Messaging generates Registration complete event (<b>LBM_MSG_UMQ_REGISTRATION_COMPLETE_EX</b>).</p>
-<p>A receiver must be registered on the broker before the broker can send messages to the receiver. When you create a receiver, you trigger a receiver registration. Upon registration with a broker, Ultra Messaging sends to the client application an instance of the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#a0c64df03275aad96fb201948e3fb26c6">lbm_msg_umq_registration_complete_ex_t</a> object. This object contains the broker name, IP address, and port.</p>
+<p>A receiver must be registered on the broker before the broker can send messages to the receiver. When you create a receiver, you trigger a receiver registration. Upon registration with a broker, Ultra Messaging sends to the client application an instance of the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#a0c64df03275aad96fb201948e3fb26c6">lbm_msg_umq_registration_complete_ex_t</a> object. This object contains the broker name, IP address, and port.</p>
 <dl class="section user"><dt><b>Registration</b> <b>error</b> <b></b>(LBM_MSG_UMQ_REGISTRATION_ERROR)</dt><dd>Ultra Messaging generates this event if any of the following actions occurs: </dd></dl>
 <dl class="section user"><dt></dt><dd><ol>
 <li>
@@ -1235,7 +1246,7 @@ A brokered receiver has lost connection to a broker. </li>
 <p><br />
  </p>
 <h2><a class="anchor" id="eventchanges"></a>
-Event Changes</h2>
+Event Changes&nbsp;&nbsp;<small><a href="#eventchanges">&lt;-</a></small></h2>
 <p>UMQ 6.8 and beyond does not generate all the events that pre-6.8 versions generated.</p>
 <p>The following list shows events from UMQ versions earlier than 6.8 that UMQ 6.8 queuing does not generate:</p>
 <ul>
@@ -1261,94 +1272,94 @@ Event Changes</h2>
 <p><br />
  </p>
 <h1><a class="anchor" id="configurationoptionchanges"></a>
-Configuration Option Changes</h1>
+Configuration Option Changes&nbsp;&nbsp;<small><a href="#configurationoptionchanges">&lt;-</a></small></h1>
 <p>As of Ultra Messaging Queuing 6.8, some configuration options are new, some function differently, and some are deprecated.</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="newconfigurationoptions"></a>
-New Configuration Options</h2>
+New Configuration Options&nbsp;&nbsp;<small><a href="#newconfigurationoptions">&lt;-</a></small></h2>
 <p>As of Ultra Messaging Queuing 6.8, the following new configuration options are available:</p>
 <ul>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UMQ/config.tag:../../Config/" href="../../Config/grpmajoroptions.html#brokercontext">broker (context)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/config.tag:../../Config/" href="../../Config/grpmajoroptions.html#brokercontext">broker (context)</a> </li>
 </ul>
 <p><br />
  </p>
 <h2><a class="anchor" id="changedconfigurationoptions"></a>
-Changed Configuration Options</h2>
+Changed Configuration Options&nbsp;&nbsp;<small><a href="#changedconfigurationoptions">&lt;-</a></small></h2>
 <p>As of UMQ 6.8, you use some configuration options differently.</p>
 <p>You can use the following configuration options for Ultra Load Balancing only:</p>
 <ul>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqsessionidcontext">umq_session_id (context)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqsessionidcontext">umq_session_id (context)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqdelayedconsumptionreportintervalreceiver">umq_delayed_consumption_report_interval (receiver)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqdelayedconsumptionreportintervalreceiver">umq_delayed_consumption_report_interval (receiver)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqholdintervalreceiver">umq_hold_interval (receiver)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqholdintervalreceiver">umq_hold_interval (receiver)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqindexassignmenteligibilitydefaultreceiver">umq_index_assignment_eligibility_default (receiver)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqindexassignmenteligibilitydefaultreceiver">umq_index_assignment_eligibility_default (receiver)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqreceivertypeidreceiver">umq_receiver_type_id (receiver)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqreceivertypeidreceiver">umq_receiver_type_id (receiver)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqretransmitrequestintervalreceiver">umq_retransmit_request_interval (receiver)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqretransmitrequestintervalreceiver">umq_retransmit_request_interval (receiver)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqretransmitrequestoutstandingmaximumreceiver">umq_retransmit_request_outstanding_maximum (receiver)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqretransmitrequestoutstandingmaximumreceiver">umq_retransmit_request_outstanding_maximum (receiver)</a> </li>
 </ul>
-<p>Configuration option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UMQ/config.tag:../../Config/" href="../../Config/grpmajoroptions.html#transportsource">transport (source)</a> has an additional value: <b>broker</b>.</p>
+<p>Configuration option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/config.tag:../../Config/" href="../../Config/grpmajoroptions.html#transportsource">transport (source)</a> has an additional value: <b>broker</b>.</p>
 <center> <table class="doxtable">
 <tr>
 <th>String</th><th>Integer Value</th><th>Description </th></tr>
 <tr>
 <td><b>broker</b></td><td><b>LBM_SRC_TOPIC_ATTR_TRANSPORT_BROKER</b></td><td>Sources send messages to a broker, which manages the messages for consumption. </td></tr>
 </table>
-</center><p>Option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqqueueactivitytimeoutcontext">umq_queue_activity_timeout (context)</a> has no effect.</p>
-<p>Configuration option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqqueueregistrationidcontext">umq_queue_registration_id (context)</a> functions differently and no longer helps to manage duplicate message delivery.</p>
-<p>For configuration option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqqueueparticipationreceiver">umq_queue_participation (receiver)</a>, you cannot set value 2 to enable queue browsing with brokered contexts.</p>
-<p>See also <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UMQ/config.tag:../../Config/" href="../../Config/grpdeprecated.html">Deprecated Options</a>.</p>
+</center><p>Option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqqueueactivitytimeoutcontext">umq_queue_activity_timeout (context)</a> has no effect.</p>
+<p>Configuration option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqqueueregistrationidcontext">umq_queue_registration_id (context)</a> functions differently and no longer helps to manage duplicate message delivery.</p>
+<p>For configuration option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqqueueparticipationreceiver">umq_queue_participation (receiver)</a>, you cannot set value 2 to enable queue browsing with brokered contexts.</p>
+<p>See also <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/config.tag:../../Config/" href="../../Config/grpdeprecated.html">Deprecated Options</a>.</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="deprecatedconfigurationoptions"></a>
-Deprecated Configuration Options</h2>
+Deprecated Configuration Options&nbsp;&nbsp;<small><a href="#deprecatedconfigurationoptions">&lt;-</a></small></h2>
 <p>As of UMQ 6.8, the following configuration options are deprecated:</p>
 <ul>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UMQ/config.tag:../../Config/" href="../../Config/grpdeprecated.html#umqflightsizecontext">umq_flight_size (context)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/config.tag:../../Config/" href="../../Config/grpdeprecated.html#umqflightsizecontext">umq_flight_size (context)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UMQ/config.tag:../../Config/" href="../../Config/grpdeprecated.html#umqflightsizebehaviorcontext">umq_flight_size_behavior (context)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/config.tag:../../Config/" href="../../Config/grpdeprecated.html#umqflightsizebehaviorcontext">umq_flight_size_behavior (context)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UMQ/config.tag:../../Config/" href="../../Config/grpdeprecated.html#umqmsgtotallifetimecontext">umq_msg_total_lifetime (context)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/config.tag:../../Config/" href="../../Config/grpdeprecated.html#umqmsgtotallifetimecontext">umq_msg_total_lifetime (context)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UMQ/config.tag:../../Config/" href="../../Config/grpdeprecated.html#umqmessageretransmissionintervalcontext">umq_message_retransmission_interval (context)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/config.tag:../../Config/" href="../../Config/grpdeprecated.html#umqmessageretransmissionintervalcontext">umq_message_retransmission_interval (context)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UMQ/config.tag:../../Config/" href="../../Config/grpdeprecated.html#umqmessagestabilitynotificationcontext">umq_message_stability_notification (context)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/config.tag:../../Config/" href="../../Config/grpdeprecated.html#umqmessagestabilitynotificationcontext">umq_message_stability_notification (context)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UMQ/config.tag:../../Config/" href="../../Config/grpdeprecated.html#umqqueuecheckintervalcontext">umq_queue_check_interval (context)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/config.tag:../../Config/" href="../../Config/grpdeprecated.html#umqqueuecheckintervalcontext">umq_queue_check_interval (context)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UMQ/config.tag:../../Config/" href="../../Config/grpdeprecated.html#umqqueuenamesource">umq_queue_name (source)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/config.tag:../../Config/" href="../../Config/grpdeprecated.html#umqqueuenamesource">umq_queue_name (source)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UMQ/config.tag:../../Config/" href="../../Config/grpdeprecated.html#umqqueueparticipantsonlysource">umq_queue_participants_only (source)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/config.tag:../../Config/" href="../../Config/grpdeprecated.html#umqqueueparticipantsonlysource">umq_queue_participants_only (source)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UMQ/config.tag:../../Config/" href="../../Config/grpdeprecated.html#umqqueuequeryintervalcontext">umq_queue_query_interval (context)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/config.tag:../../Config/" href="../../Config/grpdeprecated.html#umqqueuequeryintervalcontext">umq_queue_query_interval (context)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UMQ/config.tag:../../Config/" href="../../Config/grpdeprecated.html#umqrequirequeueauthenticationcontext">umq_require_queue_authentication (context)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/config.tag:../../Config/" href="../../Config/grpdeprecated.html#umqrequirequeueauthenticationcontext">umq_require_queue_authentication (context)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UMQ/config.tag:../../Config/" href="../../Config/grpdeprecated.html#umqretentionintergroupstabilitybehaviorcontext">umq_retention_intergroup_stability_behavior (context)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/config.tag:../../Config/" href="../../Config/grpdeprecated.html#umqretentionintergroupstabilitybehaviorcontext">umq_retention_intergroup_stability_behavior (context)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UMQ/config.tag:../../Config/" href="../../Config/grpdeprecated.html#umqretentionintragroupstabilitybehaviorcontext">umq_retention_intragroup_stability_behavior (context)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/config.tag:../../Config/" href="../../Config/grpdeprecated.html#umqretentionintragroupstabilitybehaviorcontext">umq_retention_intragroup_stability_behavior (context)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UMQ/config.tag:../../Config/" href="../../Config/grpdeprecated.html#umqretentionintergroupstabilitybehaviorsource">umq_retention_intergroup_stability_behavior (source)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/config.tag:../../Config/" href="../../Config/grpdeprecated.html#umqretentionintergroupstabilitybehaviorsource">umq_retention_intergroup_stability_behavior (source)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UMQ/config.tag:../../Config/" href="../../Config/grpdeprecated.html#umqretentionintragroupstabilitybehaviorsource">umq_retention_intragroup_stability_behavior (source)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/config.tag:../../Config/" href="../../Config/grpdeprecated.html#umqretentionintragroupstabilitybehaviorsource">umq_retention_intragroup_stability_behavior (source)</a> </li>
 </ul>
 <p><br />
  </p>
 <h1><a class="anchor" id="deprecatedandunavailablefeatures"></a>
-Deprecated and Unavailable Features</h1>
+Deprecated and Unavailable Features&nbsp;&nbsp;<small><a href="#deprecatedandunavailablefeatures">&lt;-</a></small></h1>
 <p>As of Ultra Messaging Queuing 6.8, some queuing features are deprecated and some UMS features are unavailable to brokered contexts. Also, you cannot use all variations of some features.</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="deprecatedfeatures"></a>
-Deprecated Features</h2>
+Deprecated Features&nbsp;&nbsp;<small><a href="#deprecatedfeatures">&lt;-</a></small></h2>
 <p>The following UMQ features are deprecated and also unavailable: </p><ul>
 <li>
 Source Dissemination </li>
@@ -1366,15 +1377,15 @@ Numeric index IDs for Indexed Queuing </li>
 <p><br />
  </p>
 <h2><a class="anchor" id="deprecatedfunctionsandmethods"></a>
-Deprecated Functions and Methods</h2>
+Deprecated Functions and Methods&nbsp;&nbsp;<small><a href="#deprecatedfunctionsandmethods">&lt;-</a></small></h2>
 <p>As of UMQ 6.8, the following C API functions are deprecated:</p>
 <ul>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#aac6015a6a8e914c6e621e3b28940fe87">lbm_ctx_umq_get_inflight()</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#aac6015a6a8e914c6e621e3b28940fe87">lbm_ctx_umq_get_inflight()</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#a6cd0c297e489e006ef5da83398184daa">lbm_umq_ctx_msg_stable()</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#a6cd0c297e489e006ef5da83398184daa">lbm_umq_ctx_msg_stable()</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#a21cb52dc4c0a14484cfc0454a156e2d8">lbm_queue_immediate_message()</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#a21cb52dc4c0a14484cfc0454a156e2d8">lbm_queue_immediate_message()</a> </li>
 </ul>
 <p>The following Java and .NET API classes and methods are deprecated for Ultra Messaging 6.8 or later:</p>
 <ul>
@@ -1388,7 +1399,7 @@ LBMContext.setUMQMessageStable() method </li>
 <p><br />
  </p>
 <h2><a class="anchor" id="unavailablefeatures"></a>
-Unavailable Features</h2>
+Unavailable Features&nbsp;&nbsp;<small><a href="#unavailablefeatures">&lt;-</a></small></h2>
 <p>Ultra Messaging queuing applications can use some Ultra Messaging functionality, but some functionality is unavailable with Ultra Messaging queuing.</p>
 <p>You cannot use Ultra Messaging queuing with the following Ultra Messaging core functionalities:</p>
 <ul>
@@ -1444,16 +1455,16 @@ Ultra Messaging Wildcard Receivers </li>
 <p>You cannot use brokered contexts with the following functions or methods:</p>
 <ul>
 <li>
-<b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#aeeb72be91872f87626d26156c3201dfe">lbm_rcv_umq_deregister()</a></b> </li>
+<b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#aeeb72be91872f87626d26156c3201dfe">lbm_rcv_umq_deregister()</a></b> </li>
 </ul>
 <p><br />
  </p>
 <h2><a class="anchor" id="limitedultramessagingfunctionality"></a>
-Limited Ultra Messaging Functionality</h2>
+Limited Ultra Messaging Functionality&nbsp;&nbsp;<small><a href="#limitedultramessagingfunctionality">&lt;-</a></small></h2>
 <p>Use the following rules and guidelines when you use Ultra Messaging queuing with Ultra Messaging core functionalities:</p>
 <ul>
 <li>
-When you use queuing, you cannot set configuration option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UMQ/config.tag:../../Config/" href="../../Config/grpmajoroptions.html#fdmanagementtypecontext">fd_management_type (context)</a>. </li>
+When you use queuing, you cannot set configuration option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/config.tag:../../Config/" href="../../Config/grpmajoroptions.html#fdmanagementtypecontext">fd_management_type (context)</a>. </li>
 <li>
 Ultra Messaging queuing systems do not fragment messages. </li>
 </ul>

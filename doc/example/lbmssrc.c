@@ -1,5 +1,5 @@
 /*
-  Copyright (c) 2005-2018 Informatica Corporation  Permission is granted to licensees to use
+  Copyright (c) 2005-2019 Informatica Corporation  Permission is granted to licensees to use
   or alter this software for any purpose, including commercial applications,
   according to the terms laid out in the Software License Agreement.
 
@@ -33,6 +33,7 @@
 	#include <winsock2.h>
 	#include <sys/timeb.h>
 	#define strcasecmp stricmp
+	#define snprintf _snprintf
 #else
 	#include <unistd.h>
 	#include <netinet/in.h>
@@ -81,27 +82,29 @@ const char purpose[] = "Purpose: "
 const char usage[] =
 "Usage: lbmssrc [options] topic\n"
 "Available options:\n"
-"  -c, --config=FILE         Use LBM configuration file FILE.\n"
-"                            Multiple config files are allowed.\n"
-"                            Example:  '-c file1.cfg -c file2.cfg'\n"
-"  -d, --delay=NUM           delay sending for NUM seconds after source creation\n"
-"  -h, --help                display this help and exit\n"
-"  -i, --int-mprop=VAL,KEY   send integer message property value VAL with name KEY\n"
-"  -j, --late-join=NUM       enable Late Join with specified retention buffer count\n"
-"  -l, --length=NUM          send messages of NUM bytes\n"
-"  -L, --linger=NUM          linger for NUM seconds before closing context\n"
-"  -M, --messages=NUM        send NUM messages\n"
-"  -N, --channel=NUM         send on channel NUM\n"
-"  -S, --perf-stats=NUM,OT   print performance stats every NUM messages sent\n"
-"                            If optional OT is given, override the default 10 usec Outlier Threshold\n"
-"  -P, --pause=NUM           pause NUM milliseconds after each send\n"
-"  -s, --statistics=NUM      print statistics every NUM seconds\n"
-"  -v, --verbose             be verbose; add per message data\n"
-"  -V, --verifiable          construct verifiable messages\n"
+"  -a, --available-data-space  print the length of available data space\n"
+"  -b, --user-supplied-buffer  send messages using a user-supplied buffer\n"
+"  -c, --config=FILE           Use LBM configuration file FILE.\n"
+"                              Multiple config files are allowed.\n"
+"                              Example:  '-c file1.cfg -c file2.cfg'\n"
+"  -d, --delay=NUM             delay sending for NUM seconds after source creation\n"
+"  -h, --help                  display this help and exit\n"
+"  -i, --int-mprop=VAL,KEY     send integer message property value VAL with name KEY\n"
+"  -j, --late-join=NUM         enable Late Join with specified retention buffer count\n"
+"  -l, --length=NUM            send messages of NUM bytes\n"
+"  -L, --linger=NUM            linger for NUM seconds before closing context\n"
+"  -M, --messages=NUM          send NUM messages\n"
+"  -N, --channel=NUM           send on channel NUM\n"
+"  -S, --perf-stats=NUM,OT     print performance stats every NUM messages sent\n"
+"                              If optional OT is given, override the default 10 usec Outlier Threshold\n"
+"  -P, --pause=NUM             pause NUM milliseconds after each send\n"
+"  -s, --statistics=NUM        print statistics every NUM seconds\n"
+"  -v, --verbose               be verbose; add per message data\n"
+"  -V, --verifiable            construct verifiable messages\n"
 MONOPTS_SENDER
 MONMODULEOPTS_SENDER;
 
-const char * OptionString = "c:d:j:hi:L:l:M:N:P:S:s:vV";
+const char * OptionString = "abc:d:j:hi:L:l:M:N:P:S:s:vV";
 #define OPTION_MONITOR_SRC 0
 #define OPTION_MONITOR_CTX 1
 #define OPTION_MONITOR_TRANSPORT 2
@@ -111,6 +114,7 @@ const char * OptionString = "c:d:j:hi:L:l:M:N:P:S:s:vV";
 #define OPTION_MONITOR_APPID 6
 const struct option OptionTable[] =
 {
+	{ "available-data-space", no_argument, NULL, 'a' },
 	{ "config", required_argument, NULL, 'c' },
 	{ "delay", required_argument, NULL, 'd' },
 	{ "help", no_argument, NULL, 'h' },
@@ -122,6 +126,7 @@ const struct option OptionTable[] =
 	{ "channel", required_argument, NULL, 'N' },
 	{ "pause", required_argument, NULL, 'P' },
 	{ "statistics", required_argument, NULL, 's' },
+	{ "user-supplied-buffer", no_argument, NULL, 'b' },
 	{ "verbose", no_argument, NULL, 'v' },
 	{ "verifiable", no_argument, NULL, 'V' },
 	{ "monitor-src", required_argument, NULL, OPTION_MONITOR_SRC },
@@ -160,6 +165,9 @@ struct Options {
 	char mprop_int_keys[16][1024];			/* message property integer keys */
 	lbm_int32_t mprop_int_vals[16];			/* message property integer values */
 	int mprop_int_cnt;						/* message property integer count */
+	int user_supplied_buffer;				/* send messages with a user supplied buffer */
+	int available_data_space;				/* print the length of available data space */
+
 };
 
 #define TIME_FMT "%" PRIu64 ".%.9" PRIu64 " "
@@ -361,159 +369,142 @@ void process_cmdline(int argc, char **argv,struct Options *opts)
 	opts->perf_stats = 0;
 	opts->perf_thresh = OUTLIER_THRESH_DEFAULT;
 	opts->mprop_int_cnt = 0;
+	opts->user_supplied_buffer = 0;
+	opts->available_data_space = 0;
 
 	/* Process the command line options, setting local variables with values */
 	while ((c = getopt_long(argc, argv, OptionString, OptionTable, NULL)) != EOF) {
-		switch (c)
+		switch (c) {
+		case 'a':
+			opts->available_data_space = 1;
+			break;
+		case 'b':
+			opts->user_supplied_buffer = 1;
+			break;
+		case 'c':
+			/* Initialize configuration parameters from a file. */
+			if (lbm_config(optarg) == LBM_FAILURE) {
+				fprintf(stderr, "lbm_config: %s\n", lbm_errmsg());
+				exit(1);
+			}
+			break;
+		case 'd':
+			opts->delay = atoi(optarg);
+			break;
+		case 'i':
 		{
-			case 'c':
-				/* Initialize configuration parameters from a file. */
-				if (lbm_config(optarg) == LBM_FAILURE) {
-					fprintf(stderr, "lbm_config: %s\n", lbm_errmsg());
-					exit(1);
-				}
-				break;
-			case 'd':
-				opts->delay = atoi(optarg);
-				break;
-			case 'i':
-				{
-					int rc;
-					if (opts->mprop_int_cnt >= MAX_MESSAGE_PROPERTIES_INTEGER_COUNT) {
-						fprintf(stderr, "Max number of integer properties exceeded\n");
-						exit(1);
-					}
-					rc = sscanf(optarg, "%d,%s", &opts->mprop_int_vals[opts->mprop_int_cnt], &opts->mprop_int_keys[opts->mprop_int_cnt][0]);
-					if (rc != 2) {
-						fprintf(stderr, "Failed to parse int-mprop: %s\n", optarg);
-						exit(1);
-					}
-					opts->mprop_int_cnt++;
-				}
-				break;
-			case 'j':
-				if (sscanf(optarg, "%d", &opts->latejoin_threshold) != 1)
-					++errflag;
-				break;
-			case 'L':
-				opts->linger = atoi(optarg);
-				break;
-			case 'l':
-				opts->msglen = atoi(optarg);
-				break;
-			case 'M':
-				opts->msgs = atoi(optarg);
-				break;
-			case 'N':
-				opts->channel_number = atol(optarg);
-				break;
-			case 'S':
-				{
-					int rc;
-					rc = sscanf(optarg, "%d,%d", &opts->perf_stats, &opts->perf_thresh);
-					if (rc != 2) {
-						opts->perf_stats = atol(optarg);
-						opts->perf_thresh = OUTLIER_THRESH_DEFAULT;
-					}
-				}
-				break;
-			case 'h':
-				print_help_exit(argv, 0);
-			case 'P':
-				opts->pause = atoi(optarg);
-				break;
-			case 's':
-				opts->stats_sec = atoi(optarg);
-				break;
-			case 'v':
-				opts->verbose++;
-				break;
-			case 'V':
-				opts->verifiable_msgs = 1;
-				break;
-			case OPTION_MONITOR_CTX:
-				opts->monitor_context = 1;
-				opts->monitor_context_ivl = atoi(optarg);
-				break;
-			case OPTION_MONITOR_SRC:
-				opts->monitor_source = 1;
-				opts->monitor_source_ivl = atoi(optarg);
-				break;
-			case OPTION_MONITOR_TRANSPORT:
-				if (optarg != NULL)
-				{
-					if (strcasecmp(optarg, "lbm") == 0)
-					{
-						opts->transport = (lbmmon_transport_func_t *) lbmmon_transport_lbm_module();
-					}
-					else if (strcasecmp(optarg, "udp") == 0)
-					{
-						opts->transport = (lbmmon_transport_func_t *) lbmmon_transport_udp_module();						
-					}
-					else if (strcasecmp(optarg, "lbmsnmp") == 0)
-					{
-						opts->transport = (lbmmon_transport_func_t *) lbmmon_transport_lbmsnmp_module();
-					}
-					else
-					{
-						++errflag;
-					}
-				}
-				else
-				{
+			int rc;
+			if (opts->mprop_int_cnt >= MAX_MESSAGE_PROPERTIES_INTEGER_COUNT) {
+				fprintf(stderr, "Max number of integer properties exceeded\n");
+				exit(1);
+			}
+			rc = sscanf(optarg, "%d,%s", &opts->mprop_int_vals[opts->mprop_int_cnt], &opts->mprop_int_keys[opts->mprop_int_cnt][0]);
+			if (rc != 2) {
+				fprintf(stderr, "Failed to parse int-mprop: %s\n", optarg);
+				exit(1);
+			}
+			opts->mprop_int_cnt++;
+		}
+		break;
+		case 'j':
+			if (sscanf(optarg, "%d", &opts->latejoin_threshold) != 1)
+				++errflag;
+			break;
+		case 'L':
+			opts->linger = atoi(optarg);
+			break;
+		case 'l':
+			opts->msglen = atoi(optarg);
+			break;
+		case 'M':
+			opts->msgs = atoi(optarg);
+			break;
+		case 'N':
+			opts->channel_number = atol(optarg);
+			break;
+		case 'S':
+		{
+			int rc;
+			rc = sscanf(optarg, "%d,%d", &opts->perf_stats, &opts->perf_thresh);
+			if (rc != 2) {
+				opts->perf_stats = atol(optarg);
+				opts->perf_thresh = OUTLIER_THRESH_DEFAULT;
+			}
+		}
+		break;
+		case 'h':
+			print_help_exit(argv, 0);
+		case 'P':
+			opts->pause = atoi(optarg);
+			break;
+		case 's':
+			opts->stats_sec = atoi(optarg);
+			break;
+		case 'v':
+			opts->verbose++;
+			break;
+		case 'V':
+			opts->verifiable_msgs = 1;
+			break;
+		case OPTION_MONITOR_CTX:
+			opts->monitor_context = 1;
+			opts->monitor_context_ivl = atoi(optarg);
+			break;
+		case OPTION_MONITOR_SRC:
+			opts->monitor_source = 1;
+			opts->monitor_source_ivl = atoi(optarg);
+			break;
+		case OPTION_MONITOR_TRANSPORT:
+			if (optarg != NULL) {
+				if (strcasecmp(optarg, "lbm") == 0) {
+					opts->transport = (lbmmon_transport_func_t *)lbmmon_transport_lbm_module();
+				} else if (strcasecmp(optarg, "udp") == 0) {
+					opts->transport = (lbmmon_transport_func_t *)lbmmon_transport_udp_module();
+				} else if (strcasecmp(optarg, "lbmsnmp") == 0) {
+					opts->transport = (lbmmon_transport_func_t *)lbmmon_transport_lbmsnmp_module();
+				} else {
 					++errflag;
 				}
-				break;
-			case OPTION_MONITOR_TRANSPORT_OPTS:
-				if (optarg != NULL)
-				{
-					strncpy(opts->transport_options_string, optarg, sizeof(opts->transport_options_string));
-				}
-				else
-				{
+			} else {
+				++errflag;
+			}
+			break;
+		case OPTION_MONITOR_TRANSPORT_OPTS:
+			if (optarg != NULL) {
+				strncpy(opts->transport_options_string, optarg, sizeof(opts->transport_options_string));
+			}
+			else {
+				++errflag;
+			}
+			break;
+		case OPTION_MONITOR_FORMAT:
+			if (optarg != NULL) {
+				if (strcasecmp(optarg, "csv") == 0) {
+					opts->format = (lbmmon_format_func_t *)lbmmon_format_csv_module();
+				} else {
 					++errflag;
 				}
-				break;
-			case OPTION_MONITOR_FORMAT:
-				if (optarg != NULL)
-				{
-					if (strcasecmp(optarg, "csv") == 0)
-					{
-						opts->format = (lbmmon_format_func_t *) lbmmon_format_csv_module();
-					}
-					else
-					{
-						++errflag;
-					}
-				}
-				else
-				{
-					++errflag;
-				}
-				break;
-			case OPTION_MONITOR_FORMAT_OPTS:
-				if (optarg != NULL)
-				{
-					strncpy(opts->format_options_string, optarg, sizeof(opts->format_options_string));
-				}
-				else
-				{
-					++errflag;
-				}
-				break;
-			case OPTION_MONITOR_APPID:
-				if (optarg != NULL)
-				{
-					strncpy(opts->application_id_string, optarg, sizeof(opts->application_id_string));
-				}
-				else
-				{
-					++errflag;
-				}
-				break;
-			default:
-				errflag++;
-				break;
+			} else {
+				++errflag;
+			}
+			break;
+		case OPTION_MONITOR_FORMAT_OPTS:
+			if (optarg != NULL) {
+				strncpy(opts->format_options_string, optarg, sizeof(opts->format_options_string));
+			} else {
+				++errflag;
+			}
+			break;
+		case OPTION_MONITOR_APPID:
+			if (optarg != NULL) {
+				strncpy(opts->application_id_string, optarg, sizeof(opts->application_id_string));
+			} else {
+				++errflag;
+			}
+			break;
+		default:
+			errflag++;
+			break;
 		}
 	}
 	if ((errflag != 0) || (optind == argc)) {
@@ -610,10 +601,13 @@ int main(int argc, char **argv)
 	int count = 0;
 	unsigned long long bytes_sent = 0;
 	char *message = NULL;
+	char *user_supplied_buffer = NULL;
 	lbmmon_sctl_t * monctl;
 	lbm_ssrc_send_ex_info_t info;
 	char *key_ptrs[16];
 	int err;
+	int msg_props = 0;
+	int spectrum = 0;
 
 	int transport;		/* transport in use (used for SMX testing) */
 	size_t transize = 4;
@@ -711,43 +705,67 @@ int main(int argc, char **argv)
 		}
 	}
 
-	if (opts->mprop_int_cnt > 0) {
-		int msg_props;
+	/*  Config | Cmd Line |
+	 * --------|----------| Action
+	 *  MP  SC |  MP  SC  |
+	 * --------|----------|-------------------------------------
+	 *  0   0  |  0   0   | Do Nothing
+	 *  0   0  |  0   1   | Enable SC; Send SC
+	 *  0   0  |  1   0   | Enable MP; Send MP
+	 *  0   0  |  1   1   | Enable SC & MP; Send SC & MP
+	 *  0   1  |  0   0   | Don't send SC
+	 *  0   1  |  0   1   | Send SC
+	 *  0   1  |  1   0   | Error example app: must provide SC #
+	 *  0   1  |  1   1   | Enable MP; Send SC & MP
+	 *  1   0  |  0   0   | Don't send MP
+	 *  1   0  |  0   1   | Error example app: must provide SC #
+	 *  1   0  |  1   0   | Send MP
+	 *  1   0  |  1   1   | Enable SC; Send SC & MP
+	 *  1   1  |  0   0   | Don't send SC or MP
+	 *  1   1  |  0   1   | Error example app: must provide MP(s)
+	 *  1   1  |  1   0   | Error example app: must provide SC #
+	 *  1   1  |  1   1   | Send SC & MP
+	 */
+	{
 		size_t msg_props_size;
-		msg_props = 0;
 		msg_props_size = sizeof(int);
 		if (lbm_src_topic_attr_getopt(tattr, "smart_src_message_property_int_count", &msg_props, &msg_props_size) == LBM_FAILURE) {
 			fprintf(stderr, "lbm_src_topic_attr_getopt: %s\n", lbm_errmsg());
 			exit(1);
 		}
-		/* Turn on message properties if needed */
-		if (msg_props < opts->mprop_int_cnt) {
-			fprintf(stderr,
-						"WARNING: found Message Properties on the command line but smart_src_message_property_int_count is either not configured or too small; setting config parameter to %d.\n",
-						opts->mprop_int_cnt);
-			if (lbm_src_topic_attr_setopt(tattr, "smart_src_message_property_int_count", &opts->mprop_int_cnt, sizeof(opts->mprop_int_cnt)) != 0) {
-				fprintf(stderr, "lbm_src_topic_attr_setopt: %s\n", lbm_errmsg());
-				exit(1);
-			}
-		}
 	}
-
-	if (opts->channel_number != -1) {
-		int spectrum;
+	{
 		size_t spectrum_size;
-		spectrum = 0;
 		spectrum_size = sizeof(int);
 		if (lbm_src_topic_attr_getopt(tattr, "smart_src_enable_spectrum_channel", &spectrum, &spectrum_size) == LBM_FAILURE) {
 			fprintf(stderr, "lbm_src_topic_attr_getopt: %s\n", lbm_errmsg());
 			exit(1);
 		}
-		/* Turn on message properties if needed */
-		if (!spectrum) {
-			fprintf(stderr, "WARNING: found Channel Number on the command line but smart_src_enable_spectrum_channel is not enabled; setting config parameter to enabled.\n");
-			if (lbm_src_topic_attr_str_setopt(tattr, "smart_src_enable_spectrum_channel", "1") != 0) {
+	}
+	if (opts->mprop_int_cnt > 0) {
+		if (msg_props < opts->mprop_int_cnt) {	/* Turn on message properties */
+			fprintf(stderr, "WARNING: found Message Properties on the command line but smart_src_message_property_int_count is either not configured or too small; setting config parameter to %d.\n", opts->mprop_int_cnt);
+			if (lbm_src_topic_attr_setopt(tattr, "smart_src_message_property_int_count", &(opts->mprop_int_cnt), sizeof(opts->mprop_int_cnt)) != 0) {
 				fprintf(stderr, "lbm_src_topic_attr_setopt: %s\n", lbm_errmsg());
 				exit(1);
 			}
+		}
+		if (spectrum && (opts->channel_number == -1)) {
+			fprintf(stderr, "ERROR: smart_src_enable_spectrum_channel is configured but Channel Number was not found on the command line. Try again with -N option.\n");
+			exit(1);
+		}
+	}
+	if (opts->channel_number != -1) {
+		if (!spectrum) { /* Turn on spectrum channel */
+			fprintf(stderr, "WARNING: found Channel Number on the command line but smart_src_enable_spectrum_channel is not enabled; setting config parameter to enabled.\n");
+			if (lbm_src_topic_attr_str_setopt(tattr, "smart_src_enable_spectrum_channel", "1") != 0) {
+				fprintf(stderr, "lbm_src_topic_attr_str_setopt: %s\n", lbm_errmsg());
+				exit(1);
+			}
+		}
+		if (msg_props && (opts->mprop_int_cnt == 0)) {
+			fprintf(stderr, "ERROR: smart_src_message_property_int_count is configured but Message Properties were not found on the command line. Try again with -i option.\n");
+			exit(1);
 		}
 	}
 
@@ -766,6 +784,15 @@ int main(int argc, char **argv)
 	if (lbm_ssrc_create(&ssrc, ctx, topic, handle_ssrc_event, opts, NULL) == LBM_FAILURE) {
 		fprintf(stderr, "lbm_ssrc_create: %s\n", lbm_errmsg());
 		exit(1);
+	}
+
+	if (opts->available_data_space) {
+		int length = 0;
+		if (lbm_ssrc_get_available_data_space(ssrc, &length) == LBM_FAILURE) {
+			fprintf(stderr, "lbm_ssrc_get_available_data_space: %s\n", lbm_errmsg());
+			exit(1);
+		}
+		printf("The length of available data space: %d.\n", length);
 	}
 
 	/* If a statistics were requested, setup an LBM timer to the dump the statistics */
@@ -851,9 +878,20 @@ int main(int argc, char **argv)
 		info.mprop_int_keys = key_ptrs;
 		info.mprop_int_vals = opts->mprop_int_vals;
 	}
+	if (opts->user_supplied_buffer) {
+		info.flags |= LBM_SSRC_SEND_EX_FLAG_USER_SUPPLIED_BUFFER;
+		if (opts->msglen > 0) {
+			user_supplied_buffer = (char *)malloc(opts->msglen);
+			memset(user_supplied_buffer, 0, opts->msglen);
+			info.usr_supplied_buffer = user_supplied_buffer;
+			snprintf(user_supplied_buffer, opts->msglen, "User supplied buffer message... ");
+		} else {
+			info.usr_supplied_buffer = (char *)(&user_supplied_buffer);	/* initializing to a non-null address for zero-length message case */
+		}
+	}
 
 	/* Start sending messages to whomever is listening */
-	printf("Sending %u messages of size %u bytes to topic [%s]\n",
+	printf("lbmssrc - Sending %u messages of size %u bytes to topic [%s]\n",
 		   opts->msgs, (unsigned)opts->msglen, opts->topic);
 	current_tv(&starttv); /* Store the start time */
 	if (lbm_ssrc_buff_get(ssrc, &message, 0) == LBM_FAILURE) {
@@ -966,11 +1004,15 @@ int main(int argc, char **argv)
 		}
 	}
 
-	printf("Deleting source\n");
+	if (opts->user_supplied_buffer && (opts->msglen > 0)) {
+		free(user_supplied_buffer);
+	}
 
-	/* Deallocate source and LBM context */
+	/* Deallocate smart source and LBM context */
+	printf("Deleting smart source\n");
 	lbm_ssrc_delete(ssrc);
 	ssrc = NULL;
+
 	printf("Deleting context\n");
 	lbm_context_delete(ctx);
 	ctx = NULL;

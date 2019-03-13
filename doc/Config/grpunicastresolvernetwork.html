@@ -59,34 +59,41 @@ $(document).ready(function(){initNavTree('grpunicastresolvernetwork.html','');})
 <img src="Resolver-Unicast.png" alt="Resolver-Unicast.png"/>
 </div>
  <p>If using multiple lbmrd instances with a single context, you can configure <b>resolver_unicast_interface</b> and <b>resolver_unicast_port_low/high</b> and omit the <b>Interface:LocalPort</b> section of <b>resolver_unicast_daemon</b>.</p>
-<p>See also <em>Unicast Topic Resolution</em> in the <em>Ultra Messaging Concepts Guide</em> for more information.</p>
+<p>See also <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Config/design.tag:../Design/" href="../Design/topicresolutiondescription.html#unicasttopicresolution">Unicast Topic Resolution</a> for general information on Unicast Topic Resolution.</p>
 <p><br />
  </p>
 <h1><a class="anchor" id="unicastresolvernetworkref"></a>
-Reference</h1>
+Reference&nbsp;&nbsp;<small><a href="#unicastresolvernetworkref">&lt;-</a></small></h1>
 <p><br />
  </p>
 <h2><a class="anchor" id="resolverunicastdaemoncontext"></a>
-resolver_unicast_daemon (context)</h2>
-<dl class="section user"><dt></dt><dd>Add a list of one or more unicast resolver daemon specifications to the list of unicast resolver daemons. Unlike most other UM settings, every time this setting is called, it adds another daemon specification to the list and does NOT overwrite previous specifications. The value is formatted as comma or semicolon separated entries, where each entry contains the interface, source port, resolver IP, and destination port for a single daemon. </dd></dl>
-<dl class="section user"><dt></dt><dd>When the binary form of option setting is used, UM expects an array of structures. See <a class="el" href="attributesobjects.html#settinganoptionfromarraysofbinaryvalues">Setting an Option from Arrays of Binary Values</a>. </dd></dl>
-<dl class="section user"><dt></dt><dd>For the configuration file as well as string versions of setting this option, the string value is formatted as follows: </dd></dl>
-<dl class="section user"><dt></dt><dd><code>[Iface[:Src_Port]-&gt;]IP:Dest_Port[,...]</code> </dd></dl>
-<dl class="section user"><dt></dt><dd><b>Iface</b> is the interface to use (previously set via <a class="el" href="grpunicastresolvernetwork.html#resolverunicastinterfacecontext">resolver_unicast_interface (context)</a>). </dd></dl>
-<dl class="section user"><dt></dt><dd><b>Src_Port</b> is the source port to use (previously <a class="el" href="grpdeprecated.html#resolverunicastportcontext">resolver_unicast_port (context)</a>). </dd></dl>
-<dl class="section user"><dt></dt><dd><b>IP</b> is the resolver daemon's IP address (previously <a class="el" href="grpdeprecated.html#resolverunicastaddresscontext">resolver_unicast_address (context)</a>). </dd></dl>
-<dl class="section user"><dt></dt><dd><b>Dest_Port</b> is the resolver daemon's UDP port (previously <a class="el" href="grpdeprecated.html#resolverunicastdestinationportcontext">resolver_unicast_destination_port (context)</a>). </dd></dl>
-<dl class="section user"><dt></dt><dd>You can omit either the <b>Src_Port</b> or both the <b>Iface</b> and <b>Src_Port</b>, in which case the default <a class="el" href="grpunicastresolvernetwork.html#resolverunicastinterfacecontext">resolver_unicast_interface (context)</a> and <a class="el" href="grpdeprecated.html#resolverunicastportcontext">resolver_unicast_port (context)</a> settings are used. Because each entry adds a new daemon specification and does not overwrite previous values, an entry or string with the IP address of 0.0.0.0 and port of 0 removes all previous daemon specifications. At least one daemon specification means the context does not use multicast topic resolution. </dd></dl>
-<dl class="section user"><dt></dt><dd>Possible formats of each entry are as follows: </dd></dl>
-<dl class="section user"><dt></dt><dd><code>Interface:LocalPort-&gt;DaemonIP:RemotePort</code> </dd></dl>
-<dl class="section user"><dt></dt><dd><code>Interface-&gt;DaemonIP:RemotePort</code> </dd></dl>
-<dl class="section user"><dt></dt><dd><code>DaemonIP:RemotePort</code> </dd></dl>
-<dl class="section user"><dt></dt><dd>You can specify <b>Interface</b> in any of the ways described in <a class="el" href="generalconfigurationguidelines.html#specifyinginterfaces">Specifying Interfaces</a>.</dd></dl>
+resolver_unicast_daemon (context)&nbsp;&nbsp;<small><a href="#resolverunicastdaemoncontext">&lt;-</a></small></h2>
+<dl class="section user"><dt></dt><dd>Enable Unicast UDP-based TR and add one or more unicast resolver daemon (lbmrd) specifications to the current lbmrd list. Unlike most other UM settings, every time this setting is called, it adds one or more daemon specifications to the list, and does NOT overwrite previous specifications. </dd></dl>
+<dl class="section user"><dt></dt><dd>Setting this option Disables Multicast UDP-based TR, but does not affect whether TCP-based TR is enabled or disabled. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Config/design.tag:../Design/" href="../Design/topicresolutiondescription.html#udpbasedtopicresolutiondetails">UDP-Based Topic Resolution Details</a>. </dd></dl>
+<dl class="section user"><dt></dt><dd>For the configuration file as well as string API method of setting this option, the string value consists of one or more lbmrd specifications separated by commas or semicolons, formatted as follows: </dd></dl>
+<dl class="section user"><dt></dt><dd><pre class="fragment">[Iface[:Src_Port]-&gt;]IP:Dest_Port[,...]
+</pre> </dd></dl>
+<dl class="section user"><dt></dt><dd><ul>
+<li><b><code>Iface</code></b> is the interface to use (previously set via <a class="el" href="grpunicastresolvernetwork.html#resolverunicastinterfacecontext">resolver_unicast_interface (context)</a>). </li>
+<li><b><code>Src_Port</code></b> is the source port to use (previously <a class="el" href="grpdeprecated.html#resolverunicastportcontext">resolver_unicast_port (context)</a>). Normally only specified if firewalls require specific source ports be used. </li>
+<li><b><code>IP</code></b> is the resolver daemon's IP address (previously <a class="el" href="grpdeprecated.html#resolverunicastaddresscontext">resolver_unicast_address (context)</a>). </li>
+<li><b><code>Dest_Port</code></b> is the resolver daemon's UDP port (previously <a class="el" href="grpdeprecated.html#resolverunicastdestinationportcontext">resolver_unicast_destination_port (context)</a>). </li>
+</ul>
+</dd></dl>
+<dl class="section user"><dt></dt><dd>You can omit either the <b><code>Src_Port</code></b> or both the <b><code>Iface</code></b> and <b><code>Src_Port</code></b>, in which case the default settings <a class="el" href="grpunicastresolvernetwork.html#resolverunicastinterfacecontext">resolver_unicast_interface (context)</a> and <a class="el" href="grpdeprecated.html#resolverunicastportcontext">resolver_unicast_port (context)</a> are used. </dd></dl>
+<dl class="section user"><dt></dt><dd>Because each entry adds a new daemon specification and does not overwrite previous values, a special construct must be used to clear a previously-specified list. An entry with the IP address of 0.0.0.0 and port of 0 removes all previous daemon specifications. This can be useful if multiple configuration files are used, and a later file should override the daemon list from an earlier file. </dd></dl>
+<dl class="section user"><dt></dt><dd>Possible formats of each entry are as follows: <pre class="fragment">Interface:LocalPort-&gt;DaemonIP:RemotePort
+Interface-&gt;DaemonIP:RemotePort
+DaemonIP:RemotePort
+</pre> </dd></dl>
+<dl class="section user"><dt></dt><dd>You can specify <b><code>Interface</code></b> in any of the ways described in <a class="el" href="generalconfigurationguidelines.html#specifyinginterfaces">Specifying Interfaces</a>. </dd></dl>
+<dl class="section user"><dt></dt><dd>When the binary form of option setting is used, UM does NOT expect an array of structures. Instead, only one lbmrd specification can be supplied for each call to <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#ab67f641d5a0ad1a9fe53d415da58d961">lbm_context_attr_setopt()</a>. However, when the binary form of option retrieval <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a0e578b4f0005589f6558d15e55be8483">lbm_context_attr_getopt()</a> is used, the list of lbmrds is returned as an array, and the <b><code>optlen</code></b> parameter should be set as: <pre class="fragment">optlen = (max_num_lbmrds * sizeof(lbm_ucast_resolver_entry_t));
+</pre></dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>context </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a3ce940fe5841daa6e761bc1e9b0a7c6f">lbm_ucast_resolver_entry_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a3ce940fe5841daa6e761bc1e9b0a7c6f">lbm_ucast_resolver_entry_t</a></b> </td></tr>
 <tr>
 <td><em>When to Set:</em> </td><td>Can only be set during object initialization.</td></tr>
 <tr>
@@ -96,13 +103,14 @@ resolver_unicast_daemon (context)</h2>
 <p><br />
  </p>
 <h2><a class="anchor" id="resolverunicastinterfacecontext"></a>
-resolver_unicast_interface (context)</h2>
-<dl class="section user"><dt></dt><dd>Specifies the network interface over which UM receives unicast Topic Resolution messages. Can specify full IP address of interface, or just network part (see <a class="el" href="generalconfigurationguidelines.html#specifyinginterfaces">Specifying Interfaces</a> for details). Default is set to <a class="el" href="grpmajoroptions.html#defaultinterfacecontext">default_interface (context)</a>, if specified. Otherwise, it is set to INADDR_ANY, meaning that it will accept unicast Topic Resolution messages on any interface.</dd></dl>
+resolver_unicast_interface (context)&nbsp;&nbsp;<small><a href="#resolverunicastinterfacecontext">&lt;-</a></small></h2>
+<dl class="section user"><dt></dt><dd>Specifies the network interface over which UM receives unicast Topic Resolution messages. </dd></dl>
+<dl class="section user"><dt></dt><dd>Can specify full IP address of interface, or just network part (see <a class="el" href="generalconfigurationguidelines.html#specifyinginterfaces">Specifying Interfaces</a> for details). Default is set to <a class="el" href="grpmajoroptions.html#defaultinterfacecontext">default_interface (context)</a>&gt;, if specified. Otherwise, it is set to INADDR_ANY, meaning that it will accept unicast Topic Resolution messages on any interface.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>context </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a0b66a5b33839617b2a822e4a20a8d535">lbm_ipv4_address_mask_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a0b66a5b33839617b2a822e4a20a8d535">lbm_ipv4_address_mask_t</a></b> </td></tr>
 <tr>
 <td><em>Default value:</em> </td><td>0.0.0.0 (INADDR_ANY) </td></tr>
 <tr>
@@ -112,14 +120,15 @@ resolver_unicast_interface (context)</h2>
 <p><br />
  </p>
 <h2><a class="anchor" id="resolverunicastporthighcontext"></a>
-resolver_unicast_port_high (context)</h2>
-<dl class="section user"><dt></dt><dd>The highest local UDP port in a range of ports used for unicast topic resolution messages. The UM resolution daemon (lbmrd) sends unicast topic resolution messages to the UDP port range defined by this option and <a class="el" href="grpunicastresolvernetwork.html#resolverunicastportlowcontext">resolver_unicast_port_low (context)</a>. </dd></dl>
+resolver_unicast_port_high (context)&nbsp;&nbsp;<small><a href="#resolverunicastporthighcontext">&lt;-</a></small></h2>
+<dl class="section user"><dt></dt><dd>The highest local UDP port in a range of ports used for unicast topic resolution messages. </dd></dl>
+<dl class="section user"><dt></dt><dd>The UM resolution daemon (lbmrd) sends unicast topic resolution messages to the UDP port range defined by this option and <a class="el" href="grpunicastresolvernetwork.html#resolverunicastportlowcontext">resolver_unicast_port_low (context)</a>. </dd></dl>
 <dl class="section user"><dt></dt><dd>See <a class="el" href="generalconfigurationguidelines.html#portassignments">Port Assignments</a> for more information about configuring ports.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>context </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a86897f2fdd66aa7021683a4e72a4537b">lbm_uint16_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a86897f2fdd66aa7021683a4e72a4537b">lbm_uint16_t</a></b> </td></tr>
 <tr>
 <td><em>Default value:</em> </td><td>14406 </td></tr>
 <tr>
@@ -131,14 +140,15 @@ resolver_unicast_port_high (context)</h2>
 <p><br />
  </p>
 <h2><a class="anchor" id="resolverunicastportlowcontext"></a>
-resolver_unicast_port_low (context)</h2>
-<dl class="section user"><dt></dt><dd>The lowest local UDP port in a range of ports used for unicast topic resolution messages. The UM resolution daemon (lbmrd) sends unicast topic resolution messages to the UDP port range defined by this option and <a class="el" href="grpunicastresolvernetwork.html#resolverunicastporthighcontext">resolver_unicast_port_high (context)</a>. </dd></dl>
+resolver_unicast_port_low (context)&nbsp;&nbsp;<small><a href="#resolverunicastportlowcontext">&lt;-</a></small></h2>
+<dl class="section user"><dt></dt><dd>The lowest local UDP port in a range of ports used for unicast topic resolution messages. </dd></dl>
+<dl class="section user"><dt></dt><dd>The UM resolution daemon (lbmrd) sends unicast topic resolution messages to the UDP port range defined by this option and <a class="el" href="grpunicastresolvernetwork.html#resolverunicastporthighcontext">resolver_unicast_port_high (context)</a>. </dd></dl>
 <dl class="section user"><dt></dt><dd>See <a class="el" href="generalconfigurationguidelines.html#portassignments">Port Assignments</a> for more information about configuring ports.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>context </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a86897f2fdd66aa7021683a4e72a4537b">lbm_uint16_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a86897f2fdd66aa7021683a4e72a4537b">lbm_uint16_t</a></b> </td></tr>
 <tr>
 <td><em>Default value:</em> </td><td>14402 </td></tr>
 <tr>
@@ -150,13 +160,14 @@ resolver_unicast_port_low (context)</h2>
 <p><br />
  </p>
 <h2><a class="anchor" id="resolverunicastreceiversocketbuffercontext"></a>
-resolver_unicast_receiver_socket_buffer (context)</h2>
-<dl class="section user"><dt></dt><dd>Value used to set SO_RCVBUF value of the UDP receivers for unicast topic resolution messages. In some cases the OS will not allow all of this value to be used. A value of 0 instructs UM to use the default OS values. See the section on <a class="el" href="generalconfigurationguidelines.html#socketbuffersizes">Socket Buffer Sizes</a> for platform-dependent information.</dd></dl>
+resolver_unicast_receiver_socket_buffer (context)&nbsp;&nbsp;<small><a href="#resolverunicastreceiversocketbuffercontext">&lt;-</a></small></h2>
+<dl class="section user"><dt></dt><dd>Value used to set SO_RCVBUF value of the UDP receivers for unicast topic resolution messages. </dd></dl>
+<dl class="section user"><dt></dt><dd>In some cases the OS will not allow all of this value to be used. A value of 0 instructs UM to use the default OS values. See ref socketbuffersizes for platform-dependent information.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>context </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
 <tr>
 <td><em>Units:</em> </td><td>bytes </td></tr>
 <tr>

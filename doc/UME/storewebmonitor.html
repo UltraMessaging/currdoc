@@ -55,10 +55,13 @@ $(document).ready(function(){initNavTree('storewebmonitor.html','');});
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p>The built-in web monitor (configured in the umestored XML configuration file) is a rich source of information about the health of a UM stores. This section contains a page-by-page guide to reading and interpreting the output of a UM web monitor, with just a couple example sources and one receiver using a single store.</p>
+<dl class="section warning"><dt>Warning</dt><dd>The store's web monitor is not designed to be a highly-secure feature. Anybody with access to the network can access the web monitor pages.</dd></dl>
+<p>Users are expected to prevent unauthorized access to the web monitor through normal firewalling methods. Users who are unable to limit access to a level consistent with their overall security needs should disable the store web monitor (using <a class="el" href="configurationreferenceforumestored.html#umecfgwebmonitor">&lt;web-monitor&gt;</a>). See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UME/design.tag:../Design/" href="../Design/fundamentalconcepts.html#webmonsecurity">Webmon Security</a> for more information.</p>
+<dl class="section note"><dt>Note</dt><dd>the UM daemon designs are evolving away from simple web-based monitoring and towards a publish/subscribe model of distributing monitoring events and statistics.</dd></dl>
 <p><br />
  </p>
 <h1><a class="anchor" id="storewebmonitorindexpage"></a>
-Store Web Monitor Index Page</h1>
+Store Web Monitor Index Page&nbsp;&nbsp;<small><a href="#storewebmonitorindexpage">&lt;-</a></small></h1>
 <p>Here is an image of the Web Monitor's <em>Index</em> (main) page:</p>
 <center> <div class="image">
 <img src="webmon_index.png" alt="webmon_index.png"/>
@@ -68,7 +71,7 @@ Store Web Monitor Index Page</h1>
 <p><br />
  </p>
 <h1><a class="anchor" id="storewebmonitorstorespage"></a>
-Store Web Monitor Stores Page</h1>
+Store Web Monitor Stores Page&nbsp;&nbsp;<small><a href="#storewebmonitorstorespage">&lt;-</a></small></h1>
 <p>Here is an image of the Web Monitor's <em>Stores</em> page:</p>
 <center> <div class="image">
 <img src="webmon_stores.png" alt="webmon_stores.png"/>
@@ -78,7 +81,7 @@ Store Web Monitor Stores Page</h1>
 <p><br />
  </p>
 <h1><a class="anchor" id="storewebmonitorstorepage"></a>
-Store Web Monitor Store Page</h1>
+Store Web Monitor Store Page&nbsp;&nbsp;<small><a href="#storewebmonitorstorepage">&lt;-</a></small></h1>
 <p>Here is an image of the Web Monitor's <em>Store</em> page:</p>
 <center> <div class="image">
 <img src="webmon_store.png" alt="webmon_store.png"/>
@@ -141,7 +144,7 @@ Store Web Monitor Store Page</h1>
 <p><br />
  </p>
 <h1><a class="anchor" id="storewebmonitorsourcepage"></a>
-Store Web Monitor Source Page</h1>
+Store Web Monitor Source Page&nbsp;&nbsp;<small><a href="#storewebmonitorsourcepage">&lt;-</a></small></h1>
 <p>Here is an image of the Web Monitor's <em>Source</em> page:</p>
 <center> <div class="image">
 <img src="webmon_source.png" alt="webmon_source.png"/>
@@ -153,7 +156,7 @@ Store Web Monitor Source Page</h1>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>10.29.3.42.14392 </td><td><p class="starttd">The IP address and port of the source's UM configuration option, <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grprequestnetwork.html#requesttcpportcontext">request_tcp_port (context)</a>.</p>
+<td>10.29.3.42.14392 </td><td><p class="starttd">The IP address and port of the source's UM configuration option, <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UME/config.tag:../Config/" href="../Config/grpunicastimmediatemessagingnetwork.html#requesttcpportcontext">request_tcp_port (context)</a>.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
@@ -306,7 +309,7 @@ Store Web Monitor Source Page</h1>
 <p><br />
  </p>
 <h1><a class="anchor" id="storewebmonitorreceiverpage"></a>
-Store Web Monitor Receiver Page</h1>
+Store Web Monitor Receiver Page&nbsp;&nbsp;<small><a href="#storewebmonitorreceiverpage">&lt;-</a></small></h1>
 <p>Here is an image of the Web Monitor's <em>Receiver</em> page:</p>
 <center> <div class="image">
 <img src="webmon_receiver.png" alt="webmon_receiver.png"/>
@@ -318,7 +321,7 @@ Store Web Monitor Receiver Page</h1>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>10.29.3.42.14393 </td><td><p class="starttd">The IP address and port of the source's UM configuration option, <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grprequestnetwork.html#requesttcpportcontext">request_tcp_port (context)</a>.</p>
+<td>10.29.3.42.14393 </td><td><p class="starttd">The IP address and port of the source's UM configuration option, <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UME/config.tag:../Config/" href="../Config/grpunicastimmediatemessagingnetwork.html#requesttcpportcontext">request_tcp_port (context)</a>.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>

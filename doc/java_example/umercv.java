@@ -1,11 +1,12 @@
 import com.latencybusters.lbm.*;
 import java.text.NumberFormat;
+import java.util.*;
 
 // See https://communities.informatica.com/infakb/faq/5/Pages/80008.aspx
 import org.openmdx.uses.gnu.getopt.*;
 
 /*
- Copyright (c) 2005-2018 Informatica Corporation  Permission is granted to licensees to use
+ Copyright (c) 2005-2019 Informatica Corporation  Permission is granted to licensees to use
  or alter this software for any purpose, including commercial applications,
  according to the terms laid out in the Software License Agreement.
 
@@ -49,7 +50,8 @@ class umercv {
 "  -i offset = use offset to calculate Registration ID\n"+ 
 "              (as source registration ID + offset)\n"+ 
 "              offset of 0 forces creation of regid by store\n"+ 
-"  -N seqnum_offset = display recovery sequence number info and set low seqnum to low+seqnum_offset\n"+ 
+"  -N NUM = subscribe to channel NUM\n"+ 
+"  -Q seqnum_offset = display recovery sequence number info and set low seqnum to low+seqnum_offset\n"+ 
 "  -S = exit after source ends, print throughput summary\n"+ 
 "  -s num_secs = print statistics every num_secs along with bandwidth\n"+ 
 "  -h = help\n"+ 
@@ -88,6 +90,7 @@ class umercv {
 		int exack = 0;
 		long seqnum_offset = 0;
 		boolean sqn_info = false;
+		ArrayList<Integer> channels = new ArrayList<Integer>();
 		LBMObjectRecycler objRec = new LBMObjectRecycler();
 		
 		LBM lbm = null;
@@ -127,7 +130,7 @@ class umercv {
 		longopts[6] = new LongOpt("monitor-appid", LongOpt.REQUIRED_ARGUMENT,
 				null, OPTION_MONITOR_APPID);
 
-		Getopt gopt = new Getopt("umercv", args, "+c:eEDi:r:R:s:ShqvX:N:", longopts);
+		Getopt gopt = new Getopt("umercv", args, "+c:eEDi:r:R:s:ShqvX:N:Q:", longopts);
 		int c = -1;
 		boolean error = false;
 		while ((c = gopt.getopt()) != -1) 
@@ -205,7 +208,10 @@ class umercv {
 					case 'i':
 						regid_offset = gopt.getOptarg();
 						break;
-					case 'N':
+					 case 'N':
+						channels.add(Integer.parseInt(gopt.getOptarg()));
+						break;
+					case 'Q':
 						sqn_info = true;
 						seqnum_offset = Long.parseLong(gopt.getOptarg());
 						break;
@@ -353,6 +359,17 @@ class umercv {
 			System.exit(1);
 		}
 		rcv.setLBMReceiver(lbmrcv);
+
+		if(channels.size() > 0) {
+			for(int i=0;i<channels.size();i++) {
+				try {
+					lbmrcv.subscribeChannel(channels.get(i), rcv, null);
+				} catch (LBMException ex) {
+					System.err.println("Error subscribing to channel: " + ex.toString());
+				}
+			}
+		}
+
 
 		// This immediate-mode receiver is *only* used for topicless
 		// immediate-mode sends. Immediate sends that use a topic
@@ -835,7 +852,12 @@ class UMERcvReceiver implements LBMReceiverCallback,
 				}
 				
 				if (_verbose) {
-					System.err.print("[" + msg.topicName() + "][" + msg.source()
+					String topicstr = msg.topicName();
+					if (msg.channelInfo() != null) {
+						topicstr = topicstr + ":" + msg.channelInfo().channelNumber();
+					}
+
+					System.err.print("[" + topicstr + "][" + msg.source()
 							+ "][" + msg.sequenceNumber() + "]");
 					if ((msg.flags() & LBM.MSG_FLAG_UME_RETRANSMIT) != 0) {
 						System.err.print("-RX-");
@@ -845,19 +867,34 @@ class UMERcvReceiver implements LBMReceiverCallback,
 					}
 					System.err.print(", ");
 					System.err.println(msg.data().length + " bytes");
+					try {
+						LBMMessageProperties props = msg.properties();
+						if (props != null) {
+							Iterator<LBMMessageProperty> iter = props.iterator();
+							while (iter.hasNext()) {
+								LBMMessageProperty prop = iter.next();
+								try {
+									System.err.println("\tproperties[" + prop.key()
+										+ "] = " + prop.getString());
+								} catch (LBMEInvalException e) {
+									e.printStackTrace();
+								}
+							}
+						}
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+
 				}
-				if (_exack > 0)
-				{
-					if ((msg.sequenceNumber() % _exack) == 0)
-					{
-						if (_verbose)
+				if (_exack > 0) {
+					if ((msg.sequenceNumber() % _exack) == 0) {
+						if (_verbose) {
 							System.out.println(" Sending Explicit ACK");
-						try
-						{
+						}
+						try {
 							msg.sendExplicitAck();
 						}
-						catch (LBMException e)
-						{
+						catch (LBMException e) {
 							System.err.println("msg.sendExplicitAck(): " + e.getMessage());
 						}
 					}

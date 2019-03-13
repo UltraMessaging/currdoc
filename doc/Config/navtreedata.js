@@ -135,6 +135,7 @@ var NAVTREE =
         [ "transport_demux_tablesz (receiver)", "grpmajoroptions.html#transportdemuxtableszreceiver", null ],
         [ "transport_mapping_function (context)", "grpmajoroptions.html#transportmappingfunctioncontext", null ],
         [ "transport_session_multiple_sending_threads (context)", "grpmajoroptions.html#transportsessionmultiplesendingthreadscontext", null ],
+        [ "transport_session_single_receiving_thread (context)", "grpmajoroptions.html#transportsessionsinglereceivingthreadcontext", null ],
         [ "transport_source_side_filtering_behavior (source)", "grpmajoroptions.html#transportsourcesidefilteringbehaviorsource", null ],
         [ "transport_topic_sequence_number_info_active_threshold (source)", "grpmajoroptions.html#transporttopicsequencenumberinfoactivethresholdsource", null ],
         [ "transport_topic_sequence_number_info_interval (source)", "grpmajoroptions.html#transporttopicsequencenumberinfointervalsource", null ],
@@ -144,50 +145,51 @@ var NAVTREE =
         [ "zero_transports_function (xsp)", "grpmajoroptions.html#zerotransportsfunctionxsp", null ]
       ] ]
     ] ],
-    [ "Resolver Operation Options", "grpresolveroperation.html", [
-      [ "Minimum Values for Advertisement and Query Intervals", "grpresolveroperation.html#minimumvaluesforadvertisementandqueryintervals", null ],
-      [ "Reference", "grpresolveroperation.html#resolveroperationref", [
-        [ "disable_extended_topic_resolution_message_options (context)", "grpresolveroperation.html#disableextendedtopicresolutionmessageoptionscontext", null ],
-        [ "resolution_no_source_notification_threshold (receiver)", "grpresolveroperation.html#resolutionnosourcenotificationthresholdreceiver", null ],
-        [ "resolution_number_of_sources_query_threshold (receiver)", "grpresolveroperation.html#resolutionnumberofsourcesquerythresholdreceiver", null ],
-        [ "resolver_advertisement_maximum_initial_interval (source)", "grpresolveroperation.html#resolveradvertisementmaximuminitialintervalsource", null ],
-        [ "resolver_advertisement_minimum_initial_duration (source)", "grpresolveroperation.html#resolveradvertisementminimuminitialdurationsource", null ],
-        [ "resolver_advertisement_minimum_initial_interval (source)", "grpresolveroperation.html#resolveradvertisementminimuminitialintervalsource", null ],
-        [ "resolver_advertisement_minimum_sustain_duration (source)", "grpresolveroperation.html#resolveradvertisementminimumsustaindurationsource", null ],
-        [ "resolver_advertisement_send_immediate_response (source)", "grpresolveroperation.html#resolveradvertisementsendimmediateresponsesource", null ],
-        [ "resolver_advertisement_sustain_interval (source)", "grpresolveroperation.html#resolveradvertisementsustainintervalsource", null ],
-        [ "resolver_cache (context)", "grpresolveroperation.html#resolvercachecontext", null ],
-        [ "resolver_context_name_activity_timeout (context)", "grpresolveroperation.html#resolvercontextnameactivitytimeoutcontext", null ],
-        [ "resolver_context_name_query_duration (context)", "grpresolveroperation.html#resolvercontextnamequerydurationcontext", null ],
-        [ "resolver_context_name_query_maximum_interval (context)", "grpresolveroperation.html#resolvercontextnamequerymaximumintervalcontext", null ],
-        [ "resolver_context_name_query_minimum_interval (context)", "grpresolveroperation.html#resolvercontextnamequeryminimumintervalcontext", null ],
-        [ "resolver_datagram_max_size (context)", "grpresolveroperation.html#resolverdatagrammaxsizecontext", null ],
-        [ "resolver_domain_id_active_propagation_timeout (context)", "grpresolveroperation.html#resolverdomainidactivepropagationtimeoutcontext", null ],
-        [ "resolver_initial_advertisement_bps (context)", "grpresolveroperation.html#resolverinitialadvertisementbpscontext", null ],
-        [ "resolver_initial_advertisements_per_second (context)", "grpresolveroperation.html#resolverinitialadvertisementspersecondcontext", null ],
-        [ "resolver_initial_queries_per_second (context)", "grpresolveroperation.html#resolverinitialqueriespersecondcontext", null ],
-        [ "resolver_initial_query_bps (context)", "grpresolveroperation.html#resolverinitialquerybpscontext", null ],
-        [ "resolver_query_maximum_initial_interval (receiver)", "grpresolveroperation.html#resolverquerymaximuminitialintervalreceiver", null ],
-        [ "resolver_query_minimum_initial_duration (receiver)", "grpresolveroperation.html#resolverqueryminimuminitialdurationreceiver", null ],
-        [ "resolver_query_minimum_initial_interval (receiver)", "grpresolveroperation.html#resolverqueryminimuminitialintervalreceiver", null ],
-        [ "resolver_query_minimum_sustain_duration (receiver)", "grpresolveroperation.html#resolverqueryminimumsustaindurationreceiver", null ],
-        [ "resolver_query_sustain_interval (receiver)", "grpresolveroperation.html#resolverquerysustainintervalreceiver", null ],
-        [ "resolver_receiver_map_tablesz (context)", "grpresolveroperation.html#resolverreceivermaptableszcontext", null ],
-        [ "resolver_send_final_advertisements (source)", "grpresolveroperation.html#resolversendfinaladvertisementssource", null ],
-        [ "resolver_send_initial_advertisement (source)", "grpresolveroperation.html#resolversendinitialadvertisementsource", null ],
-        [ "resolver_source_map_tablesz (context)", "grpresolveroperation.html#resolversourcemaptableszcontext", null ],
-        [ "resolver_string_hash_function (context)", "grpresolveroperation.html#resolverstringhashfunctioncontext", null ],
-        [ "resolver_string_hash_function_ex (context)", "grpresolveroperation.html#resolverstringhashfunctionexcontext", null ],
-        [ "resolver_sustain_advertisement_bps (context)", "grpresolveroperation.html#resolversustainadvertisementbpscontext", null ],
-        [ "resolver_sustain_advertisements_per_second (context)", "grpresolveroperation.html#resolversustainadvertisementspersecondcontext", null ],
-        [ "resolver_sustain_queries_per_second (context)", "grpresolveroperation.html#resolversustainqueriespersecondcontext", null ],
-        [ "resolver_sustain_query_bps (context)", "grpresolveroperation.html#resolversustainquerybpscontext", null ],
-        [ "resolver_unicast_activity_timeout (context)", "grpresolveroperation.html#resolverunicastactivitytimeoutcontext", null ],
-        [ "resolver_unicast_change_interval (context)", "grpresolveroperation.html#resolverunicastchangeintervalcontext", null ],
-        [ "resolver_unicast_check_interval (context)", "grpresolveroperation.html#resolverunicastcheckintervalcontext", null ],
-        [ "resolver_unicast_force_alive (context)", "grpresolveroperation.html#resolverunicastforcealivecontext", null ],
-        [ "resolver_unicast_ignore_unknown_source (context)", "grpresolveroperation.html#resolverunicastignoreunknownsourcecontext", null ],
-        [ "resolver_unicast_keepalive_interval (context)", "grpresolveroperation.html#resolverunicastkeepaliveintervalcontext", null ]
+    [ "UDP-Based Resolver Operation Options", "grpudpbasedresolveroperation.html", [
+      [ "Minimum Values for Advertisement and Query Intervals", "grpudpbasedresolveroperation.html#minimumvaluesforadvertisementandqueryintervals", null ],
+      [ "Reference", "grpudpbasedresolveroperation.html#resolveroperationref", [
+        [ "disable_extended_topic_resolution_message_options (context)", "grpudpbasedresolveroperation.html#disableextendedtopicresolutionmessageoptionscontext", null ],
+        [ "resolution_no_source_notification_threshold (receiver)", "grpudpbasedresolveroperation.html#resolutionnosourcenotificationthresholdreceiver", null ],
+        [ "resolution_number_of_sources_query_threshold (receiver)", "grpudpbasedresolveroperation.html#resolutionnumberofsourcesquerythresholdreceiver", null ],
+        [ "resolver_advertisement_maximum_initial_interval (source)", "grpudpbasedresolveroperation.html#resolveradvertisementmaximuminitialintervalsource", null ],
+        [ "resolver_advertisement_minimum_initial_duration (source)", "grpudpbasedresolveroperation.html#resolveradvertisementminimuminitialdurationsource", null ],
+        [ "resolver_advertisement_minimum_initial_interval (source)", "grpudpbasedresolveroperation.html#resolveradvertisementminimuminitialintervalsource", null ],
+        [ "resolver_advertisement_minimum_sustain_duration (source)", "grpudpbasedresolveroperation.html#resolveradvertisementminimumsustaindurationsource", null ],
+        [ "resolver_advertisement_send_immediate_response (source)", "grpudpbasedresolveroperation.html#resolveradvertisementsendimmediateresponsesource", null ],
+        [ "resolver_advertisement_sustain_interval (source)", "grpudpbasedresolveroperation.html#resolveradvertisementsustainintervalsource", null ],
+        [ "resolver_cache (context)", "grpudpbasedresolveroperation.html#resolvercachecontext", null ],
+        [ "resolver_context_name_activity_timeout (context)", "grpudpbasedresolveroperation.html#resolvercontextnameactivitytimeoutcontext", null ],
+        [ "resolver_context_name_query_duration (context)", "grpudpbasedresolveroperation.html#resolvercontextnamequerydurationcontext", null ],
+        [ "resolver_context_name_query_maximum_interval (context)", "grpudpbasedresolveroperation.html#resolvercontextnamequerymaximumintervalcontext", null ],
+        [ "resolver_context_name_query_minimum_interval (context)", "grpudpbasedresolveroperation.html#resolvercontextnamequeryminimumintervalcontext", null ],
+        [ "resolver_datagram_max_size (context)", "grpudpbasedresolveroperation.html#resolverdatagrammaxsizecontext", null ],
+        [ "resolver_domain_id_active_propagation_timeout (context)", "grpudpbasedresolveroperation.html#resolverdomainidactivepropagationtimeoutcontext", null ],
+        [ "resolver_initial_advertisement_bps (context)", "grpudpbasedresolveroperation.html#resolverinitialadvertisementbpscontext", null ],
+        [ "resolver_initial_advertisements_per_second (context)", "grpudpbasedresolveroperation.html#resolverinitialadvertisementspersecondcontext", null ],
+        [ "resolver_initial_queries_per_second (context)", "grpudpbasedresolveroperation.html#resolverinitialqueriespersecondcontext", null ],
+        [ "resolver_initial_query_bps (context)", "grpudpbasedresolveroperation.html#resolverinitialquerybpscontext", null ],
+        [ "resolver_query_maximum_initial_interval (receiver)", "grpudpbasedresolveroperation.html#resolverquerymaximuminitialintervalreceiver", null ],
+        [ "resolver_query_minimum_initial_duration (receiver)", "grpudpbasedresolveroperation.html#resolverqueryminimuminitialdurationreceiver", null ],
+        [ "resolver_query_minimum_initial_interval (receiver)", "grpudpbasedresolveroperation.html#resolverqueryminimuminitialintervalreceiver", null ],
+        [ "resolver_query_minimum_sustain_duration (receiver)", "grpudpbasedresolveroperation.html#resolverqueryminimumsustaindurationreceiver", null ],
+        [ "resolver_query_sustain_interval (receiver)", "grpudpbasedresolveroperation.html#resolverquerysustainintervalreceiver", null ],
+        [ "resolver_receiver_map_tablesz (context)", "grpudpbasedresolveroperation.html#resolverreceivermaptableszcontext", null ],
+        [ "resolver_send_final_advertisements (source)", "grpudpbasedresolveroperation.html#resolversendfinaladvertisementssource", null ],
+        [ "resolver_send_initial_advertisement (source)", "grpudpbasedresolveroperation.html#resolversendinitialadvertisementsource", null ],
+        [ "resolver_service (context)", "grpudpbasedresolveroperation.html#resolverservicecontext", null ],
+        [ "resolver_source_map_tablesz (context)", "grpudpbasedresolveroperation.html#resolversourcemaptableszcontext", null ],
+        [ "resolver_string_hash_function (context)", "grpudpbasedresolveroperation.html#resolverstringhashfunctioncontext", null ],
+        [ "resolver_string_hash_function_ex (context)", "grpudpbasedresolveroperation.html#resolverstringhashfunctionexcontext", null ],
+        [ "resolver_sustain_advertisement_bps (context)", "grpudpbasedresolveroperation.html#resolversustainadvertisementbpscontext", null ],
+        [ "resolver_sustain_advertisements_per_second (context)", "grpudpbasedresolveroperation.html#resolversustainadvertisementspersecondcontext", null ],
+        [ "resolver_sustain_queries_per_second (context)", "grpudpbasedresolveroperation.html#resolversustainqueriespersecondcontext", null ],
+        [ "resolver_sustain_query_bps (context)", "grpudpbasedresolveroperation.html#resolversustainquerybpscontext", null ],
+        [ "resolver_unicast_activity_timeout (context)", "grpudpbasedresolveroperation.html#resolverunicastactivitytimeoutcontext", null ],
+        [ "resolver_unicast_change_interval (context)", "grpudpbasedresolveroperation.html#resolverunicastchangeintervalcontext", null ],
+        [ "resolver_unicast_check_interval (context)", "grpudpbasedresolveroperation.html#resolverunicastcheckintervalcontext", null ],
+        [ "resolver_unicast_force_alive (context)", "grpudpbasedresolveroperation.html#resolverunicastforcealivecontext", null ],
+        [ "resolver_unicast_ignore_unknown_source (context)", "grpudpbasedresolveroperation.html#resolverunicastignoreunknownsourcecontext", null ],
+        [ "resolver_unicast_keepalive_interval (context)", "grpudpbasedresolveroperation.html#resolverunicastkeepaliveintervalcontext", null ]
       ] ]
     ] ],
     [ "Multicast Resolver Network Options", "grpmulticastresolvernetwork.html", [
@@ -213,6 +215,7 @@ var NAVTREE =
       ] ]
     ] ],
     [ "Transport TCP Network Options", "grptransporttcpnetwork.html", [
+      [ "TCP Transport Session Management", "grptransporttcpnetwork.html#tcptransportsessionmanagement", null ],
       [ "Reference", "grptransporttcpnetwork.html#transporttcpnetworkref", [
         [ "transport_tcp_interface (receiver)", "grptransporttcpnetwork.html#transporttcpinterfacereceiver", null ],
         [ "transport_tcp_interface (source)", "grptransporttcpnetwork.html#transporttcpinterfacesource", null ],
@@ -230,6 +233,7 @@ var NAVTREE =
         [ "transport_tcp_activity_timeout (source)", "grptransporttcpoperation.html#transporttcpactivitytimeoutsource", null ],
         [ "transport_tcp_coalesce_threshold (source)", "grptransporttcpoperation.html#transporttcpcoalescethresholdsource", null ],
         [ "transport_tcp_datagram_max_size (context)", "grptransporttcpoperation.html#transporttcpdatagrammaxsizecontext", null ],
+        [ "transport_tcp_dro_loss_recovery_timeout (receiver)", "grptransporttcpoperation.html#transporttcpdrolossrecoverytimeoutreceiver", null ],
         [ "transport_tcp_exclusiveaddr (source)", "grptransporttcpoperation.html#transporttcpexclusiveaddrsource", null ],
         [ "transport_tcp_listen_backlog (source)", "grptransporttcpoperation.html#transporttcplistenbacklogsource", null ],
         [ "transport_tcp_multiple_receiver_behavior (source)", "grptransporttcpoperation.html#transporttcpmultiplereceiverbehaviorsource", null ],
@@ -242,6 +246,7 @@ var NAVTREE =
       ] ]
     ] ],
     [ "Transport LBT-RM Network Options", "grptransportlbtrmnetwork.html", [
+      [ "LBT-RM Transport Session Management", "grptransportlbtrmnetwork.html#lbtrmtransportsessionmanagement", null ],
       [ "Reference", "grptransportlbtrmnetwork.html#transportlbtrmnetworkref", [
         [ "transport_lbtrm_destination_port (source)", "grptransportlbtrmnetwork.html#transportlbtrmdestinationportsource", null ],
         [ "transport_lbtrm_multicast_address (source)", "grptransportlbtrmnetwork.html#transportlbtrmmulticastaddresssource", null ],
@@ -277,6 +282,7 @@ var NAVTREE =
         [ "transport_lbtrm_preactivity_timeout (receiver)", "grptransportlbtrmoperation.html#transportlbtrmpreactivitytimeoutreceiver", null ],
         [ "transport_lbtrm_rate_interval (context)", "grptransportlbtrmoperation.html#transportlbtrmrateintervalcontext", null ],
         [ "transport_lbtrm_receiver_timestamp (context)", "grptransportlbtrmoperation.html#transportlbtrmreceivertimestampcontext", null ],
+        [ "transport_lbtrm_recycle_receive_buffers (context)", "grptransportlbtrmoperation.html#transportlbtrmrecyclereceivebufferscontext", null ],
         [ "transport_lbtrm_retransmit_rate_limit (context)", "grptransportlbtrmoperation.html#transportlbtrmretransmitratelimitcontext", null ],
         [ "transport_lbtrm_sm_maximum_interval (source)", "grptransportlbtrmoperation.html#transportlbtrmsmmaximumintervalsource", null ],
         [ "transport_lbtrm_sm_minimum_interval (source)", "grptransportlbtrmoperation.html#transportlbtrmsmminimumintervalsource", null ],
@@ -285,6 +291,7 @@ var NAVTREE =
       ] ]
     ] ],
     [ "Transport LBT-RU Network Options", "grptransportlbtrunetwork.html", [
+      [ "LBT-RU Transport Session Management", "grptransportlbtrunetwork.html#lbtrutransportsessionmanagement", null ],
       [ "Reference", "grptransportlbtrunetwork.html#transportlbtrunetworkref", [
         [ "transport_lbtru_interface (receiver)", "grptransportlbtrunetwork.html#transportlbtruinterfacereceiver", null ],
         [ "transport_lbtru_interface (source)", "grptransportlbtrunetwork.html#transportlbtruinterfacesource", null ],
@@ -321,6 +328,7 @@ var NAVTREE =
         [ "transport_lbtru_datagram_max_size (context)", "grptransportlbtruoperation.html#transportlbtrudatagrammaxsizecontext", null ],
         [ "transport_lbtru_maximum_connect_attempts (receiver)", "grptransportlbtruoperation.html#transportlbtrumaximumconnectattemptsreceiver", null ],
         [ "transport_lbtru_rate_interval (context)", "grptransportlbtruoperation.html#transportlbtrurateintervalcontext", null ],
+        [ "transport_lbtru_recycle_receive_buffers (context)", "grptransportlbtruoperation.html#transportlbtrurecyclereceivebufferscontext", null ],
         [ "transport_lbtru_retransmit_rate_limit (context)", "grptransportlbtruoperation.html#transportlbtruretransmitratelimitcontext", null ],
         [ "transport_lbtru_sm_maximum_interval (source)", "grptransportlbtruoperation.html#transportlbtrusmmaximumintervalsource", null ],
         [ "transport_lbtru_sm_minimum_interval (source)", "grptransportlbtruoperation.html#transportlbtrusmminimumintervalsource", null ],
@@ -328,10 +336,12 @@ var NAVTREE =
       ] ]
     ] ],
     [ "Transport LBT-IPC Operation Options", "grptransportlbtipcoperation.html", [
+      [ "LBT-IPC Transport Session Management", "grptransportlbtipcoperation.html#lbtipctransportsessionmanagement", null ],
       [ "Reference", "grptransportlbtipcoperation.html#transportlbtipcoperationref", [
         [ "transport_lbtipc_activity_timeout (receiver)", "grptransportlbtipcoperation.html#transportlbtipcactivitytimeoutreceiver", null ],
         [ "transport_lbtipc_behavior (source)", "grptransportlbtipcoperation.html#transportlbtipcbehaviorsource", null ],
         [ "transport_lbtipc_datagram_max_size (context)", "grptransportlbtipcoperation.html#transportlbtipcdatagrammaxsizecontext", null ],
+        [ "transport_lbtipc_dro_loss_recovery_timeout (receiver)", "grptransportlbtipcoperation.html#transportlbtipcdrolossrecoverytimeoutreceiver", null ],
         [ "transport_lbtipc_id (source)", "grptransportlbtipcoperation.html#transportlbtipcidsource", null ],
         [ "transport_lbtipc_id_high (context)", "grptransportlbtipcoperation.html#transportlbtipcidhighcontext", null ],
         [ "transport_lbtipc_id_low (context)", "grptransportlbtipcoperation.html#transportlbtipcidlowcontext", null ],
@@ -339,11 +349,13 @@ var NAVTREE =
         [ "transport_lbtipc_pend_behavior_linger_loop_count (context)", "grptransportlbtipcoperation.html#transportlbtipcpendbehaviorlingerloopcountcontext", null ],
         [ "transport_lbtipc_receiver_operational_mode (context)", "grptransportlbtipcoperation.html#transportlbtipcreceiveroperationalmodecontext", null ],
         [ "transport_lbtipc_receiver_thread_behavior (context)", "grptransportlbtipcoperation.html#transportlbtipcreceiverthreadbehaviorcontext", null ],
+        [ "transport_lbtipc_recycle_receive_buffers (context)", "grptransportlbtipcoperation.html#transportlbtipcrecyclereceivebufferscontext", null ],
         [ "transport_lbtipc_sm_interval (source)", "grptransportlbtipcoperation.html#transportlbtipcsmintervalsource", null ],
         [ "transport_lbtipc_transmission_window_size (source)", "grptransportlbtipcoperation.html#transportlbtipctransmissionwindowsizesource", null ]
       ] ]
     ] ],
     [ "Transport LBT-SMX Operation Options", "grptransportlbtsmxoperation.html", [
+      [ "LBT-SMX Transport Session Management", "grptransportlbtsmxoperation.html#lbtsmxtransportsessionmanagement", null ],
       [ "Reference", "grptransportlbtsmxoperation.html#transportlbtsmxoperationref", [
         [ "transport_lbtsmx_activity_timeout (receiver)", "grptransportlbtsmxoperation.html#transportlbtsmxactivitytimeoutreceiver", null ],
         [ "transport_lbtsmx_datagram_max_size (source)", "grptransportlbtsmxoperation.html#transportlbtsmxdatagrammaxsizesource", null ],
@@ -474,29 +486,25 @@ var NAVTREE =
         [ "use_otr (receiver)", "grpofftransportrecovery.html#useotrreceiver", null ]
       ] ]
     ] ],
-    [ "Request Network Options", "grprequestnetwork.html", [
-      [ "Reference", "grprequestnetwork.html#requestnetworkref", [
-        [ "request_tcp_bind_request_port (context)", "grprequestnetwork.html#requesttcpbindrequestportcontext", null ],
-        [ "request_tcp_interface (context)", "grprequestnetwork.html#requesttcpinterfacecontext", null ],
-        [ "request_tcp_port (context)", "grprequestnetwork.html#requesttcpportcontext", null ],
-        [ "request_tcp_port_high (context)", "grprequestnetwork.html#requesttcpporthighcontext", null ],
-        [ "request_tcp_port_low (context)", "grprequestnetwork.html#requesttcpportlowcontext", null ]
+    [ "Unicast Immediate Messaging Network Options", "grpunicastimmediatemessagingnetwork.html", [
+      [ "Reference", "grpunicastimmediatemessagingnetwork.html#requestnetworkref", [
+        [ "request_tcp_bind_request_port (context)", "grpunicastimmediatemessagingnetwork.html#requesttcpbindrequestportcontext", null ],
+        [ "request_tcp_interface (context)", "grpunicastimmediatemessagingnetwork.html#requesttcpinterfacecontext", null ],
+        [ "request_tcp_port (context)", "grpunicastimmediatemessagingnetwork.html#requesttcpportcontext", null ],
+        [ "request_tcp_port_high (context)", "grpunicastimmediatemessagingnetwork.html#requesttcpporthighcontext", null ],
+        [ "request_tcp_port_low (context)", "grpunicastimmediatemessagingnetwork.html#requesttcpportlowcontext", null ]
       ] ]
     ] ],
-    [ "Request Operation Options", "grprequestoperation.html", [
-      [ "Reference", "grprequestoperation.html#requestoperationref", [
-        [ "request_tcp_exclusiveaddr (context)", "grprequestoperation.html#requesttcpexclusiveaddrcontext", null ],
-        [ "request_tcp_listen_backlog (context)", "grprequestoperation.html#requesttcplistenbacklogcontext", null ],
-        [ "request_tcp_reuseaddr (context)", "grprequestoperation.html#requesttcpreuseaddrcontext", null ]
-      ] ]
-    ] ],
-    [ "Response Operation Options", "grpresponseoperation.html", [
-      [ "Reference", "grpresponseoperation.html#responseoperationref", [
-        [ "response_session_maximum_buffer (context)", "grpresponseoperation.html#responsesessionmaximumbuffercontext", null ],
-        [ "response_session_sender_socket_buffer (context)", "grpresponseoperation.html#responsesessionsendersocketbuffercontext", null ],
-        [ "response_tcp_deletion_timeout (context)", "grpresponseoperation.html#responsetcpdeletiontimeoutcontext", null ],
-        [ "response_tcp_interface (context)", "grpresponseoperation.html#responsetcpinterfacecontext", null ],
-        [ "response_tcp_nodelay (context)", "grpresponseoperation.html#responsetcpnodelaycontext", null ]
+    [ "Unicast Immediate Messaging Operation Options", "grpunicastimmediatemessagingoperation.html", [
+      [ "Reference", "grpunicastimmediatemessagingoperation.html#requestoperationref", [
+        [ "request_tcp_exclusiveaddr (context)", "grpunicastimmediatemessagingoperation.html#requesttcpexclusiveaddrcontext", null ],
+        [ "request_tcp_listen_backlog (context)", "grpunicastimmediatemessagingoperation.html#requesttcplistenbacklogcontext", null ],
+        [ "request_tcp_reuseaddr (context)", "grpunicastimmediatemessagingoperation.html#requesttcpreuseaddrcontext", null ],
+        [ "response_session_maximum_buffer (context)", "grpunicastimmediatemessagingoperation.html#responsesessionmaximumbuffercontext", null ],
+        [ "response_session_sender_socket_buffer (context)", "grpunicastimmediatemessagingoperation.html#responsesessionsendersocketbuffercontext", null ],
+        [ "response_tcp_deletion_timeout (context)", "grpunicastimmediatemessagingoperation.html#responsetcpdeletiontimeoutcontext", null ],
+        [ "response_tcp_interface (context)", "grpunicastimmediatemessagingoperation.html#responsetcpinterfacecontext", null ],
+        [ "response_tcp_nodelay (context)", "grpunicastimmediatemessagingoperation.html#responsetcpnodelaycontext", null ]
       ] ]
     ] ],
     [ "Implicit Batching Options", "grpimplicitbatching.html", [
@@ -755,8 +763,8 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "accesstocurrentoperatingoptions.html",
-"grpmulticastresolvernetwork.html#resolvermulticastinterfacecontext",
-"grpultramessagingpersistence.html#umereceiverpacedpersistencereceiver"
+"grpmulticastresolvernetwork.html#resolvermulticastincomingportcontext",
+"grpultramessagingpersistence.html#umerepositoryackonreceptionsource"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

@@ -58,15 +58,15 @@ $(document).ready(function(){initNavTree('umversion6_10.html','');});
 <p><br />
  </p>
 <h1><a class="anchor" id="enhancementsfor6_10"></a>
-Enhancements for 6.10</h1>
+Enhancements for 6.10&nbsp;&nbsp;<small><a href="#enhancementsfor6_10">&lt;-</a></small></h1>
 <p><br />
  </p>
 <h2><a class="anchor" id="streamingenhancementsfor6_10"></a>
-Streaming Enhancements for 6.10</h2>
+Streaming Enhancements for 6.10&nbsp;&nbsp;<small><a href="#streamingenhancementsfor6_10">&lt;-</a></small></h2>
 <p>The following new features and enhancements apply to UMS, UMP, and UMQ products.</p>
 <ul>
 <li>
-<p class="startli"><b>IPC performance improvement.</b> Changed the receiver-side dequeuing algorithm to avoid semaphore operations when possible. Also see configuration option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grptransportlbtipcoperation.html#transportlbtipcpendbehaviorlingerloopcountcontext">transport_lbtipc_pend_behavior_linger_loop_count (context)</a>.</p>
+<p class="startli"><b>IPC performance improvement.</b> Changed the receiver-side dequeuing algorithm to avoid semaphore operations when possible. Also see configuration option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/ChangeLog/config.tag:../Config/" href="../Config/grptransportlbtipcoperation.html#transportlbtipcpendbehaviorlingerloopcountcontext">transport_lbtipc_pend_behavior_linger_loop_count (context)</a>.</p>
 <p class="endli"></p>
 </li>
 <li>
@@ -82,7 +82,7 @@ Streaming Enhancements for 6.10</h2>
 <p class="endli"></p>
 </li>
 <li>
-<p class="startli"><b>Smart Sources.</b> A new, somewhat restrictive API for sending messages which eliminates looping, locking, and dynamic memory allocation/freeing, resulting in a significant reduction in send time and elimination of variance in execution time (jitter). Available for C and Java. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/ChangeLog/design.tag:../Design/" href="../Design/umfeatures.html#smartsources">Smart Sources</a>.</p>
+<p class="startli"><b>Smart Sources.</b> A new, somewhat restrictive API for sending messages which eliminates looping, locking, and dynamic memory allocation/freeing, resulting in a significant reduction in send time and elimination of variance in execution time (jitter). Available for C and Java. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/ChangeLog/design.tag:../Design/" href="../Design/advancedoptimizations.html#smartsources">Smart Sources</a>.</p>
 <p class="endli"></p>
 </li>
 <li>
@@ -90,12 +90,11 @@ Streaming Enhancements for 6.10</h2>
 <p class="endli"></p>
 </li>
 <li>
-<p class="startli"><b>Send message direct to a source.</b> Unicast Immediate Messages have always allowed the use of IP address and request port of the destination application. As of version 6.10, a "source string" can also be used as the destination. This allows a receiving application to send a message directly to a newly subscribed source application. See the Concepts Guide section "Sending to
-Sources".</p>
+<p class="startli"><b>Send message direct to a source.</b> Unicast Immediate Messages (UIM) have always allowed the use of IP address and UIM port (also known as "request port") of the destination application. As of version 6.10, a "source string" can also be used as the destination. This allows a receiving application to send a message directly to a newly subscribed source application. See the Concepts Guide section <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/ChangeLog/design.tag:../Design/" href="../Design/umobjects.html#sendingtosources">Sending to Sources</a>.</p>
 <p class="endli"></p>
 </li>
 <li>
-<p class="startli"><b>Default interface configuration option.</b> This new configuration option simplifies the previously error-prone process of configuring interfaces for different features. If all or most features should use the same interface, it is no longer necessary to configure each interface option. Instead, specify the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grpmajoroptions.html#defaultinterfacecontext">default_interface (context)</a> once and then optionally specify any exceptions. (See below for affected configuration options.)</p>
+<p class="startli"><b>Default interface configuration option.</b> This new configuration option simplifies the previously error-prone process of configuring interfaces for different features. If all or most features should use the same interface, it is no longer necessary to configure each interface option. Instead, specify the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/ChangeLog/config.tag:../Config/" href="../Config/grpmajoroptions.html#defaultinterfacecontext">default_interface (context)</a> once and then optionally specify any exceptions. (See below for affected configuration options.)</p>
 <p class="endli"></p>
 </li>
 <li>
@@ -147,90 +146,90 @@ Sources".</p>
 <tr>
 <th>Option </th><th>Old default </th><th>New default </th></tr>
 <tr>
-<td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grpmajoroptions.html#multiplereceivemaximumdatagramscontext">multiple_receive_maximum_datagrams (context)</a> </td><td>1 </td><td><p class="starttd">0</p>
+<td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/ChangeLog/config.tag:../Config/" href="../Config/grpmajoroptions.html#multiplereceivemaximumdatagramscontext">multiple_receive_maximum_datagrams (context)</a> </td><td>1 </td><td><p class="starttd">0</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grpmulticastresolvernetwork.html#resolvermulticastinterfacecontext">resolver_multicast_interface (context)</a> </td><td>INADDR_ANY </td><td><p class="starttd">Value of <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grpmajoroptions.html#defaultinterfacecontext">default_interface (context)</a></p>
+<td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/ChangeLog/config.tag:../Config/" href="../Config/grpmulticastresolvernetwork.html#resolvermulticastinterfacecontext">resolver_multicast_interface (context)</a> </td><td>INADDR_ANY </td><td><p class="starttd">Value of <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/ChangeLog/config.tag:../Config/" href="../Config/grpmajoroptions.html#defaultinterfacecontext">default_interface (context)</a></p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grpunicastresolvernetwork.html#resolverunicastinterfacecontext">resolver_unicast_interface (context)</a> </td><td>INADDR_ANY </td><td><p class="starttd">Value of <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grpmajoroptions.html#defaultinterfacecontext">default_interface (context)</a></p>
+<td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/ChangeLog/config.tag:../Config/" href="../Config/grpunicastresolvernetwork.html#resolverunicastinterfacecontext">resolver_unicast_interface (context)</a> </td><td>INADDR_ANY </td><td><p class="starttd">Value of <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/ChangeLog/config.tag:../Config/" href="../Config/grpmajoroptions.html#defaultinterfacecontext">default_interface (context)</a></p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grprequestnetwork.html#requesttcpinterfacecontext">request_tcp_interface (context)</a> </td><td>INADDR_ANY </td><td><p class="starttd">Value of <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grpmajoroptions.html#defaultinterfacecontext">default_interface (context)</a></p>
+<td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/ChangeLog/config.tag:../Config/" href="../Config/grpunicastimmediatemessagingnetwork.html#requesttcpinterfacecontext">request_tcp_interface (context)</a> </td><td>INADDR_ANY </td><td><p class="starttd">Value of <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/ChangeLog/config.tag:../Config/" href="../Config/grpmajoroptions.html#defaultinterfacecontext">default_interface (context)</a></p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grpresponseoperation.html#responsetcpinterfacecontext">response_tcp_interface (context)</a> </td><td>INADDR_ANY </td><td><p class="starttd">Value of <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grpmajoroptions.html#defaultinterfacecontext">default_interface (context)</a></p>
+<td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/ChangeLog/config.tag:../Config/" href="../Config/grpunicastimmediatemessagingoperation.html#responsetcpinterfacecontext">response_tcp_interface (context)</a> </td><td>INADDR_ANY </td><td><p class="starttd">Value of <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/ChangeLog/config.tag:../Config/" href="../Config/grpmajoroptions.html#defaultinterfacecontext">default_interface (context)</a></p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grptransporttcpnetwork.html#transporttcpinterfacesource">transport_tcp_interface (source)</a> </td><td>INADDR_ANY </td><td><p class="starttd">Value of <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grpmajoroptions.html#defaultinterfacecontext">default_interface (context)</a></p>
+<td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/ChangeLog/config.tag:../Config/" href="../Config/grptransporttcpnetwork.html#transporttcpinterfacesource">transport_tcp_interface (source)</a> </td><td>INADDR_ANY </td><td><p class="starttd">Value of <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/ChangeLog/config.tag:../Config/" href="../Config/grpmajoroptions.html#defaultinterfacecontext">default_interface (context)</a></p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grptransporttcpnetwork.html#transporttcpinterfacereceiver">transport_tcp_interface (receiver)</a> </td><td>INADDR_ANY </td><td><p class="starttd">Value of <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grpmajoroptions.html#defaultinterfacecontext">default_interface (context)</a></p>
+<td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/ChangeLog/config.tag:../Config/" href="../Config/grptransporttcpnetwork.html#transporttcpinterfacereceiver">transport_tcp_interface (receiver)</a> </td><td>INADDR_ANY </td><td><p class="starttd">Value of <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/ChangeLog/config.tag:../Config/" href="../Config/grpmajoroptions.html#defaultinterfacecontext">default_interface (context)</a></p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grptransportlbtrunetwork.html#transportlbtruinterfacesource">transport_lbtru_interface (source)</a> </td><td>INADDR_ANY </td><td><p class="starttd">Value of <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grpmajoroptions.html#defaultinterfacecontext">default_interface (context)</a></p>
+<td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/ChangeLog/config.tag:../Config/" href="../Config/grptransportlbtrunetwork.html#transportlbtruinterfacesource">transport_lbtru_interface (source)</a> </td><td>INADDR_ANY </td><td><p class="starttd">Value of <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/ChangeLog/config.tag:../Config/" href="../Config/grpmajoroptions.html#defaultinterfacecontext">default_interface (context)</a></p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grptransportlbtrunetwork.html#transportlbtruinterfacereceiver">transport_lbtru_interface (receiver)</a> </td><td>INADDR_ANY </td><td><p class="starttd">Value of <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grpmajoroptions.html#defaultinterfacecontext">default_interface (context)</a></p>
+<td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/ChangeLog/config.tag:../Config/" href="../Config/grptransportlbtrunetwork.html#transportlbtruinterfacereceiver">transport_lbtru_interface (receiver)</a> </td><td>INADDR_ANY </td><td><p class="starttd">Value of <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/ChangeLog/config.tag:../Config/" href="../Config/grpmajoroptions.html#defaultinterfacecontext">default_interface (context)</a></p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grpmulticastresolvernetwork.html#resolvermulticastreceiversocketbuffercontext">resolver_multicast_receiver_socket_buffer (context)</a> </td><td>0 (OS default) </td><td><p class="starttd">8388608 (8MB) Increase in socket buffers reduces loss and latency outliers for UDP-based transports with ordered delivery.</p>
+<td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/ChangeLog/config.tag:../Config/" href="../Config/grpmulticastresolvernetwork.html#resolvermulticastreceiversocketbuffercontext">resolver_multicast_receiver_socket_buffer (context)</a> </td><td>0 (OS default) </td><td><p class="starttd">8388608 (8MB) Increase in socket buffers reduces loss and latency outliers for UDP-based transports with ordered delivery.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grpunicastresolvernetwork.html#resolverunicastreceiversocketbuffercontext">resolver_unicast_receiver_socket_buffer (context)</a> </td><td>0 (OS default) </td><td><p class="starttd">8388608 (8MB)</p>
+<td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/ChangeLog/config.tag:../Config/" href="../Config/grpunicastresolvernetwork.html#resolverunicastreceiversocketbuffercontext">resolver_unicast_receiver_socket_buffer (context)</a> </td><td>0 (OS default) </td><td><p class="starttd">8388608 (8MB)</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grptransportlbtrmreliability.html#transportlbtrmreceiversocketbuffercontext">transport_lbtrm_receiver_socket_buffer (context)</a> </td><td>524288 (512KB) </td><td><p class="starttd">8388608 (8MB)</p>
+<td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/ChangeLog/config.tag:../Config/" href="../Config/grptransportlbtrmreliability.html#transportlbtrmreceiversocketbuffercontext">transport_lbtrm_receiver_socket_buffer (context)</a> </td><td>524288 (512KB) </td><td><p class="starttd">8388608 (8MB)</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grptransportlbtrmreliability.html#transportlbtrmsourcesocketbuffercontext">transport_lbtrm_source_socket_buffer (context)</a> </td><td>0 (OS default) </td><td><p class="starttd">1048576 (1MB)</p>
+<td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/ChangeLog/config.tag:../Config/" href="../Config/grptransportlbtrmreliability.html#transportlbtrmsourcesocketbuffercontext">transport_lbtrm_source_socket_buffer (context)</a> </td><td>0 (OS default) </td><td><p class="starttd">1048576 (1MB)</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grptransportlbtrureliability.html#transportlbtrureceiversocketbuffercontext">transport_lbtru_receiver_socket_buffer (context)</a> </td><td>524288 (512KB) </td><td><p class="starttd">8388608 (8MB)</p>
+<td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/ChangeLog/config.tag:../Config/" href="../Config/grptransportlbtrureliability.html#transportlbtrureceiversocketbuffercontext">transport_lbtru_receiver_socket_buffer (context)</a> </td><td>524288 (512KB) </td><td><p class="starttd">8388608 (8MB)</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grptransportlbtrureliability.html#transportlbtrusourcesocketbuffercontext">transport_lbtru_source_socket_buffer (context)</a> </td><td>0 (OS default) </td><td><p class="starttd">1048576 (1MB)</p>
+<td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/ChangeLog/config.tag:../Config/" href="../Config/grptransportlbtrureliability.html#transportlbtrusourcesocketbuffercontext">transport_lbtru_source_socket_buffer (context)</a> </td><td>0 (OS default) </td><td><p class="starttd">1048576 (1MB)</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grptransporttcpoperation.html#transporttcpsendersocketbuffersource">transport_tcp_sender_socket_buffer (source)</a> </td><td>Windows 128000 (125KB) </td><td><p class="starttd">0 (OS default) The value zero suppresses the setting of the socket buffer, which allows the OS to make use of auto-tuning.</p>
+<td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/ChangeLog/config.tag:../Config/" href="../Config/grptransporttcpoperation.html#transporttcpsendersocketbuffersource">transport_tcp_sender_socket_buffer (source)</a> </td><td>Windows 128000 (125KB) </td><td><p class="starttd">0 (OS default) The value zero suppresses the setting of the socket buffer, which allows the OS to make use of auto-tuning.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grpresponseoperation.html#responsesessionsendersocketbuffercontext">response_session_sender_socket_buffer (context)</a> </td><td>Windows 128000 (125KB) </td><td><p class="starttd">0 (OS default) The value zero suppresses the setting of the socket buffer, which allows the OS to make use of auto-tuning.</p>
+<td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/ChangeLog/config.tag:../Config/" href="../Config/grpunicastimmediatemessagingoperation.html#responsesessionsendersocketbuffercontext">response_session_sender_socket_buffer (context)</a> </td><td>Windows 128000 (125KB) </td><td><p class="starttd">0 (OS default) The value zero suppresses the setting of the socket buffer, which allows the OS to make use of auto-tuning.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grptransportlbtrmoperation.html#transportlbtrmrateintervalcontext">transport_lbtrm_rate_interval (context)</a> </td><td>100 ms (.1 sec) </td><td><p class="starttd">10 ms (.01 sec) Reduction of rate interval can improve network stability and prevent loss, but can also increase latency outliers.</p>
+<td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/ChangeLog/config.tag:../Config/" href="../Config/grptransportlbtrmoperation.html#transportlbtrmrateintervalcontext">transport_lbtrm_rate_interval (context)</a> </td><td>100 ms (.1 sec) </td><td><p class="starttd">10 ms (.01 sec) Reduction of rate interval can improve network stability and prevent loss, but can also increase latency outliers.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grpofftransportrecovery.html#otrrequestinitialdelayreceiver">otr_request_initial_delay (receiver)</a> </td><td>10 sec </td><td><p class="starttd">2 sec</p>
+<td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/ChangeLog/config.tag:../Config/" href="../Config/grpofftransportrecovery.html#otrrequestinitialdelayreceiver">otr_request_initial_delay (receiver)</a> </td><td>10 sec </td><td><p class="starttd">2 sec</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grpofftransportrecovery.html#otrrequestmessagetimeoutreceiver">otr_request_message_timeout (receiver)</a> </td><td>20 sec </td><td>60 sec </td></tr>
+<td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/ChangeLog/config.tag:../Config/" href="../Config/grpofftransportrecovery.html#otrrequestmessagetimeoutreceiver">otr_request_message_timeout (receiver)</a> </td><td>20 sec </td><td>60 sec </td></tr>
 </table>
 </li>
 </ul>
 <p><br />
  </p>
 <h2><a class="anchor" id="persistenceenhancementsfor6_10"></a>
-Persistence Enhancements for 6.10</h2>
+Persistence Enhancements for 6.10&nbsp;&nbsp;<small><a href="#persistenceenhancementsfor6_10">&lt;-</a></small></h2>
 <p>The following new features and enhancements apply to UMP and UMQ products.</p>
 <ul>
 <li>
@@ -239,15 +238,15 @@ Persistence Enhancements for 6.10</h2>
 <tr>
 <th>Option </th><th>Old default </th><th>New default </th></tr>
 <tr>
-<td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeuseackbatchingreceiver">ume_use_ack_batching (receiver)</a> </td><td>0 (no) </td><td><p class="starttd">1 (yes) Batching of receiver consumption acknowledgements greatly increases system throughput, although it also increases the likelihood of duplicate messages during a recovery operation.</p>
+<td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/ChangeLog/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeuseackbatchingreceiver">ume_use_ack_batching (receiver)</a> </td><td>0 (no) </td><td><p class="starttd">1 (yes) Batching of receiver consumption acknowledgements greatly increases system throughput, although it also increases the likelihood of duplicate messages during a recovery operation.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeconfirmeddeliverynotificationsource">ume_confirmed_delivery_notification (source)</a> </td><td>1 (yes) </td><td><p class="starttd">0 (no) Increases system throughput.</p>
+<td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/ChangeLog/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeconfirmeddeliverynotificationsource">ume_confirmed_delivery_notification (source)</a> </td><td>1 (yes) </td><td><p class="starttd">0 (no) Increases system throughput.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umemessagestabilitytimeoutsource">ume_message_stability_timeout (source)</a> </td><td>20,000 (20 sec) </td><td>5,000 (5 sec) Should be less than NAK generation interval (for UDP-based protocols). </td></tr>
+<td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/ChangeLog/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umemessagestabilitytimeoutsource">ume_message_stability_timeout (source)</a> </td><td>20,000 (20 sec) </td><td>5,000 (5 sec) Should be less than NAK generation interval (for UDP-based protocols). </td></tr>
 </table>
 <p class="endli"></p>
 </li>
@@ -257,14 +256,14 @@ Persistence Enhancements for 6.10</h2>
 <tr>
 <th>Option </th><th>Old default </th><th>New default </th></tr>
 <tr>
-<td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/ChangeLog/ume.tag:../UME/" href="../UME/configurationreferenceforumestored.html#umecfgrepositorysizethreshold">repository-size-threshold</a> </td><td>25,165,824 (24MB) </td><td>1,024 (1K) </td></tr>
+<td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/ChangeLog/ume.tag:../UME/" href="../UME/configurationreferenceforumestored.html#umecfgrepositorysizethreshold">repository-size-threshold</a> </td><td>25,165,824 (24MB) </td><td>1,024 (1K) </td></tr>
 </table>
 </li>
 </ul>
 <p><br />
  </p>
 <h2><a class="anchor" id="queuingenhancementsfor6_10"></a>
-Queuing Enhancements for 6.10</h2>
+Queuing Enhancements for 6.10&nbsp;&nbsp;<small><a href="#queuingenhancementsfor6_10">&lt;-</a></small></h2>
 <p>The following new features and enhancements apply to the UMQ product.</p>
 <ul>
 <li>
@@ -273,67 +272,70 @@ None. </li>
 <p><br />
  </p>
 <h2><a class="anchor" id="dynamicrouterenhancementsfor6_10"></a>
-Dynamic Router Enhancements for 6.10</h2>
+Dynamic Router Enhancements for 6.10&nbsp;&nbsp;<small><a href="#dynamicrouterenhancementsfor6_10">&lt;-</a></small></h2>
 <p>The following new features and enhancements apply to the Dynamic Routing Option (DRO).</p>
 <ul>
 <li>
-Smart-Batch. New method of batching within the UM router which significantly increases throughput without increasing latency (as compared to flushing every message). See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/ChangeLog/gateway.tag:../Gateway/" href="../Gateway/xmlconfigurationreference.html#drocfg_smart-batch">&lt;smart-batch&gt;</a>. </li>
+Smart-Batch. New method of batching within the UM router which significantly increases throughput without increasing latency (as compared to flushing every message). See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/ChangeLog/gateway.tag:../Gateway/" href="../Gateway/xmlconfigurationreference.html#drocfg_smart-batch">&lt;smart-batch&gt;</a>. </li>
 </ul>
 <p><br />
  </p>
 <h1><a class="anchor" id="fixedlimitationsfor6_10"></a>
-Fixed Limitations for 6.10</h1>
+Fixed Limitations for 6.10&nbsp;&nbsp;<small><a href="#fixedlimitationsfor6_10">&lt;-</a></small></h1>
 <p><br />
  </p>
 <h2><a class="anchor" id="streamingfixedlimitationsfor6_10"></a>
-Streaming Fixed Limitations for 6.10</h2>
+Streaming Fixed Limitations for 6.10&nbsp;&nbsp;<small><a href="#streamingfixedlimitationsfor6_10">&lt;-</a></small></h2>
 <p>The following bug fixes apply to UMS, UMP, and UMQ products.</p>
 <table class="doxtable">
 <tr>
 <th>Change Request </th><th>Description </th></tr>
 <tr>
-<td>10024 </td><td><p class="starttd">FIXED: <em>The API function <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/ChangeLog/api.tag:../API/" href="../API/lbm_8h.html#a30bf33dce2021f6ea8915b45f511af56">lbm_transport_source_parse()</a> incorrectly parsed source strings under a wide variety of circumstances.</em></p>
+<td>10024 </td><td><p class="starttd"><b>FIXED:</b> <em>The API function <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/ChangeLog/api.tag:../API/" href="../API/lbm_8h.html#a30bf33dce2021f6ea8915b45f511af56">lbm_transport_source_parse()</a> incorrectly parsed source strings under a wide variety of circumstances.</em></p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>9824 </td><td><p class="starttd">FIXED: <em>When a .NET program made use of ResolverEventCallback, it could result in a crash with the message, '<code>A callback was made on a garbage collected delegate...</code>'.</em></p>
+<td>9824 </td><td><p class="starttd"><b>FIXED:</b> <em>When a .NET program made use of ResolverEventCallback, it could result in a crash with the message, '<code>A callback was made on a garbage collected delegate...</code>'.</em></p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>9710, 9788 </td><td><p class="starttd">FIXED: <em>The API functions <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/ChangeLog/api.tag:../API/" href="../API/lbm_8h.html#a7a8f94b03c37c4481044d3c6b250bdb3">lbm_rcv_topic_attr_dump()</a>, <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/ChangeLog/api.tag:../API/" href="../API/lbm_8h.html#a1d7722b39132940193205d6287c0a7f7">lbm_src_topic_attr_dump()</a>, and lbm_context_topic_attr_dump() generated log messages of the form: <br />
+<td>9710, 9788 </td><td><p class="starttd"><b>FIXED:</b> <em>The API functions <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/ChangeLog/api.tag:../API/" href="../API/lbm_8h.html#a7a8f94b03c37c4481044d3c6b250bdb3">lbm_rcv_topic_attr_dump()</a>, <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/ChangeLog/api.tag:../API/" href="../API/lbm_8h.html#a1d7722b39132940193205d6287c0a7f7">lbm_src_topic_attr_dump()</a>, and lbm_context_topic_attr_dump() generated log messages of the form: <br />
 '<code>Core-5688-27 WARNING: ... config variable ... is deprecated. Use ... instead.</code>' <br />
-One side-effect of this problem is that the Dynamic Router (DRO) logs these messages.</em> This has been corrected since UM version 6.9.1.</p>
+One side-effect of this problem is that the Dynamic Router (DRO) logs these messages.</em></p>
+<p>This has been corrected since UM version 6.9.1.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>9950 </td><td><p class="starttd">FIXED: <em>Corrected certain log messages generated due to Windows socket errors.</em> Previously, the reason for the error was not printed correctly (always said error code was zero). Now it correctly prints the error code returned by Windows.</p>
+<td>9950 </td><td><p class="starttd"><b>FIXED:</b> <em>Corrected certain log messages generated due to Windows socket errors.</em></p>
+<p>Previously, the reason for the error was not printed correctly (always said error code was zero). Now it correctly prints the error code returned by Windows.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>9877 </td><td><p class="starttd">FIXED: <em>If an LBT-RU source's context thread experiences a significant multi-second delay, due perhaps to scheduling delay on a severely overloaded server, and a receiver is configured to receive multiple datagrams via the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grpmajoroptions.html#multiplereceivemaximumdatagramscontext">multiple_receive_maximum_datagrams (context)</a> option, there is a possibility that the receiver will crash with a fatal assert: <br />
+<td>9877 </td><td><p class="starttd"><b>FIXED:</b> <em>If an LBT-RU source's context thread experiences a significant multi-second delay, due perhaps to scheduling delay on a severely overloaded server, and a receiver is configured to receive multiple datagrams via the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/ChangeLog/config.tag:../Config/" href="../Config/grpmajoroptions.html#multiplereceivemaximumdatagramscontext">multiple_receive_maximum_datagrams (context)</a> option, there is a possibility that the receiver will crash with a fatal assert: <br />
 '<code>[map != NULL]</code>'.</em></p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>9939 </td><td><p class="starttd">FIXED: <em>Corrected memory alignment crash when using LZ4 compression on 32-bit SPARC machines.</em></p>
+<td>9939 </td><td><p class="starttd"><b>FIXED:</b> <em>Corrected memory alignment crash when using LZ4 compression on 32-bit SPARC machines.</em></p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>9981, 9977, 9955 </td><td><p class="starttd">FIXED: <em>UM version 6.9.* have a problem which prevents the optional UM products UMDS, UMCache, and SNMP from working (mul_inet_ntoa).</em></p>
+<td>9981, 9977, 9955 </td><td><p class="starttd"><b>FIXED:</b> <em>UM version 6.9.* have a problem which prevents the optional UM products UMDS, UMCache, and SNMP from working (mul_inet_ntoa).</em></p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>9722, 9826 </td><td><p class="starttd">FIXED: <em>When the UMDS server component was executed on UMS or UMP library versions prior to 6.9, the server would log: <br />
+<td>9722, 9826 </td><td><p class="starttd"><b>FIXED:</b> <em>When the UMDS server component was executed on UMS or UMP library versions prior to 6.9, the server would log: <br />
 '<code>CoreApi-5688-22 UMQ not supported</code>' <br />
-Note that the server would function properly, so the log message could be ignored.</em> In UM 6.10 the log is suppressed.</p>
+Note that the server would function properly, so the log message could be ignored.</em></p>
+<p>In UM 6.10 the log is suppressed.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>9957 </td><td><p class="starttd">FIXED: <em>When using Myricom's Datagram Bypass Library (DBL), a fatal assert ('<code>handle==dmux- &gt;rcvmsock-&gt;sock</code>') and segmentation fault can occur if a receiver is deleted while the receiver is processing incoming datagrams.</em></p>
+<td>9957 </td><td><p class="starttd"><b>FIXED:</b> <em>When using Myricom's Datagram Bypass Library (DBL), a fatal assert ('<code>handle==dmux- &gt;rcvmsock-&gt;sock</code>') and segmentation fault can occur if a receiver is deleted while the receiver is processing incoming datagrams.</em></p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>9779 </td><td><p class="starttd">Enhancement: Added configuration option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grptransportlbtrureliability.html#transportlbtrunakinitialbackoffintervalreceiver">transport_lbtru_nak_initial_backoff_interval (receiver)</a>. Setting this greater than zero reduces NAK traffic when UDP datagrams are delivered out of order. However, it also introduces repair latency when a datagram is lost.</p>
+<td>9779 </td><td><p class="starttd">Enhancement: Added configuration option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/ChangeLog/config.tag:../Config/" href="../Config/grptransportlbtrureliability.html#transportlbtrunakinitialbackoffintervalreceiver">transport_lbtru_nak_initial_backoff_interval (receiver)</a>. Setting this greater than zero reduces NAK traffic when UDP datagrams are delivered out of order. However, it also introduces repair latency when a datagram is lost.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
@@ -366,38 +368,42 @@ Note that the server would function properly, so the log message could be ignore
 <p><br />
  </p>
 <h2><a class="anchor" id="persistencefixedlimitationsfor6_10"></a>
-Persistence Fixed Limitations for 6.10</h2>
+Persistence Fixed Limitations for 6.10&nbsp;&nbsp;<small><a href="#persistencefixedlimitationsfor6_10">&lt;-</a></small></h2>
 <p>The following bug fixes apply to UMP and UMQ products.</p>
 <table class="doxtable">
 <tr>
 <th>Change Request </th><th>Description </th></tr>
 <tr>
-<td>9953 </td><td><p class="starttd">FIXED: <em>Due to an incorrect print specification, 32-bit applications can occasionally crash with illegal memory access when debug logging is enabled and a persistent session ID is being printed.</em> The print specification has been corrected.</p>
+<td>9953 </td><td><p class="starttd"><b>FIXED:</b> <em>Due to an incorrect print specification, 32-bit applications can occasionally crash with illegal memory access when debug logging is enabled and a persistent session ID is being printed.</em></p>
+<p>The print specification has been corrected.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>9583 </td><td><p class="starttd">FIXED: <em>When a source requests registration with a store, if is possible for the store's response control message (PREG_RESP) to be lost. The source will re-try the registration, which the store will reject with the log, "RegID xxx is in use by a different source".</em> This has been corrected (a store allows a registered source to re-register).</p>
+<td>9583 </td><td><p class="starttd"><b>FIXED:</b> <em>When a source requests registration with a store, if is possible for the store's response control message (PREG_RESP) to be lost. The source will re-try the registration, which the store will reject with the log, "RegID xxx is in use by a different source".</em></p>
+<p>This has been corrected (a store allows a registered source to re-register).</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>9920, 9929 </td><td><p class="starttd">FIXED: <em>Under unknown circumstances, a store can exit with inconsistent data in the state and/or cache files. When the store is restarted, this inconsistent data can result in a store crash during initialization.</em> Defensive checks have been added.</p>
+<td>9920, 9929 </td><td><p class="starttd"><b>FIXED:</b> <em>Under unknown circumstances, a store can exit with inconsistent data in the state and/or cache files. When the store is restarted, this inconsistent data can result in a store crash during initialization.</em></p>
+<p>Defensive checks have been added.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>9861 </td><td><p class="starttd">FIXED: <em>The UMM tool tip for the source configuration option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeproactivekeepaliveintervalcontext">ume_proactive_keepalive_interval (context)</a> was incorrect. Also, if zero was supplied, CPU utilization jumped to 100%. It is fixed such that zero disables proactive keepalives.</em></p>
+<td>9861 </td><td><p class="starttd"><b>FIXED:</b> <em>The UMM tool tip for the source configuration option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/ChangeLog/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeproactivekeepaliveintervalcontext">ume_proactive_keepalive_interval (context)</a> was incorrect. Also, if zero was supplied, CPU utilization jumped to 100%. It is fixed such that zero disables proactive keepalives.</em></p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>9902, 9925 </td><td><p class="starttd">FIXED: <em>The Store's log file sometimes shows session IDs as negative numbers.</em> These have been corrected to use unsigned.</p>
+<td>9902, 9925 </td><td><p class="starttd"><b>FIXED:</b> <em>The Store's log file sometimes shows session IDs as negative numbers.</em></p>
+<p>These have been corrected to use unsigned.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>9458, 9796 </td><td><p class="starttd">FIXED: <em>A minor race condition in the Store which results in one or more warning logs: <br />
+<td>9458, 9796 </td><td><p class="starttd"><b>FIXED:</b> <em>A minor race condition in the Store which results in one or more warning logs: <br />
 '<code>WARNING: failed assertion [repo-&gt;disk_holder-&gt;disk-&gt;offset &gt;= deletesz] at line ...</code>'</em></p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>9938, 9943 </td><td><p class="starttd">Enhancement: If a 5.x persistent source is configured for named stores and is also configured not to query for the store name (via the environment variable '<code>UME_SKIP_NAMED_STORE_QUERY</code>'), and a 6.x store becomes non-responsive due to excessive load, and then returns to normal operation, the source will not be able to resolve the store again. This is because a 6.x store cannot be configured to periodically advertise its name indefinitely. In UM version 6.10, the store can be configured to periodically advertise indefinitely via the UM configuration option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grpmajoroptions.html#compatibilityincludepreum60behaviorcontext">compatibility_include_pre_um_6_0_behavior (context)</a>. Note that this option is only recommended for use during a limited transition period while customers upgrade from 5.x to 6.x and persistent stores must be configured not to query. When all components are at version 6.x, the use of this configuration option should be discontinued.</p>
+<td>9938, 9943 </td><td><p class="starttd">Enhancement: If a 5.x persistent source is configured for named stores and is also configured not to query for the store name (via the environment variable '<code>UME_SKIP_NAMED_STORE_QUERY</code>'), and a 6.x store becomes non-responsive due to excessive load, and then returns to normal operation, the source will not be able to resolve the store again. This is because a 6.x store cannot be configured to periodically advertise its name indefinitely. In UM version 6.10, the store can be configured to periodically advertise indefinitely via the UM configuration option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/ChangeLog/config.tag:../Config/" href="../Config/grpmajoroptions.html#compatibilityincludepreum60behaviorcontext">compatibility_include_pre_um_6_0_behavior (context)</a>. Note that this option is only recommended for use during a limited transition period while customers upgrade from 5.x to 6.x and persistent stores must be configured not to query. When all components are at version 6.x, the use of this configuration option should be discontinued.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
@@ -405,12 +411,12 @@ Persistence Fixed Limitations for 6.10</h2>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>9689 </td><td>Enhancement: Added Store configuration element <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/ChangeLog/ume.tag:../UME/" href="../UME/configurationreferenceforumestored.html#umecfgxmlconfig">&lt;xml-config&gt;</a> to allow the use of XML-based UM configuration files. With this addition, Informatica discourages the use of the environment variable '<code>LBM_XML_CONFIG_FILENAME</code>'. </td></tr>
+<td>9689 </td><td>Enhancement: Added Store configuration element <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/ChangeLog/ume.tag:../UME/" href="../UME/configurationreferenceforumestored.html#umecfgxmlconfig">&lt;xml-config&gt;</a> to allow the use of XML-based UM configuration files. With this addition, Informatica discourages the use of the environment variable '<code>LBM_XML_CONFIG_FILENAME</code>'. </td></tr>
 </table>
 <p><br />
  </p>
 <h2><a class="anchor" id="queuingfixedlimitationsfor6_10"></a>
-Queuing Fixed Limitations for 6.10</h2>
+Queuing Fixed Limitations for 6.10&nbsp;&nbsp;<small><a href="#queuingfixedlimitationsfor6_10">&lt;-</a></small></h2>
 <p>The following bug fixes apply to the UMQ product.</p>
 <ul>
 <li>
@@ -419,7 +425,7 @@ None. </li>
 <p><br />
  </p>
 <h2><a class="anchor" id="dynamicrouterfixedlimitationsfor6_10"></a>
-Dynamic Router Fixed Limitations for 6.10</h2>
+Dynamic Router Fixed Limitations for 6.10&nbsp;&nbsp;<small><a href="#dynamicrouterfixedlimitationsfor6_10">&lt;-</a></small></h2>
 <p>The following bug fixes apply to the Dynamic Routing Option (DRO).</p>
 <table class="doxtable">
 <tr>
@@ -448,11 +454,11 @@ This was due to a problem in the underlying UM library.</p>
 <p><br />
  </p>
 <h1><a class="anchor" id="deprecationsfor610"></a>
-Deprecations for 6.10</h1>
+Deprecations for 6.10&nbsp;&nbsp;<small><a href="#deprecationsfor610">&lt;-</a></small></h1>
 <p><br />
  </p>
 <h2><a class="anchor" id="streamingdeprecationsfor610"></a>
-Streaming Deprecations for 6.10</h2>
+Streaming Deprecations for 6.10&nbsp;&nbsp;<small><a href="#streamingdeprecationsfor610">&lt;-</a></small></h2>
 <ul>
 <li>
 <p class="startli">Adaptive Batching - still operational, but planned to be removed in a future release.</p>
@@ -476,7 +482,7 @@ RDMA transport - the underlying library is no longer available. This functionali
 <p><br />
  </p>
 <h2><a class="anchor" id="persistencedeprecationsfor610"></a>
-Persistence Deprecations for 6.10</h2>
+Persistence Deprecations for 6.10&nbsp;&nbsp;<small><a href="#persistencedeprecationsfor610">&lt;-</a></small></h2>
 <ul>
 <li>
 <p class="startli">Java APIs deprecated: </p><ul>
@@ -492,17 +498,17 @@ LBMContext.setUMQMessageStable() method </li>
 <li>
 <p class="startli">Configuration options deprecated: </p><ul>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grpdeprecated.html#retransmitretentionagethresholdsource">retransmit_retention_age_threshold (source)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/ChangeLog/config.tag:../Config/" href="../Config/grpdeprecated.html#retransmitretentionagethresholdsource">retransmit_retention_age_threshold (source)</a> </li>
 </ul>
 <p class="endli"><br />
  </p>
 </li>
 </ul>
 <h2><a class="anchor" id="dynamicrouterdeprecationsfor610"></a>
-Dynamic Router Deprecations for 6.10</h2>
+Dynamic Router Deprecations for 6.10&nbsp;&nbsp;<small><a href="#dynamicrouterdeprecationsfor610">&lt;-</a></small></h2>
 <ul>
 <li>
-Dual-TCP peer links. UM DRO version 6.10 no longer supports dual-TCP peer links. The XML configuration elements '<code>&lt;tcp&gt;</code>' and '<code>&lt;companion&gt;</code>' will generate errors. Upgrading customers should use <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/ChangeLog/gateway.tag:../Gateway/" href="../Gateway/xmlconfigurationreference.html#drocfg_single-tcp">&lt;single-tcp&gt;</a> instead. </li>
+Dual-TCP peer links. UM DRO version 6.10 no longer supports dual-TCP peer links. The XML configuration elements '<code>&lt;tcp&gt;</code>' and '<code>&lt;companion&gt;</code>' will generate errors. Upgrading customers should use <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/ChangeLog/gateway.tag:../Gateway/" href="../Gateway/xmlconfigurationreference.html#drocfg_single-tcp">&lt;single-tcp&gt;</a> instead. </li>
 </ul>
 </div></div><!-- contents -->
 </div><!-- doc-content -->

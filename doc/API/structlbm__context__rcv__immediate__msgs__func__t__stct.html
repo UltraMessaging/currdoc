@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">UM C API
-   &#160;<span id="projectnumber">6.11.1</span>
+   &#160;<span id="projectnumber">6.12</span>
    </div>
   </td>
  </tr>
@@ -73,7 +73,7 @@ $(document).ready(function(){initNavTree('structlbm__context__rcv__immediate__ms
 </div><!--header-->
 <div class="contents">
 
-<p>Structure that holds the application callback for receiving topic-less immediate mode messages.  
+<p>Structure that holds the application callback for receiving certain immediate mode messages (UIM).  
  <a href="structlbm__context__rcv__immediate__msgs__func__t__stct.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="lbm_8h_source.html">lbm.h</a>&gt;</code></p>
@@ -91,8 +91,16 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><b>clientd</b></td></t
 <tr class="separator:a044eee697c3190b9f88638a8f0522356"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Structure that holds the application callback for receiving topic-less immediate mode messages. </p>
-<p>A struct used to set the context-level topic-less immediate mode message receiver callback. If an event queue is specified, messages will be placed on the event queue; if evq is NULL, messages will be delivered directly from the context thread. </p>
+<div class="textblock"><p>Structure that holds the application callback for receiving certain immediate mode messages (UIM). </p>
+<p>UIMs can be received using normal UM receivers. However, there are two cases where an application would not use a normal receiver: </p><ul>
+<li>
+Topicless messages (no topic associated with the message). </li>
+<li>
+Messages that have a topic, but for which no matching receiver exists; sort of a "default" receiver of UIMs. </li>
+</ul>
+<p>Callbacks for these cases can be registered using the configuration options <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/API/config.tag:../Config/" href="../Config/grpmulticastimmediatemessagingoperation.html#immediatemessagereceiverfunctioncontext">immediate_message_receiver_function (context)</a> and <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/API/config.tag:../Config/" href="../Config/grpmulticastimmediatemessagingoperation.html#immediatemessagetopicreceiverfunctioncontext">immediate_message_topic_receiver_function (context)</a> respectively.</p>
+<p>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/API/design.tag:../Design/" href="../Design/fundamentalconcepts.html#immediatemessaging">Immediate Messaging</a> for general information on immediate messaging.</p>
+<p>See <a class="el" href="structlbm__context__rcv__immediate__msgs__func__t__stct.html">lbm_context_rcv_immediate_msgs_func_t_stct</a> for field definitions. </p>
 </div><hr/>The documentation for this struct was generated from the following file:<ul>
 <li><a class="el" href="lbm_8h_source.html">lbm.h</a></li>
 </ul>

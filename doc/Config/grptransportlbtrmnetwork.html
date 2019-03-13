@@ -54,26 +54,34 @@ $(document).ready(function(){initNavTree('grptransportlbtrmnetwork.html','');});
 <div class="title">Transport LBT-RM Network Options </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>The image below shows a simplified relationship between the primary LBT-RM transport network options.</p>
+<div class="textblock"><p><br />
+ </p>
+<h1><a class="anchor" id="lbtrmtransportsessionmanagement"></a>
+LBT-RM Transport Session Management&nbsp;&nbsp;<small><a href="#lbtrmtransportsessionmanagement">&lt;-</a></small></h1>
+<p>The image below shows a simplified relationship between the primary LBT-RM transport network options.</p>
 <div class="image">
 <img src="LBT-RM-Network.png" alt="LBT-RM-Network.png"/>
 </div>
  <dl class="section note"><dt>Note</dt><dd>for a multi-homed LBT-RM source, the interface LBT-RM multicast resolver interface specified with <a class="el" href="grpmulticastresolvernetwork.html#resolvermulticastinterfacecontext">resolver_multicast_interface (context)</a> will be used as the source for LBT-RM.</dd></dl>
+<p>When a source is created, the application can explicitly map it to a transport session by setting the <a class="el" href="grptransportlbtrmnetwork.html#transportlbtrmmulticastaddresssource">transport_lbtrm_multicast_address (source)</a> and <a class="el" href="grptransportlbtrmnetwork.html#transportlbtrmdestinationportsource">transport_lbtrm_destination_port (source)</a> options. If a previous source was created on the same context with the same group/port pair, this new source will be mapped to the same transport session. Note that two different contexts on the same host may share the same group/port pair, and the resulting transport sessions will be separate and independent.</p>
+<p>Alternatively, if the application does not explicitly specify a multicast group and destination port, UM will implicitly assign the new source to a pool of transport sessions defined when the context was created. The pool is defined as a range of multicast groups specified by the options <a class="el" href="grptransportlbtrmnetwork.html#transportlbtrmmulticastaddresslowcontext">transport_lbtrm_multicast_address_low (context)</a> and <a class="el" href="grptransportlbtrmnetwork.html#transportlbtrmmulticastaddresshighcontext">transport_lbtrm_multicast_address_high (context)</a>. The number of transport sessions in the pool is the range of the two multicast group IP addresses, as represented by a 32-bit number. For example, the default settings 224.10.10.10 and 224.10.10.14 are represented by the numbers 0xE00A0A0A and 0xE00A0A0E. This represents 5 different groups, so the pool contains 5 transport sessions (all with the same destination port).</p>
+<p>When a new source is created and the multicast group is not explicitly defined, UM will check to see how many transport sessions are currently active from the pool within the context. If it is less than the number in the pool, then UM will activate the next transport session in the range. However, if the context already has activated all transport sessions in the pool, then the new topic is mapped to one of the existing transport sessions, in round-robin fashion.</p>
 <p><br />
  </p>
 <h1><a class="anchor" id="transportlbtrmnetworkref"></a>
-Reference</h1>
+Reference&nbsp;&nbsp;<small><a href="#transportlbtrmnetworkref">&lt;-</a></small></h1>
 <p><br />
  </p>
 <h2><a class="anchor" id="transportlbtrmdestinationportsource"></a>
-transport_lbtrm_destination_port (source)</h2>
+transport_lbtrm_destination_port (source)&nbsp;&nbsp;<small><a href="#transportlbtrmdestinationportsource">&lt;-</a></small></h2>
 <dl class="section user"><dt></dt><dd>The UDP destination port used for this Topic when the transport is LBT-RM. </dd></dl>
+<dl class="section user"><dt></dt><dd>See <a class="el" href="grptransportlbtrmnetwork.html#lbtrmtransportsessionmanagement">LBT-RM Transport Session Management</a> for how LBT-RM source transport sessions are managed. </dd></dl>
 <dl class="section user"><dt></dt><dd>See <a class="el" href="generalconfigurationguidelines.html#portassignments">Port Assignments</a> for more information about configuring ports.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>source </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a86897f2fdd66aa7021683a4e72a4537b">lbm_uint16_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a86897f2fdd66aa7021683a4e72a4537b">lbm_uint16_t</a></b> </td></tr>
 <tr>
 <td><em>Default value:</em> </td><td>14400 </td></tr>
 <tr>
@@ -85,8 +93,11 @@ transport_lbtrm_destination_port (source)</h2>
 <p><br />
  </p>
 <h2><a class="anchor" id="transportlbtrmmulticastaddresssource"></a>
-transport_lbtrm_multicast_address (source)</h2>
-<dl class="section user"><dt></dt><dd>The preferred multicast address (or domain name of the multicast address) for this Topic when the transport is LBT-RM. If 0.0.0.0 (INADDR_ANY), the context will attempt to find one in the given multicast address range.</dd></dl>
+transport_lbtrm_multicast_address (source)&nbsp;&nbsp;<small><a href="#transportlbtrmmulticastaddresssource">&lt;-</a></small></h2>
+<dl class="section user"><dt></dt><dd>The preferred multicast address (or domain name of the multicast address) for this Topic when the transport is LBT-RM. </dd></dl>
+<dl class="section user"><dt></dt><dd>If 0.0.0.0 (INADDR_ANY), the default, the context will use a round-robin method to select an address in the configured multicast multicast address range: <a class="el" href="grptransportlbtrmnetwork.html#transportlbtrmmulticastaddresshighcontext">transport_lbtrm_multicast_address_high (context)</a> - <a class="el" href="grptransportlbtrmnetwork.html#transportlbtrmmulticastaddresslowcontext">transport_lbtrm_multicast_address_low (context)</a>. </dd></dl>
+<dl class="section user"><dt></dt><dd>See <a class="el" href="grptransportlbtrmnetwork.html#lbtrmtransportsessionmanagement">LBT-RM Transport Session Management</a> for how LBT-RM source transport sessions are managed. </dd></dl>
+<dl class="section user"><dt></dt><dd>See <a class="el" href="generalconfigurationguidelines.html#portassignments">Port Assignments</a> for more information about configuring ports.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>source </td></tr>
@@ -101,8 +112,9 @@ transport_lbtrm_multicast_address (source)</h2>
 <p><br />
  </p>
 <h2><a class="anchor" id="transportlbtrmmulticastaddresshighcontext"></a>
-transport_lbtrm_multicast_address_high (context)</h2>
-<dl class="section user"><dt></dt><dd>Multicast address (or domain name of the multicast address) used as the highest value to assign to LBT-RM sessions.</dd></dl>
+transport_lbtrm_multicast_address_high (context)&nbsp;&nbsp;<small><a href="#transportlbtrmmulticastaddresshighcontext">&lt;-</a></small></h2>
+<dl class="section user"><dt></dt><dd>Multicast address (or domain name of the multicast address) used as the highest value to assign to LBT-RM sessions. </dd></dl>
+<dl class="section user"><dt></dt><dd>See <a class="el" href="grptransportlbtrmnetwork.html#lbtrmtransportsessionmanagement">LBT-RM Transport Session Management</a> for how LBT-RM source transport sessions are managed.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>context </td></tr>
@@ -117,8 +129,9 @@ transport_lbtrm_multicast_address_high (context)</h2>
 <p><br />
  </p>
 <h2><a class="anchor" id="transportlbtrmmulticastaddresslowcontext"></a>
-transport_lbtrm_multicast_address_low (context)</h2>
-<dl class="section user"><dt></dt><dd>Multicast address (or domain name of the multicast address) used as the lowest value to assign to LBT-RM sessions.</dd></dl>
+transport_lbtrm_multicast_address_low (context)&nbsp;&nbsp;<small><a href="#transportlbtrmmulticastaddresslowcontext">&lt;-</a></small></h2>
+<dl class="section user"><dt></dt><dd>Multicast address (or domain name of the multicast address) used as the lowest value to assign to LBT-RM sessions. </dd></dl>
+<dl class="section user"><dt></dt><dd>See <a class="el" href="grptransportlbtrmnetwork.html#lbtrmtransportsessionmanagement">LBT-RM Transport Session Management</a> for how LBT-RM source transport sessions are managed.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>context </td></tr>
@@ -133,14 +146,14 @@ transport_lbtrm_multicast_address_low (context)</h2>
 <p><br />
  </p>
 <h2><a class="anchor" id="transportlbtrmsourceporthighcontext"></a>
-transport_lbtrm_source_port_high (context)</h2>
+transport_lbtrm_source_port_high (context)&nbsp;&nbsp;<small><a href="#transportlbtrmsourceporthighcontext">&lt;-</a></small></h2>
 <dl class="section user"><dt></dt><dd>Highest port number value used for LBT-RM source session's unicast NAK processing. Receivers send NAKs to this port for to request retransmission. Each LBT-RM session must use a unique port value. Note that this does not control the UDP source port on the outbound LBT-RM stream. </dd></dl>
 <dl class="section user"><dt></dt><dd>See <a class="el" href="generalconfigurationguidelines.html#portassignments">Port Assignments</a> for more information about configuring ports.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>context </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a86897f2fdd66aa7021683a4e72a4537b">lbm_uint16_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a86897f2fdd66aa7021683a4e72a4537b">lbm_uint16_t</a></b> </td></tr>
 <tr>
 <td><em>Default value:</em> </td><td>14399 </td></tr>
 <tr>
@@ -152,14 +165,14 @@ transport_lbtrm_source_port_high (context)</h2>
 <p><br />
  </p>
 <h2><a class="anchor" id="transportlbtrmsourceportlowcontext"></a>
-transport_lbtrm_source_port_low (context)</h2>
+transport_lbtrm_source_port_low (context)&nbsp;&nbsp;<small><a href="#transportlbtrmsourceportlowcontext">&lt;-</a></small></h2>
 <dl class="section user"><dt></dt><dd>Lowest port number value used for LBT-RM source session's unicast NAK processing. Receivers send NAKs to this port for to request retransmission. Each LBT-RM session must use a unique port value. Note that this does not control the UDP source port on the outbound LBT-RM stream. </dd></dl>
 <dl class="section user"><dt></dt><dd>See <a class="el" href="generalconfigurationguidelines.html#portassignments">Port Assignments</a> for more information about configuring ports.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>context </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a86897f2fdd66aa7021683a4e72a4537b">lbm_uint16_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a86897f2fdd66aa7021683a4e72a4537b">lbm_uint16_t</a></b> </td></tr>
 <tr>
 <td><em>Default value:</em> </td><td>14390 </td></tr>
 <tr>

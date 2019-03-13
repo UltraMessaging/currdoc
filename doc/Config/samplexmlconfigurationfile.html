@@ -137,7 +137,7 @@ The template, <b>Sending-LBTRM</b>, uses the <b>order</b> attribute for the <b>f
 </pre><p><br />
  </p>
 <h1><a class="anchor" id="usingtheorderandrulexmlattributes"></a>
-Using the Order and Rule XML Attributes</h1>
+Using the Order and Rule XML Attributes&nbsp;&nbsp;<small><a href="#usingtheorderandrulexmlattributes">&lt;-</a></small></h1>
 <p>The order and rule XML attributes combine to enable you to permit or restrict the creation of primitive UM objects. The container elements such as the <code> <a class="el" href="xmlconfigurationfileelements.html#contexts">&lt;contexts&gt;,</a> <a class="el" href="xmlconfigurationfileelements.html#sources">&lt;sources&gt;,</a> <a class="el" href="xmlconfigurationfileelements.html#receivers">&lt;receivers&gt;,</a> </code> etc. have the <b>order</b> attribute. The single object elements, such as <code> <a class="el" href="xmlconfigurationfileelements.html#context">&lt;context&gt;,</a> <a class="el" href="xmlconfigurationfileelements.html#topic">&lt;topic&gt;,</a> </code> etc., have the <b>rule</b> attribute. The default for both attributes allows creation of all objects. You can however, exert some administrative control over your applications by allowing the creation of only certain objects.</p>
 <p>You can vary the <b>order</b> attribute values to suit whether permission or restriction is more prevalent. In the example below, only a single topic needs to be restricted, so we use the default values for the <b>order</b> attribute with only a single topic restricted with a <b>rule="deny"</b> attribute.</p>
 <pre class="fragment">&lt;sources order="deny,allow"&gt;
@@ -149,7 +149,7 @@ Using the Order and Rule XML Attributes</h1>
   &lt;topic topicname="AARM" rule="allow"/&gt;
   &lt;!-- all other receive topics denied --&gt;
 &lt;/receivers&gt;
-</pre><p>You can also combine topic names with topic patterns. In the example below, we set the <b>order</b> attribute to the default. Topic <b>ISM</b> is denied with its order attribute. Topics <b>IRM</b> and <b>SRM</b> satisfy both their own allow rules and the pattern <b>*R*</b> <b>deny</b> rule. So when you allocate a source topic with <b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a1ba60407fa2bde0997aab6d5a5d2da1a">lbm_src_topic_alloc()</a></b>, UM accepts the rule that matches the <b>order</b> attribute default, which is <b>allow</b>.</p>
+</pre><p>You can also combine topic names with topic patterns. In the example below, we set the <b>order</b> attribute to the default. Topic <b>ISM</b> is denied with its order attribute. Topics <b>IRM</b> and <b>SRM</b> satisfy both their own allow rules and the pattern <b>*R*</b> <b>deny</b> rule. So when you allocate a source topic with <b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a1ba60407fa2bde0997aab6d5a5d2da1a">lbm_src_topic_alloc()</a></b>, UM accepts the rule that matches the <b>order</b> attribute default, which is <b>allow</b>.</p>
 <pre class="fragment">&lt;sources order="deny,allow"&gt;
   &lt;topic topicname="ISM" rule="deny"/&gt;
   &lt;topic topicname="IRM" rule="allow"/&gt;

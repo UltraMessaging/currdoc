@@ -71,7 +71,7 @@ Sources communicate with receivers </li>
 <p><br />
  </p>
 <h1><a class="anchor" id="persistentstorearchitecture"></a>
-Persistent Store Architecture</h1>
+Persistent Store Architecture&nbsp;&nbsp;<small><a href="#persistentstorearchitecture">&lt;-</a></small></h1>
 <p>The umestored daemon runs the persistent store feature. You can configure multiple stores per daemon using the '<code>&lt;store&gt;</code>' element in the umestored XML configuration file. See <a class="el" href="configurationreferenceforumestored.html">Configuration Reference for Umestored</a>. Individual stores can use separate disk cache and disk state directories and be configured to persist messages for multiple sources (topics), which are referred to as, source repositories. UM provides each umestored daemon with a Web Monitor for statistics monitoring. See <a class="el" href="storewebmonitor.html">Store Web Monitor</a>.</p>
 <div class="image">
 <img src="store_architecture.png" alt="store_architecture.png"/>
@@ -79,7 +79,7 @@ Persistent Store Architecture</h1>
  <p><br />
  </p>
 <h2><a class="anchor" id="sourcerepositories"></a>
-Source Repositories</h2>
+Source Repositories&nbsp;&nbsp;<small><a href="#sourcerepositories">&lt;-</a></small></h2>
 <p>Within a store, you configure repositories for individual topics and each can have their own set of '<code>&lt;topic&gt;</code>' level options that affect the repository's type, size, liveness behavior and much more. If you have multiple sources sending on the same topic, UM creates a separate repository for each source. UM uses the repository options configured for the topic to apply to each source's repository. If you specify 48MB for the size of the repository and have 10 sources sending on the topic, the persistent store requires 480MB of storage for that topic.</p>
 <p>A repository can be configured as one of the following types:</p>
 <ul>
@@ -96,19 +96,19 @@ reduced-fd - the repository maintains state and data on disk, also uses a memory
 <p><br />
  </p>
 <h2><a class="anchor" id="repositorythresholdsandlimits"></a>
-Repository Thresholds and Limits</h2>
+Repository Thresholds and Limits&nbsp;&nbsp;<small><a href="#repositorythresholdsandlimits">&lt;-</a></small></h2>
 <p>Repositories are designed as circular buffers. When age or size thresholds are met for a topic, the repository removes or overwrites messages in order to prevent reaching its configured limit, which keeps space available for new messages. UM provides UM configuration options and store configuration options to control threshold and limit behavior.</p>
 <p>UM configuration options control source repositories for all the sources sending within the context. The default for these options, listed below, are 0 (zero) which makes the like-name option for the repository in the umestored XML configuration file active.</p>
 <ul>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umerepositorydiskfilesizelimitsource">ume_repository_disk_file_size_limit (source)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umerepositorydiskfilesizelimitsource">ume_repository_disk_file_size_limit (source)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umerepositorysizelimitsource">ume_repository_size_limit (source)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umerepositorysizelimitsource">ume_repository_size_limit (source)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umerepositorysizethresholdsource">ume_repository_size_threshold (source)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umerepositorysizethresholdsource">ume_repository_size_threshold (source)</a> </li>
 </ul>
-<p>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html">Ultra Messaging Persistence Options</a>.</p>
-<p>Note: The above configuration options' default values can be altered for individual sources and receivers by calling <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UME/api.tag:../API/" href="../API/lbm_8h.html#a96ea052dce2e6376684cbf2003407cbf">lbm_src_topic_attr_setopt()</a> before you allocate the topic.</p>
+<p>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html">Ultra Messaging Persistence Options</a>.</p>
+<p>Note: The above configuration options' default values can be altered for individual sources and receivers by calling <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UME/api.tag:../API/" href="../API/lbm_8h.html#a96ea052dce2e6376684cbf2003407cbf">lbm_src_topic_attr_setopt()</a> before you allocate the topic.</p>
 <p>The umestored configuration options for source/topic repositories explained below can also be used to control threshold and limit behavior. See <a class="el" href="configurationreferenceforumestored.html#topicelement">Topic Element</a> for complete information about the following repository options.</p>
 <dl class="section note"><dt>Note</dt><dd>Whether you use the UM configuration options mentioned above or the source repository options explained below to control source repository threshold and limit behavior, remember the values you configure apply to a single source sending to the store. If you use the default repository size limit of 48 MB and you have 1,000 sources sending to the store, UM creates a store with 1,000 source repositories of 48 MB each, which requires a store with approximately 48 GB of memory. And if you use the default disk file size limit of 100 MB and you have 1,000 sources sending to the store, UM creates a store with 1,000 source repositories of 100 MB each, which requires a store with disk storage capacity of approximately 100 GB.</dd></dl>
 <p><b>Memory Repository</b></p>
@@ -147,12 +147,12 @@ Repository Thresholds and Limits</h2>
 </li>
 </ul>
 <h2><a class="anchor" id="persistentstorefault"></a>
-Tolerance Persistent Store Fault Tolerance</h2>
+Tolerance Persistent Store Fault Tolerance&nbsp;&nbsp;<small><a href="#persistentstorefault">&lt;-</a></small></h2>
 <p>Sources and receivers register with a store and use individual repositories within the store. Sources can use redundant repositories configured in multiple stores in Quorum/Consensus arrangement for fault tolerance. Be aware that the arrangement of stores into Quorum/Consensus groups is a function of the source. I.e. the individual stores of a Quorum/Consensus group are not aware of each other and do not coordinate their activities.</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="identifyingpersistentstores"></a>
-Identifying Persistent Stores</h2>
+Identifying Persistent Stores&nbsp;&nbsp;<small><a href="#identifyingpersistentstores">&lt;-</a></small></h2>
 <p>You can identify stores with either a domainID:interface:port, interface:port or a name. Using only interface:port is more feasible in smaller implementations where the smaller number of possible IP addresses is easier to manage. Larger implementations, especially those that span topic resolution domains using UM Routers, are better served with stores identified by a name or domainID:interface:port.</p>
 <p>UM automatically resolves and maintains a mapping between a store name and a single topic resolution domain, IP address and port. UM also automatically resolves store names if the store is located across one or more UM Routers in a different topic resolution domain.</p>
 <p>The following lists other specifics of store identification.</p>
@@ -172,7 +172,7 @@ Sources using named stores issue an information message to the application every
 </pre><p class="endli"></p>
 </li>
 <li>
-Add the interface:port to <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umestoresource">ume_store (source)</a> so sources can find and register with the store. <pre class="fragment">source ume_store 10.29.3.16:14567
+Add the interface:port to <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umestoresource">ume_store (source)</a> so sources can find and register with the store. <pre class="fragment">source ume_store 10.29.3.16:14567
 </pre> </li>
 </ol>
 <p>To run the store on a different machine for any reason, you must change both the umestored XML configuration file and the UM configuration file.</p>
@@ -184,10 +184,10 @@ Add the interface:port to <a class="elRef" doxygen="/29W/Amun/home/jenkins/backu
 </pre><p class="endli"></p>
 </li>
 <li>
-Add the active interface to <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umestoresource">ume_store (source)</a> so sources can find and register with the store. You can only specify one interface in the configuration file. <pre class="fragment">source ume_store 10.29.3.16:14567
+Add the active interface to <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umestoresource">ume_store (source)</a> so sources can find and register with the store. You can only specify one interface in the configuration file. <pre class="fragment">source ume_store 10.29.3.16:14567
 </pre> </li>
 </ol>
-<p>To run the store on a different machine, you must only change the interface specified in the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umestoresource">ume_store (source)</a> UM configuration option, provided you use one of the interfaces in the range specified in in the umestored configuration file.</p>
+<p>To run the store on a different machine, you must only change the interface specified in the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umestoresource">ume_store (source)</a> UM configuration option, provided you use one of the interfaces in the range specified in in the umestored configuration file.</p>
 <p><b>Using a Store (context) Name</b></p>
 <p>Configure a store with a name instead of just IP:port. '<code>0.0.0.0</code>' (<code>INADDR_ANY</code>) or no value is the default for the store's interface attribute.</p>
 <ol>
@@ -210,7 +210,7 @@ Add the active interface to <a class="elRef" doxygen="/29W/Amun/home/jenkins/bac
 </pre><p class="endli"></p>
 </li>
 <li>
-<p class="startli">Add the store's context name to <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umestorenamesource">ume_store_name (source)</a> so sources can find and register with the store.</p>
+<p class="startli">Add the store's context name to <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umestorenamesource">ume_store_name (source)</a> so sources can find and register with the store.</p>
 <pre class="fragment">source ume_store_name NEWYORK-1
 </pre> </li>
 </ol>

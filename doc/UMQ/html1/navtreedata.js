@@ -101,7 +101,9 @@ var NAVTREE =
     ] ],
     [ "Ultra Load Balancing (ULB)", "index.html#ultraloadbalancingulb", [
       [ "Application Sets and Receiver Type IDs", "index.html#applicationsetsandreceivertypeids", null ],
-      [ "Load Balancing", "index.html#loadbalancing", null ],
+      [ "Load Balancing", "index.html#loadbalancing", [
+        [ "ULB Performance", "index.html#ulbperformance", null ]
+      ] ],
       [ "Ultra Load Balancing Flight Size", "index.html#ultraloadbalancingflightsize", null ],
       [ "Indexed Ultra Load Balancing", "index.html#indexedultraloadbalancing", null ],
       [ "Total Message Lifetimes for Ultra Load Balancing", "index.html#totalmessagelifetimesforultraloadbalancing", null ]

@@ -59,11 +59,11 @@ $(document).ready(function(){initNavTree('umversion6_1.html','');});
 <p><br />
  </p>
 <h1><a class="anchor" id="enhancementsfor6_1"></a>
-Enhancements for 6.1</h1>
+Enhancements for 6.1&nbsp;&nbsp;<small><a href="#enhancementsfor6_1">&lt;-</a></small></h1>
 <p><br />
  </p>
 <h2><a class="anchor" id="streamingenhancementsfor6_1"></a>
-Streaming Enhancements for 6.1</h2>
+Streaming Enhancements for 6.1&nbsp;&nbsp;<small><a href="#streamingenhancementsfor6_1">&lt;-</a></small></h2>
 <p>The following new features and enhancements apply to UMS, UMP, and UMQ products.</p>
 <table class="doxtable">
 <tr>
@@ -71,11 +71,11 @@ Streaming Enhancements for 6.1</h2>
 <tr>
 <td></td><td>Added LBT-SMX </td></tr>
 <tr>
-<td>7529 </td><td><p class="starttd">Added the polling of context events when using <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/ChangeLog/api.tag:../API/" href="../API/lbm_8h.html#ad9416b1f0b474b5d4c4f39bb3c4bda77">lbm_context_process_events()</a> with <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grpmajoroptions.html#operationalmodecontext">operational_mode (context)</a> set to <code>sequential</code>. You can now set the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/ChangeLog/api.tag:../API/" href="../API/lbm_8h.html#ad9416b1f0b474b5d4c4f39bb3c4bda77">lbm_context_process_events()</a> parameter '<code>msec</code>' to 0 (zero), which results in the UM context making one pass to process timers, sockets and then timers again before returning the thread to the application without any delay. (Previously, if you set the msec parameter to 10 and the UM context took 5 msecs to process all events, it would wait another 5 msecs before returning the thread to the application.)</p>
+<td>7529 </td><td><p class="starttd">Added the polling of context events when using <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/ChangeLog/api.tag:../API/" href="../API/lbm_8h.html#ad9416b1f0b474b5d4c4f39bb3c4bda77">lbm_context_process_events()</a> with <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/ChangeLog/config.tag:../Config/" href="../Config/grpmajoroptions.html#operationalmodecontext">operational_mode (context)</a> set to <code>sequential</code>. You can now set the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/ChangeLog/api.tag:../API/" href="../API/lbm_8h.html#ad9416b1f0b474b5d4c4f39bb3c4bda77">lbm_context_process_events()</a> parameter '<code>msec</code>' to 0 (zero), which results in the UM context making one pass to process timers, sockets and then timers again before returning the thread to the application without any delay. (Previously, if you set the msec parameter to 10 and the UM context took 5 msecs to process all events, it would wait another 5 msecs before returning the thread to the application.)</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>7664 </td><td><p class="starttd">Ultra Messaging no longer sends a Topic Management Record (TMR) when an application deletes a receiver in a standard way with, for example <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/ChangeLog/api.tag:../API/" href="../API/lbm_8h.html#a8d5e8713f5ae776330b23a1e371f934d">lbm_rcv_delete()</a>, when Dynamic Routers do not exist in the Topic Resolution domain. TMRs specifically inform a Dynamic Router that a receiver for a particular topic has been shutdown. (Without the presence of Dynamic Routers, TMRs become unnecessary network traffic.)</p>
+<td>7664 </td><td><p class="starttd">Ultra Messaging no longer sends a Topic Management Record (TMR) when an application deletes a receiver in a standard way with, for example <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/ChangeLog/api.tag:../API/" href="../API/lbm_8h.html#a8d5e8713f5ae776330b23a1e371f934d">lbm_rcv_delete()</a>, when Dynamic Routers do not exist in the Topic Resolution domain. TMRs specifically inform a Dynamic Router that a receiver for a particular topic has been shutdown. (Without the presence of Dynamic Routers, TMRs become unnecessary network traffic.)</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
@@ -83,7 +83,7 @@ Streaming Enhancements for 6.1</h2>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>4785 </td><td><p class="starttd">Added the ability in the Java and .NET APIs to restrict receiver objects to a single LBMReceiverCallback with a new API: <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/ChangeLog/javaapi.tag:../JavaAPI/" href="../JavaAPI/classcom_1_1latencybusters_1_1lbm_1_1LBMReceiverAttributes.html#a86cd8541b3b013ed7c05908bdf56c3d8">com::latencybusters::lbm::LBMReceiverAttributes::enableSingleReceiverCallback()</a>. You can reduce latencies and increase throughput by using a single callback which removes the need for any synchronization of multiple callbacks within UM during message delivery.</p>
+<td>4785 </td><td><p class="starttd">Added the ability in the Java and .NET APIs to restrict receiver objects to a single LBMReceiverCallback with a new API: <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/ChangeLog/javaapi.tag:../JavaAPI/" href="../JavaAPI/classcom_1_1latencybusters_1_1lbm_1_1LBMReceiverAttributes.html#a86cd8541b3b013ed7c05908bdf56c3d8">com::latencybusters::lbm::LBMReceiverAttributes::enableSingleReceiverCallback()</a>. You can reduce latencies and increase throughput by using a single callback which removes the need for any synchronization of multiple callbacks within UM during message delivery.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
@@ -92,9 +92,9 @@ Streaming Enhancements for 6.1</h2>
 <p><br />
  </p>
 <h2><a class="anchor" id="newtransportlbtsmx"></a>
-New Transport LBT-SMX</h2>
+New Transport LBT-SMX&nbsp;&nbsp;<small><a href="#newtransportlbtsmx">&lt;-</a></small></h2>
 <p>The LBT-SMX (shared memory acceleration) transport is an Interprocess Communication (IPC) transport you can use for the lowest latency message streaming. LBT-SMX is faster, though more-restrictive than the LBT-IPC transport. Like LBT-IPC, sources can publish topic messages to a shared memory area from which receivers can read topic messages. Unlike LBT-IPC, the native APIs for the LBT-SMX transport are not thread safe and do not support all UM features such as message batching or fragmentation.</p>
-<p>You can use either the native LBT-SMX API calls, <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/ChangeLog/api.tag:../API/" href="../API/lbm_8h.html#a8a56e2f08924d25caea26d205cf730c5">lbm_src_buff_acquire()</a> and <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/ChangeLog/api.tag:../API/" href="../API/lbm_8h.html#a4f857abe9088918c618cdd248ccf7d83">lbm_src_buffs_complete()</a> to send over LBT-SMX or you can use lbm_src_send_*() API calls. The existing send APIs are thread safe with SMX, but they incur a synchronization overhead and thus are slower than the native LBT-SMX API calls.</p>
+<p>You can use either the native LBT-SMX API calls, <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/ChangeLog/api.tag:../API/" href="../API/lbm_8h.html#a8a56e2f08924d25caea26d205cf730c5">lbm_src_buff_acquire()</a> and <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/ChangeLog/api.tag:../API/" href="../API/lbm_8h.html#a4f857abe9088918c618cdd248ccf7d83">lbm_src_buffs_complete()</a> to send over LBT-SMX or you can use lbm_src_send_*() API calls. The existing send APIs are thread safe with SMX, but they incur a synchronization overhead and thus are slower than the native LBT-SMX API calls.</p>
 <p>LBT-SMX operates on the following Ultra Messaging 64-bit packages: </p><ul>
 <li>
 SunOS-5.10-amd64 </li>
@@ -104,12 +104,12 @@ Linux-glibc-2.5-x86_64 </li>
 Win2k-x86_64 </li>
 </ul>
 <p>The example applications lbmlatping.* and lbmlatpong.* show how to use the native LBT-SMX API calls. All three APIs (C API, Java API, and .NET API) have identically named example applications. Other example applications can use the LBT-SMX transport with the use of a UM configuration file containing source transport lbtsmx. You cannot use LBT-SMX with example applications for features not supported by LBT-SMX, such as lbmreq.*, lbmresp.*, lbmrcvq.* or lbmwrcvq.*.</p>
-<p>The LBT-SMX configuration options are similar to the LBT-IPC transport options. See Transport <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grptransportlbtsmxoperation.html">Transport LBT-SMX Operation Options</a>.</p>
+<p>The LBT-SMX configuration options are similar to the LBT-IPC transport options. See Transport <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/ChangeLog/config.tag:../Config/" href="../Config/grptransportlbtsmxoperation.html">Transport LBT-SMX Operation Options</a>.</p>
 <p>You can use Automatic Monitoring, UM API retrieve/reset calls, and LBMMON APIs to access LBT-SMX source and receiver transport statistics. To increase performance, the LBT-SMX transport does not collect statistics by default. Set the UM configuration option transportlbtsmxmessagestatisticsenabledcontext to 1 to enable the collection of transport statistics.</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="persistenceenhancementsfor6_1"></a>
-Persistence Enhancements for 6.1</h2>
+Persistence Enhancements for 6.1&nbsp;&nbsp;<small><a href="#persistenceenhancementsfor6_1">&lt;-</a></small></h2>
 <p>The following new features and enhancements apply to UMP and UMQ products.</p>
 <ul>
 <li>
@@ -118,7 +118,7 @@ None. </li>
 <p><br />
  </p>
 <h2><a class="anchor" id="queuingenhancementsfor6_1"></a>
-Queuing Enhancements for 6.1</h2>
+Queuing Enhancements for 6.1&nbsp;&nbsp;<small><a href="#queuingenhancementsfor6_1">&lt;-</a></small></h2>
 <dl class="section note"><dt>Note</dt><dd>The brokered queuing and UM JMS functionalities were replaced in version 6.8, so most of these notes do not apply to more-recent versions of UM. However, ULB functionalty is retained.</dd></dl>
 <p>The following new features and enhancements apply to the UMQ product.</p>
 <ul>
@@ -128,7 +128,7 @@ None. </li>
 <p><br />
  </p>
 <h2><a class="anchor" id="dynamicrouterenhancementsfor6_1"></a>
-Dynamic Router Enhancements for 6.1</h2>
+Dynamic Router Enhancements for 6.1&nbsp;&nbsp;<small><a href="#dynamicrouterenhancementsfor6_1">&lt;-</a></small></h2>
 <p>The following new features and enhancements apply to the Dynamic Routing Option (DRO).</p>
 <ul>
 <li>
@@ -137,22 +137,22 @@ None. </li>
 <p><br />
  </p>
 <h1><a class="anchor" id="fixedlimitationsfor6_1"></a>
-Fixed Limitations for 6.1</h1>
+Fixed Limitations for 6.1&nbsp;&nbsp;<small><a href="#fixedlimitationsfor6_1">&lt;-</a></small></h1>
 <p><br />
  </p>
 <h2><a class="anchor" id="streamingfixedlimitationsfor6_1"></a>
-Streaming Fixed Limitations for 6.1</h2>
+Streaming Fixed Limitations for 6.1&nbsp;&nbsp;<small><a href="#streamingfixedlimitationsfor6_1">&lt;-</a></small></h2>
 <p>The following bug fixes apply to UMS, UMP, and UMQ products.</p>
 <table class="doxtable">
 <tr>
 <th>Change Request </th><th>Description </th></tr>
 <tr>
-<td>7656 </td><td>Fixed a problem with <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/ChangeLog/api.tag:../API/" href="../API/lbm_8h.html#aab029e3f210b40f3fded64fec2a27a02">lbm_set_umm_info()</a> that caused it to always return 0 (success). The function now returns -1 on a parsing error of a returned UMM configuration file, UMM Daemon login error or a communications error with the UMM Daemon. </td></tr>
+<td>7656 </td><td>Fixed a problem with <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/ChangeLog/api.tag:../API/" href="../API/lbm_8h.html#aab029e3f210b40f3fded64fec2a27a02">lbm_set_umm_info()</a> that caused it to always return 0 (success). The function now returns -1 on a parsing error of a returned UMM configuration file, UMM Daemon login error or a communications error with the UMM Daemon. </td></tr>
 </table>
 <p><br />
  </p>
 <h2><a class="anchor" id="persistencefixedlimitationsfor6_1"></a>
-Persistence Fixed Limitations for 6.1</h2>
+Persistence Fixed Limitations for 6.1&nbsp;&nbsp;<small><a href="#persistencefixedlimitationsfor6_1">&lt;-</a></small></h2>
 <p>The following bug fixes apply to UMP and UMQ products.</p>
 <table class="doxtable">
 <tr>
@@ -184,7 +184,7 @@ Previously the message always displayed RegID 0 and no store information.</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="queuingfixedlimitationsfor6_1"></a>
-Queuing Fixed Limitations for 6.1</h2>
+Queuing Fixed Limitations for 6.1&nbsp;&nbsp;<small><a href="#queuingfixedlimitationsfor6_1">&lt;-</a></small></h2>
 <dl class="section note"><dt>Note</dt><dd>The brokered queuing and UM JMS functionalities were replaced in version 6.8, so most of these notes do not apply to more-recent versions of UM. However, ULB functionalty is retained.</dd></dl>
 <p>The following bug fixes apply to the UMQ product.</p>
 <table class="doxtable">
@@ -196,7 +196,7 @@ Queuing Fixed Limitations for 6.1</h2>
 <p><br />
  </p>
 <h2><a class="anchor" id="dynamicrouterfixedlimitationsfor6_1"></a>
-Dynamic Router Fixed Limitations for 6.1</h2>
+Dynamic Router Fixed Limitations for 6.1&nbsp;&nbsp;<small><a href="#dynamicrouterfixedlimitationsfor6_1">&lt;-</a></small></h2>
 <p>The following bug fixes apply to the Dynamic Routing Option (DRO).</p>
 <ul>
 <li>

@@ -56,24 +56,23 @@ $(document).ready(function(){initNavTree('index.html','');});
 <div class="contents">
 <div class="textblock"><p> 
 <img src="infa_logo.png" width="400" height="138" alt="Informatica"/><br/><br/>
-<big><b>Ultra Messaging</b></big> <small>(Version 6.11.1)</small><br/>
+<big><b>Ultra Messaging</b></big> <small>(Version 6.12)</small><br/>
 <br/><br/><br/>
 <center class="mytitle">Dynamic Routing Guide</center>
-<center>Copyright (C) 2004-2018, Informatica Corporation.  All Rights Reserved.</center>
+<center>Copyright (C) 2004-2019, Informatica Corporation.  All Rights Reserved.</center>
 <br/><br/><br/>
 [&nbsp;<a href="../index.html">Multi-page HTML</a>&nbsp;]&nbsp;&nbsp;|&nbsp;&nbsp;[&nbsp;<a href="../UM_Routing_Guide=en.pdf">PDF</a>&nbsp;]
 <br/><br/>
  </p>
 <h1><a class="anchor" id="firstsect"></a>
-Introduction</h1>
+Introduction&nbsp;&nbsp;<small><a href="#firstsect">&lt;-</a></small></h1>
 <p>This document explains design concepts and product implementation for the Ultra Messaging <em>Dynamic Routing Option</em> (DRO).</p>
 <dl class="section attention"><dt>Attention</dt><dd><b>See the <a href="../../DocIntro=en.pdf">Documentation Introduction</a> for important information on copyright, patents, information resources (including Knowledge Base, and How To articles), Marketplace, Support, and other information about Informatica and its products.</b></dd></dl>
-<p>The Ultra Messaging Dynamic Routing Option (DRO) consists of a daemon called the "UM Router" (or just the DRO) that bridges disjoint Topic Resolution Domains (TRDs) by effectively forwarding control and user traffic between them. Thus, the UM Router facilitates WAN routing where multicast routing capability is absent, possibly due to technical obstacles or enterprise policies.</p>
-<p>The UM Router transfers multicast and/or unicast topic resolution information, thus ensuring that receivers in disjoint topic resolution domains from the source can receive the topic messages to which they subscribe.</p>
+<p>The Ultra Messaging Dynamic Routing Option (DRO) consists of a daemon called the "UM Router" (or just the DRO) that bridges disjoint Topic Resolution Domains (TRDs) by effectively forwarding control and user traffic between them. Thus, the UM Router facilitates WAN routing where multicast routing capability is absent, possibly due to technical obstacles or enterprise policies. (FYI: a historical name for the UM Router is "Twenty Nine West Gateway Daemon" or "tnwgd". In the documentation you will see various abbreviations that include "tnwg".)</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="drofeatures"></a>
-DRO Features</h2>
+DRO Features&nbsp;&nbsp;<small><a href="#drofeatures">&lt;-</a></small></h2>
 <p>The UM Router includes the following features: </p><ul>
 <li>
 Full bidirectional forwarding </li>
@@ -111,11 +110,11 @@ Multitransport Threads (MTT) </li>
 <p><br />
  </p>
 <h1><a class="anchor" id="droarchitecture"></a>
-DRO Architecture</h1>
+DRO Architecture&nbsp;&nbsp;<small><a href="#droarchitecture">&lt;-</a></small></h1>
 <p><br />
  </p>
 <h2><a class="anchor" id="umrouterportals"></a>
-UM Router Portals</h2>
+UM Router Portals&nbsp;&nbsp;<small><a href="#umrouterportals">&lt;-</a></small></h2>
 <p>The UM Router uses interfaces, called portals, through which to pass data. A UM Router consists of two or more bidirectional portals that may be one of two types:</p>
 <ul>
 <li>
@@ -131,7 +130,7 @@ A peer portal, which communicates via TCP with another peer portal (of another U
 <p><br />
  </p>
 <h2><a class="anchor" id="topicresolutiondomains"></a>
-Topic Resolution Domains</h2>
+Topic Resolution Domains&nbsp;&nbsp;<small><a href="#topicresolutiondomains">&lt;-</a></small></h2>
 <p>Since topic resolution uses UDP, sources and receivers must have UDP connectivity to each other. When they do, we consider them to be in the same topic resolution domain (TRD). More specifically, UM contexts must satisfy the following two requirements to belong to the same topic resolution domain.</p>
 <ul>
 <li>
@@ -156,7 +155,7 @@ Contexts can communicate using the protocols required for both message transport
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="proxysourcesandproxyreceivers"></a>
-Proxy Sources and Proxy Receivers</h2>
+Proxy Sources and Proxy Receivers&nbsp;&nbsp;<small><a href="#proxysourcesandproxyreceivers">&lt;-</a></small></h2>
 <p>To resolve a topic across a UM Router (described in <a class="el" href="index.html#basicumrouteroperation">Basic UM Router Operation</a>), the UM Router creates, within portals, proxy sources and proxy receivers (shown in the figure below by their dashed lines). These proxies behave like their UM counterparts; they resolve topics on the TRDs like normal sources and receivers, and the UM Router internally passes data from one portal to the other. However unlike regular sources, proxy sources do not have retransmission retention buffers normally used for Late Join or OTR.</p>
 <div class="image">
 <img src="proxies.png" alt="proxies.png"/>
@@ -166,16 +165,16 @@ Proxy Sources and Proxy Receivers</h2>
 <p><br />
  </p>
 <h2><a class="anchor" id="routing"></a>
-Routing</h2>
+Routing&nbsp;&nbsp;<small><a href="#routing">&lt;-</a></small></h2>
 <p>In multiple-UM Router environments where more than one UM Router can provide possible messaging pathways, the UM Routers are able to cooperatively determine and establish optimal routes. Also, the UM Router network is able to detect link or other UM Router outages and automatically reroute traffic as needed. See <a class="el" href="index.html#routingtopologies">Routing Topologies</a> for more information.</p>
 <p><br />
  </p>
 <h1><a class="anchor" id="umrouterconcepts"></a>
-UM Router Concepts</h1>
+UM Router Concepts&nbsp;&nbsp;<small><a href="#umrouterconcepts">&lt;-</a></small></h1>
 <p><br />
  </p>
 <h2><a class="anchor" id="basicumrouteroperation"></a>
-Basic UM Router Operation</h2>
+Basic UM Router Operation&nbsp;&nbsp;<small><a href="#basicumrouteroperation">&lt;-</a></small></h2>
 <p>The diagram below shows a UM Router bridging topic resolution domains TRD1 and TRD2, for topic AAA, in a direct link configuration. Endpoint E1 contains a proxy receiver for topic AAA and endpoint E2 has a proxy source for topic AAA.</p>
 <div class="image">
 <img src="basic_routing.png" alt="basic_routing.png"/>
@@ -198,7 +197,7 @@ E1's AAA proxy receiver sees the TIR and requests that E2 (and any other interes
 <p><br />
  </p>
 <h3><a class="anchor" id="interestandusequeries"></a>
-Interest and Use Queries</h3>
+Interest and Use Queries&nbsp;&nbsp;<small><a href="#interestandusequeries">&lt;-</a></small></h3>
 <p>When a UM Router starts, its endpoint portals issue a brief series of Topic Resolution Request messages to their respective topic resolution domains. This provokes quiescent receivers (and wildcard receivers) into sending Use Query Responses, indicating interest in various topics. Each portal then records this interest.</p>
 <div class="image">
 <img src="dro_tr_1.png" alt="dro_tr_1.png"/>
@@ -215,25 +214,40 @@ Interest and Use Queries</h3>
 <p><br />
  </p>
 <h3><a class="anchor" id="umrouterkeepalive"></a>
-UM Router Keepalive</h3>
+UM Router Keepalive&nbsp;&nbsp;<small><a href="#umrouterkeepalive">&lt;-</a></small></h3>
 <p>To maintain a reliable connection, peer portals exchange UM Router Keepalive signals. Keepalive intervals and connection timeouts are configurable on a per-portal basis. You can also set the UM Router to send keepalives only when traffic is idle, which is the default condition. When both traffic and keepalives go silent at a portal ingress, the portal considers the connection lost and disconnects the TCP link. After the disconnect, the portal tries to reconnect. See refeatewaykeepalive.</p>
 <p><br />
  </p>
 <h3><a class="anchor" id="finaladvertisements"></a>
-Final Advertisements</h3>
+Final Advertisements&nbsp;&nbsp;<small><a href="#finaladvertisements">&lt;-</a></small></h3>
 <p>UM Router proxy sources on endpoint portals, when deleted, send out a series of final advertisements. A final advertisement tells any receivers, including proxy receivers on other UM Routers, that the particular source has gone away. This triggers EOS and clean-up activities on the receiver relative to that specific source, which causes the receiver to begin querying according to its topic resolution configuration for the sustaining phase of querying.</p>
 <p>In short, final advertisements announce earlier detection of a source that has gone away, instead of transport timeout. This causes a faster transition to an alternative proxy source on a different UM Router if there is a change in the routing path.</p>
 <p><br />
  </p>
 <h3><a class="anchor" id="moreaboutproxysourcesandreceivers"></a>
-More About Proxy Sources and Receivers</h3>
+More About Proxy Sources and Receivers&nbsp;&nbsp;<small><a href="#moreaboutproxysourcesandreceivers">&lt;-</a></small></h3>
 <p>The domain-id is used by Interest Messages and other internal and UM Router-to-UM Router traffic to ensure forwarding of all messages (payload and topic resolution) to the correct recipients. This also has the effect of not creating proxy sources/receivers where they are not needed. Thus, UM Routers create proxy sources and receivers based solely on receiver interest.</p>
 <p>If more than one source sends on a given topic, the receiving portal's single proxy receiver for that topic receives all messages sent on that topic. The sending portal, however creates a proxy source for every source sending on the topic. The UM Router maintains a table of proxy sources, each keyed by an Originating Transport ID (OTID), enabling the proxy receiver to forward each message to the correct proxy source. An OTID uniquely identifies a source's transport session, and is included in topic advertisements.</p>
-<dl class="section note"><dt>Note</dt><dd>It is important to keep maximum datagram sizes exactly the same across all TRDs and transports. For example, if the TRD on one side of a UM Router uses LBT-RM message transport and the TRD on the other side uses LBT-RDMA with a larger maximum datagram size configured, fragments from domain 1 will be too large for domain 2. See configuration options: <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Gateway/config.tag:../../Config/" href="../../Config/grpresolveroperation.html#resolverdatagrammaxsizecontext">resolver_datagram_max_size (context)</a>, <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Gateway/config.tag:../../Config/" href="../../Config/grptransporttcpoperation.html#transporttcpdatagrammaxsizecontext">transport_tcp_datagram_max_size (context)</a>, <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Gateway/config.tag:../../Config/" href="../../Config/grptransportlbtrmoperation.html#transportlbtrmdatagrammaxsizecontext">transport_lbtrm_datagram_max_size (context)</a>, <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Gateway/config.tag:../../Config/" href="../../Config/grptransportlbtruoperation.html#transportlbtrudatagrammaxsizecontext">transport_lbtru_datagram_max_size (context)</a>, <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Gateway/config.tag:../../Config/" href="../../Config/grptransportlbtipcoperation.html#transportlbtipcdatagrammaxsizecontext">transport_lbtipc_datagram_max_size (context)</a>, and <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Gateway/config.tag:../../Config/" href="../../Config/grptransportlbtsmxoperation.html#transportlbtsmxdatagrammaxsizesource">transport_lbtsmx_datagram_max_size (source)</a>.</dd></dl>
+<p><br />
+ </p>
+<h3><a class="anchor" id="protocolconversion"></a>
+Protocol Conversion&nbsp;&nbsp;<small><a href="#protocolconversion">&lt;-</a></small></h3>
+<p>When an application creates a source, it is configured to use one of the UM transport types. When a DRO is deployed, the proxy sources are also configured to use one of the UM transport types. Although users often use the same transport type for sources and proxy sources, this is not necessary. When different transport types are configured for source and proxy source, the DRO is performing a protocol conversion.</p>
+<p>When this is done, it is very important to configure the transports to use the same maximum datagram size. If you don't, the DRO can drop messages which cannot be recovered through normal means. For example, a source in TRD1 can be configured for TCP, which has a default maximum datagram size of 65536. If a DRO's remote portal is configured to create LBT-RU proxy sources, that has a default maximum datagram size of 8192. If the source sends a user message of 10K, the TCP source will send it as a single fragment. The DRO will receive it and will attempt to forward it on an LBT-RU proxy source, but the 10K fragment is too large for LBT-RU's maximum datagram size, so the message will be dropped.</p>
+<p>The solution is to override the default maximum datagram sizes to be the same. Informatica generally does not recommend configuring UDP-based transports for datagram sizes above 8K, so it is advisable to set the maximum datagram sizes of all transport types to 8192, like this:</p>
+<pre>
+context transport_tcp_datagram_max_size 8192
+context transport_lbtrm_datagram_max_size 8192
+context transport_lbtru_datagram_max_size 8192
+context transport_lbtipc_datagram_max_size 8192
+source transport_lbtsmx_datagram_max_size 8192
+</pre><p>See configuration options: <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Gateway/config.tag:../../Config/" href="../../Config/grptransporttcpoperation.html#transporttcpdatagrammaxsizecontext">transport_tcp_datagram_max_size (context)</a>, <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Gateway/config.tag:../../Config/" href="../../Config/grptransportlbtrmoperation.html#transportlbtrmdatagrammaxsizecontext">transport_lbtrm_datagram_max_size (context)</a>, <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Gateway/config.tag:../../Config/" href="../../Config/grptransportlbtruoperation.html#transportlbtrudatagrammaxsizecontext">transport_lbtru_datagram_max_size (context)</a>, <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Gateway/config.tag:../../Config/" href="../../Config/grptransportlbtipcoperation.html#transportlbtipcdatagrammaxsizecontext">transport_lbtipc_datagram_max_size (context)</a>, and <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Gateway/config.tag:../../Config/" href="../../Config/grptransportlbtsmxoperation.html#transportlbtsmxdatagrammaxsizesource">transport_lbtsmx_datagram_max_size (source)</a>.</p>
+<p>Also see <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Gateway/design.tag:../../Design/" href="../../Design/architecture.html#messagefragmentationandreassembly">Message Fragmentation and Reassembly</a>.</p>
+<p>Final note: the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Gateway/config.tag:../../Config/" href="../../Config/grpudpbasedresolveroperation.html#resolverdatagrammaxsizecontext">resolver_datagram_max_size (context)</a> option also needs to be made the same in all instances of UM, including DROs.</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="multihopforwarding"></a>
-Multi-Hop Forwarding</h2>
+Multi-Hop Forwarding&nbsp;&nbsp;<small><a href="#multihopforwarding">&lt;-</a></small></h2>
 <p>UM can resolve topics across a span of multiple UM Routers. Consider a simple example UM Router deployment, as shown in the following figure.</p>
 <div class="image">
 <img src="multi_hop.png" alt="multi_hop.png"/>
@@ -267,7 +281,7 @@ Topic AAA has now been resolved across both UM Routers, which forward all topic 
 <p><br />
  </p>
 <h2><a class="anchor" id="routingwildcardreceivers"></a>
-Routing Wildcard Receivers</h2>
+Routing Wildcard Receivers&nbsp;&nbsp;<small><a href="#routingwildcardreceivers">&lt;-</a></small></h2>
 <p>The UM Router supports topic resolution for wildcard receivers in a manner very similar to non-wildcard receivers. Wildcard receivers in a TRD issuing a WC-TQR cause corresponding proxy wildcard receivers to be created in portals, as shown in the following figure. The UM Router creates a single proxy source for pattern match.</p>
 <div class="image">
 <img src="wildcard.png" alt="wildcard.png"/>
@@ -275,14 +289,14 @@ Routing Wildcard Receivers</h2>
  <p><br />
  </p>
 <h2><a class="anchor" id="forwardingcosts"></a>
-Forwarding Costs</h2>
+Forwarding Costs&nbsp;&nbsp;<small><a href="#forwardingcosts">&lt;-</a></small></h2>
 <p>Forwarding a message through a UM Router incurs a cost in terms of latency, network bandwidth, and CPU utilization on the UM Router machine (which may in turn affect the latency of other forwarded messages). Transiting multiple UM Routers adds even more cumulative latency to a message. Other UM Router-related factors such as portal buffering, network bandwidth, switches, etc., can also add latency.</p>
 <p>Factors other than latency contribute to the cost of forwarding a message. Consider a message that can be sent from one domain to its destination domain over one of two paths. A three-hop path over 1Gbps links may be faster than a single-hop path over a 100Mbps link. Further, it may be the case that the 100Mbps link is more expensive or less reliable.</p>
 <p>You assign forwarding cost values on a per-portal basis. When summed over a path, these values determine the cost of that entire path. A network of UM Routers uses forwarding cost as the criterion for determining the best path over which to resolve a topic.</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="umrouterrouting"></a>
-UM Router Routing</h2>
+UM Router Routing&nbsp;&nbsp;<small><a href="#umrouterrouting">&lt;-</a></small></h2>
 <p>UM Routers have an awareness of other UM Routers in their network and how they are linked. Thus, they each maintain a topology map, which is periodically confirmed and updated. This map also includes forwarding cost information.</p>
 <p>Using this information, the UM Routers can cooperate during topic resolution to determine the best (lowest cost) path over which to resolve a topic or to route control information. They do this by totaling the costs of all portals along each candidate route, then comparing the totals.</p>
 <p>For example, the following figure shows two possible paths from TRD1 to TRD2: A-C (total route cost of 11) and B-D (total route cost of 7). In this case, the UM Routers select path B-D.</p>
@@ -295,12 +309,12 @@ UM Router Routing</h2>
 <p><br />
  </p>
 <h2><a class="anchor" id="routingtopologies"></a>
-Routing Topologies</h2>
+Routing Topologies&nbsp;&nbsp;<small><a href="#routingtopologies">&lt;-</a></small></h2>
 <p>You can configure multiple UM Routers in a variety of topologies. Following are several examples.</p>
 <p><br />
  </p>
 <h3><a class="anchor" id="directlink"></a>
-Direct Link</h3>
+Direct Link&nbsp;&nbsp;<small><a href="#directlink">&lt;-</a></small></h3>
 <p>The Direct Link configuration uses a single UM Router to directly connect two TRDs. For a configuration example, see <a class="el" href="index.html#directlinkconfiguration">Direct Link Configuration</a>.</p>
 <div class="image">
 <img src="direct_link.png" alt="direct_link.png"/>
@@ -308,7 +322,7 @@ Direct Link</h3>
  <p><br />
  </p>
 <h3><a class="anchor" id="singlelink"></a>
-Single Link</h3>
+Single Link&nbsp;&nbsp;<small><a href="#singlelink">&lt;-</a></small></h3>
 <p>A Single Link configuration connects two TRDs using a UM Router on each end of an intermediate link. The intermediate link can be a "peer" link, or a transit TRD. For configuration examples, see <a class="el" href="index.html#peerlinkconfiguration">Peer Link Configuration</a> and <a class="el" href="index.html#transittrdlinkconfiguration">Transit TRD Link Configuration</a>.</p>
 <div class="image">
 <img src="single_link.png" alt="single_link.png"/>
@@ -316,7 +330,7 @@ Single Link</h3>
  <p><br />
  </p>
 <h3><a class="anchor" id="parallellinks"></a>
-Parallel Links</h3>
+Parallel Links&nbsp;&nbsp;<small><a href="#parallellinks">&lt;-</a></small></h3>
 <p>Parallel Links offer multiple complete paths between two TRDs. However, UM will not load-balance messages across both links. Rather, parallel links are used for failover purposes. You can set preference between the links by setting the primary path for the lowest cost and standby paths at higher costs. For a configuration example, see <a class="el" href="index.html#parallellinksconfiguration">Parallel Links Configuration</a>.</p>
 <div class="image">
 <img src="parallel_links.png" alt="parallel_links.png"/>
@@ -324,7 +338,7 @@ Parallel Links</h3>
  <p><br />
  </p>
 <h3><a class="anchor" id="loops"></a>
-Loops</h3>
+Loops&nbsp;&nbsp;<small><a href="#loops">&lt;-</a></small></h3>
 <p>Loops let you route packets back to the originating UM Router without reusing any paths. Also, if any peer-peer links are interrupted, the looped UM Routers are able to find an alternate route between any two TRDs.</p>
 <div class="image">
 <img src="loops.png" alt="loops.png"/>
@@ -332,7 +346,7 @@ Loops</h3>
  <p><br />
  </p>
 <h3><a class="anchor" id="loopandspur"></a>
-Loop and Spur</h3>
+Loop and Spur&nbsp;&nbsp;<small><a href="#loopandspur">&lt;-</a></small></h3>
 <p>The Loop and Spur has a one or more UM Routers tangential to the loop and accessible only through a single UM Router participating in the loop. For a configuration example, see <a class="el" href="index.html#loopandspurconfiguration">Loop and Spur Configuration</a>.</p>
 <div class="image">
 <img src="loop_and_spur.png" alt="loop_and_spur.png"/>
@@ -340,7 +354,7 @@ Loop and Spur</h3>
  <p><br />
  </p>
 <h3><a class="anchor" id="loopwithcentralizedtrd"></a>
-Loop with Centralized TRD</h3>
+Loop with Centralized TRD&nbsp;&nbsp;<small><a href="#loopwithcentralizedtrd">&lt;-</a></small></h3>
 <p>Adding a TRD to the center of a loop enhances its rerouting capabilities.</p>
 <div class="image">
 <img src="loop_central_trd.png" alt="loop_central_trd.png"/>
@@ -348,7 +362,7 @@ Loop with Centralized TRD</h3>
  <p><br />
  </p>
 <h3><a class="anchor" id="Star"></a>
-with centralized TRD</h3>
+with centralized TRD&nbsp;&nbsp;<small><a href="#Star">&lt;-</a></small></h3>
 <p>A Star with a centralized TRD does not offer rerouting capabilities but does provide an economical way to join multiple disparate TRDs.</p>
 <div class="image">
 <img src="star_central_trd.png" alt="star_central_trd.png"/>
@@ -356,7 +370,7 @@ with centralized TRD</h3>
  <p><br />
  </p>
 <h3><a class="anchor" id="starwithcentralizedumrouter"></a>
-Star with Centralized UM Router</h3>
+Star with Centralized UM Router&nbsp;&nbsp;<small><a href="#starwithcentralizedumrouter">&lt;-</a></small></h3>
 <p>The Star with a centralized UM Router is the simplest way to bridge multiple TRDs. For a configuration example, see <a class="el" href="index.html#starconfiguration">Star Configuration</a>.</p>
 <div class="image">
 <img src="star_central_dro.png" alt="star_central_dro.png"/>
@@ -364,7 +378,7 @@ Star with Centralized UM Router</h3>
  <p><br />
  </p>
 <h3><a class="anchor" id="mesh"></a>
-Mesh</h3>
+Mesh&nbsp;&nbsp;<small><a href="#mesh">&lt;-</a></small></h3>
 <p>The Mesh topology provides peer portal interconnects between many UM Routers, approaching an all-connected-to-all configuration. This provides multiple possible paths between any two TRDs in the mesh. Note that this diagram is illustrative of the ways the UM Routers may be interconnected, and not necessarily a practical or recommended application. For a configuration example, see <a class="el" href="index.html#meshconfiguration">Mesh Configuration</a>.</p>
 <div class="image">
 <img src="mesh.png" alt="mesh.png"/>
@@ -372,7 +386,7 @@ Mesh</h3>
  <p><br />
  </p>
 <h3><a class="anchor" id="palmtree"></a>
-Palm Tree</h3>
+Palm Tree&nbsp;&nbsp;<small><a href="#palmtree">&lt;-</a></small></h3>
 <p>The Palm Tree has a set of series-connected TRDs fanning out to a more richly meshed set of TRDs. This topology tends to pass more concentrated traffic over common links for part of its transit while supporting a loop, star, or mesh near its terminus.</p>
 <div class="image">
 <img src="palm_tree.png" alt="palm_tree.png"/>
@@ -380,7 +394,7 @@ Palm Tree</h3>
  <p><br />
  </p>
 <h3><a class="anchor" id="dumbbell"></a>
-Dumbbell</h3>
+Dumbbell&nbsp;&nbsp;<small><a href="#dumbbell">&lt;-</a></small></h3>
 <p>Similar to the Palm Tree, the Dumbbell has a funneled route with a loop, star, or mesh topology on each end.</p>
 <div class="image">
 <img src="dumbell.png" alt="dumbell.png"/>
@@ -388,7 +402,7 @@ Dumbbell</h3>
  <p><br />
  </p>
 <h2><a class="anchor" id="unsupportedconfigurations"></a>
-Unsupported Configurations</h2>
+Unsupported Configurations&nbsp;&nbsp;<small><a href="#unsupportedconfigurations">&lt;-</a></small></h2>
 <p>When designing UM Router networks, do not use any of the following topology constructs.</p>
 <p>Two peer-to-peer connections between the same two UM Routers:</p>
 <div class="image">
@@ -405,13 +419,13 @@ Unsupported Configurations</h2>
  <p><br />
  </p>
 <h2><a class="anchor" id="umfeaturecompatibility"></a>
-UM Feature Compatibility</h2>
+UM Feature Compatibility&nbsp;&nbsp;<small><a href="#umfeaturecompatibility">&lt;-</a></small></h2>
 <p>You must install the UM Dynamic Routing Option with its companion Ultra Messaging UMS, UMP, or UMQ product, and versions must match. While most UM features are compatible with the UM Router, some are not. Following is a table of features and their compatibilities with the UM Router.</p>
 <table class="doxtable">
 <tr>
 <th>UM Feature </th><th>UM Router Compatible? </th><th>Notes </th></tr>
 <tr>
-<td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Gateway/config.tag:../../Config/" href="../../Config/grptransportacceleration.html">Transport Acceleration</a> </td><td>Yes </td><td></td></tr>
+<td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Gateway/config.tag:../../Config/" href="../../Config/grptransportacceleration.html">Transport Acceleration</a> </td><td>Yes </td><td></td></tr>
 <tr>
 <td>Hot Failover (HF) </td><td>Yes </td><td>The UM Router can pass messages sent by HF publishers to HF receivers, however the UM Router itself cannot be configured to originate or terminate HF data streams. </td></tr>
 <tr>
@@ -490,22 +504,22 @@ UM Feature Compatibility</h2>
 <p><br />
  </p>
 <h1><a class="anchor" id="umrouterimplementation"></a>
-UM Router Implementation</h1>
+UM Router Implementation&nbsp;&nbsp;<small><a href="#umrouterimplementation">&lt;-</a></small></h1>
 <p><br />
  </p>
 <h2><a class="anchor" id="umrouterconfigurationoverview"></a>
-UM Router Configuration Overview</h2>
+UM Router Configuration Overview&nbsp;&nbsp;<small><a href="#umrouterconfigurationoverview">&lt;-</a></small></h2>
 <p>When the UM Router daemon launches, it uses configuration option settings to determine its behavior and expectations. You specify option values in an XML configuration file, and reference the file from a command line argument.</p>
 <p>Typically, you have a separate XML configuration file for each UM Router, which contains structured configuration elements that describe aspects of the UM Router. Within this XML configuration file, each endpoint portal definition points to a UM configuration file, which allow the portal to properly connect to its TRD.</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="creatingapplicationsforumroutercompatibility"></a>
-Creating Applications for UM Router Compatibility</h2>
+Creating Applications for UM Router Compatibility&nbsp;&nbsp;<small><a href="#creatingapplicationsforumroutercompatibility">&lt;-</a></small></h2>
 <p>When developing messaging applications that use Ultra Messaging and, in particular, the UM Router, please observe the following guidelines.</p>
 <p><br />
  </p>
 <h3><a class="anchor" id="namingandidentification"></a>
-Naming and Identification</h3>
+Naming and Identification&nbsp;&nbsp;<small><a href="#namingandidentification">&lt;-</a></small></h3>
 <p>An important part to successfully implementing UM Routers is prudent and error-free naming of TRDs, UM Routers, portals, etc., as well as correct identification of IP addresses and ports. It is good practice to first design the UM Router network by defining all connections and uniquely naming all UM Routers, portals, and TRDs. This works well as a diagram similar to some examples presented in this document. Include the following names and parameters in your design diagram:</p>
 <ul>
 <li>
@@ -524,13 +538,13 @@ Portal costs </li>
  <p><br />
  </p>
 <h3><a class="anchor" id="portalcosts"></a>
-Portal Costs</h3>
+Portal Costs&nbsp;&nbsp;<small><a href="#portalcosts">&lt;-</a></small></h3>
 <p>A network of UM Routers uses forwarding cost as the criterion for determining the best (lowest cost) path over which to resolve a topic and route data. Forwarding cost is simply the sum of all portal costs along a multi-UM Router path. Thus, total cost for the single path in the above example is 34. (Note that this is a non-real-world example, since costs are pointless without alternate routes to compare to.) You assign portal costs via the <code>&lt;cost&gt;</code> configuration option.</p>
 <p>After the UM Router network calculates its paths, if a new lower-cost source becomes available, receivers switch to that path.</p>
 <p><br />
  </p>
 <h3><a class="anchor" id="accesscontrollistsacl"></a>
-Access Control Lists (ACL)</h3>
+Access Control Lists (ACL)&nbsp;&nbsp;<small><a href="#accesscontrollistsacl">&lt;-</a></small></h3>
 <p>You can apply Access Control Lists (ACL) to a UM Router's portals to filter traffic by certain topics, transports, topic patterns, multicast groups, etc. You configure ACLs in a UM Router's XML configuration file, as children of an <code>&lt;endpoint&gt;</code> or <code>&lt;peer&gt;</code> portal. As traffic arrives at the portal, the portal either forwards it or rejects it per ACL criteria.</p>
 <p>Inbound ACLs determine what information to forward to other portals in the UM Router, while Outbound ACLs determine (by topic) what information from other portals that this portal can send out the UM Router. Each portal (endpoint or peer) can have up to one inbound ACL and one outbound ACL.</p>
 <div class="image">
@@ -627,18 +641,18 @@ Access Control Lists (ACL)</h3>
 </pre><p><br />
  </p>
 <h3><a class="anchor" id="timersandintervals"></a>
-Timers and Intervals</h3>
+Timers and Intervals&nbsp;&nbsp;<small><a href="#timersandintervals">&lt;-</a></small></h3>
 <p>The UM Router offers a wide choice of timer and interval options to fine tune its behavior and performance. There are interactions and dependencies between some of these, and if misconfigured, they may cause race or failure conditions.</p>
 <p>This manual's description of configuration options (see <a class="el" href="index.html#xmlconfigurationreference">XML Configuration Reference</a>), includes identification of such relationships. Please heed them.</p>
 <p><br />
  </p>
 <h3><a class="anchor" id="multicastimmediatemessagingconsiderations"></a>
-Multicast Immediate Messaging Considerations</h3>
-<p>Multicast Immediate Messages (MIMs) may pass through the UM Router. You cannot filter MIMs with Access Control Lists (ACL)-MIMs are forwarded to all TRDs. Informatica does not recommend using MIM for messaging traffic across the UM Router. MIM is intended for short-lived topics and applications that cannot tolerate a delay between source creation and the sending of the first message. See also <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Gateway/design.tag:../../Design/" href="../../Design/umfeatures.html#multicastimmediatemessaging">Multicast Immediate Messaging</a>.</p>
+Multicast Immediate Messaging Considerations&nbsp;&nbsp;<small><a href="#multicastimmediatemessagingconsiderations">&lt;-</a></small></h3>
+<p>Multicast Immediate Messages (MIMs) may pass through the UM Router. You cannot filter MIMs with Access Control Lists (ACL)-MIMs are forwarded to all TRDs. Informatica does not recommend using MIM for messaging traffic across the UM Router. MIM is intended for short-lived topics and applications that cannot tolerate a delay between source creation and the sending of the first message. See also <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Gateway/design.tag:../../Design/" href="../../Design/umfeatures.html#multicastimmediatemessaging">Multicast Immediate Messaging</a>.</p>
 <p><br />
  </p>
 <h3><a class="anchor" id="persistenceovertheumrouter"></a>
-Persistence Over the UM Router</h3>
+Persistence Over the UM Router&nbsp;&nbsp;<small><a href="#persistenceovertheumrouter">&lt;-</a></small></h3>
 <p>The UM Router supports UMP persistence by routing all necessary control and retransmission channels along with transport and topic resolution traffic. A typical implementation places the UMP persistent store in the same TRD as its registered source, as shown in the following figure.</p>
 <div class="image">
 <img src="persist_1.png" alt="persist_1.png"/>
@@ -651,28 +665,38 @@ Persistence Over the UM Router</h3>
 <p><br />
  </p>
 <h3><a class="anchor" id="latejoinandofftransportrecovery"></a>
-Late Join and Off-Transport Recovery</h3>
+Late Join and Off-Transport Recovery&nbsp;&nbsp;<small><a href="#latejoinandofftransportrecovery">&lt;-</a></small></h3>
 <p>The UM Router supports sources and receivers configured for Late Join and/or Off-Transport Recovery (OTR). Retransmission requests and subsequent retransmissions are conducted across the entire path through the UM Router network. A UM Router's proxy sources do not have Late-Join/OTR retention buffers and hence, are not able to provide recovered messages.</p>
 <p><br />
  </p>
 <h3><a class="anchor" id="topicresolutionreliability"></a>
-Topic Resolution Reliability</h3>
+Topic Resolution Reliability&nbsp;&nbsp;<small><a href="#topicresolutionreliability">&lt;-</a></small></h3>
 <p>Topic resolution can sometimes remain in a quiescent phase due to link interruption, preventing needed re-subscription topic resolution activity. Two ways you can address this are:</p>
 <ul>
 <li>
-For isolated incidents, call <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Gateway/api.tag:../../API/" href="../../API/lbm_8h.html#ae6dd7c56acf916ef66658cc1ebc7a525">lbm_context_topic_resolution_request()</a> (see example lbmtrreq.c). This restarts the sustaining phase. </li>
+For isolated incidents, call <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Gateway/api.tag:../../API/" href="../../API/lbm_8h.html#ae6dd7c56acf916ef66658cc1ebc7a525">lbm_context_topic_resolution_request()</a> (see example lbmtrreq.c). This restarts the sustaining phase. </li>
 <li>
-For more chronic problems, such as a UM Router link (especially an endpoint link) over a WAN of questionable reliability, consider configuring Topic resolution to stay in the sustaining phase (options <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Gateway/config.tag:../../Config/" href="../../Config/grpresolveroperation.html#resolveradvertisementminimumsustaindurationsource">resolver_advertisement_minimum_sustain_duration (source)</a> and <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Gateway/config.tag:../../Config/" href="../../Config/grpresolveroperation.html#resolverqueryminimumsustaindurationreceiver">resolver_query_minimum_sustain_duration (receiver)</a>). </li>
+For more chronic problems, such as a UM Router link (especially an endpoint link) over a WAN of questionable reliability, consider configuring Topic resolution to stay in the sustaining phase (options <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Gateway/config.tag:../../Config/" href="../../Config/grpudpbasedresolveroperation.html#resolveradvertisementminimumsustaindurationsource">resolver_advertisement_minimum_sustain_duration (source)</a> and <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Gateway/config.tag:../../Config/" href="../../Config/grpudpbasedresolveroperation.html#resolverqueryminimumsustaindurationreceiver">resolver_query_minimum_sustain_duration (receiver)</a>). </li>
 </ul>
 <p><br />
  </p>
 <h3><a class="anchor" id="bosandeosbehaviorovertheumrouter"></a>
-BOS and EOS Behavior Over the UM Router</h3>
+BOS and EOS Behavior Over the UM Router&nbsp;&nbsp;<small><a href="#bosandeosbehaviorovertheumrouter">&lt;-</a></small></h3>
 <p>Through a network of UM Routers, a topic traverses a separate session for each link along its path. Thus, the UM Router reports BOS/EOSs based on the activity between the proxy source transport and its associated receiver. There is no end-to-end, application-to-application reporting of the data path state. Also, in the case of multiple topics being assigned to multiple sessions, topics may find themselves with different session mates from hop to hop. Of course, this all influences when, and for which transport session, a topic's BOSs and EOSs are issued.</p>
 <p><br />
  </p>
+<h3><a class="anchor" id="umrouterreliableloss"></a>
+UM Router Reliable Loss&nbsp;&nbsp;<small><a href="#umrouterreliableloss">&lt;-</a></small></h3>
+<p>The UM router can create a situation where a "reliable" transport (TCP or LBT-IPC) can experience out-of-order message delivery.</p>
+<p>The UM router can perform a "protocol conversion" function. I.e. an originating source can use a UDP-based protocol (LBT-RM or LBT-RU), but the proxy source for a remote receiver can use a "reliable" protocol (TCP or LBT-IPC). With a UDP-based protocol, messages can arrive to the UM Router network out of order, usually due to packet loss and recovery. However, when those out-of-order messages are forwarded across a "reliable" protocol (TCP or LBT-IPC), the receiver does not expect the sequence number gap, and immediately declares the out-of-order messages as unrecoverable loss. This, in spite of the fact that the missing message arrives shortly thereafter.</p>
+<p>Starting in UM version 6.12, there are two new configuration options: <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Gateway/config.tag:../../Config/" href="../../Config/grptransporttcpoperation.html#transporttcpdrolossrecoverytimeoutreceiver">transport_tcp_dro_loss_recovery_timeout (receiver)</a> and <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Gateway/config.tag:../../Config/" href="../../Config/grptransportlbtipcoperation.html#transportlbtipcdrolossrecoverytimeoutreceiver">transport_lbtipc_dro_loss_recovery_timeout (receiver)</a>, which modify the receiver's behavior. Instead of declaring a gap immediately unrecoverable, a delay is introduced which is similar to what a UDP-based receiver uses to wait for lost and retransmitted datagrams. If the missing message arrives within the delay time, the messages are delivered to application without loss.</p>
+<p>Be aware that this functionality is only used with "reliable" protocols published by a UM Router's proxy source. If this delay feature is enabled, it will <em>not</em> apply to a "reliable" protocol that is received directly from the originating source.</p>
+<p>Note however that you can get genuine gaps in the "reliable" data stream <em>without</em> recovery. For example, an overloaded UM Router can drop messages. Or a UM Router's proxy receiver can experience unrecoverable loss. In that case, the delay will have to expire before the missing messages are declared unrecoverable and subsequent data is delivered.</p>
+<dl class="section attention"><dt>Attention</dt><dd>The delay times default to 0, which retains the pre-6.12 behavior of immediately declaring sequence number gaps unrecoverable. If you want this new behavior, you must configure the appropriate option.</dd></dl>
+<p><br />
+ </p>
 <h2><a class="anchor" id="topologyconfigurationexamples"></a>
-Topology Configuration Examples</h2>
+Topology Configuration Examples&nbsp;&nbsp;<small><a href="#topologyconfigurationexamples">&lt;-</a></small></h2>
 <p>Following are example configurations for a variety of UM Router topologies. These are the topology examples presented <a class="el" href="index.html#routingtopologies">Routing Topologies</a>.</p>
 <p>In a real-world situation, you would have UM Router XML configuration files with their portal interfaces referencing complete UM configuration files. However, for these examples, the referred domain configuration files are simplified to contain only information relevant to the applicable UM Router. As part of this simplification, domain configuration files show interfaces for only one or two transport types.</p>
 <p>Also, IP addresses are provided in some cases and omitted in other cases. This is because initiator peer portals need to know the IP addresses (and port numbers) of their corresponding acceptor portals to establish connections, whereas endpoint portals communicate via topic resolution and thus, do not need to know IP addresses.</p>
@@ -680,7 +704,7 @@ Topology Configuration Examples</h2>
 <p><br />
  </p>
 <h3><a class="anchor" id="directlinkconfiguration"></a>
-Direct Link Configuration</h3>
+Direct Link Configuration&nbsp;&nbsp;<small><a href="#directlinkconfiguration">&lt;-</a></small></h3>
 <p>This example uses a UM Router to connect two topic resolution domain LANs.</p>
 <div class="image">
 <img src="cfg_direct_link.png" alt="cfg_direct_link.png"/>
@@ -728,7 +752,7 @@ context resolver_multicast_address 225.2.37.85
 </pre><p><br />
  </p>
 <h3><a class="anchor" id="peerlinkconfiguration"></a>
-Peer Link Configuration</h3>
+Peer Link Configuration&nbsp;&nbsp;<small><a href="#peerlinkconfiguration">&lt;-</a></small></h3>
 <p>In cases where the UM Router connection between two TRDs must tunnel through a WAN or TCP/IP network, you can implement a UM Router at each end, as shown in the example below.</p>
 <div class="image">
 <img src="cfg_single_link.png" alt="cfg_single_link.png"/>
@@ -794,7 +818,7 @@ context resolver_multicast_port 13965
 </pre><p><br />
  </p>
 <h3><a class="anchor" id="transittrdlinkconfiguration"></a>
-Transit TRD Link Configuration</h3>
+Transit TRD Link Configuration&nbsp;&nbsp;<small><a href="#transittrdlinkconfiguration">&lt;-</a></small></h3>
 <p>This example, like the previous one, configures two localized UM Routers tunneling a connection between two TRDs, however, the UM Routers in this example are tunneling through an intermediate TRD. This has the added effect of connecting three TRDs.</p>
 <div class="image">
 <img src="cfg_transit_trd.png" alt="cfg_transit_trd.png"/>
@@ -859,7 +883,7 @@ context resolver_multicast_address 225.3.37.85
 </pre><p><br />
  </p>
 <h3><a class="anchor" id="parallellinksconfiguration"></a>
-Parallel Links Configuration</h3>
+Parallel Links Configuration&nbsp;&nbsp;<small><a href="#parallellinksconfiguration">&lt;-</a></small></h3>
 <p>This example is similar in purpose to the single link, peer-to-peer example, except that a second pair of UM Routers is added as a backup route. You can set one of these as a secondary route by assigning a higher cost to portals along the path. In this case we set G3 and G4's portal costs to 5, forcing the lower route to be selected only if the upper (G1, G2) route fails.</p>
 <p>Also note that we have configured the peer portals for the leftmost or odd-numbered UM Routers as initiators, and the rightmost or even-numbered UM Router peers as acceptors.</p>
 <div class="image">
@@ -982,7 +1006,7 @@ context resolver_multicast_address 225.2.37.85
 </pre><p><br />
  </p>
 <h3><a class="anchor" id="loopandspurconfiguration"></a>
-Loop and Spur Configuration</h3>
+Loop and Spur Configuration&nbsp;&nbsp;<small><a href="#loopandspurconfiguration">&lt;-</a></small></h3>
 <div class="image">
 <img src="cfg_loop_spur.png" alt="cfg_loop_spur.png"/>
 </div>
@@ -1174,7 +1198,7 @@ context resolver_multicast_address 225.5.37.85
 </pre><p><br />
  </p>
 <h3><a class="anchor" id="starconfiguration"></a>
-Star Configuration</h3>
+Star Configuration&nbsp;&nbsp;<small><a href="#starconfiguration">&lt;-</a></small></h3>
 <p>This network consists of four TRDs. Within each TRD, full multicast connectivity exists. However, no multicast connectivity exists between the four TRDs.</p>
 <div class="image">
 <img src="cfg_star.png" alt="cfg_star.png"/>
@@ -1242,7 +1266,7 @@ context resolver_multicast_address 225.4.37.85
 </pre><p><br />
  </p>
 <h3><a class="anchor" id="meshconfiguration"></a>
-Mesh Configuration</h3>
+Mesh Configuration&nbsp;&nbsp;<small><a href="#meshconfiguration">&lt;-</a></small></h3>
 <p>The mesh topology utilizes many connections between many nodes, to provide a variety of alternate routes. However, meshes are not the best solution in many cases, as unneeded complexity can increase the chance for configuration errors or make it more difficult to trace problems.</p>
 <div class="image">
 <img src="cfg_mesh.png" alt="cfg_mesh.png"/>
@@ -1491,7 +1515,7 @@ context resolver_multicast_address 225.3.37.85
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="usingumconfigurationfileswiththeumrouter"></a>
-Using UM Configuration Files with the UM Router</h2>
+Using UM Configuration Files with the UM Router&nbsp;&nbsp;<small><a href="#usingumconfigurationfileswiththeumrouter">&lt;-</a></small></h2>
 <p>Within the UM Router configuration file, the endpoint portal's <code>&lt;lbm-config&gt;</code> element lets you import configurations from either a plain text or XML UM configuration file. However, using the XML type of UM configuration files provides the following advantages over plain text UM configuration files:</p>
 <ul>
 <li>
@@ -1504,7 +1528,7 @@ Using UM XML templates to set options for individual portals lets the UM Router 
 <p><br />
  </p>
 <h3><a class="anchor" id="settingindividualendpointoptions"></a>
-Setting Individual Endpoint Options</h3>
+Setting Individual Endpoint Options&nbsp;&nbsp;<small><a href="#settingindividualendpointoptions">&lt;-</a></small></h3>
 <p>When setting endpoint options, first name the context of each endpoint in the UM Router's XML configuration file.</p>
 <pre class="fragment">&lt;portals&gt;
   &lt;endpoint&gt;
@@ -1525,7 +1549,7 @@ Setting Individual Endpoint Options</h3>
   &lt;/endpoint&gt;
 &lt;/portals&gt;
 </pre><p>Then assign configuration templates to those contexts in the UM XML configuration file.</p>
-<pre class="fragment">&lt;application name="tnwgd" template="global"&gt;
+<pre class="fragment">&lt;application name="dro1" template="global"&gt;
   &lt;contexts&gt;
     &lt;context name="G1_E1" template="G1-E1-options"&gt;
       &lt;sources /&gt;
@@ -1539,7 +1563,7 @@ Setting Individual Endpoint Options</h3>
 <p><br />
  </p>
 <h3><a class="anchor" id="umrouterandumxmlconfigurationusecases"></a>
-UM Router and UM XML Configuration Use Cases</h3>
+UM Router and UM XML Configuration Use Cases&nbsp;&nbsp;<small><a href="#umrouterandumxmlconfigurationusecases">&lt;-</a></small></h3>
 <p>One advantage of using UM XML configuration files with the UM Router is the ability to assign unique UM attributes to the topics and contexts used for the proxy sources and receivers (which plain text UM configuration files cannot do). The following example shows how to assign a different LBTRM multicast address to a source based on its topic.</p>
 <p>Create a new UM XML configuration template for the desired topic name.</p>
 <pre class="fragment">&lt;template name="AAA-template"&gt;
@@ -1549,7 +1573,7 @@ UM Router and UM XML Configuration Use Cases</h3>
   &lt;/options&gt;
 &lt;/template&gt;
 </pre><p>Then include this template in the <code>&lt;application&gt;</code> element associated with the UM Router.</p>
-<pre class="fragment">&lt;application name="tnwgd" template="global-options"&gt;
+<pre class="fragment">&lt;application name="dro1" template="global-options"&gt;
   &lt;contexts&gt;
     &lt;context&gt;
       &lt;sources template="source-options"&gt;
@@ -1559,7 +1583,7 @@ UM Router and UM XML Configuration Use Cases</h3>
   &lt;/contexts&gt;
 &lt;/application&gt;
 </pre><p>It is also possible to assign UM attributes directly in the <code>&lt;application&gt;</code> tag. For example, the following specifies that a particular topic should use an LBT-RU transport.</p>
-<pre class="fragment">&lt;application name="tnwgd" template="tnwgd-common"&gt;
+<pre class="fragment">&lt;application name="dro1" template="dro1-common"&gt;
   &lt;contexts&gt;
     &lt;context&gt;
       &lt;sources template="source-template"&gt;
@@ -1575,16 +1599,16 @@ UM Router and UM XML Configuration Use Cases</h3>
 </pre><p><br />
  </p>
 <h3><a class="anchor" id="sampleconfiguration"></a>
-Sample Configuration</h3>
+Sample Configuration&nbsp;&nbsp;<small><a href="#sampleconfiguration">&lt;-</a></small></h3>
 <p>The following sample configuration incorporates many of the examples mentioned above. The UM Router applies options to all UM objects created. The UM XML configuration file overwrites these options for two specific topics. The first topic, LBTRM_TOPIC, uses a different template to change its transport from TCP to LBTRM, and to set an additional property. The second topic, LBTRU_TOPIC, also changes its transport from TCP to a new value. However, its new attributes are applied directly in its associated topic tag, instead of referencing a template. In addition, this sample configuration assigns the rm-source template to all sources and receivers associated with the context endpt_1.</p>
 <p><br />
  </p>
 <h3><a class="anchor" id="xmlumconfigurationfile"></a>
-XML UM Configuration File</h3>
+XML UM Configuration File&nbsp;&nbsp;<small><a href="#xmlumconfigurationfile">&lt;-</a></small></h3>
 <pre class="fragment">&lt;?xml version="1.0" encoding="UTF-8" ?&gt;
 &lt;um-configuration version="1.0"&gt;
   &lt;templates&gt;
-    &lt;template name="tnwgd-common"&gt;
+    &lt;template name="dro1-common"&gt;
       &lt;options type="source"&gt;
         &lt;option name="transport" default-value="tcp" /&gt;
       &lt;/options&gt;
@@ -1603,7 +1627,7 @@ XML UM Configuration File</h3>
     &lt;/template&gt;
   &lt;/templates&gt;
   &lt;applications&gt;
-    &lt;application name="tnwgd" template="tnwgd-common"&gt;
+    &lt;application name="dro1" template="dro1-common"&gt;
      &lt;contexts&gt;
         &lt;context&gt;
           &lt;sources&gt;
@@ -1626,7 +1650,7 @@ XML UM Configuration File</h3>
 </pre><p><br />
  </p>
 <h3><a class="anchor" id="xmlumrouterconfigurationfile"></a>
-XML UM Router Configuration File</h3>
+XML UM Router Configuration File&nbsp;&nbsp;<small><a href="#xmlumrouterconfigurationfile">&lt;-</a></small></h3>
 <p>This UM Router uses the above XML UM configuration file, sample-config.xml, to set its UM options. It has three endpoints, one of which has the context endpt_1.</p>
 <pre class="fragment">&lt;?xml version="1.0" encoding="UTF-8" ?&gt;
 &lt;tnw-gateway version="1.0"&gt;
@@ -1665,7 +1689,7 @@ XML UM Router Configuration File</h3>
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="runningtheumrouterdaemon"></a>
-Running the UM Router Daemon</h2>
+Running the UM Router Daemon&nbsp;&nbsp;<small><a href="#runningtheumrouterdaemon">&lt;-</a></small></h2>
 <p>To run the UM Router, ensure the following:</p>
 <ul>
 <li>
@@ -1677,34 +1701,74 @@ The configuration file is error free. </li>
 </ul>
 <p>Typically, you run the UM Router with one configuration file argument, for example:</p>
 <pre class="fragment">tnwgd gw1-config.xml
-</pre><p>The UM Router logs version information on startup. The following is an example of this information:</p>
+</pre><p> (FYI: "tnwgd" stands for "Twenty Nine West Gateway Daemon", a historical name for the UM Router.)</p>
+<p>The UM Router logs version information on startup. The following is an example of this information:</p>
 <pre class="fragment">Version 6.0 Build: Sep 26 2012, 00:31:33 (UMS 6.0 [UMP-6.0] [UMQ-6.0] [64-bit] Build: Sep 26 2012, 00:27:17 ( DEBUG license LBT-RM LBT-RU LBT-IPC LBT-RDMA ) WC[PCRE 7.4 2007-09-21, regex, appcb] HRT[gettimeofday()])
 </pre><p><br />
  </p>
-<h3><a class="anchor" id="tnwgd"></a>
-tnwgd</h3>
-<p><b>Name</b> </p>
-<p>tnwgd - UM Router Daemon</p>
-<p><b>Synopsis</b> </p>
-<pre class="fragment">tnwgd [-d] [--dump-dtd] [-h] [--help] [-f] [--detach] [-v] [--validate] configfile
-</pre><p><b>Description</b> </p>
-<p>UM Router services are provided by tnwgd. A UM Router configuration file is required. The contents and format of the configuration file are documented separately.</p>
-<p>The DTD used to validate a configuration file is dumped to standard output with <code>-d</code> or <code>--dump-dtd</code>. After dumping the DTD, tnwgd exits instead of providing UM Router services as usual. See <a class="el" href="index.html#umrouterconfigurationdtd">UM Router Configuration DTD</a> for the DTD with comments removed.</p>
-<p>To validate the configuration file, use either the <code>-v</code> or <code>--validate</code> options. After attempting validation, tnwgd exits instead of providing UM Router services as usual. The exit status will be 0 for a configuration file successfully validated by the DTD, and non-zero otherwise.</p>
-<p>tnwgd normally remains attached to the controlling terminal and runs until interrupted. If the <code>-f</code> or <code>--detach</code> options are given, tnwgd instead forks, detaches the child from the controlling terminal, and the parent exits immediately.</p>
-<p>Command line help is available with <code>-h</code> or <code>--help</code>.</p>
-<p><b>Exit</b> <b>Status</b> </p>
-<p>The exit status from tnwgd is 0 for success and some non-zero value for failure.</p>
+<h1><a class="anchor" id="manpagesforumrouter"></a>
+Man Pages for UM Router&nbsp;&nbsp;<small><a href="#manpagesforumrouter">&lt;-</a></small></h1>
+<p>Help for the UM Router command line can be obtained by entering "tnwgd -h". Brief help for the UM Router configuration file can be obtained by entering "tnwgd -d", which prints the DTD contents. (FYI: "tnwgd" stands for "Twenty Nine West Gateway Daemon", a historical name for the UM Router.)</p>
+<p>There are two executables for the UM Router, each with it's own man page: </p><ul>
+<li>
+<a class="el" href="index.html#tnwgdmanpage">Tnwgd Man Page</a> - Unix and Windows command-line interface. </li>
+<li>
+<a class="el" href="index.html#tnwgdsmanpage">Tnwgds Man Page</a> - Windows service interface. </li>
+</ul>
+<p><br />
+ </p>
+<h2><a class="anchor" id="tnwgdmanpage"></a>
+Tnwgd Man Page&nbsp;&nbsp;<small><a href="#tnwgdmanpage">&lt;-</a></small></h2>
+<p>The tnwgd executable can be run interactively from a command prompt or from a script/batch file. For use as a Windows Service, see <a class="el" href="index.html#tnwgdsmanpage">Tnwgds Man Page</a>.</p>
+<pre class="fragment">Purpose: UM Gateway daemon
+Usage: tnwgd [options] configfile
+Available options:
+  -d, --dump-dtd             dump the configuration DTD to stdout
+  -h, --help                 display this help and exit
+  -v, --validate             validate config-file then exit
+  -f, --detach               detach from terminal</pre><dl class="section user"><dt><b>Description</b> </dt><dd>UM Router services are provided by tnwgd. (FYI: "tnwgd" stands for "Twenty Nine West Gateway Daemon", a historical name for the UM Router.) A UM Router configuration file is required. The contents and format of the configuration file are documented separately.</dd></dl>
+<dl class="section user"><dt></dt><dd>The DTD used to validate a configuration file is dumped to standard output with <code>-d</code> or <code>--dump-dtd</code>. After dumping the DTD, tnwgd exits instead of providing UM Router services as usual. See <a class="el" href="index.html#umrouterconfigurationdtd">UM Router Configuration DTD</a> for the DTD with comments removed.</dd></dl>
+<dl class="section user"><dt></dt><dd>To validate the configuration file, use either the <code>-v</code> or <code>--validate</code> options. After attempting validation, tnwgd exits instead of providing UM Router services as usual. The exit status will be 0 for a configuration file successfully validated by the DTD, and non-zero otherwise.</dd></dl>
+<dl class="section user"><dt></dt><dd>Command line help is available with <code>-h</code> or <code>--help</code>.</dd></dl>
+<dl class="section user"><dt><b>Unix</b> <b>Only</b> </dt><dd>Tnwgd normally remains attached to the controlling terminal and runs until interrupted. If the <code>-f</code> or <code>--detach</code> option is given on Unix, tnwgd instead forks and detaches the child process from the controlling terminal, and the parent exits immediately.</dd></dl>
+<dl class="section user"><dt><b>Exit</b> <b>Status</b> </dt><dd>The exit status from tnwgd is 0 for success and some non-zero value for failure.</dd></dl>
+<p><br />
+ </p>
+<h2><a class="anchor" id="tnwgdsmanpage"></a>
+Tnwgds Man Page&nbsp;&nbsp;<small><a href="#tnwgdsmanpage">&lt;-</a></small></h2>
+<p>The tnwgds executable is for use as a Windows Service. The service can be installed as a service by the Windows package installer.</p>
+<p>Alternatively, the tnwgds executable can be run interactively from a command prompt to install the service or to change certain configuration elements. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Gateway/operations.tag:../../Operations/" href="../../Operations/startupshutdownprocedures.html#umdaemonsaswindowsservices">UM Daemons as Windows Services</a> for more details.</p>
+<pre class="fragment">Purpose: UM Gateway daemon
+Usage: tnwgds [options] [configfile]
+Available options:
+  -d, --dump-dtd             dump the configuration DTD to stdout
+  -h, --help                 display this help and exit
+  -v, --validate             validate config-file then exit
+  -s, --service=install      install the service passing configfile
+  -s, --service=remove       delete/remove the service
+  -s, --service=config       update configfile info to use configfile passed
+  -e, --event-log-level      Update/set service logging level.  This is the minimum logging
+                             level to send to the Windows event log.  Valid values are:
+                                NONE - Send no events
+                                INFO
+                                WARN - default
+                                ERROR</pre><dl class="section user"><dt><b>Description</b> </dt><dd>UM Router services are provided by tnwgds Windows Service. (FYI: "tnwgds" stands for "Twenty Nine West Gateway Daemon Service", a historical name for the UM Router.) A UM Router configuration file is required. The contents and format of the configuration file are documented separately.</dd></dl>
+<dl class="section user"><dt></dt><dd>The <code>configfile</code> parameter is used interactively to configure the UM Router's XML configuration file.</dd></dl>
+<dl class="section user"><dt></dt><dd>The DTD used to validate a configuration file is dumped to standard output with <code>-d</code> or <code>--dump-dtd</code>. After dumping the DTD, tnwgd exits instead of providing UM Router services as usual. See <a class="el" href="index.html#umrouterconfigurationdtd">UM Router Configuration DTD</a> for the DTD with comments removed.</dd></dl>
+<dl class="section user"><dt></dt><dd>To validate the configuration file, use either the <code>-v</code> or <code>--validate</code> options. After attempting validation, tnwgd exits instead of providing UM Router services as usual. The exit status will be 0 for a configuration file successfully validated by the DTD, and non-zero otherwise.</dd></dl>
+<dl class="section user"><dt></dt><dd>The <code>-s</code> is used interactively to control the installation of the Windows service. The <code>-e</code> is used interactively to configure the logging threshold for writing to the Windows Event Log. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Gateway/operations.tag:../../Operations/" href="../../Operations/startupshutdownprocedures.html#umdaemonsaswindowsservices">UM Daemons as Windows Services</a> for more details.</dd></dl>
+<dl class="section user"><dt></dt><dd>Command line help is available with <code>-h</code> or <code>--help</code>.</dd></dl>
+<dl class="section user"><dt><b>Exit</b> <b>Status</b> </dt><dd>The exit status from tnwgd is 0 for success and some non-zero value for failure.</dd></dl>
 <p><br />
  </p>
 <h1><a class="anchor" id="xmlconfigurationreference"></a>
-XML Configuration Reference</h1>
+XML Configuration Reference&nbsp;&nbsp;<small><a href="#xmlconfigurationreference">&lt;-</a></small></h1>
 <p>For controlling/configuring each UM Router, you use a XML UM Router configuration file, which also contains references to UM configuration files to extract needed information about the TRDs interfaced by endpoint portals. This chapter includes a lookup reference for the XML UM Router configuration file's elements and DTD.</p>
 <p>An XML UM Router configuration file follows standard XML conventions. Element declarations or a pointer to a DTD file are not needed, as these are handled by the UM Router.</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="filestructure"></a>
-File Structure</h2>
+File Structure&nbsp;&nbsp;<small><a href="#filestructure">&lt;-</a></small></h2>
 <p>An XML UM Router configuration file generally comprises two primary elements: <code>&lt;daemon&gt;</code> and <code>&lt;portals&gt;</code>. Organized and contained within these are option value assignments. <code>&lt;daemon&gt;</code> sub-containers let you set options global to the UM Router. <code>&lt;portals&gt;</code> sub-containers let you configure each portal in the UM Router individually.</p>
 <p>XML UM Router configuration files use the high-level structure shown in the following example. This example includes only some container elements, and only some options.</p>
 <pre class="fragment">&lt;?xml version="1.0" encoding="UTF-8" ?&gt;
@@ -1812,12 +1876,12 @@ File Structure</h2>
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="elementsreference"></a>
-Elements Reference</h2>
+Elements Reference&nbsp;&nbsp;<small><a href="#elementsreference">&lt;-</a></small></h2>
 <p>Following are descriptions of the XML UM Router configuration file elements. For the children listings, + designates 1 or more, designates 0 or more, and ? designates 0 or 1. You must insert children in the order presented.</p>
 <p><br />
  </p>
 <h3><a class="anchor" id="drocfg_tnw-gateway"></a>
-&lt;tnw-gateway&gt;</h3>
+&lt;tnw-gateway&gt;&nbsp;&nbsp;<small><a href="#drocfg_tnw-gateway">&lt;-</a></small></h3>
 <p>The <code>&lt;tnw-gateway&gt;</code> element is a required container for all options residing in the XML UM Router configuration file. This is the top-level element.</p>
 <ul>
 <li>
@@ -1849,7 +1913,7 @@ Elements Reference</h2>
 </pre><p><br />
  </p>
 <h3><a class="anchor" id="drocfg_daemon"></a>
-&lt;daemon&gt;</h3>
+&lt;daemon&gt;&nbsp;&nbsp;<small><a href="#drocfg_daemon">&lt;-</a></small></h3>
 <p>The <code>&lt;daemon&gt;</code> element is a container for options common to the entire UM Router.</p>
 <ul>
 <li>
@@ -1872,7 +1936,7 @@ Elements Reference</h2>
 </pre><p><br />
  </p>
 <h3><a class="anchor" id="drocfg_name"></a>
-&lt;name&gt;</h3>
+&lt;name&gt;&nbsp;&nbsp;<small><a href="#drocfg_name">&lt;-</a></small></h3>
 <p>The <code>&lt;name&gt;</code> element lets you set a name for this UM Router (do not duplicate for any other known UM Routers), or for the name of an endpoint or peer portal. Each portal name must be unique within the UM Router.</p>
 <ul>
 <li>
@@ -1899,7 +1963,7 @@ Elements Reference</h2>
 </pre><p><br />
  </p>
 <h3><a class="anchor" id="drocfg_log"></a>
-&lt;log&gt;</h3>
+&lt;log&gt;&nbsp;&nbsp;<small><a href="#drocfg_log">&lt;-</a></small></h3>
 <p>The <code>&lt;log&gt;</code> element specifies the destination for UM Router log messages. If you set the type for file, use this element to contain the full pathname/filename.</p>
 <ul>
 <li>
@@ -1925,7 +1989,7 @@ Elements Reference</h2>
 &#160;&#160;<code>disable</code> - Do not roll log file by frequency. <br />
 Only applicable for <code>type="file"</code> </td><td><code>disable</code> </td></tr>
 <tr>
-<td>xml:space </td><td>How whitespace is handled. default trims leading and trailing whitespace (e.g., tabs, spaces, linefeeds, etc.), and compresses multiple whitespace characters into a single space character. preserve preserves the whitespace exactly as read. </td><td>default </td></tr>
+<td>xml:space </td><td>How whitespace is handled. <b>"default"</b>. trims leading and trailing whitespace (e.g., tabs, spaces, linefeeds, etc.), and compresses multiple whitespace characters into a single space character. <b>"preserve"</b>. preserves the whitespace exactly as read. </td><td><b>"default"</b> </td></tr>
 </table>
 <p><b>Example:</b> </p>
 <pre class="fragment">&lt;tnw-gateway version="1.0"&gt;
@@ -1938,7 +2002,7 @@ Only applicable for <code>type="file"</code> </td><td><code>disable</code> </td>
 </pre><p><br />
  </p>
 <h3><a class="anchor" id="drocfg_uid"></a>
-&lt;uid&gt;</h3>
+&lt;uid&gt;&nbsp;&nbsp;<small><a href="#drocfg_uid">&lt;-</a></small></h3>
 <p>The <code>&lt;uid&gt;</code> element specifies a User ID (UID) for the daemon process (if run as root).</p>
 <ul>
 <li>
@@ -1960,7 +2024,7 @@ Only applicable for <code>type="file"</code> </td><td><code>disable</code> </td>
 </pre><p><br />
  </p>
 <h3><a class="anchor" id="drocfg_gid"></a>
-&lt;gid&gt;</h3>
+&lt;gid&gt;&nbsp;&nbsp;<small><a href="#drocfg_gid">&lt;-</a></small></h3>
 <p>The <code>&lt;gid&gt;</code> element specifies a Group ID (GID) for daemon process (if run as root).</p>
 <ul>
 <li>
@@ -1982,7 +2046,7 @@ Only applicable for <code>type="file"</code> </td><td><code>disable</code> </td>
 </pre><p><br />
  </p>
 <h3><a class="anchor" id="drocfg_pidfile"></a>
-&lt;pidfile&gt;</h3>
+&lt;pidfile&gt;&nbsp;&nbsp;<small><a href="#drocfg_pidfile">&lt;-</a></small></h3>
 <p>The <code>&lt;pidfile&gt;</code> element contains the pathname for daemon process ID (PID) file.</p>
 <ul>
 <li>
@@ -1997,7 +2061,7 @@ Only applicable for <code>type="file"</code> </td><td><code>disable</code> </td>
 <tr>
 <th>XML Attribute </th><th>Description </th><th>Default Value </th></tr>
 <tr>
-<td>xml:space </td><td>How whitespace is handled. default trims leading and trailing whitespace (e.g., tabs, spaces, linefeeds, etc.), and compresses multiple whitespace characters into a single space character. preserve preserves the whitespace exactly as read. </td><td>default </td></tr>
+<td>xml:space </td><td>How whitespace is handled. <b>"default"</b> trims leading and trailing whitespace (e.g., tabs, spaces, linefeeds, etc.), and compresses multiple whitespace characters into a single space character. <b>"preserve"</b> preserves the whitespace exactly as read. </td><td><b>"default"</b> </td></tr>
 </table>
 <p><b>Example:</b> </p>
 <pre class="fragment">&lt;tnw-gateway version="1.0"&gt;
@@ -2010,7 +2074,7 @@ Only applicable for <code>type="file"</code> </td><td><code>disable</code> </td>
 </pre><p><br />
  </p>
 <h3><a class="anchor" id="drocfg_lbm-license-file"></a>
-&lt;lbm-license-file&gt;</h3>
+&lt;lbm-license-file&gt;&nbsp;&nbsp;<small><a href="#drocfg_lbm-license-file">&lt;-</a></small></h3>
 <p>The <code>&lt;lbm-license-file&gt;</code> element specifies the UM license file's pathname/filename.</p>
 <ul>
 <li>
@@ -2025,7 +2089,7 @@ Only applicable for <code>type="file"</code> </td><td><code>disable</code> </td>
 <tr>
 <th>XML Attribute </th><th>Description </th><th>Default Value </th></tr>
 <tr>
-<td>xml:space </td><td>How whitespace is handled. default trims leading and trailing whitespace (e.g., tabs, spaces, linefeeds, etc.), and compresses multiple whitespace characters into a single space character. preserve preserves the whitespace exactly as read. </td><td>default </td></tr>
+<td>xml:space </td><td>How whitespace is handled. <b>"default"</b> trims leading and trailing whitespace (e.g., tabs, spaces, linefeeds, etc.), and compresses multiple whitespace characters into a single space character. <b>"preserve"</b> preserves the whitespace exactly as read. </td><td><b>"default"</b> </td></tr>
 </table>
 <p><b>Example:</b> </p>
 <pre class="fragment">&lt;tnw-gateway version="1.0"&gt;
@@ -2040,7 +2104,7 @@ Only applicable for <code>type="file"</code> </td><td><code>disable</code> </td>
 </pre><p><br />
  </p>
 <h3><a class="anchor" id="drocfg_topicmap"></a>
-&lt;topicmap/&gt;</h3>
+&lt;topicmap/&gt;&nbsp;&nbsp;<small><a href="#drocfg_topicmap">&lt;-</a></small></h3>
 <p>The <code>&lt;topicmap&gt;</code> element specifies characteristics of the internal topic maps.</p>
 <ul>
 <li>
@@ -2075,7 +2139,7 @@ Only applicable for <code>type="file"</code> </td><td><code>disable</code> </td>
 </pre><p><br />
  </p>
 <h3><a class="anchor" id="drocfg_patternmap"></a>
-&lt;patternmap/&gt;</h3>
+&lt;patternmap/&gt;&nbsp;&nbsp;<small><a href="#drocfg_patternmap">&lt;-</a></small></h3>
 <p>The <code>&lt;patternmap&gt;</code> element determines characteristics of the internal pattern maps.</p>
 <ul>
 <li>
@@ -2109,7 +2173,7 @@ murmur2 - Good all-around hash function by Austin Appleby. Best for medium to lo
 </pre><p><br />
  </p>
 <h3><a class="anchor" id="drocfg_monitor"></a>
-&lt;monitor&gt;</h3>
+&lt;monitor&gt;&nbsp;&nbsp;<small><a href="#drocfg_monitor">&lt;-</a></small></h3>
 <p>The <code>&lt;monitor&gt;</code> element is a container for monitoring configuration elements.</p>
 <ul>
 <li>
@@ -2140,7 +2204,7 @@ murmur2 - Good all-around hash function by Austin Appleby. Best for medium to lo
 </pre><p><br />
  </p>
 <h3><a class="anchor" id="drocfg_transport-module"></a>
-&lt;transport-module/&gt;</h3>
+&lt;transport-module/&gt;&nbsp;&nbsp;<small><a href="#drocfg_transport-module">&lt;-</a></small></h3>
 <p>The <code>&lt;transport-module&gt;</code> element specifies characteristics about the monitoring transport module used.</p>
 <ul>
 <li>
@@ -2170,10 +2234,23 @@ murmur2 - Good all-around hash function by Austin Appleby. Best for medium to lo
       . . .
       . . .
 &lt;/tnw-gateway&gt;
+</pre><p><b>Example</b> 2:</p>
+<p>Monitoring configuration options can be supplied directly in the XML.</p>
+<pre class="fragment">&lt;tnw-gateway version="1.0"&gt;
+  &lt;daemon&gt;
+    &lt;monitor interval=30&gt;
+      &lt;transport-module module="lbm"
+        options="config=/cfgs/TD1.cfg;context|request_tcp_interface=192.168.135.131"/&gt;
+      &lt;format-module options="config=/cfgs/TD1.cfg;separator=|"/&gt;
+    &lt;/monitor&gt;  
+  &lt;/daemon&gt;
+      . . .
+      . . .
+&lt;/tnw-gateway&gt;
 </pre><p><br />
  </p>
 <h3><a class="anchor" id="drocfg_format-module"></a>
-&lt;format-module/&gt;</h3>
+&lt;format-module/&gt;&nbsp;&nbsp;<small><a href="#drocfg_format-module">&lt;-</a></small></h3>
 <p>The <code>&lt;format-module&gt;</code> element provides specifics about the monitoring format module.</p>
 <ul>
 <li>
@@ -2206,8 +2283,10 @@ murmur2 - Good all-around hash function by Austin Appleby. Best for medium to lo
 </pre><p><br />
  </p>
 <h3><a class="anchor" id="drocfg_web-monitor"></a>
-&lt;web-monitor&gt;</h3>
+&lt;web-monitor&gt;&nbsp;&nbsp;<small><a href="#drocfg_web-monitor">&lt;-</a></small></h3>
 <p>The <code>&lt;web-monitor&gt;</code> element identifies the address for the web monitor, in the form of interface:port. You can use "*" to specify the local host.</p>
+<p>Omit this element to disable the web monitor.</p>
+<p>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Gateway/design.tag:../../Design/" href="../../Design/fundamentalconcepts.html#webmonsecurity">Webmon Security</a> for important security information.</p>
 <ul>
 <li>
 <b>Cardinality:</b> 0 or 1 </li>
@@ -2221,7 +2300,7 @@ murmur2 - Good all-around hash function by Austin Appleby. Best for medium to lo
 <tr>
 <th>XML Attribute </th><th>Description </th><th>Default Value </th></tr>
 <tr>
-<td>xml:space </td><td>How whitespace is handled. default trims leading and trailing whitespace (e.g., tabs, spaces, linefeeds, etc.), and compresses multiple whitespace characters into a single space character. preserve preserves the whitespace exactly as read. </td><td>default </td></tr>
+<td>xml:space </td><td>How whitespace is handled. <b>"default"</b> trims leading and trailing whitespace (e.g., tabs, spaces, linefeeds, etc.), and compresses multiple whitespace characters into a single space character. <b>"preserve"</b> preserves the whitespace exactly as read. </td><td><b>"default"</b> </td></tr>
 </table>
 <p><b>Example:</b> </p>
 <pre class="fragment">&lt;tnw-gateway version="1.0"&gt;
@@ -2234,8 +2313,8 @@ murmur2 - Good all-around hash function by Austin Appleby. Best for medium to lo
 </pre><p><br />
  </p>
 <h3><a class="anchor" id="drocfg_daemon-monitor"></a>
-&lt;daemon-monitor&gt;</h3>
-<p>The <code>&lt;daemon-monitor&gt;</code> element configures the Daemon Statistics feature. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Gateway/design.tag:../../Design/" href="../../Design/umfeatures.html#daemonstatistics">Daemon Statistics</a> for general information on Daemon Statistics.</p>
+&lt;daemon-monitor&gt;&nbsp;&nbsp;<small><a href="#drocfg_daemon-monitor">&lt;-</a></small></h3>
+<p>The <code>&lt;daemon-monitor&gt;</code> element configures the Daemon Statistics feature. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Gateway/design.tag:../../Design/" href="../../Design/umobjects.html#daemonstatistics">Daemon Statistics</a> for general information on Daemon Statistics.</p>
 <ul>
 <li>
 <b>Cardinality:</b> 0 or 1 </li>
@@ -2269,8 +2348,8 @@ murmur2 - Good all-around hash function by Austin Appleby. Best for medium to lo
 </pre><p><br />
  </p>
 <h3><a class="anchor" id="drocfg_remote-snapshot-request"></a>
-&lt;remote-snapshot-request&gt;</h3>
-<p>The <code>&lt;remote-snapshot-request&gt;</code> element configures whether the UM Router will respond to monitoring apps requests to send on-demand snapshots of daemon statistics. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Gateway/design.tag:../../Design/" href="../../Design/umfeatures.html#daemonstatistics">Daemon Statistics</a> for general information on Daemon Statistics.</p>
+&lt;remote-snapshot-request&gt;&nbsp;&nbsp;<small><a href="#drocfg_remote-snapshot-request">&lt;-</a></small></h3>
+<p>The <code>&lt;remote-snapshot-request&gt;</code> element configures whether the UM Router will respond to monitoring apps requests to send on-demand snapshots of daemon statistics. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Gateway/design.tag:../../Design/" href="../../Design/umobjects.html#daemonstatistics">Daemon Statistics</a> for general information on Daemon Statistics.</p>
 <ul>
 <li>
 <b>Cardinality:</b> 0 or 1 </li>
@@ -2304,8 +2383,8 @@ murmur2 - Good all-around hash function by Austin Appleby. Best for medium to lo
 </pre><p><br />
  </p>
 <h3><a class="anchor" id="drocfg_remote-config-changes-request"></a>
-&lt;remote-config-changes-request&gt;</h3>
-<p>The <code>&lt;remote-config-changes-request&gt;</code> element configures whether the UM Router will respond to monitoring apps requests to change the rate at which Daemon Statistics messages are published. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Gateway/design.tag:../../Design/" href="../../Design/umfeatures.html#daemonstatistics">Daemon Statistics</a> for general information on Daemon Statistics.</p>
+&lt;remote-config-changes-request&gt;&nbsp;&nbsp;<small><a href="#drocfg_remote-config-changes-request">&lt;-</a></small></h3>
+<p>The <code>&lt;remote-config-changes-request&gt;</code> element configures whether the UM Router will respond to monitoring apps requests to change the rate at which Daemon Statistics messages are published. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Gateway/design.tag:../../Design/" href="../../Design/umobjects.html#daemonstatistics">Daemon Statistics</a> for general information on Daemon Statistics.</p>
 <ul>
 <li>
 <b>Cardinality:</b> 0 or 1 </li>
@@ -2339,7 +2418,7 @@ murmur2 - Good all-around hash function by Austin Appleby. Best for medium to lo
 </pre><p><br />
  </p>
 <h3><a class="anchor" id="drocfg_xml-config"></a>
-&lt;xml-config&gt;</h3>
+&lt;xml-config&gt;&nbsp;&nbsp;<small><a href="#drocfg_xml-config">&lt;-</a></small></h3>
 <p>The <code>&lt;xml-config&gt;</code> element specifies the UM XML configuration file.</p>
 <ul>
 <li>
@@ -2354,7 +2433,7 @@ murmur2 - Good all-around hash function by Austin Appleby. Best for medium to lo
 <tr>
 <th>XML Attribute </th><th>Description </th><th>Default Value </th></tr>
 <tr>
-<td>xml:space </td><td>How whitespace is handled. default trims leading and trailing whitespace (e.g., tabs, spaces, linefeeds, etc.), and compresses multiple whitespace characters into a single space character. preserve preserves the whitespace exactly as read. </td><td>default </td></tr>
+<td>xml:space </td><td>How whitespace is handled. <b>"default"</b> trims leading and trailing whitespace (e.g., tabs, spaces, linefeeds, etc.), and compresses multiple whitespace characters into a single space character. <b>"preserve"</b> preserves the whitespace exactly as read. </td><td><b>"default"</b> </td></tr>
 </table>
 <p><b>Example:</b> </p>
 <pre class="fragment">&lt;tnw-gateway version="1.0"&gt;
@@ -2364,12 +2443,10 @@ murmur2 - Good all-around hash function by Austin Appleby. Best for medium to lo
       . . .
       . . .
 &lt;/tnw-gateway&gt;
-&lt;route-info propagation-interval="1000" check-interval="750" timeout="4000" max-hop-count="100"/&gt;
-&lt;route-recalculation backoff-interval="5000" warning-interval="10000"/&gt;
 </pre><p><br />
  </p>
 <h3><a class="anchor" id="drocfg_route-info"></a>
-&lt;route-info&gt;</h3>
+&lt;route-info&gt;&nbsp;&nbsp;<small><a href="#drocfg_route-info">&lt;-</a></small></h3>
 <p>The <code>&lt;route-info&gt;</code> element lets you set control parameters for UM Router initial route setup (or reroute) behavior.</p>
 <ul>
 <li>
@@ -2392,7 +2469,7 @@ murmur2 - Good all-around hash function by Austin Appleby. Best for medium to lo
 <tr>
 <td>max-hop-count </td><td>The maximum number of UM Routers a route information message can traverse before being discarded. </td><td>100 </td></tr>
 <tr>
-<td>xml:space </td><td>How whitespace is handled. default trims leading and trailing whitespace (e.g., tabs, spaces, linefeeds, etc.), and compresses multiple whitespace characters into a single space character. preserve preserves the whitespace exactly as read. </td><td>default </td></tr>
+<td>xml:space </td><td>How whitespace is handled. <b>"default"</b> trims leading and trailing whitespace (e.g., tabs, spaces, linefeeds, etc.), and compresses multiple whitespace characters into a single space character. <b>"preserve"</b> preserves the whitespace exactly as read. </td><td><b>"default"</b> </td></tr>
 </table>
 <p><b>Example:</b> </p>
 <pre class="fragment">&lt;tnw-gateway version="1.0"&gt;
@@ -2405,7 +2482,7 @@ murmur2 - Good all-around hash function by Austin Appleby. Best for medium to lo
 </pre><p><br />
  </p>
 <h3><a class="anchor" id="drocfg_route-recalculation"></a>
-&lt;route-recalculation&gt;</h3>
+&lt;route-recalculation&gt;&nbsp;&nbsp;<small><a href="#drocfg_route-recalculation">&lt;-</a></small></h3>
 <p>The <code>&lt;route-recalculation&gt;</code> element lets you set timing parameters for UM Router rerouting route calculation behavior.</p>
 <ul>
 <li>
@@ -2424,7 +2501,7 @@ murmur2 - Good all-around hash function by Austin Appleby. Best for medium to lo
 <tr>
 <td>warning-interval </td><td>How long, in milliseconds, the UM Router waits before warning that a route recalculation is being held up due to a non-converging topology. </td><td>10000 </td></tr>
 <tr>
-<td>xml:space </td><td>How whitespace is handled. default trims leading and trailing whitespace (e.g., tabs, spaces, linefeeds, etc.), and compresses multiple whitespace characters into a single space character. preserve preserves the whitespace exactly as read. </td><td>default </td></tr>
+<td>xml:space </td><td>How whitespace is handled. <b>"default"</b> trims leading and trailing whitespace (e.g., tabs, spaces, linefeeds, etc.), and compresses multiple whitespace characters into a single space character. <b>"preserve"</b> preserves the whitespace exactly as read. </td><td><b>"default"</b> </td></tr>
 </table>
 <p><b>Example:</b> </p>
 <pre class="fragment">&lt;tnw-gateway version="1.0"&gt;
@@ -2437,7 +2514,7 @@ murmur2 - Good all-around hash function by Austin Appleby. Best for medium to lo
 </pre><p><br />
  </p>
 <h3><a class="anchor" id="drocfg_portals"></a>
-&lt;portals&gt;</h3>
+&lt;portals&gt;&nbsp;&nbsp;<small><a href="#drocfg_portals">&lt;-</a></small></h3>
 <p>The <code>&lt;portals&gt;</code> element is a container for all endpoint and peer portal configuration information.</p>
 <ul>
 <li>
@@ -2462,7 +2539,7 @@ murmur2 - Good all-around hash function by Austin Appleby. Best for medium to lo
 </pre><p><br />
  </p>
 <h3><a class="anchor" id="drocfg_endpoint"></a>
-&lt;endpoint&gt;</h3>
+&lt;endpoint&gt;&nbsp;&nbsp;<small><a href="#drocfg_endpoint">&lt;-</a></small></h3>
 <p>The <code>&lt;endpoint&gt;</code> element is a container element for all configuration options of a single endpoint portal.</p>
 <ul>
 <li>
@@ -2492,7 +2569,7 @@ murmur2 - Good all-around hash function by Austin Appleby. Best for medium to lo
 </pre><p><br />
  </p>
 <h3><a class="anchor" id="drocfg_domain-id"></a>
-&lt;domain-id&gt;</h3>
+&lt;domain-id&gt;&nbsp;&nbsp;<small><a href="#drocfg_domain-id">&lt;-</a></small></h3>
 <p>The <code>&lt;domain-id&gt;</code> element identifies the TRD for this endpoint portal. It must be unique within the UM Router (which means that for any TRD, you can assign only one endpoint portal per UM Router). Also, all endpoints interfacing a given TRD must have the same <code>&lt;domain-id&gt;</code> value.</p>
 <ul>
 <li>
@@ -2522,7 +2599,7 @@ murmur2 - Good all-around hash function by Austin Appleby. Best for medium to lo
 </pre><p><br />
  </p>
 <h3><a class="anchor" id="drocfg_cost"></a>
-&lt;cost&gt;</h3>
+&lt;cost&gt;&nbsp;&nbsp;<small><a href="#drocfg_cost">&lt;-</a></small></h3>
 <p>The <code>&lt;cost&gt;</code> element assigns a positive non-zero integer cost to the portal. The default value is 1.</p>
 <ul>
 <li>
@@ -2552,7 +2629,7 @@ murmur2 - Good all-around hash function by Austin Appleby. Best for medium to lo
 </pre><p><br />
  </p>
 <h3><a class="anchor" id="drocfg_source-deletion-delay"></a>
-&lt;source-deletion-delay&gt;</h3>
+&lt;source-deletion-delay&gt;&nbsp;&nbsp;<small><a href="#drocfg_source-deletion-delay">&lt;-</a></small></h3>
 <p>The <code>&lt;source-deletion-delay&gt;</code> element sets the time in milliseconds to wait after a route map change occurs before deleting a proxy source. Such a route map change could be due to failure of a UM Router or link within a network.</p>
 <ul>
 <li>
@@ -2582,7 +2659,7 @@ murmur2 - Good all-around hash function by Austin Appleby. Best for medium to lo
 </pre><p><br />
  </p>
 <h3><a class="anchor" id="drocfg_max-queue"></a>
-&lt;max-queue&gt;</h3>
+&lt;max-queue&gt;&nbsp;&nbsp;<small><a href="#drocfg_max-queue">&lt;-</a></small></h3>
 <p>The <code>&lt;max-queue&gt;</code> element sets the maximum buffer size for blocking messages. If not specified, this defaults to 1000000 bytes.</p>
 <ul>
 <li>
@@ -2612,7 +2689,7 @@ murmur2 - Good all-around hash function by Austin Appleby. Best for medium to lo
 </pre><p><br />
  </p>
 <h3><a class="anchor" id="drocfg_lbm-config"></a>
-&lt;lbm-config&gt;</h3>
+&lt;lbm-config&gt;&nbsp;&nbsp;<small><a href="#drocfg_lbm-config">&lt;-</a></small></h3>
 <p>The <code>&lt;lbm-config&gt;</code> element specifies the UM configuration file that contains configuration options associated with this portal.</p>
 <ul>
 <li>
@@ -2627,7 +2704,7 @@ murmur2 - Good all-around hash function by Austin Appleby. Best for medium to lo
 <tr>
 <th>XML Attribute </th><th>Description </th><th>Default Value </th></tr>
 <tr>
-<td>xml:space </td><td>How whitespace is handled. default trims leading and trailing whitespace (e.g., tabs, spaces, linefeeds, etc.), and compresses multiple whitespace characters into a single space character. preserve preserves the whitespace exactly as read. </td><td>default </td></tr>
+<td>xml:space </td><td>How whitespace is handled. <b>"default"</b> trims leading and trailing whitespace (e.g., tabs, spaces, linefeeds, etc.), and compresses multiple whitespace characters into a single space character. <b>"preserve"</b> preserves the whitespace exactly as read. </td><td><b>"default"</b> </td></tr>
 </table>
 <p><b>Example:</b> </p>
 <pre class="fragment">&lt;tnw-gateway version="1.0"&gt;
@@ -2646,7 +2723,7 @@ murmur2 - Good all-around hash function by Austin Appleby. Best for medium to lo
 </pre><p><br />
  </p>
 <h3><a class="anchor" id="drocfg_lbm-attributes"></a>
-&lt;lbm-attributes&gt;</h3>
+&lt;lbm-attributes&gt;&nbsp;&nbsp;<small><a href="#drocfg_lbm-attributes">&lt;-</a></small></h3>
 <p>The <code>&lt;lbm-attributes&gt;</code> element is a container for individual UM-option-setting elements. It lets you set individual UM attributes without referencing a UM configuration file. These values override any values set via files referenced by <code>&lt;lbm-config&gt;</code>.</p>
 <ul>
 <li>
@@ -2676,7 +2753,7 @@ murmur2 - Good all-around hash function by Austin Appleby. Best for medium to lo
 </pre><p><br />
  </p>
 <h3><a class="anchor" id="drocfg_option"></a>
-&lt;option/&gt;</h3>
+&lt;option/&gt;&nbsp;&nbsp;<small><a href="#drocfg_option">&lt;-</a></small></h3>
 <p>The <code>&lt;option&gt;</code> element lets you set an individual UM configuration option without referencing a UM configuration file. This value overrides any values set via files referenced by <code>&lt;lbm-config&gt;</code>.</p>
 <ul>
 <li>
@@ -2697,7 +2774,7 @@ murmur2 - Good all-around hash function by Austin Appleby. Best for medium to lo
 <tr>
 <td>value </td><td>The value of the option. </td><td>none </td></tr>
 </table>
-<dl class="section note"><dt>Note</dt><dd>Some UM options specify interfaces, which can be done by supplying the device name of the interface. Special care must be taken when supplying device names. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Gateway/config.tag:../../Config/" href="../../Config/generalconfigurationguidelines.html#interfacedevicenamesandxml">Interface Device Names and XML</a> for details.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Some UM options specify interfaces, which can be done by supplying the device name of the interface. Special care must be taken when supplying device names. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Gateway/config.tag:../../Config/" href="../../Config/generalconfigurationguidelines.html#interfacedevicenamesandxml">Interface Device Names and XML</a> for details.</dd></dl>
 <p><b>Example:</b> </p>
 <pre class="fragment">&lt;tnw-gateway version="1.0"&gt;
       . . .
@@ -2717,7 +2794,7 @@ murmur2 - Good all-around hash function by Austin Appleby. Best for medium to lo
 </pre><p><br />
  </p>
 <h3><a class="anchor" id="drocfg_acl"></a>
-&lt;acl&gt;</h3>
+&lt;acl&gt;&nbsp;&nbsp;<small><a href="#drocfg_acl">&lt;-</a></small></h3>
 <p>The <code>&lt;acl&gt;</code> element contains elements (inbound and outbound ACEs) that describe how an ACL (Access Control List) filters messages.</p>
 <ul>
 <li>
@@ -2747,7 +2824,7 @@ murmur2 - Good all-around hash function by Austin Appleby. Best for medium to lo
 </pre><p><br />
  </p>
 <h3><a class="anchor" id="drocfg_inbound"></a>
-&lt;inbound&gt;</h3>
+&lt;inbound&gt;&nbsp;&nbsp;<small><a href="#drocfg_inbound">&lt;-</a></small></h3>
 <p>The <code>&lt;inbound&gt;</code> element is a container for ACE elements, to separate inbound ACEs from outbound ACEs.</p>
 <ul>
 <li>
@@ -2777,7 +2854,7 @@ murmur2 - Good all-around hash function by Austin Appleby. Best for medium to lo
 </pre><p><br />
  </p>
 <h3><a class="anchor" id="drocfg_outbound"></a>
-&lt;outbound&gt;</h3>
+&lt;outbound&gt;&nbsp;&nbsp;<small><a href="#drocfg_outbound">&lt;-</a></small></h3>
 <p>The <code>&lt;outbound&gt;</code> element is a container for ACE elements, to separate outbound ACEs from inbound ACEs.</p>
 <ul>
 <li>
@@ -2807,7 +2884,7 @@ murmur2 - Good all-around hash function by Austin Appleby. Best for medium to lo
 </pre><p><br />
  </p>
 <h3><a class="anchor" id="drocfg_ace"></a>
-&lt;ace&gt;</h3>
+&lt;ace&gt;&nbsp;&nbsp;<small><a href="#drocfg_ace">&lt;-</a></small></h3>
 <p>Within an inbound or outbound ACL, you can have one or more <code>&lt;ace&gt;</code> elements. Each ACE (Access Control Entry). lets you match and accept or reject messages based on access control condition elements, which are the elements contained within an <code>&lt;ace&gt;</code> element.</p>
 <ul>
 <li>
@@ -2851,7 +2928,7 @@ murmur2 - Good all-around hash function by Austin Appleby. Best for medium to lo
 </pre><p><br />
  </p>
 <h3><a class="anchor" id="drocfg_topic"></a>
-&lt;topic&gt;</h3>
+&lt;topic&gt;&nbsp;&nbsp;<small><a href="#drocfg_topic">&lt;-</a></small></h3>
 <p>The <code>&lt;topic&gt;</code> element defines a condition used in an ACE. Specifically, this is a match pattern for a topic name.</p>
 <ul>
 <li>
@@ -2866,7 +2943,7 @@ murmur2 - Good all-around hash function by Austin Appleby. Best for medium to lo
 <tr>
 <th>XML Attribute </th><th>Description </th><th>Default Value </th></tr>
 <tr>
-<td>xml:space </td><td>How whitespace is handled. default trims leading and trailing whitespace (e.g., tabs, spaces, linefeeds, etc.), and compresses multiple whitespace characters into a single space character. preserve preserves the whitespace exactly as read. </td><td>default </td></tr>
+<td>xml:space </td><td>How whitespace is handled. <b>"default"</b> trims leading and trailing whitespace (e.g., tabs, spaces, linefeeds, etc.), and compresses multiple whitespace characters into a single space character. <b>"preserve"</b> preserves the whitespace exactly as read. </td><td><b>"default"</b> </td></tr>
 </table>
 <p><b>Example:</b> </p>
 <pre class="fragment">            &lt;ace match="accept"&gt;
@@ -2875,7 +2952,7 @@ murmur2 - Good all-around hash function by Austin Appleby. Best for medium to lo
 </pre><p><br />
  </p>
 <h3><a class="anchor" id="drocfg_pcre-pattern"></a>
-&lt;pcre-pattern&gt;</h3>
+&lt;pcre-pattern&gt;&nbsp;&nbsp;<small><a href="#drocfg_pcre-pattern">&lt;-</a></small></h3>
 <p>The <code>&lt;pcre-pattern&gt;</code> element defines a condition used in an ACE. Specifically, this is a match pattern for a PCRE regular expression matched in the message.</p>
 <ul>
 <li>
@@ -2890,7 +2967,7 @@ murmur2 - Good all-around hash function by Austin Appleby. Best for medium to lo
 <tr>
 <th>XML Attribute </th><th>Description </th><th>Default Value </th></tr>
 <tr>
-<td>xml:space </td><td>How whitespace is handled. default trims leading and trailing whitespace (e.g., tabs, spaces, linefeeds, etc.), and compresses multiple whitespace characters into a single space character. preserve preserves the whitespace exactly as read. </td><td>default </td></tr>
+<td>xml:space </td><td>How whitespace is handled. <b>"default"</b> trims leading and trailing whitespace (e.g., tabs, spaces, linefeeds, etc.), and compresses multiple whitespace characters into a single space character. <b>"preserve"</b> preserves the whitespace exactly as read. </td><td><b>"default"</b> </td></tr>
 </table>
 <p><b>Example:</b> </p>
 <pre class="fragment">            &lt;ace match="accept"&gt;
@@ -2899,7 +2976,7 @@ murmur2 - Good all-around hash function by Austin Appleby. Best for medium to lo
 </pre><p><br />
  </p>
 <h3><a class="anchor" id="drocfg_regex-pattern"></a>
-&lt;regex-pattern&gt;</h3>
+&lt;regex-pattern&gt;&nbsp;&nbsp;<small><a href="#drocfg_regex-pattern">&lt;-</a></small></h3>
 <p>The <code>&lt;regex-pattern&gt;</code> element defines a condition used in an ACE. Specifically, this is a match pattern for a RegEx regular expression matched in the message.</p>
 <p>This element is deprecated.</p>
 <ul>
@@ -2915,7 +2992,7 @@ murmur2 - Good all-around hash function by Austin Appleby. Best for medium to lo
 <tr>
 <th>XML Attribute </th><th>Description </th><th>Default Value </th></tr>
 <tr>
-<td>xml:space </td><td>How whitespace is handled. default trims leading and trailing whitespace (e.g., tabs, spaces, linefeeds, etc.), and compresses multiple whitespace characters into a single space character. preserve preserves the whitespace exactly as read. </td><td>default </td></tr>
+<td>xml:space </td><td>How whitespace is handled. <b>"default"</b> trims leading and trailing whitespace (e.g., tabs, spaces, linefeeds, etc.), and compresses multiple whitespace characters into a single space character. <b>"preserve"</b> preserves the whitespace exactly as read. </td><td><b>"default"</b> </td></tr>
 </table>
 <p><b>Example:</b> </p>
 <pre class="fragment">            &lt;ace match="accept"&gt;
@@ -2924,7 +3001,7 @@ murmur2 - Good all-around hash function by Austin Appleby. Best for medium to lo
 </pre><p><br />
  </p>
 <h3><a class="anchor" id="drocfg_transport"></a>
-&lt;transport/&gt;</h3>
+&lt;transport/&gt;&nbsp;&nbsp;<small><a href="#drocfg_transport">&lt;-</a></small></h3>
 <p>The <code>&lt;transport&gt;</code> element defines a condition used in an ACE. Specifically, this is a match pattern for a UM transport type.</p>
 <ul>
 <li>
@@ -2950,7 +3027,7 @@ murmur2 - Good all-around hash function by Austin Appleby. Best for medium to lo
 </pre><p><br />
  </p>
 <h3><a class="anchor" id="drocfg_source-ip"></a>
-&lt;source-ip/&gt;</h3>
+&lt;source-ip/&gt;&nbsp;&nbsp;<small><a href="#drocfg_source-ip">&lt;-</a></small></h3>
 <p>The <code>&lt;source-ip&gt;</code> element defines a condition used in an ACE. Specifically, this is a match pattern for the message source IP address. This applies only to TCP, LBT-RM, and LBT-RU transports.</p>
 <ul>
 <li>
@@ -2976,7 +3053,7 @@ murmur2 - Good all-around hash function by Austin Appleby. Best for medium to lo
 </pre><p><br />
  </p>
 <h3><a class="anchor" id="drocfg_multicast-group"></a>
-&lt;multicast-group/&gt;</h3>
+&lt;multicast-group/&gt;&nbsp;&nbsp;<small><a href="#drocfg_multicast-group">&lt;-</a></small></h3>
 <p>The <code>&lt;multicast-group&gt;</code> element defines a condition used in an ACE. Specifically, this is a match pattern for the message's multicast group address. This applies only to LBT-RM transports.</p>
 <ul>
 <li>
@@ -3002,7 +3079,7 @@ murmur2 - Good all-around hash function by Austin Appleby. Best for medium to lo
 </pre><p><br />
  </p>
 <h3><a class="anchor" id="drocfg_udp-source-port"></a>
-&lt;udp-source-port/&gt;</h3>
+&lt;udp-source-port/&gt;&nbsp;&nbsp;<small><a href="#drocfg_udp-source-port">&lt;-</a></small></h3>
 <p>The <code>&lt;udp-source-port&gt;</code> element defines a condition used in an ACE. Specifically, this is a match pattern for the message's UDP source port number. This applies only to LBT-RM and LBT-RU transports.</p>
 <ul>
 <li>
@@ -3028,7 +3105,7 @@ murmur2 - Good all-around hash function by Austin Appleby. Best for medium to lo
 </pre><p><br />
  </p>
 <h3><a class="anchor" id="drocfg_udp-destination-port"></a>
-&lt;udp-destination-port/&gt;</h3>
+&lt;udp-destination-port/&gt;&nbsp;&nbsp;<small><a href="#drocfg_udp-destination-port">&lt;-</a></small></h3>
 <p>The <code>&lt;udp-destination-port&gt;</code> element defines a condition used in an ACE. Specifically, this is a match pattern for the message's UDP destination port number. This applies only to LBT-RM transports.</p>
 <ul>
 <li>
@@ -3054,7 +3131,7 @@ murmur2 - Good all-around hash function by Austin Appleby. Best for medium to lo
 </pre><p><br />
  </p>
 <h3><a class="anchor" id="drocfg_tcp-source-port"></a>
-&lt;tcp-source-port/&gt;</h3>
+&lt;tcp-source-port/&gt;&nbsp;&nbsp;<small><a href="#drocfg_tcp-source-port">&lt;-</a></small></h3>
 <p>The <code>&lt;tcp-source-port&gt;</code> element defines a condition used in an ACE. Specifically, this is a match pattern for the message's TCP source port number. This applies only to TCP transports.</p>
 <ul>
 <li>
@@ -3080,7 +3157,7 @@ murmur2 - Good all-around hash function by Austin Appleby. Best for medium to lo
 </pre><p><br />
  </p>
 <h3><a class="anchor" id="drocfg_xport-id"></a>
-&lt;xport-id/&gt;</h3>
+&lt;xport-id/&gt;&nbsp;&nbsp;<small><a href="#drocfg_xport-id">&lt;-</a></small></h3>
 <p>The <code>&lt;xport-id&gt;</code> element defines a condition used in an ACE. Specifically, this is a match pattern for the message's xport ID number. This applies only to LBT-IPC transports.</p>
 <ul>
 <li>
@@ -3106,7 +3183,7 @@ murmur2 - Good all-around hash function by Austin Appleby. Best for medium to lo
 </pre><p><br />
  </p>
 <h3><a class="anchor" id="drocfg_topic-resolution"></a>
-&lt;topic-resolution&gt;</h3>
+&lt;topic-resolution&gt;&nbsp;&nbsp;<small><a href="#drocfg_topic-resolution">&lt;-</a></small></h3>
 <p>The <code>&lt;topic-resolution&gt;</code> element is a container for UM Router topic resolution behavior options.</p>
 <ul>
 <li>
@@ -3134,7 +3211,7 @@ murmur2 - Good all-around hash function by Austin Appleby. Best for medium to lo
 </pre><p><br />
  </p>
 <h3><a class="anchor" id="drocfg_initial-request"></a>
-&lt;initial-request/&gt;</h3>
+&lt;initial-request/&gt;&nbsp;&nbsp;<small><a href="#drocfg_initial-request">&lt;-</a></small></h3>
 <p>The <code>&lt;initial-request&gt;</code> element sets interval and duration for initial topic resolution requests.</p>
 <ul>
 <li>
@@ -3169,7 +3246,7 @@ murmur2 - Good all-around hash function by Austin Appleby. Best for medium to lo
 </pre><p><br />
  </p>
 <h3><a class="anchor" id="drocfg_topic-use-query"></a>
-&lt;topic-use-query&gt;</h3>
+&lt;topic-use-query&gt;&nbsp;&nbsp;<small><a href="#drocfg_topic-use-query">&lt;-</a></small></h3>
 <p>The <code>&lt;topic-use-query&gt;</code> element sets parameters for when and how often this endpoint portal sends topic use queries.</p>
 <ul>
 <li>
@@ -3207,7 +3284,7 @@ murmur2 - Good all-around hash function by Austin Appleby. Best for medium to lo
 </pre><p><br />
  </p>
 <h3><a class="anchor" id="drocfg_rate-limit"></a>
-&lt;rate-limit/&gt;</h3>
+&lt;rate-limit/&gt;&nbsp;&nbsp;<small><a href="#drocfg_rate-limit">&lt;-</a></small></h3>
 <p>The <code>&lt;rate-limit&gt;</code> element sets rate limits for topic resolution data sent over the network.</p>
 <p>You can set rate limits individually for each of the following topic resolution message types:</p>
 <ul>
@@ -3259,7 +3336,7 @@ For domain route messages: 50 </td></tr>
 </pre><p><br />
  </p>
 <h3><a class="anchor" id="drocfg_pattern-use-query"></a>
-&lt;pattern-use-query&gt;</h3>
+&lt;pattern-use-query&gt;&nbsp;&nbsp;<small><a href="#drocfg_pattern-use-query">&lt;-</a></small></h3>
 <p>The <code>&lt;pattern-use-query&gt;</code> element sets parameters for when and how often this endpoint portal sends pattern use queries.</p>
 <ul>
 <li>
@@ -3297,7 +3374,7 @@ For domain route messages: 50 </td></tr>
 </pre><p><br />
  </p>
 <h3><a class="anchor" id="drocfg_remote-topic-interest"></a>
-&lt;remote-topic-interest&gt;</h3>
+&lt;remote-topic-interest&gt;&nbsp;&nbsp;<small><a href="#drocfg_remote-topic-interest">&lt;-</a></small></h3>
 <p>The <code>&lt;remote-topic-interest&gt;</code> element sets parameters for when and how often this endpoint portal sends topic interest messages.</p>
 <ul>
 <li>
@@ -3333,7 +3410,7 @@ For domain route messages: 50 </td></tr>
 </pre><p><br />
  </p>
 <h3><a class="anchor" id="drocfg_remote-pattern-interest"></a>
-&lt;remote-pattern-interest&gt;</h3>
+&lt;remote-pattern-interest&gt;&nbsp;&nbsp;<small><a href="#drocfg_remote-pattern-interest">&lt;-</a></small></h3>
 <p>The <code>&lt;remote-pattern-interest&gt;</code> element sets parameters for when and how often this endpoint portal sends pattern interest messages.</p>
 <ul>
 <li>
@@ -3369,7 +3446,7 @@ For domain route messages: 50 </td></tr>
 </pre><p><br />
  </p>
 <h3><a class="anchor" id="drocfg_domain-route"></a>
-&lt;domain-route&gt;</h3>
+&lt;domain-route&gt;&nbsp;&nbsp;<small><a href="#drocfg_domain-route">&lt;-</a></small></h3>
 <p>The <code>&lt;domain-route&gt;</code> element sets maximum and minimum limits for the interval between periodic domain route messages being sent for each remote domain that the portal is servicing.</p>
 <ul>
 <li>
@@ -3405,7 +3482,7 @@ For domain route messages: 50 </td></tr>
 </pre><p><br />
  </p>
 <h3><a class="anchor" id="drocfg_remote-topic"></a>
-&lt;remote-topic/&gt;</h3>
+&lt;remote-topic/&gt;&nbsp;&nbsp;<small><a href="#drocfg_remote-topic">&lt;-</a></small></h3>
 <p>The <code>&lt;remote-topic&gt;</code> element determines timings and limits for determination of continued topic interest at this portal.</p>
 <ul>
 <li>
@@ -3424,7 +3501,7 @@ For domain route messages: 50 </td></tr>
 <tr>
 <td>max-topics </td><td>Maximum number of topics to check at a time. Before changing the value of this option, please contact Informatica Support. </td><td>100 </td></tr>
 <tr>
-<td>timeout </td><td>Minimum time (in milliseconds) remote interest for a topic must be unrefreshed before interest is removed for that domain. Before changing the value of this option, please contact Informatica Support. </td><td>300000 </td></tr>
+<td>timeout </td><td>Minimum time (in milliseconds) remote interest for a topic must be refreshed before interest is removed for that domain. Before changing the value of this option, please contact Informatica Support. </td><td>300000 </td></tr>
 </table>
 <p><b>Example:</b> </p>
 <pre class="fragment">&lt;tnw-gateway version="1.0"&gt;
@@ -3439,7 +3516,7 @@ For domain route messages: 50 </td></tr>
 </pre><p><br />
  </p>
 <h3><a class="anchor" id="drocfg_remote-pattern"></a>
-&lt;remote-pattern/&gt;</h3>
+&lt;remote-pattern/&gt;&nbsp;&nbsp;<small><a href="#drocfg_remote-pattern">&lt;-</a></small></h3>
 <p>The <code>&lt;remote-pattern&gt;</code> element determines timings and limits for determination of continued pattern interest at this portal.</p>
 <ul>
 <li>
@@ -3458,7 +3535,7 @@ For domain route messages: 50 </td></tr>
 <tr>
 <td>max-topics </td><td>Maximum number of patterns to check at a time. Before changing the value of this option, please contact Informatica Support. </td><td>100 </td></tr>
 <tr>
-<td>timeout </td><td>Minimum time (in milliseconds) remote interest for a pattern must be unrefreshed before interest is removed for that domain. Before changing the value of this option, please contact Informatica Support. </td><td>300000 </td></tr>
+<td>timeout </td><td>Minimum time (in milliseconds) remote interest for a pattern must be refreshed before interest is removed for that domain. Before changing the value of this option, please contact Informatica Support. </td><td>300000 </td></tr>
 </table>
 <p><b>Example:</b> </p>
 <pre class="fragment">&lt;tnw-gateway version="1.0"&gt;
@@ -3473,7 +3550,7 @@ For domain route messages: 50 </td></tr>
 </pre><p><br />
  </p>
 <h3><a class="anchor" id="drocfg_source-context-name"></a>
-&lt;source-context-name&gt;</h3>
+&lt;source-context-name&gt;&nbsp;&nbsp;<small><a href="#drocfg_source-context-name">&lt;-</a></small></h3>
 <p>The <code>&lt;source-context-name&gt;</code> element specifies the portal source context name.</p>
 <ul>
 <li>
@@ -3488,7 +3565,7 @@ For domain route messages: 50 </td></tr>
 <tr>
 <th>XML Attribute </th><th>Description </th><th>Default Value </th></tr>
 <tr>
-<td>xml:space </td><td>How whitespace is handled. default trims leading and trailing whitespace (e.g., tabs, spaces, linefeeds, etc.), and compresses multiple whitespace characters into a single space character. preserve preserves the whitespace exactly as read. </td><td>default </td></tr>
+<td>xml:space </td><td>How whitespace is handled. <b>"default"</b> trims leading and trailing whitespace (e.g., tabs, spaces, linefeeds, etc.), and compresses multiple whitespace characters into a single space character. <b>"preserve"</b> preserves the whitespace exactly as read. </td><td><b>"default"</b> </td></tr>
 </table>
 <p><b>Example:</b> </p>
 <pre class="fragment">&lt;tnw-gateway version="1.0"&gt;
@@ -3503,7 +3580,7 @@ For domain route messages: 50 </td></tr>
 </pre><p><br />
  </p>
 <h3><a class="anchor" id="drocfg_receiver-context-name"></a>
-&lt;receiver-context-name&gt;</h3>
+&lt;receiver-context-name&gt;&nbsp;&nbsp;<small><a href="#drocfg_receiver-context-name">&lt;-</a></small></h3>
 <p>The <code>&lt;receiver-context-name&gt;</code> element specifies the portal receiver context name.</p>
 <ul>
 <li>
@@ -3518,7 +3595,7 @@ For domain route messages: 50 </td></tr>
 <tr>
 <th>XML Attribute </th><th>Description </th><th>Default Value </th></tr>
 <tr>
-<td>xml:space </td><td>How whitespace is handled. default trims leading and trailing whitespace (e.g., tabs, spaces, linefeeds, etc.), and compresses multiple whitespace characters into a single space character. preserve preserves the whitespace exactly as read. </td><td>default </td></tr>
+<td>xml:space </td><td>How whitespace is handled. <b>"default"</b> trims leading and trailing whitespace (e.g., tabs, spaces, linefeeds, etc.), and compresses multiple whitespace characters into a single space character. <b>"preserve"</b> preserves the whitespace exactly as read. </td><td><b>"default"</b> </td></tr>
 </table>
 <p><b>Example:</b> </p>
 <pre class="fragment">&lt;tnw-gateway version="1.0"&gt;
@@ -3533,7 +3610,7 @@ For domain route messages: 50 </td></tr>
 </pre><p><br />
  </p>
 <h3><a class="anchor" id="drocfg_sqn-window"></a>
-&lt;sqn-window/&gt;</h3>
+&lt;sqn-window/&gt;&nbsp;&nbsp;<small><a href="#drocfg_sqn-window">&lt;-</a></small></h3>
 <p>The <code>&lt;sqn-window&gt;</code> (sequence number window) element specifies the portal's awareness of received message sequence numbers, for the purpose of detecting duplicates.</p>
 <ul>
 <li>
@@ -3565,7 +3642,7 @@ For domain route messages: 50 </td></tr>
 </pre><p><br />
  </p>
 <h3><a class="anchor" id="drocfg_context-query"></a>
-&lt;context-query/&gt;</h3>
+&lt;context-query/&gt;&nbsp;&nbsp;<small><a href="#drocfg_context-query">&lt;-</a></small></h3>
 <p>The <code>&lt;context-query&gt;</code> element determines timing characteristics for context name queries generated at this portal.</p>
 <ul>
 <li>
@@ -3601,7 +3678,7 @@ For domain route messages: 50 </td></tr>
 </pre><p><br />
  </p>
 <h3><a class="anchor" id="drocfg_peer"></a>
-&lt;peer&gt;</h3>
+&lt;peer&gt;&nbsp;&nbsp;<small><a href="#drocfg_peer">&lt;-</a></small></h3>
 <p>The <code>&lt;peer&gt;</code> element is a container element for all configuration options of a single peer portal.</p>
 <ul>
 <li>
@@ -3630,7 +3707,7 @@ For domain route messages: 50 </td></tr>
 </pre><p><br />
  </p>
 <h3><a class="anchor" id="drocfg_sourcemap"></a>
-&lt;sourcemap/&gt;</h3>
+&lt;sourcemap/&gt;&nbsp;&nbsp;<small><a href="#drocfg_sourcemap">&lt;-</a></small></h3>
 <p>The <code>&lt;sourcemap&gt;</code> element sets the size of the peer portal's source map.</p>
 <ul>
 <li>
@@ -3662,7 +3739,7 @@ For domain route messages: 50 </td></tr>
 </pre><p><br />
  </p>
 <h3><a class="anchor" id="drocfg_tcp"></a>
-&lt;tcp&gt;</h3>
+&lt;tcp&gt;&nbsp;&nbsp;<small><a href="#drocfg_tcp">&lt;-</a></small></h3>
 <p>DEPRECATED AS OF UM 6.10. DO NOT USE. The <code>&lt;tcp&gt;</code> element contains elements for a peer portal's "dual TCP" settings. As of UM 6.10, dual TCP is no longer supported. Please use <code>&lt;single-tcp&gt;</code> instead.</p>
 <ul>
 <li>
@@ -3691,7 +3768,7 @@ For domain route messages: 50 </td></tr>
 </pre><p><br />
  </p>
 <h3><a class="anchor" id="drocfg_interface"></a>
-&lt;interface&gt;</h3>
+&lt;interface&gt;&nbsp;&nbsp;<small><a href="#drocfg_interface">&lt;-</a></small></h3>
 <p>The <code>&lt;interface&gt;</code> element contains the IP host or network address for this peer portal, specified in dotted-decimal or CIDR format.</p>
 <ul>
 <li>
@@ -3719,7 +3796,7 @@ For domain route messages: 50 </td></tr>
 </pre><p><br />
  </p>
 <h3><a class="anchor" id="drocfg_listen-port"></a>
-&lt;listen-port&gt;</h3>
+&lt;listen-port&gt;&nbsp;&nbsp;<small><a href="#drocfg_listen-port">&lt;-</a></small></h3>
 <p>The <code>&lt;listen-port&gt;</code> element contains port number on which an acceptor peer portal listens for connections from the initiating peer portal. The initiating peer portal configuration must specify this port as its initiator port.</p>
 <ul>
 <li>
@@ -3749,7 +3826,7 @@ For domain route messages: 50 </td></tr>
 </pre><p><br />
  </p>
 <h3><a class="anchor" id="drocfg_receive-buffer"></a>
-&lt;receive-buffer&gt;</h3>
+&lt;receive-buffer&gt;&nbsp;&nbsp;<small><a href="#drocfg_receive-buffer">&lt;-</a></small></h3>
 <p>The <code>&lt;receive-buffer&gt;</code> element contains the size of the TCP receive buffer. If not specified, the UM Router uses the system default size.</p>
 <ul>
 <li>
@@ -3777,7 +3854,7 @@ For domain route messages: 50 </td></tr>
 </pre><p><br />
  </p>
 <h3><a class="anchor" id="drocfg_send-buffer"></a>
-&lt;send-buffer&gt;</h3>
+&lt;send-buffer&gt;&nbsp;&nbsp;<small><a href="#drocfg_send-buffer">&lt;-</a></small></h3>
 <p>The <code>&lt;send-buffer&gt;</code> element contains the size of the TCP send buffer. If not specified, the UM Router uses the system default size.</p>
 <ul>
 <li>
@@ -3805,7 +3882,7 @@ For domain route messages: 50 </td></tr>
 </pre><p><br />
  </p>
 <h3><a class="anchor" id="drocfg_keepalive"></a>
-&lt;keepalive/&gt;</h3>
+&lt;keepalive/&gt;&nbsp;&nbsp;<small><a href="#drocfg_keepalive">&lt;-</a></small></h3>
 <p>The <code>&lt;keepalive&gt;</code> element, when present, enables a TCP keepalive signal transmission, which is disabled by default.</p>
 <ul>
 <li>
@@ -3833,7 +3910,7 @@ For domain route messages: 50 </td></tr>
 </pre><p><br />
  </p>
 <h3><a class="anchor" id="drocfg_nodelay"></a>
-&lt;nodelay/&gt;</h3>
+&lt;nodelay/&gt;&nbsp;&nbsp;<small><a href="#drocfg_nodelay">&lt;-</a></small></h3>
 <p>The <code>&lt;nodelay&gt;</code> element, when present, allows immediate sending of messages without waiting for the batching send buffer to fill. This is disabled by default.</p>
 <ul>
 <li>
@@ -3861,7 +3938,7 @@ For domain route messages: 50 </td></tr>
 </pre><p><br />
  </p>
 <h3><a class="anchor" id="drocfg_compression"></a>
-&lt;compression&gt;</h3>
+&lt;compression&gt;&nbsp;&nbsp;<small><a href="#drocfg_compression">&lt;-</a></small></h3>
 <p>The <code>&lt;compression&gt;</code> element enables compression and sets the desired data compression algorithm for the peer link. Currently, only LZ4 lossless data compression is supported.</p>
 <ul>
 <li>
@@ -3889,7 +3966,7 @@ For domain route messages: 50 </td></tr>
 </pre><p><br />
  </p>
 <h3><a class="anchor" id="drocfg_tls"></a>
-&lt;tls&gt;</h3>
+&lt;tls&gt;&nbsp;&nbsp;<small><a href="#drocfg_tls">&lt;-</a></small></h3>
 <p>The <code>&lt;tls&gt;</code> element contains elements to configure peer link encryption.</p>
 <ul>
 <li>
@@ -3925,7 +4002,7 @@ For domain route messages: 50 </td></tr>
 <p><br />
  </p>
 <h3><a class="anchor" id="drocfg_certificate"></a>
-&lt;certificate&gt;</h3>
+&lt;certificate&gt;&nbsp;&nbsp;<small><a href="#drocfg_certificate">&lt;-</a></small></h3>
 <p>The <code>&lt;certificate&gt;</code> element specifies the path to a file containing an OpenSSL-compatible PEM-formatted certificate that will be presented as the TLS server certificate when a TLS connection is established by a client.</p>
 <ul>
 <li>
@@ -3957,7 +4034,7 @@ For domain route messages: 50 </td></tr>
 </pre><p><br />
  </p>
 <h3><a class="anchor" id="drocfg_certificate-key"></a>
-&lt;certificate-key&gt;</h3>
+&lt;certificate-key&gt;&nbsp;&nbsp;<small><a href="#drocfg_certificate-key">&lt;-</a></small></h3>
 <p>The <code>&lt;certificate-key&gt;</code> element specifies the path to a file containing the private key associated with the "server" certificate specified by <code>&lt;certificate&gt;</code>. Note that this private key must be protected from intruders. For that reason, when the certificate and private key files are generated, the private key file is typically encrypted with a passphrase. The passphrase is supplied using <code>&lt;certificate-key-password&gt;</code>.</p>
 <ul>
 <li>
@@ -3989,7 +4066,7 @@ For domain route messages: 50 </td></tr>
 </pre><p><br />
  </p>
 <h3><a class="anchor" id="drocfg_certificate-key-password"></a>
-&lt;certificate-key-password&gt;</h3>
+&lt;certificate-key-password&gt;&nbsp;&nbsp;<small><a href="#drocfg_certificate-key-password">&lt;-</a></small></h3>
 <p>The <code>&lt;certificate-key-password&gt;</code> element specifies the passphrase needed to decrypt the server private key file specified by <code>&lt;tls-certificate-key&gt;</code>.</p>
 <ul>
 <li>
@@ -4023,7 +4100,7 @@ For domain route messages: 50 </td></tr>
 </pre><p><br />
  </p>
 <h3><a class="anchor" id="drocfg_trusted-certificates"></a>
-&lt;trusted-certificates&gt;</h3>
+&lt;trusted-certificates&gt;&nbsp;&nbsp;<small><a href="#drocfg_trusted-certificates">&lt;-</a></small></h3>
 <p>The <code>&lt;trusted-certificates&gt;</code> element specifies the path to a file containing one or more OpenSSL-compatible PEM-formatted TLS client certificates and certificate authorities. If this element is not supplied, the default behavior is to use the system-level trusted certificates and certificate authorities (operating-system dependent). The TLS server uses these trusted certificates to verify the identity of connecting clients. If a client connects and presents a certificate which is not in the server's trusted certificates file, the connection will be canceled.</p>
 <ul>
 <li>
@@ -4055,7 +4132,7 @@ For domain route messages: 50 </td></tr>
 </pre><p><br />
  </p>
 <h3><a class="anchor" id="drocfg_cipher-suites"></a>
-&lt;cipher-suites&gt;</h3>
+&lt;cipher-suites&gt;&nbsp;&nbsp;<small><a href="#drocfg_cipher-suites">&lt;-</a></small></h3>
 <p>The <code>&lt;cipher-suites&gt;</code> element defines the list of one or more (comma separated) names of cipher suites that are acceptable to this context. The names are in OpenSSL format; see <a href="https://www.openssl.org/docs/manmaster/apps/ciphers.html#TLS-v1.2-cipher-suites">https://www.openssl.org/docs/manmaster/apps/ciphers.html#TLS-v1.2-cipher-suites</a> for a list of valid suite names (the ones with dashes) and the equivalent IANA names (with underscores). If more than suite name one is supplied, they should be in descending order of preference. When a remote context negotiates encrypted TCP, the two sides must find a cipher suite in common, otherwise the connection will be canceled. The default, TLS_DHE_RSA_WITH_AES_256_GCM_SHA384, is highly secure and is recommended.</p>
 <ul>
 <li>
@@ -4087,7 +4164,7 @@ For domain route messages: 50 </td></tr>
 </pre><p><br />
  </p>
 <h3><a class="anchor" id="drocfg_companion"></a>
-&lt;companion&gt;</h3>
+&lt;companion&gt;&nbsp;&nbsp;<small><a href="#drocfg_companion">&lt;-</a></small></h3>
 <p>DEPRECATED AS OF UM 6.10. DO NOT USE. The <code>&lt;companion&gt;</code> element contains the IP address and the port of the companion peer portal on another UM Router, to which this peer is connected via "dual TCP". As of UM 6.10, dual TCP (<code>&lt;tcp&gt;</code>) is no longer supported. Please use <code>&lt;single-tcp&gt;</code> instead.</p>
 <ul>
 <li>
@@ -4118,7 +4195,7 @@ For domain route messages: 50 </td></tr>
 </pre><p><br />
  </p>
 <h3><a class="anchor" id="drocfg_address"></a>
-&lt;address&gt;</h3>
+&lt;address&gt;&nbsp;&nbsp;<small><a href="#drocfg_address">&lt;-</a></small></h3>
 <p>The <code>&lt;address&gt;</code> element contains the IP address of the acceptor peer portal on another UM Router, to which this initiator peer is connected via "single TCP". (As of UM 6.10, dual TCP (<code>&lt;tcp&gt;</code>) is no longer supported.)</p>
 <ul>
 <li>
@@ -4149,7 +4226,7 @@ For domain route messages: 50 </td></tr>
 </pre><p><br />
  </p>
 <h3><a class="anchor" id="drocfg_port"></a>
-&lt;port&gt;</h3>
+&lt;port&gt;&nbsp;&nbsp;<small><a href="#drocfg_port">&lt;-</a></small></h3>
 <p>The <code>&lt;port&gt;</code> element contains the IP port of the acceptor peer portal on another UM Router, to which this initiator peer is connected. (As of UM 6.10, dual TCP (<code>&lt;tcp&gt;</code>) is no longer supported.)</p>
 <ul>
 <li>
@@ -4180,7 +4257,7 @@ For domain route messages: 50 </td></tr>
 </pre><p><br />
  </p>
 <h3><a class="anchor" id="drocfg_single-tcp"></a>
-&lt;single-tcp&gt;</h3>
+&lt;single-tcp&gt;&nbsp;&nbsp;<small><a href="#drocfg_single-tcp">&lt;-</a></small></h3>
 <p>The <code>&lt;single-tcp&gt;</code> element contains elements for a peer portal's tcp settings, when configuring the peer for single-tcp operation.</p>
 <ul>
 <li>
@@ -4211,7 +4288,7 @@ For domain route messages: 50 </td></tr>
 </pre><p><br />
  </p>
 <h3><a class="anchor" id="drocfg_initiator"></a>
-&lt;initiator&gt;</h3>
+&lt;initiator&gt;&nbsp;&nbsp;<small><a href="#drocfg_initiator">&lt;-</a></small></h3>
 <p>The <code>&lt;initiator&gt;</code> element contains the IP address and the port of the corresponding acceptor peer portal on another UM Router, to which this peer is connected. This element is used in single-tcp configurations.</p>
 <ul>
 <li>
@@ -4248,7 +4325,7 @@ For domain route messages: 50 </td></tr>
 </pre><p><br />
  </p>
 <h3><a class="anchor" id="drocfg_acceptor"></a>
-&lt;acceptor&gt;</h3>
+&lt;acceptor&gt;&nbsp;&nbsp;<small><a href="#drocfg_acceptor">&lt;-</a></small></h3>
 <p>The <code>&lt;acceptor&gt;</code> element contains the listen port address of the corresponding acceptor peer portal on another UM Router, to which this peer is connected. This element is used in single-tcp configurations.</p>
 <ul>
 <li>
@@ -4278,7 +4355,7 @@ For domain route messages: 50 </td></tr>
 </pre><p><br />
  </p>
 <h3><a class="anchor" id="drocfg_max-datagram"></a>
-&lt;max-datagram&gt;</h3>
+&lt;max-datagram&gt;&nbsp;&nbsp;<small><a href="#drocfg_max-datagram">&lt;-</a></small></h3>
 <p>The <code>&lt;max-datagram&gt;</code> element specifies the maximum size a peer portal will allow an outgoing datagram to be before fragmenting it.</p>
 <ul>
 <li>
@@ -4302,7 +4379,7 @@ For domain route messages: 50 </td></tr>
 </pre><p><br />
  </p>
 <h3><a class="anchor" id="drocfg_smart-batch"></a>
-&lt;smart-batch&gt;</h3>
+&lt;smart-batch&gt;&nbsp;&nbsp;<small><a href="#drocfg_smart-batch">&lt;-</a></small></h3>
 <p>The <code>&lt;smart-batch&gt;</code> element enables the smart batching algorithm used by the UM Router when forwarding messages from one portal to another. In general, batching algorithms are used to increase throughput, but many such algorithms can produce latency outliers. The Smart Batching algorithm is designed to ensure low latencies by flushing the batching buffer when no more messages are waiting to be sent out the portal. Smart batching works with both endpoint and peer portals. For endpoint portals, a UM configuration file may be provided to set the implicit_batching_minimum_length (source) option to a large value. For peer portals, the <code>&lt;batching&gt;</code> element may be used to set the <code>&lt;min-length&gt;</code> to a large value. In either case, large values are recommended and will not produce significant latency outliers.</p>
 <ul>
 <li>
@@ -4329,7 +4406,7 @@ For domain route messages: 50 </td></tr>
 </pre><p><br />
  </p>
 <h3><a class="anchor" id="drocfg_batching"></a>
-&lt;batching&gt;</h3>
+&lt;batching&gt;&nbsp;&nbsp;<small><a href="#drocfg_batching">&lt;-</a></small></h3>
 <p>The <code>&lt;batching&gt;</code> element contains batching size and timing parameters for peer link implicit batching. This applies to data messages only: the UM Router sends control messages immediately (flushing any batched data messages). Note: worst-case latency can be dramatically reduced by combining batching with <code>&lt;smart-batch&gt;</code>.</p>
 <ul>
 <li>
@@ -4356,7 +4433,7 @@ For domain route messages: 50 </td></tr>
 </pre><p><br />
  </p>
 <h3><a class="anchor" id="drocfg_min-length"></a>
-&lt;min-length&gt;</h3>
+&lt;min-length&gt;&nbsp;&nbsp;<small><a href="#drocfg_min-length">&lt;-</a></small></h3>
 <p>The <code>&lt;min-length&gt;</code> element specifies the minimum length of a set of batched messages. When the total length of the batched messages reaches or exceeds this value, the batch is sent. If not specified, it defaults to 8192 bytes.</p>
 <ul>
 <li>
@@ -4383,7 +4460,7 @@ For domain route messages: 50 </td></tr>
 </pre><p><br />
  </p>
 <h3><a class="anchor" id="drocfg_batch-interval"></a>
-&lt;batch-interval&gt;</h3>
+&lt;batch-interval&gt;&nbsp;&nbsp;<small><a href="#drocfg_batch-interval">&lt;-</a></small></h3>
 <p>The <code>&lt;batch-interval&gt;</code> element specifies the maximum interval (in milliseconds) between when the first message of a batch is queued until the batch is sent. A message stays in the batch queue until this value or <code>&lt;min-length&gt;</code> is met or exceeded (whichever occurs first). If not specified, it defaults to 200 milliseconds. The minimum allowed value is 3 milliseconds.</p>
 <ul>
 <li>
@@ -4410,7 +4487,7 @@ For domain route messages: 50 </td></tr>
 </pre><p><br />
  </p>
 <h3><a class="anchor" id="drocfg_gateway-keepalive"></a>
-&lt;gateway-keepalive/&gt;</h3>
+&lt;gateway-keepalive/&gt;&nbsp;&nbsp;<small><a href="#drocfg_gateway-keepalive">&lt;-</a></small></h3>
 <p>The <code>&lt;gateway-keepalive&gt;</code> element contains parameters for the keepalive signals sent from this peer portal. This is a UM Router-level keepalive, not to be confused with the TCP-level <code>&lt;keepalive&gt;</code> element.</p>
 <ul>
 <li>
@@ -4444,12 +4521,12 @@ For domain route messages: 50 </td></tr>
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="deprecatedelements"></a>
-Deprecated Elements</h2>
+Deprecated Elements&nbsp;&nbsp;<small><a href="#deprecatedelements">&lt;-</a></small></h2>
 <p>The following option elements are deprecated, and provided only for UM Gateway configuration file backward compatibility. Values assigned to them have no effect on the operation of the UM Router.</p>
 <p><br />
  </p>
 <h3><a class="anchor" id="propagation-delay"></a>
-&lt;propagation-delay/&gt;</h3>
+&lt;propagation-delay/&gt;&nbsp;&nbsp;<small><a href="#propagation-delay">&lt;-</a></small></h3>
 <p>The <code>&lt;propagation-delay&gt;</code> element specifies the difference between the shortest and longest propagation delays in the network.</p>
 <p>This element is deprecated.</p>
 <ul>
@@ -4478,7 +4555,7 @@ Deprecated Elements</h2>
 </pre><p><br />
  </p>
 <h3><a class="anchor" id="late-join"></a>
-&lt;late-join/&gt;</h3>
+&lt;late-join/&gt;&nbsp;&nbsp;<small><a href="#late-join">&lt;-</a></small></h3>
 <p>The <code>&lt;late-join&gt;</code> element determines how Late Join is handled by this endpoint portal.</p>
 <p>This element is deprecated.</p>
 <ul>
@@ -4516,7 +4593,7 @@ The UM configuration specified for the portal determines the late join configura
 </pre><p><br />
  </p>
 <h3><a class="anchor" id="topic-purge"></a>
-&lt;topic-purge/&gt;</h3>
+&lt;topic-purge/&gt;&nbsp;&nbsp;<small><a href="#topic-purge">&lt;-</a></small></h3>
 <p>The <code>&lt;topic-purge&gt;</code> element determines when this portal's proxy receivers can purge topics. This element is deprecated.</p>
 <ul>
 <li>
@@ -4546,7 +4623,7 @@ The UM configuration specified for the portal determines the late join configura
 </pre><p><br />
  </p>
 <h3><a class="anchor" id="topic-interest-generate"></a>
-&lt;topic-interest-generate/&gt;</h3>
+&lt;topic-interest-generate/&gt;&nbsp;&nbsp;<small><a href="#topic-interest-generate">&lt;-</a></small></h3>
 <p>The <code>&lt;topic-interest-generate&gt;</code> element determines timing characteristics for interest message generation at this portal.</p>
 <p>This element is deprecated.</p>
 <ul>
@@ -4581,7 +4658,7 @@ The UM configuration specified for the portal determines the late join configura
 </pre><p><br />
  </p>
 <h3><a class="anchor" id="topic-domain-activity"></a>
-&lt;topic-domain-activity/&gt;</h3>
+&lt;topic-domain-activity/&gt;&nbsp;&nbsp;<small><a href="#topic-domain-activity">&lt;-</a></small></h3>
 <p>The <code>&lt;topic-domain-activity&gt;</code> element determines how long a domain remains quiescent until it is determined inactive.</p>
 <p>This element is deprecated.</p>
 <ul>
@@ -4597,7 +4674,7 @@ The UM configuration specified for the portal determines the late join configura
 <tr>
 <th>XML Attribute </th><th>Description </th><th>Default Value </th></tr>
 <tr>
-<td>timeout </td><td>Minimum time (in seconds) domain interest for a topic must be unrefreshed before interest is removed for that domain. </td><td>900 </td></tr>
+<td>timeout </td><td>Minimum time (in seconds) domain interest for a topic must be refreshed before interest is removed for that domain. </td><td>900 </td></tr>
 </table>
 <p><b>Example:</b> </p>
 <pre class="fragment">&lt;tnw-gateway version="1.0"&gt;
@@ -4612,7 +4689,7 @@ The UM configuration specified for the portal determines the late join configura
 </pre><p><br />
  </p>
 <h3><a class="anchor" id="pattern-purge"></a>
-&lt;pattern-purge/&gt;</h3>
+&lt;pattern-purge/&gt;&nbsp;&nbsp;<small><a href="#pattern-purge">&lt;-</a></small></h3>
 <p>The <code>&lt;pattern-purge&gt;</code> element determines when this portal's proxy receivers can purge pattern.</p>
 <p>This element is deprecated.</p>
 <ul>
@@ -4643,7 +4720,7 @@ The UM configuration specified for the portal determines the late join configura
 </pre><p><br />
  </p>
 <h3><a class="anchor" id="pattern-interest-generate"></a>
-&lt;pattern-interest-generate/&gt;</h3>
+&lt;pattern-interest-generate/&gt;&nbsp;&nbsp;<small><a href="#pattern-interest-generate">&lt;-</a></small></h3>
 <p>The <code>&lt;pattern-interest-generate&gt;</code> element determines timing characteristics for interest message generation at this portal.</p>
 <p>This element is deprecated.</p>
 <ul>
@@ -4678,7 +4755,7 @@ The UM configuration specified for the portal determines the late join configura
 </pre><p><br />
  </p>
 <h3><a class="anchor" id="pattern-domain-activity"></a>
-&lt;pattern-domain-activity/&gt;</h3>
+&lt;pattern-domain-activity/&gt;&nbsp;&nbsp;<small><a href="#pattern-domain-activity">&lt;-</a></small></h3>
 <p>The <code>&lt;pattern-domain-activity&gt;</code> element determines how long a domain remains quiescent until it is determined inactive.</p>
 <p>This element is deprecated.</p>
 <ul>
@@ -4694,7 +4771,7 @@ The UM configuration specified for the portal determines the late join configura
 <tr>
 <th>XML Attribute </th><th>Description </th><th>Default Value </th></tr>
 <tr>
-<td>timeout </td><td>Minimum time (in seconds) domain interest for a pattern must be unrefreshed before interest is removed for that domain. </td><td>900 </td></tr>
+<td>timeout </td><td>Minimum time (in seconds) domain interest for a pattern must be refreshed before interest is removed for that domain. </td><td>900 </td></tr>
 </table>
 <p><b>Example:</b> </p>
 <pre class="fragment">&lt;tnw-gateway version="1.0"&gt;
@@ -4709,7 +4786,7 @@ The UM configuration specified for the portal determines the late join configura
 </pre><p><br />
  </p>
 <h3><a class="anchor" id="topic-use-check"></a>
-&lt;topic-use-check/&gt;</h3>
+&lt;topic-use-check/&gt;&nbsp;&nbsp;<small><a href="#topic-use-check">&lt;-</a></small></h3>
 <p>The <code>&lt;topic-use-check&gt;</code> element checks for interest in topics at periodic intervals.</p>
 <p>This element is deprecated.</p>
 <ul>
@@ -4740,7 +4817,7 @@ The UM configuration specified for the portal determines the late join configura
 </pre><p><br />
  </p>
 <h3><a class="anchor" id="pattern-use-check"></a>
-&lt;pattern-use-check/&gt;</h3>
+&lt;pattern-use-check/&gt;&nbsp;&nbsp;<small><a href="#pattern-use-check">&lt;-</a></small></h3>
 <p>The <code>&lt;pattern-use-check&gt;</code> element checks for interest in patterns at periodic intervals.</p>
 <p>This element is deprecated.</p>
 <ul>
@@ -4771,8 +4848,8 @@ The UM configuration specified for the portal determines the late join configura
 </pre><p><br />
  </p>
 <h3><a class="anchor" id="drocfg_publishing-interval"></a>
-&lt;publishing-interval&gt;</h3>
-<p>The <code>&lt;publishing-interval&gt;</code> element configures the rate at which Daemon Statistics messages are published. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Gateway/design.tag:../../Design/" href="../../Design/umfeatures.html#daemonstatistics">Daemon Statistics</a> for general information on Daemon Statistics.</p>
+&lt;publishing-interval&gt;&nbsp;&nbsp;<small><a href="#drocfg_publishing-interval">&lt;-</a></small></h3>
+<p>The <code>&lt;publishing-interval&gt;</code> element configures the rate at which Daemon Statistics messages are published. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Gateway/design.tag:../../Design/" href="../../Design/umobjects.html#daemonstatistics">Daemon Statistics</a> for general information on Daemon Statistics.</p>
 <ul>
 <li>
 <b>Cardinality:</b> 0 or 1 </li>
@@ -4801,8 +4878,8 @@ The UM configuration specified for the portal determines the late join configura
 </pre><p><br />
  </p>
 <h3><a class="anchor" id="drocfg_group"></a>
-&lt;group&gt;</h3>
-<p>The <code>&lt;group&gt;</code> element configures the rate at which one particular grouping of Daemon Statistics messages are published. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Gateway/design.tag:../../Design/" href="../../Design/umfeatures.html#daemonstatistics">Daemon Statistics</a> for general information on Daemon Statistics.</p>
+&lt;group&gt;&nbsp;&nbsp;<small><a href="#drocfg_group">&lt;-</a></small></h3>
+<p>The <code>&lt;group&gt;</code> element configures the rate at which one particular grouping of Daemon Statistics messages are published. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Gateway/design.tag:../../Design/" href="../../Design/umobjects.html#daemonstatistics">Daemon Statistics</a> for general information on Daemon Statistics.</p>
 <ul>
 <li>
 <b>Cardinality:</b> 0 or 1 </li>
@@ -4831,7 +4908,7 @@ The UM configuration specified for the portal determines the late join configura
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="umrouterconfigurationdtd"></a>
-UM Router Configuration DTD</h2>
+UM Router Configuration DTD&nbsp;&nbsp;<small><a href="#umrouterconfigurationdtd">&lt;-</a></small></h2>
 <p>Here is the XML configuration DTD with the comments removed. To see the DTD with comments included, enter <code>tnwgd --dump-dtd</code>.</p>
 <pre class="fragment">&lt;!ELEMENT tnw-gateway (daemon?, portals)&gt;
 &lt;!ATTLIST tnw-gateway
@@ -4842,7 +4919,7 @@ UM Router Configuration DTD</h2>
 &lt;!ATTLIST log
           type (file | syslog | console) "console"
           frequency (disable | daily | hourly | test) "disable"
-          size CDATA " 0 "
+          size CDATA "0"
           xml:space (default | preserve) "default"
 &gt;
 &lt;!ELEMENT pidfile ( #PCDATA )&gt;
@@ -4854,12 +4931,12 @@ UM Router Configuration DTD</h2>
 &lt;!ELEMENT topicmap EMPTY&gt;
 &lt;!ATTLIST topicmap
           hash-function ( classic | djb2 | sdbm | murmur2 ) "murmur2"
-          size CDATA " 131111 "
+          size CDATA "131111"
 &gt;
 &lt;!ELEMENT patternmap EMPTY&gt;
 &lt;!ATTLIST patternmap
           hash-function ( classic | djb2 | sdbm | murmur2 ) "murmur2"
-          size CDATA " 131111 "
+          size CDATA "131111"
 &gt;
 &lt;!ELEMENT portals (endpoint | peer)+&gt;
 &lt;!ELEMENT endpoint (name, domain-id, cost?, source-deletion-delay?, max-queue?, smart-batch?, lbm-config?, lbm-attributes?, acl?, topic-resolution?, late-join?, topic-purge?, topic-interest-generate?, topic-domain-activity?, pattern-purge?, pattern-interest-generate?, pattern-domain-activity?, remote-topic?, remote-pattern?, source-context-name?, receiver-context-name?, sqn-window?, context-query?, publishing-interval? )&gt;
@@ -4871,7 +4948,7 @@ UM Router Configuration DTD</h2>
 &lt;!ELEMENT source-deletion-delay ( #PCDATA )&gt;
 &lt;!ELEMENT sourcemap EMPTY&gt;
 &lt;!ATTLIST sourcemap
-          size CDATA " 131072 "
+          size CDATA "131072"
 &gt;
 &lt;!ELEMENT tcp (interface?, listen-port, receive-buffer?, send-buffer?, keepalive?, nodelay?, compression?, tls?, companion )&gt;
 &lt;!ELEMENT interface ( #PCDATA )&gt;
@@ -4889,14 +4966,14 @@ UM Router Configuration DTD</h2>
 &lt;!ELEMENT trusted-certificates ( #PCDATA )&gt;
 &lt;!ELEMENT cipher-suites ( #PCDATA )&gt;
 &lt;!ATTLIST companion
-          reconnect-interval CDATA " 5000 "
+          reconnect-interval CDATA "5000"
 &gt;
 &lt;!ELEMENT address ( #PCDATA )&gt;
 &lt;!ELEMENT port ( #PCDATA )&gt;
 &lt;!ELEMENT single-tcp (interface?, receive-buffer?, send-buffer?, keepalive?, nodelay?, compression?, tls?, (initiator | acceptor ) )&gt;
 &lt;!ELEMENT initiator (address, port)&gt;
 &lt;!ATTLIST initiator
-          reconnect-interval CDATA " 5000 "
+          reconnect-interval CDATA "5000"
 &gt;
 &lt;!ELEMENT acceptor (listen-port)&gt;
 &lt;!ELEMENT max-queue ( #PCDATA )&gt;
@@ -4969,30 +5046,30 @@ UM Router Configuration DTD</h2>
 &lt;!ELEMENT topic-resolution (topic-use-query?, pattern-use-query?, remote-topic-interest?, remote-pattern-interest?, domain-route?, initial-request? )&gt;
 &lt;!ELEMENT topic-use-query (rate-limit? ) &gt;
 &lt;!ATTLIST topic-use-query
-          timeout CDATA " 3000 "
-          max CDATA " 5 "
-          periodic-interval CDATA " 300000 "
+          timeout CDATA "3000"
+          max CDATA "5"
+          periodic-interval CDATA "300000"
 &gt;
 &lt;!ELEMENT pattern-use-query (rate-limit? ) &gt;
 &lt;!ATTLIST pattern-use-query
-          timeout CDATA " 3000 "
-          max CDATA " 5 "
-          periodic-interval CDATA " 300000 "
+          timeout CDATA "3000"
+          max CDATA "5"
+          periodic-interval CDATA "300000"
 &gt;
 &lt;!ELEMENT remote-topic-interest (rate-limit? ) &gt;
 &lt;!ATTLIST remote-topic-interest
-          min-interval CDATA " 1000 "
-          max-interval CDATA " 60000 "
+          min-interval CDATA "1000"
+          max-interval CDATA "60000"
 &gt;
 &lt;!ELEMENT remote-pattern-interest (rate-limit? ) &gt;
 &lt;!ATTLIST remote-pattern-interest
-          min-interval CDATA " 1000 "
-          max-interval CDATA " 60000 "
+          min-interval CDATA "1000"
+          max-interval CDATA "60000"
 &gt;
 &lt;!ELEMENT domain-route (rate-limit? ) &gt;
 &lt;!ATTLIST domain-route
-          min-interval CDATA " 100 "
-          max-interval CDATA " 1000 "
+          min-interval CDATA "100"
+          max-interval CDATA "1000"
 &gt;
 &lt;!ELEMENT rate-limit EMPTY&gt;
 &lt;!ATTLIST rate-limit
@@ -5001,8 +5078,8 @@ UM Router Configuration DTD</h2>
 &gt;
 &lt;!ELEMENT initial-request EMPTY&gt;
 &lt;!ATTLIST initial-request
-          periodic-interval CDATA " 1000 "
-          duration CDATA " 10 "
+          periodic-interval CDATA "1000"
+          duration CDATA "10"
 &gt;
 &lt;!ELEMENT late-join EMPTY&gt;
 &lt;!ATTLIST late-join
@@ -5031,15 +5108,15 @@ UM Router Configuration DTD</h2>
 &lt;!ATTLIST pattern-domain-activity timeout CDATA #IMPLIED&gt;
 &lt;!ELEMENT remote-topic EMPTY&gt;
 &lt;!ATTLIST remote-topic
-          check-interval CDATA " 90000 "
-          max-topics CDATA " 100 "
-          timeout CDATA " 300000 "
+          check-interval CDATA "90000"
+          max-topics CDATA "100"
+          timeout CDATA "300000"
 &gt;
 &lt;!ELEMENT remote-pattern EMPTY&gt;
 &lt;!ATTLIST remote-pattern
-          check-interval CDATA " 90000 "
-          max-patterns CDATA " 100 "
-          timeout CDATA " 300000 "
+          check-interval CDATA "90000"
+          max-patterns CDATA "100"
+          timeout CDATA "300000"
 &gt;
 &lt;!ELEMENT topic-use-check EMPTY&gt;
 &lt;!ATTLIST topic-use-check periodic-interval CDATA #IMPLIED&gt;
@@ -5047,7 +5124,7 @@ UM Router Configuration DTD</h2>
 &lt;!ATTLIST pattern-use-check periodic-interval CDATA #IMPLIED&gt;
 &lt;!ELEMENT monitor (transport-module?, format-module?)&gt;
 &lt;!ATTLIST monitor
-          interval CDATA " 0 "
+          interval CDATA "0"
 &gt;
 &lt;!ELEMENT transport-module EMPTY&gt;
 &lt;!ATTLIST transport-module
@@ -5071,8 +5148,8 @@ UM Router Configuration DTD</h2>
 &lt;!ATTLIST receiver-context-name xml:space (default | preserve) "default"&gt;
 &lt;!ELEMENT sqn-window EMPTY&gt;
 &lt;!ATTLIST sqn-window
-          size CDATA " 16384 "
-          increment CDATA " 2048 "
+          size CDATA "16384"
+          increment CDATA "2048"
 &gt;
 &lt;!ELEMENT context-query EMPTY&gt;
 &lt;!ATTLIST context-query
@@ -5084,23 +5161,23 @@ UM Router Configuration DTD</h2>
 &lt;!ELEMENT gateway-keepalive EMPTY&gt;
 &lt;!ATTLIST gateway-keepalive
           idle ( yes | no ) "yes"
-          interval CDATA " 5000 "
-          timeout CDATA " 15000 "
+          interval CDATA "5000"
+          timeout CDATA "15000"
 &gt;
 &lt;!ELEMENT route-info EMPTY&gt;
 &lt;!ATTLIST route-info
-          propagation-interval CDATA " 1000 "
-          check-interval CDATA " 750 "
-          timeout CDATA " 4000 "
-          max-hop-count CDATA " 100 "
+          propagation-interval CDATA "1000"
+          check-interval CDATA "750"
+          timeout CDATA "4000"
+          max-hop-count CDATA "100"
 &gt;
 &lt;!ELEMENT route-recalculation EMPTY&gt;
 &lt;!ATTLIST route-recalculation
-          backoff-interval CDATA " 5000 "
-          warning-interval CDATA " 10000 "
+          backoff-interval CDATA "5000"
+          warning-interval CDATA "10000"
 &gt;
 &lt;!ELEMENT daemon-monitor (lbm-config?, publishing-interval?, remote-snapshot-request?, remote-config-changes-request?)&gt;
-&lt;!ATTLIST daemon-monitor topic CDATA " tnwgd.monitor "&gt;
+&lt;!ATTLIST daemon-monitor topic CDATA "tnwgd.monitor"&gt;
 &lt;!ELEMENT publishing-interval (group+)&gt;
 &lt;!ELEMENT group EMPTY&gt;
 &lt;!ATTLIST group name (default | gateway-config | route-manager-topology | malloc-info | portal-config | portal-stats ) #REQUIRED&gt;
@@ -5111,54 +5188,54 @@ UM Router Configuration DTD</h2>
 &lt;!ATTLIST remote-config-changes-request allow (0 | 1) "0"&gt;</pre><p><br />
  </p>
 <h1><a class="anchor" id="umrouterdaemonstatistics"></a>
-UM Router Daemon Statistics</h1>
-<p>This section contains details on the UM Router's Daemon Statistics feature. <b>You should already be familiar with the general information contained in <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Gateway/design.tag:../../Design/" href="../../Design/umfeatures.html#daemonstatistics">Daemon Statistics</a>.</b></p>
+UM Router Daemon Statistics&nbsp;&nbsp;<small><a href="#umrouterdaemonstatistics">&lt;-</a></small></h1>
+<p>This section contains details on the UM Router's Daemon Statistics feature. <b>You should already be familiar with the general information contained in <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Gateway/design.tag:../../Design/" href="../../Design/umobjects.html#daemonstatistics">Daemon Statistics</a>.</b></p>
 <p><br />
  </p>
 <h2><a class="anchor" id="umrouterdaemonstatisticsstructures"></a>
-UM Router Daemon Statistics Structures</h2>
+UM Router Daemon Statistics Structures&nbsp;&nbsp;<small><a href="#umrouterdaemonstatisticsstructures">&lt;-</a></small></h2>
 <p>The different message types are:</p>
 <ul>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Gateway/api.tag:../../API/" href="../../API/tnwgdmonmsgs_8h.html#a3d4c9c51b7c6c951f9bb30fc01985443">TNWG_DSTATTYPE_MALLINFO</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Gateway/api.tag:../../API/" href="../../API/tnwgdmonmsgs_8h.html#a3d4c9c51b7c6c951f9bb30fc01985443">TNWG_DSTATTYPE_MALLINFO</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Gateway/api.tag:../../API/" href="../../API/tnwgdmonmsgs_8h.html#a219110ebfcf129991d124c7c4b958b5f">TNWG_DSTATTYPE_GATEWAYCFG</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Gateway/api.tag:../../API/" href="../../API/tnwgdmonmsgs_8h.html#a219110ebfcf129991d124c7c4b958b5f">TNWG_DSTATTYPE_GATEWAYCFG</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Gateway/api.tag:../../API/" href="../../API/tnwgdmonmsgs_8h.html#aa6d1797deea435e8b48b6296bc0725a1">TNWG_DSTATTYPE_PORTCFG</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Gateway/api.tag:../../API/" href="../../API/tnwgdmonmsgs_8h.html#aa6d1797deea435e8b48b6296bc0725a1">TNWG_DSTATTYPE_PORTCFG</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Gateway/api.tag:../../API/" href="../../API/tnwgdmonmsgs_8h.html#a8f8364505ea12a843de27bd08f781742">TNWG_DSTATTYPE_RM_LOCAL</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Gateway/api.tag:../../API/" href="../../API/tnwgdmonmsgs_8h.html#a8f8364505ea12a843de27bd08f781742">TNWG_DSTATTYPE_RM_LOCAL</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Gateway/api.tag:../../API/" href="../../API/tnwgdmonmsgs_8h.html#a42c3c613d145e1468643a3e82cd4d831">TNWG_DSTATTYPE_RM_PORTAL</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Gateway/api.tag:../../API/" href="../../API/tnwgdmonmsgs_8h.html#a42c3c613d145e1468643a3e82cd4d831">TNWG_DSTATTYPE_RM_PORTAL</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Gateway/api.tag:../../API/" href="../../API/tnwgdmonmsgs_8h.html#ac5224b9528702e4517b7ca3c0e98ce44">TNWG_DSTATTYPE_RM_OTHERGW</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Gateway/api.tag:../../API/" href="../../API/tnwgdmonmsgs_8h.html#ac5224b9528702e4517b7ca3c0e98ce44">TNWG_DSTATTYPE_RM_OTHERGW</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Gateway/api.tag:../../API/" href="../../API/tnwgdmonmsgs_8h.html#a63eb677c1dedb172db3a4d4fd74bed5e">TNWG_DSTATTYPE_RM_OTHERGW_NBR</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Gateway/api.tag:../../API/" href="../../API/tnwgdmonmsgs_8h.html#a63eb677c1dedb172db3a4d4fd74bed5e">TNWG_DSTATTYPE_RM_OTHERGW_NBR</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Gateway/api.tag:../../API/" href="../../API/tnwgdmonmsgs_8h.html#a753f815bd1b3d81710769ebc11ead975">TNWG_DSTATTYPE_PORTSTAT</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Gateway/api.tag:../../API/" href="../../API/tnwgdmonmsgs_8h.html#a753f815bd1b3d81710769ebc11ead975">TNWG_DSTATTYPE_PORTSTAT</a> </li>
 </ul>
-<p>Each one has a specific structure associated with it, as detailed in <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Gateway/api.tag:../../API/" href="../../API/tnwgdmonmsgs_8h.html">tnwgdmonmsgs.h</a>.</p>
-<p>Note that message types ending with "CFG" are in the config category. All others are in the stats category. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Gateway/design.tag:../../Design/" href="../../Design/umfeatures.html#daemonstatisticsstructures">Daemon Statistics Structures</a> for information on how the two categories are handled differently.</p>
+<p>Each one has a specific structure associated with it, as detailed in the file <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Gateway/api.tag:../../API/" href="../../API/tnwgdmonmsgs_8h.html">tnwgdmonmsgs.h</a>.</p>
+<p>Note that message types ending with "CFG" are in the config category. All others are in the stats category. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Gateway/design.tag:../../Design/" href="../../Design/umobjects.html#daemonstatisticsstructures">Daemon Statistics Structures</a> for information on how the two categories are handled differently.</p>
 <p><br />
  </p>
 <h3><a class="anchor" id="umrouterdaemonstatisticsbyteswapping"></a>
-UM Router Daemon Statistics Byte Swapping</h3>
-<p>A monitoring application receiving these messages must detect if there is an endian mismatch (see <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Gateway/design.tag:../../Design/" href="../../Design/umfeatures.html#daemonstatisticsbinarydata">Daemon Statistics Binary Data</a>). The header structure <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Gateway/api.tag:../../API/" href="../../API/tnwgdmonmsgs_8h.html#adede0ed30cc9a1511a0d354012f935fe">tnwg_dstat_msg_hdr_t</a> contains a 16-bit field named <code>magic</code> which is set equal to <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Gateway/api.tag:../../API/" href="../../API/tnwgdmonmsgs_8h.html#a564f67a429dc4f223eb22141c217eb13">LBM_TNWG_DAEMON_MAGIC</a>. The receiving application should compare it to <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Gateway/api.tag:../../API/" href="../../API/tnwgdmonmsgs_8h.html#a564f67a429dc4f223eb22141c217eb13">LBM_TNWG_DAEMON_MAGIC</a> and <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Gateway/api.tag:../../API/" href="../../API/tnwgdmonmsgs_8h.html#a5b2b012ee57b0466b70e249b41234b0d">LBM_TNWG_DAEMON_ANTIMAGIC</a>. Anything else would represent a serious problem.</p>
+UM Router Daemon Statistics Byte Swapping&nbsp;&nbsp;<small><a href="#umrouterdaemonstatisticsbyteswapping">&lt;-</a></small></h3>
+<p>A monitoring application receiving these messages must detect if there is an endian mismatch (see <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Gateway/design.tag:../../Design/" href="../../Design/umobjects.html#daemonstatisticsbinarydata">Daemon Statistics Binary Data</a>). The header structure <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Gateway/api.tag:../../API/" href="../../API/tnwgdmonmsgs_8h.html#adede0ed30cc9a1511a0d354012f935fe">tnwg_dstat_msg_hdr_t</a> contains a 16-bit field named <code>magic</code> which is set equal to <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Gateway/api.tag:../../API/" href="../../API/tnwgdmonmsgs_8h.html#a564f67a429dc4f223eb22141c217eb13">LBM_TNWG_DAEMON_MAGIC</a>. The receiving application should compare it to <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Gateway/api.tag:../../API/" href="../../API/tnwgdmonmsgs_8h.html#a564f67a429dc4f223eb22141c217eb13">LBM_TNWG_DAEMON_MAGIC</a> and <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Gateway/api.tag:../../API/" href="../../API/tnwgdmonmsgs_8h.html#a5b2b012ee57b0466b70e249b41234b0d">LBM_TNWG_DAEMON_ANTIMAGIC</a>. Anything else would represent a serious problem.</p>
 <p>If the receiving app sees: </p><pre class="fragment">  magic == LBM_TNWG_DAEMON_MAGIC
 </pre><p> then it can simply access the binary fields directly. However, if it sees: </p><pre class="fragment">  magic == LBM_TNWG_DAEMON_ANTIMAGIC
 </pre><p> then <em>most</em> (but not all) binary fields need to be byte-swapped. See <a href="../../example/tnwgdmon.c">tnwgdmon.c</a> for an example, paying special attention to the macros <code>COND_SWAPxx</code> (which <em>conditionally</em> swaps based on the magic test) and the functions <code>byte_swapXX()</code> (which performs the byte swapping).</p>
 <p><br />
  </p>
 <h3><a class="anchor" id="umrouterdaemonstatisticsstructuresstringbuffers"></a>
-UM Router Daemon Statistics String Buffers</h3>
-<p>UM Router Daemon Statistics data structures sometimes contain string buffers. Strings in these data structures are always null-terminated. These messages are generally sent as fixed-length equal to the sizes of the structures, and therefore include all of the declared bytes of the string fields, even if the contained string uses fewer bytes than declared. For example, the structure <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Gateway/api.tag:../../API/" href="../../API/tnwgdmonmsgs_8h.html#a4e8d3cbad4fc3907e6875a867f778cd7">tnwg_dstat_record_hdr_t</a> contains the field <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Gateway/api.tag:../../API/" href="../../API/structtnwg__dstat__record__hdr__t__stct.html#a259dca70e2e2d30e16f6959ac899fd78">tnwg_dstat_record_hdr_t_stct::portal_name</a> which is a <code>char</code> array of size <code>TNWG_DSTAT_MAX_PORTAL_NAME_LEN</code>. If <code>portal_name</code> is set to "p1", then only 3 bytes of the buffer are used (including the null string terminator). However, all <code>TNWG_DSTAT_MAX_PORTAL_NAME_LEN</code> bytes will be sent in the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Gateway/api.tag:../../API/" href="../../API/tnwgdmonmsgs_8h.html#a42c3c613d145e1468643a3e82cd4d831">TNWG_DSTATTYPE_RM_PORTAL</a> message type.</p>
-<p>Contrast this with <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Gateway/ume.tag:../../UME/" href="../../UME/storedaemonstatistics.html#storedaemonstatisticsstructuresstringbuffers">Store Daemon Statistics String Buffers</a>.</p>
-<p>There are two exceptions to this rule: <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Gateway/api.tag:../../API/" href="../../API/tnwgdmonmsgs_8h.html#aa6d1797deea435e8b48b6296bc0725a1">TNWG_DSTATTYPE_PORTCFG</a> and <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Gateway/api.tag:../../API/" href="../../API/tnwgdmonmsgs_8h.html#a219110ebfcf129991d124c7c4b958b5f">TNWG_DSTATTYPE_GATEWAYCFG</a>.</p>
-<p>The <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Gateway/api.tag:../../API/" href="../../API/tnwgdmonmsgs_8h.html#aa6d1797deea435e8b48b6296bc0725a1">TNWG_DSTATTYPE_PORTCFG</a> message is of type <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Gateway/api.tag:../../API/" href="../../API/tnwgdmonmsgs_8h.html#ad401470ed9be21b3ebca145fb79459b3">tnwg_pcfg_stat_grp_msg_t</a> and has the field <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Gateway/api.tag:../../API/" href="../../API/structtnwg__pcfg__stat__grp__msg__t__stct.html#a7887eff4d4e78540e53ea5a5a2521193">tnwg_pcfg_stat_grp_msg_t_stct::data</a>. This field is a variable-length string buffer which contains one or more null-terminated strings. The total length of the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Gateway/api.tag:../../API/" href="../../API/tnwgdmonmsgs_8h.html#aa6d1797deea435e8b48b6296bc0725a1">TNWG_DSTATTYPE_PORTCFG</a> message is the sum of the length of its sub-structures plus the number of bytes of string data (characters plus string-terminating nulls). The number of strings in <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Gateway/api.tag:../../API/" href="../../API/structtnwg__pcfg__stat__grp__msg__t__stct.html#a7887eff4d4e78540e53ea5a5a2521193">tnwg_pcfg_stat_grp_msg_t_stct::data</a> is given by <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Gateway/api.tag:../../API/" href="../../API/structtnwg__pcfg__stat__grp__msg__t__stct.html#a278f4ace28e25468a5b5cff658847b7d">tnwg_pcfg_stat_grp_msg_t_stct::rechdr</a>-&gt;num_options. The monitoring application must step through the string buffer that many times to find each string. For an example of how to do this, see <a href="../../example/tnwgdmon.c">tnwgdmon.c</a> in the code following, "`case TNWG_DSTATTYPE_PORTCFG:`".</p>
-<p>The <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Gateway/api.tag:../../API/" href="../../API/tnwgdmonmsgs_8h.html#a219110ebfcf129991d124c7c4b958b5f">TNWG_DSTATTYPE_GATEWAYCFG</a> message is of type <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Gateway/api.tag:../../API/" href="../../API/tnwgdmonmsgs_8h.html#a9d9ec1a3f772ba37b376ace807eb5fb5">tnwg_dstat_gatewaycfg_msg_t</a> and has the field <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Gateway/api.tag:../../API/" href="../../API/structtnwg__dstat__gatewaycfg__msg__t__stct.html#a4f72360cd45b5191a11b608e7a3ce052">tnwg_dstat_gatewaycfg_msg_t_stct::data</a>. This field is a variable-length string buffer which contains exactly one null-terminated string. This string contains the entirety of the UM Router's configuration file. The individual lines contain the normal line-ending character(s). The total length of the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Gateway/api.tag:../../API/" href="../../API/tnwgdmonmsgs_8h.html#a219110ebfcf129991d124c7c4b958b5f">TNWG_DSTATTYPE_GATEWAYCFG</a> message is the length of its sub-structure plus the number of bytes of string data (characters plus string-terminating nulls).</p>
+UM Router Daemon Statistics String Buffers&nbsp;&nbsp;<small><a href="#umrouterdaemonstatisticsstructuresstringbuffers">&lt;-</a></small></h3>
+<p>UM Router Daemon Statistics data structures sometimes contain string buffers. Strings in these data structures are always null-terminated. These messages are generally sent as fixed-length equal to the sizes of the structures, and therefore include all of the declared bytes of the string fields, even if the contained string uses fewer bytes than declared. For example, the structure <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Gateway/api.tag:../../API/" href="../../API/tnwgdmonmsgs_8h.html#a4e8d3cbad4fc3907e6875a867f778cd7">tnwg_dstat_record_hdr_t</a> contains the field <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Gateway/api.tag:../../API/" href="../../API/structtnwg__dstat__record__hdr__t__stct.html#a259dca70e2e2d30e16f6959ac899fd78">tnwg_dstat_record_hdr_t_stct::portal_name</a> which is a <code>char</code> array of size <code>TNWG_DSTAT_MAX_PORTAL_NAME_LEN</code>. If <code>portal_name</code> is set to "p1", then only 3 bytes of the buffer are used (including the null string terminator). However, all <code>TNWG_DSTAT_MAX_PORTAL_NAME_LEN</code> bytes will be sent in the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Gateway/api.tag:../../API/" href="../../API/tnwgdmonmsgs_8h.html#a42c3c613d145e1468643a3e82cd4d831">TNWG_DSTATTYPE_RM_PORTAL</a> message type.</p>
+<p>Contrast this with <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Gateway/ume.tag:../../UME/" href="../../UME/storedaemonstatistics.html#storedaemonstatisticsstructuresstringbuffers">Store Daemon Statistics String Buffers</a>.</p>
+<p>There are two exceptions to this rule: <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Gateway/api.tag:../../API/" href="../../API/tnwgdmonmsgs_8h.html#aa6d1797deea435e8b48b6296bc0725a1">TNWG_DSTATTYPE_PORTCFG</a> and <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Gateway/api.tag:../../API/" href="../../API/tnwgdmonmsgs_8h.html#a219110ebfcf129991d124c7c4b958b5f">TNWG_DSTATTYPE_GATEWAYCFG</a>.</p>
+<p>The <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Gateway/api.tag:../../API/" href="../../API/tnwgdmonmsgs_8h.html#aa6d1797deea435e8b48b6296bc0725a1">TNWG_DSTATTYPE_PORTCFG</a> message is of type <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Gateway/api.tag:../../API/" href="../../API/tnwgdmonmsgs_8h.html#ad401470ed9be21b3ebca145fb79459b3">tnwg_pcfg_stat_grp_msg_t</a> and has the field <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Gateway/api.tag:../../API/" href="../../API/structtnwg__pcfg__stat__grp__msg__t__stct.html#a7887eff4d4e78540e53ea5a5a2521193">tnwg_pcfg_stat_grp_msg_t_stct::data</a>. This field is a variable-length string buffer which contains one or more null-terminated strings. The total length of the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Gateway/api.tag:../../API/" href="../../API/tnwgdmonmsgs_8h.html#aa6d1797deea435e8b48b6296bc0725a1">TNWG_DSTATTYPE_PORTCFG</a> message is the sum of the length of its sub-structures plus the number of bytes of string data (characters plus string-terminating nulls). The number of strings in <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Gateway/api.tag:../../API/" href="../../API/structtnwg__pcfg__stat__grp__msg__t__stct.html#a7887eff4d4e78540e53ea5a5a2521193">tnwg_pcfg_stat_grp_msg_t_stct::data</a> is given by <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Gateway/api.tag:../../API/" href="../../API/structtnwg__pcfg__stat__grp__msg__t__stct.html#a278f4ace28e25468a5b5cff658847b7d">tnwg_pcfg_stat_grp_msg_t_stct::rechdr</a>-&gt;num_options. The monitoring application must step through the string buffer that many times to find each string. For an example of how to do this, see <a href="../../example/tnwgdmon.c">tnwgdmon.c</a> in the code following, "`case TNWG_DSTATTYPE_PORTCFG:`".</p>
+<p>The <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Gateway/api.tag:../../API/" href="../../API/tnwgdmonmsgs_8h.html#a219110ebfcf129991d124c7c4b958b5f">TNWG_DSTATTYPE_GATEWAYCFG</a> message is of type <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Gateway/api.tag:../../API/" href="../../API/tnwgdmonmsgs_8h.html#a9d9ec1a3f772ba37b376ace807eb5fb5">tnwg_dstat_gatewaycfg_msg_t</a> and has the field <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Gateway/api.tag:../../API/" href="../../API/structtnwg__dstat__gatewaycfg__msg__t__stct.html#a4f72360cd45b5191a11b608e7a3ce052">tnwg_dstat_gatewaycfg_msg_t_stct::data</a>. This field is a variable-length string buffer which contains exactly one null-terminated string. This string contains the entirety of the UM Router's configuration file. The individual lines contain the normal line-ending character(s). The total length of the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Gateway/api.tag:../../API/" href="../../API/tnwgdmonmsgs_8h.html#a219110ebfcf129991d124c7c4b958b5f">TNWG_DSTATTYPE_GATEWAYCFG</a> message is the length of its sub-structure plus the number of bytes of string data (characters plus string-terminating nulls).</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="umrouterdaemonstatisticsconfiguration"></a>
-UM Router Daemon Statistics Configuration</h2>
+UM Router Daemon Statistics Configuration&nbsp;&nbsp;<small><a href="#umrouterdaemonstatisticsconfiguration">&lt;-</a></small></h2>
 <p>There are three places in the UM Router configuration file that Daemon Statistics are configured: </p><ul>
 <li>
 The <a class="el" href="index.html#drocfg_daemon-monitor">&lt;daemon-monitor&gt;</a> element inside the <code>&lt;daemon&gt;</code> definition. Configures all aspects of the Store Daemon Statistics feature, including publishing intervals. </li>
@@ -5198,18 +5275,18 @@ The <a class="el" href="index.html#drocfg_publishing-interval">&lt;publishing-in
 <p><br />
  </p>
 <h2><a class="anchor" id="umrouterdaemonstatisticsrequests"></a>
-UM Router Daemon Statistics Requests</h2>
+UM Router Daemon Statistics Requests&nbsp;&nbsp;<small><a href="#umrouterdaemonstatisticsrequests">&lt;-</a></small></h2>
 <p>The UM Router Daemon supports a monitoring application to send a specific set of requests to control the operation of Daemon Statistics. The <a class="el" href="index.html#drocfg_remote-snapshot-request">remote-snapshot-request</a> and <a class="el" href="index.html#drocfg_remote-config-changes-request">remote-config-changes-request</a> configuration elements control whether the Store enables this request feature (defaults to disabled).</p>
-<p>If enabled, the monitoring application can send a command message to the UM Router in the form of a topicless unicast immediate "request" message (see <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Gateway/api.tag:../../API/" href="../../API/lbm_8h.html#ae011c7a66e1db1f012d7f9633dbd321d">lbm_unicast_immediate_request()</a> with NULL for topic). The format of the message is a simple ascii string, with or without null termination. Due to the simple format of the message, no data structure is defined for it.</p>
+<p>If enabled, the monitoring application can send a command message to the UM Router in the form of a topicless unicast immediate "request" message (see <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Gateway/api.tag:../../API/" href="../../API/lbm_8h.html#ae011c7a66e1db1f012d7f9633dbd321d">lbm_unicast_immediate_request()</a> with NULL for topic). The format of the message is a simple ascii string, with or without null termination. Due to the simple format of the message, no data structure is defined for it.</p>
 <p>When the UM Router receives and validates the command, it sends a UM response message back to the requesting application containing a status message (which is <em>not</em> null-terminated). If the status was OK, the Store also performs the requested action.</p>
 <p>The example program <a href="../../example/tnwgdcmd.c">tnwgdcmd.c</a> demonstrates the correct way to send the messages and receive the responses.</p>
 <p><b>Commands enabled by <a class="el" href="index.html#drocfg_remote-snapshot-request">remote-snapshot-request</a>:</b></p>
-<dl class="section user"><dt>version</dt><dd>The UM Router returns in its command response the value of <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Gateway/api.tag:../../API/" href="../../API/umedmonmsgs_8h.html#af43ca32ea1917897c4ff1310d214c20b">LBM_UMESTORE_DMON_VERSION</a>. No daemon statistics messages are published.</dd></dl>
-<dl class="section user"><dt>snap mallinfo</dt><dd>The UM Router immediately publishes the memory allocation usage message of type <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Gateway/api.tag:../../API/" href="../../API/tnwgdmonmsgs_8h.html#a3d4c9c51b7c6c951f9bb30fc01985443">TNWG_DSTATTYPE_MALLINFO</a>.</dd></dl>
-<dl class="section user"><dt>snap pstat</dt><dd>The UM Router immediately publishes the portal statistics message(s) of type <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Gateway/api.tag:../../API/" href="../../API/tnwgdmonmsgs_8h.html#a753f815bd1b3d81710769ebc11ead975">TNWG_DSTATTYPE_PORTSTAT</a>.</dd></dl>
-<dl class="section user"><dt>snap ri</dt><dd>The UM Router immediately publishes the route information message(s) of types <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Gateway/api.tag:../../API/" href="../../API/tnwgdmonmsgs_8h.html#a8f8364505ea12a843de27bd08f781742">TNWG_DSTATTYPE_RM_LOCAL</a>, <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Gateway/api.tag:../../API/" href="../../API/tnwgdmonmsgs_8h.html#a42c3c613d145e1468643a3e82cd4d831">TNWG_DSTATTYPE_RM_PORTAL</a> <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Gateway/api.tag:../../API/" href="../../API/tnwgdmonmsgs_8h.html#ac5224b9528702e4517b7ca3c0e98ce44">TNWG_DSTATTYPE_RM_OTHERGW</a>, and <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Gateway/api.tag:../../API/" href="../../API/tnwgdmonmsgs_8h.html#a63eb677c1dedb172db3a4d4fd74bed5e">TNWG_DSTATTYPE_RM_OTHERGW_NBR</a>.</dd></dl>
-<dl class="section user"><dt>snap gcfg</dt><dd>The UM Router immediately publishes the gateway configuration message <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Gateway/api.tag:../../API/" href="../../API/tnwgdmonmsgs_8h.html#a219110ebfcf129991d124c7c4b958b5f">TNWG_DSTATTYPE_GATEWAYCFG</a>.</dd></dl>
-<dl class="section user"><dt>snap pcfg</dt><dd>The UM Router immediately publishes the portal configuration message(s) <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Gateway/api.tag:../../API/" href="../../API/tnwgdmonmsgs_8h.html#aa6d1797deea435e8b48b6296bc0725a1">TNWG_DSTATTYPE_PORTCFG</a>.</dd></dl>
+<dl class="section user"><dt>version</dt><dd>The UM Router returns in its command response the value of <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Gateway/api.tag:../../API/" href="../../API/umedmonmsgs_8h.html#af43ca32ea1917897c4ff1310d214c20b">LBM_UMESTORE_DMON_VERSION</a>. No daemon statistics messages are published.</dd></dl>
+<dl class="section user"><dt>snap mallinfo</dt><dd>The UM Router immediately publishes the memory allocation usage message of type <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Gateway/api.tag:../../API/" href="../../API/tnwgdmonmsgs_8h.html#a3d4c9c51b7c6c951f9bb30fc01985443">TNWG_DSTATTYPE_MALLINFO</a>.</dd></dl>
+<dl class="section user"><dt>snap pstat</dt><dd>The UM Router immediately publishes the portal statistics message(s) of type <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Gateway/api.tag:../../API/" href="../../API/tnwgdmonmsgs_8h.html#a753f815bd1b3d81710769ebc11ead975">TNWG_DSTATTYPE_PORTSTAT</a>.</dd></dl>
+<dl class="section user"><dt>snap ri</dt><dd>The UM Router immediately publishes the route information message(s) of types <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Gateway/api.tag:../../API/" href="../../API/tnwgdmonmsgs_8h.html#a8f8364505ea12a843de27bd08f781742">TNWG_DSTATTYPE_RM_LOCAL</a>, <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Gateway/api.tag:../../API/" href="../../API/tnwgdmonmsgs_8h.html#a42c3c613d145e1468643a3e82cd4d831">TNWG_DSTATTYPE_RM_PORTAL</a> <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Gateway/api.tag:../../API/" href="../../API/tnwgdmonmsgs_8h.html#ac5224b9528702e4517b7ca3c0e98ce44">TNWG_DSTATTYPE_RM_OTHERGW</a>, and <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Gateway/api.tag:../../API/" href="../../API/tnwgdmonmsgs_8h.html#a63eb677c1dedb172db3a4d4fd74bed5e">TNWG_DSTATTYPE_RM_OTHERGW_NBR</a>.</dd></dl>
+<dl class="section user"><dt>snap gcfg</dt><dd>The UM Router immediately publishes the gateway configuration message <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Gateway/api.tag:../../API/" href="../../API/tnwgdmonmsgs_8h.html#a219110ebfcf129991d124c7c4b958b5f">TNWG_DSTATTYPE_GATEWAYCFG</a>.</dd></dl>
+<dl class="section user"><dt>snap pcfg</dt><dd>The UM Router immediately publishes the portal configuration message(s) <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Gateway/api.tag:../../API/" href="../../API/tnwgdmonmsgs_8h.html#aa6d1797deea435e8b48b6296bc0725a1">TNWG_DSTATTYPE_PORTCFG</a>.</dd></dl>
 <p><b>Commands enabled by <a class="el" href="index.html#drocfg_remote-config-changes-request">remote-config-changes-request</a>:</b></p>
 <dl class="section user"><dt>mallinfo N</dt><dd>Set the publishing interval for memory allocation usage. <br />
 For example: <code>mallinfo 5</code></dd></dl>
@@ -5224,16 +5301,19 @@ For example: <code>"G1-TRD1" pcfg 5</code></dd></dl>
 <p><br />
  </p>
 <h1><a class="anchor" id="umroutermonitoring"></a>
-UM Router Monitoring</h1>
+UM Router Monitoring&nbsp;&nbsp;<small><a href="#umroutermonitoring">&lt;-</a></small></h1>
 <p><br />
  </p>
-<h2><a class="anchor" id="UM"></a>
-Router Web Monitor</h2>
+<h2><a class="anchor" id="umrouterwebmonitor"></a>
+UM Router Web Monitor&nbsp;&nbsp;<small><a href="#umrouterwebmonitor">&lt;-</a></small></h2>
 <p>The built-in web monitor (configured in the tnwgd XML configuration file; see <a class="el" href="index.html#xmlconfigurationreference">XML Configuration Reference</a>) provides valuable statistics about the UM Router and its portals, for which, the Web Monitor separates into receive statistics and send statistics. The Web Monitor provides a page for each endpoint and peer portal.</p>
+<dl class="section warning"><dt>Warning</dt><dd>The UM Router's web monitor is not designed to be a highly-secure feature. Anybody with access to the network can access the web monitor pages.</dd></dl>
+<p>Users are expected to prevent unauthorized access to the web monitor through normal firewalling methods. Users who are unable to limit access to a level consistent with their overall security needs should disable the store web monitor (using <a class="el" href="index.html#drocfg_web-monitor">&lt;web-monitor&gt;</a>). See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Gateway/design.tag:../../Design/" href="../../Design/fundamentalconcepts.html#webmonsecurity">Webmon Security</a> for more information.</p>
+<dl class="section note"><dt>Note</dt><dd>the UM daemon designs are evolving away from simple web-based monitoring and towards a publish/subscribe model of distributing monitoring events and statistics.</dd></dl>
 <p><br />
  </p>
 <h3><a class="anchor" id="mainpage"></a>
-Main Page</h3>
+Main Page&nbsp;&nbsp;<small><a href="#mainpage">&lt;-</a></small></h3>
 <p>This page displays general information about the UM Router, and also provides the following links to more detailed statistical and configuration information.</p>
 <dl class="section user"><dt><b>UM</b> <b>Router</b> <b>Configuration</b> </dt><dd>Displays the UM Router XML configuration file used by this UM Router.</dd></dl>
 <dl class="section user"><dt><b>Portals</b> </dt><dd>Displays portal statistics and information, one portal per page. The Portals page allows you to link to any of the Peer or Endpoint portals configured for the UM Router.</dd></dl>
@@ -5249,7 +5329,7 @@ Main Page</h3>
 <p><br />
  </p>
 <h3><a class="anchor" id="endpointportalpage"></a>
-Endpoint Portal Page</h3>
+Endpoint Portal Page&nbsp;&nbsp;<small><a href="#endpointportalpage">&lt;-</a></small></h3>
 <p>The Endpoint Portal Page displays Receive and Send statistics for the selected endpoint portal. Receive statistics pertain to messages entering the portal from its connected TRD. Send statistics pertain to messages sent out to the TRD.</p>
 <p>Click on any of the links at the top of the page to review configuration option values for the portal's UM topic resolution domain. The two columns provide different units of measure for a given statistic type, where the first column is typically in fragments or messages (depending on the statistic type), and the second column is in bytes.</p>
 <p><br />
@@ -5314,7 +5394,7 @@ Endpoint Portal Page</h3>
 <p><br />
  </p>
 <h3><a class="anchor" id="peerportalpage"></a>
-Peer Portal Page</h3>
+Peer Portal Page&nbsp;&nbsp;<small><a href="#peerportalpage">&lt;-</a></small></h3>
 <p>This page allows you to see Receive and Send statistics for the selected peer portal. Click on any of the links at the top of the page to review configuration option values for the portal's UM topic resolution domain.</p>
 <p>The peer portal page displays the following statistics:</p>
 <p><br />
@@ -5384,7 +5464,7 @@ Peer Portal Page</h3>
 <p><br />
  </p>
 <h3><a class="anchor" id="topologyinfopage"></a>
-Topology Info Page</h3>
+Topology Info Page&nbsp;&nbsp;<small><a href="#topologyinfopage">&lt;-</a></small></h3>
 <p>This page allows you to see UM Router network connectivity information from the perspective of this UM Router. The <em>Other UM Routers</em> section (below) provides information in the same format as is used for the local UM Router.</p>
 <dl class="section user"><dt><b>Local</b> <b>UM</b> <b>Router</b> <b>Name</b> </dt><dd>The UM Router name as assigned via configuration.</dd></dl>
 <dl class="section user"><dt><b>Local</b> <b>UM</b> <b>Router</b> <b>ID</b> </dt><dd>A unique value that the UM Router assigns to itself automatically.</dd></dl>
@@ -5415,7 +5495,7 @@ Topology Info Page</h3>
 <p><br />
  </p>
 <h3><a class="anchor" id="pathinfo"></a>
-Path Info</h3>
+Path Info&nbsp;&nbsp;<small><a href="#pathinfo">&lt;-</a></small></h3>
 <p>The Path Info page lets you query and display a hop path that messages will take between any two TRDs that you enter into the Domain ID 1 and Domain ID 2 text boxes. Fill in the boxes and click the Calculate Shortest Path button, and you see the following fields:</p>
 <dl class="section user"><dt><b>Hop</b> <b>Count</b> </dt><dd>The number of hops from none node to the next along the displayed route, where a node can be either a UM Router or a TRD.</dd></dl>
 <dl class="section user"><dt><b>Aggregate</b> <b>Cost</b> </dt><dd>A sum of the cost values of all portals along the displayed path.</dd></dl>
@@ -5423,12 +5503,12 @@ Path Info</h3>
 <p><br />
  </p>
 <h2><a class="anchor" id="umrouterlogmessages"></a>
-UM Router Log Messages</h2>
+UM Router Log Messages&nbsp;&nbsp;<small><a href="#umrouterlogmessages">&lt;-</a></small></h2>
 <p>The UM Router daemon generates log messages that are used to monitor its health and operation. You can configure these to be directed to "console" (standard output), "syslog", or a specified log "file", via the <a class="el" href="index.html#drocfg_log">&lt;log&gt;</a> configuration element. Normally "console" is only used during testing, as a persistent log file is preferred for production use. The UM Router does not over-write log files on startup, but instead appends them.</p>
 <p><br />
  </p>
 <h3><a class="anchor" id="umrouterrollinglogs"></a>
-UM Router Rolling Logs</h3>
+UM Router Rolling Logs&nbsp;&nbsp;<small><a href="#umrouterrollinglogs">&lt;-</a></small></h3>
 <p>To prevent unbounded disk file growth, the UM Router supports rolling log files. When the log file rolls, the file is renamed according to the model: <br />
 &#160;&#160;<em>CONFIGUREDNAME</em><code>_</code><em>PID</em><code>.</code><em>DATE</em><code>.</code><em>SEQNUM</em> <br />
 where: </p><ul>
@@ -5449,7 +5529,7 @@ where: </p><ul>
 <p><br />
  </p>
 <h3><a class="anchor" id="importantumrouterlogmessages"></a>
-Important UM Router Log Messages</h3>
+Important UM Router Log Messages&nbsp;&nbsp;<small><a href="#importantumrouterlogmessages">&lt;-</a></small></h3>
 <p><b>Connection Failure Messages</b></p>
 <pre class="fragment">peer portal [name] failed to connect to peer at [IP:port] via [interface] [err]: reason
 peer portal [name] failed to accept connection (accept) [err]: reason
@@ -5468,12 +5548,12 @@ Initiator: peer portal [name] connected to [IP:port ]
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="umroutertransportstats"></a>
-UM Router Transport Stats</h2>
+UM Router Transport Stats&nbsp;&nbsp;<small><a href="#umroutertransportstats">&lt;-</a></small></h2>
 <p>Using the <code>&lt;monitor&gt;</code> element in a UM Router's XML configuration file and the UMS Monitoring feature, you can monitor the transport activity between the UM Router and its Topic Resolution Domain. The configuration also provides Context and Event Queue statistics. The statistics output identifies individual portals by name.</p>
 <p><br />
  </p>
 <h1><a class="anchor" id="umrouterglossary"></a>
-UM Router Glossary</h1>
+UM Router Glossary&nbsp;&nbsp;<small><a href="#umrouterglossary">&lt;-</a></small></h1>
 <dl class="section user"><dt><b>Access</b> <b>Control</b> <b>List</b> <b></b>(ACL)</dt><dd>A portal configuration you can use to filter out messages based on a variety of criteria.</dd></dl>
 <dl class="section user"><dt><b>forwarding</b> <b>cost</b> </dt><dd>A value assigned to a portal to help determine best-path routing selection.</dd></dl>
 <dl class="section user"><dt><b>UM</b> <b>Router</b> <b>keepalive</b> </dt><dd>Control messages exchanged between UM Routers to confirm that UM Routers are still running.</dd></dl>
@@ -5486,14 +5566,14 @@ UM Router Glossary</h1>
 <p><br />
  </p>
 <h1><a class="anchor" id="comparisontopre60umgateway"></a>
-Comparison to Pre-6.0 UM Gateway</h1>
+Comparison to Pre-6.0 UM Gateway&nbsp;&nbsp;<small><a href="#comparisontopre60umgateway">&lt;-</a></small></h1>
 <p>With the release of Ultra Messaging 6.0, the UM Gateway feature is discontinued and replaced by the Ultra Messaging Dynamic Routing Option (also referred to as the UM Router).</p>
 <p>The UM Router's primary improvement over the UM Gateway is its ability to intelligently select efficient traffic routes from multiple path choices on a dynamic topic-by-topic basis.</p>
 <dl class="section note"><dt>Note</dt><dd>This release of the UM Router is not backward compatible with earlier versions of the UM Gateway in the sense that you cannot have UM Routers and UM Gateways in the same network.</dd></dl>
 <p><br />
  </p>
 <h2><a class="anchor" id="addedfeaturesanddifferences"></a>
-Added Features and Differences</h2>
+Added Features and Differences&nbsp;&nbsp;<small><a href="#addedfeaturesanddifferences">&lt;-</a></small></h2>
 <p>In addition to routing functionality, the following are features of the UM Router that were not provided in the UM Gateway:</p>
 <ul>
 <li>

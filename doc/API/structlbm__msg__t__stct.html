@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">UM C API
-   &#160;<span id="projectnumber">6.11.1</span>
+   &#160;<span id="projectnumber">6.12</span>
    </div>
   </td>
  </tr>
@@ -73,7 +73,7 @@ $(document).ready(function(){initNavTree('structlbm__msg__t__stct.html','');});
 </div><!--header-->
 <div class="contents">
 
-<p>Structure that stores information about a received message.  
+<p>Structure that stores information about a received message. It is delivered to the application via the receiver callback function (<a class="el" href="lbm_8h.html#ac8dd91be561ad6262ccf3f7f94771cfd">lbm_rcv_cb_proc</a>).  
  <a href="structlbm__msg__t__stct.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="lbm_8h_source.html">lbm.h</a>&gt;</code></p>
@@ -98,68 +98,118 @@ Data Fields</h2></td></tr>
 <tr class="separator:af96152f594427bf4bf520e9a8e022aae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a414eaced619e9dfafbcb2c7608af8e7e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="lbm_8h.html#abdb96b55cc467a75e1f9ec0036dbc14b">lbm_uint_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlbm__msg__t__stct.html#a414eaced619e9dfafbcb2c7608af8e7e">sequence_number</a></td></tr>
 <tr class="separator:a414eaced619e9dfafbcb2c7608af8e7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a37c456bd571f110e3428950ffff2a846"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a37c456bd571f110e3428950ffff2a846"></a>
-long&#160;</td><td class="memItemRight" valign="bottom"><b>refcnt</b></td></tr>
+<tr class="memitem:a37c456bd571f110e3428950ffff2a846"><td class="memItemLeft" align="right" valign="top">long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlbm__msg__t__stct.html#a37c456bd571f110e3428950ffff2a846">refcnt</a></td></tr>
 <tr class="separator:a37c456bd571f110e3428950ffff2a846"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a17210e2e27316d6231a59991ab3c4ecc"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a17210e2e27316d6231a59991ab3c4ecc"></a>
-size_t&#160;</td><td class="memItemRight" valign="bottom"><b>apphdr_len</b></td></tr>
+<tr class="memitem:a17210e2e27316d6231a59991ab3c4ecc"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlbm__msg__t__stct.html#a17210e2e27316d6231a59991ab3c4ecc">apphdr_len</a></td></tr>
 <tr class="separator:a17210e2e27316d6231a59991ab3c4ecc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2cb0280d5da6c2821e892c5e8e5b0fda"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2cb0280d5da6c2821e892c5e8e5b0fda"></a>
-<a class="el" href="lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>apphdr_code</b></td></tr>
+<tr class="memitem:a2cb0280d5da6c2821e892c5e8e5b0fda"><td class="memItemLeft" align="right" valign="top"><a class="el" href="lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlbm__msg__t__stct.html#a2cb0280d5da6c2821e892c5e8e5b0fda">apphdr_code</a></td></tr>
 <tr class="separator:a2cb0280d5da6c2821e892c5e8e5b0fda"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad891723924b1b2e1c986ef65c3316663"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad891723924b1b2e1c986ef65c3316663"></a>
-<a class="el" href="lbm_8h.html#a00b4a00d4c5a4892743027ea6cab128b">lbm_timeval_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>tsp</b></td></tr>
+<tr class="memitem:ad891723924b1b2e1c986ef65c3316663"><td class="memItemLeft" align="right" valign="top"><a class="el" href="lbm_8h.html#a00b4a00d4c5a4892743027ea6cab128b">lbm_timeval_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlbm__msg__t__stct.html#ad891723924b1b2e1c986ef65c3316663">tsp</a></td></tr>
 <tr class="separator:ad891723924b1b2e1c986ef65c3316663"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0a010040f0e639dc24f54d2a75ee34be"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0a010040f0e639dc24f54d2a75ee34be"></a>
-<a class="el" href="lbm_8h.html#a46699a1cfc611df32e6cce3fb5100aae">lbm_ushort_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>hdrlen</b></td></tr>
+<tr class="memitem:a0a010040f0e639dc24f54d2a75ee34be"><td class="memItemLeft" align="right" valign="top"><a class="el" href="lbm_8h.html#a46699a1cfc611df32e6cce3fb5100aae">lbm_ushort_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlbm__msg__t__stct.html#a0a010040f0e639dc24f54d2a75ee34be">hdrlen</a></td></tr>
 <tr class="separator:a0a010040f0e639dc24f54d2a75ee34be"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a38c530bb5a27742d0a125cdc153d5e05"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a38c530bb5a27742d0a125cdc153d5e05"></a>
-const lbm_buff_t *&#160;</td><td class="memItemRight" valign="bottom"><b>buffer</b></td></tr>
+<tr class="memitem:a38c530bb5a27742d0a125cdc153d5e05"><td class="memItemLeft" align="right" valign="top">const lbm_buff_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlbm__msg__t__stct.html#a38c530bb5a27742d0a125cdc153d5e05">buffer</a></td></tr>
 <tr class="separator:a38c530bb5a27742d0a125cdc153d5e05"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a86b60281b3bcd311ec9789c6d549835f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a86b60281b3bcd311ec9789c6d549835f"></a>
-const void *&#160;</td><td class="memItemRight" valign="bottom"><b>fragment_info</b></td></tr>
+<tr class="memitem:a86b60281b3bcd311ec9789c6d549835f"><td class="memItemLeft" align="right" valign="top">const void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlbm__msg__t__stct.html#a86b60281b3bcd311ec9789c6d549835f">fragment_info</a></td></tr>
 <tr class="separator:a86b60281b3bcd311ec9789c6d549835f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a87f47a29a15868b23c55d5ce6d6a86af"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a87f47a29a15868b23c55d5ce6d6a86af"></a>
-const char *&#160;</td><td class="memItemRight" valign="bottom"><b>apphdr_data</b></td></tr>
+<tr class="memitem:a87f47a29a15868b23c55d5ce6d6a86af"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlbm__msg__t__stct.html#a87f47a29a15868b23c55d5ce6d6a86af">apphdr_data</a></td></tr>
 <tr class="separator:a87f47a29a15868b23c55d5ce6d6a86af"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0cec1be7ccf002b9d5195321f84d362d"><td class="memItemLeft" align="right" valign="top">const void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlbm__msg__t__stct.html#a0cec1be7ccf002b9d5195321f84d362d">source_clientd</a></td></tr>
 <tr class="separator:a0cec1be7ccf002b9d5195321f84d362d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaef6a490b763b2cb2c67a539ef62250c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aaef6a490b763b2cb2c67a539ef62250c"></a>
-const void *&#160;</td><td class="memItemRight" valign="bottom"><b>umeack</b></td></tr>
+<tr class="memitem:aaef6a490b763b2cb2c67a539ef62250c"><td class="memItemLeft" align="right" valign="top">const void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlbm__msg__t__stct.html#aaef6a490b763b2cb2c67a539ef62250c">umeack</a></td></tr>
 <tr class="separator:aaef6a490b763b2cb2c67a539ef62250c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3b3037a9a0be1ee45b1d1a70499a3402"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3b3037a9a0be1ee45b1d1a70499a3402"></a>
-const void *&#160;</td><td class="memItemRight" valign="bottom"><b>src_cd</b></td></tr>
+<tr class="memitem:a3b3037a9a0be1ee45b1d1a70499a3402"><td class="memItemLeft" align="right" valign="top">const void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlbm__msg__t__stct.html#a3b3037a9a0be1ee45b1d1a70499a3402">src_cd</a></td></tr>
 <tr class="separator:a3b3037a9a0be1ee45b1d1a70499a3402"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a65e9bdf3cd33fbe81353896a2427666f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a65e9bdf3cd33fbe81353896a2427666f"></a>
-<a class="el" href="lbm_8h.html#abdb96b55cc467a75e1f9ec0036dbc14b">lbm_uint_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>osqn</b></td></tr>
+<tr class="memitem:a65e9bdf3cd33fbe81353896a2427666f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="lbm_8h.html#abdb96b55cc467a75e1f9ec0036dbc14b">lbm_uint_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlbm__msg__t__stct.html#a65e9bdf3cd33fbe81353896a2427666f">osqn</a></td></tr>
 <tr class="separator:a65e9bdf3cd33fbe81353896a2427666f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aae3980b196792859686d4d88b236e9b8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="lbm_8h.html#a92eeef15a938f250c05c436c52960055">lbm_msg_channel_info_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlbm__msg__t__stct.html#aae3980b196792859686d4d88b236e9b8">channel_info</a></td></tr>
 <tr class="separator:aae3980b196792859686d4d88b236e9b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a42d15397e57d3a276300ff197e810450"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a42d15397e57d3a276300ff197e810450"></a>
-const void *&#160;</td><td class="memItemRight" valign="bottom"><b>umq_msgid</b></td></tr>
+<tr class="memitem:a42d15397e57d3a276300ff197e810450"><td class="memItemLeft" align="right" valign="top">const void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlbm__msg__t__stct.html#a42d15397e57d3a276300ff197e810450">umq_msgid</a></td></tr>
 <tr class="separator:a42d15397e57d3a276300ff197e810450"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5322db82bb31a252037029ae165f5176"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5322db82bb31a252037029ae165f5176"></a>
-const void *&#160;</td><td class="memItemRight" valign="bottom"><b>umq_cr</b></td></tr>
+<tr class="memitem:a5322db82bb31a252037029ae165f5176"><td class="memItemLeft" align="right" valign="top">const void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlbm__msg__t__stct.html#a5322db82bb31a252037029ae165f5176">umq_cr</a></td></tr>
 <tr class="separator:a5322db82bb31a252037029ae165f5176"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af2d986db10fad363e5c091a584236d77"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af2d986db10fad363e5c091a584236d77"></a>
-const void *&#160;</td><td class="memItemRight" valign="bottom"><b>pdata</b></td></tr>
+<tr class="memitem:af2d986db10fad363e5c091a584236d77"><td class="memItemLeft" align="right" valign="top">const void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlbm__msg__t__stct.html#af2d986db10fad363e5c091a584236d77">pdata</a></td></tr>
 <tr class="separator:af2d986db10fad363e5c091a584236d77"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae1619e3a9382792e15704ce8a1b730c1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae1619e3a9382792e15704ce8a1b730c1"></a>
-size_t&#160;</td><td class="memItemRight" valign="bottom"><b>plen</b></td></tr>
+<tr class="memitem:ae1619e3a9382792e15704ce8a1b730c1"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlbm__msg__t__stct.html#ae1619e3a9382792e15704ce8a1b730c1">plen</a></td></tr>
 <tr class="separator:ae1619e3a9382792e15704ce8a1b730c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae494fd38e1139a128d58616fa9d2e439"><td class="memItemLeft" align="right" valign="top"><a class="el" href="lbm_8h.html#a9155c3d6d70b67c426089d53b3eacaac">lbm_msg_properties_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlbm__msg__t__stct.html#ae494fd38e1139a128d58616fa9d2e439">properties</a></td></tr>
 <tr class="separator:ae494fd38e1139a128d58616fa9d2e439"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6b315b516a36327ef0aacc051c27df8c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="lbm_8h.html#ad57314f4cc9f2543733a668fad940418">lbm_hf_sequence_number_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlbm__msg__t__stct.html#a6b315b516a36327ef0aacc051c27df8c">hf_sequence_number</a></td></tr>
 <tr class="separator:a6b315b516a36327ef0aacc051c27df8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad012a39514693c5ce10230baec796927"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad012a39514693c5ce10230baec796927"></a>
-const void *&#160;</td><td class="memItemRight" valign="bottom"><b>broker_msg_state</b></td></tr>
+<tr class="memitem:ad012a39514693c5ce10230baec796927"><td class="memItemLeft" align="right" valign="top">const void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlbm__msg__t__stct.html#ad012a39514693c5ce10230baec796927">broker_msg_state</a></td></tr>
 <tr class="separator:ad012a39514693c5ce10230baec796927"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4e0fab1c6a59636b0b996a6070c32a9b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="lbm_8h.html#a60ce419ca9bccc4d2b61b9acb70fe30e">lbm_timespec_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlbm__msg__t__stct.html#a4e0fab1c6a59636b0b996a6070c32a9b">hr_timestamp</a></td></tr>
 <tr class="separator:a4e0fab1c6a59636b0b996a6070c32a9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Structure that stores information about a received message. </p>
+<div class="textblock"><p>Structure that stores information about a received message. It is delivered to the application via the receiver callback function (<a class="el" href="lbm_8h.html#ac8dd91be561ad6262ccf3f7f94771cfd">lbm_rcv_cb_proc</a>). </p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="lbm_8h.html#aa7491c50fefbc2b70f8035fce7ac1477">lbm_rcv_create</a> </dd></dl>
 </div><h2 class="groupheader">Field Documentation</h2>
+<a class="anchor" id="a2cb0280d5da6c2821e892c5e8e5b0fda"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a> lbm_msg_t_stct::apphdr_code</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>UM internal only. DO NOT ACCESS DIRECTLY! </p>
+
+</div>
+</div>
+<a class="anchor" id="a87f47a29a15868b23c55d5ce6d6a86af"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char* lbm_msg_t_stct::apphdr_data</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>UM internal only. DO NOT ACCESS DIRECTLY! To access information about application headers, see <a class="el" href="lbm_8h.html#a316dcfdb28460ee670cc6399d6d94b9f">lbm_apphdr_chain_iter_create_from_msg()</a>. </p>
+
+</div>
+</div>
+<a class="anchor" id="a17210e2e27316d6231a59991ab3c4ecc"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t lbm_msg_t_stct::apphdr_len</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>UM internal only. DO NOT ACCESS DIRECTLY! </p>
+
+</div>
+</div>
+<a class="anchor" id="ad012a39514693c5ce10230baec796927"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const void* lbm_msg_t_stct::broker_msg_state</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>UM internal only. DO NOT ACCESS DIRECTLY! </p>
+
+</div>
+</div>
+<a class="anchor" id="a38c530bb5a27742d0a125cdc153d5e05"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const lbm_buff_t* lbm_msg_t_stct::buffer</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>UM internal only. DO NOT ACCESS DIRECTLY! </p>
+
+</div>
+</div>
 <a class="anchor" id="aae3980b196792859686d4d88b236e9b8"></a>
 <div class="memitem">
 <div class="memproto">
@@ -208,17 +258,33 @@ const void *&#160;</td><td class="memItemRight" valign="bottom"><b>broker_msg_st
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Flags associated with the message. </p><ul>
-<li><code>LBM_MSG_FLAG_START_BATCH</code> - Message starts a batch </li>
-<li><code>LBM_MSG_FLAG_END_BATCH</code> - Message ends a batch </li>
-<li><code>LBM_MSG_FLAG_HF_PASS_THROUGH</code> - Message is a passed-through Hot Failover message </li>
-<li><code>LBM_MSG_FLAG_RETRANSMIT</code> - Message is a late join recovered message </li>
-<li><code>LBM_MSG_FLAG_UME_RETRANSMIT</code> - Message is a UM recovered message </li>
-<li><code>LBM_MSG_FLAG_IMMEDIATE</code> - Message is an immediate message </li>
-<li><code>LBM_MSG_FLAG_TOPICLESS</code> - Message has no topic </li>
-<li><code>LBM_MSG_FLAG_HF_32</code> - Message has a 32 bit hot failover sequence number </li>
-<li><code>LBM_MSG_FLAG_HF_64</code> - Message has a 64 bit hot failover sequence number </li>
-</ul>
+<p>Bitmap indicating extra information about the message. Zero or more flag bits ORed together LBM_MSG_FLAG_*, not including LBM_MSG_FLAG_NUMBERED_CHANNEL. </p>
+
+</div>
+</div>
+<a class="anchor" id="a86b60281b3bcd311ec9789c6d549835f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const void* lbm_msg_t_stct::fragment_info</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>UM internal only. DO NOT ACCESS DIRECTLY! To access information about message fragments, see <a class="el" href="lbm_8h.html#afa760960c21f502a8cb4c5ec5d97f91b">lbm_msg_retrieve_fragment_info()</a>. </p>
+
+</div>
+</div>
+<a class="anchor" id="a0a010040f0e639dc24f54d2a75ee34be"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="lbm_8h.html#a46699a1cfc611df32e6cce3fb5100aae">lbm_ushort_t</a> lbm_msg_t_stct::hdrlen</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>UM internal only. DO NOT ACCESS DIRECTLY! </p>
 
 </div>
 </div>
@@ -261,6 +327,45 @@ const void *&#160;</td><td class="memItemRight" valign="bottom"><b>broker_msg_st
 
 </div>
 </div>
+<a class="anchor" id="a65e9bdf3cd33fbe81353896a2427666f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="lbm_8h.html#abdb96b55cc467a75e1f9ec0036dbc14b">lbm_uint_t</a> lbm_msg_t_stct::osqn</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>UM internal only. DO NOT ACCESS DIRECTLY! </p>
+
+</div>
+</div>
+<a class="anchor" id="af2d986db10fad363e5c091a584236d77"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const void* lbm_msg_t_stct::pdata</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>UM internal only. DO NOT ACCESS DIRECTLY! </p>
+
+</div>
+</div>
+<a class="anchor" id="ae1619e3a9382792e15704ce8a1b730c1"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t lbm_msg_t_stct::plen</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>UM internal only. DO NOT ACCESS DIRECTLY! </p>
+
+</div>
+</div>
 <a class="anchor" id="ae494fd38e1139a128d58616fa9d2e439"></a>
 <div class="memitem">
 <div class="memproto">
@@ -270,7 +375,20 @@ const void *&#160;</td><td class="memItemRight" valign="bottom"><b>broker_msg_st
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Message properties structure for this message </p>
+<p>Message properties structure for this message. See <a class="el" href="lbm_8h.html#aac0dc50537a458d2a2ca418a394fd21b" title="Gets the value of the property with the specified name, type, and size. Note that this function perfo...">lbm_msg_properties_get()</a> and <a class="el" href="lbm_8h.html#acfa02c8316e97baeb9894daa991ef1fb" title="Begin iterating over an lbm_msg_properties_t object, starting at the first element. Calling lbm_msg_properties_iter_first associates an iterator with a properties object, and sets its current position to the first property available. An iterator can be used to iterate over more than one properties object as long as lbm_msg_properties_iter_first is called to associate it with each new properties object. ">lbm_msg_properties_iter_first()</a>. </p>
+
+</div>
+</div>
+<a class="anchor" id="a37c456bd571f110e3428950ffff2a846"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">long lbm_msg_t_stct::refcnt</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>UM internal only. DO NOT ACCESS DIRECTLY! </p>
 
 </div>
 </div>
@@ -309,7 +427,7 @@ const void *&#160;</td><td class="memItemRight" valign="bottom"><b>broker_msg_st
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Source string of transport session. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/API/design.tag:../Design/" href="../Design/umobjects.html#sourcestring">Source String</a>. </p>
+<p>Source string of transport session. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/API/design.tag:../Design/" href="../Design/fundamentalconcepts.html#sourcestring">Source String</a>. </p>
 
 </div>
 </div>
@@ -322,7 +440,20 @@ const void *&#160;</td><td class="memItemRight" valign="bottom"><b>broker_msg_st
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Pointer set by lbm_rcv_src_notification_create_function_cb callback </p>
+<p>The per-source clientd value for the source set by the lbm_rcv_src_notification_create_function_cb callback </p>
+
+</div>
+</div>
+<a class="anchor" id="a3b3037a9a0be1ee45b1d1a70499a3402"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const void* lbm_msg_t_stct::src_cd</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>UM internal only. DO NOT ACCESS DIRECTLY! </p>
 
 </div>
 </div>
@@ -339,6 +470,19 @@ const void *&#160;</td><td class="memItemRight" valign="bottom"><b>broker_msg_st
 
 </div>
 </div>
+<a class="anchor" id="ad891723924b1b2e1c986ef65c3316663"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="lbm_8h.html#a00b4a00d4c5a4892743027ea6cab128b">lbm_timeval_t</a> lbm_msg_t_stct::tsp</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Timestamp indicating the earliest time that the message was received, in seconds and microseconds since midnight, January 1st, 1970 UTC. This time can be up to 500 milliseconds prior to actual receipt time, and hence, is not suitable when accurate message-arrival-time measurements are needed. </p>
+
+</div>
+</div>
 <a class="anchor" id="ab25327dc4b4ebf527106f6e708dbc05f"></a>
 <div class="memitem">
 <div class="memproto">
@@ -349,32 +493,70 @@ const void *&#160;</td><td class="memItemRight" valign="bottom"><b>broker_msg_st
       </table>
 </div><div class="memdoc">
 <p>Type of message. </p><ul>
-<li><code>LBM_MSG_DATA</code> - Data message, Message is composed of user data </li>
-<li><code>LBM_MSG_BOS</code> - Beginning of Transport Session (source connection established) (data received) </li>
-<li><code>LBM_MSG_EOS</code> - End of Transport Session (connection closed to source) (no further data) </li>
-<li><code>LBM_MSG_REQUEST</code> - Request message from source </li>
-<li><code>LBM_MSG_RESPONSE</code> - Response message from requestee </li>
-<li><code>LBM_MSG_UNRECOVERABLE_LOSS</code> - Missing message detected and not recovered in given time (no data) </li>
-<li><code>LBM_MSG_UNRECOVERABLE_LOSS_BURST</code> - Missing burst of messages detected and not recovered (no data) </li>
-<li><code>LBM_MSG_NO_SOURCE_NOTIFICATION</code> - No source has been found for topic, Still querying for topic source </li>
-<li><code>LBM_MSG_UME_REGISTRATION_ERROR</code> - UMP receiver registration encountered an error. Data holds error message </li>
-<li><code>LBM_MSG_UME_REGISTRATION_SUCCESS</code> - UMP receiver registration successful. Data holds registration IDs </li>
-<li><code>LBM_MSG_UME_REGISTRATION_CHANGE</code> - UMP receiver notification of source registration change. Data holds info message </li>
-<li><code>LBM_MSG_UME_REGISTRATION_SUCCESS_EX</code> - UMP receiver registration successful for a store (extended form). Data holds registration IDs, etc. </li>
-<li><code>LBM_MSG_UME_REGISTRATION_CHANGE_EX</code> - UMP receiver notification of registration completion. Data holds sequence number and flags, etc. </li>
-<li><code>LBM_MSG_UME_DEREGISTRATION_SUCCESS_EX</code> - UMP receiver notification of deregistration success. Data holds registration IDs, etc. </li>
-<li><code>LBM_MSG_UME_DEREGISTRATION_COMPLETE_EX</code> - UMP receiver notification of deregistration complete. </li>
-<li><code>LBM_MSG_UMQ_REGISTRATION_ERROR</code> - UMQ receiver registration encountered an error. Data holds error message. </li>
-<li><code>LBM_MSG_UMQ_REGISTRATION_COMPLETE_EX</code> - UMQ receiver notification of registration completion. Data holds Queue information, assignment ID, etc. </li>
-<li><code>LBM_MSG_UMQ_DEREGISTRATION_COMPLETE_EX</code> - UMQ receiver notification of de-registration completion. Data holds Queue information, etc. </li>
-<li><code>LBM_MSG_UMQ_INDEX_ASSIGNMENT_ELIGIBILITY_ERROR</code> - UMQ receiver index assignment start/stop encountered an error. Data holds error message. </li>
-<li><code>LBM_MSG_UMQ_INDEX_ASSIGNMENT_ELIGIBILITY_START_COMPLETE_EX</code> - UMQ receiver notification of beginning of index assignment eligibility or index assignment. Data holds index information, etc. </li>
-<li><code>LBM_MSG_UMQ_INDEX_ASSIGNMENT_ELIGIBILITY_STOP_COMPLETE_EX</code> - UMQ receiver notification of end of index assignment eligibility or index assignment. Data holds index information, etc. </li>
-<li><code>LBM_MSG_UMQ_INDEX_ASSIGNED_EX</code> - UMQ receiver notification of beginning of index. </li>
-<li><code>LBM_MSG_UMQ_INDEX_RELEASED_EX</code> - UMQ receiver notification of end of index. </li>
-<li><code>LBM_MSG_UMQ_INDEX_ASSIGNMENT_ERROR</code> - UMQ receiver notification of an index assignment error. </li>
-<li><code>LBM_MSG_HF_RESET</code> - Hot-failover reset message was handled. UMS is now expecting msg-&gt;hf_sequence_number as the next non-reset hot-failover message. </li>
+<li><a class="el" href="lbm_8h.html#aa47eb604db7dc9fd53f9650ed940e058">LBM_MSG_DATA</a> - Data message, Message is composed of user data </li>
+<li><a class="el" href="lbm_8h.html#ab5489080adc7157549a9930b30c68425">LBM_MSG_BOS</a> - Beginning of Transport Session (source connection established) (data received) </li>
+<li><a class="el" href="lbm_8h.html#a2647b87f92adb5a34ea129fbfeeed5a3">LBM_MSG_EOS</a> - End of Transport Session (connection closed to source) (no further data) </li>
+<li><a class="el" href="lbm_8h.html#ab83f7de50ce32f69651a7252d84ea828">LBM_MSG_REQUEST</a> - Request message from source </li>
+<li><a class="el" href="lbm_8h.html#a1d6c42864a4f2eb50d3300f12d8a33cb">LBM_MSG_RESPONSE</a> - Response message (from an earlier request) </li>
+<li><a class="el" href="lbm_8h.html#a88920e0a4188081f9a14fc8f76c18578">LBM_MSG_UNRECOVERABLE_LOSS</a> - Missing message detected and not recovered in given time (no data) </li>
+<li><a class="el" href="lbm_8h.html#a6629139aaf902976c8df9de3f37d10db">LBM_MSG_UNRECOVERABLE_LOSS_BURST</a> - Missing burst of messages detected and not recovered (no data) </li>
+<li><a class="el" href="lbm_8h.html#ae5762d573ecd4a041f1d1326d35312aa">LBM_MSG_NO_SOURCE_NOTIFICATION</a> - No source has been found for topic, Still querying for topic source </li>
+<li><a class="el" href="lbm_8h.html#aeb0203ec0c560a60c3b97017afc61ada">LBM_MSG_UME_REGISTRATION_ERROR</a> - UMP receiver registration encountered an error. Data holds error message </li>
+<li><a class="el" href="lbm_8h.html#a2ffe0658e008764982ad97128fedcaf0">LBM_MSG_UME_REGISTRATION_SUCCESS</a> - UMP receiver registration successful. Data holds registration IDs </li>
+<li><a class="el" href="lbm_8h.html#ac12f55e0cdd14bd4d389bb3ef3afded3">LBM_MSG_UME_REGISTRATION_CHANGE</a> - UMP receiver notification of source registration change. Data holds info message </li>
+<li><a class="el" href="lbm_8h.html#acae32fc8bfc50769993fcea62e553bd8">LBM_MSG_UME_REGISTRATION_SUCCESS_EX</a> - UMP receiver registration successful for a store (extended form). Data holds registration IDs, etc. </li>
+<li><a class="el" href="lbm_8h.html#ac6a7a25ddf1e95d30d686b967fd7e5c9">LBM_MSG_UME_DEREGISTRATION_SUCCESS_EX</a> - UMP receiver notification of deregistration success. Data holds registration IDs, etc. </li>
+<li><a class="el" href="lbm_8h.html#a86121aa40ecebeaa5c17e711dcd76b96">LBM_MSG_UME_DEREGISTRATION_COMPLETE_EX</a> - UMP receiver notification of deregistration complete. </li>
+<li><a class="el" href="lbm_8h.html#a9d1e2e6ee259b458a8a7097462ae7166">LBM_MSG_UMQ_REGISTRATION_ERROR</a> - UMQ receiver registration encountered an error. Data holds error message. </li>
+<li><a class="el" href="lbm_8h.html#af5cdc6cdb79853c73d03abac074e2d4c">LBM_MSG_UMQ_REGISTRATION_COMPLETE_EX</a> - UMQ receiver notification of registration completion. Data holds Queue information, assignment ID, etc. </li>
+<li><a class="el" href="lbm_8h.html#a7e05596c569bc4043d30833347f92bba">LBM_MSG_UMQ_DEREGISTRATION_COMPLETE_EX</a> - UMQ receiver notification of de-registration completion. Data holds Queue information, etc. </li>
+<li><a class="el" href="lbm_8h.html#a6fd9dbb2e6c9559c16fb2ad2e6c0781d">LBM_MSG_UMQ_INDEX_ASSIGNMENT_ELIGIBILITY_ERROR</a> - UMQ receiver index assignment start/stop encountered an error. Data holds error message. </li>
+<li><a class="el" href="lbm_8h.html#a0be80e79faa49ef9cb1e399c9bf436f6">LBM_MSG_UMQ_INDEX_ASSIGNMENT_ELIGIBILITY_START_COMPLETE_EX</a> - UMQ receiver notification of beginning of index assignment eligibility or index assignment. Data holds index information, etc. </li>
+<li><a class="el" href="lbm_8h.html#acee7666e4e4d1b4ee55d4e580cf21c90">LBM_MSG_UMQ_INDEX_ASSIGNMENT_ELIGIBILITY_STOP_COMPLETE_EX</a> - UMQ receiver notification of end of index assignment eligibility or index assignment. Data holds index information, etc. </li>
+<li><a class="el" href="lbm_8h.html#a84058f898fab99ffe5652d64e105c1aa">LBM_MSG_UMQ_INDEX_ASSIGNED_EX</a> - UMQ receiver notification of beginning of index. </li>
+<li><a class="el" href="lbm_8h.html#a3ba42691e5f6f4f8f38b46ccce203ba4">LBM_MSG_UMQ_INDEX_RELEASED_EX</a> - UMQ receiver notification of end of index. </li>
+<li><a class="el" href="lbm_8h.html#a55784af6ed72244740c3d0509f9d4e84">LBM_MSG_UMQ_INDEX_ASSIGNMENT_ERROR</a> - UMQ receiver notification of an index assignment error. </li>
+<li><a class="el" href="lbm_8h.html#ae451edfbf80aa1cf945bfc844563933a">LBM_MSG_HF_RESET</a> - Hot-failover reset message was handled. UMS is now expecting msg-&gt;hf_sequence_number as the next non-reset hot-failover message. </li>
 </ul>
+
+</div>
+</div>
+<a class="anchor" id="aaef6a490b763b2cb2c67a539ef62250c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const void* lbm_msg_t_stct::umeack</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>UM internal only. DO NOT ACCESS DIRECTLY! </p>
+
+</div>
+</div>
+<a class="anchor" id="a5322db82bb31a252037029ae165f5176"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const void* lbm_msg_t_stct::umq_cr</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>UM internal only. DO NOT ACCESS DIRECTLY! </p>
+
+</div>
+</div>
+<a class="anchor" id="a42d15397e57d3a276300ff197e810450"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const void* lbm_msg_t_stct::umq_msgid</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>UM internal only. DO NOT ACCESS DIRECTLY! </p>
 
 </div>
 </div>

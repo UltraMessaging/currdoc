@@ -7,7 +7,7 @@ import org.openmdx.uses.gnu.getopt.*;
 import verifiablemsg.*;
 
 /*
-  Copyright (c) 2005-2018 Informatica Corporation  Permission is granted to licensees to use
+  Copyright (c) 2005-2019 Informatica Corporation  Permission is granted to licensees to use
   or alter this software for any purpose, including commercial applications,
   according to the terms laid out in the Software License Agreement.
 
@@ -31,15 +31,20 @@ import java.nio.ByteBuffer;
 class lbmssrc
 {
 //	private static String pcid = "";
+	private static int maxmsglength = 65536;
 	private static long msgs = 10000000;
 	private static int stats_sec = 0;
 	private static boolean verbose = false;
 	private static boolean sequential = true;
 	private static boolean verifiable = false;
+	private static boolean usrbuff = false;
+	private static boolean prntds = false;
 	private static String purpose = "Purpose: Uses Smart Source to send messages on a single topic.";
 	private static String usage =
 "Usage: lbmssrc [options] topic\n"+ 
 "Available options:\n"+ 
+"  -a available-data-space = print the length of available data space\n"+
+"  -b user-supplied-buffer =  send messages using a user-supplied buffer\n"+
 "  -c filename = Use LBM configuration file filename.\n"+ 
 "                Multiple config files are allowed.\n"+ 
 "                Example:  '-c file1.cfg -c file2.cfg'\n"+ 
@@ -118,7 +123,7 @@ class lbmssrc
 		longopts[4] = new LongOpt("monitor-format", LongOpt.REQUIRED_ARGUMENT, null, OPTION_MONITOR_FORMAT);
 		longopts[5] = new LongOpt("monitor-format-opts", LongOpt.REQUIRED_ARGUMENT, null, OPTION_MONITOR_FORMAT_OPTS);
 		longopts[6] = new LongOpt("monitor-appid", LongOpt.REQUIRED_ARGUMENT, null, OPTION_MONITOR_APPID);
-		Getopt gopt = new Getopt("lbmssrc", args, "+C:d:ec:hi:l:M:N:P:s:L:vV", longopts);
+		Getopt gopt = new Getopt("lbmssrc", args, "+C:d:ec:hi:l:M:N:P:s:L:vVab", longopts);
 		int c = -1;
 		boolean error = false;
 		mprop_int_vals = new long[16];
@@ -235,6 +240,12 @@ class lbmssrc
 					case 'V':
 						verifiable = true;	
 						break;
+					case 'a':
+						prntds = true;
+						break;
+					case 'b':
+						usrbuff = true;
+						break;
 					default:
 						error = true;
 						break;
@@ -299,7 +310,6 @@ class lbmssrc
 			System.exit(1);
 		}
 		
-		sattr.setProperty("transport", "LBTRM");
 		if (channel != -1) {
 			sattr.setProperty("smart_src_enable_spectrum_channel", "1");
 		}
@@ -469,8 +479,9 @@ class lbmssrc
 		long start_time = System.currentTimeMillis();
 		int totmsgs;
 		LBMSSourceSendExInfo exinfo = null;
+		ByteBuffer usrbuffmsg = null;
 
-		if ((channel != -1) || (mprop_int_cnt > 0)) {
+		if ((channel != -1) || (mprop_int_cnt > 0) || usrbuff) {
 			exinfo = new LBMSSourceSendExInfo();
 			if (channel != -1) {
 				exinfo.setChannel(channel);
@@ -478,20 +489,44 @@ class lbmssrc
 			if (mprop_int_cnt > 0) {
 				exinfo.setMessageProperties(mprop_int_cnt, mprop_int_keys, mprop_int_vals);
 			}
+			if (usrbuff) {
+				/* need to alloc a bytebuffer and fill it with data */
+				usrbuffmsg = ByteBuffer.allocateDirect(msglen);
+				try {
+					exinfo.setUserSuppliedBuffer(usrbuffmsg);
+				}
+				catch (LBMEInvalException e) {
+					System.err.println("lbmssrc: setUserSuppliedBuffer error\n" + e);
+				}
+			}
 		}
+		/*
+		 * if -a was specified, print the maximum allowable message payload size.  This 
+		 * is the maximum allowable size based on using all of the configured message properties
+		 * and spectrum.
+		 */
+		if (prntds) {
+			System.out.println("The length of available data space: " + mySmartSource.getAvailableDataSpace());
+		}
+
+		ByteBuffer fillmessage = message;
+		if (usrbuff) {
+			fillmessage = usrbuffmsg;
+		}
+
 		for ( totmsgs = 0 ; totmsgs < msgs ; )
 		{
 			try
 			{
 				if (verifiable) {
-					message.position(0);
-					message.put(VerifiableMessage.constructVerifiableMessage(msglen));
+					fillmessage.position(0);
+					fillmessage.put(VerifiableMessage.constructVerifiableMessage(msglen));
 				} else {
 					/* Only put data in message if verbose since this is performance sensitive */
 					if (verbose) {
-						message.position(0);
-						message.put("message ".getBytes());
-						message.put(String.valueOf(totmsgs).getBytes());
+						fillmessage.position(0);
+						fillmessage.put("message ".getBytes());
+						fillmessage.put(String.valueOf(totmsgs).getBytes());
 					}
 				}
 				mySmartSource.send(message, msglen, 0, exinfo);

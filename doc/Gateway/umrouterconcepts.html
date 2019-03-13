@@ -57,7 +57,7 @@ $(document).ready(function(){initNavTree('umrouterconcepts.html','');});
 <div class="textblock"><p><br />
  </p>
 <h1><a class="anchor" id="basicumrouteroperation"></a>
-Basic UM Router Operation</h1>
+Basic UM Router Operation&nbsp;&nbsp;<small><a href="#basicumrouteroperation">&lt;-</a></small></h1>
 <p>The diagram below shows a UM Router bridging topic resolution domains TRD1 and TRD2, for topic AAA, in a direct link configuration. Endpoint E1 contains a proxy receiver for topic AAA and endpoint E2 has a proxy source for topic AAA.</p>
 <div class="image">
 <img src="basic_routing.png" alt="basic_routing.png"/>
@@ -80,7 +80,7 @@ E1's AAA proxy receiver sees the TIR and requests that E2 (and any other interes
 <p><br />
  </p>
 <h2><a class="anchor" id="interestandusequeries"></a>
-Interest and Use Queries</h2>
+Interest and Use Queries&nbsp;&nbsp;<small><a href="#interestandusequeries">&lt;-</a></small></h2>
 <p>When a UM Router starts, its endpoint portals issue a brief series of Topic Resolution Request messages to their respective topic resolution domains. This provokes quiescent receivers (and wildcard receivers) into sending Use Query Responses, indicating interest in various topics. Each portal then records this interest.</p>
 <div class="image">
 <img src="dro_tr_1.png" alt="dro_tr_1.png"/>
@@ -97,25 +97,40 @@ Interest and Use Queries</h2>
 <p><br />
  </p>
 <h2><a class="anchor" id="umrouterkeepalive"></a>
-UM Router Keepalive</h2>
+UM Router Keepalive&nbsp;&nbsp;<small><a href="#umrouterkeepalive">&lt;-</a></small></h2>
 <p>To maintain a reliable connection, peer portals exchange UM Router Keepalive signals. Keepalive intervals and connection timeouts are configurable on a per-portal basis. You can also set the UM Router to send keepalives only when traffic is idle, which is the default condition. When both traffic and keepalives go silent at a portal ingress, the portal considers the connection lost and disconnects the TCP link. After the disconnect, the portal tries to reconnect. See refeatewaykeepalive.</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="finaladvertisements"></a>
-Final Advertisements</h2>
+Final Advertisements&nbsp;&nbsp;<small><a href="#finaladvertisements">&lt;-</a></small></h2>
 <p>UM Router proxy sources on endpoint portals, when deleted, send out a series of final advertisements. A final advertisement tells any receivers, including proxy receivers on other UM Routers, that the particular source has gone away. This triggers EOS and clean-up activities on the receiver relative to that specific source, which causes the receiver to begin querying according to its topic resolution configuration for the sustaining phase of querying.</p>
 <p>In short, final advertisements announce earlier detection of a source that has gone away, instead of transport timeout. This causes a faster transition to an alternative proxy source on a different UM Router if there is a change in the routing path.</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="moreaboutproxysourcesandreceivers"></a>
-More About Proxy Sources and Receivers</h2>
+More About Proxy Sources and Receivers&nbsp;&nbsp;<small><a href="#moreaboutproxysourcesandreceivers">&lt;-</a></small></h2>
 <p>The domain-id is used by Interest Messages and other internal and UM Router-to-UM Router traffic to ensure forwarding of all messages (payload and topic resolution) to the correct recipients. This also has the effect of not creating proxy sources/receivers where they are not needed. Thus, UM Routers create proxy sources and receivers based solely on receiver interest.</p>
 <p>If more than one source sends on a given topic, the receiving portal's single proxy receiver for that topic receives all messages sent on that topic. The sending portal, however creates a proxy source for every source sending on the topic. The UM Router maintains a table of proxy sources, each keyed by an Originating Transport ID (OTID), enabling the proxy receiver to forward each message to the correct proxy source. An OTID uniquely identifies a source's transport session, and is included in topic advertisements.</p>
-<dl class="section note"><dt>Note</dt><dd>It is important to keep maximum datagram sizes exactly the same across all TRDs and transports. For example, if the TRD on one side of a UM Router uses LBT-RM message transport and the TRD on the other side uses LBT-RDMA with a larger maximum datagram size configured, fragments from domain 1 will be too large for domain 2. See configuration options: <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Gateway/config.tag:../Config/" href="../Config/grpresolveroperation.html#resolverdatagrammaxsizecontext">resolver_datagram_max_size (context)</a>, <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Gateway/config.tag:../Config/" href="../Config/grptransporttcpoperation.html#transporttcpdatagrammaxsizecontext">transport_tcp_datagram_max_size (context)</a>, <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Gateway/config.tag:../Config/" href="../Config/grptransportlbtrmoperation.html#transportlbtrmdatagrammaxsizecontext">transport_lbtrm_datagram_max_size (context)</a>, <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Gateway/config.tag:../Config/" href="../Config/grptransportlbtruoperation.html#transportlbtrudatagrammaxsizecontext">transport_lbtru_datagram_max_size (context)</a>, <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Gateway/config.tag:../Config/" href="../Config/grptransportlbtipcoperation.html#transportlbtipcdatagrammaxsizecontext">transport_lbtipc_datagram_max_size (context)</a>, and <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Gateway/config.tag:../Config/" href="../Config/grptransportlbtsmxoperation.html#transportlbtsmxdatagrammaxsizesource">transport_lbtsmx_datagram_max_size (source)</a>.</dd></dl>
+<p><br />
+ </p>
+<h2><a class="anchor" id="protocolconversion"></a>
+Protocol Conversion&nbsp;&nbsp;<small><a href="#protocolconversion">&lt;-</a></small></h2>
+<p>When an application creates a source, it is configured to use one of the UM transport types. When a DRO is deployed, the proxy sources are also configured to use one of the UM transport types. Although users often use the same transport type for sources and proxy sources, this is not necessary. When different transport types are configured for source and proxy source, the DRO is performing a protocol conversion.</p>
+<p>When this is done, it is very important to configure the transports to use the same maximum datagram size. If you don't, the DRO can drop messages which cannot be recovered through normal means. For example, a source in TRD1 can be configured for TCP, which has a default maximum datagram size of 65536. If a DRO's remote portal is configured to create LBT-RU proxy sources, that has a default maximum datagram size of 8192. If the source sends a user message of 10K, the TCP source will send it as a single fragment. The DRO will receive it and will attempt to forward it on an LBT-RU proxy source, but the 10K fragment is too large for LBT-RU's maximum datagram size, so the message will be dropped.</p>
+<p>The solution is to override the default maximum datagram sizes to be the same. Informatica generally does not recommend configuring UDP-based transports for datagram sizes above 8K, so it is advisable to set the maximum datagram sizes of all transport types to 8192, like this:</p>
+<pre>
+context transport_tcp_datagram_max_size 8192
+context transport_lbtrm_datagram_max_size 8192
+context transport_lbtru_datagram_max_size 8192
+context transport_lbtipc_datagram_max_size 8192
+source transport_lbtsmx_datagram_max_size 8192
+</pre><p>See configuration options: <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Gateway/config.tag:../Config/" href="../Config/grptransporttcpoperation.html#transporttcpdatagrammaxsizecontext">transport_tcp_datagram_max_size (context)</a>, <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Gateway/config.tag:../Config/" href="../Config/grptransportlbtrmoperation.html#transportlbtrmdatagrammaxsizecontext">transport_lbtrm_datagram_max_size (context)</a>, <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Gateway/config.tag:../Config/" href="../Config/grptransportlbtruoperation.html#transportlbtrudatagrammaxsizecontext">transport_lbtru_datagram_max_size (context)</a>, <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Gateway/config.tag:../Config/" href="../Config/grptransportlbtipcoperation.html#transportlbtipcdatagrammaxsizecontext">transport_lbtipc_datagram_max_size (context)</a>, and <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Gateway/config.tag:../Config/" href="../Config/grptransportlbtsmxoperation.html#transportlbtsmxdatagrammaxsizesource">transport_lbtsmx_datagram_max_size (source)</a>.</p>
+<p>Also see <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Gateway/design.tag:../Design/" href="../Design/architecture.html#messagefragmentationandreassembly">Message Fragmentation and Reassembly</a>.</p>
+<p>Final note: the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Gateway/config.tag:../Config/" href="../Config/grpudpbasedresolveroperation.html#resolverdatagrammaxsizecontext">resolver_datagram_max_size (context)</a> option also needs to be made the same in all instances of UM, including DROs.</p>
 <p><br />
  </p>
 <h1><a class="anchor" id="multihopforwarding"></a>
-Multi-Hop Forwarding</h1>
+Multi-Hop Forwarding&nbsp;&nbsp;<small><a href="#multihopforwarding">&lt;-</a></small></h1>
 <p>UM can resolve topics across a span of multiple UM Routers. Consider a simple example UM Router deployment, as shown in the following figure.</p>
 <div class="image">
 <img src="multi_hop.png" alt="multi_hop.png"/>
@@ -149,7 +164,7 @@ Topic AAA has now been resolved across both UM Routers, which forward all topic 
 <p><br />
  </p>
 <h1><a class="anchor" id="routingwildcardreceivers"></a>
-Routing Wildcard Receivers</h1>
+Routing Wildcard Receivers&nbsp;&nbsp;<small><a href="#routingwildcardreceivers">&lt;-</a></small></h1>
 <p>The UM Router supports topic resolution for wildcard receivers in a manner very similar to non-wildcard receivers. Wildcard receivers in a TRD issuing a WC-TQR cause corresponding proxy wildcard receivers to be created in portals, as shown in the following figure. The UM Router creates a single proxy source for pattern match.</p>
 <div class="image">
 <img src="wildcard.png" alt="wildcard.png"/>
@@ -157,14 +172,14 @@ Routing Wildcard Receivers</h1>
  <p><br />
  </p>
 <h1><a class="anchor" id="forwardingcosts"></a>
-Forwarding Costs</h1>
+Forwarding Costs&nbsp;&nbsp;<small><a href="#forwardingcosts">&lt;-</a></small></h1>
 <p>Forwarding a message through a UM Router incurs a cost in terms of latency, network bandwidth, and CPU utilization on the UM Router machine (which may in turn affect the latency of other forwarded messages). Transiting multiple UM Routers adds even more cumulative latency to a message. Other UM Router-related factors such as portal buffering, network bandwidth, switches, etc., can also add latency.</p>
 <p>Factors other than latency contribute to the cost of forwarding a message. Consider a message that can be sent from one domain to its destination domain over one of two paths. A three-hop path over 1Gbps links may be faster than a single-hop path over a 100Mbps link. Further, it may be the case that the 100Mbps link is more expensive or less reliable.</p>
 <p>You assign forwarding cost values on a per-portal basis. When summed over a path, these values determine the cost of that entire path. A network of UM Routers uses forwarding cost as the criterion for determining the best path over which to resolve a topic.</p>
 <p><br />
  </p>
 <h1><a class="anchor" id="umrouterrouting"></a>
-UM Router Routing</h1>
+UM Router Routing&nbsp;&nbsp;<small><a href="#umrouterrouting">&lt;-</a></small></h1>
 <p>UM Routers have an awareness of other UM Routers in their network and how they are linked. Thus, they each maintain a topology map, which is periodically confirmed and updated. This map also includes forwarding cost information.</p>
 <p>Using this information, the UM Routers can cooperate during topic resolution to determine the best (lowest cost) path over which to resolve a topic or to route control information. They do this by totaling the costs of all portals along each candidate route, then comparing the totals.</p>
 <p>For example, the following figure shows two possible paths from TRD1 to TRD2: A-C (total route cost of 11) and B-D (total route cost of 7). In this case, the UM Routers select path B-D.</p>
@@ -177,12 +192,12 @@ UM Router Routing</h1>
 <p><br />
  </p>
 <h1><a class="anchor" id="routingtopologies"></a>
-Routing Topologies</h1>
+Routing Topologies&nbsp;&nbsp;<small><a href="#routingtopologies">&lt;-</a></small></h1>
 <p>You can configure multiple UM Routers in a variety of topologies. Following are several examples.</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="directlink"></a>
-Direct Link</h2>
+Direct Link&nbsp;&nbsp;<small><a href="#directlink">&lt;-</a></small></h2>
 <p>The Direct Link configuration uses a single UM Router to directly connect two TRDs. For a configuration example, see <a class="el" href="umrouterimplementation.html#directlinkconfiguration">Direct Link Configuration</a>.</p>
 <div class="image">
 <img src="direct_link.png" alt="direct_link.png"/>
@@ -190,7 +205,7 @@ Direct Link</h2>
  <p><br />
  </p>
 <h2><a class="anchor" id="singlelink"></a>
-Single Link</h2>
+Single Link&nbsp;&nbsp;<small><a href="#singlelink">&lt;-</a></small></h2>
 <p>A Single Link configuration connects two TRDs using a UM Router on each end of an intermediate link. The intermediate link can be a "peer" link, or a transit TRD. For configuration examples, see <a class="el" href="umrouterimplementation.html#peerlinkconfiguration">Peer Link Configuration</a> and <a class="el" href="umrouterimplementation.html#transittrdlinkconfiguration">Transit TRD Link Configuration</a>.</p>
 <div class="image">
 <img src="single_link.png" alt="single_link.png"/>
@@ -198,7 +213,7 @@ Single Link</h2>
  <p><br />
  </p>
 <h2><a class="anchor" id="parallellinks"></a>
-Parallel Links</h2>
+Parallel Links&nbsp;&nbsp;<small><a href="#parallellinks">&lt;-</a></small></h2>
 <p>Parallel Links offer multiple complete paths between two TRDs. However, UM will not load-balance messages across both links. Rather, parallel links are used for failover purposes. You can set preference between the links by setting the primary path for the lowest cost and standby paths at higher costs. For a configuration example, see <a class="el" href="umrouterimplementation.html#parallellinksconfiguration">Parallel Links Configuration</a>.</p>
 <div class="image">
 <img src="parallel_links.png" alt="parallel_links.png"/>
@@ -206,7 +221,7 @@ Parallel Links</h2>
  <p><br />
  </p>
 <h2><a class="anchor" id="loops"></a>
-Loops</h2>
+Loops&nbsp;&nbsp;<small><a href="#loops">&lt;-</a></small></h2>
 <p>Loops let you route packets back to the originating UM Router without reusing any paths. Also, if any peer-peer links are interrupted, the looped UM Routers are able to find an alternate route between any two TRDs.</p>
 <div class="image">
 <img src="loops.png" alt="loops.png"/>
@@ -214,7 +229,7 @@ Loops</h2>
  <p><br />
  </p>
 <h2><a class="anchor" id="loopandspur"></a>
-Loop and Spur</h2>
+Loop and Spur&nbsp;&nbsp;<small><a href="#loopandspur">&lt;-</a></small></h2>
 <p>The Loop and Spur has a one or more UM Routers tangential to the loop and accessible only through a single UM Router participating in the loop. For a configuration example, see <a class="el" href="umrouterimplementation.html#loopandspurconfiguration">Loop and Spur Configuration</a>.</p>
 <div class="image">
 <img src="loop_and_spur.png" alt="loop_and_spur.png"/>
@@ -222,7 +237,7 @@ Loop and Spur</h2>
  <p><br />
  </p>
 <h2><a class="anchor" id="loopwithcentralizedtrd"></a>
-Loop with Centralized TRD</h2>
+Loop with Centralized TRD&nbsp;&nbsp;<small><a href="#loopwithcentralizedtrd">&lt;-</a></small></h2>
 <p>Adding a TRD to the center of a loop enhances its rerouting capabilities.</p>
 <div class="image">
 <img src="loop_central_trd.png" alt="loop_central_trd.png"/>
@@ -230,7 +245,7 @@ Loop with Centralized TRD</h2>
  <p><br />
  </p>
 <h2><a class="anchor" id="Star"></a>
-with centralized TRD</h2>
+with centralized TRD&nbsp;&nbsp;<small><a href="#Star">&lt;-</a></small></h2>
 <p>A Star with a centralized TRD does not offer rerouting capabilities but does provide an economical way to join multiple disparate TRDs.</p>
 <div class="image">
 <img src="star_central_trd.png" alt="star_central_trd.png"/>
@@ -238,7 +253,7 @@ with centralized TRD</h2>
  <p><br />
  </p>
 <h2><a class="anchor" id="starwithcentralizedumrouter"></a>
-Star with Centralized UM Router</h2>
+Star with Centralized UM Router&nbsp;&nbsp;<small><a href="#starwithcentralizedumrouter">&lt;-</a></small></h2>
 <p>The Star with a centralized UM Router is the simplest way to bridge multiple TRDs. For a configuration example, see <a class="el" href="umrouterimplementation.html#starconfiguration">Star Configuration</a>.</p>
 <div class="image">
 <img src="star_central_dro.png" alt="star_central_dro.png"/>
@@ -246,7 +261,7 @@ Star with Centralized UM Router</h2>
  <p><br />
  </p>
 <h2><a class="anchor" id="mesh"></a>
-Mesh</h2>
+Mesh&nbsp;&nbsp;<small><a href="#mesh">&lt;-</a></small></h2>
 <p>The Mesh topology provides peer portal interconnects between many UM Routers, approaching an all-connected-to-all configuration. This provides multiple possible paths between any two TRDs in the mesh. Note that this diagram is illustrative of the ways the UM Routers may be interconnected, and not necessarily a practical or recommended application. For a configuration example, see <a class="el" href="umrouterimplementation.html#meshconfiguration">Mesh Configuration</a>.</p>
 <div class="image">
 <img src="mesh.png" alt="mesh.png"/>
@@ -254,7 +269,7 @@ Mesh</h2>
  <p><br />
  </p>
 <h2><a class="anchor" id="palmtree"></a>
-Palm Tree</h2>
+Palm Tree&nbsp;&nbsp;<small><a href="#palmtree">&lt;-</a></small></h2>
 <p>The Palm Tree has a set of series-connected TRDs fanning out to a more richly meshed set of TRDs. This topology tends to pass more concentrated traffic over common links for part of its transit while supporting a loop, star, or mesh near its terminus.</p>
 <div class="image">
 <img src="palm_tree.png" alt="palm_tree.png"/>
@@ -262,7 +277,7 @@ Palm Tree</h2>
  <p><br />
  </p>
 <h2><a class="anchor" id="dumbbell"></a>
-Dumbbell</h2>
+Dumbbell&nbsp;&nbsp;<small><a href="#dumbbell">&lt;-</a></small></h2>
 <p>Similar to the Palm Tree, the Dumbbell has a funneled route with a loop, star, or mesh topology on each end.</p>
 <div class="image">
 <img src="dumbell.png" alt="dumbell.png"/>
@@ -270,7 +285,7 @@ Dumbbell</h2>
  <p><br />
  </p>
 <h1><a class="anchor" id="unsupportedconfigurations"></a>
-Unsupported Configurations</h1>
+Unsupported Configurations&nbsp;&nbsp;<small><a href="#unsupportedconfigurations">&lt;-</a></small></h1>
 <p>When designing UM Router networks, do not use any of the following topology constructs.</p>
 <p>Two peer-to-peer connections between the same two UM Routers:</p>
 <div class="image">
@@ -287,13 +302,13 @@ Unsupported Configurations</h1>
  <p><br />
  </p>
 <h1><a class="anchor" id="umfeaturecompatibility"></a>
-UM Feature Compatibility</h1>
+UM Feature Compatibility&nbsp;&nbsp;<small><a href="#umfeaturecompatibility">&lt;-</a></small></h1>
 <p>You must install the UM Dynamic Routing Option with its companion Ultra Messaging UMS, UMP, or UMQ product, and versions must match. While most UM features are compatible with the UM Router, some are not. Following is a table of features and their compatibilities with the UM Router.</p>
 <table class="doxtable">
 <tr>
 <th>UM Feature </th><th>UM Router Compatible? </th><th>Notes </th></tr>
 <tr>
-<td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Gateway/config.tag:../Config/" href="../Config/grptransportacceleration.html">Transport Acceleration</a> </td><td>Yes </td><td></td></tr>
+<td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Gateway/config.tag:../Config/" href="../Config/grptransportacceleration.html">Transport Acceleration</a> </td><td>Yes </td><td></td></tr>
 <tr>
 <td>Hot Failover (HF) </td><td>Yes </td><td>The UM Router can pass messages sent by HF publishers to HF receivers, however the UM Router itself cannot be configured to originate or terminate HF data streams. </td></tr>
 <tr>

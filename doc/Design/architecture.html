@@ -57,336 +57,76 @@ $(document).ready(function(){initNavTree('architecture.html','');});
 <div class="textblock"><p>UM is designed to be a flexible architecture. Unlike many messaging systems, UM does not require an intermediate daemon to handle routing issues or protocol processing. This increases the performance of UM and returns valuable computation time and memory back to applications that would normally be consumed by messaging daemons.</p>
 <p><br />
  </p>
+<h1><a class="anchor" id="umsoftwarestack"></a>
+UM Software Stack&nbsp;&nbsp;<small><a href="#umsoftwarestack">&lt;-</a></small></h1>
+<p>Here is a simplified diagram of the software stack:</p>
+<div class="image">
+<img src="Arch_layers.png" alt="Arch_layers.png"/>
+</div>
+ <p>At the bottom is the operating system socket layer, the computer hardware, and the network infrastructure. UM opens normal network sockets using standard operating system APIs. It expects the socket communications to operate properly within the constraints of the operational environment. For example, UM expects sent datagrams to be successfully delivered to their destinations, except when overload conditions exist, in which case packet loss is expected.</p>
+<p>The UM library implements a Transport Layer on top of Sockets. The primary responsibility of the Transport Layer is to reliably route datagrams from a publishing instance instance of UM to a receiving instance of UM. If datagram delivery fails, the Transport Layer detects a gap in the data stream and arranges retransmission.</p>
+<p>UM implements a Topic Layer on top of its Transport Layer. Publishers usually map multiple topics to a Transport Session, therefore there can be multiple instances of the topic layer on top of a given transport layer instance ("Transport Session"). The Topic layer is responsible for splitting large application messages into datagram-sized fragments and sending them on the proper Transport Session. On the receiving side, the Topic Layer (by default) reassembles fragmented messages, makes sure they are in the right order, and delivers them to the application. Note that the receive-side Topic Layer has a special name: the <em>Delivery Controller</em>.</p>
+<p>In addition to those layers is a Topic Resolution module which is responsible for topic discovery and triggering the receive-side joining of Transport Sessions.</p>
+<p><br />
+ </p>
+<h2><a class="anchor" id="deliverycontroller"></a>
+Delivery Controller&nbsp;&nbsp;<small><a href="#deliverycontroller">&lt;-</a></small></h2>
+<p>The interaction between the receiver Transport Layer and the Delivery Controller (receive-side Topic Layer) deserves some special explanation.</p>
+<p>In UM, publishing applications typically map multiple topic sources to a Transport Session. These topics are multiplexed onto a single Transport Session. A subscribing application will instantiate an independent Delivery Controller for each topic source on the Transport Session. The distribution of datagrams from the Transport Session to the appropriate Delivery Controller instance is a de-multiplexing process.</p>
+<p>In most communication stacks, the transport layer is responsible for both reliability and ordering - ensuring that messages are delivered in the same order that they were sent. The UM division of functionality is different. It is the Delivery Controller which re-orders the datagrams into the order originally sent. The transport layer delivers datagrams to the Delivery Controller in the order that they arrive. If there is datagram loss, the Delivery Controller sees a gap in the series of topic messages. It buffers the post-gap messages until transport layer arranges retransmission and gives the retransmitted datagrams to the Delivery Controller. The Delivery Controller will then deliver to the application the re-transmitted message, followed by the buffered messages in proper order to the application.</p>
+<p>This is an important feature because if a datagram is lost and requires retransmission, that topic will experience additional latency since it takes time for that handshake to happen. However, because the Transport Layer delivers datagrams as they arrive, the Delivery Controller is able to deliver messages for topics that are unaffected by the loss. See <a class="el" href="architecture.html#examplelossrecovery">Example: Loss Recovery</a> for an illustration of this.</p>
+<p>This design also enables the UM "Arrival Order Delivery" feature directly to applications (see <a class="el" href="architecture.html#ordereddelivery">Ordered Delivery</a>). There are some use cases where a subscribing application does not need to receive every message; it is only important that it get the <em>latest</em> message for a topic with the lowest possible latency. For example, an automated trading application needs the latest quote for a symbol, and doesn't care about older quotes. With Arrival Order delivery, the transport layer will attempt to recover a lost datagram, an unavoidable latency. While waiting for the retransmission, a newer datagram for that topic might be received. Rather than waiting for the retransmitted lost datagram, the Delivery Controller will immediately deliver the newer datagram to the application. Then, when the lost datagram is retransmitted, it will also be delivered to the application.</p>
+<p><br />
+ </p>
 <h1><a class="anchor" id="embeddedmode"></a>
-Embedded Mode</h1>
-<p>When you create a context (<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#a8058947690bd0995bc2c59d4a61b462f">lbm_context_create()</a>) with the UM configuration option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpmajoroptions.html#operationalmodecontext">operational_mode (context)</a> set to embedded (the default), UM creates an independent thread, called the context thread, which handles timer and socket events, and does protocol-level processing, like retransmission of dropped packets.</p>
+Embedded Mode&nbsp;&nbsp;<small><a href="#embeddedmode">&lt;-</a></small></h1>
+<p>When you create a context (<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#a8058947690bd0995bc2c59d4a61b462f">lbm_context_create()</a>) with the UM configuration option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Design/config.tag:../Config/" href="../Config/grpmajoroptions.html#operationalmodecontext">operational_mode (context)</a> set to embedded (the default), UM creates an independent thread, called the context thread, which handles timer and socket events, and does protocol-level processing, like retransmission of dropped packets.</p>
 <p><br />
  </p>
 <h1><a class="anchor" id="sequentialmode"></a>
-Sequential Mode</h1>
-<p>When you create a context (<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#a8058947690bd0995bc2c59d4a61b462f">lbm_context_create()</a>) with the UM configuration option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpmajoroptions.html#operationalmodecontext">operational_mode (context)</a> set to sequential, the context thread is NOT created. It becomes the application's responsibility to donate a thread to UM by calling <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#ad9416b1f0b474b5d4c4f39bb3c4bda77">lbm_context_process_events()</a> regularly, typically in a tight loop. Use Sequential mode for circumstances where your application wants control over the attributes of the context thread. For example, some applications raise the priority of the context thread so as to obtain more consistent latencies. In sequential mode, no separate thread is spawned when a context is created.</p>
+Sequential Mode&nbsp;&nbsp;<small><a href="#sequentialmode">&lt;-</a></small></h1>
+<p>When you create a context (<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#a8058947690bd0995bc2c59d4a61b462f">lbm_context_create()</a>) with the UM configuration option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Design/config.tag:../Config/" href="../Config/grpmajoroptions.html#operationalmodecontext">operational_mode (context)</a> set to sequential, the context thread is NOT created. It becomes the application's responsibility to donate a thread to UM by calling <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#ad9416b1f0b474b5d4c4f39bb3c4bda77">lbm_context_process_events()</a> regularly, typically in a tight loop. Use Sequential mode for circumstances where your application wants control over the attributes of the context thread. For example, some applications raise the priority of the context thread so as to obtain more consistent latencies. In sequential mode, no separate thread is spawned when a context is created.</p>
 <p>You enable Sequential mode with the following configuration option.</p>
 <pre class="fragment">context operational_mode sequential
 </pre><p>In addition to the context thread, there are other UM features which rely on specialized threads: </p><ul>
 <li>
-The LBT-IPC transport type, when used, creates its own specialized receive thread. Similar to the context thread, the creation of this thread can be suppressed by setting the option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grptransportlbtipcoperation.html#transportlbtipcreceiveroperationalmodecontext">transport_lbtipc_receiver_operational_mode (context)</a> to sequential. The application must then call <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#a8729a284ef9f01f329fbf0edbc147227">lbm_context_process_lbtipc_messages()</a> regularly. </li>
+The LBT-IPC transport type, when used, creates its own specialized receive thread. Similar to the context thread, the creation of this thread can be suppressed by setting the option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Design/config.tag:../Config/" href="../Config/grptransportlbtipcoperation.html#transportlbtipcreceiveroperationalmodecontext">transport_lbtipc_receiver_operational_mode (context)</a> to sequential. The application must then call <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#a8729a284ef9f01f329fbf0edbc147227">lbm_context_process_lbtipc_messages()</a> regularly. </li>
 <li>
 The LBT-SMX transport type, when used, creates its own specialized receive thread. However, unlike the context thread and the LBT-IPC threads, the creation of the LBT-SMX thread is handled by UM. There is no sequential mode for the LBT-SMX thread. </li>
 <li>
-The <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grptransportacceleration.html#myricomdatagrambypasslayerdbl">DBL transport acceleration</a>, when used, creates its own specialized receive thread. However, unlike the context thread and the LBT-IPC threads, the creation of the DBL thread is handled by UM. There is no sequential mode for the DBL thread. </li>
+The <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Design/config.tag:../Config/" href="../Config/grptransportacceleration.html#myricomdatagrambypasslayerdbl">DBL transport acceleration</a>, when used, creates its own specialized receive thread. However, unlike the context thread and the LBT-IPC threads, the creation of the DBL thread is handled by UM. There is no sequential mode for the DBL thread. </li>
 </ul>
-<p><br />
- </p>
-<h1><a class="anchor" id="topicresolutiondescription"></a>
-Topic Resolution Description</h1>
-<p>Topic resolution is the discovery of a topic's transport session information by a receiver to enable the receipt of topic messages. By default, Ultra Messaging Ultra Messaging relies on multicast requests and responses to resolve topics to transport sessions. (You can also use Unicast requests and responses, if needed.) Ultra Messaging receivers multicast their topic requests, or queries, to an IP multicast address and UDP port configured with the Ultra Messaging configuration options, <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpmulticastresolvernetwork.html#resolvermulticastaddresscontext">resolver_multicast_address (context)</a> and <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpmulticastresolvernetwork.html#resolvermulticastportcontext">resolver_multicast_port (context)</a>). Ultra Messaging sources also multicast their advertisements and responses to receiver queries to the same multicast address and UDP port.</p>
-<p>Topic Resolution occurs in the following phases:</p>
-<ul>
-<li>
-Initial Phase - Period that allows you to resolve a topic aggressively. Can be used to resolve all known topics before message sending begins. This phase can be configured to run differently from the defaults or completely disabled. </li>
-<li>
-Sustaining Phase - Period that allows new receivers to resolve a topic after the Initial Phase. Can also be the primary period of topic resolution if you disable the Initial Phase. This phase can also be configured to run differently from the defaults or completely disabled. </li>
-<li>
-Quiescent Phase - The "steady state" period during which a topic is resolved and Ultra Messaging uses no system resources for topic resolution. </li>
-</ul>
-<p>The phases of topic resolution pertain to individual topics. Therefore if your system has 100 topics, 100 different topic resolution advertisement and query phases may be running concurrently. This describes the three phases of Ultra Messaging topic resolution.</p>
-<dl class="section note"><dt>Note</dt><dd>With the UMQ product, topic resolution does not apply to brokered queuing sources, receivers, or the brokers themselves. However, ULB queuing does make use of topic resolution.</dd></dl>
-<p><br />
- </p>
-<h2><a class="anchor" id="multicasttopicresolution"></a>
-Multicast Topic Resolution</h2>
-<p>The following diagram depicts the UM topic resolution using multicast.</p>
-<div class="image">
-<img src="TopicResolution.png" alt="TopicResolution.png"/>
-</div>
- <p>UM performs topic resolution automatically. Your application does not need to call any API functions to initiate topic resolution, however, you can influence topic resolution with <a class="el" href="architecture.html#topicresolutionconfigurationoptions">Topic Resolution Configuration Options</a>. Moreover, you can set configuration options for individual topics by using the lbm_*_attr_setopt() functions in your application. See <a class="el" href="architecture.html#topicresolutionconfigurationoptions">Topic Resolution Configuration Options</a> for details.</p>
-<p>Topic Resolution also occurs across UM Routers, which means between Topic Resolution Domains. A Topic Resolution Domain refers to all the UM contexts that use the same UM topic resolution configuration values, such as <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpmulticastresolvernetwork.html#resolvermulticastaddresscontext">resolver_multicast_address (context)</a> and <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpmulticastresolvernetwork.html#resolvermulticastportcontext">resolver_multicast_port (context)</a>. UM Routers automatically assign Topic Resolution Domain IDs and manage Topic resolution traffic across them. See the UM Router Guide for more information.</p>
-<p>Multicast topic resolution traffic can benefit from hardware acceleration. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grptransportacceleration.html">Transport Acceleration Options</a> in the <a href="../Config/index.html">UM Configuration Guide</a> for more information.</p>
-<dl class="section note"><dt>Note</dt><dd>The Unicast Topic Resolution Daemon (lbmrd) can not run on the OpenVMS platform. If unicast topic resolution is needed with OpenVMS, the lbmrd must be run on an alternate platform (e.g. Linux or Windows).</dd></dl>
-<p><br />
- </p>
-<h2><a class="anchor" id="sourcesadvertise"></a>
-Sources Advertise</h2>
-<p>Ultra Messaging sources help Ultra Messaging receivers discover transport information in the following ways:</p>
-<dl class="section user"><dt><b>Advertise</b> <b>Active</b> <b>Topics</b> </dt><dd>Each source advertises its active topic first upon its creation and subsequently according to the resolver_advertisement_*_interval configuration options for the Initial and Sustaining Phases. Sources advertise by sending a Topic Information Record (TIR). (You can prevent a source from sending an advertisement upon creation with <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpresolveroperation.html#resolversendinitialadvertisementsource">resolver_send_initial_advertisement (source)</a>.)</dd></dl>
-<dl class="section user"><dt><b>Respond</b> <b>to</b> <b>Topic</b> <b>Queries</b> </dt><dd>Each source responds immediately to queries from receivers about its topic.</dd></dl>
-<p>Both a topic advertisement and a query response contain the topic's transport session information. Based on the transport type, a receiver can join the appropriate multicast group (for LBT-RM), send a connection request (for LBT-RU), connect to the source (for TCP) or access a shared memory area (for LBT-IPC and SMX). A TIR may contain the following address and port information:</p>
-<ul>
-<li>
-For a TCP transport, the source address, TCP port and Session ID. </li>
-<li>
-For an LBT-RM transport, the multicast group address, LBT-RM Session ID and the unicast UDP port (to which NAKs are sent) and the UDP destination port. </li>
-<li>
-For an LBT-RU transport, the source address, UDP port and Session ID. </li>
-<li>
-For an LBT-IPC transport, the Host ID, LBT-IPC Session ID and Transport ID. </li>
-<li>
-For an LBT-SMX transport, the Host ID, LBT-SMX Session ID and Transport ID. </li>
-<li>
-For an LBT-RDMA transport, the source address, RDMA port and Session ID. </li>
-</ul>
-<p>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpresolveroperation.html">Resolver Operation Options</a> in the <a href="../../Config/index.html">UM Configuration Guide</a> for more information.</p>
-<p>With the UMP/UMQ products, any Persistent sources you configure to send to Persistent Stores by setting the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umestoresource">ume_store (source)</a> configuration option, also include a Persistence flag in their advertisements. This indicates that the receiver should request the source to send a Source Registration Information (SRI) record, which identifies the store or stores the receiver should register with. See Source and Receiver Registration with the Store in the <a href="../UME/UM_Guide_for_Persistence=en.pdf">UM Guide for Persistence</a> for more information.</p>
-<p><br />
- </p>
-<h2><a class="anchor" id="receiversquery"></a>
-Receivers Query</h2>
-<p>Receivers can discover transport information in the following ways.</p>
-<ul>
-<li>
-Search advertisements collected in the resolver cache maintained by the UM context. </li>
-<li>
-Listen for source advertisements on the resolver_multicast_address:port. </li>
-<li>
-Send a topic query (TQR). </li>
-</ul>
-<p>A new receiver queries for its topic according to the resolver_query_*_interval configuration options for the Initial and Sustaining Phases.</p>
-<p>Note that the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpresolveroperation.html#resolverqueryminimuminitialintervalreceiver">resolver_query_minimum_initial_interval (receiver)</a> actually begins after you call <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#a3de8a6a659896f76475c453683db4e18">lbm_rcv_topic_lookup()</a> prior to creating the receiver. If you have disabled the Initial Phase for the topic's resolution, the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpresolveroperation.html#resolveradvertisementsustainintervalsource">resolver_advertisement_sustain_interval (source)</a> begins after you call <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#a3de8a6a659896f76475c453683db4e18">lbm_rcv_topic_lookup()</a>.</p>
-<p>A Topic Query Record (TQR) consists primarily of the topic string. Receivers continue querying on a topic until they discover the number of sources configured by <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpresolveroperation.html#resolutionnumberofsourcesquerythresholdreceiver">resolution_number_of_sources_query_threshold (receiver)</a>. However the large default of this configuration option (10,000,000) allows a receiver to continue to query until both the initial and sustaining phase of topic resolution complete.</p>
-<p>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpresolveroperation.html">Resolver Operation Options</a> in the <a href="../../Config/index.html">UM Configuration Guide</a> for more information.</p>
-<p><br />
- </p>
-<h2><a class="anchor" id="wildcardreceivertopicresolution"></a>
-Wildcard Receiver Topic Resolution</h2>
-<p><a class="el" href="umobjects.html#umwildcardreceivers">UM Wildcard Receivers</a> can discover transport information in the following ways:</p>
-<ul>
-<li>
-Search advertisements collected in the resolver cache maintained by the UM context. </li>
-<li>
-Listen for source advertisements on the resolver_multicast_address:port. </li>
-<li>
-Send a wildcard receiver topic query (WC-TQR). </li>
-</ul>
-<p>UM implements only one phase of wildcard receiver queries, sending wildcard receiver queries according to wildcard receiver resolver_query_*_interval configuration options until the topic pattern has been queried for the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpwildcardreceiver.html#resolverqueryminimumdurationwildcardreceiver">resolver_query_minimum_duration (wildcard_receiver)</a>. The wildcard receiver topic query (WC-TQR) contains the topic pattern and the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpwildcardreceiver.html#patterntypewildcardreceiver">pattern_type (wildcard_receiver)</a>.</p>
-<p>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpwildcardreceiver.html">Wildcard Receiver Options</a> in the <a href="../../Config/index.html">UM Configuration Guide</a> for more information.</p>
-<p><br />
- </p>
-<h2><a class="anchor" id="initialphase"></a>
-Initial Phase</h2>
-<p>The initial topic resolution phase for a topic is an aggressive phase that can be used to resolve all topics before sending any messages. During the initial phase, network traffic and CPU utilization might actually be higher. You can completely disable this phase, if desired. See Disabling Aspects of Topic Resolution in the <a href="../Config/index.html">UM Configuration Guide</a>.</p>
-<p><b>Advertising in the Initial Phase</b></p>
-<p>For the initial phase default settings, the resolver issues the first advertisement as soon as the scheduler can process it. The resolver issues the second advertisement 10 ms later, or at the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpresolveroperation.html#resolveradvertisementminimuminitialintervalsource">resolver_advertisement_minimum_initial_interval (source)</a>. For each subsequent advertisement, UM doubles the interval between advertisements. The source sends an advertisement at 20 ms, 40 ms, 80 ms, 160 ms, 320 ms and finally at 500 ms, or the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpresolveroperation.html#resolveradvertisementmaximuminitialintervalsource">resolver_advertisement_maximum_initial_interval (source)</a>. These 8 advertisements require a total of 1130 ms. The interval between advertisements remains at the maximum 500 ms, resulting in 7 more advertisements before the total duration of the initial phase reaches 5000 ms, or the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpresolveroperation.html#resolveradvertisementminimuminitialdurationsource">resolver_advertisement_minimum_initial_duration (source)</a>. This concludes the initial advertisement phase for the topic.</p>
-<div class="image">
-<img src="Resolver_Initial_Phase_TIR.png" alt="Resolver_Initial_Phase_TIR.png"/>
-</div>
- <p>The initial phase for a topic can take longer than the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpresolveroperation.html#resolveradvertisementminimuminitialdurationsource">resolver_advertisement_minimum_initial_duration (source)</a> if many topics are in resolution at the same time. The configuration options, <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpresolveroperation.html#resolverinitialadvertisementspersecondcontext">resolver_initial_advertisements_per_second (context)</a> and <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpresolveroperation.html#resolverinitialadvertisementbpscontext">resolver_initial_advertisement_bps (context)</a> enforce a rate limit on topic advertisements for the entire UM context. A large number of topics in resolution - in any phase - or long topic names may exceed these limits.</p>
-<p>If a source advertising in the initial phase receives a topic query, it responds with a topic advertisement. UM recalculates the next advertisement interval from that point forward as if the advertisement was sent at the nearest interval.</p>
-<p><b>Querying in the Initial Phase</b></p>
-<p>Querying activity by receivers in the initial phase operates in similar fashion to advertising activity, although with different interval defaults. The <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpresolveroperation.html#resolverqueryminimuminitialintervalreceiver">resolver_query_minimum_initial_interval (receiver)</a> default is 20 ms. Subsequent intervals double in length until the interval reaches 200 ms, or the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpresolveroperation.html#resolverquerymaximuminitialintervalreceiver">resolver_query_maximum_initial_interval (receiver)</a>. The query interval remains at 200 ms until the initial querying phase reaches 5000 ms, or the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpresolveroperation.html#resolverqueryminimuminitialdurationreceiver">resolver_query_minimum_initial_duration (receiver)</a>.</p>
-<div class="image">
-<img src="Resolver_Initial_Phase_TQR.png" alt="Resolver_Initial_Phase_TQR.png"/>
-</div>
- <p>The initial query phase completes when it reaches the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpresolveroperation.html#resolverqueryminimuminitialdurationreceiver">resolver_query_minimum_initial_duration (receiver)</a>. The initial query phase also has UM context-wide rate limit controls (<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpresolveroperation.html#resolverinitialqueriespersecondcontext">resolver_initial_queries_per_second (context)</a> and <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpresolveroperation.html#resolverinitialquerybpscontext">resolver_initial_query_bps (context)</a>) that can result in the extension of a phase's duration in the case of a large number of topics or long topic names.</p>
-<p><br />
- </p>
-<h2><a class="anchor" id="sustainingphase"></a>
-Sustaining Phase</h2>
-<p>The sustaining topic resolution phase follows the initial phase and can be a less active phase in which a new receiver resolves its topic. It can also act as the sole topic resolution phase if you disable the initial phase. The sustaining phase defaults use less network resources than the initial phase and can also be modified or disabled completely. See Disabling Aspects of Topic Resolution in the UM Configuration Guide.</p>
-<p><b>Advertising in the Sustaining Phase</b></p>
-<p>For the sustaining phase defaults, a source sends an advertisement every second (<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpresolveroperation.html#resolveradvertisementsustainintervalsource">resolver_advertisement_sustain_interval (source)</a>) for 1 minute (<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpresolveroperation.html#resolveradvertisementminimumsustaindurationsource">resolver_advertisement_minimum_sustain_duration (source)</a>). When this duration expires, the sustaining phase of advertisement for a topic ends. If a source receives a topic query, the sustaining phase resumes for the topic and the source completes another duration of advertisements.</p>
-<div class="image">
-<img src="Resolver_Sustain_Phase_TIR.png" alt="Resolver_Sustain_Phase_TIR.png"/>
-</div>
- <p>The sustaining advertisement phase has UM context-wide rate limit controls (<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpresolveroperation.html#resolversustainadvertisementspersecondcontext">resolver_sustain_advertisements_per_second (context)</a> and <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpresolveroperation.html#resolversustainadvertisementbpscontext">resolver_sustain_advertisement_bps (context)</a>) that can result in the extension of a phase's duration in the case of a large number of topics or long topic names.</p>
-<p><b>Querying in the Sustaining Phase</b></p>
-<p>Default sustaining phase querying operates the same as advertising. Unresolved receivers query every second (<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpresolveroperation.html#resolverquerysustainintervalreceiver">resolver_query_sustain_interval (receiver)</a>) for 1 minute (<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpresolveroperation.html#resolverqueryminimumsustaindurationreceiver">resolver_query_minimum_sustain_duration (receiver)</a>). When this duration expires, the sustaining phase of querying for a topic ends.</p>
-<div class="image">
-<img src="Resolver_Sustain_Phase_TQR.png" alt="Resolver_Sustain_Phase_TQR.png"/>
-</div>
- <p>Sustaining phase queries stop when one of the following events occurs:</p>
-<ul>
-<li>
-The receiver discovers multiple sources that equal <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpresolveroperation.html#resolutionnumberofsourcesquerythresholdreceiver">resolution_number_of_sources_query_threshold (receiver)</a>. </li>
-<li>
-The sustaining query phase reaches the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpresolveroperation.html#resolverqueryminimumsustaindurationreceiver">resolver_query_minimum_sustain_duration (receiver)</a>. </li>
-</ul>
-<p>The sustaining query phase also has UM context-wide rate limit controls (<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpresolveroperation.html#resolversustainqueriespersecondcontext">resolver_sustain_queries_per_second (context)</a> and <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpresolveroperation.html#resolversustainquerybpscontext">resolver_sustain_query_bps (context)</a>) that can result in the extension of a phase's duration in the case of a large number of topics or long topic names.</p>
-<p><br />
- </p>
-<h2><a class="anchor" id="quiescentphase"></a>
-Quiescent Phase</h2>
-<p>This phase is the absence of topic resolution activity for a given topic. It is possible that some topics may be in the quiescent phase at the same time other topics are in initial or sustaining phases of topic resolution.</p>
-<p>This phase ends if either of the following occurs.</p>
-<ul>
-<li>
-A new receiver sends a query. </li>
-<li>
-Your application calls <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#ae6dd7c56acf916ef66658cc1ebc7a525">lbm_context_topic_resolution_request()</a> that provokes the sending of topic queries for any receiver or wildcard receiver in this state. </li>
-</ul>
-<p><br />
- </p>
-<h2><a class="anchor" id="storecontextnameresolution"></a>
-Store (context) Name Resolution</h2>
-<p>With the UMP/UMQ products, topic resolution facilitates the resolution of Persistent Store names to a DomainID:IPAddress:Port.</p>
-<p>Topic Resolution resolves store (or context) names by sending context name queries and context name advertisements over the topic resolution channel. A store name resolves to the store's DomainID:IPAddress:Port. You configure the store's name and IPAddress:Port in the store's XML configuration file. See Identifying Persistent Stores in the <a href="../UME/UM_Guide_for_Persistence=en.pdf">UM Guide for Persistence</a> for more information.</p>
-<p>If you do not use UM Routers, the DomainID is zero. Otherwise, the DomainID represents the Topic Resolution Domain where the store resides. Stores can learn their DomainID by listening to Topic Resolution traffic. See the UM Router Guide for more information about Topic Resolution Domains.</p>
-<p>Via the Topic Resolution channel, sources query for store names and stores respond with an advertisement when they see a query for their own store name. The advertisement contains the store's DomainID:IPAddress:Port.</p>
-<p>For a new source configured to use a store names (<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umestorenamesource">ume_store_name (source)</a>), the resolver issues the first context name query as soon as the scheduler can process it. The resolver issues the second advertisement 100 ms later, or at the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpresolveroperation.html#resolvercontextnamequeryminimumintervalcontext">resolver_context_name_query_minimum_interval (context)</a>. For each subsequent query, UM doubles the interval between queries. The source sends a query at 200 ms, 400 ms, 800 ms and finally at 1000 ms, or the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpresolveroperation.html#resolvercontextnamequerymaximumintervalcontext">resolver_context_name_query_maximum_interval (context)</a>. The interval between queries remains at the maximum 1000 ms until the total time querying for a store (context) name equals <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpresolveroperation.html#resolvercontextnamequerydurationcontext">resolver_context_name_query_duration (context)</a>. The default for this duration is 0 (zero) which means the resolver continues to send queries until the name resolves. After a store name resolves, the resolver stops sending queries.</p>
-<p>If a source sees advertisements from multiple stores with the same name, or a store sees an advertisement that matches its own store name, the source issues a warning log message. The source also issues an informational log message whenever it detects that a resolved store (context) name changes to a different DomainID:IPAddress:Port.</p>
-<p><br />
- </p>
-<h2><a class="anchor" id="topicresolutionconfigurationoptions"></a>
-Topic Resolution Configuration Options</h2>
-<p>See the following sections in <a href="../../Config/index.html">UM Configuration Guide</a> for more information"</p>
-<ul>
-<li>
-<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpresolveroperation.html">Resolver Operation Options</a> </li>
-<li>
-<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpmulticastresolvernetwork.html">Multicast Resolver Network Options</a> </li>
-<li>
-<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpunicastresolvernetwork.html">Unicast Resolver Network Options</a> </li>
-<li>
-<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpwildcardreceiver.html">Wildcard Receiver Options</a> </li>
-</ul>
-<p><b>Assigning Different Configuration Options to Individual Topics</b></p>
-<p>You can assign different configuration option values to individual topics by accessing the topic attribute table (lbm_*_topic_attr_t_stct) before creating the source, receiver or wildcard receiver.</p>
-<p>Creating a Source with Different Topic Resolution Options:</p>
-<ol>
-<li>
-Call <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#a96ea052dce2e6376684cbf2003407cbf">lbm_src_topic_attr_setopt()</a> to set new option value </li>
-<li>
-Call <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#a1ba60407fa2bde0997aab6d5a5d2da1a">lbm_src_topic_alloc()</a> </li>
-<li>
-Call <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#ab8dd76271bf9df7a5f88476d431f523e">lbm_src_create()</a> </li>
-</ol>
-<p>Creating a Receiver with Different Topic Resolution Options:</p>
-<ol>
-<li>
-Call <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#a1afc75f0fb3601d072b3463e7acf16a6">lbm_rcv_topic_attr_setopt()</a> to set new option value </li>
-<li>
-Call <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#a3de8a6a659896f76475c453683db4e18">lbm_rcv_topic_lookup()</a> </li>
-<li>
-Call <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#aa7491c50fefbc2b70f8035fce7ac1477">lbm_rcv_create()</a> </li>
-</ol>
-<p>Creating a Wildcard Receiver with Different Topic Resolution Options:</p>
-<ol>
-<li>
-Call <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#acec52fdb461e1f903b319e086d1d3e10">lbm_wildcard_rcv_attr_setopt()</a> to set new wildcard receiver option value </li>
-<li>
-Call <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#a5b5d52f6b87499213757b73b09bc8160">lbm_wildcard_rcv_create()</a> </li>
-</ol>
-<p><b>Multicast Network Options</b></p>
-<p>Essentially, the _incoming and _outgoing versions of resolver_multicast_address/port provide more fine-grained control of topic resolution. By default, the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpmulticastresolvernetwork.html#resolvermulticastaddresscontext">resolver_multicast_address (context)</a> and <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpmulticastresolvernetwork.html#resolvermulticastportcontext">resolver_multicast_port (context)</a> and the _incoming and _outgoing address and port are set to the same value. If you want your context to listen to a particular multicast address/port and send on another address/port, then you can set the _incoming and _outgoing configuration options to different values.</p>
-<p>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpresolveroperation.html">Resolver Operation Options</a> in the <a href="../../Config/index.html">UM Configuration Guide</a> for more information.</p>
-<p><br />
- </p>
-<h2><a class="anchor" id="unicasttopicresolution"></a>
-Unicast Topic Resolution</h2>
-<p>By default UM expects multicast connectivity between all sources and receivers. When only unicast connectivity is available, you may configure all sources and receivers to use unicast topic resolution. This requires that you run one or more instances of the UM unicast topic resolution daemon (lbmrd), which perform the same topic resolution activities as multicast topic resolution. You configure your applications to use the lbmrd daemons with <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpunicastresolvernetwork.html#resolverunicastdaemoncontext">resolver_unicast_daemon (context)</a>.</p>
-<p>See <a class="el" href="manpageforlbmrd.html">Manpage for lbmrd</a> for details on running the lbmrd daemon.</p>
-<p>The lbmrd can run on any machine, including the source or receiver. Of course, sources will also have to select a transport protocol that uses unicast addressing (e.g. TCP, TCP-LB, or LBT-RU). The lbmrd maintains a table of clients (address and port pairs) from which it has received a topic resolution message, which can be any of the following:</p>
-<ul>
-<li>
-Topic Information Records (TIR) - also known as topic advertisements </li>
-<li>
-Topic Query Records (TQR) </li>
-<li>
-keepalive messages, which are only used in unicast topic resolution </li>
-</ul>
-<p>After lbmrd receives a TQR or TIR, it forwards it to all known clients. If a client (i.e. source or receiver) is not sending either TIRs or TQRs, it sends a keepalive message to lbmrd according to the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpresolveroperation.html#resolverunicastkeepaliveintervalcontext">resolver_unicast_keepalive_interval (context)</a>. This registration with the lbmrd allows the client to receive advertisements or queries from lbmrd. lbmrd maintains no state about topics, only about clients.</p>
-<dl class="section note"><dt>Note</dt><dd>The Unicast Topic Resolution Daemon (lbmrd) can not run on the OpenVMS platform. If unicast topic resolution is needed with OpenVMS, the lbmrd must be run on an alternate platform (e.g. Linux or Windows).</dd></dl>
-<p><b>LBMRD with the UM Router Best Practice</b></p>
-<p>If you're using the lbmrd for topic resolution across UM Routers, you may want all of your domains discovered and all routes to be known before creating any topics. If so, change the UM configuration option, <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpresolveroperation.html#resolverunicastforcealivecontext">resolver_unicast_force_alive (context)</a>, from the default setting to 1 so your contexts start sending keepalives to lbmrd immediately. This makes your startup process cleaner by allowing your contexts to discover the other Topic Resolution Domains and establish the best routes. The trade off is a little more network traffic every 5 seconds.</p>
-<p><b>Unicast Topic Information Records</b></p>
-<p>Of all topic resolution messages, only the TIR contains address and port information. This tells a receiver how it can get the data being published. Based on the transport type, a receiver can join the appropriate multicast group (for LBT-RM), send a connection request (for LBT-RU), or connect to the source (for TCP).</p>
-<p>The address and port information potentially contained within a TIR includes:</p>
-<ul>
-<li>
-For a TCP transport, the source address and TCP port. </li>
-<li>
-For an LBT-RM transport, the unicast UDP port (to which NAKs are sent) and the UDP destination port. </li>
-<li>
-For an LBT-RU transport, the source address and UDP port. </li>
-</ul>
-<p>For unicast-based transports (TCP and LBT-RU), the TIR source address is 0.0.0.0, not the actual source address.</p>
-<p>Topic resolution messages (whether received by the application via multicast, or by the unicast topic resolution daemon via unicast) are always UDP datagrams. They are received via a recvfrom() call, which also obtains the address and port from which the datagrams were received. If the address 0.0.0.0 (INADDR_ANY) appears for one of the addresses, lbmrd replaces it with the address from which the datagram is received. The net effect is as if the actual source address had originally been put into the TIR.</p>
-<p><b>Unicast Topic Resolution Resilience</b></p>
-<p>Running multiple instances of lbmrd allows your applications to continue operation in the face of a lbmrd failure. Your applications' sources and receivers send topic resolution messages as usual, however, rather than sending every message to each lbmrd instance, UM directs messages to lbmrd instances in a round-robin fashion. Since the lbmrd does not maintain any resolver state, as long as one lbmrd instance is running, UM continues to forward LBMR packets to all connected clients. UM switches to the next active lbmrd instance every 250-750 ms.</p>
-<p><br />
- </p>
-<h2><a class="anchor" id="networkaddresstranslationnat"></a>
-Network Address Translation (NAT)</h2>
-<p>If your network architecture includes LANs that are bridged with Network Address Translation (NAT), UM receivers will not be able to connect directly to UM sources across the NAT. Sources send Topic Resolution advertisements containing their local IP addresses and ports, but receivers on the other side of the NAT cannot access those sources using those local addresses/ports. They must use alternate addresses/ports, which the NAT forwards according to the NAT's configuration.</p>
-<p>The recommended method of establishing UM connectivity across a NAT is to run a pair of UM Routers connected with a single TCP peer link. In this usage, the LANs on each side of the NAT are distinct Topic Resolution Domains.</p>
-<p>Alternatively, if the NAT can be configured to allow two-way UDP traffic between the networks, the lbmrd can be configured to modify Topic Resolution advertisements according to a set of rules defined in an XML configuration file. Those rules allow a source's advertisements forwarded to local receivers to be sent as-is, while advertisements forwarded to remote receivers are modified with the IP addresses and ports that the NAT expects. In this usage, the LANs on each side of the NAT are combined into a single Topic Resolution domain.</p>
-<dl class="section warning"><dt>Warning</dt><dd>Using an lbmrd NAT configuration severely limits the UM features that can be used across the NAT. Normal source-to-receiver traffic is supported, but the following more-advanced UM features are not supported: <ul>
-<li>
-<a class="el" href="fundamentalconcepts.html#persistence">Persistence</a> </li>
-<li>
-<a class="el" href="fundamentalconcepts.html#queuing">Queuing</a> </li>
-<li>
-<a class="el" href="fundamentalconcepts.html#requestresponse">Request/Response</a> </li>
-<li>
-<a class="el" href="fundamentalconcepts.html#latejoin">Late Join</a> </li>
-<li>
-<a class="el" href="umfeatures.html#offtransportrecoveryotr">Off-Transport Recovery (OTR)</a> </li>
-<li>
-<a class="el" href="umfeatures.html#sendingtosources">Sending to Sources</a> </li>
-</ul>
-Late Join, sending to sources, and OTR can be made to work if applications are configured to use the default value (0.0.0.0) for <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grprequestnetwork.html#requesttcpinterfacecontext">request_tcp_interface (context)</a>. This means that you cannot use <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpmajoroptions.html#defaultinterfacecontext">default_interface (context)</a>. Be aware that the UM Router requires a valid interface be specified for <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grprequestnetwork.html#requesttcpinterfacecontext">request_tcp_interface (context)</a>. Thus, <b>lbmrd NAT support for Late Join, Request/Response, and OTR is not compatible with UM topologies that contain the UM Router</b>.</dd></dl>
-<p><b>Example NAT configuration</b></p>
-<p>In this example, there are two networks, A and B, that are interconnected via a NAT firewall. Network A has IP addresses in the 10.1.0.0/16 range, and B has IP addresses in the 192.168.1/24 range. The NAT is configured such that hosts in network B have no visibility into network A, and can send TCP and UDP packets to only a single host in A (10.1.1.50) via the NAT's external IP address 192.168.1.1, ports 12000 and 12001. I.e. packets sent from B to 192.168.1.1:12000 are forwarded to 10.1.1.50:12000, and packets from B to 192.168.1.1:12001 are forwarded to 10.1.1.50:12001. Hosts in network A have full visibility of network B and can send TCP and UDP packets to hosts in B by their local 192 addresses and ports. Those packets have their source addresses changed to 192.168.1.1.</p>
-<p>Since hosts in network A have full visibility into network B, receivers in network A should be able to use source advertisements from network B without any changes. However, receivers in network B will not be able to use source advertisements from network A unless those advertisements' IP addresses are transformed.</p>
-<p>The lbmrd is configured for NAT using its XML configuration file:</p>
-<pre class="fragment">&lt;?xml version="1.0" encoding="UTF-8" ?&gt;
-&lt;lbmrd version="1.0"&gt;
-  &lt;daemon&gt;
-    &lt;interface&gt;10.1.1.50&lt;/interface&gt;
-    &lt;port&gt;12000&lt;/port&gt;
-  &lt;/daemon&gt;
-  &lt;domains&gt;
-    &lt;domain name="DomainA"&gt;
-      &lt;network&gt;10.1.0.0/16&lt;/network&gt;
-    &lt;/domain&gt;
-    &lt;domain name="DomainB"&gt;
-      &lt;network&gt;192.168.1/24&lt;/network&gt;
-    &lt;/domain&gt;
-  &lt;/domains&gt;
-  &lt;transformations&gt;
-    &lt;transform source="DomainA" destination="DomainB"&gt;
-      &lt;rule&gt;
-        &lt;match address="10.1.1.50" port="*"/&gt;
-        &lt;replace address="192.168.1.1" port="*"/&gt;
-      &lt;/rule&gt;
-    &lt;/transform&gt;
-  &lt;/transformations&gt;
-&lt;/lbmrd&gt;
-</pre><p>The lbmrd must be run on 10.1.1.50.</p>
-<p>The application on 10.1.1.50 should be configured with:</p>
-<pre class="fragment">context resolver_unicast_daemon 10.1.1.50:12000
-source transport_tcp_port 12001
-</pre><p>The applications in the 192 network should be configured with:</p>
-<pre class="fragment">context resolver_unicast_daemon 192.168.1.1:12000
-source transport_tcp_port 12100
-</pre><p>With this, the application on 10.1.1.50 is able to create sources and receivers that communicate with applications in the 192 network.</p>
-<p>See <a class="el" href="manpageforlbmrd.html#lbmrdconfigurationfile">lbmrd Configuration File</a> for full details of the XML configuration file.</p>
 <p><br />
  </p>
 <h1><a class="anchor" id="messagebatching"></a>
-Message Batching</h1>
+Message Batching&nbsp;&nbsp;<small><a href="#messagebatching">&lt;-</a></small></h1>
 <p>Batching many small messages into fewer network packets decreases the per-message CPU load, thereby increasing throughput. Let's say it costs 2 microseconds of CPU to fully process a message. If you process 10 messages per second, you won't notice the load. If you process half a million messages per second, you saturate the CPU. So to achieve high message rates, you have to reduce the per-message CPU cost with some form of message batching. These per-message costs apply to both the sender and the receiver. However, the implementation of batching is almost exclusively the realm of the sender.</p>
-<p>Many people are under the impression that while batching improves CPU load, it increases message latency. While it is true that there are circumstances where this can happen, it is also true that careful use of batching can result in small latency increases or none at all. In fact, there are circumstances where batching can actually reduce latency.</p>
+<p>Many people are under the impression that while batching improves CPU load, it increases message latency. While it is true that there are circumstances where this can happen, it is also true that careful use of batching can result in small latency increases or none at all. In fact, there are circumstances where batching can actually reduce latency. See <a class="el" href="architecture.html#intelligentbatching">Intelligent Batching</a>.</p>
 <p>With the UMQ product, you cannot use these message batching features with Brokered Queuing.</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="implicitbatching"></a>
-Implicit Batching</h2>
-<p>UM automatically batches smaller messages into transport session datagrams. The implicit batching configuration options, <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpimplicitbatching.html#implicitbatchingintervalsource">implicit_batching_interval (source)</a> (default = 200 milliseconds) and <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpimplicitbatching.html#implicitbatchingminimumlengthsource">implicit_batching_minimum_length (source)</a> (default = 2048 bytes) govern UM implicit message batching. Although these are source options, they actually apply to the transport session to which the source was assigned.</p>
-<p>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpimplicitbatching.html">Implicit Batching Options</a>.</p>
-<p>See also <a class="el" href="umobjects.html#sourceconfigurationandtransportsessions">Source Configuration and Transport Sessions</a>.</p>
-<p>UM establishes the implicit batching parameters when it creates the transport session. Any sources assigned to that transport session use the implicit batching limits set for that transport session, and the limits apply to any and all sources subsequently assigned to that transport session. This means that batched transport datagrams can contain messages on multiple topics.</p>
+Implicit Batching&nbsp;&nbsp;<small><a href="#implicitbatching">&lt;-</a></small></h2>
+<p>UM automatically batches smaller messages into <a class="el" href="fundamentalconcepts.html#transportsessions">Transport Session</a> datagrams. The implicit batching configuration options, <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Design/config.tag:../Config/" href="../Config/grpimplicitbatching.html#implicitbatchingintervalsource">implicit_batching_interval (source)</a> (default = 200 milliseconds) and <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Design/config.tag:../Config/" href="../Config/grpimplicitbatching.html#implicitbatchingminimumlengthsource">implicit_batching_minimum_length (source)</a> (default = 2048 bytes) govern UM implicit message batching. Although these are source options, they actually apply to the Transport Session to which the source was assigned.</p>
+<p>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Design/config.tag:../Config/" href="../Config/grpimplicitbatching.html">Implicit Batching Options</a>.</p>
+<p>See also <a class="el" href="fundamentalconcepts.html#sourceconfigurationandtransportsessions">Source Configuration and Transport Sessions</a>.</p>
+<p>UM establishes the implicit batching parameters when it creates the Transport Session. Any sources assigned to that Transport Session use the implicit batching limits set for that Transport Session, and the limits apply to any and all sources subsequently assigned to that Transport Session. This means that batched transport datagrams can contain messages on multiple topics.</p>
 <p><b>Implicit Batching Operation</b></p>
 <p>Implicit Batching buffers messages until:</p>
 <ul>
 <li>
-the buffer size exceeds the configured <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpimplicitbatching.html#implicitbatchingminimumlengthsource">implicit_batching_minimum_length (source)</a> or </li>
+the buffer size exceeds the configured <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Design/config.tag:../Config/" href="../Config/grpimplicitbatching.html#implicitbatchingminimumlengthsource">implicit_batching_minimum_length (source)</a>, or </li>
 <li>
-the oldest message in the buffer has been in the buffer for <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpimplicitbatching.html#implicitbatchingintervalsource">implicit_batching_interval (source)</a> milliseconds. When either condition is met, UM flushes the buffer, pushing the messages onto the network. </li>
+the oldest message in the buffer has been in the buffer for <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Design/config.tag:../Config/" href="../Config/grpimplicitbatching.html#implicitbatchingintervalsource">implicit_batching_interval (source)</a> milliseconds, or </li>
+<li>
+adding another message would cause the buffer to exceed the configured maximum datagram size for the underlying transport type (transport_*_datagram_max_size). </li>
 </ul>
-<p>It may appear this design introduces significant latencies for low-rate topics. However, remember that Implicit Batching operates on a transport session basis. Typically many low-rate topics map to the same transport session, providing a high aggregate rate. The <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpimplicitbatching.html#implicitbatchingintervalsource">implicit_batching_interval (source)</a> option is a last resort to prevent messages from becoming stuck in the Implicit Batching buffer. If your UM deployment frequently uses the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpimplicitbatching.html#implicitbatchingintervalsource">implicit_batching_interval (source)</a> to push out the data (i.e. if the entire transport session has periods of inactivity longer than the value of <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpimplicitbatching.html#implicitbatchingintervalsource">implicit_batching_interval (source)</a> (defaults to 200 ms), then either the implicit batching options need to be fine-tuned (reducing one or both), or you should consider an alternate form of batching. See <a class="el" href="architecture.html#intelligentbatching">Intelligent Batching</a>.</p>
-<p>The minimum value for the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpimplicitbatching.html#implicitbatchingintervalsource">implicit_batching_interval (source)</a> is 3 milliseconds. The actual minimum amount of time that data stays in the buffer depends on your Operating System and its scheduling clock interval. For example, on a Solaris 8 machine, the actual time is can be as much as 20 milliseconds. On older Microsoft Windows machines, the time can be as much as 16 milliseconds. On a Linux 2.6 kernel, the actual time is 3 milliseconds (+/- 1).</p>
+<p>When at least one condition is met, UM flushes the buffer, pushing the messages onto the network.</p>
+<p>Note that the two size-related parameters operate somewhat differently. When the application sends a message, the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Design/config.tag:../Config/" href="../Config/grpimplicitbatching.html#implicitbatchingminimumlengthsource">implicit_batching_minimum_length (source)</a> option will trigger a flush <em>after</em> the message is sent. I.e. a sent datagram will typically be larger than the value specified by <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Design/config.tag:../Config/" href="../Config/grpimplicitbatching.html#implicitbatchingminimumlengthsource">implicit_batching_minimum_length (source)</a> (hence the use of the word "minimum"). In contrast, the transport_*_datagram_max_size option will trigger a flush <em>before</em> the message is sent. I.e. a sent datagram will never be larger than the transport_*_datagram_max_size option. If both size conditions apply, the datagram max size takes priority. (See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Design/config.tag:../Config/" href="../Config/grptransporttcpoperation.html#transporttcpdatagrammaxsizecontext">transport_tcp_datagram_max_size (context)</a>, <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Design/config.tag:../Config/" href="../Config/grptransportlbtrmoperation.html#transportlbtrmdatagrammaxsizecontext">transport_lbtrm_datagram_max_size (context)</a>, <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Design/config.tag:../Config/" href="../Config/grptransportlbtruoperation.html#transportlbtrudatagrammaxsizecontext">transport_lbtru_datagram_max_size (context)</a>, <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Design/config.tag:../Config/" href="../Config/grptransportlbtipcoperation.html#transportlbtipcdatagrammaxsizecontext">transport_lbtipc_datagram_max_size (context)</a>, <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Design/config.tag:../Config/" href="../Config/grptransportlbtsmxoperation.html#transportlbtsmxdatagrammaxsizesource">transport_lbtsmx_datagram_max_size (source)</a>.)</p>
+<p>It may appear this design introduces significant latencies for low-rate topics. However, remember that Implicit Batching operates on a Transport Session basis. Typically many low-rate topics map to the same Transport Session, providing a high aggregate rate. The <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Design/config.tag:../Config/" href="../Config/grpimplicitbatching.html#implicitbatchingintervalsource">implicit_batching_interval (source)</a> option is a last resort to prevent messages from becoming stuck in the Implicit Batching buffer. If your UM deployment frequently uses the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Design/config.tag:../Config/" href="../Config/grpimplicitbatching.html#implicitbatchingintervalsource">implicit_batching_interval (source)</a> to push out the data (i.e. if the entire Transport Session has periods of inactivity longer than the value of <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Design/config.tag:../Config/" href="../Config/grpimplicitbatching.html#implicitbatchingintervalsource">implicit_batching_interval (source)</a> (defaults to 200 ms), then either the implicit batching options need to be fine-tuned (reducing one or both), or you should consider an alternate form of batching. See <a class="el" href="architecture.html#intelligentbatching">Intelligent Batching</a>.</p>
+<p>The minimum value for the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Design/config.tag:../Config/" href="../Config/grpimplicitbatching.html#implicitbatchingintervalsource">implicit_batching_interval (source)</a> is 3 milliseconds. The actual minimum amount of time that data stays in the buffer depends on your Operating System and its scheduling clock interval. For example, on a Solaris 8 machine, the actual time is can be as much as 20 milliseconds. On older Microsoft Windows machines, the time can be as much as 16 milliseconds. On a Linux 2.6 kernel, the actual time is 3 milliseconds (+/- 1).</p>
 <p><b>Implicit Batching Example</b></p>
-<p>The following example demonstrates how the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpimplicitbatching.html#implicitbatchingminimumlengthsource">implicit_batching_minimum_length (source)</a> is actually a trigger or floor, for sending batched messages. It is sometimes misconstrued as a ceiling or upper limit.</p>
+<p>The following example demonstrates how the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Design/config.tag:../Config/" href="../Config/grpimplicitbatching.html#implicitbatchingminimumlengthsource">implicit_batching_minimum_length (source)</a> is actually a trigger or floor, for sending batched messages. It is sometimes misconstrued as a ceiling or upper limit.</p>
 <pre class="fragment">implicit_batching_minimum_length = 2000
 </pre><ol>
 <li>
@@ -404,26 +144,26 @@ UM parses out the two messages and delivers them to the appropriate topic levels
 <p><br />
  </p>
 <h2><a class="anchor" id="intelligentbatching"></a>
-Intelligent Batching</h2>
+Intelligent Batching&nbsp;&nbsp;<small><a href="#intelligentbatching">&lt;-</a></small></h2>
 <p>Intelligent Batching uses Implicit Batching along with your application's knowledge of the messages it must send. It is a form of dynamic adaptive batching that automatically adjusts for different message rates. Intelligent Batching can provide significant savings of CPU resources without adding any noticeable latency.</p>
-<p>For example, your application might receive input events in a batch, and therefore know that it must produce a corresponding batch of output messages. Or the message producer works off of an input queue, and it can detect messages in the queue. In any case, if the application knows that it has more messages to send without going to sleep, it simply does normal sends to UM, letting Implicit Batching send only when the buffer meets the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpimplicitbatching.html#implicitbatchingminimumlengthsource">implicit_batching_minimum_length (source)</a> threshold.</p>
-<p>However, when the application detects that it has no more messages to send after it sends the current message, it sets the FLUSH flag (LBM_MSG_FLUSH) when sending the message which instructs UM to flush the implicit batching buffer immediately by sending all messages to the transport layer. Refer to <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#a91f4b9cb04fe1323ec56833211cc5cb7">lbm_src_send()</a> in the UM API documentation (UM C API, UM Java API, or UM .NET API) for all the available send flags.</p>
-<p>When using Intelligent Batching, it is usually advisable to increase the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpimplicitbatching.html#implicitbatchingminimumlengthsource">implicit_batching_minimum_length (source)</a> option to 10 times the size of the average message, to a maximum value of 8196. This tends to strike a good balance between batching length and flushing frequency, giving you low latencies across a wide variation of message rates.</p>
+<p>For example, your application might receive input events in a batch, and therefore know that it must produce a corresponding batch of output messages. Or the message producer works off of an input queue, and it can detect messages in the queue. In any case, if the application knows that it has more messages to send without going to sleep, it simply does normal sends to UM, letting Implicit Batching send only when the buffer meets the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Design/config.tag:../Config/" href="../Config/grpimplicitbatching.html#implicitbatchingminimumlengthsource">implicit_batching_minimum_length (source)</a> threshold.</p>
+<p>However, when the application detects that it has no more messages to send after it sends the current message, it sets the FLUSH flag (LBM_MSG_FLUSH) when sending the message which instructs UM to flush the implicit batching buffer immediately by sending all messages to the transport layer. Refer to <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#a91f4b9cb04fe1323ec56833211cc5cb7">lbm_src_send()</a> in the UM API documentation (UM C API, UM Java API, or UM .NET API) for all the available send flags.</p>
+<p>When using Intelligent Batching, it is usually advisable to increase the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Design/config.tag:../Config/" href="../Config/grpimplicitbatching.html#implicitbatchingminimumlengthsource">implicit_batching_minimum_length (source)</a> option to 10 times the size of the average message, to a maximum value of 8196. This tends to strike a good balance between batching length and flushing frequency, giving you low latencies across a wide variation of message rates.</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="applicationbatching"></a>
-Application Batching</h2>
+Application Batching&nbsp;&nbsp;<small><a href="#applicationbatching">&lt;-</a></small></h2>
 <p>In all of the above situations, your application sends individual messages to UM and lets UM decide when to push the data onto the wire (often with application help). With application batching, your application buffers messages itself and sends a group of messages to UM with a single send. Thus, UM treats the send as a single message. On the receiving side, your application needs to know how to dissect the UM message into individual application messages.</p>
-<p>This approach is most useful for Java or .NET applications where there is a higher per-message cost in delivering an UM message to the application. It can also be helpful when using an event queue to deliver received messages. This imposes a thread switch cost for each UM message. At low message rates, this extra overhead is not noticeable. However, at high message rates, application batching can significantly reduce CPU overhead.</p>
+<p>This approach is most useful for Java or .NET applications where there is a higher per-message cost in delivering an UM message to the application. It can also be helpful when using an <a class="el" href="fundamentalconcepts.html#eventqueueobject">event queue</a> to deliver received messages. This imposes a thread switch cost for each UM message. At low message rates, this extra overhead is not noticeable. However, at high message rates, application batching can significantly reduce CPU overhead.</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="explicitbatching"></a>
-Explicit Batching</h2>
+Explicit Batching&nbsp;&nbsp;<small><a href="#explicitbatching">&lt;-</a></small></h2>
 <p>UM allows you to group messages for a particular topic with explicit batching. The purpose of grouping messages with explicit batching is to allow the receiving application to detect the first and last messages of a group without needing to examine the message contents.</p>
 <dl class="section note"><dt>Note</dt><dd>Explicit Batching does not guarantee that all the messages of a group will be sent in a single datagram.</dd></dl>
 <dl class="section warning"><dt>Warning</dt><dd>Explicit Batching does not provide any kind of transactional guarantee. It is possible to receive some messages of a group while others are unrecoverably lost. If the first and/or last messages of a group are unrecoverably lost, then the receiving application will not have an indication of start and/or end of the group.</dd></dl>
-<p>When your application sends a message (<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#a91f4b9cb04fe1323ec56833211cc5cb7">lbm_src_send()</a>) it may flag the message as being the start of a batch (LBM_MSG_START_BATCH) or the end of a batch (LBM_MSG_END_BATCH). All messages sent between the start and end are grouped together. The flag used to indicate the end of a batch also signals UM to send the message immediately to the implicit batching buffer. At this point, <a class="el" href="architecture.html#implicitbatching">Implicit Batching</a> completes the batching operation. UM includes the start and end flags in the message so receivers can process the batched messages effectively.</p>
-<p>Unlike Intelligent Batching which allows intermediate messages to trigger flushing according to the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpimplicitbatching.html#implicitbatchingminimumlengthsource">implicit_batching_minimum_length (source)</a> option, explicit batching holds all messages until the batch is completed. This feature is useful if you configure a relatively small <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpimplicitbatching.html#implicitbatchingminimumlengthsource">implicit_batching_minimum_length (source)</a> and your application has a batch of messages to send that exceeds the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpimplicitbatching.html#implicitbatchingminimumlengthsource">implicit_batching_minimum_length (source)</a>. By releasing all the messages at once, Implicit Batching maximizes the size of the network datagrams.</p>
+<p>When your application sends a message (<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#a91f4b9cb04fe1323ec56833211cc5cb7">lbm_src_send()</a>) it may flag the message as being the start of a batch (LBM_MSG_START_BATCH) or the end of a batch (LBM_MSG_END_BATCH). All messages sent between the start and end are grouped together. The flag used to indicate the end of a batch also signals UM to send the message immediately to the implicit batching buffer. At this point, <a class="el" href="architecture.html#implicitbatching">Implicit Batching</a> completes the batching operation. UM includes the start and end flags in the message so receivers can process the batched messages effectively.</p>
+<p>Unlike Intelligent Batching which allows intermediate messages to trigger flushing according to the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Design/config.tag:../Config/" href="../Config/grpimplicitbatching.html#implicitbatchingminimumlengthsource">implicit_batching_minimum_length (source)</a> option, explicit batching holds all messages until the batch is completed. This feature is useful if you configure a relatively small <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Design/config.tag:../Config/" href="../Config/grpimplicitbatching.html#implicitbatchingminimumlengthsource">implicit_batching_minimum_length (source)</a> and your application has a batch of messages to send that exceeds the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Design/config.tag:../Config/" href="../Config/grpimplicitbatching.html#implicitbatchingminimumlengthsource">implicit_batching_minimum_length (source)</a>. By releasing all the messages at once, Implicit Batching maximizes the size of the network datagrams.</p>
 <p><b>Explicit Batching Example</b></p>
 <p>The following example demonstrates explicit batching.</p>
 <pre class="fragment">implicit_batching_minimum_length = 8000
@@ -433,28 +173,64 @@ Your application performs 10 sends of 100 bytes each as a single explicit batch.
 <li>
 At the 10th send (which completes the batch), UM delivers the 1000 bytes of messages to the implicit batch buffer. </li>
 <li>
-Let's assume that the buffer already has 7899 bytes of data in it from other topics on the same transport session </li>
+Let's assume that the buffer already has 7899 bytes of data in it from other topics on the same Transport Session </li>
 <li>
 UM adds the first 100-byte message to the buffer, bringing it to 7999. </li>
 <li>
-UM adds the second 100-byte message, bringing it up to 8099 bytes, which exceeds </li>
-<li>
-licit_batching_minimum_length but is below the 8192 maximum datagram size. </li>
+UM adds the second 100-byte message, bringing it up to 8099 bytes, which exceeds <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Design/config.tag:../Config/" href="../Config/grpimplicitbatching.html#implicitbatchingminimumlengthsource">implicit_batching_minimum_length (source)</a> but is below the 8192 maximum datagram size. </li>
 <li>
 UM sends the 8099 bytes (plus overhead) datagram. </li>
 <li>
-UM adds the third through tenth messages to the implicit batch buffer. These messages will be sent when either <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpimplicitbatching.html#implicitbatchingminimumlengthsource">implicit_batching_minimum_length (source)</a> is again exceeded, or the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpimplicitbatching.html#implicitbatchingintervalsource">implicit_batching_interval (source)</a> is met, or a message arrives in the buffer with the flush flag (LBM_MSG_FLUSH) set. </li>
+UM adds the third through tenth messages to the implicit batch buffer. These messages will be sent when either <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Design/config.tag:../Config/" href="../Config/grpimplicitbatching.html#implicitbatchingminimumlengthsource">implicit_batching_minimum_length (source)</a> is again exceeded, or the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Design/config.tag:../Config/" href="../Config/grpimplicitbatching.html#implicitbatchingintervalsource">implicit_batching_interval (source)</a> is met, or a message arrives in the buffer with the flush flag (LBM_MSG_FLUSH) set. </li>
 </ol>
 <p><br />
  </p>
 <h2><a class="anchor" id="adaptivebatching"></a>
-Adaptive Batching</h2>
-<p>The adaptive batching feature is deprecated and will be removed from the product in a future release.</p>
+Adaptive Batching&nbsp;&nbsp;<small><a href="#adaptivebatching">&lt;-</a></small></h2>
+<p>The adaptive batching feature is deprecated and will be removed from the product in a future UM release.</p>
+<p><br />
+ </p>
+<h1><a class="anchor" id="messagefragmentationandreassembly"></a>
+Message Fragmentation and Reassembly&nbsp;&nbsp;<small><a href="#messagefragmentationandreassembly">&lt;-</a></small></h1>
+<p>Message fragmentation is the process by which an arbitrarily large message is split into a series of smaller pieces or <em>fragments</em>. Reassembly is the process of putting the pieces back together into a single contiguous message. Ultra Messaging performs fragmentation and reassembly of large user messages. When a user message is small enough, it fits into a single fragment.</p>
+<p>Note that there is another layer of fragmentation and reassembly that happens in the TCP/IP network stack, usually by the host operating system. This <em>IP fragmentation</em> of datagrams into packets happens when sending datagrams larger than the <a href="https://en.wikipedia.org/wiki/Maximum_transmission_unit">MTU</a> of the network medium, usually 1500 bytes. However, this fragmentation and reassembly happens transparently to and independently of Ultra Messaging. In the UM documentation, "fragmentation" generally refers to the higher-level splitting of messages by the UM library.</p>
+<p>Another term that Ultra Messaging borrows from networking is "datagram". In the UM documentation, a <em>datagram</em> is a unit of data which is sent to the transport (network socket or shared memory). In the case of network-based transport types, this refers to a buffer which is sent to the network socket in a single system call.</p>
+<p>(Be aware that for UDP-based transport types (LBT-RM and LBT-RU), the UM datagrams are in fact sent as UDP datagrams. For non-UDP-based transports, the use of the term "datagram" is retained for consistency.)</p>
+<p>The mapping of message fragments to datagrams depends on three factors: </p><ol>
+<li>
+User message size, </li>
+<li>
+Configured maximum datagram size for the source's transport type, and </li>
+<li>
+Use of the <a class="el" href="architecture.html#implicitbatching">Implicit Batching</a> feature. </li>
+</ol>
+<p>When configured, the source implicit batching feature combines multiple small user messages into a single datagram no greater than the size of the transport type's configured maximum datagram size. Large user messages are split into N fragments, the first N-1 of which are approximately the size of the transport type's configured maximum datagram size, and the Nth fragment containing the left-over bytes.</p>
+<p>Each transport type has its own default maximum datagram size. For example, LBT-RM and LBT-RU have 8K as their default maximum datagram sizes, while TCP and IPC have 64K as their default maximums. These different defaults represent optimal values for the different transport types, and it is usually not necessary to change them. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Design/config.tag:../Config/" href="../Config/grptransporttcpoperation.html#transporttcpdatagrammaxsizecontext">transport_tcp_datagram_max_size (context)</a>, <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Design/config.tag:../Config/" href="../Config/grptransportlbtrmoperation.html#transportlbtrmdatagrammaxsizecontext">transport_lbtrm_datagram_max_size (context)</a>, <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Design/config.tag:../Config/" href="../Config/grptransportlbtruoperation.html#transportlbtrudatagrammaxsizecontext">transport_lbtru_datagram_max_size (context)</a>, <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Design/config.tag:../Config/" href="../Config/grptransportlbtipcoperation.html#transportlbtipcdatagrammaxsizecontext">transport_lbtipc_datagram_max_size (context)</a>, <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Design/config.tag:../Config/" href="../Config/grptransportlbtsmxoperation.html#transportlbtsmxdatagrammaxsizesource">transport_lbtsmx_datagram_max_size (source)</a>.</p>
+<p>Note that the transport's datagram max size option limits the size of the UM <em>payload</em>, and does not include overhead specific to the underlying transport type. For example, <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Design/config.tag:../Config/" href="../Config/grptransportlbtrmoperation.html#transportlbtrmdatagrammaxsizecontext">transport_lbtrm_datagram_max_size (context)</a> does not include the UDP, IP, or packet overhead. The actual network frame can be larger than than the configured datagram max size.</p>
+<dl class="section note"><dt>Note</dt><dd>The SMX transport type does not support fragmentation.</dd></dl>
+<dl class="section warning"><dt>Warning</dt><dd>There is one important circumstance where it is necessary to override one or more defaults to make all datagram max sizes the same, including TCP. In these cases, it is usually best to choose the smallest of the default maximum datagram sizes. See DRO <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Design/gateway.tag:../Gateway/" href="../Gateway/umrouterconcepts.html#protocolconversion">Protocol Conversion</a>.</dd></dl>
+<p><br />
+ </p>
+<h2><a class="anchor" id="datagrammaxsizeandnetworkmtu"></a>
+Datagram Max Size and Network MTU&nbsp;&nbsp;<small><a href="#datagrammaxsizeandnetworkmtu">&lt;-</a></small></h2>
+<p>When UM is building the datagram, it reserves space for size for the maximum possible UM header. Since most UM messages do not need a large UM header, it is rare for a transport datagram to reach the configured size limit. This can represent a problem for users who configure their systems to avoid IP fragmentation by setting their datagram max size to the MTU of their network: the majority of packets will be significantly smaller than the MTU. Users might be tempted to configure the datagram max size to larger than the MTU to take into account the unused reserved header size, but this is normally not recommended. Some UM message types have different maximum possible UM header, and therefore reserve different amounts of size for the header. A setting that results in most packets being filled close to the network MTU can result in occasional packets which exceed the network MTU, and must be fragmented by the operating system.</p>
+<p>For most networks, Informatica recommends setting the datagram max sizes to a minimum of 8K, and allowing the operating system to perform IP fragmentation. It is true that IP fragmentation can decrease the efficiency of network routers and switches, but only if those routers and switches have to perform the fragmentation. With most modern networks, the entire fabric is designed to handle a common MTU, typically of 1500 bytes. Thus, an IP datagram larger than 1500 bytes is fragmented once by the sending host's operating system, and the switches and routers only need to forward the already-fragmented packets. Switches and routers can forward fragmented packets without loss of efficiency.</p>
+<p>The only time when it is necessary to limit UM's datagram max size option to an MTU is if a network link in the path has an MTU which is smaller than the host's network interface's MTU. This could be true if an older WAN link is used with an MTU below 1500, or if the host is configured for jumbo frames above 1500, but other links in the network are smaller than that. Because of the variation in UM's reserved size, Informatica recommends setting up networks with a consistent MTU across all links that carry UM traffic.</p>
+<dl class="section note"><dt>Note</dt><dd>The various datagram max size configuration options refer to the UDP payload used by UM. It does not include UDP, IP, or Ethernet header bytes.</dd></dl>
+<p><br />
+ </p>
+<h2><a class="anchor" id="datagramsandkernelbypassnetworkdrivers"></a>
+Datagrams and Kernel Bypass Network Drivers&nbsp;&nbsp;<small><a href="#datagramsandkernelbypassnetworkdrivers">&lt;-</a></small></h2>
+<p>Users of a <a class="el" href="umglossary.html#glossarykernelbypass">kernel bypass</a> network driver frequently want to avoid all IP fragmentation. Some such drivers do not support fragmentation at all, while others do support it but route fragments through the kernel ("slow path"), thus avoiding the intended performance benefit of the driver.</p>
+<p>For applications that need to send messages larger than an MTU, the datagram max size can be reduced so that UM-level fragmentation produces datagrams less than an MTU. However, because UM reserves enough space for the maximum possible header, some users set their datagram max size to a value <em>above</em> the MTU. This allows normal LBT-RM and LBT-RU traffic to more-efficiently fill packets (thus reducing packet counts).</p>
+<p>However, keep in mind that UM does not publish the internal reserved size, and does not guarantee that the reserved size will stay the same. Users who use this technique determine their optimal datagram max size empirically through testing within the constraints of their use cases.</p>
+<p>Finally, for those kernel bypass network drivers that do support "slow-path" IP fragmentation, some users choose to set datagram max sizes that "almost always" avoid IP fragmentation, but will occasionally fragment.</p>
+<dl class="section note"><dt>Note</dt><dd>UM version 6.12 changed the amount of space that Smart Sources reserve for the UM header. This can mean that pre-6.12 users upgrading to 6.12 and beyond may need to change their configuration. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Design/changelog.tag:../ChangeLog/" href="../ChangeLog/umversion6_12.html#smartsourceheadersizechange">Smart Source Header Size Change</a>.</dd></dl>
 <p><br />
  </p>
 <h1><a class="anchor" id="ordereddelivery"></a>
-Ordered Delivery</h1>
-<p>With the Ordered Delivery feature, a receiver's delivery controller can deliver messages to your application in sequence number order or arrival order. This feature can also reassemble fragmented messages or leave reassembly to the application. You can set Ordered Delivery via UM configuration option to one of three modes:</p>
+Ordered Delivery&nbsp;&nbsp;<small><a href="#ordereddelivery">&lt;-</a></small></h1>
+<p>With the Ordered Delivery feature, a receiver's <a class="el" href="architecture.html#deliverycontroller">Delivery Controller</a> can deliver messages to your application in sequence number order or arrival order. This feature can also reassemble fragmented messages or leave reassembly to the application. You can set Ordered Delivery via UM configuration option to one of three modes:</p>
 <ul>
 <li>
 Sequence Number Order, Fragments Reassembled </li>
@@ -463,26 +239,28 @@ Arrival Order, Fragments Reassembled </li>
 <li>
 Arrival Order, Fragments Not Reassembled </li>
 </ul>
+<p>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Design/config.tag:../Config/" href="../Config/grpmajoroptions.html#ordereddeliveryreceiver">ordered_delivery (receiver)</a></p>
+<p>Note that these ordering modes only apply to a specific topic from a single publisher. UM does not ensure ordering across different topics, or on a single topic across different publishers. See <a class="el" href="fundamentalconcepts.html#messageordering">Message Ordering</a> for more information.</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="sequencenumberorderfragmentsreassembleddefaultmode"></a>
-Sequence Number Order, Fragments Reassembled (Default Mode)</h2>
-<p>In this mode, a receiver's delivery controller delivers messages in sequence number order (the same order in which they are sent). This feature also guarantees reassembly of fragmented large messages. To enable sequence number ordered delivery, set the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpmajoroptions.html#ordereddeliveryreceiver">ordered_delivery (receiver)</a> configuration option as shown:</p>
+Sequence Number Order, Fragments Reassembled (Default Mode)&nbsp;&nbsp;<small><a href="#sequencenumberorderfragmentsreassembleddefaultmode">&lt;-</a></small></h2>
+<p>In this mode, a receiver's <a class="el" href="architecture.html#deliverycontroller">Delivery Controller</a> delivers messages in sequence number order (the same order in which they are sent). This feature also guarantees reassembly of fragmented large messages. To enable sequence number ordered delivery, set the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Design/config.tag:../Config/" href="../Config/grpmajoroptions.html#ordereddeliveryreceiver">ordered_delivery (receiver)</a> configuration option as shown:</p>
 <pre class="fragment">receiver ordered_delivery 1
 </pre><p>Please note that ordered delivery can introduce latency when packets are lost (new messages are buffered waiting for retransmission of lost packets).</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="arrivalorderfragmentsreassembled"></a>
-Arrival Order, Fragments Reassembled</h2>
-<p>This mode delivers messages immediately upon reception, in the order the datagrams are received, except for fragmented messages, which UM holds and reassembles before delivering to your application. Be aware that messages can be delivered out of order, either because of message loss and retransmission, or because the networking hardware re-orders UDP packets. Your application can then use the sequence_number field of lbm_msg_t objects to order or discard messages.</p>
+Arrival Order, Fragments Reassembled&nbsp;&nbsp;<small><a href="#arrivalorderfragmentsreassembled">&lt;-</a></small></h2>
+<p>This mode delivers messages immediately upon reception, in the order the datagrams are received, except for fragmented messages, which UM holds and reassembles before delivering to your application. Be aware that messages can be delivered out of order, either because of message loss and retransmission, or because the networking hardware re-orders UDP packets. Your application can then use the sequence_number field of <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Design/api.tag:../API/" href="../API/structlbm__msg__t__stct.html">lbm_msg_t</a> objects to order or discard messages. But be aware that the sequence number may not always increase by 1; application messages larger than the maximum allowable datagram size will be split into fragments, and each fragment gets its own sequence number. With the "Arrival Order, Fragments Reassembled" mode of delivery, UM will reassemble the fragments into the original large application message and deliver it with a single call to the application receiver callback. But that message's sequence_number will reflect the final fragment.</p>
 <p>To enable this arrival-order-with-reassembly mode, set the following configuration option as shown:</p>
 <pre class="fragment">receiver ordered_delivery -1
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="arrivalorderfragmentsnotreassembled"></a>
-Arrival Order, Fragments Not Reassembled</h2>
+Arrival Order, Fragments Not Reassembled&nbsp;&nbsp;<small><a href="#arrivalorderfragmentsnotreassembled">&lt;-</a></small></h2>
 <p>This mode allows messages to be delivered to the application immediately upon reception, in the order the datagrams are received. If a message is lost, UM will retransmit the message. In the meantime, any subsequent messages received are delivered immediately to the application, followed by the dropped packet when its retransmission is received. This mode guarantees the lowest latency.</p>
-<p>With this mode, the receiver delivers messages larger than the transport's maximum datagram size as individual fragments. (See transport_*_datagram_max_size in the <a href="../Config/index.html">UM Configuration Guide</a>.) The C API function, <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#afa760960c21f502a8cb4c5ec5d97f91b">lbm_msg_retrieve_fragment_info()</a> returns fragmentation information for the message you pass to it, and can be used to reassemble large messages. (In Java and .NET, LBMMessage provides methods to return the same fragment information.) Note that reassembly is not required for small messages.</p>
+<p>With this mode, the receiver delivers messages larger than the transport's maximum datagram size as individual fragments. (See transport_*_datagram_max_size in the <a href="../Config/index.html">UM Configuration Guide</a>.) The C API function, <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#afa760960c21f502a8cb4c5ec5d97f91b">lbm_msg_retrieve_fragment_info()</a> returns fragmentation information for the message you pass to it, and can be used to reassemble large messages. (In Java and .NET, LBMMessage provides methods to return the same fragment information.) Note that reassembly is not required for small messages.</p>
 <p>To enable this no-reassemble arrival-order mode, set the following configuration option as shown:</p>
 <pre class="fragment">receiver ordered_delivery 0
 </pre><p>When developing message reassembly code, consider the following:</p>
@@ -495,19 +273,127 @@ Some message fragments may never arrive (unrecoverable loss), so you must time o
 <p><br />
  </p>
 <h1><a class="anchor" id="lossdetectionusingtsnis"></a>
-Loss Detection Using TSNIs</h1>
+Loss Detection Using TSNIs&nbsp;&nbsp;<small><a href="#lossdetectionusingtsnis">&lt;-</a></small></h1>
 <p>When a source enters a period during which it has no data traffic to send, that source issues timed Topic Sequence Number Info (TSNI) messages. The TSNI lets receivers know that the source is still active and also reminds receivers of the sequence number of the last message. This helps receivers become aware of any lost messages between TSNIs.</p>
-<p>Sources send TSNIs over the same transport and on the same topic as normal data messages. You can set a time value of the TSNI interval with configuration option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpmajoroptions.html#transporttopicsequencenumberinfointervalsource">transport_topic_sequence_number_info_interval (source)</a>. You can also set a time value for the duration that the source sends contiguous TSNIs with configuration option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpmajoroptions.html#transporttopicsequencenumberinfoactivethresholdsource">transport_topic_sequence_number_info_active_threshold (source)</a>, after which time the source stops issuing TSNIs.</p>
+<p>Sources send TSNIs over the same transport and on the same topic as normal data messages. You can set a time value of the TSNI interval with configuration option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Design/config.tag:../Config/" href="../Config/grpmajoroptions.html#transporttopicsequencenumberinfointervalsource">transport_topic_sequence_number_info_interval (source)</a>. You can also set a time value for the duration that the source sends contiguous TSNIs with configuration option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Design/config.tag:../Config/" href="../Config/grpmajoroptions.html#transporttopicsequencenumberinfoactivethresholdsource">transport_topic_sequence_number_info_active_threshold (source)</a>, after which time the source stops issuing TSNIs.</p>
 <p><br />
  </p>
 <h1><a class="anchor" id="receiverkeepaliveusingsesssionmessages"></a>
-Receiver Keepalive Using Session Messages</h1>
-<p>When an LBT-RM, LBT-RU, or LBT-IPC transport session enters a period during which it has no data traffic to send, UM issues timed Session Messages (SMs). For example, suppose all topics in a session stop sending data. One by one, they then send TSNIs, and if there is still no data to send, their TSNI periods eventually expire. After the last quiescent topic's TSNIs stop, UM begins transmitting SMs.</p>
-<p>You can set time values for SM interval and duration with configuration options specific to their transport type.</p>
+Receiver Keepalive Using Session Messages&nbsp;&nbsp;<small><a href="#receiverkeepaliveusingsesssionmessages">&lt;-</a></small></h1>
+<p>When an LBT-RM, LBT-RU, or LBT-IPC <a class="el" href="fundamentalconcepts.html#transportsessions">Transport Session</a> enters an inactive period during which it has no messages to send, the UM context sends Session Messages (SMs). The first SM is sent after 200 milliseconds of inactivity (by default). If the period of inactivity continues additional SMs will be sent at increasing intervals, up to a maximum interval of 10 seconds (by default).</p>
+<p>SMs serve three functions: </p><ol>
+<li>
+'''Keepalive''' - SMs inform receivers that transport sessions are still alive. If a receiver stops getting any kind of traffic for a transport session, after a configurable period of inactivity the receiver will time out the transport session and will assume that it has died. </li>
+<li>
+'''Tail loss''' - for UDP-based transport sessions (LBT-RM and LBT-RU), SMs are used to detect packet loss, specifically "tail loss", and trigger recovery. </li>
+<li>
+'''Multicast Flows''' - for multicast-based transport sessions (LBT-RM), SMs serve to keep the network hardware multicast flows "hot", so that replication and forwarding of multicast packets is done in hardware at line speed. </li>
+</ol>
+<p>Any other UM message on a transport session will suppress the sending of SMs, including data messages and TSNIs. (Topic Resolution messages are not sent on the transport session, and will not suppress sending SMs.) You can set time values for SM interval and duration with configuration options specific to their transport type.</p>
 <div class="image">
 <img src="SMs.png" alt="SMs.png"/>
 </div>
-  </div></div><!-- contents -->
+ <p><br />
+ </p>
+<h1><a class="anchor" id="extendedmessagingexample"></a>
+Extended Messaging Example&nbsp;&nbsp;<small><a href="#extendedmessagingexample">&lt;-</a></small></h1>
+<p>This section illustrates many of the preceding concepts using an extended example of message passing. This example uses <a class="el" href="transporttypes.html#transportlbtrm">LBT-RM</a>, but for the purposes of this example, <a class="el" href="transporttypes.html#transportlbtru">LBT-RU</a> operates in a similar manner.</p>
+<p>The example starts out with two applications, Publisher and Subscriber:</p>
+<div class="image">
+<img src="Ext_examp.png" alt="Ext_examp.png"/>
+</div>
+ <p>The publisher has created three source objects, for topics "A", "B", and "C" respectively. All three sources are mapped to a single LBT-RM <a class="el" href="fundamentalconcepts.html#transportsessions">Transport Session</a> by configuring them for the same <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Design/config.tag:../Config/" href="../Config/grptransportlbtrmnetwork.html#transportlbtrmmulticastaddresssource">multicast group address</a> and <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Design/config.tag:../Config/" href="../Config/grptransportlbtrmnetwork.html#transportlbtrmdestinationportsource">destination port</a>.</p>
+<p>The Subscriber application creates two receivers, for topics "A" and "B".</p>
+<p>The creation of sources and receivers triggers <a class="el" href="fundamentalconcepts.html#topicresolutionoverview">Topic Resolution</a>, and the subscriber joins the Transport Session once the topics are resolved. To be precise, the first receiver to discover a source triggers joining the Transport Session and creating a <a class="el" href="architecture.html#deliverycontroller">Delivery Controller</a>; subsequent source discoveries on the same Transport Session don't need to join; they only create Delivery Controllers. However, until such time as one or more publishing sources send their first <a class="el" href="architecture.html#umsoftwarestack">topic-layer</a> message, the source Transport Session sends no datagrams. The Transport Session is created, but has not yet "started".</p>
+<p><br />
+ </p>
+<h2><a class="anchor" id="examplefirstmessage"></a>
+Example: First Message&nbsp;&nbsp;<small><a href="#examplefirstmessage">&lt;-</a></small></h2>
+<p>In this example, the first message on the Transport Session is generated by the publishing application sending an application message, in this case for topic "A".</p>
+<div class="image">
+<img src="Ext_examp_msg0.png" alt="Ext_examp_msg0.png"/>
+</div>
+ <p>The send function is passed the "flush" flag so that the message is sent immediately. The message is assigned a topic-level sequence number of 0, since it is the application's first message for that topic. The source-side transport layer wraps the application message in a datagram and gives it transport sequence number 0, since it is the first datagram sent on the Transport Session.</p>
+<p>On the receive side, the first datagram (of any kind) on the Transport Session informs the transport layer that the Transport Session is active. The transport layer informs all mapped <a class="el" href="architecture.html#deliverycontroller">Delivery Controller</a> instances that the Transport Session has begun. Each Delivery Controller delivers a Beginning Of Session event (BOS) to the application callback for each receiver. The passed-in <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Design/api.tag:../API/" href="../API/structlbm__msg__t__stct.html">lbm_msg_t</a> structure has event <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Design/api.tag:../API/" href="../API/structlbm__msg__t__stct.html#ab25327dc4b4ebf527106f6e708dbc05f">type</a> equal to <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#ab5489080adc7157549a9930b30c68425">LBM_MSG_BOS</a>.</p>
+<p>Note that the receiver for topic B gets a BOS even though no messages were received for it; the BOS event informs the receivers that the <em>Transport Session</em> is active, not the topic.</p>
+<p>Finally, the transport layer passes the received datagram to the topic-A Delivery Controller, which passes the application message to the receiver callback. The passed-in <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Design/api.tag:../API/" href="../API/structlbm__msg__t__stct.html">lbm_msg_t</a> structure has event <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Design/api.tag:../API/" href="../API/structlbm__msg__t__stct.html#ab25327dc4b4ebf527106f6e708dbc05f">type</a> equal to <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#aa47eb604db7dc9fd53f9650ed940e058">LBM_MSG_DATA</a>, and a topic-level <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Design/api.tag:../API/" href="../API/structlbm__msg__t__stct.html#a414eaced619e9dfafbcb2c7608af8e7e">sequence_number</a> of 0. (The transport sequence number is not available to the application.)</p>
+<p><br />
+ </p>
+<h2><a class="anchor" id="examplebatching"></a>
+Example: Batching&nbsp;&nbsp;<small><a href="#examplebatching">&lt;-</a></small></h2>
+<p>The publishing application now has two more messages to send. To maximize efficiency, it chooses to <a class="el" href="architecture.html#messagebatching">batch</a> the messages together:</p>
+<div class="image">
+<img src="Ext_examp_batch.png" alt="Ext_examp_batch.png"/>
+</div>
+ <p>The publishing application sends a message to topic "B", this time <em>without</em> the "flush" flag. The source-side topic layer buffers the message. Then the publishing application sends a message to topic "C", <em>with</em> the "flush" flag. The source-side transport layer wraps both application messages into a single datagram and gives it transport sequence number 1, since it is the second datagram sent on the Transport Session. But the two topic level sequence numbers are 0, since these are the first messages sent to those topics.</p>
+<p>Note that almost no latency is added by batching, so long as the second message is ready to send immediately after the first. This method of low-latency batching is called <a class="el" href="architecture.html#intelligentbatching">Intelligent Batching</a>, and can greatly increase the maximum sustainable throughput of UM.</p>
+<p>The subscriber gets the datagram and delivers the topic "B" message to the application receiver callback. It's topic-level <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Design/api.tag:../API/" href="../API/structlbm__msg__t__stct.html#a414eaced619e9dfafbcb2c7608af8e7e">sequence_number</a> is 0 since it was the first message sent to the "B" source. However, the subscriber application has no receiver for topic "C", so the message "C" is simply discarded.</p>
+<p><br />
+ </p>
+<h2><a class="anchor" id="exampleumfragmentation"></a>
+Example: UM Fragmentation&nbsp;&nbsp;<small><a href="#exampleumfragmentation">&lt;-</a></small></h2>
+<p>The publishing application now has a topic "A" message to send that is larger than the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Design/config.tag:../Config/" href="../Config/grptransportlbtrmoperation.html#transportlbtrmdatagrammaxsizecontext">maximum allowable datagram</a>.</p>
+<div class="image">
+<img src="Ext_examp_frag.png" alt="Ext_examp_frag.png"/>
+</div>
+ <p>The source-side topic layer splits the application message into two fragments and assigns each fragment its own topic-level sequence number (1 for the first, 2 for the second). The topic-layer gives each fragment separately to the transport layer, which wraps each fragment into its own datagram, consuming two transport sequence numbers (2 and 3). Note that the transport layer does not interpret these fragments as parts of a single larger message; from the transport's point of view, this simply two datagrams being sent.</p>
+<p>The receive-side transport layer gets the datagrams and hands them to the Topic-A <a class="el" href="architecture.html#deliverycontroller">Delivery Controller</a> (receiver-side topic layer). The Delivery Controller reassembles the fragments in the correct order, and delivers the message to the application's receiver callback in a single call. The <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Design/api.tag:../API/" href="../API/structlbm__msg__t__stct.html#a414eaced619e9dfafbcb2c7608af8e7e">sequence_number</a> visible to the application is the topic-level sequence number of the <em>last</em> fragment (2 in this example).</p>
+<p>Note that the application receiver callback never sees a topic sequence_number of 1 for topic "A". It saw 0 then 2, with 1 seemingly missing. However, the application can call <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#afa760960c21f502a8cb4c5ec5d97f91b">lbm_msg_retrieve_fragment_info()</a> to find out the range of topic sequence numbers consumed by a message.</p>
+<p>The behavior described above is for the default <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Design/config.tag:../Config/" href="../Config/grpmajoroptions.html#ordereddeliveryreceiver">ordered_delivery (receiver)</a> equal to 1. see <a class="el" href="architecture.html#ordereddelivery">Ordered Delivery</a> for alternative behaviors.</p>
+<p><br />
+ </p>
+<h2><a class="anchor" id="examplelossrecovery"></a>
+Example: Loss Recovery&nbsp;&nbsp;<small><a href="#examplelossrecovery">&lt;-</a></small></h2>
+<p>Now the publishing application sends a message to topic C. But the datagram is lost, so the receiver does not see it. Also, right after the send to topic C, the application deletes the sources for topics B and C.</p>
+<div class="image">
+<img src="Ext_examp_loss1.png" alt="Ext_examp_loss1.png"/>
+</div>
+ <p>Deleting a source shortly after sending a message to it is contrary to best practice. Applications should pause between the last send to a topic and the deletion of the topic, preferable a delay of between 5 and 10 seconds. This gives receivers an opportunity to attempt recovery if the last message sent was lost. We delete the sources here to illustrate an important point.</p>
+<p>Note that although the datagram was lost and two topics were deleted, nothing happens. The receiver does not request a retransmission because the receiver has no idea that the source sent a message. Also, the source-side topic layer does not explicitly inform the receiver that the topics are deleted.</p>
+<p>Continuing the example, the publishing application sends another message, this time a message for topic A ("Topic-A, topic sqn=3"):</p>
+<div class="image">
+<img src="Ext_examp_recover1.png" alt="Ext_examp_recover1.png"/>
+</div>
+ <p>There are two notable events here: </p><ol>
+<li>
+<p class="startli">The "A" message is delivered immediately to the topic "A" receiver, even though earlier data was lost and not yet retransmitted. If this were TCP, the kernel would buffer and prevent delivery of subsequent data until the lost data is recovered.</p>
+<p class="endli"></p>
+</li>
+<li>
+The reception of that "A" message with transport sequence number 5 informs the receive-side transport layer that transport datagram #4 was lost. So it initiates a NAK/retransmission cycle. When the lost datagram is retransmitted, the receiver throws it away since it is for an unsubscribed topic. </li>
+</ol>
+<p>You might wonder: why NAK and retransmit datagram 4 if the subscriber is just going to throw it away? The subscriber NAKs it because it has no way of knowing which topic it contains; if it were topic B, then it would need that datagram. The publisher retransmits it because it does not know which topics the subscriber is interested in. It has no way of knowing that the subscriber will throw it away.</p>
+<p>Regarding message "Topic-A, sqn=3", what if the publisher did not have that message to send? I.e. what if that "Topic-C, sqn=1" message were the last one for a while? This is called "tail loss" since the lost datagram is not immediately followed by a successful datagram. The subscriber has no idea that messages were sent but lost. In this case, the source-side transport layer would have sent a transport-level "session message" after about 200 ms of inactivity on the Transport Session. That session message would inform the receiver-side transport layer that datagram #5 was lost, and would trigger the NAK/retransmission.</p>
+<p>Finally, note that the message for topic-C was retransmitted, even though the topic-C source was deleted. This is because the deletion of a source does not purge the transport layer's retransmission buffer of datagrams from that source. However, higher-level recovery mechanisms, such as late join and OTR, are no longer possible after the source is deleted. Also, if <em>all</em> sources on a Transport Session are deleted, the Transport Session itself is deleted, which makes even transport-level retransmission impossible. (Only <a class="el" href="fundamentalconcepts.html#persistence">Persistence</a> allows recovery after the transport session is deleted.)</p>
+<p><br />
+ </p>
+<h2><a class="anchor" id="exampleunrecoverableloss"></a>
+Example: Unrecoverable Loss&nbsp;&nbsp;<small><a href="#exampleunrecoverableloss">&lt;-</a></small></h2>
+<p>The previous examples assume that events are happening in fairly rapid succession. In this example of unrecoverable loss, significantly longer time periods are involved.</p>
+<p>Unrecoverable loss is what happens when UM tries to recover the lost data but it is unable to. There are many possible scenarios which can cause recovery efforts fail, most of which involve a massive overload of one or more components in the data flow.</p>
+<p>To simplify this example, let's assume that, starting now, all NAKs are blocked by the network switch. If the publisher never sees the NAKs, it assumes that all datagrams were received successfully and does not retransmit anything.</p>
+<div class="image">
+<img src="Ext_examp_unrec.png" alt="Ext_examp_unrec.png"/>
+</div>
+ <p>At T=0, the message "Topic-A, sqn=4" is sent, but not received. Let's assume that the publisher has no more application messages to send for a while. With every application message sent, the source starts two activity timers: a transport-level "session" timer, and a topic-level "TSNI" timer. The session timer is for .2 seconds (see <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Design/config.tag:../Config/" href="../Config/grptransportlbtrmoperation.html#transportlbtrmsmminimumintervalsource">transport_lbtrm_sm_minimum_interval (source)</a>), and the TSNI timer is for 5 seconds (see <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Design/config.tag:../Config/" href="../Config/grpmajoroptions.html#transporttopicsequencenumberinfointervalsource">transport_topic_sequence_number_info_interval (source)</a>).</p>
+<p>At T=0.2, the session timer expires and the source-side transport layer sends a session message. When the receive-side transport layer sees the session message, it learns that transport datagram #6 was lost. So it starts two receive-side transport-level timers: "NAK backoff" and "NAK generation". NAK backoff is shown here as .05 seconds, but is actually randomized between .025 and .075 (see <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Design/config.tag:../Config/" href="../Config/grptransportlbtrmreliability.html#transportlbtrmnakinitialbackoffintervalreceiver">transport_lbtrm_nak_initial_backoff_interval (receiver)</a>. The NAK generation is 10 seconds (see <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Design/config.tag:../Config/" href="../Config/grptransportlbtrmreliability.html#transportlbtrmnakgenerationintervalreceiver">transport_lbtrm_nak_generation_interval (receiver)</a>).</p>
+<p>At T=0.25, the NAK backoff timer expires. Since the transport receiver still has not seen datagram #6, it sends a NAK. However, we are assuming that all NAKs are blocked, so the transport source never sees it. Over the next ~5 seconds, the source will send several more session messages and the receiver will send several more NAKs (not shown).</p>
+<p>At T=5, the TSNI timer set by the source at T=0 expires. Since no application messages have been sent since then, the source sends a TSNI message for topic "A". This informs the Delivery Controller that it lost the message "Topic-A, sqn=4". However, the receive-side Delivery Controller (topic layer) does not initiate any recovery activity. It only sets a <em>topic-level</em> timer for the same amount of time as the transport's NAK generation timer, 10 seconds. The Delivery Controller assumes that the transport layer will do the actual data recovery.</p>
+<p>At T=10.2, the receive-side transport layer's NAK generation timer (set at T=0.2) finally expires; the <em>transport layer</em> now considers datagram #6 as unrecoverable loss. The transport layer stops sending NAKs for that datagram, and it increments the receive-side transport statistic <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Design/api.tag:../API/" href="../API/structlbm__rcv__transport__stats__lbtrm__t__stct.html#aec81f344ce20a3485bbf2f5a65b5c61e">lbm_rcv_transport_stats_lbtrm_t_stct::unrecovered_tmo</a>. Note that it does <em>not</em> deliver an unrecoverable loss event to the application.</p>
+<p>Over the next ~5 seconds, the Delivery Controller continues to wait for the missing message to be recovered by the transport receiver, but the transport receiver has already given up. You might wonder why the transport layer doesn't inform the Delivery Controller that the lost datagram was unrecoverable loss. The problem is that the transport layer does not know the contents of the lost datagram, and therefore does not know which topic to inform. That is why the Delivery Controller needs to set its own NAK generation timer at the point where it detects topic-level loss (at T=5).</p>
+<p>Note that had sources src-B and src-C not been deleted earlier, messages sent to them could have been successfully received and processed during this entire 15-second period. However, any subsequent messages for topic "A" would need to be buffered until T=15. After the unrecoverable loss event is delivered for topic A sequence_number 4, subsequently received and buffered messages for topic "A" are delivered.</p>
+<p><br />
+ </p>
+<h2><a class="anchor" id="exampletransportdeletion"></a>
+Example: Transport Deletion&nbsp;&nbsp;<small><a href="#exampletransportdeletion">&lt;-</a></small></h2>
+<p>During the previous 15 seconds, the source-side had sent a number of topic-level TSNI (for topic A) and transport-level session messages. At this point, the publishing application deletes source "A". Since sources "B" and "C" were deleted earlier, "A" was the last source mapped to the Transport Session. So UM deletes the Transport Session.</p>
+<div class="image">
+<img src="Ext_examp_del.png" alt="Ext_examp_del.png"/>
+</div>
+ <p>Note that no indication is sent from the source side to inform receivers of the removal of the sources, nor the Transport Session. So the receive-side transport layer has to time out the Transport Session after 60 seconds of inactivity (see <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Design/config.tag:../Config/" href="../Config/grptransportlbtrmoperation.html#transportlbtrmactivitytimeoutreceiver">transport_lbtrm_activity_timeout (receiver)</a>).</p>
+<p>The receive-side transport layer then informs both Delivery Controllers of the End Of Session event, which the Delivery Controllers pass onto the application receiver callback for each topic. The <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Design/api.tag:../API/" href="../API/structlbm__msg__t__stct.html">lbm_msg_t</a> structure has an event <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Design/api.tag:../API/" href="../API/structlbm__msg__t__stct.html#ab25327dc4b4ebf527106f6e708dbc05f">type</a> of <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#a2647b87f92adb5a34ea129fbfeeed5a3">LBM_MSG_EOS</a>. The delivery controllers and the receive-side transport layer instance are then deleted.</p>
+<p>However, note that the receiver objects will continue to exist. They are ready in case another publishing application starts up and creates sources for topics A and/or B. </p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.8.11-->
 </body>

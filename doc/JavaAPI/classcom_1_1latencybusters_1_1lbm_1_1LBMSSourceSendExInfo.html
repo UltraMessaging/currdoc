@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">UM Java API
-   &#160;<span id="projectnumber">6.11.1</span>
+   &#160;<span id="projectnumber">6.12</span>
    </div>
   </td>
  </tr>
@@ -93,6 +93,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ab19c67cc337ecd1d5dd2ef34184bc562"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a53c583297be03ff5b07e30aec04281ee"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBMSSourceSendExInfo.html#a53c583297be03ff5b07e30aec04281ee">setMessageProperties</a> (int mprop_int_cnt, String[] mprop_int_keys, long[] mprop_int_vals)</td></tr>
 <tr class="separator:a53c583297be03ff5b07e30aec04281ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1e882125b124817a7b035b9c30893049"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBMSSourceSendExInfo.html#a1e882125b124817a7b035b9c30893049">setUserSuppliedBuffer</a> (ByteBuffer userBuffer)  throws LBMEInvalException </td></tr>
+<tr class="separator:a1e882125b124817a7b035b9c30893049"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a569bcd119a0a95e54297cdbd7cc0dbc2"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBMSSourceSendExInfo.html#a569bcd119a0a95e54297cdbd7cc0dbc2">flags</a> ()</td></tr>
 <tr class="separator:a569bcd119a0a95e54297cdbd7cc0dbc2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acd4275d5100bdbd1eb1ed37511f4b41d"><td class="memItemLeft" align="right" valign="top">Object&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBMSSourceSendExInfo.html#acd4275d5100bdbd1eb1ed37511f4b41d">clientObject</a> ()</td></tr>
@@ -105,6 +107,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a55b9223ff684af486d7a44642638fb8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1b5be213ee694f8ab61b0becf18db0d1"><td class="memItemLeft" align="right" valign="top">long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBMSSourceSendExInfo.html#a1b5be213ee694f8ab61b0becf18db0d1">getMessagePropertyValue</a> (int index)  throws LBMEInvalException </td></tr>
 <tr class="separator:a1b5be213ee694f8ab61b0becf18db0d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa87e738bf15026033f8d6cef83b2b71f"><td class="memItemLeft" align="right" valign="top">ByteBuffer&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBMSSourceSendExInfo.html#aa87e738bf15026033f8d6cef83b2b71f">getUserSuppliedBuffer</a> ()</td></tr>
+<tr class="separator:aa87e738bf15026033f8d6cef83b2b71f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBM.html">LBM</a> Smart Source Send Extended Info class. Holds a user-supplied callback argument and user-supplied flags to change callback behavior for extended <a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBMSSource.html#aba3cbc3ffa1d57701107756bd50ab63d">LBMSSource#send(ByteBuffer, int, int, LBMSSourceSendExInfo)</a> calls. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBMSSource.html#aba3cbc3ffa1d57701107756bd50ab63d">LBMSSource::send(ByteBuffer, int, int, LBMSSourceSendExInfo)</a> </dd>
@@ -123,6 +127,10 @@ Public Member Functions</h2></td></tr>
 <dd>
 <a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBM.html#a9e2bb331f4c9c838fff4a58345283079">LBM::SSRC_SEND_EX_FLAG_UPDATE_PROPERTY_VALUES</a> </dd></dl>
 <dl class="section since"><dt>Since</dt><dd>UM 6.11 </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBM.html#a625e8d261fc46ad51ed71d970a8c3df9">LBM::SSRC_SEND_EX_FLAG_USER_SUPPLIED_BUFFER</a> </dd></dl>
+<dl class="section since"><dt>Since</dt><dd>UM 6.11.1.2 </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBM.html#a55870d5d138958682807953caa64fc03">LBM::SSRC_SEND_EX_FLAG_SEQUENCE_NUMBER_INFO_FRAGONLY</a> </dd></dl>
+<dl class="section since"><dt>Since</dt><dd>UM 6.12 </dd></dl>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a91c0c0d3bc6fb5122d223e56b3f27c5e"></a>
 <div class="memitem">
@@ -174,6 +182,8 @@ Public Member Functions</h2></td></tr>
 <dd>
 <a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBM.html#a1dc17a998c0241604b4550ac955bcdbb">LBM::SSRC_SEND_EX_FLAG_SEQUENCE_NUMBER_INFO</a> </dd></dl>
 <dl class="section since"><dt>Since</dt><dd>UM 6.11 </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBM.html#a55870d5d138958682807953caa64fc03">LBM::SSRC_SEND_EX_FLAG_SEQUENCE_NUMBER_INFO_FRAGONLY</a> </dd></dl>
+<dl class="section since"><dt>Since</dt><dd>UM 6.12 </dd></dl>
 
 <p>References <a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBMSSourceSendExInfo.html#a569bcd119a0a95e54297cdbd7cc0dbc2">com.latencybusters.lbm.LBMSSourceSendExInfo.flags()</a>.</p>
 
@@ -226,6 +236,8 @@ Public Member Functions</h2></td></tr>
 <dd>
 <a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBM.html#a7f9067b382defeac85ada48b9d8460bd">LBM::SSRC_SEND_EX_FLAG_UPDATE_CHANNEL</a> </dd></dl>
 <dl class="section since"><dt>Since</dt><dd>UM 6.11 </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBM.html#a55870d5d138958682807953caa64fc03">LBM::SSRC_SEND_EX_FLAG_SEQUENCE_NUMBER_INFO_FRAGONLY</a> </dd></dl>
+<dl class="section since"><dt>Since</dt><dd>UM 6.12 </dd></dl>
 
 <p>References <a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBMSSourceSendExInfo.html#a569bcd119a0a95e54297cdbd7cc0dbc2">com.latencybusters.lbm.LBMSSourceSendExInfo.flags()</a>.</p>
 
@@ -292,6 +304,8 @@ Public Member Functions</h2></td></tr>
 <dd>
 <a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBM.html#a9e2bb331f4c9c838fff4a58345283079">LBM::SSRC_SEND_EX_FLAG_UPDATE_PROPERTY_VALUES</a> </dd></dl>
 <dl class="section since"><dt>Since</dt><dd>UM 6.11 </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBM.html#a55870d5d138958682807953caa64fc03">LBM::SSRC_SEND_EX_FLAG_SEQUENCE_NUMBER_INFO_FRAGONLY</a> </dd></dl>
+<dl class="section since"><dt>Since</dt><dd>UM 6.12 </dd></dl>
 
 <p>References <a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBMSSourceSendExInfo.html#a569bcd119a0a95e54297cdbd7cc0dbc2">com.latencybusters.lbm.LBMSSourceSendExInfo.flags()</a>.</p>
 
@@ -369,6 +383,8 @@ Public Member Functions</h2></td></tr>
 <dd>
 <a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBM.html#a9e2bb331f4c9c838fff4a58345283079">LBM::SSRC_SEND_EX_FLAG_UPDATE_PROPERTY_VALUES</a> </dd></dl>
 <dl class="section since"><dt>Since</dt><dd>UM 6.11 </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBM.html#a55870d5d138958682807953caa64fc03">LBM::SSRC_SEND_EX_FLAG_SEQUENCE_NUMBER_INFO_FRAGONLY</a> </dd></dl>
+<dl class="section since"><dt>Since</dt><dd>UM 6.12 </dd></dl>
 
 <p>References <a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBMSSourceSendExInfo.html#ab19c67cc337ecd1d5dd2ef34184bc562">com.latencybusters.lbm.LBMSSourceSendExInfo.setChannel()</a>, <a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBMSSourceSendExInfo.html#aa30afa9b77f16d0fe5e3526543dfaee7">com.latencybusters.lbm.LBMSSourceSendExInfo.setClientObject()</a>, <a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBMSSourceSendExInfo.html#a2a5d559f67a9ba83d2b39dfa0ad057ba">com.latencybusters.lbm.LBMSSourceSendExInfo.setFlags()</a>, and <a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBMSSourceSendExInfo.html#a53c583297be03ff5b07e30aec04281ee">com.latencybusters.lbm.LBMSSourceSendExInfo.setMessageProperties()</a>.</p>
 
@@ -419,6 +435,10 @@ Public Member Functions</h2></td></tr>
 <dd>
 <a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBM.html#a9e2bb331f4c9c838fff4a58345283079">LBM::SSRC_SEND_EX_FLAG_UPDATE_PROPERTY_VALUES</a> </dd></dl>
 <dl class="section since"><dt>Since</dt><dd>UM 6.11 </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBM.html#a625e8d261fc46ad51ed71d970a8c3df9">LBM::SSRC_SEND_EX_FLAG_USER_SUPPLIED_BUFFER</a> </dd></dl>
+<dl class="section since"><dt>Since</dt><dd>UM 6.11.1.2 </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBM.html#a55870d5d138958682807953caa64fc03">LBM::SSRC_SEND_EX_FLAG_SEQUENCE_NUMBER_INFO_FRAGONLY</a> </dd></dl>
+<dl class="section since"><dt>Since</dt><dd>UM 6.12 </dd></dl>
 
 <p>Referenced by <a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBMSSourceSendExInfo.html#aab3e623b3450dffd6e4202e484bfc3f1">com.latencybusters.lbm.LBMSSourceSendExInfo.LBMSSourceSendExInfo()</a>, and <a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBMSSourceSendExInfo.html#a2a5d559f67a9ba83d2b39dfa0ad057ba">com.latencybusters.lbm.LBMSSourceSendExInfo.setFlags()</a>.</p>
 
@@ -491,6 +511,23 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Returns the message property value at the specified index to be included with messages. </p><dl class="section return"><dt>Returns</dt><dd>The message property value at the given index. </dd></dl>
 <dl class="section since"><dt>Since</dt><dd>UM 6.11 </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="aa87e738bf15026033f8d6cef83b2b71f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ByteBuffer com.latencybusters.lbm.LBMSSourceSendExInfo.getUserSuppliedBuffer </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Returns the value of a previously supplied user buffer which will be used as a message buffer. </p><dl class="section return"><dt>Returns</dt><dd>The direct ByteBuffer object. </dd></dl>
+<dl class="section since"><dt>Since</dt><dd>UM 6.11.1.2 </dd></dl>
 
 </div>
 </div>
@@ -579,6 +616,10 @@ Public Member Functions</h2></td></tr>
 <dd>
 <a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBM.html#a9e2bb331f4c9c838fff4a58345283079">LBM::SSRC_SEND_EX_FLAG_UPDATE_PROPERTY_VALUES</a> </dd></dl>
 <dl class="section since"><dt>Since</dt><dd>UM 6.11 </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBM.html#a625e8d261fc46ad51ed71d970a8c3df9">LBM::SSRC_SEND_EX_FLAG_USER_SUPPLIED_BUFFER</a> </dd></dl>
+<dl class="section since"><dt>Since</dt><dd>UM 6.11.1.2 </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBM.html#a55870d5d138958682807953caa64fc03">LBM::SSRC_SEND_EX_FLAG_SEQUENCE_NUMBER_INFO_FRAGONLY</a> </dd></dl>
+<dl class="section since"><dt>Since</dt><dd>UM 6.12 </dd></dl>
 
 <p>References <a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBMSSourceSendExInfo.html#a569bcd119a0a95e54297cdbd7cc0dbc2">com.latencybusters.lbm.LBMSSourceSendExInfo.flags()</a>.</p>
 
@@ -628,6 +669,31 @@ Public Member Functions</h2></td></tr>
 <p>References <a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBM.html#a7d36ade766c44e1f8ade5791b004a301">com.latencybusters.lbm.LBM.SSRC_SEND_EX_FLAG_PROPERTIES</a>.</p>
 
 <p>Referenced by <a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBMSSourceSendExInfo.html#ad8efaad5d67e44537335a06902a06bbf">com.latencybusters.lbm.LBMSSourceSendExInfo.LBMSSourceSendExInfo()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a1e882125b124817a7b035b9c30893049"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void com.latencybusters.lbm.LBMSSourceSendExInfo.setUserSuppliedBuffer </td>
+          <td>(</td>
+          <td class="paramtype">ByteBuffer&#160;</td>
+          <td class="paramname"><em>userBuffer</em></td><td>)</td>
+          <td> throws <a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBMEInvalException.html">LBMEInvalException</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Sets the value of a supplied user buffer which will be used as a message buffer. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">userBuffer</td><td>The direct ByteBuffer object. Use null to unset this option </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section since"><dt>Since</dt><dd>UM 6.11.1.2 </dd></dl>
+
+<p>References <a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBM.html#a625e8d261fc46ad51ed71d970a8c3df9">com.latencybusters.lbm.LBM.SSRC_SEND_EX_FLAG_USER_SUPPLIED_BUFFER</a>.</p>
 
 </div>
 </div>

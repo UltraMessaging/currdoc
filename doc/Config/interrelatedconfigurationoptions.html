@@ -59,7 +59,7 @@ $(document).ready(function(){initNavTree('interrelatedconfigurationoptions.html'
 <p><br />
  </p>
 <h1><a class="anchor" id="preventingnakstormswithnakintervals"></a>
-Preventing NAK Storms with NAK Intervals</h1>
+Preventing NAK Storms with NAK Intervals&nbsp;&nbsp;<small><a href="#preventingnakstormswithnakintervals">&lt;-</a></small></h1>
 <p>The NAK generation interval should be sufficiently longer than the NAK backoff interval so that the source, after receiving the first NAK from a receiver, has time to retransmit the missing datagram and prevent a NAK storm from all receivers. LBTRM, LBTRU, and MIM all use NAK generation and backoff intervals. The NAK behavior for all transports is the same.</p>
 <dl class="section user"><dt><b>Interrelated</b> <b>Options</b>:</dt><dd><ul>
 <li>
@@ -90,7 +90,7 @@ receiver transport_lbtrm_nak_generation_interval 10000  # 10 seconds
 <p><br />
  </p>
 <h1><a class="anchor" id="preventingtaillosswithtsniandnakintervaloptions"></a>
-Preventing Tail Loss With TSNI and NAK Interval Options</h1>
+Preventing Tail Loss With TSNI and NAK Interval Options&nbsp;&nbsp;<small><a href="#preventingtaillosswithtsniandnakintervaloptions">&lt;-</a></small></h1>
 <p>Tail loss refers to the situation where a receiver (subscriber) does not receive the last few (tail) messages sent by a source (publisher). When unrecoverable loss occurs on a transport, due to the possibility of multiple topic-level messages being contained in a single transport-level sequence number (due to implicit batching), a receiver does not know which particular messages were unrecoverable until the arrival of later messages (revealing earlier gaps in topic-level sequence number) or until the arrival of Topic Sequence Number Information (TSNI) records sent periodically by a publisher. Specific topic-level knowledge of sequence gaps is a prerequisite for the receiver to deliver event callbacks to the application indicating that unrecoverable loss has occurred, because those event callbacks are per-receiver (topic-level). A TSNI active threshold that is too small relative to the TSNI and/or NAK generation interval may prevent the reporting of tail loss to the application, especially with ordered delivery.</p>
 <dl class="section user"><dt><b>Interrelated</b> <b>Options</b>:</dt><dd><ul>
 <li>
@@ -116,7 +116,7 @@ source   transport_topic_sequence_number_info_active_threshold 60
 <p><br />
  </p>
 <h1><a class="anchor" id="preventingipcreceiverdeafnesswithkeepaliveoptions"></a>
-Preventing IPC Receiver Deafness With Keepalive Options</h1>
+Preventing IPC Receiver Deafness With Keepalive Options&nbsp;&nbsp;<small><a href="#preventingipcreceiverdeafnesswithkeepaliveoptions">&lt;-</a></small></h1>
 <p>With an LBT-IPC transport, an activity timeout that is too small relative to the session message interval may cause receiver deafness. If a timeout is too short, the keepalive messages might not be received in time to prevent the receiver from being deleted or disconnecting because the source appears to be gone.</p>
 <dl class="section user"><dt><b>Interrelated</b> <b>Options</b>:</dt><dd><ul>
 <li>
@@ -138,7 +138,7 @@ source   transport_lbtipc_sm_interval      10000
 <p><br />
  </p>
 <h1><a class="anchor" id="preventingerroneouslbtrmlbtrusessiontimeouts"></a>
-Preventing Erroneous LBT-RM/LBT-RU Session Timeouts</h1>
+Preventing Erroneous LBT-RM/LBT-RU Session Timeouts&nbsp;&nbsp;<small><a href="#preventingerroneouslbtrmlbtrusessiontimeouts">&lt;-</a></small></h1>
 <p>An LBT-RM or LBT-RU receiver-side quiescent timeout may delete a transport session that a source is still active on. This can happen if the timeout is too short relative to the source's interval between session messages (which serve as a session keepalive).</p>
 <dl class="section user"><dt><b>Interrelated</b> <b>Options</b>:</dt><dd><ul>
 <li>
@@ -166,7 +166,7 @@ source    transport_lbtru_sm_maximum_interval 10000
 <p><br />
  </p>
 <h1><a class="anchor" id="preventingerrorsduetobadmulticastaddressranges"></a>
-Preventing Errors Due to Bad Multicast Address Ranges</h1>
+Preventing Errors Due to Bad Multicast Address Ranges&nbsp;&nbsp;<small><a href="#preventingerrorsduetobadmulticastaddressranges">&lt;-</a></small></h1>
 <p>Sometimes it is easy to accidentally reverse the low and high values for LBT-RM multicast addresses, which actually creates a very large range. Aside from excluding intended addresses, this can cause error conditions.</p>
 <dl class="section user"><dt><b>Interrelated</b> <b>Options</b>:</dt><dd><ul>
 <li>
@@ -187,7 +187,7 @@ context transport_lbtrm_multicast_address_high 224.10.10.14
 <p><br />
  </p>
 <h1><a class="anchor" id="preventingstoretimeouts"></a>
-Preventing Store Timeouts</h1>
+Preventing Store Timeouts&nbsp;&nbsp;<small><a href="#preventingstoretimeouts">&lt;-</a></small></h1>
 <p>When using Persistence, a store may be erroneously declared unresponsive if its activity timeout expires before it has had adequate opportunity to verify it is still active via activity check intervals.</p>
 <dl class="section user"><dt><b>Interrelated</b> <b>Options</b>:</dt><dd><ul>
 <li>
@@ -207,7 +207,7 @@ source ume_store_check_interval 500
 <p><br />
  </p>
 <h1><a class="anchor" id="preventingulbtimeouts"></a>
-Preventing ULB Timeouts</h1>
+Preventing ULB Timeouts&nbsp;&nbsp;<small><a href="#preventingulbtimeouts">&lt;-</a></small></h1>
 <p>When using ULB queuing, ULB source or receiver may be erroneously declared unresponsive if its activity timeout expires before it has had adequate opportunities to attempt to re-register via activity check intervals if the source appears to be inactive. It is also possible for sources to attempt to reassign messages that have already been processed.</p>
 <dl class="section user"><dt><b>Interrelated</b> <b>Options</b>:</dt><dd><ul>
 <li>
@@ -239,13 +239,13 @@ source   umq_ulb_check_interval 1000
 <p><br />
  </p>
 <h1><a class="anchor" id="preventingunicastresolverdaemontimeouts"></a>
-Preventing Unicast Resolver Daemon Timeouts</h1>
+Preventing Unicast Resolver Daemon Timeouts&nbsp;&nbsp;<small><a href="#preventingunicastresolverdaemontimeouts">&lt;-</a></small></h1>
 <p>A unicast resolver daemon may be erroneously declared inactive if its activity timeout expires before it has had adequate opportunity to verify that it is still alive.</p>
 <dl class="section user"><dt><b>Interrelated</b> <b>Options</b>:</dt><dd><ul>
 <li>
-<a class="el" href="grpresolveroperation.html#resolverunicastactivitytimeoutcontext">resolver_unicast_activity_timeout (context)</a> </li>
+<a class="el" href="grpudpbasedresolveroperation.html#resolverunicastactivitytimeoutcontext">resolver_unicast_activity_timeout (context)</a> </li>
 <li>
-<a class="el" href="grpresolveroperation.html#resolverunicastcheckintervalcontext">resolver_unicast_check_interval (context)</a> </li>
+<a class="el" href="grpudpbasedresolveroperation.html#resolverunicastcheckintervalcontext">resolver_unicast_check_interval (context)</a> </li>
 </ul>
 </dd></dl>
 <dl class="section user"><dt><b>Recommendations</b>:</dt><dd>Set the unicast resolver daemon activity timeout to at least 5x the activity check interval. Or, if activity notification is not desired, set both options to 0.</dd></dl>
@@ -256,11 +256,11 @@ Preventing Unicast Resolver Daemon Timeouts</h1>
 context resolver_unicast_activity_timeout 1000
 context resolver_unicast_check_interval 200
 </pre></dd></dl>
-<dl class="section user"><dt><b>See</b> <b>also</b>:</dt><dd><a class="el" href="grpresolveroperation.html">Resolver Operation Options</a></dd></dl>
+<dl class="section user"><dt><b>See</b> <b>also</b>:</dt><dd><a class="el" href="grpudpbasedresolveroperation.html">UDP-Based Resolver Operation Options</a></dd></dl>
 <p><br />
  </p>
 <h1><a class="anchor" id="preventingundetectedlatejoinloss"></a>
-Preventing Undetected Late Join Loss</h1>
+Preventing Undetected Late Join Loss&nbsp;&nbsp;<small><a href="#preventingundetectedlatejoinloss">&lt;-</a></small></h1>
 <p>If during a Late Join operation, a transport times out while a receiver is requesting retransmission of missing messages, this can cause lost messages to go undetected and likely become unrecoverable.</p>
 <dl class="section user"><dt><b>Interrelated</b> <b>Options</b>:</dt><dd><ul>
 <li>
@@ -288,7 +288,7 @@ receiver transport_lbtrm_activity_timeout 60000
 <p><br />
  </p>
 <h1><a class="anchor" id="preventingundetectedloss"></a>
-Preventing Undetected Loss</h1>
+Preventing Undetected Loss&nbsp;&nbsp;<small><a href="#preventingundetectedloss">&lt;-</a></small></h1>
 <p>It is possible that an unrecoverable loss due to unsatisfied NAKs or a transport activity timeout may go unreported if the delivery controller loss check is disabled or has too long an interval. For UMP stores, the loss check interval must be enabled. Two options (three, if using LBT-RM) are interrelated and must be set according to the guidelines below.</p>
 <dl class="section user"><dt><b>Interrelated</b> <b>Options</b>:</dt><dd><ul>
 <li>
@@ -317,7 +317,7 @@ receiver transport_lbtrm_nak_generation_interval 10000
 <p><br />
  </p>
 <h1><a class="anchor" id="preventingstoreregistrationhangs"></a>
-Preventing Store Registration Hangs</h1>
+Preventing Store Registration Hangs&nbsp;&nbsp;<small><a href="#preventingstoreregistrationhangs">&lt;-</a></small></h1>
 <p>The following configuration options come into play when sources register with stores in a lossy environment:</p>
 <dl class="section user"><dt><b>Interrelated</b> <b>Options</b>:</dt><dd><ul>
 <li>

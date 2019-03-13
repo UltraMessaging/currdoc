@@ -6,10 +6,10 @@
 <div class="contents">
 <div class="textblock">
 <img src="infa_logo.png" width="400" height="138" alt="Informatica"/><br/><br/>
-<big><b>Ultra Messaging</b></big> <small>(Version 6.11.1)</small><br/>
+<big><b>Ultra Messaging</b></big> <small>(Version 6.12)</small><br/>
 <br/><br/><br/>
 <center class="mytitle">Java Ultra Messaging Examples</center>
-<center>Copyright (C) 2004-2018, Informatica Corporation.  All Rights Reserved.</center>
+<center>Copyright (C) 2004-2019, Informatica Corporation.  All Rights Reserved.</center>
 <br/><br/><br/>
 <p>The files in this directory are the source for the performance measurement
 binaries.  If you haven't done so already, please start with the example
@@ -17,22 +17,12 @@ programs found in the UM Quick Start Guide.
 
 <h3>Example Programs</h3>
 <hr>
-<p><a href=MinRcv.java><b><code>MinRcv.java</code></b></a> -
-MinRcv.java&nbsp;-&nbsp;Minimal&nbsp;receiver&nbsp;program.<br>
-</code>
-
-<hr>
-<p><a href=MinSrc.java><b><code>MinSrc.java</code></b></a> -
-MinSrc.java&nbsp;-&nbsp;Minimal&nbsp;source&nbsp;program.<br>
-</code>
-
-<hr>
-<p><a href=lbmExampleUtil.java><b><code>lbmExampleUtil.java</code></b></a> -
+<p><a href=lbmdump.java><b><code>lbmdump.java</code></b></a> -
 Utility&nbsp;functions&nbsp;for&nbsp;UM&nbsp;example&nbsp;programs.<br>
 </code>
 
 <hr>
-<p><a href=lbmdump.java><b><code>lbmdump.java</code></b></a> -
+<p><a href=lbmExampleUtil.java><b><code>lbmExampleUtil.java</code></b></a> -
 Utility&nbsp;functions&nbsp;for&nbsp;UM&nbsp;example&nbsp;programs.<br>
 </code>
 
@@ -216,6 +206,22 @@ Monitoring&nbsp;options:\n<br>
 </code>
 
 <hr>
+<p><a href=lbmpong1.java><b><code>lbmpong1.java</code></b></a> -
+<code>Usage:&nbsp;lbmpong1&nbsp;[options]&nbsp;id<br>
+&nbsp;&nbsp;-c&nbsp;filename&nbsp;=&nbsp;Use&nbsp;LBM&nbsp;configuration&nbsp;file&nbsp;filename.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Multiple&nbsp;config&nbsp;files&nbsp;are&nbsp;allowed.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Example:&nbsp;&nbsp;'-c&nbsp;file1.cfg&nbsp;-c&nbsp;file2.cfg'<br>
+&nbsp;&nbsp;-E&nbsp;=&nbsp;exit&nbsp;after&nbsp;source&nbsp;ends<br>
+&nbsp;&nbsp;-e&nbsp;=&nbsp;use&nbsp;LBM&nbsp;embedded&nbsp;mode<br>
+&nbsp;&nbsp;-h&nbsp;=&nbsp;help<br>
+&nbsp;&nbsp;-i&nbsp;ID&nbsp;=&nbsp;producer/consumer&nbsp;IDentifier<br>
+&nbsp;&nbsp;-M&nbsp;msgs&nbsp;=&nbsp;stop&nbsp;after&nbsp;receiving&nbsp;msgs&nbsp;messages<br>
+&nbsp;&nbsp;-q&nbsp;=&nbsp;use&nbsp;an&nbsp;LBM&nbsp;event&nbsp;queue<br>
+&nbsp;&nbsp;-t&nbsp;secs&nbsp;=&nbsp;run&nbsp;for&nbsp;secs&nbsp;seconds<br>
+&nbsp;&nbsp;-v&nbsp;=&nbsp;be&nbsp;verbose&nbsp;about&nbsp;each&nbsp;message&nbsp;(for&nbsp;RTT&nbsp;only)<br>
+</code>
+
+<hr>
 <p><a href=lbmpong.java><b><code>lbmpong.java</code></b></a> -
 <code>Usage:&nbsp;lbmpong&nbsp;[options]&nbsp;id<br>
 Available&nbsp;options:<br>
@@ -246,22 +252,6 @@ Available&nbsp;options:<br>
 &nbsp;&nbsp;-T&nbsp;topic&nbsp;=&nbsp;topic&nbsp;name&nbsp;prefix&nbsp;(appended&nbsp;with&nbsp;'/'&nbsp;and&nbsp;id)&nbsp;[lbmpong]<br>
 &nbsp;&nbsp;-v&nbsp;=&nbsp;be&nbsp;verbose&nbsp;about&nbsp;each&nbsp;message&nbsp;(for&nbsp;RTT&nbsp;only)<br>
 &nbsp;&nbsp;id&nbsp;=&nbsp;either&nbsp;\<br>
-</code>
-
-<hr>
-<p><a href=lbmpong1.java><b><code>lbmpong1.java</code></b></a> -
-<code>Usage:&nbsp;lbmpong1&nbsp;[options]&nbsp;id<br>
-&nbsp;&nbsp;-c&nbsp;filename&nbsp;=&nbsp;Use&nbsp;LBM&nbsp;configuration&nbsp;file&nbsp;filename.<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Multiple&nbsp;config&nbsp;files&nbsp;are&nbsp;allowed.<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Example:&nbsp;&nbsp;'-c&nbsp;file1.cfg&nbsp;-c&nbsp;file2.cfg'<br>
-&nbsp;&nbsp;-E&nbsp;=&nbsp;exit&nbsp;after&nbsp;source&nbsp;ends<br>
-&nbsp;&nbsp;-e&nbsp;=&nbsp;use&nbsp;LBM&nbsp;embedded&nbsp;mode<br>
-&nbsp;&nbsp;-h&nbsp;=&nbsp;help<br>
-&nbsp;&nbsp;-i&nbsp;ID&nbsp;=&nbsp;producer/consumer&nbsp;IDentifier<br>
-&nbsp;&nbsp;-M&nbsp;msgs&nbsp;=&nbsp;stop&nbsp;after&nbsp;receiving&nbsp;msgs&nbsp;messages<br>
-&nbsp;&nbsp;-q&nbsp;=&nbsp;use&nbsp;an&nbsp;LBM&nbsp;event&nbsp;queue<br>
-&nbsp;&nbsp;-t&nbsp;secs&nbsp;=&nbsp;run&nbsp;for&nbsp;secs&nbsp;seconds<br>
-&nbsp;&nbsp;-v&nbsp;=&nbsp;be&nbsp;verbose&nbsp;about&nbsp;each&nbsp;message&nbsp;(for&nbsp;RTT&nbsp;only)<br>
 </code>
 
 <hr>
@@ -416,6 +406,8 @@ Monitoring&nbsp;options:\n<br>
 <p><a href=lbmssrc.java><b><code>lbmssrc.java</code></b></a> -
 <code>Usage:&nbsp;lbmssrc&nbsp;[options]&nbsp;topic<br>
 Available&nbsp;options:<br>
+&nbsp;&nbsp;-a&nbsp;available-data-space&nbsp;=&nbsp;print&nbsp;the&nbsp;length&nbsp;of&nbsp;available&nbsp;data&nbsp;space<br>
+&nbsp;&nbsp;-b&nbsp;user-supplied-buffer&nbsp;=&nbsp;&nbsp;send&nbsp;messages&nbsp;using&nbsp;a&nbsp;user-supplied&nbsp;buffer<br>
 &nbsp;&nbsp;-c&nbsp;filename&nbsp;=&nbsp;Use&nbsp;LBM&nbsp;configuration&nbsp;file&nbsp;filename.<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Multiple&nbsp;config&nbsp;files&nbsp;are&nbsp;allowed.<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Example:&nbsp;&nbsp;'-c&nbsp;file1.cfg&nbsp;-c&nbsp;file2.cfg'<br>
@@ -526,6 +518,16 @@ Monitoring&nbsp;options:\n<br>
 </code>
 
 <hr>
+<p><a href=MinRcv.java><b><code>MinRcv.java</code></b></a> -
+MinRcv.java&nbsp;-&nbsp;Minimal&nbsp;receiver&nbsp;program.<br>
+</code>
+
+<hr>
+<p><a href=MinSrc.java><b><code>MinSrc.java</code></b></a> -
+MinSrc.java&nbsp;-&nbsp;Minimal&nbsp;source&nbsp;program.<br>
+</code>
+
+<hr>
 <p><a href=umercv.java><b><code>umercv.java</code></b></a> -
 <code>Usage:&nbsp;umercv&nbsp;[options]&nbsp;topic<br>
 Available&nbsp;options:<br>
@@ -537,7 +539,8 @@ Available&nbsp;options:<br>
 &nbsp;&nbsp;-i&nbsp;offset&nbsp;=&nbsp;use&nbsp;offset&nbsp;to&nbsp;calculate&nbsp;Registration&nbsp;ID<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(as&nbsp;source&nbsp;registration&nbsp;ID&nbsp;+&nbsp;offset)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;offset&nbsp;of&nbsp;0&nbsp;forces&nbsp;creation&nbsp;of&nbsp;regid&nbsp;by&nbsp;store<br>
-&nbsp;&nbsp;-N&nbsp;seqnum_offset&nbsp;=&nbsp;display&nbsp;recovery&nbsp;sequence&nbsp;number&nbsp;info&nbsp;and&nbsp;set&nbsp;low&nbsp;seqnum&nbsp;to&nbsp;low+seqnum_offset<br>
+&nbsp;&nbsp;-N&nbsp;NUM&nbsp;=&nbsp;subscribe&nbsp;to&nbsp;channel&nbsp;NUM<br>
+&nbsp;&nbsp;-Q&nbsp;seqnum_offset&nbsp;=&nbsp;display&nbsp;recovery&nbsp;sequence&nbsp;number&nbsp;info&nbsp;and&nbsp;set&nbsp;low&nbsp;seqnum&nbsp;to&nbsp;low+seqnum_offset<br>
 &nbsp;&nbsp;-S&nbsp;=&nbsp;exit&nbsp;after&nbsp;source&nbsp;ends,&nbsp;print&nbsp;throughput&nbsp;summary<br>
 &nbsp;&nbsp;-s&nbsp;num_secs&nbsp;=&nbsp;print&nbsp;statistics&nbsp;every&nbsp;num_secs&nbsp;along&nbsp;with&nbsp;bandwidth<br>
 &nbsp;&nbsp;-h&nbsp;=&nbsp;help<br>
@@ -601,6 +604,8 @@ Monitoring&nbsp;options:\n<br>
 <p><a href=umessrc.java><b><code>umessrc.java</code></b></a> -
 <code>Usage:&nbsp;umessrc&nbsp;[options]&nbsp;topic<br>
 Available&nbsp;options:<br>
+&nbsp;&nbsp;-a&nbsp;available-data-space&nbsp;=&nbsp;print&nbsp;the&nbsp;length&nbsp;of&nbsp;available&nbsp;data&nbsp;space<br>
+&nbsp;&nbsp;-b&nbsp;user-supplied-buffer&nbsp;=&nbsp;&nbsp;send&nbsp;messages&nbsp;using&nbsp;a&nbsp;user-supplied&nbsp;buffer<br>
 &nbsp;&nbsp;-c&nbsp;filename&nbsp;=&nbsp;read&nbsp;config&nbsp;parameters&nbsp;from&nbsp;filename<br>
 &nbsp;&nbsp;-C&nbsp;filename&nbsp;=&nbsp;read&nbsp;context&nbsp;config&nbsp;parameters&nbsp;from&nbsp;filename<br>
 &nbsp;&nbsp;-D&nbsp;=&nbsp;Send&nbsp;deregistration&nbsp;after&nbsp;sending&nbsp;1000&nbsp;messages<br>
@@ -608,14 +613,17 @@ Available&nbsp;options:<br>
 &nbsp;&nbsp;-f&nbsp;NUM&nbsp;=&nbsp;allow&nbsp;NUM&nbsp;unstabilized&nbsp;messages&nbsp;in&nbsp;flight&nbsp;(determines&nbsp;message&nbsp;rate)<br>
 &nbsp;&nbsp;--flight-size&nbsp;=&nbsp;See&nbsp;-f&nbsp;above<br>
 &nbsp;&nbsp;-h&nbsp;=&nbsp;help<br>
+&nbsp;&nbsp;-i&nbsp;msg_prop&nbsp;=&nbsp;send&nbsp;message&nbsp;property&nbsp;as&nbsp;integer&nbsp;value&nbsp;with&nbsp;string&nbsp;key<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Example:&nbsp;&nbsp;'-i&nbsp;1,prop1'<br>
 &nbsp;&nbsp;-j&nbsp;=&nbsp;turn&nbsp;on&nbsp;UME&nbsp;late&nbsp;join<br>
 &nbsp;&nbsp;-l&nbsp;len&nbsp;=&nbsp;send&nbsp;messages&nbsp;of&nbsp;len&nbsp;bytes<br>
 &nbsp;&nbsp;-L&nbsp;linger&nbsp;=&nbsp;linger&nbsp;for&nbsp;linger&nbsp;seconds&nbsp;before&nbsp;closing&nbsp;context<br>
 &nbsp;&nbsp;-m&nbsp;NUM&nbsp;=&nbsp;send&nbsp;at&nbsp;NUM&nbsp;messages&nbsp;per&nbsp;second&nbsp;(trumped&nbsp;by&nbsp;-f)<br>
 &nbsp;&nbsp;--message-rate&nbsp;=&nbsp;See&nbsp;-m&nbsp;above<br>
 &nbsp;&nbsp;-M&nbsp;msgs&nbsp;=&nbsp;send&nbsp;msgs&nbsp;number&nbsp;of&nbsp;messages<br>
-&nbsp;&nbsp;-N&nbsp;=&nbsp;display&nbsp;sequence&nbsp;number&nbsp;information&nbsp;source&nbsp;events<br>
+&nbsp;&nbsp;-N&nbsp;chn&nbsp;=&nbsp;send&nbsp;messages&nbsp;on&nbsp;channel&nbsp;chn<br>
 &nbsp;&nbsp;-P&nbsp;msec&nbsp;=&nbsp;pause&nbsp;after&nbsp;each&nbsp;send&nbsp;msec&nbsp;milliseconds<br>
+&nbsp;&nbsp;-Q&nbsp;=&nbsp;display&nbsp;sequence&nbsp;number&nbsp;information&nbsp;source&nbsp;events<br>
 &nbsp;&nbsp;-S&nbsp;ip:port&nbsp;=&nbsp;use&nbsp;UME&nbsp;store&nbsp;at&nbsp;the&nbsp;specified&nbsp;address&nbsp;and&nbsp;port<br>
 &nbsp;&nbsp;-s&nbsp;sec&nbsp;=&nbsp;print&nbsp;stats&nbsp;every&nbsp;sec&nbsp;seconds<br>
 &nbsp;&nbsp;-t&nbsp;storename&nbsp;=&nbsp;use&nbsp;UME&nbsp;store&nbsp;with&nbsp;name&nbsp;storename<br>

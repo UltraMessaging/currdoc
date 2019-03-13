@@ -56,13 +56,16 @@ $(document).ready(function(){initNavTree('umroutermonitoring.html','');});
 <div class="contents">
 <div class="textblock"><p><br />
  </p>
-<h1><a class="anchor" id="UM"></a>
-Router Web Monitor</h1>
+<h1><a class="anchor" id="umrouterwebmonitor"></a>
+UM Router Web Monitor&nbsp;&nbsp;<small><a href="#umrouterwebmonitor">&lt;-</a></small></h1>
 <p>The built-in web monitor (configured in the tnwgd XML configuration file; see <a class="el" href="xmlconfigurationreference.html">XML Configuration Reference</a>) provides valuable statistics about the UM Router and its portals, for which, the Web Monitor separates into receive statistics and send statistics. The Web Monitor provides a page for each endpoint and peer portal.</p>
+<dl class="section warning"><dt>Warning</dt><dd>The UM Router's web monitor is not designed to be a highly-secure feature. Anybody with access to the network can access the web monitor pages.</dd></dl>
+<p>Users are expected to prevent unauthorized access to the web monitor through normal firewalling methods. Users who are unable to limit access to a level consistent with their overall security needs should disable the store web monitor (using <a class="el" href="xmlconfigurationreference.html#drocfg_web-monitor">&lt;web-monitor&gt;</a>). See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Gateway/design.tag:../Design/" href="../Design/fundamentalconcepts.html#webmonsecurity">Webmon Security</a> for more information.</p>
+<dl class="section note"><dt>Note</dt><dd>the UM daemon designs are evolving away from simple web-based monitoring and towards a publish/subscribe model of distributing monitoring events and statistics.</dd></dl>
 <p><br />
  </p>
 <h2><a class="anchor" id="mainpage"></a>
-Main Page</h2>
+Main Page&nbsp;&nbsp;<small><a href="#mainpage">&lt;-</a></small></h2>
 <p>This page displays general information about the UM Router, and also provides the following links to more detailed statistical and configuration information.</p>
 <dl class="section user"><dt><b>UM</b> <b>Router</b> <b>Configuration</b> </dt><dd>Displays the UM Router XML configuration file used by this UM Router.</dd></dl>
 <dl class="section user"><dt><b>Portals</b> </dt><dd>Displays portal statistics and information, one portal per page. The Portals page allows you to link to any of the Peer or Endpoint portals configured for the UM Router.</dd></dl>
@@ -78,7 +81,7 @@ Main Page</h2>
 <p><br />
  </p>
 <h2><a class="anchor" id="endpointportalpage"></a>
-Endpoint Portal Page</h2>
+Endpoint Portal Page&nbsp;&nbsp;<small><a href="#endpointportalpage">&lt;-</a></small></h2>
 <p>The Endpoint Portal Page displays Receive and Send statistics for the selected endpoint portal. Receive statistics pertain to messages entering the portal from its connected TRD. Send statistics pertain to messages sent out to the TRD.</p>
 <p>Click on any of the links at the top of the page to review configuration option values for the portal's UM topic resolution domain. The two columns provide different units of measure for a given statistic type, where the first column is typically in fragments or messages (depending on the statistic type), and the second column is in bytes.</p>
 <p><br />
@@ -143,7 +146,7 @@ Endpoint Portal Page</h2>
 <p><br />
  </p>
 <h2><a class="anchor" id="peerportalpage"></a>
-Peer Portal Page</h2>
+Peer Portal Page&nbsp;&nbsp;<small><a href="#peerportalpage">&lt;-</a></small></h2>
 <p>This page allows you to see Receive and Send statistics for the selected peer portal. Click on any of the links at the top of the page to review configuration option values for the portal's UM topic resolution domain.</p>
 <p>The peer portal page displays the following statistics:</p>
 <p><br />
@@ -213,7 +216,7 @@ Peer Portal Page</h2>
 <p><br />
  </p>
 <h2><a class="anchor" id="topologyinfopage"></a>
-Topology Info Page</h2>
+Topology Info Page&nbsp;&nbsp;<small><a href="#topologyinfopage">&lt;-</a></small></h2>
 <p>This page allows you to see UM Router network connectivity information from the perspective of this UM Router. The <em>Other UM Routers</em> section (below) provides information in the same format as is used for the local UM Router.</p>
 <dl class="section user"><dt><b>Local</b> <b>UM</b> <b>Router</b> <b>Name</b> </dt><dd>The UM Router name as assigned via configuration.</dd></dl>
 <dl class="section user"><dt><b>Local</b> <b>UM</b> <b>Router</b> <b>ID</b> </dt><dd>A unique value that the UM Router assigns to itself automatically.</dd></dl>
@@ -244,7 +247,7 @@ Topology Info Page</h2>
 <p><br />
  </p>
 <h2><a class="anchor" id="pathinfo"></a>
-Path Info</h2>
+Path Info&nbsp;&nbsp;<small><a href="#pathinfo">&lt;-</a></small></h2>
 <p>The Path Info page lets you query and display a hop path that messages will take between any two TRDs that you enter into the Domain ID 1 and Domain ID 2 text boxes. Fill in the boxes and click the Calculate Shortest Path button, and you see the following fields:</p>
 <dl class="section user"><dt><b>Hop</b> <b>Count</b> </dt><dd>The number of hops from none node to the next along the displayed route, where a node can be either a UM Router or a TRD.</dd></dl>
 <dl class="section user"><dt><b>Aggregate</b> <b>Cost</b> </dt><dd>A sum of the cost values of all portals along the displayed path.</dd></dl>
@@ -252,12 +255,12 @@ Path Info</h2>
 <p><br />
  </p>
 <h1><a class="anchor" id="umrouterlogmessages"></a>
-UM Router Log Messages</h1>
+UM Router Log Messages&nbsp;&nbsp;<small><a href="#umrouterlogmessages">&lt;-</a></small></h1>
 <p>The UM Router daemon generates log messages that are used to monitor its health and operation. You can configure these to be directed to "console" (standard output), "syslog", or a specified log "file", via the <a class="el" href="xmlconfigurationreference.html#drocfg_log">&lt;log&gt;</a> configuration element. Normally "console" is only used during testing, as a persistent log file is preferred for production use. The UM Router does not over-write log files on startup, but instead appends them.</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="umrouterrollinglogs"></a>
-UM Router Rolling Logs</h2>
+UM Router Rolling Logs&nbsp;&nbsp;<small><a href="#umrouterrollinglogs">&lt;-</a></small></h2>
 <p>To prevent unbounded disk file growth, the UM Router supports rolling log files. When the log file rolls, the file is renamed according to the model: <br />
 &#160;&#160;<em>CONFIGUREDNAME</em><code>_</code><em>PID</em><code>.</code><em>DATE</em><code>.</code><em>SEQNUM</em> <br />
 where: </p><ul>
@@ -278,7 +281,7 @@ where: </p><ul>
 <p><br />
  </p>
 <h2><a class="anchor" id="importantumrouterlogmessages"></a>
-Important UM Router Log Messages</h2>
+Important UM Router Log Messages&nbsp;&nbsp;<small><a href="#importantumrouterlogmessages">&lt;-</a></small></h2>
 <p><b>Connection Failure Messages</b></p>
 <pre class="fragment">peer portal [name] failed to connect to peer at [IP:port] via [interface] [err]: reason
 peer portal [name] failed to accept connection (accept) [err]: reason
@@ -297,7 +300,7 @@ Initiator: peer portal [name] connected to [IP:port ]
 </pre><p><br />
  </p>
 <h1><a class="anchor" id="umroutertransportstats"></a>
-UM Router Transport Stats</h1>
+UM Router Transport Stats&nbsp;&nbsp;<small><a href="#umroutertransportstats">&lt;-</a></small></h1>
 <p>Using the <code>&lt;monitor&gt;</code> element in a UM Router's XML configuration file and the UMS Monitoring feature, you can monitor the transport activity between the UM Router and its Topic Resolution Domain. The configuration also provides Context and Event Queue statistics. The statistics output identifies individual portals by name. </p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->

@@ -57,11 +57,11 @@ $(document).ready(function(){initNavTree('specialnotes.html','');});
 <div class="textblock"><p><br />
  </p>
 <h1><a class="anchor" id="configuringmultihomedhosts"></a>
-Configuring Multi-Homed Hosts</h1>
+Configuring Multi-Homed Hosts&nbsp;&nbsp;<small><a href="#configuringmultihomedhosts">&lt;-</a></small></h1>
 <p>By default, UM will select the first multicast-capable, non-loopback interface for multicast topic resolution. If you are fortunate, on a multi-homed host, the correct interface will be selected. However, this fortuitous selection should not be relied upon. Moving the interface card to a different slot, a change in the operating system kernel, and numerous other factors can lead to a different ordering of interfaces as reported by the operating system. This in turn can lead UM to a select a different interface after the change.</p>
 <p>It is strongly recommended that the actual interface be specified. The <a class="el" href="grpmulticastresolvernetwork.html#resolvermulticastinterfacecontext">resolver_multicast_interface (context)</a> option allows you to explicitly specify the multicast interface. Note that this also changes the interface for LBT-RM and multicast immediate messaging.</p>
 <dl class="section user"><dt><b>Other</b> <b>interface</b> <b>options</b>:</dt><dd><a class="el" href="grpunicastresolvernetwork.html#resolverunicastinterfacecontext">resolver_unicast_interface (context)</a> when using the unicast resolver <br />
- <a class="el" href="grprequestnetwork.html#requesttcpinterfacecontext">request_tcp_interface (context)</a> when using the request/response messaging <br />
+ <a class="el" href="grpunicastimmediatemessagingnetwork.html#requesttcpinterfacecontext">request_tcp_interface (context)</a> when using the request/response messaging <br />
  <a class="el" href="grptransportlbtrunetwork.html#transportlbtruinterfacereceiver">transport_lbtru_interface (receiver)</a> <br />
  <a class="el" href="grptransportlbtrunetwork.html#transportlbtruinterfacesource">transport_lbtru_interface (source)</a> <br />
  <a class="el" href="grptransporttcpnetwork.html#transporttcpinterfacereceiver">transport_tcp_interface (receiver)</a> <br />
@@ -80,14 +80,14 @@ Configuring Multi-Homed Hosts</h1>
 <dl class="section user"><dt><b>Multicast</b> <b>immediate</b> <b>messaging</b>:</dt><dd><a class="el" href="grpmulticastimmediatemessagingnetwork.html#mimdestinationportcontext">mim_destination_port (context)</a> <br />
  <a class="el" href="grpmulticastimmediatemessagingnetwork.html#mimincomingdestinationportcontext">mim_incoming_destination_port (context)</a> <br />
  <a class="el" href="grpmulticastimmediatemessagingnetwork.html#mimoutgoingdestinationportcontext">mim_outgoing_destination_port (context)</a></dd></dl>
-<dl class="section user"><dt><b>Requests</b>:</dt><dd><a class="el" href="grprequestnetwork.html#requesttcpportcontext">request_tcp_port (context)</a> <br />
- <a class="el" href="grprequestnetwork.html#requesttcpportlowcontext">request_tcp_port_low (context)</a> <br />
- <a class="el" href="grprequestnetwork.html#requesttcpporthighcontext">request_tcp_port_high (context)</a></dd></dl>
+<dl class="section user"><dt><b>Requests</b>:</dt><dd><a class="el" href="grpunicastimmediatemessagingnetwork.html#requesttcpportcontext">request_tcp_port (context)</a> <br />
+ <a class="el" href="grpunicastimmediatemessagingnetwork.html#requesttcpportlowcontext">request_tcp_port_low (context)</a> <br />
+ <a class="el" href="grpunicastimmediatemessagingnetwork.html#requesttcpporthighcontext">request_tcp_port_high (context)</a></dd></dl>
 <p>In addition, since machines acting as a firewall are often multi-homed as well, see <a class="el" href="specialnotes.html#configuringmultihomedhosts">Configuring Multi-Homed Hosts</a> for additional considerations.</p>
 <p><br />
  </p>
 <h1><a class="anchor" id="traversingafirewall"></a>
-Traversing a Firewall</h1>
+Traversing a Firewall&nbsp;&nbsp;<small><a href="#traversingafirewall">&lt;-</a></small></h1>
 <p>To use UM across a firewall, several port options may need to be changed. The options of interest include:</p>
 <dl class="section user"><dt><b>Multicast</b> <b>resolver</b>:</dt><dd><a class="el" href="grpmulticastresolvernetwork.html#resolvermulticastportcontext">resolver_multicast_port (context)</a></dd></dl>
 <dl class="section user"><dt><b>Unicast</b> <b>resolver</b>:</dt><dd><a class="el" href="grpdeprecated.html#resolverunicastportcontext">resolver_unicast_port (context)</a> <br />

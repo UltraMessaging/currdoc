@@ -57,7 +57,7 @@ $(document).ready(function(){initNavTree('generalconfigurationguidelines.html','
 <div class="textblock"><p><br />
  </p>
 <h1><a class="anchor" id="casesensitivity"></a>
-Case Sensitivity</h1>
+Case Sensitivity&nbsp;&nbsp;<small><a href="#casesensitivity">&lt;-</a></small></h1>
 <p>All Ultra Messaging scope, option, and value strings are case-insensitive. Thus, the following are identical:</p>
 <pre class="fragment">context fd_management_type wincompport
 Context Fd_Management_Type WinCompPort
@@ -65,7 +65,7 @@ CONTEXT FD_MANAGEMENT_TYPE WINCOMPPORT
 </pre><p><br />
  </p>
 <h1><a class="anchor" id="specifyinginterfaces"></a>
-Specifying Interfaces</h1>
+Specifying Interfaces&nbsp;&nbsp;<small><a href="#specifyinginterfaces">&lt;-</a></small></h1>
 <p>The <b>*_interface</b> options require a network interface, usually supplied as a string (from a configuration file or in source code via <b>*_attr_str_setopt()</b>), the syntax used for network interface specifications is <a href="https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#CIDR_notation">CIDR notation</a>:</p>
 <p><em><b>a.b.c.d/num</b></em></p>
 <p>where '<em><b>num</b></em>' is the optional number of leading 1 bits in the netmask. If the '<em><b>/num</b></em>' is omitted, it defaults to 32 (netmask 255.255.255.255), which means that it must be an exact match for the interface's IP address. However, if '<em><b>/num</b></em>' is supplied, it tells Ultra Messaging to find an interface within that network. This makes it easier to share a configuration file between many (possibly multi-homed) machines on the same network.</p>
@@ -79,7 +79,7 @@ Specifying Interfaces</h1>
 <p><br />
  </p>
 <h2><a class="anchor" id="interfacedevicenamesandxml"></a>
-Interface Device Names and XML</h2>
+Interface Device Names and XML&nbsp;&nbsp;<small><a href="#interfacedevicenamesandxml">&lt;-</a></small></h2>
 <p>As mentioned above, when a device name is supplied as an interface specification, the device name must be enclosed in double quotes. This presents a problem when the configuration option is specified within an XML file. In XML files, the values for all options must be enclosed in double quotes, but those quotes are only used by the XML parser to delimit the value. The quote characters themselves are not passed to the UM configuration parser. But the UM configuration parser needs the double quotes to indicate that the device name is being used.</p>
 <p>The solution is to use the "&amp;quot;" escape when specifying device names for interfaces within an XML file. The XML parser will convert those to actual double quote characters as part of the value passed to UM.</p>
 <p>For example: </p><pre class="fragment">&lt;options type="context"&gt;
@@ -95,7 +95,7 @@ Interface Device Names and XML</h2>
 <p><br />
  </p>
 <h1><a class="anchor" id="socketbuffersizes"></a>
-Socket Buffer Sizes</h1>
+Socket Buffer Sizes&nbsp;&nbsp;<small><a href="#socketbuffersizes">&lt;-</a></small></h1>
 <p>When specifying send or receive socket buffer sizes, keep the following platform-specific information in mind.</p>
 <dl class="section user"><dt><b>Linux</b> </dt><dd>The kernel value net.core.rmem_max dictates the highest value allowed for a receive socket. The kernel value net.core.wmem_max dictates the highest value allowed for a sending socket. Increase these values to increase the amount of buffering allowed.</dd></dl>
 <dl class="section user"><dt><b>Windows</b> </dt><dd>Windows should allow socket buffer sizes to be set very high if needed without requiring registry changes.</dd></dl>
@@ -103,19 +103,19 @@ Socket Buffer Sizes</h1>
 <p><br />
  </p>
 <h1><a class="anchor" id="portassignments"></a>
-Port Assignments</h1>
+Port Assignments&nbsp;&nbsp;<small><a href="#portassignments">&lt;-</a></small></h1>
 <p>There are a large number of configuration options which are network port numbers. In many cases, ranges of ports are specified so that multiple instances of UM-based programs can be run on the same machine without interference. Each instance will find a free port in the configured range. However, if the range is not large enough, an instance of UM can fail to initialize due to ports not being available.</p>
 <p>Port range exhaustion can also happen if other software packages assign to ports in the range configured for UM. Users should be careful to configure all their networking packages to use non-overlapping port numbers.</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="ephemeralports"></a>
-Ephemeral Ports</h2>
+Ephemeral Ports&nbsp;&nbsp;<small><a href="#ephemeralports">&lt;-</a></small></h2>
 <p>The operating system allocates a range of ports for <em>ephemeral</em> ports. These ports are allocated dynamically as-needed by networking packages, including UM, for sockets that don't need a well-known, predictable port number. See Wikipedia's article <a href="https://en.wikipedia.org/wiki/Ephemeral_port#Range">Ephemeral port</a> for ephemeral port ranges used by popular operating systems.</p>
 <p>UM port configurations should avoid the host's ephemeral port range. Since these ports are allocated dynamically by the operating system, these allocations can interfere with UM by exhausting UM port ranges.</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="networkvshostorder"></a>
-Network VS Host Order</h2>
+Network VS Host Order&nbsp;&nbsp;<small><a href="#networkvshostorder">&lt;-</a></small></h2>
 <p>When the UM C API is used to set configuration options programmatically, port numbers can be specified as a string or as a binary value. For example, here is an option being set by binary value:</p>
 <pre class="fragment">unsigned short int optval = 4901;  /* host byte order required */
 size_t optlen = sizeof(optval);
@@ -133,7 +133,7 @@ rc = lbm_source_attr_setopt(attrib, "transport_tcp_port", &amp;optval, optlen);
 <p><br />
  </p>
 <h1><a class="anchor" id="referenceentryformat"></a>
-Reference Entry Format</h1>
+Reference Entry Format&nbsp;&nbsp;<small><a href="#referenceentryformat">&lt;-</a></small></h1>
 <p>This section describes the format of each option reference entry.</p>
 <p>Each entry begins with a brief description of the option. Following the description is a series of items that defines permissible usage and describes the values for the option.</p>
 <dl class="section user"><dt><b>Scope</b> </dt><dd>Defines the scope to which the option applies.</dd></dl>

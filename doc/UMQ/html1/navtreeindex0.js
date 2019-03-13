@@ -87,6 +87,7 @@ var NAVTREEINDEX0 =
 "index.html#startingasinglenodequeuingsystem":[1,2],
 "index.html#thebroker":[2,3],
 "index.html#totalmessagelifetimesforultraloadbalancing":[6,4],
+"index.html#ulbperformance":[6,1,0],
 "index.html#ultraloadbalancingflightsize":[6,2],
 "index.html#ultraloadbalancingulb":[6],
 "index.html#umqarchitecture":[0,1],

@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">UM C API
-   &#160;<span id="projectnumber">6.11.1</span>
+   &#160;<span id="projectnumber">6.12</span>
    </div>
   </td>
  </tr>
@@ -73,7 +73,7 @@ $(document).ready(function(){initNavTree('structlbm__src__send__ex__info__t__stc
 </div><!--header-->
 <div class="contents">
 
-<p>Structure that holds information for the extended send calls A structure used with UM sources that utilize the extended send calls to pass options.  
+<p>Structure that holds information for the extended send calls.  
  <a href="structlbm__src__send__ex__info__t__stct.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="lbm_8h_source.html">lbm.h</a>&gt;</code></p>
@@ -100,8 +100,9 @@ Data Fields</h2></td></tr>
 <tr class="separator:a5eda719e0b45a8efa9c6daceb25866e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Structure that holds information for the extended send calls A structure used with UM sources that utilize the extended send calls to pass options. </p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="lbm_8h.html#a091b5806bf18d10ebd0d9117e0c70229">lbm_src_send_ex</a> </dd></dl>
+<div class="textblock"><p>Structure that holds information for the extended send calls. </p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="lbm_8h.html#a091b5806bf18d10ebd0d9117e0c70229">lbm_src_send_ex</a></dd></dl>
+<p>See <a class="el" href="structlbm__src__send__ex__info__t__stct.html">lbm_src_send_ex_info_t_stct</a> for field definitions. </p>
 </div><h2 class="groupheader">Field Documentation</h2>
 <a class="anchor" id="ab5d177886b035d3cbbb730c522bee207"></a>
 <div class="memitem">
@@ -112,7 +113,7 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>pointer to information used to send messages using app header chains </p>
+<p>pointer to information used to send messages using app header chains. Set <a class="el" href="lbm_8h.html#a71368905028cc0d6480c239a0228b49c">LBM_SRC_SEND_EX_FLAG_APPHDR_CHAIN</a> in flags. </p>
 
 </div>
 </div>
@@ -125,7 +126,7 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>pointer to an asynchronous operation callback </p>
+<p>Deprecated, not used. </p>
 
 </div>
 </div>
@@ -138,7 +139,7 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>pointer to information used to send messages on a channel </p>
+<p>pointer to information used to send messages on a channel. Set <a class="el" href="lbm_8h.html#a148ccd9217cfe34e171c81c241f5375c">LBM_SRC_SEND_EX_FLAG_CHANNEL</a> in flags. </p>
 
 </div>
 </div>
@@ -151,7 +152,7 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Flags that set which settings are active as defined by "LBM_SRC_SEND_EX_*". Search <a class="el" href="lbm_8h.html" title="Ultra Messaging (UM) Core API. ">lbm.h</a> for LBM_SRC_SEND_EX_FLAG_*. </p>
+<p>Bitmap indicating which of other fields in the structure are used. Zero or more flag bits ORed together: LBM_SRC_SEND_EX_FLAG_* (i.e. <a class="el" href="lbm_8h.html#a781e689ed6e1178938dc0b2e2bfabc06">LBM_SRC_SEND_EX_FLAG_UME_CLIENTD</a>, <a class="el" href="lbm_8h.html#ab5e0248995820580913a90b05ebd56ca">LBM_SRC_SEND_EX_FLAG_UMQ_CLIENTD</a>, <a class="el" href="lbm_8h.html#ab99586b3f3b469aa6f2e2da632fa5be0">LBM_SRC_SEND_EX_FLAG_SEQUENCE_NUMBER_INFO</a>, <a class="el" href="lbm_8h.html#ae2b7b029ca6a3fcfc2cd67d809930a95">LBM_SRC_SEND_EX_FLAG_SEQUENCE_NUMBER_INFO_FRAGONLY</a>, <a class="el" href="lbm_8h.html#a71368905028cc0d6480c239a0228b49c">LBM_SRC_SEND_EX_FLAG_APPHDR_CHAIN</a>, <a class="el" href="lbm_8h.html#a3dced1476af472b3d4256a3d51683c4d">LBM_SRC_SEND_EX_FLAG_UMQ_MESSAGE_ID_INFO</a>, <a class="el" href="lbm_8h.html#a148ccd9217cfe34e171c81c241f5375c">LBM_SRC_SEND_EX_FLAG_CHANNEL</a>, <a class="el" href="lbm_8h.html#a01992618e0edcf2ca8aea4bc607c9d1e">LBM_SRC_SEND_EX_FLAG_UMQ_INDEX</a>, <a class="el" href="lbm_8h.html#aa04727ba812d6da49d6a4af74f0aac6f">LBM_SRC_SEND_EX_FLAG_UMQ_TOTAL_LIFETIME</a>, <a class="el" href="lbm_8h.html#a5bf62d916b1acee97156dc8077ac3584">LBM_SRC_SEND_EX_FLAG_HF_OPTIONAL</a>, <a class="el" href="lbm_8h.html#a169eb19b58d383875b718117b2def6e5">LBM_SRC_SEND_EX_FLAG_PROPERTIES</a>, <a class="el" href="lbm_8h.html#a8fa0f4ed620fb82d08eec3f47db187be">LBM_SRC_SEND_EX_FLAG_HF_32</a>, <a class="el" href="lbm_8h.html#ac8dc3937fb55c66c86180c0ce2285318">LBM_SRC_SEND_EX_FLAG_HF_64</a>) </p>
 
 </div>
 </div>
@@ -164,7 +165,7 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>The hot failover sequence number to send </p>
+<p>The hot failover sequence number to send. Only valid for hot failover extended send API, like <a class="el" href="lbm_8h.html#ac515c1425d9b3f04f1e2cea5d66d3005" title="Send a Hot Failover (HF) message to the topic associated with a UM source. See https://communities.informatica.com/infakb/faq/5/Pages/80060.aspx for details and restrictions. ">lbm_hf_src_send_ex()</a>. Set <a class="el" href="lbm_8h.html#a8fa0f4ed620fb82d08eec3f47db187be">LBM_SRC_SEND_EX_FLAG_HF_32</a> or <a class="el" href="lbm_8h.html#ac8dc3937fb55c66c86180c0ce2285318">LBM_SRC_SEND_EX_FLAG_HF_64</a> in flags. </p>
 
 </div>
 </div>
@@ -177,7 +178,7 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>pointer to a message properties structure </p>
+<p>pointer to a message properties structure. See <a class="el" href="lbm_8h.html#abda1a4224f1c3e94b10b74051be3dd53" title="Creates a new properties object, used for sending messages with properties. Send a message with prope...">lbm_msg_properties_create()</a>. Set <a class="el" href="lbm_8h.html#a169eb19b58d383875b718117b2def6e5">LBM_SRC_SEND_EX_FLAG_PROPERTIES</a> in flags. </p>
 
 </div>
 </div>
@@ -190,7 +191,7 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>client data pointer to be passed back in source events for stability and confirmations </p>
+<p>client data pointer to be passed back in source events for stability and confirmations. Set <a class="el" href="lbm_8h.html#a781e689ed6e1178938dc0b2e2bfabc06">LBM_SRC_SEND_EX_FLAG_UME_CLIENTD</a> in flags. </p>
 
 </div>
 </div>
@@ -203,7 +204,7 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>pointer to information used to send messages and associate them with a given UMQ index </p>
+<p>pointer to information used to send messages and associate them with a given UMQ index. Set <a class="el" href="lbm_8h.html#a01992618e0edcf2ca8aea4bc607c9d1e">LBM_SRC_SEND_EX_FLAG_UMQ_INDEX</a> in flags. </p>
 
 </div>
 </div>
@@ -216,7 +217,7 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>pointer to information used to specify a message's total lifetime </p>
+<p>pointer to information used to specify a message's total lifetime. When supplied, this information overrides the configuration option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/API/config.tag:../Config/" href="../Config/grpdeprecated.html#umqmsgtotallifetimecontext">umq_msg_total_lifetime (context)</a>. Set <a class="el" href="lbm_8h.html#aa04727ba812d6da49d6a4af74f0aac6f">LBM_SRC_SEND_EX_FLAG_UMQ_TOTAL_LIFETIME</a> in flags. </p>
 
 </div>
 </div>

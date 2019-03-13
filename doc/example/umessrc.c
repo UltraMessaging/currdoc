@@ -1,5 +1,5 @@
 /*
-  Copyright (c) 2005-2018 Informatica Corporation  Permission is granted to licensees to use
+  Copyright (c) 2005-2019 Informatica Corporation  Permission is granted to licensees to use
   or alter this software for any purpose, including commercial applications,
   according to the terms laid out in the Software License Agreement.
 
@@ -36,6 +36,7 @@
 	#include <ws2tcpip.h>
 	#include <sys/timeb.h>
 	#define strcasecmp stricmp
+	#define snprintf _snprintf
 #else
 	#include <unistd.h>
 	#include <netinet/in.h>
@@ -61,6 +62,7 @@
 #define DEFAULT_MSGS_PER_SEC 0
 #define DEFAULT_FLIGHT_SZ -1	
 #define DEFAULT_DELAY_B4CLOSE 5
+#define MAX_MESSAGE_PROPERTIES_INTEGER_COUNT 16		/* SSRC_MAX_MSG_PROP_INT_CNT */
 
 /* Application Level Counters */
 unsigned long appsent,stablerecv;
@@ -90,30 +92,34 @@ const char purpose[] = "Purpose: "
 ;
 
 const char usage[] =
-	"Usage: umessrc [options] topic\n"
-	"Available options:\n"
-"  -c, --config=FILE         use LBM configuration file FILE\n"
-"  -d, --delay=NUM           delay sending for NUM seconds after smart source creation\n"
-"  -D, --deregister			 deregister the smart source after sending messages\n"
-"  -h, --help                display this help and exit\n"
-"  -j, --late-join           turn on UME late join\n"
-"  -f, --flight-size=NUM     allow NUM unstabilized messages in flight (determines message rate)\n"
-"  -l, --length=NUM          send messages of NUM bytes\n"
-"  -L, --linger=NUM          linger for NUM seconds before closing context\n"
-"  -M, --messages=NUM        send NUM messages\n"
-"  -m, --message-rate=NUM    send at NUM messages per second if allowed by the flight size setting\n"
-"  -N, --seqnum-info         display sequence number information from smart source events\n"
-"  -n, --non-block           use non-blocking I/O\n"
-"  -P, --pause=NUM           pause NUM milliseconds after each send\n"
-"  -s, --statistics=NUM      print statistics every NUM seconds\n"
-"  -S, --store=IP            use specified UME store\n"
-"  -t, --storename=NAME      use specified UME store\n"
-"  -v, --verbose             print additional info in verbose form\n"
-"  -V, --verifiable          construct verifiable messages\n"
+"Usage: umessrc [options] topic\n"
+"Available options:\n"
+"  -a, --available-data-space  print the length of available data space\n"
+"  -b, --user-supplied-buffer  send messages using a user-supplied buffer\n"
+"  -c, --config=FILE           use LBM configuration file FILE\n"
+"  -d, --delay=NUM             delay sending for NUM seconds after smart source creation\n"
+"  -D, --deregister			   deregister the smart source after sending messages\n"
+"  -h, --help                  display this help and exit\n"
+"  -i, --int-mprop=VAL,KEY     send integer message property value VAL with name KEY\n"
+"  -j, --late-join             turn on UME late join\n"
+"  -f, --flight-size=NUM       allow NUM unstabilized messages in flight (determines message rate)\n"
+"  -l, --length=NUM            send messages of NUM bytes\n"
+"  -L, --linger=NUM            linger for NUM seconds before closing context\n"
+"  -M, --messages=NUM          send NUM messages\n"
+"  -m, --message-rate=NUM      send at NUM messages per second if allowed by the flight size setting\n"
+"  -N, --channel=NUM           send on channel NUM\n"
+"  -n, --non-block             use non-blocking I/O\n"
+"  -P, --pause=NUM             pause NUM milliseconds after each send\n"
+"  -Q, --seqnum-info           display sequence number information from smart source events\n"
+"  -s, --statistics=NUM        print statistics every NUM seconds\n"
+"  -S, --store=IP              use specified UME store\n"
+"  -t, --storename=NAME        use specified UME store\n"
+"  -v, --verbose               print additional info in verbose form\n"
+"  -V, --verifiable            construct verifiable messages\n"
 MONOPTS_SENDER
 MONMODULEOPTS_SENDER;
 
-const char * OptionString = "c:d:Df:hjL:l:M:m:NP:s:S:t:vV";
+const char * OptionString = "abc:d:Df:hi:jL:l:M:m:N:P:Qs:S:t:vV";
 #define OPTION_MONITOR_SRC 0
 #define OPTION_MONITOR_CTX 1
 #define OPTION_MONITOR_TRANSPORT 2
@@ -123,21 +129,25 @@ const char * OptionString = "c:d:Df:hjL:l:M:m:NP:s:S:t:vV";
 #define OPTION_MONITOR_APPID 6
 const struct option OptionTable[] =
 {
+	{ "available-data-space", no_argument, NULL, 'a' }, 
+	{ "channel", required_argument, NULL, 'N' },
 	{ "config", required_argument, NULL, 'c' },
 	{ "delay", required_argument, NULL, 'd' },
 	{ "deregister", no_argument, NULL, 'D' },
 	{ "flight-size", required_argument, NULL, 'f' },
 	{ "help", no_argument, NULL, 'h' },
+	{ "int-mprop", required_argument, NULL, 'i' },
 	{ "late-join", no_argument, NULL, 'j' },
 	{ "length", required_argument, NULL, 'l' },
 	{ "linger", required_argument, NULL, 'L' },
 	{ "message-rate", required_argument, NULL, 'm' },
 	{ "messages", required_argument, NULL, 'M' },
 	{ "pause", required_argument, NULL, 'P' },
-	{ "seqnum-info", no_argument, NULL, 'N' },
+	{ "seqnum-info", no_argument, NULL, 'Q' },
 	{ "statistics", required_argument, NULL, 's' },
 	{ "store", required_argument, NULL, 'S' },
 	{ "storename", required_argument, NULL, 't' },
+	{ "user-supplied-buffer", no_argument, NULL, 'b' }, 
 	{ "verbose", no_argument, NULL, 'v' },
 	{ "verifiable", no_argument, NULL, 'V' },
 	{ "monitor-src", required_argument, NULL, OPTION_MONITOR_SRC },
@@ -183,6 +193,12 @@ struct Options {
 	int store_behavior; 				/* UME store behavior - set in config file */
 	char storename[256]; 				/* The store name */
 	int deregister;
+	long channel_number;				/* The channel (sub-topic) number to use */
+	char mprop_int_keys[16][1024];		/* message property integer keys */
+	lbm_int32_t mprop_int_vals[16];		/* message property integer values */
+	int mprop_int_cnt;					/* message property integer count */
+	int user_supplied_buffer;			/* send messages with a user supplied buffer */
+	int available_data_space;			/* print the length of available data space */
 } options;
 
 int blocked = 0;
@@ -736,6 +752,7 @@ void process_cmdline(int argc, char **argv,struct Options *opts)
 	opts->msglen = MIN_ALLOC_MSGLEN;
 	opts->msgs = DEFAULT_MAX_MESSAGES;
 	opts->msgs_per_sec = DEFAULT_MSGS_PER_SEC;
+	opts->channel_number = -1;
 	opts->conffname[0] = '\0';
 	opts->storeip[0] = '\0';
 	opts->storeport[0] = '\0';
@@ -745,12 +762,21 @@ void process_cmdline(int argc, char **argv,struct Options *opts)
 	opts->transport = (lbmmon_transport_func_t *) lbmmon_transport_lbm_module();
 	opts->format = (lbmmon_format_func_t *) lbmmon_format_csv_module();
 	opts->deregister = 0;
+	opts->mprop_int_cnt = 0;
+	opts->user_supplied_buffer = 0;
+	opts->available_data_space = 0;
 
 	/* Process the command line options, setting local variables with values */
 	while ((c = getopt_long(argc, argv, OptionString, OptionTable, NULL)) != EOF)
 	{
 		switch (c)
 		{
+			case 'a':
+				opts->available_data_space = 1;
+				break;
+			case 'b':
+				opts->user_supplied_buffer = 1;
+				break;
 			case 'c':
 				strncpy(opts->conffname, optarg, sizeof(opts->conffname));
 				break;
@@ -763,6 +789,21 @@ void process_cmdline(int argc, char **argv,struct Options *opts)
 			case 'f':
 				opts->flightsz = atoi(optarg);
 				break;
+			case 'i':
+				{
+					int rc;
+					if (opts->mprop_int_cnt >= MAX_MESSAGE_PROPERTIES_INTEGER_COUNT) {
+						fprintf(stderr, "Max number of integer properties exceeded\n");
+						exit(1);
+					}
+					rc = sscanf(optarg, "%d,%s", &opts->mprop_int_vals[opts->mprop_int_cnt], &opts->mprop_int_keys[opts->mprop_int_cnt][0]);
+					if (rc != 2) {
+						fprintf(stderr, "Failed to parse int-mprop: %s\n", optarg);
+						exit(1);
+					}
+					opts->mprop_int_cnt++;
+				}
+			break;
 			case 'l':
 				opts->msglen = atoi(optarg);
 				break;
@@ -776,7 +817,7 @@ void process_cmdline(int argc, char **argv,struct Options *opts)
 				opts->msgs = atoi(optarg);
 				break;
 			case 'N':
-				opts->seqnum_info = 1;
+				opts->channel_number = atol(optarg);
 				break;
 			case 'h':
 				fprintf(stderr, "%s\n%s\n%s\n%s",
@@ -787,6 +828,9 @@ void process_cmdline(int argc, char **argv,struct Options *opts)
 				break;
 			case 'P':
 				opts->pause_ivl = atoi(optarg);
+				break;
+			case 'Q':
+				opts->seqnum_info = 1;
 				break;
 			case 's':
 				opts->stats_sec = atoi(optarg);
@@ -945,6 +989,7 @@ int main(int argc, char **argv)
 	unsigned long count = 0;
 	int flag_value = 0;
 	char *message = NULL;
+	char *user_supplied_buffer = NULL;
 	int msgs_per_ivl = 1;	/* stores result from calc_rate_vals */
 	size_t optlen = 0;
 	lbmmon_sctl_t * monctl;
@@ -953,6 +998,10 @@ int main(int argc, char **argv)
 	int xflag = 0;
 	int transport;
 	size_t transize = 4;
+	lbm_ssrc_send_ex_info_t exinfo;
+	char *key_ptrs[16];
+	int msg_props = 0;
+	int spectrum = 0;
 
 #ifdef __VOS__
 	set_rr_scheduling(); /* set round-robin scheduling policy for thread */
@@ -1144,6 +1193,69 @@ int main(int argc, char **argv)
 		printf("Not using UME Message Stability Notification.\n");
 	}
 
+	/*  Config | Cmd Line |
+	 * --------|----------| Action
+	 *  MP  SC |  MP  SC  |
+	 * --------|----------|-------------------------------------
+	 *  0   0  |  0   0   | Do Nothing
+	 *  0   0  |  0   1   | Enable SC; Send SC
+	 *  0   0  |  1   0   | Enable MP; Send MP
+	 *  0   0  |  1   1   | Enable SC & MP; Send SC & MP
+	 *  0   1  |  0   0   | Don't send SC
+	 *  0   1  |  0   1   | Send SC
+	 *  0   1  |  1   0   | Error example app: must provide SC #
+	 *  0   1  |  1   1   | Enable MP; Send SC & MP
+	 *  1   0  |  0   0   | Don't send MP
+	 *  1   0  |  0   1   | Error example app: must provide SC #
+	 *  1   0  |  1   0   | Send MP
+	 *  1   0  |  1   1   | Enable SC; Send SC & MP
+	 *  1   1  |  0   0   | Don't send SC or MP
+	 *  1   1  |  0   1   | Error example app: must provide MP(s)
+	 *  1   1  |  1   0   | Error example app: must provide SC #
+	 *  1   1  |  1   1   | Send SC & MP
+	 */
+	{
+		size_t msg_props_size;
+		msg_props_size = sizeof(int);
+		if (lbm_src_topic_attr_getopt(tattr, "smart_src_message_property_int_count", &msg_props, &msg_props_size) == LBM_FAILURE) {
+			fprintf(stderr, "lbm_src_topic_attr_getopt: %s\n", lbm_errmsg());
+			exit(1);
+		}
+	}
+	{
+		size_t spectrum_size;
+		spectrum_size = sizeof(int);
+		if (lbm_src_topic_attr_getopt(tattr, "smart_src_enable_spectrum_channel", &spectrum, &spectrum_size) == LBM_FAILURE) {
+			fprintf(stderr, "lbm_src_topic_attr_getopt: %s\n", lbm_errmsg());
+			exit(1);
+		}
+	}
+	if (opts->mprop_int_cnt > 0) {
+		if (msg_props < opts->mprop_int_cnt) {	/* Turn on message properties */
+			fprintf(stderr, "WARNING: found Message Properties on the command line but smart_src_message_property_int_count is either not configured or too small; setting config parameter to %d.\n", opts->mprop_int_cnt);
+			if (lbm_src_topic_attr_setopt(tattr, "smart_src_message_property_int_count", &(opts->mprop_int_cnt), sizeof(opts->mprop_int_cnt)) != 0) {
+				fprintf(stderr, "lbm_src_topic_attr_setopt: %s\n", lbm_errmsg());
+				exit(1);
+			}
+		}
+		if (spectrum && (opts->channel_number == -1)) {
+			fprintf(stderr, "ERROR: smart_src_enable_spectrum_channel is configured but Channel Number was not found on the command line. Try again with -N option.\n");
+			exit(1);
+		}
+	}
+	if (opts->channel_number != -1) {
+		if (!spectrum) { /* Turn on spectrum channel */
+			fprintf(stderr, "WARNING: found Channel Number on the command line but smart_src_enable_spectrum_channel is not enabled; setting config parameter to enabled.\n");
+			if (lbm_src_topic_attr_str_setopt(tattr, "smart_src_enable_spectrum_channel", "1") != 0) {
+				fprintf(stderr, "lbm_src_topic_attr_str_setopt: %s\n", lbm_errmsg());
+				exit(1);
+			}
+		}
+		if (msg_props && (opts->mprop_int_cnt == 0)) {
+			fprintf(stderr, "ERROR: smart_src_message_property_int_count is configured but Message Properties were not found on the command line. Try again with -i option.\n");
+			exit(1);
+		}
+	}
 
 	/* Create LBM context (passing in context attributes) */
 	if (lbm_context_create(&ctx, cattr, NULL, NULL) == LBM_FAILURE) {
@@ -1179,6 +1291,14 @@ int main(int argc, char **argv)
 	if (lbm_ssrc_create(&ssrc, ctx, topic, handle_ssrc_event, opts, NULL) == LBM_FAILURE) {
 		fprintf(stderr, "lbm_ssrc_create: %s\n", lbm_errmsg());
 		exit(1);
+	}
+	if (opts->available_data_space) {
+		int length = 0;
+		if (lbm_ssrc_get_available_data_space(ssrc, &length) == LBM_FAILURE) {
+			fprintf(stderr, "lbm_ssrc_get_available_data_space: %s\n", lbm_errmsg());
+			exit(1);
+		}
+		printf("The length of available data space: %d.\n", length);
 	}
 	/* If statistics were requested, set up an LBM timer to dump the statistics */
 	if (opts->stats_sec > 0) {
@@ -1236,6 +1356,37 @@ int main(int argc, char **argv)
 		printf("Delaying for %d second%s\n", opts->delay, ((opts->delay > 1) ? "s" : ""));
 		SLEEP_SEC(opts->delay);
 	}
+
+	exinfo.flags = 0;
+	if (opts->channel_number >= 0) {
+		printf("Sending on channel %ld\n", opts->channel_number);
+		exinfo.flags = LBM_SSRC_SEND_EX_FLAG_CHANNEL;
+		exinfo.channel = opts->channel_number;
+	}
+
+	if (opts->mprop_int_cnt > 0) {
+		int i;
+		printf("Sending integer message properties:\n");
+		for (i = 0; i < opts->mprop_int_cnt; ++i) {
+			printf("\tproperty #%d: %s = %d\n", i + 1, opts->mprop_int_keys[i], opts->mprop_int_vals[i]);
+			key_ptrs[i] = opts->mprop_int_keys[i];
+		}
+		exinfo.flags |= LBM_SSRC_SEND_EX_FLAG_PROPERTIES;
+		exinfo.mprop_int_cnt = opts->mprop_int_cnt;
+		exinfo.mprop_int_keys = key_ptrs;
+		exinfo.mprop_int_vals = opts->mprop_int_vals;
+	}
+
+	if (opts->user_supplied_buffer) {
+		exinfo.flags |= LBM_SSRC_SEND_EX_FLAG_USER_SUPPLIED_BUFFER;
+		if (opts->msglen > 0) {
+			user_supplied_buffer = (char *)malloc(opts->msglen);
+			memset(user_supplied_buffer, 0, opts->msglen);
+			exinfo.usr_supplied_buffer = user_supplied_buffer;
+			snprintf(user_supplied_buffer, opts->msglen, "User supplied buffer message... ");
+		}
+	}
+
 	printf("Sending %u messages of size %lu bytes to topic [%s]\n",
 		opts->msgs, (unsigned long) opts->msglen, opts->topic);
 	fflush(stdout);
@@ -1248,11 +1399,10 @@ int main(int argc, char **argv)
 	}
 
 	for (count = 0; count < opts->msgs; ) {
-		lbm_ssrc_send_ex_info_t exinfo;
 
 		for (i = 0; i < msgs_per_ivl; i++)
 		{
-			exinfo.flags = LBM_SRC_SEND_EX_FLAG_UME_CLIENTD;
+			exinfo.flags |= LBM_SRC_SEND_EX_FLAG_UME_CLIENTD;
 			if (opts->verifiable_msgs) {
 				construct_verifiable_msg(message, opts->msglen);
 			} else {
@@ -1382,8 +1532,12 @@ int main(int argc, char **argv)
 		}
 	}
 
-	printf("Deleting smart source\n");
+	if (opts->user_supplied_buffer && (opts->msglen > 0)) {
+		free(user_supplied_buffer);
+	}
+
 	/* Deallocate smart source and LBM context */
+	printf("Deleting smart source\n");
 	lbm_ssrc_delete(ssrc);
 	ssrc = NULL;
 

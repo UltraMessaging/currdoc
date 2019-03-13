@@ -2,7 +2,7 @@
 use strict;
 # lbmmondiag.pl: Interpret and print LBM monitoring statistics, assigning severity estimates to those of diagnostic interest
 #
-# Copyright (c) 2009-2017 Informatica Corporation  Permission is granted to licensees to use
+# Copyright (c) 2009-2019 Informatica Corporation  Permission is granted to licensees to use
 # or alter this software for any purpose, including commercial applications,
 # according to the terms laid out in the Software License Agreement.
 #

@@ -1,5 +1,5 @@
 /*
-  Copyright (c) 2005-2018 Informatica Corporation  Permission is granted to licensees to use
+  Copyright (c) 2005-2019 Informatica Corporation  Permission is granted to licensees to use
   or alter this software for any purpose, including commercial applications,
   according to the terms laid out in the Software License Agreement.
 
@@ -1122,18 +1122,24 @@ static void lbmmrcv_dump(const char *buffer, int size)
 
 		if ( cs_idx + 1 >= size )
 		{
-			if ( cs_idx%16 <= ROW_MID_POINT )
+			if ( cs_idx%16 <= ROW_MID_POINT ) {
 				printf("  " );
+			}
         	printf(" ");
-	        for ( blk_idx = cs_idx%16; blk_idx < 16; blk_idx++ )
+	        for ( blk_idx = cs_idx%16; blk_idx < 16; blk_idx++ ) {
 		        printf( "   " );
+			}
+
 			printf("%s\n", textver );
 			break;
 		}
-		else if ( cs_idx%16 == ROW_MID_POINT )
+		else if ( cs_idx%16 == ROW_MID_POINT ) {
 			printf("  " );
-		else if ( cs_idx%16 == END_OF_ROW )
+		}
+		else if ( cs_idx%16 == END_OF_ROW ) {
 			printf( "    %s\n", textver );
+		}
+
 		cs_idx++;
 	}
 }

@@ -15,7 +15,8 @@ var NAVTREE =
         [ "Interest and Use Queries", "umrouterconcepts.html#interestandusequeries", null ],
         [ "UM Router Keepalive", "umrouterconcepts.html#umrouterkeepalive", null ],
         [ "Final Advertisements", "umrouterconcepts.html#finaladvertisements", null ],
-        [ "More About Proxy Sources and Receivers", "umrouterconcepts.html#moreaboutproxysourcesandreceivers", null ]
+        [ "More About Proxy Sources and Receivers", "umrouterconcepts.html#moreaboutproxysourcesandreceivers", null ],
+        [ "Protocol Conversion", "umrouterconcepts.html#protocolconversion", null ]
       ] ],
       [ "Multi-Hop Forwarding", "umrouterconcepts.html#multihopforwarding", null ],
       [ "Routing Wildcard Receivers", "umrouterconcepts.html#routingwildcardreceivers", null ],
@@ -48,7 +49,8 @@ var NAVTREE =
         [ "Persistence Over the UM Router", "umrouterimplementation.html#persistenceovertheumrouter", null ],
         [ "Late Join and Off-Transport Recovery", "umrouterimplementation.html#latejoinandofftransportrecovery", null ],
         [ "Topic Resolution Reliability", "umrouterimplementation.html#topicresolutionreliability", null ],
-        [ "BOS and EOS Behavior Over the UM Router", "umrouterimplementation.html#bosandeosbehaviorovertheumrouter", null ]
+        [ "BOS and EOS Behavior Over the UM Router", "umrouterimplementation.html#bosandeosbehaviorovertheumrouter", null ],
+        [ "UM Router Reliable Loss", "umrouterimplementation.html#umrouterreliableloss", null ]
       ] ],
       [ "Topology Configuration Examples", "umrouterimplementation.html#topologyconfigurationexamples", [
         [ "Direct Link Configuration", "umrouterimplementation.html#directlinkconfiguration", null ],
@@ -66,9 +68,11 @@ var NAVTREE =
         [ "XML UM Configuration File", "umrouterimplementation.html#xmlumconfigurationfile", null ],
         [ "XML UM Router Configuration File", "umrouterimplementation.html#xmlumrouterconfigurationfile", null ]
       ] ],
-      [ "Running the UM Router Daemon", "umrouterimplementation.html#runningtheumrouterdaemon", [
-        [ "tnwgd", "umrouterimplementation.html#tnwgd", null ]
-      ] ]
+      [ "Running the UM Router Daemon", "umrouterimplementation.html#runningtheumrouterdaemon", null ]
+    ] ],
+    [ "Man Pages for UM Router", "manpagesforumrouter.html", [
+      [ "Tnwgd Man Page", "manpagesforumrouter.html#tnwgdmanpage", null ],
+      [ "Tnwgds Man Page", "manpagesforumrouter.html#tnwgdsmanpage", null ]
     ] ],
     [ "XML Configuration Reference", "xmlconfigurationreference.html", [
       [ "File Structure", "xmlconfigurationreference.html#filestructure", null ],
@@ -184,7 +188,7 @@ var NAVTREE =
       [ "UM Router Daemon Statistics Requests", "umrouterdaemonstatistics.html#umrouterdaemonstatisticsrequests", null ]
     ] ],
     [ "UM Router Monitoring", "umroutermonitoring.html", [
-      [ "Router Web Monitor", "umroutermonitoring.html#UM", [
+      [ "UM Router Web Monitor", "umroutermonitoring.html#umrouterwebmonitor", [
         [ "Main Page", "umroutermonitoring.html#mainpage", null ],
         [ "Endpoint Portal Page", "umroutermonitoring.html#endpointportalpage", null ],
         [ "Peer Portal Page", "umroutermonitoring.html#peerportalpage", null ],

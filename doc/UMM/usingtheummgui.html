@@ -59,7 +59,7 @@ $(document).ready(function(){initNavTree('usingtheummgui.html','');});
 <p><br />
  </p>
 <h1><a class="anchor" id="usingummwithaumapplication"></a>
-Using UMM With a UM Application</h1>
+Using UMM With a UM Application&nbsp;&nbsp;<small><a href="#usingummwithaumapplication">&lt;-</a></small></h1>
 <p>The following procedure describes a general approach to using UMM to serve license and configuration values to your applications. This procedure contains general guidelines for configuring UM for the application SENDAPP.</p>
 <ul>
 <li>
@@ -106,7 +106,7 @@ Start SENDAPP. </li>
 <p><br />
  </p>
 <h1><a class="anchor" id="ummmenus"></a>
-UMM Menus</h1>
+UMM Menus&nbsp;&nbsp;<small><a href="#ummmenus">&lt;-</a></small></h1>
 <p>The following table explains the UMM menu selections:</p>
 <table class="doxtable">
 <tr>
@@ -130,7 +130,7 @@ UMM Menus</h1>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>File </td><td>Save To File </td><td><p class="starttd">Save the Application, Template or User record to an XML file instead of the database. This selection allows you to use the UMM GUI to configure applications but not use UMM Daemon when running your applications. After saving an application's configuration to a file, you can use the <code>LBM_XML_CONFIG_FILENAME</code> and <code>LBM_XML_CONFIG_APPNAME</code> environment variables to enable the XML configuration file. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UMM/config.tag:../Config/" href="../Config/index.html#usingxmlconfigurationfileswithaumapplication">Using XML Configuration Files With a UM Application</a>.</p>
+<td>File </td><td>Save To File </td><td><p class="starttd">Save the Application, Template or User record to an XML file instead of the database. This selection allows you to use the UMM GUI to configure applications but not use UMM Daemon when running your applications. After saving an application's configuration to a file, you can use the <code>LBM_XML_CONFIG_FILENAME</code> and <code>LBM_XML_CONFIG_APPNAME</code> environment variables to enable the XML configuration file. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMM/config.tag:../Config/" href="../Config/index.html#usingxmlconfigurationfileswithaumapplication">Using XML Configuration Files With a UM Application</a>.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
@@ -147,7 +147,7 @@ UMM Menus</h1>
 <p><br />
  </p>
 <h1><a class="anchor" id="creatingconfigurationtemplates"></a>
-Creating Configuration Templates</h1>
+Creating Configuration Templates&nbsp;&nbsp;<small><a href="#creatingconfigurationtemplates">&lt;-</a></small></h1>
 <p>You can define option templates that can be applied in application configurations. Multiple templates can be applied to any primitive UM object or application. Templates can be applied to most tags including '<code>&lt;application&gt;</code>', '<code>&lt;contexts&gt;</code>', '<code>&lt;context&gt;</code>', '<code>&lt;sources&gt;</code>', '<code>&lt;receivers&gt;</code>', '<code>&lt;topic&gt;</code>', and '<code>&lt;wildcard-receivers&gt;</code>'.</p>
 <ol>
 <li>
@@ -213,7 +213,7 @@ Right click on the object name in the left pane or click on the File Menu. Then 
 <p><br />
  </p>
 <h1><a class="anchor" id="usingtheorderattribute"></a>
-Using the Order Attribute</h1>
+Using the Order Attribute&nbsp;&nbsp;<small><a href="#usingtheorderattribute">&lt;-</a></small></h1>
 <p>Any option used in a template or directly configured for an application has an order attribute expressed with two values in one of two sequences: </p><pre class="fragment">&lt;option default-value="tcp" name="transport" order="deny,allow"&gt;
 </pre><p> or </p><pre class="fragment">&lt;option default-value="tcp" name="transport" order="allow,deny"&gt;
 </pre><p>The order attribute allows you to permit or restrict more than one value for the option. The order, allow,deny essentially means "allow what you specify,
@@ -221,7 +221,7 @@ deny everything else." The order, deny, allow means "deny what you specify, allo
 <p><br />
  </p>
 <h2><a class="anchor" id="usingthedenyalloworder"></a>
-Using the Deny,Allow Order</h2>
+Using the Deny,Allow Order&nbsp;&nbsp;<small><a href="#usingthedenyalloworder">&lt;-</a></small></h2>
 <p>The example below allows any transport type except for LBT-IPC or LBT-RDMA. </p><pre class="fragment">&lt;option default-value="tcp" name="transport" order="deny,allow"&gt;
     &lt;deny&gt;LBT-IPC&lt;/deny&gt;
     &lt;deny&gt;LBT-RDMA&lt;/deny&gt;
@@ -254,7 +254,7 @@ Using the Deny,Allow Order</h2>
 <p><br />
  </p>
 <h2><a class="anchor" id="usingtheallowdenyorder"></a>
-Using the Allow,Deny Order</h2>
+Using the Allow,Deny Order&nbsp;&nbsp;<small><a href="#usingtheallowdenyorder">&lt;-</a></small></h2>
 <p>You could accomplish the same restriction shown in Using the '<code>Deny,Allow</code>' Order with the next example.</p>
 <pre class="fragment">&lt;option default-value="tcp" name="transport" order="allow,deny"&gt;
     &lt;allow&gt;TCP&lt;/allow&gt;
@@ -298,7 +298,7 @@ Using the Allow,Deny Order</h2>
 <p><br />
  </p>
 <h2><a class="anchor" id="settingpermittedandrestrictedvalues"></a>
-Setting Permitted and Restricted Values</h2>
+Setting Permitted and Restricted Values&nbsp;&nbsp;<small><a href="#settingpermittedandrestrictedvalues">&lt;-</a></small></h2>
 <ol>
 <li>
 <p class="startli">To use the Order attribute for an option, click on the Order field and select either Allow,Deny or Deny,Allow (default).</p>
@@ -338,7 +338,7 @@ Right click on the object name in the left pane or click on the File Menu. Then 
 <p><br />
  </p>
 <h2><a class="anchor" id="optionswithvalueranges"></a>
-Options with Value Ranges</h2>
+Options with Value Ranges&nbsp;&nbsp;<small><a href="#optionswithvalueranges">&lt;-</a></small></h2>
 <p>Some options can specify a range of values. You can specify both allow and deny rules to allow one or more values of a larger range. The next example allows a single multicast address out of a range of otherwise allowable addresses.</p>
 <pre class="fragment">&lt;options&gt;
   &lt;option name="transport_lbtrm_multicast_address" default_value="239.191.10.11" order="deny,allow"&gt;
@@ -350,7 +350,7 @@ Options with Value Ranges</h2>
 <p><br />
  </p>
 <h1><a class="anchor" id="creatingapplicationconfigurations"></a>
-Creating Application Configurations</h1>
+Creating Application Configurations&nbsp;&nbsp;<small><a href="#creatingapplicationconfigurations">&lt;-</a></small></h1>
 <p>You can configure UM Configuration Options for specific applications. You can attach a template or select any number of individual options. Separate applications can have the same options, but with different values. You can also configure an application with multiple contexts or event queues and apply an order attribute to easily vary similar configurations.</p>
 <ol>
 <li>
@@ -469,7 +469,7 @@ Click on the XML View tab to review the actual XML configuration for the applica
 <p><br />
  </p>
 <h2><a class="anchor" id="configuringsources"></a>
-Configuring Sources</h2>
+Configuring Sources&nbsp;&nbsp;<small><a href="#configuringsources">&lt;-</a></small></h2>
 <p>You can configure an individual UM source using a topicname or a topic pattern. Configuring a pattern allows you to easily specify option values for all the topics that match the pattern instead of configuring individual topics (topicname) with the same options and values. (You could also apply a template to the context that has all the source scope option values.) When using a topic pattern, the following rules apply:</p>
 <ul>
 <li>
@@ -543,7 +543,7 @@ Repeat Steps 3-9 for all topics and topic patterns for the context. </li>
 </li>
 </ul>
 <h2><a class="anchor" id="configuringreceivers"></a>
-Configuring Receivers</h2>
+Configuring Receivers&nbsp;&nbsp;<small><a href="#configuringreceivers">&lt;-</a></small></h2>
 <p>Use the following procedure to configure options for an individual UM receiver:</p>
 <ol>
 <li>
@@ -597,7 +597,7 @@ Repeat Steps 3-9 for all receiver topics and topic patterns for the context. </l
 <p><br />
  </p>
 <h2><a class="anchor" id="configuringwildcardreceivers"></a>
-Configuring Wildcard Receivers</h2>
+Configuring Wildcard Receivers&nbsp;&nbsp;<small><a href="#configuringwildcardreceivers">&lt;-</a></small></h2>
 <p>To apply XML configuration to a wildcard receiver, be sure both the pattern and pattern-type match exactly. You may also specify both receiver and wildcard receiver options.</p>
 <p>Use the following procedure to configure options for an individual UM wildcard receiver:</p>
 <ol>
@@ -651,7 +651,7 @@ Repeat Steps 3-9 for all wildcard receiver patterns for the context. </li>
 </ol>
 <p>/n</p>
 <h2><a class="anchor" id="applyingtemplates"></a>
-Applying Templates</h2>
+Applying Templates&nbsp;&nbsp;<small><a href="#applyingtemplates">&lt;-</a></small></h2>
 <p>The Templates dialog box allows you to apply templates to applications or any primitive UM object and also to remove templates or change the order.</p>
 <center>Templates List</center> <div class="image">
 <img src="templates_list_2.png" alt="templates_list_2.png"/>

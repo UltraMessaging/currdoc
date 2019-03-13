@@ -76,7 +76,7 @@ $(document).ready(function(){initNavTree('enablingpersistence.html','');});
 <p><br />
  </p>
 <h1><a class="anchor" id="startingconfiguration"></a>
-Starting Configuration</h1>
+Starting Configuration&nbsp;&nbsp;<small><a href="#startingconfiguration">&lt;-</a></small></h1>
 <p>We begin with the minimal source and receiver used by the QuickStart Guide. To more easily demonstrate the persistence features we are interested in, we have modified the QuickStart source and receiver in the following ways.</p>
 <ul>
 <li>
@@ -100,8 +100,8 @@ Modified the receiver to not exit on unexpected receiver events. </li>
 <p><br />
  </p>
 <h1><a class="anchor" id="addingthestoretoasource"></a>
-Adding the Store to a Source</h1>
-<p>The fundamental component of a persistence solution is the persistent store. To use a store, a source needs to be configured to use one by setting <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umestoresource">ume_store (source)</a> for the source. We can do that with the following piece of code.</p>
+Adding the Store to a Source&nbsp;&nbsp;<small><a href="#addingthestoretoasource">&lt;-</a></small></h1>
+<p>The fundamental component of a persistence solution is the persistent store. To use a store, a source needs to be configured to use one by setting <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umestoresource">ume_store (source)</a> for the source. We can do that with the following piece of code.</p>
 <pre class="fragment">err = lbm_src_topic_attr_str_setopt(&amp;attr, "ume_store", "127.0.0.1:14567");
 </pre><p>This sets the persistent store for the source to the store running at 127.0.0.1 on port 14567.</p>
 <p>Example files for our exercise are: </p><table class="doxtable">
@@ -136,7 +136,7 @@ Start the Source. <br />
 <p><br />
  </p>
 <h1><a class="anchor" id="addingfaultrecoverywithregistrationids"></a>
-Adding Fault Recovery with Registration IDs</h1>
+Adding Fault Recovery with Registration IDs&nbsp;&nbsp;<small><a href="#addingfaultrecoverywithregistrationids">&lt;-</a></small></h1>
 <p>If the source or receiver crashes, how does the source and receiver tell the store that they have restarted and wish to resume where they left off? We need to add in some sort of identifiers to the source and receiver so that the store knows which sources and receivers they are.</p>
 <p>In persistence, these identifiers are called Registration IDs or RegIDs. UM allows the application to control the use of RegIDs as it wishes. This allows applications to migrate sources and receivers not just between systems, but between locations with true, unprecedented freedom. However, UM requires an application to be careful of how it uses RegIDs. Specifically, an application must not use the same RegID for multiple sources and/or receivers at the same time.</p>
 <p>Now let's look at how we can use RegIDs to provide complete fault recovery of sources and receivers. We'll first handle RegIDs in the simplest manner by using static IDs for our source and receiver. For the source, the RegID of 1000 can be added to the existing store specification by changing the string to <code>127.0.0.1:14567:1000</code></p>
@@ -160,18 +160,18 @@ err = lbm_rcv_topic_attr_setopt(&amp;attr, "ume_registration_extended_function",
 <p><br />
  </p>
 <h1><a class="anchor" id="enablingpersistencebetweenthesourceandstore"></a>
-Enabling Persistence Between the Source and Store</h1>
+Enabling Persistence Between the Source and Store&nbsp;&nbsp;<small><a href="#enablingpersistencebetweenthesourceandstore">&lt;-</a></small></h1>
 <p>Let's refine our source to include some desired behavior following a crash. Upon restart, we want our source to resume with the first unsent message. For example, if the source sent 10 messages and crashed, we want our source to resume with the 11th message and continue until it has sent the 20th message.</p>
 <p>Accomplishing this graceful resumption requires us to ensure that our source is the only source that uses the RegID assigned to it. The same RegID should be used as long as the source has not sent the 20th message regardless of any crashes that may occur. The sources and receivers are primarily responsible for managing the RegIDs.</p>
 <p>The following two sections explain the changes needed for the source and receiver, which become fairly easy due to the events that UM delivers to the application during persistence operation.</p>
 <p><br />
  </p>
 <h1><a class="anchor" id="enablingpersistenceinthesource"></a>
-Enabling Persistence in the Source</h1>
+Enabling Persistence in the Source&nbsp;&nbsp;<small><a href="#enablingpersistenceinthesource">&lt;-</a></small></h1>
 <p>With the above mentioned behaviors in mind, let's turn to looking at how they may be implemented with persistence, starting with the source. We can summarize the changes we need by the following list.</p>
 <ol>
 <li>
-At source startup, use any saved RegID information found in the file by setting information in the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umestoresource">ume_store (source)</a> configuration variable. </li>
+At source startup, use any saved RegID information found in the file by setting information in the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umestoresource">ume_store (source)</a> configuration variable. </li>
 <li>
 After the store registration is successful, if a new RegID was assigned to the source, save the RegID to the file. </li>
 <li>
@@ -185,43 +185,43 @@ After message 20 has been sent, delete the saved RegID file. </li>
 <p><br />
  </p>
 <h2><a class="anchor" id="smartsourcesandpersistence"></a>
-Smart Sources and Persistence</h2>
-<p>When using the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UME/design.tag:../Design/" href="../Design/umfeatures.html#smartsources">Smart Sources</a> feature to send persistent messages, there are a few restrictions: </p><ul>
+Smart Sources and Persistence&nbsp;&nbsp;<small><a href="#smartsourcesandpersistence">&lt;-</a></small></h2>
+<p>When using the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UME/design.tag:../Design/" href="../Design/advancedoptimizations.html#smartsources">Smart Sources</a> feature to send persistent messages, there are a few restrictions: </p><ul>
 <li>
 No support for source-side delivery confirmation. Neither of the forms described in <a class="el" href="persistenceconcepts.html#deliveryconfirmationconcept">Delivery Confirmation Concept</a> are allowed. </li>
 <li>
 No support for <a class="el" href="designingpersistenceapplications.html#receiverlivenessdetection">Receiver Liveness Detection</a>. </li>
 <li>
-Application stability notification is only supported per-message. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umemessagestabilitynotificationsource">ume_message_stability_notification (source)</a>. </li>
+Application stability notification is only supported per-message. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umemessagestabilitynotificationsource">ume_message_stability_notification (source)</a>. </li>
 <li>
 The following configuration options have limited or no support with Smart Sources: <ul>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeconfirmeddeliverynotificationsource">ume_confirmed_delivery_notification (source)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeconfirmeddeliverynotificationsource">ume_confirmed_delivery_notification (source)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeretentionuniqueconfirmationssource">ume_retention_unique_confirmations (source)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeretentionuniqueconfirmationssource">ume_retention_unique_confirmations (source)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umesriflushsrirequestresponsesource">ume_sri_flush_sri_request_response (source)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umesriflushsrirequestresponsesource">ume_sri_flush_sri_request_response (source)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umesrirequestresponselatencysource">ume_sri_request_response_latency (source)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umesrirequestresponselatencysource">ume_sri_request_response_latency (source)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umemessagestabilitynotificationsource">ume_message_stability_notification (source)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umemessagestabilitynotificationsource">ume_message_stability_notification (source)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grplatejoin.html#retransmitretentionsizethresholdsource">retransmit_retention_size_threshold (source)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UME/config.tag:../Config/" href="../Config/grplatejoin.html#retransmitretentionsizethresholdsource">retransmit_retention_size_threshold (source)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeretentionsizethresholdsource">ume_retention_size_threshold (source)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeretentionsizethresholdsource">ume_retention_size_threshold (source)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grplatejoin.html#retransmitretentionsizelimitsource">retransmit_retention_size_limit (source)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UME/config.tag:../Config/" href="../Config/grplatejoin.html#retransmitretentionsizelimitsource">retransmit_retention_size_limit (source)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeretentionsizelimitsource">ume_retention_size_limit (source)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeretentionsizelimitsource">ume_retention_size_limit (source)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpdeprecated.html#retransmitretentionagethresholdsource">retransmit_retention_age_threshold (source)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UME/config.tag:../Config/" href="../Config/grpdeprecated.html#retransmitretentionagethresholdsource">retransmit_retention_age_threshold (source)</a> </li>
 </ul>
 </li>
 </ul>
 <p><br />
  </p>
 <h1><a class="anchor" id="enablingpersistenceinthereceiver"></a>
-Enabling Persistence in the Receiver</h1>
+Enabling Persistence in the Receiver&nbsp;&nbsp;<small><a href="#enablingpersistenceinthereceiver">&lt;-</a></small></h1>
 <p>Let's also refine the receiver to resume where it left off after a crash. Just as with the source, the receiver can have the store assign it a RegID if the receiver is just beginning. Once the receiver receives the 20th message from the source, it can get rid of the RegID and exit. Because the receiver can receive some messages, crash, and come back, we should only need to look at a message and check if it is the 20th message based on the message contents or sequence number. UM provides all the events to the application that we need to create these behaviors in the receiver.</p>
 <p>The receiver changes are summarized below:</p>
 <ol>

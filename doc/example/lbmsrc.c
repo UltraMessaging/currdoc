@@ -1,5 +1,5 @@
 /*
-  Copyright (c) 2005-2018 Informatica Corporation  Permission is granted to licensees to use
+  Copyright (c) 2005-2019 Informatica Corporation  Permission is granted to licensees to use
   or alter this software for any purpose, including commercial applications,
   according to the terms laid out in the Software License Agreement.
 
@@ -485,6 +485,37 @@ void process_cmdline(int argc, char **argv,struct Options *opts)
 	opts->topic = argv[optind];
 }
 
+/*
+ * Handler for immediate messages directed to NULL topic
+ * callback is set as a parameter of lbm_context_rcv_immediate_msgs()
+ */
+int handle_immediate_msg(lbm_context_t *ctx, lbm_msg_t *msg, void *clientd)
+{
+	struct Options *opts = (struct Options *) clientd;
+
+	switch (msg->type) {
+		case LBM_MSG_DATA:
+			/* Data message received */
+			if (opts->verbose) {
+				printf("IM Data [%s][%u], %lu bytes\n", msg->source, msg->sequence_number, (unsigned long) msg->len);
+			}
+		break;
+
+		case LBM_MSG_REQUEST:
+			/* Request message received (no response processed here) */
+			if (opts->verbose) {
+				printf("IM Request [%s][%u], %lu bytes\n", msg->source, msg->sequence_number, (unsigned long) msg->len);
+			}
+		break;
+
+		default:
+			printf("Unknown immediate message lbm_msg_t type %x [%s]\n", msg->type, msg->source);
+		break;
+	}
+
+	return 0;
+}
+
 #if !defined(_WIN32)
 static int LossRate = 0;
 
@@ -677,6 +708,19 @@ int main(int argc, char **argv)
 
 		printf("Enabled Late Join with message retention threshold set to %lu bytes.\n", opts->latejoin_threshold);
 
+	}
+
+	{
+		lbm_context_rcv_immediate_msgs_func_t topicless_im_rcv_func;
+
+		topicless_im_rcv_func.clientd = opts;
+		topicless_im_rcv_func.evq = NULL;
+		topicless_im_rcv_func.func = handle_immediate_msg;
+		if (lbm_context_attr_setopt(cattr, "immediate_message_receiver_function",
+				&topicless_im_rcv_func, sizeof(topicless_im_rcv_func)) == LBM_FAILURE) {
+			fprintf(stderr, "lbm_context_rcv_immediate_msgs: %s\n", lbm_errmsg());
+			exit(1);
+		}
 	}
 
 	/* Create LBM context (passing in context attributes) */

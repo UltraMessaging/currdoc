@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.11"/>
-<title>Guide for Persistence: Persistence Man Pages</title>
+<title>Guide for Persistence: Man Pages for Store</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -46,20 +46,33 @@
   </div>
 </div>
 <script type="text/javascript">
-$(document).ready(function(){initNavTree('persistencemanpages.html','');});
+$(document).ready(function(){initNavTree('manpagesforstore.html','');});
 </script>
 <div id="doc-content">
 <div class="header">
   <div class="headertitle">
-<div class="title">Persistence Man Pages </div>  </div>
+<div class="title">Man Pages for Store </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><br />
+<div class="textblock"><p>There are two executables for the Store, each with it's own man page: </p><ul>
+<li>
+<a class="el" href="manpagesforstore.html#umestoredmanpage">Umestored Man Page</a> - Unix and Windows command-line interface. </li>
+<li>
+<a class="el" href="manpagesforstore.html#umestoredsmanpage">Umestoreds Man Page</a> - Windows service interface. </li>
+</ul>
+<p><br />
  </p>
 <h1><a class="anchor" id="umestoredmanpage"></a>
-umestored Man Page</h1>
-<p><code>umestored -d --dump-dtd -f --detach -h --help -v --validate configfile</code></p>
-<dl class="section user"><dt><b>Description</b> </dt><dd>Persistent Store services are provided by umestored. A store configuration file is required.</dd></dl>
+Umestored Man Page&nbsp;&nbsp;<small><a href="#umestoredmanpage">&lt;-</a></small></h1>
+<p>The umestored executable can be run interactively from a command prompt or from a script/batch file. For use as a Windows Service, see <a class="el" href="manpagesforstore.html#umestoredsmanpage">Umestoreds Man Page</a>.</p>
+<pre class="fragment">UMP Store daemon
+Usage: umestored [options] configfile
+Available options:
+  -h, --help            display this help and exit
+  -d, --dump-dtd        dump DTD to stdout
+  -f, --detach          detach from terminal (not supported on Windows)
+  -v, --validate        validate config, but do not run</pre><dl class="section user"><dt>Description</dt><dd>Persistent Store services are provided by umestored.</dd></dl>
+<dl class="section user"><dt></dt><dd>The <code>configfile</code> parameter is required and specifies the Store's XML configuration file.</dd></dl>
 <dl class="section user"><dt></dt><dd>The DTD used to validate a configuration file will be dumped to standard output with the -d or <code>--dump-dtd</code>. After dumping the DTD, umestored exits instead of providing persistence services as usual.</dd></dl>
 <dl class="section user"><dt></dt><dd>The configuration file will be validated against the DTD if either the <code>-v</code> or <code>--validate</code> options are given. After attempting validation, umestored exits instead of providing persistence services as usual. The exit status will be 0 for a configuration file validated by the DTD and non-zero otherwise.</dd></dl>
 <dl class="section user"><dt></dt><dd>Umestored normally remains attached to the controlling terminal and runs until interrupted. If the <code>-f</code> or <code>--detach</code> options are given, umestored instead forks, detaches the child from the controlling terminal, and the parent exits immediately.</dd></dl>
@@ -69,14 +82,29 @@ umestored Man Page</h1>
 <p><br />
  </p>
 <h1><a class="anchor" id="umestoredsmanpage"></a>
-umestoreds Man Page</h1>
-<p><code>umestoreds -d --dump-dtd -h --help -s action --service=action -v --validate configfile</code></p>
-<dl class="section user"><dt><b>Description</b> </dt><dd>Persistent Store services are provided by the umestoreds Windows Service. A store configuration file is optional. If not present, the Registry will be consulted.</dd></dl>
+Umestoreds Man Page&nbsp;&nbsp;<small><a href="#umestoredsmanpage">&lt;-</a></small></h1>
+<p>The umestoreds executable is for use as a Windows Service. The service can be installed as a service by the Windows package installer.</p>
+<p>Alternatively, the umestoreds executable can be run interactively from a command prompt to install the service or to change certain configuration elements. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UME/operations.tag:../Operations/" href="../Operations/startupshutdownprocedures.html#umdaemonsaswindowsservices">UM Daemons as Windows Services</a> for more details.</p>
+<pre class="fragment">UMP Store service
+Usage: umestoreds [options] [configfile]
+Available options:
+  -h, --help              display this help and exit
+  -d, --dump-dtd          dump DTD to stdout
+  -s, --service=install   install the service passing configfile
+  -s, --service=remove    delete/remove the service
+  -s, --service=config    update configfile info to use configfile passed
+  -v, --validate          validate config, but do not run
+  -e, --event-log-level   Update/set service logging level.  This is the minimum logging
+                          level to send to the Windows event log.  Valid values are:
+                             NONE - Send no events
+                             INFO
+                             WARN - default
+                             ERROR
+  configfile              XML config file (if not present, looks in registry)</pre><dl class="section user"><dt><b>Description</b> </dt><dd>Persistent Store services are provided by the umestoreds Windows Service.</dd></dl>
+<dl class="section user"><dt></dt><dd>The <code>configfile</code> parameter is used interactively to configure the Store's XML configuration file.</dd></dl>
 <dl class="section user"><dt></dt><dd>The DTD used to validate a configuration file will be dumped to standard output with the <code>-d</code> or <code>--dump-dtd</code>. After dumping the DTD, umestoreds exits instead of providing persistence services as usual.</dd></dl>
 <dl class="section user"><dt></dt><dd>The configuration file will be validated against the DTD if either the <code>-v</code> or <code>--validate</code> options are given. After attempting validation, umestoreds exits instead of providing persistence services as usual. The exit status will be 0 for a configuration file validated by the DTD and non-zero otherwise.</dd></dl>
-<dl class="section user"><dt></dt><dd>The <code>-s</code> install or <code>--service=install</code> options will install the service using the given configuration file. Once installed, umestoreds exits. Once installed, the service may be stopped or started via the Windows Service Control Panel.</dd></dl>
-<dl class="section user"><dt></dt><dd>The <code>-s</code> remove or <code>--service=remove</code> options will remove the service. Once removed, umestoreds exits.</dd></dl>
-<dl class="section user"><dt></dt><dd>The <code>-s</code> config or <code>--service=config</code> options will update the configuration file used with the service to be the given configuration file. Once updated, umestoreds exits.</dd></dl>
+<dl class="section user"><dt></dt><dd>The <code>-s</code> is used interactively to control the installation of the Windows service. The <code>-e</code> is used interactively to configure the logging threshold for writing to the Windows Event Log. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UME/operations.tag:../Operations/" href="../Operations/startupshutdownprocedures.html#umdaemonsaswindowsservices">UM Daemons as Windows Services</a> for more details.</dd></dl>
 <dl class="section user"><dt></dt><dd>Command line help is available with -h.</dd></dl>
 <dl class="section user"><dt><b>Usage</b> <b>Notes</b> </dt><dd>When installing the UM Persistent Store as a Microsoft Windows service, use only local disk devices and fully qualified path names for all filenames. This is because Windows services run by default under a Local System account, which has reduced privileges and is not allowed access to network devices.</dd></dl>
 <dl class="section user"><dt></dt><dd>Stopping the UM Persistent Store service triggers a clean shutdown, which attempts to cleanly finish outstanding IO requests before shutting down.</dd></dl>

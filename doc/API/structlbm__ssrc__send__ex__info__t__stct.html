@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">UM C API
-   &#160;<span id="projectnumber">6.11.1</span>
+   &#160;<span id="projectnumber">6.12</span>
    </div>
   </td>
  </tr>
@@ -92,12 +92,15 @@ Data Fields</h2></td></tr>
 <tr class="separator:ac81546a02860998dd8d751a01edb3b42"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af3318fcf60e612912d16cd401e8aa39e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="lbm_8h.html#a5dfd61ade99cd24213125c293b15ef4a">lbm_uint32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlbm__ssrc__send__ex__info__t__stct.html#af3318fcf60e612912d16cd401e8aa39e">channel</a></td></tr>
 <tr class="separator:af3318fcf60e612912d16cd401e8aa39e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adcb94e05adb46da7cb8cce93a656b7d4"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlbm__ssrc__send__ex__info__t__stct.html#adcb94e05adb46da7cb8cce93a656b7d4">usr_supplied_buffer</a></td></tr>
+<tr class="separator:adcb94e05adb46da7cb8cce93a656b7d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Structure that holds information for the extended smart source send calls. </p>
-<p>A structure used with UM <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/API/design.tag:../Design/" href="../Design/umfeatures.html#smartsources">Smart Sources</a> feature that utilize the extended send calls to pass options.</p>
-<p>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/API/design.tag:../Design/" href="../Design/umfeatures.html#smartsources">Smart Sources</a> for more information on Smart Sources. See also <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/API/config.tag:../Config/" href="../Config/grpsmartsource.html">Smart Source Options</a> for configuration information.</p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="lbm_8h.html#a2f50f56536778332e9f5712b06546425">lbm_ssrc_send_ex()</a> </dd></dl>
+<p>A structure used with UM <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/API/design.tag:../Design/" href="../Design/advancedoptimizations.html#smartsources">Smart Sources</a> feature that utilize the extended send calls to pass options.</p>
+<p>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/API/design.tag:../Design/" href="../Design/advancedoptimizations.html#smartsources">Smart Sources</a> for more information on Smart Sources. See also <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/API/config.tag:../Config/" href="../Config/grpsmartsource.html">Smart Source Options</a> for configuration information.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="lbm_8h.html#a2f50f56536778332e9f5712b06546425">lbm_ssrc_send_ex()</a></dd></dl>
+<p>See <a class="el" href="structlbm__ssrc__send__ex__info__t__stct.html">lbm_ssrc_send_ex_info_t_stct</a> for field definitions. </p>
 </div><h2 class="groupheader">Field Documentation</h2>
 <a class="anchor" id="af3318fcf60e612912d16cd401e8aa39e"></a>
 <div class="memitem">
@@ -108,7 +111,7 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Spectrum channel number </p>
+<p>Spectrum channel number. Set <a class="el" href="lbm_8h.html#a5aa5ef8cbf768dd5ad5bb8a709cf9d78">LBM_SSRC_SEND_EX_FLAG_CHANNEL</a> in flags. </p>
 
 </div>
 </div>
@@ -121,7 +124,7 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Flags that set which settings are active as defined by "LBM_SSRC_SEND_EX_*". Search <a class="el" href="lbm_8h.html" title="Ultra Messaging (UM) Core API. ">lbm.h</a> for LBM_SSRC_SEND_EX_FLAG_*. </p>
+<p>Bitmap indicating which settings are active. Zero or more flag bits ORed together: LBM_SSRC_SEND_EX_FLAG_* (i.e. <a class="el" href="lbm_8h.html#a7eebb967c4f37348b65c8480b9afd29a">LBM_SSRC_SEND_EX_FLAG_UME_CLIENTD</a>, <a class="el" href="lbm_8h.html#a2127e7be4d1724055524a07eea2d2a29">LBM_SSRC_SEND_EX_FLAG_SEQUENCE_NUMBER_INFO</a>, <a class="el" href="lbm_8h.html#ada0523d063902e74b26a334d0f19a266">LBM_SSRC_SEND_EX_FLAG_SEQUENCE_NUMBER_INFO_FRAGONLY</a>, <a class="el" href="lbm_8h.html#a5aa5ef8cbf768dd5ad5bb8a709cf9d78">LBM_SSRC_SEND_EX_FLAG_CHANNEL</a>, <a class="el" href="lbm_8h.html#af00465b8e9c560959351ec92f62a190e">LBM_SSRC_SEND_EX_FLAG_PROPERTIES</a>, <a class="el" href="lbm_8h.html#a8e81e2661e6d2845790041d170864b1e">LBM_SSRC_SEND_EX_FLAG_REBUILD_BUFFER</a>, <a class="el" href="lbm_8h.html#abc403bc082dfb1b6af6c33d19deb84bc">LBM_SSRC_SEND_EX_FLAG_UPDATE_CHANNEL</a>, <a class="el" href="lbm_8h.html#a40748fccf40f69c2029d68c16f923704">LBM_SSRC_SEND_EX_FLAG_UPDATE_PROPERTY_VALUES</a>, <a class="el" href="lbm_8h.html#a366727d0b5f3039e03b9c4bce8065da5">LBM_SSRC_SEND_EX_FLAG_USER_SUPPLIED_BUFFER</a>) </p>
 
 </div>
 </div>
@@ -134,7 +137,7 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Message property integer count </p>
+<p>Message property integer count. Set <a class="el" href="lbm_8h.html#af00465b8e9c560959351ec92f62a190e">LBM_SSRC_SEND_EX_FLAG_PROPERTIES</a>. </p>
 
 </div>
 </div>
@@ -147,7 +150,7 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Message property pointer to an array of NULL terminated key character strings </p>
+<p>Message property pointer to an array of NULL terminated key character strings. Set <a class="el" href="lbm_8h.html#af00465b8e9c560959351ec92f62a190e">LBM_SSRC_SEND_EX_FLAG_PROPERTIES</a>. </p>
 
 </div>
 </div>
@@ -160,7 +163,7 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Message property pointer to an array of 32-bit integers </p>
+<p>Message property pointer to an array of 32-bit integers. Set <a class="el" href="lbm_8h.html#af00465b8e9c560959351ec92f62a190e">LBM_SSRC_SEND_EX_FLAG_PROPERTIES</a>. </p>
 
 </div>
 </div>
@@ -173,7 +176,20 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>client data pointer to be passed back in source events for stability and confirmations </p>
+<p>Client data pointer to be passed back in source events for stability and confirmations. Set <a class="el" href="lbm_8h.html#a7eebb967c4f37348b65c8480b9afd29a">LBM_SSRC_SEND_EX_FLAG_UME_CLIENTD</a> in flags. </p>
+
+</div>
+</div>
+<a class="anchor" id="adcb94e05adb46da7cb8cce93a656b7d4"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char* lbm_ssrc_send_ex_info_t_stct::usr_supplied_buffer</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Pointer to the user supplied buffer containing the data to send in this message. Set <a class="el" href="lbm_8h.html#a366727d0b5f3039e03b9c4bce8065da5">LBM_SSRC_SEND_EX_FLAG_USER_SUPPLIED_BUFFER</a> in flags. </p>
 
 </div>
 </div>

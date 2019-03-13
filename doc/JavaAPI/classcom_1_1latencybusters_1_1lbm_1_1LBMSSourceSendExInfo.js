@@ -11,8 +11,10 @@ var classcom_1_1latencybusters_1_1lbm_1_1LBMSSourceSendExInfo =
     [ "getMessagePropertyCnt", "classcom_1_1latencybusters_1_1lbm_1_1LBMSSourceSendExInfo.html#abd7da0eb8d3ea568001e8f65b852f4e0", null ],
     [ "getMessagePropertyKey", "classcom_1_1latencybusters_1_1lbm_1_1LBMSSourceSendExInfo.html#a55b9223ff684af486d7a44642638fb8c", null ],
     [ "getMessagePropertyValue", "classcom_1_1latencybusters_1_1lbm_1_1LBMSSourceSendExInfo.html#a1b5be213ee694f8ab61b0becf18db0d1", null ],
+    [ "getUserSuppliedBuffer", "classcom_1_1latencybusters_1_1lbm_1_1LBMSSourceSendExInfo.html#aa87e738bf15026033f8d6cef83b2b71f", null ],
     [ "setChannel", "classcom_1_1latencybusters_1_1lbm_1_1LBMSSourceSendExInfo.html#ab19c67cc337ecd1d5dd2ef34184bc562", null ],
     [ "setClientObject", "classcom_1_1latencybusters_1_1lbm_1_1LBMSSourceSendExInfo.html#aa30afa9b77f16d0fe5e3526543dfaee7", null ],
     [ "setFlags", "classcom_1_1latencybusters_1_1lbm_1_1LBMSSourceSendExInfo.html#a2a5d559f67a9ba83d2b39dfa0ad057ba", null ],
-    [ "setMessageProperties", "classcom_1_1latencybusters_1_1lbm_1_1LBMSSourceSendExInfo.html#a53c583297be03ff5b07e30aec04281ee", null ]
+    [ "setMessageProperties", "classcom_1_1latencybusters_1_1lbm_1_1LBMSSourceSendExInfo.html#a53c583297be03ff5b07e30aec04281ee", null ],
+    [ "setUserSuppliedBuffer", "classcom_1_1latencybusters_1_1lbm_1_1LBMSSourceSendExInfo.html#a1e882125b124817a7b035b9c30893049", null ]
 ];

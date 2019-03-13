@@ -1,5 +1,7 @@
 var NAVTREEINDEX2 =
 {
+"classcom_1_1latencybusters_1_1lbm_1_1LBMHotFailoverSource.html#a8d2f5820cd5c58ad2b42daedebe7da1e":[2,0,0,0,0,36,35],
+"classcom_1_1latencybusters_1_1lbm_1_1LBMHotFailoverSource.html#a8d3fcadfbdcb57f383370094c8429f0c":[2,0,0,0,0,36,11],
 "classcom_1_1latencybusters_1_1lbm_1_1LBMHotFailoverSource.html#a8e6134c3969c0a1cdb4466314bc1687f":[2,0,0,0,0,36,33],
 "classcom_1_1latencybusters_1_1lbm_1_1LBMHotFailoverSource.html#a956cf0459322f5921b8aacd9d7d6329a":[2,0,0,0,0,36,26],
 "classcom_1_1latencybusters_1_1lbm_1_1LBMHotFailoverSource.html#a9f249320e775c4929e49fd22a19cc0d8":[2,0,0,0,0,36,19],
@@ -247,7 +249,5 @@ var NAVTREEINDEX2 =
 "classcom_1_1latencybusters_1_1lbm_1_1LBMMessagePropertiesIterator.html#a1deccca7f515f7b284324d425cb3db85":[2,0,0,0,0,45,1],
 "classcom_1_1latencybusters_1_1lbm_1_1LBMMessagePropertiesIterator.html#a2fc0f6a0fe183f01e474b6011b3e30b1":[2,0,0,0,0,45,0],
 "classcom_1_1latencybusters_1_1lbm_1_1LBMMessagePropertiesIterator.html#ae49fa3b43410155394236c6abe3caca7":[2,0,0,0,0,45,2],
-"classcom_1_1latencybusters_1_1lbm_1_1LBMMessageProperty.html":[2,0,0,0,0,46],
-"classcom_1_1latencybusters_1_1lbm_1_1LBMMessageProperty.html#a0c5ec74350f70be1fc77809c94aaa77a":[2,0,0,0,0,46,8],
-"classcom_1_1latencybusters_1_1lbm_1_1LBMMessageProperty.html#a0fe645d881db34692a60351d87023eb5":[2,0,0,0,0,46,5]
+"classcom_1_1latencybusters_1_1lbm_1_1LBMMessageProperty.html":[2,0,0,0,0,46]
 };

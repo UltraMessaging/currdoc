@@ -1,7 +1,20 @@
 var NAVTREE =
 [
   [ "Operations Guide", "index.html", [
-    [ "Monitoring", "index.html#firstsect", [
+    [ "Introduction", "index.html#firstsect", null ],
+    [ "UM Installation", "index.html#uminstallation", [
+      [ "UM Package Installer", "index.html#umpackageinstaller", [
+        [ "Unix Package Installer", "index.html#unixpackageinstaller", null ],
+        [ "Windows Package Installer", "index.html#windowspackageinstaller", null ],
+        [ "Other Package Installers", "index.html#otherpackageinstallers", null ]
+      ] ],
+      [ "Copy UM Runtime Files", "index.html#copyumruntimefiles", [
+        [ "Copy Unix Runtime Files", "index.html#copyunixruntimefiles", null ],
+        [ "Copy Windows Runtime Files", "index.html#copywindowsruntimefiles", null ]
+      ] ],
+      [ "Application Installer", "index.html#applicationinstaller", null ]
+    ] ],
+    [ "Monitoring", "index.html#monitoring", [
       [ "Monitoring Transport Statistics", "index.html#monitoringtransportstatistics", [
         [ "LBT-RM and LBT-RU Receiver Statistics", "index.html#lbtrmandlbtrureceiverstatistics", null ],
         [ "LBT-RM and LBT-RU Source Statistics", "index.html#lbtrmandlbtrusourcestatistics", null ],
@@ -13,14 +26,14 @@ var NAVTREE =
       [ "Monitoring the Persistent Store Daemon (umestored)", "index.html#monitoringthepersistentstoredaemonumestored", [
         [ "Monitoring Store Log File", "index.html#monitoringstorelogfile", null ],
         [ "Monitoring a Store's Internal Transport Statistics", "index.html#monitoringastoresinternaltransportstatistics", null ],
-        [ "Persistent Store Web Monitor", "index.html#persistentstorewebmonitor", null ],
+        [ "Persistent Store Web Monitoring", "index.html#persistentstorewebmonitoring", null ],
         [ "Persistent Store Daemon Statistics", "index.html#persistentstoredaemonstatistics", null ],
         [ "Detecting Persistent Store Failures", "index.html#detectingpersistentstorefailures", null ]
       ] ],
       [ "Monitoring the UM Router Daemon (tnwgd)", "index.html#monitoringtheumrouterdaemontnwgd", [
         [ "Monitoring UM Router Log File", "index.html#monitoringumrouterlogfile", null ],
         [ "UM Router Transport Statistics", "index.html#umroutertransportstatistics", null ],
-        [ "UM Router Web Monitor", "index.html#umrouterwebmonitor", null ],
+        [ "UM Router Web Monitoring", "index.html#umrouterwebmonitoring", null ],
         [ "UM Router Daemon Statistics", "index.html#op-umrouterdaemonstatistics", null ],
         [ "Detecting UM Router Failures", "index.html#detectingumrouterfailures", null ]
       ] ],
@@ -43,6 +56,13 @@ var NAVTREE =
       [ "UM Router (tnwgd)", "index.html#umroutertnwgd", [
         [ "Starting a UM Router", "index.html#startingaumrouter", null ],
         [ "Restarting a UM Router", "index.html#restartingaumrouter", null ]
+      ] ],
+      [ "UM Daemons as Windows Services", "index.html#umdaemonsaswindowsservices", [
+        [ "Install the Windows Service", "index.html#installthewindowsservice", null ],
+        [ "Configure the Daemon", "index.html#configurethedaemon", null ],
+        [ "Configure the Windows Service", "index.html#configurethewindowsservice", null ],
+        [ "Start the Windows Service", "index.html#startthewindowsservice", null ],
+        [ "Remove the Windows Service", "index.html#removethewindowsservice", null ]
       ] ],
       [ "UM Analysis Tools", "index.html#umanalysistools", [
         [ "Packet Capture Tools", "index.html#packetcapturetools", null ],
@@ -118,6 +138,7 @@ var NAVTREE =
     [ "UM Log Messages", "index.html#umlogmessages", [
       [ "UM Core Messages", "index.html#umcoremessages", null ],
       [ "UM Core API Messages", "index.html#umcoreapimessages", null ],
+      [ "UM SRS Log Messages", "index.html#umsrslogmessages", null ],
       [ "UM Dynamic Routing Log Messages", "index.html#umdynamicroutinglogmessages", null ],
       [ "UM Lbmrd Log Messages", "index.html#umlbmrdlogmessages", null ],
       [ "UM Persistent Store Log Messages", "index.html#umpersistentstorelogmessages", null ],

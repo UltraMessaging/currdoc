@@ -12,6 +12,7 @@ var classcom_1_1latencybusters_1_1lbm_1_1LBMSSource =
     [ "dumpAttributeList", "classcom_1_1latencybusters_1_1lbm_1_1LBMSSource.html#a089effce8632ca6d08ff2728a87486d1", null ],
     [ "finalize", "classcom_1_1latencybusters_1_1lbm_1_1LBMSSource.html#afbe31aa29672e2cc4268f5e6f71494b4", null ],
     [ "getAttributeValue", "classcom_1_1latencybusters_1_1lbm_1_1LBMSSource.html#aa38c05f71c11e26820c679860e74a48b", null ],
+    [ "getAvailableDataSpace", "classcom_1_1latencybusters_1_1lbm_1_1LBMSSource.html#a8485801e5e71160842d707840c07a7f8", null ],
     [ "getSSrcInflight", "classcom_1_1latencybusters_1_1lbm_1_1LBMSSource.html#a1b47f54eac0be0472bf6c85f61acd043", null ],
     [ "getSSrcInflightEx", "classcom_1_1latencybusters_1_1lbm_1_1LBMSSource.html#a80b3a5c3b43658283feb7014a112d227", null ],
     [ "getStatistics", "classcom_1_1latencybusters_1_1lbm_1_1LBMSSource.html#add33e63af4bf28336f2204b1f48802b1", null ],

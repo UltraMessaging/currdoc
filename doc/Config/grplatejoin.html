@@ -60,7 +60,7 @@ $(document).ready(function(){initNavTree('grplatejoin.html','');});
 <p><br />
  </p>
 <h1><a class="anchor" id="estimatingrecoverytime"></a>
-Estimating Recovery Time</h1>
+Estimating Recovery Time&nbsp;&nbsp;<small><a href="#estimatingrecoverytime">&lt;-</a></small></h1>
 <p>Late Join message recovery time is a function of how much data must be recovered and how fast messages are retransmitted. To estimate Late Join recovery time <b>R</b> in minutes, use the formula:</p>
 <pre class="fragment">R = D / ( 1 - ( txrate / rxrate ) )
 </pre><dl class="section user"><dt>where:</dt><dd><br />
@@ -75,22 +75,22 @@ Estimating Recovery Time</h1>
 </pre><p>or 16.67 minutes. Note that this formula assumes the following:</p>
 <ul>
 <li>
-Retransmit rate(rxrate) is as linear as possible with use of option <a class="el" href="grpresponseoperation.html#responsetcpnodelaycontext">response_tcp_nodelay (context)</a> to 1. </li>
+Retransmit rate(rxrate) is as linear as possible with use of option <a class="el" href="grpunicastimmediatemessagingoperation.html#responsetcpnodelaycontext">response_tcp_nodelay (context)</a> to 1. </li>
 <li>
 Transmit rate (txrate) from <em>all</em> relevant sources is fairly constant and equal </li>
 <li>
-<p class="startli">Retransmit rate (rxrate) from Late Join buffers is fairly constant and equal, and should be measured in a live test, if possible. You can adjust the recovery rate with two Late Join configuration options: <a class="el" href="grplatejoin.html#retransmitrequestoutstandingmaximumreceiver">retransmit_request_outstanding_maximum (receiver)</a> and <a class="el" href="grplatejoin.html#retransmitrequestintervalreceiver">retransmit_request_interval (receiver)</a>.</p>
-<p class="endli"><br />
- </p>
-</li>
+Retransmit rate (rxrate) from Late Join buffers is fairly constant and equal, and should be measured in a live test, if possible. You can adjust the recovery rate with two Late Join configuration options: <a class="el" href="grplatejoin.html#retransmitrequestoutstandingmaximumreceiver">retransmit_request_outstanding_maximum (receiver)</a> and <a class="el" href="grplatejoin.html#retransmitrequestintervalreceiver">retransmit_request_interval (receiver)</a>. </li>
 </ul>
+<p><br />
+ </p>
 <h1><a class="anchor" id="latejoinref"></a>
-Reference</h1>
+Reference&nbsp;&nbsp;<small><a href="#latejoinref">&lt;-</a></small></h1>
 <p><br />
  </p>
 <h2><a class="anchor" id="latejoinsource"></a>
-late_join (source)</h2>
-<dl class="section user"><dt></dt><dd>Configure the source to enable both Late Join and Off-Transport Recovery operation for receivers. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Config/design.tag:../Design/" href="../Design/umfeatures.html#usinglatejoin">Using Late Join</a> and <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Config/design.tag:../Design/" href="../Design/umfeatures.html#offtransportrecoveryotr">Off-Transport Recovery (OTR)</a> in the Ultra Messaging Concepts Guide.</dd></dl>
+late_join (source)&nbsp;&nbsp;<small><a href="#latejoinsource">&lt;-</a></small></h2>
+<dl class="section user"><dt></dt><dd>Configure the source to enable both Late Join and Off-Transport Recovery operation for receivers. </dd></dl>
+<dl class="section user"><dt></dt><dd>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Config/design.tag:../Design/" href="../Design/umfeatures.html#usinglatejoin">Using Late Join</a> and <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Config/design.tag:../Design/" href="../Design/umfeatures.html#offtransportrecoveryotr">Off-Transport Recovery (OTR)</a>.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>source </td></tr>
@@ -115,13 +115,15 @@ late_join (source)</h2>
 <p><br />
  </p>
 <h2><a class="anchor" id="latejoininforequestintervalreceiver"></a>
-late_join_info_request_interval (receiver)</h2>
-<dl class="section user"><dt></dt><dd>The interval at which the receiver requests a Late Join Information Record (LJI) from the source. Controlling these requests helps reduce receiver start-up traffic on your network.</dd></dl>
+late_join_info_request_interval (receiver)&nbsp;&nbsp;<small><a href="#latejoininforequestintervalreceiver">&lt;-</a></small></h2>
+<dl class="section user"><dt></dt><dd>The interval at which the receiver requests a Late Join Information Record (LJI) from the source. </dd></dl>
+<dl class="section user"><dt></dt><dd>Controlling these requests helps reduce receiver start-up traffic on your network. </dd></dl>
+<dl class="section user"><dt></dt><dd>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Config/design.tag:../Design/" href="../Design/fundamentalconcepts.html#latejoin">Late Join</a>.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>receiver </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
 <tr>
 <td><em>Units:</em> </td><td>milliseconds </td></tr>
 <tr>
@@ -135,13 +137,14 @@ late_join_info_request_interval (receiver)</h2>
 <p><br />
  </p>
 <h2><a class="anchor" id="latejoininforequestmaximumreceiver"></a>
-late_join_info_request_maximum (receiver)</h2>
-<dl class="section user"><dt></dt><dd>The maximum number of requests the receiver issues for a Late Join Information Record (LJI) from the source. If the receiver has not received an LJI after this number of requests, it stops requesting.</dd></dl>
+late_join_info_request_maximum (receiver)&nbsp;&nbsp;<small><a href="#latejoininforequestmaximumreceiver">&lt;-</a></small></h2>
+<dl class="section user"><dt></dt><dd>The maximum number of requests the receiver issues for a Late Join Information Record (LJI) from the source. </dd></dl>
+<dl class="section user"><dt></dt><dd>If the receiver has not received an LJI after this number of requests, it stops requesting.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>receiver </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
 <tr>
 <td><em>Default value:</em> </td><td>60 </td></tr>
 <tr>
@@ -153,8 +156,9 @@ late_join_info_request_maximum (receiver)</h2>
 <p><br />
  </p>
 <h2><a class="anchor" id="retransmitinitialsequencenumberrequestreceiver"></a>
-retransmit_initial_sequence_number_request (receiver)</h2>
-<dl class="section user"><dt></dt><dd>When a late-joining receiver detects (from the topic advertisement) that a source is enabled for Late Join but has sent no messages, this flag option lets the receiver request an initial sequence number from a source. Sources respond with a TSNI.</dd></dl>
+retransmit_initial_sequence_number_request (receiver)&nbsp;&nbsp;<small><a href="#retransmitinitialsequencenumberrequestreceiver">&lt;-</a></small></h2>
+<dl class="section user"><dt></dt><dd>When a late-joining receiver detects (from the topic advertisement) that a source is enabled for Late Join but has sent no messages, this flag option lets the receiver request an initial sequence number from a source. </dd></dl>
+<dl class="section user"><dt></dt><dd>Sources respond with a TSNI.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>receiver </td></tr>
@@ -183,13 +187,16 @@ retransmit_initial_sequence_number_request (receiver)</h2>
 <p><br />
  </p>
 <h2><a class="anchor" id="retransmitmessagecachingproximityreceiver"></a>
-retransmit_message_caching_proximity (receiver)</h2>
-<dl class="section user"><dt></dt><dd>This option determines how a receiver handles new messages that are being published while the receiver is in the process of recovering older messages through the retransmit request mechanism. A receiver has the ability to cache new messages during the recovery process in order to facilitate a smooth transition from recovery to live stream. This option value determines how close (proximate) a newly received message sequence number must be to the latest retransmitted sequence number for the receiver to cache it. New messages that arrive while the receiver is not within proximity will be discarded, and the receiver will attempt to recover those messages later via the retransmit request mechanism. An option value between 0 and 0x7FFFFFFE (2,147,483,646) enables proximity caching, with larger values allowing caching to begin earlier during recovery. Values 0x7FFFFFFF and above disable proximity caching. This value has meaning for only receivers using ordered delivery of data. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Config/design.tag:../Design/" href="../Design/umfeatures.html#configuringlatejoinforlargenumbersofmessages">Configuring Late Join for Large Numbers of Messages</a> in the Ultra Messaging Concepts Guide for additional information about this option.</dd></dl>
+retransmit_message_caching_proximity (receiver)&nbsp;&nbsp;<small><a href="#retransmitmessagecachingproximityreceiver">&lt;-</a></small></h2>
+<dl class="section user"><dt></dt><dd>This option determines how a receiver handles new messages that are being published while the receiver is in the process of recovering older messages through the retransmit request mechanism. </dd></dl>
+<dl class="section user"><dt></dt><dd>A receiver has the ability to cache new messages during the recovery process in order to facilitate a smooth transition from recovery to live stream. This option value determines how close (proximate) a newly received message sequence number must be to the latest retransmitted sequence number for the receiver to cache it. New messages that arrive while the receiver is not within proximity will be discarded, and the receiver will attempt to recover those messages later via the retransmit request mechanism. </dd></dl>
+<dl class="section user"><dt></dt><dd>An option value between 0 and 0x7FFFFFFE (2,147,483,646) enables proximity caching, with larger values allowing caching to begin earlier during recovery. Values 0x7FFFFFFF and above disable proximity caching. This value has meaning for only receivers using ordered delivery of data. </dd></dl>
+<dl class="section user"><dt></dt><dd>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Config/design.tag:../Design/" href="../Design/umfeatures.html#configuringlatejoinforlargenumbersofmessages">Configuring Late Join for Large Numbers of Messages</a> for additional information.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>receiver </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
 <tr>
 <td><em>Units:</em> </td><td>messages </td></tr>
 <tr>
@@ -203,13 +210,14 @@ retransmit_message_caching_proximity (receiver)</h2>
 <p><br />
  </p>
 <h2><a class="anchor" id="retransmitrequestintervalreceiver"></a>
-retransmit_request_interval (receiver)</h2>
-<dl class="section user"><dt></dt><dd>The interval between retransmission request messages to the source. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Config/design.tag:../Design/" href="../Design/umfeatures.html#configuringlatejoinforlargenumbersofmessages">Configuring Late Join for Large Numbers of Messages</a> in the Ultra Messaging Concepts Guide for additional information about this option.</dd></dl>
+retransmit_request_interval (receiver)&nbsp;&nbsp;<small><a href="#retransmitrequestintervalreceiver">&lt;-</a></small></h2>
+<dl class="section user"><dt></dt><dd>The interval between retransmission request messages to the source. </dd></dl>
+<dl class="section user"><dt></dt><dd>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Config/design.tag:../Design/" href="../Design/umfeatures.html#configuringlatejoinforlargenumbersofmessages">Configuring Late Join for Large Numbers of Messages</a> for additional information.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>receiver </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
 <tr>
 <td><em>Units:</em> </td><td>milliseconds </td></tr>
 <tr>
@@ -221,13 +229,14 @@ retransmit_request_interval (receiver)</h2>
 <p><br />
  </p>
 <h2><a class="anchor" id="retransmitrequestmaximumreceiver"></a>
-retransmit_request_maximum (receiver)</h2>
-<dl class="section user"><dt></dt><dd>The maximum number of messages to request, counting backward from the current latest message, when late-joining a topic. Due to network timing factors, UM may transmit an additional message. For example, a value of 5 sends 5 or possibly 6 retransmit messages to the new receiver. (Hence, you cannot request and be guaranteed to receive only 1 last message&ndash;you may get 2.) A value of 0 indicates no maximum.</dd></dl>
+retransmit_request_maximum (receiver)&nbsp;&nbsp;<small><a href="#retransmitrequestmaximumreceiver">&lt;-</a></small></h2>
+<dl class="section user"><dt></dt><dd>The maximum number of messages to request, counting backward from the current latest message, when late-joining a topic. </dd></dl>
+<dl class="section user"><dt></dt><dd>Due to network timing factors, UM may transmit an additional message. For example, a value of 5 sends 5 or possibly 6 retransmit messages to the new receiver. (Hence, you cannot request and be guaranteed to receive only 1 last message&ndash;you may get 2.) A value of 0 indicates no maximum.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>receiver </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
 <tr>
 <td><em>Units:</em> </td><td>messages </td></tr>
 <tr>
@@ -239,13 +248,14 @@ retransmit_request_maximum (receiver)</h2>
 <p><br />
  </p>
 <h2><a class="anchor" id="retransmitrequestmessagetimeoutreceiver"></a>
-retransmit_request_message_timeout (receiver)</h2>
-<dl class="section user"><dt></dt><dd>The maximum time from when a receiver first sends a retransmission request to when the receiver gives up on receiving the retransmitted message and reports loss. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Config/design.tag:../Design/" href="../Design/umfeatures.html#configuringlatejoinforlargenumbersofmessages">Configuring Late Join for Large Numbers of Messages</a> for additional information about this option.</dd></dl>
+retransmit_request_message_timeout (receiver)&nbsp;&nbsp;<small><a href="#retransmitrequestmessagetimeoutreceiver">&lt;-</a></small></h2>
+<dl class="section user"><dt></dt><dd>The maximum time from when a receiver first sends a retransmission request to when the receiver gives up on receiving the retransmitted message and reports loss. </dd></dl>
+<dl class="section user"><dt></dt><dd>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Config/design.tag:../Design/" href="../Design/umfeatures.html#configuringlatejoinforlargenumbersofmessages">Configuring Late Join for Large Numbers of Messages</a> for additional information.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>receiver </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
 <tr>
 <td><em>Units:</em> </td><td>milliseconds </td></tr>
 <tr>
@@ -259,13 +269,15 @@ retransmit_request_message_timeout (receiver)</h2>
 <p><br />
  </p>
 <h2><a class="anchor" id="retransmitrequestoutstandingmaximumreceiver"></a>
-retransmit_request_outstanding_maximum (receiver)</h2>
-<dl class="section user"><dt></dt><dd>The maximum number of messages to request and to remain active (pending) at a single time. A value of 0 indicates no maximum. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Config/design.tag:../Design/" href="../Design/umfeatures.html#configuringlatejoinforlargenumbersofmessages">Configuring Late Join for Large Numbers of Messages</a> in the Ultra Messaging Concepts Guide for additional information about this option.</dd></dl>
+retransmit_request_outstanding_maximum (receiver)&nbsp;&nbsp;<small><a href="#retransmitrequestoutstandingmaximumreceiver">&lt;-</a></small></h2>
+<dl class="section user"><dt></dt><dd>The maximum number of messages to request and to remain active (pending) at a single time. </dd></dl>
+<dl class="section user"><dt></dt><dd>A value of 0 indicates no maximum. </dd></dl>
+<dl class="section user"><dt></dt><dd>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Config/design.tag:../Design/" href="../Design/umfeatures.html#configuringlatejoinforlargenumbersofmessages">Configuring Late Join for Large Numbers of Messages</a> for additional information.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>receiver </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
 <tr>
 <td><em>Units:</em> </td><td>messages </td></tr>
 <tr>
@@ -277,10 +289,10 @@ retransmit_request_outstanding_maximum (receiver)</h2>
 <p><br />
  </p>
 <h2><a class="anchor" id="retransmitretentionsizelimitsource"></a>
-retransmit_retention_size_limit (source)</h2>
-<dl class="section user"><dt></dt><dd>Sets a maximum limit on the size of the source's retransmit retention buffer when using a UMP store. </dd></dl>
-<dl class="section user"><dt></dt><dd>With UMP, stability and delivery confirmation events can delay the deletion of retained messages, which can increase the size of the buffer above the <a class="el" href="grplatejoin.html#retransmitretentionsizethresholdsource">retransmit_retention_size_threshold (source)</a>. Hence, this option provides a hard size limit. UM sets a minimum value for this option of 8K for UDP and 64K for TCP, and issues a log warning if you set a value less than the minimum. </dd></dl>
-<dl class="section user"><dt></dt><dd>With <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Config/design.tag:../Design/" href="../Design/umfeatures.html#smartsources">Smart Sources</a>, this option is ignored. Retention buffers are preallocated.</dd></dl>
+retransmit_retention_size_limit (source)&nbsp;&nbsp;<small><a href="#retransmitretentionsizelimitsource">&lt;-</a></small></h2>
+<dl class="section user"><dt></dt><dd>Sets a maximum limit on the size of the source's retransmit retention buffer when using a UME store. </dd></dl>
+<dl class="section user"><dt></dt><dd>With UME, stability and delivery confirmation events can delay the deletion of retained messages, which can increase the size of the buffer above the <a class="el" href="grplatejoin.html#retransmitretentionsizethresholdsource">retransmit_retention_size_threshold (source)</a>. Hence, this option provides a hard size limit. UM sets a minimum value for this option of 8K for UDP and 64K for TCP, and issues a log warning if you set a value less than the minimum. </dd></dl>
+<dl class="section user"><dt></dt><dd>With <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Config/design.tag:../Design/" href="../Design/advancedoptimizations.html#smartsources">Smart Sources</a>, this option is ignored. Retention buffers are preallocated.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>source </td></tr>
@@ -297,10 +309,11 @@ retransmit_retention_size_limit (source)</h2>
 <p><br />
  </p>
 <h2><a class="anchor" id="retransmitretentionsizethresholdsource"></a>
-retransmit_retention_size_threshold (source)</h2>
+retransmit_retention_size_threshold (source)&nbsp;&nbsp;<small><a href="#retransmitretentionsizethresholdsource">&lt;-</a></small></h2>
 <dl class="section user"><dt></dt><dd>Specifies the minimum size of the retained message buffer before UM can delete messages. </dd></dl>
-<dl class="section user"><dt></dt><dd>The buffer must reach this size before UM can delete any messages older than <a class="el" href="grpdeprecated.html#retransmitretentionagethresholdsource">retransmit_retention_age_threshold (source)</a>. For UMP, these options combined with <a class="el" href="grplatejoin.html#retransmitretentionsizelimitsource">retransmit_retention_size_limit (source)</a> affect the retention buffer size. A value of 0 sets the size threshold to be always triggered, in which case deletion is determined by other threshold criteria. </dd></dl>
-<dl class="section user"><dt></dt><dd>With <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Config/design.tag:../Design/" href="../Design/umfeatures.html#smartsources">Smart Sources</a>, this option is ignored. Retention buffers are preallocated and are never deleted.</dd></dl>
+<dl class="section user"><dt></dt><dd>The buffer must reach this size before UM can delete any messages older than <a class="el" href="grpdeprecated.html#retransmitretentionagethresholdsource">retransmit_retention_age_threshold (source)</a>. </dd></dl>
+<dl class="section user"><dt></dt><dd>For UMP, these options combined with <a class="el" href="grplatejoin.html#retransmitretentionsizelimitsource">retransmit_retention_size_limit (source)</a> affect the retention buffer size. A value of 0 sets the size threshold to be always triggered, in which case deletion is determined by other threshold criteria. </dd></dl>
+<dl class="section user"><dt></dt><dd>With <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Config/design.tag:../Design/" href="../Design/advancedoptimizations.html#smartsources">Smart Sources</a>, this option is ignored. Retention buffers are preallocated and are never deleted.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>source </td></tr>
@@ -317,8 +330,9 @@ retransmit_retention_size_threshold (source)</h2>
 <p><br />
  </p>
 <h2><a class="anchor" id="uselatejoinreceiver"></a>
-use_late_join (receiver)</h2>
-<dl class="section user"><dt></dt><dd>Flag indicating if the receiver should participate in a late join operation or not.</dd></dl>
+use_late_join (receiver)&nbsp;&nbsp;<small><a href="#uselatejoinreceiver">&lt;-</a></small></h2>
+<dl class="section user"><dt></dt><dd>Flag indicating if the receiver should participate in a late join operation or not. </dd></dl>
+<dl class="section user"><dt></dt><dd>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Config/design.tag:../Design/" href="../Design/fundamentalconcepts.html#latejoin">Late Join</a> for more information.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>receiver </td></tr>

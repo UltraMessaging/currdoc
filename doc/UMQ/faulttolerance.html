@@ -60,26 +60,26 @@ $(document).ready(function(){initNavTree('faulttolerance.html','');});
 <p><br />
  </p>
 <h1><a class="anchor" id="messagereliability"></a>
-Message Reliability</h1>
+Message Reliability&nbsp;&nbsp;<small><a href="#messagereliability">&lt;-</a></small></h1>
 <p>To ensure that messages reach receiver applications, Ultra Messaging uses message stability, persistence, and consumption reporting.</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="messagestability"></a>
-Message Stability</h2>
+Message Stability&nbsp;&nbsp;<small><a href="#messagestability">&lt;-</a></small></h2>
 <p>Message stability is an indication that the broker has received a message from the source.</p>
 <p>The broker confirms receipt of each message it receives from the sending client application. When at least two nodes acknowledge message stability, the active broker sends a stability acknowledgment back to the source.</p>
 <p>Typically, after a source sends a message, it retains that message because it might need to retransmit the message. When the source receives a stability acknowledgment, it can then discard the message. During the period after the source sends the message until the source receives the stability acknowledgment, the message status is in flight. If a broker or broker connection fails, the source application can retain the in-flight messages for retransmission.</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="messageconsumption"></a>
-Message Consumption</h2>
+Message Consumption&nbsp;&nbsp;<small><a href="#messageconsumption">&lt;-</a></small></h2>
 <p>Message consumption is an indication that the receiving client application has processed a message from the broker.</p>
 <p>The receiving client application receives and processes each message from the broker. After the callback delivers the message and returns, Ultra Messaging automatically tells the broker that the message is consumed.</p>
 <p>After a broker sends a message, it retains that message because it might need to retransmit the message if the receiver application or connection to the receiver application fails. When the broker receives a message consumption acknowledgment, it can then discard the message.</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="messagepersistence"></a>
-Message Persistence</h2>
+Message Persistence&nbsp;&nbsp;<small><a href="#messagepersistence">&lt;-</a></small></h2>
 <p>By default, queuing sources set all messages to be persisted. When the broker receives a message that is set for persistence, the broker holds that message in long-term storage until the receiving client application consumes the message.</p>
 <p>To set persistence in a message, you must set the JMSDeliveryMode message property for the message. The following example shows a way that you can set a message property to persistent:</p>
 <pre class="fragment">/* setup */
@@ -96,12 +96,12 @@ assert(ret==LBM_OK);
 </pre><p><br />
  </p>
 <h1><a class="anchor" id="noderedundancy"></a>
-Node Redundancy</h1>
+Node Redundancy&nbsp;&nbsp;<small><a href="#noderedundancy">&lt;-</a></small></h1>
 <p>A high availability queuing system uses three host machines on which to run the components of a node. This deployment uses redundancy for processes and for persistence storage.</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="highavailability"></a>
-High Availability</h2>
+High Availability&nbsp;&nbsp;<small><a href="#highavailability">&lt;-</a></small></h2>
 <p>To use configure an Ultra Messaging queuing system for high availability, you must use the queuing three-node deployment. Each node resides on a different host, to eliminate any broker single point of failure.</p>
 <p>The following image shows a high-availability queuing system with one source application, one receiver application, and three brokers:</p>
 <div class="image">
@@ -142,7 +142,7 @@ The active broker removes the message from its queue in memory. </li>
 <p><br />
  </p>
 <h2><a class="anchor" id="highavailabilitysysteminitiation"></a>
-High Availability System Initiation</h2>
+High Availability System Initiation&nbsp;&nbsp;<small><a href="#highavailabilitysysteminitiation">&lt;-</a></small></h2>
 <p>A high availability queuing system follows an initiation procedure when you first start the system.</p>
 <p>When a high availability queuing system first starts, it must determine which node is the active node and which nodes are the standby nodes. The brokers do this through an active-broker election process. The queuing system performs the following initiation actions:</p>
 <ol>
@@ -160,7 +160,7 @@ Client applications initiate and complete registration with the active broker. <
 <p><br />
  </p>
 <h1><a class="anchor" id="nodefailover"></a>
-Node Failover</h1>
+Node Failover&nbsp;&nbsp;<small><a href="#nodefailover">&lt;-</a></small></h1>
 <p>If an active broker fails, Ultra Messaging starts a reelection process to elect a new active broker.</p>
 <p>The following image shows the change after an active broker fails and the queuing system elects a new active broker:</p>
 <div class="image">

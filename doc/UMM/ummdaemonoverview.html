@@ -58,7 +58,7 @@ $(document).ready(function(){initNavTree('ummdaemonoverview.html','');});
 <p><br />
  </p>
 <h1><a class="anchor" id="ummconfiguration"></a>
-UMM Configuration</h1>
+UMM Configuration&nbsp;&nbsp;<small><a href="#ummconfiguration">&lt;-</a></small></h1>
 <p>Follow the procedure below to configure UMM:</p>
 <ol>
 <li>
@@ -83,7 +83,7 @@ Optional: see <a class="el" href="ummdaemonoverview.html#securingummdaemoncommun
 <p><br />
  </p>
 <h2><a class="anchor" id="ummpropertiesfile"></a>
-umm.properties File</h2>
+umm.properties File&nbsp;&nbsp;<small><a href="#ummpropertiesfile">&lt;-</a></small></h2>
 <p>Contains database information such as the database username, password and driver. The simplest way to configure UMM is to edit this file to reflect your configuration database. The other two batch files or shell scripts automatically look to umm.properties for database information. This file, however, is optional. You could specify database information with options in the UMM Daemon and UMM GUI batch files or shell scripts. The umm.properties provided with installation appears below.</p>
 <pre class="fragment">################## mySQL example ##############################
 LBM_LICENSE_FILENAME=lbm.lic
@@ -101,12 +101,12 @@ port="15701"    #Only used by ummd.
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="ummdbatorummdshfile"></a>
-ummd.bat or ummd.sh File</h2>
-<p>Specifies the needed information to run the UMM Daemon. By default, the ummd.bat/sh looks to umm.properties for database information. You can override the umm.properties file settings with ummd options. See the <a class="el" href="manpageforummd.html">Manpage for ummd</a>. See the installed files ummd.bat (Windows) or ummd.sh (Unix) for invocation examples.</p>
+ummd.bat or ummd.sh File&nbsp;&nbsp;<small><a href="#ummdbatorummdshfile">&lt;-</a></small></h2>
+<p>Specifies the needed information to run the UMM Daemon. By default, the ummd.bat/sh looks to umm.properties for database information. You can override the umm.properties file settings with ummd options. See the <a class="el" href="manpageforummd.html">Man Page for ummd</a>. See the installed files ummd.bat (Windows) or ummd.sh (Unix) for invocation examples.</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="ummbatorummshfile"></a>
-umm.bat or umm.sh File</h2>
+umm.bat or umm.sh File&nbsp;&nbsp;<small><a href="#ummbatorummshfile">&lt;-</a></small></h2>
 <p>Specifies the needed information to run the UMM GUI. By default, the umm.bat/sh looks to umm.properties for database information. You can override the umm.properties file settings with ummd options. See the installed files umm.bat (Windows) or umm.sh (Unix) for invocation examples.</p>
 <p>The same options available to the UMM Daemon (manpage for ummd) are also available for the umm.bat batch file and the umm.sh shell script. The following two options are also available:</p>
 <ul>
@@ -119,7 +119,7 @@ umm.bat or umm.sh File</h2>
 <p><br />
  </p>
 <h1><a class="anchor" id="connectingyourapplicationstotheummdaemon"></a>
-Connecting Your Applications to the UMM Daemon</h1>
+Connecting Your Applications to the UMM Daemon&nbsp;&nbsp;<small><a href="#connectingyourapplicationstotheummdaemon">&lt;-</a></small></h1>
 <p>To use UMM with your installation of Ultra Messaging, you must use the following environment variable for every application/user combination: <br />
 <code>export LBM_UMM_INFO=</code><em>application_name</em><code>:</code><em>user_name</em><code>:</code><em>password</em><code>@</code><em>ip</em><code>:</code><em>port</em></p>
 <p>For example: <br />
@@ -142,16 +142,16 @@ Your application tries to connect in a round robin fashion if the daemon with in
 <li>
 The UMM Daemon closes the connection with your application. </li>
 </ol>
-<p>You can specify the same information directly in your applications with the C API, <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UMM/api.tag:../API/" href="../API/lbm_8h.html#aab029e3f210b40f3fded64fec2a27a02">lbm_set_umm_info()</a>, and the Java API and .NET API, <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UMM/javaapi.tag:../JavaAPI/" href="../JavaAPI/classcom_1_1latencybusters_1_1lbm_1_1LBM.html#a030233dfb74d4413749182124211c570">com::latencybusters::lbm::LBM::setUmmInfo()</a>. These must be the first calls made by your applications.</p>
+<p>You can specify the same information directly in your applications with the C API, <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMM/api.tag:../API/" href="../API/lbm_8h.html#aab029e3f210b40f3fded64fec2a27a02">lbm_set_umm_info()</a>, and the Java API and .NET API, <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMM/javaapi.tag:../JavaAPI/" href="../JavaAPI/classcom_1_1latencybusters_1_1lbm_1_1LBM.html#a030233dfb74d4413749182124211c570">com::latencybusters::lbm::LBM::setUmmInfo()</a>. These must be the first calls made by your applications.</p>
 <p><br />
  </p>
 <h1><a class="anchor" id="configuringtheummdatabase"></a>
-Configuring the UMM Database</h1>
+Configuring the UMM Database&nbsp;&nbsp;<small><a href="#configuringtheummdatabase">&lt;-</a></small></h1>
 <p>Informatica has demonstrated operation with JDBC interfaces to MySQL and Oracle databases. You may be able to use other JDBC databases, but Informatica has only tested with MySQL and Oracle.</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="oracleconsiderations"></a>
-Oracle Considerations</h2>
+Oracle Considerations&nbsp;&nbsp;<small><a href="#oracleconsiderations">&lt;-</a></small></h2>
 <p>Informatica does not supply an Oracle database or any licensing to use Oracle. You can install an Oracle database either before or after installing UM. Drivers are not shipped with UM. The Oracle driver can be downloaded at <a href="http://www.oracle.com/technetwork/database/enterprise-edition/jdbc-10201-088211.html">http://www.oracle.com/technetwork/database/enterprise-edition/jdbc-10201-088211.html</a>. The appropriate driver jar file name must be added to the classpath of the umm.bat/umm.sh and ummd.bat/ummd.sh scripts.</p>
 <p>Configure Oracle with the following steps, which assume you have already installed UM:</p>
 <ol>
@@ -174,7 +174,7 @@ From the Oracle command line or database home page, load /UMM/oracle_templates.t
 <p><br />
  </p>
 <h2><a class="anchor" id="mysqlconsiderations"></a>
-MySQL Considerations</h2>
+MySQL Considerations&nbsp;&nbsp;<small><a href="#mysqlconsiderations">&lt;-</a></small></h2>
 <p>Informatica does not supply MySQL or any licensing to use MySQL. You can install MySQL either before or after installing UM. Drivers are not shipped with UM. The MySQL driver can be downloaded at <a href="http://dev.mysql.com/downloads/connector/j/5.0.html">http://dev.mysql.com/downloads/connector/j/5.0.html</a>. The appropriate driver jar file name must be added to the classpath of the umm.bat/umm.sh and ummd.bat/ummd.sh scripts.</p>
 <p>Configure MySQL with the following steps, which assume you have already installed UM:</p>
 <ol>
@@ -202,7 +202,7 @@ From the MySQL command prompt, run: <pre class="fragment">LOAD DATA INFILE 'mysq
 <p><br />
  </p>
 <h1><a class="anchor" id="securingummdaemoncommunicationwithssl"></a>
-Securing UMM Daemon Communication with SSL</h1>
+Securing UMM Daemon Communication with SSL&nbsp;&nbsp;<small><a href="#securingummdaemoncommunicationwithssl">&lt;-</a></small></h1>
 <p>UMM allows you to secure the TCP transmission of UMM credentials and UM license keys between the UMM Daemon and UM applications using Secure Sockets Layer (SSL). You can implement a certificate-less, Transport Layer Security (TLS) option or provide your own certificate to authenticate the UMM Daemon. The following procedure explains how to secure UMM Daemon communications.</p>
 <ol>
 <li>
@@ -221,7 +221,7 @@ Securing UMM Daemon Communication with SSL</h1>
 lbmrcv:default:default@10.29.3.95:21273
 </pre> </li>
 </ol>
-<p>You can specify the same information directly in your applications with the C API, <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UMM/api.tag:../API/" href="../API/lbm_8h.html#aab029e3f210b40f3fded64fec2a27a02">lbm_set_umm_info()</a>, and the Java API and .NET API, <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/UMM/javaapi.tag:../JavaAPI/" href="../JavaAPI/classcom_1_1latencybusters_1_1lbm_1_1LBM.html#a030233dfb74d4413749182124211c570">com::latencybusters::lbm::LBM::setUmmInfo()</a>. These must be the first calls made by your applications. </p>
+<p>You can specify the same information directly in your applications with the C API, <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMM/api.tag:../API/" href="../API/lbm_8h.html#aab029e3f210b40f3fded64fec2a27a02">lbm_set_umm_info()</a>, and the Java API and .NET API, <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMM/javaapi.tag:../JavaAPI/" href="../JavaAPI/classcom_1_1latencybusters_1_1lbm_1_1LBM.html#a030233dfb74d4413749182124211c570">com::latencybusters::lbm::LBM::setUmmInfo()</a>. These must be the first calls made by your applications. </p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.8.11-->

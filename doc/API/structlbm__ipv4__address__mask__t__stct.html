@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">UM C API
-   &#160;<span id="projectnumber">6.11.1</span>
+   &#160;<span id="projectnumber">6.12</span>
    </div>
   </td>
  </tr>
@@ -87,7 +87,8 @@ Data Fields</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Structure that holds an IPv4 address and a CIDR style netmask. </p>
-<p>A structure used with options to set/get specific addresses within a range. </p>
+<p>A structure used with options to set/get specific addresses within a range.</p>
+<p>See <a class="el" href="structlbm__ipv4__address__mask__t__stct.html">lbm_ipv4_address_mask_t_stct</a> for field definitions. </p>
 </div><h2 class="groupheader">Field Documentation</h2>
 <a class="anchor" id="adfbed23d500ed1a5e64d316432d8bc36"></a>
 <div class="memitem">
@@ -98,7 +99,7 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>IPv4 address </p>
+<p>IPv4 address in network byte order, as might be returned from inet_aton(). </p>
 
 </div>
 </div>
@@ -111,7 +112,7 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Number of leading 1's in the netmask </p>
+<p>Number of leading 1's in the netmask. E.g. the value 28 represents a netmask of 0xFFFFFFF0. </p>
 
 </div>
 </div>

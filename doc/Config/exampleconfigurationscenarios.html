@@ -57,7 +57,7 @@ $(document).ready(function(){initNavTree('exampleconfigurationscenarios.html',''
 <div class="textblock"><p><br />
  </p>
 <h1><a class="anchor" id="highestthroughput"></a>
-Highest Throughput</h1>
+Highest Throughput&nbsp;&nbsp;<small><a href="#highestthroughput">&lt;-</a></small></h1>
 <p>The following configuration option tunes UM for the highest possible throughput.</p>
 <pre class="fragment">#
 # LBM can be configured to make efficient use of CPU time, leading
@@ -70,7 +70,7 @@ source implicit_batching_minimum_length 8192
 </pre><p><br />
  </p>
 <h1><a class="anchor" id="lowestlatency"></a>
-Lowest Latency</h1>
+Lowest Latency&nbsp;&nbsp;<small><a href="#lowestlatency">&lt;-</a></small></h1>
 <p>This is an example configuration that favors low latency at the expense of higher CPU utilization and potentially lower throughput.</p>
 <pre class="fragment">#
 # Latency can be reduced at the expense of network efficiency and
@@ -85,8 +85,7 @@ source implicit_batching_minimum_length 1
 #
 # Latency can be kept to a minimum with UM by writing receiving
 # applications that can accept messages in the order they arrive.
-# See https://communities.informatica.com/infakb/faq/5/Pages/80043.aspx and
-# http://www.29West.Com/docs/THPM/tcp-latency.html#TCP-RECEIVER-SIDE-LATENCY
+# See https://communities.informatica.com/infakb/faq/5/Pages/80043.aspx
 # for more information. Here's how to use arrival-order delivery:
 #
 receiver ordered_delivery 0
@@ -106,7 +105,7 @@ receiver transport_lbtrm_nak_backoff_interval 10
 </pre><p><br />
  </p>
 <h1><a class="anchor" id="creatingmulticastsources"></a>
-Creating Multicast Sources</h1>
+Creating Multicast Sources&nbsp;&nbsp;<small><a href="#creatingmulticastsources">&lt;-</a></small></h1>
 <p>This is an example configuration file that changes the default transport to reliable multicast so all sources created send messages over LBT-RM.</p>
 <pre class="fragment">#
 # UM can be configured to create sources using the LBT-RM reliable
@@ -129,13 +128,13 @@ context transport_lbtrm_retransmit_rate_limit 1000000
 </pre><p><br />
  </p>
 <h1><a class="anchor" id="disablingaspectsoftopicresolution"></a>
-Disabling Aspects of Topic Resolution</h1>
+Disabling Aspects of Topic Resolution&nbsp;&nbsp;<small><a href="#disablingaspectsoftopicresolution">&lt;-</a></small></h1>
 <p>If you need to reduce the amount of Topic Resolution traffic on your network, use the following Configuration options and values in a Ultra Messaging Configuration file.</p>
 <dl class="section note"><dt>Note</dt><dd>Ultra Messaging does not recommend disabling both advertisements and queries because topics may not resolve at all.</dd></dl>
 <p><br />
  </p>
 <h2><a class="anchor" id="disablingtopicadvertisements"></a>
-Disabling Topic Advertisements</h2>
+Disabling Topic Advertisements&nbsp;&nbsp;<small><a href="#disablingtopicadvertisements">&lt;-</a></small></h2>
 <p>You can disable topic advertisements in the Initial Phase, Sustaining Phase or both phases of topic resolution.</p>
 <p><b>Disabling Initial Phase Advertisements</b></p>
 <p>Use the following options to disable topic advertisements in only the Initial Phase.</p>
@@ -147,7 +146,7 @@ source resolver_advertisement_maximum_initial_interval 0
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="disablingreceivertopicqueries"></a>
-Disabling Receiver Topic Queries</h2>
+Disabling Receiver Topic Queries&nbsp;&nbsp;<small><a href="#disablingreceivertopicqueries">&lt;-</a></small></h2>
 <p>You can disable the querying of topics by receivers in the Initial Phase, Sustaining Phase or both phases of topic resolution.</p>
 <p><b>Disabling Initial Phase Queries</b></p>
 <p>Use the following options to disable topic queries in only the Initial Phase.</p>
@@ -160,21 +159,21 @@ receiver resolution_number_of_sources_query_threshold 0
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="disablingwildcardtopicqueries"></a>
-Disabling Wildcard Topic Queries</h2>
+Disabling Wildcard Topic Queries&nbsp;&nbsp;<small><a href="#disablingwildcardtopicqueries">&lt;-</a></small></h2>
 <p>Use the following options to disable topic queries by wildcard receivers.</p>
 <pre class="fragment">wildcard_receiver resolver_query_minimum_interval 0
 wildcard_receiver resolver_query_maximum_interval 0
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="disablingstorecontextnamequeries"></a>
-Disabling Store (Context) Name Queries</h2>
+Disabling Store (Context) Name Queries&nbsp;&nbsp;<small><a href="#disablingstorecontextnamequeries">&lt;-</a></small></h2>
 <p>When using Persistence, use the following options to disable context name queries by sources.</p>
 <pre class="fragment">resolver_context_name_query_maximum_interval 0
 resolver_context_name_query_minimum_interval 0
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="Disabling"></a>
-All But the Minimum Topic Resolution Traffic</h2>
+All But the Minimum Topic Resolution Traffic&nbsp;&nbsp;<small><a href="#Disabling">&lt;-</a></small></h2>
 <p>A minimalist approach to topic resolution can take different forms based on you requirements. One approach is to disable all traffic except for queries in the sustaining phase. Add the following settings to your Ultra Messaging configuration file to implement this approach.</p>
 <pre class="fragment">source resolver_advertisement_minimum_initial_interval 0
 source resolver_advertisement_sustain_interval 0
@@ -184,7 +183,7 @@ wildcard_receiver resolver_query_minimum_interval 0
 </pre><p><br />
  </p>
 <h1><a class="anchor" id="unicastresolver"></a>
-Unicast Resolver</h1>
+Unicast Resolver&nbsp;&nbsp;<small><a href="#unicastresolver">&lt;-</a></small></h1>
 <p>To use the unicast resolver, use a configuration file like the following example:</p>
 <pre class="fragment">#
 # Topic resolution can be configured to use unicast traffic with an
@@ -195,7 +194,7 @@ context resolver_unicast_daemon 127.0.0.1:15380
 </pre><p><br />
  </p>
 <h1><a class="anchor" id="reestablishpre40topicresolution"></a>
-Re-establish Pre-4.0 Topic Resolution</h1>
+Re-establish Pre-4.0 Topic Resolution&nbsp;&nbsp;<small><a href="#reestablishpre40topicresolution">&lt;-</a></small></h1>
 <p>Ultra Messaging topic resolution prior to LBM Version 4.0 did not have resolution phases. To implement pre-4.0 topic resolution, include the following configuration option changes in your Ultra Messaging configuration file.</p>
 <pre class="fragment"># ----- Disable Advertisements in 4.0 Initial Phase
 source resolver_advertisement_minimum_initial_interval 0
@@ -218,7 +217,7 @@ wildcard_receiver resolver_query_minimum_interval 0
 </pre><p><br />
  </p>
 <h1><a class="anchor" id="reestablishprelbm33preume20portdefaults"></a>
-Re-establish Pre-LBM 3.3 (Pre-UME 2.0) Port Defaults</h1>
+Re-establish Pre-LBM 3.3 (Pre-UME 2.0) Port Defaults&nbsp;&nbsp;<small><a href="#reestablishprelbm33preume20portdefaults">&lt;-</a></small></h1>
 <p>To use the early default ports (prior to LBM 3.3 and UME 2.0), the following configuration file may be used.</p>
 <pre class="fragment">context mim_destination_port 4401
 context mim_incoming_destination_port 4401
@@ -247,7 +246,7 @@ source  ume_tertiary_store_port 4567
 <p><br />
  </p>
 <h1><a class="anchor" id="configurenewportdefaults"></a>
-Configure New Port Defaults</h1>
+Configure New Port Defaults&nbsp;&nbsp;<small><a href="#configurenewportdefaults">&lt;-</a></small></h1>
 <p>In the unusual case that you must run older versions of Ultra Messaging (less than LBM 3.3 / UME 2.0) on certain machine(s) and need these older version to work with the machines running the current versions of UMS and UMP, you can use the following configuration file for the older versions to synchronize port usage between old and current versions.</p>
 <pre class="fragment">context mim_destination_port 14401
 context mim_incoming_destination_port 14401

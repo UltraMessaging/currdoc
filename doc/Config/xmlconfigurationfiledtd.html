@@ -58,79 +58,59 @@ $(document).ready(function(){initNavTree('xmlconfigurationfiledtd.html','');});
 <pre class="fragment">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;!ELEMENT um-configuration (license | templates | applications)*&gt;
 &lt;!ATTLIST um-configuration version CDATA #REQUIRED&gt;
-
 &lt;!ELEMENT license ( #PCDATA )&gt;
 &lt;!ATTLIST license format (filename | string) "string"&gt;
 &lt;!ATTLIST license xml:space (default | preserve) "default"&gt;
-
 &lt;!ELEMENT templates (template*)&gt;
-
 &lt;!ELEMENT template (options+)&gt;
 &lt;!ATTLIST template name CDATA #REQUIRED&gt;
-
 &lt;!ELEMENT options (option | application-data)*&gt;
 &lt;!ATTLIST options type (event-queue | context | source | receiver | wildcard-receiver | hfx) #IMPLIED&gt;
-
 &lt;!ELEMENT option (allow | deny)*&gt;
 &lt;!ATTLIST option name CDATA #REQUIRED&gt;
 &lt;!ATTLIST option default-value CDATA #IMPLIED&gt;
 &lt;!ATTLIST option order CDATA #IMPLIED&gt;
-
 &lt;!ELEMENT application-data ( #PCDATA )&gt;
 &lt;!ATTLIST application-data xml:space (default | preserve) "default"&gt;
-
 &lt;!ELEMENT allow ( #PCDATA )&gt;
 &lt;!ATTLIST allow xml:space (default | preserve) "default"&gt;
-
 &lt;!ELEMENT deny ( #PCDATA )&gt;
 &lt;!ATTLIST deny xml:space (default | preserve) "default"&gt;
-
 &lt;!ELEMENT applications (application*)&gt;
-
 &lt;!ELEMENT application (contexts | event-queues | hfxs | application-data)+&gt;
 &lt;!ATTLIST application name CDATA #IMPLIED&gt;
 &lt;!ATTLIST application template CDATA #IMPLIED&gt;
-
 &lt;!ELEMENT contexts (context*)&gt;
 &lt;!ATTLIST contexts template CDATA #IMPLIED&gt;
 &lt;!ATTLIST contexts order CDATA #IMPLIED&gt;
-
 &lt;!ELEMENT event-queues (event-queue*)&gt;
 &lt;!ATTLIST event-queues template CDATA #IMPLIED&gt;
 &lt;!ATTLIST event-queues order CDATA #IMPLIED&gt;
-
 &lt;!ELEMENT hfxs (topic*)&gt;
 &lt;!ATTLIST hfxs template CDATA #IMPLIED&gt;
 &lt;!ATTLIST hfxs order CDATA #IMPLIED&gt;
-
 &lt;!ELEMENT event-queue (options*)&gt;
 &lt;!ATTLIST event-queue name CDATA #IMPLIED&gt;
 &lt;!ATTLIST event-queue template CDATA #IMPLIED&gt;
 &lt;!ATTLIST event-queue rule (allow | deny) "allow"&gt;
-
 &lt;!ELEMENT context (sources | receivers | wildcard-receivers | options)+&gt;
 &lt;!ATTLIST context name CDATA #IMPLIED&gt;
 &lt;!ATTLIST context template CDATA #IMPLIED&gt;
 &lt;!ATTLIST context rule (allow | deny) "allow"&gt;
-
 &lt;!ELEMENT sources (topic*)&gt;
 &lt;!ATTLIST sources template CDATA #IMPLIED&gt;
 &lt;!ATTLIST sources order CDATA #IMPLIED&gt;
-
 &lt;!ELEMENT receivers (topic*)&gt;
 &lt;!ATTLIST receivers template CDATA #IMPLIED&gt;
 &lt;!ATTLIST receivers order CDATA #IMPLIED&gt;
-
 &lt;!ELEMENT wildcard-receivers (wildcard-receiver*)&gt;
 &lt;!ATTLIST wildcard-receivers template CDATA #IMPLIED&gt;
 &lt;!ATTLIST wildcard-receivers order CDATA #IMPLIED&gt;
-
 &lt;!ELEMENT topic (options*)&gt;
 &lt;!ATTLIST topic template CDATA #IMPLIED&gt;
 &lt;!ATTLIST topic rule (allow | deny) "allow"&gt;
 &lt;!ATTLIST topic pattern CDATA #IMPLIED&gt;
 &lt;!ATTLIST topic topicname CDATA #IMPLIED&gt;
-
 &lt;!ELEMENT wildcard-receiver (options*)&gt;
 &lt;!ATTLIST wildcard-receiver template CDATA #IMPLIED&gt;
 &lt;!ATTLIST wildcard-receiver rule (allow | deny) "allow"&gt;

@@ -1,5 +1,10 @@
 var NAVTREEINDEX13 =
 {
+"classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMNotArrayException.html":[2,0,0,0,0,0,49],
+"classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMNotArrayException.html#a135a59d4ca0df58025c359eac84d9f23":[2,0,0,0,0,0,49,1],
+"classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMNotArrayException.html#aa02bcb7289f143263b0462852c79be80":[2,0,0,0,0,0,49,0],
+"classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMOutOfRangeException.html":[2,0,0,0,0,0,50],
+"classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMOutOfRangeException.html#a0b9c8ea736e93de85bc7fad65e552101":[2,0,0,0,0,0,50,5],
 "classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMOutOfRangeException.html#a93f9cb71d9122faf3c4c4774e1ee6851":[2,0,0,0,0,0,50,1],
 "classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMOutOfRangeException.html#ae1651c732b348a1680f8cd79b82c3398":[2,0,0,0,0,0,50,0],
 "classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMOutOfRangeException.html#af2176fabe2e72780bf40f7dce9888e8e":[2,0,0,0,0,0,50,3],
@@ -244,10 +249,5 @@ var NAVTREEINDEX13 =
 "classcom_1_1latencybusters_1_1pdm_1_1PDMDeserializer.html#a95abcb16308f5d4889e794aed2ce7a8e":[2,0,0,0,1,3,13],
 "classcom_1_1latencybusters_1_1pdm_1_1PDMDeserializer.html#aa767fb135537664dc58b7a4e743d604b":[2,0,0,0,1,3,17],
 "classcom_1_1latencybusters_1_1pdm_1_1PDMDeserializer.html#ab28a8a8566ec390213cb445b029cadd5":[2,0,0,0,1,3,14],
-"classcom_1_1latencybusters_1_1pdm_1_1PDMDeserializer.html#ab44f114f26307459e6e70ca472f565e7":[2,0,0,0,1,3,25],
-"classcom_1_1latencybusters_1_1pdm_1_1PDMDeserializer.html#ab5c8628505ab4863d749d7bb352c9fa6":[2,0,0,0,1,3,1],
-"classcom_1_1latencybusters_1_1pdm_1_1PDMDeserializer.html#abd8851a652f30bdd32e539674a306704":[2,0,0,0,1,3,23],
-"classcom_1_1latencybusters_1_1pdm_1_1PDMDeserializer.html#ac026fc8529b55a2c052f2a808260bae6":[2,0,0,0,1,3,2],
-"classcom_1_1latencybusters_1_1pdm_1_1PDMDeserializer.html#acd7eed3a19e22bb01703d724441612d9":[2,0,0,0,1,3,16],
-"classcom_1_1latencybusters_1_1pdm_1_1PDMDeserializer.html#ad033b3987e17d8bdb4665473dcc6f3e4":[2,0,0,0,1,3,21]
+"classcom_1_1latencybusters_1_1pdm_1_1PDMDeserializer.html#ab44f114f26307459e6e70ca472f565e7":[2,0,0,0,1,3,25]
 };

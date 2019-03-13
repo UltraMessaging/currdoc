@@ -58,16 +58,18 @@ $(document).ready(function(){initNavTree('grpmulticastresolvernetwork.html','');
 <div class="image">
 <img src="Resolver-Multicast.png" alt="Resolver-Multicast.png"/>
 </div>
- <p>See also <em>Topic Resolution</em> in the <em>Ultra Messaging Concepts Guide</em> for more information.</p>
+ <p>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Config/design.tag:../Design/" href="../Design/fundamentalconcepts.html#topicresolutionoverview">Topic Resolution Overview</a> for general information on Topic Resolution.</p>
 <p><br />
  </p>
 <h1><a class="anchor" id="multicastresolvernetworkref"></a>
-Reference</h1>
+Reference&nbsp;&nbsp;<small><a href="#multicastresolvernetworkref">&lt;-</a></small></h1>
 <p><br />
  </p>
 <h2><a class="anchor" id="resolvermulticastaddresscontext"></a>
-resolver_multicast_address (context)</h2>
-<dl class="section user"><dt></dt><dd>Multicast address (or domain name of the multicast address) used for Topic Resolution. This option automatically sets the values for <a class="el" href="grpmulticastresolvernetwork.html#resolvermulticastincomingaddresscontext">resolver_multicast_incoming_address (context)</a> and <a class="el" href="grpmulticastresolvernetwork.html#resolvermulticastoutgoingaddresscontext">resolver_multicast_outgoing_address (context)</a> as evidenced by the default values for all three options, which are the same.</dd></dl>
+resolver_multicast_address (context)&nbsp;&nbsp;<small><a href="#resolvermulticastaddresscontext">&lt;-</a></small></h2>
+<dl class="section user"><dt></dt><dd>Multicast address (or domain name of the multicast address) used for Topic Resolution. </dd></dl>
+<dl class="section user"><dt></dt><dd>This option automatically sets the values for <a class="el" href="grpmulticastresolvernetwork.html#resolvermulticastincomingaddresscontext">resolver_multicast_incoming_address (context)</a> and <a class="el" href="grpmulticastresolvernetwork.html#resolvermulticastoutgoingaddresscontext">resolver_multicast_outgoing_address (context)</a> as evidenced by the default values for all three options, which are the same. </dd></dl>
+<dl class="section user"><dt></dt><dd>See also <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Config/design.tag:../Design/" href="../Design/topicresolutiondescription.html#udpbasedtopicresolutiondetails">UDP-Based Topic Resolution Details</a>.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>context </td></tr>
@@ -82,8 +84,9 @@ resolver_multicast_address (context)</h2>
 <p><br />
  </p>
 <h2><a class="anchor" id="resolvermulticastincomingaddresscontext"></a>
-resolver_multicast_incoming_address (context)</h2>
-<dl class="section user"><dt></dt><dd>Incoming multicast address (or domain name of the multicast address) used for finer control of Topic Resolution. This value may be set to 0.0.0.0 (INADDR_ANY), to switch off listening to topic resolution messages. This means that queries from receivers or advertisements from sources will not be handled. </dd></dl>
+resolver_multicast_incoming_address (context)&nbsp;&nbsp;<small><a href="#resolvermulticastincomingaddresscontext">&lt;-</a></small></h2>
+<dl class="section user"><dt></dt><dd>Incoming multicast address (or domain name of the multicast address) used for finer control of Topic Resolution. </dd></dl>
+<dl class="section user"><dt></dt><dd>This value may be set to 0.0.0.0 (INADDR_ANY), to switch off listening to topic resolution messages. This means that queries from receivers or advertisements from sources will not be handled. </dd></dl>
 <dl class="section user"><dt></dt><dd>See also <a class="el" href="grpmulticastresolvernetwork.html#resolvermulticastoutgoingaddresscontext">resolver_multicast_outgoing_address (context)</a>.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
@@ -99,7 +102,7 @@ resolver_multicast_incoming_address (context)</h2>
 <p><br />
  </p>
 <h2><a class="anchor" id="resolvermulticastincomingportcontext"></a>
-resolver_multicast_incoming_port (context)</h2>
+resolver_multicast_incoming_port (context)&nbsp;&nbsp;<small><a href="#resolvermulticastincomingportcontext">&lt;-</a></small></h2>
 <dl class="section user"><dt></dt><dd>Incoming multicast port used for finer control of Topic Resolution. </dd></dl>
 <dl class="section user"><dt></dt><dd>See also <a class="el" href="grpmulticastresolvernetwork.html#resolvermulticastoutgoingportcontext">resolver_multicast_outgoing_port (context)</a>. </dd></dl>
 <dl class="section user"><dt></dt><dd>See <a class="el" href="generalconfigurationguidelines.html#portassignments">Port Assignments</a> for more information about configuring ports.</dd></dl>
@@ -107,7 +110,7 @@ resolver_multicast_incoming_port (context)</h2>
 <tr>
 <td><em>Scope:</em> </td><td>context </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a86897f2fdd66aa7021683a4e72a4537b">lbm_uint16_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a86897f2fdd66aa7021683a4e72a4537b">lbm_uint16_t</a></b> </td></tr>
 <tr>
 <td><em>Default value:</em> </td><td>12965 </td></tr>
 <tr>
@@ -119,13 +122,14 @@ resolver_multicast_incoming_port (context)</h2>
 <p><br />
  </p>
 <h2><a class="anchor" id="resolvermulticastinterfacecontext"></a>
-resolver_multicast_interface (context)</h2>
-<dl class="section user"><dt></dt><dd>Specifies which network interface UM sends/receives all multicast traffic (Topic Resolution, LBT-RM, Multicast Immediate Messaging). Can specify full IP address of interface, or just network part (see <a class="el" href="generalconfigurationguidelines.html#specifyinginterfaces">Specifying Interfaces</a> for details). Default is set to <a class="el" href="grpmajoroptions.html#defaultinterfacecontext">default_interface (context)</a> if specified. Otherwise, it is set to the default multicast interface as determined by UM (the first multicast-capable, non-loopback interface).</dd></dl>
+resolver_multicast_interface (context)&nbsp;&nbsp;<small><a href="#resolvermulticastinterfacecontext">&lt;-</a></small></h2>
+<dl class="section user"><dt></dt><dd>Specifies which network interface UM sends/receives all multicast traffic (Topic Resolution, LBT-RM, Multicast Immediate Messaging). </dd></dl>
+<dl class="section user"><dt></dt><dd>Can specify full IP address of interface, or just network part (see <a class="el" href="generalconfigurationguidelines.html#specifyinginterfaces">Specifying Interfaces</a> for details). Default is set to <a class="el" href="grpmajoroptions.html#defaultinterfacecontext">default_interface (context)</a>, if specified. Otherwise, it is set to the default multicast interface as determined by UM (the first multicast-capable, non-loopback interface).</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>context </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a0b66a5b33839617b2a822e4a20a8d535">lbm_ipv4_address_mask_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a0b66a5b33839617b2a822e4a20a8d535">lbm_ipv4_address_mask_t</a></b> </td></tr>
 <tr>
 <td><em>Default value:</em> </td><td>0.0.0.0 </td></tr>
 <tr>
@@ -135,7 +139,7 @@ resolver_multicast_interface (context)</h2>
 <p><br />
  </p>
 <h2><a class="anchor" id="resolvermulticastoutgoingaddresscontext"></a>
-resolver_multicast_outgoing_address (context)</h2>
+resolver_multicast_outgoing_address (context)&nbsp;&nbsp;<small><a href="#resolvermulticastoutgoingaddresscontext">&lt;-</a></small></h2>
 <dl class="section user"><dt></dt><dd>Outgoing multicast address (or domain name of the multicast address) used for finer control of Topic Resolution. </dd></dl>
 <dl class="section user"><dt></dt><dd>See also <a class="el" href="grpmulticastresolvernetwork.html#resolvermulticastincomingaddresscontext">resolver_multicast_incoming_address (context)</a>.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
@@ -152,7 +156,7 @@ resolver_multicast_outgoing_address (context)</h2>
 <p><br />
  </p>
 <h2><a class="anchor" id="resolvermulticastoutgoingportcontext"></a>
-resolver_multicast_outgoing_port (context)</h2>
+resolver_multicast_outgoing_port (context)&nbsp;&nbsp;<small><a href="#resolvermulticastoutgoingportcontext">&lt;-</a></small></h2>
 <dl class="section user"><dt></dt><dd>Outgoing multicast port used for finer control of Topic Resolution. </dd></dl>
 <dl class="section user"><dt></dt><dd>See also <a class="el" href="grpmulticastresolvernetwork.html#resolvermulticastincomingportcontext">resolver_multicast_incoming_port (context)</a>. </dd></dl>
 <dl class="section user"><dt></dt><dd>See <a class="el" href="generalconfigurationguidelines.html#portassignments">Port Assignments</a> for more information about configuring ports.</dd></dl>
@@ -160,7 +164,7 @@ resolver_multicast_outgoing_port (context)</h2>
 <tr>
 <td><em>Scope:</em> </td><td>context </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a86897f2fdd66aa7021683a4e72a4537b">lbm_uint16_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a86897f2fdd66aa7021683a4e72a4537b">lbm_uint16_t</a></b> </td></tr>
 <tr>
 <td><em>Default value:</em> </td><td>12965 </td></tr>
 <tr>
@@ -172,14 +176,15 @@ resolver_multicast_outgoing_port (context)</h2>
 <p><br />
  </p>
 <h2><a class="anchor" id="resolvermulticastportcontext"></a>
-resolver_multicast_port (context)</h2>
-<dl class="section user"><dt></dt><dd>Multicast port used for Topic Resolution. This option automatically sets the values for <a class="el" href="grpmulticastresolvernetwork.html#resolvermulticastincomingportcontext">resolver_multicast_incoming_port (context)</a> and <a class="el" href="grpmulticastresolvernetwork.html#resolvermulticastoutgoingportcontext">resolver_multicast_outgoing_port (context)</a> as evidenced by the default values for all three options, which are the same. </dd></dl>
+resolver_multicast_port (context)&nbsp;&nbsp;<small><a href="#resolvermulticastportcontext">&lt;-</a></small></h2>
+<dl class="section user"><dt></dt><dd>Multicast port used for Topic Resolution. </dd></dl>
+<dl class="section user"><dt></dt><dd>This option automatically sets the values for <a class="el" href="grpmulticastresolvernetwork.html#resolvermulticastincomingportcontext">resolver_multicast_incoming_port (context)</a> and <a class="el" href="grpmulticastresolvernetwork.html#resolvermulticastoutgoingportcontext">resolver_multicast_outgoing_port (context)</a> as evidenced by the default values for all three options, which are the same. </dd></dl>
 <dl class="section user"><dt></dt><dd>See <a class="el" href="generalconfigurationguidelines.html#portassignments">Port Assignments</a> for more information about configuring ports.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>context </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a86897f2fdd66aa7021683a4e72a4537b">lbm_uint16_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a86897f2fdd66aa7021683a4e72a4537b">lbm_uint16_t</a></b> </td></tr>
 <tr>
 <td><em>Default value:</em> </td><td>12965 </td></tr>
 <tr>
@@ -191,13 +196,14 @@ resolver_multicast_port (context)</h2>
 <p><br />
  </p>
 <h2><a class="anchor" id="resolvermulticastreceiversocketbuffercontext"></a>
-resolver_multicast_receiver_socket_buffer (context)</h2>
-<dl class="section user"><dt></dt><dd>Value used to set SO_RCVBUF value of the resolver receivers. In some cases the OS will not allow all of this value to be used. A value of 0 instructs UM to use the default OS values. See the section on <a class="el" href="generalconfigurationguidelines.html#socketbuffersizes">Socket Buffer Sizes</a> for platform-dependent information. See also our white paper Topics in High Performance Messaging for background and guidelines on UDP buffer sizing.</dd></dl>
+resolver_multicast_receiver_socket_buffer (context)&nbsp;&nbsp;<small><a href="#resolvermulticastreceiversocketbuffercontext">&lt;-</a></small></h2>
+<dl class="section user"><dt></dt><dd>Value used to set SO_RCVBUF value of the resolver receivers. </dd></dl>
+<dl class="section user"><dt></dt><dd>In some cases the OS will not allow all of this value to be used. A value of 0 instructs UM to use the default OS values. See <a class="el" href="generalconfigurationguidelines.html#socketbuffersizes">Socket Buffer Sizes</a> for platform-dependent information. See also our white paper Topics in High Performance Messaging for background and guidelines on UDP buffer sizing.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>context </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
 <tr>
 <td><em>Units:</em> </td><td>bytes </td></tr>
 <tr>
@@ -209,13 +215,14 @@ resolver_multicast_receiver_socket_buffer (context)</h2>
 <p><br />
  </p>
 <h2><a class="anchor" id="resolvermulticastttlcontext"></a>
-resolver_multicast_ttl (context)</h2>
-<dl class="section user"><dt></dt><dd>The IP TTL (hop count) to use for a Topic Resolution packet. A value of 1 confines the packet to the local network (but may also cause high CPU usage on some routers). Also controls TTL on LBT-RM packets.</dd></dl>
+resolver_multicast_ttl (context)&nbsp;&nbsp;<small><a href="#resolvermulticastttlcontext">&lt;-</a></small></h2>
+<dl class="section user"><dt></dt><dd>The IP TTL (hop count) to use for a Topic Resolution packet. </dd></dl>
+<dl class="section user"><dt></dt><dd>A value of 1 confines the packet to the local network (but may also cause high CPU usage on some routers). Also controls TTL on LBT-RM packets.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>context </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a09c7963deb485135d5bb29c84cd7d3a9">lbm_uint8_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a09c7963deb485135d5bb29c84cd7d3a9">lbm_uint8_t</a></b> </td></tr>
 <tr>
 <td><em>Default value:</em> </td><td>16 </td></tr>
 <tr>

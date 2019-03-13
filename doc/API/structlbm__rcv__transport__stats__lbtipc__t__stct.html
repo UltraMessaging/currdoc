@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">UM C API
-   &#160;<span id="projectnumber">6.11.1</span>
+   &#160;<span id="projectnumber">6.12</span>
    </div>
   </td>
  </tr>
@@ -93,7 +93,8 @@ Data Fields</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Structure that holds datagram statistics for receiver LBT-IPC transports. </p>
-<p>Note that when stats are sampled, the fields in the structure are not necessarily from the same instant in time. The structure might be updated concurrently with it being sampled, and while each structure field is atomically read, the field values can be skewed slightly across time. </p>
+<p>Note that when stats are sampled, the fields in the structure are not necessarily from the same instant in time. The structure might be updated concurrently with it being sampled, and while each structure field is atomically read, the field values can be skewed slightly across time.</p>
+<p>See <a class="el" href="structlbm__rcv__transport__stats__lbtipc__t__stct.html">lbm_rcv_transport_stats_lbtipc_t_stct</a> for field definitions. </p>
 </div><h2 class="groupheader">Field Documentation</h2>
 <a class="anchor" id="ab6a6d8204a7b58550836838b6746229d"></a>
 <div class="memitem">
@@ -130,7 +131,7 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Number of messages or message fragments received over an LBT-IPC transport. A single datagram may contain one or more messages or a fragment of a larger message. For fragmented messages larger than configuration option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/API/config.tag:../Config/" href="../Config/grptransportlbtipcoperation.html#transportlbtipcdatagrammaxsizecontext">transport_lbtipc_datagram_max_size (context)</a> (default 64KB), this count reflects the number of datagrams used to constitute those messages. Thus, this number is equal to or greater than the datagram counter (msgs_rcved, above). This number also includes messages received for which there was no interested receiver, which is tallied in the lbm_msgs_no_topic_rcved counter (below). </p>
+<p>Number of messages or message fragments received over an LBT-IPC transport. A single datagram may contain one or more messages or a fragment of a larger message. For fragmented messages larger than configuration option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/API/config.tag:../Config/" href="../Config/grptransportlbtipcoperation.html#transportlbtipcdatagrammaxsizecontext">transport_lbtipc_datagram_max_size (context)</a> (default 64KB), this count reflects the number of datagrams used to constitute those messages. Thus, this number is equal to or greater than the datagram counter (msgs_rcved, above). This number also includes messages received for which there was no interested receiver, which is tallied in the lbm_msgs_no_topic_rcved counter (below). </p>
 
 </div>
 </div>
@@ -156,7 +157,7 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Number of LBT-IPC datagrams received. Depending on batching settings, a single LBT-IPC datagram may contain one or more messages, or a fragment of a larger message. With LBT-IPC, larger messages are split into fragment sizes limited by configuration option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.11.1_RC1/doc/API/config.tag:../Config/" href="../Config/grptransportlbtipcoperation.html#transportlbtipcdatagrammaxsizecontext">transport_lbtipc_datagram_max_size (context)</a> (default 64KB). </p>
+<p>Number of LBT-IPC datagrams received. Depending on batching settings, a single LBT-IPC datagram may contain one or more messages, or a fragment of a larger message. With LBT-IPC, larger messages are split into fragment sizes limited by configuration option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/API/config.tag:../Config/" href="../Config/grptransportlbtipcoperation.html#transportlbtipcdatagrammaxsizecontext">transport_lbtipc_datagram_max_size (context)</a> (default 64KB). </p>
 
 </div>
 </div>

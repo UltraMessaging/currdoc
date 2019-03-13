@@ -60,6 +60,7 @@ var classcom_1_1latencybusters_1_1lbm_1_1LBM =
     [ "LBM_RESOLVER_EVENT_INFO_INFO_SOURCE_ID_TYPE_PRESENT_FLAG", "classcom_1_1latencybusters_1_1lbm_1_1LBM.html#a445ef365eff7383b80ba51796ac6744d", null ],
     [ "LBM_RESOLVER_EVENT_INFO_INFO_VERSION_PRESENT_FLAG", "classcom_1_1latencybusters_1_1lbm_1_1LBM.html#a02c4ac352823b0ada9227e8233630092", null ],
     [ "LBM_RESOLVER_EVENTADVERTISEMENT_FLAGS_UMQ", "classcom_1_1latencybusters_1_1lbm_1_1LBM.html#a7af73e5d93e1cef1aedf61ba68b8b763", null ],
+    [ "LBM_SHARE", "classcom_1_1latencybusters_1_1lbm_1_1LBM.html#a46be7a7970d91f66310da6be011add42", null ],
     [ "LBM_SRC_COST_FUNCTION_REJECT", "classcom_1_1latencybusters_1_1lbm_1_1LBM.html#a194640b45c3ab7274d4c47eefae205cc", null ],
     [ "LBM_STREAMMESSAGE", "classcom_1_1latencybusters_1_1lbm_1_1LBM.html#ad0df8b998adc33e72b1b9868bbc12723", null ],
     [ "LBM_TEXTMESSAGE", "classcom_1_1latencybusters_1_1lbm_1_1LBM.html#a7b8dea2ba292f4ab38da8115523373e5", null ],
