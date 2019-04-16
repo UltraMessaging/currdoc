@@ -254,7 +254,8 @@ var NAVTREE =
       ] ],
       [ "Deprecations for 6.0", "umversion6_0.html#deprecationsfor60", [
         [ "Streaming Deprecations for 6.0", "umversion6_0.html#streamingdeprecationsfor60", null ]
-      ] ]
+      ] ],
+      [ "Errata", "umversion6_0.html#errata", null ]
     ] ]
   ] ]
 ];

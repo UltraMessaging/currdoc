@@ -123,14 +123,14 @@ ActiveMQ broker </li>
 Upgrading Brokered Queuing and JMS&nbsp;&nbsp;<small><a href="#upgradingbrokeredqueueingandjms">&lt;-</a></small></h1>
 <p>In UM version 6.8, the brokered queuing functionality and JMS API was re-implemented with an enhanced ActiveMQ-based JMS/AMQP broker. In many cases, the UM queuing API can still be used with few if any changes.</p>
 <dl class="section note"><dt>Note</dt><dd>Important: If you are upgrading non-ULB queuing applications from versions prior to 6.8, note that this upgrade has a major impact on your applications and deployment. The umestored daemon no longer implements queuing functionality; instead, the UMQ client API now uses the AMQP protocol to communicate with an ActiveMQ broker for queuing functionality. You must rebuild applications, redeploy daemons, and perform a flash cut over. Also, review your applications for functionalities that are deprecated in UMQ 6.8 or later. UMQ clients using version 6.8 or later will not interoperate with a pre-6.8 umestored-based queue broker. UMQ clients using versions earlier than 6.8 will not interoperate with an ActiveMQ broker. For more information, see the Guide for Queuing.</dd></dl>
-<p>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/ChangeLog/umq.tag:../UMQ/" href="../UMQ/gettingstarted.html#queuingupgradeconsiderations">Queuing Upgrade Considerations</a> for more information about upgrading brokered queuing applications.</p>
+<p>See <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/ChangeLog/umq.tag:../UMQ/" href="../UMQ/gettingstarted.html#queuingupgradeconsiderations">Queuing Upgrade Considerations</a> for more information about upgrading brokered queuing applications.</p>
 <p><br />
  </p>
 <h1><a class="anchor" id="upgradingfromversionpre60"></a>
 Upgrading From Version Pre-6.0&nbsp;&nbsp;<small><a href="#upgradingfromversionpre60">&lt;-</a></small></h1>
 <p>With the introduction of the UM Router, several changes needed to be made to the "wire format" of UM command and control messages. This resulted in 6.0-based applications not being interoperable with pre-6.0 applications. For many customers, this did not pose a significant problem since they were able to upgrade all of their systems in a single step. I.e. there was no need for pre-6.0 applications to exchange messages with 6.0 applications.</p>
 <p>However, for many customers, this kind of "flash" upgrade is simply not practical. Therefore, starting with UM version 6.7, an upgrade path was developed which allows different applications to be upgraded at different times, while still allowing those mixed-version applications to exchange messages.</p>
-<dl class="section note"><dt>Note</dt><dd>When you upgrade from a previous version, you must set option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/ChangeLog/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umestoreactivitytimeoutsource">ume_store_activity_timeout (source)</a> to 10,000 and UMP store option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/ChangeLog/ume.tag:../UME/" href="../UME/configurationreferenceforumestored.html#umecfgkeepaliveinterval">keepalive-interval</a> to 3,000. This avoids unexpected behavior during a phased upgrade.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>When you upgrade from a previous version, you must set option <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umestoreactivitytimeoutsource">ume_store_activity_timeout (source)</a> to 10,000 and UMP store option <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/ChangeLog/ume.tag:../UME/" href="../UME/configurationreferenceforumestored.html#umecfgkeepaliveinterval">keepalive-interval</a> to 3,000. This avoids unexpected behavior during a phased upgrade.</dd></dl>
 <p>To upgrade Ultra Messaging from version 5.3.x to version 6.7 and beyond, perform the following procedure:</p>
 <ol>
 <li>
@@ -142,7 +142,7 @@ Upgrading From Version Pre-6.0&nbsp;&nbsp;<small><a href="#upgradingfromversionp
 <p class="endli"></p>
 </li>
 <li>
-<p class="startli">If using UMP stores, ensure that all source settings for option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/ChangeLog/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umestorebehaviorsource">ume_store_behavior (source)</a> are set to '<code>qc</code>' or '<code>quorum-consensus</code>', and not '<code>rr</code>' or '<code>round-robin</code>'.</p>
+<p class="startli">If using UMP stores, ensure that all source settings for option <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umestorebehaviorsource">ume_store_behavior (source)</a> are set to '<code>qc</code>' or '<code>quorum-consensus</code>', and not '<code>rr</code>' or '<code>round-robin</code>'.</p>
 <p class="endli"></p>
 </li>
 <li>
@@ -158,39 +158,39 @@ Separate sources on the same context can specify daemons of different versions. 
 <li>
 Do not start upgraded daemons with 5.3.x state and cache files. </li>
 </ul>
-<dl class="section note"><dt>Note</dt><dd>When upgrading from 5.3.x, if you neglect to set <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/ChangeLog/config.tag:../Config/" href="../Config/grpmajoroptions.html#compatibilityincludepreum60behaviorcontext">compatibility_include_pre_um_6_0_behavior (context)</a> to 1, receivers incorrectly receive messages without persistence.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>When upgrading from 5.3.x, if you neglect to set <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grpmajoroptions.html#compatibilityincludepreum60behaviorcontext">compatibility_include_pre_um_6_0_behavior (context)</a> to 1, receivers incorrectly receive messages without persistence.</dd></dl>
 </li>
 <li>
 <p class="startli">Upgrade source and receiver applications. You can upgrade these one by one, in any order. As you upgrade each application, set the following configuration options: </p><ul>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/ChangeLog/config.tag:../Config/" href="../Config/grpmajoroptions.html#compatibilityincludepreum60behaviorcontext">compatibility_include_pre_um_6_0_behavior (context)</a> to 1 </li>
+<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grpmajoroptions.html#compatibilityincludepreum60behaviorcontext">compatibility_include_pre_um_6_0_behavior (context)</a> to 1 </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/ChangeLog/config.tag:../Config/" href="../Config/grptransporttcpoperation.html#transporttcpusesessionidsource">transport_tcp_use_session_id (source)</a> to 0 </li>
+<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grptransporttcpoperation.html#transporttcpusesessionidsource">transport_tcp_use_session_id (source)</a> to 0 </li>
 </ul>
 <p>These settings must remain during the period when the network contains both applications based on 5.3.x and this release.</p>
 <p class="endli"></p>
 </li>
 <li>
-<p class="startli">If you use Late Join or OTR, review the settings for Late Join or OTR per-message timeout options. Note that option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/ChangeLog/config.tag:../Config/" href="../Config/grpdeprecated.html#otrrequestdurationreceiver">otr_request_duration (receiver)</a> was deprecated in 6.0, and the following options are added: </p><ul>
+<p class="startli">If you use Late Join or OTR, review the settings for Late Join or OTR per-message timeout options. Note that option <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grpdeprecated.html#otrrequestdurationreceiver">otr_request_duration (receiver)</a> was deprecated in 6.0, and the following options are added: </p><ul>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/ChangeLog/config.tag:../Config/" href="../Config/grplatejoin.html#latejoininforequestintervalreceiver">late_join_info_request_interval (receiver)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grplatejoin.html#latejoininforequestintervalreceiver">late_join_info_request_interval (receiver)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/ChangeLog/config.tag:../Config/" href="../Config/grplatejoin.html#latejoininforequestmaximumreceiver">late_join_info_request_maximum (receiver)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grplatejoin.html#latejoininforequestmaximumreceiver">late_join_info_request_maximum (receiver)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/ChangeLog/config.tag:../Config/" href="../Config/grplatejoin.html#retransmitrequestmessagetimeoutreceiver">retransmit_request_message_timeout (receiver)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grplatejoin.html#retransmitrequestmessagetimeoutreceiver">retransmit_request_message_timeout (receiver)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/ChangeLog/config.tag:../Config/" href="../Config/grpofftransportrecovery.html#otrmessagecachingthresholdreceiver">otr_message_caching_threshold (receiver)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grpofftransportrecovery.html#otrmessagecachingthresholdreceiver">otr_message_caching_threshold (receiver)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/ChangeLog/config.tag:../Config/" href="../Config/grpofftransportrecovery.html#otrrequestmessagetimeoutreceiver">otr_request_message_timeout (receiver)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grpofftransportrecovery.html#otrrequestmessagetimeoutreceiver">otr_request_message_timeout (receiver)</a> </li>
 </ul>
 <p class="endli"></p>
 </li>
 <li>
 After all components are upgraded to this release, set the following configuration options: <ul>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/ChangeLog/config.tag:../Config/" href="../Config/grpmajoroptions.html#compatibilityincludepreum60behaviorcontext">compatibility_include_pre_um_6_0_behavior (context)</a> to 0 </li>
+<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grpmajoroptions.html#compatibilityincludepreum60behaviorcontext">compatibility_include_pre_um_6_0_behavior (context)</a> to 0 </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/ChangeLog/config.tag:../Config/" href="../Config/grptransporttcpoperation.html#transporttcpusesessionidsource">transport_tcp_use_session_id (source)</a> to 1 </li>
+<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grptransporttcpoperation.html#transporttcpusesessionidsource">transport_tcp_use_session_id (source)</a> to 1 </li>
 </ul>
 </li>
 </ol>
@@ -199,8 +199,8 @@ After all components are upgraded to this release, set the following configurati
 <h2><a class="anchor" id="logmessagesduringupgrade"></a>
 Log Messages During Upgrade&nbsp;&nbsp;<small><a href="#logmessagesduringupgrade">&lt;-</a></small></h2>
 <p>For 5.3.x applications on the same TRD as this release, you might see the following log messages:</p>
-<dl class="section user"><dt>LBMC unknown next header 64</dt><dd>Informational. You can ignore this message. You can reduce the frequency of this message by increasing the value for context option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/ChangeLog/config.tag:../Config/" href="../Config/grpunicastimmediatemessagingoperation.html#responsetcpdeletiontimeoutcontext">response_tcp_deletion_timeout (context)</a>.</dd></dl>
-<dl class="section user"><dt>LBMR Topic Info Record malformed. Dropping remainder</dt><dd>Issued for every TIR that contains a TCP Session ID. You must set option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/ChangeLog/config.tag:../Config/" href="../Config/grptransporttcpoperation.html#transporttcpusesessionidsource">transport_tcp_use_session_id (source)</a> to 0 during the interim migration period.</dd></dl>
+<dl class="section user"><dt>LBMC unknown next header 64</dt><dd>Informational. You can ignore this message. You can reduce the frequency of this message by increasing the value for context option <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grpunicastimmediatemessagingoperation.html#responsetcpdeletiontimeoutcontext">response_tcp_deletion_timeout (context)</a>.</dd></dl>
+<dl class="section user"><dt>LBMR Topic Info Record malformed. Dropping remainder</dt><dd>Issued for every TIR that contains a TCP Session ID. You must set option <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grptransporttcpoperation.html#transporttcpusesessionidsource">transport_tcp_use_session_id (source)</a> to 0 during the interim migration period.</dd></dl>
 <dl class="section user"><dt>LOG Level 5: Core-5688-3387: LBMR Extended Type 0x7 incorrect (10.29.3.49:40633 len 102). [...D.....&lt;.............1I...........(&gt;..............store-name............ (&gt;.........................$]. Dropping.</dt><dd>Informational. This occurs if UMP store umestored daemons are present and configured with a discoverable name. For each name advertisement, all contexts drop the packet and log this warning.</dd></dl>
 <dl class="section user"><dt>[WARNING]: Core-5688-516: LBMC cntl unknown next header: 55.</dt><dd>Informational. Issued once per transport session when receiving an SRI from a UMP source. </dd></dl>
 </div></div><!-- contents -->

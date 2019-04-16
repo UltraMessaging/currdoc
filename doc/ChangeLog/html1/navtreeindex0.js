@@ -57,6 +57,7 @@ var NAVTREEINDEX0 =
 "index.html#enhancementsfor6_9":[10,0],
 "index.html#enhancementsfor6_9_1":[9,0],
 "index.html#enhancementsfor6_9_2":[8,0],
+"index.html#errata":[18,3],
 "index.html#firstsect":[0],
 "index.html#fixedlimitationsfor6_0":[18,1],
 "index.html#fixedlimitationsfor6_1":[17,1],

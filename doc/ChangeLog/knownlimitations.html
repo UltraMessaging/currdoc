@@ -66,16 +66,16 @@ Streaming Known Limitations&nbsp;&nbsp;<small><a href="#streamingknownlimitation
 </th></tr>
 <tr>
 <td>10498 </td><td><p class="starttd">Security Vulnerability: the Persistent Store web monitor function can be used to read arbitrary files on the host running the Store daemon.</p>
-<p>Note that the persistent store web monitor is not a secure system and is not intended to be exposed to unauthorized users. In particular, the web monitor cannot be configured for certificate-based <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/ChangeLog/design.tag:../Design/" href="../Design/umfeatures.html#encryptedtcp">Encrypted TCP</a>. Users are expected to prevent unauthorized access to the web monitor through normal firewalling methods. Users who are unable to limit access to a level consistent with their overall security needs should disable the store web monitor. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/ChangeLog/design.tag:../Design/" href="../Design/fundamentalconcepts.html#webmonsecurity">Webmon Security</a> for more information.</p>
+<p>Note that the persistent store web monitor is not a secure system and is not intended to be exposed to unauthorized users. In particular, the web monitor cannot be configured for certificate-based <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/ChangeLog/design.tag:../Design/" href="../Design/umfeatures.html#encryptedtcp">Encrypted TCP</a>. Users are expected to prevent unauthorized access to the web monitor through normal firewalling methods. Users who are unable to limit access to a level consistent with their overall security needs should disable the store web monitor. See <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/ChangeLog/design.tag:../Design/" href="../Design/fundamentalconcepts.html#webmonsecurity">Webmon Security</a> for more information.</p>
 <dl class="section note"><dt>Note</dt><dd>the UM daemon designs are evolving away from simple web-based monitoring and towards a publish/subscribe model of distributing monitoring events and statistics.</dd></dl>
 </td></tr>
 <tr>
-<td>10609 </td><td><p class="starttd">The UM Router (DRO) daemon statistics message type <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/ChangeLog/api.tag:../API/" href="../API/tnwgdmonmsgs_8h.html#aeac81f470a988e915602acbb57be5793">tnwg_portal_peer_dstat_record_t</a> has 3 improper fields: remote_interest_topics, remote_interest_pcre_patterns, and remote_interest_regex_patterns. They are improper because those counts do not apply to a peer portal. The tnwg_portal_peer_dstat_record_t messages can have garbage in those fields.</p>
+<td>10609 </td><td><p class="starttd">The UM Router (DRO) daemon statistics message type <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/ChangeLog/api.tag:../API/" href="../API/tnwgdmonmsgs_8h.html#aeac81f470a988e915602acbb57be5793">tnwg_portal_peer_dstat_record_t</a> has 3 improper fields: remote_interest_topics, remote_interest_pcre_patterns, and remote_interest_regex_patterns. They are improper because those counts do not apply to a peer portal. The tnwg_portal_peer_dstat_record_t messages can have garbage in those fields.</p>
 <p><b>Workaround:</b> a monitoring application should ignore those 3 fields.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>10136 </td><td><p class="starttd">When an XML file is used to configure UM, an invalid configuration option or value logs appropriate error messages, but does not return failure status to the application. As a workaround, the application logger callback can check for logged messages that start with "Core-5626-" and trigger their own error handler. Note that setting up the logger callback has a clientd (see <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/ChangeLog/api.tag:../API/" href="../API/lbm_8h.html#aae14099b91f2919f424e81f20ca10951">lbm_log()</a>), so a shared structure can be established for the logger callback to communicate any matches it finds to the application thread calling <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/ChangeLog/api.tag:../API/" href="../API/lbm_8h.html#aecac05969bba0d6057589ca03dfe60a2">lbm_config()</a>.</p>
+<td>10136 </td><td><p class="starttd">When an XML file is used to configure UM, an invalid configuration option or value logs appropriate error messages, but does not return failure status to the application. As a workaround, the application logger callback can check for logged messages that start with "Core-5626-" and trigger their own error handler. Note that setting up the logger callback has a clientd (see <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/ChangeLog/api.tag:../API/" href="../API/lbm_8h.html#aae14099b91f2919f424e81f20ca10951">lbm_log()</a>), so a shared structure can be established for the logger callback to communicate any matches it finds to the application thread calling <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/ChangeLog/api.tag:../API/" href="../API/lbm_8h.html#aecac05969bba0d6057589ca03dfe60a2">lbm_config()</a>.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
@@ -95,7 +95,7 @@ Streaming Known Limitations&nbsp;&nbsp;<small><a href="#streamingknownlimitation
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>6828, 6830, 6831 </td><td><p class="starttd">There are severe restrictions on the use of NAT with UM. Normally, a UM Router should be used with peer links to transit a NAT. However, there are very restrictive scenarios where Unicast Topic Resolution with <code>lbmrd</code> can be used to establish direct communication across a NAT. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/ChangeLog/design.tag:../Design/" href="../Design/topicresolutiondescription.html#networkaddresstranslationnat">Network Address Translation (NAT)</a>.</p>
+<td>6828, 6830, 6831 </td><td><p class="starttd">There are severe restrictions on the use of NAT with UM. Normally, a UM Router should be used with peer links to transit a NAT. However, there are very restrictive scenarios where Unicast Topic Resolution with <code>lbmrd</code> can be used to establish direct communication across a NAT. See <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/ChangeLog/design.tag:../Design/" href="../Design/topicresolutiondescription.html#networkaddresstranslationnat">Network Address Translation (NAT)</a>.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
@@ -115,7 +115,7 @@ Streaming Known Limitations&nbsp;&nbsp;<small><a href="#streamingknownlimitation
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>8727, 8603 </td><td><p class="starttd">You cannot use <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/ChangeLog/api.tag:../API/" href="../API/lbm_8h.html#a4094c703f97a7ebe340b985b2ed1ac2b">lbm_rcv_retrieve_transport_stats()</a> to retrieve transport statistics from receivers with SMX sources. Instead, to retrieve these statistics use Automatic Monitoring.</p>
+<td>8727, 8603 </td><td><p class="starttd">You cannot use <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/ChangeLog/api.tag:../API/" href="../API/lbm_8h.html#a4094c703f97a7ebe340b985b2ed1ac2b">lbm_rcv_retrieve_transport_stats()</a> to retrieve transport statistics from receivers with SMX sources. Instead, to retrieve these statistics use Automatic Monitoring.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
@@ -131,7 +131,7 @@ Streaming Known Limitations&nbsp;&nbsp;<small><a href="#streamingknownlimitation
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>8820, 7368 </td><td><p class="starttd">Setting <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/ChangeLog/config.tag:../Config/" href="../Config/grptransporttcpoperation.html#transporttcpactivitymethodreceiver">transport_tcp_activity_method (receiver)</a> to '<code>SO_KEEPALIVE</code>' without setting <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/ChangeLog/config.tag:../Config/" href="../Config/grptransporttcpoperation.html#transporttcpactivitytimeoutreceiver">transport_tcp_activity_timeout (receiver)</a> to a value other than the default value of 0 causes a receiver create fatal assert: '<code>s_entry-&gt;topic.rcv!=NULL</code>'.</p>
+<td>8820, 7368 </td><td><p class="starttd">Setting <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grptransporttcpoperation.html#transporttcpactivitymethodreceiver">transport_tcp_activity_method (receiver)</a> to '<code>SO_KEEPALIVE</code>' without setting <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grptransporttcpoperation.html#transporttcpactivitytimeoutreceiver">transport_tcp_activity_timeout (receiver)</a> to a value other than the default value of 0 causes a receiver create fatal assert: '<code>s_entry-&gt;topic.rcv!=NULL</code>'.</p>
 <p>Also, any other configuration that causes a receiver create to fail triggers the fatal assert: '<code>s_entry-&gt;topic.rcv!=NULL</code>'.</p>
 <p class="endtd"></p>
 </td></tr>
@@ -147,7 +147,15 @@ Persistence Known Limitations&nbsp;&nbsp;<small><a href="#persistenceknownlimita
 <tr>
 <th>Change Request </th><th>Description </th></tr>
 <tr>
-<td>10171 </td><td><p class="starttd">A set of default operational configuration options do not satisfy Persistence recommendations. Hung registrations can result. Persistence users are advised to follow the recommendations in <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/ChangeLog/config.tag:../Config/" href="../Config/interrelatedconfigurationoptions.html#preventingstoreregistrationhangs">Preventing Store Registration Hangs</a>.</p>
+<td>9940, 10131 </td><td><p class="starttd">If a persistent publisher send a message containing Message Properties, and the Proactive Retransmission feature is used to record the message on the Store, a receiver which recovers the message from the Store will crash with a fatal assert: <br />
+<code>FATAL: failed assertion [prop_offset &gt;= 0]</code> <br />
+If message properties are used on persisted sources, the user should disable Proactive Retransmissions by setting the configuration option: <br />
+<code>source ume_message_stability_timeout 0</code> <br />
+See <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umemessagestabilitytimeoutsource">ume_message_stability_timeout (source)</a>.</p>
+<p class="endtd"></p>
+</td></tr>
+<tr>
+<td>10171 </td><td><p class="starttd">A set of default operational configuration options do not satisfy Persistence recommendations. Hung registrations can result. Persistence users are advised to follow the recommendations in <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/interrelatedconfigurationoptions.html#preventingstoreregistrationhangs">Preventing Store Registration Hangs</a>.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
@@ -157,20 +165,20 @@ Persistence Known Limitations&nbsp;&nbsp;<small><a href="#persistenceknownlimita
 <tr>
 <td>4543 </td><td><p class="starttd">When running a store on a Solaris machine, you may experience registration failures after a few minutes. The store repeatedly reports the error: <br />
 <code>[WARNING]: wait returned error 4 [select: (22) Invalid argument]</code> <br />
-Setting <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/ChangeLog/config.tag:../Config/" href="../Config/grpmajoroptions.html#fdmanagementtypecontext">fd_management_type (context)</a> to '<code>devpoll</code>' prevents this problem.</p>
+Setting <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grpmajoroptions.html#fdmanagementtypecontext">fd_management_type (context)</a> to '<code>devpoll</code>' prevents this problem.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>4667 </td><td><p class="starttd">Multi-transport Threads do not support Persistence. Note that MTT is deprecated, and the new XSP feature provides improved multi-threading for receivers, and is compatible with Persistence. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/ChangeLog/design.tag:../Design/" href="../Design/umfeatures.html#transportservicesproviderxsp">Transport Services Provider (XSP)</a>.</p>
+<td>4667 </td><td><p class="starttd">Multi-transport Threads do not support Persistence. Note that MTT is deprecated, and the new XSP feature provides improved multi-threading for receivers, and is compatible with Persistence. See <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/ChangeLog/design.tag:../Design/" href="../Design/umfeatures.html#transportservicesproviderxsp">Transport Services Provider (XSP)</a>.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>5841 </td><td><p class="starttd">A UMP store daemon, umestored, may shut down unexpectedly if you enable proxy sources and UM is not able to create a transport session for a needed proxy source. For example, if the store is configured to use TCP transports for proxy sources (the default), and <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/ChangeLog/config.tag:../Config/" href="../Config/grptransporttcpnetwork.html#transporttcpporthighcontext">transport_tcp_port_high (context)</a> minus <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/ChangeLog/config.tag:../Config/" href="../Config/grptransporttcpnetwork.html#transporttcpportlowcontext">transport_tcp_port_low (context)</a> is 8, then when the 9th proxy source is created, UM will be unable to assign a port for that transport session. This is because UM will attempt to create up to <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/ChangeLog/config.tag:../Config/" href="../Config/grptransporttcpnetwork.html#transporttcpmaximumportscontext">transport_tcp_maximum_ports (context)</a> transport sessions, which defaults to 10. <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/ChangeLog/config.tag:../Config/" href="../Config/grptransporttcpnetwork.html#transporttcpporthighcontext">transport_tcp_port_high (context)</a> minus <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/ChangeLog/config.tag:../Config/" href="../Config/grptransporttcpnetwork.html#transporttcpportlowcontext">transport_tcp_port_low (context)</a> must be at least <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/ChangeLog/config.tag:../Config/" href="../Config/grptransporttcpnetwork.html#transporttcpmaximumportscontext">transport_tcp_maximum_ports (context)</a>, and may need to be even larger if other applications and/or daemons on the same machines are configured to use ports from the same range.</p>
+<td>5841 </td><td><p class="starttd">A UMP store daemon, umestored, may shut down unexpectedly if you enable proxy sources and UM is not able to create a transport session for a needed proxy source. For example, if the store is configured to use TCP transports for proxy sources (the default), and <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grptransporttcpnetwork.html#transporttcpporthighcontext">transport_tcp_port_high (context)</a> minus <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grptransporttcpnetwork.html#transporttcpportlowcontext">transport_tcp_port_low (context)</a> is 8, then when the 9th proxy source is created, UM will be unable to assign a port for that transport session. This is because UM will attempt to create up to <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grptransporttcpnetwork.html#transporttcpmaximumportscontext">transport_tcp_maximum_ports (context)</a> transport sessions, which defaults to 10. <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grptransporttcpnetwork.html#transporttcpporthighcontext">transport_tcp_port_high (context)</a> minus <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grptransporttcpnetwork.html#transporttcpportlowcontext">transport_tcp_port_low (context)</a> must be at least <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grptransporttcpnetwork.html#transporttcpmaximumportscontext">transport_tcp_maximum_ports (context)</a>, and may need to be even larger if other applications and/or daemons on the same machines are configured to use ports from the same range.</p>
 <p>Informatica recommends configuring large port ranges appropriate to the transport type.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>6843 </td><td><p class="starttd">An overly aggressive configuration on the source can cause the source to declare the store unresponsive while the source processes stability acknowledgements or confirmed delivery notifications or both. Using "strong RegIDs" prevents the source from sending messages until the store's <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/ChangeLog/ume.tag:../UME/" href="../UME/configurationreferenceforumestored.html#umecfgsourceactivitytimeout">source-activity-timeout</a> expires on the store. After the activity timeout expires, the source can reregister.</p>
+<td>6843 </td><td><p class="starttd">An overly aggressive configuration on the source can cause the source to declare the store unresponsive while the source processes stability acknowledgements or confirmed delivery notifications or both. Using "strong RegIDs" prevents the source from sending messages until the store's <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/ChangeLog/ume.tag:../UME/" href="../UME/configurationreferenceforumestored.html#umecfgsourceactivitytimeout">source-activity-timeout</a> expires on the store. After the activity timeout expires, the source can reregister.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
@@ -203,7 +211,7 @@ Queuing Known Limitations&nbsp;&nbsp;<small><a href="#queuingknownlimitations">&
 <p class="endtd"></p>
 </th></tr>
 <tr>
-<td>9211 </td><td><p class="starttd">Option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/ChangeLog/config.tag:../Config/" href="../Config/grpultramessagingqueuing.html#umqqueueactivitytimeoutcontext">umq_queue_activity_timeout (context)</a> has no effect.</p>
+<td>9211 </td><td><p class="starttd">Option <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grpultramessagingqueuing.html#umqqueueactivitytimeoutcontext">umq_queue_activity_timeout (context)</a> has no effect.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
@@ -250,7 +258,7 @@ Dynamic Router Known Limitations&nbsp;&nbsp;<small><a href="#dynamicrouterknownl
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>Restriction </td><td>The UM Router ignores UM Spectrum configuration options, which results in UM Routers forwarding all channel data without applying any filtering. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/ChangeLog/design.tag:../Design/" href="../Design/umobjects.html#spectrum">Spectrum</a>. </td></tr>
+<td>Restriction </td><td>The UM Router ignores UM Spectrum configuration options, which results in UM Routers forwarding all channel data without applying any filtering. See <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/ChangeLog/design.tag:../Design/" href="../Design/umobjects.html#spectrum">Spectrum</a>. </td></tr>
 </table>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
