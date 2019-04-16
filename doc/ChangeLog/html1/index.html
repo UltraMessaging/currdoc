@@ -192,8 +192,9 @@ Streaming Fixed Limitations for 6.12&nbsp;&nbsp;<small><a href="#streamingfixedl
 <p><a class="anchor" id="bug5199"></a></p>
 </td></tr>
 <tr>
-<td>5199, 9415 </td><td><p class="starttd"><b>ENHANCEMENT:</b> <em>There are a variety of circumstances where a newly-created receiver will be delivered unrecoverable loss events before the first message is received. This is normally not useful to the application since it does not represent a <em>gap</em> in the received message stream, but rather just difficulty in getting successfully joined to the stream.</em></p>
+<td>5199, 9415 </td><td><p class="starttd"><b>ENHANCEMENT:</b> <em>There are a variety of circumstances where a newly-created streaming receiver will be delivered unrecoverable loss events before the first message is received. This is normally not useful to the application since it does not represent a <em>gap</em> in the received message stream, but rather just difficulty in getting successfully joined to the stream.</em></p>
 <p>UM now will suppress unrecoverable loss events prior to the first message delivery. Informatica believes that this new behavior is the correct behavior for UM, and that there should be no cause for concern by users.</p>
+<p>This behavior change does not apply to Persisted data streams where delivery of all messages is important.</p>
 <p>See <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/ChangeLog/design.tag:../../Design/" href="../../Design/fundamentalconcepts.html#leadingloss">Leading Loss</a> for more information.</p>
 <p class="endtd"></p>
 </td></tr>
