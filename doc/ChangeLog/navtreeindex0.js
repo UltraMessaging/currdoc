@@ -1,5 +1,6 @@
 var NAVTREEINDEX0 =
 {
+"errata.html":[19],
 "index.html":[],
 "index.html":[0],
 "knownlimitations.html":[2],
@@ -13,7 +14,6 @@ var NAVTREEINDEX0 =
 "umversion6_0.html#dynamicrouterenhancementsfor6_0":[18,0,3],
 "umversion6_0.html#dynamicrouterfixedlimitationsfor6_0":[18,1,3],
 "umversion6_0.html#enhancementsfor6_0":[18,0],
-"umversion6_0.html#errata":[18,3],
 "umversion6_0.html#fixedlimitationsfor6_0":[18,1],
 "umversion6_0.html#persistenceenhancementsfor6_0":[18,0,1],
 "umversion6_0.html#persistencefixedlimitationsfor6_0":[18,1,1],
