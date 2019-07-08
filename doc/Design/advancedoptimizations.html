@@ -56,7 +56,7 @@ $(document).ready(function(){initNavTree('advancedoptimizations.html','');});
 <div class="contents">
 <div class="textblock"><p>The internal design of UM has many compromises between performance and flexibility. For example, there are critical sections which maintain state information which must be kept internally consistent. Since UM allows the application the flexibility of multi-threaded use, those critical sections are protected with Mutex locks. These locks add very little overhead to UM's execution, but "very little" is not the same as "zero". The use of locks is a compromise between efficiency and flexibility. Similar lines of reasoning explain why UM makes use of dynamic memory (malloc and free), and bus-interlocked read/modify/write operations (e.g. atomic increment).</p>
 <p>UM provides configuration options which improve efficiency, at the cost of reduced application design flexibility. Application designers who are able to constrain their programs within certain restrictions can take advantage of improved performance and reduced latency outliers.</p>
-<ul>
+<p><b>RECEIVE-SIDE:</b> </p><ul>
 <li>
 <a class="el" href="advancedoptimizations.html#receivebufferrecycling">Receive Buffer Recycling</a> - Receive-side latency reduction. </li>
 <li>
@@ -65,6 +65,10 @@ $(document).ready(function(){initNavTree('advancedoptimizations.html','');});
 <a class="el" href="advancedoptimizations.html#lbmcontextprocesseventsex">lbm_context_process_events_ex</a> - Receive-side latency reduction. </li>
 <li>
 <a class="el" href="advancedoptimizations.html#receivemultipledatagrams">Receive Multiple Datagrams</a> - Receive-side latency reduction. </li>
+<li>
+<a class="el" href="advancedoptimizations.html#transportdemultiplexertablesize">Transport Demultiplexer Table Size</a> - Receive-side latency reduction. </li>
+</ul>
+<p><b>SEND-SIDE:</b> </p><ul>
 <li>
 <a class="el" href="advancedoptimizations.html#smartsources">Smart Sources</a> - Send-side latency reduction. </li>
 <li>
@@ -241,6 +245,15 @@ Non-Linux. The recvmmsg() function was introduced into the Linux kernel in versi
 </ul>
 <p><br />
  </p>
+<h1><a class="anchor" id="transportdemultiplexertablesize"></a>
+Transport Demultiplexer Table Size&nbsp;&nbsp;<small><a href="#transportdemultiplexertablesize">&lt;-</a></small></h1>
+<p>A UM <a class="el" href="fundamentalconcepts.html#transportsessions">Transport Session</a> can have multiple sources (topics) mapped to it. For example, if a publishing application creates two sources with the same multicast address and destination port, both sources will be carried on the same transport session. A receiver joined to that transport session must separate (demultiplex) the topics, either for delivery to the proper receiver callback, or for discarding.</p>
+<p>The demultiplexing of the topics is managed by a hash table (not the same kind of hash table that manages the Topic Resolution cache). As a result, the processing of received messages can be made more efficient by optimally sizing the hash table. This is done using the configuration option <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grpmajoroptions.html#transportdemuxtableszreceiver">transport_demux_tablesz (receiver)</a>.</p>
+<p>Unlike many hash tables, the transport demultiplexer needs to have a number of buckets which is a power of two. The demultiplexing code will be most efficient if the number of buckets is equal to or greater than the number of sources created on the transport session. In that case, the hash function is "perfect", which is to say that there will never be any collisions. Note that if the number of buckets is smaller than the number of sources, the collision resolution process is O(log N) where N is the length of the collision chain.</p>
+<p>The only disadvantage of increasing the size of the hash table is memory usage (each bucket is 16 bytes on 64-bit architectures). Having a larger than optimal table does not make performance worse.</p>
+<p>Note that if the number of sources is small, only a small degree of efficiency improvement results from optimally sizing the hash table.</p>
+<p><br />
+ </p>
 <h1><a class="anchor" id="smartsources"></a>
 Smart Sources&nbsp;&nbsp;<small><a href="#smartsources">&lt;-</a></small></h1>
 <p>The normal <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#a91f4b9cb04fe1323ec56833211cc5cb7">lbm_src_send()</a> function (and its Java and .NET equivalents) are very flexible and support the full range of UM's rich feature set. To provide this level of capability, it is necessary to make use of dynamic (malloc/free) memory, and critical section locking (mutex) in the send path. While modern memory managers and thread locks are very efficient, they do introduce some degree of variability of execution time, leading to latency outliers potentially in the millisecond range.</p>
@@ -343,6 +356,8 @@ Smart Source Defensive Checks&nbsp;&nbsp;<small><a href="#smartsourcedefensivech
 <td><b>16, 0x10</b></td><td>user message length checking </td></tr>
 <tr>
 <td><b>32, 0x20</b></td><td>application header checking, including <a class="el" href="umobjects.html#spectrum">Spectrum</a> and <a class="el" href="umobjects.html#messageproperties">Message Properties</a>. </td></tr>
+<tr>
+<td><b>64, 0x40</b></td><td>null check for User Supplied Buffer (see <a class="el" href="advancedoptimizations.html#smartsourcemessagebuffers">Smart Source Message Buffers</a>) </td></tr>
 </table>
 </center><p>To enable all checking, set the environment variable <b>LBM_SMART_SOURCE_CHECK</b> to "0xffffffff".</p>
 <p><br />

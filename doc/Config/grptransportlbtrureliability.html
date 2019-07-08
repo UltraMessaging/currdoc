@@ -65,12 +65,12 @@ Reference&nbsp;&nbsp;<small><a href="#transportlbtrureliabilityref">&lt;-</a></s
 transport_lbtru_ignore_interval (source)&nbsp;&nbsp;<small><a href="#transportlbtruignoreintervalsource">&lt;-</a></small></h2>
 <dl class="section user"><dt></dt><dd>The interval to ignore NAKs after a retransmission is sent. </dd></dl>
 <dl class="section user"><dt></dt><dd>This option affects the transport session underlying the source rather than the source itself. The transport session uses the value from the first source created on the session and ignores subsequent sources. </dd></dl>
-<dl class="section user"><dt></dt><dd>Refer to <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Config/design.tag:../Design/" href="../Design/fundamentalconcepts.html#sourceobject">Source Object</a> for additional information.</dd></dl>
+<dl class="section user"><dt></dt><dd>Refer to <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Config/design.tag:../Design/" href="../Design/fundamentalconcepts.html#sourceobject">Source Object</a> for additional information.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>source </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
 <tr>
 <td><em>Units:</em> </td><td>milliseconds </td></tr>
 <tr>
@@ -84,12 +84,12 @@ transport_lbtru_ignore_interval (source)&nbsp;&nbsp;<small><a href="#transportlb
 <h2><a class="anchor" id="transportlbtrunakbackoffintervalreceiver"></a>
 transport_lbtru_nak_backoff_interval (receiver)&nbsp;&nbsp;<small><a href="#transportlbtrunakbackoffintervalreceiver">&lt;-</a></small></h2>
 <dl class="section user"><dt></dt><dd>The maximum interval between transmissions of a single NAK. </dd></dl>
-<dl class="section user"><dt></dt><dd>For LBT-RU transport sessions only. The actual value is randomized (to reduce self-similar behaviors) and is uniform on the range [0.5*interval, 1.5*interval]. This option affects the transport session underlying the receiver rather than the receiver itself. The transport session uses the value from the first receiver created on the session and ignores subsequent receivers. Refer to <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Config/design.tag:../Design/" href="../Design/fundamentalconcepts.html#receiverobject">Receiver Object</a> and <a class="el" href="interrelatedconfigurationoptions.html">Interrelated Configuration Options</a> for additional information.</dd></dl>
+<dl class="section user"><dt></dt><dd>For LBT-RU transport sessions only. The actual value is randomized (to reduce self-similar behaviors) and is uniform on the range [0.5*interval, 1.5*interval]. This option affects the transport session underlying the receiver rather than the receiver itself. The transport session uses the value from the first receiver created on the session and ignores subsequent receivers. Refer to <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Config/design.tag:../Design/" href="../Design/fundamentalconcepts.html#receiverobject">Receiver Object</a> and <a class="el" href="interrelatedconfigurationoptions.html">Interrelated Configuration Options</a> for additional information.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>receiver </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
 <tr>
 <td><em>Units:</em> </td><td>milliseconds </td></tr>
 <tr>
@@ -103,12 +103,12 @@ transport_lbtru_nak_backoff_interval (receiver)&nbsp;&nbsp;<small><a href="#tran
 <h2><a class="anchor" id="transportlbtrunakgenerationintervalreceiver"></a>
 transport_lbtru_nak_generation_interval (receiver)&nbsp;&nbsp;<small><a href="#transportlbtrunakgenerationintervalreceiver">&lt;-</a></small></h2>
 <dl class="section user"><dt></dt><dd>The maximum time that a piece of data may be outstanding before the data is unrecoverably lost. </dd></dl>
-<dl class="section user"><dt></dt><dd>For LBT-RU transport sessions only. Although the minimum valid value is 5 milliseconds, larger values are advisable. This option affects the transport session underlying the receiver rather than the receiver itself. The transport session uses the value from the first receiver created on the session and ignores subsequent receivers. Refer to <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Config/design.tag:../Design/" href="../Design/fundamentalconcepts.html#receiverobject">Receiver Object</a> and <a class="el" href="interrelatedconfigurationoptions.html">Interrelated Configuration Options</a> for additional information.</dd></dl>
+<dl class="section user"><dt></dt><dd>For LBT-RU transport sessions only. Although the minimum valid value is 5 milliseconds, larger values are advisable. This option affects the transport session underlying the receiver rather than the receiver itself. The transport session uses the value from the first receiver created on the session and ignores subsequent receivers. Refer to <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Config/design.tag:../Design/" href="../Design/fundamentalconcepts.html#receiverobject">Receiver Object</a> and <a class="el" href="interrelatedconfigurationoptions.html">Interrelated Configuration Options</a> for additional information.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>receiver </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
 <tr>
 <td><em>Units:</em> </td><td>milliseconds </td></tr>
 <tr>
@@ -128,7 +128,7 @@ transport_lbtru_nak_initial_backoff_interval (receiver)&nbsp;&nbsp;<small><a hre
 <tr>
 <td><em>Scope:</em> </td><td>receiver </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
 <tr>
 <td><em>Units:</em> </td><td>milliseconds </td></tr>
 <tr>
@@ -142,12 +142,12 @@ transport_lbtru_nak_initial_backoff_interval (receiver)&nbsp;&nbsp;<small><a hre
 <h2><a class="anchor" id="transportlbtrunaksuppressintervalreceiver"></a>
 transport_lbtru_nak_suppress_interval (receiver)&nbsp;&nbsp;<small><a href="#transportlbtrunaksuppressintervalreceiver">&lt;-</a></small></h2>
 <dl class="section user"><dt></dt><dd>The maximum interval to suppress sending NAKs after an NCF is received. </dd></dl>
-<dl class="section user"><dt></dt><dd>For LBT-RU transport sessions only. This option affects the transport session underlying the receiver rather than the receiver itself. The transport session uses the value from the first receiver created on the session and ignores subsequent receivers. Refer to <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Config/design.tag:../Design/" href="../Design/fundamentalconcepts.html#receiverobject">Receiver Object</a> for additional information.</dd></dl>
+<dl class="section user"><dt></dt><dd>For LBT-RU transport sessions only. This option affects the transport session underlying the receiver rather than the receiver itself. The transport session uses the value from the first receiver created on the session and ignores subsequent receivers. Refer to <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Config/design.tag:../Design/" href="../Design/fundamentalconcepts.html#receiverobject">Receiver Object</a> for additional information.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>receiver </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
 <tr>
 <td><em>Units:</em> </td><td>milliseconds </td></tr>
 <tr>
@@ -167,7 +167,7 @@ transport_lbtru_receiver_socket_buffer (context)&nbsp;&nbsp;<small><a href="#tra
 <tr>
 <td><em>Scope:</em> </td><td>context </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
 <tr>
 <td><em>Units:</em> </td><td>bytes </td></tr>
 <tr>
@@ -186,7 +186,7 @@ transport_lbtru_source_socket_buffer (context)&nbsp;&nbsp;<small><a href="#trans
 <tr>
 <td><em>Scope:</em> </td><td>context </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
 <tr>
 <td><em>Units:</em> </td><td>bytes </td></tr>
 <tr>
@@ -219,7 +219,7 @@ transport_lbtru_transmission_window_limit (source)&nbsp;&nbsp;<small><a href="#t
 <h2><a class="anchor" id="transportlbtrutransmissionwindowsizesource"></a>
 transport_lbtru_transmission_window_size (source)&nbsp;&nbsp;<small><a href="#transportlbtrutransmissionwindowsizesource">&lt;-</a></small></h2>
 <dl class="section user"><dt></dt><dd>The maximum amount of buffered data that the LBT-RU source is allowed to retain for retransmissions. </dd></dl>
-<dl class="section user"><dt></dt><dd>The minimum valid value is 65536 bytes. This option affects the transport session underlying the source rather than the source itself. The transport session uses the value from the first source created on the session and ignores subsequent sources. Refer to <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Config/design.tag:../Design/" href="../Design/fundamentalconcepts.html#sourceobject">Source Object</a> for additional information.</dd></dl>
+<dl class="section user"><dt></dt><dd>The minimum valid value is 65536 bytes. This option affects the transport session underlying the source rather than the source itself. The transport session uses the value from the first source created on the session and ignores subsequent sources. Refer to <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Config/design.tag:../Design/" href="../Design/fundamentalconcepts.html#sourceobject">Source Object</a> for additional information.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>source </td></tr>

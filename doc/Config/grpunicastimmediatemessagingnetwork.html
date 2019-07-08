@@ -54,9 +54,9 @@ $(document).ready(function(){initNavTree('grpunicastimmediatemessagingnetwork.ht
 <div class="title">Unicast Immediate Messaging Network Options </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>In early versions of UM, the Unicast Immediate Messaging (UIM) feature was primarily used to support the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Config/design.tag:../Design/" href="../Design/fundamentalconcepts.html#requestresponse">Request/Response</a> feature. Therefore, the configuration options related to UIMs have names that start with "request" and "response". However, as UM has evolved, the UIM feature has come to be used by a great many UM features, such as Late Join, Persistence, and Queuing.</p>
+<div class="textblock"><p>In early versions of UM, the Unicast Immediate Messaging (UIM) feature was primarily used to support the <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Config/design.tag:../Design/" href="../Design/fundamentalconcepts.html#requestresponse">Request/Response</a> feature. Therefore, the configuration options related to UIMs have names that start with "request" and "response". However, as UM has evolved, the UIM feature has come to be used by a great many UM features, such as Late Join, Persistence, and Queuing.</p>
 <p>To maintain backwards compatibility, the old names of the configuration options have been retained. The reader must simply be aware that the "request_..." and "response_..." options affect more than just the request/response feature.</p>
-<p>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Config/design.tag:../Design/" href="../Design/umfeatures.html#unicastimmediatemessaging">Unicast Immediate Messaging</a> for general information on UIM. See also <a class="el" href="grpunicastimmediatemessagingoperation.html">Unicast Immediate Messaging Operation Options</a> for operationally-oriented options.</p>
+<p>See <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Config/design.tag:../Design/" href="../Design/umfeatures.html#unicastimmediatemessaging">Unicast Immediate Messaging</a> for general information on UIM. See also <a class="el" href="grpunicastimmediatemessagingoperation.html">Unicast Immediate Messaging Operation Options</a> for operationally-oriented options.</p>
 <p><br />
  </p>
 <h1><a class="anchor" id="requestnetworkref"></a>
@@ -66,8 +66,8 @@ Reference&nbsp;&nbsp;<small><a href="#requestnetworkref">&lt;-</a></small></h1>
 <h2><a class="anchor" id="requesttcpbindrequestportcontext"></a>
 request_tcp_bind_request_port (context)&nbsp;&nbsp;<small><a href="#requesttcpbindrequestportcontext">&lt;-</a></small></h2>
 <dl class="section user"><dt></dt><dd>Allows you to turn off UIM port binding (also known as "request port binding"). </dd></dl>
-<dl class="section user"><dt></dt><dd>Setting this option to 0 prevents sockets from being bound to the UIM port. Turning off UIM port binding also turns off several UM features such as: <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Config/design.tag:../Design/" href="../Design/umobjects.html#requestresponsemodel">Request/Response Model</a>, <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Config/design.tag:../Design/" href="../Design/umfeatures.html#usinglatejoin">Using Late Join</a>, <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Config/design.tag:../Design/" href="../Design/umfeatures.html#offtransportrecoveryotr">Off-Transport Recovery (OTR)</a>, the reception of Unicast Immediate Messages, persistence, brokered queuing, and ULB. </dd></dl>
-<dl class="section user"><dt></dt><dd>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Config/design.tag:../Design/" href="../Design/umfeatures.html#unicastimmediatemessaging">Unicast Immediate Messaging</a> for general information on UIM.</dd></dl>
+<dl class="section user"><dt></dt><dd>Setting this option to 0 prevents sockets from being bound to the UIM port. Turning off UIM port binding also turns off several UM features such as: <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Config/design.tag:../Design/" href="../Design/umobjects.html#requestresponsemodel">Request/Response Model</a>, <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Config/design.tag:../Design/" href="../Design/umfeatures.html#usinglatejoin">Using Late Join</a>, <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Config/design.tag:../Design/" href="../Design/umfeatures.html#offtransportrecoveryotr">Off-Transport Recovery (OTR)</a>, the reception of Unicast Immediate Messages, persistence, brokered queuing, and ULB. </dd></dl>
+<dl class="section user"><dt></dt><dd>See <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Config/design.tag:../Design/" href="../Design/umfeatures.html#unicastimmediatemessaging">Unicast Immediate Messaging</a> for general information on UIM.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>context </td></tr>
@@ -99,12 +99,12 @@ request_tcp_bind_request_port (context)&nbsp;&nbsp;<small><a href="#requesttcpbi
 request_tcp_interface (context)&nbsp;&nbsp;<small><a href="#requesttcpinterfacecontext">&lt;-</a></small></h2>
 <dl class="section user"><dt></dt><dd>Specifies the network interface over which UM accepts TCP connections for reception of UIM messages. </dd></dl>
 <dl class="section user"><dt></dt><dd>You can specify a full IP address of interface, or just the network part (see <a class="el" href="generalconfigurationguidelines.html#specifyinginterfaces">Specifying Interfaces</a> for details). Default is set to <a class="el" href="grpmajoroptions.html#defaultinterfacecontext">default_interface (context)</a>, if specified. Otherwise, it is set to INADDR_ANY, meaning that it will not bind to a specific interface. You can also modify the default by setting the option to 0.0.0.0/0 which produces the same result. </dd></dl>
-<dl class="section user"><dt></dt><dd>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Config/design.tag:../Design/" href="../Design/umfeatures.html#unicastimmediatemessaging">Unicast Immediate Messaging</a> for general information on UIM.</dd></dl>
+<dl class="section user"><dt></dt><dd>See <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Config/design.tag:../Design/" href="../Design/umfeatures.html#unicastimmediatemessaging">Unicast Immediate Messaging</a> for general information on UIM.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>context </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a0b66a5b33839617b2a822e4a20a8d535">lbm_ipv4_address_mask_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a0b66a5b33839617b2a822e4a20a8d535">lbm_ipv4_address_mask_t</a></b> </td></tr>
 <tr>
 <td><em>Default value:</em> </td><td>0.0.0.0 (INADDR_ANY) </td></tr>
 <tr>
@@ -118,12 +118,12 @@ request_tcp_port (context)&nbsp;&nbsp;<small><a href="#requesttcpportcontext">&l
 <dl class="section user"><dt></dt><dd>Port number used for UIM port (also known as "request port"). </dd></dl>
 <dl class="section user"><dt></dt><dd>A context binds to and listens on the UIM port to be able to accept TCP connections for reception of Unicast Immediate Messages (UIMs). The port is either explicitly specified by <a class="el" href="grpunicastimmediatemessagingnetwork.html#requesttcpportcontext">request_tcp_port (context)</a>, or is selected from the range: [<a class="el" href="grpunicastimmediatemessagingnetwork.html#requesttcpportlowcontext">request_tcp_port_low (context)</a>, <a class="el" href="grpunicastimmediatemessagingnetwork.html#requesttcpporthighcontext">request_tcp_port_high (context)</a>]. </dd></dl>
 <dl class="section user"><dt></dt><dd>If <a class="el" href="grpunicastimmediatemessagingnetwork.html#requesttcpportcontext">request_tcp_port (context)</a> is 0, the context binds to the first open port within the range of [<a class="el" href="grpunicastimmediatemessagingnetwork.html#requesttcpportlowcontext">request_tcp_port_low (context)</a>, <a class="el" href="grpunicastimmediatemessagingnetwork.html#requesttcpporthighcontext">request_tcp_port_high (context)</a>]. If nonzero, the specific port number is used instead. </dd></dl>
-<dl class="section user"><dt></dt><dd>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Config/design.tag:../Design/" href="../Design/umfeatures.html#unicastimmediatemessaging">Unicast Immediate Messaging</a> for general information on UIM. See <a class="el" href="generalconfigurationguidelines.html#portassignments">Port Assignments</a> for more information about configuring ports.</dd></dl>
+<dl class="section user"><dt></dt><dd>See <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Config/design.tag:../Design/" href="../Design/umfeatures.html#unicastimmediatemessaging">Unicast Immediate Messaging</a> for general information on UIM. See <a class="el" href="generalconfigurationguidelines.html#portassignments">Port Assignments</a> for more information about configuring ports.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>context </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a86897f2fdd66aa7021683a4e72a4537b">lbm_uint16_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a86897f2fdd66aa7021683a4e72a4537b">lbm_uint16_t</a></b> </td></tr>
 <tr>
 <td><em>Default value:</em> </td><td>0 (use open port) </td></tr>
 <tr>
@@ -138,12 +138,12 @@ request_tcp_port (context)&nbsp;&nbsp;<small><a href="#requesttcpportcontext">&l
 request_tcp_port_high (context)&nbsp;&nbsp;<small><a href="#requesttcpporthighcontext">&lt;-</a></small></h2>
 <dl class="section user"><dt></dt><dd>High port number to use for UIM port (also known as "request port"). </dd></dl>
 <dl class="section user"><dt></dt><dd>A context binds to and listens on the UIM port to be able to accept TCP connections for reception of Unicast Immediate Messages (UIMs). The port is either explicitly specified by <a class="el" href="grpunicastimmediatemessagingnetwork.html#requesttcpportcontext">request_tcp_port (context)</a>, or is selected from the range: [<a class="el" href="grpunicastimmediatemessagingnetwork.html#requesttcpportlowcontext">request_tcp_port_low (context)</a>, <a class="el" href="grpunicastimmediatemessagingnetwork.html#requesttcpporthighcontext">request_tcp_port_high (context)</a>]. </dd></dl>
-<dl class="section user"><dt></dt><dd>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Config/design.tag:../Design/" href="../Design/umfeatures.html#unicastimmediatemessaging">Unicast Immediate Messaging</a> for more information about UIM. See <a class="el" href="generalconfigurationguidelines.html#portassignments">Port Assignments</a> for more information about configuring ports.</dd></dl>
+<dl class="section user"><dt></dt><dd>See <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Config/design.tag:../Design/" href="../Design/umfeatures.html#unicastimmediatemessaging">Unicast Immediate Messaging</a> for more information about UIM. See <a class="el" href="generalconfigurationguidelines.html#portassignments">Port Assignments</a> for more information about configuring ports.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>context </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a86897f2fdd66aa7021683a4e72a4537b">lbm_uint16_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a86897f2fdd66aa7021683a4e72a4537b">lbm_uint16_t</a></b> </td></tr>
 <tr>
 <td><em>Default value:</em> </td><td>14395 </td></tr>
 <tr>
@@ -158,12 +158,12 @@ request_tcp_port_high (context)&nbsp;&nbsp;<small><a href="#requesttcpporthighco
 request_tcp_port_low (context)&nbsp;&nbsp;<small><a href="#requesttcpportlowcontext">&lt;-</a></small></h2>
 <dl class="section user"><dt></dt><dd>Low port number to use for UIM port (also known as "request port"). </dd></dl>
 <dl class="section user"><dt></dt><dd>A context binds to and listens on the UIM port to be able to accept TCP connections for reception of Unicast Immediate Messages (UIMs). The port is either explicitly specified by <a class="el" href="grpunicastimmediatemessagingnetwork.html#requesttcpportcontext">request_tcp_port (context)</a>, or is selected from the range: [<a class="el" href="grpunicastimmediatemessagingnetwork.html#requesttcpportlowcontext">request_tcp_port_low (context)</a>, <a class="el" href="grpunicastimmediatemessagingnetwork.html#requesttcpporthighcontext">request_tcp_port_high (context)</a>]. </dd></dl>
-<dl class="section user"><dt></dt><dd>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Config/design.tag:../Design/" href="../Design/umfeatures.html#unicastimmediatemessaging">Unicast Immediate Messaging</a> for general information on UIM. See <a class="el" href="generalconfigurationguidelines.html#portassignments">Port Assignments</a> for more information about configuring ports.</dd></dl>
+<dl class="section user"><dt></dt><dd>See <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Config/design.tag:../Design/" href="../Design/umfeatures.html#unicastimmediatemessaging">Unicast Immediate Messaging</a> for general information on UIM. See <a class="el" href="generalconfigurationguidelines.html#portassignments">Port Assignments</a> for more information about configuring ports.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>context </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a86897f2fdd66aa7021683a4e72a4537b">lbm_uint16_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a86897f2fdd66aa7021683a4e72a4537b">lbm_uint16_t</a></b> </td></tr>
 <tr>
 <td><em>Default value:</em> </td><td>14391 </td></tr>
 <tr>

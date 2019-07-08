@@ -418,9 +418,9 @@ Brokered Context&nbsp;&nbsp;<small><a href="#brokeredcontext">&lt;-</a></small><
 <p>The brokered context establishes the environment for an Ultra Messaging queuing system.</p>
 <p>When you build an Ultra Messaging queuing system, you must create a context and define the broker for the context. You can have multiple brokered contexts in a queuing system.</p>
 <p>You can define the broker for the context in the client configuration file or in the application code. When you define the broker for a context, you must specify the IP address of the machine that hosts the broker and the Advanced Message Queuing Protocol (AMQP) listening port.</p>
-<p>To define the broker for a brokered context in a configuration file, the option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/config.tag:../../Config/" href="../../Config/grpmajoroptions.html#brokercontext">broker (context)</a> as follows:</p>
+<p>To define the broker for a brokered context in a configuration file, the option <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/config.tag:../../Config/" href="../../Config/grpmajoroptions.html#brokercontext">broker (context)</a> as follows:</p>
 <pre class="fragment">context broker broker_ip_address:port
-</pre><p>For more information about the Ultra Messaging context, see <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/design.tag:../../Design/" href="../../Design/fundamentalconcepts.html#contextobject">Context Object</a>.</p>
+</pre><p>For more information about the Ultra Messaging context, see <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/design.tag:../../Design/" href="../../Design/fundamentalconcepts.html#contextobject">Context Object</a>.</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="brokeredsource"></a>
@@ -582,7 +582,7 @@ If Performance Is Important, Consider Not Persisting Messages&nbsp;&nbsp;<small>
 <h3><a class="anchor" id="waitforregistration"></a>
 Wait for Registration&nbsp;&nbsp;<small><a href="#waitforregistration">&lt;-</a></small></h3>
 <p>To avoid start-up errors, do not start sending messages immediately after source creation. Instead, wait for sources to register with the broker.</p>
-<p>After you create the source, wait for the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#aa409add379c0380b2efa63f4095d69e4">LBM_SRC_EVENT_UMQ_REGISTRATION_COMPLETE_EX</a> event before sending messages.</p>
+<p>After you create the source, wait for the <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#aa409add379c0380b2efa63f4095d69e4">LBM_SRC_EVENT_UMQ_REGISTRATION_COMPLETE_EX</a> event before sending messages.</p>
 <p><br />
  </p>
 <h3><a class="anchor" id="planforpossibleconnectioninterruptions"></a>
@@ -612,7 +612,7 @@ settings that are generic or common to most objects </li>
 <li>
 settings that are likely to change, such as broker IP address and port number </li>
 </ul>
-<p>When using configuration files to set attributes for client applications, you can use either plain text configuration files or XML configuration files. Become familiar with the advantages of both types before deciding which type to use. For complete information about how to use both types of configuration files, see <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/config.tag:../../Config/" href="../../Config/index.html#configurationoverview">Configuration Overview</a>.</p>
+<p>When using configuration files to set attributes for client applications, you can use either plain text configuration files or XML configuration files. Become familiar with the advantages of both types before deciding which type to use. For complete information about how to use both types of configuration files, see <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/config.tag:../../Config/" href="../../Config/index.html#configurationoverview">Configuration Overview</a>.</p>
 <p>The plain text configuration file, when invoked, writes option values into Ultra Messaging current default attributes. Ultra Messaging then uses these values in the creation of all objects. The format is simple, and Ultra Messaging does not validate the file syntax.</p>
 <p>XML configuration files override default attributes and have more flexibility than a plain text configuration file. A single XML file can contain options for multiple client applications. For a single application, you can configure multiple named contexts, event queues, and so on, with different values for the same options. Also, Ultra Messaging Manager (UMM) can manage XML configuration files.</p>
 <p><br />
@@ -868,7 +868,7 @@ Use an XML configuration file for a more flexible approach to setting configurat
 <li>
 Set configuration options individually using function or method calls. You can use this technique to override options set from configuration files. </li>
 </ul>
-<p>For detailed information about setting configuration options, see <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/config.tag:../../Config/" href="../../Config/index.html#configurationoverview">Configuration Overview</a>.</p>
+<p>For detailed information about setting configuration options, see <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/config.tag:../../Config/" href="../../Config/index.html#configurationoverview">Configuration Overview</a>.</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="sampleapplications"></a>
@@ -1105,8 +1105,8 @@ Ultra Load Balancing (ULB)&nbsp;&nbsp;<small><a href="#ultraloadbalancingulb">&l
 <p>Use Ultra Load Balancing (ULB) to evenly distribute a message load to receiving applications without a broker between sending and receiving applications.</p>
 <p>A ULB source sends messages on a UM topic. The source also sends receiver assignment control information. This control information identifies which receiver is to process each message. Receivers unicast message consumption reports back to the source.</p>
 <p>ULB sources and receivers use standard Ultra Messaging contexts and do not connect to brokers.</p>
-<p>For information on ULB configuration options, see <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html">Ultra Messaging Queuing Options</a>, paying special attention to options with "ulb" in the name.</p>
-<dl class="section attention"><dt>Attention</dt><dd>The ULB feature is not compatible with setting <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/config.tag:../../Config/" href="../../Config/grpmajoroptions.html#ordereddeliveryreceiver">ordered_delivery (receiver)</a> to <code>"0"</code> (arrival order without reassembly).</dd></dl>
+<p>For information on ULB configuration options, see <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html">Ultra Messaging Queuing Options</a>, paying special attention to options with "ulb" in the name.</p>
+<dl class="section attention"><dt>Attention</dt><dd>The ULB feature is not compatible with setting <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/config.tag:../../Config/" href="../../Config/grpmajoroptions.html#ordereddeliveryreceiver">ordered_delivery (receiver)</a> to <code>"0"</code> (arrival order without reassembly).</dd></dl>
 <p><br />
  </p>
 <h2><a class="anchor" id="applicationsetsandreceivertypeids"></a>
@@ -1116,20 +1116,20 @@ Application Sets and Receiver Type IDs&nbsp;&nbsp;<small><a href="#applicationse
 <div class="image">
 <img src="ulb_psd_appsets.png" alt="ulb_psd_appsets.png"/>
 </div>
- <p>Subscribing applications create ULB receivers that register with a ULB source. The source adds each receiver to an application set according to a <em>receiver type ID</em> which is supplied by the subscribing application. The source's configuration defines which receivers are added to which application sets using the configuration option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqulbapplicationsetsource">umq_ulb_application_set (source)</a>.</p>
+ <p>Subscribing applications create ULB receivers that register with a ULB source. The source adds each receiver to an application set according to a <em>receiver type ID</em> which is supplied by the subscribing application. The source's configuration defines which receivers are added to which application sets using the configuration option <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqulbapplicationsetsource">umq_ulb_application_set (source)</a>.</p>
 <p><b>Application Sets</b> are identified with an integer between 0 and 65535. The sets must be numbered consecutively, starting from 0. In the diagram above, application set "A" would be 0, and "B" would be 1.</p>
 <p><b>Receiver Type IDs</b> are arbitrary 32-bit integers selected and managed by the application designer. There is no requirement for these IDs to be consecutively numbered. When a receiver registers with the source, the ID is used by the source to determine various configuration options to be associated with that receiver, such as which application set the receiver belongs in. Here are the configuration options that the source associates with receivers by their type IDs: </p><ul>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqulbapplicationsetsource">umq_ulb_application_set (source)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqulbapplicationsetsource">umq_ulb_application_set (source)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqulbreceiverportionsource">umq_ulb_receiver_portion (source)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqulbreceiverportionsource">umq_ulb_receiver_portion (source)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqulbreceiverprioritysource">umq_ulb_receiver_priority (source)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqulbreceiverprioritysource">umq_ulb_receiver_priority (source)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqulbreceivereventssource">umq_ulb_receiver_events (source)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqulbreceivereventssource">umq_ulb_receiver_events (source)</a> </li>
 </ul>
 <p>For example, in the diagram above the source might be an order entry system, load balancing orders across a set of three execution engines (application set A), and also load balancing those same orders across a set of two logger processes (application set B). We could define execution engines to be type 10 and the loggers to be type 20. The source would be configured as: </p><pre class="fragment">source umq_ulb_application_set 0:10;1:20
-</pre><p> Three execution engines would start up, each setting <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqreceivertypeidreceiver">umq_receiver_type_id (receiver)</a> to 10. Two logger processes would start up, each setting <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqreceivertypeidreceiver">umq_receiver_type_id (receiver)</a> to 20. Thus, each order will be sent to two receivers: one of the execution engines and one of the loggers.</p>
+</pre><p> Three execution engines would start up, each setting <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqreceivertypeidreceiver">umq_receiver_type_id (receiver)</a> to 10. Two logger processes would start up, each setting <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqreceivertypeidreceiver">umq_receiver_type_id (receiver)</a> to 20. Thus, each order will be sent to two receivers: one of the execution engines and one of the loggers.</p>
 <p>A ULB source sends both the message data and the assignment control information on the same transport session to all receivers. The source also sends assignment data so that the assigned receiver in each application set processes the message. The receivers not assigned ignore the message. When the assigned receivers process their messages, they unicast Consumed reports back to the source.</p>
 <p><br />
  </p>
@@ -1143,7 +1143,7 @@ receiver feedback information </li>
 <li>
 receiver portion size </li>
 <li>
-configuration option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqulbapplicationsetloadfactorbehaviorsource">umq_ulb_application_set_load_factor_behavior (source)</a> </li>
+configuration option <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqulbapplicationsetloadfactorbehaviorsource">umq_ulb_application_set_load_factor_behavior (source)</a> </li>
 </ul>
 <p><br />
  </p>
@@ -1152,15 +1152,15 @@ ULB Performance&nbsp;&nbsp;<small><a href="#ulbperformance">&lt;-</a></small></h
 <p>ULB is built on top of standard UM sources and receivers. As such, all receivers receive all messages sent to the topic, even ULB receivers. The normal load-balancing queuing semantics are implemented above the transport, so that only the assigned receiver delivers a particular message to the application; the other un-assigned receivers discard the message.</p>
 <p>For multicast-based data transport (LBT-RM), there is no performance penalty to sending each message to all receivers. However, for unicast-based data transports (e.g. LBT-RU, LBT-TCP), the normal source semantic of delivering each message to all receivers represents an inefficiency and limits the maximum sustainable throughput. As receivers are added to a ULB topic, the efficiency continues to drop due to unnecessary sends of messages to unassigned receivers, thus lowering the maximum sustainable throughput further with each added receiver.</p>
 <p><b>ULB Source-Side Filtering</b></p>
-<p>Starting with UM version 6.12, the Source-Side Filtering feature has been enhanced to support load-balancing queue semantics. Configure the ULB source with the option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/config.tag:../../Config/" href="../../Config/grpmajoroptions.html#transportsourcesidefilteringbehaviorsource">transport_source_side_filtering_behavior (source)</a> set to <code>"ulb"</code>. This causes the unicast source to send a particular message to <em>only</em> the assigned receiver. This reduces work for both the unicast source and for the un-assigned receivers. As receivers are added, the maximum sustainable throughput does not significantly drop.</p>
-<p>To benefit from this feature, receivers <em>must</em> be configured for arrival order delivery by setting <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/config.tag:../../Config/" href="../../Config/grpmajoroptions.html#ordereddeliveryreceiver">ordered_delivery (receiver)</a> to <code>-1</code>. Receivers without that setting will work correctly with the source, but will not benefit from the ULB Source-Side Filtering feature. I.e. receivers configured for ordered delivery value <code>1</code> (the default) will continue to receive all messages sent, and discard the non-assigned messages.</p>
+<p>Starting with UM version 6.12, the Source-Side Filtering feature has been enhanced to support load-balancing queue semantics. Configure the ULB source with the option <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/config.tag:../../Config/" href="../../Config/grpmajoroptions.html#transportsourcesidefilteringbehaviorsource">transport_source_side_filtering_behavior (source)</a> set to <code>"ulb"</code>. This causes the unicast source to send a particular message to <em>only</em> the assigned receiver. This reduces work for both the unicast source and for the un-assigned receivers. As receivers are added, the maximum sustainable throughput does not significantly drop.</p>
+<p>To benefit from this feature, receivers <em>must</em> be configured for arrival order delivery by setting <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/config.tag:../../Config/" href="../../Config/grpmajoroptions.html#ordereddeliveryreceiver">ordered_delivery (receiver)</a> to <code>-1</code>. Receivers without that setting will work correctly with the source, but will not benefit from the ULB Source-Side Filtering feature. I.e. receivers configured for ordered delivery value <code>1</code> (the default) will continue to receive all messages sent, and discard the non-assigned messages.</p>
 <p>A ULB source must be at UM version 6.12 or beyond to enable ULB Source Side Filtering. That source is fully interoperable with receivers at UM versions before 6.12, but the older receivers will not benefit from the ULB Source-Side Filtering feature. I.e. pre-6.12 receivers will continue to receive all messages sent, and discard the non-assigned messages.</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="ultraloadbalancingflightsize"></a>
 Ultra Load Balancing Flight Size&nbsp;&nbsp;<small><a href="#ultraloadbalancingflightsize">&lt;-</a></small></h2>
-<p>Ultra Load Balancing uses a flight size mechanism to limit the number of messages sent but not consumed, and blocks a source or warns when a send exceeds the configured flight size. Set Ultra Load Balancing with configuration option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqulbflightsizesource">umq_ulb_flight_size (source)</a>.</p>
-<p>You can set configuration option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqulbflightsizebehaviorsource">umq_ulb_flight_size_behavior (source)</a> to either of the following behaviors:</p>
+<p>Ultra Load Balancing uses a flight size mechanism to limit the number of messages sent but not consumed, and blocks a source or warns when a send exceeds the configured flight size. Set Ultra Load Balancing with configuration option <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqulbflightsizesource">umq_ulb_flight_size (source)</a>.</p>
+<p>You can set configuration option <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqulbflightsizebehaviorsource">umq_ulb_flight_size_behavior (source)</a> to either of the following behaviors:</p>
 <ul>
 <li>
 Block any sends that would exceed the flight size. </li>
@@ -1174,7 +1174,7 @@ Continue to allow sends while notifying the sending application. </li>
 Indexed Ultra Load Balancing&nbsp;&nbsp;<small><a href="#indexedultraloadbalancing">&lt;-</a></small></h2>
 <p>Indexed Ultra Load Balancing is a way to group messages and ensure that one receiver processes all messages in the group in the order they are sent. The source uses an index to assign the messages in a group. An index is an application-defined 64-bit unsigned number or free-form string.</p>
 <p>If you must process a set of messages in order, it can be more efficient for one receiver to process the messages. You can set the same index in all related messages to ensure that they all go to one receiver.</p>
-<p>Send messages with an index using send call <b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#a4d883eaaa22baf81abf21d495f471c8b">lbm_src_sendv_ex()</a></b> that includes a pointer to <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#af038a0415aaf7dc4285a944bc93e5ea2">lbm_umq_index_info_t</a> in <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#a21504de56612c7c6e4be655402b47a37">lbm_src_send_ex_info_t</a>.</p>
+<p>Send messages with an index using send call <b><a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#a4d883eaaa22baf81abf21d495f471c8b">lbm_src_sendv_ex()</a></b> that includes a pointer to <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#af038a0415aaf7dc4285a944bc93e5ea2">lbm_umq_index_info_t</a> in <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#a21504de56612c7c6e4be655402b47a37">lbm_src_send_ex_info_t</a>.</p>
 <p>By default, all receivers are eligible for index assignment. When the source assigns the first message with a particular index to a receiver in each application set, the source assigns subsequent messages with that same index to those same receivers.</p>
 <p>Note that because Ultra Load Balancing sources make assignment decisions independently, multiple sources that send on the same index might assign the index to different receivers.</p>
 <p><br />
@@ -1184,8 +1184,8 @@ Total Message Lifetimes for Ultra Load Balancing&nbsp;&nbsp;<small><a href="#tot
 <p>You can set a total message lifetime for Ultra Load Balancing applications in different ways.</p>
 <p>An Ultra Load Balancing message total lifetime starts when the source sends the message, and ends when the source receives a consumption report or times out. In each case, you set the timeout to a value in milliseconds. If the message times out, the source reclaims the memory.</p>
 <p>By default, there is no message lifetime limit. Messages must be consumed.</p>
-<p>A timeout can be set with the configuration option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqulbapplicationsetmessagelifetimesource">umq_ulb_application_set_message_lifetime (source)</a>.</p>
-<p>Also, it is possible to set a timeout on a per-message basis using the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#a091b5806bf18d10ebd0d9117e0c70229">lbm_src_send_ex()</a> API. Set <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/api.tag:../../API/" href="../../API/structlbm__src__send__ex__info__t__stct.html#a5335e2eb3550544263d7be7f690837d9">lbm_src_send_ex_info_t_stct::umq_total_lifetime</a> to point at a <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#ab8b20fc8f822cdc1b8e78960b59d5739">lbm_umq_msg_total_lifetime_info_t</a> structure, and fill in the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/api.tag:../../API/" href="../../API/structlbm__umq__msg__total__lifetime__info__t__stct.html#a1773d754611aada145ee2077d008a473">lbm_umq_msg_total_lifetime_info_t_stct::umq_msg_total_lifetime</a> field.</p>
+<p>A timeout can be set with the configuration option <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqulbapplicationsetmessagelifetimesource">umq_ulb_application_set_message_lifetime (source)</a>.</p>
+<p>Also, it is possible to set a timeout on a per-message basis using the <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#a091b5806bf18d10ebd0d9117e0c70229">lbm_src_send_ex()</a> API. Set <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/api.tag:../../API/" href="../../API/structlbm__src__send__ex__info__t__stct.html#a5335e2eb3550544263d7be7f690837d9">lbm_src_send_ex_info_t_stct::umq_total_lifetime</a> to point at a <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#ab8b20fc8f822cdc1b8e78960b59d5739">lbm_umq_msg_total_lifetime_info_t</a> structure, and fill in the <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/api.tag:../../API/" href="../../API/structlbm__umq__msg__total__lifetime__info__t__stct.html#a1773d754611aada145ee2077d008a473">lbm_umq_msg_total_lifetime_info_t_stct::umq_msg_total_lifetime</a> field.</p>
 <p>If you set a timeout using both the configuration option and the API, the API overrides the configured setting.</p>
 <p><br />
  </p>
@@ -1217,13 +1217,13 @@ Source Events&nbsp;&nbsp;<small><a href="#sourceevents">&lt;-</a></small></h2>
 <dl class="section user"><dt><b>Registration</b> <b>error</b> <b></b>(LBM_SRC_EVENT_UMQ_REGISTRATION_ERROR)</dt><dd>If the source is disconnected from the broker, Ultra Messaging generates a registration error event to indicate that the source is no longer registered with the broker. For example, if the broker shuts down and the source loses its connection to the broker, Ultra Messaging generates a registration error event and any message that you send or is in flight does not reach the broker. You must wait for a registration complete event before you send more messages to the broker.</dd></dl>
 <p>In a high availability multi-node deployment, if the active broker shuts down, Ultra Messaging elects one of the standby brokers as the new active broker. The source connects to the new active broker by default. Ultra Messaging generates a registration error event when the source loses connection to the previous active broker and a registration complete event when the source successfully registers with the new active broker.</p>
 <dl class="section user"><dt><b>Message</b> <b>ID</b> <b></b>(LBM_SRC_EVENT_UMQ_MESSAGE_ID_INFO)</dt><dd>For each message a source sends, Ultra Messaging generates an event that contains the message ID. </dd></dl>
-<dl class="section user"><dt></dt><dd>To enable this event, set the <b>LBM_SRC_SEND_EX_FLAG_UMQ_MESSAGE_ID_INFO</b> flag of the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#a21504de56612c7c6e4be655402b47a37">lbm_src_send_ex_info_t</a> object passed on the send call.</dd></dl>
+<dl class="section user"><dt></dt><dd>To enable this event, set the <b>LBM_SRC_SEND_EX_FLAG_UMQ_MESSAGE_ID_INFO</b> flag of the <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#a21504de56612c7c6e4be655402b47a37">lbm_src_send_ex_info_t</a> object passed on the send call.</dd></dl>
 <dl class="section user"><dt><b>Message</b> <b>Sequence</b> <b>Number</b> <b></b>(LBM_SRC_EVENT_SEQUENCE_NUMBER_INFO)</dt><dd>For each message a source sends, Ultra Messaging generates an event that contains the message sequence number. </dd></dl>
-<dl class="section user"><dt></dt><dd>To enable this event, set the <b>LBM_SRC_SEND_EX_FLAG_SEQUENCE_NUMBER_INFO</b> flag of the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#a21504de56612c7c6e4be655402b47a37">lbm_src_send_ex_info_t</a> object passed on the send call.</dd></dl>
-<dl class="section user"><dt><b>Flight</b> <b>Size</b> <b>Notification</b> <b></b>(LBM_SRC_EVENT_FLIGHT_SIZE_NOTIFICATION)</dt><dd>Ultra Messaging can generate a flight size event when the number of in-flight messages exceeds or drops under the configured flight size. To enable this event, set configuration option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/config.tag:../../Config/" href="../../Config/grpdeprecated.html#umqflightsizebehaviorcontext">umq_flight_size_behavior (context)</a> to <b>notify</b>. Also, recast the event data pointer as type <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#a1c4371e4c1113403ea0fb11bce39491f">lbm_src_event_flight_size_notification_t</a>. </dd></dl>
-<dl class="section user"><dt></dt><dd>If the number of in-flight messages exceeds the configured flight size, the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/api.tag:../../API/" href="../../API/structlbm__src__event__flight__size__notification__t__stct.html#a4805e12cbac941f189ea511d48d02445">lbm_src_event_flight_size_notification_t::state</a> value is <b>LBM_SRC_EVENT_FLIGHT_SIZE_NOTIFICATION_STATE_OVER</b>. If the number of in-flight messages drops below the configured flight size, the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/api.tag:../../API/" href="../../API/structlbm__src__event__flight__size__notification__t__stct.html#a4805e12cbac941f189ea511d48d02445">lbm_src_event_flight_size_notification_t::state</a> value is <b>LBM_SRC_EVENT_FLIGHT_SIZE_NOTIFICATION_STATE_UNDER</b>.</dd></dl>
-<dl class="section user"><dt><b>Source</b> <b>Wakeup</b> <b>Notification</b> <b></b>(LBM_SRC_EVENT_WAKEUP)</dt><dd>Ultra Messaging can generate a wakeup event when a source send operation, blocked because the number of in-flight messages exceeded the configured flight size, is able to send again. To enable this event, set configuration option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/config.tag:../../Config/" href="../../Config/grpdeprecated.html#umqflightsizebehaviorcontext">umq_flight_size_behavior (context)</a> to <b>block</b>. Also, recast the event data pointer as pointer type <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#a4a090ffb298662b540d2fbd4f8add876">lbm_src_event_wakeup_t</a> *. </dd></dl>
-<dl class="section user"><dt></dt><dd>When a source becomes unblocked, the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/api.tag:../../API/" href="../../API/structlbm__src__event__wakeup__t__stct.html#acb8fe53ff49e0813bb4837b6131afc45">lbm_src_event_wakeup_t::flags</a> value is <b>LBM_SRC_EVENT_WAKEUP_FLAG_NORMAL</b>.</dd></dl>
+<dl class="section user"><dt></dt><dd>To enable this event, set the <b>LBM_SRC_SEND_EX_FLAG_SEQUENCE_NUMBER_INFO</b> flag of the <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#a21504de56612c7c6e4be655402b47a37">lbm_src_send_ex_info_t</a> object passed on the send call.</dd></dl>
+<dl class="section user"><dt><b>Flight</b> <b>Size</b> <b>Notification</b> <b></b>(LBM_SRC_EVENT_FLIGHT_SIZE_NOTIFICATION)</dt><dd>Ultra Messaging can generate a flight size event when the number of in-flight messages exceeds or drops under the configured flight size. To enable this event, set configuration option <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/config.tag:../../Config/" href="../../Config/grpdeprecated.html#umqflightsizebehaviorcontext">umq_flight_size_behavior (context)</a> to <b>notify</b>. Also, recast the event data pointer as type <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#a1c4371e4c1113403ea0fb11bce39491f">lbm_src_event_flight_size_notification_t</a>. </dd></dl>
+<dl class="section user"><dt></dt><dd>If the number of in-flight messages exceeds the configured flight size, the <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/api.tag:../../API/" href="../../API/structlbm__src__event__flight__size__notification__t__stct.html#a4805e12cbac941f189ea511d48d02445">lbm_src_event_flight_size_notification_t::state</a> value is <b>LBM_SRC_EVENT_FLIGHT_SIZE_NOTIFICATION_STATE_OVER</b>. If the number of in-flight messages drops below the configured flight size, the <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/api.tag:../../API/" href="../../API/structlbm__src__event__flight__size__notification__t__stct.html#a4805e12cbac941f189ea511d48d02445">lbm_src_event_flight_size_notification_t::state</a> value is <b>LBM_SRC_EVENT_FLIGHT_SIZE_NOTIFICATION_STATE_UNDER</b>.</dd></dl>
+<dl class="section user"><dt><b>Source</b> <b>Wakeup</b> <b>Notification</b> <b></b>(LBM_SRC_EVENT_WAKEUP)</dt><dd>Ultra Messaging can generate a wakeup event when a source send operation, blocked because the number of in-flight messages exceeded the configured flight size, is able to send again. To enable this event, set configuration option <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/config.tag:../../Config/" href="../../Config/grpdeprecated.html#umqflightsizebehaviorcontext">umq_flight_size_behavior (context)</a> to <b>block</b>. Also, recast the event data pointer as pointer type <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#a4a090ffb298662b540d2fbd4f8add876">lbm_src_event_wakeup_t</a> *. </dd></dl>
+<dl class="section user"><dt></dt><dd>When a source becomes unblocked, the <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/api.tag:../../API/" href="../../API/structlbm__src__event__wakeup__t__stct.html#acb8fe53ff49e0813bb4837b6131afc45">lbm_src_event_wakeup_t::flags</a> value is <b>LBM_SRC_EVENT_WAKEUP_FLAG_NORMAL</b>.</dd></dl>
 <p><br />
  </p>
 <h2><a class="anchor" id="receiverevents"></a>
@@ -1231,7 +1231,7 @@ Receiver Events&nbsp;&nbsp;<small><a href="#receiverevents">&lt;-</a></small></h
 <p>Ultra Messaging generates receiver events that the client application can listen for and respond to.</p>
 <p>You can use receiver events to determine the state of the receiver and messages.</p>
 <p>When you use brokered contexts, Ultra Messaging generates Registration complete event (<b>LBM_MSG_UMQ_REGISTRATION_COMPLETE_EX</b>).</p>
-<p>A receiver must be registered on the broker before the broker can send messages to the receiver. When you create a receiver, you trigger a receiver registration. Upon registration with a broker, Ultra Messaging sends to the client application an instance of the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#a0c64df03275aad96fb201948e3fb26c6">lbm_msg_umq_registration_complete_ex_t</a> object. This object contains the broker name, IP address, and port.</p>
+<p>A receiver must be registered on the broker before the broker can send messages to the receiver. When you create a receiver, you trigger a receiver registration. Upon registration with a broker, Ultra Messaging sends to the client application an instance of the <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#a0c64df03275aad96fb201948e3fb26c6">lbm_msg_umq_registration_complete_ex_t</a> object. This object contains the broker name, IP address, and port.</p>
 <dl class="section user"><dt><b>Registration</b> <b>error</b> <b></b>(LBM_MSG_UMQ_REGISTRATION_ERROR)</dt><dd>Ultra Messaging generates this event if any of the following actions occurs: </dd></dl>
 <dl class="section user"><dt></dt><dd><ol>
 <li>
@@ -1281,7 +1281,7 @@ New Configuration Options&nbsp;&nbsp;<small><a href="#newconfigurationoptions">&
 <p>As of Ultra Messaging Queuing 6.8, the following new configuration options are available:</p>
 <ul>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/config.tag:../../Config/" href="../../Config/grpmajoroptions.html#brokercontext">broker (context)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/config.tag:../../Config/" href="../../Config/grpmajoroptions.html#brokercontext">broker (context)</a> </li>
 </ul>
 <p><br />
  </p>
@@ -1291,31 +1291,31 @@ Changed Configuration Options&nbsp;&nbsp;<small><a href="#changedconfigurationop
 <p>You can use the following configuration options for Ultra Load Balancing only:</p>
 <ul>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqsessionidcontext">umq_session_id (context)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqsessionidcontext">umq_session_id (context)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqdelayedconsumptionreportintervalreceiver">umq_delayed_consumption_report_interval (receiver)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqdelayedconsumptionreportintervalreceiver">umq_delayed_consumption_report_interval (receiver)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqholdintervalreceiver">umq_hold_interval (receiver)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqholdintervalreceiver">umq_hold_interval (receiver)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqindexassignmenteligibilitydefaultreceiver">umq_index_assignment_eligibility_default (receiver)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqindexassignmenteligibilitydefaultreceiver">umq_index_assignment_eligibility_default (receiver)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqreceivertypeidreceiver">umq_receiver_type_id (receiver)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqreceivertypeidreceiver">umq_receiver_type_id (receiver)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqretransmitrequestintervalreceiver">umq_retransmit_request_interval (receiver)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqretransmitrequestintervalreceiver">umq_retransmit_request_interval (receiver)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqretransmitrequestoutstandingmaximumreceiver">umq_retransmit_request_outstanding_maximum (receiver)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqretransmitrequestoutstandingmaximumreceiver">umq_retransmit_request_outstanding_maximum (receiver)</a> </li>
 </ul>
-<p>Configuration option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/config.tag:../../Config/" href="../../Config/grpmajoroptions.html#transportsource">transport (source)</a> has an additional value: <b>broker</b>.</p>
+<p>Configuration option <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/config.tag:../../Config/" href="../../Config/grpmajoroptions.html#transportsource">transport (source)</a> has an additional value: <b>broker</b>.</p>
 <center> <table class="doxtable">
 <tr>
 <th>String</th><th>Integer Value</th><th>Description </th></tr>
 <tr>
 <td><b>broker</b></td><td><b>LBM_SRC_TOPIC_ATTR_TRANSPORT_BROKER</b></td><td>Sources send messages to a broker, which manages the messages for consumption. </td></tr>
 </table>
-</center><p>Option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqqueueactivitytimeoutcontext">umq_queue_activity_timeout (context)</a> has no effect.</p>
-<p>Configuration option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqqueueregistrationidcontext">umq_queue_registration_id (context)</a> functions differently and no longer helps to manage duplicate message delivery.</p>
-<p>For configuration option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqqueueparticipationreceiver">umq_queue_participation (receiver)</a>, you cannot set value 2 to enable queue browsing with brokered contexts.</p>
-<p>See also <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/config.tag:../../Config/" href="../../Config/grpdeprecated.html">Deprecated Options</a>.</p>
+</center><p>Option <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqqueueactivitytimeoutcontext">umq_queue_activity_timeout (context)</a> has no effect.</p>
+<p>Configuration option <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqqueueregistrationidcontext">umq_queue_registration_id (context)</a> functions differently and no longer helps to manage duplicate message delivery.</p>
+<p>For configuration option <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqqueueparticipationreceiver">umq_queue_participation (receiver)</a>, you cannot set value 2 to enable queue browsing with brokered contexts.</p>
+<p>See also <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/config.tag:../../Config/" href="../../Config/grpdeprecated.html">Deprecated Options</a>.</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="deprecatedconfigurationoptions"></a>
@@ -1323,33 +1323,33 @@ Deprecated Configuration Options&nbsp;&nbsp;<small><a href="#deprecatedconfigura
 <p>As of UMQ 6.8, the following configuration options are deprecated:</p>
 <ul>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/config.tag:../../Config/" href="../../Config/grpdeprecated.html#umqflightsizecontext">umq_flight_size (context)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/config.tag:../../Config/" href="../../Config/grpdeprecated.html#umqflightsizecontext">umq_flight_size (context)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/config.tag:../../Config/" href="../../Config/grpdeprecated.html#umqflightsizebehaviorcontext">umq_flight_size_behavior (context)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/config.tag:../../Config/" href="../../Config/grpdeprecated.html#umqflightsizebehaviorcontext">umq_flight_size_behavior (context)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/config.tag:../../Config/" href="../../Config/grpdeprecated.html#umqmsgtotallifetimecontext">umq_msg_total_lifetime (context)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/config.tag:../../Config/" href="../../Config/grpdeprecated.html#umqmsgtotallifetimecontext">umq_msg_total_lifetime (context)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/config.tag:../../Config/" href="../../Config/grpdeprecated.html#umqmessageretransmissionintervalcontext">umq_message_retransmission_interval (context)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/config.tag:../../Config/" href="../../Config/grpdeprecated.html#umqmessageretransmissionintervalcontext">umq_message_retransmission_interval (context)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/config.tag:../../Config/" href="../../Config/grpdeprecated.html#umqmessagestabilitynotificationcontext">umq_message_stability_notification (context)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/config.tag:../../Config/" href="../../Config/grpdeprecated.html#umqmessagestabilitynotificationcontext">umq_message_stability_notification (context)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/config.tag:../../Config/" href="../../Config/grpdeprecated.html#umqqueuecheckintervalcontext">umq_queue_check_interval (context)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/config.tag:../../Config/" href="../../Config/grpdeprecated.html#umqqueuecheckintervalcontext">umq_queue_check_interval (context)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/config.tag:../../Config/" href="../../Config/grpdeprecated.html#umqqueuenamesource">umq_queue_name (source)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/config.tag:../../Config/" href="../../Config/grpdeprecated.html#umqqueuenamesource">umq_queue_name (source)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/config.tag:../../Config/" href="../../Config/grpdeprecated.html#umqqueueparticipantsonlysource">umq_queue_participants_only (source)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/config.tag:../../Config/" href="../../Config/grpdeprecated.html#umqqueueparticipantsonlysource">umq_queue_participants_only (source)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/config.tag:../../Config/" href="../../Config/grpdeprecated.html#umqqueuequeryintervalcontext">umq_queue_query_interval (context)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/config.tag:../../Config/" href="../../Config/grpdeprecated.html#umqqueuequeryintervalcontext">umq_queue_query_interval (context)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/config.tag:../../Config/" href="../../Config/grpdeprecated.html#umqrequirequeueauthenticationcontext">umq_require_queue_authentication (context)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/config.tag:../../Config/" href="../../Config/grpdeprecated.html#umqrequirequeueauthenticationcontext">umq_require_queue_authentication (context)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/config.tag:../../Config/" href="../../Config/grpdeprecated.html#umqretentionintergroupstabilitybehaviorcontext">umq_retention_intergroup_stability_behavior (context)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/config.tag:../../Config/" href="../../Config/grpdeprecated.html#umqretentionintergroupstabilitybehaviorcontext">umq_retention_intergroup_stability_behavior (context)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/config.tag:../../Config/" href="../../Config/grpdeprecated.html#umqretentionintragroupstabilitybehaviorcontext">umq_retention_intragroup_stability_behavior (context)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/config.tag:../../Config/" href="../../Config/grpdeprecated.html#umqretentionintragroupstabilitybehaviorcontext">umq_retention_intragroup_stability_behavior (context)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/config.tag:../../Config/" href="../../Config/grpdeprecated.html#umqretentionintergroupstabilitybehaviorsource">umq_retention_intergroup_stability_behavior (source)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/config.tag:../../Config/" href="../../Config/grpdeprecated.html#umqretentionintergroupstabilitybehaviorsource">umq_retention_intergroup_stability_behavior (source)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/config.tag:../../Config/" href="../../Config/grpdeprecated.html#umqretentionintragroupstabilitybehaviorsource">umq_retention_intragroup_stability_behavior (source)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/config.tag:../../Config/" href="../../Config/grpdeprecated.html#umqretentionintragroupstabilitybehaviorsource">umq_retention_intragroup_stability_behavior (source)</a> </li>
 </ul>
 <p><br />
  </p>
@@ -1381,11 +1381,11 @@ Deprecated Functions and Methods&nbsp;&nbsp;<small><a href="#deprecatedfunctions
 <p>As of UMQ 6.8, the following C API functions are deprecated:</p>
 <ul>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#aac6015a6a8e914c6e621e3b28940fe87">lbm_ctx_umq_get_inflight()</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#aac6015a6a8e914c6e621e3b28940fe87">lbm_ctx_umq_get_inflight()</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#a6cd0c297e489e006ef5da83398184daa">lbm_umq_ctx_msg_stable()</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#a6cd0c297e489e006ef5da83398184daa">lbm_umq_ctx_msg_stable()</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#a21cb52dc4c0a14484cfc0454a156e2d8">lbm_queue_immediate_message()</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#a21cb52dc4c0a14484cfc0454a156e2d8">lbm_queue_immediate_message()</a> </li>
 </ul>
 <p>The following Java and .NET API classes and methods are deprecated for Ultra Messaging 6.8 or later:</p>
 <ul>
@@ -1455,7 +1455,7 @@ Ultra Messaging Wildcard Receivers </li>
 <p>You cannot use brokered contexts with the following functions or methods:</p>
 <ul>
 <li>
-<b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#aeeb72be91872f87626d26156c3201dfe">lbm_rcv_umq_deregister()</a></b> </li>
+<b><a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#aeeb72be91872f87626d26156c3201dfe">lbm_rcv_umq_deregister()</a></b> </li>
 </ul>
 <p><br />
  </p>
@@ -1464,7 +1464,7 @@ Limited Ultra Messaging Functionality&nbsp;&nbsp;<small><a href="#limitedultrame
 <p>Use the following rules and guidelines when you use Ultra Messaging queuing with Ultra Messaging core functionalities:</p>
 <ul>
 <li>
-When you use queuing, you cannot set configuration option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/UMQ/config.tag:../../Config/" href="../../Config/grpmajoroptions.html#fdmanagementtypecontext">fd_management_type (context)</a>. </li>
+When you use queuing, you cannot set configuration option <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/config.tag:../../Config/" href="../../Config/grpmajoroptions.html#fdmanagementtypecontext">fd_management_type (context)</a>. </li>
 <li>
 Ultra Messaging queuing systems do not fragment messages. </li>
 </ul>

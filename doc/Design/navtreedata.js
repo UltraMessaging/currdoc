@@ -273,6 +273,7 @@ var NAVTREE =
         [ "Receive Multiple Datagrams Compatibility", "advancedoptimizations.html#receivemultipledatagramscompatibility", null ],
         [ "Receive Multiple Datagrams Restrictions", "advancedoptimizations.html#receivemultipledatagramsrestrictions", null ]
       ] ],
+      [ "Transport Demultiplexer Table Size", "advancedoptimizations.html#transportdemultiplexertablesize", null ],
       [ "Smart Sources", "advancedoptimizations.html#smartsources", [
         [ "Smart Source Message Buffers", "advancedoptimizations.html#smartsourcemessagebuffers", null ],
         [ "Smart Sources and Memory Management", "advancedoptimizations.html#smartsourcesandmemorymanagement", null ],
@@ -419,7 +420,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "advancedoptimizations.html",
-"umfeatures.html#mimandwildcardreceivers"
+"umfeatures.html#latejoinwithump"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

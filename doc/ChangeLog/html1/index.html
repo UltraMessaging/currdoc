@@ -3994,16 +3994,35 @@ The Late Join option retransmit_request_generation_interval is deprecated and re
  </p>
 <h2><a class="anchor" id="errata"></a>
 Errata&nbsp;&nbsp;<small><a href="#errata">&lt;-</a></small></h2>
-<p>The following important errors were discovered in the documentation after it was released.</p>
+<p>The following important corrections and improvements made to the documentation after it was released.</p>
 <ul>
 <li>
 <p class="startli">Bug 9940/10131 was reported as being fixed in UM version 6.10.1. This was incorrect. The bug exists in all UM versions from 6.0 to 6.12.</p>
-<p class="endli">If a persistent publisher send a message containing Message Properties, and the Proactive Retransmission feature is used to record the message on the Store, a receiver which recovers the message from the Store will crash with a fatal assert: <br />
+<p>If a persistent publisher send a message containing Message Properties, and the Proactive Retransmission feature is used to record the message on the Store, a receiver which recovers the message from the Store will crash with a fatal assert: <br />
 <code>FATAL: failed assertion [prop_offset &gt;= 0]</code> <br />
 If message properties are used on persisted sources, the user should disable Proactive Retransmissions by setting the configuration option: <br />
 <code>source ume_message_stability_timeout 0</code> <br />
-See <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/ChangeLog/config.tag:../../Config/" href="../../Config/grpultramessagingpersistence.html#umemessagestabilitytimeoutsource">ume_message_stability_timeout (source)</a>. </p>
+See <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/ChangeLog/config.tag:../../Config/" href="../../Config/grpultramessagingpersistence.html#umemessagestabilitytimeoutsource">ume_message_stability_timeout (source)</a>.</p>
+<p class="endli"></p>
 </li>
+<li>
+<p class="startli">Significant updates to <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/ChangeLog/config.tag:../../Config/" href="../../Config/grpdeliverycontrol.html#deliverycontrolmaximumtotalmapentriescontext">delivery_control_maximum_total_map_entries (context)</a>.</p>
+<p class="endli"></p>
+</li>
+<li>
+<p class="startli">Significant updates to <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/ChangeLog/config.tag:../../Config/" href="../../Config/grpofftransportrecovery.html#otrmessagecachingthresholdreceiver">otr_message_caching_threshold (receiver)</a>.</p>
+<p class="endli"></p>
+</li>
+<li>
+<p class="startli">Significant updates to <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/ChangeLog/config.tag:../../Config/" href="../../Config/grpofftransportrecovery.html#otrrequestinitialdelayreceiver">otr_request_initial_delay (receiver)</a>.</p>
+<p class="endli"></p>
+</li>
+<li>
+<p class="startli">Added description of order map to <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/ChangeLog/design.tag:../../Design/" href="../../Design/architecture.html#deliverycontroller">Delivery Controller</a>.</p>
+<p class="endli"></p>
+</li>
+<li>
+Added new section <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/ChangeLog/design.tag:../../Design/" href="../../Design/advancedoptimizations.html#transportdemultiplexertablesize">Transport Demultiplexer Table Size</a>. </li>
 </ul>
 </div></div><!-- contents -->
 </div><!-- doc-content -->

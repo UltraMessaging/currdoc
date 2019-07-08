@@ -1,5 +1,6 @@
 var NAVTREEINDEX1 =
 {
+"umfeatures.html#latejoinwithump":[5,1,0],
 "umfeatures.html#mimandwildcardreceivers":[5,7,3],
 "umfeatures.html#mimconfiguration":[5,7,5],
 "umfeatures.html#mimexampleapplications":[5,7,6],

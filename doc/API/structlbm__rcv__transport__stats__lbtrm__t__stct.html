@@ -253,7 +253,7 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Number of messages or message fragments received over an LBT-RM transport. A single datagram may contain one or more messages or a fragment of a larger message. For fragmented messages larger than configuration option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/API/config.tag:../Config/" href="../Config/grptransportlbtrmoperation.html#transportlbtrmdatagrammaxsizecontext">transport_lbtrm_datagram_max_size (context)</a> (default 8KB), this count reflects the number of datagrams used to constitute those messages. Thus, this number is equal to or greater than the datagram counter (msgs_rcved, above). This number also includes messages received for which there was no interested receiver, which is tallied in the lbm_msgs_no_topic_rcved counter (below). </p>
+<p>Number of messages or message fragments received over an LBT-RM transport. A single datagram may contain one or more messages or a fragment of a larger message. For fragmented messages larger than configuration option <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/API/config.tag:../Config/" href="../Config/grptransportlbtrmoperation.html#transportlbtrmdatagrammaxsizecontext">transport_lbtrm_datagram_max_size (context)</a> (default 8KB), this count reflects the number of datagrams used to constitute those messages. Thus, this number is equal to or greater than the datagram counter (msgs_rcved, above). This number also includes messages received for which there was no interested receiver, which is tallied in the lbm_msgs_no_topic_rcved counter (below). </p>
 
 </div>
 </div>
@@ -292,7 +292,7 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Number of LBT-RM datagrams received. Depending on batching settings, a single LBT-RM datagram may contain one or more messages, or a fragment of a larger message. With LBT-RM, larger messages are split into fragment sizes limited by configuration option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/API/config.tag:../Config/" href="../Config/grptransportlbtrmoperation.html#transportlbtrmdatagrammaxsizecontext">transport_lbtrm_datagram_max_size (context)</a> (default 8KB). </p>
+<p>Number of LBT-RM datagrams received. Depending on batching settings, a single LBT-RM datagram may contain one or more messages, or a fragment of a larger message. With LBT-RM, larger messages are split into fragment sizes limited by configuration option <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/API/config.tag:../Config/" href="../Config/grptransportlbtrmoperation.html#transportlbtrmdatagrammaxsizecontext">transport_lbtrm_datagram_max_size (context)</a> (default 8KB). </p>
 
 </div>
 </div>
@@ -318,7 +318,7 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Maximum time (in milliseconds), i.e., the longest time recorded so far for a lost message to be recovered. If this time is near or equal to the configuration option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/API/config.tag:../Config/" href="../Config/grptransportlbtrmreliability.html#transportlbtrmnakgenerationintervalreceiver">transport_lbtrm_nak_generation_interval (receiver)</a> setting, you have likely experienced some level of unrecoverable loss. </p>
+<p>Maximum time (in milliseconds), i.e., the longest time recorded so far for a lost message to be recovered. If this time is near or equal to the configuration option <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/API/config.tag:../Config/" href="../Config/grptransportlbtrmreliability.html#transportlbtrmnakgenerationintervalreceiver">transport_lbtrm_nak_generation_interval (receiver)</a> setting, you have likely experienced some level of unrecoverable loss. </p>
 
 </div>
 </div>
@@ -344,7 +344,7 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Minimum time (in milliseconds), i.e., the shortest time recorded so far for a lost message to be recovered. If this time is greater than configuration option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/API/config.tag:../Config/" href="../Config/grptransportlbtrmreliability.html#transportlbtrmnakbackoffintervalreceiver">transport_lbtrm_nak_backoff_interval (receiver)</a>, it may be taking multiple NAKs to initiate retransmissions, indicating a lossy network.</p>
+<p>Minimum time (in milliseconds), i.e., the shortest time recorded so far for a lost message to be recovered. If this time is greater than configuration option <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/API/config.tag:../Config/" href="../Config/grptransportlbtrmreliability.html#transportlbtrmnakbackoffintervalreceiver">transport_lbtrm_nak_backoff_interval (receiver)</a>, it may be taking multiple NAKs to initiate retransmissions, indicating a lossy network.</p>
 <p>This field is initialized to all 1s (-1 if printed signed). </p>
 
 </div>
@@ -400,7 +400,7 @@ Data Fields</h2></td></tr>
 </div><div class="memdoc">
 <p>Number of individual NAKs sent by the receiver transport. This may differ from the tally of lost datagrams (below) due to reasons such as </p><ul>
 <li>Other receiver transports may have already sent a NAK for the same lost datagram, resulting in a retransmitted lost datagram (or an NCF) to arrive at this receiver transport before it has a chance to issue a NAK, or </li>
-<li>During periods of heavy loss, receiver transports may be forced to issue multiple NAKs per lost datagram (controlled by configuration options <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/API/config.tag:../Config/" href="../Config/grptransportlbtrmreliability.html#transportlbtrmnakgenerationintervalreceiver">transport_lbtrm_nak_generation_interval (receiver)</a> and <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/API/config.tag:../Config/" href="../Config/grptransportlbtrmreliability.html#transportlbtrmnakbackoffintervalreceiver">transport_lbtrm_nak_backoff_interval (receiver)</a>) until either the retransmission is received or the datagram is declared unrecovered (which may ultimately lead to UM delivering an LBM_MSG_UNRECOVERABLE_LOSS notification to the receiver application). </li>
+<li>During periods of heavy loss, receiver transports may be forced to issue multiple NAKs per lost datagram (controlled by configuration options <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/API/config.tag:../Config/" href="../Config/grptransportlbtrmreliability.html#transportlbtrmnakgenerationintervalreceiver">transport_lbtrm_nak_generation_interval (receiver)</a> and <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/API/config.tag:../Config/" href="../Config/grptransportlbtrmreliability.html#transportlbtrmnakbackoffintervalreceiver">transport_lbtrm_nak_backoff_interval (receiver)</a>) until either the retransmission is received or the datagram is declared unrecovered (which may ultimately lead to UM delivering an LBM_MSG_UNRECOVERABLE_LOSS notification to the receiver application). </li>
 </ul>
 
 </div>
@@ -414,7 +414,7 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Number of NCFs received from a source transport with reason code "ignored". If a source transport receives a NAK for a datagram that it has recently retransmitted, it sends an "NCF ignored" and does not retransmit. How "recently" is determined by the configuration option source <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/API/config.tag:../Config/" href="../Config/grptransportlbtrmreliability.html#transportlbtrmignoreintervalsource">transport_lbtrm_ignore_interval (source)</a> (default 500ms). If this count is high, a receiver transport may be having trouble receiving retransmissions, or the ignore interval may be set too long. </p>
+<p>Number of NCFs received from a source transport with reason code "ignored". If a source transport receives a NAK for a datagram that it has recently retransmitted, it sends an "NCF ignored" and does not retransmit. How "recently" is determined by the configuration option source <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/API/config.tag:../Config/" href="../Config/grptransportlbtrmreliability.html#transportlbtrmignoreintervalsource">transport_lbtrm_ignore_interval (source)</a> (default 500ms). If this count is high, a receiver transport may be having trouble receiving retransmissions, or the ignore interval may be set too long. </p>
 
 </div>
 </div>
@@ -453,7 +453,7 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Number of NCFs received with reason code "unknown". These are NCFs with a reason code this receiver transport does not recognize. After a delay (set by configuration option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/API/config.tag:../Config/" href="../Config/grptransportlbtrmreliability.html#transportlbtrmnaksuppressintervalreceiver">transport_lbtrm_nak_suppress_interval (receiver)</a> (default 1000ms), it resends the NAK. This counter should never be greater than 0 unless applications linked with different versions of Ultra Messaging software coexist on the same network. </p>
+<p>Number of NCFs received with reason code "unknown". These are NCFs with a reason code this receiver transport does not recognize. After a delay (set by configuration option <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/API/config.tag:../Config/" href="../Config/grptransportlbtrmreliability.html#transportlbtrmnaksuppressintervalreceiver">transport_lbtrm_nak_suppress_interval (receiver)</a> (default 1000ms), it resends the NAK. This counter should never be greater than 0 unless applications linked with different versions of Ultra Messaging software coexist on the same network. </p>
 
 </div>
 </div>
@@ -479,7 +479,7 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Number of LBT-RM datagrams unrecovered due to a retransmission not received within the NAK generation interval (set by configuration option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/API/config.tag:../Config/" href="../Config/grptransportlbtrmreliability.html#transportlbtrmnakgenerationintervalreceiver">transport_lbtrm_nak_generation_interval (receiver)</a>; default 10,000ms). Note: Receivers for these messages' topics will also report related messages as unrecoverable, with LBM_MSG_UNRECOVERABLE_LOSS for an individual message and LBM_MSG_UNRECOVERABLE_LOSS_BURST for a burst loss event. However, it is possible for these application-level message declarations to occur even without increments to this counter, as the transport is unaware of the topic content of messages and may still be trying to deliver related lost packets. </p>
+<p>Number of LBT-RM datagrams unrecovered due to a retransmission not received within the NAK generation interval (set by configuration option <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/API/config.tag:../Config/" href="../Config/grptransportlbtrmreliability.html#transportlbtrmnakgenerationintervalreceiver">transport_lbtrm_nak_generation_interval (receiver)</a>; default 10,000ms). Note: Receivers for these messages' topics will also report related messages as unrecoverable, with LBM_MSG_UNRECOVERABLE_LOSS for an individual message and LBM_MSG_UNRECOVERABLE_LOSS_BURST for a burst loss event. However, it is possible for these application-level message declarations to occur even without increments to this counter, as the transport is unaware of the topic content of messages and may still be trying to deliver related lost packets. </p>
 
 </div>
 </div>

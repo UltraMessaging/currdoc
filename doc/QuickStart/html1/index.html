@@ -68,7 +68,7 @@ $(document).ready(function(){initNavTree('index.html','');});
 Introduction&nbsp;&nbsp;<small><a href="#firstsect">&lt;-</a></small></h1>
 <p>This document provides step-by-step instructions on how to rapidly get started using Ultra Messaging high performance message streaming. It gets you started using our pre-compiled evaluation binaries to test performance, and then walks you through the steps of writing minimal source (publisher) and receiver (subscriber) applications.</p>
 <dl class="section attention"><dt>Attention</dt><dd><b>See the <a href="../../DocIntro=en.pdf">Documentation Introduction</a> for important information on copyright, patents, information resources (including Knowledge Base, and How To articles), Marketplace, Support, and other information about Informatica and its products.</b></dd></dl>
-<p>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/QuickStart/design.tag:../../Design/" href="../../Design/umglossary.html">UM Glossary</a> for Ultra Messaging terminology, abbreviations, and acronyms.</p>
+<p>See <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/QuickStart/design.tag:../../Design/" href="../../Design/umglossary.html">UM Glossary</a> for Ultra Messaging terminology, abbreviations, and acronyms.</p>
 <p><br />
  </p>
 <h1><a class="anchor" id="ultramessagingbinaryquickstart"></a>
@@ -355,15 +355,15 @@ main()
 }  /* main */</pre><p>Notes:</p>
 <ol>
 <li>
-<p class="startli">Create a context object. A context is an environment in which LBM functions. Note that the first parameter is a pointer to a pointer variable; <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/QuickStart/api.tag:../../API/" href="../../API/lbm_8h.html#a8058947690bd0995bc2c59d4a61b462f">lbm_context_create()</a> writes the pointer to the context object into "ctx". Also, by passing NULL to the context attribute parameter, the default option values are used. For most applications only a single context is required regardless of how many sources and receivers are created.</p>
+<p class="startli">Create a context object. A context is an environment in which LBM functions. Note that the first parameter is a pointer to a pointer variable; <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/QuickStart/api.tag:../../API/" href="../../API/lbm_8h.html#a8058947690bd0995bc2c59d4a61b462f">lbm_context_create()</a> writes the pointer to the context object into "ctx". Also, by passing NULL to the context attribute parameter, the default option values are used. For most applications only a single context is required regardless of how many sources and receivers are created.</p>
 <p class="endli"></p>
 </li>
 <li>
-<p class="startli">Allocate a topic object. A topic object is little more than a string (the topic name). During operation, LBM keeps some state information in the topic object as well. The topic is bound to the containing context, and will also be bound to a source object. Note that the first parameter is a pointer to a pointer variable; <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/QuickStart/api.tag:../../API/" href="../../API/lbm_8h.html#a1ba60407fa2bde0997aab6d5a5d2da1a">lbm_src_topic_alloc()</a> writes the pointer to the topic object into "topic". Also, by passing NULL to the source topic attribute, the default option values are used. The string "Greeting" is the topic string.</p>
+<p class="startli">Allocate a topic object. A topic object is little more than a string (the topic name). During operation, LBM keeps some state information in the topic object as well. The topic is bound to the containing context, and will also be bound to a source object. Note that the first parameter is a pointer to a pointer variable; <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/QuickStart/api.tag:../../API/" href="../../API/lbm_8h.html#a1ba60407fa2bde0997aab6d5a5d2da1a">lbm_src_topic_alloc()</a> writes the pointer to the topic object into "topic". Also, by passing NULL to the source topic attribute, the default option values are used. The string "Greeting" is the topic string.</p>
 <p class="endli"></p>
 </li>
 <li>
-<p class="startli">Create the source object. A source object is used to send messages. It must be bound to a topic. Note that the first parameter is a pointer to a pointer variable; <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/QuickStart/api.tag:../../API/" href="../../API/lbm_8h.html#ab8dd76271bf9df7a5f88476d431f523e">lbm_src_create()</a> writes the pointer to the source object to into "src". Use of the third and fourth parameters is optional but recommended in a production program - some source events can be important to the application. The last parameter is an optional event queue (not used in this example).</p>
+<p class="startli">Create the source object. A source object is used to send messages. It must be bound to a topic. Note that the first parameter is a pointer to a pointer variable; <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/QuickStart/api.tag:../../API/" href="../../API/lbm_8h.html#ab8dd76271bf9df7a5f88476d431f523e">lbm_src_create()</a> writes the pointer to the source object to into "src". Use of the third and fourth parameters is optional but recommended in a production program - some source events can be important to the application. The last parameter is an optional event queue (not used in this example).</p>
 <p class="endli"></p>
 </li>
 <li>
@@ -371,11 +371,11 @@ main()
 <p class="endli"></p>
 </li>
 <li>
-<p class="startli">Send a message to the "Greeting" topic. The flags make sure the call to <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/QuickStart/api.tag:../../API/" href="../../API/lbm_8h.html#a91f4b9cb04fe1323ec56833211cc5cb7">lbm_src_send()</a> doesn't return until the message is sent. Note that while this ensures low latency, flushing every message carries a heavy efficiency cost. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/QuickStart/design.tag:../../Design/" href="../../Design/architecture.html#intelligentbatching">Intelligent Batching</a> for more information.</p>
+<p class="startli">Send a message to the "Greeting" topic. The flags make sure the call to <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/QuickStart/api.tag:../../API/" href="../../API/lbm_8h.html#a91f4b9cb04fe1323ec56833211cc5cb7">lbm_src_send()</a> doesn't return until the message is sent. Note that while this ensures low latency, flushing every message carries a heavy efficiency cost. See <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/QuickStart/design.tag:../../Design/" href="../../Design/architecture.html#intelligentbatching">Intelligent Batching</a> for more information.</p>
 <p class="endli"></p>
 </li>
 <li>
-<p class="startli">For some transport types (mostly UDP-based), a short delay before deleting the source is advisable. Even though the message is sent, there may have been packet loss, and some transports need a bit of time to request re-transmission. Also, if the above <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/QuickStart/api.tag:../../API/" href="../../API/lbm_8h.html#a91f4b9cb04fe1323ec56833211cc5cb7">lbm_src_send()</a> call didn't include the flush, some time might also be needed to empty the batching buffer.</p>
+<p class="startli">For some transport types (mostly UDP-based), a short delay before deleting the source is advisable. Even though the message is sent, there may have been packet loss, and some transports need a bit of time to request re-transmission. Also, if the above <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/QuickStart/api.tag:../../API/" href="../../API/lbm_8h.html#a91f4b9cb04fe1323ec56833211cc5cb7">lbm_src_send()</a> call didn't include the flush, some time might also be needed to empty the batching buffer.</p>
 <p class="endli"><br />
  </p>
 </li>
@@ -515,7 +515,7 @@ main()
 }  /* main */</pre><p>Notes:</p>
 <ol>
 <li>
-<p class="startli">LBM passes received messages to the application by means of a callback. I.e. the LBM context thread reads the network socket, performs its higher-level protocol functions, and then calls an application-level function that was set up during initialization. This callback function has some severe limitations placed upon it. It must execute very quickly; any potentially blocking calls it might make will interfere with the proper execution of the LBM context thread. One common desire is for the receive function to send an LBM message (via <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/QuickStart/api.tag:../../API/" href="../../API/lbm_8h.html#a91f4b9cb04fe1323ec56833211cc5cb7">lbm_src_send()</a>), however this has the potential to produce a deadlock condition. If it is desired for the receive callback function to call LBM or other potentially blocking functions, it is strongly advised to make use of an event queue, which causes the callback to be executed from an application thread. See the example tool <a href="../../example/lbmrcvq.c">lbmrcvq.c</a> for an example of using a receiver event queue.</p>
+<p class="startli">LBM passes received messages to the application by means of a callback. I.e. the LBM context thread reads the network socket, performs its higher-level protocol functions, and then calls an application-level function that was set up during initialization. This callback function has some severe limitations placed upon it. It must execute very quickly; any potentially blocking calls it might make will interfere with the proper execution of the LBM context thread. One common desire is for the receive function to send an LBM message (via <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/QuickStart/api.tag:../../API/" href="../../API/lbm_8h.html#a91f4b9cb04fe1323ec56833211cc5cb7">lbm_src_send()</a>), however this has the potential to produce a deadlock condition. If it is desired for the receive callback function to call LBM or other potentially blocking functions, it is strongly advised to make use of an event queue, which causes the callback to be executed from an application thread. See the example tool <a href="../../example/lbmrcvq.c">lbmrcvq.c</a> for an example of using a receiver event queue.</p>
 <p class="endli"></p>
 </li>
 <li>
@@ -523,15 +523,15 @@ main()
 <p class="endli"></p>
 </li>
 <li>
-<p class="startli">Create a context object. A context is an environment in which LBM functions. Note that the first parameter is a pointer to a pointer variable; <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/QuickStart/api.tag:../../API/" href="../../API/lbm_8h.html#a8058947690bd0995bc2c59d4a61b462f">lbm_context_create()</a> writes the pointer to the context object into "ctx". Also, by passing NULL to the context attribute parameter, the default option values are used. For most applications only a single context is required regardless of how many sources and receivers are created.</p>
+<p class="startli">Create a context object. A context is an environment in which LBM functions. Note that the first parameter is a pointer to a pointer variable; <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/QuickStart/api.tag:../../API/" href="../../API/lbm_8h.html#a8058947690bd0995bc2c59d4a61b462f">lbm_context_create()</a> writes the pointer to the context object into "ctx". Also, by passing NULL to the context attribute parameter, the default option values are used. For most applications only a single context is required regardless of how many sources and receivers are created.</p>
 <p class="endli"></p>
 </li>
 <li>
-<p class="startli">Lookup a topic object. A topic object is little more than a string (the topic name). During operation, LBM keeps some state information in the topic object as well. The topic is bound to the containing context, and will also be bound to a receiver object. Note that the first parameter is a pointer to a pointer variable; <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/QuickStart/api.tag:../../API/" href="../../API/lbm_8h.html#a3de8a6a659896f76475c453683db4e18">lbm_rcv_topic_lookup()</a> writes the pointer to the topic object into "topic". Also, by passing NULL to the source topic attribute, the default option values are used. The string "Greeting" is the topic string.</p>
+<p class="startli">Lookup a topic object. A topic object is little more than a string (the topic name). During operation, LBM keeps some state information in the topic object as well. The topic is bound to the containing context, and will also be bound to a receiver object. Note that the first parameter is a pointer to a pointer variable; <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/QuickStart/api.tag:../../API/" href="../../API/lbm_8h.html#a3de8a6a659896f76475c453683db4e18">lbm_rcv_topic_lookup()</a> writes the pointer to the topic object into "topic". Also, by passing NULL to the source topic attribute, the default option values are used. The string "Greeting" is the topic string.</p>
 <p class="endli"></p>
 </li>
 <li>
-Create the receiver object and bind it to a topic. Note that the first parameter is a pointer to a pointer variable; <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/QuickStart/api.tag:../../API/" href="../../API/lbm_8h.html#aa7491c50fefbc2b70f8035fce7ac1477">lbm_rcv_create()</a> writes the pointer to the source object to into "rcv". The second and third parameters are the function and application data pointers. When a message is received, the function is called with the data pointer passed in as its last parameter. The last parameter is an optional event queue (not used in this example). </li>
+Create the receiver object and bind it to a topic. Note that the first parameter is a pointer to a pointer variable; <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/QuickStart/api.tag:../../API/" href="../../API/lbm_8h.html#aa7491c50fefbc2b70f8035fce7ac1477">lbm_rcv_create()</a> writes the pointer to the source object to into "rcv". The second and third parameters are the function and application data pointers. When a message is received, the function is called with the data pointer passed in as its last parameter. The last parameter is an optional event queue (not used in this example). </li>
 </ol>
 <p><br />
  </p>
@@ -565,7 +565,7 @@ Unicast-Only Operation&nbsp;&nbsp;<small><a href="#unicastonlyoperation">&lt;-</
 <li>
 Dest_Port is the resolver daemon's UDP port (previously resolver_unicast_destination_port). </li>
 </ul>
-<p>For more information, see <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/QuickStart/config.tag:../../Config/" href="../../Config/grpunicastresolvernetwork.html#resolverunicastdaemoncontext">resolver_unicast_daemon (context)</a>.</p>
+<p>For more information, see <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/QuickStart/config.tag:../../Config/" href="../../Config/grpunicastresolvernetwork.html#resolverunicastdaemoncontext">resolver_unicast_daemon (context)</a>.</p>
 <p class="endli"></p>
 </li>
 <li>
@@ -583,7 +583,7 @@ Starting Ultra Messaging Dynamic Routing Option&nbsp;&nbsp;<small><a href="#star
 <p>The UM Router bridges disjoint topic resolution domains by forwarding multicast and/or unicast topic resolution traffic. Before installing and starting a UM Router daemon (tnwgd) clear objectives and proper planning are very important. Approach this planning with the consideration that a UM Router condenses your network into a single process. You must be clear about the traffic you expect to forward through a UM Router. The following highlights some other specifics.</p>
 <ul>
 <li>
-<p class="startli">Know your Topic Resolution Domains. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/QuickStart/gateway.tag:../../Gateway/" href="../../Gateway/droarchitecture.html#topicresolutiondomains">Topic Resolution Domains</a>.</p>
+<p class="startli">Know your Topic Resolution Domains. See <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/QuickStart/gateway.tag:../../Gateway/" href="../../Gateway/droarchitecture.html#topicresolutiondomains">Topic Resolution Domains</a>.</p>
 <p class="endli"></p>
 </li>
 <li>
@@ -679,7 +679,7 @@ Persistent Store Daemon&nbsp;&nbsp;<small><a href="#persistentstoredaemon">&lt;-
 Start the daemon. <br />
 <code>$ umestored config.xml</code> </li>
 </ol>
-<p>See also <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/QuickStart/ume.tag:../../UME/" href="../../UME/manpagesforstore.html#umestoredmanpage">Umestored Man Page</a>.</p>
+<p>See also <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/QuickStart/ume.tag:../../UME/" href="../../UME/manpagesforstore.html#umestoredmanpage">Umestored Man Page</a>.</p>
 <p><br />
  </p>
 <h1><a class="anchor" id="nextsteps"></a>

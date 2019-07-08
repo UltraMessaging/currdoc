@@ -68,7 +68,7 @@ $(document).ready(function(){initNavTree('index.html','');});
 <p>This document describes how Ultra Messaging-based user applications are configured. The configurations of standard UM daemon components (Dynamic Router, Persistent Store, Resolver Daemon, etc.) are describe in other documents.</p>
 <dl class="section attention"><dt>Attention</dt><dd><b>See the <a href="../DocIntro=en.pdf">Documentation Introduction</a> for important information on copyright, patents, information resources (including Knowledge Base, and How To articles), Marketplace, Support, and other information about Informatica and its products.</b></dd></dl>
 <p>This document assumes familiarity with the <a href="../Design/index.html">UM Concepts Guide</a>.</p>
-<p>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Config/design.tag:../Design/" href="../Design/umglossary.html">UM Glossary</a> for Ultra Messaging terminology, abbreviations, and acronyms.</p>
+<p>See <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Config/design.tag:../Design/" href="../Design/umglossary.html">UM Glossary</a> for Ultra Messaging terminology, abbreviations, and acronyms.</p>
 <p><br />
  </p>
 <h1><a class="anchor" id="configurationoverview"></a>
@@ -106,7 +106,7 @@ Custom attributes object(s) created/populated (if applicable). </li>
 <li>
 If lbm_*_create() has a NULL attr, copy current default attributes into current attributes. Otherwise, copy custom attributes object values into current attributes. </li>
 <li>
-Read applicable options from the XML config table into the current attributes. Do not overwrite options set with <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#aecac05969bba0d6057589ca03dfe60a2">lbm_config()</a>, or lbm_*_attr_setopt(), which were tagged when modified. </li>
+Read applicable options from the XML config table into the current attributes. Do not overwrite options set with <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#aecac05969bba0d6057589ca03dfe60a2">lbm_config()</a>, or lbm_*_attr_setopt(), which were tagged when modified. </li>
 <li>
 Finish object creation. </li>
 <li>
@@ -135,13 +135,13 @@ Which Method Should I Use?&nbsp;&nbsp;<small><a href="#whichmethodshouldiuse">&l
 <p>For the four basic assignment methods listed above, following are some scenarios where specific methods are selected.</p>
 <ul>
 <li>
-<p class="startli">To change a default option value and apply it to all objects you create, call <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#aecac05969bba0d6057589ca03dfe60a2">lbm_config()</a> for one or more configuration files. For example, to use LBT-RM rather than TCP for all sources, create a plain text configuration file containing </p><pre>source transport LBTRM</pre><p> and pass its file name to <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#aecac05969bba0d6057589ca03dfe60a2">lbm_config()</a>.</p>
+<p class="startli">To change a default option value and apply it to all objects you create, call <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#aecac05969bba0d6057589ca03dfe60a2">lbm_config()</a> for one or more configuration files. For example, to use LBT-RM rather than TCP for all sources, create a plain text configuration file containing </p><pre>source transport LBTRM</pre><p> and pass its file name to <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#aecac05969bba0d6057589ca03dfe60a2">lbm_config()</a>.</p>
 <dl class="section note"><dt>Note</dt><dd>The C API offers functions lbm_*_attr_create_default() to change a current default value back to the initial (factory) default value. No such corresponding method exists for the Java or .NET APIs.</dd></dl>
 </li>
 <li>
-To customize specific options before an object is created for a specific object instance, use a custom attributes object. Also, you can assign XML data to the XML config table directly from your application via <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#ac3cb9ed202d10200b9e621f499556159">lbm_config_xml_string()</a>.  </li>
+To customize specific options before an object is created for a specific object instance, use a custom attributes object. Also, you can assign XML data to the XML config table directly from your application via <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#ac3cb9ed202d10200b9e621f499556159">lbm_config_xml_string()</a>.  </li>
 <li>
-To create sets of custom values to be used when creating primitive objects, call <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#ab1dc9d6fa0a9af0399a61a8d6029cf73">lbm_config_xml_file()</a> and specify an XML configuration file. This is useful for setting specific default options on a per-topic or per-context basis, which cannot be done with a plain text configuration file. For an example where a sending application uses specific options and values, create an XML configuration file with the application's name (optional) that specifies those options and values. Then pass the XML file name and application name to <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#ab1dc9d6fa0a9af0399a61a8d6029cf73">lbm_config_xml_file()</a>.  </li>
+To create sets of custom values to be used when creating primitive objects, call <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#ab1dc9d6fa0a9af0399a61a8d6029cf73">lbm_config_xml_file()</a> and specify an XML configuration file. This is useful for setting specific default options on a per-topic or per-context basis, which cannot be done with a plain text configuration file. For an example where a sending application uses specific options and values, create an XML configuration file with the application's name (optional) that specifies those options and values. Then pass the XML file name and application name to <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#ab1dc9d6fa0a9af0399a61a8d6029cf73">lbm_config_xml_file()</a>.  </li>
 <li>
 To change an option after an object is created, modify the current attributes for the object. (Note that many options cannot be changed after an object has been created.)  </li>
 </ul>
@@ -177,10 +177,10 @@ Plain Text Configuration Files&nbsp;&nbsp;<small><a href="#plaintextconfiguratio
 Reading Plain Text Configuration Files&nbsp;&nbsp;<small><a href="#readingplaintextconfigurationfiles">&lt;-</a></small></h2>
 <p>There are two ways to read a plain text configuration file to set values in current default attributes.</p>
 <dl class="section user"><dt><b>API</b> <b>function</b> <b>lbm_config</b>()</dt><dd>You can call the function multiple times with different file names to set configuration options in phases.</dd></dl>
-<p>When you create UM objects (such as a context or receiver), UM sets attributes for that object using the current default attributes. Hence, you must call <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#aecac05969bba0d6057589ca03dfe60a2">lbm_config()</a> before creating objects (lbm_*_create()).</p>
+<p>When you create UM objects (such as a context or receiver), UM sets attributes for that object using the current default attributes. Hence, you must call <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#aecac05969bba0d6057589ca03dfe60a2">lbm_config()</a> before creating objects (lbm_*_create()).</p>
 <dl class="section user"><dt><b>Environment</b> <b>variable</b> <b>LBM_DEFAULT_CONFIG_FILE</b> </dt><dd>Reads configuration file when your application is started. You can set this variable to a full pathname or a URL; for example:</dd></dl>
 <pre class="fragment">export LBM_DEFAULT_CONFIG_FILE=/home/lbm/lbtrm.cfg
-</pre><p>(You can still use the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#aecac05969bba0d6057589ca03dfe60a2">lbm_config()</a> function on a different file to make additional changes.)</p>
+</pre><p>(You can still use the <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#aecac05969bba0d6057589ca03dfe60a2">lbm_config()</a> function on a different file to make additional changes.)</p>
 <p><br />
  </p>
 <h1><a class="anchor" id="plaintextconfigurationfileformat"></a>

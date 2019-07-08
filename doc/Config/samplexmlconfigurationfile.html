@@ -149,7 +149,7 @@ Using the Order and Rule XML Attributes&nbsp;&nbsp;<small><a href="#usingtheorde
   &lt;topic topicname="AARM" rule="allow"/&gt;
   &lt;!-- all other receive topics denied --&gt;
 &lt;/receivers&gt;
-</pre><p>You can also combine topic names with topic patterns. In the example below, we set the <b>order</b> attribute to the default. Topic <b>ISM</b> is denied with its order attribute. Topics <b>IRM</b> and <b>SRM</b> satisfy both their own allow rules and the pattern <b>*R*</b> <b>deny</b> rule. So when you allocate a source topic with <b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a1ba60407fa2bde0997aab6d5a5d2da1a">lbm_src_topic_alloc()</a></b>, UM accepts the rule that matches the <b>order</b> attribute default, which is <b>allow</b>.</p>
+</pre><p>You can also combine topic names with topic patterns. In the example below, we set the <b>order</b> attribute to the default. Topic <b>ISM</b> is denied with its order attribute. Topics <b>IRM</b> and <b>SRM</b> satisfy both their own allow rules and the pattern <b>*R*</b> <b>deny</b> rule. So when you allocate a source topic with <b><a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a1ba60407fa2bde0997aab6d5a5d2da1a">lbm_src_topic_alloc()</a></b>, UM accepts the rule that matches the <b>order</b> attribute default, which is <b>allow</b>.</p>
 <pre class="fragment">&lt;sources order="deny,allow"&gt;
   &lt;topic topicname="ISM" rule="deny"/&gt;
   &lt;topic topicname="IRM" rule="allow"/&gt;

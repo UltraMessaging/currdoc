@@ -1,7 +1,7 @@
 var NAVTREEINDEX0 =
 {
 "advancedoptimizations.html":[7],
-"advancedoptimizations.html#comparisonofzerocopyandsmartsources":[7,6],
+"advancedoptimizations.html#comparisonofzerocopyandsmartsources":[7,7],
 "advancedoptimizations.html#contextlockreduction":[7,2,0],
 "advancedoptimizations.html#contextlockreductionrestrictions":[7,2,1],
 "advancedoptimizations.html#gettimeofdayreduction":[7,2,2],
@@ -14,15 +14,16 @@ var NAVTREEINDEX0 =
 "advancedoptimizations.html#receivemultipledatagramsrestrictions":[7,3,1],
 "advancedoptimizations.html#singlereceivingthread":[7,1],
 "advancedoptimizations.html#singlereceivingthreadrestrictions":[7,1,0],
-"advancedoptimizations.html#smartsourceconfiguration":[7,4,2],
-"advancedoptimizations.html#smartsourcedefensivechecks":[7,4,3],
-"advancedoptimizations.html#smartsourcemessagebuffers":[7,4,0],
-"advancedoptimizations.html#smartsourcerestrictions":[7,4,4],
-"advancedoptimizations.html#smartsources":[7,4],
-"advancedoptimizations.html#smartsourcesandmemorymanagement":[7,4,1],
-"advancedoptimizations.html#zerocopyrestrictions":[7,5,1],
-"advancedoptimizations.html#zerocopysendapi":[7,5],
-"advancedoptimizations.html#zerocopysendcompatibility":[7,5,0],
+"advancedoptimizations.html#smartsourceconfiguration":[7,5,2],
+"advancedoptimizations.html#smartsourcedefensivechecks":[7,5,3],
+"advancedoptimizations.html#smartsourcemessagebuffers":[7,5,0],
+"advancedoptimizations.html#smartsourcerestrictions":[7,5,4],
+"advancedoptimizations.html#smartsources":[7,5],
+"advancedoptimizations.html#smartsourcesandmemorymanagement":[7,5,1],
+"advancedoptimizations.html#transportdemultiplexertablesize":[7,4],
+"advancedoptimizations.html#zerocopyrestrictions":[7,6,1],
+"advancedoptimizations.html#zerocopysendapi":[7,6],
+"advancedoptimizations.html#zerocopysendcompatibility":[7,6,0],
 "architecture.html":[4],
 "architecture.html#adaptivebatching":[4,3,4],
 "architecture.html#applicationbatching":[4,3,2],
@@ -248,6 +249,5 @@ var NAVTREEINDEX0 =
 "umfeatures.html#configuringlatejoinforlargenumbersofmessages":[5,1,5],
 "umfeatures.html#encryptedtcp":[5,3],
 "umfeatures.html#highresolutiontimestamps":[5,5],
-"umfeatures.html#latejoinoptionssummary":[5,1,1],
-"umfeatures.html#latejoinwithump":[5,1,0]
+"umfeatures.html#latejoinoptionssummary":[5,1,1]
 };

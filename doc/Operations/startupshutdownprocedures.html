@@ -66,7 +66,7 @@ Topic Resolution&nbsp;&nbsp;<small><a href="#topicresolution">&lt;-</a></small><
 <p>Operations staff should not have any direct topic resolution tasks aside from monitoring the increased CPU and bandwidth usage.</p>
 <p>Topic resolution is the discovery of a topic's transport session information by a receiver to enable the receipt of topic messages. Although in a multicast environment, topic resolution does not need to be started or shutdown, it does use network resources and can cause deaf receivers and other problems if not operating properly. See <em>Topic Resolution</em> in the <em>UM Concepts Guide</em> for more detailed information.</p>
 <p>Applications cannot deliver messages until topic resolution completes. UM monitoring statistics are active before all topics resolve. In a large topic space approximately 10,000 topics) topic resolution messages may be 'staggered' or rate controlled, taking potentially several seconds to complete.</p>
-<p>For example, 10,000 topics at the default value of 1,000 for <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Operations/config.tag:../Config/" href="../Config/grpudpbasedresolveroperation.html#resolverinitialadvertisementspersecondcontext">resolver_initial_advertisements_per_second (context)</a> will take 10 seconds to send out an advertisement for every topic. If all receiving applications have been started first, fully resolving all topics may not take much more than 10 seconds. The rate of topic resolution can also be controlled with the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Operations/config.tag:../Config/" href="../Config/grpudpbasedresolveroperation.html#resolverinitialadvertisementbpscontext">resolver_initial_advertisement_bps (context)</a> configuration option. Topic advertisements contain the topic string and approximately 110 bytes overhead. Topic queries from receivers contain no overhead, only the topic string.</p>
+<p>For example, 10,000 topics at the default value of 1,000 for <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Operations/config.tag:../Config/" href="../Config/grpudpbasedresolveroperation.html#resolverinitialadvertisementspersecondcontext">resolver_initial_advertisements_per_second (context)</a> will take 10 seconds to send out an advertisement for every topic. If all receiving applications have been started first, fully resolving all topics may not take much more than 10 seconds. The rate of topic resolution can also be controlled with the <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Operations/config.tag:../Config/" href="../Config/grpudpbasedresolveroperation.html#resolverinitialadvertisementbpscontext">resolver_initial_advertisement_bps (context)</a> configuration option. Topic advertisements contain the topic string and approximately 110 bytes overhead. Topic queries from receivers contain no overhead, only the topic string.</p>
 <p><br />
  </p>
 <h1><a class="anchor" id="umapplications"></a>
@@ -110,10 +110,10 @@ In an Application Log, disconnect events (LBM_SRC_EVENT_DISCONNECT) for unicast 
  </p>
 <h1><a class="anchor" id="unicasttopicresolverlbmrd"></a>
 Unicast Topic Resolver (lbmrd)&nbsp;&nbsp;<small><a href="#unicasttopicresolverlbmrd">&lt;-</a></small></h1>
-<p>If not using multicast topic resolution, one or more instances of lbmrd must be started prior to stating applications. Unicast resolver daemons require an XML configuration file and multiple resolver daemons can be specified by your UM development team for resiliency. For more information on Unicast Topic Resolution, see <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Operations/design.tag:../Design/" href="../Design/topicresolutiondescription.html#unicastudptr">Unicast UDP TR</a>.</p>
+<p>If not using multicast topic resolution, one or more instances of lbmrd must be started prior to stating applications. Unicast resolver daemons require an XML configuration file and multiple resolver daemons can be specified by your UM development team for resiliency. For more information on Unicast Topic Resolution, see <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Operations/design.tag:../Design/" href="../Design/topicresolutiondescription.html#unicastudptr">Unicast UDP TR</a>.</p>
 <p>Execute the following command on the appropriate machine to start a unicast topic resolver (lbmrd) from command line:</p>
 <pre class="fragment">lbmrd --interface=ADDR -L daemon_logfile.out -p PORT lbmrd.cfg
-</pre><p>For more information on the lbmrd command-line, see <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Operations/design.tag:../Design/" href="../Design/manpagesforlbmrd.html#lbmrdmanpage">Lbmrd Man Page</a>.</p>
+</pre><p>For more information on the lbmrd command-line, see <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Operations/design.tag:../Design/" href="../Design/manpagesforlbmrd.html#lbmrdmanpage">Lbmrd Man Page</a>.</p>
 <p>To stop the resolver, use the kill command. If a unicast resolver daemon terminates, you need to restart it.</p>
 <p>Observe the lbmrd logfile for errors and warnings</p>
 <p>To make the lbmrd a Windows Service, see <a class="el" href="startupshutdownprocedures.html#umdaemonsaswindowsservices">UM Daemons as Windows Services</a>.</p>
@@ -133,7 +133,7 @@ Persistent Store (umestored)&nbsp;&nbsp;<small><a href="#persistentstoreumestore
 Starting a Store&nbsp;&nbsp;<small><a href="#startingastore">&lt;-</a></small></h2>
 <p>Execute the following command on the appropriate machine to start a (umestored) from command line:</p>
 <pre class="fragment">umestored config-file.xml
-</pre><p>For more information on the umestored command-line, see <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Operations/ume.tag:../UME/" href="../UME/manpagesforstore.html#umestoredmanpage">Umestored Man Page</a>.</p>
+</pre><p>For more information on the umestored command-line, see <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Operations/ume.tag:../UME/" href="../UME/manpagesforstore.html#umestoredmanpage">Umestored Man Page</a>.</p>
 <ul>
 <li>
 Record umestored PID to monitor process presence for failure detection. </li>
@@ -200,7 +200,7 @@ Record tnwgd PID to monitor process presence for failure detection. </li>
 <li>
 Monitor the tnwgd logfile for errors and warnings. </li>
 </ul>
-<p>For more information on the tnwgd command-line, see <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Operations/gateway.tag:../Gateway/" href="../Gateway/manpagesforumrouter.html#tnwgdmanpage">Tnwgd Man Page</a>. To make the UM Router a Windows Service, see <a class="el" href="startupshutdownprocedures.html#umdaemonsaswindowsservices">UM Daemons as Windows Services</a>.</p>
+<p>For more information on the tnwgd command-line, see <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Operations/gateway.tag:../Gateway/" href="../Gateway/manpagesforumrouter.html#tnwgdmanpage">Tnwgd Man Page</a>. To make the UM Router a Windows Service, see <a class="el" href="startupshutdownprocedures.html#umdaemonsaswindowsservices">UM Daemons as Windows Services</a>.</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="restartingaumrouter"></a>
@@ -223,13 +223,13 @@ UM Daemons as Windows Services&nbsp;&nbsp;<small><a href="#umdaemonsaswindowsser
 <tr>
 <th>Executable File </th><th>Description </th><th>Service Display Name </th><th>Man Page </th></tr>
 <tr>
-<td><b>lbmrds.exe</b> </td><td>UDP-based Unicast Topic Resolver </td><td>"LBMR Store Daemon" </td><td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Operations/design.tag:../Design/" href="../Design/manpagesforlbmrd.html#lbmrdsmanpage">man page</a> </td></tr>
+<td><b>lbmrds.exe</b> </td><td>UDP-based Unicast Topic Resolver </td><td>"LBMR Store Daemon" </td><td><a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Operations/design.tag:../Design/" href="../Design/manpagesforlbmrd.html#lbmrdsmanpage">man page</a> </td></tr>
 <tr>
-<td><b>srsds.exe</b> </td><td>TCP-based Topic Resolver </td><td>"UM Stateful Topic Resolution Service" </td><td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Operations/design.tag:../Design/" href="../Design/manpagesforsrs.html#srsdsmanpage">man page</a> </td></tr>
+<td><b>srsds.exe</b> </td><td>TCP-based Topic Resolver </td><td>"UM Stateful Topic Resolution Service" </td><td><a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Operations/design.tag:../Design/" href="../Design/manpagesforsrs.html#srsdsmanpage">man page</a> </td></tr>
 <tr>
-<td><b>storeds.exe</b> </td><td>Persistent Store </td><td>"UME Store Daemon" </td><td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Operations/ume.tag:../UME/" href="../UME/manpagesforstore.html#umestoredsmanpage">man page</a> </td></tr>
+<td><b>storeds.exe</b> </td><td>Persistent Store </td><td>"UME Store Daemon" </td><td><a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Operations/ume.tag:../UME/" href="../UME/manpagesforstore.html#umestoredsmanpage">man page</a> </td></tr>
 <tr>
-<td><b>tnwgds.exe</b> </td><td>UM Router (DRO) </td><td>"Ultra Messaging Gateway" </td><td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Operations/gateway.tag:../Gateway/" href="../Gateway/manpagesforumrouter.html#tnwgdsmanpage">man page</a> </td></tr>
+<td><b>tnwgds.exe</b> </td><td>UM Router (DRO) </td><td>"Ultra Messaging Gateway" </td><td><a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Operations/gateway.tag:../Gateway/" href="../Gateway/manpagesforumrouter.html#tnwgdsmanpage">man page</a> </td></tr>
 </table>
 <p>Note that the Ultra Messaging Manager daemon (<code>"ummd"</code>) is not offered as a Windows Service at this time.</p>
 <p>As of UM version 6.12, the above UM daemons work similarly with respect to running as a Windows Service. See the individual man pages for differences.</p>
@@ -272,13 +272,13 @@ Configure the Daemon&nbsp;&nbsp;<small><a href="#configurethedaemon">&lt;-</a></
 <tr>
 <th>Executable File </th><th>Description </th><th>Configuration Details </th><th>Man Page </th></tr>
 <tr>
-<td><b>lbmrds.exe</b> </td><td>UDP-based Unicast Topic Resolver </td><td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Operations/design.tag:../Design/" href="../Design/lbmrdconfigurationfile.html">lbmrd Configuration File</a> </td><td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Operations/design.tag:../Design/" href="../Design/manpagesforlbmrd.html#lbmrdsmanpage">man page</a> </td></tr>
+<td><b>lbmrds.exe</b> </td><td>UDP-based Unicast Topic Resolver </td><td><a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Operations/design.tag:../Design/" href="../Design/lbmrdconfigurationfile.html">lbmrd Configuration File</a> </td><td><a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Operations/design.tag:../Design/" href="../Design/manpagesforlbmrd.html#lbmrdsmanpage">man page</a> </td></tr>
 <tr>
-<td><b>srsds.exe</b> </td><td>TCP-based Topic Resolver </td><td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Operations/design.tag:../Design/" href="../Design/srsconfigurationfile.html">SRS Configuration File</a> </td><td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Operations/design.tag:../Design/" href="../Design/manpagesforsrs.html#srsdsmanpage">man page</a> </td></tr>
+<td><b>srsds.exe</b> </td><td>TCP-based Topic Resolver </td><td><a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Operations/design.tag:../Design/" href="../Design/srsconfigurationfile.html">SRS Configuration File</a> </td><td><a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Operations/design.tag:../Design/" href="../Design/manpagesforsrs.html#srsdsmanpage">man page</a> </td></tr>
 <tr>
-<td><b>storeds.exe</b> </td><td>Persistent Store </td><td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Operations/ume.tag:../UME/" href="../UME/configurationreferenceforumestored.html">Configuration Reference for Umestored</a> </td><td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Operations/ume.tag:../UME/" href="../UME/manpagesforstore.html#umestoredsmanpage">man page</a> </td></tr>
+<td><b>storeds.exe</b> </td><td>Persistent Store </td><td><a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Operations/ume.tag:../UME/" href="../UME/configurationreferenceforumestored.html">Configuration Reference for Umestored</a> </td><td><a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Operations/ume.tag:../UME/" href="../UME/manpagesforstore.html#umestoredsmanpage">man page</a> </td></tr>
 <tr>
-<td><b>tnwgds.exe</b> </td><td>UM Router (DRO) </td><td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Operations/gateway.tag:../Gateway/" href="../Gateway/xmlconfigurationreference.html">XML Configuration Reference</a> </td><td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12_RC3/doc/Operations/gateway.tag:../Gateway/" href="../Gateway/manpagesforumrouter.html#tnwgdsmanpage">man page</a> </td></tr>
+<td><b>tnwgds.exe</b> </td><td>UM Router (DRO) </td><td><a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Operations/gateway.tag:../Gateway/" href="../Gateway/xmlconfigurationreference.html">XML Configuration Reference</a> </td><td><a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Operations/gateway.tag:../Gateway/" href="../Gateway/manpagesforumrouter.html#tnwgdsmanpage">man page</a> </td></tr>
 </table>
 <p><br />
  </p>

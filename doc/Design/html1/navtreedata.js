@@ -273,6 +273,7 @@ var NAVTREE =
         [ "Receive Multiple Datagrams Compatibility", "index.html#receivemultipledatagramscompatibility", null ],
         [ "Receive Multiple Datagrams Restrictions", "index.html#receivemultipledatagramsrestrictions", null ]
       ] ],
+      [ "Transport Demultiplexer Table Size", "index.html#transportdemultiplexertablesize", null ],
       [ "Smart Sources", "index.html#smartsources", [
         [ "Smart Source Message Buffers", "index.html#smartsourcemessagebuffers", null ],
         [ "Smart Sources and Memory Management", "index.html#smartsourcesandmemorymanagement", null ],
