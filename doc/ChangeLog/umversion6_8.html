@@ -76,7 +76,9 @@ Streaming Enhancements for 6.8&nbsp;&nbsp;<small><a href="#streamingenhancements
 </ul>
 <p>The following configuration options default values are changed: </p><table class="doxtable">
 <tr>
-<th>Option </th><th>Old Default </th><th>New Default </th><th>Notes </th></tr>
+<th>Option </th><th>Old Default </th><th>New Default </th><th><p class="starttd">Notes</p>
+<p class="endtd"></p>
+</th></tr>
 <tr>
 <td><a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grpmulticastimmediatemessagingnetwork.html#mimincomingaddresscontext">mim_incoming_address (context)</a> </td><td>224.10.10.21 </td><td>0.0.0.0 </td><td><p class="starttd">Disable MIM reception by default to avoid the possibility of default-configured applications sending data that is heard by all contexts.</p>
 <p class="endtd"></p>
@@ -117,7 +119,9 @@ You can now configure a Persistent Store to port=0, which selects the actual por
 </ul>
 <p>The following configuration options default values are changed: </p><table class="doxtable">
 <tr>
-<th>Option </th><th>Old Default </th><th>New Default </th><th>Notes </th></tr>
+<th>Option </th><th>Old Default </th><th>New Default </th><th><p class="starttd">Notes</p>
+<p class="endtd"></p>
+</th></tr>
 <tr>
 <td><a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grpofftransportrecovery.html#useotrreceiver">use_otr (receiver)</a> </td><td>0 </td><td>2 (enables only persistent receivers) </td><td><p class="starttd"></p>
 <p class="endtd"></p>
@@ -151,7 +155,9 @@ You can now configure a Persistent Store to port=0, which selects the actual por
 </table>
 <p>The following Persistent Store configuration options default values are changed: </p><table class="doxtable">
 <tr>
-<th>Option </th><th>Old Default </th><th>New Default </th><th>Notes </th></tr>
+<th>Option </th><th>Old Default </th><th>New Default </th><th><p class="starttd">Notes</p>
+<p class="endtd"></p>
+</th></tr>
 <tr>
 <td><a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/ChangeLog/ume.tag:../UME/" href="../UME/configurationreferenceforumestored.html#umecfgreceivernewregistrationrollback">receiver-new-registration-rollback</a> </td><td>0 </td><td>2147483647 </td><td><p class="starttd">The previous default value of 0 resulted in new receivers not requesting any initial state. The new value causes receivers to request all of the data cached in the Persistent Stores that they might be interested in before they become active. You may still need to change these values either with configuration or programmatically.</p>
 <p class="endtd"></p>
@@ -239,7 +245,9 @@ Streaming Fixed Limitations for 6.8&nbsp;&nbsp;<small><a href="#streamingfixedli
 <p>The following bug fixes apply to UMS, UMP, and UMQ products.</p>
 <table class="doxtable">
 <tr>
-<th>Change Request </th><th>Description </th></tr>
+<th>Change Request </th><th><p class="starttd">Description</p>
+<p class="endtd"></p>
+</th></tr>
 <tr>
 <td>2219 </td><td><p class="starttd">A Windows application crashes if you set configuration option <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grpmajoroptions.html#fdmanagementtypecontext">fd_management_type (context)</a> to '<code>select</code>'. The valid option for Windows is '<code>wsaeventselect</code>'. As a solution, now if you set a Windows application configuration option <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grpmajoroptions.html#fdmanagementtypecontext">fd_management_type (context)</a> to '<code>select</code>', Ultra Messaging returns an error.</p>
 <p class="endtd"></p>
@@ -381,7 +389,9 @@ Persistence Fixed Limitations for 6.8&nbsp;&nbsp;<small><a href="#persistencefix
 <p>The following bug fixes apply to UMP and UMQ products.</p>
 <table class="doxtable">
 <tr>
-<th>Change Request </th><th>Description </th></tr>
+<th>Change Request </th><th><p class="starttd">Description</p>
+<p class="endtd"></p>
+</th></tr>
 <tr>
 <td>4727 </td><td><p class="starttd">If you restart all UMP stores simultaneously, UMP stores cannot recreate proxy sources. As a solution, the UMP Store now maintains information about proxy sources as part of the per-source state, and can elect proxy sources upon restart of the store daemon if necessary. Once restarted, a store waits for the configured <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/ChangeLog/ume.tag:../UME/" href="../UME/configurationreferenceforumestored.html#umecfgsourceactivitytimeout">source-activity-timeout</a> before it attempts to create a proxy source.</p>
 <p class="endtd"></p>
@@ -436,7 +446,9 @@ Queuing Fixed Limitations for 6.8&nbsp;&nbsp;<small><a href="#queuingfixedlimita
 <p>The following bug fixes apply to the UMQ product.</p>
 <table class="doxtable">
 <tr>
-<th>Change Request </th><th>Description </th></tr>
+<th>Change Request </th><th><p class="starttd">Description</p>
+<p class="endtd"></p>
+</th></tr>
 <tr>
 <td>8621 </td><td><p class="starttd">Configurations with multiple slave queue instances can cause data loss, crashes or an inability to restart without removal of cache and state files (resulting in data loss). Informatica recommends deploying only configurations with a single queue instance without slaves. To facilitate failover, configure the '<code>sinc-log-filename</code>', <code>sinc-data-filename</code>, and '<code>sinc-queue-swap-filename</code>' to write to a shared file system, and use external process management (automatic or manual) to start up a backup queue instance referencing the same files if and only if the active instance fails (i.e. only allow one queue instance to access the files at any time). Note that host failures (e.g., OS, disk, server) may still result in data loss. With this configuration, sinc files grow over time, so perform clean restarts (i.e., shut down, delete all files and restart) periodically. Using a shared file system may also impact performance; Informatica recommends holistic system performance characterization prior to production deployment.</p>
 <p class="endtd"></p>
@@ -463,7 +475,9 @@ Dynamic Router Fixed Limitations for 6.8&nbsp;&nbsp;<small><a href="#dynamicrout
 <p>The following bug fixes apply to the Dynamic Routing Option (DRO).</p>
 <table class="doxtable">
 <tr>
-<th>Change Request </th><th>Description </th></tr>
+<th>Change Request </th><th><p class="starttd">Description</p>
+<p class="endtd"></p>
+</th></tr>
 <tr>
 <td>8851 </td><td><p class="starttd">Setting option &lt;max-datagram&gt; to a value other than the default of 65535 can cause the UM Router to hang. As a solution, the UM Router now discards wrong-sized messages and continues.</p>
 <p class="endtd"></p>

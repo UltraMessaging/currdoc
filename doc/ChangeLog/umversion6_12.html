@@ -161,6 +161,10 @@ Streaming Fixed Limitations for 6.12&nbsp;&nbsp;<small><a href="#streamingfixedl
 <p>The following bug fixes apply to UMS, UMP, and UMQ products.</p>
 <p><a class="anchor" id="bug10602"></a></p><table class="doxtable">
 <tr>
+<th>Change Request </th><th><p class="starttd">Description</p>
+<p class="endtd"></p>
+</th></tr>
+<tr>
 <td>10602 </td><td><p class="starttd"><b>FIXED:</b> <em>Smart Sources reserved a differing amount of space for worst-case headers than traditional sources. For users of kernel bypass network drivers like Onload, this can lead to having to set the <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grptransportlbtrmoperation.html#transportlbtrmdatagrammaxsizecontext">transport_lbtrm_datagram_max_size (context)</a> option to different values for apps using Smart Sources vs. apps that do not. For apps that use both, this creates a sub-optimal solution for one or the other.</em></p>
 <p>UM now uses the same reserve size for Smart Sources as it always has for traditional sources.</p>
 <dl class="section attention"><dt>Attention</dt><dd>Users of Smart Source may need to update their configuration because of this. See <a class="el" href="umversion6_12.html#smartsourceheadersizechange">Smart Source Header Size Change</a>.</dd></dl>
@@ -268,6 +272,10 @@ Persistence Fixed Limitations for 6.12&nbsp;&nbsp;<small><a href="#persistencefi
 <p>The following bug fixes apply to UMP and UMQ products.</p>
 <p><a class="anchor" id="bug5890"></a></p><table class="doxtable">
 <tr>
+<th>Change Request </th><th><p class="starttd">Description</p>
+<p class="endtd"></p>
+</th></tr>
+<tr>
 <td>5890, 9054 </td><td><p class="starttd"><b>ENHANCEMENT:</b> <em>There are certain circumstances where a receiver has to unnecessarily wait for the <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeactivitytimeoutreceiver">ume_activity_timeout (receiver)</a> to expire before it can register with a Store.</em></p>
 <p>An enhancement was made to persistent receivers that allows for immediate re-registration in the following circumstances: </p><ul>
 <li>
@@ -304,7 +312,7 @@ A receiver process is restarted and it has the same session ID, <a class="elRef"
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>10447 </td><td><p class="starttd"><b>FIXED:</b> <em>If a source sends messages and then immediately deregisters, there is a chance that the Store will crash with an illegal memory access.</em></p>
+<td>10447, 10451, 10458 </td><td><p class="starttd"><b>FIXED:</b> <em>If a source sends messages and then immediately deregisters, there is a chance that the Store will crash with an illegal memory access.</em></p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
@@ -325,6 +333,10 @@ A receiver process is restarted and it has the same session ID, <a class="elRef"
 Queuing Fixed Limitations for 6.12&nbsp;&nbsp;<small><a href="#queuingfixedlimitationsfor6_12">&lt;-</a></small></h2>
 <p>The following bug fixes apply to the UMQ product.</p>
 <table class="doxtable">
+<tr>
+<th>Change Request </th><th><p class="starttd">Description</p>
+<p class="endtd"></p>
+</th></tr>
 <tr>
 <td>9974 </td><td><p class="starttd"><b>FIXED:</b> <em>There was a scenario where a late arriving ACK from a ULB receiver could cause the ULB source to crash with an illegal memory access inside <code>lbm_ulb_src_ctlr_handle_ack()</code>.</em></p>
 <p class="endtd"></p>
@@ -351,6 +363,10 @@ Queuing Fixed Limitations for 6.12&nbsp;&nbsp;<small><a href="#queuingfixedlimit
 Dynamic Router Fixed Limitations for 6.12&nbsp;&nbsp;<small><a href="#dynamicrouterfixedlimitationsfor6_12">&lt;-</a></small></h2>
 <p>The following bug fixes apply to the Dynamic Routing Option (DRO).</p>
 <table class="doxtable">
+<tr>
+<th>Change Request </th><th><p class="starttd">Description</p>
+<p class="endtd"></p>
+</th></tr>
 <tr>
 <td>10443 </td><td><p class="starttd"><b>FIXED:</b> <em>When a DRO portal is queuing outgoing messages (perhaps due to a low rate limiter or a low-bandwidth link), and a topic has more than <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grpdeliverycontrol.html#deliverycontrolmaximumburstlossreceiver">delivery_control_maximum_burst_loss (receiver)</a> (default 1024) messages queued to be sent, there is a possibility that receivers will deliver a burst loss event to the application and not deliver the queued messages, even though they are eventually sent. This is because the originating source sent a TSNI, and the DRO allowed it to bypass the data queue and be sent before the queued data messages. Thus the receiver sees a gap greater than the burst loss configuration and does not wait for the missing data to be sent.</em></p>
 <p>The DRO now queues TSNIs behind data messages.</p>

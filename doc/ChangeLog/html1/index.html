@@ -181,6 +181,10 @@ Streaming Fixed Limitations for 6.12&nbsp;&nbsp;<small><a href="#streamingfixedl
 <p>The following bug fixes apply to UMS, UMP, and UMQ products.</p>
 <p><a class="anchor" id="bug10602"></a></p><table class="doxtable">
 <tr>
+<th>Change Request </th><th><p class="starttd">Description</p>
+<p class="endtd"></p>
+</th></tr>
+<tr>
 <td>10602 </td><td><p class="starttd"><b>FIXED:</b> <em>Smart Sources reserved a differing amount of space for worst-case headers than traditional sources. For users of kernel bypass network drivers like Onload, this can lead to having to set the <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/ChangeLog/config.tag:../../Config/" href="../../Config/grptransportlbtrmoperation.html#transportlbtrmdatagrammaxsizecontext">transport_lbtrm_datagram_max_size (context)</a> option to different values for apps using Smart Sources vs. apps that do not. For apps that use both, this creates a sub-optimal solution for one or the other.</em></p>
 <p>UM now uses the same reserve size for Smart Sources as it always has for traditional sources.</p>
 <dl class="section attention"><dt>Attention</dt><dd>Users of Smart Source may need to update their configuration because of this. See <a class="el" href="index.html#smartsourceheadersizechange">Smart Source Header Size Change</a>.</dd></dl>
@@ -288,6 +292,10 @@ Persistence Fixed Limitations for 6.12&nbsp;&nbsp;<small><a href="#persistencefi
 <p>The following bug fixes apply to UMP and UMQ products.</p>
 <p><a class="anchor" id="bug5890"></a></p><table class="doxtable">
 <tr>
+<th>Change Request </th><th><p class="starttd">Description</p>
+<p class="endtd"></p>
+</th></tr>
+<tr>
 <td>5890, 9054 </td><td><p class="starttd"><b>ENHANCEMENT:</b> <em>There are certain circumstances where a receiver has to unnecessarily wait for the <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/ChangeLog/config.tag:../../Config/" href="../../Config/grpultramessagingpersistence.html#umeactivitytimeoutreceiver">ume_activity_timeout (receiver)</a> to expire before it can register with a Store.</em></p>
 <p>An enhancement was made to persistent receivers that allows for immediate re-registration in the following circumstances: </p><ul>
 <li>
@@ -324,7 +332,7 @@ A receiver process is restarted and it has the same session ID, <a class="elRef"
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>10447 </td><td><p class="starttd"><b>FIXED:</b> <em>If a source sends messages and then immediately deregisters, there is a chance that the Store will crash with an illegal memory access.</em></p>
+<td>10447, 10451, 10458 </td><td><p class="starttd"><b>FIXED:</b> <em>If a source sends messages and then immediately deregisters, there is a chance that the Store will crash with an illegal memory access.</em></p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
@@ -345,6 +353,10 @@ A receiver process is restarted and it has the same session ID, <a class="elRef"
 Queuing Fixed Limitations for 6.12&nbsp;&nbsp;<small><a href="#queuingfixedlimitationsfor6_12">&lt;-</a></small></h3>
 <p>The following bug fixes apply to the UMQ product.</p>
 <table class="doxtable">
+<tr>
+<th>Change Request </th><th><p class="starttd">Description</p>
+<p class="endtd"></p>
+</th></tr>
 <tr>
 <td>9974 </td><td><p class="starttd"><b>FIXED:</b> <em>There was a scenario where a late arriving ACK from a ULB receiver could cause the ULB source to crash with an illegal memory access inside <code>lbm_ulb_src_ctlr_handle_ack()</code>.</em></p>
 <p class="endtd"></p>
@@ -371,6 +383,10 @@ Queuing Fixed Limitations for 6.12&nbsp;&nbsp;<small><a href="#queuingfixedlimit
 Dynamic Router Fixed Limitations for 6.12&nbsp;&nbsp;<small><a href="#dynamicrouterfixedlimitationsfor6_12">&lt;-</a></small></h3>
 <p>The following bug fixes apply to the Dynamic Routing Option (DRO).</p>
 <table class="doxtable">
+<tr>
+<th>Change Request </th><th><p class="starttd">Description</p>
+<p class="endtd"></p>
+</th></tr>
 <tr>
 <td>10443 </td><td><p class="starttd"><b>FIXED:</b> <em>When a DRO portal is queuing outgoing messages (perhaps due to a low rate limiter or a low-bandwidth link), and a topic has more than <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/ChangeLog/config.tag:../../Config/" href="../../Config/grpdeliverycontrol.html#deliverycontrolmaximumburstlossreceiver">delivery_control_maximum_burst_loss (receiver)</a> (default 1024) messages queued to be sent, there is a possibility that receivers will deliver a burst loss event to the application and not deliver the queued messages, even though they are eventually sent. This is because the originating source sent a TSNI, and the DRO allowed it to bypass the data queue and be sent before the queued data messages. Thus the receiver sees a gap greater than the burst loss configuration and does not wait for the missing data to be sent.</em></p>
 <p>The DRO now queues TSNIs behind data messages.</p>
@@ -501,7 +517,9 @@ Persistence Known Limitations&nbsp;&nbsp;<small><a href="#persistenceknownlimita
 <p>The following open limitations fixes apply to UMP and UMQ products.</p>
 <table class="doxtable">
 <tr>
-<th>Change Request </th><th>Description </th></tr>
+<th>Change Request </th><th><p class="starttd">Description</p>
+<p class="endtd"></p>
+</th></tr>
 <tr>
 <td>9940, 10131 </td><td><p class="starttd">If a persistent publisher send a message containing Message Properties, and the Proactive Retransmission feature is used to record the message on the Store, a receiver which recovers the message from the Store will crash with a fatal assert: <br />
 <code>FATAL: failed assertion [prop_offset &gt;= 0]</code> <br />
@@ -596,7 +614,9 @@ Dynamic Router Known Limitations&nbsp;&nbsp;<small><a href="#dynamicrouterknownl
 <p>The following open limitations apply to the Dynamic Routing Option (DRO).</p>
 <table class="doxtable">
 <tr>
-<th>Change Request </th><th>Description </th></tr>
+<th>Change Request </th><th><p class="starttd">Description</p>
+<p class="endtd"></p>
+</th></tr>
 <tr>
 <td>9718 </td><td><p class="starttd">The encryption feature does not implement elliptic curve encryption. Cipher suites with "ECDH", "ECDHE", and "ECDSA" cannot be used. Use "DHE" and "RSA" instead.</p>
 <p class="endtd"></p>
@@ -826,6 +846,10 @@ Streaming Fixed Limitations for 6.11.1&nbsp;&nbsp;<small><a href="#streamingfixe
 <p>The following bug fixes apply to UMS, UMP, and UMQ products.</p>
 <table class="doxtable">
 <tr>
+<th>Change Request </th><th><p class="starttd">Description</p>
+<p class="endtd"></p>
+</th></tr>
+<tr>
 <td>10385, 10280 </td><td>Enhancement: <em>Reduced number of gettimeofday() calls in context loop. This lowers receive-side latency and CPU load.</em> </td></tr>
 </table>
 <p><br />
@@ -834,6 +858,10 @@ Streaming Fixed Limitations for 6.11.1&nbsp;&nbsp;<small><a href="#streamingfixe
 Persistence Fixed Limitations for 6.11.1&nbsp;&nbsp;<small><a href="#persistencefixedlimitationsfor6_11_1">&lt;-</a></small></h3>
 <p>The following bug fixes apply to UMP and UMQ products.</p>
 <table class="doxtable">
+<tr>
+<th>Change Request </th><th><p class="starttd">Description</p>
+<p class="endtd"></p>
+</th></tr>
 <tr>
 <td>10332, 10409 </td><td><p class="starttd"><b>FIXED:</b> <em>When the Persistent Store is configured to publish <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/ChangeLog/ume.tag:../../UME/" href="../../UME/storedaemonstatistics.html">Daemon Statistics</a>, there is a small chance that it will fail to initialize properly. It might log the error:</em> <br />
 <code>[CRITICAL]: Store-10184-80: umestore_dmon_publish: CoreApi-5688-2996: src must be valid</code> <br />
@@ -986,6 +1014,10 @@ Streaming Fixed Limitations for 6.11&nbsp;&nbsp;<small><a href="#streamingfixedl
 <p>The following bug fixes apply to UMS, UMP, and UMQ products.</p>
 <table class="doxtable">
 <tr>
+<th>Change Request </th><th><p class="starttd">Description</p>
+<p class="endtd"></p>
+</th></tr>
+<tr>
 <td>10260 </td><td><p class="starttd"><b>FIXED:</b> <em>When using Smart Source, a source processing NAKs can fatal assert: "(bvec-&gt;flags &amp; ~LBTRM_BVEC_SMART_SOURCE_FLAG) == 0".</em></p>
 <p class="endtd"></p>
 </td></tr>
@@ -1062,6 +1094,10 @@ Persistence Fixed Limitations for 6.11&nbsp;&nbsp;<small><a href="#persistencefi
 <p>The following bug fixes apply to UMP and UMQ products.</p>
 <table class="doxtable">
 <tr>
+<th>Change Request </th><th><p class="starttd">Description</p>
+<p class="endtd"></p>
+</th></tr>
+<tr>
 <td>10231 </td><td><p class="starttd"><b>FIXED:</b> <em>The Persistent Store Web Monitor displays truncated values for "Retransmission Request Received Rate" and "Retransmission Request
 Service Rate".</em></p>
 <p>The decimal portion is now correctly displayed.</p>
@@ -1123,6 +1159,10 @@ None. </li>
 Dynamic Router Fixed Limitations for 6.11&nbsp;&nbsp;<small><a href="#dynamicrouterfixedlimitationsfor6_11">&lt;-</a></small></h3>
 <p>The following bug fixes apply to the Dynamic Routing Option (DRO).</p>
 <table class="doxtable">
+<tr>
+<th>Change Request </th><th><p class="starttd">Description</p>
+<p class="endtd"></p>
+</th></tr>
 <tr>
 <td>10194 </td><td><p class="starttd"><b>FIXED:</b> <em>When Peer Links attempt to establish connections, there is a window during which a socket could get closed just before attempting to complete the connection. This can result in a fatal assert "handle==conn_mgr-&gt;sock-&gt;sock", or could simply result in the peer link not making any more connection attempts, leaving the link permanently disconnected.</em></p>
 <p class="endtd"></p>
@@ -1199,7 +1239,9 @@ Streaming Fixed Limitations for 6.10.1&nbsp;&nbsp;<small><a href="#streamingfixe
 <p>The following bug fixes apply to UMS, UMP, and UMQ products.</p>
 <table class="doxtable">
 <tr>
-<th>Change Request </th><th>Description </th></tr>
+<th>Change Request </th><th><p class="starttd">Description</p>
+<p class="endtd"></p>
+</th></tr>
 <tr>
 <td>10051, 10130 </td><td><p class="starttd"><b>FIXED:</b> <em>Large UIM messages, such as UM responses, can become corrupted when transferred between Topic Resolution Domains by a UM Router (DRO).</em></p>
 <p class="endtd"></p>
@@ -1222,7 +1264,9 @@ Persistence Fixed Limitations for 6.10.1&nbsp;&nbsp;<small><a href="#persistence
 <p>The following bug fixes apply to UMP and UMQ products.</p>
 <table class="doxtable">
 <tr>
-<th>Change Request </th><th>Description </th></tr>
+<th>Change Request </th><th><p class="starttd">Description</p>
+<p class="endtd"></p>
+</th></tr>
 <tr>
 <td>10050, 10054 </td><td><b>FIXED:</b> <em>For UMM version 6.10 (only), the UM Router (DRO) is not able to run on the UMS or UMP products' "lbm" libraries.</em> </td></tr>
 </table>
@@ -1242,7 +1286,9 @@ Dynamic Router Fixed Limitations for 6.10.1&nbsp;&nbsp;<small><a href="#dynamicr
 <p>The following bug fixes apply to the Dynamic Routing Option (DRO).</p>
 <table class="doxtable">
 <tr>
-<th>Change Request </th><th>Description </th></tr>
+<th>Change Request </th><th><p class="starttd">Description</p>
+<p class="endtd"></p>
+</th></tr>
 <tr>
 <td>10050, 10054 </td><td><b>FIXED:</b> <em>For UMM version 6.10 (only), the UM Router (DRO) is not able to run on the UMS or UMP products' "lbm" libraries.</em> </td></tr>
 </table>
@@ -1340,7 +1386,9 @@ Streaming Enhancements for 6.10&nbsp;&nbsp;<small><a href="#streamingenhancement
 <p class="startli"><b>Improved defaults.</b> The following configuration options have new default values. For systems already in production, please review the options and determine if the improved defaults are appropriate for your application. If not, then you must ensure that the desired values are explicitly configured.</p>
 <table class="doxtable">
 <tr>
-<th>Option </th><th>Old default </th><th>New default </th></tr>
+<th>Option </th><th>Old default </th><th><p class="starttd">New default</p>
+<p class="endtd"></p>
+</th></tr>
 <tr>
 <td><a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/ChangeLog/config.tag:../../Config/" href="../../Config/grpmajoroptions.html#multiplereceivemaximumdatagramscontext">multiple_receive_maximum_datagrams (context)</a> </td><td>1 </td><td><p class="starttd">0</p>
 <p class="endtd"></p>
@@ -1432,7 +1480,9 @@ Persistence Enhancements for 6.10&nbsp;&nbsp;<small><a href="#persistenceenhance
 <p class="startli"><b>Improved UM configuration defaults.</b> The following configuration options have new default values. For systems already in production, please review the options and determine if the improved defaults are appropriate for your application. If not, then you must ensure that the desired values are explicitly configured.</p>
 <table class="doxtable">
 <tr>
-<th>Option </th><th>Old default </th><th>New default </th></tr>
+<th>Option </th><th>Old default </th><th><p class="starttd">New default</p>
+<p class="endtd"></p>
+</th></tr>
 <tr>
 <td><a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/ChangeLog/config.tag:../../Config/" href="../../Config/grpultramessagingpersistence.html#umeuseackbatchingreceiver">ume_use_ack_batching (receiver)</a> </td><td>0 (no) </td><td><p class="starttd">1 (yes) Batching of receiver consumption acknowledgements greatly increases system throughput, although it also increases the likelihood of duplicate messages during a recovery operation.</p>
 <p class="endtd"></p>
@@ -1450,7 +1500,9 @@ Persistence Enhancements for 6.10&nbsp;&nbsp;<small><a href="#persistenceenhance
 <p class="startli">Improved Store configuration defaults.</p>
 <table class="doxtable">
 <tr>
-<th>Option </th><th>Old default </th><th>New default </th></tr>
+<th>Option </th><th>Old default </th><th><p class="starttd">New default</p>
+<p class="endtd"></p>
+</th></tr>
 <tr>
 <td><a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/ChangeLog/ume.tag:../../UME/" href="../../UME/configurationreferenceforumestored.html#umecfgrepositorysizethreshold">repository-size-threshold</a> </td><td>25,165,824 (24MB) </td><td>1,024 (1K) </td></tr>
 </table>
@@ -1485,7 +1537,9 @@ Streaming Fixed Limitations for 6.10&nbsp;&nbsp;<small><a href="#streamingfixedl
 <p>The following bug fixes apply to UMS, UMP, and UMQ products.</p>
 <table class="doxtable">
 <tr>
-<th>Change Request </th><th>Description </th></tr>
+<th>Change Request </th><th><p class="starttd">Description</p>
+<p class="endtd"></p>
+</th></tr>
 <tr>
 <td>10024 </td><td><p class="starttd"><b>FIXED:</b> <em>The API function <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/ChangeLog/api.tag:../../API/" href="../../API/lbm_8h.html#a30bf33dce2021f6ea8915b45f511af56">lbm_transport_source_parse()</a> incorrectly parsed source strings under a wide variety of circumstances.</em></p>
 <p class="endtd"></p>
@@ -1568,7 +1622,9 @@ Persistence Fixed Limitations for 6.10&nbsp;&nbsp;<small><a href="#persistencefi
 <p>The following bug fixes apply to UMP and UMQ products.</p>
 <table class="doxtable">
 <tr>
-<th>Change Request </th><th>Description </th></tr>
+<th>Change Request </th><th><p class="starttd">Description</p>
+<p class="endtd"></p>
+</th></tr>
 <tr>
 <td>9953 </td><td><p class="starttd"><b>FIXED:</b> <em>Due to an incorrect print specification, 32-bit applications can occasionally crash with illegal memory access when debug logging is enabled and a persistent session ID is being printed.</em></p>
 <p>The print specification has been corrected.</p>
@@ -1625,7 +1681,9 @@ Dynamic Router Fixed Limitations for 6.10&nbsp;&nbsp;<small><a href="#dynamicrou
 <p>The following bug fixes apply to the Dynamic Routing Option (DRO).</p>
 <table class="doxtable">
 <tr>
-<th>Change Request </th><th>Description </th></tr>
+<th>Change Request </th><th><p class="starttd">Description</p>
+<p class="endtd"></p>
+</th></tr>
 <tr>
 <td>9710, 9788 </td><td><p class="starttd">The DRO generated log messages of the form, <br />
 <code>Core-5688-27 WARNING: ... config variable ... is deprecated. Use ... instead.</code> <br />
@@ -1762,7 +1820,9 @@ Streaming Fixed Limitations for 6.9.2&nbsp;&nbsp;<small><a href="#streamingfixed
 <p>The following bug fixes apply to UMS, UMP, and UMQ products.</p>
 <table class="doxtable">
 <tr>
-<th>Change Request </th><th>Description </th></tr>
+<th>Change Request </th><th><p class="starttd">Description</p>
+<p class="endtd"></p>
+</th></tr>
 <tr>
 <td>9927 </td><td><p class="starttd">Fixed a problem with UDP transports LBT-RM and LBT-RU where sending a very large number of datagrams (more than 4 billion) results in a failed assertion [oblk!=NULL].</p>
 <p class="endtd"></p>
@@ -1777,7 +1837,9 @@ Persistence Fixed Limitations for 6.9.2&nbsp;&nbsp;<small><a href="#persistencef
 <p>The following bug fixes apply to UMP and UMQ products.</p>
 <table class="doxtable">
 <tr>
-<th>Change Request </th><th>Description </th></tr>
+<th>Change Request </th><th><p class="starttd">Description</p>
+<p class="endtd"></p>
+</th></tr>
 <tr>
 <td>9902 </td><td><p class="starttd">Fixed problem where session IDs were printed to the Store log file in an inconsistent way, sometimes signed, sometimes unsigned.</p>
 <p>Session IDs are now always printed unsigned.</p>
@@ -1866,7 +1928,9 @@ Streaming Fixed Limitations for 6.9.1&nbsp;&nbsp;<small><a href="#streamingfixed
 <p>The following bug fixes apply to UMS, UMP, and UMQ products.</p>
 <table class="doxtable">
 <tr>
-<th>Change Request </th><th>Description </th></tr>
+<th>Change Request </th><th><p class="starttd">Description</p>
+<p class="endtd"></p>
+</th></tr>
 <tr>
 <td>9729 </td><td><p class="starttd">Fixed a problem where a UDP packet with bad checksum was silently ignored.</p>
 <p>UDP packets with checksum errors will now generate a warning log message.</p>
@@ -1894,7 +1958,9 @@ Persistence Fixed Limitations for 6.9.1&nbsp;&nbsp;<small><a href="#persistencef
 <p>The following bug fixes apply to UMP and UMQ products.</p>
 <table class="doxtable">
 <tr>
-<th>Change Request </th><th>Description </th></tr>
+<th>Change Request </th><th><p class="starttd">Description</p>
+<p class="endtd"></p>
+</th></tr>
 <tr>
 <td>9707 </td><td><p class="starttd">Fixed a problem with Receiver Paced Persistence where setting the source configuration option <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/ChangeLog/config.tag:../../Config/" href="../../Config/grpultramessagingpersistence.html#umewritedelaysource">ume_write_delay (source)</a> to zero did not override the store's <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/ChangeLog/ume.tag:../../UME/" href="../../UME/configurationreferenceforumestored.html#umecfgrepositorydiskwritedelay">repository-disk-write-delay</a> value.</p>
 <p>The source can now override the store with <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/ChangeLog/config.tag:../../Config/" href="../../Config/grpultramessagingpersistence.html#umewritedelaysource">ume_write_delay (source)</a> set to zero.</p>
@@ -1934,7 +2000,9 @@ Dynamic Router Fixed Limitations for 6.9.1&nbsp;&nbsp;<small><a href="#dynamicro
 <p>The following bug fixes apply to the Dynamic Routing Option (DRO).</p>
 <table class="doxtable">
 <tr>
-<th>Change Request </th><th>Description </th></tr>
+<th>Change Request </th><th><p class="starttd">Description</p>
+<p class="endtd"></p>
+</th></tr>
 <tr>
 <td>9817 </td><td><p class="starttd">Fixed a topic deafness problem where a temporary surge of messages flowing out of an endpoint portal will put one or more topic queues into a blocked state which does not unblock when the surge is over.</p>
 <p>Temporarily blocked topic queues are now correctly unblocked.</p>
@@ -2026,7 +2094,9 @@ Streaming Fixed Limitations for 6.9&nbsp;&nbsp;<small><a href="#streamingfixedli
 <p>The following bug fixes apply to UMS, UMP, and UMQ products.</p>
 <table class="doxtable">
 <tr>
-<th>Change Request </th><th>Description </th></tr>
+<th>Change Request </th><th><p class="starttd">Description</p>
+<p class="endtd"></p>
+</th></tr>
 <tr>
 <td>9759 </td><td><p class="starttd">The <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/ChangeLog/operations.tag:../../Operations/" href="../../Operations/umlogmessages.html">UM Log Messages</a> chapter of the "Operations Guide" did not correctly order messages numerically. For example, "Core-1234-10" would come before "Core-1234-9".</p>
 <p>The order has been corrected.</p>
@@ -2067,7 +2137,9 @@ Persistence Fixed Limitations for 6.9&nbsp;&nbsp;<small><a href="#persistencefix
 <p>The following bug fixes apply to UMP and UMQ products.</p>
 <table class="doxtable">
 <tr>
-<th>Change Request </th><th>Description </th></tr>
+<th>Change Request </th><th><p class="starttd">Description</p>
+<p class="endtd"></p>
+</th></tr>
 <tr>
 <td>9115 </td><td><p class="starttd">The store now prints BOS and EOS events to its log.</p>
 <p class="endtd"></p>
@@ -2089,7 +2161,9 @@ Queuing Fixed Limitations for 6.9&nbsp;&nbsp;<small><a href="#queuingfixedlimita
 <p>The following bug fixes apply to the UMQ product.</p>
 <table class="doxtable">
 <tr>
-<th>Change Request </th><th>Description </th></tr>
+<th>Change Request </th><th><p class="starttd">Description</p>
+<p class="endtd"></p>
+</th></tr>
 <tr>
 <td>9494 </td><td><p class="starttd">UMM did not include the option <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/ChangeLog/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqqueueactivitytimeoutcontext">umq_queue_activity_timeout (context)</a>.</p>
 <p>It has been added.</p>
@@ -2112,7 +2186,9 @@ Dynamic Router Fixed Limitations for 6.9&nbsp;&nbsp;<small><a href="#dynamicrout
 <p>The following bug fixes apply to the Dynamic Routing Option (DRO).</p>
 <table class="doxtable">
 <tr>
-<th>Change Request </th><th>Description </th></tr>
+<th>Change Request </th><th><p class="starttd">Description</p>
+<p class="endtd"></p>
+</th></tr>
 <tr>
 <td>8880 </td><td><p class="starttd">UM Router daemons using dual-tcp peer links with non-"select" FD management types might issue many '<code>Core-5688-3808...</code>' log messages.</p>
 <p>The Router now hard-codes peer links to use select for Unix and wsaeventselect for Windows. This avoids the errors.</p>
@@ -2147,7 +2223,9 @@ Streaming Enhancements for 6.8&nbsp;&nbsp;<small><a href="#streamingenhancements
 </ul>
 <p>The following configuration options default values are changed: </p><table class="doxtable">
 <tr>
-<th>Option </th><th>Old Default </th><th>New Default </th><th>Notes </th></tr>
+<th>Option </th><th>Old Default </th><th>New Default </th><th><p class="starttd">Notes</p>
+<p class="endtd"></p>
+</th></tr>
 <tr>
 <td><a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/ChangeLog/config.tag:../../Config/" href="../../Config/grpmulticastimmediatemessagingnetwork.html#mimincomingaddresscontext">mim_incoming_address (context)</a> </td><td>224.10.10.21 </td><td>0.0.0.0 </td><td><p class="starttd">Disable MIM reception by default to avoid the possibility of default-configured applications sending data that is heard by all contexts.</p>
 <p class="endtd"></p>
@@ -2188,7 +2266,9 @@ You can now configure a Persistent Store to port=0, which selects the actual por
 </ul>
 <p>The following configuration options default values are changed: </p><table class="doxtable">
 <tr>
-<th>Option </th><th>Old Default </th><th>New Default </th><th>Notes </th></tr>
+<th>Option </th><th>Old Default </th><th>New Default </th><th><p class="starttd">Notes</p>
+<p class="endtd"></p>
+</th></tr>
 <tr>
 <td><a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/ChangeLog/config.tag:../../Config/" href="../../Config/grpofftransportrecovery.html#useotrreceiver">use_otr (receiver)</a> </td><td>0 </td><td>2 (enables only persistent receivers) </td><td><p class="starttd"></p>
 <p class="endtd"></p>
@@ -2222,7 +2302,9 @@ You can now configure a Persistent Store to port=0, which selects the actual por
 </table>
 <p>The following Persistent Store configuration options default values are changed: </p><table class="doxtable">
 <tr>
-<th>Option </th><th>Old Default </th><th>New Default </th><th>Notes </th></tr>
+<th>Option </th><th>Old Default </th><th>New Default </th><th><p class="starttd">Notes</p>
+<p class="endtd"></p>
+</th></tr>
 <tr>
 <td><a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/ChangeLog/ume.tag:../../UME/" href="../../UME/configurationreferenceforumestored.html#umecfgreceivernewregistrationrollback">receiver-new-registration-rollback</a> </td><td>0 </td><td>2147483647 </td><td><p class="starttd">The previous default value of 0 resulted in new receivers not requesting any initial state. The new value causes receivers to request all of the data cached in the Persistent Stores that they might be interested in before they become active. You may still need to change these values either with configuration or programmatically.</p>
 <p class="endtd"></p>
@@ -2310,7 +2392,9 @@ Streaming Fixed Limitations for 6.8&nbsp;&nbsp;<small><a href="#streamingfixedli
 <p>The following bug fixes apply to UMS, UMP, and UMQ products.</p>
 <table class="doxtable">
 <tr>
-<th>Change Request </th><th>Description </th></tr>
+<th>Change Request </th><th><p class="starttd">Description</p>
+<p class="endtd"></p>
+</th></tr>
 <tr>
 <td>2219 </td><td><p class="starttd">A Windows application crashes if you set configuration option <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/ChangeLog/config.tag:../../Config/" href="../../Config/grpmajoroptions.html#fdmanagementtypecontext">fd_management_type (context)</a> to '<code>select</code>'. The valid option for Windows is '<code>wsaeventselect</code>'. As a solution, now if you set a Windows application configuration option <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/ChangeLog/config.tag:../../Config/" href="../../Config/grpmajoroptions.html#fdmanagementtypecontext">fd_management_type (context)</a> to '<code>select</code>', Ultra Messaging returns an error.</p>
 <p class="endtd"></p>
@@ -2452,7 +2536,9 @@ Persistence Fixed Limitations for 6.8&nbsp;&nbsp;<small><a href="#persistencefix
 <p>The following bug fixes apply to UMP and UMQ products.</p>
 <table class="doxtable">
 <tr>
-<th>Change Request </th><th>Description </th></tr>
+<th>Change Request </th><th><p class="starttd">Description</p>
+<p class="endtd"></p>
+</th></tr>
 <tr>
 <td>4727 </td><td><p class="starttd">If you restart all UMP stores simultaneously, UMP stores cannot recreate proxy sources. As a solution, the UMP Store now maintains information about proxy sources as part of the per-source state, and can elect proxy sources upon restart of the store daemon if necessary. Once restarted, a store waits for the configured <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/ChangeLog/ume.tag:../../UME/" href="../../UME/configurationreferenceforumestored.html#umecfgsourceactivitytimeout">source-activity-timeout</a> before it attempts to create a proxy source.</p>
 <p class="endtd"></p>
@@ -2507,7 +2593,9 @@ Queuing Fixed Limitations for 6.8&nbsp;&nbsp;<small><a href="#queuingfixedlimita
 <p>The following bug fixes apply to the UMQ product.</p>
 <table class="doxtable">
 <tr>
-<th>Change Request </th><th>Description </th></tr>
+<th>Change Request </th><th><p class="starttd">Description</p>
+<p class="endtd"></p>
+</th></tr>
 <tr>
 <td>8621 </td><td><p class="starttd">Configurations with multiple slave queue instances can cause data loss, crashes or an inability to restart without removal of cache and state files (resulting in data loss). Informatica recommends deploying only configurations with a single queue instance without slaves. To facilitate failover, configure the '<code>sinc-log-filename</code>', <code>sinc-data-filename</code>, and '<code>sinc-queue-swap-filename</code>' to write to a shared file system, and use external process management (automatic or manual) to start up a backup queue instance referencing the same files if and only if the active instance fails (i.e. only allow one queue instance to access the files at any time). Note that host failures (e.g., OS, disk, server) may still result in data loss. With this configuration, sinc files grow over time, so perform clean restarts (i.e., shut down, delete all files and restart) periodically. Using a shared file system may also impact performance; Informatica recommends holistic system performance characterization prior to production deployment.</p>
 <p class="endtd"></p>
@@ -2534,7 +2622,9 @@ Dynamic Router Fixed Limitations for 6.8&nbsp;&nbsp;<small><a href="#dynamicrout
 <p>The following bug fixes apply to the Dynamic Routing Option (DRO).</p>
 <table class="doxtable">
 <tr>
-<th>Change Request </th><th>Description </th></tr>
+<th>Change Request </th><th><p class="starttd">Description</p>
+<p class="endtd"></p>
+</th></tr>
 <tr>
 <td>8851 </td><td><p class="starttd">Setting option &lt;max-datagram&gt; to a value other than the default of 65535 can cause the UM Router to hang. As a solution, the UM Router now discards wrong-sized messages and continues.</p>
 <p class="endtd"></p>
@@ -2700,7 +2790,9 @@ Streaming Fixed Limitations for 6.7.3&nbsp;&nbsp;<small><a href="#streamingfixed
 <p>The following bug fixes apply to UMS, UMP, and UMQ products.</p>
 <table class="doxtable">
 <tr>
-<th>Change Request </th><th>Description </th></tr>
+<th>Change Request </th><th><p class="starttd">Description</p>
+<p class="endtd"></p>
+</th></tr>
 <tr>
 <td>9508 </td><td><p class="starttd">On Windows, an application might crash when a TCP receiver disconnects from a TCP source.</p>
 <p class="endtd"></p>
@@ -2819,7 +2911,9 @@ Streaming Fixed Limitations for 6.7.1&nbsp;&nbsp;<small><a href="#streamingfixed
 <p>The following bug fixes apply to UMS, UMP, and UMQ products.</p>
 <table class="doxtable">
 <tr>
-<th>Change Request </th><th>Description </th></tr>
+<th>Change Request </th><th><p class="starttd">Description</p>
+<p class="endtd"></p>
+</th></tr>
 <tr>
 <td>3944 </td><td><p class="starttd">The '<code>lbmpong.c</code>' sample application might cause the following fatal assert: <br />
 <code>FATAL: failed assertion [src-&gt;exbq!=NULL] at line 2155 in ../../../../src/lib/lbm/lbmsrc.c</code></p>
@@ -2897,7 +2991,9 @@ Persistence Fixed Limitations for 6.7.1&nbsp;&nbsp;<small><a href="#persistencef
 <p>The following bug fixes apply to UMP and UMQ products.</p>
 <table class="doxtable">
 <tr>
-<th>Change Request </th><th>Description </th></tr>
+<th>Change Request </th><th><p class="starttd">Description</p>
+<p class="endtd"></p>
+</th></tr>
 <tr>
 <td>8933 </td><td><p class="starttd">An Ultra Messaging Java application might crash when using the <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/ChangeLog/javaapi.tag:../../JavaAPI/" href="../../JavaAPI/classcom_1_1latencybusters_1_1lbm_1_1UMERegistrationIdExCallbackInfo.html">com::latencybusters::lbm::UMERegistrationIdExCallbackInfo</a> or <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/ChangeLog/javaapi.tag:../../JavaAPI/" href="../../JavaAPI/classcom_1_1latencybusters_1_1lbm_1_1UMERecoverySequenceNumberCallbackInfo.html">com::latencybusters::lbm::UMERecoverySequenceNumberCallbackInfo</a> callback methods.</p>
 <p class="endtd"></p>
@@ -2933,7 +3029,9 @@ Queuing Fixed Limitations for 6.7.1&nbsp;&nbsp;<small><a href="#queuingfixedlimi
 <p>The following bug fixes apply to the UMQ product.</p>
 <table class="doxtable">
 <tr>
-<th>Change Request </th><th>Description </th></tr>
+<th>Change Request </th><th><p class="starttd">Description</p>
+<p class="endtd"></p>
+</th></tr>
 <tr>
 <td>8950 </td><td><p class="starttd">When a Java source uses ULB and sends messages with <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/ChangeLog/javaapi.tag:../../JavaAPI/" href="../../JavaAPI/classcom_1_1latencybusters_1_1lbm_1_1LBMSourceSendExInfo.html">com::latencybusters::lbm::LBMSourceSendExInfo</a> without a per-send client object, a memory leak occurs. As a solution, the call to the lbm_src_send_count_expected_terminals() function occurs only when there is a per-send client present.</p>
 <p class="endtd"></p>
@@ -2952,7 +3050,9 @@ Dynamic Router Fixed Limitations for 6.7.1&nbsp;&nbsp;<small><a href="#dynamicro
 <p>The following bug fixes apply to the Dynamic Routing Option (DRO).</p>
 <table class="doxtable">
 <tr>
-<th>Change Request </th><th>Description </th></tr>
+<th>Change Request </th><th><p class="starttd">Description</p>
+<p class="endtd"></p>
+</th></tr>
 <tr>
 <td>8859, 8871, 9002 </td><td><p class="starttd">On UNIX platforms, UM Router daemons using single-tcp peer links might incorrectly declare peer links as inactive, and attempt to tear down and re-establish the peer connection. As a solution, for UNIX platforms the UM Router now forces the peer portal option <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/ChangeLog/config.tag:../../Config/" href="../../Config/grpmajoroptions.html#fdmanagementtypecontext">fd_management_type (context)</a> to '<code>select</code>' regardless of the user's configuration settings.</p>
 <p class="endtd"></p>
@@ -3068,7 +3168,9 @@ Streaming Fixed Limitations for 6.7&nbsp;&nbsp;<small><a href="#streamingfixedli
 <p>The following bug fixes apply to UMS, UMP, and UMQ products.</p>
 <table class="doxtable">
 <tr>
-<th>Change Request </th><th>Description </th></tr>
+<th>Change Request </th><th><p class="starttd">Description</p>
+<p class="endtd"></p>
+</th></tr>
 <tr>
 <td>2551 </td><td><p class="starttd">With adaptive batching enabled, applications sometimes issue a warning assertion, <br />
 <code>WARNING: failed assertion [imbq-&gt;stats.ttss_mean&lt;=imbq- &gt;stats.ttcs_mean]</code> <br />
@@ -3218,7 +3320,9 @@ Persistence Fixed Limitations for 6.7&nbsp;&nbsp;<small><a href="#persistencefix
 <p>The following bug fixes apply to UMP and UMQ products.</p>
 <table class="doxtable">
 <tr>
-<th>Change Request </th><th>Description </th></tr>
+<th>Change Request </th><th><p class="starttd">Description</p>
+<p class="endtd"></p>
+</th></tr>
 <tr>
 <td>1013 </td><td><p class="starttd">When a umestored configuration file sets the '<code>&lt;log&gt;</code>' type attribute to the unsupported value of syslog, the umestored daemon reports the following error message: <br />
 <code>daemon section log entity must have a value</code> <br />
@@ -3300,7 +3404,9 @@ Queuing Fixed Limitations for 6.7&nbsp;&nbsp;<small><a href="#queuingfixedlimita
 <p>The following bug fixes apply to the UMQ product.</p>
 <table class="doxtable">
 <tr>
-<th>Change Request </th><th>Description </th></tr>
+<th>Change Request </th><th><p class="starttd">Description</p>
+<p class="endtd"></p>
+</th></tr>
 <tr>
 <td>8315 </td><td><p class="starttd">In the .NET API, Ultra Messaging reuses <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/ChangeLog/javaapi.tag:../../JavaAPI/" href="../../JavaAPI/classcom_1_1latencybusters_1_1lbm_1_1LBMMessageChannelInfo.html">com::latencybusters::lbm::LBMMessageChannelInfo</a>, <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/ChangeLog/javaapi.tag:../../JavaAPI/" href="../../JavaAPI/classcom_1_1latencybusters_1_1lbm_1_1UMQMessageId.html">com::latencybusters::lbm::UMQMessageId</a>, and <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/ChangeLog/javaapi.tag:../../JavaAPI/" href="../../JavaAPI/classcom_1_1latencybusters_1_1lbm_1_1UMQIndexInfo.html">com::latencybusters::lbm::UMQIndexInfo</a> objects between different <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/ChangeLog/javaapi.tag:../../JavaAPI/" href="../../JavaAPI/classcom_1_1latencybusters_1_1lbm_1_1LBMMessage.html">com::latencybusters::lbm::LBMMessage</a> objects for delivery, reducing garbage collection overhead.</p>
 <p class="endtd"></p>
@@ -3324,7 +3430,9 @@ Dynamic Router Fixed Limitations for 6.7&nbsp;&nbsp;<small><a href="#dynamicrout
 <p>The following bug fixes apply to the Dynamic Routing Option (DRO).</p>
 <table class="doxtable">
 <tr>
-<th>Change Request </th><th>Description </th></tr>
+<th>Change Request </th><th><p class="starttd">Description</p>
+<p class="endtd"></p>
+</th></tr>
 <tr>
 <td>7276 </td><td><p class="starttd">When using an aggressive keepalive configuration on a UM Router (DRO) peer link, the UM Router might fatally terminate.</p>
 <p class="endtd"></p>
@@ -3404,7 +3512,9 @@ Streaming Enhancements for 6.5&nbsp;&nbsp;<small><a href="#streamingenhancements
 <p>The following new features and enhancements apply to UMS, UMP, and UMQ products.</p>
 <table class="doxtable">
 <tr>
-<th>Change Request </th><th>Description </th></tr>
+<th>Change Request </th><th><p class="starttd">Description</p>
+<p class="endtd"></p>
+</th></tr>
 <tr>
 <td>7911 </td><td><p class="starttd">You can now configure Ultra Messaging to use Solarflare Onload to select transport sockets for acceleration. Onload is a kernel-bypass technology that accelerates message traffic and operates with Solarflare 10GbE Ethernet NICs. See <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/ChangeLog/config.tag:../../Config/" href="../../Config/grptransportacceleration.html#solarflareonload">Solarflare® Onload</a> for more information.</p>
 <p class="endtd"></p>
@@ -3419,7 +3529,9 @@ Persistence Enhancements for 6.5&nbsp;&nbsp;<small><a href="#persistenceenhancem
 <p>The following new features and enhancements apply to UMP and UMQ products.</p>
 <table class="doxtable">
 <tr>
-<th>Change Request </th><th>Description </th></tr>
+<th>Change Request </th><th><p class="starttd">Description</p>
+<p class="endtd"></p>
+</th></tr>
 <tr>
 <td>7478 </td><td>The Persistent Store Web Monitor now displays the Session ID on the Store page, Source page, and Receiver page. </td></tr>
 </table>
@@ -3440,7 +3552,9 @@ Dynamic Router Enhancements for 6.5&nbsp;&nbsp;<small><a href="#dynamicrouterenh
 <p>The following new features and enhancements apply to the Dynamic Routing Option (DRO).</p>
 <table class="doxtable">
 <tr>
-<th>Change Request </th><th>Description </th></tr>
+<th>Change Request </th><th><p class="starttd">Description</p>
+<p class="endtd"></p>
+</th></tr>
 <tr>
 <td>7694 </td><td>You can now use the LBT-SMX transport to send ingress message traffic to a UM Router (DRO). The UM Router no longer ignores topic resolution traffic from a LBT-SMX source. You still cannot, however, use LBT-SMX to send egress traffic from a UM Router. </td></tr>
 </table>
@@ -3503,7 +3617,9 @@ Streaming Enhancements for 6.1&nbsp;&nbsp;<small><a href="#streamingenhancements
 <p>The following new features and enhancements apply to UMS, UMP, and UMQ products.</p>
 <table class="doxtable">
 <tr>
-<th>Change Request </th><th>Description </th></tr>
+<th>Change Request </th><th><p class="starttd">Description</p>
+<p class="endtd"></p>
+</th></tr>
 <tr>
 <td></td><td>Added LBT-SMX </td></tr>
 <tr>
@@ -3581,7 +3697,9 @@ Streaming Fixed Limitations for 6.1&nbsp;&nbsp;<small><a href="#streamingfixedli
 <p>The following bug fixes apply to UMS, UMP, and UMQ products.</p>
 <table class="doxtable">
 <tr>
-<th>Change Request </th><th>Description </th></tr>
+<th>Change Request </th><th><p class="starttd">Description</p>
+<p class="endtd"></p>
+</th></tr>
 <tr>
 <td>7656 </td><td>Fixed a problem with <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/ChangeLog/api.tag:../../API/" href="../../API/lbm_8h.html#aab029e3f210b40f3fded64fec2a27a02">lbm_set_umm_info()</a> that caused it to always return 0 (success). The function now returns -1 on a parsing error of a returned UMM configuration file, UMM Daemon login error or a communications error with the UMM Daemon. </td></tr>
 </table>
@@ -3592,7 +3710,9 @@ Persistence Fixed Limitations for 6.1&nbsp;&nbsp;<small><a href="#persistencefix
 <p>The following bug fixes apply to UMP and UMQ products.</p>
 <table class="doxtable">
 <tr>
-<th>Change Request </th><th>Description </th></tr>
+<th>Change Request </th><th><p class="starttd">Description</p>
+<p class="endtd"></p>
+</th></tr>
 <tr>
 <td>7606 </td><td><p class="starttd">When a receiver tries to register with a store using a RegID in use by another receiver, the application error log message now includes the RegID: <br />
 <code>UME registration error: error in UME registration, RegID 1508542809 is in use by a different receiver at store 0</code> <br />
@@ -3625,7 +3745,9 @@ Queuing Fixed Limitations for 6.1&nbsp;&nbsp;<small><a href="#queuingfixedlimita
 <p>The following bug fixes apply to the UMQ product.</p>
 <table class="doxtable">
 <tr>
-<th>Change Request </th><th>Description </th></tr>
+<th>Change Request </th><th><p class="starttd">Description</p>
+<p class="endtd"></p>
+</th></tr>
 <tr>
 <td>7545 </td><td>Corrected an issue that prevented a UMQ receiver for a dead letter topic from registering with a queue if any queue instance did not have a record of the creation of the dead letter topic. </td></tr>
 </table>
@@ -3997,7 +4119,11 @@ Errata&nbsp;&nbsp;<small><a href="#errata">&lt;-</a></small></h1>
 <p>The following important corrections and improvements made to the documentation after it was released.</p>
 <ul>
 <li>
-<p class="startli">Bug 9940/10131 was reported as being fixed in UM version 6.10.1. This was incorrect. The bug exists in all UM versions from 6.0 to 6.12.</p>
+<p class="startli">Bug 10447, fixed in 6.12, was reported in the release notes without its cloned bug numbers, 10451 and 10458. Those cloned bug numbers have now been added to the release notes entry.</p>
+<p class="endli"></p>
+</li>
+<li>
+<p class="startli">Bug 9940/10131 was reported as being fixed in UM version 6.10.1. This was incorrect. The bug exists in all UM versions from 6.0 to 6.12, inclusive. (The fix is planned for the 6.12.1 hotfix.)</p>
 <p>If a persistent publisher send a message containing Message Properties, and the Proactive Retransmission feature is used to record the message on the Store, a receiver which recovers the message from the Store will crash with a fatal assert: <br />
 <code>FATAL: failed assertion [prop_offset &gt;= 0]</code> <br />
 If message properties are used on persisted sources, the user should disable Proactive Retransmissions by setting the configuration option: <br />
