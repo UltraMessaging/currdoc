@@ -12,6 +12,7 @@ var classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMFieldBool =
     [ "get_base_len", "classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMFieldBool.html#a0951ab25e0640e832441ab376b8671ef", null ],
     [ "get_len", "classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMFieldBool.html#a02f1e1157a3c64a5a67970a02cf3f751", null ],
     [ "get_name", "classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMFieldBool.html#af8de14f9c4290ce3c9acdefcbd3372b7", null ],
+    [ "getType", "classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMFieldBool.html#ab2a63b576475bf8939a9ded31bbce495", null ],
     [ "getType", "classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMFieldBool.html#a532fabd8c41762456fb2c2164dbecb31", null ],
     [ "getTypeString", "classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMFieldBool.html#a570025e8a64759fd31ba0c9892e9c624", null ],
     [ "internalString", "classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMFieldBool.html#acce0716641e47e6afffd824f8bdc98f9", null ],

@@ -1,5 +1,7 @@
 var classcom_1_1latencybusters_1_1lbm_1_1LBMMonitor =
 [
+    [ "errorMessage", "classcom_1_1latencybusters_1_1lbm_1_1LBMMonitor.html#a8c93653efb42bdcad90d55386d6da065", null ],
+    [ "errorNumber", "classcom_1_1latencybusters_1_1lbm_1_1LBMMonitor.html#a5ee18a9f46c3bdd85c1fcaf5267ec30a", null ],
     [ "ATTR_SOURCE_IM", "classcom_1_1latencybusters_1_1lbm_1_1LBMMonitor.html#a56ac6a1afa79bb6b0f7bbc175251baaa", null ],
     [ "ATTR_SOURCE_NORMAL", "classcom_1_1latencybusters_1_1lbm_1_1LBMMonitor.html#aaa95161001bc03f4e3754ab94cd4ffdf", null ],
     [ "EAGAIN", "classcom_1_1latencybusters_1_1lbm_1_1LBMMonitor.html#a96d1fc18bb0afb1c9c9bc36478ceedd4", null ],

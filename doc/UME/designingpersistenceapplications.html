@@ -92,8 +92,8 @@ Use Static RegIDs&nbsp;&nbsp;<small><a href="#usestaticregids">&lt;-</a></small>
 <p><b>C API</b></p>
 <pre class="fragment">lbm_src_topic_attr_t * sattr;
 
-if (lbm_src_topic_attr_create(&amp;sattr) == LBM_FAILURE) {
-  fprintf(stderr, "lbm_src_topic_attr_create: %s\n", lbm_errmsg());
+if (lbm_src_topic_attr_create_from_xml(&amp;sattr, "MyCtx", src_topic_name) == LBM_FAILURE) {
+  fprintf(stderr, "lbm_src_topic_attr_create_from_xml: %s\n", lbm_errmsg());
   exit(1);
 }
 if (lbm_src_topic_attr_str_setopt(sattr, "ume_store", "127.0.0.1:14567:1000")
@@ -192,7 +192,7 @@ New or Re-Registration&nbsp;&nbsp;<small><a href="#neworreregistration">&lt;-</a
     err = read_src_regid_from_file(SRC_REGID_SAVE_FILENAME, store_info, sizeof(store_info));
     if (!err) { srcinfo.existing_regid = 1; }
 
-        err = lbm_src_topic_attr_create(&amp;attr);
+        err = lbm_src_topic_attr_create_from_xml(&amp;attr, "MyCtx", src_topic_name);
         if (err) {printf("line %d: %s\n", __LINE__, lbm_errmsg()); exit(1);}
 
         err = lbm_src_topic_attr_str_setopt(attr, "ume_store", store_info);
@@ -360,8 +360,8 @@ Confirmed Delivery&nbsp;&nbsp;<small><a href="#confirmeddelivery">&lt;-</a></sma
 <p><b>C API</b></p>
 <pre class="fragment">lbm_src_topic_attr_t * sattr;
 
-if (lbm_src_topic_attr_create(&amp;sattr) == LBM_FAILURE) {
-    fprintf(stderr, "lbm_src_topic_attr_create: %s\n", lbm_errmsg());
+if (lbm_src_topic_attr_create_from_xml(&amp;sattr, "MyCtx", src_topic_name) == LBM_FAILURE) {
+    fprintf(stderr, "lbm_src_topic_attr_create_from_xml: %s\n", lbm_errmsg());
     exit(1);
 }
 if (lbm_src_topic_attr_str_setopt(sattr, "ume_retention_unique_confirmations",
@@ -1314,7 +1314,7 @@ Designing Persistent Stores&nbsp;&nbsp;<small><a href="#designingpersistentstore
  </p>
 <h2><a class="anchor" id="storelogfile"></a>
 Store Log File&nbsp;&nbsp;<small><a href="#storelogfile">&lt;-</a></small></h2>
-<p>The store daemon generates log messages that are used to monitor its health and operation. You can configure these to be directed to "console" (standard output) or a specified log "file", via the <a class="el" href="configurationreferenceforumestored.html#logelement">&lt;log&gt;</a> configuration element. Normally "console" is only used during testing, as a persistent log file is preferred for production use. The store does not over-write log files on startup, but instead appends them.</p>
+<p>The store daemon generates log messages that are used to monitor its health and operation. You can configure these to be directed to "console" (standard output) or a specified log "file", via the <a class="el" href="configurationreferenceforumestored.html#umeelementlog">&lt;log&gt;</a> configuration element. Normally "console" is only used during testing, as a persistent log file is preferred for production use. The store does not over-write log files on startup, but instead appends them.</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="storerollinglogs"></a>
@@ -1332,7 +1332,7 @@ where: </p><ul>
 <em>SEQNUM</em> - Sequence number, starting at 1 when the process starts, and incrementing each time the log file rolls. </li>
 </ul>
 <p>For example: <code>umestorelog_9867.2017-08-20.2</code></p>
-<p>The user can configure when the log file is eligible to roll over by either or both of two criteria: size and frequency. The size criterion is in millions of bytes. The frequency criterion can be daily or hourly. Once one or both criteria are met, the next message written to the log will trigger a roll operation. These criteria are supplied as attributes to the <a class="el" href="configurationreferenceforumestored.html#logelement">&lt;log&gt;</a> configuration element.</p>
+<p>The user can configure when the log file is eligible to roll over by either or both of two criteria: size and frequency. The size criterion is in millions of bytes. The frequency criterion can be daily or hourly. Once one or both criteria are met, the next message written to the log will trigger a roll operation. These criteria are supplied as attributes to the <a class="el" href="configurationreferenceforumestored.html#umeelementlog">&lt;log&gt;</a> configuration element.</p>
 <p>If both criteria are supplied, then the first one to be reached will trigger a roll. For example, consider the setting: </p><pre class="fragment">  &lt;log type="file" size="23" frequency="daily"&gt;store.log&lt;/log&gt;
 </pre><p> Let say that the log file grows at 1 million bytes per hour. At 11:00 pm, the log file will reach 23 million bytes, and will roll. Then, at 12:00 midnight, the log file will roll again, even though it is only 1 million bytes in size.</p>
 <dl class="section note"><dt>Note</dt><dd>The rolling logs cannot be configured to automatically overwrite old logs. Thus, the amount of disk space consumed by log files will grow without bound. The user must implement a desired process of archiving or deleting older log files according to the user's preference.</dd></dl>

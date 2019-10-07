@@ -18,5 +18,7 @@ var classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMFields =
     [ "set_debug_level", "classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMFields.html#a3c03c8646702b8e1196d0d325bd37d06", null ],
     [ "toDbgString", "classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMFields.html#a0c36815089a208bf4bcd1c5e130bed7b", null ],
     [ "toString", "classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMFields.html#a60b74412cc4f133079e3fa53e58c901d", null ],
-    [ "debug_level", "classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMFields.html#a7f4f5c9ddb8d33822f0d823f75725da3", null ]
+    [ "DEBUG_BASIC", "classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMFields.html#ad2f7d304c7115ec0ca32bab496ddc1a9", null ],
+    [ "debug_level", "classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMFields.html#a7f4f5c9ddb8d33822f0d823f75725da3", null ],
+    [ "DEBUG_VERBOSE_PARSING", "classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMFields.html#aff5bd4c7ac7e4e493838eadceeab3a49", null ]
 ];

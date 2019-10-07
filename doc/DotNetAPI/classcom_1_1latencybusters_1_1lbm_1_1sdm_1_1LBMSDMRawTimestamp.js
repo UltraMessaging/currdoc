@@ -15,5 +15,6 @@ var classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMRawTimestamp =
     [ "toDbgString", "classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMRawTimestamp.html#a7431435a97cf3415e1c0dadf2e9f4e59", null ],
     [ "ToString", "classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMRawTimestamp.html#adf2cd42b0a57ec15bab0c7598abf6673", null ],
     [ "DEBUG_BASIC", "classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMRawTimestamp.html#aa3373548eac00f814d909b5549977985", null ],
-    [ "DEBUG_VERBOSE_PARSING", "classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMRawTimestamp.html#a5385943298807b324d25eab6b67d447d", null ]
+    [ "DEBUG_VERBOSE_PARSING", "classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMRawTimestamp.html#a5385943298807b324d25eab6b67d447d", null ],
+    [ "length", "classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMRawTimestamp.html#afd8b02fb16612cca13715485bdd656d6", null ]
 ];

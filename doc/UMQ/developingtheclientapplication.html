@@ -81,8 +81,8 @@ Create the Context&nbsp;&nbsp;<small><a href="#createthecontext">&lt;-</a></smal
 <p>A client application that sends or receives messages must have one or more context objects.</p>
 <p>When you create a brokered context, set the IP address and port of the broker, and configure the attributes in a context attribute object. After you create the context, you can delete the context attribute object. The following code fragments show context coding concepts.</p>
 <p>Create a context attribute object with the current default configuration.</p>
-<pre class="fragment">if (lbm_context_attr_create(&amp;cattr) == LBM_FAILURE) {
-    fprintf(stderr, "lbm_context_attr_create: %s\n", lbm_errmsg());
+<pre class="fragment">if (lbm_context_attr_create_from_xml(&amp;cattr, "MyCtx") == LBM_FAILURE) {
+    fprintf(stderr, "lbm_context_attr_create_from_xml: %s\n", lbm_errmsg());
     exit(1);
 }
 </pre><p>Set the configuration options that must be unique or permanent for the context. The following example sets configuration option broker to 10.29.3.190:5672.</p>
@@ -103,9 +103,9 @@ Create the Context&nbsp;&nbsp;<small><a href="#createthecontext">&lt;-</a></smal
 Create the Sources&nbsp;&nbsp;<small><a href="#createthesources">&lt;-</a></small></h1>
 <p>A client application that sends messages must have at least one source object.</p>
 <p>When you create a source, configure the attributes in a topic attribute object. After you create the source, you can delete the topic attribute object. The following code fragments show source coding concepts.</p>
-<p>Create a topic attribute object with the current default configuration.</p>
-<pre class="fragment">if (lbm_src_topic_attr_create(&amp;tattr) == LBM_FAILURE) {
-    fprintf(stderr, "lbm_src_topic_attr_create: %s\n", lbm_errmsg());
+<p>Create a topic attribute object with the current default configuration. The topic name supplied should be the same as is passed to <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/api.tag:../API/" href="../API/lbm_8h.html#a1ba60407fa2bde0997aab6d5a5d2da1a">lbm_src_topic_alloc()</a> below.</p>
+<pre class="fragment">if (lbm_src_topic_attr_create_from_xml(&amp;tattr, "MyCtx", "QueueName") == LBM_FAILURE) {
+    fprintf(stderr, "lbm_src_topic_attr_create_from_xml: %s\n", lbm_errmsg());
     exit(1);
 }
 </pre><p>Set configuration options that must be unique or permanent for the source. The following example sets configuration option transport to BROKER.</p>

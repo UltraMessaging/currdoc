@@ -96,7 +96,6 @@ var NAVTREEINDEX0 =
 "index.html#umcoremessages":[8,0],
 "index.html#umdaemonsaswindowsservices":[3,6],
 "index.html#umdebugflags":[3,7,5],
-"index.html#umdslogmessages":[8,6],
 "index.html#umdynamicroutinglogmessages":[8,3],
 "index.html#uminstallation":[1],
 "index.html#umlbmrdlogmessages":[8,4],

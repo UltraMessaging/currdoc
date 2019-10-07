@@ -54,5 +54,14 @@ var classcom_1_1latencybusters_1_1lbm_1_1LBMObjectRecycler =
     [ "setSharedMsgPoolSize", "classcom_1_1latencybusters_1_1lbm_1_1LBMObjectRecycler.html#a3feb61e50894fc6880997fde84210745", null ],
     [ "setSharedRcvStatsPoolSize", "classcom_1_1latencybusters_1_1lbm_1_1LBMObjectRecycler.html#a11d191eb2c53a8fc65f0573f2de66f41", null ],
     [ "setSharedSrcEvsPoolSize", "classcom_1_1latencybusters_1_1lbm_1_1LBMObjectRecycler.html#aadf94ceeae179157998dc0aa281c45f1", null ],
-    [ "setSharedSrcStatsPoolSize", "classcom_1_1latencybusters_1_1lbm_1_1LBMObjectRecycler.html#a5264c22d0c3d5eb76d83aff885fecfde", null ]
+    [ "setSharedSrcStatsPoolSize", "classcom_1_1latencybusters_1_1lbm_1_1LBMObjectRecycler.html#a5264c22d0c3d5eb76d83aff885fecfde", null ],
+    [ "TLCtxSrcEvs", "classcom_1_1latencybusters_1_1lbm_1_1LBMObjectRecycler.html#aecc4aeaed880b2e77ab65a3a2b1ef386", null ],
+    [ "TLCtxStats", "classcom_1_1latencybusters_1_1lbm_1_1LBMObjectRecycler.html#afcd458c8eb9f4cc0e1c68c32d576442b", null ],
+    [ "TLEvqStats", "classcom_1_1latencybusters_1_1lbm_1_1LBMObjectRecycler.html#a4864e6db31b743e295fe5f0ab8174032", null ],
+    [ "TLIMRcvStats", "classcom_1_1latencybusters_1_1lbm_1_1LBMObjectRecycler.html#af8b43247e3978cda33b023aad2712fa3", null ],
+    [ "TLIMSrcStats", "classcom_1_1latencybusters_1_1lbm_1_1LBMObjectRecycler.html#af3e78686e4e46c0c2dc48575549d083c", null ],
+    [ "TLMsgs", "classcom_1_1latencybusters_1_1lbm_1_1LBMObjectRecycler.html#ac2282fb95154f71a56fc797726bb1458", null ],
+    [ "TLRcvStats", "classcom_1_1latencybusters_1_1lbm_1_1LBMObjectRecycler.html#af692a96ca1a9b9f493409a3e63cbc64f", null ],
+    [ "TLSrcEvs", "classcom_1_1latencybusters_1_1lbm_1_1LBMObjectRecycler.html#afe1d7bf8b459758edce9b4cc74abc420", null ],
+    [ "TLSrcStats", "classcom_1_1latencybusters_1_1lbm_1_1LBMObjectRecycler.html#a6a8c8c20881dd3797c1bdab03c5b4aac", null ]
 ];

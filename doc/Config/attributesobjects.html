@@ -69,12 +69,12 @@ $(document).ready(function(){initNavTree('attributesobjects.html','');});
 <tr>
 <td><a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#aa8e1d6704480545f52007a436def4440">lbm_hfx_t</a> </td><td><a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a7c6b4856985572c212bea283c01f7c18">lbm_hfx_attr_t</a> </td></tr>
 </table>
-</center><p>You call API functions to create attributes objects and set, retrieve, or delete their values. These function names are based on the attributes object name and are shown in the following table, using the context object as an example. See the C API for all attributes functions.</p>
+</center><p>You call API functions to create attributes objects and set, retrieve, or delete their values. These API names are based on the attributes object name and are shown in the following table, using the context object as an example. See the C API for all attributes APIs.</p>
 <center> <table class="doxtable">
 <tr>
 <th>Action</th><th>UM API function </th></tr>
 <tr>
-<td>Create Attributes Object</td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a066c0eb289bf4afcefac86a1109fca1e">lbm_context_attr_create()</a></b> </td></tr>
+<td>Create Attributes Object</td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a04d99cc97d32f359888c5befcc50512e">lbm_context_attr_create_from_xml()</a></b> </td></tr>
 <tr>
 <td>Set Option from Binary Value</td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#ab67f641d5a0ad1a9fe53d415da58d961">lbm_context_attr_setopt()</a></b> </td></tr>
 <tr>
@@ -87,22 +87,22 @@ $(document).ready(function(){initNavTree('attributesobjects.html','');});
 <td>Delete Attributes Object</td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a9c0a3c1f4a8854d8ec5585392c817c85">lbm_context_attr_delete()</a></b> </td></tr>
 </table>
 </center><p> For other object types, replace <b>context</b> with <b>src_topic</b>, <b>rcv_topic</b>, <b>wildcard_rcv</b>, <b>event_queue</b>, or <b>hfx</b>.</p>
-<p>The following sections describe in detail the use of these UM API functions. The functions related to <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#acf249ec7a22d6a0eb9fc42d6375bda5a">lbm_context_attr_t</a> objects are used for the purpose of illustration, but the instructions (if not the specifics) apply to all UM attributes objects.</p>
+<p>The following sections describe in detail the use of these UM API functions. The APIs related to <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#acf249ec7a22d6a0eb9fc42d6375bda5a">lbm_context_attr_t</a> objects are used for the purpose of illustration, but the instructions (if not the specifics) apply to all UM attributes objects.</p>
 <p><br />
  </p>
 <h1><a class="anchor" id="creatinganattributesobject"></a>
 Creating An Attributes Object&nbsp;&nbsp;<small><a href="#creatinganattributesobject">&lt;-</a></small></h1>
-<p>In the following example, the call to <b><a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a066c0eb289bf4afcefac86a1109fca1e">lbm_context_attr_create()</a></b> creates the custom attributes object, and initializes each option from the current default values. Subsequent calls to <b><a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#ab67f641d5a0ad1a9fe53d415da58d961">lbm_context_attr_setopt()</a></b> or <b><a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#af45c2cec5557da4057a0c96f305d6a40">lbm_context_attr_str_setopt()</a></b> modify only the option values in the attributes object.</p>
+<p>In the following example, the call to <b><a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a04d99cc97d32f359888c5befcc50512e">lbm_context_attr_create_from_xml()</a></b> creates the custom attributes object, and initializes each option from the current default values. Subsequent calls to <b><a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#ab67f641d5a0ad1a9fe53d415da58d961">lbm_context_attr_setopt()</a></b> or <b><a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#af45c2cec5557da4057a0c96f305d6a40">lbm_context_attr_str_setopt()</a></b> modify only the option values in the attributes object.</p>
 <pre class="fragment">lbm_context_attr_t * attrib;
 int rc;
 
-rc = lbm_context_attr_create(&amp;attrib);
+rc = lbm_context_attr_create_from_xml(&amp;attrib, "MyCtx");
 if (rc != 0)
 {
   /* Immediately after UM returns error, capture error details. */
   int errnum = lbm_errnum();
   const char * errmsg = lbm_errmsg();
-  fprintf(stderr, "Error %d returned from lbm_context_attr_create(), %s\n",
+  fprintf(stderr, "Error %d returned from lbm_context_attr_create_from_xml(), %s\n",
           errnum, errmsg);
 }
 </pre><p>This example also illustrates the proper way to determine the success or failure of an UM API call. Most UM API calls return 0 to indicate success, and -1 to indicate failure. To retrieve the specific UM error code for the failure, call <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#af3a827eb26d87be5b1a6b9fd3a4b63aa">lbm_errnum()</a>. To retrieve a text string describing the error code, call <b><a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a22a4650d3a5b649c84a0c05adedcc055">lbm_errmsg()</a></b>.</p>
@@ -110,7 +110,7 @@ if (rc != 0)
  </p>
 <h1><a class="anchor" id="settinganoptionfromabinaryvalue"></a>
 Setting an Option from a Binary Value&nbsp;&nbsp;<small><a href="#settinganoptionfromabinaryvalue">&lt;-</a></small></h1>
-<p>For an option of type other than "string", call <b><a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#ab67f641d5a0ad1a9fe53d415da58d961">lbm_context_attr_setopt()</a></b> to set its value. (See the C API reference for details on this function.) The final two parameters in the function are a pointer to a variable containing the option value, and a variable of type size_t that contains the correct length of the option value variable.</p>
+<p>For an option of type other than "string", call <b><a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#ab67f641d5a0ad1a9fe53d415da58d961">lbm_context_attr_setopt()</a></b> to set its value. (See the C API reference for details on this API.) The final two parameters in the API are a pointer to a variable containing the option value, and a variable of type size_t that contains the correct length of the option value variable.</p>
 <p>The example code below sets three options. First, we set <a class="el" href="grpmajoroptions.html#operationalmodecontext">operational_mode (context)</a> to <b>sequential</b>. Then we set the <a class="el" href="grptransporttcpnetwork.html#transporttcpportlowcontext">transport_tcp_port_low (context)</a> and <a class="el" href="grptransporttcpnetwork.html#transporttcpporthighcontext">transport_tcp_port_high (context)</a> values to <b>4901</b> and <b>4920</b>, respectively.</p>
 <pre class="fragment">lbm_context_attr_t * attrib; /* Must have already been created */
 int rc;
@@ -144,7 +144,7 @@ if (rc != 0) {
  </p>
 <h2><a class="anchor" id="settinganoptionfromarraysofbinaryvalues"></a>
 Setting an Option from Arrays of Binary Values&nbsp;&nbsp;<small><a href="#settinganoptionfromarraysofbinaryvalues">&lt;-</a></small></h2>
-<p>There are some configuration options which expect an array of a particular type. The *_setopt() function uses its "optlen" parameter to determine the number of valid elements in the array.</p>
+<p>There are some configuration options which expect an array of a particular type. The *_setopt() API uses its "optlen" parameter to determine the number of valid elements in the array.</p>
 <p>For example, when using <a class="el" href="grpultramessagingqueuing.html#umqulbapplicationsetsource">umq_ulb_application_set (source)</a> to configure a ULB source's application sets, the <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a6699be947ebb422869633f68f1191c21">lbm_umq_ulb_receiver_type_entry_t</a> structure is used to define one mapping between receiver type ID and application set index. It is common to have more than one receiver type and/or more than one application set, so the application code must pass an array of lbm_umq_ulb_receiver_type_entry_t structures. Note how <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a96ea052dce2e6376684cbf2003407cbf">lbm_src_topic_attr_setopt()</a>'s "optlen" is calculated in the following code:</p>
 <pre class="fragment">lbm_umq_ulb_receiver_type_entry_t appsets[32];  /* This application's worst case need. */
 int optlen, num_valid_elements;

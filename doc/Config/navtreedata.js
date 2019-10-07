@@ -13,41 +13,50 @@ var NAVTREE =
       [ "Plain Text Configuration Files", "index.html#plaintextconfigurationfiles", [
         [ "Reading Plain Text Configuration Files", "index.html#readingplaintextconfigurationfiles", null ]
       ] ],
-      [ "Plain Text Configuration File Format", "index.html#plaintextconfigurationfileformat", null ],
-      [ "XML Configuration Files", "index.html#xmlconfigurationfiles", [
-        [ "Reading XML Configuration Files", "index.html#readingxmlconfigurationfiles", null ],
-        [ "Using XML Configuration Files With a UM Application", "index.html#usingxmlconfigurationfileswithaumapplication", null ],
-        [ "XML Configuration File Format", "index.html#xmlconfigurationfileformat", null ],
-        [ "Merging Multiple XML Configuration Files", "index.html#mergingmultiplexmlconfigurationfiles", null ]
-      ] ]
+      [ "Plain Text Configuration File Format", "index.html#plaintextconfigurationfileformat", null ]
     ] ],
-    [ "XML Configuration File Elements", "xmlconfigurationfileelements.html", [
-      [ "<um-configuration>", "xmlconfigurationfileelements.html#umconfiguration", null ],
-      [ "<license>", "xmlconfigurationfileelements.html#license", null ],
-      [ "<options>", "xmlconfigurationfileelements.html#options", null ],
-      [ "<option>", "xmlconfigurationfileelements.html#option", null ],
-      [ "<allow>", "xmlconfigurationfileelements.html#allow", null ],
-      [ "<deny>", "xmlconfigurationfileelements.html#deny", null ],
-      [ "<templates>", "xmlconfigurationfileelements.html#templates", null ],
-      [ "<template>", "xmlconfigurationfileelements.html#template", null ],
-      [ "<applications>", "xmlconfigurationfileelements.html#applications", null ],
-      [ "<application>", "xmlconfigurationfileelements.html#application", null ],
-      [ "<contexts>", "xmlconfigurationfileelements.html#contexts", null ],
-      [ "<context>", "xmlconfigurationfileelements.html#context", null ],
-      [ "<sources>", "xmlconfigurationfileelements.html#sources", null ],
-      [ "<topic>", "xmlconfigurationfileelements.html#topic", null ],
-      [ "<receivers>", "xmlconfigurationfileelements.html#receivers", null ],
-      [ "<wildcard-receivers>", "xmlconfigurationfileelements.html#wildcardreceivers", null ],
-      [ "<wildcard-receiver>", "xmlconfigurationfileelements.html#wildcardreceiver", null ],
-      [ "<event-queues>", "xmlconfigurationfileelements.html#eventqueues", null ],
-      [ "<event-queue>", "xmlconfigurationfileelements.html#eventqueue", null ],
-      [ "<hfxs>", "xmlconfigurationfileelements.html#hfxs", null ],
-      [ "<application-data>", "xmlconfigurationfileelements.html#applicationdata", null ]
+    [ "XML Configuration Files", "xmlconfigurationfiles.html", [
+      [ "XML Configuration Concepts", "xmlconfigurationfiles.html#xmlconfigurationconcepts", null ],
+      [ "XML Reference Names", "xmlconfigurationfiles.html#xmlreferencenames", [
+        [ "XML Object Names", "xmlconfigurationfiles.html#xmlobjectnames", null ],
+        [ "XML Application Names", "xmlconfigurationfiles.html#xmlapplicationnames", null ]
+      ] ],
+      [ "Order and Rule Specifications", "xmlconfigurationfiles.html#orderandrulespecifications", [
+        [ "Constraining Configuration Values", "xmlconfigurationfiles.html#constrainingconfigurationvalues", null ],
+        [ "Restricting Topics", "xmlconfigurationfiles.html#restrictingtopics", null ],
+        [ "Overlapping Topics", "xmlconfigurationfiles.html#overlappingtopics", null ]
+      ] ],
+      [ "UM Default Values", "xmlconfigurationfiles.html#umdefaultvalues", null ],
+      [ "Reading XML Configuration Files", "xmlconfigurationfiles.html#readingxmlconfigurationfiles", null ],
+      [ "Using XML Configuration Files With a UM Application", "xmlconfigurationfiles.html#usingxmlconfigurationfileswithaumapplication", null ],
+      [ "XML Configuration File Format", "xmlconfigurationfiles.html#xmlconfigurationfileformat", null ],
+      [ "Merging Multiple XML Configuration Files", "xmlconfigurationfiles.html#mergingmultiplexmlconfigurationfiles", null ],
+      [ "XML Configuration File Elements", "xmlconfigurationfiles.html#xmlconfigurationfileelements", [
+        [ "UM Element \"<um-configuration>\"", "xmlconfigurationfiles.html#umelementumconfiguration", null ],
+        [ "UM Element \"<applications>\"", "xmlconfigurationfiles.html#umelementapplications", null ],
+        [ "UM Element \"<application>\"", "xmlconfigurationfiles.html#umelementapplication", null ],
+        [ "UM Element \"<application-data>\"", "xmlconfigurationfiles.html#umelementapplicationdata", null ],
+        [ "UM Element \"<hfxs>\"", "xmlconfigurationfiles.html#umelementhfxs", null ],
+        [ "UM Element \"<topic>\"", "xmlconfigurationfiles.html#umelementtopic", null ],
+        [ "UM Element \"<options>\"", "xmlconfigurationfiles.html#umelementoptions", null ],
+        [ "UM Element \"<option>\"", "xmlconfigurationfiles.html#umelementoption", null ],
+        [ "UM Element \"<deny>\"", "xmlconfigurationfiles.html#umelementdeny", null ],
+        [ "UM Element \"<allow>\"", "xmlconfigurationfiles.html#umelementallow", null ],
+        [ "UM Element \"<event-queues>\"", "xmlconfigurationfiles.html#umelementeventqueues", null ],
+        [ "UM Element \"<event-queue>\"", "xmlconfigurationfiles.html#umelementeventqueue", null ],
+        [ "UM Element \"<contexts>\"", "xmlconfigurationfiles.html#umelementcontexts", null ],
+        [ "UM Element \"<context>\"", "xmlconfigurationfiles.html#umelementcontext", null ],
+        [ "UM Element \"<wildcard-receivers>\"", "xmlconfigurationfiles.html#umelementwildcardreceivers", null ],
+        [ "UM Element \"<wildcard-receiver>\"", "xmlconfigurationfiles.html#umelementwildcardreceiver", null ],
+        [ "UM Element \"<receivers>\"", "xmlconfigurationfiles.html#umelementreceivers", null ],
+        [ "UM Element \"<sources>\"", "xmlconfigurationfiles.html#umelementsources", null ],
+        [ "UM Element \"<templates>\"", "xmlconfigurationfiles.html#umelementtemplates", null ],
+        [ "UM Element \"<template>\"", "xmlconfigurationfiles.html#umelementtemplate", null ],
+        [ "UM Element \"<license>\"", "xmlconfigurationfiles.html#umelementlicense", null ]
+      ] ],
+      [ "XML Configuration File DTD", "xmlconfigurationfiles.html#xmlconfigurationfiledtd", null ],
+      [ "Sample XML Configuration File", "xmlconfigurationfiles.html#samplexmlconfigurationfile", null ]
     ] ],
-    [ "Sample XML Configuration File", "samplexmlconfigurationfile.html", [
-      [ "Using the Order and Rule XML Attributes", "samplexmlconfigurationfile.html#usingtheorderandrulexmlattributes", null ]
-    ] ],
-    [ "XML Configuration File DTD", "xmlconfigurationfiledtd.html", null ],
     [ "Attributes Objects", "attributesobjects.html", [
       [ "Creating An Attributes Object", "attributesobjects.html#creatinganattributesobject", null ],
       [ "Setting an Option from a Binary Value", "attributesobjects.html#settinganoptionfromabinaryvalue", [

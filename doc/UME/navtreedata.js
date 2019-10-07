@@ -124,17 +124,34 @@ var NAVTREE =
       [ "Umestoreds Man Page", "manpagesforstore.html#umestoredsmanpage", null ]
     ] ],
     [ "Configuration Reference for Umestored", "configurationreferenceforumestored.html", [
-      [ "Daemon Element", "configurationreferenceforumestored.html#daemonelement", [
-        [ "Log Element", "configurationreferenceforumestored.html#logelement", null ],
-        [ "Daemon-monitor Element", "configurationreferenceforumestored.html#daemonmonitorelement", null ],
-        [ "Publishing-interval Element", "configurationreferenceforumestored.html#publishingintervalelement", null ],
-        [ "Group Element", "configurationreferenceforumestored.html#groupelement", null ]
+      [ "Store XML Configuration File Elements", "configurationreferenceforumestored.html#storexmlconfigurationfileelements", [
+        [ "UMP Element \"<ume-store>\"", "configurationreferenceforumestored.html#umeelementumestore", null ],
+        [ "UMP Element \"<stores>\"", "configurationreferenceforumestored.html#umeelementstores", null ],
+        [ "UMP Element \"<store>\"", "configurationreferenceforumestored.html#umeelementstore", null ],
+        [ "UMP Element \"<topics>\"", "configurationreferenceforumestored.html#umeelementtopics", null ],
+        [ "UMP Element \"<topic>\"", "configurationreferenceforumestored.html#umeelementtopic", null ],
+        [ "UMP Element \"<ume-attributes>\"", "configurationreferenceforumestored.html#umeelementumeattributes", null ],
+        [ "UMP Element \"<option>\"", "configurationreferenceforumestored.html#umeelementoption", null ],
+        [ "UMP Element \"<publishing-interval>\"", "configurationreferenceforumestored.html#umeelementpublishinginterval", null ],
+        [ "UMP Element \"<group>\"", "configurationreferenceforumestored.html#umeelementgroup", null ],
+        [ "UMP Element \"<daemon>\"", "configurationreferenceforumestored.html#umeelementdaemon", null ],
+        [ "UMP Element \"<daemon-monitor>\"", "configurationreferenceforumestored.html#umeelementdaemonmonitor", null ],
+        [ "UMP Element \"<remote-config-changes-request>\"", "configurationreferenceforumestored.html#umeelementremoteconfigchangesrequest", null ],
+        [ "UMP Element \"<remote-snapshot-request>\"", "configurationreferenceforumestored.html#umeelementremotesnapshotrequest", null ],
+        [ "UMP Element \"<lbm-config>\"", "configurationreferenceforumestored.html#umeelementlbmconfig", null ],
+        [ "UMP Element \"<web-monitor>\"", "configurationreferenceforumestored.html#umeelementwebmonitor", null ],
+        [ "UMP Element \"<lbm-license-file>\"", "configurationreferenceforumestored.html#umeelementlbmlicensefile", null ],
+        [ "UMP Element \"<xml-config>\"", "configurationreferenceforumestored.html#umeelementxmlconfig", null ],
+        [ "UMP Element \"<gid>\"", "configurationreferenceforumestored.html#umeelementgid", null ],
+        [ "UMP Element \"<pidfile>\"", "configurationreferenceforumestored.html#umeelementpidfile", null ],
+        [ "UMP Element \"<uid>\"", "configurationreferenceforumestored.html#umeelementuid", null ],
+        [ "UMP Element \"<log>\"", "configurationreferenceforumestored.html#umeelementlog", null ]
       ] ],
-      [ "Stores Element", "configurationreferenceforumestored.html#storeselement", [
-        [ "Store Element", "configurationreferenceforumestored.html#storeelement", null ],
-        [ "Topics Element", "configurationreferenceforumestored.html#topicselement", null ],
-        [ "Topic Element", "configurationreferenceforumestored.html#topicelement", null ]
+      [ "Options for a Store's ume-attributes Element", "configurationreferenceforumestored.html#optionsforastoresumeattributeselement", [
+        [ "Options for UM", "configurationreferenceforumestored.html#optionsforum", null ],
+        [ "Store Options", "configurationreferenceforumestored.html#storeoptions", null ]
       ] ],
+      [ "Options for a Topic's ume-attributes Element", "configurationreferenceforumestored.html#optionsforatopicsume-attributeselement", null ],
       [ "Option Types for ume-attributes Elements", "configurationreferenceforumestored.html#optiontypesforumeattributeselements", null ],
       [ "umestored Configuration DTD", "configurationreferenceforumestored.html#umestoredconfigurationdtd", null ],
       [ "Store Configuration Example", "configurationreferenceforumestored.html#storeconfigurationexample", [

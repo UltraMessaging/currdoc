@@ -19,5 +19,6 @@ var classcom_1_1latencybusters_1_1pdm_1_1PDMFieldInfo =
     [ "parse", "classcom_1_1latencybusters_1_1pdm_1_1PDMFieldInfo.html#a6cb795b310f6c18fd03725cd0646a33e", null ],
     [ "parse", "classcom_1_1latencybusters_1_1pdm_1_1PDMFieldInfo.html#a0d8854f097c6064d4f9c20193471f30c", null ],
     [ "toBytes", "classcom_1_1latencybusters_1_1pdm_1_1PDMFieldInfo.html#aaf023b556e688e60d2a565ec943e5d56", null ],
-    [ "toBytes", "classcom_1_1latencybusters_1_1pdm_1_1PDMFieldInfo.html#a18b0e70cde308a43571b9dd9798c93b1", null ]
+    [ "toBytes", "classcom_1_1latencybusters_1_1pdm_1_1PDMFieldInfo.html#a18b0e70cde308a43571b9dd9798c93b1", null ],
+    [ "INT_NAME_KNOWN_LEN", "classcom_1_1latencybusters_1_1pdm_1_1PDMFieldInfo.html#acf555c2e2c2898704ead0de22c893e80", null ]
 ];

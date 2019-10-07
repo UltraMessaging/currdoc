@@ -124,17 +124,34 @@ var NAVTREE =
       [ "Umestoreds Man Page", "index.html#umestoredsmanpage", null ]
     ] ],
     [ "Configuration Reference for Umestored", "index.html#configurationreferenceforumestored", [
-      [ "Daemon Element", "index.html#daemonelement", [
-        [ "Log Element", "index.html#logelement", null ],
-        [ "Daemon-monitor Element", "index.html#daemonmonitorelement", null ],
-        [ "Publishing-interval Element", "index.html#publishingintervalelement", null ],
-        [ "Group Element", "index.html#groupelement", null ]
+      [ "Store XML Configuration File Elements", "index.html#storexmlconfigurationfileelements", [
+        [ "UMP Element \"<ume-store>\"", "index.html#umeelementumestore", null ],
+        [ "UMP Element \"<stores>\"", "index.html#umeelementstores", null ],
+        [ "UMP Element \"<store>\"", "index.html#umeelementstore", null ],
+        [ "UMP Element \"<topics>\"", "index.html#umeelementtopics", null ],
+        [ "UMP Element \"<topic>\"", "index.html#umeelementtopic", null ],
+        [ "UMP Element \"<ume-attributes>\"", "index.html#umeelementumeattributes", null ],
+        [ "UMP Element \"<option>\"", "index.html#umeelementoption", null ],
+        [ "UMP Element \"<publishing-interval>\"", "index.html#umeelementpublishinginterval", null ],
+        [ "UMP Element \"<group>\"", "index.html#umeelementgroup", null ],
+        [ "UMP Element \"<daemon>\"", "index.html#umeelementdaemon", null ],
+        [ "UMP Element \"<daemon-monitor>\"", "index.html#umeelementdaemonmonitor", null ],
+        [ "UMP Element \"<remote-config-changes-request>\"", "index.html#umeelementremoteconfigchangesrequest", null ],
+        [ "UMP Element \"<remote-snapshot-request>\"", "index.html#umeelementremotesnapshotrequest", null ],
+        [ "UMP Element \"<lbm-config>\"", "index.html#umeelementlbmconfig", null ],
+        [ "UMP Element \"<web-monitor>\"", "index.html#umeelementwebmonitor", null ],
+        [ "UMP Element \"<lbm-license-file>\"", "index.html#umeelementlbmlicensefile", null ],
+        [ "UMP Element \"<xml-config>\"", "index.html#umeelementxmlconfig", null ],
+        [ "UMP Element \"<gid>\"", "index.html#umeelementgid", null ],
+        [ "UMP Element \"<pidfile>\"", "index.html#umeelementpidfile", null ],
+        [ "UMP Element \"<uid>\"", "index.html#umeelementuid", null ],
+        [ "UMP Element \"<log>\"", "index.html#umeelementlog", null ]
       ] ],
-      [ "Stores Element", "index.html#storeselement", [
-        [ "Store Element", "index.html#storeelement", null ],
-        [ "Topics Element", "index.html#topicselement", null ],
-        [ "Topic Element", "index.html#topicelement", null ]
+      [ "Options for a Store's ume-attributes Element", "index.html#optionsforastoresumeattributeselement", [
+        [ "Options for UM", "index.html#optionsforum", null ],
+        [ "Store Options", "index.html#storeoptions", null ]
       ] ],
+      [ "Options for a Topic's ume-attributes Element", "index.html#optionsforatopicsume-attributeselement", null ],
       [ "Option Types for ume-attributes Elements", "index.html#optiontypesforumeattributeselements", null ],
       [ "umestored Configuration DTD", "index.html#umestoredconfigurationdtd", null ],
       [ "Store Configuration Example", "index.html#storeconfigurationexample", [

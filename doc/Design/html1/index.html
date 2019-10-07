@@ -59,15 +59,21 @@ $(document).ready(function(){initNavTree('index.html','');});
 <big><b>Ultra Messaging</b></big> <small>(Version 6.12)</small><br/>
 <br/><br/><br/>
 <center class="mytitle">Concepts Guide</center>
-<center>Copyright (C) 2004-2019, Informatica Corporation.  All Rights Reserved.</center>
 <br/><br/><br/>
 [&nbsp;<a href="../index.html">Multi-page HTML</a>&nbsp;]&nbsp;&nbsp;|&nbsp;&nbsp;[&nbsp;<a href="../Concepts_Guide=en.pdf">PDF</a>&nbsp;]
 <br/><br/>
  </p>
 <h1><a class="anchor" id="firstsect"></a>
 Introduction&nbsp;&nbsp;<small><a href="#firstsect">&lt;-</a></small></h1>
+<p><b>&copy; Copyright Informatica LLC 2004-2019.</b></p>
 <p>This document introduces the basic concepts and design approaches used by Ultra Messaging.</p>
-<dl class="section attention"><dt>Attention</dt><dd><b>See the <a href="../../DocIntro=en.pdf">Documentation Introduction</a> for important information on copyright, patents, information resources (including Knowledge Base, and How To articles), Marketplace, Support, and other information about Informatica and its products.</b></dd></dl>
+<p>This software and documentation are provided only under a separate license agreement containing restrictions on use and disclosure. No part of this document may be reproduced or transmitted in any form, by any means (electronic, photocopying, recording or otherwise) without prior consent of Informatica LLC.</p>
+<p>A current list of Informatica trademarks is available on the web at <a href="https://www.informatica.com/trademarks.html">https://www.informatica.com/trademarks.html</a>.</p>
+<p>Portions of this software and/or documentation are subject to copyright held by third parties. Required third party notices are included with the product.</p>
+<p>This software is protected by patents as detailed at <a href="https://www.informatica.com/legal/patents.html">https://www.informatica.com/legal/patents.html</a>.</p>
+<p>The information in this documentation is subject to change without notice. If you find any problems in this documentation, please report them to us in writing at Informatica LLC 2100 Seaport Blvd. Redwood City, CA 94063.</p>
+<p>Informatica products are warranted according to the terms and conditions of the agreements under which they are provided. <br />
+INFORMATICA LLC PROVIDES THE INFORMATION IN THIS DOCUMENT "AS IS" WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING WITHOUT ANY WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND ANY WARRANTY OR CONDITION OF NON-INFRINGEMENT.</p>
 <p>Ultra Messaging comprises a software layer, supplied in the form of a dynamic library (shared object), which provides applications with message delivery functionality that adds considerable value to the basic networking services contained in the host operating system. The UMP and UMQ products also include a "store" daemon that implements Persistence. The UMQ product also includes a "broker" daemon that implements Brokered Queuing.</p>
 <p>Applications access Ultra Messaging features through the Ultra Messaging Application Programming Interface (API).</p>
 <p>Ultra Messaging includes the following APIs: the UM C API, the UM Java API, and the UM .NET API. These APIs are very similar, and for the most part this document concentrates on the C API. The translation from C functions to Java or .NET methods should be reasonably straightforward; see the UM Quick Start Guide for sample applications in Java and .NET. The UMQ product also supports the JMS API.</p>
@@ -205,7 +211,7 @@ Queuing&nbsp;&nbsp;<small><a href="#queuing">&lt;-</a></small></h2>
 UM Router&nbsp;&nbsp;<small><a href="#umrouter">&lt;-</a></small></h2>
 <p>The Ultra Messaging Dynamic Routing Option (DRO) consists of a daemon called the "UM Router" (or just the DRO) that bridges disjoint Topic Resolution Domains (TRDs) by effectively forwarding control and user traffic between them. Thus, the UM Router facilitates WAN routing where multicast routing capability is absent, possibly due to technical obstacles or enterprise policies.</p>
 <p>The UM Router transfers multicast and/or unicast topic resolution information, thus ensuring that receivers in disjoint topic resolution domains from the source can receive the topic messages to which they subscribe.</p>
-<p>See The <a href="../../Gateway/index.html">Dynamic Routing Guide</a> for more information.</p>
+<p>See the <a href="../../Gateway/index.html">Dynamic Routing Guide</a> for more information.</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="latejoin"></a>
@@ -636,11 +642,11 @@ Webmon Security&nbsp;&nbsp;<small><a href="#webmonsecurity">&lt;-</a></small></h
 <p class="endtd"></p>
 </th></tr>
 <tr>
-<td>Store </td><td><p class="starttd"><a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/ume.tag:../../UME/" href="../../UME/configurationreferenceforumestored.html#umecfgwebmonitor">&lt;web-monitor&gt;</a></p>
+<td>Store </td><td><p class="starttd"><a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/ume.tag:../../UME/" href="../../UME/configurationreferenceforumestored.html#umeelementwebmonitor">&lt;web-monitor&gt;</a></p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>UM Router </td><td><p class="starttd"><a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/gateway.tag:../../Gateway/" href="../../Gateway/xmlconfigurationreference.html#drocfg_web-monitor">&lt;web-monitor&gt;</a></p>
+<td>UM Router </td><td><p class="starttd"><a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/gateway.tag:../../Gateway/" href="../../Gateway/xmlconfigurationreference.html#droelementwebmonitor">&lt;web-monitor&gt;</a></p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
@@ -1461,7 +1467,7 @@ Persistent Store name resolution. </li>
 <li>
 Redundancy. </li>
 </ul>
-<p>UM performs TR automatically; there are no API functions specific to normal TR operation. However, you can influence topic resolution by configuration. Moreover, you can set configuration options differently for individual topics, either by using <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../../Config/" href="../../Config/index.html#xmlconfigurationfiles">XML Configuration Files</a> (the <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../../Config/" href="../../Config/xmlconfigurationfileelements.html#topic">&lt;topic&gt;</a> element), or by using the API functions for setting configuration options programmatically (e.g. <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/api.tag:../../API/" href="../../API/lbm_8h.html#a1afc75f0fb3601d072b3463e7acf16a6">lbm_rcv_topic_attr_setopt()</a> and <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/api.tag:../../API/" href="../../API/lbm_8h.html#a96ea052dce2e6376684cbf2003407cbf">lbm_src_topic_attr_setopt()</a>). See <a class="el" href="index.html#udptopicresolutionconfigurationoptions">UDP Topic Resolution Configuration Options</a> for details.</p>
+<p>UM performs TR automatically; there are no API functions specific to normal TR operation. However, you can influence topic resolution by configuration. Moreover, you can set configuration options differently for individual topics, either by using <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../../Config/" href="../../Config/xmlconfigurationfiles.html">XML Configuration Files</a> (the <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../../Config/" href="../../Config/xmlconfigurationfiles.html#umelementtopic">&lt;topic&gt;</a> element), or by using the API functions for setting configuration options programmatically (e.g. <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/api.tag:../../API/" href="../../API/lbm_8h.html#a1afc75f0fb3601d072b3463e7acf16a6">lbm_rcv_topic_attr_setopt()</a> and <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/api.tag:../../API/" href="../../API/lbm_8h.html#a96ea052dce2e6376684cbf2003407cbf">lbm_src_topic_attr_setopt()</a>). See <a class="el" href="index.html#udptopicresolutionconfigurationoptions">UDP Topic Resolution Configuration Options</a> for details.</p>
 <p>An important design point of Topic Resolution is that information related to sources is distributed to all contexts in a UM network. This is done so that when a receiver object is created within a context, it can discover sources for the topic and join those sources. In support of this discovery process, each context maintains a memory-based <em>"resolver cache"</em>, which stores source information. The TR protocols and algorithms are largely in support of maintaining each context's resolver cache.</p>
 <p>Topic Resolution also occurs across a <a class="el" href="index.html#umrouter">UM Router</a>, which means between <a class="el" href="index.html#topicresolutiondomain">Topic Resolution Domains</a> (TRDs). A receiver in one TRD will discover a source in a different TRD, potentially across many UM Router hops. In this case, the UM Routers actively assist in TR. I.e. the sources and receivers in different TRDs do not exchange TR with each other directly, but rather with the assistance of the UM Router.</p>
 <dl class="section note"><dt>Note</dt><dd>With the UMQ product, Topic Resolution does not apply to brokered queuing sources, receivers, or the brokers themselves. However, ULB queuing does make use of topic resolution.</dd></dl>
@@ -1694,7 +1700,7 @@ UDP Topic Resolution Configuration Options&nbsp;&nbsp;<small><a href="#udptopicr
 <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../../Config/" href="../../Config/grpwildcardreceiver.html">Wildcard Receiver Options</a> </li>
 </ul>
 <p><b>Assigning Different Configuration Options to Individual Topics</b></p>
-<p>You can set configuration options differently for individual topics, either by using <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../../Config/" href="../../Config/index.html#xmlconfigurationfiles">XML Configuration Files</a> (the <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../../Config/" href="../../Config/xmlconfigurationfileelements.html#topic">&lt;topic&gt;</a> element), or by using the API functions for setting configuration options programmatically (e.g. <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/api.tag:../../API/" href="../../API/lbm_8h.html#a1afc75f0fb3601d072b3463e7acf16a6">lbm_rcv_topic_attr_setopt()</a> and <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/api.tag:../../API/" href="../../API/lbm_8h.html#a96ea052dce2e6376684cbf2003407cbf">lbm_src_topic_attr_setopt()</a>).</p>
+<p>You can set configuration options differently for individual topics, either by using <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../../Config/" href="../../Config/xmlconfigurationfiles.html">XML Configuration Files</a> (the <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../../Config/" href="../../Config/xmlconfigurationfiles.html#umelementtopic">&lt;topic&gt;</a> element), or by using the API functions for setting configuration options programmatically (e.g. <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/api.tag:../../API/" href="../../API/lbm_8h.html#a1afc75f0fb3601d072b3463e7acf16a6">lbm_rcv_topic_attr_setopt()</a> and <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/api.tag:../../API/" href="../../API/lbm_8h.html#a96ea052dce2e6376684cbf2003407cbf">lbm_src_topic_attr_setopt()</a>).</p>
 <p><br />
  </p>
 <h3><a class="anchor" id="unicasttopicresolution"></a>
@@ -1913,7 +1919,7 @@ TCP-Based TR Version Interoperability&nbsp;&nbsp;<small><a href="#tcpbasedtrvers
 <p>TCP-based TR was first introduced in UM version 6.12. To maintain interoperability between pre-6.12 and 6.12, TCP-based TR must be combined with UDP-based TR.</p>
 <p>This makes it difficult to gain the benefits of TCP-based TR. Since pre-6.12 applications still need to avoid the problems of deafness, even applications that have upgraded to 6.12 and beyond need to enable UDP-based TR, usually with extended sustaining phases, often to infinity.</p>
 <p>Ideally, all applications within a TRD can be upgraded, but this is often not possible. How can the TR load be reduced in a step-wise fashion while an organization is upgrading applications gradually, over a long period of time?</p>
-<p>Fortunately, You can set configuration options differently for individual topics, either by using <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../../Config/" href="../../Config/index.html#xmlconfigurationfiles">XML Configuration Files</a> (the <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../../Config/" href="../../Config/xmlconfigurationfileelements.html#topic">&lt;topic&gt;</a> element), or by using the API functions for setting configuration options programmatically (e.g. <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/api.tag:../../API/" href="../../API/lbm_8h.html#a1afc75f0fb3601d072b3463e7acf16a6">lbm_rcv_topic_attr_setopt()</a> and <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/api.tag:../../API/" href="../../API/lbm_8h.html#a96ea052dce2e6376684cbf2003407cbf">lbm_src_topic_attr_setopt()</a>).</p>
+<p>Fortunately, You can set configuration options differently for individual topics, either by using <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../../Config/" href="../../Config/xmlconfigurationfiles.html">XML Configuration Files</a> (the <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../../Config/" href="../../Config/xmlconfigurationfiles.html#umelementtopic">&lt;topic&gt;</a> element), or by using the API functions for setting configuration options programmatically (e.g. <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/api.tag:../../API/" href="../../API/lbm_8h.html#a1afc75f0fb3601d072b3463e7acf16a6">lbm_rcv_topic_attr_setopt()</a> and <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/api.tag:../../API/" href="../../API/lbm_8h.html#a96ea052dce2e6376684cbf2003407cbf">lbm_src_topic_attr_setopt()</a>).</p>
 <p>Some helpful strategies might be: </p><ul>
 <li>
 Identify those topics or classes of topics that have limited application interest. If topic X has sources and receivers in upgraded applications, the UDP-based TR for that topic can be reduced (e.g. sustaining phase greatly reduced). </li>
@@ -2370,7 +2376,7 @@ XSP Usage&nbsp;&nbsp;<small><a href="#xspusage">&lt;-</a></small></h3>
 <li>
 <p class="startli">Create a context attribute object and set the <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../../Config/" href="../../Config/grpmajoroptions.html#transportmappingfunctioncontext">transport_mapping_function (context)</a> option to point at the application's XSP mapping callback function using the structure <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/api.tag:../../API/" href="../../API/lbm_8h.html#a90dde1ea00f12038cff7195c76d47a46">lbm_transport_mapping_func_t</a>.</p>
 <pre class="fragment">  lbm_context_attr_t *ctx_attr;
-  err = lbm_context_attr_create(&amp;ctx_attr);
+  err = lbm_context_attr_create_from_xml(&amp;ctx_attr, "MyCtx");
 
   lbm_transport_mapping_func_t mapping_func;
   mapping_func.mapping_func = app_xsp_mapper_callback;
@@ -2429,7 +2435,7 @@ Other XSP Operations&nbsp;&nbsp;<small><a href="#otherxspoperations">&lt;-</a></
 </ul>
 <p>To create and manipulate an XSP attribute object, see: </p><ul>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/api.tag:../../API/" href="../../API/lbm_8h.html#a9ab709766b50d510266901f961341a00">lbm_xsp_attr_create()</a> </li>
+lbm_xsp_attr_create_from_xml() </li>
 <li>
 <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/api.tag:../../API/" href="../../API/lbm_8h.html#ae52cbac6a22b495a3b48a70bf23fc118">lbm_xsp_attr_setopt()</a> </li>
 <li>
@@ -2657,10 +2663,11 @@ Immediate messaging target: TCP:10.29.3.76:4391
  </p>
 <h3><a class="anchor" id="configuringlatejoinforlargenumbersofmessages"></a>
 Configuring Late Join for Large Numbers of Messages&nbsp;&nbsp;<small><a href="#configuringlatejoinforlargenumbersofmessages">&lt;-</a></small></h3>
-<p>Suppose you have a receiver that comes up at midday and must gracefully catch up on the large number of messages it has missed. The following discussion explains the relevant Late Join options and how to use them.</p>
+<p>Suppose you have a persistent receiver that comes up at midday and must gracefully catch up on the large number of messages it has missed. The following discussion explains the relevant Late Join options and how to use them. (The discussion also applies to streaming-based late join, but since streaming sources must hold all retained messages in memory, there are typically far fewer messages available.)</p>
 <p><b>Option:</b> <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../../Config/" href="../../Config/grplatejoin.html#retransmitrequestoutstandingmaximumreceiver">retransmit_request_outstanding_maximum (receiver)</a></p>
-<p>When a receiver comes up and begins requesting Late Join messages, it does not simply request messages starting at Sequence Number 0 through 1000000. Rather, it requests the messages a little at a time, depending upon how option <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../../Config/" href="../../Config/grplatejoin.html#retransmitrequestoutstandingmaximumreceiver">retransmit_request_outstanding_maximum (receiver)</a> is set. For example, when set to the default of 200, the receiver sends requests the first 200 messages (Sequence Number 0 - 199). Upon receiving Sequence Number 0, it then requests the next message (200), and so on, limiting the number of outstanding unfulfilled requests to 200.</p>
-<p>Note that in some environments, the default of 200 messages may be too high and overwhelm receivers with RXs, which can cause loss in a live LBT-RM stream. However, in other situations higher values can increase the rate of RXs received.</p>
+<p>When a receiver comes up and begins requesting Late Join messages, it does not simply request messages starting at Sequence Number 0 through 1000000. Rather, it requests the messages a little at a time, depending upon how option <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../../Config/" href="../../Config/grplatejoin.html#retransmitrequestoutstandingmaximumreceiver">retransmit_request_outstanding_maximum (receiver)</a> is set. For example, when set to the default of 10, the receiver sends requests the first 10 messages (Sequence Number 0 - 9). Upon receiving Sequence Number 0, it then requests the next message (10), and so on, limiting the number of outstanding unfulfilled requests to 10.</p>
+<p>Note that higher for values retransmit_request_outstanding_maximum can increase the rate of RXs received, which can reduce the time required for receiver recovery. However, this can lead to heavy loading of the Store, potentially making it unable to sustain the incoming data rate.</p>
+<p>Also, be aware that increasing retransmit_request_outstanding_maximum may require a corresponding increase to <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../../Config/" href="../../Config/grplatejoin.html#retransmitrequestintervalreceiver">retransmit_request_interval (receiver)</a>. Otherwise you can have a situation where messages time out because it takes a store longer than retransmit_request_interval to process all retransmit_request_outstanding_maximum requests. When this happens, you can see messages needlessly requested and sent many times (generates warnings to the receiver application log file).</p>
 <p><b>Option:</b> <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../../Config/" href="../../Config/grplatejoin.html#retransmitmessagecachingproximityreceiver">retransmit_message_caching_proximity (receiver)</a></p>
 <p>When sequence number delivery order is used, long recoveries of active sources can create receiver memory cache problems due to the processing of both new and retransmitted messages. This option provides a method to control caching and cache size during recovery.</p>
 <p>It does this by comparing the option value (default 2147483647) to the difference between the newest (live) received sequence number and the latest received RX sequence number. If the difference is less than the option's value, the receiver caches incoming live new messages. Otherwise, new messages are dropped and not cached (with the assumption that they can be requested later as retransmissions).</p>
@@ -4184,7 +4191,7 @@ Source String from Source Notification Function&nbsp;&nbsp;<small><a href="#sour
   src_notif_callback_info.clientd = NULL;   /* Can be user's receiver-specific state. */
   ...
   lbm_rcv_topic_attr_t *rcv_topic_attr;
-  err = lbm_rcv_topic_attr_create(&amp;rcv_topic_attr);
+  err = lbm_rcv_topic_attr_create_from_xml(&amp;rcv_topic_attr, "MyCtx", receiver_topic_name);
 
   err = lbm_rcv_topic_attr_setopt(rcv_topic_attr, "source_notification_function",
                                  &amp;src_notif_callback_info, sizeof(src_notif_callback_info));
@@ -4377,7 +4384,7 @@ Hot Failover Across Multiple Contexts&nbsp;&nbsp;<small><a href="#hotfailoveracr
 <p>The following outlines the general procedure for HFX.</p>
 <ol>
 <li>
-Create an HFX Object for every HF topic of interest with <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/api.tag:../../API/" href="../../API/lbm_8h.html#a82e9efbf70242d83ab287916ac497645">lbm_hfx_create()</a>, passing in an attributes object created with <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/api.tag:../../API/" href="../../API/lbm_8h.html#a0e904e14d61eee45af197c17f7e3dc08">lbm_hfx_attr_create()</a> to specify any attributes desired. </li>
+Create an HFX Object for every HF topic of interest with <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/api.tag:../../API/" href="../../API/lbm_8h.html#a82e9efbf70242d83ab287916ac497645">lbm_hfx_create()</a>, passing in an attributes object created with <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/api.tag:../../API/" href="../../API/lbm_8h.html#aabc739544b1a28481e9b4bc51bb49705">lbm_hfx_attr_create_from_xml()</a> to specify any attributes desired. </li>
 <li>
 Create a context for the first NIC receiving HF messages with <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/api.tag:../../API/" href="../../API/lbm_8h.html#a8058947690bd0995bc2c59d4a61b462f">lbm_context_create()</a>. </li>
 <li>
@@ -4394,6 +4401,7 @@ Receive messages. The HFX Object identifies and drops all duplicates, delivering
 <h2><a class="anchor" id="daemonstatistics"></a>
 Daemon Statistics&nbsp;&nbsp;<small><a href="#daemonstatistics">&lt;-</a></small></h2>
 <p>The <a class="el" href="index.html#persistence">Persistence</a> Store daemon and the <a class="el" href="index.html#umrouter">UM Router</a> daemon each have a simple web server which provides operational information. This information is important for monitoring the operation and performance of these daemons. However, while the web-based presentation is convenient for manual, on-demand monitoring, it is not suitable for automated collection and recording of operational information for historical analysis.</p>
+<p>(The UMDS product also supports Daemon Statistics as of UMDS version 6.12; see UMDS documentation for details.)</p>
 <p>Starting with UM version 6.11, a feature called "Daemon Statistics" has been added to the Store and Router daemons. The Stateful Resolver Service (SRS), added in UM version 6.12, supports Daemon Statistics only (no web server). The Daemon Statistics feature supports the background publishing of their operational information via UM messages. Monitoring systems can now subscribe to this information in much the same way that UM transport statistics can be subscribed.</p>
 <p>While the information published by the Store, UM Router, and SRS daemon statistics differ in their content, the general feature usage is the same between them. When the feature is configured, the daemon will periodically collect and publish its operational information.</p>
 <p>The following sections give general information which is common across daemons, followed by links to daemon-specific details.</p>

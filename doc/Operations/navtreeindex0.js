@@ -109,7 +109,6 @@ var NAVTREEINDEX0 =
 "umlogmessages.html":[8],
 "umlogmessages.html#umcoreapimessages":[8,1],
 "umlogmessages.html#umcoremessages":[8,0],
-"umlogmessages.html#umdslogmessages":[8,6],
 "umlogmessages.html#umdynamicroutinglogmessages":[8,3],
 "umlogmessages.html#umlbmrdlogmessages":[8,4],
 "umlogmessages.html#umpersistentstorelogmessages":[8,5],

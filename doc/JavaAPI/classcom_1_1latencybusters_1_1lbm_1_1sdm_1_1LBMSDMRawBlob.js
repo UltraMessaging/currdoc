@@ -11,5 +11,7 @@ var classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMRawBlob =
     [ "set_debug_level", "classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMRawBlob.html#a3c03c8646702b8e1196d0d325bd37d06", null ],
     [ "toDbgString", "classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMRawBlob.html#afb2e193cf650f3e5841f24a755a87301", null ],
     [ "toString", "classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMRawBlob.html#aba1d29786e249903af15dc697fb289e8", null ],
-    [ "debug_level", "classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMRawBlob.html#a7f4f5c9ddb8d33822f0d823f75725da3", null ]
+    [ "DEBUG_BASIC", "classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMRawBlob.html#ad2f7d304c7115ec0ca32bab496ddc1a9", null ],
+    [ "debug_level", "classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMRawBlob.html#a7f4f5c9ddb8d33822f0d823f75725da3", null ],
+    [ "DEBUG_VERBOSE_PARSING", "classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMRawBlob.html#aff5bd4c7ac7e4e493838eadceeab3a49", null ]
 ];

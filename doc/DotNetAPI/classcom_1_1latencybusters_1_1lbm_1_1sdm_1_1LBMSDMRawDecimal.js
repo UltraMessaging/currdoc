@@ -13,5 +13,6 @@ var classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMRawDecimal =
     [ "toDbgString", "classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMRawDecimal.html#a7431435a97cf3415e1c0dadf2e9f4e59", null ],
     [ "ToString", "classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMRawDecimal.html#ad08ca9ba3c360a63b9a9c2fb4e9bdce0", null ],
     [ "DEBUG_BASIC", "classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMRawDecimal.html#aa3373548eac00f814d909b5549977985", null ],
-    [ "DEBUG_VERBOSE_PARSING", "classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMRawDecimal.html#a5385943298807b324d25eab6b67d447d", null ]
+    [ "DEBUG_VERBOSE_PARSING", "classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMRawDecimal.html#a5385943298807b324d25eab6b67d447d", null ],
+    [ "length", "classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMRawDecimal.html#a62e5180390839b73a9c4e975993c27a7", null ]
 ];

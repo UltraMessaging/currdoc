@@ -12,5 +12,8 @@ var classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMRawDecimal =
     [ "set_debug_level", "classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMRawDecimal.html#a3c03c8646702b8e1196d0d325bd37d06", null ],
     [ "toDbgString", "classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMRawDecimal.html#afb2e193cf650f3e5841f24a755a87301", null ],
     [ "toString", "classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMRawDecimal.html#ae416ff14749f23f8c01356646062bac8", null ],
-    [ "debug_level", "classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMRawDecimal.html#a7f4f5c9ddb8d33822f0d823f75725da3", null ]
+    [ "DEBUG_BASIC", "classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMRawDecimal.html#ad2f7d304c7115ec0ca32bab496ddc1a9", null ],
+    [ "debug_level", "classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMRawDecimal.html#a7f4f5c9ddb8d33822f0d823f75725da3", null ],
+    [ "DEBUG_VERBOSE_PARSING", "classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMRawDecimal.html#aff5bd4c7ac7e4e493838eadceeab3a49", null ],
+    [ "length", "classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMRawDecimal.html#a62e5180390839b73a9c4e975993c27a7", null ]
 ];

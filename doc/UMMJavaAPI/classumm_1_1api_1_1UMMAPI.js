@@ -47,5 +47,13 @@ var classumm_1_1api_1_1UMMAPI =
     [ "setTemplates", "classumm_1_1api_1_1UMMAPI.html#a3c5f393f299a308780d1e99011cb7bef", null ],
     [ "setTemplates", "classumm_1_1api_1_1UMMAPI.html#af08ad37b2da024bd2705dff8b743838f", null ],
     [ "setUserPassword", "classumm_1_1api_1_1UMMAPI.html#a5c642290bdbec786c5bcca54b4b7ee9c", null ],
-    [ "setUserPassword", "classumm_1_1api_1_1UMMAPI.html#a43f90582396f28b940ab70d1aa4ad495", null ]
+    [ "setUserPassword", "classumm_1_1api_1_1UMMAPI.html#a43f90582396f28b940ab70d1aa4ad495", null ],
+    [ "APPLICATION", "classumm_1_1api_1_1UMMAPI.html#a37e0e5f822ca4ec021c8591897f75d79", null ],
+    [ "AUDIT", "classumm_1_1api_1_1UMMAPI.html#ac50a5271eb73d3fbd6e6346552674c27", null ],
+    [ "CONNECTION_FACTORY", "classumm_1_1api_1_1UMMAPI.html#a9a59f8ace63feb862a140f8dcbe69246", null ],
+    [ "DESTINATION", "classumm_1_1api_1_1UMMAPI.html#a0f0e615b3983559db85c7c252581e16a", null ],
+    [ "TEMPLATE", "classumm_1_1api_1_1UMMAPI.html#a9024b568ef8ef50312e632739bf14e1f", null ],
+    [ "UMM_XML_START", "classumm_1_1api_1_1UMMAPI.html#a21b1b57b51eaa6876f2fda24ff0bf69c", null ],
+    [ "UMM_XML_STOP", "classumm_1_1api_1_1UMMAPI.html#a8b2c0c45b1e48fecbbe021cfa925066f", null ],
+    [ "USER", "classumm_1_1api_1_1UMMAPI.html#a5739046161616b3fd4055f48e0805232", null ]
 ];

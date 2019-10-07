@@ -59,15 +59,21 @@ $(document).ready(function(){initNavTree('index.html','');});
 <big><b>Ultra Messaging</b></big> <small>(Version 6.12)</small><br/>
 <br/><br/><br/>
 <center class="mytitle">Guide to Queuing</center>
-<center>Copyright (C) 2004-2019, Informatica Corporation.  All Rights Reserved.</center>
 <br/><br/><br/>
 [&nbsp;<a href="../index.html">Multi-page HTML</a>&nbsp;]&nbsp;&nbsp;|&nbsp;&nbsp;[&nbsp;<a href="../UM_Guide_for_Queuing=en.pdf">PDF</a>&nbsp;]
 <br/><br/>
  </p>
 <h1><a class="anchor" id="firstsect"></a>
 Introduction&nbsp;&nbsp;<small><a href="#firstsect">&lt;-</a></small></h1>
+<p><b>&copy; Copyright Informatica LLC 2004-2019.</b></p>
 <p>This document describes the queuing functionality of the Ultra Messaging UMQ product.</p>
-<dl class="section attention"><dt>Attention</dt><dd><b>See the <a href="../../DocIntro=en.pdf">Documentation Introduction</a> for important information on copyright, patents, information resources (including Knowledge Base, and How To articles), Marketplace, Support, and other information about Informatica and its products.</b></dd></dl>
+<p>This software and documentation are provided only under a separate license agreement containing restrictions on use and disclosure. No part of this document may be reproduced or transmitted in any form, by any means (electronic, photocopying, recording or otherwise) without prior consent of Informatica LLC.</p>
+<p>A current list of Informatica trademarks is available on the web at <a href="https://www.informatica.com/trademarks.html">https://www.informatica.com/trademarks.html</a>.</p>
+<p>Portions of this software and/or documentation are subject to copyright held by third parties. Required third party notices are included with the product.</p>
+<p>This software is protected by patents as detailed at <a href="https://www.informatica.com/legal/patents.html">https://www.informatica.com/legal/patents.html</a>.</p>
+<p>The information in this documentation is subject to change without notice. If you find any problems in this documentation, please report them to us in writing at Informatica LLC 2100 Seaport Blvd. Redwood City, CA 94063.</p>
+<p>Informatica products are warranted according to the terms and conditions of the agreements under which they are provided. <br />
+INFORMATICA LLC PROVIDES THE INFORMATION IN THIS DOCUMENT "AS IS" WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING WITHOUT ANY WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND ANY WARRANTY OR CONDITION OF NON-INFRINGEMENT.</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="umqoverview"></a>
@@ -714,8 +720,8 @@ Create the Context&nbsp;&nbsp;<small><a href="#createthecontext">&lt;-</a></smal
 <p>A client application that sends or receives messages must have one or more context objects.</p>
 <p>When you create a brokered context, set the IP address and port of the broker, and configure the attributes in a context attribute object. After you create the context, you can delete the context attribute object. The following code fragments show context coding concepts.</p>
 <p>Create a context attribute object with the current default configuration.</p>
-<pre class="fragment">if (lbm_context_attr_create(&amp;cattr) == LBM_FAILURE) {
-    fprintf(stderr, "lbm_context_attr_create: %s\n", lbm_errmsg());
+<pre class="fragment">if (lbm_context_attr_create_from_xml(&amp;cattr, "MyCtx") == LBM_FAILURE) {
+    fprintf(stderr, "lbm_context_attr_create_from_xml: %s\n", lbm_errmsg());
     exit(1);
 }
 </pre><p>Set the configuration options that must be unique or permanent for the context. The following example sets configuration option broker to 10.29.3.190:5672.</p>
@@ -736,9 +742,9 @@ Create the Context&nbsp;&nbsp;<small><a href="#createthecontext">&lt;-</a></smal
 Create the Sources&nbsp;&nbsp;<small><a href="#createthesources">&lt;-</a></small></h2>
 <p>A client application that sends messages must have at least one source object.</p>
 <p>When you create a source, configure the attributes in a topic attribute object. After you create the source, you can delete the topic attribute object. The following code fragments show source coding concepts.</p>
-<p>Create a topic attribute object with the current default configuration.</p>
-<pre class="fragment">if (lbm_src_topic_attr_create(&amp;tattr) == LBM_FAILURE) {
-    fprintf(stderr, "lbm_src_topic_attr_create: %s\n", lbm_errmsg());
+<p>Create a topic attribute object with the current default configuration. The topic name supplied should be the same as is passed to <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#a1ba60407fa2bde0997aab6d5a5d2da1a">lbm_src_topic_alloc()</a> below.</p>
+<pre class="fragment">if (lbm_src_topic_attr_create_from_xml(&amp;tattr, "MyCtx", "QueueName") == LBM_FAILURE) {
+    fprintf(stderr, "lbm_src_topic_attr_create_from_xml: %s\n", lbm_errmsg());
     exit(1);
 }
 </pre><p>Set configuration options that must be unique or permanent for the source. The following example sets configuration option transport to BROKER.</p>

@@ -13,5 +13,8 @@ var classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMRawTimestamp =
     [ "set_debug_level", "classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMRawTimestamp.html#a3c03c8646702b8e1196d0d325bd37d06", null ],
     [ "toDbgString", "classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMRawTimestamp.html#afb2e193cf650f3e5841f24a755a87301", null ],
     [ "toString", "classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMRawTimestamp.html#af8c0629f602963179a7275a8dc2468fa", null ],
-    [ "debug_level", "classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMRawTimestamp.html#a7f4f5c9ddb8d33822f0d823f75725da3", null ]
+    [ "DEBUG_BASIC", "classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMRawTimestamp.html#ad2f7d304c7115ec0ca32bab496ddc1a9", null ],
+    [ "debug_level", "classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMRawTimestamp.html#a7f4f5c9ddb8d33822f0d823f75725da3", null ],
+    [ "DEBUG_VERBOSE_PARSING", "classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMRawTimestamp.html#aff5bd4c7ac7e4e493838eadceeab3a49", null ],
+    [ "length", "classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMRawTimestamp.html#afd8b02fb16612cca13715485bdd656d6", null ]
 ];

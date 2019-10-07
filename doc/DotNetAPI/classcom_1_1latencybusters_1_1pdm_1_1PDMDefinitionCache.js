@@ -8,5 +8,6 @@ var classcom_1_1latencybusters_1_1pdm_1_1PDMDefinitionCache =
     [ "put", "classcom_1_1latencybusters_1_1pdm_1_1PDMDefinitionCache.html#a55cff101a2d42f51e3884fbcaaf70a81", null ],
     [ "remove", "classcom_1_1latencybusters_1_1pdm_1_1PDMDefinitionCache.html#af0e0ffce41a39b14f464912c9efb16b9", null ],
     [ "remove", "classcom_1_1latencybusters_1_1pdm_1_1PDMDefinitionCache.html#a244a83affb2fc626c4ca3c22dd295a4c", null ],
-    [ "cacheLock", "classcom_1_1latencybusters_1_1pdm_1_1PDMDefinitionCache.html#ad2e45d2301449c8e79ce8e04ca06b866", null ]
+    [ "cacheLock", "classcom_1_1latencybusters_1_1pdm_1_1PDMDefinitionCache.html#ad2e45d2301449c8e79ce8e04ca06b866", null ],
+    [ "Instance", "classcom_1_1latencybusters_1_1pdm_1_1PDMDefinitionCache.html#a51bd0e67e90d51209511d3c638e9ba62", null ]
 ];

@@ -89,5 +89,7 @@ var classcom_1_1latencybusters_1_1pdm_1_1PDMMessage =
     [ "toBytes", "classcom_1_1latencybusters_1_1pdm_1_1PDMMessage.html#a88b0119e197140a892de26f359eb7f65", null ],
     [ "toBytes", "classcom_1_1latencybusters_1_1pdm_1_1PDMMessage.html#a96ea79a10ca210d9d88168817dfc310f", null ],
     [ "toBytes", "classcom_1_1latencybusters_1_1pdm_1_1PDMMessage.html#a78586c5e813745a933258d5e26492fa9", null ],
-    [ "updateOptOrVarFlag", "classcom_1_1latencybusters_1_1pdm_1_1PDMMessage.html#ad9bab46d37e5d1d97653a0eae4df9063", null ]
+    [ "updateOptOrVarFlag", "classcom_1_1latencybusters_1_1pdm_1_1PDMMessage.html#ad9bab46d37e5d1d97653a0eae4df9063", null ],
+    [ "VERSION_POLICY_BEST", "classcom_1_1latencybusters_1_1pdm_1_1PDMMessage.html#a0cfaf177111e1e3a33453e55e8c4796a", null ],
+    [ "VERSION_POLICY_EXACT", "classcom_1_1latencybusters_1_1pdm_1_1PDMMessage.html#abeee6b2c684440433c05b60447ccabc4", null ]
 ];

@@ -112,7 +112,7 @@ XSP Usage&nbsp;&nbsp;<small><a href="#xspusage">&lt;-</a></small></h2>
 <li>
 <p class="startli">Create a context attribute object and set the <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grpmajoroptions.html#transportmappingfunctioncontext">transport_mapping_function (context)</a> option to point at the application's XSP mapping callback function using the structure <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#a90dde1ea00f12038cff7195c76d47a46">lbm_transport_mapping_func_t</a>.</p>
 <pre class="fragment">  lbm_context_attr_t *ctx_attr;
-  err = lbm_context_attr_create(&amp;ctx_attr);
+  err = lbm_context_attr_create_from_xml(&amp;ctx_attr, "MyCtx");
 
   lbm_transport_mapping_func_t mapping_func;
   mapping_func.mapping_func = app_xsp_mapper_callback;
@@ -171,7 +171,7 @@ Other XSP Operations&nbsp;&nbsp;<small><a href="#otherxspoperations">&lt;-</a></
 </ul>
 <p>To create and manipulate an XSP attribute object, see: </p><ul>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#a9ab709766b50d510266901f961341a00">lbm_xsp_attr_create()</a> </li>
+lbm_xsp_attr_create_from_xml() </li>
 <li>
 <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#ae52cbac6a22b495a3b48a70bf23fc118">lbm_xsp_attr_setopt()</a> </li>
 <li>
@@ -399,10 +399,11 @@ Immediate messaging target: TCP:10.29.3.76:4391
  </p>
 <h2><a class="anchor" id="configuringlatejoinforlargenumbersofmessages"></a>
 Configuring Late Join for Large Numbers of Messages&nbsp;&nbsp;<small><a href="#configuringlatejoinforlargenumbersofmessages">&lt;-</a></small></h2>
-<p>Suppose you have a receiver that comes up at midday and must gracefully catch up on the large number of messages it has missed. The following discussion explains the relevant Late Join options and how to use them.</p>
+<p>Suppose you have a persistent receiver that comes up at midday and must gracefully catch up on the large number of messages it has missed. The following discussion explains the relevant Late Join options and how to use them. (The discussion also applies to streaming-based late join, but since streaming sources must hold all retained messages in memory, there are typically far fewer messages available.)</p>
 <p><b>Option:</b> <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grplatejoin.html#retransmitrequestoutstandingmaximumreceiver">retransmit_request_outstanding_maximum (receiver)</a></p>
-<p>When a receiver comes up and begins requesting Late Join messages, it does not simply request messages starting at Sequence Number 0 through 1000000. Rather, it requests the messages a little at a time, depending upon how option <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grplatejoin.html#retransmitrequestoutstandingmaximumreceiver">retransmit_request_outstanding_maximum (receiver)</a> is set. For example, when set to the default of 200, the receiver sends requests the first 200 messages (Sequence Number 0 - 199). Upon receiving Sequence Number 0, it then requests the next message (200), and so on, limiting the number of outstanding unfulfilled requests to 200.</p>
-<p>Note that in some environments, the default of 200 messages may be too high and overwhelm receivers with RXs, which can cause loss in a live LBT-RM stream. However, in other situations higher values can increase the rate of RXs received.</p>
+<p>When a receiver comes up and begins requesting Late Join messages, it does not simply request messages starting at Sequence Number 0 through 1000000. Rather, it requests the messages a little at a time, depending upon how option <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grplatejoin.html#retransmitrequestoutstandingmaximumreceiver">retransmit_request_outstanding_maximum (receiver)</a> is set. For example, when set to the default of 10, the receiver sends requests the first 10 messages (Sequence Number 0 - 9). Upon receiving Sequence Number 0, it then requests the next message (10), and so on, limiting the number of outstanding unfulfilled requests to 10.</p>
+<p>Note that higher for values retransmit_request_outstanding_maximum can increase the rate of RXs received, which can reduce the time required for receiver recovery. However, this can lead to heavy loading of the Store, potentially making it unable to sustain the incoming data rate.</p>
+<p>Also, be aware that increasing retransmit_request_outstanding_maximum may require a corresponding increase to <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grplatejoin.html#retransmitrequestintervalreceiver">retransmit_request_interval (receiver)</a>. Otherwise you can have a situation where messages time out because it takes a store longer than retransmit_request_interval to process all retransmit_request_outstanding_maximum requests. When this happens, you can see messages needlessly requested and sent many times (generates warnings to the receiver application log file).</p>
 <p><b>Option:</b> <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grplatejoin.html#retransmitmessagecachingproximityreceiver">retransmit_message_caching_proximity (receiver)</a></p>
 <p>When sequence number delivery order is used, long recoveries of active sources can create receiver memory cache problems due to the processing of both new and retransmitted messages. This option provides a method to control caching and cache size during recovery.</p>
 <p>It does this by comparing the option value (default 2147483647) to the difference between the newest (live) received sequence number and the latest received RX sequence number. If the difference is less than the option's value, the receiver caches incoming live new messages. Otherwise, new messages are dropped and not cached (with the assumption that they can be requested later as retransmissions).</p>

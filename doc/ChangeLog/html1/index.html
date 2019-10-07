@@ -59,15 +59,21 @@ $(document).ready(function(){initNavTree('index.html','');});
 <big><b>Ultra Messaging</b></big> <small>(Version 6.12)</small><br/>
 <br/><br/><br/>
 <center class="mytitle">Release Notes</center>
-<center>Copyright (C) 2004-2019, Informatica Corporation.  All Rights Reserved.</center>
 <br/><br/><br/>
 [&nbsp;<a href="../index.html">Multi-page HTML</a>&nbsp;]&nbsp;&nbsp;|&nbsp;&nbsp;[&nbsp;<a href="../ReleaseNotes=en.pdf">PDF</a>&nbsp;]
 <br/><br/>
  </p>
 <h1><a class="anchor" id="firstsect"></a>
 Introduction&nbsp;&nbsp;<small><a href="#firstsect">&lt;-</a></small></h1>
+<p><b>&copy; Copyright Informatica LLC 2004-2019.</b></p>
 <p>This document describes the important changes made to the Ultra Messaging product family with each release. The document is cumulative across the major version number, and also across the core Ultra Messaging products: Streaming Edition (UMS), Persistence Edition (UMP), Queuing Edition (UMQ), and the Dynamic Routing Option (DRO).</p>
-<dl class="section attention"><dt>Attention</dt><dd><b>See the <a href="../../DocIntro=en.pdf">Documentation Introduction</a> for important information on copyright, patents, information resources (including Knowledge Base, and How To articles), Marketplace, Support, and other information about Informatica and its products.</b></dd></dl>
+<p>This software and documentation are provided only under a separate license agreement containing restrictions on use and disclosure. No part of this document may be reproduced or transmitted in any form, by any means (electronic, photocopying, recording or otherwise) without prior consent of Informatica LLC.</p>
+<p>A current list of Informatica trademarks is available on the web at <a href="https://www.informatica.com/trademarks.html">https://www.informatica.com/trademarks.html</a>.</p>
+<p>Portions of this software and/or documentation are subject to copyright held by third parties. Required third party notices are included with the product.</p>
+<p>This software is protected by patents as detailed at <a href="https://www.informatica.com/legal/patents.html">https://www.informatica.com/legal/patents.html</a>.</p>
+<p>The information in this documentation is subject to change without notice. If you find any problems in this documentation, please report them to us in writing at Informatica LLC 2100 Seaport Blvd. Redwood City, CA 94063.</p>
+<p>Informatica products are warranted according to the terms and conditions of the agreements under which they are provided. <br />
+INFORMATICA LLC PROVIDES THE INFORMATION IN THIS DOCUMENT "AS IS" WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING WITHOUT ANY WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND ANY WARRANTY OR CONDITION OF NON-INFRINGEMENT.</p>
 <p>See <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/ChangeLog/design.tag:../../Design/" href="../../Design/umglossary.html">UM Glossary</a> for Ultra Messaging terminology, abbreviations, and acronyms.</p>
 <dl class="section attention"><dt>Attention</dt><dd>See <a class="el" href="index.html#errata">Errata</a> for important errors in the documentation.</dd></dl>
 <p><br />
@@ -393,7 +399,7 @@ Dynamic Router Fixed Limitations for 6.12&nbsp;&nbsp;<small><a href="#dynamicrou
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>10499 </td><td><p class="starttd"><b>FIXED:</b> <em>The DRO configuration element <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/ChangeLog/gateway.tag:../../Gateway/" href="../../Gateway/xmlconfigurationreference.html#drocfg_route-info">&lt;route-info&gt;</a> has the attribute <code>"max-hop-count"</code> which is documented as defaulting to 100. However, the DRO did not properly initialize its internal default, which had the effect of defaulting to 255.</em></p>
+<td>10499 </td><td><p class="starttd"><b>FIXED:</b> <em>The DRO configuration element <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/ChangeLog/gateway.tag:../../Gateway/" href="../../Gateway/xmlconfigurationreference.html#droelementrouteinfo">&lt;route-info&gt;</a> has the attribute <code>"max-hop-count"</code> which is documented as defaulting to 100. However, the DRO did not properly initialize its internal default, which had the effect of defaulting to 255.</em></p>
 <p>The DRO now properly defaults <code>"max-hop-count"</code> to 100.</p>
 <p class="endtd"></p>
 </td></tr>
@@ -436,6 +442,10 @@ Streaming Known Limitations&nbsp;&nbsp;<small><a href="#streamingknownlimitation
 <th>Change Request </th><th><p class="starttd">Description</p>
 <p class="endtd"></p>
 </th></tr>
+<tr>
+<td>10772 </td><td><p class="starttd">Starting with UM version 6.10, the UM library built for MacOS (Darwin) no longer supports <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/ChangeLog/config.tag:../../Config/" href="../../Config/grpmajoroptions.html#fdmanagementtypecontext">fd_management_type (context)</a> of "kqueue".</p>
+<p class="endtd"></p>
+</td></tr>
 <tr>
 <td>10498 </td><td><p class="starttd">Security Vulnerability: the Persistent Store web monitor function can be used to read arbitrary files on the host running the Store daemon.</p>
 <p>Note that the persistent store web monitor is not a secure system and is not intended to be exposed to unauthorized users. In particular, the web monitor cannot be configured for certificate-based <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/ChangeLog/design.tag:../../Design/" href="../../Design/umfeatures.html#encryptedtcp">Encrypted TCP</a>. Users are expected to prevent unauthorized access to the web monitor through normal firewalling methods. Users who are unable to limit access to a level consistent with their overall security needs should disable the store web monitor. See <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/ChangeLog/design.tag:../../Design/" href="../../Design/fundamentalconcepts.html#webmonsecurity">Webmon Security</a> for more information.</p>
@@ -1524,7 +1534,7 @@ Dynamic Router Enhancements for 6.10&nbsp;&nbsp;<small><a href="#dynamicrouteren
 <p>The following new features and enhancements apply to the Dynamic Routing Option (DRO).</p>
 <ul>
 <li>
-Smart-Batch. New method of batching within the UM router which significantly increases throughput without increasing latency (as compared to flushing every message). See <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/ChangeLog/gateway.tag:../../Gateway/" href="../../Gateway/xmlconfigurationreference.html#drocfg_smart-batch">&lt;smart-batch&gt;</a>. </li>
+Smart-Batch. New method of batching within the UM router which significantly increases throughput without increasing latency (as compared to flushing every message). See <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/ChangeLog/gateway.tag:../../Gateway/" href="../../Gateway/xmlconfigurationreference.html#droelementsmartbatch">&lt;smart-batch&gt;</a>. </li>
 </ul>
 <p><br />
  </p>
@@ -1663,7 +1673,7 @@ Persistence Fixed Limitations for 6.10&nbsp;&nbsp;<small><a href="#persistencefi
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>9689 </td><td>Enhancement: Added Store configuration element <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/ChangeLog/ume.tag:../../UME/" href="../../UME/configurationreferenceforumestored.html#umecfgxmlconfig">&lt;xml-config&gt;</a> to allow the use of XML-based UM configuration files. With this addition, Informatica discourages the use of the environment variable '<code>LBM_XML_CONFIG_FILENAME</code>'. </td></tr>
+<td>9689 </td><td>Enhancement: Added Store configuration element <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/ChangeLog/ume.tag:../../UME/" href="../../UME/configurationreferenceforumestored.html#umeelementxmlconfig">&lt;xml-config&gt;</a> to allow the use of XML-based UM configuration files. With this addition, Informatica discourages the use of the environment variable '<code>LBM_XML_CONFIG_FILENAME</code>'. </td></tr>
 </table>
 <p><br />
  </p>
@@ -1762,7 +1772,7 @@ LBMContext.setUMQMessageStable() method </li>
 Dynamic Router Deprecations for 6.10&nbsp;&nbsp;<small><a href="#dynamicrouterdeprecationsfor610">&lt;-</a></small></h3>
 <ul>
 <li>
-Dual-TCP peer links. UM DRO version 6.10 no longer supports dual-TCP peer links. The XML configuration elements '<code>&lt;tcp&gt;</code>' and '<code>&lt;companion&gt;</code>' will generate errors. Upgrading customers should use <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/ChangeLog/gateway.tag:../../Gateway/" href="../../Gateway/xmlconfigurationreference.html#drocfg_single-tcp">&lt;single-tcp&gt;</a> instead. </li>
+Dual-TCP peer links. UM DRO version 6.10 no longer supports dual-TCP peer links. The XML configuration elements '<code>&lt;tcp&gt;</code>' and '<code>&lt;companion&gt;</code>' will generate errors. Upgrading customers should use <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/ChangeLog/gateway.tag:../../Gateway/" href="../../Gateway/xmlconfigurationreference.html#droelementsingletcp">&lt;single-tcp&gt;</a> instead. </li>
 </ul>
 <p><br />
  </p>
@@ -2259,6 +2269,10 @@ C: <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lb
 Java and .NET: <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/ChangeLog/javaapi.tag:../../JavaAPI/" href="../../JavaAPI/classcom_1_1latencybusters_1_1lbm_1_1UMEMessageAck.html#a48ecb4264bbdc97da4ad5de2f0e175b4">com::latencybusters::lbm::UMEMessageAck::markNotOutstanding()</a> </li>
 </ul>
 <p>This call updates the internal acking state up to the sequence number provided for throttled recovery, without acking anything.</p>
+<p class="endli"></p>
+</li>
+<li>
+<p class="startli">The Persistent Store no longer requires a UM License file to operate. Persistent client application still require a license key with peristence enabled.</p>
 <p class="endli"></p>
 </li>
 <li>
@@ -4119,36 +4133,7 @@ Errata&nbsp;&nbsp;<small><a href="#errata">&lt;-</a></small></h1>
 <p>The following important corrections and improvements made to the documentation after it was released.</p>
 <ul>
 <li>
-<p class="startli">Bug 10447, fixed in 6.12, was reported in the release notes without its cloned bug numbers, 10451 and 10458. Those cloned bug numbers have now been added to the release notes entry.</p>
-<p class="endli"></p>
-</li>
-<li>
-<p class="startli">Bug 9940/10131 was reported as being fixed in UM version 6.10.1. This was incorrect. The bug exists in all UM versions from 6.0 to 6.12, inclusive. (The fix is planned for the 6.12.1 hotfix.)</p>
-<p>If a persistent publisher send a message containing Message Properties, and the Proactive Retransmission feature is used to record the message on the Store, a receiver which recovers the message from the Store will crash with a fatal assert: <br />
-<code>FATAL: failed assertion [prop_offset &gt;= 0]</code> <br />
-If message properties are used on persisted sources, the user should disable Proactive Retransmissions by setting the configuration option: <br />
-<code>source ume_message_stability_timeout 0</code> <br />
-See <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/ChangeLog/config.tag:../../Config/" href="../../Config/grpultramessagingpersistence.html#umemessagestabilitytimeoutsource">ume_message_stability_timeout (source)</a>.</p>
-<p class="endli"></p>
-</li>
-<li>
-<p class="startli">Significant updates to <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/ChangeLog/config.tag:../../Config/" href="../../Config/grpdeliverycontrol.html#deliverycontrolmaximumtotalmapentriescontext">delivery_control_maximum_total_map_entries (context)</a>.</p>
-<p class="endli"></p>
-</li>
-<li>
-<p class="startli">Significant updates to <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/ChangeLog/config.tag:../../Config/" href="../../Config/grpofftransportrecovery.html#otrmessagecachingthresholdreceiver">otr_message_caching_threshold (receiver)</a>.</p>
-<p class="endli"></p>
-</li>
-<li>
-<p class="startli">Significant updates to <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/ChangeLog/config.tag:../../Config/" href="../../Config/grpofftransportrecovery.html#otrrequestinitialdelayreceiver">otr_request_initial_delay (receiver)</a>.</p>
-<p class="endli"></p>
-</li>
-<li>
-<p class="startli">Added description of order map to <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/ChangeLog/design.tag:../../Design/" href="../../Design/architecture.html#deliverycontroller">Delivery Controller</a>.</p>
-<p class="endli"></p>
-</li>
-<li>
-Added new section <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/ChangeLog/design.tag:../../Design/" href="../../Design/advancedoptimizations.html#transportdemultiplexertablesize">Transport Demultiplexer Table Size</a>. </li>
+none. </li>
 </ul>
 </div></div><!-- contents -->
 </div><!-- doc-content -->

@@ -13,41 +13,50 @@ var NAVTREE =
       [ "Plain Text Configuration Files", "index.html#plaintextconfigurationfiles", [
         [ "Reading Plain Text Configuration Files", "index.html#readingplaintextconfigurationfiles", null ]
       ] ],
-      [ "Plain Text Configuration File Format", "index.html#plaintextconfigurationfileformat", null ],
-      [ "XML Configuration Files", "index.html#xmlconfigurationfiles", [
-        [ "Reading XML Configuration Files", "index.html#readingxmlconfigurationfiles", null ],
-        [ "Using XML Configuration Files With a UM Application", "index.html#usingxmlconfigurationfileswithaumapplication", null ],
-        [ "XML Configuration File Format", "index.html#xmlconfigurationfileformat", null ],
-        [ "Merging Multiple XML Configuration Files", "index.html#mergingmultiplexmlconfigurationfiles", null ]
-      ] ]
+      [ "Plain Text Configuration File Format", "index.html#plaintextconfigurationfileformat", null ]
     ] ],
-    [ "XML Configuration File Elements", "index.html#xmlconfigurationfileelements", [
-      [ "<um-configuration>", "index.html#umconfiguration", null ],
-      [ "<license>", "index.html#license", null ],
-      [ "<options>", "index.html#options", null ],
-      [ "<option>", "index.html#option", null ],
-      [ "<allow>", "index.html#allow", null ],
-      [ "<deny>", "index.html#deny", null ],
-      [ "<templates>", "index.html#templates", null ],
-      [ "<template>", "index.html#template", null ],
-      [ "<applications>", "index.html#applications", null ],
-      [ "<application>", "index.html#application", null ],
-      [ "<contexts>", "index.html#contexts", null ],
-      [ "<context>", "index.html#context", null ],
-      [ "<sources>", "index.html#sources", null ],
-      [ "<topic>", "index.html#topic", null ],
-      [ "<receivers>", "index.html#receivers", null ],
-      [ "<wildcard-receivers>", "index.html#wildcardreceivers", null ],
-      [ "<wildcard-receiver>", "index.html#wildcardreceiver", null ],
-      [ "<event-queues>", "index.html#eventqueues", null ],
-      [ "<event-queue>", "index.html#eventqueue", null ],
-      [ "<hfxs>", "index.html#hfxs", null ],
-      [ "<application-data>", "index.html#applicationdata", null ]
+    [ "XML Configuration Files", "index.html#xmlconfigurationfiles", [
+      [ "XML Configuration Concepts", "index.html#xmlconfigurationconcepts", null ],
+      [ "XML Reference Names", "index.html#xmlreferencenames", [
+        [ "XML Object Names", "index.html#xmlobjectnames", null ],
+        [ "XML Application Names", "index.html#xmlapplicationnames", null ]
+      ] ],
+      [ "Order and Rule Specifications", "index.html#orderandrulespecifications", [
+        [ "Constraining Configuration Values", "index.html#constrainingconfigurationvalues", null ],
+        [ "Restricting Topics", "index.html#restrictingtopics", null ],
+        [ "Overlapping Topics", "index.html#overlappingtopics", null ]
+      ] ],
+      [ "UM Default Values", "index.html#umdefaultvalues", null ],
+      [ "Reading XML Configuration Files", "index.html#readingxmlconfigurationfiles", null ],
+      [ "Using XML Configuration Files With a UM Application", "index.html#usingxmlconfigurationfileswithaumapplication", null ],
+      [ "XML Configuration File Format", "index.html#xmlconfigurationfileformat", null ],
+      [ "Merging Multiple XML Configuration Files", "index.html#mergingmultiplexmlconfigurationfiles", null ],
+      [ "XML Configuration File Elements", "index.html#xmlconfigurationfileelements", [
+        [ "UM Element \"<um-configuration>\"", "index.html#umelementumconfiguration", null ],
+        [ "UM Element \"<applications>\"", "index.html#umelementapplications", null ],
+        [ "UM Element \"<application>\"", "index.html#umelementapplication", null ],
+        [ "UM Element \"<application-data>\"", "index.html#umelementapplicationdata", null ],
+        [ "UM Element \"<hfxs>\"", "index.html#umelementhfxs", null ],
+        [ "UM Element \"<topic>\"", "index.html#umelementtopic", null ],
+        [ "UM Element \"<options>\"", "index.html#umelementoptions", null ],
+        [ "UM Element \"<option>\"", "index.html#umelementoption", null ],
+        [ "UM Element \"<deny>\"", "index.html#umelementdeny", null ],
+        [ "UM Element \"<allow>\"", "index.html#umelementallow", null ],
+        [ "UM Element \"<event-queues>\"", "index.html#umelementeventqueues", null ],
+        [ "UM Element \"<event-queue>\"", "index.html#umelementeventqueue", null ],
+        [ "UM Element \"<contexts>\"", "index.html#umelementcontexts", null ],
+        [ "UM Element \"<context>\"", "index.html#umelementcontext", null ],
+        [ "UM Element \"<wildcard-receivers>\"", "index.html#umelementwildcardreceivers", null ],
+        [ "UM Element \"<wildcard-receiver>\"", "index.html#umelementwildcardreceiver", null ],
+        [ "UM Element \"<receivers>\"", "index.html#umelementreceivers", null ],
+        [ "UM Element \"<sources>\"", "index.html#umelementsources", null ],
+        [ "UM Element \"<templates>\"", "index.html#umelementtemplates", null ],
+        [ "UM Element \"<template>\"", "index.html#umelementtemplate", null ],
+        [ "UM Element \"<license>\"", "index.html#umelementlicense", null ]
+      ] ],
+      [ "XML Configuration File DTD", "index.html#xmlconfigurationfiledtd", null ],
+      [ "Sample XML Configuration File", "index.html#samplexmlconfigurationfile", null ]
     ] ],
-    [ "Sample XML Configuration File", "index.html#samplexmlconfigurationfile", [
-      [ "Using the Order and Rule XML Attributes", "index.html#usingtheorderandrulexmlattributes", null ]
-    ] ],
-    [ "XML Configuration File DTD", "index.html#xmlconfigurationfiledtd", null ],
     [ "Attributes Objects", "index.html#attributesobjects", [
       [ "Creating An Attributes Object", "index.html#creatinganattributesobject", null ],
       [ "Setting an Option from a Binary Value", "index.html#settinganoptionfromabinaryvalue", [
@@ -763,8 +772,8 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "index.html",
-"index.html#requesttcpportcontext",
-"index.html#transporttcpinterfacesource"
+"index.html#resolveradvertisementminimumsustaindurationsource",
+"index.html#transporttcpusesessionidsource"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

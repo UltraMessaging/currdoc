@@ -59,15 +59,21 @@ $(document).ready(function(){initNavTree('index.html','');});
 <big><b>Ultra Messaging</b></big> <small>(Version 6.12)</small><br/>
 <br/><br/><br/>
 <center class="mytitle">Guide for Persistence</center>
-<center>Copyright (C) 2004-2019, Informatica Corporation.  All Rights Reserved.</center>
 <br/><br/><br/>
 [&nbsp;<a href="../index.html">Multi-page HTML</a>&nbsp;]&nbsp;&nbsp;|&nbsp;&nbsp;[&nbsp;<a href="../UM_Guide_for_Persistence=en.pdf">PDF</a>&nbsp;]
 <br/><br/>
  </p>
 <h1><a class="anchor" id="firstsect"></a>
 Introduction&nbsp;&nbsp;<small><a href="#firstsect">&lt;-</a></small></h1>
+<p><b>&copy; Copyright Informatica LLC 2004-2019.</b></p>
 <p>This document describes the Persistence functionality of the UMP and UMQ products.</p>
-<dl class="section attention"><dt>Attention</dt><dd><b>See the <a href="../../DocIntro=en.pdf">Documentation Introduction</a> for important information on copyright, patents, information resources (including Knowledge Base, and How To articles), Marketplace, Support, and other information about Informatica and its products.</b></dd></dl>
+<p>This software and documentation are provided only under a separate license agreement containing restrictions on use and disclosure. No part of this document may be reproduced or transmitted in any form, by any means (electronic, photocopying, recording or otherwise) without prior consent of Informatica LLC.</p>
+<p>A current list of Informatica trademarks is available on the web at <a href="https://www.informatica.com/trademarks.html">https://www.informatica.com/trademarks.html</a>.</p>
+<p>Portions of this software and/or documentation are subject to copyright held by third parties. Required third party notices are included with the product.</p>
+<p>This software is protected by patents as detailed at <a href="https://www.informatica.com/legal/patents.html">https://www.informatica.com/legal/patents.html</a>.</p>
+<p>The information in this documentation is subject to change without notice. If you find any problems in this documentation, please report them to us in writing at Informatica LLC 2100 Seaport Blvd. Redwood City, CA 94063.</p>
+<p>Informatica products are warranted according to the terms and conditions of the agreements under which they are provided. <br />
+INFORMATICA LLC PROVIDES THE INFORMATION IN THIS DOCUMENT "AS IS" WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING WITHOUT ANY WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND ANY WARRANTY OR CONDITION OF NON-INFRINGEMENT.</p>
 <p>This document assumes familiarity with the <a href="../../Design/index.html">UM Concepts Guide</a>.</p>
 <p>See <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UME/design.tag:../../Design/" href="../../Design/umglossary.html">UM Glossary</a> for Ultra Messaging terminology, abbreviations, and acronyms.</p>
 <p><br />
@@ -233,7 +239,7 @@ Repository Thresholds and Limits&nbsp;&nbsp;<small><a href="#repositorythreshold
 </ul>
 <p>See <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UME/config.tag:../../Config/" href="../../Config/grpultramessagingpersistence.html">Ultra Messaging Persistence Options</a>.</p>
 <p>Note: The above configuration options' default values can be altered for individual sources and receivers by calling <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UME/api.tag:../../API/" href="../../API/lbm_8h.html#a96ea052dce2e6376684cbf2003407cbf">lbm_src_topic_attr_setopt()</a> before you allocate the topic.</p>
-<p>The umestored configuration options for source/topic repositories explained below can also be used to control threshold and limit behavior. See <a class="el" href="index.html#topicelement">Topic Element</a> for complete information about the following repository options.</p>
+<p>The umestored configuration options for source/topic repositories explained below can also be used to control threshold and limit behavior. See <a class="el" href="index.html#optionsforatopicsume-attributeselement">Options for a Topic's ume-attributes Element</a> for complete information about the following repository options.</p>
 <dl class="section note"><dt>Note</dt><dd>Whether you use the UM configuration options mentioned above or the source repository options explained below to control source repository threshold and limit behavior, remember the values you configure apply to a single source sending to the store. If you use the default repository size limit of 48 MB and you have 1,000 sources sending to the store, UM creates a store with 1,000 source repositories of 48 MB each, which requires a store with approximately 48 GB of memory. And if you use the default disk file size limit of 100 MB and you have 1,000 sources sending to the store, UM creates a store with 1,000 source repositories of 100 MB each, which requires a store with disk storage capacity of approximately 100 GB.</dd></dl>
 <p><b>Memory Repository</b></p>
 <p>A memory type source repository has three configuration options that manage its size relative to its capacity.</p>
@@ -369,7 +375,7 @@ Source sends SRI over configured transport </li>
 <div class="image">
 <img src="source_registration.png" alt="source_registration.png"/>
 </div>
- <p>Sources can find the correct store(s) to register with from the values configured for it in <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UME/config.tag:../../Config/" href="../../Config/grpultramessagingpersistence.html#umestoresource">ume_store (source)</a> or <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UME/config.tag:../../Config/" href="../../Config/grpultramessagingpersistence.html#umestorenamesource">ume_store_name (source)</a>. The configuration option <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UME/config.tag:../../Config/" href="../../Config/grpultramessagingpersistence.html#umestoresource">ume_store (source)</a> contains the IP address, TCP port, registration ID, and group index for the store(s) to be used by the source. The configuration option <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UME/config.tag:../../Config/" href="../../Config/grpultramessagingpersistence.html#umestorenamesource">ume_store_name (source)</a> contains the names of the stores to be used by the source. <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UME/config.tag:../../Config/" href="../../Config/grpultramessagingpersistence.html#umestorenamesource">ume_store_name (source)</a> requires that the store name is configured with the <a class="el" href="index.html#umecfgcontextname">context-name</a> option in the store's XML configuration file. See <a class="el" href="index.html#identifyingpersistentstores">Identifying Persistent Stores</a> and the <a class="el" href="index.html#storeelement">Store Element</a>.</p>
+ <p>Sources can find the correct store(s) to register with from the values configured for it in <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UME/config.tag:../../Config/" href="../../Config/grpultramessagingpersistence.html#umestoresource">ume_store (source)</a> or <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UME/config.tag:../../Config/" href="../../Config/grpultramessagingpersistence.html#umestorenamesource">ume_store_name (source)</a>. The configuration option <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UME/config.tag:../../Config/" href="../../Config/grpultramessagingpersistence.html#umestoresource">ume_store (source)</a> contains the IP address, TCP port, registration ID, and group index for the store(s) to be used by the source. The configuration option <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UME/config.tag:../../Config/" href="../../Config/grpultramessagingpersistence.html#umestorenamesource">ume_store_name (source)</a> contains the names of the stores to be used by the source. <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UME/config.tag:../../Config/" href="../../Config/grpultramessagingpersistence.html#umestorenamesource">ume_store_name (source)</a> requires that the store name is configured with the <a class="el" href="index.html#umecfgcontextname">context-name</a> option in the store's XML configuration file. See <a class="el" href="index.html#identifyingpersistentstores">Identifying Persistent Stores</a> and the <a class="el" href="index.html#umeelementstore">&lt;store&gt;</a>.</p>
 <p>Sources unicast registrations to the store. The store unicasts responses back to the source. Registrations are on a per topic per source basis. Stores use RegIDs to identify sources and receivers. After registration sources may send data.</p>
 <p>After the source successfully registers with all the stores for which it is configured, the source issues a Registration Complete event and sends a Source Registration Information (SRI) record over the configured UM transport session.</p>
 <p>For multiple stores, the source determines when to issue a Registration Complete event based on the settings for the <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UME/config.tag:../../Config/" href="../../Config/grpultramessagingpersistence.html#umeretentionintragroupstabilitybehaviorsource">ume_retention_intragroup_stability_behavior (source)</a> and <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UME/config.tag:../../Config/" href="../../Config/grpultramessagingpersistence.html#umeretentionintergroupstabilitybehaviorsource">ume_retention_intergroup_stability_behavior (source)</a> options.</p>
@@ -768,7 +774,6 @@ source ume_write_delay 1000
   &lt;daemon&gt;
     &lt;log&gt;/configs/stores/umestore0/umestored.log&lt;/log&gt;
     &lt;pidfile&gt;/configs/stores/umestore0/umestored.pid&lt;/pidfile&gt;
-    &lt;lbm-license-file&gt;/bin/umq_exp_license.txt&lt;/lbm-license-file&gt;
     &lt;lbm-config&gt;/configs/lbm_store0.cfg&lt;/lbm-config&gt;
     &lt;web-monitor&gt;*:15404&lt;/web-monitor&gt;
   &lt;/daemon&gt;
@@ -1419,8 +1424,8 @@ Use Static RegIDs&nbsp;&nbsp;<small><a href="#usestaticregids">&lt;-</a></small>
 <p><b>C API</b></p>
 <pre class="fragment">lbm_src_topic_attr_t * sattr;
 
-if (lbm_src_topic_attr_create(&amp;sattr) == LBM_FAILURE) {
-  fprintf(stderr, "lbm_src_topic_attr_create: %s\n", lbm_errmsg());
+if (lbm_src_topic_attr_create_from_xml(&amp;sattr, "MyCtx", src_topic_name) == LBM_FAILURE) {
+  fprintf(stderr, "lbm_src_topic_attr_create_from_xml: %s\n", lbm_errmsg());
   exit(1);
 }
 if (lbm_src_topic_attr_str_setopt(sattr, "ume_store", "127.0.0.1:14567:1000")
@@ -1519,7 +1524,7 @@ New or Re-Registration&nbsp;&nbsp;<small><a href="#neworreregistration">&lt;-</a
     err = read_src_regid_from_file(SRC_REGID_SAVE_FILENAME, store_info, sizeof(store_info));
     if (!err) { srcinfo.existing_regid = 1; }
 
-        err = lbm_src_topic_attr_create(&amp;attr);
+        err = lbm_src_topic_attr_create_from_xml(&amp;attr, "MyCtx", src_topic_name);
         if (err) {printf("line %d: %s\n", __LINE__, lbm_errmsg()); exit(1);}
 
         err = lbm_src_topic_attr_str_setopt(attr, "ume_store", store_info);
@@ -1687,8 +1692,8 @@ Confirmed Delivery&nbsp;&nbsp;<small><a href="#confirmeddelivery">&lt;-</a></sma
 <p><b>C API</b></p>
 <pre class="fragment">lbm_src_topic_attr_t * sattr;
 
-if (lbm_src_topic_attr_create(&amp;sattr) == LBM_FAILURE) {
-    fprintf(stderr, "lbm_src_topic_attr_create: %s\n", lbm_errmsg());
+if (lbm_src_topic_attr_create_from_xml(&amp;sattr, "MyCtx", src_topic_name) == LBM_FAILURE) {
+    fprintf(stderr, "lbm_src_topic_attr_create_from_xml: %s\n", lbm_errmsg());
     exit(1);
 }
 if (lbm_src_topic_attr_str_setopt(sattr, "ume_retention_unique_confirmations",
@@ -2641,7 +2646,7 @@ Designing Persistent Stores&nbsp;&nbsp;<small><a href="#designingpersistentstore
  </p>
 <h3><a class="anchor" id="storelogfile"></a>
 Store Log File&nbsp;&nbsp;<small><a href="#storelogfile">&lt;-</a></small></h3>
-<p>The store daemon generates log messages that are used to monitor its health and operation. You can configure these to be directed to "console" (standard output) or a specified log "file", via the <a class="el" href="index.html#logelement">&lt;log&gt;</a> configuration element. Normally "console" is only used during testing, as a persistent log file is preferred for production use. The store does not over-write log files on startup, but instead appends them.</p>
+<p>The store daemon generates log messages that are used to monitor its health and operation. You can configure these to be directed to "console" (standard output) or a specified log "file", via the <a class="el" href="index.html#umeelementlog">&lt;log&gt;</a> configuration element. Normally "console" is only used during testing, as a persistent log file is preferred for production use. The store does not over-write log files on startup, but instead appends them.</p>
 <p><br />
  </p>
 <h3><a class="anchor" id="storerollinglogs"></a>
@@ -2659,7 +2664,7 @@ where: </p><ul>
 <em>SEQNUM</em> - Sequence number, starting at 1 when the process starts, and incrementing each time the log file rolls. </li>
 </ul>
 <p>For example: <code>umestorelog_9867.2017-08-20.2</code></p>
-<p>The user can configure when the log file is eligible to roll over by either or both of two criteria: size and frequency. The size criterion is in millions of bytes. The frequency criterion can be daily or hourly. Once one or both criteria are met, the next message written to the log will trigger a roll operation. These criteria are supplied as attributes to the <a class="el" href="index.html#logelement">&lt;log&gt;</a> configuration element.</p>
+<p>The user can configure when the log file is eligible to roll over by either or both of two criteria: size and frequency. The size criterion is in millions of bytes. The frequency criterion can be daily or hourly. Once one or both criteria are met, the next message written to the log will trigger a roll operation. These criteria are supplied as attributes to the <a class="el" href="index.html#umeelementlog">&lt;log&gt;</a> configuration element.</p>
 <p>If both criteria are supplied, then the first one to be reached will trigger a roll. For example, consider the setting: </p><pre class="fragment">  &lt;log type="file" size="23" frequency="daily"&gt;store.log&lt;/log&gt;
 </pre><p> Let say that the log file grows at 1 million bytes per hour. At 11:00 pm, the log file will reach 23 million bytes, and will roll. Then, at 12:00 midnight, the log file will roll again, even though it is only 1 million bytes in size.</p>
 <dl class="section note"><dt>Note</dt><dd>The rolling logs cannot be configured to automatically overwrite old logs. Thus, the amount of disk space consumed by log files will grow without bound. The user must implement a desired process of archiving or deleting older log files according to the user's preference.</dd></dl>
@@ -2972,7 +2977,7 @@ The store deletes the proxy source and the original source resumes activity. </l
 <h3><a class="anchor" id="activitytimeoutandstatelifetimes"></a>
 Activity Timeout and State Lifetimes&nbsp;&nbsp;<small><a href="#activitytimeoutandstatelifetimes">&lt;-</a></small></h3>
 <p>UM provides activity and state lifetime timers for sources and receivers that operate in conjunction with the proxy source option or independently. This section explains how these timers work together and how they work with proxy sources.</p>
-<p>The <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UME/config.tag:../../Config/" href="../../Config/grpultramessagingpersistence.html#umeactivitytimeoutsource">ume_activity_timeout (source)</a> and <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UME/config.tag:../../Config/" href="../../Config/grpultramessagingpersistence.html#umeactivitytimeoutreceiver">ume_activity_timeout (receiver)</a> options determine how long a source or receiver must be inactive before a store allows another source or receiver to register using that RegID. This prevents a second source or receiver from stealing a RegID from an existing source or receiver. An activity timeout can be configured for the source/receiver with the UM Configuration Option cited above or with a topic's <a class="el" href="index.html#umecfgumeattributes">ume-attribute</a> configured in the umestored XML configuration file. The following diagram illustrates the default activity timeout behavior, which uses <a class="el" href="index.html#umecfgsourcestatelifetime">source-state-lifetime</a> in the umestored XML configuration file.</p>
+<p>The <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UME/config.tag:../../Config/" href="../../Config/grpultramessagingpersistence.html#umeactivitytimeoutsource">ume_activity_timeout (source)</a> and <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UME/config.tag:../../Config/" href="../../Config/grpultramessagingpersistence.html#umeactivitytimeoutreceiver">ume_activity_timeout (receiver)</a> options determine how long a source or receiver must be inactive before a store allows another source or receiver to register using that RegID. This prevents a second source or receiver from stealing a RegID from an existing source or receiver. An activity timeout can be configured for the source/receiver with the UM Configuration Option cited above or with a topic's <a class="el" href="index.html#umeelementumeattributes">&lt;ume-attribute&gt;</a> configured in the umestored XML configuration file. The following diagram illustrates the default activity timeout behavior, which uses <a class="el" href="index.html#umecfgsourcestatelifetime">source-state-lifetime</a> in the umestored XML configuration file.</p>
 <div class="image">
 <img src="source_act_timeout_def.png" alt="source_act_timeout_def.png"/>
 </div>
@@ -3135,242 +3140,655 @@ Stores section - holds parameters for any persistent stores and also the topics 
 &lt;/ume-store&gt;
 </pre><p><br />
  </p>
-<h2><a class="anchor" id="daemonelement"></a>
-Daemon Element&nbsp;&nbsp;<small><a href="#daemonelement">&lt;-</a></small></h2>
-<p>The following table presents child elements allowed in the daemon configuration section.</p>
-<table class="doxtable">
-<tr>
-<th>Tag </th><th>Description </th><th><p class="starttd">Default Value</p>
-<p class="endtd"><a class="anchor" id="umecfglog"></a></p>
-</th></tr>
-<tr>
-<td>log </td><td>Required. Pathname for log file. </td><td><p class="starttd">None - this is a required element.</p>
-<p class="endtd"><a class="anchor" id="umecfguid"></a></p>
-</td></tr>
-<tr>
-<td>uid </td><td>User ID (uid) for daemon process (if started as root) </td><td><p class="starttd">Daemon retains starting uid</p>
-<p class="endtd"><a class="anchor" id="umecfgpidfile"></a></p>
-</td></tr>
-<tr>
-<td>pidfile </td><td>Pathname for daemon process ID (pid) file </td><td><p class="starttd">No pidfile</p>
-<p class="endtd"><a class="anchor" id="umecfggid"></a></p>
-</td></tr>
-<tr>
-<td>gid </td><td>Group ID (gid) for daemon process (if started as root) </td><td><p class="starttd">Daemon retains starting gid</p>
-<p class="endtd"><a class="anchor" id="umecfglbmconfig"></a></p>
-</td></tr>
-<tr>
-<td>lbm-config </td><td>Pathname for UM configuration file </td><td><p class="starttd">No config file; use UM defaults</p>
-<p class="endtd"><a class="anchor" id="umecfgxmlconfig"></a></p>
-</td></tr>
-<tr>
-<td>xml-config </td><td>Pathname for UM XML configuration file </td><td><p class="starttd">No config file; use UM defaults</p>
-<p class="endtd"><a class="anchor" id="umecfglbmlicensefile"></a></p>
-</td></tr>
-<tr>
-<td>lbm-license-file </td><td>Pathname for UM license file </td><td><p class="starttd">License read from environment</p>
-<p class="endtd"><a class="anchor" id="umecfgwebmonitor"></a></p>
-</td></tr>
-<tr>
-<td>web-monitor </td><td><p class="starttd">Address:port where web monitor listens. Address of '*' listens on all interfaces. Also has a single attribute, <code>permission</code>, with allowable values: <code>"read-only"</code> and <code>"read-write"</code>. Using read-only disables the text fields and buttons on a Web Monitor "debug page" that can only be enabled by Informatica Support. Example: *:15304</p>
-<p>Omit this element to disable the web monitor.</p>
-<p class="endtd">See <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UME/design.tag:../../Design/" href="../../Design/fundamentalconcepts.html#webmonsecurity">Webmon Security</a> for important security information. </p>
-</td><td><p class="starttd">No web monitor</p>
-<p class="endtd"><a class="anchor" id="umecfgdaemonmonitor"></a></p>
-</td></tr>
-<tr>
-<td>daemon-monitor </td><td>configuration for <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UME/design.tag:../../Design/" href="../../Design/umobjects.html#daemonstatistics">Daemon Statistics</a>. </td></tr>
-</table>
-<p><br />
+<h2><a class="anchor" id="storexmlconfigurationfileelements"></a>
+Store XML Configuration File Elements&nbsp;&nbsp;<small><a href="#storexmlconfigurationfileelements">&lt;-</a></small></h2>
+<hr/>
+<p> <br />
  </p>
-<h3><a class="anchor" id="logelement"></a>
-Log Element&nbsp;&nbsp;<small><a href="#logelement">&lt;-</a></small></h3>
-<p>The Log Element defines how the store daemon writes log messages during operation.</p>
-<p>The following table gives attributes for the <code>&lt;log&gt;</code> element:</p>
-<table class="doxtable">
-<tr>
-<th>Attribute </th><th>Description </th><th>Default Value </th></tr>
-<tr>
-<td>type </td><td>One of "file", "console". </td><td>"console" </td></tr>
-<tr>
-<td>size </td><td>Number of millions of bytes of file size to roll log file. E.g. a value of 1 rolls after 1000000 bytes. Maximum value is 4000. Value of 0 disables rolling by file size. Only applicable for <code>type="file"</code>. </td><td>0 </td></tr>
-<tr>
-<td>frequency </td><td>Frequency by which to roll log file. Choices are <br />
-&#160;&#160;<code>daily</code> - Roll log file at midnight. <br />
-&#160;&#160;<code>hourly</code> - Roll log file after approximately an hour, but is not exact and can drift significantly over a period of time. <br />
-&#160;&#160;<code>test</code> - For internal Informatica testing and should not be used. <br />
-&#160;&#160;<code>disable</code> - Do not roll log file by frequency. <br />
-Only applicable for <code>type="file"</code> </td><td><code>disable</code> </td></tr>
-</table>
-<p><br />
- </p>
-<h3><a class="anchor" id="daemonmonitorelement"></a>
-Daemon-monitor Element&nbsp;&nbsp;<small><a href="#daemonmonitorelement">&lt;-</a></small></h3>
-<p>The daemon-monitor element configures the store daemon for <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UME/design.tag:../../Design/" href="../../Design/umobjects.html#daemonstatistics">Daemon Statistics</a>.</p>
-<p>See <a class="el" href="index.html#storedaemonstatisticsconfiguration">Store Daemon Statistics Configuration</a> for an example of configuring.</p>
-<p>The following table gives attributes for the <code>&lt;daemon-monitor&gt;</code> element:</p>
-<table class="doxtable">
-<tr>
-<th>Attribute </th><th>Description </th><th>Default Value </th></tr>
-<tr>
-<td>topic </td><td>topic name for used to publish daemon statistics. </td><td>umestore.monitor </td></tr>
-</table>
-<p>The following table presents child elements allowed in the daemon-monitor configuration section.</p>
-<table class="doxtable">
-<tr>
-<th>Tag </th><th>Description </th><th><p class="starttd">Default Value</p>
-<p class="endtd"><a class="anchor" id="dmoncfglbmconfig"></a></p>
-</th></tr>
-<tr>
-<td>lbm-config </td><td>Optional LBM configuration file for the monitoring context. </td><td><p class="starttd">Defaults to LBM settings set by the daemon element's <a class="el" href="index.html#umecfglbmconfig">lbm-config element</a>.</p>
-<p class="endtd"><a class="anchor" id="dmoncfgpublishinginterval"></a></p>
-</td></tr>
-<tr>
-<td>publishing-interval </td><td>optional element which sets the interval for message publication. </td><td><p class="starttd">Defaults to not publishing.</p>
-<p class="endtd"><a class="anchor" id="dmoncfgremotesnapshotrequest"></a></p>
-</td></tr>
-<tr>
-<td>remote-snapshot-request </td><td>Controls if the daemon will respond to requests from monitoring applications. See <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UME/design.tag:../../Design/" href="../../Design/umobjects.html#daemonstatisticsrequests">Daemon Statistics Requests</a>. </td><td><p class="starttd">Defaults to disabled.</p>
-<p class="endtd"><a class="anchor" id="dmoncfgremoteconfigchangesrequest"></a></p>
-</td></tr>
-<tr>
-<td>remote-config-changes-request </td><td>Controls if the daemon will respond to change requests from monitoring applications. See <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UME/design.tag:../../Design/" href="../../Design/umobjects.html#daemonstatisticsrequests">Daemon Statistics Requests</a>. </td><td>Defaults to disabled. </td></tr>
-</table>
-<p><br />
- </p>
-<h3><a class="anchor" id="publishingintervalelement"></a>
-Publishing-interval Element&nbsp;&nbsp;<small><a href="#publishingintervalelement">&lt;-</a></small></h3>
-<p>Element which sets the publishing intervals for desired message types. The desired message types must be listed as <code>&lt;group&gt;</code> sub-elements of the <code>&lt;publishing-interval&gt;</code> element.</p>
-<p>See <a class="el" href="index.html#storedaemonstatisticsconfiguration">Store Daemon Statistics Configuration</a> for an example of configuring.</p>
-<p>The following table presents child elements allowed in the daemon-monitor configuration section.</p>
-<table class="doxtable">
-<tr>
-<th>Tag </th><th>Description </th><th><p class="starttd">Default Value</p>
-<p class="endtd"><a class="anchor" id="dmoncfggroup"></a></p>
-</th></tr>
-<tr>
-<td>group </td><td>Identifies the grouping of message type(s) and their publishing intervals. </td><td>Any grouping of message type(s) not listed default to not publishing. </td></tr>
-</table>
-<p><br />
- </p>
-<h3><a class="anchor" id="groupelement"></a>
-Group Element&nbsp;&nbsp;<small><a href="#groupelement">&lt;-</a></small></h3>
-<p>The group element identifies the grouping of message type(s) and their publishing interval.</p>
-<p>The following table gives attributes for the <code>&lt;group&gt;</code> element:</p>
-<table class="doxtable">
-<tr>
-<th>Attribute </th><th>Description </th><th>Default Value </th></tr>
-<tr>
-<td>name </td><td>one of the following: <ul>
+<h3><a class="anchor" id="umeelementumestore"></a>
+UMP Element "&lt;ume-store&gt;"&nbsp;&nbsp;<small><a href="#umeelementumestore">&lt;-</a></small></h3>
+<p>Container element that holds the configuration for the Persistent Store process. Also defines the version of the configuration format used by the file.</p>
+<ul>
 <li>
-<code>"default"</code> - sets a default interval for all message types. </li>
-<li>
-<code>"store"</code> - sets the interval for messages of type <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UME/api.tag:../../API/" href="../../API/umedmonmsgs_8h.html#aeeb55ed0b759e6316cdedc3c990dfe26">umestore_store_dmon_stat_msg_t</a>. </li>
-<li>
-<code>"source"</code> - sets the interval for messages of type <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UME/api.tag:../../API/" href="../../API/umedmonmsgs_8h.html#a88ce572fd35203194ada676661d2f54b">umestore_repo_dmon_stat_msg_t</a>. </li>
-<li>
-<code>"receiver"</code> - sets the interval for messages of type <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UME/api.tag:../../API/" href="../../API/umedmonmsgs_8h.html#a3829efae398d994795fb395097626709">umestore_rcv_dmon_stat_msg_t</a>. </li>
-<li>
-<code>"disk"</code> - sets the interval for messages of type <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UME/api.tag:../../API/" href="../../API/umedmonmsgs_8h.html#a3ed32f1017abda98dbac7f228d7c506b">umestore_disk_dmon_stat_msg_t</a>. </li>
-<li>
-<code>"config"</code> - sets the interval for messages of types <code>umestore_*_dmon_config_msg_t</code>. </li>
-<li>
-<code>"memory"</code> - sets the interval for messages of type <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UME/api.tag:../../API/" href="../../API/umedmonmsgs_8h.html#a0f08c3244acc64f54edb6e5897477121">umestore_smart_heap_dmon_stat_msg_t</a>. </li>
+<b>Children:</b> <a class="el" href="index.html#umeelementdaemon">&lt;daemon&gt;</a>, <a class="el" href="index.html#umeelementstores">&lt;stores&gt;</a> </li>
 </ul>
-</td><td>Required attribute (no default). </td></tr>
+<p><b>XML</b> <b>Attributes:</b> </p><table class="doxtable">
 <tr>
-<td>ivl </td><td>Time interval in seconds. </td><td>Required attribute (no default) </td></tr>
+<th>Attribute </th><th>Description </th><th>Valid Values </th><th>Default Value </th></tr>
+<tr>
+<td><b>version</b> </td><td>Version number of UME store XML DTD that the configuration file corresponds to. See <a class="el" href="index.html#umestoredconfigurationdtd">umestored Configuration DTD</a> for a description of the different versions. Users are encouraged to update their Store configuration files to correspond to the latest version supported by the Store software in use. </td><td>string </td><td>(no default; must be specified) </td></tr>
 </table>
-<p><br />
+<p><b>Example:</b> </p><pre class="fragment">&lt;?xml version="1.0"?&gt;
+&lt;ume-store version="1.3"&gt;
+  ...
+&lt;/ume-store&gt;
+</pre><hr/>
+<p> <br />
  </p>
-<h2><a class="anchor" id="storeselement"></a>
-Stores Element&nbsp;&nbsp;<small><a href="#storeselement">&lt;-</a></small></h2>
-<p>The Stores Element is a container for individual store elements which define specific store instances. The below is an example of a Stores Element.</p>
-<pre class="fragment">  &lt;stores&gt;
-    &lt;store name="test-store-1" port="14567"&gt;
-      &lt;ume-attributes&gt; ... &lt;/ume-attributes&gt;
-      &lt;topics&gt;
-        &lt;topic pattern="quote.*" type="PCRE"&gt;
-          &lt;ume-attributes&gt; ... &lt;/ume-attributes&gt;
-        &lt;/topic&gt;
-        &lt;topic pattern="subject.*" type="PCRE"&gt;
-          &lt;ume-attributes&gt; ... &lt;/ume-attributes&gt;
-        &lt;/topic&gt;
-      &lt;/topics&gt;
-    &lt;/store&gt;
-    &lt;store name="test-store-2" port="14568"&gt;
-      &lt;ume-attributes&gt; ... &lt;/ume-attributes&gt;
-      &lt;topics&gt;
-        &lt;topic pattern="issue.*" type="PCRE"&gt;
-          &lt;ume-attributes&gt; ... &lt;/ume-attributes&gt;
-        &lt;/topic&gt;
-        &lt;topic pattern="topic.*" type="PCRE"&gt;
-          &lt;ume-attributes&gt; ... &lt;/ume-attributes&gt;
-        &lt;/topic&gt;
-      &lt;/topics&gt;
-    &lt;/store&gt;
+<h3><a class="anchor" id="umeelementstores"></a>
+UMP Element "&lt;stores&gt;"&nbsp;&nbsp;<small><a href="#umeelementstores">&lt;-</a></small></h3>
+<p>Container element for one or more <a class="el" href="index.html#umeelementstore">&lt;store&gt;</a> elements. A store process can run multiple independent store instances. Some users prefer to run multiple store instances in a single process to reduce their process management complexity. Other users prefer to run multiple store processes, each with a single store instance, to reduce the impact of a store process failing.</p>
+<p>There should be little or no performance difference between multiple store instances running in the same process vs. multiple store processes on the same host. However, for maximum store performance, it is generally easier to pin store threads to cores when each process is running a single store instance.</p>
+<p>It is NOT recommended for multiple stores within a Q/C group to run in the same process, or even the same host, as this defeats the goal of reliability through redundancy.</p>
+<ul>
+<li>
+<b>Cardinality:</b> 0 .. 1 </li>
+<li>
+<b>Parent:</b> <a class="el" href="index.html#umeelementumestore">&lt;ume-store&gt;</a> </li>
+<li>
+<b>Children:</b> <a class="el" href="index.html#umeelementstore">&lt;store&gt;</a> </li>
+</ul>
+<p><b>Example:</b> </p><pre class="fragment">&lt;?xml version="1.0"?&gt;
+&lt;ume-store version="1.3"&gt;
+  &lt;stores&gt;
+    ...
   &lt;/stores&gt;
+  ...
+&lt;/ume-store&gt;
+</pre><hr/>
+<p> <br />
+ </p>
+<h3><a class="anchor" id="umeelementstore"></a>
+UMP Element "&lt;store&gt;"&nbsp;&nbsp;<small><a href="#umeelementstore">&lt;-</a></small></h3>
+<p>Configuration for a Store instance.</p>
+<ul>
+<li>
+<b>Cardinality:</b> 0 .. unbounded </li>
+<li>
+<b>Parent:</b> <a class="el" href="index.html#umeelementstores">&lt;stores&gt;</a> </li>
+<li>
+<b>Children:</b> <a class="el" href="index.html#umeelementpublishinginterval">&lt;publishing-interval&gt;</a>, <a class="el" href="index.html#umeelementumeattributes">&lt;ume-attributes&gt;</a>, <a class="el" href="index.html#umeelementtopics">&lt;topics&gt;</a> </li>
+</ul>
+<p><b>XML</b> <b>Attributes:</b> </p><table class="doxtable">
+<tr>
+<th>Attribute </th><th>Description </th><th>Valid Values </th><th>Default Value </th></tr>
+<tr>
+<td><b>name</b> </td><td>Identifies log messages for this store instance in the umestored log file. </td><td>attr_name </td><td>(no default; must be specified) </td></tr>
+<tr>
+<td><b>interface</b> </td><td>Specifies the IP address over which umestored accepts connection requests for this store. You can specify a single IP address, such as 10.29.3.16, or a range of addresses, 10.29.3.16/25. See also <a class="el" href="index.html#identifyingpersistentstores">Identifying Persistent Stores</a>. </td><td>string </td><td><b><code>"0.0.0.0"</code></b> (INADDR_ANY) </td></tr>
+<tr>
+<td><b>port</b> </td><td>TCP port where umestored should listen for connection requests to this store. </td><td>string </td><td>(no default; must be specified) </td></tr>
+</table>
+<p><b>Example:</b> </p><pre class="fragment">&lt;?xml version="1.0"?&gt;
+&lt;ume-store version="1.3"&gt;
+  &lt;stores&gt;
+    &lt;store name="MyStore1" interface="10.1.2.3" port="12000"&gt;
+      ...
+    &lt;/store&gt;
+    ...
+  &lt;/stores&gt;
+  ...
+&lt;/ume-store&gt;
+</pre><hr/>
+<p> <br />
+ </p>
+<h3><a class="anchor" id="umeelementtopics"></a>
+UMP Element "&lt;topics&gt;"&nbsp;&nbsp;<small><a href="#umeelementtopics">&lt;-</a></small></h3>
+<p>Container for <a class="el" href="index.html#umeelementtopic">&lt;topic&gt;</a> elements. Defines the topics that this store instance will persist.</p>
+<ul>
+<li>
+<b>Parent:</b> <a class="el" href="index.html#umeelementstore">&lt;store&gt;</a> </li>
+<li>
+<b>Children:</b> <a class="el" href="index.html#umeelementtopic">&lt;topic&gt;</a> </li>
+</ul>
+<p><b>Example:</b> </p><pre class="fragment">&lt;?xml version="1.0"?&gt;
+&lt;ume-store version="1.3"&gt;
+  &lt;stores&gt;
+    &lt;store name="MyStore1" interface="10.1.2.3" port="12000"&gt;
+      &lt;topics&gt;
+        ...
+      &lt;/topics&gt;
+      ...
+    &lt;/store&gt;
+    ...
+  &lt;/stores&gt;
+  ...
+&lt;/ume-store&gt;
+</pre><hr/>
+<p> <br />
+ </p>
+<h3><a class="anchor" id="umeelementtopic"></a>
+UMP Element "&lt;topic&gt;"&nbsp;&nbsp;<small><a href="#umeelementtopic">&lt;-</a></small></h3>
+<p>Defines a topic pattern which the Store will use to find sources to persist. Also contains configuration information about those topics.</p>
+<ul>
+<li>
+<b>Parent:</b> <a class="el" href="index.html#umeelementtopics">&lt;topics&gt;</a> </li>
+<li>
+<b>Children:</b> <a class="el" href="index.html#umeelementumeattributes">&lt;ume-attributes&gt;</a> </li>
+</ul>
+<p><b>XML</b> <b>Attributes:</b> </p><table class="doxtable">
+<tr>
+<th>Attribute </th><th>Description </th><th>Valid Values </th><th>Default Value </th></tr>
+<tr>
+<td><b>pattern</b> </td><td>A string that is used to discover sources to be persisted. The string can be a simple topic name (<code>type="direct"</code>), or it can be a regular expression (<code>type="pcre"</code>) which can match more than one topic. </td><td>string </td><td>(no default; must be specified) </td></tr>
+<tr>
+<td><b>type</b> </td><td>How the <code>pattern</code> attribute should be interpreted. </td><td><b><code>"direct"</code></b> - Topic name (exact string match) <br />
+<b><code>"PCRE"</code></b> - Perl regular expression. <br />
+<b><code>"regexp"</code></b> - Posix regular expression. <b>Deprecated; do not use.</b> </td><td><b>direct</b> </td></tr>
+</table>
+<p><b>Example:</b> </p>
+<p>In this example, the topic "NYSE.xyz" and all topics that start with "alert." are persisted in the "MyStore1" store instance. </p><pre class="fragment">&lt;?xml version="1.0"?&gt;
+&lt;ume-store version="1.3"&gt;
+  &lt;stores&gt;
+    &lt;store name="MyStore1" interface="10.1.2.3" port="12000"&gt;
+      &lt;topics&gt;
+        &lt;topic pattern="NYSE.xyz" type="direct"&gt;
+          ...
+        &lt;/topic&gt;
+        &lt;topic pattern="^alert\..*" type="pcre"&gt;
+          ...
+        &lt;/topic&gt;
+        ...
+      &lt;/topics&gt;
+      ...
+    &lt;/store&gt;
+    ...
+  &lt;/stores&gt;
+  ...
+&lt;/ume-store&gt;
+</pre><hr/>
+<p> <br />
+ </p>
+<h3><a class="anchor" id="umeelementumeattributes"></a>
+UMP Element "&lt;ume-attributes&gt;"&nbsp;&nbsp;<small><a href="#umeelementumeattributes">&lt;-</a></small></h3>
+<p>Container for a set of <a class="el" href="index.html#umeelementoption">&lt;option&gt;</a> elements.</p>
+<ul>
+<li>
+<b>Cardinality:</b> 0 .. unbounded </li>
+<li>
+<b>Parent:</b> <a class="el" href="index.html#umeelementstore">&lt;store&gt;</a>, <a class="el" href="index.html#umeelementtopic">&lt;topic&gt;</a> </li>
+<li>
+<b>Children:</b> <a class="el" href="index.html#umeelementoption">&lt;option&gt;</a> </li>
+</ul>
+<p><b>Example:</b> </p>
+<p>In this example, some options are at the "store" level and apply to all topics. Other options are specific to the topic "NYSE.xyz". </p><pre class="fragment">&lt;?xml version="1.0"?&gt;
+&lt;ume-store version="1.3"&gt;
+  &lt;stores&gt;
+    &lt;store name="MyStore1" interface="10.1.2.3" port="12000"&gt;
+      &lt;ume-attributes&gt;
+        ...
+      &lt;/ume-attributes&gt;
+      &lt;topics&gt;
+        &lt;topic pattern="NYSE.xyz" type="direct"&gt;
+          &lt;ume-attributes&gt;
+            ...
+          &lt;/ume-attributes&gt;
+          ...
+        &lt;/topic&gt;
+        ...
+      &lt;/topics&gt;
+      ...
+    &lt;/store&gt;
+    ...
+  &lt;/stores&gt;
+  ...
+&lt;/ume-store&gt;
+</pre><hr/>
+<p> <br />
+ </p>
+<h3><a class="anchor" id="umeelementoption"></a>
+UMP Element "&lt;option&gt;"&nbsp;&nbsp;<small><a href="#umeelementoption">&lt;-</a></small></h3>
+<p>Set a configuration option of a particular type. See <a class="el" href="index.html#optionsforastoresumeattributeselement">Options for a Store's ume-attributes Element</a> for more information on the available options.</p>
+<ul>
+<li>
+<b>Parent:</b> <a class="el" href="index.html#umeelementumeattributes">&lt;ume-attributes&gt;</a> </li>
+</ul>
+<p><b>XML</b> <b>Attributes:</b> </p><table class="doxtable">
+<tr>
+<th>Attribute </th><th>Description </th><th>Valid Values </th><th>Default Value </th></tr>
+<tr>
+<td><b>type</b> </td><td>Type of configuration option. </td><td><b><code>"lbm-receiver"</code></b> - UM configuration option of scope "receiver". <br />
+<b><code>"lbm-context"</code></b> - UM configuration option of scope "context". <br />
+<b><code>"lbm-source"</code></b> - UM configuration option of scope "source". <br />
+<b><code>"store"</code></b> - Store configuration option. </td><td>(no default; must be specified) </td></tr>
+<tr>
+<td><b>name</b> </td><td>Name of option. </td><td>attr_name </td><td>(no default; must be specified) </td></tr>
+<tr>
+<td><b>value</b> </td><td>Value for option. </td><td>string </td><td>(no default; must be specified) </td></tr>
+</table>
+<p><b>Example:</b> </p>
+<p>In this example, some options are at the "store" level and apply to all topics. Other options are specific to the topic "NYSE.xyz". </p><pre class="fragment">&lt;?xml version="1.0"?&gt;
+&lt;ume-store version="1.3"&gt;
+  &lt;stores&gt;
+    &lt;store name="MyStore1" interface="10.1.2.3" port="12000"&gt;
+      &lt;ume-attributes&gt;
+        &lt;option type="lbm-context" name="fd_management_type" value="epoll"/&gt;
+        ...
+      &lt;/ume-attributes&gt;
+      &lt;topics&gt;
+        &lt;topic pattern="NYSE.xyz" type="direct"&gt;
+          &lt;ume-attributes&gt;
+            &lt;option type="..." name="..." value="..."/&gt;
+            ...
+          &lt;/ume-attributes&gt;
+          ...
+        &lt;/topic&gt;
+        ...
+      &lt;/topics&gt;
+      ...
+    &lt;/store&gt;
+    ...
+  &lt;/stores&gt;
+  ...
+&lt;/ume-store&gt;
+</pre><hr/>
+<p> <br />
+ </p>
+<h3><a class="anchor" id="umeelementpublishinginterval"></a>
+UMP Element "&lt;publishing-interval&gt;"&nbsp;&nbsp;<small><a href="#umeelementpublishinginterval">&lt;-</a></small></h3>
+<p>Set how often the store publishes its daemon stats. See <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UME/design.tag:../../Design/" href="../../Design/umobjects.html#daemonstatistics">Daemon Statistics</a> for general information on Daemon Statistics.</p>
+<ul>
+<li>
+<b>Parent:</b> <a class="el" href="index.html#umeelementstore">&lt;store&gt;</a>, <a class="el" href="index.html#umeelementdaemonmonitor">&lt;daemon-monitor&gt;</a> </li>
+<li>
+<b>Children:</b> <a class="el" href="index.html#umeelementgroup">&lt;group&gt;</a> </li>
+</ul>
+<p><b>Example:</b> </p>
+<p>Daemon Statistics are configured at both the daemon level and at the store level. </p><pre class="fragment">&lt;?xml version="1.0"?&gt;
+&lt;ume-store version="1.3"&gt;
+  &lt;daemon&gt;
+    &lt;daemon-monitor topic="bozo"&gt;
+      &lt;publishing-interval&gt;
+        ...
+      &lt;/publishing-interval&gt;
+    &lt;/daemon-monitor&gt;
+  &lt;/daemon&gt;
+  &lt;stores&gt;
+    &lt;store name="MyStore1" interface="10.1.2.3" port="12000"&gt;
+      &lt;publishing-interval&gt;
+        ...
+      &lt;/publishing-interval&gt;
+      ...
+    &lt;/store&gt;
+    ...
+  &lt;/stores&gt;
+  ...
+&lt;/ume-store&gt;
+</pre><hr/>
+<p> <br />
+ </p>
+<h3><a class="anchor" id="umeelementgroup"></a>
+UMP Element "&lt;group&gt;"&nbsp;&nbsp;<small><a href="#umeelementgroup">&lt;-</a></small></h3>
+<p>Configures the rate at which one particular grouping of Daemon Statistics messages are published. See <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UME/design.tag:../../Design/" href="../../Design/umobjects.html#daemonstatistics">Daemon Statistics</a> for general information on Daemon Statistics.</p>
+<ul>
+<li>
+<b>Parent:</b> <a class="el" href="index.html#umeelementpublishinginterval">&lt;publishing-interval&gt;</a> </li>
+</ul>
+<p><b>XML</b> <b>Attributes:</b> </p><table class="doxtable">
+<tr>
+<th>Attribute </th><th>Description </th><th>Valid Values </th><th>Default Value </th></tr>
+<tr>
+<td><b>name</b> </td><td>Name of statistics group being configured. </td><td><b><code>"default"</code></b> - Sets a default interval for all message types. <br />
+<b><code>"store"</code></b> - Sets the interval for messages of type <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UME/api.tag:../../API/" href="../../API/umedmonmsgs_8h.html#aeeb55ed0b759e6316cdedc3c990dfe26">umestore_store_dmon_stat_msg_t</a>. <br />
+<b><code>"source"</code></b> - Sets the interval for messages of type <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UME/api.tag:../../API/" href="../../API/umedmonmsgs_8h.html#a88ce572fd35203194ada676661d2f54b">umestore_repo_dmon_stat_msg_t</a>. <br />
+<b><code>"receiver"</code></b> - Sets the interval for messages of type <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UME/api.tag:../../API/" href="../../API/umedmonmsgs_8h.html#a3829efae398d994795fb395097626709">umestore_rcv_dmon_stat_msg_t</a>. <br />
+<b><code>"disk"</code></b> - Sets the interval for messages of type <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UME/api.tag:../../API/" href="../../API/umedmonmsgs_8h.html#a3ed32f1017abda98dbac7f228d7c506b">umestore_disk_dmon_stat_msg_t</a>. <br />
+<b><code>"config"</code></b> - Sets the interval for messages of types umestore_*_dmon_config_msg_t. <br />
+<b><code>"memory"</code></b> - Sets the interval for messages of type umestore_smart_heap_dmon_stat_msg_t. </td><td>(no default; must be specified) </td></tr>
+<tr>
+<td><b>ivl</b> </td><td>Time, in seconds, between publishing the statistics group being configured. </td><td>string </td><td>(no default; must be specified) </td></tr>
+</table>
+<p><b>Example:</b> </p>
+<p>Daemon Statistics are configured at both the daemon level and at the store level. </p><pre class="fragment">&lt;?xml version="1.0"?&gt;
+&lt;ume-store version="1.3"&gt;
+  &lt;daemon&gt;
+    &lt;daemon-monitor topic="bozo"&gt;
+      &lt;publishing-interval&gt;
+        &lt;group name="default" ivl="10"/&gt;
+        &lt;group name="store" ivl="20"/&gt;
+        ...
+      &lt;/publishing-interval&gt;
+    &lt;/daemon-monitor&gt;
+  &lt;/daemon&gt;
+  &lt;stores&gt;
+    &lt;store name="MyStore1" interface="10.1.2.3" port="12000"&gt;
+      &lt;publishing-interval&gt;
+        &lt;group name="default" ivl="10"/&gt;
+        &lt;group name="store" ivl="20"/&gt;
+        ...
+      &lt;/publishing-interval&gt;
+      ...
+    &lt;/store&gt;
+    ...
+  &lt;/stores&gt;
+  ...
+&lt;/ume-store&gt;
+</pre><hr/>
+<p> <br />
+ </p>
+<h3><a class="anchor" id="umeelementdaemon"></a>
+UMP Element "&lt;daemon&gt;"&nbsp;&nbsp;<small><a href="#umeelementdaemon">&lt;-</a></small></h3>
+<p>Container element for configuration elements that apply to the entire Store process.</p>
+<ul>
+<li>
+<b>Parent:</b> <a class="el" href="index.html#umeelementumestore">&lt;ume-store&gt;</a> </li>
+<li>
+<b>Children:</b> <a class="el" href="index.html#umeelementlog">&lt;log&gt;</a>, <a class="el" href="index.html#umeelementuid">&lt;uid&gt;</a>, <a class="el" href="index.html#umeelementpidfile">&lt;pidfile&gt;</a>, <a class="el" href="index.html#umeelementgid">&lt;gid&gt;</a>, <a class="el" href="index.html#umeelementlbmconfig">&lt;lbm-config&gt;</a>, <a class="el" href="index.html#umeelementxmlconfig">&lt;xml-config&gt;</a>, <a class="el" href="index.html#umeelementlbmlicensefile">&lt;lbm-license-file&gt;</a>, <a class="el" href="index.html#umeelementwebmonitor">&lt;web-monitor&gt;</a>, <a class="el" href="index.html#umeelementdaemonmonitor">&lt;daemon-monitor&gt;</a> </li>
+</ul>
+<p><b>Example:</b> </p><pre class="fragment">&lt;?xml version="1.0"?&gt;
+&lt;ume-store version="1.3"&gt;
+  &lt;daemon&gt;
+    ...
+  &lt;/daemon&gt;
+  ...
+&lt;/ume-store&gt;
+</pre><hr/>
+<p> <br />
+ </p>
+<h3><a class="anchor" id="umeelementdaemonmonitor"></a>
+UMP Element "&lt;daemon-monitor&gt;"&nbsp;&nbsp;<small><a href="#umeelementdaemonmonitor">&lt;-</a></small></h3>
+<p>The daemon-monitor element configures the store daemon for <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UME/design.tag:../../Design/" href="../../Design/umobjects.html#daemonstatistics">Daemon Statistics</a>.</p>
+<ul>
+<li>
+<b>Parent:</b> <a class="el" href="index.html#umeelementdaemon">&lt;daemon&gt;</a> </li>
+<li>
+<b>Children:</b> <a class="el" href="index.html#umeelementlbmconfig">&lt;lbm-config&gt;</a>, <a class="el" href="index.html#umeelementpublishinginterval">&lt;publishing-interval&gt;</a>, <a class="el" href="index.html#umeelementremotesnapshotrequest">&lt;remote-snapshot-request&gt;</a>, <a class="el" href="index.html#umeelementremoteconfigchangesrequest">&lt;remote-config-changes-request&gt;</a> </li>
+</ul>
+<p><b>XML</b> <b>Attributes:</b> </p><table class="doxtable">
+<tr>
+<th>Attribute </th><th>Description </th><th>Valid Values </th><th>Default Value </th></tr>
+<tr>
+<td><b>topic</b> </td><td>Topic name for used to publish daemon statistics. </td><td>string </td><td><b><code>"umestore.monitor"</code></b> </td></tr>
+</table>
+<p><b>Example:</b> </p>
+<p>Daemon Statistics are configured at both the daemon level and at the store level. </p><pre class="fragment">&lt;?xml version="1.0"?&gt;
+&lt;ume-store version="1.3"&gt;
+  &lt;daemon&gt;
+    &lt;daemon-monitor topic="bozo"&gt;
+      &lt;publishing-interval&gt;
+        ...
+      &lt;/publishing-interval&gt;
+    &lt;/daemon-monitor&gt;
+  &lt;/daemon&gt;
+  ...
+&lt;/ume-store&gt;
+</pre><hr/>
+<p> <br />
+ </p>
+<h3><a class="anchor" id="umeelementremoteconfigchangesrequest"></a>
+UMP Element "&lt;remote-config-changes-request&gt;"&nbsp;&nbsp;<small><a href="#umeelementremoteconfigchangesrequest">&lt;-</a></small></h3>
+<p>Controls if the daemon will respond to requests from monitoring applications. See <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UME/design.tag:../../Design/" href="../../Design/umobjects.html#daemonstatisticsrequests">Daemon Statistics Requests</a>.</p>
+<ul>
+<li>
+<b>Parent:</b> <a class="el" href="index.html#umeelementdaemonmonitor">&lt;daemon-monitor&gt;</a> </li>
+</ul>
+<p><b>XML</b> <b>Attributes:</b> </p><table class="doxtable">
+<tr>
+<th>Attribute </th><th>Description </th><th>Valid Values </th><th>Default Value </th></tr>
+<tr>
+<td><b>allow</b> </td><td>Enables handling requests. </td><td><b><code>"0"</code></b> - Disable request handling. <br />
+<b><code>"1"</code></b> - Enable request handling. </td><td><b><code>"0"</code></b> </td></tr>
+</table>
+<p><b>Example:</b> </p>
+<p>Daemon Statistics are configured at both the daemon level and at the store level. </p><pre class="fragment">&lt;?xml version="1.0"?&gt;
+&lt;ume-store version="1.3"&gt;
+  &lt;daemon&gt;
+    &lt;daemon-monitor topic="bozo"&gt;
+      &lt;remote-config-changes-request allow="1"/&gt;
+        ...
+      &lt;/publishing-interval&gt;
+    &lt;/daemon-monitor&gt;
+  &lt;/daemon&gt;
+  ...
+&lt;/ume-store&gt;
+</pre><hr/>
+<p> <br />
+ </p>
+<h3><a class="anchor" id="umeelementremotesnapshotrequest"></a>
+UMP Element "&lt;remote-snapshot-request&gt;"&nbsp;&nbsp;<small><a href="#umeelementremotesnapshotrequest">&lt;-</a></small></h3>
+<p>Controls if the daemon will respond to requests from monitoring applications. See <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UME/design.tag:../../Design/" href="../../Design/umobjects.html#daemonstatisticsrequests">Daemon Statistics Requests</a>.</p>
+<ul>
+<li>
+<b>Parent:</b> <a class="el" href="index.html#umeelementdaemonmonitor">&lt;daemon-monitor&gt;</a> </li>
+</ul>
+<p><b>XML</b> <b>Attributes:</b> </p><table class="doxtable">
+<tr>
+<th>Attribute </th><th>Description </th><th>Valid Values </th><th>Default Value </th></tr>
+<tr>
+<td><b>allow</b> </td><td>Enables handling requests. </td><td><b><code>"0"</code></b> - Disable request handling. <br />
+<b><code>"1"</code></b> - Enable request handling. </td><td><b><code>"0"</code></b> </td></tr>
+</table>
+<p><b>Example:</b> </p>
+<p>Daemon Statistics are configured at both the daemon level and at the store level. </p><pre class="fragment">&lt;?xml version="1.0"?&gt;
+&lt;ume-store version="1.3"&gt;
+  &lt;daemon&gt;
+    &lt;daemon-monitor topic="bozo"&gt;
+      &lt;remote-snapshot-request allow="1"/&gt;
+        ...
+      &lt;/publishing-interval&gt;
+    &lt;/daemon-monitor&gt;
+  &lt;/daemon&gt;
+  ...
+&lt;/ume-store&gt;
+</pre><hr/>
+<p> <br />
+ </p>
+<h3><a class="anchor" id="umeelementlbmconfig"></a>
+UMP Element "&lt;lbm-config&gt;"&nbsp;&nbsp;<small><a href="#umeelementlbmconfig">&lt;-</a></small></h3>
+<p>Pathname for UM configuration file which is used to configure UM for either the store or for daemon statistics, depending on the parent element.</p>
+<ul>
+<li>
+<b>Parent:</b> <a class="el" href="index.html#umeelementdaemon">&lt;daemon&gt;</a>, <a class="el" href="index.html#umeelementdaemonmonitor">&lt;daemon-monitor&gt;</a> </li>
+</ul>
+<p><b>XML</b> <b>Attributes:</b> </p><table class="doxtable">
+<tr>
+<th>Attribute </th><th>Description </th><th>Valid Values </th><th>Default Value </th></tr>
+<tr>
+<td><b>xml:space</b> </td><td>Specifies how whitespace (tabs, spaces, linefeeds) are handled in the element content. </td><td><b><code>"default"</code></b> - Trim leading and trailing whitespace, and compress multiple whitespace characters into a single space. <br />
+<b><code>"preserve"</code></b> - Retain whitespace exactly as entered. </td><td><b>default</b> </td></tr>
+</table>
+<p><b>Example:</b> </p><pre class="fragment">&lt;?xml version="1.0"?&gt;
+&lt;ume-store version="1.3"&gt;
+  &lt;daemon&gt;
+    &lt;lbm-config&gt;/etc/ump/store0.cfg&lt;/lbm-config&gt;
+    ...
+    &lt;daemon-monitor topic="bozo"&gt;
+      &lt;lbm-config&gt;/etc/ump/store0_dmon.cfg&lt;/lbm-config&gt;
+      ...
+    &lt;/daemon-monitor&gt;
+  &lt;/daemon&gt;
+  ...
+&lt;/ume-store&gt;
+</pre><hr/>
+<p> <br />
+ </p>
+<h3><a class="anchor" id="umeelementwebmonitor"></a>
+UMP Element "&lt;web-monitor&gt;"&nbsp;&nbsp;<small><a href="#umeelementwebmonitor">&lt;-</a></small></h3>
+<p>Address and port for the Store web-based monitor. Format is "Address:Port", where "Address" is either an IP address of one of the host's interfaces, or is "*" which allows the use of any interface. See <a class="el" href="index.html#storewebmonitor">Store Web Monitor</a> for more information.</p>
+<p>If omitted, the web monitor is disabled.</p>
+<ul>
+<li>
+<b>Parent:</b> <a class="el" href="index.html#umeelementdaemon">&lt;daemon&gt;</a> </li>
+</ul>
+<p><b>XML</b> <b>Attributes:</b> </p><table class="doxtable">
+<tr>
+<th>Attribute </th><th>Description </th><th>Valid Values </th><th>Default Value </th></tr>
+<tr>
+<td><b>xml:space</b> </td><td>Specifies how whitespace (tabs, spaces, linefeeds) are handled in the element content. </td><td><b><code>"default"</code></b> - Trim leading and trailing whitespace, and compress multiple whitespace characters into a single space. <br />
+<b><code>"preserve"</code></b> - Retain whitespace exactly as entered. </td><td><b>default</b> </td></tr>
+</table>
+<p><b>Example:</b> </p><pre class="fragment">&lt;?xml version="1.0"?&gt;
+&lt;ume-store version="1.3"&gt;
+  &lt;daemon&gt;
+    &lt;web-monitor&gt;*:8080&lt;/web-monitor&gt;
+    ...
+  &lt;/daemon&gt;
+  ...
+&lt;/ume-store&gt;
+</pre><hr/>
+<p> <br />
+ </p>
+<h3><a class="anchor" id="umeelementlbmlicensefile"></a>
+UMP Element "&lt;lbm-license-file&gt;"&nbsp;&nbsp;<small><a href="#umeelementlbmlicensefile">&lt;-</a></small></h3>
+<p>Pathname for UM license file. NOTE: a license key is no longer required for Store operation. This element is retained for backwards compatibility.</p>
+<ul>
+<li>
+<b>Parent:</b> <a class="el" href="index.html#umeelementdaemon">&lt;daemon&gt;</a> </li>
+</ul>
+<p><b>XML</b> <b>Attributes:</b> </p><table class="doxtable">
+<tr>
+<th>Attribute </th><th>Description </th><th>Valid Values </th><th>Default Value </th></tr>
+<tr>
+<td><b>xml:space</b> </td><td>Specifies how whitespace (tabs, spaces, linefeeds) are handled in the element content. </td><td><b><code>"default"</code></b> - Trim leading and trailing whitespace, and compress multiple whitespace characters into a single space. <br />
+<b><code>"preserve"</code></b> - Retain whitespace exactly as entered. </td><td><b>default</b> </td></tr>
+</table>
+<hr/>
+<p> <br />
+ </p>
+<h3><a class="anchor" id="umeelementxmlconfig"></a>
+UMP Element "&lt;xml-config&gt;"&nbsp;&nbsp;<small><a href="#umeelementxmlconfig">&lt;-</a></small></h3>
+<p>Pathname for UM XML configuration file. See also <a class="el" href="index.html#umeelementlbmconfig">UMP Element "&lt;lbm-config&gt;"</a>.</p>
+<ul>
+<li>
+<b>Parent:</b> <a class="el" href="index.html#umeelementdaemon">&lt;daemon&gt;</a> </li>
+</ul>
+<p><b>XML</b> <b>Attributes:</b> </p><table class="doxtable">
+<tr>
+<th>Attribute </th><th>Description </th><th>Valid Values </th><th>Default Value </th></tr>
+<tr>
+<td><b>xml:space</b> </td><td>Specifies how whitespace (tabs, spaces, linefeeds) are handled in the element content. </td><td><b><code>"default"</code></b> - Trim leading and trailing whitespace, and compress multiple whitespace characters into a single space. <br />
+<b><code>"preserve"</code></b> - Retain whitespace exactly as entered. </td><td><b>default</b> </td></tr>
+<tr>
+<td><b>application-name</b> </td><td>Specifies the "application name" of the store process, for use within the UM XML configuration file. See <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UME/config.tag:../../Config/" href="../../Config/xmlconfigurationfiles.html#xmlapplicationnames">XML Application Names</a> for more information on application names. </td><td>string </td><td><b><code>"umestored"</code></b> </td></tr>
+</table>
+<p><b>Example:</b> </p><pre class="fragment">&lt;?xml version="1.0"?&gt;
+&lt;ume-store version="1.3"&gt;
+  &lt;daemon&gt;
+    &lt;xml-config&gt;/etc/ump/store01_um.xml&lt;/xml-config&gt;
+    ...
+  &lt;/daemon&gt;
+  ...
+&lt;/ume-store&gt;
+</pre><hr/>
+<p> <br />
+ </p>
+<h3><a class="anchor" id="umeelementgid"></a>
+UMP Element "&lt;gid&gt;"&nbsp;&nbsp;<small><a href="#umeelementgid">&lt;-</a></small></h3>
+<p>Specifies a Group ID (GID) for daemon process (if run as root).</p>
+<ul>
+<li>
+<b>Parent:</b> <a class="el" href="index.html#umeelementdaemon">&lt;daemon&gt;</a> </li>
+</ul>
+<p><b>XML</b> <b>Attributes:</b> </p><table class="doxtable">
+<tr>
+<th>Attribute </th><th>Description </th><th>Valid Values </th><th>Default Value </th></tr>
+<tr>
+<td><b>xml:space</b> </td><td>Specifies how whitespace (tabs, spaces, linefeeds) are handled in the element content. </td><td><b><code>"default"</code></b> - Trim leading and trailing whitespace, and compress multiple whitespace characters into a single space. <br />
+<b><code>"preserve"</code></b> - Retain whitespace exactly as entered. </td><td><b>default</b> </td></tr>
+</table>
+<p><b>Example:</b> </p><pre class="fragment">&lt;?xml version="1.0"?&gt;
+&lt;ume-store version="1.3"&gt;
+  &lt;daemon&gt;
+    &lt;gid&gt;1234&lt;/gid&gt;
+    ...
+  &lt;/daemon&gt;
+  ...
+&lt;/ume-store&gt;
+</pre><hr/>
+<p> <br />
+ </p>
+<h3><a class="anchor" id="umeelementpidfile"></a>
+UMP Element "&lt;pidfile&gt;"&nbsp;&nbsp;<small><a href="#umeelementpidfile">&lt;-</a></small></h3>
+<p>Contains the pathname for daemon process ID (PID) file.</p>
+<ul>
+<li>
+<b>Parent:</b> <a class="el" href="index.html#umeelementdaemon">&lt;daemon&gt;</a> </li>
+</ul>
+<p><b>XML</b> <b>Attributes:</b> </p><table class="doxtable">
+<tr>
+<th>Attribute </th><th>Description </th><th>Valid Values </th><th>Default Value </th></tr>
+<tr>
+<td><b>xml:space</b> </td><td>Specifies how whitespace (tabs, spaces, linefeeds) are handled in the element content. </td><td><b><code>"default"</code></b> - Trim leading and trailing whitespace, and compress multiple whitespace characters into a single space. <br />
+<b><code>"preserve"</code></b> - Retain whitespace exactly as entered. </td><td><b>default</b> </td></tr>
+</table>
+<p><b>Example:</b> </p><pre class="fragment">&lt;?xml version="1.0"?&gt;
+&lt;ume-store version="1.3"&gt;
+  &lt;daemon&gt;
+    &lt;pidfile&gt;/var/run/store01.pid&lt;/pidfile&gt;
+    ...
+  &lt;/daemon&gt;
+  ...
+&lt;/ume-store&gt;
+</pre><hr/>
+<p> <br />
+ </p>
+<h3><a class="anchor" id="umeelementuid"></a>
+UMP Element "&lt;uid&gt;"&nbsp;&nbsp;<small><a href="#umeelementuid">&lt;-</a></small></h3>
+<p>Specifies a User ID (UID) for daemon process (if run as root).</p>
+<ul>
+<li>
+<b>Parent:</b> <a class="el" href="index.html#umeelementdaemon">&lt;daemon&gt;</a> </li>
+</ul>
+<p><b>XML</b> <b>Attributes:</b> </p><table class="doxtable">
+<tr>
+<th>Attribute </th><th>Description </th><th>Valid Values </th><th>Default Value </th></tr>
+<tr>
+<td><b>xml:space</b> </td><td>Specifies how whitespace (tabs, spaces, linefeeds) are handled in the element content. </td><td><b><code>"default"</code></b> - Trim leading and trailing whitespace, and compress multiple whitespace characters into a single space. <br />
+<b><code>"preserve"</code></b> - Retain whitespace exactly as entered. </td><td><b>default</b> </td></tr>
+</table>
+<p><b>Example:</b> </p><pre class="fragment">&lt;?xml version="1.0"?&gt;
+&lt;ume-store version="1.3"&gt;
+  &lt;daemon&gt;
+    &lt;uid&gt;1234&lt;/uid&gt;
+    ...
+  &lt;/daemon&gt;
+  ...
+&lt;/ume-store&gt;
+</pre><hr/>
+<p> <br />
+ </p>
+<h3><a class="anchor" id="umeelementlog"></a>
+UMP Element "&lt;log&gt;"&nbsp;&nbsp;<small><a href="#umeelementlog">&lt;-</a></small></h3>
+<p>Contains the path name of the store log file. See <a class="el" href="index.html#storerollinglogs">Store Rolling Logs</a> for more information.</p>
+<p>If omitted, log messages are written to standard output.</p>
+<ul>
+<li>
+<b>Parent:</b> <a class="el" href="index.html#umeelementdaemon">&lt;daemon&gt;</a> </li>
+</ul>
+<p><b>XML</b> <b>Attributes:</b> </p><table class="doxtable">
+<tr>
+<th>Attribute </th><th>Description </th><th>Valid Values </th><th>Default Value </th></tr>
+<tr>
+<td><b>type</b> </td><td>Where to write log messages. </td><td><b><code>"file"</code></b> - Write log messages to a file. <br />
+<b><code>"console"</code></b> - Write log messages to standard output. </td><td><b><code>"console"</code></b> </td></tr>
+<tr>
+<td><b>frequency</b> </td><td>Time-frame by which to roll the log file. </td><td><b><code>"disable"</code></b> - Do not roll the log file based on time. <br />
+<b><code>"daily"</code></b> - Roll the log file at midnight. <br />
+<b><code>"hourly"</code></b> - Roll log file after approximately an hour, but is not exact and can drift significantly over a period of time. <br />
+<b><code>"test"</code></b> - For internal Informatica use only. Do not use. </td><td><b><code>"disable"</code></b> </td></tr>
+<tr>
+<td><b>size</b> </td><td>Size (in MB, i.e. 2**20, or 1,048,576) of current log file at which it is rolled. Specify 0 to disable rolling by log file size. </td><td>string </td><td><b><code>"10"</code></b> </td></tr>
+<tr>
+<td><b>xml:space</b> </td><td>Specifies how whitespace (tabs, spaces, linefeeds) are handled in the element content. </td><td><b><code>"default"</code></b> - Trim leading and trailing whitespace, and compress multiple whitespace characters into a single space. <br />
+<b><code>"preserve"</code></b> - Retain whitespace exactly as entered. </td><td><b>default</b> </td></tr>
+</table>
+<p><b>Example:</b> </p><pre class="fragment">&lt;?xml version="1.0"?&gt;
+&lt;ume-store version="1.3"&gt;
+  &lt;daemon&gt;
+    &lt;log type="file" size="23" frequency="daily"&gt;/var/log/store01.log&lt;/log&gt;
+    ...
+  &lt;/daemon&gt;
+  ...
+&lt;/ume-store&gt;
 </pre><p><br />
  </p>
-<h3><a class="anchor" id="storeelement"></a>
-Store Element&nbsp;&nbsp;<small><a href="#storeelement">&lt;-</a></small></h3>
-<p>The Store Element contains information about an individual store and has attributes, options and topics. See the example below.</p>
-<pre class="fragment">  &lt;store name="test-store-1" port="14567"&gt;
-    &lt;ume-attributes&gt; ... &lt;/ume-attributes&gt;
-    &lt;topics&gt;
-      &lt;topic pattern="quote.*" type="PCRE"&gt;
-        &lt;ume-attributes&gt; ... &lt;/ume-attributes&gt;
-      &lt;/topic&gt;
-      &lt;topic pattern="subject.*" type="PCRE"&gt;
-        &lt;ume-attributes&gt; ... &lt;/ume-attributes&gt;
-      &lt;/topic&gt;
-    &lt;/topics&gt;
-  &lt;/store&gt;
-</pre><p>The following table gives attributes for the <code>&lt;store&gt;</code> element:</p>
-<table class="doxtable">
-<tr>
-<th>Attribute </th><th>Description </th><th><p class="starttd">Default Value</p>
-<p class="endtd"></p>
-</th></tr>
-<tr>
-<td>name </td><td>Name that identifies log messages for this store in the umestored log file. </td><td><p class="starttd">None—this is a required attribute</p>
-<p class="endtd"></p>
-</td></tr>
-<tr>
-<td>port </td><td>TCP port where umestored should listen for connection requests to this store. </td><td><p class="starttd">None—this is a required attribute</p>
-<p class="endtd"></p>
-</td></tr>
-<tr>
-<td>interface </td><td>Specifies the IP address over which umestored accepts connection requests for this store. You can specify a single IP address, such as 10.29.3.16, or a range of addresses, 10.29.3.16/25. See also <a class="el" href="index.html#identifyingpersistentstores">Identifying Persistent Stores</a> </td><td>0.0.0.0 (INADDR_ANY) </td></tr>
-</table>
-<p><b>Child Elements of the Store Element</b></p>
-<p>The following table gives the child elements allowed in the store configuration section:</p>
-<table class="doxtable">
-<tr>
-<th>Child Element </th><th>Description </th><th><p class="starttd">Default Value</p>
-<p class="endtd"><a class="anchor" id="umecfgtopics"></a></p>
-</th></tr>
-<tr>
-<td>topics </td><td>A container for topic elements. See <a class="el" href="index.html#topicselement">Topics Element</a> for more information. </td><td><p class="starttd">None</p>
-<p class="endtd"><a class="anchor" id="umecfgumeattributes"></a></p>
-</td></tr>
-<tr>
-<td>ume-attributes </td><td>A container for option elements. See <a class="el" href="index.html#optionsforastoresumeattributeselement">Options for a Store's ume-attributes Element</a> for more information. </td><td><p class="starttd">None</p>
-<p class="endtd"><a class="anchor" id="storecfgpublishinginterval"></a></p>
-</td></tr>
-<tr>
-<td>publishing-interval </td><td>optional element which sets the interval for message publication. </td><td>Defaults to not publishing. </td></tr>
-</table>
-<p><a class="anchor" id="optionsforastoresumeattributeselement"></a><b>Options for a Store's ume-attributes Element</b></p>
+<h2><a class="anchor" id="optionsforastoresumeattributeselement"></a>
+Options for a Store's ume-attributes Element&nbsp;&nbsp;<small><a href="#optionsforastoresumeattributeselement">&lt;-</a></small></h2>
 <p>Inside a '<code>&lt;ume-attributes&gt;</code>' section, options are set with one or more '<code>&lt;option ...&gt;</code>' elements. Each '<code>&lt;option ...&gt;</code>' element contains a '<code>type'</code> attribute, a '<code>name</code>' attribute, and a '<code>value</code>' attribute. The '<code>type</code>' attribute identifies the scope of the option (context, receiver, source, or store), the '<code>name</code>' attribute identifies the individual option being set, and the '<code>value</code>' attribute supplies the value.</p>
-<p><b>Options for UM</b></p>
+<p><br />
+ </p>
+<h3><a class="anchor" id="optionsforum"></a>
+Options for UM&nbsp;&nbsp;<small><a href="#optionsforum">&lt;-</a></small></h3>
 <p>Options with a type of "lbm-source", "lbm-receiver", or "lbm-context" are UM configuration options, which the store passes to the UM library.</p>
 <p>For example, the option element: <br />
 <code>&lt;option type="lbm-context" name="transport_lbtrm_receiver_socket_buffer" value="1048576"/&gt;</code> <br />
 sets the UM configuration option <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UME/config.tag:../../Config/" href="../../Config/grptransportlbtrmreliability.html#transportlbtrmreceiversocketbuffercontext">transport_lbtrm_receiver_socket_buffer (context)</a> (receiver socket buffer size for LBT-RM) to 1 megabyte.</p>
 <p>See the <a href="../../Config/index.html">UM Configuration Guide</a> for the full list of UM configuration options.</p>
 <dl class="section note"><dt>Note</dt><dd>Some UM options specify interfaces, which can be done by supplying the device name of the interface. Special care must be taken when supplying device names. See <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UME/config.tag:../../Config/" href="../../Config/generalconfigurationguidelines.html#interfacedevicenamesandxml">Interface Device Names and XML</a> for details.</dd></dl>
-<p><b>Store Options</b></p>
+<p><br />
+ </p>
+<h3><a class="anchor" id="storeoptions"></a>
+Store Options&nbsp;&nbsp;<small><a href="#storeoptions">&lt;-</a></small></h3>
 <p>Store options without a type attribute or those explicitly given a type attribute of '<code>store</code>' simply configure the store itself.</p>
 <p>For example, the option element: <br />
 <code>&lt;option type="store" name="disk-cache-directory" value="cache"/&gt;</code> <br />
@@ -3402,37 +3820,8 @@ sets the store's disk cache directory.</p>
 </table>
 <p><br />
  </p>
-<h3><a class="anchor" id="topicselement"></a>
-Topics Element&nbsp;&nbsp;<small><a href="#topicselement">&lt;-</a></small></h3>
-<p>The Topics element is a container element for all the topics persisted by the UM store. It is one of the two child elements of the Store Element. See the example below:</p>
-<pre class="fragment">  &lt;topics&gt;
-    &lt;topic pattern="issue.*" type="PCRE"&gt;
-      &lt;ume-attributes&gt; ... &lt;/ume-attributes&gt;
-    &lt;/topic&gt;
-    &lt;topic pattern="topic.*" type="PCRE"&gt;
-      &lt;ume-attributes&gt; ... &lt;/ume-attributes&gt;
-    &lt;/topic&gt;
-  &lt;/topics&gt;
-</pre><p><br />
- </p>
-<h3><a class="anchor" id="topicelement"></a>
-Topic Element&nbsp;&nbsp;<small><a href="#topicelement">&lt;-</a></small></h3>
-<p>The Topic Element defines an individual topic persisted on the store.</p>
-<p>The following table gives attributes for the <code>&lt;topic&gt;</code> element:</p>
-<table class="doxtable">
-<tr>
-<th>Attribute </th><th>Description </th><th><p class="starttd">Default Value</p>
-<p class="endtd"><a class="anchor" id="umecfgpattern"></a></p>
-</th></tr>
-<tr>
-<td>pattern </td><td>Specifies a pattern used to select topics for which a store provides persistence services. </td><td><p class="starttd">None—this is a required attribute</p>
-<p class="endtd"><a class="anchor" id="umecfgtype"></a></p>
-</td></tr>
-<tr>
-<td>type </td><td>Specifies the type of matching to be performed on the pattern attribute. A value of <code>direct</code> selects an exact string match. A value of <code>PCRE</code> selects a Perl Compatible Regular Expression match. A value of <code>regexp</code> selects a POSIX extended regular expression. <b>The <code>regexp</code> selection is deprecated.</b> </td><td><code>direct</code> </td></tr>
-</table>
-<p>The Topic Element has one child element, ume-attributes, the options for which appear in Options for a Topic's ume-attributes Element.</p>
-<p><b>Options for a Topic's ume-attributes Element</b></p>
+<h2><a class="anchor" id="optionsforatopicsume-attributeselement"></a>
+Options for a Topic's ume-attributes Element&nbsp;&nbsp;<small><a href="#optionsforatopicsume-attributeselement">&lt;-</a></small></h2>
 <p>As with <a class="el" href="index.html#optionsforastoresumeattributeselement">Options for a Store's ume-attributes Element</a>, options for a topic's ume-attributes element can set both UM configuration options as well as store configuration.</p>
 <p>The following table gives options allowed for a topic element. Use the store Option Type for these options.</p>
 <table class="doxtable">
@@ -3564,13 +3953,13 @@ Option Types for ume-attributes Elements&nbsp;&nbsp;<small><a href="#optiontypes
     &lt;store name="test-store" port="14567"&gt;
       &lt;ume-attributes&gt;
         &lt;option type="store" name="disk-cache-directory" value="cache"/&gt;
-            &lt;option type="lbm-context" name="transport_lbtrm_rate_interval" value="100"&gt;
+        &lt;option type="lbm-context" name="transport_lbtrm_rate_interval" value="100"/&gt;
       &lt;/ume-attributes&gt;
       &lt;topics&gt;
         &lt;topic pattern="test.*" type="PCRE"&gt;
           &lt;ume-attributes&gt;
-            &lt;option type="lbm-receiver" name="transport_lbtrm_send_naks" value="0"&gt;
-            &lt;option type="lbm-source" name="transport" value="lbtru"&gt;
+            &lt;option type="lbm-receiver" name="transport_lbtrm_send_naks" value="0"/&gt;
+            &lt;option type="lbm-source" name="transport" value="lbtru"/&gt;
             &lt;option type="store" name="repository-size-limit" value="209715200"/&gt;
           &lt;/ume-attributes&gt;
         &lt;/topic&gt;
@@ -3585,19 +3974,19 @@ Option Types for ume-attributes Elements&nbsp;&nbsp;<small><a href="#optiontypes
 </th></tr>
 <tr>
 <td>lbm-receiver </td><td>Allows you to configure receiver-scope options that you usually specify in an Ultra Messaging configuration file or set using lbm_*_attr_setopt(). For example, you could turn off delivery of NAKs for a particular topic by including the following within the topic's '<code>&lt;ume-attributes&gt;</code>' element: <br />
-<code>&lt;option type="lbm-receiver" name="transport_lbtrm_send_naks" value="0"&gt;</code> <br />
+<code>&lt;option type="lbm-receiver" name="transport_lbtrm_send_naks" value="0"/&gt;</code> <br />
 '<code>&lt;option&gt;</code>' is a child of '<code>&lt;ume-attributes&gt;'</code>, but you can use option type lbm-receiver within only a '<code>&lt;topic&gt;</code>' element, not a '<code>&lt;store&gt;</code>' element. </td><td><p class="starttd">None - this is a required attribute.</p>
 <p class="endtd"><a class="anchor" id="umecfglbmcontext"></a></p>
 </td></tr>
 <tr>
 <td>lbm-context </td><td>Allows you to configure context-scope options that you usually specify in an Ultra Messaging configuration file or set using lbm_*_attr_setopt(). For example, you could increase the receiver socket buffer by including the following within the '<code>&lt;ume-attributes&gt;</code>' element: <br />
-<code>&lt;option type="lbm-context" name="transport_lbtrm_receiver_socket_buffer" value="1048576"&gt;</code> <br />
+<code>&lt;option type="lbm-context" name="transport_lbtrm_receiver_socket_buffer" value="1048576"/&gt;</code> <br />
 '<code>&lt;option&gt;</code>' is a child of '<code>&lt;ume-attributes&gt;</code>', but you can use option type lbm-receiver within only a '<code>&lt;store&gt;</code>' element, not a '<code>&lt;topic&gt;</code>' element. </td><td><p class="starttd">None - this is a required attribute.</p>
 <p class="endtd"><a class="anchor" id="umecfglbmsource"></a></p>
 </td></tr>
 <tr>
 <td>lbm-source </td><td>Allows you to configure source-scope options that you usually specify in an Ultra Messaging configuration file or set using lbm_*_attr_setopt(). For example, you could change the transport by including the following within the '<code>&lt;ume-attributes&gt;</code>' element: <br />
-<code>&lt;option type="lbm-source" name="transport" value="lbtru"&gt;</code> <br />
+<code>&lt;option type="lbm-source" name="transport" value="lbtru"/&gt;</code> <br />
 '<code>&lt;option&gt;</code>' is a child of '<code>&lt;ume-attributes&gt;</code>', but you can use option type lbm-source within only a '<code>&lt;topic&gt;</code>' element, not a '<code>&lt;store&gt;</code>' element. </td><td><p class="starttd">None - this is a required attribute.</p>
 <p class="endtd"><a class="anchor" id="umecfgstore"></a></p>
 </td></tr>
@@ -3799,9 +4188,9 @@ Store Daemon Statistics Retx Counts&nbsp;&nbsp;<small><a href="#storedaemonstati
 Store Daemon Statistics Configuration&nbsp;&nbsp;<small><a href="#storedaemonstatisticsconfiguration">&lt;-</a></small></h2>
 <p>There are two places in the Store configuration file that Daemon Statistics are configured: </p><ul>
 <li>
-The <a class="el" href="index.html#daemonmonitorelement">Daemon-monitor Element</a> inside the <code>&lt;daemon&gt;</code> definition. Configures all aspects of the Store Daemon Statistics feature, including publishing intervals. </li>
+The <a class="el" href="index.html#umeelementdaemonmonitor">&lt;daemon-monitor&gt;</a> element inside the <code>&lt;daemon&gt;</code> definition. Configures all aspects of the Store Daemon Statistics feature, including publishing intervals. </li>
 <li>
-The <a class="el" href="index.html#publishingintervalelement">Publishing-interval Element</a> inside a <code>&lt;store&gt;</code> definition. Configures only the publishing intervals on a store basis. </li>
+The <a class="el" href="index.html#umeelementpublishinginterval">&lt;publishing-interval&gt;</a> inside a <code>&lt;store&gt;</code> definition. Configures only the publishing intervals on a store basis. </li>
 </ul>
 <p>Here is an example of configuring daemon statistics.</p>
 <pre class="fragment">&lt;ume-store version="1.3"&gt;
@@ -3833,11 +4222,11 @@ The <a class="el" href="index.html#publishingintervalelement">Publishing-interva
  </p>
 <h2><a class="anchor" id="storedaemonstatisticsrequests"></a>
 Store Daemon Statistics Requests&nbsp;&nbsp;<small><a href="#storedaemonstatisticsrequests">&lt;-</a></small></h2>
-<p>The Store Daemon supports a monitoring application to send a specific set of requests to control the operation of Daemon Statistics. The <a class="el" href="index.html#dmoncfgremotesnapshotrequest">remote-snapshot-request</a> and <a class="el" href="index.html#dmoncfgremoteconfigchangesrequest">remote-config-changes-request</a> configuration elements control whether the Store enables this request feature (defaults to disabled).</p>
+<p>The Store Daemon supports a monitoring application to send a specific set of requests to control the operation of Daemon Statistics. The <a class="el" href="index.html#umeelementremotesnapshotrequest">&lt;remote-snapshot-request&gt;</a> and <a class="el" href="index.html#umeelementremoteconfigchangesrequest">&lt;remote-config-changes-request&gt;</a> elements control whether the Store enables this request feature (defaults to disabled).</p>
 <p>If enabled, the monitoring application can send a command message to the store in the form of a topicless unicast immediate "request" message (see <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UME/api.tag:../../API/" href="../../API/lbm_8h.html#ae011c7a66e1db1f012d7f9633dbd321d">lbm_unicast_immediate_request()</a> with NULL for topic). The format of the message is a simple ascii string, with or without null termination. Due to the simple format of the message, no data structure is defined for it.</p>
 <p>When the Store receives and validates the command, it sends a UM response message back to the requesting application containing a status message (which is <em>not</em> null-terminated). If the status was OK, the Store also performs the requested action.</p>
 <p>The example program <a href="../../example/umedcmd.c">umedcmd.c</a> demonstrates the correct way to send the messages and receive the responses.</p>
-<p><b>Commands enabled by <a class="el" href="index.html#dmoncfgremotesnapshotrequest">remote-snapshot-request</a>:</b></p>
+<p><b>Commands enabled by <a class="el" href="index.html#umeelementremotesnapshotrequest">&lt;remote-snapshot-request&gt;</a>:</b></p>
 <dl class="section user"><dt>version</dt><dd>The Store returns in its command response the value of <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UME/api.tag:../../API/" href="../../API/umedmonmsgs_8h.html#af43ca32ea1917897c4ff1310d214c20b">LBM_UMESTORE_DMON_VERSION</a>. No daemon statistics messages are published.</dd></dl>
 <dl class="section user"><dt>snap memory</dt><dd>The Store immediately publishes the memory usage message <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UME/api.tag:../../API/" href="../../API/umedmonmsgs_8h.html#aa3a3d4c63922003ed750ed38027bcc82">LBM_UMESTORE_DMON_MPG_SMART_HEAP_STATS</a>.</dd></dl>
 <dl class="section user"><dt>snap src</dt><dd>The Store immediately publishes the source repository statistics message(s) <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UME/api.tag:../../API/" href="../../API/umedmonmsgs_8h.html#aa4269805d37ad1586f340a0f4486e0e9">LBM_UMESTORE_DMON_MPG_REPO_STATS</a>.</dd></dl>
@@ -3845,7 +4234,7 @@ Store Daemon Statistics Requests&nbsp;&nbsp;<small><a href="#storedaemonstatisti
 <dl class="section user"><dt>snap disk</dt><dd>The Store immediately publishes the disk statistics message(s) <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UME/api.tag:../../API/" href="../../API/umedmonmsgs_8h.html#a41acc94a55b5c03bf2580c876d7f8ad4">LBM_UMESTORE_DMON_MPG_DISK_STATS</a>.</dd></dl>
 <dl class="section user"><dt>snap store</dt><dd>The Store immediately publishes the store statistics message(s) <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UME/api.tag:../../API/" href="../../API/umedmonmsgs_8h.html#a102df121698e67407d2aeffc0147d91e">LBM_UMESTORE_DMON_MPG_STORE_STATS</a>.</dd></dl>
 <dl class="section user"><dt>snap config</dt><dd>The Store immediately publishes the store config category messages <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UME/api.tag:../../API/" href="../../API/umedmonmsgs_8h.html#aed8460b69470931e1d8ee4347110a309">LBM_UMESTORE_DMON_MPG_STORE_CONFIG</a>, <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UME/api.tag:../../API/" href="../../API/umedmonmsgs_8h.html#aab14bc84ccbe0986c41e5f3f4b5f2b34">LBM_UMESTORE_DMON_MPG_STORE_PATTERN_CONFIG</a>, <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UME/api.tag:../../API/" href="../../API/umedmonmsgs_8h.html#a8e29917df3f47cbb8935cb1ed683e876">LBM_UMESTORE_DMON_MPG_STORE_TOPIC_CONFIG</a>, <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UME/api.tag:../../API/" href="../../API/umedmonmsgs_8h.html#a76e34ed0b81c5e1141a36e358f3803a4">LBM_UMESTORE_DMON_MPG_REPO_CONFIG</a>, and <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UME/api.tag:../../API/" href="../../API/umedmonmsgs_8h.html#a37abe47b7a806332d6dec510f8370386">LBM_UMESTORE_DMON_MPG_RCV_CONFIG</a></dd></dl>
-<p><b>Commands enabled by <a class="el" href="index.html#dmoncfgremoteconfigchangesrequest">remote-config-changes-request</a>:</b></p>
+<p><b>Commands enabled by <a class="el" href="index.html#umeelementremoteconfigchangesrequest">&lt;remote-config-changes-request&gt;</a>:</b></p>
 <dl class="section user"><dt>memory N</dt><dd>Set the publishing interval for memory usage. <br />
 For example: <code>memory 5</code></dd></dl>
 <dl class="section user"><dt>src N</dt><dd>Set the publishing interval for source repository statistics messages. This command can be preceded by a store name in double quote marks to only set the publishing interval for that store. <br />
@@ -3864,7 +4253,7 @@ For example: <code>"store1" config 5</code></dd></dl>
 Store Web Monitor&nbsp;&nbsp;<small><a href="#storewebmonitor">&lt;-</a></small></h1>
 <p>The built-in web monitor (configured in the umestored XML configuration file) is a rich source of information about the health of a UM stores. This section contains a page-by-page guide to reading and interpreting the output of a UM web monitor, with just a couple example sources and one receiver using a single store.</p>
 <dl class="section warning"><dt>Warning</dt><dd>The store's web monitor is not designed to be a highly-secure feature. Anybody with access to the network can access the web monitor pages.</dd></dl>
-<p>Users are expected to prevent unauthorized access to the web monitor through normal firewalling methods. Users who are unable to limit access to a level consistent with their overall security needs should disable the store web monitor (using <a class="el" href="index.html#umecfgwebmonitor">&lt;web-monitor&gt;</a>). See <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UME/design.tag:../../Design/" href="../../Design/fundamentalconcepts.html#webmonsecurity">Webmon Security</a> for more information.</p>
+<p>Users are expected to prevent unauthorized access to the web monitor through normal firewalling methods. Users who are unable to limit access to a level consistent with their overall security needs should disable the store web monitor (using <a class="el" href="index.html#umeelementwebmonitor">&lt;web-monitor&gt;</a>). See <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UME/design.tag:../../Design/" href="../../Design/fundamentalconcepts.html#webmonsecurity">Webmon Security</a> for more information.</p>
 <dl class="section note"><dt>Note</dt><dd>the UM daemon designs are evolving away from simple web-based monitoring and towards a publish/subscribe model of distributing monitoring events and statistics.</dd></dl>
 <p><br />
  </p>
@@ -3939,7 +4328,7 @@ Store Web Monitor Store Page&nbsp;&nbsp;<small><a href="#storewebmonitorstorepag
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>Patterns </td><td><p class="starttd">Specifies the wildcard pattern used to select topics for which a store will provide persistence services. This would be configured as a topic attribute in the store's XML configuration file. For example: <a class="el" href="index.html#umecfgpattern">&lt;topic pattern="test.*" type="PCRE"&gt;</a></p>
+<td>Patterns </td><td><p class="starttd">Specifies the wildcard pattern used to select topics for which a store will provide persistence services. This would be configured as a topic attribute in the store's XML configuration file. For example: <a class="el" href="index.html#umeelementtopic">&lt;topic pattern="test.*" type="PCRE"&gt;</a></p>
 <p class="endtd"></p>
 </td></tr>
 <tr>

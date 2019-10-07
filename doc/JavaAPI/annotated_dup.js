@@ -116,7 +116,7 @@ var annotated_dup =
           [ "LBMMessagePropertiesIterator", "classcom_1_1latencybusters_1_1lbm_1_1LBMMessagePropertiesIterator.html", "classcom_1_1latencybusters_1_1lbm_1_1LBMMessagePropertiesIterator" ],
           [ "LBMMessageProperty", "classcom_1_1latencybusters_1_1lbm_1_1LBMMessageProperty.html", "classcom_1_1latencybusters_1_1lbm_1_1LBMMessageProperty" ],
           [ "LBMMessageReclamationCallback", "interfacecom_1_1latencybusters_1_1lbm_1_1LBMMessageReclamationCallback.html", "interfacecom_1_1latencybusters_1_1lbm_1_1LBMMessageReclamationCallback" ],
-          [ "LBMMonitor", "classcom_1_1latencybusters_1_1lbm_1_1LBMMonitor.html", null ],
+          [ "LBMMonitor", "classcom_1_1latencybusters_1_1lbm_1_1LBMMonitor.html", "classcom_1_1latencybusters_1_1lbm_1_1LBMMonitor" ],
           [ "LBMMonitorEAgainException", "classcom_1_1latencybusters_1_1lbm_1_1LBMMonitorEAgainException.html", "classcom_1_1latencybusters_1_1lbm_1_1LBMMonitorEAgainException" ],
           [ "LBMMonitorEAlreadyException", "classcom_1_1latencybusters_1_1lbm_1_1LBMMonitorEAlreadyException.html", "classcom_1_1latencybusters_1_1lbm_1_1LBMMonitorEAlreadyException" ],
           [ "LBMMonitorEInvalException", "classcom_1_1latencybusters_1_1lbm_1_1LBMMonitorEInvalException.html", "classcom_1_1latencybusters_1_1lbm_1_1LBMMonitorEInvalException" ],

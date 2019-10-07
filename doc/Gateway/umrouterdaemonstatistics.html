@@ -103,11 +103,11 @@ UM Router Daemon Statistics String Buffers&nbsp;&nbsp;<small><a href="#umrouterd
 UM Router Daemon Statistics Configuration&nbsp;&nbsp;<small><a href="#umrouterdaemonstatisticsconfiguration">&lt;-</a></small></h1>
 <p>There are three places in the UM Router configuration file that Daemon Statistics are configured: </p><ul>
 <li>
-The <a class="el" href="xmlconfigurationreference.html#drocfg_daemon-monitor">&lt;daemon-monitor&gt;</a> element inside the <code>&lt;daemon&gt;</code> definition. Configures all aspects of the Store Daemon Statistics feature, including publishing intervals. </li>
+The <a class="el" href="xmlconfigurationreference.html#droelementdaemonmonitor">&lt;daemon-monitor&gt;</a> element inside the <a class="el" href="xmlconfigurationreference.html#droelementdaemon">&lt;daemon&gt;</a> definition. Configures all aspects of the Store Daemon Statistics feature, including publishing intervals. </li>
 <li>
-The <a class="el" href="xmlconfigurationreference.html#drocfg_publishing-interval">&lt;publishing-interval&gt;</a> element inside the <code>&lt;peer&gt;</code> definition. Configures only the publishing intervals on a peer portal basis. </li>
+The <a class="el" href="xmlconfigurationreference.html#droelementpublishinginterval">&lt;publishing-interval&gt;</a> element inside the <a class="el" href="xmlconfigurationreference.html#droelementpeer">&lt;peer&gt;</a> definition. Configures only the publishing intervals on a peer portal basis. </li>
 <li>
-The <a class="el" href="xmlconfigurationreference.html#drocfg_publishing-interval">&lt;publishing-interval&gt;</a> element inside the <code>&lt;endpoint&gt;</code> definition. Configures only the publishing intervals on an endpoint portal basis. </li>
+The <a class="el" href="xmlconfigurationreference.html#droelementpublishinginterval">&lt;publishing-interval&gt;</a> element inside the <a class="el" href="xmlconfigurationreference.html#droelementendpoint">&lt;endpoint&gt;</a> definition. Configures only the publishing intervals on an endpoint portal basis. </li>
 </ul>
 <p>Here is an example of configuring daemon statistics.</p>
 <pre class="fragment">&lt;?xml version="1.0" encoding="UTF-8" ?&gt;
@@ -117,8 +117,8 @@ The <a class="el" href="xmlconfigurationreference.html#drocfg_publishing-interva
     ...
     &lt;publishing-interval&gt;
       &lt;group name="default" ivl="3"/&gt;
-      &lt;group name="gateway-config" ivl="120"&gt;
-      &lt;group name="portal-config" ivl="120"&gt;
+      &lt;group name="gateway-config" ivl="120"/&gt;
+      &lt;group name="portal-config" ivl="120"/&gt;
     &lt;/publishing-interval&gt;
     &lt;remote-snapshot-request allow="1"/&gt;
     &lt;remote-config-changes-request allow="1"/&gt;
@@ -129,8 +129,8 @@ The <a class="el" href="xmlconfigurationreference.html#drocfg_publishing-interva
       ...
       &lt;publishing-interval&gt;
         &lt;group name="default" ivl="6"/&gt;
-        &lt;group name="gateway-config" ivl="120"&gt;
-        &lt;group name="portal-config" ivl="120"&gt;
+        &lt;group name="gateway-config" ivl="120"/&gt;
+        &lt;group name="portal-config" ivl="120"/&gt;
       &lt;/publishing-interval&gt;
     &lt;/endpoint&gt;
     ...
@@ -141,18 +141,18 @@ The <a class="el" href="xmlconfigurationreference.html#drocfg_publishing-interva
  </p>
 <h1><a class="anchor" id="umrouterdaemonstatisticsrequests"></a>
 UM Router Daemon Statistics Requests&nbsp;&nbsp;<small><a href="#umrouterdaemonstatisticsrequests">&lt;-</a></small></h1>
-<p>The UM Router Daemon supports a monitoring application to send a specific set of requests to control the operation of Daemon Statistics. The <a class="el" href="xmlconfigurationreference.html#drocfg_remote-snapshot-request">remote-snapshot-request</a> and <a class="el" href="xmlconfigurationreference.html#drocfg_remote-config-changes-request">remote-config-changes-request</a> configuration elements control whether the Store enables this request feature (defaults to disabled).</p>
+<p>The UM Router Daemon supports a monitoring application to send a specific set of requests to control the operation of Daemon Statistics. The <a class="el" href="xmlconfigurationreference.html#droelementremotesnapshotrequest">&lt;remote-snapshot-request&gt;</a> and <a class="el" href="xmlconfigurationreference.html#droelementremoteconfigchangesrequest">&lt;remote-config-changes-request&gt;</a> configuration elements control whether the Store enables this request feature (defaults to disabled).</p>
 <p>If enabled, the monitoring application can send a command message to the UM Router in the form of a topicless unicast immediate "request" message (see <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Gateway/api.tag:../API/" href="../API/lbm_8h.html#ae011c7a66e1db1f012d7f9633dbd321d">lbm_unicast_immediate_request()</a> with NULL for topic). The format of the message is a simple ascii string, with or without null termination. Due to the simple format of the message, no data structure is defined for it.</p>
 <p>When the UM Router receives and validates the command, it sends a UM response message back to the requesting application containing a status message (which is <em>not</em> null-terminated). If the status was OK, the Store also performs the requested action.</p>
 <p>The example program <a href="../example/tnwgdcmd.c">tnwgdcmd.c</a> demonstrates the correct way to send the messages and receive the responses.</p>
-<p><b>Commands enabled by <a class="el" href="xmlconfigurationreference.html#drocfg_remote-snapshot-request">remote-snapshot-request</a>:</b></p>
+<p><b>Commands enabled by <a class="el" href="xmlconfigurationreference.html#droelementremotesnapshotrequest">&lt;remote-snapshot-request&gt;</a>:</b></p>
 <dl class="section user"><dt>version</dt><dd>The UM Router returns in its command response the value of <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Gateway/api.tag:../API/" href="../API/umedmonmsgs_8h.html#af43ca32ea1917897c4ff1310d214c20b">LBM_UMESTORE_DMON_VERSION</a>. No daemon statistics messages are published.</dd></dl>
 <dl class="section user"><dt>snap mallinfo</dt><dd>The UM Router immediately publishes the memory allocation usage message of type <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Gateway/api.tag:../API/" href="../API/tnwgdmonmsgs_8h.html#a3d4c9c51b7c6c951f9bb30fc01985443">TNWG_DSTATTYPE_MALLINFO</a>.</dd></dl>
 <dl class="section user"><dt>snap pstat</dt><dd>The UM Router immediately publishes the portal statistics message(s) of type <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Gateway/api.tag:../API/" href="../API/tnwgdmonmsgs_8h.html#a753f815bd1b3d81710769ebc11ead975">TNWG_DSTATTYPE_PORTSTAT</a>.</dd></dl>
 <dl class="section user"><dt>snap ri</dt><dd>The UM Router immediately publishes the route information message(s) of types <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Gateway/api.tag:../API/" href="../API/tnwgdmonmsgs_8h.html#a8f8364505ea12a843de27bd08f781742">TNWG_DSTATTYPE_RM_LOCAL</a>, <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Gateway/api.tag:../API/" href="../API/tnwgdmonmsgs_8h.html#a42c3c613d145e1468643a3e82cd4d831">TNWG_DSTATTYPE_RM_PORTAL</a> <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Gateway/api.tag:../API/" href="../API/tnwgdmonmsgs_8h.html#ac5224b9528702e4517b7ca3c0e98ce44">TNWG_DSTATTYPE_RM_OTHERGW</a>, and <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Gateway/api.tag:../API/" href="../API/tnwgdmonmsgs_8h.html#a63eb677c1dedb172db3a4d4fd74bed5e">TNWG_DSTATTYPE_RM_OTHERGW_NBR</a>.</dd></dl>
 <dl class="section user"><dt>snap gcfg</dt><dd>The UM Router immediately publishes the gateway configuration message <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Gateway/api.tag:../API/" href="../API/tnwgdmonmsgs_8h.html#a219110ebfcf129991d124c7c4b958b5f">TNWG_DSTATTYPE_GATEWAYCFG</a>.</dd></dl>
 <dl class="section user"><dt>snap pcfg</dt><dd>The UM Router immediately publishes the portal configuration message(s) <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Gateway/api.tag:../API/" href="../API/tnwgdmonmsgs_8h.html#aa6d1797deea435e8b48b6296bc0725a1">TNWG_DSTATTYPE_PORTCFG</a>.</dd></dl>
-<p><b>Commands enabled by <a class="el" href="xmlconfigurationreference.html#drocfg_remote-config-changes-request">remote-config-changes-request</a>:</b></p>
+<p><b>Commands enabled by <a class="el" href="xmlconfigurationreference.html#droelementremoteconfigchangesrequest">&lt;remote-config-changes-request&gt;</a>:</b></p>
 <dl class="section user"><dt>mallinfo N</dt><dd>Set the publishing interval for memory allocation usage. <br />
 For example: <code>mallinfo 5</code></dd></dl>
 <dl class="section user"><dt>ri N</dt><dd>Set the publishing interval for the route information messages. <br />

@@ -1088,7 +1088,7 @@ Source String from Source Notification Function&nbsp;&nbsp;<small><a href="#sour
   src_notif_callback_info.clientd = NULL;   /* Can be user's receiver-specific state. */
   ...
   lbm_rcv_topic_attr_t *rcv_topic_attr;
-  err = lbm_rcv_topic_attr_create(&amp;rcv_topic_attr);
+  err = lbm_rcv_topic_attr_create_from_xml(&amp;rcv_topic_attr, "MyCtx", receiver_topic_name);
 
   err = lbm_rcv_topic_attr_setopt(rcv_topic_attr, "source_notification_function",
                                  &amp;src_notif_callback_info, sizeof(src_notif_callback_info));
@@ -1281,7 +1281,7 @@ Hot Failover Across Multiple Contexts&nbsp;&nbsp;<small><a href="#hotfailoveracr
 <p>The following outlines the general procedure for HFX.</p>
 <ol>
 <li>
-Create an HFX Object for every HF topic of interest with <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#a82e9efbf70242d83ab287916ac497645">lbm_hfx_create()</a>, passing in an attributes object created with <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#a0e904e14d61eee45af197c17f7e3dc08">lbm_hfx_attr_create()</a> to specify any attributes desired. </li>
+Create an HFX Object for every HF topic of interest with <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#a82e9efbf70242d83ab287916ac497645">lbm_hfx_create()</a>, passing in an attributes object created with <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#aabc739544b1a28481e9b4bc51bb49705">lbm_hfx_attr_create_from_xml()</a> to specify any attributes desired. </li>
 <li>
 Create a context for the first NIC receiving HF messages with <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#a8058947690bd0995bc2c59d4a61b462f">lbm_context_create()</a>. </li>
 <li>
@@ -1298,6 +1298,7 @@ Receive messages. The HFX Object identifies and drops all duplicates, delivering
 <h1><a class="anchor" id="daemonstatistics"></a>
 Daemon Statistics&nbsp;&nbsp;<small><a href="#daemonstatistics">&lt;-</a></small></h1>
 <p>The <a class="el" href="fundamentalconcepts.html#persistence">Persistence</a> Store daemon and the <a class="el" href="fundamentalconcepts.html#umrouter">UM Router</a> daemon each have a simple web server which provides operational information. This information is important for monitoring the operation and performance of these daemons. However, while the web-based presentation is convenient for manual, on-demand monitoring, it is not suitable for automated collection and recording of operational information for historical analysis.</p>
+<p>(The UMDS product also supports Daemon Statistics as of UMDS version 6.12; see UMDS documentation for details.)</p>
 <p>Starting with UM version 6.11, a feature called "Daemon Statistics" has been added to the Store and Router daemons. The Stateful Resolver Service (SRS), added in UM version 6.12, supports Daemon Statistics only (no web server). The Daemon Statistics feature supports the background publishing of their operational information via UM messages. Monitoring systems can now subscribe to this information in much the same way that UM transport statistics can be subscribed.</p>
 <p>While the information published by the Store, UM Router, and SRS daemon statistics differ in their content, the general feature usage is the same between them. When the feature is configured, the daemon will periodically collect and publish its operational information.</p>
 <p>The following sections give general information which is common across daemons, followed by links to daemon-specific details.</p>

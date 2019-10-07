@@ -15,5 +15,9 @@ var classumm_1_1api_1_1User =
     [ "setId", "classumm_1_1api_1_1User.html#a0cf6fd75068606c24695de693db0b91a", null ],
     [ "setPassword", "classumm_1_1api_1_1User.html#a38ebf83535686e5212450e7fc61fa13e", null ],
     [ "setUserName", "classumm_1_1api_1_1User.html#ab70e8f3383af285e86a8ff3c259cafa3", null ],
-    [ "setUserType", "classumm_1_1api_1_1User.html#ac37ff27546da45b4596a365d4a678562", null ]
+    [ "setUserType", "classumm_1_1api_1_1User.html#ac37ff27546da45b4596a365d4a678562", null ],
+    [ "ADMIN", "classumm_1_1api_1_1User.html#a6c3dd5070baf0d964b958aa067a63e55", null ],
+    [ "ADMIN_STR", "classumm_1_1api_1_1User.html#afa3f524dec941c83588def26fc78e0d8", null ],
+    [ "NORMAL", "classumm_1_1api_1_1User.html#a068adaba51a784de3e0220bc196977b0", null ],
+    [ "NORMAL_STR", "classumm_1_1api_1_1User.html#ad72a51a0754e10367c523942be649f3b", null ]
 ];

@@ -2,6 +2,7 @@ var enumcom_1_1latencybusters_1_1pdm_1_1PDMFieldType =
 [
     [ "PDMFieldType", "enumcom_1_1latencybusters_1_1pdm_1_1PDMFieldType.html#a7dd98a7c20180e8777f7f8508a718fd1", null ],
     [ "getType", "enumcom_1_1latencybusters_1_1pdm_1_1PDMFieldType.html#aac19d72d4b94e40e5a659741059c0314", null ],
+    [ "getType", "enumcom_1_1latencybusters_1_1pdm_1_1PDMFieldType.html#a1ce1e768ae75f966b73175c0ac76a663", null ],
     [ "getTypeLen", "enumcom_1_1latencybusters_1_1pdm_1_1PDMFieldType.html#ae733d8f0081d3b70bda22cf56cb6d9a7", null ],
     [ "getTypeStr", "enumcom_1_1latencybusters_1_1pdm_1_1PDMFieldType.html#a6d711d8c66c89a38d928218fc02fcbb7", null ],
     [ "isArray", "enumcom_1_1latencybusters_1_1pdm_1_1PDMFieldType.html#a1c9134f12f2b6f1d4315746d97c3f7d1", null ],
