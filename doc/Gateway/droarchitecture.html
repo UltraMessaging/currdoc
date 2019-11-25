@@ -83,19 +83,7 @@ Contexts can communicate using the protocols required for both message transport
 </ul>
 <p>For example, two contexts on separate machines in the same LAN are not in the same topic resolution domain if they use different resolver addresses. See Multicast Resolver Network Options. A topic resolution domain can span a WAN if the UM contexts on each side of a firewall use the same UM configuration and the firewall allows UDP traffic (multicast or unicast) to pass.</p>
 <p>Each endpoint portal must identify its associated topic resolution domain with a domain-id the UM Router's XML configuration file, as in the example below. All portals in the same TRD must have the same domain-id, and different TRDs networked together via UM Routers must have domain-ids unique to each other.</p>
-<pre class="fragment">  &lt;portals&gt;
-    &lt;endpoint&gt;
-      &lt;name&gt;LAN100&lt;/name&gt;
-      &lt;domain-id&gt;100&lt;/domain-id&gt;
-      &lt;lbm-config&gt;lan100.cfg&lt;/lbm-config&gt;
-    &lt;/endpoint&gt;
-    &lt;endpoint&gt;
-      &lt;name&gt;LAN200&lt;/name&gt;
-      &lt;domain-id&gt;200&lt;/domain-id&gt;
-      &lt;lbm-config&gt;lan200.cfg&lt;/lbm-config&gt;
-    &lt;/endpoint&gt;
-  &lt;/portals&gt;
-</pre><p><br />
+<div class="fragment"><div class="line">&lt;portals&gt;</div><div class="line">  &lt;endpoint&gt;</div><div class="line">    &lt;name&gt;LAN100&lt;/name&gt;</div><div class="line">    &lt;domain-<span class="keywordtype">id</span>&gt;100&lt;/domain-<span class="keywordtype">id</span>&gt;</div><div class="line">    &lt;lbm-config&gt;lan100.cfg&lt;/lbm-config&gt;</div><div class="line">  &lt;/endpoint&gt;</div><div class="line">  &lt;endpoint&gt;</div><div class="line">    &lt;name&gt;LAN200&lt;/name&gt;</div><div class="line">    &lt;domain-<span class="keywordtype">id</span>&gt;200&lt;/domain-<span class="keywordtype">id</span>&gt;</div><div class="line">    &lt;lbm-config&gt;lan200.cfg&lt;/lbm-config&gt;</div><div class="line">  &lt;/endpoint&gt;</div><div class="line">&lt;/portals&gt;</div></div><!-- fragment --><p><br />
  </p>
 <h1><a class="anchor" id="proxysourcesandproxyreceivers"></a>
 Proxy Sources and Proxy Receivers&nbsp;&nbsp;<small><a href="#proxysourcesandproxyreceivers">&lt;-</a></small></h1>

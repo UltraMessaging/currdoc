@@ -130,7 +130,7 @@ UMM Menus&nbsp;&nbsp;<small><a href="#ummmenus">&lt;-</a></small></h1>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>File </td><td>Save To File </td><td><p class="starttd">Save the Application, Template or User record to an XML file instead of the database. This selection allows you to use the UMM GUI to configure applications but not use UMM Daemon when running your applications. After saving an application's configuration to a file, you can use the <code>LBM_XML_CONFIG_FILENAME</code> and <code>LBM_XML_CONFIG_APPNAME</code> environment variables to enable the XML configuration file. See <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMM/config.tag:../Config/" href="../Config/xmlconfigurationfiles.html#usingxmlconfigurationfileswithaumapplication">Using XML Configuration Files With a UM Application</a>.</p>
+<td>File </td><td>Save To File </td><td><p class="starttd">Save the Application, Template or User record to an XML file instead of the database. This selection allows you to use the UMM GUI to configure applications but not use UMM Daemon when running your applications. After saving an application's configuration to a file, you can use the <code>LBM_XML_CONFIG_FILENAME</code> and <code>LBM_XML_CONFIG_APPNAME</code> environment variables to enable the XML configuration file. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMM/config.tag:../Config/" href="../Config/xmlconfigurationfiles.html#usingxmlconfigurationfileswithaumapplication">Using XML Configuration Files With a UM Application</a>.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
@@ -214,19 +214,13 @@ Right click on the object name in the left pane or click on the File Menu. Then 
  </p>
 <h1><a class="anchor" id="usingtheorderattribute"></a>
 Using the Order Attribute&nbsp;&nbsp;<small><a href="#usingtheorderattribute">&lt;-</a></small></h1>
-<p>Any option used in a template or directly configured for an application has an order attribute expressed with two values in one of two sequences: </p><pre class="fragment">&lt;option default-value="tcp" name="transport" order="deny,allow"&gt;
-</pre><p> or </p><pre class="fragment">&lt;option default-value="tcp" name="transport" order="allow,deny"&gt;
-</pre><p>The order attribute allows you to permit or restrict more than one value for the option. The order, allow,deny essentially means "allow what you specify,
+<p>Any option used in a template or directly configured for an application has an order attribute expressed with two values in one of two sequences: </p><div class="fragment"><div class="line">&lt;option <span class="keywordflow">default</span>-value=<span class="stringliteral">&quot;tcp&quot;</span> name=<span class="stringliteral">&quot;transport&quot;</span> order=<span class="stringliteral">&quot;deny,allow&quot;</span>&gt;</div></div><!-- fragment --><p> or </p><div class="fragment"><div class="line">&lt;option <span class="keywordflow">default</span>-value=<span class="stringliteral">&quot;tcp&quot;</span> name=<span class="stringliteral">&quot;transport&quot;</span> order=<span class="stringliteral">&quot;allow,deny&quot;</span>&gt;</div></div><!-- fragment --><p>The order attribute allows you to permit or restrict more than one value for the option. The order, allow,deny essentially means "allow what you specify,
 deny everything else." The order, deny, allow means "deny what you specify, allow everything else." The default order is '<code>deny,allow</code>'. If you specify nothing, the default rule executes, ignoring the option's default value. Order of appearance of rules is not significant.</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="usingthedenyalloworder"></a>
 Using the Deny,Allow Order&nbsp;&nbsp;<small><a href="#usingthedenyalloworder">&lt;-</a></small></h2>
-<p>The example below allows any transport type except for LBT-IPC or LBT-RDMA. </p><pre class="fragment">&lt;option default-value="tcp" name="transport" order="deny,allow"&gt;
-    &lt;deny&gt;LBT-IPC&lt;/deny&gt;
-    &lt;deny&gt;LBT-RDMA&lt;/deny&gt;
-&lt;/option&gt;
-</pre><p>The procedure below shows how to accomplish this in the UMM GUI. Refer to the composite screen image following the procedure.</p>
+<p>The example below allows any transport type except for LBT-IPC or LBT-RDMA. </p><div class="fragment"><div class="line">&lt;option <span class="keywordflow">default</span>-value=<span class="stringliteral">&quot;tcp&quot;</span> name=<span class="stringliteral">&quot;transport&quot;</span> order=<span class="stringliteral">&quot;deny,allow&quot;</span>&gt;</div><div class="line">    &lt;deny&gt;LBT-IPC&lt;/deny&gt;</div><div class="line">    &lt;deny&gt;LBT-RDMA&lt;/deny&gt;</div><div class="line">&lt;/option&gt;</div></div><!-- fragment --><p>The procedure below shows how to accomplish this in the UMM GUI. Refer to the composite screen image following the procedure.</p>
 <ol>
 <li>
 <p class="startli">For the source option, transport, click in the Ordering box and select '<code>Deny,Allow</code>'.</p>
@@ -256,13 +250,7 @@ Using the Deny,Allow Order&nbsp;&nbsp;<small><a href="#usingthedenyalloworder">&
 <h2><a class="anchor" id="usingtheallowdenyorder"></a>
 Using the Allow,Deny Order&nbsp;&nbsp;<small><a href="#usingtheallowdenyorder">&lt;-</a></small></h2>
 <p>You could accomplish the same restriction shown in Using the '<code>Deny,Allow</code>' Order with the next example.</p>
-<pre class="fragment">&lt;option default-value="tcp" name="transport" order="allow,deny"&gt;
-    &lt;allow&gt;TCP&lt;/allow&gt;
-    &lt;allow&gt;TCP-LB&lt;/allow&gt;
-    &lt;allow&gt;LBT-RU&lt;/allow&gt;
-    &lt;allow&gt;LBT-RM&lt;/allow&gt;
-&lt;/option&gt;
-</pre><p>The procedure below shows how to accomplish this in the UMM GUI. Refer to the composite screen image following the procedure.</p>
+<div class="fragment"><div class="line">&lt;option <span class="keywordflow">default</span>-value=<span class="stringliteral">&quot;tcp&quot;</span> name=<span class="stringliteral">&quot;transport&quot;</span> order=<span class="stringliteral">&quot;allow,deny&quot;</span>&gt;</div><div class="line">    &lt;allow&gt;TCP&lt;/allow&gt;</div><div class="line">    &lt;allow&gt;TCP-LB&lt;/allow&gt;</div><div class="line">    &lt;allow&gt;LBT-RU&lt;/allow&gt;</div><div class="line">    &lt;allow&gt;LBT-RM&lt;/allow&gt;</div><div class="line">&lt;/option&gt;</div></div><!-- fragment --><p>The procedure below shows how to accomplish this in the UMM GUI. Refer to the composite screen image following the procedure.</p>
 <ol>
 <li>
 <p class="startli">For the source option, transport, click in the Ordering box and select '<code>Allow,Deny</code>'.</p>
@@ -340,13 +328,7 @@ Right click on the object name in the left pane or click on the File Menu. Then 
 <h2><a class="anchor" id="optionswithvalueranges"></a>
 Options with Value Ranges&nbsp;&nbsp;<small><a href="#optionswithvalueranges">&lt;-</a></small></h2>
 <p>Some options can specify a range of values. You can specify both allow and deny rules to allow one or more values of a larger range. The next example allows a single multicast address out of a range of otherwise allowable addresses.</p>
-<pre class="fragment">&lt;options&gt;
-  &lt;option name="transport_lbtrm_multicast_address" default_value="239.191.10.11" order="deny,allow"&gt;
-    &lt;allow&gt;239.191.10.15&lt;/allow&gt;
-    &lt;deny&gt;239.191.10.12-239.191.10.20&lt;/deny&gt;
-  &lt;/option&gt;
-&lt;/options&gt;
-</pre><p>Address 239.191.10.15 matches both an allow and deny rule, but since the order indicates that allow is the default, the value is allowed.</p>
+<div class="fragment"><div class="line">&lt;options&gt;</div><div class="line">  &lt;option name=<span class="stringliteral">&quot;transport_lbtrm_multicast_address&quot;</span> default_value=<span class="stringliteral">&quot;239.191.10.11&quot;</span> order=<span class="stringliteral">&quot;deny,allow&quot;</span>&gt;</div><div class="line">    &lt;allow&gt;239.191.10.15&lt;/allow&gt;</div><div class="line">    &lt;deny&gt;239.191.10.12-239.191.10.20&lt;/deny&gt;</div><div class="line">  &lt;/option&gt;</div><div class="line">&lt;/options&gt;</div></div><!-- fragment --><p>Address 239.191.10.15 matches both an allow and deny rule, but since the order indicates that allow is the default, the value is allowed.</p>
 <p><br />
  </p>
 <h1><a class="anchor" id="creatingapplicationconfigurations"></a>
@@ -476,19 +458,7 @@ Configuring Sources&nbsp;&nbsp;<small><a href="#configuringsources">&lt;-</a></s
 Topics that match both a topicname and a topic pattern use the option values from the more specific match, i.e. the topicname. </li>
 <li>
 <p class="startli">If multiple patterns match a given topic, UMM uses the first pattern matched in the XML configuration file. In the example below, when your application creates a source for topic SRM, it will use the LBTRM transport, which is configured for the first pattern, '<code>*R*</code>', and not the TCP transport which is configured for the second pattern, '<code>*RM</code>'.</p>
-<pre class="fragment">      &lt;sources order="deny,allow"&gt;
-        &lt;topic pattern="*R*" rule="allow"&gt;
-          &lt;options type="source"&gt;
-            &lt;option default-value="lbtrm" name="transport"/&gt;
-          &lt;/options&gt;
-        &lt;/topic&gt;
-        &lt;topic pattern="*RM" rule="allow"&gt;
-          &lt;options type="source"&gt;
-            &lt;option default-value="tcp" name="transport"/&gt;
-          &lt;/options&gt;
-        &lt;/topic&gt;
-      &lt;/sources&gt;
-</pre><p>Use the following procedure to configure options for an individual UM source:</p>
+<div class="fragment"><div class="line">&lt;sources order=<span class="stringliteral">&quot;deny,allow&quot;</span>&gt;</div><div class="line">  &lt;topic pattern=<span class="stringliteral">&quot;*R*&quot;</span> rule=<span class="stringliteral">&quot;allow&quot;</span>&gt;</div><div class="line">    &lt;options type=<span class="stringliteral">&quot;source&quot;</span>&gt;</div><div class="line">      &lt;option <span class="keywordflow">default</span>-value=<span class="stringliteral">&quot;lbtrm&quot;</span> name=<span class="stringliteral">&quot;transport&quot;</span>/&gt;</div><div class="line">    &lt;/options&gt;</div><div class="line">  &lt;/topic&gt;</div><div class="line">  &lt;topic pattern=<span class="stringliteral">&quot;*RM&quot;</span> rule=<span class="stringliteral">&quot;allow&quot;</span>&gt;</div><div class="line">    &lt;options type=<span class="stringliteral">&quot;source&quot;</span>&gt;</div><div class="line">      &lt;option <span class="keywordflow">default</span>-value=<span class="stringliteral">&quot;tcp&quot;</span> name=<span class="stringliteral">&quot;transport&quot;</span>/&gt;</div><div class="line">    &lt;/options&gt;</div><div class="line">  &lt;/topic&gt;</div><div class="line">&lt;/sources&gt;</div></div><!-- fragment --><p>Use the following procedure to configure options for an individual UM source:</p>
 <ol>
 <li>
 <p class="startli">Click on the Sources tab on the left of the context pane. An empty Sources window appears.</p>

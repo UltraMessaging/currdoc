@@ -1,5 +1,6 @@
 var NAVTREEINDEX14 =
 {
+"classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMBadTypeException.html#aaa6eb0ae1fb63b3895945f44520a1647":[2,0,0,0,0,0,20,1],
 "classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMBadTypeException.html#ac2aee59d9926982fc3610c449985493d":[2,0,0,0,0,0,20,0],
 "classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMCannotConvertException.html":[2,0,0,0,0,0,21],
 "classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMCannotConvertException.html#a0385a918f06a9e86e0a7c48f6cfabd0c":[2,0,0,0,0,0,21,0],
@@ -248,6 +249,5 @@ var NAVTREEINDEX14 =
 "classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMFieldDecimal.html#a19cc24b8548c3c4df689f8553f796abd":[2,0,0,0,0,0,28,28],
 "classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMFieldDecimal.html#a2169b46261bea6bda97b330c3b83d3d8":[2,0,0,0,0,0,28,18],
 "classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMFieldDecimal.html#a21b0768d1e89034f4ffb2d6fe7cbc827":[2,0,0,0,0,0,28,55],
-"classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMFieldDecimal.html#a236d115f05143145ff720e19b6660da5":[2,0,0,0,0,0,28,47],
-"classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMFieldDecimal.html#a24163ff246f6d6243691d5d255769d09":[2,0,0,0,0,0,28,23]
+"classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMFieldDecimal.html#a236d115f05143145ff720e19b6660da5":[2,0,0,0,0,0,28,47]
 };

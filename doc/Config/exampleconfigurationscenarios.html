@@ -59,73 +59,17 @@ $(document).ready(function(){initNavTree('exampleconfigurationscenarios.html',''
 <h1><a class="anchor" id="highestthroughput"></a>
 Highest Throughput&nbsp;&nbsp;<small><a href="#highestthroughput">&lt;-</a></small></h1>
 <p>The following configuration option tunes UM for the highest possible throughput.</p>
-<pre class="fragment">#
-# LBM can be configured to make efficient use of CPU time, leading
-# to the highest-possible throughput (bytes per second or messages
-# per second). This may come at the expense of latency at low
-# message rates. The following line configures LBM to accumulate
-# 8KB of messages (or for wait implicit_batching_interval) before sending.
-#
-source implicit_batching_minimum_length 8192
-</pre><p><br />
+<div class="fragment"><div class="line"><span class="preprocessor">#</span></div><div class="line"><span class="preprocessor"># LBM can be configured to make efficient use of CPU time, leading</span></div><div class="line"><span class="preprocessor"># to the highest-possible throughput (bytes per second or messages</span></div><div class="line"><span class="preprocessor"># per second). This may come at the expense of latency at low</span></div><div class="line"><span class="preprocessor"># message rates. The following line configures LBM to accumulate</span></div><div class="line"><span class="preprocessor"># 8KB of messages (or for wait implicit_batching_interval) before sending.</span></div><div class="line"><span class="preprocessor">#</span></div><div class="line"><span class="preprocessor">source implicit_batching_minimum_length 8192</span></div></div><!-- fragment --><p><br />
  </p>
 <h1><a class="anchor" id="lowestlatency"></a>
 Lowest Latency&nbsp;&nbsp;<small><a href="#lowestlatency">&lt;-</a></small></h1>
 <p>This is an example configuration that favors low latency at the expense of higher CPU utilization and potentially lower throughput.</p>
-<pre class="fragment">#
-# Latency can be reduced at the expense of network efficiency and
-# system CPU time by adjusting implicit batching parameters. The
-# default parameters hold messages for up to 200 milliseconds or until
-# 2048 bytes are waiting to go. The lowest possible latency is
-# obtained by setting the minimum batching length to 1 byte, which
-# effectively disables the implicit batching feature. For example:
-#
-context mim_implicit_batching_minimum_length 1
-source implicit_batching_minimum_length 1
-#
-# Latency can be kept to a minimum with UM by writing receiving
-# applications that can accept messages in the order they arrive.
-# See https://communities.informatica.com/infakb/faq/5/Pages/80043.aspx
-# for more information. Here's how to use arrival-order delivery:
-#
-receiver ordered_delivery 0
-#
-# Disable Nagel's algorithm (batching) for TCP responses to eliminate
-# queuing latency when sending only single responses.
-#
-context response_tcp_nodelay 1
-#
-# If you are running a LAN environment with under 100 machines, you can
-# drastically improve your recovery related latencies without significant
-# additional network overhead by using the following UM loss recovery parameter.
-# See https://communities.informatica.com/infakb/faq/5/Pages/80070.aspx
-# for additional information about this and other recovery parameters.
-#
-receiver transport_lbtrm_nak_backoff_interval 10
-</pre><p><br />
+<div class="fragment"><div class="line"><span class="preprocessor">#</span></div><div class="line"><span class="preprocessor"># Latency can be reduced at the expense of network efficiency and</span></div><div class="line"><span class="preprocessor"># system CPU time by adjusting implicit batching parameters. The</span></div><div class="line"><span class="preprocessor"># default parameters hold messages for up to 200 milliseconds or until</span></div><div class="line"><span class="preprocessor"># 2048 bytes are waiting to go. The lowest possible latency is</span></div><div class="line"><span class="preprocessor"># obtained by setting the minimum batching length to 1 byte, which</span></div><div class="line"><span class="preprocessor"># effectively disables the implicit batching feature. For example:</span></div><div class="line"><span class="preprocessor">#</span></div><div class="line">context mim_implicit_batching_minimum_length 1</div><div class="line">source implicit_batching_minimum_length 1</div><div class="line"><span class="preprocessor">#</span></div><div class="line"><span class="preprocessor"># Latency can be kept to a minimum with UM by writing receiving</span></div><div class="line"><span class="preprocessor"># applications that can accept messages in the order they arrive.</span></div><div class="line"><span class="preprocessor"># See https://communities.informatica.com/infakb/faq/5/Pages/80043.aspx</span></div><div class="line"><span class="preprocessor"># for more information. Here&#39;s how to use arrival-order delivery:</span></div><div class="line"><span class="preprocessor">#</span></div><div class="line">receiver ordered_delivery 0</div><div class="line"><span class="preprocessor">#</span></div><div class="line"><span class="preprocessor"># Disable Nagel&#39;s algorithm (batching) for TCP responses to eliminate</span></div><div class="line"><span class="preprocessor"># queuing latency when sending only single responses.</span></div><div class="line"><span class="preprocessor">#</span></div><div class="line">context response_tcp_nodelay 1</div><div class="line"><span class="preprocessor">#</span></div><div class="line"><span class="preprocessor"># If you are running a LAN environment with under 100 machines, you can</span></div><div class="line"><span class="preprocessor"># drastically improve your recovery related latencies without significant</span></div><div class="line"><span class="preprocessor"># additional network overhead by using the following UM loss recovery parameter.</span></div><div class="line"><span class="preprocessor"># See https://communities.informatica.com/infakb/faq/5/Pages/80070.aspx</span></div><div class="line"><span class="preprocessor"># for additional information about this and other recovery parameters.</span></div><div class="line"><span class="preprocessor">#</span></div><div class="line"><span class="preprocessor">receiver transport_lbtrm_nak_backoff_interval 10</span></div></div><!-- fragment --><p><br />
  </p>
 <h1><a class="anchor" id="creatingmulticastsources"></a>
 Creating Multicast Sources&nbsp;&nbsp;<small><a href="#creatingmulticastsources">&lt;-</a></small></h1>
 <p>This is an example configuration file that changes the default transport to reliable multicast so all sources created send messages over LBT-RM.</p>
-<pre class="fragment">#
-# UM can be configured to create sources using the LBT-RM reliable
-# multicast protocol instead of the default TCP.
-#
-source transport LBT-RM
-#
-# Stable and reliable operation with multicast requires careful
-# setting of rate control limits.
-#
-# It's generally best to start with small limits and gradually
-# increase them after testing indicates that they can be safely
-# sustained on your network.
-#
-# The following example limits (new) data to 10 Mbps and retransmissions
-# to 1 Mbps (10%).
-#
-context transport_lbtrm_data_rate_limit 10000000
-context transport_lbtrm_retransmit_rate_limit 1000000
-</pre><p><br />
+<div class="fragment"><div class="line"><span class="preprocessor">#</span></div><div class="line"><span class="preprocessor"># UM can be configured to create sources using the LBT-RM reliable</span></div><div class="line"><span class="preprocessor"># multicast protocol instead of the default TCP.</span></div><div class="line"><span class="preprocessor">#</span></div><div class="line">source transport LBT-RM</div><div class="line"><span class="preprocessor">#</span></div><div class="line"><span class="preprocessor"># Stable and reliable operation with multicast requires careful</span></div><div class="line"><span class="preprocessor"># setting of rate control limits.</span></div><div class="line"><span class="preprocessor">#</span></div><div class="line"><span class="preprocessor"># It&#39;s generally best to start with small limits and gradually</span></div><div class="line"><span class="preprocessor"># increase them after testing indicates that they can be safely</span></div><div class="line"><span class="preprocessor"># sustained on your network.</span></div><div class="line"><span class="preprocessor">#</span></div><div class="line"><span class="preprocessor"># The following example limits (new) data to 10 Mbps and retransmissions</span></div><div class="line"><span class="preprocessor"># to 1 Mbps (10%).</span></div><div class="line"><span class="preprocessor">#</span></div><div class="line">context transport_lbtrm_data_rate_limit 10000000</div><div class="line">context transport_lbtrm_retransmit_rate_limit 1000000</div></div><!-- fragment --><p><br />
  </p>
 <h1><a class="anchor" id="disablingaspectsoftopicresolution"></a>
 Disabling Aspects of Topic Resolution&nbsp;&nbsp;<small><a href="#disablingaspectsoftopicresolution">&lt;-</a></small></h1>
@@ -138,140 +82,54 @@ Disabling Topic Advertisements&nbsp;&nbsp;<small><a href="#disablingtopicadverti
 <p>You can disable topic advertisements in the Initial Phase, Sustaining Phase or both phases of topic resolution.</p>
 <p><b>Disabling Initial Phase Advertisements</b></p>
 <p>Use the following options to disable topic advertisements in only the Initial Phase.</p>
-<pre class="fragment">source resolver_advertisement_minimum_initial_interval 0
-source resolver_advertisement_maximum_initial_interval 0
-</pre><p><b>Disabling Sustaining Phase Advertisements</b></p>
+<div class="fragment"><div class="line">source resolver_advertisement_minimum_initial_interval 0</div><div class="line">source resolver_advertisement_maximum_initial_interval 0</div></div><!-- fragment --><p><b>Disabling Sustaining Phase Advertisements</b></p>
 <p>Use the following option to disable topic advertisements in only the Sustaining Phase.</p>
-<pre class="fragment">source resolver_advertisement_sustain_interval 0
-</pre><p><br />
+<div class="fragment"><div class="line">source resolver_advertisement_sustain_interval 0</div></div><!-- fragment --><p><br />
  </p>
 <h2><a class="anchor" id="disablingreceivertopicqueries"></a>
 Disabling Receiver Topic Queries&nbsp;&nbsp;<small><a href="#disablingreceivertopicqueries">&lt;-</a></small></h2>
 <p>You can disable the querying of topics by receivers in the Initial Phase, Sustaining Phase or both phases of topic resolution.</p>
 <p><b>Disabling Initial Phase Queries</b></p>
 <p>Use the following options to disable topic queries in only the Initial Phase.</p>
-<pre class="fragment">receiver resolver_query_minimum_initial_interval 0
-receiver resolver_query_maximum_initial_interval 0
-</pre><p><b>Disabling Sustaining Phase Queries</b></p>
+<div class="fragment"><div class="line">receiver resolver_query_minimum_initial_interval 0</div><div class="line">receiver resolver_query_maximum_initial_interval 0</div></div><!-- fragment --><p><b>Disabling Sustaining Phase Queries</b></p>
 <p>Use the following options to disable topic queries in only the Sustaining Phase.</p>
-<pre class="fragment">receiver resolver_query_sustain_interval 0
-receiver resolution_number_of_sources_query_threshold 0
-</pre><p><br />
+<div class="fragment"><div class="line">receiver resolver_query_sustain_interval 0</div><div class="line">receiver resolution_number_of_sources_query_threshold 0</div></div><!-- fragment --><p><br />
  </p>
 <h2><a class="anchor" id="disablingwildcardtopicqueries"></a>
 Disabling Wildcard Topic Queries&nbsp;&nbsp;<small><a href="#disablingwildcardtopicqueries">&lt;-</a></small></h2>
 <p>Use the following options to disable topic queries by wildcard receivers.</p>
-<pre class="fragment">wildcard_receiver resolver_query_minimum_interval 0
-wildcard_receiver resolver_query_maximum_interval 0
-</pre><p><br />
+<div class="fragment"><div class="line">wildcard_receiver resolver_query_minimum_interval 0</div><div class="line">wildcard_receiver resolver_query_maximum_interval 0</div></div><!-- fragment --><p><br />
  </p>
 <h2><a class="anchor" id="disablingstorecontextnamequeries"></a>
 Disabling Store (Context) Name Queries&nbsp;&nbsp;<small><a href="#disablingstorecontextnamequeries">&lt;-</a></small></h2>
 <p>When using Persistence, use the following options to disable context name queries by sources.</p>
-<pre class="fragment">resolver_context_name_query_maximum_interval 0
-resolver_context_name_query_minimum_interval 0
-</pre><p><br />
+<div class="fragment"><div class="line">resolver_context_name_query_maximum_interval 0</div><div class="line">resolver_context_name_query_minimum_interval 0</div></div><!-- fragment --><p><br />
  </p>
 <h2><a class="anchor" id="Disabling"></a>
 All But the Minimum Topic Resolution Traffic&nbsp;&nbsp;<small><a href="#Disabling">&lt;-</a></small></h2>
 <p>A minimalist approach to topic resolution can take different forms based on you requirements. One approach is to disable all traffic except for queries in the sustaining phase. Add the following settings to your Ultra Messaging configuration file to implement this approach.</p>
-<pre class="fragment">source resolver_advertisement_minimum_initial_interval 0
-source resolver_advertisement_sustain_interval 0
-receiver resolver_query_minimum_initial_interval 0
-receiver resolution_number_of_sources_query_threshold 1
-wildcard_receiver resolver_query_minimum_interval 0
-</pre><p><br />
+<div class="fragment"><div class="line">source resolver_advertisement_minimum_initial_interval 0</div><div class="line">source resolver_advertisement_sustain_interval 0</div><div class="line">receiver resolver_query_minimum_initial_interval 0</div><div class="line">receiver resolution_number_of_sources_query_threshold 1</div><div class="line">wildcard_receiver resolver_query_minimum_interval 0</div></div><!-- fragment --><p><br />
  </p>
 <h1><a class="anchor" id="unicastresolver"></a>
 Unicast Resolver&nbsp;&nbsp;<small><a href="#unicastresolver">&lt;-</a></small></h1>
 <p>To use the unicast resolver, use a configuration file like the following example:</p>
-<pre class="fragment">#
-# Topic resolution can be configured to use unicast traffic with an
-# LBM resolver daemon (lbmrd) instead of the default which uses multicast.
-# Be sure to insert the IP address of your lbmrd below.
-#
-context resolver_unicast_daemon 127.0.0.1:15380
-</pre><p><br />
+<div class="fragment"><div class="line"><span class="preprocessor">#</span></div><div class="line"><span class="preprocessor"># Topic resolution can be configured to use unicast traffic with an</span></div><div class="line"><span class="preprocessor"># LBM resolver daemon (lbmrd) instead of the default which uses multicast.</span></div><div class="line"><span class="preprocessor"># Be sure to insert the IP address of your lbmrd below.</span></div><div class="line"><span class="preprocessor">#</span></div><div class="line"><span class="preprocessor">context resolver_unicast_daemon 127.0.0.1:15380</span></div></div><!-- fragment --><p><br />
  </p>
 <h1><a class="anchor" id="reestablishpre40topicresolution"></a>
 Re-establish Pre-4.0 Topic Resolution&nbsp;&nbsp;<small><a href="#reestablishpre40topicresolution">&lt;-</a></small></h1>
 <p>Ultra Messaging topic resolution prior to LBM Version 4.0 did not have resolution phases. To implement pre-4.0 topic resolution, include the following configuration option changes in your Ultra Messaging configuration file.</p>
-<pre class="fragment"># ----- Disable Advertisements in 4.0 Initial Phase
-source resolver_advertisement_minimum_initial_interval 0
-
-# ----- Re-establish pre-4.0 Advertisement Behavior
-source resolver_advertisement_minimum_sustain_duration 0
-context resolver_sustain_advertisement_bps 0
-
-# ----- Disable Queries in 4.0 Initial Phase
-receiver resolver_query_minimum_initial_interval 0
-
-# ----- Re-establish pre-4.0 Query Behavior
-receiver resolver_query_sustain_interval 100
-receiver resolver_query_minimum_sustain_duration 0
-context resolver_sustain_query_bps 0
-receiver resolution_number_of_sources_query_threshold 1
-
-# ----- Re-establish pre-4.0 Wildcard Query Behavior
-wildcard_receiver resolver_query_minimum_interval 0
-</pre><p><br />
+<div class="fragment"><div class="line"><span class="preprocessor"># ----- Disable Advertisements in 4.0 Initial Phase</span></div><div class="line">source resolver_advertisement_minimum_initial_interval 0</div><div class="line"></div><div class="line"><span class="preprocessor"># ----- Re-establish pre-4.0 Advertisement Behavior</span></div><div class="line">source resolver_advertisement_minimum_sustain_duration 0</div><div class="line">context resolver_sustain_advertisement_bps 0</div><div class="line"></div><div class="line"><span class="preprocessor"># ----- Disable Queries in 4.0 Initial Phase</span></div><div class="line">receiver resolver_query_minimum_initial_interval 0</div><div class="line"></div><div class="line"><span class="preprocessor"># ----- Re-establish pre-4.0 Query Behavior</span></div><div class="line">receiver resolver_query_sustain_interval 100</div><div class="line">receiver resolver_query_minimum_sustain_duration 0</div><div class="line">context resolver_sustain_query_bps 0</div><div class="line">receiver resolution_number_of_sources_query_threshold 1</div><div class="line"></div><div class="line"><span class="preprocessor"># ----- Re-establish pre-4.0 Wildcard Query Behavior</span></div><div class="line"><span class="preprocessor">wildcard_receiver resolver_query_minimum_interval 0</span></div></div><!-- fragment --><p><br />
  </p>
 <h1><a class="anchor" id="reestablishprelbm33preume20portdefaults"></a>
 Re-establish Pre-LBM 3.3 (Pre-UME 2.0) Port Defaults&nbsp;&nbsp;<small><a href="#reestablishprelbm33preume20portdefaults">&lt;-</a></small></h1>
 <p>To use the early default ports (prior to LBM 3.3 and UME 2.0), the following configuration file may be used.</p>
-<pre class="fragment">context mim_destination_port 4401
-context mim_incoming_destination_port 4401
-context mim_outgoing_destination_port 4401
-context resolver_multicast_port 2965
-context resolver_multicast_incoming_port 2965
-context resolver_multicast_outgoing_port 2965
-context resolver_unicast_destination_port 5380
-context resolver_unicast_port_high 4406
-context resolver_unicast_port_low  4402
-source  transport_lbtrm_destination_port 4400
-context transport_lbtrm_source_port_high 4399
-context transport_lbtrm_source_port_low  4390
-context transport_lbtru_port_high 4389
-context transport_lbtru_port_high 4380
-receiver transport_lbtru_port_high 4379
-receiver transport_lbtru_port_low  4360
-context request_tcp_port_high 4395
-context request_tcp_port_low 4391
-context transport_tcp_port_high 4390
-context transport_tcp_port_low  4371
-source  ume_primary_store_port 4567
-source  ume_secondary_store_port 4567
-source  ume_tertiary_store_port 4567
-</pre><dl class="section note"><dt>Note</dt><dd>Alternatively, UM will use the early port settings when the environment variable <b>LBM_USE_ORIG_DEFAULT_PORTS</b> is set to <b>1</b>.</dd></dl>
+<div class="fragment"><div class="line">context mim_destination_port 4401</div><div class="line">context mim_incoming_destination_port 4401</div><div class="line">context mim_outgoing_destination_port 4401</div><div class="line">context resolver_multicast_port 2965</div><div class="line">context resolver_multicast_incoming_port 2965</div><div class="line">context resolver_multicast_outgoing_port 2965</div><div class="line">context resolver_unicast_destination_port 5380</div><div class="line">context resolver_unicast_port_high 4406</div><div class="line">context resolver_unicast_port_low  4402</div><div class="line">source  transport_lbtrm_destination_port 4400</div><div class="line">context transport_lbtrm_source_port_high 4399</div><div class="line">context transport_lbtrm_source_port_low  4390</div><div class="line">context transport_lbtru_port_high 4389</div><div class="line">context transport_lbtru_port_high 4380</div><div class="line">receiver transport_lbtru_port_high 4379</div><div class="line">receiver transport_lbtru_port_low  4360</div><div class="line">context request_tcp_port_high 4395</div><div class="line">context request_tcp_port_low 4391</div><div class="line">context transport_tcp_port_high 4390</div><div class="line">context transport_tcp_port_low  4371</div><div class="line">source  ume_primary_store_port 4567</div><div class="line">source  ume_secondary_store_port 4567</div><div class="line">source  ume_tertiary_store_port 4567</div></div><!-- fragment --><dl class="section note"><dt>Note</dt><dd>Alternatively, UM will use the early port settings when the environment variable <b>LBM_USE_ORIG_DEFAULT_PORTS</b> is set to <b>1</b>.</dd></dl>
 <p><br />
  </p>
 <h1><a class="anchor" id="configurenewportdefaults"></a>
 Configure New Port Defaults&nbsp;&nbsp;<small><a href="#configurenewportdefaults">&lt;-</a></small></h1>
 <p>In the unusual case that you must run older versions of Ultra Messaging (less than LBM 3.3 / UME 2.0) on certain machine(s) and need these older version to work with the machines running the current versions of UMS and UMP, you can use the following configuration file for the older versions to synchronize port usage between old and current versions.</p>
-<pre class="fragment">context mim_destination_port 14401
-context mim_incoming_destination_port 14401
-context mim_outgoing_destination_port 14401
-context resolver_multicast_port 12965
-context resolver_multicast_incoming_port 12965
-context resolver_multicast_outgoing_port 12965
-context resolver_unicast_destination_port 15380
-context resolver_unicast_port_high 14406
-context resolver_unicast_port_low  14402
-source  transport_lbtrm_destination_port 14400
-context transport_lbtrm_source_port_high 14399
-context transport_lbtrm_source_port_low  14390
-context transport_lbtru_port_high 14389
-context transport_lbtru_port_low 14380
-receiver transport_lbtru_port_high 14379
-receiver transport_lbtru_port_low  14360
-context request_tcp_port_high 14395
-context request_tcp_port_low 14391
-context transport_tcp_port_high 14390
-context transport_tcp_port_low  14371
-source  ume_primary_store_port 14567
-source  ume_secondary_store_port 14567
-source  ume_tertiary_store_port 14567
-</pre> </div></div><!-- contents -->
+<div class="fragment"><div class="line">context mim_destination_port 14401</div><div class="line">context mim_incoming_destination_port 14401</div><div class="line">context mim_outgoing_destination_port 14401</div><div class="line">context resolver_multicast_port 12965</div><div class="line">context resolver_multicast_incoming_port 12965</div><div class="line">context resolver_multicast_outgoing_port 12965</div><div class="line">context resolver_unicast_destination_port 15380</div><div class="line">context resolver_unicast_port_high 14406</div><div class="line">context resolver_unicast_port_low  14402</div><div class="line">source  transport_lbtrm_destination_port 14400</div><div class="line">context transport_lbtrm_source_port_high 14399</div><div class="line">context transport_lbtrm_source_port_low  14390</div><div class="line">context transport_lbtru_port_high 14389</div><div class="line">context transport_lbtru_port_low 14380</div><div class="line">receiver transport_lbtru_port_high 14379</div><div class="line">receiver transport_lbtru_port_low  14360</div><div class="line">context request_tcp_port_high 14395</div><div class="line">context request_tcp_port_low 14391</div><div class="line">context transport_tcp_port_high 14390</div><div class="line">context transport_tcp_port_low  14371</div><div class="line">source  ume_primary_store_port 14567</div><div class="line">source  ume_secondary_store_port 14567</div><div class="line">source  ume_tertiary_store_port 14567</div></div><!-- fragment --> </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.8.11-->
 </body>

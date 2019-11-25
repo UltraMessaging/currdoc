@@ -1,5 +1,6 @@
 var NAVTREEINDEX2 =
 {
+"grpultramessagingpersistence.html#umeregistrationintervalsource":[37,0,26],
 "grpultramessagingpersistence.html#umerepositoryackonreceptionsource":[37,0,27],
 "grpultramessagingpersistence.html#umerepositorydiskfilesizelimitsource":[37,0,28],
 "grpultramessagingpersistence.html#umerepositorysizelimitsource":[37,0,29],

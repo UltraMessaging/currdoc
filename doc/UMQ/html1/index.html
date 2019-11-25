@@ -56,7 +56,7 @@ $(document).ready(function(){initNavTree('index.html','');});
 <div class="contents">
 <div class="textblock"><p> 
 <img src="infa_logo.png" width="400" height="138" alt="Informatica"/><br/><br/>
-<big><b>Ultra Messaging</b></big> <small>(Version 6.12)</small><br/>
+<big><b>Ultra Messaging</b></big> <small>(Version 6.12.1)</small><br/>
 <br/><br/><br/>
 <center class="mytitle">Guide to Queuing</center>
 <br/><br/><br/>
@@ -199,17 +199,14 @@ Consult your Informatica sales engineer for the download procedure and appropria
 Download the installation files to the installation directory and run the installation script. </li>
 <li>
 <p class="startli">Locate the documentation .zip package and unzip it into the installation directory. For example:</p>
-<pre class="fragment">unzip UMQ_6.12_doc.zip -d &lt;InstallDir&gt;/
-</pre> </li>
+<div class="fragment"><div class="line">unzip UMQ_6.12.1_doc.zip -d &lt;InstallDir&gt;/</div></div><!-- fragment --> </li>
 <li>
 Copy the license file into a location that is accessible to the Ultra Messaging library. </li>
 <li>
-<p class="startli">Set the Ultra Messaging license environment variable to the full path name of the license file. For example: </p><pre class="fragment">export LBM_LICENSE_FILENAME=/path/filename.lic
-</pre><p class="endli"></p>
+<p class="startli">Set the Ultra Messaging license environment variable to the full path name of the license file. For example: </p><div class="fragment"><div class="line">export LBM_LICENSE_FILENAME=/path/filename.lic</div></div><!-- fragment --><p class="endli"></p>
 </li>
 <li>
-Add the library to the library path. For example, use the following line: <pre class="fragment">export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:&lt;InstallDir&gt;/UMQ_6.12/&lt;platform&gt;/lib
-</pre> </li>
+Add the library to the library path. For example, use the following line: <div class="fragment"><div class="line">export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:&lt;InstallDir&gt;/UMQ_6.12.1/&lt;platform&gt;/lib</div></div><!-- fragment --> </li>
 </ol>
 <p><br />
  </p>
@@ -218,49 +215,19 @@ Starting a Single-Node Queuing System&nbsp;&nbsp;<small><a href="#startingasingl
 <p>After you have installed Ultra Messaging, run the daemons and sample applications to verify successful installation.</p>
 <ol>
 <li>
-<p class="startli">Start the broker with the following command: </p><pre class="fragment">&lt;InstallDir&gt;/UMQ_6.12/&lt;platform&gt;/broker/apache-activemq-5.10.0/bin/activemq start
-</pre><p class="endli"></p>
+<p class="startli">Start the broker with the following command: </p><div class="fragment"><div class="line">&lt;InstallDir&gt;/UMQ_6.12.1/&lt;platform&gt;/broker/apache-activemq-5.10.0/bin/activemq start</div></div><!-- fragment --><p class="endli"></p>
 </li>
 <li>
-<p class="startli">Start the sample receiving application with the following commands: </p><pre class="fragment">&lt;InstallDir&gt;/UMQ_6.12/&lt;platform&gt;/bin/umqrcv -B &lt;brokerIP:port&gt; -r 10 QueueDestA
-</pre><p class="endli"></p>
+<p class="startli">Start the sample receiving application with the following commands: </p><div class="fragment"><div class="line">&lt;InstallDir&gt;/UMQ_6.12.1/&lt;platform&gt;/bin/umqrcv -B &lt;brokerIP:port&gt; -r 10 QueueDestA</div></div><!-- fragment --><p class="endli"></p>
 </li>
 <li>
-<p class="startli">In a second command window, start the sample sending application with the following command: </p><pre class="fragment">&lt;InstallDir&gt;/UMQ_6.12/&lt;platform&gt;/bin/umqsrc -B &lt;brokerIP:port&gt; -M 10 QueueDestA
-</pre><p>In the sending application window, you see output similar to the following example display: </p><pre class="fragment">0 msgs/sec -&gt; 1 msgs/ivl, 0 msec ivl
-Using flight size of 1000
-Not using UME Late Join.
-Using UMQ Message Stability Notification. Will not display events. Delaying for 1 second
-UMQ queue "(Broker: Default IP: 10.29.3.49 PORT: 5672 )"[0][Inst: 10.29.3.49/5672] [0] ctx registration. ID 92da70611c65ece4 Flags 0
-UMQ queue "(Broker: Default IP: 10.29.3.49 PORT: 5672 )"[0] ctx registration complete. ID 92da70611c65ece4 Flags 0
-UMQ "(Broker: Default IP: 10.29.3.49 PORT: 5672 )"[0] src registration complete. Flags 0
-Sending 10 messages of size 25 bytes to topic [QueueDestA]
-Sent 10 messages of size 25 bytes in 1.003 seconds.
-1.003 secs. 0.009965 Kmsgs/sec. 1.993 Kbps
-[BROKER], sent 10/1660, app sent 10 stable 0 inflight 10 Lingering for 5 seconds...
-Deleting source
-Deleting context
-</pre><p>In the receiving application window, you see messages being received, as in the following example display: </p><pre class="fragment">Request port binding disabled, no immediate messaging target.
-UMQ queue "(Broker: Default IP: 10.29.3.49 PORT: 5672 )"[0][Inst: 10.29.3.49/5672] [0] ctx registration. ID a1387d282ba177d2 Flags 0
-UMQ queue "(Broker: Default IP: 10.29.3.49 PORT: 5672 )"[0] ctx registration complete. ID a1387d282ba177d2 Flags 0
-[QueueDestA][(Broker: Default IP: 10.29.3.49 PORT: 5672 )] UMQ "(Broker: Default IP: 10.29.3.49 PORT: 5672 )"[0] registration complete. AssignID 0. Flags 0
-1.001 secs. 0
-1.001 secs. 0
-1.001 secs. 0
-1.001 secs. 0
-1.001 secs. 0
-1.001 secs. 0.009991 Kmsgs/sec.
-Quitting.... received 10 messages (0 reassigned, 0 resubmitted)
-</pre><p class="endli"><br />
+<p class="startli">In a second command window, start the sample sending application with the following command: </p><div class="fragment"><div class="line">&lt;InstallDir&gt;/UMQ_6.12.1/&lt;platform&gt;/bin/umqsrc -B &lt;brokerIP:port&gt; -M 10 QueueDestA</div></div><!-- fragment --><p>In the sending application window, you see output similar to the following example display: </p><div class="fragment"><div class="line">0 msgs/sec -&gt; 1 msgs/ivl, 0 msec ivl</div><div class="line">Using flight size of 1000</div><div class="line">Not <span class="keyword">using</span> UME Late Join.</div><div class="line">Using UMQ Message Stability Notification. Will not display events. Delaying <span class="keywordflow">for</span> 1 second</div><div class="line">UMQ queue <span class="stringliteral">&quot;(Broker: Default IP: 10.29.3.49 PORT: 5672 )&quot;</span>[0][Inst: 10.29.3.49/5672] [0] ctx registration. ID 92da70611c65ece4 Flags 0</div><div class="line">UMQ queue <span class="stringliteral">&quot;(Broker: Default IP: 10.29.3.49 PORT: 5672 )&quot;</span>[0] ctx registration complete. ID 92da70611c65ece4 Flags 0</div><div class="line">UMQ <span class="stringliteral">&quot;(Broker: Default IP: 10.29.3.49 PORT: 5672 )&quot;</span>[0] src registration complete. Flags 0</div><div class="line">Sending 10 messages of size 25 bytes to topic [QueueDestA]</div><div class="line">Sent 10 messages of size 25 bytes in 1.003 seconds.</div><div class="line">1.003 secs. 0.009965 Kmsgs/sec. 1.993 Kbps</div><div class="line">[BROKER], sent 10/1660, app sent 10 stable 0 inflight 10 Lingering <span class="keywordflow">for</span> 5 seconds...</div><div class="line">Deleting source</div><div class="line">Deleting context</div></div><!-- fragment --><p>In the receiving application window, you see messages being received, as in the following example display: </p><div class="fragment"><div class="line">Request port binding disabled, no immediate messaging target.</div><div class="line">UMQ queue <span class="stringliteral">&quot;(Broker: Default IP: 10.29.3.49 PORT: 5672 )&quot;</span>[0][Inst: 10.29.3.49/5672] [0] ctx registration. ID a1387d282ba177d2 Flags 0</div><div class="line">UMQ queue <span class="stringliteral">&quot;(Broker: Default IP: 10.29.3.49 PORT: 5672 )&quot;</span>[0] ctx registration complete. ID a1387d282ba177d2 Flags 0</div><div class="line">[QueueDestA][(Broker: Default IP: 10.29.3.49 PORT: 5672 )] UMQ <span class="stringliteral">&quot;(Broker: Default IP: 10.29.3.49 PORT: 5672 )&quot;</span>[0] registration complete. AssignID 0. Flags 0</div><div class="line">1.001 secs. 0</div><div class="line">1.001 secs. 0</div><div class="line">1.001 secs. 0</div><div class="line">1.001 secs. 0</div><div class="line">1.001 secs. 0</div><div class="line">1.001 secs. 0.009991 Kmsgs/sec.</div><div class="line">Quitting.... received 10 messages (0 reassigned, 0 resubmitted)</div></div><!-- fragment --><p class="endli"><br />
  </p>
 </li>
 </ol>
 <h2><a class="anchor" id="shuttingdownasinglenodebroker"></a>
 Shutting Down a Single-Node Broker&nbsp;&nbsp;<small><a href="#shuttingdownasinglenodebroker">&lt;-</a></small></h2>
-<p>Shut down the broker with the following command: </p><pre class="fragment">&lt;InstallDir&gt;/UMQ_6.12/&lt;platform&gt;/broker/apache-activemq-5.10.0/bin/activemq stop
-Kmsgs/sec. 0 Kmsgs/sec. 0 Kmsgs/sec. 0 Kmsgs/sec. 0 Kmsgs/sec. 0
-Kbps Kbps Kbps Kbps Kbps 1.998 Kbps
-</pre><p><br />
+<p>Shut down the broker with the following command: </p><div class="fragment"><div class="line">&lt;InstallDir&gt;/UMQ_6.12.1/&lt;platform&gt;/broker/apache-activemq-5.10.0/bin/activemq stop</div><div class="line">Kmsgs/sec. 0 Kmsgs/sec. 0 Kmsgs/sec. 0 Kmsgs/sec. 0 Kmsgs/sec. 0</div><div class="line">Kbps Kbps Kbps Kbps Kbps 1.998 Kbps</div></div><!-- fragment --><p><br />
  </p>
 <h2><a class="anchor" id="highavailabilityinstallation"></a>
 High Availability Installation&nbsp;&nbsp;<small><a href="#highavailabilityinstallation">&lt;-</a></small></h2>
@@ -272,44 +239,28 @@ Consult your Informatica sales engineer for the download procedure and appropria
 <li>
 Download the installation files to the installation directory of the first broker host and run the installation script. </li>
 <li>
-<p class="startli">Locate the documentation .zip package and unzip it into the installation directory. For example: </p><pre class="fragment">unzip UMQ_6.12_doc.zip -d &lt;InstallDir&gt;/
-</pre><p class="endli"></p>
+<p class="startli">Locate the documentation .zip package and unzip it into the installation directory. For example: </p><div class="fragment"><div class="line">unzip UMQ_6.12.1_doc.zip -d &lt;InstallDir&gt;/</div></div><!-- fragment --><p class="endli"></p>
 </li>
 <li>
 Copy the license file into a location that is accessible to the Ultra Messaging library. </li>
 <li>
-<p class="startli">Set the Ultra Messaging license environment variable to the full path name of the license file. For example: </p><pre class="fragment">export LBM_LICENSE_FILENAME=/path/filename.lic
-</pre><p class="endli"></p>
+<p class="startli">Set the Ultra Messaging license environment variable to the full path name of the license file. For example: </p><div class="fragment"><div class="line">export LBM_LICENSE_FILENAME=/path/filename.lic</div></div><!-- fragment --><p class="endli"></p>
 </li>
 <li>
-<p class="startli">Add the library to the library path. For example, use the following line: </p><pre class="fragment">export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:&lt;InstallDir&gt;/UMQ_6.12/&lt;platform&gt;/lib
-</pre><p class="endli"></p>
+<p class="startli">Add the library to the library path. For example, use the following line: </p><div class="fragment"><div class="line">export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:&lt;InstallDir&gt;/UMQ_6.12.1/&lt;platform&gt;/lib</div></div><!-- fragment --><p class="endli"></p>
 </li>
 <li>
 <p class="startli">A high availability broker node contains a working configuration directory and a default configuration directory for each unique node in a multiple node arrangement.</p>
-<p>Create the store repository directories. Then, depending on which host you are configuring, copy the default broker1, broker2, or broker3 configuration file to the working configuration directory with the following example commands: </p><pre class="fragment">mkdir &lt;InstallDir&gt;/UMQ_6.12/&lt;platform&gt;/broker/store/
-mkdir &lt;InstallDir&gt;/UMQ_6.12/&lt;platform&gt;/broker/store/cache
-mkdir &lt;InstallDir&gt;/UMQ_6.12/&lt;platform&gt;/broker/store/state
-cp &lt;InstallDir&gt;/UMQ_6.12/&lt;platform&gt;/broker/deployments/three_replicating_brokers/broker1/um.xml &lt;InstallDir&gt;/UMQ_6.12/&lt;platform&gt;/broker
-</pre><p class="endli"></p>
+<p>Create the store repository directories. Then, depending on which host you are configuring, copy the default broker1, broker2, or broker3 configuration file to the working configuration directory with the following example commands: </p><div class="fragment"><div class="line">mkdir &lt;InstallDir&gt;/UMQ_6.12.1/&lt;platform&gt;/broker/store/</div><div class="line">mkdir &lt;InstallDir&gt;/UMQ_6.12.1/&lt;platform&gt;/broker/store/cache</div><div class="line">mkdir &lt;InstallDir&gt;/UMQ_6.12.1/&lt;platform&gt;/broker/store/state</div><div class="line">cp &lt;InstallDir&gt;/UMQ_6.12.1/&lt;platform&gt;/broker/deployments/three_replicating_brokers/broker1/um.xml &lt;InstallDir&gt;/UMQ_6.12.1/&lt;platform&gt;/broker</div></div><!-- fragment --><p class="endli"></p>
 </li>
 <li>
-<p class="startli">Edit the um.xml configuration file that is in &lt;InstallDir&gt;/UMQ_6.12/&lt;platform&gt;/broker/ to set the resolver IP addresses and ports for all three nodes, as shown in the following example: </p><pre class="fragment">&lt;option name="resolver_unicast_daemon" default-value="10.33.200.201:21212"/&gt;
-&lt;option name="resolver_unicast_daemon" default-value="10.33.200.202:21212"/&gt;
-&lt;option name="resolver_unicast_daemon" default-value="10.33.200.203:21212"/&gt;
-</pre><p> Also, set the local broker host interface addresses to the IP address of a network interface on the current broker host that has connectivity to the other broker hosts, and to the servers where the clients run, as shown in the following example: </p><pre class="fragment">&lt;option name="resolver_multicast_interface" default-value="10.33.200.201"/&gt;
-&lt;option name="resolver_unicast_interface" default-value="10.33.200.201"/&gt;
-&lt;option name="request_tcp_interface" default-value="10.33.200.201"/&gt;
-&lt;option name="response_tcp_interface" default-value="10.33.200.201 "/&gt;
-</pre><dl class="section note"><dt>Note</dt><dd>Do not change any values in the broker um.xml configuration file other than interfaces and addresses shown in this step.</dd></dl>
+<p class="startli">Edit the um.xml configuration file that is in &lt;InstallDir&gt;/UMQ_6.12.1/&lt;platform&gt;/broker/ to set the resolver IP addresses and ports for all three nodes, as shown in the following example: </p><div class="fragment"><div class="line">&lt;option name=<span class="stringliteral">&quot;resolver_unicast_daemon&quot;</span> <span class="keywordflow">default</span>-value=<span class="stringliteral">&quot;10.33.200.201:21212&quot;</span>/&gt;</div><div class="line">&lt;option name=<span class="stringliteral">&quot;resolver_unicast_daemon&quot;</span> <span class="keywordflow">default</span>-value=<span class="stringliteral">&quot;10.33.200.202:21212&quot;</span>/&gt;</div><div class="line">&lt;option name=<span class="stringliteral">&quot;resolver_unicast_daemon&quot;</span> <span class="keywordflow">default</span>-value=<span class="stringliteral">&quot;10.33.200.203:21212&quot;</span>/&gt;</div></div><!-- fragment --><p> Also, set the local broker host interface addresses to the IP address of a network interface on the current broker host that has connectivity to the other broker hosts, and to the servers where the clients run, as shown in the following example: </p><div class="fragment"><div class="line">&lt;option name=<span class="stringliteral">&quot;resolver_multicast_interface&quot;</span> <span class="keywordflow">default</span>-value=<span class="stringliteral">&quot;10.33.200.201&quot;</span>/&gt;</div><div class="line">&lt;option name=<span class="stringliteral">&quot;resolver_unicast_interface&quot;</span> <span class="keywordflow">default</span>-value=<span class="stringliteral">&quot;10.33.200.201&quot;</span>/&gt;</div><div class="line">&lt;option name=<span class="stringliteral">&quot;request_tcp_interface&quot;</span> <span class="keywordflow">default</span>-value=<span class="stringliteral">&quot;10.33.200.201&quot;</span>/&gt;</div><div class="line">&lt;option name=<span class="stringliteral">&quot;response_tcp_interface&quot;</span> <span class="keywordflow">default</span>-value=<span class="stringliteral">&quot;10.33.200.201 &quot;</span>/&gt;</div></div><!-- fragment --><dl class="section note"><dt>Note</dt><dd>Do not change any values in the broker um.xml configuration file other than interfaces and addresses shown in this step.</dd></dl>
 </li>
 <li>
-<p class="startli">Depending on which host you are configuring, copy the default broker1, broker2, or broker3 stored.xml configuration file to the working configuration directory with the following broker1 example command: </p><pre class="fragment">cp &lt;InstallDir&gt;/UMQ_6.12/&lt;platform&gt;/broker/deployments/three_replicating_brokers/broker1/store/stored.xml &lt;InstallDir&gt;/UMQ_6.12/&lt;platform&gt;/broker/store
-</pre><p class="endli"></p>
+<p class="startli">Depending on which host you are configuring, copy the default broker1, broker2, or broker3 stored.xml configuration file to the working configuration directory with the following broker1 example command: </p><div class="fragment"><div class="line">cp &lt;InstallDir&gt;/UMQ_6.12.1/&lt;platform&gt;/broker/deployments/three_replicating_brokers/broker1/store/stored.xml &lt;InstallDir&gt;/UMQ_6.12.1/&lt;platform&gt;/broker/store</div></div><!-- fragment --><p class="endli"></p>
 </li>
 <li>
-Depending on which host you are configuring, copy the default broker1, broker2, or broker3 ActiveMQ configuration file to the working configuration directory with the following broker1 example command: <pre class="fragment">cp &lt;InstallDir&gt;/UMQ_6.12/&lt;platform&gt;/broker/deployments/three_replicating_brokers/broker1/apache-activemq-5.10.0/conf/activemq.xml &lt;InstallDir&gt;/UMQ_6.12/&lt;platform&gt;/broker/apache-activemq-5.10.0/conf
-</pre> </li>
+Depending on which host you are configuring, copy the default broker1, broker2, or broker3 ActiveMQ configuration file to the working configuration directory with the following broker1 example command: <div class="fragment"><div class="line">cp &lt;InstallDir&gt;/UMQ_6.12.1/&lt;platform&gt;/broker/deployments/three_replicating_brokers/broker1/apache-activemq-5.10.0/conf/activemq.xml &lt;InstallDir&gt;/UMQ_6.12.1/&lt;platform&gt;/broker/apache-activemq-5.10.0/conf</div></div><!-- fragment --> </li>
 <li>
 <p class="startli">Repeat steps 1-10 for the second broker host, and again for the third broker host, making sure to copy the configuration files from ...three_replication_brokers/broker2/... or ...three_replication_brokers/broker3/... as needed.</p>
 <p class="endli"><br />
@@ -321,48 +272,17 @@ Starting a High Availability Queuing System&nbsp;&nbsp;<small><a href="#starting
 <p>After you have installed Ultra Messaging, run the daemons and sample applications to verify successful installation.</p>
 <ol>
 <li>
-On the first host, start the lbmrd resolver daemon with the following example command: <pre class="fragment">&lt;InstallDir&gt;/UMQ_6.12/&lt;platform&gt;/bin/lbmrd -i 10.33.200.201 -p 21212 &amp;
-</pre> </li>
+On the first host, start the lbmrd resolver daemon with the following example command: <div class="fragment"><div class="line">&lt;InstallDir&gt;/UMQ_6.12.1/&lt;platform&gt;/bin/lbmrd -i 10.33.200.201 -p 21212 &amp;</div></div><!-- fragment --> </li>
 <li>
-Start the umestored daemon with the following example commands: <pre class="fragment">cd &lt;InstallDir&gt;/UMQ_6.12/&lt;platform&gt;/broker/store
-&lt;InstallDir&gt;/UMQ_6.12/&lt;platform&gt;/bin/umestored stored.xml &amp;
-</pre> </li>
+Start the umestored daemon with the following example commands: <div class="fragment"><div class="line">cd &lt;InstallDir&gt;/UMQ_6.12.1/&lt;platform&gt;/broker/store</div><div class="line">&lt;InstallDir&gt;/UMQ_6.12.1/&lt;platform&gt;/bin/umestored stored.xml &amp;</div></div><!-- fragment --> </li>
 <li>
-Start the broker with the following example commands: <pre class="fragment">cd &lt;InstallDir&gt;/UMQ_6.12/&lt;platform&gt;/broker/apache-activemq-5.10.0
-&lt;InstallDir&gt;/UMQ_6.12/&lt;platform&gt;/broker/apache-activemq-5.10.0/bin/activemq start
-</pre> </li>
+Start the broker with the following example commands: <div class="fragment"><div class="line">cd &lt;InstallDir&gt;/UMQ_6.12.1/&lt;platform&gt;/broker/apache-activemq-5.10.0</div><div class="line">&lt;InstallDir&gt;/UMQ_6.12.1/&lt;platform&gt;/broker/apache-activemq-5.10.0/bin/activemq start</div></div><!-- fragment --> </li>
 <li>
 Repeat steps 1-3 on the second and third host. </li>
 <li>
-Start the sample receiving application with the following commands: <pre class="fragment">&lt;InstallDir&gt;/UMQ_6.12/&lt;platform&gt;/bin/umqrcv -B &lt;broker1IP:port1,broker2IP:port2,broker3IP:port3&gt; -r 10 QueueDestA
-</pre> </li>
+Start the sample receiving application with the following commands: <div class="fragment"><div class="line">&lt;InstallDir&gt;/UMQ_6.12.1/&lt;platform&gt;/bin/umqrcv -B &lt;broker1IP:port1,broker2IP:port2,broker3IP:port3&gt; -r 10 QueueDestA</div></div><!-- fragment --> </li>
 <li>
-<p class="startli">In a second command window, start the sample sending application with the following command: </p><pre class="fragment">&lt;InstallDir&gt;/UMQ_6.12/&lt;platform&gt;/bin/umqsrc -B &lt;broker1IP:port1,broker2IP:port2,broker3IP:port3&gt; -M 10 QueueDestA
-</pre><p>In the sending application window, you see output similar to the following example display: </p><pre class="fragment">0 msgs/sec -&gt; 1 msgs/ivl, 0 msec ivl
-Using flight size of 1000
-Not using UME Late Join.
-Using UMQ Message Stability Notification. Will not display events. Delaying for 1 second
-LOG Level 4: Core-8901-03: BROKER: Disconnect detected while establishing broker connection (10.29.3.85:5672).
-UMQ queue "(Broker: Default IP: 10.29.3.49 PORT: 5672 )"[0][Inst: 10.29.3.49/5672] [0] ctx registration. ID f544ce868d92a087 Flags 0
-UMQ queue "(Broker: Default IP: 10.29.3.49 PORT: 5672 )"[0] ctx registration complete. ID f544ce868d92a087 Flags 0
-UMQ "(Broker: Default IP: 10.29.3.49 PORT: 5672 )"[0] src registration complete. Flags 0
-Sending 10 messages of size 25 bytes to topic [QueueTstA] Sent 10 messages of size 25 bytes in 1.003 seconds. 1.003 secs. 0.009972 Kmsgs/sec. 1.994 Kbps
-[BROKER], sent 10/1660, app sent 10 stable 0 inflight 10 Lingering for 5 seconds...
-Deleting source Deleting context
-</pre><p>In the receiving application window, you see messages being received, as in the following example display: </p><pre class="fragment">Request port binding disabled, no immediate messaging target.
-LOG Level 4: Core-8901-03: BROKER: Disconnect detected while establishing broker connection (10.29.3.85:5672).
-UMQ queue "(Broker: Default IP: 10.29.3.49 PORT: 5672 )"[0][Inst: 10.29.3.49/5672] [0] ctx registration. ID a8c3c09a7ccb1476 Flags 0
-UMQ queue "(Broker: Default IP: 10.29.3.49 PORT: 5672 )"[0] ctx registration complete. ID a8c3c09a7ccb1476 Flags 0
-[QueueTstA][(Broker: Default IP: 10.29.3.49 PORT: 5672 )] UMQ "(Broker: Default IP: 10.29.3.49 PORT: 5672 )"[0] registration complete. AssignID 0. Flags 0
-1.001 secs. 0      Kmsgs/sec.  0          Kbps
-1.001 secs. 0      Kmsgs/sec.  0          Kbps
-1.001 secs. 0      Kmsgs/sec.  0          Kbps
-1.001 secs. 0      Kmsgs/sec.  0          Kbps
-1.001 secs. 0      Kmsgs/sec.  0          Kbps
-1.001 secs. 0.007993 Kmsgs/sec.  1.599 Kbps
-1.001 secs. 0.001998 Kmsgs/sec.  0.3996 Kbps
-Quitting.... received 10 messages (0 reassigned, 0 resubmitted)
-</pre><p class="endli"><br />
+<p class="startli">In a second command window, start the sample sending application with the following command: </p><div class="fragment"><div class="line">&lt;InstallDir&gt;/UMQ_6.12.1/&lt;platform&gt;/bin/umqsrc -B &lt;broker1IP:port1,broker2IP:port2,broker3IP:port3&gt; -M 10 QueueDestA</div></div><!-- fragment --><p>In the sending application window, you see output similar to the following example display: </p><div class="fragment"><div class="line">0 msgs/sec -&gt; 1 msgs/ivl, 0 msec ivl</div><div class="line">Using flight size of 1000</div><div class="line">Not <span class="keyword">using</span> UME Late Join.</div><div class="line">Using UMQ Message Stability Notification. Will not display events. Delaying <span class="keywordflow">for</span> 1 second</div><div class="line">LOG Level 4: Core-8901-03: BROKER: Disconnect detected <span class="keywordflow">while</span> establishing broker connection (10.29.3.85:5672).</div><div class="line">UMQ queue <span class="stringliteral">&quot;(Broker: Default IP: 10.29.3.49 PORT: 5672 )&quot;</span>[0][Inst: 10.29.3.49/5672] [0] ctx registration. ID f544ce868d92a087 Flags 0</div><div class="line">UMQ queue <span class="stringliteral">&quot;(Broker: Default IP: 10.29.3.49 PORT: 5672 )&quot;</span>[0] ctx registration complete. ID f544ce868d92a087 Flags 0</div><div class="line">UMQ <span class="stringliteral">&quot;(Broker: Default IP: 10.29.3.49 PORT: 5672 )&quot;</span>[0] src registration complete. Flags 0</div><div class="line">Sending 10 messages of size 25 bytes to topic [QueueTstA] Sent 10 messages of size 25 bytes in 1.003 seconds. 1.003 secs. 0.009972 Kmsgs/sec. 1.994 Kbps</div><div class="line">[BROKER], sent 10/1660, app sent 10 stable 0 inflight 10 Lingering <span class="keywordflow">for</span> 5 seconds...</div><div class="line">Deleting source Deleting context</div></div><!-- fragment --><p>In the receiving application window, you see messages being received, as in the following example display: </p><div class="fragment"><div class="line">Request port binding disabled, no immediate messaging target.</div><div class="line">LOG Level 4: Core-8901-03: BROKER: Disconnect detected <span class="keywordflow">while</span> establishing broker connection (10.29.3.85:5672).</div><div class="line">UMQ queue <span class="stringliteral">&quot;(Broker: Default IP: 10.29.3.49 PORT: 5672 )&quot;</span>[0][Inst: 10.29.3.49/5672] [0] ctx registration. ID a8c3c09a7ccb1476 Flags 0</div><div class="line">UMQ queue <span class="stringliteral">&quot;(Broker: Default IP: 10.29.3.49 PORT: 5672 )&quot;</span>[0] ctx registration complete. ID a8c3c09a7ccb1476 Flags 0</div><div class="line">[QueueTstA][(Broker: Default IP: 10.29.3.49 PORT: 5672 )] UMQ <span class="stringliteral">&quot;(Broker: Default IP: 10.29.3.49 PORT: 5672 )&quot;</span>[0] registration complete. AssignID 0. Flags 0</div><div class="line">1.001 secs. 0      Kmsgs/sec.  0          Kbps</div><div class="line">1.001 secs. 0      Kmsgs/sec.  0          Kbps</div><div class="line">1.001 secs. 0      Kmsgs/sec.  0          Kbps</div><div class="line">1.001 secs. 0      Kmsgs/sec.  0          Kbps</div><div class="line">1.001 secs. 0      Kmsgs/sec.  0          Kbps</div><div class="line">1.001 secs. 0.007993 Kmsgs/sec.  1.599 Kbps</div><div class="line">1.001 secs. 0.001998 Kmsgs/sec.  0.3996 Kbps</div><div class="line">Quitting.... received 10 messages (0 reassigned, 0 resubmitted)</div></div><!-- fragment --><p class="endli"><br />
  </p>
 </li>
 </ol>
@@ -371,8 +291,7 @@ Shutting Down High Availability Nodes&nbsp;&nbsp;<small><a href="#shuttingdownhi
 <p>To shut down a high availability queuing system node, perform the following steps:</p>
 <ol>
 <li>
-Shut down the broker with the following command: <pre class="fragment">&lt;InstallDir&gt;/UMQ_6.12/&lt;platform&gt;/broker/apache-activemq-5.10.0/bin/activemq stop
-</pre> </li>
+Shut down the broker with the following command: <div class="fragment"><div class="line">&lt;InstallDir&gt;/UMQ_6.12.1/&lt;platform&gt;/broker/apache-activemq-5.10.0/bin/activemq stop</div></div><!-- fragment --> </li>
 <li>
 Shut down the umestored process. </li>
 <li>
@@ -424,9 +343,8 @@ Brokered Context&nbsp;&nbsp;<small><a href="#brokeredcontext">&lt;-</a></small><
 <p>The brokered context establishes the environment for an Ultra Messaging queuing system.</p>
 <p>When you build an Ultra Messaging queuing system, you must create a context and define the broker for the context. You can have multiple brokered contexts in a queuing system.</p>
 <p>You can define the broker for the context in the client configuration file or in the application code. When you define the broker for a context, you must specify the IP address of the machine that hosts the broker and the Advanced Message Queuing Protocol (AMQP) listening port.</p>
-<p>To define the broker for a brokered context in a configuration file, the option <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/config.tag:../../Config/" href="../../Config/grpmajoroptions.html#brokercontext">broker (context)</a> as follows:</p>
-<pre class="fragment">context broker broker_ip_address:port
-</pre><p>For more information about the Ultra Messaging context, see <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/design.tag:../../Design/" href="../../Design/fundamentalconcepts.html#contextobject">Context Object</a>.</p>
+<p>To define the broker for a brokered context in a configuration file, the option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMQ/config.tag:../../Config/" href="../../Config/grpmajoroptions.html#brokercontext">broker (context)</a> as follows:</p>
+<div class="fragment"><div class="line">context broker broker_ip_address:port</div></div><!-- fragment --><p>For more information about the Ultra Messaging context, see <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMQ/design.tag:../../Design/" href="../../Design/fundamentalconcepts.html#contextobject">Context Object</a>.</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="brokeredsource"></a>
@@ -436,8 +354,7 @@ Brokered Source&nbsp;&nbsp;<small><a href="#brokeredsource">&lt;-</a></small></h
 <p>When you create a source, you must specify the name of a message destination. The broker creates a queue destination with the specified name. If you create multiple sources, specify a different message destination for each source. A source sends messages to the message destination associated with it.</p>
 <p>You can configure the source in the configuration file or in the application code. When you configure the source for a brokered context, you must set the transport option to broker.</p>
 <p>To set up the broker transport for a source in the client configuration file, include the following parameter:</p>
-<pre class="fragment">source transport broker
-</pre><p><br />
+<div class="fragment"><div class="line">source transport broker</div></div><!-- fragment --><p><br />
  </p>
 <h3><a class="anchor" id="sourceeventconcepts"></a>
 Source Event Concepts&nbsp;&nbsp;<small><a href="#sourceeventconcepts">&lt;-</a></small></h3>
@@ -528,20 +445,7 @@ Composite Destinations&nbsp;&nbsp;<small><a href="#compositedestinations">&lt;-<
 Composite Destination Configuration&nbsp;&nbsp;<small><a href="#compositedestinationconfiguration">&lt;-</a></small></h3>
 <p>You configure the composite destination in the Ultra Messaging message broker. Use the broker configuration file to set up the logical and physical queues for the composite destination.</p>
 <p>The following XML code shows an example of a configuration for a composite destination:</p>
-<pre class="fragment">&lt;destinationInterceptors&gt;
-    &lt;virtualDestinationInterceptor&gt;
-        &lt;virtualDestinations&gt;
-            &lt;compositeQueue name="VirtQueue0"&gt;
-                &lt;forwardTo&gt;
-                    &lt;queue physicalName="QueueA" /&gt;
-                    &lt;queue physicalName="QueueB" /&gt;
-                    &lt;queue physicalName="QueueC" /&gt;
-                &lt;/forwardTo&gt;
-            &lt;/compositeQueue&gt;
-        &lt;/virtualDestinations&gt;
-    &lt;/virtualDestinationInterceptor&gt;
-&lt;/destinationInterceptors&gt;
-</pre><p><br />
+<div class="fragment"><div class="line">&lt;destinationInterceptors&gt;</div><div class="line">    &lt;virtualDestinationInterceptor&gt;</div><div class="line">        &lt;virtualDestinations&gt;</div><div class="line">            &lt;compositeQueue name=<span class="stringliteral">&quot;VirtQueue0&quot;</span>&gt;</div><div class="line">                &lt;forwardTo&gt;</div><div class="line">                    &lt;queue physicalName=<span class="stringliteral">&quot;QueueA&quot;</span> /&gt;</div><div class="line">                    &lt;queue physicalName=<span class="stringliteral">&quot;QueueB&quot;</span> /&gt;</div><div class="line">                    &lt;queue physicalName=<span class="stringliteral">&quot;QueueC&quot;</span> /&gt;</div><div class="line">                &lt;/forwardTo&gt;</div><div class="line">            &lt;/compositeQueue&gt;</div><div class="line">        &lt;/virtualDestinations&gt;</div><div class="line">    &lt;/virtualDestinationInterceptor&gt;</div><div class="line">&lt;/destinationInterceptors&gt;</div></div><!-- fragment --><p><br />
  </p>
 <h2><a class="anchor" id="messagelifetime"></a>
 Message Lifetime&nbsp;&nbsp;<small><a href="#messagelifetime">&lt;-</a></small></h2>
@@ -588,7 +492,7 @@ If Performance Is Important, Consider Not Persisting Messages&nbsp;&nbsp;<small>
 <h3><a class="anchor" id="waitforregistration"></a>
 Wait for Registration&nbsp;&nbsp;<small><a href="#waitforregistration">&lt;-</a></small></h3>
 <p>To avoid start-up errors, do not start sending messages immediately after source creation. Instead, wait for sources to register with the broker.</p>
-<p>After you create the source, wait for the <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#aa409add379c0380b2efa63f4095d69e4">LBM_SRC_EVENT_UMQ_REGISTRATION_COMPLETE_EX</a> event before sending messages.</p>
+<p>After you create the source, wait for the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#aa409add379c0380b2efa63f4095d69e4">LBM_SRC_EVENT_UMQ_REGISTRATION_COMPLETE_EX</a> event before sending messages.</p>
 <p><br />
  </p>
 <h3><a class="anchor" id="planforpossibleconnectioninterruptions"></a>
@@ -618,7 +522,7 @@ settings that are generic or common to most objects </li>
 <li>
 settings that are likely to change, such as broker IP address and port number </li>
 </ul>
-<p>When using configuration files to set attributes for client applications, you can use either plain text configuration files or XML configuration files. Become familiar with the advantages of both types before deciding which type to use. For complete information about how to use both types of configuration files, see <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/config.tag:../../Config/" href="../../Config/index.html#configurationoverview">Configuration Overview</a>.</p>
+<p>When using configuration files to set attributes for client applications, you can use either plain text configuration files or XML configuration files. Become familiar with the advantages of both types before deciding which type to use. For complete information about how to use both types of configuration files, see <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMQ/config.tag:../../Config/" href="../../Config/index.html#configurationoverview">Configuration Overview</a>.</p>
 <p>The plain text configuration file, when invoked, writes option values into Ultra Messaging current default attributes. Ultra Messaging then uses these values in the creation of all objects. The format is simple, and Ultra Messaging does not validate the file syntax.</p>
 <p>XML configuration files override default attributes and have more flexibility than a plain text configuration file. A single XML file can contain options for multiple client applications. For a single application, you can configure multiple named contexts, event queues, and so on, with different values for the same options. Also, Ultra Messaging Manager (UMM) can manage XML configuration files.</p>
 <p><br />
@@ -667,8 +571,7 @@ Memory Usage&nbsp;&nbsp;<small><a href="#memoryusage">&lt;-</a></small></h2>
 <h3><a class="anchor" id="jvmsize"></a>
 JVM Size&nbsp;&nbsp;<small><a href="#jvmsize">&lt;-</a></small></h3>
 <p>The ActiveMQ broker defaults to having a minimum and maximum JVM size of 1GB. Many UM users will find that this size restriction is inadequate. This can be configured by overriding the ACTIVEMQ_OPTS_MEMORY environment variable. For example, to set it to 1GB minimum and 2GB maximum, set the following prior to invoking ActiveMQ's startup script:</p>
-<pre class="fragment">export ACTIVEMQ_OPTS_MEMORY="-Xms1G -Xmx2G"
-</pre><p><br />
+<div class="fragment"><div class="line">export ACTIVEMQ_OPTS_MEMORY=<span class="stringliteral">&quot;-Xms1G -Xmx2G&quot;</span></div></div><!-- fragment --><p><br />
  </p>
 <h3><a class="anchor" id="jvmreservedspace"></a>
 JVM Reserved Space&nbsp;&nbsp;<small><a href="#jvmreservedspace">&lt;-</a></small></h3>
@@ -678,8 +581,7 @@ JVM Reserved Space&nbsp;&nbsp;<small><a href="#jvmreservedspace">&lt;-</a></smal
 <h3><a class="anchor" id="messagepaging"></a>
 Message Paging&nbsp;&nbsp;<small><a href="#messagepaging">&lt;-</a></small></h3>
 <p>When a destination is initialized, ActiveMQ defaults to paging in 200 messages for that destination. If your messages are so large that paging in 200 messages from a destination will cause you to exceed the configured JVM limit, you should lower the number of messages to page in per destination. This can be done by adding the following attribute to any policy entries that have large messages in the activemq.xml file:</p>
-<pre class="fragment">&lt;policyEntry queue="&gt;" persistJMSRedelivered="true" maxPageSize="20"&gt;&lt;/policyEntry&gt;
-</pre><p>The values you use will depend on your maximum message size. Using the default configured values, the JVM gets 1GB of memory and ActiveMQ is allowed to use 70% of that memory (700MB) with 300MB reserved for headroom. Knowing that ActiveMQ could page in 200 messages on startup, you need to make sure that your 200 messages will fit inside the 30% headroom. This is because when ActiveMQ begins paging in messages it does a one time memory check. If you were at 69% of the JVM limit, it will see that you have space and then page in 200 pages. If the 200 messages it pages in don't fit in the remaining headroom space, you will encounter memory errors.</p>
+<div class="fragment"><div class="line">&lt;policyEntry queue=<span class="stringliteral">&quot;&gt;&quot;</span> persistJMSRedelivered=<span class="stringliteral">&quot;true&quot;</span> maxPageSize=<span class="stringliteral">&quot;20&quot;</span>&gt;&lt;/policyEntry&gt;</div></div><!-- fragment --><p>The values you use will depend on your maximum message size. Using the default configured values, the JVM gets 1GB of memory and ActiveMQ is allowed to use 70% of that memory (700MB) with 300MB reserved for headroom. Knowing that ActiveMQ could page in 200 messages on startup, you need to make sure that your 200 messages will fit inside the 30% headroom. This is because when ActiveMQ begins paging in messages it does a one time memory check. If you were at 69% of the JVM limit, it will see that you have space and then page in 200 pages. If the 200 messages it pages in don't fit in the remaining headroom space, you will encounter memory errors.</p>
 <p>For example, consider a case where you are sending 10MB messages. With the default page size of 200, you would need 2GB of available to page in all of those messages. This value is much greater than the 30% headroom available, so you could get memory errors.</p>
 <p>This can be handled in two ways:</p>
 <ol>
@@ -720,147 +622,33 @@ Create the Context&nbsp;&nbsp;<small><a href="#createthecontext">&lt;-</a></smal
 <p>A client application that sends or receives messages must have one or more context objects.</p>
 <p>When you create a brokered context, set the IP address and port of the broker, and configure the attributes in a context attribute object. After you create the context, you can delete the context attribute object. The following code fragments show context coding concepts.</p>
 <p>Create a context attribute object with the current default configuration.</p>
-<pre class="fragment">if (lbm_context_attr_create_from_xml(&amp;cattr, "MyCtx") == LBM_FAILURE) {
-    fprintf(stderr, "lbm_context_attr_create_from_xml: %s\n", lbm_errmsg());
-    exit(1);
-}
-</pre><p>Set the configuration options that must be unique or permanent for the context. The following example sets configuration option broker to 10.29.3.190:5672.</p>
-<pre class="fragment">if (lbm_context_attr_str_setopt(cattr, "broker", "10.29.3.190:5672") == LBM_FAILURE) {
-    fprintf(stderr, "lbm_context_attr_str_setopt:broker: %s\n", lbm_errmsg());
-    exit(1);
-}
-</pre><p>Create the context object using the context attribute object.</p>
-<pre class="fragment">if (lbm_context_create(&amp;ctx, cattr, NULL, NULL) == LBM_FAILURE) {
-    fprintf(stderr, "lbm_context_create: %s\n", lbm_errmsg());
-    exit(1);
-}
-</pre><p>Delete the context attribute object, which is no longer needed.</p>
-<pre class="fragment">lbm_context_attr_delete(cattr);
-</pre><p><br />
+<div class="fragment"><div class="line"><span class="keywordflow">if</span> (<a class="codeRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#a04d99cc97d32f359888c5befcc50512e">lbm_context_attr_create_from_xml</a>(&amp;cattr, <span class="stringliteral">&quot;MyCtx&quot;</span>) == LBM_FAILURE) {</div><div class="line">    fprintf(stderr, <span class="stringliteral">&quot;lbm_context_attr_create_from_xml: %s\n&quot;</span>, <a class="codeRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#a22a4650d3a5b649c84a0c05adedcc055">lbm_errmsg</a>());</div><div class="line">    exit(1);</div><div class="line">}</div></div><!-- fragment --><p>Set the configuration options that must be unique or permanent for the context. The following example sets configuration option broker to 10.29.3.190:5672.</p>
+<div class="fragment"><div class="line"><span class="keywordflow">if</span> (<a class="codeRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#af45c2cec5557da4057a0c96f305d6a40">lbm_context_attr_str_setopt</a>(cattr, <span class="stringliteral">&quot;broker&quot;</span>, <span class="stringliteral">&quot;10.29.3.190:5672&quot;</span>) == LBM_FAILURE) {</div><div class="line">    fprintf(stderr, <span class="stringliteral">&quot;lbm_context_attr_str_setopt:broker: %s\n&quot;</span>, <a class="codeRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#a22a4650d3a5b649c84a0c05adedcc055">lbm_errmsg</a>());</div><div class="line">    exit(1);</div><div class="line">}</div></div><!-- fragment --><p>Create the context object using the context attribute object.</p>
+<div class="fragment"><div class="line"><span class="keywordflow">if</span> (<a class="codeRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#a8058947690bd0995bc2c59d4a61b462f">lbm_context_create</a>(&amp;ctx, cattr, NULL, NULL) == LBM_FAILURE) {</div><div class="line">    fprintf(stderr, <span class="stringliteral">&quot;lbm_context_create: %s\n&quot;</span>, <a class="codeRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#a22a4650d3a5b649c84a0c05adedcc055">lbm_errmsg</a>());</div><div class="line">    exit(1);</div><div class="line">}</div></div><!-- fragment --><p>Delete the context attribute object, which is no longer needed.</p>
+<div class="fragment"><div class="line"><a class="codeRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#a9c0a3c1f4a8854d8ec5585392c817c85">lbm_context_attr_delete</a>(cattr);</div></div><!-- fragment --><p><br />
  </p>
 <h2><a class="anchor" id="createthesources"></a>
 Create the Sources&nbsp;&nbsp;<small><a href="#createthesources">&lt;-</a></small></h2>
 <p>A client application that sends messages must have at least one source object.</p>
 <p>When you create a source, configure the attributes in a topic attribute object. After you create the source, you can delete the topic attribute object. The following code fragments show source coding concepts.</p>
-<p>Create a topic attribute object with the current default configuration. The topic name supplied should be the same as is passed to <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#a1ba60407fa2bde0997aab6d5a5d2da1a">lbm_src_topic_alloc()</a> below.</p>
-<pre class="fragment">if (lbm_src_topic_attr_create_from_xml(&amp;tattr, "MyCtx", "QueueName") == LBM_FAILURE) {
-    fprintf(stderr, "lbm_src_topic_attr_create_from_xml: %s\n", lbm_errmsg());
-    exit(1);
-}
-</pre><p>Set configuration options that must be unique or permanent for the source. The following example sets configuration option transport to BROKER.</p>
-<pre class="fragment">if (lbm_src_topic_attr_str_setopt(tattr, "transport", "BROKER") == LBM_FAILURE) {
-    fprintf(stderr, "lbm_src_topic_attr_str_setopt:transport: %s\n", lbm_errmsg());
-    exit(1);
-}
-</pre><p>Create a source topic object using the context and topic attribute object. The topic string becomes the queue name.</p>
-<pre class="fragment">if (lbm_src_topic_alloc(&amp;topic, ctx, "QueueName", tattr) == LBM_FAILURE) {
-    fprintf(stderr, "lbm_src_topic_alloc: %s\n", lbm_errmsg());
-    exit(1);
-}
-</pre><p>Delete the topic attribute object, or retain it for subsequent source topic allocation.</p>
-<pre class="fragment">lbm_src_topic_attr_delete(tattr);
-</pre><p>Create the source object using context and source topic object. An example of the function "app_src_callback" is shown below.</p>
-<pre class="fragment">if (lbm_src_create(&amp;src, ctx, topic, app_src_callback, NULL, NULL) == LBM_FAILURE) {
-    fprintf(stderr, "lbm_src_create: %s\n", lbm_errmsg());
-    exit(1);
-}
-</pre><p>If needed, set the message properties for the message. In this example we set message property Price to a value of 170 and message property Quan to 49.</p>
-<pre class="fragment">lbm_src_send_ex_info_t info; int32_t value;
-int ret;
-...
-/* setup */
-memset(&amp;info, 0, sizeof(lbm_src_send_ex_info_t));
-info.flags = LBM_SRC_SEND_EX_FLAG_PROPERTIES;
-lbm_msg_properties_create(&amp;info.properties);
-
-/* set user defined message properties */
-value = 170;
-ret = lbm_msg_properties_set(info.properties, "Price",
-                             (void *) &amp;value,
-                             LBM_MSG_PROPERTY_INT, sizeof(int32_t));
-assert(ret==LBM_OK);
-
-value = 49;
-ret = lbm_msg_properties_set(info.properties, "Quan",
-                             (void *) &amp;value, LBM_MSG_PROPERTY_INT,
-                             sizeof(int32_t));
-assert(ret==LBM_OK);
-</pre><p>Send the message and delete the message properties object.</p>
-<pre class="fragment">lbm_src_send_ex(src, "HelloWorld", 10, 0, &amp;info);
-...
-lbm_msg_properties_delete(info.properties);
-</pre><p>Verify that the source has registered with the broker. Verify that the sent message is stable at the broker.</p>
-<pre class="fragment">int app_src_callback(lbm_src_t *src, int event, void *ed, void *cd) {
-    ...
-    switch (event) {
-        ...
-        case LBM_SRC_EVENT_UMQ_REGISTRATION_COMPLETE_EX:
-            ... /* handle the registration complete */
-            break;
-        case LBM_SRC_EVENT_UMQ_MESSAGE_STABLE_EX:
-            .... /* handle message stability */
-            break;
-        }
-        ...
-    }
-    ...
-}
-</pre><p><br />
+<p>Create a topic attribute object with the current default configuration. The topic name supplied should be the same as is passed to <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#a1ba60407fa2bde0997aab6d5a5d2da1a">lbm_src_topic_alloc()</a> below.</p>
+<div class="fragment"><div class="line"><span class="keywordflow">if</span> (<a class="codeRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#adc12814cac6280b5bd48bfde41d7c88a">lbm_src_topic_attr_create_from_xml</a>(&amp;tattr, <span class="stringliteral">&quot;MyCtx&quot;</span>, <span class="stringliteral">&quot;QueueName&quot;</span>) == LBM_FAILURE) {</div><div class="line">    fprintf(stderr, <span class="stringliteral">&quot;lbm_src_topic_attr_create_from_xml: %s\n&quot;</span>, <a class="codeRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#a22a4650d3a5b649c84a0c05adedcc055">lbm_errmsg</a>());</div><div class="line">    exit(1);</div><div class="line">}</div></div><!-- fragment --><p>Set configuration options that must be unique or permanent for the source. The following example sets configuration option transport to BROKER.</p>
+<div class="fragment"><div class="line"><span class="keywordflow">if</span> (<a class="codeRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#a422f330bf7ef3efdd7a9f17caabccb24">lbm_src_topic_attr_str_setopt</a>(tattr, <span class="stringliteral">&quot;transport&quot;</span>, <span class="stringliteral">&quot;BROKER&quot;</span>) == LBM_FAILURE) {</div><div class="line">    fprintf(stderr, <span class="stringliteral">&quot;lbm_src_topic_attr_str_setopt:transport: %s\n&quot;</span>, <a class="codeRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#a22a4650d3a5b649c84a0c05adedcc055">lbm_errmsg</a>());</div><div class="line">    exit(1);</div><div class="line">}</div></div><!-- fragment --><p>Create a source topic object using the context and topic attribute object. The topic string becomes the queue name.</p>
+<div class="fragment"><div class="line"><span class="keywordflow">if</span> (<a class="codeRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#a1ba60407fa2bde0997aab6d5a5d2da1a">lbm_src_topic_alloc</a>(&amp;topic, ctx, <span class="stringliteral">&quot;QueueName&quot;</span>, tattr) == LBM_FAILURE) {</div><div class="line">    fprintf(stderr, <span class="stringliteral">&quot;lbm_src_topic_alloc: %s\n&quot;</span>, <a class="codeRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#a22a4650d3a5b649c84a0c05adedcc055">lbm_errmsg</a>());</div><div class="line">    exit(1);</div><div class="line">}</div></div><!-- fragment --><p>Delete the topic attribute object, or retain it for subsequent source topic allocation.</p>
+<div class="fragment"><div class="line"><a class="codeRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#acb24cc75476206c155b00c4994aece85">lbm_src_topic_attr_delete</a>(tattr);</div></div><!-- fragment --><p>Create the source object using context and source topic object. An example of the function "app_src_callback" is shown below.</p>
+<div class="fragment"><div class="line"><span class="keywordflow">if</span> (<a class="codeRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#ab8dd76271bf9df7a5f88476d431f523e">lbm_src_create</a>(&amp;src, ctx, topic, app_src_callback, NULL, NULL) == LBM_FAILURE) {</div><div class="line">    fprintf(stderr, <span class="stringliteral">&quot;lbm_src_create: %s\n&quot;</span>, <a class="codeRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#a22a4650d3a5b649c84a0c05adedcc055">lbm_errmsg</a>());</div><div class="line">    exit(1);</div><div class="line">}</div></div><!-- fragment --><p>If needed, set the message properties for the message. In this example we set message property Price to a value of 170 and message property Quan to 49.</p>
+<div class="fragment"><div class="line"><a class="codeRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMQ/api.tag:../../API/" href="../../API/structlbm__src__send__ex__info__t__stct.html">lbm_src_send_ex_info_t</a> info; int32_t value;</div><div class="line"><span class="keywordtype">int</span> ret;</div><div class="line">...</div><div class="line"><span class="comment">/* setup */</span></div><div class="line">memset(&amp;info, 0, <span class="keyword">sizeof</span>(<a class="codeRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMQ/api.tag:../../API/" href="../../API/structlbm__src__send__ex__info__t__stct.html">lbm_src_send_ex_info_t</a>));</div><div class="line">info.<a class="codeRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMQ/api.tag:../../API/" href="../../API/structlbm__src__send__ex__info__t__stct.html#aa450a079510ebdc97b19625d10bd18ea">flags</a> = <a class="codeRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#a169eb19b58d383875b718117b2def6e5">LBM_SRC_SEND_EX_FLAG_PROPERTIES</a>;</div><div class="line"><a class="codeRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#abda1a4224f1c3e94b10b74051be3dd53">lbm_msg_properties_create</a>(&amp;info.<a class="codeRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMQ/api.tag:../../API/" href="../../API/structlbm__src__send__ex__info__t__stct.html#a69ae228b9501f0466bfec8da2a479cbf">properties</a>);</div><div class="line"></div><div class="line"><span class="comment">/* set user defined message properties */</span></div><div class="line">value = 170;</div><div class="line">ret = <a class="codeRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#acec18484fc06996fe3b61e76a593d5fb">lbm_msg_properties_set</a>(info.<a class="codeRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMQ/api.tag:../../API/" href="../../API/structlbm__src__send__ex__info__t__stct.html#a69ae228b9501f0466bfec8da2a479cbf">properties</a>, <span class="stringliteral">&quot;Price&quot;</span>,</div><div class="line">                             (<span class="keywordtype">void</span> *) &amp;value,</div><div class="line">                             LBM_MSG_PROPERTY_INT, <span class="keyword">sizeof</span>(int32_t));</div><div class="line">assert(ret==LBM_OK);</div><div class="line"></div><div class="line">value = 49;</div><div class="line">ret = <a class="codeRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#acec18484fc06996fe3b61e76a593d5fb">lbm_msg_properties_set</a>(info.<a class="codeRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMQ/api.tag:../../API/" href="../../API/structlbm__src__send__ex__info__t__stct.html#a69ae228b9501f0466bfec8da2a479cbf">properties</a>, <span class="stringliteral">&quot;Quan&quot;</span>,</div><div class="line">                             (<span class="keywordtype">void</span> *) &amp;value, LBM_MSG_PROPERTY_INT,</div><div class="line">                             <span class="keyword">sizeof</span>(int32_t));</div><div class="line">assert(ret==LBM_OK);</div></div><!-- fragment --><p>Send the message and delete the message properties object.</p>
+<div class="fragment"><div class="line"><a class="codeRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#a091b5806bf18d10ebd0d9117e0c70229">lbm_src_send_ex</a>(src, <span class="stringliteral">&quot;HelloWorld&quot;</span>, 10, 0, &amp;info);</div><div class="line">...</div><div class="line">lbm_msg_properties_delete(info.<a class="codeRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMQ/api.tag:../../API/" href="../../API/structlbm__src__send__ex__info__t__stct.html#a69ae228b9501f0466bfec8da2a479cbf">properties</a>);</div></div><!-- fragment --><p>Verify that the source has registered with the broker. Verify that the sent message is stable at the broker.</p>
+<div class="fragment"><div class="line"><span class="keywordtype">int</span> app_src_callback(<a class="codeRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#a717ff27bb10ae7800330c21d810dffb8">lbm_src_t</a> *src, <span class="keywordtype">int</span> event, <span class="keywordtype">void</span> *ed, <span class="keywordtype">void</span> *cd) {</div><div class="line">    ...</div><div class="line">    <span class="keywordflow">switch</span> (event) {</div><div class="line">        ...</div><div class="line">        <span class="keywordflow">case</span> <a class="codeRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#aa409add379c0380b2efa63f4095d69e4">LBM_SRC_EVENT_UMQ_REGISTRATION_COMPLETE_EX</a>:</div><div class="line">            ... <span class="comment">/* handle the registration complete */</span></div><div class="line">            <span class="keywordflow">break</span>;</div><div class="line">        <span class="keywordflow">case</span> <a class="codeRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#a65cd8e57a5b144f29cc70c8537c7d506">LBM_SRC_EVENT_UMQ_MESSAGE_STABLE_EX</a>:</div><div class="line">            .... <span class="comment">/* handle message stability */</span></div><div class="line">            <span class="keywordflow">break</span>;</div><div class="line">        }</div><div class="line">        ...</div><div class="line">    }</div><div class="line">    ...</div><div class="line">}</div></div><!-- fragment --><p><br />
  </p>
 <h2><a class="anchor" id="createthereceivers"></a>
 Create the Receivers&nbsp;&nbsp;<small><a href="#createthereceivers">&lt;-</a></small></h2>
 <p>A client application that receives messages must have at least one receiver object.</p>
 <p>When you create a receiver, configure the attributes in a topic attribute object. The following code fragments show receiver coding concepts.</p>
 <p>Create a receiver topic object using the context object with the current default configuration. The topic string is the queue name.</p>
-<pre class="fragment">if (lbm_rcv_topic_lookup(&amp;topic, ctx, "QueueName", NULL) == LBM_FAILURE) {
-    fprintf(stderr, "lbm_rcv_topic_lookup: %s\n", lbm_errmsg());
-    exit(1);
-}
-</pre><p>Create the receiver object using the context and topic object.</p>
-<pre class="fragment">if (lbm_rcv_create(&amp;rcv, ctx, topic, app_rcv_callback, NULL, NULL) == LBM_FAILURE) {
-    fprintf(stderr, "lbm_rcv_create: %s\n", lbm_errmsg());
-    exit(1);
-}
-</pre><p>Ultra Messaging receives a message and then delivers the message to the application. The message might have message properties. After the callback delivers the message and returns, Ultra Messaging automatically tells the broker that the message is consumed.</p>
-<pre class="fragment">/* Message callback function provided at Receiver Create */
-int app_rcv_callback(lbm_rcv_t *rcv, lbm_msg_t *msg, void *clientd) {
-    ...
-    switch (msg-&gt;type) {
-    case LBM_MSG_DATA:
-        if (msg-&gt;properties != NULL) {
-            int ret;
-            lbm_msg_properties_iter_t *prop_iter=NULL;
-
-            ret = lbm_msg_properties_iter_create(&amp;prop_iter);
-            assert(ret==LBM_OK);
-
-            ret = lbm_msg_properties_iter_first(prop_iter, msg-&gt;properties);
-            while (ret == LBM_OK) {
-                if (strcmp("Price", prop_iter-&gt;name) == 0) {
-                    assert(prop_iter-&gt;type==LBM_MSG_PROPERTY_INT);
-                    printf("Price is %d\n", (int32_t) *((int32_t *) prop_iter-&gt;data));
-                }
-                else if (strcmp("Quan", prop_iter-&gt;name) == 0) {
-                    assert(prop_iter-&gt;type==LBM_MSG_PROPERTY_INT);
-                    printf("Quantity is %d\n", (int32_t) *((int32_t *) prop_iter-&gt;data));
-                }
-                else {
-                    printf("Error: Unknown property name: %s, type: %d",
-                           prop_iter-&gt;name, prop_iter-&gt;type);
-                }
-                ret = lbm_msg_properties_iter_next(prop_iter);
-            }
-            lbm_msg_properties_iter_delete(prop_iter);
-        }
-        ... /* implement processing the payload in msg-&gt;data */ }
-        break;
-    ... /* implement processing for other message types */
-    default:
-        ... /* implement default handler */
-        break;
-    }
-}
-</pre><p><br />
+<div class="fragment"><div class="line"><span class="keywordflow">if</span> (<a class="codeRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#a3de8a6a659896f76475c453683db4e18">lbm_rcv_topic_lookup</a>(&amp;topic, ctx, <span class="stringliteral">&quot;QueueName&quot;</span>, NULL) == LBM_FAILURE) {</div><div class="line">    fprintf(stderr, <span class="stringliteral">&quot;lbm_rcv_topic_lookup: %s\n&quot;</span>, <a class="codeRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#a22a4650d3a5b649c84a0c05adedcc055">lbm_errmsg</a>());</div><div class="line">    exit(1);</div><div class="line">}</div></div><!-- fragment --><p>Create the receiver object using the context and topic object.</p>
+<div class="fragment"><div class="line"><span class="keywordflow">if</span> (<a class="codeRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#aa7491c50fefbc2b70f8035fce7ac1477">lbm_rcv_create</a>(&amp;rcv, ctx, topic, app_rcv_callback, NULL, NULL) == LBM_FAILURE) {</div><div class="line">    fprintf(stderr, <span class="stringliteral">&quot;lbm_rcv_create: %s\n&quot;</span>, <a class="codeRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#a22a4650d3a5b649c84a0c05adedcc055">lbm_errmsg</a>());</div><div class="line">    exit(1);</div><div class="line">}</div></div><!-- fragment --><p>Ultra Messaging receives a message and then delivers the message to the application. The message might have message properties. After the callback delivers the message and returns, Ultra Messaging automatically tells the broker that the message is consumed.</p>
+<div class="fragment"><div class="line"><span class="comment">/* Message callback function provided at Receiver Create */</span></div><div class="line"><span class="keywordtype">int</span> app_rcv_callback(<a class="codeRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#a0a4af6b8247cc5a0a24a8578fb6e83bd">lbm_rcv_t</a> *rcv, <a class="codeRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMQ/api.tag:../../API/" href="../../API/structlbm__msg__t__stct.html">lbm_msg_t</a> *msg, <span class="keywordtype">void</span> *clientd) {</div><div class="line">    ...</div><div class="line">    <span class="keywordflow">switch</span> (msg-&gt;<a class="codeRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMQ/api.tag:../../API/" href="../../API/structlbm__msg__t__stct.html#ab25327dc4b4ebf527106f6e708dbc05f">type</a>) {</div><div class="line">    <span class="keywordflow">case</span> <a class="codeRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#aa47eb604db7dc9fd53f9650ed940e058">LBM_MSG_DATA</a>:</div><div class="line">        <span class="keywordflow">if</span> (msg-&gt;<a class="codeRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMQ/api.tag:../../API/" href="../../API/structlbm__msg__t__stct.html#ae494fd38e1139a128d58616fa9d2e439">properties</a> != NULL) {</div><div class="line">            <span class="keywordtype">int</span> ret;</div><div class="line">            <a class="codeRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMQ/api.tag:../../API/" href="../../API/structlbm__msg__properties__iter__t__stct.html">lbm_msg_properties_iter_t</a> *prop_iter=NULL;</div><div class="line"></div><div class="line">            ret = <a class="codeRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#aa08b2aa8f00b1b97c6d496834a4432dd">lbm_msg_properties_iter_create</a>(&amp;prop_iter);</div><div class="line">            assert(ret==LBM_OK);</div><div class="line"></div><div class="line">            ret = <a class="codeRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#acfa02c8316e97baeb9894daa991ef1fb">lbm_msg_properties_iter_first</a>(prop_iter, msg-&gt;<a class="codeRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMQ/api.tag:../../API/" href="../../API/structlbm__msg__t__stct.html#ae494fd38e1139a128d58616fa9d2e439">properties</a>);</div><div class="line">            <span class="keywordflow">while</span> (ret == LBM_OK) {</div><div class="line">                <span class="keywordflow">if</span> (strcmp(<span class="stringliteral">&quot;Price&quot;</span>, prop_iter-&gt;name) == 0) {</div><div class="line">                    assert(prop_iter-&gt;type==LBM_MSG_PROPERTY_INT);</div><div class="line">                    printf(<span class="stringliteral">&quot;Price is %d\n&quot;</span>, (int32_t) *((int32_t *) prop_iter-&gt;data));</div><div class="line">                }</div><div class="line">                <span class="keywordflow">else</span> <span class="keywordflow">if</span> (strcmp(<span class="stringliteral">&quot;Quan&quot;</span>, prop_iter-&gt;name) == 0) {</div><div class="line">                    assert(prop_iter-&gt;type==LBM_MSG_PROPERTY_INT);</div><div class="line">                    printf(<span class="stringliteral">&quot;Quantity is %d\n&quot;</span>, (int32_t) *((int32_t *) prop_iter-&gt;data));</div><div class="line">                }</div><div class="line">                <span class="keywordflow">else</span> {</div><div class="line">                    printf(<span class="stringliteral">&quot;Error: Unknown property name: %s, type: %d&quot;</span>,</div><div class="line">                           prop_iter-&gt;name, prop_iter-&gt;type);</div><div class="line">                }</div><div class="line">                ret = <a class="codeRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#a2876985a82c92ade238b8196a1ec3da7">lbm_msg_properties_iter_next</a>(prop_iter);</div><div class="line">            }</div><div class="line">            <a class="codeRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#a79db125bc40762da0b462c70f9e8c4b4">lbm_msg_properties_iter_delete</a>(prop_iter);</div><div class="line">        }</div><div class="line">        ... <span class="comment">/* implement processing the payload in msg-&gt;data */</span> }</div><div class="line">        <span class="keywordflow">break</span>;</div><div class="line">    ... <span class="comment">/* implement processing for other message types */</span></div><div class="line">    <span class="keywordflow">default</span>:</div><div class="line">        ... <span class="comment">/* implement default handler */</span></div><div class="line">        <span class="keywordflow">break</span>;</div><div class="line">    }</div><div class="line">}</div></div><!-- fragment --><p><br />
  </p>
 <h2><a class="anchor" id="clientconfiguration"></a>
 Client Configuration&nbsp;&nbsp;<small><a href="#clientconfiguration">&lt;-</a></small></h2>
@@ -874,7 +662,7 @@ Use an XML configuration file for a more flexible approach to setting configurat
 <li>
 Set configuration options individually using function or method calls. You can use this technique to override options set from configuration files. </li>
 </ul>
-<p>For detailed information about setting configuration options, see <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/config.tag:../../Config/" href="../../Config/index.html#configurationoverview">Configuration Overview</a>.</p>
+<p>For detailed information about setting configuration options, see <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMQ/config.tag:../../Config/" href="../../Config/index.html#configurationoverview">Configuration Overview</a>.</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="sampleapplications"></a>
@@ -1016,18 +804,7 @@ Message Consumption&nbsp;&nbsp;<small><a href="#messageconsumption">&lt;-</a></s
 Message Persistence&nbsp;&nbsp;<small><a href="#messagepersistence">&lt;-</a></small></h3>
 <p>By default, queuing sources set all messages to be persisted. When the broker receives a message that is set for persistence, the broker holds that message in long-term storage until the receiving client application consumes the message.</p>
 <p>To set persistence in a message, you must set the JMSDeliveryMode message property for the message. The following example shows a way that you can set a message property to persistent:</p>
-<pre class="fragment">/* setup */
-memset(&amp;info, 0, sizeof(lbm_src_send_ex_info_t));
-info.flags = LBM_SRC_SEND_EX_FLAG_PROPERTIES;
-lbm_msg_properties_create(&amp;info.properties);
-
-/* set a user defined message property */
-value = 2;
-ret = lbm_msg_properties_set(info.properties, "JMSDeliveryMode",
-                             (void *) &amp;value, LBM_MSG_PROPERTY_INT,
-                             sizeof(int32_t));
-assert(ret==LBM_OK);
-</pre><p><br />
+<div class="fragment"><div class="line"><span class="comment">/* setup */</span></div><div class="line">memset(&amp;info, 0, <span class="keyword">sizeof</span>(<a class="codeRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMQ/api.tag:../../API/" href="../../API/structlbm__src__send__ex__info__t__stct.html">lbm_src_send_ex_info_t</a>));</div><div class="line">info.<a class="codeRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMQ/api.tag:../../API/" href="../../API/structlbm__src__send__ex__info__t__stct.html#aa450a079510ebdc97b19625d10bd18ea">flags</a> = <a class="codeRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#a169eb19b58d383875b718117b2def6e5">LBM_SRC_SEND_EX_FLAG_PROPERTIES</a>;</div><div class="line"><a class="codeRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#abda1a4224f1c3e94b10b74051be3dd53">lbm_msg_properties_create</a>(&amp;info.<a class="codeRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMQ/api.tag:../../API/" href="../../API/structlbm__src__send__ex__info__t__stct.html#a69ae228b9501f0466bfec8da2a479cbf">properties</a>);</div><div class="line"></div><div class="line"><span class="comment">/* set a user defined message property */</span></div><div class="line">value = 2;</div><div class="line">ret = <a class="codeRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#acec18484fc06996fe3b61e76a593d5fb">lbm_msg_properties_set</a>(info.<a class="codeRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMQ/api.tag:../../API/" href="../../API/structlbm__src__send__ex__info__t__stct.html#a69ae228b9501f0466bfec8da2a479cbf">properties</a>, <span class="stringliteral">&quot;JMSDeliveryMode&quot;</span>,</div><div class="line">                             (<span class="keywordtype">void</span> *) &amp;value, LBM_MSG_PROPERTY_INT,</div><div class="line">                             <span class="keyword">sizeof</span>(int32_t));</div><div class="line">assert(ret==LBM_OK);</div></div><!-- fragment --><p><br />
  </p>
 <h2><a class="anchor" id="noderedundancy"></a>
 Node Redundancy&nbsp;&nbsp;<small><a href="#noderedundancy">&lt;-</a></small></h2>
@@ -1111,8 +888,8 @@ Ultra Load Balancing (ULB)&nbsp;&nbsp;<small><a href="#ultraloadbalancingulb">&l
 <p>Use Ultra Load Balancing (ULB) to evenly distribute a message load to receiving applications without a broker between sending and receiving applications.</p>
 <p>A ULB source sends messages on a UM topic. The source also sends receiver assignment control information. This control information identifies which receiver is to process each message. Receivers unicast message consumption reports back to the source.</p>
 <p>ULB sources and receivers use standard Ultra Messaging contexts and do not connect to brokers.</p>
-<p>For information on ULB configuration options, see <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html">Ultra Messaging Queuing Options</a>, paying special attention to options with "ulb" in the name.</p>
-<dl class="section attention"><dt>Attention</dt><dd>The ULB feature is not compatible with setting <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/config.tag:../../Config/" href="../../Config/grpmajoroptions.html#ordereddeliveryreceiver">ordered_delivery (receiver)</a> to <code>"0"</code> (arrival order without reassembly).</dd></dl>
+<p>For information on ULB configuration options, see <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html">Ultra Messaging Queuing Options</a>, paying special attention to options with "ulb" in the name.</p>
+<dl class="section attention"><dt>Attention</dt><dd>The ULB feature is not compatible with setting <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMQ/config.tag:../../Config/" href="../../Config/grpmajoroptions.html#ordereddeliveryreceiver">ordered_delivery (receiver)</a> to <code>"0"</code> (arrival order without reassembly).</dd></dl>
 <p><br />
  </p>
 <h2><a class="anchor" id="applicationsetsandreceivertypeids"></a>
@@ -1122,20 +899,19 @@ Application Sets and Receiver Type IDs&nbsp;&nbsp;<small><a href="#applicationse
 <div class="image">
 <img src="ulb_psd_appsets.png" alt="ulb_psd_appsets.png"/>
 </div>
- <p>Subscribing applications create ULB receivers that register with a ULB source. The source adds each receiver to an application set according to a <em>receiver type ID</em> which is supplied by the subscribing application. The source's configuration defines which receivers are added to which application sets using the configuration option <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqulbapplicationsetsource">umq_ulb_application_set (source)</a>.</p>
+ <p>Subscribing applications create ULB receivers that register with a ULB source. The source adds each receiver to an application set according to a <em>receiver type ID</em> which is supplied by the subscribing application. The source's configuration defines which receivers are added to which application sets using the configuration option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqulbapplicationsetsource">umq_ulb_application_set (source)</a>.</p>
 <p><b>Application Sets</b> are identified with an integer between 0 and 65535. The sets must be numbered consecutively, starting from 0. In the diagram above, application set "A" would be 0, and "B" would be 1.</p>
 <p><b>Receiver Type IDs</b> are arbitrary 32-bit integers selected and managed by the application designer. There is no requirement for these IDs to be consecutively numbered. When a receiver registers with the source, the ID is used by the source to determine various configuration options to be associated with that receiver, such as which application set the receiver belongs in. Here are the configuration options that the source associates with receivers by their type IDs: </p><ul>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqulbapplicationsetsource">umq_ulb_application_set (source)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqulbapplicationsetsource">umq_ulb_application_set (source)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqulbreceiverportionsource">umq_ulb_receiver_portion (source)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqulbreceiverportionsource">umq_ulb_receiver_portion (source)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqulbreceiverprioritysource">umq_ulb_receiver_priority (source)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqulbreceiverprioritysource">umq_ulb_receiver_priority (source)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqulbreceivereventssource">umq_ulb_receiver_events (source)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqulbreceivereventssource">umq_ulb_receiver_events (source)</a> </li>
 </ul>
-<p>For example, in the diagram above the source might be an order entry system, load balancing orders across a set of three execution engines (application set A), and also load balancing those same orders across a set of two logger processes (application set B). We could define execution engines to be type 10 and the loggers to be type 20. The source would be configured as: </p><pre class="fragment">source umq_ulb_application_set 0:10;1:20
-</pre><p> Three execution engines would start up, each setting <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqreceivertypeidreceiver">umq_receiver_type_id (receiver)</a> to 10. Two logger processes would start up, each setting <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqreceivertypeidreceiver">umq_receiver_type_id (receiver)</a> to 20. Thus, each order will be sent to two receivers: one of the execution engines and one of the loggers.</p>
+<p>For example, in the diagram above the source might be an order entry system, load balancing orders across a set of three execution engines (application set A), and also load balancing those same orders across a set of two logger processes (application set B). We could define execution engines to be type 10 and the loggers to be type 20. The source would be configured as: </p><div class="fragment"><div class="line">source umq_ulb_application_set 0:10;1:20</div></div><!-- fragment --><p> Three execution engines would start up, each setting <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqreceivertypeidreceiver">umq_receiver_type_id (receiver)</a> to 10. Two logger processes would start up, each setting <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqreceivertypeidreceiver">umq_receiver_type_id (receiver)</a> to 20. Thus, each order will be sent to two receivers: one of the execution engines and one of the loggers.</p>
 <p>A ULB source sends both the message data and the assignment control information on the same transport session to all receivers. The source also sends assignment data so that the assigned receiver in each application set processes the message. The receivers not assigned ignore the message. When the assigned receivers process their messages, they unicast Consumed reports back to the source.</p>
 <p><br />
  </p>
@@ -1149,7 +925,7 @@ receiver feedback information </li>
 <li>
 receiver portion size </li>
 <li>
-configuration option <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqulbapplicationsetloadfactorbehaviorsource">umq_ulb_application_set_load_factor_behavior (source)</a> </li>
+configuration option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqulbapplicationsetloadfactorbehaviorsource">umq_ulb_application_set_load_factor_behavior (source)</a> </li>
 </ul>
 <p><br />
  </p>
@@ -1158,15 +934,15 @@ ULB Performance&nbsp;&nbsp;<small><a href="#ulbperformance">&lt;-</a></small></h
 <p>ULB is built on top of standard UM sources and receivers. As such, all receivers receive all messages sent to the topic, even ULB receivers. The normal load-balancing queuing semantics are implemented above the transport, so that only the assigned receiver delivers a particular message to the application; the other un-assigned receivers discard the message.</p>
 <p>For multicast-based data transport (LBT-RM), there is no performance penalty to sending each message to all receivers. However, for unicast-based data transports (e.g. LBT-RU, LBT-TCP), the normal source semantic of delivering each message to all receivers represents an inefficiency and limits the maximum sustainable throughput. As receivers are added to a ULB topic, the efficiency continues to drop due to unnecessary sends of messages to unassigned receivers, thus lowering the maximum sustainable throughput further with each added receiver.</p>
 <p><b>ULB Source-Side Filtering</b></p>
-<p>Starting with UM version 6.12, the Source-Side Filtering feature has been enhanced to support load-balancing queue semantics. Configure the ULB source with the option <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/config.tag:../../Config/" href="../../Config/grpmajoroptions.html#transportsourcesidefilteringbehaviorsource">transport_source_side_filtering_behavior (source)</a> set to <code>"ulb"</code>. This causes the unicast source to send a particular message to <em>only</em> the assigned receiver. This reduces work for both the unicast source and for the un-assigned receivers. As receivers are added, the maximum sustainable throughput does not significantly drop.</p>
-<p>To benefit from this feature, receivers <em>must</em> be configured for arrival order delivery by setting <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/config.tag:../../Config/" href="../../Config/grpmajoroptions.html#ordereddeliveryreceiver">ordered_delivery (receiver)</a> to <code>-1</code>. Receivers without that setting will work correctly with the source, but will not benefit from the ULB Source-Side Filtering feature. I.e. receivers configured for ordered delivery value <code>1</code> (the default) will continue to receive all messages sent, and discard the non-assigned messages.</p>
+<p>Starting with UM version 6.12, the Source-Side Filtering feature has been enhanced to support load-balancing queue semantics. Configure the ULB source with the option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMQ/config.tag:../../Config/" href="../../Config/grpmajoroptions.html#transportsourcesidefilteringbehaviorsource">transport_source_side_filtering_behavior (source)</a> set to <code>"ulb"</code>. This causes the unicast source to send a particular message to <em>only</em> the assigned receiver. This reduces work for both the unicast source and for the un-assigned receivers. As receivers are added, the maximum sustainable throughput does not significantly drop.</p>
+<p>To benefit from this feature, receivers <em>must</em> be configured for arrival order delivery by setting <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMQ/config.tag:../../Config/" href="../../Config/grpmajoroptions.html#ordereddeliveryreceiver">ordered_delivery (receiver)</a> to <code>-1</code>. Receivers without that setting will work correctly with the source, but will not benefit from the ULB Source-Side Filtering feature. I.e. receivers configured for ordered delivery value <code>1</code> (the default) will continue to receive all messages sent, and discard the non-assigned messages.</p>
 <p>A ULB source must be at UM version 6.12 or beyond to enable ULB Source Side Filtering. That source is fully interoperable with receivers at UM versions before 6.12, but the older receivers will not benefit from the ULB Source-Side Filtering feature. I.e. pre-6.12 receivers will continue to receive all messages sent, and discard the non-assigned messages.</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="ultraloadbalancingflightsize"></a>
 Ultra Load Balancing Flight Size&nbsp;&nbsp;<small><a href="#ultraloadbalancingflightsize">&lt;-</a></small></h2>
-<p>Ultra Load Balancing uses a flight size mechanism to limit the number of messages sent but not consumed, and blocks a source or warns when a send exceeds the configured flight size. Set Ultra Load Balancing with configuration option <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqulbflightsizesource">umq_ulb_flight_size (source)</a>.</p>
-<p>You can set configuration option <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqulbflightsizebehaviorsource">umq_ulb_flight_size_behavior (source)</a> to either of the following behaviors:</p>
+<p>Ultra Load Balancing uses a flight size mechanism to limit the number of messages sent but not consumed, and blocks a source or warns when a send exceeds the configured flight size. Set Ultra Load Balancing with configuration option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqulbflightsizesource">umq_ulb_flight_size (source)</a>.</p>
+<p>You can set configuration option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqulbflightsizebehaviorsource">umq_ulb_flight_size_behavior (source)</a> to either of the following behaviors:</p>
 <ul>
 <li>
 Block any sends that would exceed the flight size. </li>
@@ -1180,7 +956,7 @@ Continue to allow sends while notifying the sending application. </li>
 Indexed Ultra Load Balancing&nbsp;&nbsp;<small><a href="#indexedultraloadbalancing">&lt;-</a></small></h2>
 <p>Indexed Ultra Load Balancing is a way to group messages and ensure that one receiver processes all messages in the group in the order they are sent. The source uses an index to assign the messages in a group. An index is an application-defined 64-bit unsigned number or free-form string.</p>
 <p>If you must process a set of messages in order, it can be more efficient for one receiver to process the messages. You can set the same index in all related messages to ensure that they all go to one receiver.</p>
-<p>Send messages with an index using send call <b><a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#a4d883eaaa22baf81abf21d495f471c8b">lbm_src_sendv_ex()</a></b> that includes a pointer to <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#af038a0415aaf7dc4285a944bc93e5ea2">lbm_umq_index_info_t</a> in <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#a21504de56612c7c6e4be655402b47a37">lbm_src_send_ex_info_t</a>.</p>
+<p>Send messages with an index using send call <b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#a4d883eaaa22baf81abf21d495f471c8b">lbm_src_sendv_ex()</a></b> that includes a pointer to <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#af038a0415aaf7dc4285a944bc93e5ea2">lbm_umq_index_info_t</a> in <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#a21504de56612c7c6e4be655402b47a37">lbm_src_send_ex_info_t</a>.</p>
 <p>By default, all receivers are eligible for index assignment. When the source assigns the first message with a particular index to a receiver in each application set, the source assigns subsequent messages with that same index to those same receivers.</p>
 <p>Note that because Ultra Load Balancing sources make assignment decisions independently, multiple sources that send on the same index might assign the index to different receivers.</p>
 <p><br />
@@ -1190,8 +966,8 @@ Total Message Lifetimes for Ultra Load Balancing&nbsp;&nbsp;<small><a href="#tot
 <p>You can set a total message lifetime for Ultra Load Balancing applications in different ways.</p>
 <p>An Ultra Load Balancing message total lifetime starts when the source sends the message, and ends when the source receives a consumption report or times out. In each case, you set the timeout to a value in milliseconds. If the message times out, the source reclaims the memory.</p>
 <p>By default, there is no message lifetime limit. Messages must be consumed.</p>
-<p>A timeout can be set with the configuration option <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqulbapplicationsetmessagelifetimesource">umq_ulb_application_set_message_lifetime (source)</a>.</p>
-<p>Also, it is possible to set a timeout on a per-message basis using the <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#a091b5806bf18d10ebd0d9117e0c70229">lbm_src_send_ex()</a> API. Set <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/api.tag:../../API/" href="../../API/structlbm__src__send__ex__info__t__stct.html#a5335e2eb3550544263d7be7f690837d9">lbm_src_send_ex_info_t_stct::umq_total_lifetime</a> to point at a <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#ab8b20fc8f822cdc1b8e78960b59d5739">lbm_umq_msg_total_lifetime_info_t</a> structure, and fill in the <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/api.tag:../../API/" href="../../API/structlbm__umq__msg__total__lifetime__info__t__stct.html#a1773d754611aada145ee2077d008a473">lbm_umq_msg_total_lifetime_info_t_stct::umq_msg_total_lifetime</a> field.</p>
+<p>A timeout can be set with the configuration option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqulbapplicationsetmessagelifetimesource">umq_ulb_application_set_message_lifetime (source)</a>.</p>
+<p>Also, it is possible to set a timeout on a per-message basis using the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#a091b5806bf18d10ebd0d9117e0c70229">lbm_src_send_ex()</a> API. Set <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMQ/api.tag:../../API/" href="../../API/structlbm__src__send__ex__info__t__stct.html#a5335e2eb3550544263d7be7f690837d9">lbm_src_send_ex_info_t_stct::umq_total_lifetime</a> to point at a <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#ab8b20fc8f822cdc1b8e78960b59d5739">lbm_umq_msg_total_lifetime_info_t</a> structure, and fill in the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMQ/api.tag:../../API/" href="../../API/structlbm__umq__msg__total__lifetime__info__t__stct.html#a1773d754611aada145ee2077d008a473">lbm_umq_msg_total_lifetime_info_t_stct::umq_msg_total_lifetime</a> field.</p>
 <p>If you set a timeout using both the configuration option and the API, the API overrides the configured setting.</p>
 <p><br />
  </p>
@@ -1223,13 +999,13 @@ Source Events&nbsp;&nbsp;<small><a href="#sourceevents">&lt;-</a></small></h2>
 <dl class="section user"><dt><b>Registration</b> <b>error</b> <b></b>(LBM_SRC_EVENT_UMQ_REGISTRATION_ERROR)</dt><dd>If the source is disconnected from the broker, Ultra Messaging generates a registration error event to indicate that the source is no longer registered with the broker. For example, if the broker shuts down and the source loses its connection to the broker, Ultra Messaging generates a registration error event and any message that you send or is in flight does not reach the broker. You must wait for a registration complete event before you send more messages to the broker.</dd></dl>
 <p>In a high availability multi-node deployment, if the active broker shuts down, Ultra Messaging elects one of the standby brokers as the new active broker. The source connects to the new active broker by default. Ultra Messaging generates a registration error event when the source loses connection to the previous active broker and a registration complete event when the source successfully registers with the new active broker.</p>
 <dl class="section user"><dt><b>Message</b> <b>ID</b> <b></b>(LBM_SRC_EVENT_UMQ_MESSAGE_ID_INFO)</dt><dd>For each message a source sends, Ultra Messaging generates an event that contains the message ID. </dd></dl>
-<dl class="section user"><dt></dt><dd>To enable this event, set the <b>LBM_SRC_SEND_EX_FLAG_UMQ_MESSAGE_ID_INFO</b> flag of the <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#a21504de56612c7c6e4be655402b47a37">lbm_src_send_ex_info_t</a> object passed on the send call.</dd></dl>
+<dl class="section user"><dt></dt><dd>To enable this event, set the <b>LBM_SRC_SEND_EX_FLAG_UMQ_MESSAGE_ID_INFO</b> flag of the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#a21504de56612c7c6e4be655402b47a37">lbm_src_send_ex_info_t</a> object passed on the send call.</dd></dl>
 <dl class="section user"><dt><b>Message</b> <b>Sequence</b> <b>Number</b> <b></b>(LBM_SRC_EVENT_SEQUENCE_NUMBER_INFO)</dt><dd>For each message a source sends, Ultra Messaging generates an event that contains the message sequence number. </dd></dl>
-<dl class="section user"><dt></dt><dd>To enable this event, set the <b>LBM_SRC_SEND_EX_FLAG_SEQUENCE_NUMBER_INFO</b> flag of the <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#a21504de56612c7c6e4be655402b47a37">lbm_src_send_ex_info_t</a> object passed on the send call.</dd></dl>
-<dl class="section user"><dt><b>Flight</b> <b>Size</b> <b>Notification</b> <b></b>(LBM_SRC_EVENT_FLIGHT_SIZE_NOTIFICATION)</dt><dd>Ultra Messaging can generate a flight size event when the number of in-flight messages exceeds or drops under the configured flight size. To enable this event, set configuration option <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/config.tag:../../Config/" href="../../Config/grpdeprecated.html#umqflightsizebehaviorcontext">umq_flight_size_behavior (context)</a> to <b>notify</b>. Also, recast the event data pointer as type <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#a1c4371e4c1113403ea0fb11bce39491f">lbm_src_event_flight_size_notification_t</a>. </dd></dl>
-<dl class="section user"><dt></dt><dd>If the number of in-flight messages exceeds the configured flight size, the <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/api.tag:../../API/" href="../../API/structlbm__src__event__flight__size__notification__t__stct.html#a4805e12cbac941f189ea511d48d02445">lbm_src_event_flight_size_notification_t::state</a> value is <b>LBM_SRC_EVENT_FLIGHT_SIZE_NOTIFICATION_STATE_OVER</b>. If the number of in-flight messages drops below the configured flight size, the <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/api.tag:../../API/" href="../../API/structlbm__src__event__flight__size__notification__t__stct.html#a4805e12cbac941f189ea511d48d02445">lbm_src_event_flight_size_notification_t::state</a> value is <b>LBM_SRC_EVENT_FLIGHT_SIZE_NOTIFICATION_STATE_UNDER</b>.</dd></dl>
-<dl class="section user"><dt><b>Source</b> <b>Wakeup</b> <b>Notification</b> <b></b>(LBM_SRC_EVENT_WAKEUP)</dt><dd>Ultra Messaging can generate a wakeup event when a source send operation, blocked because the number of in-flight messages exceeded the configured flight size, is able to send again. To enable this event, set configuration option <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/config.tag:../../Config/" href="../../Config/grpdeprecated.html#umqflightsizebehaviorcontext">umq_flight_size_behavior (context)</a> to <b>block</b>. Also, recast the event data pointer as pointer type <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#a4a090ffb298662b540d2fbd4f8add876">lbm_src_event_wakeup_t</a> *. </dd></dl>
-<dl class="section user"><dt></dt><dd>When a source becomes unblocked, the <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/api.tag:../../API/" href="../../API/structlbm__src__event__wakeup__t__stct.html#acb8fe53ff49e0813bb4837b6131afc45">lbm_src_event_wakeup_t::flags</a> value is <b>LBM_SRC_EVENT_WAKEUP_FLAG_NORMAL</b>.</dd></dl>
+<dl class="section user"><dt></dt><dd>To enable this event, set the <b>LBM_SRC_SEND_EX_FLAG_SEQUENCE_NUMBER_INFO</b> flag of the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#a21504de56612c7c6e4be655402b47a37">lbm_src_send_ex_info_t</a> object passed on the send call.</dd></dl>
+<dl class="section user"><dt><b>Flight</b> <b>Size</b> <b>Notification</b> <b></b>(LBM_SRC_EVENT_FLIGHT_SIZE_NOTIFICATION)</dt><dd>Ultra Messaging can generate a flight size event when the number of in-flight messages exceeds or drops under the configured flight size. To enable this event, set configuration option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMQ/config.tag:../../Config/" href="../../Config/grpdeprecated.html#umqflightsizebehaviorcontext">umq_flight_size_behavior (context)</a> to <b>notify</b>. Also, recast the event data pointer as type <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#a1c4371e4c1113403ea0fb11bce39491f">lbm_src_event_flight_size_notification_t</a>. </dd></dl>
+<dl class="section user"><dt></dt><dd>If the number of in-flight messages exceeds the configured flight size, the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMQ/api.tag:../../API/" href="../../API/structlbm__src__event__flight__size__notification__t__stct.html#a4805e12cbac941f189ea511d48d02445">lbm_src_event_flight_size_notification_t::state</a> value is <b>LBM_SRC_EVENT_FLIGHT_SIZE_NOTIFICATION_STATE_OVER</b>. If the number of in-flight messages drops below the configured flight size, the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMQ/api.tag:../../API/" href="../../API/structlbm__src__event__flight__size__notification__t__stct.html#a4805e12cbac941f189ea511d48d02445">lbm_src_event_flight_size_notification_t::state</a> value is <b>LBM_SRC_EVENT_FLIGHT_SIZE_NOTIFICATION_STATE_UNDER</b>.</dd></dl>
+<dl class="section user"><dt><b>Source</b> <b>Wakeup</b> <b>Notification</b> <b></b>(LBM_SRC_EVENT_WAKEUP)</dt><dd>Ultra Messaging can generate a wakeup event when a source send operation, blocked because the number of in-flight messages exceeded the configured flight size, is able to send again. To enable this event, set configuration option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMQ/config.tag:../../Config/" href="../../Config/grpdeprecated.html#umqflightsizebehaviorcontext">umq_flight_size_behavior (context)</a> to <b>block</b>. Also, recast the event data pointer as pointer type <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#a4a090ffb298662b540d2fbd4f8add876">lbm_src_event_wakeup_t</a> *. </dd></dl>
+<dl class="section user"><dt></dt><dd>When a source becomes unblocked, the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMQ/api.tag:../../API/" href="../../API/structlbm__src__event__wakeup__t__stct.html#acb8fe53ff49e0813bb4837b6131afc45">lbm_src_event_wakeup_t::flags</a> value is <b>LBM_SRC_EVENT_WAKEUP_FLAG_NORMAL</b>.</dd></dl>
 <p><br />
  </p>
 <h2><a class="anchor" id="receiverevents"></a>
@@ -1237,7 +1013,7 @@ Receiver Events&nbsp;&nbsp;<small><a href="#receiverevents">&lt;-</a></small></h
 <p>Ultra Messaging generates receiver events that the client application can listen for and respond to.</p>
 <p>You can use receiver events to determine the state of the receiver and messages.</p>
 <p>When you use brokered contexts, Ultra Messaging generates Registration complete event (<b>LBM_MSG_UMQ_REGISTRATION_COMPLETE_EX</b>).</p>
-<p>A receiver must be registered on the broker before the broker can send messages to the receiver. When you create a receiver, you trigger a receiver registration. Upon registration with a broker, Ultra Messaging sends to the client application an instance of the <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#a0c64df03275aad96fb201948e3fb26c6">lbm_msg_umq_registration_complete_ex_t</a> object. This object contains the broker name, IP address, and port.</p>
+<p>A receiver must be registered on the broker before the broker can send messages to the receiver. When you create a receiver, you trigger a receiver registration. Upon registration with a broker, Ultra Messaging sends to the client application an instance of the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#a0c64df03275aad96fb201948e3fb26c6">lbm_msg_umq_registration_complete_ex_t</a> object. This object contains the broker name, IP address, and port.</p>
 <dl class="section user"><dt><b>Registration</b> <b>error</b> <b></b>(LBM_MSG_UMQ_REGISTRATION_ERROR)</dt><dd>Ultra Messaging generates this event if any of the following actions occurs: </dd></dl>
 <dl class="section user"><dt></dt><dd><ol>
 <li>
@@ -1287,7 +1063,7 @@ New Configuration Options&nbsp;&nbsp;<small><a href="#newconfigurationoptions">&
 <p>As of Ultra Messaging Queuing 6.8, the following new configuration options are available:</p>
 <ul>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/config.tag:../../Config/" href="../../Config/grpmajoroptions.html#brokercontext">broker (context)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMQ/config.tag:../../Config/" href="../../Config/grpmajoroptions.html#brokercontext">broker (context)</a> </li>
 </ul>
 <p><br />
  </p>
@@ -1297,31 +1073,31 @@ Changed Configuration Options&nbsp;&nbsp;<small><a href="#changedconfigurationop
 <p>You can use the following configuration options for Ultra Load Balancing only:</p>
 <ul>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqsessionidcontext">umq_session_id (context)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqsessionidcontext">umq_session_id (context)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqdelayedconsumptionreportintervalreceiver">umq_delayed_consumption_report_interval (receiver)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqdelayedconsumptionreportintervalreceiver">umq_delayed_consumption_report_interval (receiver)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqholdintervalreceiver">umq_hold_interval (receiver)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqholdintervalreceiver">umq_hold_interval (receiver)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqindexassignmenteligibilitydefaultreceiver">umq_index_assignment_eligibility_default (receiver)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqindexassignmenteligibilitydefaultreceiver">umq_index_assignment_eligibility_default (receiver)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqreceivertypeidreceiver">umq_receiver_type_id (receiver)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqreceivertypeidreceiver">umq_receiver_type_id (receiver)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqretransmitrequestintervalreceiver">umq_retransmit_request_interval (receiver)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqretransmitrequestintervalreceiver">umq_retransmit_request_interval (receiver)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqretransmitrequestoutstandingmaximumreceiver">umq_retransmit_request_outstanding_maximum (receiver)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqretransmitrequestoutstandingmaximumreceiver">umq_retransmit_request_outstanding_maximum (receiver)</a> </li>
 </ul>
-<p>Configuration option <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/config.tag:../../Config/" href="../../Config/grpmajoroptions.html#transportsource">transport (source)</a> has an additional value: <b>broker</b>.</p>
+<p>Configuration option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMQ/config.tag:../../Config/" href="../../Config/grpmajoroptions.html#transportsource">transport (source)</a> has an additional value: <b>broker</b>.</p>
 <center> <table class="doxtable">
 <tr>
 <th>String</th><th>Integer Value</th><th>Description </th></tr>
 <tr>
 <td><b>broker</b></td><td><b>LBM_SRC_TOPIC_ATTR_TRANSPORT_BROKER</b></td><td>Sources send messages to a broker, which manages the messages for consumption. </td></tr>
 </table>
-</center><p>Option <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqqueueactivitytimeoutcontext">umq_queue_activity_timeout (context)</a> has no effect.</p>
-<p>Configuration option <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqqueueregistrationidcontext">umq_queue_registration_id (context)</a> functions differently and no longer helps to manage duplicate message delivery.</p>
-<p>For configuration option <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqqueueparticipationreceiver">umq_queue_participation (receiver)</a>, you cannot set value 2 to enable queue browsing with brokered contexts.</p>
-<p>See also <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/config.tag:../../Config/" href="../../Config/grpdeprecated.html">Deprecated Options</a>.</p>
+</center><p>Option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqqueueactivitytimeoutcontext">umq_queue_activity_timeout (context)</a> has no effect.</p>
+<p>Configuration option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqqueueregistrationidcontext">umq_queue_registration_id (context)</a> functions differently and no longer helps to manage duplicate message delivery.</p>
+<p>For configuration option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMQ/config.tag:../../Config/" href="../../Config/grpultramessagingqueuing.html#umqqueueparticipationreceiver">umq_queue_participation (receiver)</a>, you cannot set value 2 to enable queue browsing with brokered contexts.</p>
+<p>See also <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMQ/config.tag:../../Config/" href="../../Config/grpdeprecated.html">Deprecated Options</a>.</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="deprecatedconfigurationoptions"></a>
@@ -1329,33 +1105,33 @@ Deprecated Configuration Options&nbsp;&nbsp;<small><a href="#deprecatedconfigura
 <p>As of UMQ 6.8, the following configuration options are deprecated:</p>
 <ul>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/config.tag:../../Config/" href="../../Config/grpdeprecated.html#umqflightsizecontext">umq_flight_size (context)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMQ/config.tag:../../Config/" href="../../Config/grpdeprecated.html#umqflightsizecontext">umq_flight_size (context)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/config.tag:../../Config/" href="../../Config/grpdeprecated.html#umqflightsizebehaviorcontext">umq_flight_size_behavior (context)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMQ/config.tag:../../Config/" href="../../Config/grpdeprecated.html#umqflightsizebehaviorcontext">umq_flight_size_behavior (context)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/config.tag:../../Config/" href="../../Config/grpdeprecated.html#umqmsgtotallifetimecontext">umq_msg_total_lifetime (context)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMQ/config.tag:../../Config/" href="../../Config/grpdeprecated.html#umqmsgtotallifetimecontext">umq_msg_total_lifetime (context)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/config.tag:../../Config/" href="../../Config/grpdeprecated.html#umqmessageretransmissionintervalcontext">umq_message_retransmission_interval (context)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMQ/config.tag:../../Config/" href="../../Config/grpdeprecated.html#umqmessageretransmissionintervalcontext">umq_message_retransmission_interval (context)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/config.tag:../../Config/" href="../../Config/grpdeprecated.html#umqmessagestabilitynotificationcontext">umq_message_stability_notification (context)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMQ/config.tag:../../Config/" href="../../Config/grpdeprecated.html#umqmessagestabilitynotificationcontext">umq_message_stability_notification (context)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/config.tag:../../Config/" href="../../Config/grpdeprecated.html#umqqueuecheckintervalcontext">umq_queue_check_interval (context)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMQ/config.tag:../../Config/" href="../../Config/grpdeprecated.html#umqqueuecheckintervalcontext">umq_queue_check_interval (context)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/config.tag:../../Config/" href="../../Config/grpdeprecated.html#umqqueuenamesource">umq_queue_name (source)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMQ/config.tag:../../Config/" href="../../Config/grpdeprecated.html#umqqueuenamesource">umq_queue_name (source)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/config.tag:../../Config/" href="../../Config/grpdeprecated.html#umqqueueparticipantsonlysource">umq_queue_participants_only (source)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMQ/config.tag:../../Config/" href="../../Config/grpdeprecated.html#umqqueueparticipantsonlysource">umq_queue_participants_only (source)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/config.tag:../../Config/" href="../../Config/grpdeprecated.html#umqqueuequeryintervalcontext">umq_queue_query_interval (context)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMQ/config.tag:../../Config/" href="../../Config/grpdeprecated.html#umqqueuequeryintervalcontext">umq_queue_query_interval (context)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/config.tag:../../Config/" href="../../Config/grpdeprecated.html#umqrequirequeueauthenticationcontext">umq_require_queue_authentication (context)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMQ/config.tag:../../Config/" href="../../Config/grpdeprecated.html#umqrequirequeueauthenticationcontext">umq_require_queue_authentication (context)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/config.tag:../../Config/" href="../../Config/grpdeprecated.html#umqretentionintergroupstabilitybehaviorcontext">umq_retention_intergroup_stability_behavior (context)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMQ/config.tag:../../Config/" href="../../Config/grpdeprecated.html#umqretentionintergroupstabilitybehaviorcontext">umq_retention_intergroup_stability_behavior (context)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/config.tag:../../Config/" href="../../Config/grpdeprecated.html#umqretentionintragroupstabilitybehaviorcontext">umq_retention_intragroup_stability_behavior (context)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMQ/config.tag:../../Config/" href="../../Config/grpdeprecated.html#umqretentionintragroupstabilitybehaviorcontext">umq_retention_intragroup_stability_behavior (context)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/config.tag:../../Config/" href="../../Config/grpdeprecated.html#umqretentionintergroupstabilitybehaviorsource">umq_retention_intergroup_stability_behavior (source)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMQ/config.tag:../../Config/" href="../../Config/grpdeprecated.html#umqretentionintergroupstabilitybehaviorsource">umq_retention_intergroup_stability_behavior (source)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/config.tag:../../Config/" href="../../Config/grpdeprecated.html#umqretentionintragroupstabilitybehaviorsource">umq_retention_intragroup_stability_behavior (source)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMQ/config.tag:../../Config/" href="../../Config/grpdeprecated.html#umqretentionintragroupstabilitybehaviorsource">umq_retention_intragroup_stability_behavior (source)</a> </li>
 </ul>
 <p><br />
  </p>
@@ -1387,11 +1163,11 @@ Deprecated Functions and Methods&nbsp;&nbsp;<small><a href="#deprecatedfunctions
 <p>As of UMQ 6.8, the following C API functions are deprecated:</p>
 <ul>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#aac6015a6a8e914c6e621e3b28940fe87">lbm_ctx_umq_get_inflight()</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#aac6015a6a8e914c6e621e3b28940fe87">lbm_ctx_umq_get_inflight()</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#a6cd0c297e489e006ef5da83398184daa">lbm_umq_ctx_msg_stable()</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#a6cd0c297e489e006ef5da83398184daa">lbm_umq_ctx_msg_stable()</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#a21cb52dc4c0a14484cfc0454a156e2d8">lbm_queue_immediate_message()</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#a21cb52dc4c0a14484cfc0454a156e2d8">lbm_queue_immediate_message()</a> </li>
 </ul>
 <p>The following Java and .NET API classes and methods are deprecated for Ultra Messaging 6.8 or later:</p>
 <ul>
@@ -1461,7 +1237,7 @@ Ultra Messaging Wildcard Receivers </li>
 <p>You cannot use brokered contexts with the following functions or methods:</p>
 <ul>
 <li>
-<b><a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#aeeb72be91872f87626d26156c3201dfe">lbm_rcv_umq_deregister()</a></b> </li>
+<b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMQ/api.tag:../../API/" href="../../API/lbm_8h.html#aeeb72be91872f87626d26156c3201dfe">lbm_rcv_umq_deregister()</a></b> </li>
 </ul>
 <p><br />
  </p>
@@ -1470,7 +1246,7 @@ Limited Ultra Messaging Functionality&nbsp;&nbsp;<small><a href="#limitedultrame
 <p>Use the following rules and guidelines when you use Ultra Messaging queuing with Ultra Messaging core functionalities:</p>
 <ul>
 <li>
-When you use queuing, you cannot set configuration option <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/config.tag:../../Config/" href="../../Config/grpmajoroptions.html#fdmanagementtypecontext">fd_management_type (context)</a>. </li>
+When you use queuing, you cannot set configuration option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMQ/config.tag:../../Config/" href="../../Config/grpmajoroptions.html#fdmanagementtypecontext">fd_management_type (context)</a>. </li>
 <li>
 Ultra Messaging queuing systems do not fragment messages. </li>
 </ul>

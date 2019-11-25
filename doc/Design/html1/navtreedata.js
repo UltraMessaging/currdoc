@@ -19,8 +19,7 @@ var NAVTREE =
       [ "Late Join", "index.html#latejoin", null ],
       [ "Request/Response", "index.html#requestresponse", null ],
       [ "UM Transports", "index.html#umtransports", [
-        [ "Transport Sessions", "index.html#transportsessions", null ],
-        [ "Multi-Transport Threads", "index.html#multitransportthreads", null ]
+        [ "Transport Sessions", "index.html#transportsessions", null ]
       ] ],
       [ "Event Delivery", "index.html#eventdelivery", null ],
       [ "Rate Controls", "index.html#ratecontrols", [
@@ -177,7 +176,8 @@ var NAVTREE =
         [ "TLS and Persistence", "index.html#tlsandpersistence", null ],
         [ "TLS and Queuing", "index.html#tlsandqueuing", null ],
         [ "TLS and the Dynamic Routing Option (DRO)", "index.html#tlsandthedynamicroutingoptiondro", null ],
-        [ "TLS and Compression", "index.html#tlsandcompression", null ]
+        [ "TLS and Compression", "index.html#tlsandcompression", null ],
+        [ "OpenSSL Dependency", "index.html#openssldependency", null ]
       ] ],
       [ "Compressed TCP", "index.html#compressedtcp", [
         [ "Compression Configuration", "index.html#compressionconfiguration", null ],
@@ -257,6 +257,11 @@ var NAVTREE =
       ] ]
     ] ],
     [ "Advanced Optimizations", "index.html#advancedoptimizations", [
+      [ "Receive Thread Busy Waiting", "index.html#receivethreadbusywaiting", [
+        [ "Network Socket Busy Waiting", "index.html#networksocketbusywaiting", null ],
+        [ "IPC Transport Busy Waiting", "index.html#ipctransportbusywaiting", null ],
+        [ "SMX Transport Busy Waiting", "index.html#smxtransportbusywaiting", null ]
+      ] ],
       [ "Receive Buffer Recycling", "index.html#receivebufferrecycling", [
         [ "Receive Buffer Recycling Restrictions", "index.html#receivebufferrecyclingrestrictions", null ]
       ] ],
@@ -399,8 +404,8 @@ var NAVTREE =
       [ "Glossary H", "index.html#glossaryh", null ],
       [ "Glossary I", "index.html#glossaryi", null ],
       [ "Glossary J", "index.html#glossaryj", null ],
-      [ "Glossary L", "index.html#glossaryl", null ],
       [ "Glossary K", "index.html#glossaryk", null ],
+      [ "Glossary L", "index.html#glossaryl", null ],
       [ "Glossary M", "index.html#glossarym", null ],
       [ "Glossary N", "index.html#glossaryn", null ],
       [ "Glossary O", "index.html#glossaryo", null ],
@@ -420,7 +425,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "index.html",
-"index.html#srselementinterface"
+"index.html#srselementdaemonmonitor"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

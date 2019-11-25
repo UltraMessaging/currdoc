@@ -13,8 +13,8 @@ var NAVTREEINDEX0 =
 "ultramessagingbinaryquickstart.html#binaryquickstartonmicrosoftwindows":[1,0],
 "ultramessagingbinaryquickstart.html#binaryquickstartonunix":[1,1],
 "ultramessagingprogrammingquickstart.html":[2],
-"ultramessagingprogrammingquickstart.html#buildingnotesunix":[2,1],
-"ultramessagingprogrammingquickstart.html#buildingnoteswindows":[2,0],
+"ultramessagingprogrammingquickstart.html#buildingnotesconunix":[2,1],
+"ultramessagingprogrammingquickstart.html#buildingnotesconwindows":[2,0],
 "ultramessagingprogrammingquickstart.html#minimalultramessagingreceiverimplementation":[2,3],
 "ultramessagingprogrammingquickstart.html#minimalultramessagingsourceimplementation":[2,2],
 "unicastonlyoperation.html":[3]

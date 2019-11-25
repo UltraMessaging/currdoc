@@ -100,14 +100,7 @@ Access Control Lists (ACL)&nbsp;&nbsp;<small><a href="#accesscontrollistsacl">&l
 <img src="acl.png" alt="acl.png"/>
 </div>
  <p>An ACL can contain one or more Access Control Entries (ACEs). ACEs are the filters that let you match (and accept or reject based on), criteria elements. For example, to accept only messages for topic ABC:</p>
-<pre class="fragment">        &lt;acl&gt;
-          &lt;inbound&gt;
-            &lt;ace match="accept"&gt;
-              &lt;topic&gt;ABC&lt;/topic&gt;
-            &lt;/ace&gt;
-          &lt;/inbound&gt;
-        &lt;/acl&gt;
-</pre><p>Possible ACE condition elements are:</p>
+<div class="fragment"><div class="line">&lt;acl&gt;</div><div class="line">  &lt;inbound&gt;</div><div class="line">    &lt;ace match=<span class="stringliteral">&quot;accept&quot;</span>&gt;</div><div class="line">      &lt;topic&gt;ABC&lt;/topic&gt;</div><div class="line">    &lt;/ace&gt;</div><div class="line">  &lt;/inbound&gt;</div><div class="line">&lt;/acl&gt;</div></div><!-- fragment --><p>Possible ACE condition elements are:</p>
 <ul>
 <li>
 <code>&lt;multicast-group/&gt;</code> * </li>
@@ -135,59 +128,10 @@ Access Control Lists (ACL)&nbsp;&nbsp;<small><a href="#accesscontrollistsacl">&l
 <p>Note that the portal ignores a condition element if a) it is inbound-only and used in an outbound ACL, or b) it simply does not apply (such as a <code>&lt;udp-source-port/&gt;</code> if the transport is TCP).</p>
 <p>Also note that ACLs can affect topic resolution traffic as well as user messages. They can, for example, block a topic (which prevents the creation of proxy receivers) and, thus, protect remote TRDs from unwanted queries and advertisements. This effect does not apply to wildcard receivers, however, because ACLs match only on discrete topics. Thus, while ACLs can operate on specific topic traffic derived from wildcard topic resolution, they cannot prevent pattern interest from propagating throughout the network.</p>
 <p>Consider the following example, where we configure a portal to forward on specific topics. This example also illustrates the parent/child hierarchy for ACLs, ACEs, and ACE conditions.</p>
-<pre class="fragment">    &lt;endpoint&gt;
-      &lt;name&gt;LAN1&lt;/name&gt;
-      &lt;lbm-config&gt;lan1.cfg&lt;/lbm-config&gt;
-      &lt;domain-id&gt;1&lt;/domain-id&gt;
-        &lt;acl&gt;
-          &lt;inbound&gt;
-            &lt;ace match="accept"&gt;
-              &lt;topic&gt;ABC&lt;/topic&gt;
-            &lt;/ace&gt;
-            &lt;ace match="accept"&gt;
-              &lt;topic&gt;DEF&lt;/topic&gt;
-              &lt;transport value=lbt-rm comparison=eq/&gt;
-            &lt;/ace&gt;
-            &lt;ace match="accept"&gt;
-              &lt;topic&gt;GHI&lt;/topic&gt;
-            &lt;/ace&gt;
-          &lt;/inbound&gt;
-        &lt;/acl&gt;
-    &lt;/endpoint&gt;
-</pre><p>The above example shows each topic match in a separate ACE. When topic "GHI" arrives, the portal finds a match in the third ACE and forwards the topic. (Placing all three <code>&lt;topic&gt;</code>s in a single ACE would never match anything.) Also note that "DEF" is forwarded only if it uses an LBT-RM transport.</p>
+<div class="fragment"><div class="line">&lt;endpoint&gt;</div><div class="line">  &lt;name&gt;LAN1&lt;/name&gt;</div><div class="line">  &lt;lbm-config&gt;lan1.cfg&lt;/lbm-config&gt;</div><div class="line">  &lt;domain-<span class="keywordtype">id</span>&gt;1&lt;/domain-<span class="keywordtype">id</span>&gt;</div><div class="line">    &lt;acl&gt;</div><div class="line">      &lt;inbound&gt;</div><div class="line">        &lt;ace match=<span class="stringliteral">&quot;accept&quot;</span>&gt;</div><div class="line">          &lt;topic&gt;ABC&lt;/topic&gt;</div><div class="line">        &lt;/ace&gt;</div><div class="line">        &lt;ace match=<span class="stringliteral">&quot;accept&quot;</span>&gt;</div><div class="line">          &lt;topic&gt;DEF&lt;/topic&gt;</div><div class="line">          &lt;transport value=lbt-rm comparison=eq/&gt;</div><div class="line">        &lt;/ace&gt;</div><div class="line">        &lt;ace match=<span class="stringliteral">&quot;accept&quot;</span>&gt;</div><div class="line">          &lt;topic&gt;GHI&lt;/topic&gt;</div><div class="line">        &lt;/ace&gt;</div><div class="line">      &lt;/inbound&gt;</div><div class="line">    &lt;/acl&gt;</div><div class="line">&lt;/endpoint&gt;</div></div><!-- fragment --><p>The above example shows each topic match in a separate ACE. When topic "GHI" arrives, the portal finds a match in the third ACE and forwards the topic. (Placing all three <code>&lt;topic&gt;</code>s in a single ACE would never match anything.) Also note that "DEF" is forwarded only if it uses an LBT-RM transport.</p>
 <p>Since the behavior for multiple ACEs is "first match, then done", list ACEs in a specific-to-general order. For the example below, to forward topic "ABC123" but reject similar topics such as "ABCD123" or "ABCE123", list the ACE for "ABC123" first (as done below). If the ACE to reject "ABC.*123" was listed first, it would also (undesirably) match and reject "ABC123".</p>
-<pre class="fragment">    &lt;endpoint&gt;
-      &lt;name&gt;LAN1&lt;/name&gt;
-      &lt;lbm-config&gt;lan1.cfg&lt;/lbm-config&gt;
-      &lt;domain-id&gt;1&lt;/domain-id&gt;
-        &lt;acl&gt;
-          &lt;inbound&gt;
-            &lt;ace match="accept"&gt;
-              &lt;topic&gt;ABC123&lt;/topic&gt;
-            &lt;/ace&gt;
-            &lt;ace match="reject"&gt;
-              &lt;pcre-pattern&gt;ABC.*123&lt;/pcre-pattern&gt;
-            &lt;/ace&gt;
-          &lt;/inbound&gt;
-        &lt;/acl&gt;
-    &lt;/endpoint&gt;
-</pre><p>You can also filter on certain transport types to accept multicast traffic but reject tcp traffic, as shown below.</p>
-<pre class="fragment">    &lt;endpoint&gt;
-      &lt;name&gt;LAN1&lt;/name&gt;
-      &lt;lbm-config&gt;lan1.cfg&lt;/lbm-config&gt;
-      &lt;domain-id&gt;1&lt;/domain-id&gt;
-        &lt;acl&gt;
-          &lt;inbound&gt;
-            &lt;ace match="accept"&gt;
-              &lt;transport comparison="equal" value="lbtrm"/&gt;
-            &lt;/ace&gt;
-            &lt;ace match="reject"&gt;
-              &lt;transport comparison="equal" value="tcp"/&gt;
-            &lt;/ace&gt;
-          &lt;/inbound&gt;
-        &lt;/acl&gt;
-    &lt;/endpoint&gt;
-</pre><p><br />
+<div class="fragment"><div class="line">&lt;endpoint&gt;</div><div class="line">  &lt;name&gt;LAN1&lt;/name&gt;</div><div class="line">  &lt;lbm-config&gt;lan1.cfg&lt;/lbm-config&gt;</div><div class="line">  &lt;domain-<span class="keywordtype">id</span>&gt;1&lt;/domain-<span class="keywordtype">id</span>&gt;</div><div class="line">    &lt;acl&gt;</div><div class="line">      &lt;inbound&gt;</div><div class="line">        &lt;ace match=<span class="stringliteral">&quot;accept&quot;</span>&gt;</div><div class="line">          &lt;topic&gt;ABC123&lt;/topic&gt;</div><div class="line">        &lt;/ace&gt;</div><div class="line">        &lt;ace match=<span class="stringliteral">&quot;reject&quot;</span>&gt;</div><div class="line">          &lt;pcre-pattern&gt;ABC.*123&lt;/pcre-pattern&gt;</div><div class="line">        &lt;/ace&gt;</div><div class="line">      &lt;/inbound&gt;</div><div class="line">    &lt;/acl&gt;</div><div class="line">&lt;/endpoint&gt;</div></div><!-- fragment --><p>You can also filter on certain transport types to accept multicast traffic but reject tcp traffic, as shown below.</p>
+<div class="fragment"><div class="line">&lt;endpoint&gt;</div><div class="line">  &lt;name&gt;LAN1&lt;/name&gt;</div><div class="line">  &lt;lbm-config&gt;lan1.cfg&lt;/lbm-config&gt;</div><div class="line">  &lt;domain-<span class="keywordtype">id</span>&gt;1&lt;/domain-<span class="keywordtype">id</span>&gt;</div><div class="line">    &lt;acl&gt;</div><div class="line">      &lt;inbound&gt;</div><div class="line">        &lt;ace match=<span class="stringliteral">&quot;accept&quot;</span>&gt;</div><div class="line">          &lt;transport comparison=<span class="stringliteral">&quot;equal&quot;</span> value=<span class="stringliteral">&quot;lbtrm&quot;</span>/&gt;</div><div class="line">        &lt;/ace&gt;</div><div class="line">        &lt;ace match=<span class="stringliteral">&quot;reject&quot;</span>&gt;</div><div class="line">          &lt;transport comparison=<span class="stringliteral">&quot;equal&quot;</span> value=<span class="stringliteral">&quot;tcp&quot;</span>/&gt;</div><div class="line">        &lt;/ace&gt;</div><div class="line">      &lt;/inbound&gt;</div><div class="line">    &lt;/acl&gt;</div><div class="line">&lt;/endpoint&gt;</div></div><!-- fragment --><p><br />
  </p>
 <h2><a class="anchor" id="timersandintervals"></a>
 Timers and Intervals&nbsp;&nbsp;<small><a href="#timersandintervals">&lt;-</a></small></h2>
@@ -197,7 +141,7 @@ Timers and Intervals&nbsp;&nbsp;<small><a href="#timersandintervals">&lt;-</a></
  </p>
 <h2><a class="anchor" id="multicastimmediatemessagingconsiderations"></a>
 Multicast Immediate Messaging Considerations&nbsp;&nbsp;<small><a href="#multicastimmediatemessagingconsiderations">&lt;-</a></small></h2>
-<p>Multicast Immediate Messages (MIMs) may pass through the UM Router. You cannot filter MIMs with Access Control Lists (ACL)-MIMs are forwarded to all TRDs. Informatica does not recommend using MIM for messaging traffic across the UM Router. MIM is intended for short-lived topics and applications that cannot tolerate a delay between source creation and the sending of the first message. See also <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Gateway/design.tag:../Design/" href="../Design/umfeatures.html#multicastimmediatemessaging">Multicast Immediate Messaging</a>.</p>
+<p>Multicast Immediate Messages (MIMs) may pass through the UM Router. You cannot filter MIMs with Access Control Lists (ACL)-MIMs are forwarded to all TRDs. Informatica does not recommend using MIM for messaging traffic across the UM Router. MIM is intended for short-lived topics and applications that cannot tolerate a delay between source creation and the sending of the first message. See also <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Gateway/design.tag:../Design/" href="../Design/umfeatures.html#multicastimmediatemessaging">Multicast Immediate Messaging</a>.</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="persistenceovertheumrouter"></a>
@@ -223,9 +167,9 @@ Topic Resolution Reliability&nbsp;&nbsp;<small><a href="#topicresolutionreliabil
 <p>Topic resolution can sometimes remain in a quiescent phase due to link interruption, preventing needed re-subscription topic resolution activity. Two ways you can address this are:</p>
 <ul>
 <li>
-For isolated incidents, call <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Gateway/api.tag:../API/" href="../API/lbm_8h.html#ae6dd7c56acf916ef66658cc1ebc7a525">lbm_context_topic_resolution_request()</a> (see example lbmtrreq.c). This restarts the sustaining phase. </li>
+For isolated incidents, call <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Gateway/api.tag:../API/" href="../API/lbm_8h.html#ae6dd7c56acf916ef66658cc1ebc7a525">lbm_context_topic_resolution_request()</a> (see example lbmtrreq.c). This restarts the sustaining phase. </li>
 <li>
-For more chronic problems, such as a UM Router link (especially an endpoint link) over a WAN of questionable reliability, consider configuring Topic resolution to stay in the sustaining phase (options <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Gateway/config.tag:../Config/" href="../Config/grpudpbasedresolveroperation.html#resolveradvertisementminimumsustaindurationsource">resolver_advertisement_minimum_sustain_duration (source)</a> and <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Gateway/config.tag:../Config/" href="../Config/grpudpbasedresolveroperation.html#resolverqueryminimumsustaindurationreceiver">resolver_query_minimum_sustain_duration (receiver)</a>). </li>
+For more chronic problems, such as a UM Router link (especially an endpoint link) over a WAN of questionable reliability, consider configuring Topic resolution to stay in the sustaining phase (options <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Gateway/config.tag:../Config/" href="../Config/grpudpbasedresolveroperation.html#resolveradvertisementminimumsustaindurationsource">resolver_advertisement_minimum_sustain_duration (source)</a> and <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Gateway/config.tag:../Config/" href="../Config/grpudpbasedresolveroperation.html#resolverqueryminimumsustaindurationreceiver">resolver_query_minimum_sustain_duration (receiver)</a>). </li>
 </ul>
 <p><br />
  </p>
@@ -238,7 +182,7 @@ BOS and EOS Behavior Over the UM Router&nbsp;&nbsp;<small><a href="#bosandeosbeh
 UM Router Reliable Loss&nbsp;&nbsp;<small><a href="#umrouterreliableloss">&lt;-</a></small></h2>
 <p>The UM router can create a situation where a "reliable" transport (TCP or LBT-IPC) can experience out-of-order message delivery.</p>
 <p>The UM router can perform a "protocol conversion" function. I.e. an originating source can use a UDP-based protocol (LBT-RM or LBT-RU), but the proxy source for a remote receiver can use a "reliable" protocol (TCP or LBT-IPC). With a UDP-based protocol, messages can arrive to the UM Router network out of order, usually due to packet loss and recovery. However, when those out-of-order messages are forwarded across a "reliable" protocol (TCP or LBT-IPC), the receiver does not expect the sequence number gap, and immediately declares the out-of-order messages as unrecoverable loss. This, in spite of the fact that the missing message arrives shortly thereafter.</p>
-<p>Starting in UM version 6.12, there are two new configuration options: <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Gateway/config.tag:../Config/" href="../Config/grptransporttcpoperation.html#transporttcpdrolossrecoverytimeoutreceiver">transport_tcp_dro_loss_recovery_timeout (receiver)</a> and <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Gateway/config.tag:../Config/" href="../Config/grptransportlbtipcoperation.html#transportlbtipcdrolossrecoverytimeoutreceiver">transport_lbtipc_dro_loss_recovery_timeout (receiver)</a>, which modify the receiver's behavior. Instead of declaring a gap immediately unrecoverable, a delay is introduced which is similar to what a UDP-based receiver uses to wait for lost and retransmitted datagrams. If the missing message arrives within the delay time, the messages are delivered to application without loss.</p>
+<p>Starting in UM version 6.12, there are two new configuration options: <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Gateway/config.tag:../Config/" href="../Config/grptransporttcpoperation.html#transporttcpdrolossrecoverytimeoutreceiver">transport_tcp_dro_loss_recovery_timeout (receiver)</a> and <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Gateway/config.tag:../Config/" href="../Config/grptransportlbtipcoperation.html#transportlbtipcdrolossrecoverytimeoutreceiver">transport_lbtipc_dro_loss_recovery_timeout (receiver)</a>, which modify the receiver's behavior. Instead of declaring a gap immediately unrecoverable, a delay is introduced which is similar to what a UDP-based receiver uses to wait for lost and retransmitted datagrams. If the missing message arrives within the delay time, the messages are delivered to application without loss.</p>
 <p>Be aware that this functionality is only used with "reliable" protocols published by a UM Router's proxy source. If this delay feature is enabled, it will <em>not</em> apply to a "reliable" protocol that is received directly from the originating source.</p>
 <p>Note however that you can get genuine gaps in the "reliable" data stream <em>without</em> recovery. For example, an overloaded UM Router can drop messages. Or a UM Router's proxy receiver can experience unrecoverable loss. In that case, the delay will have to expire before the missing messages are declared unrecoverable and subsequent data is delivered.</p>
 <dl class="section attention"><dt>Attention</dt><dd>The delay times default to 0, which retains the pre-6.12 behavior of immediately declaring sequence number gaps unrecoverable. If you want this new behavior, you must configure the appropriate option.</dd></dl>
@@ -260,45 +204,11 @@ Direct Link Configuration&nbsp;&nbsp;<small><a href="#directlinkconfiguration">&
 </div>
  <p><b>TRD1</b> <b>Configuration</b> </p>
 <p>This UM configuration file, trd1.cfg, describes TRD1 and is referenced in the UM Router configuration file.</p>
-<pre class="fragment">## Global Configuration Options ##
-context request_tcp_interface 10.29.3.0/24
-context resolver_multicast_port 13965
-context resolver_multicast_interface 10.29.3.0/24
-context resolver_multicast_address 225.1.37.85
-</pre><p><b>G1</b> <b>Configuration</b> </p>
+<div class="fragment"><div class="line"><span class="preprocessor">## Global Configuration Options ##</span></div><div class="line">context request_tcp_interface 10.29.3.0/24</div><div class="line">context resolver_multicast_port 13965</div><div class="line">context resolver_multicast_interface 10.29.3.0/24</div><div class="line">context resolver_multicast_address 225.1.37.85</div></div><!-- fragment --><p><b>G1</b> <b>Configuration</b> </p>
 <p>This UM Router configuration file defines two endpoint portals. In the daemon section, we have turned on monitoring for the all endpoint portals in the UM Router. The configuration specifies that all statistics be collected every 5 seconds and uses the lbm transport module to send statistics to your monitoring application, which runs in TRD1. See also UM Concepts, Monitoring UMS. The Web Monitor has also been turned on (port 15304) to monitor the performance of the UM Router.</p>
-<pre class="fragment">&lt;?xml version="1.0" encoding="UTF-8" ?&gt;
-&lt;!-- G1 xml file- 2 endpoint portals --&gt;
-&lt;tnw-gateway version="1.0"&gt;
-  &lt;daemon&gt;
-    &lt;log type="console"/&gt;
-    &lt;lbm-license-file&gt;lic0014.txt&lt;/lbm-license-file&gt;
-    &lt;monitor interval="5"&gt;
-      &lt;transport-module module="lbm" options="config=trd1.cfg"/&gt;
-    &lt;/monitor&gt;
-    &lt;web-monitor&gt;*:15304&lt;/web-monitor&gt;
-  &lt;/daemon&gt;
-  &lt;portals&gt;
-    &lt;endpoint&gt;
-      &lt;name&gt;G1-TRD1&lt;/name&gt;
-      &lt;domain-id&gt;1&lt;/domain-id&gt;
-      &lt;lbm-config&gt;trd1.cfg&lt;/lbm-config&gt;
-    &lt;/endpoint&gt;
-    &lt;endpoint&gt;
-      &lt;name&gt;G1-TRD2&lt;/name&gt;
-      &lt;domain-id&gt;2&lt;/domain-id&gt;
-      &lt;lbm-config&gt;trd2.cfg&lt;/lbm-config&gt;
-    &lt;/endpoint&gt;
-  &lt;/portals&gt;
-&lt;/tnw-gateway&gt;
-</pre><p><b>TRD2</b> <b>Configuration</b> </p>
+<div class="fragment"><div class="line">&lt;?xml version=<span class="stringliteral">&quot;1.0&quot;</span> encoding=<span class="stringliteral">&quot;UTF-8&quot;</span> ?&gt;</div><div class="line">&lt;!-- G1 xml file- 2 endpoint portals --&gt;</div><div class="line">&lt;tnw-gateway version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div><div class="line">  &lt;daemon&gt;</div><div class="line">    &lt;log type=<span class="stringliteral">&quot;console&quot;</span>/&gt;</div><div class="line">    &lt;lbm-license-file&gt;lic0014.txt&lt;/lbm-license-file&gt;</div><div class="line">    &lt;monitor interval=<span class="stringliteral">&quot;5&quot;</span>&gt;</div><div class="line">      &lt;transport-module module=<span class="stringliteral">&quot;lbm&quot;</span> options=<span class="stringliteral">&quot;config=trd1.cfg&quot;</span>/&gt;</div><div class="line">    &lt;/monitor&gt;</div><div class="line">    &lt;web-monitor&gt;*:15304&lt;/web-monitor&gt;</div><div class="line">  &lt;/daemon&gt;</div><div class="line">  &lt;portals&gt;</div><div class="line">    &lt;endpoint&gt;</div><div class="line">      &lt;name&gt;G1-TRD1&lt;/name&gt;</div><div class="line">      &lt;domain-<span class="keywordtype">id</span>&gt;1&lt;/domain-<span class="keywordtype">id</span>&gt;</div><div class="line">      &lt;lbm-config&gt;trd1.cfg&lt;/lbm-config&gt;</div><div class="line">    &lt;/endpoint&gt;</div><div class="line">    &lt;endpoint&gt;</div><div class="line">      &lt;name&gt;G1-TRD2&lt;/name&gt;</div><div class="line">      &lt;domain-<span class="keywordtype">id</span>&gt;2&lt;/domain-<span class="keywordtype">id</span>&gt;</div><div class="line">      &lt;lbm-config&gt;trd2.cfg&lt;/lbm-config&gt;</div><div class="line">    &lt;/endpoint&gt;</div><div class="line">  &lt;/portals&gt;</div><div class="line">&lt;/tnw-gateway&gt;</div></div><!-- fragment --><p><b>TRD2</b> <b>Configuration</b> </p>
 <p>The configuration file trd2.cfg could look something like this.</p>
-<pre class="fragment"># Global Configuration Options ##
-context request_tcp_interface 10.29.3.0/24
-context resolver_multicast_port 13965
-context resolver_multicast_interface 10.29.3.0/24
-context resolver_multicast_address 225.2.37.85
-</pre><p><br />
+<div class="fragment"><div class="line"><span class="preprocessor"># Global Configuration Options ##</span></div><div class="line">context request_tcp_interface 10.29.3.0/24</div><div class="line">context resolver_multicast_port 13965</div><div class="line">context resolver_multicast_interface 10.29.3.0/24</div><div class="line">context resolver_multicast_address 225.2.37.85</div></div><!-- fragment --><p><br />
  </p>
 <h2><a class="anchor" id="peerlinkconfiguration"></a>
 Peer Link Configuration&nbsp;&nbsp;<small><a href="#peerlinkconfiguration">&lt;-</a></small></h2>
@@ -307,64 +217,11 @@ Peer Link Configuration&nbsp;&nbsp;<small><a href="#peerlinkconfiguration">&lt;-
 <img src="cfg_single_link.png" alt="cfg_single_link.png"/>
 </div>
  <p><b>TRD1</b> <b>Configuration</b> </p>
-<pre class="fragment">## Global Configuration Options ##
-context request_tcp_interface 10.29.3.0/24
-context resolver_multicast_port 13965
-context resolver_multicast_interface 10.29.3.0/24
-context resolver_multicast_address 225.1.37.85
-</pre><p><b>G1</b> <b>Configuration</b> </p>
+<div class="fragment"><div class="line"><span class="preprocessor">## Global Configuration Options ##</span></div><div class="line">context request_tcp_interface 10.29.3.0/24</div><div class="line">context resolver_multicast_port 13965</div><div class="line">context resolver_multicast_interface 10.29.3.0/24</div><div class="line">context resolver_multicast_address 225.1.37.85</div></div><!-- fragment --><p><b>G1</b> <b>Configuration</b> </p>
 <p>Following is an example of two companion peer portals (on different UM Routers) configured via UM Router XML configuration file for a single TCP setup. Note that one must be an initiator and the other, an acceptor.</p>
-<pre class="fragment">&lt;?xml version="1.0" encoding="UTF-8" ?&gt;
-&lt;tnw-gateway version="1.0"&gt;
-    &lt;daemon&gt;
-       &lt;log type="console"/&gt;
-    &lt;/daemon&gt;
-    &lt;portals&gt;
-       &lt;endpoint&gt;
-          &lt;name&gt;G1-TRD1&lt;/name&gt;
-          &lt;domain-id&gt;1&lt;/domain-id&gt;
-          &lt;lbm-config&gt;TRD1.cfg&lt;/lbm-config&gt;
-       &lt;/endpoint&gt;
-       &lt;peer&gt;
-          &lt;name&gt;G1-G2&lt;/name&gt;
-          &lt;single-tcp&gt;
-             &lt;interface&gt;10.30.3.100&lt;/interface&gt;
-             &lt;initiator&gt;
-                &lt;address&gt;10.30.3.102&lt;/address&gt;
-                &lt;port&gt;26123&lt;/port&gt;
-             &lt;/initiator&gt;
-          &lt;/single-tcp&gt;
-       &lt;/peer&gt;
-    &lt;/portals&gt;
-&lt;/tnw-gateway&gt;
-</pre><p><b>G2</b> <b>Configuration</b> </p>
-<pre class="fragment">&lt;?xml version="1.0" encoding="UTF-8" ?&gt;
-&lt;tnw-gateway version="1.0"&gt;
-    &lt;daemon&gt;
-        &lt;log type="console"/&gt;
-    &lt;/daemon&gt;
-    &lt;portals&gt;
-      &lt;peer&gt;
-         &lt;name&gt;G2-G1&lt;/name&gt;
-         &lt;single-tcp&gt;
-           &lt;interface&gt;10.30.3.102&lt;/interface&gt;
-           &lt;acceptor&gt;
-             &lt;listen-port&gt;26123&lt;/listen-port&gt;
-           &lt;/acceptor&gt;
-         &lt;/single-tcp&gt;
-      &lt;/peer&gt;
-      &lt;endpoint&gt;
-         &lt;name&gt;G2-TRD2&lt;/name&gt;
-         &lt;domain-id&gt;2&lt;/domain-id&gt;
-         &lt;lbm-config&gt;TRD2.cfg&lt;/lbm-config&gt;
-      &lt;/endpoint&gt;
-    &lt;/portals&gt;
-&lt;/tnw-gateway&gt;
-</pre><p><b>TRD2</b> <b>Configuration</b> </p>
-<pre class="fragment">## LAN2 Configuration Options ##
-context request_tcp_interface 10.33.3.0/24
-context resolver_multicast_port 13965
-</pre><p><br />
+<div class="fragment"><div class="line">&lt;?xml version=<span class="stringliteral">&quot;1.0&quot;</span> encoding=<span class="stringliteral">&quot;UTF-8&quot;</span> ?&gt;</div><div class="line">&lt;tnw-gateway version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div><div class="line">    &lt;daemon&gt;</div><div class="line">       &lt;log type=<span class="stringliteral">&quot;console&quot;</span>/&gt;</div><div class="line">    &lt;/daemon&gt;</div><div class="line">    &lt;portals&gt;</div><div class="line">       &lt;endpoint&gt;</div><div class="line">          &lt;name&gt;G1-TRD1&lt;/name&gt;</div><div class="line">          &lt;domain-<span class="keywordtype">id</span>&gt;1&lt;/domain-<span class="keywordtype">id</span>&gt;</div><div class="line">          &lt;lbm-config&gt;TRD1.cfg&lt;/lbm-config&gt;</div><div class="line">       &lt;/endpoint&gt;</div><div class="line">       &lt;peer&gt;</div><div class="line">          &lt;name&gt;G1-G2&lt;/name&gt;</div><div class="line">          &lt;single-tcp&gt;</div><div class="line">             &lt;interface&gt;10.30.3.100&lt;/interface&gt;</div><div class="line">             &lt;initiator&gt;</div><div class="line">                &lt;address&gt;10.30.3.102&lt;/address&gt;</div><div class="line">                &lt;port&gt;26123&lt;/port&gt;</div><div class="line">             &lt;/initiator&gt;</div><div class="line">          &lt;/single-tcp&gt;</div><div class="line">       &lt;/peer&gt;</div><div class="line">    &lt;/portals&gt;</div><div class="line">&lt;/tnw-gateway&gt;</div></div><!-- fragment --><p><b>G2</b> <b>Configuration</b> </p>
+<div class="fragment"><div class="line">&lt;?xml version=<span class="stringliteral">&quot;1.0&quot;</span> encoding=<span class="stringliteral">&quot;UTF-8&quot;</span> ?&gt;</div><div class="line">&lt;tnw-gateway version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div><div class="line">    &lt;daemon&gt;</div><div class="line">        &lt;log type=<span class="stringliteral">&quot;console&quot;</span>/&gt;</div><div class="line">    &lt;/daemon&gt;</div><div class="line">    &lt;portals&gt;</div><div class="line">      &lt;peer&gt;</div><div class="line">         &lt;name&gt;G2-G1&lt;/name&gt;</div><div class="line">         &lt;single-tcp&gt;</div><div class="line">           &lt;interface&gt;10.30.3.102&lt;/interface&gt;</div><div class="line">           &lt;acceptor&gt;</div><div class="line">             &lt;listen-port&gt;26123&lt;/listen-port&gt;</div><div class="line">           &lt;/acceptor&gt;</div><div class="line">         &lt;/single-tcp&gt;</div><div class="line">      &lt;/peer&gt;</div><div class="line">      &lt;endpoint&gt;</div><div class="line">         &lt;name&gt;G2-TRD2&lt;/name&gt;</div><div class="line">         &lt;domain-<span class="keywordtype">id</span>&gt;2&lt;/domain-<span class="keywordtype">id</span>&gt;</div><div class="line">         &lt;lbm-config&gt;TRD2.cfg&lt;/lbm-config&gt;</div><div class="line">      &lt;/endpoint&gt;</div><div class="line">    &lt;/portals&gt;</div><div class="line">&lt;/tnw-gateway&gt;</div></div><!-- fragment --><p><b>TRD2</b> <b>Configuration</b> </p>
+<div class="fragment"><div class="line"><span class="preprocessor">## LAN2 Configuration Options ##</span></div><div class="line">context request_tcp_interface 10.33.3.0/24</div><div class="line">context resolver_multicast_port 13965</div></div><!-- fragment --><p><br />
  </p>
 <h2><a class="anchor" id="transittrdlinkconfiguration"></a>
 Transit TRD Link Configuration&nbsp;&nbsp;<small><a href="#transittrdlinkconfiguration">&lt;-</a></small></h2>
@@ -373,63 +230,12 @@ Transit TRD Link Configuration&nbsp;&nbsp;<small><a href="#transittrdlinkconfigu
 <img src="cfg_transit_trd.png" alt="cfg_transit_trd.png"/>
 </div>
  <p><b>TRD1</b> <b>Configuration</b> </p>
-<pre class="fragment">## TRD1 Configuration Options ##
-context request_tcp_interface 10.29.3.0/24
-context resolver_multicast_port 13965
-context resolver_multicast_interface 10.29.3.0/24
-context resolver_multicast_address 225.2.37.85
-</pre><p><b>G1</b> <b>Configuration</b> </p>
+<div class="fragment"><div class="line"><span class="preprocessor">## TRD1 Configuration Options ##</span></div><div class="line">context request_tcp_interface 10.29.3.0/24</div><div class="line">context resolver_multicast_port 13965</div><div class="line">context resolver_multicast_interface 10.29.3.0/24</div><div class="line">context resolver_multicast_address 225.2.37.85</div></div><!-- fragment --><p><b>G1</b> <b>Configuration</b> </p>
 <p>Following is an example of two companion peer portals (on different UM Routers) configured via UM Router XML configuration file for a single TCP setup. Note that one must be an initiator and the other, an acceptor.</p>
-<pre class="fragment">&lt;?xml version="1.0" encoding="UTF-8" ?&gt;
-&lt;tnw-gateway version="1.0"&gt;
-    &lt;daemon&gt;
-        &lt;log type="console"/&gt;
-    &lt;/daemon&gt;
-    &lt;portals&gt;
-      &lt;endpoint&gt;
-         &lt;name&gt;G1-TRD1&lt;/name&gt;
-         &lt;domain-id&gt;1&lt;/domain-id&gt;
-         &lt;lbm-config&gt;TRD1.cfg&lt;/lbm-config&gt;
-      &lt;/endpoint&gt;
-      &lt;endpoint&gt;
-         &lt;name&gt;G1-TRD2&lt;/name&gt;
-         &lt;domain-id&gt;2&lt;/domain-id&gt;
-         &lt;lbm-config&gt;TRD2.cfg&lt;/lbm-config&gt;
-      &lt;/endpoint&gt;
-    &lt;/portals&gt;
-&lt;/tnw-gateway&gt;
-</pre><p><b>TRD2</b> <b>Configuration</b> </p>
-<pre class="fragment">## TRD2 Configuration Options ##
-context request_tcp_interface 10.29.3.0/24
-context resolver_multicast_port 13965
-context resolver_multicast_interface 10.29.3.0/24
-context resolver_multicast_address 225.2.37.85
-</pre><p><b>G2</b> <b>Configuration</b> </p>
-<pre class="fragment">&lt;?xml version="1.0" encoding="UTF-8" ?&gt;
-&lt;tnw-gateway version="1.0"&gt;
-    &lt;daemon&gt;
-        &lt;log type="console"/&gt;
-    &lt;/daemon&gt;
-    &lt;portals&gt;
-      &lt;endpoint&gt;
-         &lt;name&gt;G2-TRD2&lt;/name&gt;
-         &lt;domain-id&gt;2&lt;/domain-id&gt;
-         &lt;lbm-config&gt;TRD2.cfg&lt;/lbm-config&gt;
-      &lt;/endpoint&gt;
-      &lt;endpoint&gt;
-         &lt;name&gt;G2-TRD3&lt;/name&gt;
-         &lt;domain-id&gt;3&lt;/domain-id&gt;
-         &lt;lbm-config&gt;TRD3.cfg&lt;/lbm-config&gt;
-      &lt;/endpoint&gt;
-    &lt;/portals&gt;
-&lt;/tnw-gateway&gt;
-</pre><p><b>TRD3</b> <b>Configuration</b> </p>
-<pre class="fragment">## TRD3 Configuration Options ##
-context request_tcp_interface 10.29.3.0/24
-context resolver_multicast_port 13965
-context resolver_multicast_interface 10.29.3.0/24
-context resolver_multicast_address 225.3.37.85
-</pre><p><br />
+<div class="fragment"><div class="line">&lt;?xml version=<span class="stringliteral">&quot;1.0&quot;</span> encoding=<span class="stringliteral">&quot;UTF-8&quot;</span> ?&gt;</div><div class="line">&lt;tnw-gateway version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div><div class="line">    &lt;daemon&gt;</div><div class="line">        &lt;log type=<span class="stringliteral">&quot;console&quot;</span>/&gt;</div><div class="line">    &lt;/daemon&gt;</div><div class="line">    &lt;portals&gt;</div><div class="line">      &lt;endpoint&gt;</div><div class="line">         &lt;name&gt;G1-TRD1&lt;/name&gt;</div><div class="line">         &lt;domain-<span class="keywordtype">id</span>&gt;1&lt;/domain-<span class="keywordtype">id</span>&gt;</div><div class="line">         &lt;lbm-config&gt;TRD1.cfg&lt;/lbm-config&gt;</div><div class="line">      &lt;/endpoint&gt;</div><div class="line">      &lt;endpoint&gt;</div><div class="line">         &lt;name&gt;G1-TRD2&lt;/name&gt;</div><div class="line">         &lt;domain-<span class="keywordtype">id</span>&gt;2&lt;/domain-<span class="keywordtype">id</span>&gt;</div><div class="line">         &lt;lbm-config&gt;TRD2.cfg&lt;/lbm-config&gt;</div><div class="line">      &lt;/endpoint&gt;</div><div class="line">    &lt;/portals&gt;</div><div class="line">&lt;/tnw-gateway&gt;</div></div><!-- fragment --><p><b>TRD2</b> <b>Configuration</b> </p>
+<div class="fragment"><div class="line"><span class="preprocessor">## TRD2 Configuration Options ##</span></div><div class="line">context request_tcp_interface 10.29.3.0/24</div><div class="line">context resolver_multicast_port 13965</div><div class="line">context resolver_multicast_interface 10.29.3.0/24</div><div class="line">context resolver_multicast_address 225.2.37.85</div></div><!-- fragment --><p><b>G2</b> <b>Configuration</b> </p>
+<div class="fragment"><div class="line">&lt;?xml version=<span class="stringliteral">&quot;1.0&quot;</span> encoding=<span class="stringliteral">&quot;UTF-8&quot;</span> ?&gt;</div><div class="line">&lt;tnw-gateway version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div><div class="line">    &lt;daemon&gt;</div><div class="line">        &lt;log type=<span class="stringliteral">&quot;console&quot;</span>/&gt;</div><div class="line">    &lt;/daemon&gt;</div><div class="line">    &lt;portals&gt;</div><div class="line">      &lt;endpoint&gt;</div><div class="line">         &lt;name&gt;G2-TRD2&lt;/name&gt;</div><div class="line">         &lt;domain-<span class="keywordtype">id</span>&gt;2&lt;/domain-<span class="keywordtype">id</span>&gt;</div><div class="line">         &lt;lbm-config&gt;TRD2.cfg&lt;/lbm-config&gt;</div><div class="line">      &lt;/endpoint&gt;</div><div class="line">      &lt;endpoint&gt;</div><div class="line">         &lt;name&gt;G2-TRD3&lt;/name&gt;</div><div class="line">         &lt;domain-<span class="keywordtype">id</span>&gt;3&lt;/domain-<span class="keywordtype">id</span>&gt;</div><div class="line">         &lt;lbm-config&gt;TRD3.cfg&lt;/lbm-config&gt;</div><div class="line">      &lt;/endpoint&gt;</div><div class="line">    &lt;/portals&gt;</div><div class="line">&lt;/tnw-gateway&gt;</div></div><!-- fragment --><p><b>TRD3</b> <b>Configuration</b> </p>
+<div class="fragment"><div class="line"><span class="preprocessor">## TRD3 Configuration Options ##</span></div><div class="line">context request_tcp_interface 10.29.3.0/24</div><div class="line">context resolver_multicast_port 13965</div><div class="line">context resolver_multicast_interface 10.29.3.0/24</div><div class="line">context resolver_multicast_address 225.3.37.85</div></div><!-- fragment --><p><br />
  </p>
 <h2><a class="anchor" id="parallellinksconfiguration"></a>
 Parallel Links Configuration&nbsp;&nbsp;<small><a href="#parallellinksconfiguration">&lt;-</a></small></h2>
@@ -439,120 +245,12 @@ Parallel Links Configuration&nbsp;&nbsp;<small><a href="#parallellinksconfigurat
 <img src="cfg_parallel.png" alt="cfg_parallel.png"/>
 </div>
  <p><b>TRD1</b> <b>Configuration</b> </p>
-<pre class="fragment">## TRD1 Configuration Options ##
-context request_tcp_interface 10.29.3.0/24
-context resolver_multicast_port 13965
-context resolver_multicast_interface 10.29.3.0/24
-context resolver_multicast_address 225.1.37.85
-</pre><p><b>G1</b> <b>Configuration</b> </p>
-<pre class="fragment">&lt;?xml version="1.0" encoding="UTF-8" ?&gt;
-&lt;tnw-gateway version="1.0"&gt;
-    &lt;daemon&gt;
-        &lt;log type="console"/&gt;
-    &lt;/daemon&gt;
-    &lt;portals&gt;
-      &lt;endpoint&gt;
-         &lt;name&gt;G1-TRD1&lt;/name&gt;
-         &lt;domain-id&gt;1&lt;/domain-id&gt;
-         &lt;cost&gt;2&lt;/cost&gt;
-         &lt;lbm-config&gt;TRD1.cfg&lt;/lbm-config&gt;
-      &lt;/endpoint&gt;
-      &lt;peer&gt;
-         &lt;name&gt;G1-G2&lt;/name&gt;
-         &lt;cost&gt;2&lt;/cost&gt;
-         &lt;single-tcp&gt;
-            &lt;interface&gt;10.30.3.101&lt;/interface&gt;
-            &lt;initiator&gt;
-               &lt;address&gt;10.30.3.102&lt;/address&gt;
-               &lt;port&gt;23745&lt;/port&gt;
-            &lt;/initiator&gt;
-         &lt;/single-tcp&gt;
-      &lt;/peer&gt;
-    &lt;/portals&gt;
-&lt;/tnw-gateway&gt;
-</pre><p><b>G2</b> <b>Configuration</b> </p>
-<pre class="fragment">&lt;?xml version="1.0" encoding="UTF-8" ?&gt;
-&lt;tnw-gateway version="1.0"&gt;
-    &lt;daemon&gt;
-        &lt;log type="console"/&gt;
-    &lt;/daemon&gt;
-    &lt;portals&gt;
-      &lt;peer&gt;
-         &lt;name&gt;G2-G1&lt;/name&gt;
-         &lt;cost&gt;2&lt;/cost&gt;
-         &lt;single-tcp&gt;
-            &lt;interface&gt;10.30.3.102&lt;/interface&gt;
-            &lt;acceptor&gt;
-               &lt;listen-port&gt;23745&lt;/listen-port&gt;
-            &lt;/acceptor&gt;
-         &lt;/single-tcp&gt;
-      &lt;/peer&gt;
-      &lt;endpoint&gt;
-         &lt;name&gt;G2-TRD2&lt;/name&gt;
-         &lt;domain-id&gt;2&lt;/domain-id&gt;
-         &lt;cost&gt;2&lt;/cost&gt;
-         &lt;lbm-config&gt;TRD2.cfg&lt;/lbm-config&gt;
-      &lt;/endpoint&gt;
-    &lt;/portals&gt;
-&lt;/tnw-gateway&gt;
-</pre><p><b>G3</b> <b>Configuration</b> </p>
-<pre class="fragment">&lt;?xml version="1.0" encoding="UTF-8" ?&gt;
-&lt;tnw-gateway version="1.0"&gt;
-    &lt;daemon&gt;
-        &lt;log type="console"/&gt;
-    &lt;/daemon&gt;
-    &lt;portals&gt;
-      &lt;endpoint&gt;
-         &lt;name&gt;G3-TRD1&lt;/name&gt;
-         &lt;domain-id&gt;1&lt;/domain-id&gt;
-         &lt;cost&gt;5&lt;/cost&gt;
-         &lt;lbm-config&gt;TRD1.cfg&lt;/lbm-config&gt;
-      &lt;/endpoint&gt;
-      &lt;peer&gt;
-         &lt;name&gt;G3-G4&lt;/name&gt;
-         &lt;cost&gt;5&lt;/cost&gt;
-         &lt;single-tcp&gt;
-            &lt;interface&gt;10.30.3.103&lt;/interface&gt;
-            &lt;initiator&gt;
-               &lt;address&gt;10.30.3.104&lt;/address&gt;
-               &lt;port&gt;23746&lt;/port&gt;
-            &lt;/initiator&gt;
-         &lt;/single-tcp&gt;
-      &lt;/peer&gt;
-    &lt;/portals&gt;
-&lt;/tnw-gateway&gt;
-</pre><p><b>G4</b> <b>Configuration</b> </p>
-<pre class="fragment">&lt;?xml version="1.0" encoding="UTF-8" ?&gt;
-&lt;tnw-gateway version="1.0"&gt;
-    &lt;daemon&gt;
-        &lt;log type="console"/&gt;
-    &lt;/daemon&gt;
-    &lt;portals&gt;
-      &lt;peer&gt;
-         &lt;name&gt;G4-G3&lt;/name&gt;
-         &lt;cost&gt;5&lt;/cost&gt;
-         &lt;single-tcp&gt;
-            &lt;interface&gt;10.30.3.104&lt;/interface&gt;
-            &lt;acceptor&gt;
-               &lt;listen-port&gt;23746&lt;/listen-port&gt;
-            &lt;/acceptor&gt;
-         &lt;/single-tcp&gt;
-      &lt;/peer&gt;
-      &lt;endpoint&gt;
-         &lt;name&gt;G4-TRD2&lt;/name&gt;
-         &lt;domain-id&gt;2&lt;/domain-id&gt;
-         &lt;cost&gt;5&lt;/cost&gt;
-         &lt;lbm-config&gt;TRD2.cfg&lt;/lbm-config&gt;
-      &lt;/endpoint&gt;
-    &lt;/portals&gt;
-&lt;/tnw-gateway&gt;
-</pre><p><b>TRD2</b> <b>Configuration</b> </p>
-<pre class="fragment">## TRD2 Configuration Options ##
-context request_tcp_interface 10.29.3.0/24
-context resolver_multicast_port 13965
-context resolver_multicast_interface 10.29.3.0/24
-context resolver_multicast_address 225.2.37.85
-</pre><p><br />
+<div class="fragment"><div class="line"><span class="preprocessor">## TRD1 Configuration Options ##</span></div><div class="line">context request_tcp_interface 10.29.3.0/24</div><div class="line">context resolver_multicast_port 13965</div><div class="line">context resolver_multicast_interface 10.29.3.0/24</div><div class="line">context resolver_multicast_address 225.1.37.85</div></div><!-- fragment --><p><b>G1</b> <b>Configuration</b> </p>
+<div class="fragment"><div class="line">&lt;?xml version=<span class="stringliteral">&quot;1.0&quot;</span> encoding=<span class="stringliteral">&quot;UTF-8&quot;</span> ?&gt;</div><div class="line">&lt;tnw-gateway version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div><div class="line">    &lt;daemon&gt;</div><div class="line">        &lt;log type=<span class="stringliteral">&quot;console&quot;</span>/&gt;</div><div class="line">    &lt;/daemon&gt;</div><div class="line">    &lt;portals&gt;</div><div class="line">      &lt;endpoint&gt;</div><div class="line">         &lt;name&gt;G1-TRD1&lt;/name&gt;</div><div class="line">         &lt;domain-<span class="keywordtype">id</span>&gt;1&lt;/domain-<span class="keywordtype">id</span>&gt;</div><div class="line">         &lt;cost&gt;2&lt;/cost&gt;</div><div class="line">         &lt;lbm-config&gt;TRD1.cfg&lt;/lbm-config&gt;</div><div class="line">      &lt;/endpoint&gt;</div><div class="line">      &lt;peer&gt;</div><div class="line">         &lt;name&gt;G1-G2&lt;/name&gt;</div><div class="line">         &lt;cost&gt;2&lt;/cost&gt;</div><div class="line">         &lt;single-tcp&gt;</div><div class="line">            &lt;interface&gt;10.30.3.101&lt;/interface&gt;</div><div class="line">            &lt;initiator&gt;</div><div class="line">               &lt;address&gt;10.30.3.102&lt;/address&gt;</div><div class="line">               &lt;port&gt;23745&lt;/port&gt;</div><div class="line">            &lt;/initiator&gt;</div><div class="line">         &lt;/single-tcp&gt;</div><div class="line">      &lt;/peer&gt;</div><div class="line">    &lt;/portals&gt;</div><div class="line">&lt;/tnw-gateway&gt;</div></div><!-- fragment --><p><b>G2</b> <b>Configuration</b> </p>
+<div class="fragment"><div class="line">&lt;?xml version=<span class="stringliteral">&quot;1.0&quot;</span> encoding=<span class="stringliteral">&quot;UTF-8&quot;</span> ?&gt;</div><div class="line">&lt;tnw-gateway version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div><div class="line">    &lt;daemon&gt;</div><div class="line">        &lt;log type=<span class="stringliteral">&quot;console&quot;</span>/&gt;</div><div class="line">    &lt;/daemon&gt;</div><div class="line">    &lt;portals&gt;</div><div class="line">      &lt;peer&gt;</div><div class="line">         &lt;name&gt;G2-G1&lt;/name&gt;</div><div class="line">         &lt;cost&gt;2&lt;/cost&gt;</div><div class="line">         &lt;single-tcp&gt;</div><div class="line">            &lt;interface&gt;10.30.3.102&lt;/interface&gt;</div><div class="line">            &lt;acceptor&gt;</div><div class="line">               &lt;listen-port&gt;23745&lt;/listen-port&gt;</div><div class="line">            &lt;/acceptor&gt;</div><div class="line">         &lt;/single-tcp&gt;</div><div class="line">      &lt;/peer&gt;</div><div class="line">      &lt;endpoint&gt;</div><div class="line">         &lt;name&gt;G2-TRD2&lt;/name&gt;</div><div class="line">         &lt;domain-<span class="keywordtype">id</span>&gt;2&lt;/domain-<span class="keywordtype">id</span>&gt;</div><div class="line">         &lt;cost&gt;2&lt;/cost&gt;</div><div class="line">         &lt;lbm-config&gt;TRD2.cfg&lt;/lbm-config&gt;</div><div class="line">      &lt;/endpoint&gt;</div><div class="line">    &lt;/portals&gt;</div><div class="line">&lt;/tnw-gateway&gt;</div></div><!-- fragment --><p><b>G3</b> <b>Configuration</b> </p>
+<div class="fragment"><div class="line">&lt;?xml version=<span class="stringliteral">&quot;1.0&quot;</span> encoding=<span class="stringliteral">&quot;UTF-8&quot;</span> ?&gt;</div><div class="line">&lt;tnw-gateway version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div><div class="line">    &lt;daemon&gt;</div><div class="line">        &lt;log type=<span class="stringliteral">&quot;console&quot;</span>/&gt;</div><div class="line">    &lt;/daemon&gt;</div><div class="line">    &lt;portals&gt;</div><div class="line">      &lt;endpoint&gt;</div><div class="line">         &lt;name&gt;G3-TRD1&lt;/name&gt;</div><div class="line">         &lt;domain-<span class="keywordtype">id</span>&gt;1&lt;/domain-<span class="keywordtype">id</span>&gt;</div><div class="line">         &lt;cost&gt;5&lt;/cost&gt;</div><div class="line">         &lt;lbm-config&gt;TRD1.cfg&lt;/lbm-config&gt;</div><div class="line">      &lt;/endpoint&gt;</div><div class="line">      &lt;peer&gt;</div><div class="line">         &lt;name&gt;G3-G4&lt;/name&gt;</div><div class="line">         &lt;cost&gt;5&lt;/cost&gt;</div><div class="line">         &lt;single-tcp&gt;</div><div class="line">            &lt;interface&gt;10.30.3.103&lt;/interface&gt;</div><div class="line">            &lt;initiator&gt;</div><div class="line">               &lt;address&gt;10.30.3.104&lt;/address&gt;</div><div class="line">               &lt;port&gt;23746&lt;/port&gt;</div><div class="line">            &lt;/initiator&gt;</div><div class="line">         &lt;/single-tcp&gt;</div><div class="line">      &lt;/peer&gt;</div><div class="line">    &lt;/portals&gt;</div><div class="line">&lt;/tnw-gateway&gt;</div></div><!-- fragment --><p><b>G4</b> <b>Configuration</b> </p>
+<div class="fragment"><div class="line">&lt;?xml version=<span class="stringliteral">&quot;1.0&quot;</span> encoding=<span class="stringliteral">&quot;UTF-8&quot;</span> ?&gt;</div><div class="line">&lt;tnw-gateway version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div><div class="line">    &lt;daemon&gt;</div><div class="line">        &lt;log type=<span class="stringliteral">&quot;console&quot;</span>/&gt;</div><div class="line">    &lt;/daemon&gt;</div><div class="line">    &lt;portals&gt;</div><div class="line">      &lt;peer&gt;</div><div class="line">         &lt;name&gt;G4-G3&lt;/name&gt;</div><div class="line">         &lt;cost&gt;5&lt;/cost&gt;</div><div class="line">         &lt;single-tcp&gt;</div><div class="line">            &lt;interface&gt;10.30.3.104&lt;/interface&gt;</div><div class="line">            &lt;acceptor&gt;</div><div class="line">               &lt;listen-port&gt;23746&lt;/listen-port&gt;</div><div class="line">            &lt;/acceptor&gt;</div><div class="line">         &lt;/single-tcp&gt;</div><div class="line">      &lt;/peer&gt;</div><div class="line">      &lt;endpoint&gt;</div><div class="line">         &lt;name&gt;G4-TRD2&lt;/name&gt;</div><div class="line">         &lt;domain-<span class="keywordtype">id</span>&gt;2&lt;/domain-<span class="keywordtype">id</span>&gt;</div><div class="line">         &lt;cost&gt;5&lt;/cost&gt;</div><div class="line">         &lt;lbm-config&gt;TRD2.cfg&lt;/lbm-config&gt;</div><div class="line">      &lt;/endpoint&gt;</div><div class="line">    &lt;/portals&gt;</div><div class="line">&lt;/tnw-gateway&gt;</div></div><!-- fragment --><p><b>TRD2</b> <b>Configuration</b> </p>
+<div class="fragment"><div class="line"><span class="preprocessor">## TRD2 Configuration Options ##</span></div><div class="line">context request_tcp_interface 10.29.3.0/24</div><div class="line">context resolver_multicast_port 13965</div><div class="line">context resolver_multicast_interface 10.29.3.0/24</div><div class="line">context resolver_multicast_address 225.2.37.85</div></div><!-- fragment --><p><br />
  </p>
 <h2><a class="anchor" id="loopandspurconfiguration"></a>
 Loop and Spur Configuration&nbsp;&nbsp;<small><a href="#loopandspurconfiguration">&lt;-</a></small></h2>
@@ -560,191 +258,16 @@ Loop and Spur Configuration&nbsp;&nbsp;<small><a href="#loopandspurconfiguration
 <img src="cfg_loop_spur.png" alt="cfg_loop_spur.png"/>
 </div>
  <p><b>TRD1</b> <b>Configuration</b> </p>
-<pre class="fragment">## Global Configuration Options ##
-context request_tcp_interface 10.29.3.0/24
-context resolver_multicast_port 13965
-context resolver_multicast_interface 10.29.3.0/24
-context resolver_multicast_address 225.1.37.85
-</pre><p><b>G1</b> <b>Configuration</b> </p>
-<pre class="fragment">&lt;?xml version="1.0" encoding="UTF-8" ?&gt;
-&lt;tnw-gateway version="1.0"&gt;
-    &lt;daemon&gt;
-        &lt;log type="console"/&gt;
-    &lt;/daemon&gt;
-    &lt;portals&gt;
-      &lt;peer&gt;
-         &lt;name&gt;G1_to_G3&lt;/name&gt;
-         &lt;single-tcp&gt;
-            &lt;initiator&gt;
-               &lt;address&gt;55.55.10.27&lt;/address&gt;
-               &lt;port&gt;23801&lt;/port&gt;
-            &lt;/initiator&gt;
-         &lt;/single-tcp&gt;
-      &lt;/peer&gt;
-      &lt;peer&gt;
-         &lt;name&gt;G1_to_G2&lt;/name&gt;
-         &lt;single-tcp&gt;
-            &lt;initiator&gt;
-               &lt;address&gt;55.55.10.26&lt;/address&gt;
-               &lt;port&gt;23745&lt;/port&gt;
-            &lt;/initiator&gt;
-         &lt;/single-tcp&gt;
-      &lt;/peer&gt;
-      &lt;endpoint&gt;
-         &lt;name&gt;G1_to_TRD1&lt;/name&gt;
-         &lt;domain-id&gt;1&lt;/domain-id&gt;
-         &lt;lbm-config&gt;TRD1.cfg&lt;/lbm-config&gt;
-      &lt;/endpoint&gt;
-    &lt;/portals&gt;
-&lt;/tnw-gateway&gt;
-</pre><p><b>G2</b> <b>Configuration</b> </p>
-<pre class="fragment">&lt;?xml version="1.0" encoding="UTF-8" ?&gt;
-&lt;tnw-gateway version="1.0"&gt;
-    &lt;daemon&gt;
-        &lt;log type="console"/&gt;
-    &lt;/daemon&gt;
-    &lt;portals&gt;
-      &lt;peer&gt;
-         &lt;name&gt;G2_to_G4&lt;/name&gt;
-         &lt;single-tcp&gt;
-            &lt;initiator&gt;
-               &lt;address&gt;55.55.10.28&lt;/address&gt;
-               &lt;port&gt;23632&lt;/port&gt;
-            &lt;/initiator&gt;
-         &lt;/single-tcp&gt;
-      &lt;/peer&gt;
-      &lt;peer&gt;
-         &lt;name&gt;G2_to_G1&lt;/name&gt;
-         &lt;single-tcp&gt;
-            &lt;acceptor&gt;
-               &lt;listen-port&gt;23745&lt;/listen-port&gt;
-            &lt;/acceptor&gt;
-         &lt;/single-tcp&gt;
-      &lt;/peer&gt;
-      &lt;endpoint&gt;
-         &lt;name&gt;G2_to_TRD2&lt;/name&gt;
-         &lt;domain-id&gt;2&lt;/domain-id&gt;
-         &lt;lbm-config&gt;TRD2.cfg&lt;/lbm-config&gt;
-      &lt;/endpoint&gt;
-    &lt;/portals&gt;
-&lt;/tnw-gateway&gt;
-</pre><p><b>TRD2</b> <b>Configuration</b> </p>
-<pre class="fragment">## Global Configuration Options ##
-context request_tcp_interface 10.29.3.0/24
-context resolver_multicast_port 13965
-context resolver_multicast_interface 10.29.3.0/24
-context resolver_multicast_address 225.2.37.85
-</pre><p><b>TRD3</b> <b>Configuration</b> </p>
-<pre class="fragment">## Global Configuration Options ##
-context request_tcp_interface 10.29.3.0/24
-context resolver_multicast_port 13965
-context resolver_multicast_interface 10.29.3.0/24
-context resolver_multicast_address 225.3.37.85
-</pre><p><b>G3</b> <b>Configuration</b> </p>
-<pre class="fragment">&lt;?xml version="1.0" encoding="UTF-8" ?&gt;
-&lt;tnw-gateway version="1.0"&gt;
-    &lt;daemon&gt;
-        &lt;log type="console"/&gt;
-    &lt;/daemon&gt;
-    &lt;portals&gt;
-      &lt;peer&gt;
-         &lt;name&gt;G3_to_G4&lt;/name&gt;
-         &lt;single-tcp&gt;
-            &lt;initiator&gt;
-               &lt;address&gt;55.55.10.28&lt;/address&gt;
-               &lt;port&gt;23754&lt;/port&gt;
-            &lt;/initiator&gt;
-         &lt;/single-tcp&gt;
-      &lt;/peer&gt;
-      &lt;peer&gt;
-         &lt;name&gt;G3_to_G1&lt;/name&gt;
-         &lt;single-tcp&gt;
-            &lt;acceptor&gt;
-               &lt;listen-port&gt;23801&lt;/listen-port&gt;
-            &lt;/acceptor&gt;
-         &lt;/single-tcp&gt;
-      &lt;/peer&gt;
-      &lt;endpoint&gt;
-         &lt;name&gt;G3_to_TRD3&lt;/name&gt;
-         &lt;domain-id&gt;3&lt;/domain-id&gt;
-         &lt;lbm-config&gt;TRD3.cfg&lt;/lbm-config&gt;
-      &lt;/endpoint&gt;
-    &lt;/portals&gt;
-&lt;/tnw-gateway&gt;
-</pre><p><b>G4</b> <b>Configuration</b> </p>
-<pre class="fragment">&lt;?xml version="1.0" encoding="UTF-8" ?&gt;
-&lt;tnw-gateway version="1.0"&gt;
-    &lt;daemon&gt;
-        &lt;log type="console"/&gt;
-    &lt;/daemon&gt;
-    &lt;portals&gt;
-      &lt;peer&gt;
-         &lt;name&gt;G4_to_G3&lt;/name&gt;
-         &lt;single-tcp&gt;
-            &lt;acceptor&gt;
-               &lt;listen-port&gt;23754&lt;/listen-port&gt;
-            &lt;/acceptor&gt;
-         &lt;/single-tcp&gt;
-      &lt;/peer&gt;
-      &lt;endpoint&gt;
-         &lt;name&gt;G4_to_TRD4&lt;/name&gt;
-         &lt;domain-id&gt;4&lt;/domain-id&gt;
-         &lt;lbm-config&gt;TRD4.cfg&lt;/lbm-config&gt;
-      &lt;/endpoint&gt;
-      &lt;peer&gt;
-         &lt;name&gt;G4_to_G2&lt;/name&gt;
-         &lt;single-tcp&gt;
-            &lt;acceptor&gt;
-               &lt;listen-port&gt;23632&lt;/listen-port&gt;
-            &lt;/acceptor&gt;
-         &lt;/single-tcp&gt;
-      &lt;/peer&gt;
-      &lt;peer&gt;
-         &lt;name&gt;G4_to_G5&lt;/name&gt;
-         &lt;single-tcp&gt;
-            &lt;initiator&gt;
-               &lt;address&gt;55.55.10.29&lt;/address&gt;
-               &lt;port&gt;23739&lt;/port&gt;
-            &lt;/initiator&gt;
-         &lt;/single-tcp&gt;
-      &lt;/peer&gt;
-    &lt;/portals&gt;
-&lt;/tnw-gateway&gt;
-</pre><p><b>TRD4</b> <b>Configuration</b> </p>
-<pre class="fragment">## Global Configuration Options ##
-context request_tcp_interface 10.29.3.0/24
-context resolver_multicast_port 13965
-context resolver_multicast_interface 10.29.3.0/24
-context resolver_multicast_address 225.4.37.85
-</pre><p><b>G5</b> <b>Configuration</b> </p>
-<pre class="fragment">&lt;?xml version="1.0" encoding="UTF-8" ?&gt;
-&lt;tnw-gateway version="1.0"&gt;
-    &lt;daemon&gt;
-        &lt;log type="console"/&gt;
-    &lt;/daemon&gt;
-    &lt;portals&gt;
-      &lt;endpoint&gt;
-         &lt;name&gt;G5_to_TRD5&lt;/name&gt;
-         &lt;domain-id&gt;5&lt;/domain-id&gt;
-         &lt;lbm-config&gt;TRD5.cfg&lt;/lbm-config&gt;
-      &lt;/endpoint&gt;
-      &lt;peer&gt;
-         &lt;name&gt;G5_to_G4&lt;/name&gt;
-         &lt;single-tcp&gt;
-            &lt;acceptor&gt;
-               &lt;listen-port&gt;23739&lt;/listen-port&gt;
-            &lt;/acceptor&gt;
-         &lt;/single-tcp&gt;
-      &lt;/peer&gt;
-    &lt;/portals&gt;
-&lt;/tnw-gateway&gt;
-</pre><p><b>TRD5</b> <b>Configuration</b> </p>
-<pre class="fragment">## Global Configuration Options ##
-context request_tcp_interface 10.29.3.0/24
-context resolver_multicast_port 13965
-context resolver_multicast_interface 10.29.3.0/24
-context resolver_multicast_address 225.5.37.85
-</pre><p><br />
+<div class="fragment"><div class="line"><span class="preprocessor">## Global Configuration Options ##</span></div><div class="line">context request_tcp_interface 10.29.3.0/24</div><div class="line">context resolver_multicast_port 13965</div><div class="line">context resolver_multicast_interface 10.29.3.0/24</div><div class="line">context resolver_multicast_address 225.1.37.85</div></div><!-- fragment --><p><b>G1</b> <b>Configuration</b> </p>
+<div class="fragment"><div class="line">&lt;?xml version=<span class="stringliteral">&quot;1.0&quot;</span> encoding=<span class="stringliteral">&quot;UTF-8&quot;</span> ?&gt;</div><div class="line">&lt;tnw-gateway version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div><div class="line">    &lt;daemon&gt;</div><div class="line">        &lt;log type=<span class="stringliteral">&quot;console&quot;</span>/&gt;</div><div class="line">    &lt;/daemon&gt;</div><div class="line">    &lt;portals&gt;</div><div class="line">      &lt;peer&gt;</div><div class="line">         &lt;name&gt;G1_to_G3&lt;/name&gt;</div><div class="line">         &lt;single-tcp&gt;</div><div class="line">            &lt;initiator&gt;</div><div class="line">               &lt;address&gt;55.55.10.27&lt;/address&gt;</div><div class="line">               &lt;port&gt;23801&lt;/port&gt;</div><div class="line">            &lt;/initiator&gt;</div><div class="line">         &lt;/single-tcp&gt;</div><div class="line">      &lt;/peer&gt;</div><div class="line">      &lt;peer&gt;</div><div class="line">         &lt;name&gt;G1_to_G2&lt;/name&gt;</div><div class="line">         &lt;single-tcp&gt;</div><div class="line">            &lt;initiator&gt;</div><div class="line">               &lt;address&gt;55.55.10.26&lt;/address&gt;</div><div class="line">               &lt;port&gt;23745&lt;/port&gt;</div><div class="line">            &lt;/initiator&gt;</div><div class="line">         &lt;/single-tcp&gt;</div><div class="line">      &lt;/peer&gt;</div><div class="line">      &lt;endpoint&gt;</div><div class="line">         &lt;name&gt;G1_to_TRD1&lt;/name&gt;</div><div class="line">         &lt;domain-<span class="keywordtype">id</span>&gt;1&lt;/domain-<span class="keywordtype">id</span>&gt;</div><div class="line">         &lt;lbm-config&gt;TRD1.cfg&lt;/lbm-config&gt;</div><div class="line">      &lt;/endpoint&gt;</div><div class="line">    &lt;/portals&gt;</div><div class="line">&lt;/tnw-gateway&gt;</div></div><!-- fragment --><p><b>G2</b> <b>Configuration</b> </p>
+<div class="fragment"><div class="line">&lt;?xml version=<span class="stringliteral">&quot;1.0&quot;</span> encoding=<span class="stringliteral">&quot;UTF-8&quot;</span> ?&gt;</div><div class="line">&lt;tnw-gateway version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div><div class="line">    &lt;daemon&gt;</div><div class="line">        &lt;log type=<span class="stringliteral">&quot;console&quot;</span>/&gt;</div><div class="line">    &lt;/daemon&gt;</div><div class="line">    &lt;portals&gt;</div><div class="line">      &lt;peer&gt;</div><div class="line">         &lt;name&gt;G2_to_G4&lt;/name&gt;</div><div class="line">         &lt;single-tcp&gt;</div><div class="line">            &lt;initiator&gt;</div><div class="line">               &lt;address&gt;55.55.10.28&lt;/address&gt;</div><div class="line">               &lt;port&gt;23632&lt;/port&gt;</div><div class="line">            &lt;/initiator&gt;</div><div class="line">         &lt;/single-tcp&gt;</div><div class="line">      &lt;/peer&gt;</div><div class="line">      &lt;peer&gt;</div><div class="line">         &lt;name&gt;G2_to_G1&lt;/name&gt;</div><div class="line">         &lt;single-tcp&gt;</div><div class="line">            &lt;acceptor&gt;</div><div class="line">               &lt;listen-port&gt;23745&lt;/listen-port&gt;</div><div class="line">            &lt;/acceptor&gt;</div><div class="line">         &lt;/single-tcp&gt;</div><div class="line">      &lt;/peer&gt;</div><div class="line">      &lt;endpoint&gt;</div><div class="line">         &lt;name&gt;G2_to_TRD2&lt;/name&gt;</div><div class="line">         &lt;domain-<span class="keywordtype">id</span>&gt;2&lt;/domain-<span class="keywordtype">id</span>&gt;</div><div class="line">         &lt;lbm-config&gt;TRD2.cfg&lt;/lbm-config&gt;</div><div class="line">      &lt;/endpoint&gt;</div><div class="line">    &lt;/portals&gt;</div><div class="line">&lt;/tnw-gateway&gt;</div></div><!-- fragment --><p><b>TRD2</b> <b>Configuration</b> </p>
+<div class="fragment"><div class="line"><span class="preprocessor">## Global Configuration Options ##</span></div><div class="line">context request_tcp_interface 10.29.3.0/24</div><div class="line">context resolver_multicast_port 13965</div><div class="line">context resolver_multicast_interface 10.29.3.0/24</div><div class="line">context resolver_multicast_address 225.2.37.85</div></div><!-- fragment --><p><b>TRD3</b> <b>Configuration</b> </p>
+<div class="fragment"><div class="line"><span class="preprocessor">## Global Configuration Options ##</span></div><div class="line">context request_tcp_interface 10.29.3.0/24</div><div class="line">context resolver_multicast_port 13965</div><div class="line">context resolver_multicast_interface 10.29.3.0/24</div><div class="line">context resolver_multicast_address 225.3.37.85</div></div><!-- fragment --><p><b>G3</b> <b>Configuration</b> </p>
+<div class="fragment"><div class="line">&lt;?xml version=<span class="stringliteral">&quot;1.0&quot;</span> encoding=<span class="stringliteral">&quot;UTF-8&quot;</span> ?&gt;</div><div class="line">&lt;tnw-gateway version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div><div class="line">    &lt;daemon&gt;</div><div class="line">        &lt;log type=<span class="stringliteral">&quot;console&quot;</span>/&gt;</div><div class="line">    &lt;/daemon&gt;</div><div class="line">    &lt;portals&gt;</div><div class="line">      &lt;peer&gt;</div><div class="line">         &lt;name&gt;G3_to_G4&lt;/name&gt;</div><div class="line">         &lt;single-tcp&gt;</div><div class="line">            &lt;initiator&gt;</div><div class="line">               &lt;address&gt;55.55.10.28&lt;/address&gt;</div><div class="line">               &lt;port&gt;23754&lt;/port&gt;</div><div class="line">            &lt;/initiator&gt;</div><div class="line">         &lt;/single-tcp&gt;</div><div class="line">      &lt;/peer&gt;</div><div class="line">      &lt;peer&gt;</div><div class="line">         &lt;name&gt;G3_to_G1&lt;/name&gt;</div><div class="line">         &lt;single-tcp&gt;</div><div class="line">            &lt;acceptor&gt;</div><div class="line">               &lt;listen-port&gt;23801&lt;/listen-port&gt;</div><div class="line">            &lt;/acceptor&gt;</div><div class="line">         &lt;/single-tcp&gt;</div><div class="line">      &lt;/peer&gt;</div><div class="line">      &lt;endpoint&gt;</div><div class="line">         &lt;name&gt;G3_to_TRD3&lt;/name&gt;</div><div class="line">         &lt;domain-<span class="keywordtype">id</span>&gt;3&lt;/domain-<span class="keywordtype">id</span>&gt;</div><div class="line">         &lt;lbm-config&gt;TRD3.cfg&lt;/lbm-config&gt;</div><div class="line">      &lt;/endpoint&gt;</div><div class="line">    &lt;/portals&gt;</div><div class="line">&lt;/tnw-gateway&gt;</div></div><!-- fragment --><p><b>G4</b> <b>Configuration</b> </p>
+<div class="fragment"><div class="line">&lt;?xml version=<span class="stringliteral">&quot;1.0&quot;</span> encoding=<span class="stringliteral">&quot;UTF-8&quot;</span> ?&gt;</div><div class="line">&lt;tnw-gateway version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div><div class="line">    &lt;daemon&gt;</div><div class="line">        &lt;log type=<span class="stringliteral">&quot;console&quot;</span>/&gt;</div><div class="line">    &lt;/daemon&gt;</div><div class="line">    &lt;portals&gt;</div><div class="line">      &lt;peer&gt;</div><div class="line">         &lt;name&gt;G4_to_G3&lt;/name&gt;</div><div class="line">         &lt;single-tcp&gt;</div><div class="line">            &lt;acceptor&gt;</div><div class="line">               &lt;listen-port&gt;23754&lt;/listen-port&gt;</div><div class="line">            &lt;/acceptor&gt;</div><div class="line">         &lt;/single-tcp&gt;</div><div class="line">      &lt;/peer&gt;</div><div class="line">      &lt;endpoint&gt;</div><div class="line">         &lt;name&gt;G4_to_TRD4&lt;/name&gt;</div><div class="line">         &lt;domain-<span class="keywordtype">id</span>&gt;4&lt;/domain-<span class="keywordtype">id</span>&gt;</div><div class="line">         &lt;lbm-config&gt;TRD4.cfg&lt;/lbm-config&gt;</div><div class="line">      &lt;/endpoint&gt;</div><div class="line">      &lt;peer&gt;</div><div class="line">         &lt;name&gt;G4_to_G2&lt;/name&gt;</div><div class="line">         &lt;single-tcp&gt;</div><div class="line">            &lt;acceptor&gt;</div><div class="line">               &lt;listen-port&gt;23632&lt;/listen-port&gt;</div><div class="line">            &lt;/acceptor&gt;</div><div class="line">         &lt;/single-tcp&gt;</div><div class="line">      &lt;/peer&gt;</div><div class="line">      &lt;peer&gt;</div><div class="line">         &lt;name&gt;G4_to_G5&lt;/name&gt;</div><div class="line">         &lt;single-tcp&gt;</div><div class="line">            &lt;initiator&gt;</div><div class="line">               &lt;address&gt;55.55.10.29&lt;/address&gt;</div><div class="line">               &lt;port&gt;23739&lt;/port&gt;</div><div class="line">            &lt;/initiator&gt;</div><div class="line">         &lt;/single-tcp&gt;</div><div class="line">      &lt;/peer&gt;</div><div class="line">    &lt;/portals&gt;</div><div class="line">&lt;/tnw-gateway&gt;</div></div><!-- fragment --><p><b>TRD4</b> <b>Configuration</b> </p>
+<div class="fragment"><div class="line"><span class="preprocessor">## Global Configuration Options ##</span></div><div class="line">context request_tcp_interface 10.29.3.0/24</div><div class="line">context resolver_multicast_port 13965</div><div class="line">context resolver_multicast_interface 10.29.3.0/24</div><div class="line">context resolver_multicast_address 225.4.37.85</div></div><!-- fragment --><p><b>G5</b> <b>Configuration</b> </p>
+<div class="fragment"><div class="line">&lt;?xml version=<span class="stringliteral">&quot;1.0&quot;</span> encoding=<span class="stringliteral">&quot;UTF-8&quot;</span> ?&gt;</div><div class="line">&lt;tnw-gateway version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div><div class="line">    &lt;daemon&gt;</div><div class="line">        &lt;log type=<span class="stringliteral">&quot;console&quot;</span>/&gt;</div><div class="line">    &lt;/daemon&gt;</div><div class="line">    &lt;portals&gt;</div><div class="line">      &lt;endpoint&gt;</div><div class="line">         &lt;name&gt;G5_to_TRD5&lt;/name&gt;</div><div class="line">         &lt;domain-<span class="keywordtype">id</span>&gt;5&lt;/domain-<span class="keywordtype">id</span>&gt;</div><div class="line">         &lt;lbm-config&gt;TRD5.cfg&lt;/lbm-config&gt;</div><div class="line">      &lt;/endpoint&gt;</div><div class="line">      &lt;peer&gt;</div><div class="line">         &lt;name&gt;G5_to_G4&lt;/name&gt;</div><div class="line">         &lt;single-tcp&gt;</div><div class="line">            &lt;acceptor&gt;</div><div class="line">               &lt;listen-port&gt;23739&lt;/listen-port&gt;</div><div class="line">            &lt;/acceptor&gt;</div><div class="line">         &lt;/single-tcp&gt;</div><div class="line">      &lt;/peer&gt;</div><div class="line">    &lt;/portals&gt;</div><div class="line">&lt;/tnw-gateway&gt;</div></div><!-- fragment --><p><b>TRD5</b> <b>Configuration</b> </p>
+<div class="fragment"><div class="line"><span class="preprocessor">## Global Configuration Options ##</span></div><div class="line">context request_tcp_interface 10.29.3.0/24</div><div class="line">context resolver_multicast_port 13965</div><div class="line">context resolver_multicast_interface 10.29.3.0/24</div><div class="line">context resolver_multicast_address 225.5.37.85</div></div><!-- fragment --><p><br />
  </p>
 <h2><a class="anchor" id="starconfiguration"></a>
 Star Configuration&nbsp;&nbsp;<small><a href="#starconfiguration">&lt;-</a></small></h2>
@@ -754,65 +277,11 @@ Star Configuration&nbsp;&nbsp;<small><a href="#starconfiguration">&lt;-</a></sma
 </div>
  <p><b>G1</b> <b>Configuration</b> </p>
 <p>The configuration for this UM Router also has transport statistics monitoring and the WebMonitor turned on.</p>
-<pre class="fragment">&lt;?xml version="1.0" encoding="UTF-8" ?&gt;
-&lt;!-- UM GW xml file- 3 endpoint portals --&gt;
-&lt;tnw-gateway version="1.0"&gt;
-  &lt;daemon&gt;
-    &lt;log type="console"/&gt;
-    &lt;lbm-license-file&gt;lic0014.txt&lt;/lbm-license-file&gt;
-    &lt;monitor interval="5"&gt;
-      &lt;transport-module module="lbm" options="config=trd1.cfg"/&gt;
-    &lt;/monitor&gt;
-    &lt;web-monitor&gt;*:15304&lt;/web-monitor&gt;
-  &lt;/daemon&gt;
-  &lt;portals&gt;
-    &lt;endpoint&gt;
-      &lt;name&gt;G1_to_TRD1&lt;/name&gt;
-      &lt;domain-id&gt;1&lt;/domain-id&gt;
-      &lt;lbm-config&gt;trd1.cfg&lt;/lbm-config&gt;
-    &lt;/endpoint&gt;
-    &lt;endpoint&gt;
-      &lt;name&gt;G1_to_TRD2&lt;/name&gt;
-      &lt;domain-id&gt;2&lt;/domain-id&gt;
-      &lt;lbm-config&gt;trd2.cfg&lt;/lbm-config&gt;
-    &lt;/endpoint&gt;
-    &lt;endpoint&gt;
-      &lt;name&gt;G1_to_TRD3&lt;/name&gt;
-      &lt;domain-id&gt;3&lt;/domain-id&gt;
-      &lt;lbm-config&gt;trd3.cfg&lt;/lbm-config&gt;
-    &lt;/endpoint&gt;
-    &lt;endpoint&gt;
-      &lt;name&gt;G1_to_TRD4&lt;/name&gt;
-      &lt;domain-id&gt;4&lt;/domain-id&gt;
-      &lt;lbm-config&gt;trd4.cfg&lt;/lbm-config&gt;
-    &lt;/endpoint&gt;
-  &lt;/portals&gt;
-&lt;/tnw-gateway&gt;
-</pre><p><b>TRD1</b> <b>Configuration</b> </p>
-<pre class="fragment">## Global Configuration Options ##
-context request_tcp_interface 10.29.3.0/24
-context resolver_multicast_port 13965
-context resolver_multicast_interface 10.29.3.0/24
-context resolver_multicast_address 225.1.37.85
-</pre><p><b>TRD2</b> <b>Configuration</b> </p>
-<pre class="fragment">## Global Configuration Options ##
-context request_tcp_interface 10.29.3.0/24
-context resolver_multicast_port 13965
-context resolver_multicast_interface 10.29.3.0/24
-context resolver_multicast_address 225.2.37.85
-</pre><p><b>TRD3</b> <b>Configuration</b> </p>
-<pre class="fragment">## Global Configuration Options ##
-context request_tcp_interface 10.29.3.0/24
-context resolver_multicast_port 13965
-context resolver_multicast_interface 10.29.3.0/24
-context resolver_multicast_address 225.3.37.85
-</pre><p><b>TRD4</b> <b>Configuration</b> </p>
-<pre class="fragment">## Global Configuration Options ##
-context request_tcp_interface 10.29.3.0/24
-context resolver_multicast_port 13965
-context resolver_multicast_interface 10.29.3.0/24
-context resolver_multicast_address 225.4.37.85
-</pre><p><br />
+<div class="fragment"><div class="line">&lt;?xml version=<span class="stringliteral">&quot;1.0&quot;</span> encoding=<span class="stringliteral">&quot;UTF-8&quot;</span> ?&gt;</div><div class="line">&lt;!-- UM GW xml file- 3 endpoint portals --&gt;</div><div class="line">&lt;tnw-gateway version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div><div class="line">  &lt;daemon&gt;</div><div class="line">    &lt;log type=<span class="stringliteral">&quot;console&quot;</span>/&gt;</div><div class="line">    &lt;lbm-license-file&gt;lic0014.txt&lt;/lbm-license-file&gt;</div><div class="line">    &lt;monitor interval=<span class="stringliteral">&quot;5&quot;</span>&gt;</div><div class="line">      &lt;transport-module module=<span class="stringliteral">&quot;lbm&quot;</span> options=<span class="stringliteral">&quot;config=trd1.cfg&quot;</span>/&gt;</div><div class="line">    &lt;/monitor&gt;</div><div class="line">    &lt;web-monitor&gt;*:15304&lt;/web-monitor&gt;</div><div class="line">  &lt;/daemon&gt;</div><div class="line">  &lt;portals&gt;</div><div class="line">    &lt;endpoint&gt;</div><div class="line">      &lt;name&gt;G1_to_TRD1&lt;/name&gt;</div><div class="line">      &lt;domain-<span class="keywordtype">id</span>&gt;1&lt;/domain-<span class="keywordtype">id</span>&gt;</div><div class="line">      &lt;lbm-config&gt;trd1.cfg&lt;/lbm-config&gt;</div><div class="line">    &lt;/endpoint&gt;</div><div class="line">    &lt;endpoint&gt;</div><div class="line">      &lt;name&gt;G1_to_TRD2&lt;/name&gt;</div><div class="line">      &lt;domain-<span class="keywordtype">id</span>&gt;2&lt;/domain-<span class="keywordtype">id</span>&gt;</div><div class="line">      &lt;lbm-config&gt;trd2.cfg&lt;/lbm-config&gt;</div><div class="line">    &lt;/endpoint&gt;</div><div class="line">    &lt;endpoint&gt;</div><div class="line">      &lt;name&gt;G1_to_TRD3&lt;/name&gt;</div><div class="line">      &lt;domain-<span class="keywordtype">id</span>&gt;3&lt;/domain-<span class="keywordtype">id</span>&gt;</div><div class="line">      &lt;lbm-config&gt;trd3.cfg&lt;/lbm-config&gt;</div><div class="line">    &lt;/endpoint&gt;</div><div class="line">    &lt;endpoint&gt;</div><div class="line">      &lt;name&gt;G1_to_TRD4&lt;/name&gt;</div><div class="line">      &lt;domain-<span class="keywordtype">id</span>&gt;4&lt;/domain-<span class="keywordtype">id</span>&gt;</div><div class="line">      &lt;lbm-config&gt;trd4.cfg&lt;/lbm-config&gt;</div><div class="line">    &lt;/endpoint&gt;</div><div class="line">  &lt;/portals&gt;</div><div class="line">&lt;/tnw-gateway&gt;</div></div><!-- fragment --><p><b>TRD1</b> <b>Configuration</b> </p>
+<div class="fragment"><div class="line"><span class="preprocessor">## Global Configuration Options ##</span></div><div class="line">context request_tcp_interface 10.29.3.0/24</div><div class="line">context resolver_multicast_port 13965</div><div class="line">context resolver_multicast_interface 10.29.3.0/24</div><div class="line">context resolver_multicast_address 225.1.37.85</div></div><!-- fragment --><p><b>TRD2</b> <b>Configuration</b> </p>
+<div class="fragment"><div class="line"><span class="preprocessor">## Global Configuration Options ##</span></div><div class="line">context request_tcp_interface 10.29.3.0/24</div><div class="line">context resolver_multicast_port 13965</div><div class="line">context resolver_multicast_interface 10.29.3.0/24</div><div class="line">context resolver_multicast_address 225.2.37.85</div></div><!-- fragment --><p><b>TRD3</b> <b>Configuration</b> </p>
+<div class="fragment"><div class="line"><span class="preprocessor">## Global Configuration Options ##</span></div><div class="line">context request_tcp_interface 10.29.3.0/24</div><div class="line">context resolver_multicast_port 13965</div><div class="line">context resolver_multicast_interface 10.29.3.0/24</div><div class="line">context resolver_multicast_address 225.3.37.85</div></div><!-- fragment --><p><b>TRD4</b> <b>Configuration</b> </p>
+<div class="fragment"><div class="line"><span class="preprocessor">## Global Configuration Options ##</span></div><div class="line">context request_tcp_interface 10.29.3.0/24</div><div class="line">context resolver_multicast_port 13965</div><div class="line">context resolver_multicast_interface 10.29.3.0/24</div><div class="line">context resolver_multicast_address 225.4.37.85</div></div><!-- fragment --><p><br />
  </p>
 <h2><a class="anchor" id="meshconfiguration"></a>
 Mesh Configuration&nbsp;&nbsp;<small><a href="#meshconfiguration">&lt;-</a></small></h2>
@@ -821,247 +290,14 @@ Mesh Configuration&nbsp;&nbsp;<small><a href="#meshconfiguration">&lt;-</a></sma
 <img src="cfg_mesh.png" alt="cfg_mesh.png"/>
 </div>
  <p><b>TRD1</b> <b>Configuration</b> </p>
-<pre class="fragment">### Global Configuration Options ##
-context request_tcp_interface 10.29.3.0/24
-context resolver_multicast_port 13965
-context resolver_multicast_interface 10.29.3.0/24
-context resolver_multicast_address 225.1.37.85
-</pre><p><b>G1</b> <b>Configuration</b> </p>
-<pre class="fragment">&lt;?xml version="1.0" encoding="UTF-8" ?&gt;
-&lt;tnw-gateway version="1.0"&gt;
-    &lt;daemon&gt;
-        &lt;log type="console"/&gt;
-    &lt;/daemon&gt;
-    &lt;portals&gt;
-      &lt;peer&gt;
-         &lt;name&gt;G1_to_G5&lt;/name&gt;
-         &lt;single-tcp&gt;
-            &lt;initiator&gt;
-               &lt;address&gt;55.55.10.105&lt;/address&gt;
-               &lt;port&gt;23880&lt;/port&gt;
-            &lt;/initiator&gt;
-         &lt;/single-tcp&gt;
-      &lt;/peer&gt;
-      &lt;peer&gt;
-         &lt;name&gt;G1_to_G4&lt;/name&gt;
-         &lt;single-tcp&gt;
-            &lt;initiator&gt;
-               &lt;address&gt;55.55.10.104&lt;/address&gt;
-               &lt;port&gt;23801&lt;/port&gt;
-            &lt;/initiator&gt;
-         &lt;/single-tcp&gt;
-      &lt;/peer&gt;
-      &lt;endpoint&gt;
-         &lt;name&gt;G1_to_TRD1&lt;/name&gt;
-         &lt;domain-id&gt;1&lt;/domain-id&gt;
-         &lt;lbm-config&gt;TRD1.cfg&lt;/lbm-config&gt;
-      &lt;/endpoint&gt;
-      &lt;endpoint&gt;
-         &lt;name&gt;G1_to_TRD2&lt;/name&gt;
-         &lt;domain-id&gt;2&lt;/domain-id&gt;
-         &lt;lbm-config&gt;TRD2.cfg&lt;/lbm-config&gt;
-      &lt;/endpoint&gt;
-      &lt;peer&gt;
-         &lt;name&gt;G1_to_G2&lt;/name&gt;
-         &lt;single-tcp&gt;
-            &lt;initiator&gt;
-               &lt;address&gt;55.55.10.102&lt;/address&gt;
-               &lt;port&gt;23745&lt;/port&gt;
-            &lt;/initiator&gt;
-         &lt;/single-tcp&gt;
-      &lt;/peer&gt;
-    &lt;/portals&gt;
-&lt;/tnw-gateway&gt;
-</pre><p><b>G2</b> <b>Configuration</b> </p>
-<pre class="fragment">&lt;?xml version="1.0" encoding="UTF-8" ?&gt;
-&lt;tnw-gateway version="1.0"&gt;
-    &lt;daemon&gt;
-        &lt;log type="console"/&gt;
-    &lt;/daemon&gt;
-    &lt;portals&gt;
-      &lt;peer&gt;
-         &lt;name&gt;G2_to_G5&lt;/name&gt;
-         &lt;single-tcp&gt;
-            &lt;initiator&gt;
-               &lt;address&gt;55.55.10.105&lt;/address&gt;
-               &lt;port&gt;23608&lt;/port&gt;
-            &lt;/initiator&gt;
-         &lt;/single-tcp&gt;
-      &lt;/peer&gt;
-      &lt;peer&gt;
-         &lt;name&gt;G2_to_G4&lt;/name&gt;
-         &lt;single-tcp&gt;
-            &lt;acceptor&gt;
-               &lt;listen-port&gt;23831&lt;/listen-port&gt;
-            &lt;/acceptor&gt;
-         &lt;/single-tcp&gt;
-      &lt;/peer&gt;
-      &lt;peer&gt;
-         &lt;name&gt;G2_to_G1&lt;/name&gt;
-         &lt;single-tcp&gt;
-            &lt;acceptor&gt;
-               &lt;listen-port&gt;23745&lt;/listen-port&gt;
-            &lt;/acceptor&gt;
-         &lt;/single-tcp&gt;
-      &lt;/peer&gt;
-      &lt;peer&gt;
-         &lt;name&gt;G2_to_G3&lt;/name&gt;
-         &lt;single-tcp&gt;
-            &lt;initiator&gt;
-               &lt;address&gt;55.55.10.103&lt;/address&gt;
-               &lt;port&gt;23632&lt;/port&gt;
-            &lt;/initiator&gt;
-         &lt;/single-tcp&gt;
-      &lt;/peer&gt;
-      &lt;endpoint&gt;
-         &lt;name&gt;G2_to_TRD2&lt;/name&gt;
-         &lt;domain-id&gt;2&lt;/domain-id&gt;
-         &lt;lbm-config&gt;TRD2.cfg&lt;/lbm-config&gt;
-      &lt;/endpoint&gt;
-    &lt;/portals&gt;
-&lt;/tnw-gateway&gt;
-</pre><p><b>G3</b> <b>Configuration</b> </p>
-<pre class="fragment">&lt;?xml version="1.0" encoding="UTF-8" ?&gt;
-&lt;tnw-gateway version="1.0"&gt;
-    &lt;daemon&gt;
-        &lt;log type="console"/&gt;
-    &lt;/daemon&gt;
-    &lt;portals&gt;
-      &lt;peer&gt;
-         &lt;name&gt;G3_to_G5&lt;/name&gt;
-         &lt;single-tcp&gt;
-            &lt;initiator&gt;
-               &lt;address&gt;55.55.10.105&lt;/address&gt;
-               &lt;port&gt;23739&lt;/port&gt;
-            &lt;/initiator&gt;
-         &lt;/single-tcp&gt;
-      &lt;/peer&gt;
-      &lt;peer&gt;
-         &lt;name&gt;G3_to_G4&lt;/name&gt;
-         &lt;single-tcp&gt;
-            &lt;acceptor&gt;
-               &lt;listen-port&gt;23754&lt;/listen-port&gt;
-            &lt;/acceptor&gt;
-         &lt;/single-tcp&gt;
-      &lt;/peer&gt;
-      &lt;peer&gt;
-         &lt;name&gt;G3_to_G2&lt;/name&gt;
-         &lt;single-tcp&gt;
-            &lt;acceptor&gt;
-               &lt;listen-port&gt;23632&lt;/listen-port&gt;
-            &lt;/acceptor&gt;
-         &lt;/single-tcp&gt;
-      &lt;/peer&gt;
-    &lt;/portals&gt;
-&lt;/tnw-gateway&gt;
-</pre><p><b>TRD2</b> <b>Configuration</b> </p>
-<pre class="fragment">## Global Configuration Options ##
-context request_tcp_interface 10.29.3.0/24
-context resolver_multicast_port 13965
-context resolver_multicast_interface 10.29.3.0/24
-context resolver_multicast_address 225.2.37.85
-</pre><p><b>TRD3</b> <b>Configuration</b> </p>
-<pre class="fragment">## Global Configuration Options ##
-context request_tcp_interface 10.29.3.0/24
-context resolver_multicast_port 13965
-context resolver_multicast_interface 10.29.3.0/24
-context resolver_multicast_address 225.3.37.85
-</pre><p><b>G4</b> <b>Configuration</b> </p>
-<pre class="fragment">&lt;?xml version="1.0" encoding="UTF-8" ?&gt;
-&lt;tnw-gateway version="1.0"&gt;
-    &lt;daemon&gt;
-        &lt;log type="console"/&gt;
-    &lt;/daemon&gt;
-    &lt;portals&gt;
-      &lt;peer&gt;
-         &lt;name&gt;G4_to_G5&lt;/name&gt;
-         &lt;single-tcp&gt;
-            &lt;initiator&gt;
-               &lt;address&gt;55.55.10.105&lt;/address&gt;
-               &lt;port&gt;23580&lt;/port&gt;
-            &lt;/initiator&gt;
-         &lt;/single-tcp&gt;
-      &lt;/peer&gt;
-      &lt;endpoint&gt;
-         &lt;name&gt;G4_to_TRD1&lt;/name&gt;
-         &lt;domain-id&gt;1&lt;/domain-id&gt;
-         &lt;lbm-config&gt;TRD1.cfg&lt;/lbm-config&gt;
-      &lt;/endpoint&gt;
-      &lt;endpoint&gt;
-         &lt;name&gt;G4_to_TRD3&lt;/name&gt;
-         &lt;domain-id&gt;3&lt;/domain-id&gt;
-         &lt;lbm-config&gt;TRD3.cfg&lt;/lbm-config&gt;
-      &lt;/endpoint&gt;
-      &lt;peer&gt;
-         &lt;name&gt;G4_to_G1&lt;/name&gt;
-         &lt;single-tcp&gt;
-            &lt;acceptor&gt;
-               &lt;listen-port&gt;23801&lt;/listen-port&gt;
-            &lt;/acceptor&gt;
-         &lt;/single-tcp&gt;
-      &lt;/peer&gt;
-      &lt;peer&gt;
-         &lt;name&gt;G4_to_G3&lt;/name&gt;
-         &lt;single-tcp&gt;
-            &lt;initiator&gt;
-               &lt;address&gt;55.55.10.103&lt;/address&gt;
-               &lt;port&gt;23754&lt;/port&gt;
-            &lt;/initiator&gt;
-         &lt;/single-tcp&gt;
-      &lt;/peer&gt;
-      &lt;peer&gt;
-         &lt;name&gt;G4_to_G2&lt;/name&gt;
-         &lt;single-tcp&gt;
-            &lt;initiator&gt;
-               &lt;address&gt;55.55.10.102&lt;/address&gt;
-               &lt;port&gt;23831&lt;/port&gt;
-            &lt;/initiator&gt;
-         &lt;/single-tcp&gt;
-      &lt;/peer&gt;
-    &lt;/portals&gt;
-&lt;/tnw-gateway&gt;
-</pre><p><b>G5</b> <b>Configuration</b> </p>
-<pre class="fragment">&lt;?xml version="1.0" encoding="UTF-8" ?&gt;
-&lt;tnw-gateway version="1.0"&gt;
-    &lt;daemon&gt;
-        &lt;log type="console"/&gt;
-    &lt;/daemon&gt;
-    &lt;portals&gt;
-      &lt;peer&gt;
-         &lt;name&gt;G5_to_G4&lt;/name&gt;
-         &lt;single-tcp&gt;
-            &lt;acceptor&gt;
-               &lt;listen-port&gt;23580&lt;/listen-port&gt;
-            &lt;/acceptor&gt;
-         &lt;/single-tcp&gt;
-      &lt;/peer&gt;
-      &lt;peer&gt;
-         &lt;name&gt;G5_to_G1&lt;/name&gt;
-         &lt;single-tcp&gt;
-            &lt;acceptor&gt;
-               &lt;listen-port&gt;23880&lt;/listen-port&gt;
-            &lt;/acceptor&gt;
-         &lt;/single-tcp&gt;
-      &lt;/peer&gt;
-      &lt;peer&gt;
-         &lt;name&gt;G5_to_G3&lt;/name&gt;
-         &lt;single-tcp&gt;
-            &lt;acceptor&gt;
-               &lt;listen-port&gt;23739&lt;/listen-port&gt;
-            &lt;/acceptor&gt;
-         &lt;/single-tcp&gt;
-      &lt;/peer&gt;
-      &lt;peer&gt;
-         &lt;name&gt;G5_to_G2&lt;/name&gt;
-         &lt;single-tcp&gt;
-            &lt;acceptor&gt;
-               &lt;listen-port&gt;23608&lt;/listen-port&gt;
-            &lt;/acceptor&gt;
-         &lt;/single-tcp&gt;
-      &lt;/peer&gt;
-    &lt;/portals&gt;
-&lt;/tnw-gateway&gt;
-</pre><p><br />
+<div class="fragment"><div class="line"><span class="preprocessor">### Global Configuration Options ##</span></div><div class="line">context request_tcp_interface 10.29.3.0/24</div><div class="line">context resolver_multicast_port 13965</div><div class="line">context resolver_multicast_interface 10.29.3.0/24</div><div class="line">context resolver_multicast_address 225.1.37.85</div></div><!-- fragment --><p><b>G1</b> <b>Configuration</b> </p>
+<div class="fragment"><div class="line">&lt;?xml version=<span class="stringliteral">&quot;1.0&quot;</span> encoding=<span class="stringliteral">&quot;UTF-8&quot;</span> ?&gt;</div><div class="line">&lt;tnw-gateway version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div><div class="line">    &lt;daemon&gt;</div><div class="line">        &lt;log type=<span class="stringliteral">&quot;console&quot;</span>/&gt;</div><div class="line">    &lt;/daemon&gt;</div><div class="line">    &lt;portals&gt;</div><div class="line">      &lt;peer&gt;</div><div class="line">         &lt;name&gt;G1_to_G5&lt;/name&gt;</div><div class="line">         &lt;single-tcp&gt;</div><div class="line">            &lt;initiator&gt;</div><div class="line">               &lt;address&gt;55.55.10.105&lt;/address&gt;</div><div class="line">               &lt;port&gt;23880&lt;/port&gt;</div><div class="line">            &lt;/initiator&gt;</div><div class="line">         &lt;/single-tcp&gt;</div><div class="line">      &lt;/peer&gt;</div><div class="line">      &lt;peer&gt;</div><div class="line">         &lt;name&gt;G1_to_G4&lt;/name&gt;</div><div class="line">         &lt;single-tcp&gt;</div><div class="line">            &lt;initiator&gt;</div><div class="line">               &lt;address&gt;55.55.10.104&lt;/address&gt;</div><div class="line">               &lt;port&gt;23801&lt;/port&gt;</div><div class="line">            &lt;/initiator&gt;</div><div class="line">         &lt;/single-tcp&gt;</div><div class="line">      &lt;/peer&gt;</div><div class="line">      &lt;endpoint&gt;</div><div class="line">         &lt;name&gt;G1_to_TRD1&lt;/name&gt;</div><div class="line">         &lt;domain-<span class="keywordtype">id</span>&gt;1&lt;/domain-<span class="keywordtype">id</span>&gt;</div><div class="line">         &lt;lbm-config&gt;TRD1.cfg&lt;/lbm-config&gt;</div><div class="line">      &lt;/endpoint&gt;</div><div class="line">      &lt;endpoint&gt;</div><div class="line">         &lt;name&gt;G1_to_TRD2&lt;/name&gt;</div><div class="line">         &lt;domain-<span class="keywordtype">id</span>&gt;2&lt;/domain-<span class="keywordtype">id</span>&gt;</div><div class="line">         &lt;lbm-config&gt;TRD2.cfg&lt;/lbm-config&gt;</div><div class="line">      &lt;/endpoint&gt;</div><div class="line">      &lt;peer&gt;</div><div class="line">         &lt;name&gt;G1_to_G2&lt;/name&gt;</div><div class="line">         &lt;single-tcp&gt;</div><div class="line">            &lt;initiator&gt;</div><div class="line">               &lt;address&gt;55.55.10.102&lt;/address&gt;</div><div class="line">               &lt;port&gt;23745&lt;/port&gt;</div><div class="line">            &lt;/initiator&gt;</div><div class="line">         &lt;/single-tcp&gt;</div><div class="line">      &lt;/peer&gt;</div><div class="line">    &lt;/portals&gt;</div><div class="line">&lt;/tnw-gateway&gt;</div></div><!-- fragment --><p><b>G2</b> <b>Configuration</b> </p>
+<div class="fragment"><div class="line">&lt;?xml version=<span class="stringliteral">&quot;1.0&quot;</span> encoding=<span class="stringliteral">&quot;UTF-8&quot;</span> ?&gt;</div><div class="line">&lt;tnw-gateway version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div><div class="line">    &lt;daemon&gt;</div><div class="line">        &lt;log type=<span class="stringliteral">&quot;console&quot;</span>/&gt;</div><div class="line">    &lt;/daemon&gt;</div><div class="line">    &lt;portals&gt;</div><div class="line">      &lt;peer&gt;</div><div class="line">         &lt;name&gt;G2_to_G5&lt;/name&gt;</div><div class="line">         &lt;single-tcp&gt;</div><div class="line">            &lt;initiator&gt;</div><div class="line">               &lt;address&gt;55.55.10.105&lt;/address&gt;</div><div class="line">               &lt;port&gt;23608&lt;/port&gt;</div><div class="line">            &lt;/initiator&gt;</div><div class="line">         &lt;/single-tcp&gt;</div><div class="line">      &lt;/peer&gt;</div><div class="line">      &lt;peer&gt;</div><div class="line">         &lt;name&gt;G2_to_G4&lt;/name&gt;</div><div class="line">         &lt;single-tcp&gt;</div><div class="line">            &lt;acceptor&gt;</div><div class="line">               &lt;listen-port&gt;23831&lt;/listen-port&gt;</div><div class="line">            &lt;/acceptor&gt;</div><div class="line">         &lt;/single-tcp&gt;</div><div class="line">      &lt;/peer&gt;</div><div class="line">      &lt;peer&gt;</div><div class="line">         &lt;name&gt;G2_to_G1&lt;/name&gt;</div><div class="line">         &lt;single-tcp&gt;</div><div class="line">            &lt;acceptor&gt;</div><div class="line">               &lt;listen-port&gt;23745&lt;/listen-port&gt;</div><div class="line">            &lt;/acceptor&gt;</div><div class="line">         &lt;/single-tcp&gt;</div><div class="line">      &lt;/peer&gt;</div><div class="line">      &lt;peer&gt;</div><div class="line">         &lt;name&gt;G2_to_G3&lt;/name&gt;</div><div class="line">         &lt;single-tcp&gt;</div><div class="line">            &lt;initiator&gt;</div><div class="line">               &lt;address&gt;55.55.10.103&lt;/address&gt;</div><div class="line">               &lt;port&gt;23632&lt;/port&gt;</div><div class="line">            &lt;/initiator&gt;</div><div class="line">         &lt;/single-tcp&gt;</div><div class="line">      &lt;/peer&gt;</div><div class="line">      &lt;endpoint&gt;</div><div class="line">         &lt;name&gt;G2_to_TRD2&lt;/name&gt;</div><div class="line">         &lt;domain-<span class="keywordtype">id</span>&gt;2&lt;/domain-<span class="keywordtype">id</span>&gt;</div><div class="line">         &lt;lbm-config&gt;TRD2.cfg&lt;/lbm-config&gt;</div><div class="line">      &lt;/endpoint&gt;</div><div class="line">    &lt;/portals&gt;</div><div class="line">&lt;/tnw-gateway&gt;</div></div><!-- fragment --><p><b>G3</b> <b>Configuration</b> </p>
+<div class="fragment"><div class="line">&lt;?xml version=<span class="stringliteral">&quot;1.0&quot;</span> encoding=<span class="stringliteral">&quot;UTF-8&quot;</span> ?&gt;</div><div class="line">&lt;tnw-gateway version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div><div class="line">    &lt;daemon&gt;</div><div class="line">        &lt;log type=<span class="stringliteral">&quot;console&quot;</span>/&gt;</div><div class="line">    &lt;/daemon&gt;</div><div class="line">    &lt;portals&gt;</div><div class="line">      &lt;peer&gt;</div><div class="line">         &lt;name&gt;G3_to_G5&lt;/name&gt;</div><div class="line">         &lt;single-tcp&gt;</div><div class="line">            &lt;initiator&gt;</div><div class="line">               &lt;address&gt;55.55.10.105&lt;/address&gt;</div><div class="line">               &lt;port&gt;23739&lt;/port&gt;</div><div class="line">            &lt;/initiator&gt;</div><div class="line">         &lt;/single-tcp&gt;</div><div class="line">      &lt;/peer&gt;</div><div class="line">      &lt;peer&gt;</div><div class="line">         &lt;name&gt;G3_to_G4&lt;/name&gt;</div><div class="line">         &lt;single-tcp&gt;</div><div class="line">            &lt;acceptor&gt;</div><div class="line">               &lt;listen-port&gt;23754&lt;/listen-port&gt;</div><div class="line">            &lt;/acceptor&gt;</div><div class="line">         &lt;/single-tcp&gt;</div><div class="line">      &lt;/peer&gt;</div><div class="line">      &lt;peer&gt;</div><div class="line">         &lt;name&gt;G3_to_G2&lt;/name&gt;</div><div class="line">         &lt;single-tcp&gt;</div><div class="line">            &lt;acceptor&gt;</div><div class="line">               &lt;listen-port&gt;23632&lt;/listen-port&gt;</div><div class="line">            &lt;/acceptor&gt;</div><div class="line">         &lt;/single-tcp&gt;</div><div class="line">      &lt;/peer&gt;</div><div class="line">    &lt;/portals&gt;</div><div class="line">&lt;/tnw-gateway&gt;</div></div><!-- fragment --><p><b>TRD2</b> <b>Configuration</b> </p>
+<div class="fragment"><div class="line"><span class="preprocessor">## Global Configuration Options ##</span></div><div class="line">context request_tcp_interface 10.29.3.0/24</div><div class="line">context resolver_multicast_port 13965</div><div class="line">context resolver_multicast_interface 10.29.3.0/24</div><div class="line">context resolver_multicast_address 225.2.37.85</div></div><!-- fragment --><p><b>TRD3</b> <b>Configuration</b> </p>
+<div class="fragment"><div class="line"><span class="preprocessor">## Global Configuration Options ##</span></div><div class="line">context request_tcp_interface 10.29.3.0/24</div><div class="line">context resolver_multicast_port 13965</div><div class="line">context resolver_multicast_interface 10.29.3.0/24</div><div class="line">context resolver_multicast_address 225.3.37.85</div></div><!-- fragment --><p><b>G4</b> <b>Configuration</b> </p>
+<div class="fragment"><div class="line">&lt;?xml version=<span class="stringliteral">&quot;1.0&quot;</span> encoding=<span class="stringliteral">&quot;UTF-8&quot;</span> ?&gt;</div><div class="line">&lt;tnw-gateway version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div><div class="line">    &lt;daemon&gt;</div><div class="line">        &lt;log type=<span class="stringliteral">&quot;console&quot;</span>/&gt;</div><div class="line">    &lt;/daemon&gt;</div><div class="line">    &lt;portals&gt;</div><div class="line">      &lt;peer&gt;</div><div class="line">         &lt;name&gt;G4_to_G5&lt;/name&gt;</div><div class="line">         &lt;single-tcp&gt;</div><div class="line">            &lt;initiator&gt;</div><div class="line">               &lt;address&gt;55.55.10.105&lt;/address&gt;</div><div class="line">               &lt;port&gt;23580&lt;/port&gt;</div><div class="line">            &lt;/initiator&gt;</div><div class="line">         &lt;/single-tcp&gt;</div><div class="line">      &lt;/peer&gt;</div><div class="line">      &lt;endpoint&gt;</div><div class="line">         &lt;name&gt;G4_to_TRD1&lt;/name&gt;</div><div class="line">         &lt;domain-<span class="keywordtype">id</span>&gt;1&lt;/domain-<span class="keywordtype">id</span>&gt;</div><div class="line">         &lt;lbm-config&gt;TRD1.cfg&lt;/lbm-config&gt;</div><div class="line">      &lt;/endpoint&gt;</div><div class="line">      &lt;endpoint&gt;</div><div class="line">         &lt;name&gt;G4_to_TRD3&lt;/name&gt;</div><div class="line">         &lt;domain-<span class="keywordtype">id</span>&gt;3&lt;/domain-<span class="keywordtype">id</span>&gt;</div><div class="line">         &lt;lbm-config&gt;TRD3.cfg&lt;/lbm-config&gt;</div><div class="line">      &lt;/endpoint&gt;</div><div class="line">      &lt;peer&gt;</div><div class="line">         &lt;name&gt;G4_to_G1&lt;/name&gt;</div><div class="line">         &lt;single-tcp&gt;</div><div class="line">            &lt;acceptor&gt;</div><div class="line">               &lt;listen-port&gt;23801&lt;/listen-port&gt;</div><div class="line">            &lt;/acceptor&gt;</div><div class="line">         &lt;/single-tcp&gt;</div><div class="line">      &lt;/peer&gt;</div><div class="line">      &lt;peer&gt;</div><div class="line">         &lt;name&gt;G4_to_G3&lt;/name&gt;</div><div class="line">         &lt;single-tcp&gt;</div><div class="line">            &lt;initiator&gt;</div><div class="line">               &lt;address&gt;55.55.10.103&lt;/address&gt;</div><div class="line">               &lt;port&gt;23754&lt;/port&gt;</div><div class="line">            &lt;/initiator&gt;</div><div class="line">         &lt;/single-tcp&gt;</div><div class="line">      &lt;/peer&gt;</div><div class="line">      &lt;peer&gt;</div><div class="line">         &lt;name&gt;G4_to_G2&lt;/name&gt;</div><div class="line">         &lt;single-tcp&gt;</div><div class="line">            &lt;initiator&gt;</div><div class="line">               &lt;address&gt;55.55.10.102&lt;/address&gt;</div><div class="line">               &lt;port&gt;23831&lt;/port&gt;</div><div class="line">            &lt;/initiator&gt;</div><div class="line">         &lt;/single-tcp&gt;</div><div class="line">      &lt;/peer&gt;</div><div class="line">    &lt;/portals&gt;</div><div class="line">&lt;/tnw-gateway&gt;</div></div><!-- fragment --><p><b>G5</b> <b>Configuration</b> </p>
+<div class="fragment"><div class="line">&lt;?xml version=<span class="stringliteral">&quot;1.0&quot;</span> encoding=<span class="stringliteral">&quot;UTF-8&quot;</span> ?&gt;</div><div class="line">&lt;tnw-gateway version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div><div class="line">    &lt;daemon&gt;</div><div class="line">        &lt;log type=<span class="stringliteral">&quot;console&quot;</span>/&gt;</div><div class="line">    &lt;/daemon&gt;</div><div class="line">    &lt;portals&gt;</div><div class="line">      &lt;peer&gt;</div><div class="line">         &lt;name&gt;G5_to_G4&lt;/name&gt;</div><div class="line">         &lt;single-tcp&gt;</div><div class="line">            &lt;acceptor&gt;</div><div class="line">               &lt;listen-port&gt;23580&lt;/listen-port&gt;</div><div class="line">            &lt;/acceptor&gt;</div><div class="line">         &lt;/single-tcp&gt;</div><div class="line">      &lt;/peer&gt;</div><div class="line">      &lt;peer&gt;</div><div class="line">         &lt;name&gt;G5_to_G1&lt;/name&gt;</div><div class="line">         &lt;single-tcp&gt;</div><div class="line">            &lt;acceptor&gt;</div><div class="line">               &lt;listen-port&gt;23880&lt;/listen-port&gt;</div><div class="line">            &lt;/acceptor&gt;</div><div class="line">         &lt;/single-tcp&gt;</div><div class="line">      &lt;/peer&gt;</div><div class="line">      &lt;peer&gt;</div><div class="line">         &lt;name&gt;G5_to_G3&lt;/name&gt;</div><div class="line">         &lt;single-tcp&gt;</div><div class="line">            &lt;acceptor&gt;</div><div class="line">               &lt;listen-port&gt;23739&lt;/listen-port&gt;</div><div class="line">            &lt;/acceptor&gt;</div><div class="line">         &lt;/single-tcp&gt;</div><div class="line">      &lt;/peer&gt;</div><div class="line">      &lt;peer&gt;</div><div class="line">         &lt;name&gt;G5_to_G2&lt;/name&gt;</div><div class="line">         &lt;single-tcp&gt;</div><div class="line">            &lt;acceptor&gt;</div><div class="line">               &lt;listen-port&gt;23608&lt;/listen-port&gt;</div><div class="line">            &lt;/acceptor&gt;</div><div class="line">         &lt;/single-tcp&gt;</div><div class="line">      &lt;/peer&gt;</div><div class="line">    &lt;/portals&gt;</div><div class="line">&lt;/tnw-gateway&gt;</div></div><!-- fragment --><p><br />
  </p>
 <h1><a class="anchor" id="usingumconfigurationfileswiththeumrouter"></a>
 Using UM Configuration Files with the UM Router&nbsp;&nbsp;<small><a href="#usingumconfigurationfileswiththeumrouter">&lt;-</a></small></h1>
@@ -1079,73 +315,17 @@ Using UM XML templates to set options for individual portals lets the UM Router 
 <h2><a class="anchor" id="settingindividualendpointoptions"></a>
 Setting Individual Endpoint Options&nbsp;&nbsp;<small><a href="#settingindividualendpointoptions">&lt;-</a></small></h2>
 <p>When setting endpoint options, first name the context of each endpoint in the UM Router's XML configuration file.</p>
-<pre class="fragment">&lt;portals&gt;
-  &lt;endpoint&gt;
-    &lt;name&gt;Endpoint_1&lt;/name&gt;
-    &lt;domain-id&gt;1&lt;/domain-id&gt;
-    &lt;source-context-name&gt;G1_E1&lt;/source-context-name&gt;
-    &lt;lbm-attributes&gt;
-      &lt;option name="request_tcp_interface" scope="context" value="10.29.4.0/24"/&gt;
-    &lt;/lbm-attributes&gt;
-  &lt;/endpoint&gt;
-  &lt;endpoint&gt;
-    &lt;name&gt;G1-TRD2&lt;/name&gt;
-    &lt;domain-id&gt;2&lt;/domain-id&gt;
-    &lt;receiver-context-name&gt;G1_E2&lt;/source-context-name&gt;
-    &lt;lbm-attributes&gt;
-      &lt;option name="request_tcp_interface" scope="context" value="10.29.5.0/24" /&gt;
-    &lt;/lbm-attributes&gt;
-  &lt;/endpoint&gt;
-&lt;/portals&gt;
-</pre><p>Then assign configuration templates to those contexts in the UM XML configuration file.</p>
-<pre class="fragment">&lt;application name="dro1" template="global"&gt;
-  &lt;contexts&gt;
-    &lt;context name="G1_E1" template="G1-E1-options"&gt;
-      &lt;sources /&gt;
-    &lt;/context&gt;
-    &lt;context name="G1_E2" template="G1-E2-options"&gt;
-      &lt;sources /&gt;
-    &lt;/context&gt;
-  &lt;/contexts&gt;
-&lt;/application&gt;
-</pre><p>You specify the unique options for each of this UM Router's two endpoints in the UM XML configuration <code>&lt;templates&gt;</code> section used for G1-E1-options and G1-E2-options.</p>
+<div class="fragment"><div class="line">&lt;portals&gt;</div><div class="line">  &lt;endpoint&gt;</div><div class="line">    &lt;name&gt;Endpoint_1&lt;/name&gt;</div><div class="line">    &lt;domain-<span class="keywordtype">id</span>&gt;1&lt;/domain-<span class="keywordtype">id</span>&gt;</div><div class="line">    &lt;source-context-name&gt;G1_E1&lt;/source-context-name&gt;</div><div class="line">    &lt;lbm-attributes&gt;</div><div class="line">      &lt;option name=<span class="stringliteral">&quot;request_tcp_interface&quot;</span> scope=<span class="stringliteral">&quot;context&quot;</span> value=<span class="stringliteral">&quot;10.29.4.0/24&quot;</span>/&gt;</div><div class="line">    &lt;/lbm-attributes&gt;</div><div class="line">  &lt;/endpoint&gt;</div><div class="line">  &lt;endpoint&gt;</div><div class="line">    &lt;name&gt;G1-TRD2&lt;/name&gt;</div><div class="line">    &lt;domain-<span class="keywordtype">id</span>&gt;2&lt;/domain-<span class="keywordtype">id</span>&gt;</div><div class="line">    &lt;receiver-context-name&gt;G1_E2&lt;/source-context-name&gt;</div><div class="line">    &lt;lbm-attributes&gt;</div><div class="line">      &lt;option name=<span class="stringliteral">&quot;request_tcp_interface&quot;</span> scope=<span class="stringliteral">&quot;context&quot;</span> value=<span class="stringliteral">&quot;10.29.5.0/24&quot;</span> /&gt;</div><div class="line">    &lt;/lbm-attributes&gt;</div><div class="line">  &lt;/endpoint&gt;</div><div class="line">&lt;/portals&gt;</div></div><!-- fragment --><p>Then assign configuration templates to those contexts in the UM XML configuration file.</p>
+<div class="fragment"><div class="line">&lt;application name=<span class="stringliteral">&quot;dro1&quot;</span> <span class="keyword">template</span>=<span class="stringliteral">&quot;global&quot;</span>&gt;</div><div class="line">  &lt;contexts&gt;</div><div class="line">    &lt;context name=<span class="stringliteral">&quot;G1_E1&quot;</span> <span class="keyword">template</span>=<span class="stringliteral">&quot;G1-E1-options&quot;</span>&gt;</div><div class="line">      &lt;sources /&gt;</div><div class="line">    &lt;/context&gt;</div><div class="line">    &lt;context name=<span class="stringliteral">&quot;G1_E2&quot;</span> <span class="keyword">template</span>=<span class="stringliteral">&quot;G1-E2-options&quot;</span>&gt;</div><div class="line">      &lt;sources /&gt;</div><div class="line">    &lt;/context&gt;</div><div class="line">  &lt;/contexts&gt;</div><div class="line">&lt;/application&gt;</div></div><!-- fragment --><p>You specify the unique options for each of this UM Router's two endpoints in the UM XML configuration <code>&lt;templates&gt;</code> section used for G1-E1-options and G1-E2-options.</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="umrouterandumxmlconfigurationusecases"></a>
 UM Router and UM XML Configuration Use Cases&nbsp;&nbsp;<small><a href="#umrouterandumxmlconfigurationusecases">&lt;-</a></small></h2>
 <p>One advantage of using UM XML configuration files with the UM Router is the ability to assign unique UM attributes to the topics and contexts used for the proxy sources and receivers (which plain text UM configuration files cannot do). The following example shows how to assign a different LBTRM multicast address to a source based on its topic.</p>
 <p>Create a new UM XML configuration template for the desired topic name.</p>
-<pre class="fragment">&lt;template name="AAA-template"&gt;
-  &lt;options type="source"&gt;
-    &lt;option name="transport_lbtrm_multicast_address"
-    default-value="225.2.37.88"/&gt;
-  &lt;/options&gt;
-&lt;/template&gt;
-</pre><p>Then include this template in the <code>&lt;application&gt;</code> element associated with the UM Router.</p>
-<pre class="fragment">&lt;application name="dro1" template="global-options"&gt;
-  &lt;contexts&gt;
-    &lt;context&gt;
-      &lt;sources template="source-options"&gt;
-        &lt;topic topicname="AAA" template="AAA-template" /&gt;
-      &lt;/sources&gt;
-    &lt;/context&gt;
-  &lt;/contexts&gt;
-&lt;/application&gt;
-</pre><p>It is also possible to assign UM attributes directly in the <code>&lt;application&gt;</code> tag. For example, the following specifies that a particular topic should use an LBT-RU transport.</p>
-<pre class="fragment">&lt;application name="dro1" template="dro1-common"&gt;
-  &lt;contexts&gt;
-    &lt;context&gt;
-      &lt;sources template="source-template"&gt;
-        &lt;topic topicname="LBTRU_TOPIC"&gt;
-          &lt;options type="source"&gt;
-            &lt;option name="transport" default-value="lbtru" /&gt;
-            &lt;/options&gt;
-        &lt;/topic&gt;
-      &lt;/sources&gt;
-    &lt;/context&gt;
-  &lt;/contexts&gt;
-&lt;/application&gt;
-</pre><p><br />
+<div class="fragment"><div class="line">&lt;<span class="keyword">template</span> name=<span class="stringliteral">&quot;AAA-template&quot;</span>&gt;</div><div class="line">  &lt;options type=<span class="stringliteral">&quot;source&quot;</span>&gt;</div><div class="line">    &lt;option name=<span class="stringliteral">&quot;transport_lbtrm_multicast_address&quot;</span></div><div class="line">    <span class="keywordflow">default</span>-value=<span class="stringliteral">&quot;225.2.37.88&quot;</span>/&gt;</div><div class="line">  &lt;/options&gt;</div><div class="line">&lt;/<span class="keyword">template</span>&gt;</div></div><!-- fragment --><p>Then include this template in the <code>&lt;application&gt;</code> element associated with the UM Router.</p>
+<div class="fragment"><div class="line">&lt;application name=<span class="stringliteral">&quot;dro1&quot;</span> <span class="keyword">template</span>=<span class="stringliteral">&quot;global-options&quot;</span>&gt;</div><div class="line">  &lt;contexts&gt;</div><div class="line">    &lt;context&gt;</div><div class="line">      &lt;sources <span class="keyword">template</span>=<span class="stringliteral">&quot;source-options&quot;</span>&gt;</div><div class="line">        &lt;topic topicname=<span class="stringliteral">&quot;AAA&quot;</span> <span class="keyword">template</span>=<span class="stringliteral">&quot;AAA-template&quot;</span> /&gt;</div><div class="line">      &lt;/sources&gt;</div><div class="line">    &lt;/context&gt;</div><div class="line">  &lt;/contexts&gt;</div><div class="line">&lt;/application&gt;</div></div><!-- fragment --><p>It is also possible to assign UM attributes directly in the <code>&lt;application&gt;</code> tag. For example, the following specifies that a particular topic should use an LBT-RU transport.</p>
+<div class="fragment"><div class="line">&lt;application name=<span class="stringliteral">&quot;dro1&quot;</span> <span class="keyword">template</span>=<span class="stringliteral">&quot;dro1-common&quot;</span>&gt;</div><div class="line">  &lt;contexts&gt;</div><div class="line">    &lt;context&gt;</div><div class="line">      &lt;sources <span class="keyword">template</span>=<span class="stringliteral">&quot;source-template&quot;</span>&gt;</div><div class="line">        &lt;topic topicname=<span class="stringliteral">&quot;LBTRU_TOPIC&quot;</span>&gt;</div><div class="line">          &lt;options type=<span class="stringliteral">&quot;source&quot;</span>&gt;</div><div class="line">            &lt;option name=<span class="stringliteral">&quot;transport&quot;</span> <span class="keywordflow">default</span>-value=<span class="stringliteral">&quot;lbtru&quot;</span> /&gt;</div><div class="line">            &lt;/options&gt;</div><div class="line">        &lt;/topic&gt;</div><div class="line">      &lt;/sources&gt;</div><div class="line">    &lt;/context&gt;</div><div class="line">  &lt;/contexts&gt;</div><div class="line">&lt;/application&gt;</div></div><!-- fragment --><p><br />
  </p>
 <h2><a class="anchor" id="sampleconfiguration"></a>
 Sample Configuration&nbsp;&nbsp;<small><a href="#sampleconfiguration">&lt;-</a></small></h2>
@@ -1154,88 +334,12 @@ Sample Configuration&nbsp;&nbsp;<small><a href="#sampleconfiguration">&lt;-</a><
  </p>
 <h2><a class="anchor" id="xmlumconfigurationfile"></a>
 XML UM Configuration File&nbsp;&nbsp;<small><a href="#xmlumconfigurationfile">&lt;-</a></small></h2>
-<pre class="fragment">&lt;?xml version="1.0" encoding="UTF-8" ?&gt;
-&lt;um-configuration version="1.0"&gt;
-  &lt;templates&gt;
-    &lt;template name="dro1-common"&gt;
-      &lt;options type="source"&gt;
-        &lt;option name="transport" default-value="tcp" /&gt;
-      &lt;/options&gt;
-      &lt;options type="context"&gt;
-        &lt;option name="request_tcp_interface" default-value="10.29.5.6" /&gt;
-        &lt;option name="transport_tcp_port_low" default-value="4400" /&gt;
-        &lt;option name="transport_tcp_port_high" default-value="4500" /&gt;
-        &lt;option name="resolver_multicast_address" default-value="225.2.37.88"/&gt;
-      &lt;/options&gt;
-    &lt;/template&gt;
-    &lt;template name="rm-source"&gt;
-      &lt;options type="source"&gt;
-        &lt;option name="transport" default-value="lbtrm" /&gt;
-        &lt;option name="transport_lbtrm_multicast_address" default-value="225.2.37.89"/&gt;
-      &lt;/options&gt;
-    &lt;/template&gt;
-  &lt;/templates&gt;
-  &lt;applications&gt;
-    &lt;application name="dro1" template="dro1-common"&gt;
-     &lt;contexts&gt;
-        &lt;context&gt;
-          &lt;sources&gt;
-            &lt;topic topicname="LBTRM_TOPIC" template="rm-source" /&gt;
-            &lt;topic topicname="LBTRU_TOPIC"&gt;
-              &lt;options type="source"&gt;
-                &lt;option name="transport" default-value="lbtru" /&gt;
-                &lt;option name="resolver_unicast_daemon" default-value="10.29.5.1:1234" /&gt;
-              &lt;/options&gt;
-            &lt;/topic&gt;
-          &lt;/sources&gt;
-        &lt;/context&gt;
-        &lt;context name="endpt_1"&gt;
-          &lt;sources template="rm-source"/&gt;
-        &lt;/context&gt;
-      &lt;/contexts&gt;
-    &lt;/application&gt;
-  &lt;/applications&gt;
-&lt;/um-configuration&gt;
-</pre><p><br />
+<div class="fragment"><div class="line">&lt;?xml version=<span class="stringliteral">&quot;1.0&quot;</span> encoding=<span class="stringliteral">&quot;UTF-8&quot;</span> ?&gt;</div><div class="line">&lt;um-configuration version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div><div class="line">  &lt;templates&gt;</div><div class="line">    &lt;<span class="keyword">template</span> name=<span class="stringliteral">&quot;dro1-common&quot;</span>&gt;</div><div class="line">      &lt;options type=<span class="stringliteral">&quot;source&quot;</span>&gt;</div><div class="line">        &lt;option name=<span class="stringliteral">&quot;transport&quot;</span> <span class="keywordflow">default</span>-value=<span class="stringliteral">&quot;tcp&quot;</span> /&gt;</div><div class="line">      &lt;/options&gt;</div><div class="line">      &lt;options type=<span class="stringliteral">&quot;context&quot;</span>&gt;</div><div class="line">        &lt;option name=<span class="stringliteral">&quot;request_tcp_interface&quot;</span> <span class="keywordflow">default</span>-value=<span class="stringliteral">&quot;10.29.5.6&quot;</span> /&gt;</div><div class="line">        &lt;option name=<span class="stringliteral">&quot;transport_tcp_port_low&quot;</span> <span class="keywordflow">default</span>-value=<span class="stringliteral">&quot;4400&quot;</span> /&gt;</div><div class="line">        &lt;option name=<span class="stringliteral">&quot;transport_tcp_port_high&quot;</span> <span class="keywordflow">default</span>-value=<span class="stringliteral">&quot;4500&quot;</span> /&gt;</div><div class="line">        &lt;option name=<span class="stringliteral">&quot;resolver_multicast_address&quot;</span> <span class="keywordflow">default</span>-value=<span class="stringliteral">&quot;225.2.37.88&quot;</span>/&gt;</div><div class="line">      &lt;/options&gt;</div><div class="line">    &lt;/<span class="keyword">template</span>&gt;</div><div class="line">    &lt;<span class="keyword">template</span> name=<span class="stringliteral">&quot;rm-source&quot;</span>&gt;</div><div class="line">      &lt;options type=<span class="stringliteral">&quot;source&quot;</span>&gt;</div><div class="line">        &lt;option name=<span class="stringliteral">&quot;transport&quot;</span> <span class="keywordflow">default</span>-value=<span class="stringliteral">&quot;lbtrm&quot;</span> /&gt;</div><div class="line">        &lt;option name=<span class="stringliteral">&quot;transport_lbtrm_multicast_address&quot;</span> <span class="keywordflow">default</span>-value=<span class="stringliteral">&quot;225.2.37.89&quot;</span>/&gt;</div><div class="line">      &lt;/options&gt;</div><div class="line">    &lt;/<span class="keyword">template</span>&gt;</div><div class="line">  &lt;/templates&gt;</div><div class="line">  &lt;applications&gt;</div><div class="line">    &lt;application name=<span class="stringliteral">&quot;dro1&quot;</span> <span class="keyword">template</span>=<span class="stringliteral">&quot;dro1-common&quot;</span>&gt;</div><div class="line">     &lt;contexts&gt;</div><div class="line">        &lt;context&gt;</div><div class="line">          &lt;sources&gt;</div><div class="line">            &lt;topic topicname=<span class="stringliteral">&quot;LBTRM_TOPIC&quot;</span> <span class="keyword">template</span>=<span class="stringliteral">&quot;rm-source&quot;</span> /&gt;</div><div class="line">            &lt;topic topicname=<span class="stringliteral">&quot;LBTRU_TOPIC&quot;</span>&gt;</div><div class="line">              &lt;options type=<span class="stringliteral">&quot;source&quot;</span>&gt;</div><div class="line">                &lt;option name=<span class="stringliteral">&quot;transport&quot;</span> <span class="keywordflow">default</span>-value=<span class="stringliteral">&quot;lbtru&quot;</span> /&gt;</div><div class="line">                &lt;option name=<span class="stringliteral">&quot;resolver_unicast_daemon&quot;</span> <span class="keywordflow">default</span>-value=<span class="stringliteral">&quot;10.29.5.1:1234&quot;</span> /&gt;</div><div class="line">              &lt;/options&gt;</div><div class="line">            &lt;/topic&gt;</div><div class="line">          &lt;/sources&gt;</div><div class="line">        &lt;/context&gt;</div><div class="line">        &lt;context name=<span class="stringliteral">&quot;endpt_1&quot;</span>&gt;</div><div class="line">          &lt;sources <span class="keyword">template</span>=<span class="stringliteral">&quot;rm-source&quot;</span>/&gt;</div><div class="line">        &lt;/context&gt;</div><div class="line">      &lt;/contexts&gt;</div><div class="line">    &lt;/application&gt;</div><div class="line">  &lt;/applications&gt;</div><div class="line">&lt;/um-configuration&gt;</div></div><!-- fragment --><p><br />
  </p>
 <h2><a class="anchor" id="xmlumrouterconfigurationfile"></a>
 XML UM Router Configuration File&nbsp;&nbsp;<small><a href="#xmlumrouterconfigurationfile">&lt;-</a></small></h2>
 <p>This UM Router uses the above XML UM configuration file, sample-config.xml, to set its UM options. It has three endpoints, one of which has the context endpt_1.</p>
-<pre class="fragment">&lt;?xml version="1.0" encoding="UTF-8" ?&gt;
-&lt;tnw-gateway version="1.0"&gt;
-  &lt;daemon&gt;
-    &lt;log type="console"/&gt;
-    &lt;xml-config&gt;sample-config.xml&lt;/xml-config&gt;
-  &lt;/daemon&gt;
-  &lt;portals&gt;
-    &lt;endpoint&gt;
-      &lt;name&gt;Endpoint_1&lt;/name&gt;
-      &lt;domain-id&gt;1&lt;/domain-id&gt;
-      &lt;lbm-attributes&gt;
-        &lt;option name="context_name" scope="context" value="endpt_1" /&gt;
-        &lt;option name="request_tcp_interface" scope="context"
-        value="10.29.4.0/24"/&gt;
-      &lt;/lbm-attributes&gt;
-    &lt;/endpoint&gt;
-    &lt;endpoint&gt;
-      &lt;name&gt;Endpoint_2&lt;/name&gt;
-      &lt;domain-id&gt;2&lt;/domain-id&gt;
-      &lt;lbm-attributes&gt;
-        &lt;option name="request_tcp_interface" scope="context"
-        value="10.29.5.0/24"/&gt;
-      &lt;/lbm-attributes&gt;
-    &lt;/endpoint&gt;
-    &lt;endpoint&gt;
-      &lt;name&gt;Endpoint_3&lt;/name&gt;
-      &lt;domain-id&gt;3&lt;/domain-id&gt;
-      &lt;lbm-attributes&gt;
-        &lt;option name="request_tcp_interface" scope="context"
-        value="10.29.6.0/24"/&gt;
-      &lt;/lbm-attributes&gt;
-    &lt;/endpoint&gt;
-  &lt;/portals&gt;
-&lt;/tnw-gateway&gt;
-</pre><p><br />
+<div class="fragment"><div class="line">&lt;?xml version=<span class="stringliteral">&quot;1.0&quot;</span> encoding=<span class="stringliteral">&quot;UTF-8&quot;</span> ?&gt;</div><div class="line">&lt;tnw-gateway version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div><div class="line">  &lt;daemon&gt;</div><div class="line">    &lt;log type=<span class="stringliteral">&quot;console&quot;</span>/&gt;</div><div class="line">    &lt;xml-config&gt;sample-config.xml&lt;/xml-config&gt;</div><div class="line">  &lt;/daemon&gt;</div><div class="line">  &lt;portals&gt;</div><div class="line">    &lt;endpoint&gt;</div><div class="line">      &lt;name&gt;Endpoint_1&lt;/name&gt;</div><div class="line">      &lt;domain-<span class="keywordtype">id</span>&gt;1&lt;/domain-<span class="keywordtype">id</span>&gt;</div><div class="line">      &lt;lbm-attributes&gt;</div><div class="line">        &lt;option name=<span class="stringliteral">&quot;context_name&quot;</span> scope=<span class="stringliteral">&quot;context&quot;</span> value=<span class="stringliteral">&quot;endpt_1&quot;</span> /&gt;</div><div class="line">        &lt;option name=<span class="stringliteral">&quot;request_tcp_interface&quot;</span> scope=<span class="stringliteral">&quot;context&quot;</span></div><div class="line">        value=<span class="stringliteral">&quot;10.29.4.0/24&quot;</span>/&gt;</div><div class="line">      &lt;/lbm-attributes&gt;</div><div class="line">    &lt;/endpoint&gt;</div><div class="line">    &lt;endpoint&gt;</div><div class="line">      &lt;name&gt;Endpoint_2&lt;/name&gt;</div><div class="line">      &lt;domain-<span class="keywordtype">id</span>&gt;2&lt;/domain-<span class="keywordtype">id</span>&gt;</div><div class="line">      &lt;lbm-attributes&gt;</div><div class="line">        &lt;option name=<span class="stringliteral">&quot;request_tcp_interface&quot;</span> scope=<span class="stringliteral">&quot;context&quot;</span></div><div class="line">        value=<span class="stringliteral">&quot;10.29.5.0/24&quot;</span>/&gt;</div><div class="line">      &lt;/lbm-attributes&gt;</div><div class="line">    &lt;/endpoint&gt;</div><div class="line">    &lt;endpoint&gt;</div><div class="line">      &lt;name&gt;Endpoint_3&lt;/name&gt;</div><div class="line">      &lt;domain-<span class="keywordtype">id</span>&gt;3&lt;/domain-<span class="keywordtype">id</span>&gt;</div><div class="line">      &lt;lbm-attributes&gt;</div><div class="line">        &lt;option name=<span class="stringliteral">&quot;request_tcp_interface&quot;</span> scope=<span class="stringliteral">&quot;context&quot;</span></div><div class="line">        value=<span class="stringliteral">&quot;10.29.6.0/24&quot;</span>/&gt;</div><div class="line">      &lt;/lbm-attributes&gt;</div><div class="line">    &lt;/endpoint&gt;</div><div class="line">  &lt;/portals&gt;</div><div class="line">&lt;/tnw-gateway&gt;</div></div><!-- fragment --><p><br />
  </p>
 <h1><a class="anchor" id="runningtheumrouterdaemon"></a>
 Running the UM Router Daemon&nbsp;&nbsp;<small><a href="#runningtheumrouterdaemon">&lt;-</a></small></h1>
@@ -1249,11 +353,9 @@ The license environment variable LBM_LICENSE_FILENAME points to a valid UM Route
 The configuration file is error free. </li>
 </ul>
 <p>Typically, you run the UM Router with one configuration file argument, for example:</p>
-<pre class="fragment">tnwgd gw1-config.xml
-</pre><p> (FYI: "tnwgd" stands for "Twenty Nine West Gateway Daemon", a historical name for the UM Router.)</p>
+<div class="fragment"><div class="line">tnwgd gw1-config.xml</div></div><!-- fragment --><p> (FYI: "tnwgd" stands for "Twenty Nine West Gateway Daemon", a historical name for the UM Router.)</p>
 <p>The UM Router logs version information on startup. The following is an example of this information:</p>
-<pre class="fragment">Version 6.0 Build: Sep 26 2012, 00:31:33 (UMS 6.0 [UMP-6.0] [UMQ-6.0] [64-bit] Build: Sep 26 2012, 00:27:17 ( DEBUG license LBT-RM LBT-RU LBT-IPC LBT-RDMA ) WC[PCRE 7.4 2007-09-21, regex, appcb] HRT[gettimeofday()])
-</pre> </div></div><!-- contents -->
+<div class="fragment"><div class="line">Version 6.0 Build: Sep 26 2012, 00:31:33 (UMS 6.0 [UMP-6.0] [UMQ-6.0] [64-bit] Build: Sep 26 2012, 00:27:17 ( DEBUG license LBT-RM LBT-RU LBT-IPC LBT-RDMA ) WC[PCRE 7.4 2007-09-21, regex, appcb] HRT[gettimeofday()])</div></div><!-- fragment --> </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.8.11-->
 </body>

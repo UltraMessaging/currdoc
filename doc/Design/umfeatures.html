@@ -60,7 +60,7 @@ $(document).ready(function(){initNavTree('umfeatures.html','');});
 <h1><a class="anchor" id="transportservicesproviderxsp"></a>
 Transport Services Provider (XSP)&nbsp;&nbsp;<small><a href="#transportservicesproviderxsp">&lt;-</a></small></h1>
 <p>As of UM version 6.11, a new receive-side object is available to the user: the <a class="el" href="fundamentalconcepts.html#transportservicesproviderobject">Transport Services Provider Object</a>.</p>
-<p>The earlier feature, <a class="el" href="fundamentalconcepts.html#multitransportthreads">Multi-Transport Threads</a>, is deprecated in favor of XSP.</p>
+<p>The earlier feature, Multi-Transport Threads (MTT), is removed from UM in favor of XSP.</p>
 <p>By default, a UM context combines all network data reception into a single <em>context thread</em>. This thread is responsible for reception and processing of application messages, topic resolution, and immediate message traffic (UIM and MIM). The context thread is also used for processing timers. This single-threaded model conserves CPU core resources, and can simplify application design. However, it can also introduce significant latency outliers (jitter) if a time-sensitive user message is waiting behind, say, a topic resolution message, or a timer callback.</p>
 <p>Using an XSP object, an application can reassign the processing of a subscribed <a class="el" href="fundamentalconcepts.html#transportsessions">Transport Session</a> to an independent thread. This allows concurrent processing of received messages with topic resolution and timers, and even allows different groups Transport Sessions to be processed concurrently with each other.</p>
 <p>By default, when an XSP object is created, UM creates a new thread associated with the XSP. Alternatively, the XSP can be created with operational mode "sequential", which gives the responsibility of thread creation to the application. Either way, the XSP uses its independent thread to read data from the sockets associated with one or more subscribed Transport Sessions. That thread then delivers received messages to the application via a normal receive application callback function.</p>
@@ -106,55 +106,31 @@ XSP Threading Considerations&nbsp;&nbsp;<small><a href="#xspthreadingconsiderati
 <h2><a class="anchor" id="xspusage"></a>
 XSP Usage&nbsp;&nbsp;<small><a href="#xspusage">&lt;-</a></small></h2>
 <p>This section provides simplified C code fragments that demonstrate some of the XSP-related API calls. For full examples of XSP usage, see <a href="../example/lbmrcvxsp.c">lbmrcvxsp.c</a> (for C) and <a href="../java_example/lbmrcvxsp.java">lbmrcvxsp.java</a> (for Java).</p>
-<dl class="section note"><dt>Note</dt><dd>Each XSP thread has its own Unicast Listener (request) port. You may need to expand the range <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grpunicastimmediatemessagingnetwork.html#requesttcpportlowcontext">request_tcp_port_low (context)</a> - <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grpunicastimmediatemessagingnetwork.html#requesttcpporthighcontext">request_tcp_port_high (context)</a>.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Each XSP thread has its own Unicast Listener (request) port. You may need to expand the range <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpunicastimmediatemessagingnetwork.html#requesttcpportlowcontext">request_tcp_port_low (context)</a> - <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpunicastimmediatemessagingnetwork.html#requesttcpporthighcontext">request_tcp_port_high (context)</a>.</dd></dl>
 <p>The common sequence of operations during application initialization is minimally shown below. In the code fragments below, error detection and handling are omitted for clarity.</p>
 <ol>
 <li>
-<p class="startli">Create a context attribute object and set the <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grpmajoroptions.html#transportmappingfunctioncontext">transport_mapping_function (context)</a> option to point at the application's XSP mapping callback function using the structure <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#a90dde1ea00f12038cff7195c76d47a46">lbm_transport_mapping_func_t</a>.</p>
-<pre class="fragment">  lbm_context_attr_t *ctx_attr;
-  err = lbm_context_attr_create_from_xml(&amp;ctx_attr, "MyCtx");
-
-  lbm_transport_mapping_func_t mapping_func;
-  mapping_func.mapping_func = app_xsp_mapper_callback;
-  mapping_func.clientd = NULL;             /* Can include app state pointer. */
-
-  err = lbm_context_attr_setopt(ctx_attr, "transport_mapping_function",
-          &amp;mapping_func, sizeof(mapping_func));
-</pre><p class="endli"></p>
+<p class="startli">Create a context attribute object and set the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpmajoroptions.html#transportmappingfunctioncontext">transport_mapping_function (context)</a> option to point at the application's XSP mapping callback function using the structure <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#a90dde1ea00f12038cff7195c76d47a46">lbm_transport_mapping_func_t</a>.</p>
+<div class="fragment"><div class="line"><a class="codeRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#acf249ec7a22d6a0eb9fc42d6375bda5a">lbm_context_attr_t</a> *ctx_attr;</div><div class="line">err = <a class="codeRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#a04d99cc97d32f359888c5befcc50512e">lbm_context_attr_create_from_xml</a>(&amp;ctx_attr, <span class="stringliteral">&quot;MyCtx&quot;</span>);</div><div class="line"></div><div class="line"><a class="codeRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/api.tag:../API/" href="../API/structlbm__transport__mapping__func__t__stct.html">lbm_transport_mapping_func_t</a> mapping_func;</div><div class="line">mapping_func.mapping_func = app_xsp_mapper_callback;</div><div class="line">mapping_func.clientd = NULL;             <span class="comment">/* Can include app state pointer. */</span></div><div class="line"></div><div class="line">err = <a class="codeRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#ab67f641d5a0ad1a9fe53d415da58d961">lbm_context_attr_setopt</a>(ctx_attr, <span class="stringliteral">&quot;transport_mapping_function&quot;</span>,</div><div class="line">        &amp;mapping_func, <span class="keyword">sizeof</span>(mapping_func));</div></div><!-- fragment --><p class="endli"></p>
 </li>
 <li>
 <p class="startli">Create the context.</p>
-<pre class="fragment">  err = lbm_context_create(&amp;ctx, ctx_attr, NULL, NULL);
-  err = lbm_context_attr_delete(ctx_attr);  /* No longer needed. */
-</pre><p class="endli"></p>
+<div class="fragment"><div class="line">err = <a class="codeRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#a8058947690bd0995bc2c59d4a61b462f">lbm_context_create</a>(&amp;ctx, ctx_attr, NULL, NULL);</div><div class="line">err = <a class="codeRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#a9c0a3c1f4a8854d8ec5585392c817c85">lbm_context_attr_delete</a>(ctx_attr);  <span class="comment">/* No longer needed. */</span></div></div><!-- fragment --><p class="endli"></p>
 </li>
 <li>
-<p class="startli">Create XSPs using <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#ae38035c6036a84f07f9ba7cee1747dbf">lbm_xsp_create()</a>. In this example, only a single XSP is created.</p>
-<pre class="fragment">  lbm_xsp_t *xsp;  /* app_xsp_mapper_callback() needs this; see below. */
-  err = lbm_xsp_create(&amp;xsp, ctx, NULL, NULL);
-</pre><p>Note that the application can optionally pass in a context attribute object and an XSP attribute object. The context attribute is because XSP is implemented as a sort of reduced-function sub-context, and so it is possible to modify context options for the XSP. However, this is rarely needed since the default action is for the XSP to inherit all the configuration of the main context.</p>
+<p class="startli">Create XSPs using <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#ae38035c6036a84f07f9ba7cee1747dbf">lbm_xsp_create()</a>. In this example, only a single XSP is created.</p>
+<div class="fragment"><div class="line"><a class="codeRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#a300cf24a22429649a1477358ca65bf78">lbm_xsp_t</a> *xsp;  <span class="comment">/* app_xsp_mapper_callback() needs this; see below. */</span></div><div class="line">err = <a class="codeRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#ae38035c6036a84f07f9ba7cee1747dbf">lbm_xsp_create</a>(&amp;xsp, ctx, NULL, NULL);</div></div><!-- fragment --><p>Note that the application can optionally pass in a context attribute object and an XSP attribute object. The context attribute is because XSP is implemented as a sort of reduced-function sub-context, and so it is possible to modify context options for the XSP. However, this is rarely needed since the default action is for the XSP to inherit all the configuration of the main context.</p>
 <p class="endli"></p>
 </li>
 <li>
 <p class="startli">Create a receiver for topic "X".</p>
-<pre class="fragment">  lbm_topic_t *topic;
-  err = lbm_rcv_topic_lookup(&amp;topic, ctx, "X", NULL);
-
-  lbm_rcv_t *rcv;
-  err = lbm_rcv_create(&amp;rcv, ctx, topic, app_rcv_callback, NULL, NULL);
-</pre><p><a class="el" href="fundamentalconcepts.html#eventqueueobject">Event queues</a> may also be used with XSP-assigned Transport Sessions.</p>
+<div class="fragment"><div class="line"><a class="codeRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#a3f0c8cba0e6f00fe7ae0ed717405e46d">lbm_topic_t</a> *topic;</div><div class="line">err = <a class="codeRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#a3de8a6a659896f76475c453683db4e18">lbm_rcv_topic_lookup</a>(&amp;topic, ctx, <span class="stringliteral">&quot;X&quot;</span>, NULL);</div><div class="line"></div><div class="line"><a class="codeRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#a0a4af6b8247cc5a0a24a8578fb6e83bd">lbm_rcv_t</a> *rcv;</div><div class="line">err = <a class="codeRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#aa7491c50fefbc2b70f8035fce7ac1477">lbm_rcv_create</a>(&amp;rcv, ctx, topic, app_rcv_callback, NULL, NULL);</div></div><!-- fragment --><p><a class="el" href="fundamentalconcepts.html#eventqueueobject">Event queues</a> may also be used with XSP-assigned Transport Sessions.</p>
 <p class="endli"></p>
 </li>
 <li>
 <p class="startli">At this point, when the main context discovers a source for topic "X", it will proceed to join the Transport Session. It will call the application's app_xsp_mapper_callback() function, which is minimally this:</p>
-<pre class="fragment">lbm_xsp_t *app_xsp_mapper_callback(lbm_context_t *ctx,
-        lbm_new_transport_info_t *transp_info, void *clientd)
-{
-  /* Retrieve the XSP object created in step 3. */
-  return xsp;
-}
-</pre><p>This minimal callback simply returns the XSP that was created during initialization (the "clientd" can be helpful for that). By assigning all receiver Transport Sessions to the same XSP, you have effectively separated message processing from UM housekeeping tasks, like processing of topic resolution and timers. This can greatly reduce latency outliers.</p>
-<p class="endli">As described in <a class="el" href="umfeatures.html#xsphandlestransportsessionsnottopics">XSP Handles Transport Sessions, Not Topics</a>, some users want to have multiple XSPs and assign the Transport Sessions to XSPs according to application logic. Note that the passed-in <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#ac611697e7263b4b5ea5a3b35eb26dc99">lbm_new_transport_info_t</a> structure contains information about the Transport Session, such as the IP address of the sender. However, this structure does not contain topic information. Applications can use the resolver's source notification callback via the <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grpmajoroptions.html#resolversourcenotificationfunctioncontext">resolver_source_notification_function (context)</a> attribute option to associate topics with source strings. </p>
+<div class="fragment"><div class="line"><a class="codeRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#a300cf24a22429649a1477358ca65bf78">lbm_xsp_t</a> *app_xsp_mapper_callback(<a class="codeRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#a9f6ec97839a8f264eb4059de01174f3c">lbm_context_t</a> *ctx,</div><div class="line">        <a class="codeRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/api.tag:../API/" href="../API/structlbm__new__transport__info__t__stct.html">lbm_new_transport_info_t</a> *transp_info, <span class="keywordtype">void</span> *clientd)</div><div class="line">{</div><div class="line">  <span class="comment">/* Retrieve the XSP object created in step 3. */</span></div><div class="line">  <span class="keywordflow">return</span> xsp;</div><div class="line">}</div></div><!-- fragment --><p>This minimal callback simply returns the XSP that was created during initialization (the "clientd" can be helpful for that). By assigning all receiver Transport Sessions to the same XSP, you have effectively separated message processing from UM housekeeping tasks, like processing of topic resolution and timers. This can greatly reduce latency outliers.</p>
+<p class="endli">As described in <a class="el" href="umfeatures.html#xsphandlestransportsessionsnottopics">XSP Handles Transport Sessions, Not Topics</a>, some users want to have multiple XSPs and assign the Transport Sessions to XSPs according to application logic. Note that the passed-in <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#ac611697e7263b4b5ea5a3b35eb26dc99">lbm_new_transport_info_t</a> structure contains information about the Transport Session, such as the IP address of the sender. However, this structure does not contain topic information. Applications can use the resolver's source notification callback via the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpmajoroptions.html#resolversourcenotificationfunctioncontext">resolver_source_notification_function (context)</a> attribute option to associate topics with source strings. </p>
 </li>
 </ol>
 <dl class="section note"><dt>Note</dt><dd>Most of the time, the application mapping callback will be invoked each time a Transport Session is joined. However, there is one exception to this rule. If a context is already joined to a Transport Session carried on a multicast group and destination port, joining another Transport Session on the same multicast group and destination port does not invoke the mapping callback again. This is because the same socket is used for all Transport Sessions that use the same group:port.</dd></dl>
@@ -165,26 +141,26 @@ Other XSP Operations&nbsp;&nbsp;<small><a href="#otherxspoperations">&lt;-</a></
 <p>As of UM 6.12, XSP supports persistent receivers.</p>
 <p>When an XSP object is created, an XSP attribute object can be supplied to set XSP options. The XSP options are: </p><ul>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grpmajoroptions.html#operationalmodexsp">operational_mode (xsp)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpmajoroptions.html#operationalmodexsp">operational_mode (xsp)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grpmajoroptions.html#zerotransportsfunctionxsp">zero_transports_function (xsp)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpmajoroptions.html#zerotransportsfunctionxsp">zero_transports_function (xsp)</a> </li>
 </ul>
 <p>To create and manipulate an XSP attribute object, see: </p><ul>
 <li>
 lbm_xsp_attr_create_from_xml() </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#ae52cbac6a22b495a3b48a70bf23fc118">lbm_xsp_attr_setopt()</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#ae52cbac6a22b495a3b48a70bf23fc118">lbm_xsp_attr_setopt()</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#a62363973a939a8555eac38846492dbb2">lbm_xsp_attr_getopt()</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#a62363973a939a8555eac38846492dbb2">lbm_xsp_attr_getopt()</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#adfc416faf8fbc79cfd16a1485341f469">lbm_xsp_attr_delete()</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#adfc416faf8fbc79cfd16a1485341f469">lbm_xsp_attr_delete()</a> </li>
 </ul>
-<p>To delete an XSP, all receivers associated with Transport Sessions handled by that XSP must first be deleted. Then the XSP can be deleted using <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#ac61812a1c86eb9d240054f9d3ba32ac5">lbm_xsp_delete()</a>.</p>
+<p>To delete an XSP, all receivers associated with Transport Sessions handled by that XSP must first be deleted. Then the XSP can be deleted using <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#ac61812a1c86eb9d240054f9d3ba32ac5">lbm_xsp_delete()</a>.</p>
 <p>To register and cancel an application file descriptor with an XSP, see: </p><ul>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#ae289a20cdc857feeda3eaba9f286b946">lbm_xsp_register_fd()</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#ae289a20cdc857feeda3eaba9f286b946">lbm_xsp_register_fd()</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#aa8d3582b9bb8126a34924063ed00b8c4">lbm_xsp_cancel_fd()</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#aa8d3582b9bb8126a34924063ed00b8c4">lbm_xsp_cancel_fd()</a> </li>
 </ul>
 <p><br />
  </p>
@@ -197,7 +173,7 @@ XSP Limitations&nbsp;&nbsp;<small><a href="#xsplimitations">&lt;-</a></small></h
 <p class="endli"></p>
 </li>
 <li>
-<p class="startli">For a persistent receiver assigned to an XSP, the user is not allowed to disable <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeproactivekeepaliveintervalcontext">ume_proactive_keepalive_interval (context)</a>.</p>
+<p class="startli">For a persistent receiver assigned to an XSP, the user is not allowed to disable <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeproactivekeepaliveintervalcontext">ume_proactive_keepalive_interval (context)</a>.</p>
 <p class="endli"></p>
 </li>
 <li>
@@ -205,23 +181,23 @@ XSP Limitations&nbsp;&nbsp;<small><a href="#xsplimitations">&lt;-</a></small></h
 <p class="endli"></p>
 </li>
 <li>
-The use of XSP is not currently compatible with <a class="el" href="umobjects.html#hotfailoverhf">Hot Failover (HF)</a>. If you desire to use Hot Failover with XSP, contact Support. </li>
+The use of XSP is not currently compatible with <a class="el" href="umobjects.html#hotfailoverhf">Hot Failover (HF)</a>. </li>
 </ul>
 <p><br />
  </p>
 <h1><a class="anchor" id="usinglatejoin"></a>
 Using Late Join&nbsp;&nbsp;<small><a href="#usinglatejoin">&lt;-</a></small></h1>
-<p>This section introduces the use of Ultra Messaging Late Join in default and specialized configurations. See <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grplatejoin.html">Late Join Options</a> for more information.</p>
-<dl class="section note"><dt>Note</dt><dd>If your application is running within a Ultra Messaging context with configuration option <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grpunicastimmediatemessagingnetwork.html#requesttcpbindrequestportcontext">request_tcp_bind_request_port (context)</a> set to zero, then UIM port binding has been turned off, which also disables the Late Join feature.</dd>
+<p>This section introduces the use of Ultra Messaging Late Join in default and specialized configurations. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grplatejoin.html">Late Join Options</a> for more information.</p>
+<dl class="section note"><dt>Note</dt><dd>If your application is running within a Ultra Messaging context with configuration option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpunicastimmediatemessagingnetwork.html#requesttcpbindrequestportcontext">request_tcp_bind_request_port (context)</a> set to zero, then UIM port binding has been turned off, which also disables the Late Join feature.</dd>
 <dd>
 With the UMQ product, you cannot use Late Join with Queuing (both Brokered and ULB).</dd></dl>
 <p>The Late Join feature enables newly created receivers to receive previously transmitted messages. Sources configured for Late Join maintain a retention buffer (not to be confused with a transport retransmission window), which holds transmitted messages for late-joining receivers.</p>
 <p>A Late Join operation follows the following sequence:</p>
 <ol>
 <li>
-A new receiver configured for Late Join with <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grplatejoin.html#uselatejoinreceiver">use_late_join (receiver)</a> completes topic resolution. Topic advertisements from the source contain a flag that indicates the source is configured for Late Join with <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grplatejoin.html#latejoinsource">late_join (source)</a>. </li>
+A new receiver configured for Late Join with <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grplatejoin.html#uselatejoinreceiver">use_late_join (receiver)</a> completes topic resolution. Topic advertisements from the source contain a flag that indicates the source is configured for Late Join with <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grplatejoin.html#latejoinsource">late_join (source)</a>. </li>
 <li>
-The new receiver sends a Late Join Information Request (LJIR) to request a previously transmitted messages. The receiver configuration option, <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grplatejoin.html#retransmitrequestoutstandingmaximumreceiver">retransmit_request_outstanding_maximum (receiver)</a>, determines the number of messages the receiver requests. </li>
+The new receiver sends a Late Join Information Request (LJIR) to request a previously transmitted messages. The receiver configuration option, <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grplatejoin.html#retransmitrequestoutstandingmaximumreceiver">retransmit_request_outstanding_maximum (receiver)</a>, determines the number of messages the receiver requests. </li>
 <li>
 The source responds with a Late Join Information (LJI) message containing the sequence numbers for the retained messages that are available for retransmission. </li>
 <li>
@@ -232,9 +208,9 @@ When <a class="el" href="umfeatures.html#configuringlatejoinforlargenumbersofmes
 <div class="image">
 <img src="LateJoin.png" alt="LateJoin.png"/>
 </div>
- <p>The source's retention buffer's is not pre-allocated and occupies an increasing amount of memory as the source sends messages and adds them to the buffer. If a retention buffer grows to a size equal to the value of the source configuration option, <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grplatejoin.html#retransmitretentionsizethresholdsource">retransmit_retention_size_threshold (source)</a>, the source deletes older messages as it adds new ones. The source configuration option <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grpdeprecated.html#retransmitretentionagethresholdsource">retransmit_retention_age_threshold (source)</a>, controls message deletion based on message age.</p>
+ <p>The source's retention buffer's is not pre-allocated and occupies an increasing amount of memory as the source sends messages and adds them to the buffer. If a retention buffer grows to a size equal to the value of the source configuration option, <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grplatejoin.html#retransmitretentionsizethresholdsource">retransmit_retention_size_threshold (source)</a>, the source deletes older messages as it adds new ones. The source configuration option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpdeprecated.html#retransmitretentionagethresholdsource">retransmit_retention_age_threshold (source)</a>, controls message deletion based on message age.</p>
 <p>UM uses control-structure overhead memory on a per-message basis for messages held in the retention buffer, in addition to the retention buffer's memory. Such memory usage can become significantly higher when retained messages are smaller in size, since more of them can then fit in the retention buffer.</p>
-<dl class="section note"><dt>Note</dt><dd>If you set the receiver configuration option <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grpmajoroptions.html#ordereddeliveryreceiver">ordered_delivery (receiver)</a> to 1, the receiver must deliver messages to your application in sequence number order. The receiver holds out-of-order messages in an ordered list cache until messages arrive to fill the sequence number gaps. If an out-of-order message arrives with a sequence number that creates a message gap greater than the value of <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grplatejoin.html#retransmitmessagecachingproximityreceiver">retransmit_message_caching_proximity (receiver)</a>, the receiver creates a burst loss event and terminates the Late Join recovery operation. You can increase the value of the proximity option and restart the receiver, but a burst loss is a significant event and you should investigate your network and message system components for failures.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>If you set the receiver configuration option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpmajoroptions.html#ordereddeliveryreceiver">ordered_delivery (receiver)</a> to 1, the receiver must deliver messages to your application in sequence number order. The receiver holds out-of-order messages in an ordered list cache until messages arrive to fill the sequence number gaps. If an out-of-order message arrives with a sequence number that creates a message gap greater than the value of <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grplatejoin.html#retransmitmessagecachingproximityreceiver">retransmit_message_caching_proximity (receiver)</a>, the receiver creates a burst loss event and terminates the Late Join recovery operation. You can increase the value of the proximity option and restart the receiver, but a burst loss is a significant event and you should investigate your network and message system components for failures.</dd></dl>
 <p><br />
  </p>
 <h2><a class="anchor" id="latejoinwithump"></a>
@@ -246,27 +222,27 @@ Late Join With Persistence&nbsp;&nbsp;<small><a href="#latejoinwithump">&lt;-</a
 Late Join Options Summary&nbsp;&nbsp;<small><a href="#latejoinoptionssummary">&lt;-</a></small></h2>
 <ul>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grplatejoin.html#latejoinsource">late_join (source)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grplatejoin.html#latejoinsource">late_join (source)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grpdeprecated.html#retransmitretentionagethresholdsource">retransmit_retention_age_threshold (source)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpdeprecated.html#retransmitretentionagethresholdsource">retransmit_retention_age_threshold (source)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grplatejoin.html#retransmitretentionsizelimitsource">retransmit_retention_size_limit (source)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grplatejoin.html#retransmitretentionsizelimitsource">retransmit_retention_size_limit (source)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grplatejoin.html#retransmitretentionsizethresholdsource">retransmit_retention_size_threshold (source)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grplatejoin.html#retransmitretentionsizethresholdsource">retransmit_retention_size_threshold (source)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grplatejoin.html#uselatejoinreceiver">use_late_join (receiver)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grplatejoin.html#uselatejoinreceiver">use_late_join (receiver)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grplatejoin.html#retransmitinitialsequencenumberrequestreceiver">retransmit_initial_sequence_number_request (receiver)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grplatejoin.html#retransmitinitialsequencenumberrequestreceiver">retransmit_initial_sequence_number_request (receiver)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grplatejoin.html#retransmitmessagecachingproximityreceiver">retransmit_message_caching_proximity (receiver)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grplatejoin.html#retransmitmessagecachingproximityreceiver">retransmit_message_caching_proximity (receiver)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grplatejoin.html#retransmitrequestmessagetimeoutreceiver">retransmit_request_message_timeout (receiver)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grplatejoin.html#retransmitrequestmessagetimeoutreceiver">retransmit_request_message_timeout (receiver)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grplatejoin.html#retransmitrequestintervalreceiver">retransmit_request_interval (receiver)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grplatejoin.html#retransmitrequestintervalreceiver">retransmit_request_interval (receiver)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grplatejoin.html#retransmitrequestmaximumreceiver">retransmit_request_maximum (receiver)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grplatejoin.html#retransmitrequestmaximumreceiver">retransmit_request_maximum (receiver)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grplatejoin.html#retransmitrequestoutstandingmaximumreceiver">retransmit_request_outstanding_maximum (receiver)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grplatejoin.html#retransmitrequestoutstandingmaximumreceiver">retransmit_request_outstanding_maximum (receiver)</a> </li>
 </ul>
 <p><br />
  </p>
@@ -276,138 +252,73 @@ Using Default Late Join Options&nbsp;&nbsp;<small><a href="#usingdefaultlatejoin
 <ol>
 <li>
 <p class="startli">Create a configuration file with source and receiver Late Join activation options set to 1. For example, file cfg1.cfg containing the two lines:</p>
-<pre class="fragment">source late_join 1
-receiver use_late_join 1
-</pre><p class="endli"></p>
+<div class="fragment"><div class="line">source late_join 1</div><div class="line">receiver use_late_join 1</div></div><!-- fragment --><p class="endli"></p>
 </li>
 <li>
 <p class="startli">Run an application that starts a Late-Join-enabled source. For example:</p>
-<pre class="fragment">lbmsrc -c cfg1.cfg -P 1000 topicName
-</pre><p class="endli"></p>
+<div class="fragment"><div class="line">lbmsrc -c cfg1.cfg -P 1000 topicName</div></div><!-- fragment --><p class="endli"></p>
 </li>
 <li>
 <p class="startli">Wait a few seconds, then run an application that starts a Late-Join-enabled receiver. For example:</p>
-<pre class="fragment">lbmrcv -c cfg1.cfg -v topicName
-</pre> </li>
+<div class="fragment"><div class="line">lbmrcv -c cfg1.cfg -v topicName</div></div><!-- fragment --> </li>
 </ol>
 <p>The output for each should closely resemble the following:</p>
 <p><b>LBMSRC</b></p>
-<pre class="fragment">$ lbmsrc -c cfg1.cfg -P 1000 topicName
-LOG Level 5: NOTICE: Source "topicName" has no retention settings (1 message retained max)
-Sending 10000000 messages of size 25 bytes to topic [topicName]
-Receiver connect [TCP:10.29.3.77:34200]
-</pre><p><b>LBMRCV</b></p>
-<pre class="fragment">$ lbmrcv -c cfg1.cfg -v topicName
-Immediate messaging target: TCP:10.29.3.77:4391
-[topicName][TCP:10.29.3.76:4371][2]-RX-, 25 bytes
-1.001 secs. 0.0009988 Kmsgs/sec. 0.1998 Kbps
-[topicName][TCP:10.29.3.76:4371][3], 25 bytes
-1.002 secs. 0.0009982 Kmsgs/sec. 0.1996 Kbps
-[topicName][TCP:10.29.3.76:4371][4], 25 bytes
-1.003 secs. 0.0009972 Kmsgs/sec. 0.1994 Kbps
-[topicName][TCP:10.29.3.76:4371][5], 25 bytes
-1.003 secs. 0.0009972 Kmsgs/sec. 0.1994 Kbps
-...
-</pre><p>Note that the source only retained 1 Late Join message (due to default retention settings) and that this message appears as a retransmit (-RX-). Also note that it is possible to sometimes receive 2 RX messages in this scenario (see <a class="el" href="umfeatures.html#retransmittingonlyrecentmessages">Retransmitting Only Recent Messages</a>.)</p>
+<div class="fragment"><div class="line">$ lbmsrc -c cfg1.cfg -P 1000 topicName</div><div class="line">LOG Level 5: NOTICE: Source <span class="stringliteral">&quot;topicName&quot;</span> has no retention settings (1 message retained max)</div><div class="line">Sending 10000000 messages of size 25 bytes to topic [topicName]</div><div class="line">Receiver connect [TCP:10.29.3.77:34200]</div></div><!-- fragment --><p><b>LBMRCV</b></p>
+<div class="fragment"><div class="line">$ lbmrcv -c cfg1.cfg -v topicName</div><div class="line">Immediate messaging target: TCP:10.29.3.77:4391</div><div class="line">[topicName][TCP:10.29.3.76:4371][2]-RX-, 25 bytes</div><div class="line">1.001 secs. 0.0009988 Kmsgs/sec. 0.1998 Kbps</div><div class="line">[topicName][TCP:10.29.3.76:4371][3], 25 bytes</div><div class="line">1.002 secs. 0.0009982 Kmsgs/sec. 0.1996 Kbps</div><div class="line">[topicName][TCP:10.29.3.76:4371][4], 25 bytes</div><div class="line">1.003 secs. 0.0009972 Kmsgs/sec. 0.1994 Kbps</div><div class="line">[topicName][TCP:10.29.3.76:4371][5], 25 bytes</div><div class="line">1.003 secs. 0.0009972 Kmsgs/sec. 0.1994 Kbps</div><div class="line">...</div></div><!-- fragment --><p>Note that the source only retained 1 Late Join message (due to default retention settings) and that this message appears as a retransmit (-RX-). Also note that it is possible to sometimes receive 2 RX messages in this scenario (see <a class="el" href="umfeatures.html#retransmittingonlyrecentmessages">Retransmitting Only Recent Messages</a>.)</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="specifyingarangeofmessagestoretransmit"></a>
 Specifying a Range of Messages to Retransmit&nbsp;&nbsp;<small><a href="#specifyingarangeofmessagestoretransmit">&lt;-</a></small></h2>
-<p>To receive more than one or two Late Join messages, increase the source's <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grplatejoin.html#retransmitretentionsizethresholdsource">retransmit_retention_size_threshold (source)</a> from its default value of 0. Once the buffer exceeds this threshold, the source allows the next new message entering the retention buffer to bump out the oldest one. Note that this threshold's units are bytes (which includes a small overhead per message).</p>
-<p>While the retention threshold endeavors to keep the buffer size close to its value, it does not set hard upper limit for retention buffer size. For this, the <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grplatejoin.html#retransmitretentionsizelimitsource">retransmit_retention_size_limit (source)</a> configuration option (also in bytes) sets this boundary.</p>
+<p>To receive more than one or two Late Join messages, increase the source's <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grplatejoin.html#retransmitretentionsizethresholdsource">retransmit_retention_size_threshold (source)</a> from its default value of 0. Once the buffer exceeds this threshold, the source allows the next new message entering the retention buffer to bump out the oldest one. Note that this threshold's units are bytes (which includes a small overhead per message).</p>
+<p>While the retention threshold endeavors to keep the buffer size close to its value, it does not set hard upper limit for retention buffer size. For this, the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grplatejoin.html#retransmitretentionsizelimitsource">retransmit_retention_size_limit (source)</a> configuration option (also in bytes) sets this boundary.</p>
 <p>Follow the steps below to demonstrate how a source can retain about 50MB of messages, but no more than 60MB:</p>
 <ol>
 <li>
 <p class="startli">Create a second configuration file (cfg2.cfg) with the following options:</p>
-<pre class="fragment">source late_join 1
-source retransmit_retention_size_threshold 50000000
-source retransmit_retention_size_limit 60000000
-receiver use_late_join 1
-</pre> </li>
+<div class="fragment"><div class="line">source late_join 1</div><div class="line">source retransmit_retention_size_threshold 50000000</div><div class="line">source retransmit_retention_size_limit 60000000</div><div class="line">receiver use_late_join 1</div></div><!-- fragment --> </li>
 <li>
 Run lbmsrc -c cfg2.cfg -P 1000 topicName. </li>
 <li>
 Wait a few seconds and run <code>lbmrcv -c cfg2.cfg -v topicName</code>. The output for each should closely resemble the following: </li>
 </ol>
 <p><b>LBMSRC</b></p>
-<pre class="fragment">$ lbmsrc -c cfg2.cfg -P 1000 topicName
-Sending 10000000 messages of size 25 bytes to topic [topicName]
-Receiver connect [TCP:10.29.3.76:34444]
-</pre><p><b>LBMRCV</b></p>
-<pre class="fragment">$ lbmrcv -c cfg2.cfg -v topicName
-Immediate messaging target: TCP:10.29.3.76:4391
-[topicName][TCP:10.29.3.77:4371][0]-RX-, 25 bytes
-[topicName][TCP:10.29.3.77:4371][1]-RX-, 25 bytes
-[topicName][TCP:10.29.3.77:4371][2]-RX-, 25 bytes
-[topicName][TCP:10.29.3.77:4371][3]-RX-, 25 bytes
-[topicName][TCP:10.29.3.77:4371][4]-RX-, 25 bytes
-1.002 secs. 0.004991 Kmsgs/sec. 0.9981 Kbps
-[topicName][TCP:10.29.3.77:4371][5], 25 bytes
-1.002 secs. 0.0009984 Kmsgs/sec. 0.1997 Kbps
-[topicName][TCP:10.29.3.77:4371][6], 25 bytes
-1.002 secs. 0.0009983 Kmsgs/sec. 0.1997 Kbps
-[topicName][TCP:10.29.3.77:4371][7], 25 bytes
-...
-</pre><p>Note that lbmrcv received live messages with sequence numbers 7, 6, and 5, and RX messages going from 4 all the way back to Sequence Number 0.</p>
+<div class="fragment"><div class="line">$ lbmsrc -c cfg2.cfg -P 1000 topicName</div><div class="line">Sending 10000000 messages of size 25 bytes to topic [topicName]</div><div class="line">Receiver connect [TCP:10.29.3.76:34444]</div></div><!-- fragment --><p><b>LBMRCV</b></p>
+<div class="fragment"><div class="line">$ lbmrcv -c cfg2.cfg -v topicName</div><div class="line">Immediate messaging target: TCP:10.29.3.76:4391</div><div class="line">[topicName][TCP:10.29.3.77:4371][0]-RX-, 25 bytes</div><div class="line">[topicName][TCP:10.29.3.77:4371][1]-RX-, 25 bytes</div><div class="line">[topicName][TCP:10.29.3.77:4371][2]-RX-, 25 bytes</div><div class="line">[topicName][TCP:10.29.3.77:4371][3]-RX-, 25 bytes</div><div class="line">[topicName][TCP:10.29.3.77:4371][4]-RX-, 25 bytes</div><div class="line">1.002 secs. 0.004991 Kmsgs/sec. 0.9981 Kbps</div><div class="line">[topicName][TCP:10.29.3.77:4371][5], 25 bytes</div><div class="line">1.002 secs. 0.0009984 Kmsgs/sec. 0.1997 Kbps</div><div class="line">[topicName][TCP:10.29.3.77:4371][6], 25 bytes</div><div class="line">1.002 secs. 0.0009983 Kmsgs/sec. 0.1997 Kbps</div><div class="line">[topicName][TCP:10.29.3.77:4371][7], 25 bytes</div><div class="line">...</div></div><!-- fragment --><p>Note that lbmrcv received live messages with sequence numbers 7, 6, and 5, and RX messages going from 4 all the way back to Sequence Number 0.</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="retransmittingonlyrecentmessages"></a>
 Retransmitting Only Recent Messages&nbsp;&nbsp;<small><a href="#retransmittingonlyrecentmessages">&lt;-</a></small></h2>
-<p>Thus far we have worked with only source late join settings, but suppose that you want to receive only the last 10 messages. To do this, configure the receiver option <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grplatejoin.html#retransmitrequestmaximumreceiver">retransmit_request_maximum (receiver)</a> to set how many messages to request backwards from the latest message.</p>
+<p>Thus far we have worked with only source late join settings, but suppose that you want to receive only the last 10 messages. To do this, configure the receiver option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grplatejoin.html#retransmitrequestmaximumreceiver">retransmit_request_maximum (receiver)</a> to set how many messages to request backwards from the latest message.</p>
 <p>Follow the steps below to set this option to 10.</p>
 <ol>
 <li>
 <p class="startli">Add the following line to cfg2.cfg and rename it cfg3.cfg:</p>
-<pre class="fragment">receiver retransmitrequestmaximumreceiver 10
-</pre><p class="endli"></p>
+<div class="fragment"><div class="line">receiver retransmitrequestmaximumreceiver 10</div></div><!-- fragment --><p class="endli"></p>
 </li>
 <li>
 <p class="startli">Run:</p>
-<pre class="fragment">lbmsrc -c cfg3.cfg -P 1000 topicName
-</pre><p class="endli"></p>
+<div class="fragment"><div class="line">lbmsrc -c cfg3.cfg -P 1000 topicName</div></div><!-- fragment --><p class="endli"></p>
 </li>
 <li>
 Wait a few seconds and run <code>lbmrcv -c cfg3.cfg -v topicName</code>. The output for each should closely resemble the following. </li>
 </ol>
 <p><b>LBMSRC</b></p>
-<pre class="fragment">$ lbmsrc -c cfg3.cfg -P 1000 topicName
-Sending 10000000 messages of size 25 bytes to topic [topicName]
-Receiver connect [TCP:10.29.3.76:34448]
-</pre><p><b>LBMRCV</b></p>
-<pre class="fragment">$ lbmrcv -c cfg3.cfg -v topicName
-Immediate messaging target: TCP:10.29.3.76:4391
-[topicName][TCP:10.29.3.77:4371][13]-RX-, 25 bytes
-[topicName][TCP:10.29.3.77:4371][14]-RX-, 25 bytes
-[topicName][TCP:10.29.3.77:4371][15]-RX-, 25 bytes
-[topicName][TCP:10.29.3.77:4371][16]-RX-, 25 bytes
-[topicName][TCP:10.29.3.77:4371][17]-RX-, 25 bytes
-[topicName][TCP:10.29.3.77:4371][18]-RX-, 25 bytes
-[topicName][TCP:10.29.3.77:4371][19]-RX-, 25 bytes
-[topicName][TCP:10.29.3.77:4371][20]-RX-, 25 bytes
-[topicName][TCP:10.29.3.77:4371][21]-RX-, 25 bytes
-[topicName][TCP:10.29.3.77:4371][22]-RX-, 25 bytes
-[topicName][TCP:10.29.3.77:4371][23]-RX-, 25 bytes
-1.002 secs. 0.01097 Kmsgs/sec. 2.195 Kbps
-[topicName][TCP:10.29.3.77:4371][24], 25 bytes
-1.002 secs. 0.0009984 Kmsgs/sec. 0.1997 Kbps
-[topicName][TCP:10.29.3.77:4371][25], 25 bytes
-1.002 secs. 0.0009984 Kmsgs/sec. 0.1997 Kbps
-[topicName][TCP:10.29.3.77:4371][26], 25 bytes
-...
-</pre><p>Note that 11, not 10, retransmits were actually received. This can happen because network and timing circumstances may have one RX already in transit while the specific RX amount is being processed. (Hence, it is not possible to guarantee one and only one RX message for every possible Late Join recovery.)</p>
+<div class="fragment"><div class="line">$ lbmsrc -c cfg3.cfg -P 1000 topicName</div><div class="line">Sending 10000000 messages of size 25 bytes to topic [topicName]</div><div class="line">Receiver connect [TCP:10.29.3.76:34448]</div></div><!-- fragment --><p><b>LBMRCV</b></p>
+<div class="fragment"><div class="line">$ lbmrcv -c cfg3.cfg -v topicName</div><div class="line">Immediate messaging target: TCP:10.29.3.76:4391</div><div class="line">[topicName][TCP:10.29.3.77:4371][13]-RX-, 25 bytes</div><div class="line">[topicName][TCP:10.29.3.77:4371][14]-RX-, 25 bytes</div><div class="line">[topicName][TCP:10.29.3.77:4371][15]-RX-, 25 bytes</div><div class="line">[topicName][TCP:10.29.3.77:4371][16]-RX-, 25 bytes</div><div class="line">[topicName][TCP:10.29.3.77:4371][17]-RX-, 25 bytes</div><div class="line">[topicName][TCP:10.29.3.77:4371][18]-RX-, 25 bytes</div><div class="line">[topicName][TCP:10.29.3.77:4371][19]-RX-, 25 bytes</div><div class="line">[topicName][TCP:10.29.3.77:4371][20]-RX-, 25 bytes</div><div class="line">[topicName][TCP:10.29.3.77:4371][21]-RX-, 25 bytes</div><div class="line">[topicName][TCP:10.29.3.77:4371][22]-RX-, 25 bytes</div><div class="line">[topicName][TCP:10.29.3.77:4371][23]-RX-, 25 bytes</div><div class="line">1.002 secs. 0.01097 Kmsgs/sec. 2.195 Kbps</div><div class="line">[topicName][TCP:10.29.3.77:4371][24], 25 bytes</div><div class="line">1.002 secs. 0.0009984 Kmsgs/sec. 0.1997 Kbps</div><div class="line">[topicName][TCP:10.29.3.77:4371][25], 25 bytes</div><div class="line">1.002 secs. 0.0009984 Kmsgs/sec. 0.1997 Kbps</div><div class="line">[topicName][TCP:10.29.3.77:4371][26], 25 bytes</div><div class="line">...</div></div><!-- fragment --><p>Note that 11, not 10, retransmits were actually received. This can happen because network and timing circumstances may have one RX already in transit while the specific RX amount is being processed. (Hence, it is not possible to guarantee one and only one RX message for every possible Late Join recovery.)</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="configuringlatejoinforlargenumbersofmessages"></a>
 Configuring Late Join for Large Numbers of Messages&nbsp;&nbsp;<small><a href="#configuringlatejoinforlargenumbersofmessages">&lt;-</a></small></h2>
 <p>Suppose you have a persistent receiver that comes up at midday and must gracefully catch up on the large number of messages it has missed. The following discussion explains the relevant Late Join options and how to use them. (The discussion also applies to streaming-based late join, but since streaming sources must hold all retained messages in memory, there are typically far fewer messages available.)</p>
-<p><b>Option:</b> <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grplatejoin.html#retransmitrequestoutstandingmaximumreceiver">retransmit_request_outstanding_maximum (receiver)</a></p>
-<p>When a receiver comes up and begins requesting Late Join messages, it does not simply request messages starting at Sequence Number 0 through 1000000. Rather, it requests the messages a little at a time, depending upon how option <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grplatejoin.html#retransmitrequestoutstandingmaximumreceiver">retransmit_request_outstanding_maximum (receiver)</a> is set. For example, when set to the default of 10, the receiver sends requests the first 10 messages (Sequence Number 0 - 9). Upon receiving Sequence Number 0, it then requests the next message (10), and so on, limiting the number of outstanding unfulfilled requests to 10.</p>
+<p><b>Option:</b> <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grplatejoin.html#retransmitrequestoutstandingmaximumreceiver">retransmit_request_outstanding_maximum (receiver)</a></p>
+<p>When a receiver comes up and begins requesting Late Join messages, it does not simply request messages starting at Sequence Number 0 through 1000000. Rather, it requests the messages a little at a time, depending upon how option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grplatejoin.html#retransmitrequestoutstandingmaximumreceiver">retransmit_request_outstanding_maximum (receiver)</a> is set. For example, when set to the default of 10, the receiver sends requests the first 10 messages (Sequence Number 0 - 9). Upon receiving Sequence Number 0, it then requests the next message (10), and so on, limiting the number of outstanding unfulfilled requests to 10.</p>
 <p>Note that higher for values retransmit_request_outstanding_maximum can increase the rate of RXs received, which can reduce the time required for receiver recovery. However, this can lead to heavy loading of the Store, potentially making it unable to sustain the incoming data rate.</p>
-<p>Also, be aware that increasing retransmit_request_outstanding_maximum may require a corresponding increase to <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grplatejoin.html#retransmitrequestintervalreceiver">retransmit_request_interval (receiver)</a>. Otherwise you can have a situation where messages time out because it takes a store longer than retransmit_request_interval to process all retransmit_request_outstanding_maximum requests. When this happens, you can see messages needlessly requested and sent many times (generates warnings to the receiver application log file).</p>
-<p><b>Option:</b> <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grplatejoin.html#retransmitmessagecachingproximityreceiver">retransmit_message_caching_proximity (receiver)</a></p>
+<p>Also, be aware that increasing retransmit_request_outstanding_maximum may require a corresponding increase to <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grplatejoin.html#retransmitrequestintervalreceiver">retransmit_request_interval (receiver)</a>. Otherwise you can have a situation where messages time out because it takes a store longer than retransmit_request_interval to process all retransmit_request_outstanding_maximum requests. When this happens, you can see messages needlessly requested and sent many times (generates warnings to the receiver application log file).</p>
+<p><b>Option:</b> <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grplatejoin.html#retransmitmessagecachingproximityreceiver">retransmit_message_caching_proximity (receiver)</a></p>
 <p>When sequence number delivery order is used, long recoveries of active sources can create receiver memory cache problems due to the processing of both new and retransmitted messages. This option provides a method to control caching and cache size during recovery.</p>
 <p>It does this by comparing the option value (default 2147483647) to the difference between the newest (live) received sequence number and the latest received RX sequence number. If the difference is less than the option's value, the receiver caches incoming live new messages. Otherwise, new messages are dropped and not cached (with the assumption that they can be requested later as retransmissions).</p>
-<p>For example, as shown in the diagram below, a receiver may be receiving both live streaming messages (latest, #200) and catch-up retransmissions (latest, #100). The difference here is 100. If <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grplatejoin.html#retransmitmessagecachingproximityreceiver">retransmit_message_caching_proximity (receiver)</a> is 75, the receiver caches the live messages and will deliver them when it is all caught up with the retransmissions. However, if this option is 150, streamed messages are dropped and later picked up again as a retransmission.</p>
+<p>For example, as shown in the diagram below, a receiver may be receiving both live streaming messages (latest, #200) and catch-up retransmissions (latest, #100). The difference here is 100. If <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grplatejoin.html#retransmitmessagecachingproximityreceiver">retransmit_message_caching_proximity (receiver)</a> is 75, the receiver caches the live messages and will deliver them when it is all caught up with the retransmissions. However, if this option is 150, streamed messages are dropped and later picked up again as a retransmission.</p>
 <div class="image">
 <img src="proximity_option.png" alt="proximity_option.png"/>
 </div>
@@ -420,63 +331,63 @@ Off-Transport Recovery (OTR)&nbsp;&nbsp;<small><a href="#offtransportrecoveryotr
 <p>Off-Transport Recovery (OTR) is a lost-message-recovery feature that provides a level of hedging against the possibility of brief and incidental unrecoverable loss at the transport level or from a <a class="el" href="fundamentalconcepts.html#umrouter">UM Router</a>. This section describes the OTR feature.</p>
 <dl class="section note"><dt>Note</dt><dd>With the UMQ product, you cannot use OTR with Queuing (both Brokered and ULB).</dd></dl>
 <p>When a transport cannot recover lost messages, OTR engages and looks to the source for message recovery. It does this by accessing the source's retention buffer (used also by the Late Join feature) to re-request messages that no longer exist in a transport's transmission window, or other places such as a Persistent Store or redundant source.</p>
-<p>OTR functions in a manner very similar to that of Late Join, but differs mainly in that it activates in message loss situations rather than following the creation of a receiver, and shares only the <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grplatejoin.html#latejoinsource">late_join (source)</a> option setting.</p>
+<p>OTR functions in a manner very similar to that of Late Join, but differs mainly in that it activates in message loss situations rather than following the creation of a receiver, and shares only the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grplatejoin.html#latejoinsource">late_join (source)</a> option setting.</p>
 <p>Upon detecting loss, a receiver initiates OTR by sending repeated, spaced, OTR requests to the source, until it recovers lost messages or a timeout period elapses.</p>
-<p>OTR operates independently from transport-level recovery mechanisms such as NAKs for LBT-RU or LBT-RM. When you enable OTR for a receiver with <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grpofftransportrecovery.html#useotrreceiver">use_otr (receiver)</a>, the <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grpofftransportrecovery.html#otrrequestinitialdelayreceiver">otr_request_initial_delay (receiver)</a> period starts as soon as the <a class="el" href="architecture.html#deliverycontroller">Delivery Controller</a> detects a sequence gap. If the gap is not resolved by the end of the delay interval, OTR recovery initiates. OTR recovery can occur before, during or after transport-level recovery attempts.</p>
-<p>When a receiver initiates OTR, the intervals between OTR requests increases twofold after each request, until the maximum interval is reached (assuming the receiver is still waiting to receive the retransmission). You use configuration options <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grpofftransportrecovery.html#otrrequestminimumintervalreceiver">otr_request_minimum_interval (receiver)</a> and <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grpofftransportrecovery.html#otrrequestmaximumintervalreceiver">otr_request_maximum_interval (receiver)</a> to set the initial (minimum) and maximum intervals, respectively.</p>
+<p>OTR operates independently from transport-level recovery mechanisms such as NAKs for LBT-RU or LBT-RM. When you enable OTR for a receiver with <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpofftransportrecovery.html#useotrreceiver">use_otr (receiver)</a>, the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpofftransportrecovery.html#otrrequestinitialdelayreceiver">otr_request_initial_delay (receiver)</a> period starts as soon as the <a class="el" href="architecture.html#deliverycontroller">Delivery Controller</a> detects a sequence gap. If the gap is not resolved by the end of the delay interval, OTR recovery initiates. OTR recovery can occur before, during or after transport-level recovery attempts.</p>
+<p>When a receiver initiates OTR, the intervals between OTR requests increases twofold after each request, until the maximum interval is reached (assuming the receiver is still waiting to receive the retransmission). You use configuration options <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpofftransportrecovery.html#otrrequestminimumintervalreceiver">otr_request_minimum_interval (receiver)</a> and <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpofftransportrecovery.html#otrrequestmaximumintervalreceiver">otr_request_maximum_interval (receiver)</a> to set the initial (minimum) and maximum intervals, respectively.</p>
 <p>The source retransmits lost messages to the recovered receiver via unicast.</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="otrwithsequencenumberordereddelivery"></a>
 OTR with Sequence Number Ordered Delivery&nbsp;&nbsp;<small><a href="#otrwithsequencenumberordereddelivery">&lt;-</a></small></h2>
-<p>When sequence number delivery order is used and a gap of missing messages occurs, a receiver buffers the new incoming messages while it attempts to recover the earlier missing ones. Long recoveries of actively streaming sources can cause excessive receiver cache memory growth due to the processing of both new and retransmitted messages. You can control caching and cache size during recovery with options <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grpofftransportrecovery.html#otrmessagecachingthresholdreceiver">otr_message_caching_threshold (receiver)</a> and <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grplatejoin.html#retransmitmessagecachingproximityreceiver">retransmit_message_caching_proximity (receiver)</a>.</p>
-<p>The option <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grpofftransportrecovery.html#otrmessagecachingthresholdreceiver">otr_message_caching_threshold (receiver)</a> sets the maximum number of messages a receiver can buffer. When the number of cached messages hits this threshold, new streamed messages are dropped and not cached, with the assumption that they can be requested later as retransmissions.</p>
-<p>The <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grplatejoin.html#retransmitmessagecachingproximityreceiver">retransmit_message_caching_proximity (receiver)</a>, which is also used by Late Join (see <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grplatejoin.html#retransmitmessagecachingproximityreceiver">retransmit_message_caching_proximity (receiver)</a>), turns off this caching if there are too many messages to buffer between the last delivered message and the currently streaming messages.</p>
+<p>When sequence number delivery order is used and a gap of missing messages occurs, a receiver buffers the new incoming messages while it attempts to recover the earlier missing ones. Long recoveries of actively streaming sources can cause excessive receiver cache memory growth due to the processing of both new and retransmitted messages. You can control caching and cache size during recovery with options <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpofftransportrecovery.html#otrmessagecachingthresholdreceiver">otr_message_caching_threshold (receiver)</a> and <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grplatejoin.html#retransmitmessagecachingproximityreceiver">retransmit_message_caching_proximity (receiver)</a>.</p>
+<p>The option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpofftransportrecovery.html#otrmessagecachingthresholdreceiver">otr_message_caching_threshold (receiver)</a> sets the maximum number of messages a receiver can buffer. When the number of cached messages hits this threshold, new streamed messages are dropped and not cached, with the assumption that they can be requested later as retransmissions.</p>
+<p>The <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grplatejoin.html#retransmitmessagecachingproximityreceiver">retransmit_message_caching_proximity (receiver)</a>, which is also used by Late Join (see <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grplatejoin.html#retransmitmessagecachingproximityreceiver">retransmit_message_caching_proximity (receiver)</a>), turns off this caching if there are too many messages to buffer between the last delivered message and the currently streaming messages.</p>
 <p>Both of these option thresholds must be satisfied before caching resumes.</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="otrwithump"></a>
 OTR With Persistence&nbsp;&nbsp;<small><a href="#otrwithump">&lt;-</a></small></h2>
-<p>With the UMP/UMQ products, you can implement OTR in conjunction with the Persistent Store, however in this configuration, it functions somewhat differently from Streaming. If an OTR-enabled receiver registered with a store detects a sequence gap in the live stream and that gap is not resolved by other means within the next <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grpofftransportrecovery.html#otrrequestinitialdelayreceiver">otr_request_initial_delay (receiver)</a> period, the receiver requests those messages from the store(s). If the store does not have some of the requested messages, the receiver requests them from the source. Regardless of whether the messages are recovered from a store or from the source, OTR delivers all recovered messages with the LBM_MSG_OTR flag, unlike Late Join, which uses the LBM_MSG_RETRANSMIT flag.</p>
+<p>With the UMP/UMQ products, you can implement OTR in conjunction with the Persistent Store, however in this configuration, it functions somewhat differently from Streaming. If an OTR-enabled receiver registered with a store detects a sequence gap in the live stream and that gap is not resolved by other means within the next <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpofftransportrecovery.html#otrrequestinitialdelayreceiver">otr_request_initial_delay (receiver)</a> period, the receiver requests those messages from the store(s). If the store does not have some of the requested messages, the receiver requests them from the source. Regardless of whether the messages are recovered from a store or from the source, OTR delivers all recovered messages with the LBM_MSG_OTR flag, unlike Late Join, which uses the LBM_MSG_RETRANSMIT flag.</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="otroptionssummary"></a>
 OTR Options Summary&nbsp;&nbsp;<small><a href="#otroptionssummary">&lt;-</a></small></h2>
 <ul>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grplatejoin.html#latejoinsource">late_join (source)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grplatejoin.html#latejoinsource">late_join (source)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grpdeprecated.html#retransmitretentionagethresholdsource">retransmit_retention_age_threshold (source)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpdeprecated.html#retransmitretentionagethresholdsource">retransmit_retention_age_threshold (source)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grplatejoin.html#retransmitretentionsizelimitsource">retransmit_retention_size_limit (source)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grplatejoin.html#retransmitretentionsizelimitsource">retransmit_retention_size_limit (source)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grplatejoin.html#retransmitretentionsizethresholdsource">retransmit_retention_size_threshold (source)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grplatejoin.html#retransmitretentionsizethresholdsource">retransmit_retention_size_threshold (source)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grpofftransportrecovery.html#useotrreceiver">use_otr (receiver)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpofftransportrecovery.html#useotrreceiver">use_otr (receiver)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grpofftransportrecovery.html#otrrequestmessagetimeoutreceiver">otr_request_message_timeout (receiver)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpofftransportrecovery.html#otrrequestmessagetimeoutreceiver">otr_request_message_timeout (receiver)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grpofftransportrecovery.html#otrrequestinitialdelayreceiver">otr_request_initial_delay (receiver)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpofftransportrecovery.html#otrrequestinitialdelayreceiver">otr_request_initial_delay (receiver)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grpofftransportrecovery.html#otrrequestlogalertcooldownreceiver">otr_request_log_alert_cooldown (receiver)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpofftransportrecovery.html#otrrequestlogalertcooldownreceiver">otr_request_log_alert_cooldown (receiver)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grpofftransportrecovery.html#otrrequestmaximumintervalreceiver">otr_request_maximum_interval (receiver)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpofftransportrecovery.html#otrrequestmaximumintervalreceiver">otr_request_maximum_interval (receiver)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grpofftransportrecovery.html#otrrequestminimumintervalreceiver">otr_request_minimum_interval (receiver)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpofftransportrecovery.html#otrrequestminimumintervalreceiver">otr_request_minimum_interval (receiver)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grpofftransportrecovery.html#otrrequestoutstandingmaximumreceiver">otr_request_outstanding_maximum (receiver)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpofftransportrecovery.html#otrrequestoutstandingmaximumreceiver">otr_request_outstanding_maximum (receiver)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grpofftransportrecovery.html#otrmessagecachingthresholdreceiver">otr_message_caching_threshold (receiver)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpofftransportrecovery.html#otrmessagecachingthresholdreceiver">otr_message_caching_threshold (receiver)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grplatejoin.html#retransmitmessagecachingproximityreceiver">retransmit_message_caching_proximity (receiver)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grplatejoin.html#retransmitmessagecachingproximityreceiver">retransmit_message_caching_proximity (receiver)</a> </li>
 </ul>
 <dl class="section note"><dt>Note</dt><dd>With <a class="el" href="advancedoptimizations.html#smartsources">Smart Sources</a>, the following configuration options have limited or no support: <ul>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grplatejoin.html#retransmitretentionsizethresholdsource">retransmit_retention_size_threshold (source)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grplatejoin.html#retransmitretentionsizethresholdsource">retransmit_retention_size_threshold (source)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grplatejoin.html#retransmitretentionsizelimitsource">retransmit_retention_size_limit (source)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grplatejoin.html#retransmitretentionsizelimitsource">retransmit_retention_size_limit (source)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grpdeprecated.html#retransmitretentionagethresholdsource">retransmit_retention_age_threshold (source)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpdeprecated.html#retransmitretentionagethresholdsource">retransmit_retention_age_threshold (source)</a> </li>
 </ul>
 </dd></dl>
 <p><br />
@@ -521,21 +432,21 @@ TLS Configuration&nbsp;&nbsp;<small><a href="#tlsconfiguration">&lt;-</a></small
 TLS Options Summary&nbsp;&nbsp;<small><a href="#tlsoptionssummary">&lt;-</a></small></h2>
 <ul>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grpencryptedtcp.html#usetlscontext">use_tls (context)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpencryptedtcp.html#usetlscontext">use_tls (context)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grpencryptedtcp.html#tlsciphersuitescontext">tls_cipher_suites (context)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpencryptedtcp.html#tlsciphersuitescontext">tls_cipher_suites (context)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grpencryptedtcp.html#tlscertificatecontext">tls_certificate (context)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpencryptedtcp.html#tlscertificatecontext">tls_certificate (context)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grpencryptedtcp.html#tlscertificatekeycontext">tls_certificate_key (context)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpencryptedtcp.html#tlscertificatekeycontext">tls_certificate_key (context)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grpencryptedtcp.html#tlscertificatekeypasswordcontext">tls_certificate_key_password (context)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpencryptedtcp.html#tlscertificatekeypasswordcontext">tls_certificate_key_password (context)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grpencryptedtcp.html#tlstrustedcertificatescontext">tls_trusted_certificates (context)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpencryptedtcp.html#tlstrustedcertificatescontext">tls_trusted_certificates (context)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grpencryptedtcp.html#tlscompressionnegotiationtimeoutcontext">tls_compression_negotiation_timeout (context)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpencryptedtcp.html#tlscompressionnegotiationtimeoutcontext">tls_compression_negotiation_timeout (context)</a> </li>
 </ul>
-<p>The <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grpencryptedtcp.html#tlsciphersuitescontext">tls_cipher_suites (context)</a> configuration option defines the list of one or more (comma separated) cipher suites that are acceptable to this context. If more than one is supplied, they should be in descending order of preference. When a remote context negotiates encrypted TCP, the two sides must find a cipher suite in common, otherwise the connection will be canceled.</p>
+<p>The <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpencryptedtcp.html#tlsciphersuitescontext">tls_cipher_suites (context)</a> configuration option defines the list of one or more (comma separated) cipher suites that are acceptable to this context. If more than one is supplied, they should be in descending order of preference. When a remote context negotiates encrypted TCP, the two sides must find a cipher suite in common, otherwise the connection will be canceled.</p>
 <p>OpenSSL uses the cipher suite to define the algorithms and key lengths for encrypting the data stream. The choice of cipher suite is critical for ensuring the security of the connection. To achieve a high degree of backwards compatibility, OpenSSL supports old cipher suites which are no longer considered secure. The user is advised to use UM's default suite.</p>
 <p>OpenSSL follows its own naming convention for cipher suites. See <a href="https://www.openssl.org/docs/man1.1.0/man1/ciphers.html">https://www.openssl.org/docs/man1.1.0/man1/ciphers.html</a> for a list of valid suite names (the ones with dashes) and the equivalent IANA names (with underscores). The UM configuration should use the OpenSSL-style names (with dashes).</p>
 <p><br />
@@ -570,7 +481,7 @@ TLS and the Dynamic Routing Option (DRO)&nbsp;&nbsp;<small><a href="#tlsandthedy
 '<b>&lt;trusted-certificates&gt;</b>' </li>
 </ul>
 <p>As with sources and receivers, the portals on both sides of a peer link must be configured for compatible encryption settings.</p>
-<p>Notice that there is no element corresponding to the context option <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grpencryptedtcp.html#tlscompressionnegotiationtimeoutcontext">tls_compression_negotiation_timeout (context)</a>. The UM Router peer link's negotiation timeout is hard-coded to 5 seconds.</p>
+<p>Notice that there is no element corresponding to the context option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpencryptedtcp.html#tlscompressionnegotiationtimeoutcontext">tls_compression_negotiation_timeout (context)</a>. The UM Router peer link's negotiation timeout is hard-coded to 5 seconds.</p>
 <p>See the UM Router configuration DTD for details.</p>
 <p><br />
  </p>
@@ -582,6 +493,18 @@ TLS and Compression&nbsp;&nbsp;<small><a href="#tlsandcompression">&lt;-</a></sm
 <p><b>Version Interoperability</b></p>
 <p>It is not recommended to mix pre-6.9 contexts with encrypted contexts on topics of shared interest. If a process with a pre-6.9 version of UM creates a receiver, and another process with UM 6.9 or beyond creates a TLS source, the pre-6.9 receiver will attempt to join the TLS source. After a timeout, the handshake will fail and the source will disconnect. The pre-6.9 receiver will retry the connection, leading to flapping.</p>
 <p>Note that in the reverse situation, a 6.9 TLS receiver will simply ignore a pre-6.9 source. I.e. no attempt will be made to join, and no flapping will occur.</p>
+<p><br />
+ </p>
+<h2><a class="anchor" id="openssldependency"></a>
+OpenSSL Dependency&nbsp;&nbsp;<small><a href="#openssldependency">&lt;-</a></small></h2>
+<p>For UM versions 6.9 through 6.12, the UM dynamic library was linked with OpenSSL in such a way as to require its presence in order for UM to load and initialize. I.e. it was a load-time dependency.</p>
+<p>As of UM version 6.12.1, the linkage with OpenSSL is made at run-time. If encryption features are not used, the OpenSSL libraries do not need to be present on the system. UM is able to initialize without OpenSSL.</p>
+<p>There are two UM features which utilize encryption provided by OpenSSL: </p><ul>
+<li>
+<a class="el" href="umfeatures.html#encryptedtcp">Encrypted TCP</a>. </li>
+<li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/umm.tag:../UMM/" href="../UMM/index.html#ummanageroverview">UM Manager (UMM)</a> with <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/umm.tag:../UMM/" href="../UMM/ummdaemonoverview.html#securingummdaemoncommunicationwithssl">secure communication</a> enabled. </li>
+</ul>
 <p><br />
  </p>
 <h1><a class="anchor" id="compressedtcp"></a>
@@ -602,9 +525,9 @@ Compression Configuration&nbsp;&nbsp;<small><a href="#compressionconfiguration">
 <p>The compression-related configuration options used by the Ultra Messaging library are:</p>
 <ul>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grpcompressedtcp.html#compressioncontext">compression (context)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpcompressedtcp.html#compressioncontext">compression (context)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grpencryptedtcp.html#tlscompressionnegotiationtimeoutcontext">tls_compression_negotiation_timeout (context)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpencryptedtcp.html#tlscompressionnegotiationtimeoutcontext">tls_compression_negotiation_timeout (context)</a> </li>
 </ul>
 <p><br />
  </p>
@@ -628,7 +551,7 @@ Compression and the Dynamic Routing Option (DRO)&nbsp;&nbsp;<small><a href="#com
 '<b>&lt;compression&gt;</b>' </li>
 </ul>
 <p>As with sources and receivers, the portals on both sides of a peer link must be configured for the same compression setting.</p>
-<p>Notice that there is no element corresponding to the context option <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grpencryptedtcp.html#tlscompressionnegotiationtimeoutcontext">tls_compression_negotiation_timeout (context)</a>. The UM Router peer link's negotiation timeout is hard-coded to 5 seconds.</p>
+<p>Notice that there is no element corresponding to the context option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpencryptedtcp.html#tlscompressionnegotiationtimeoutcontext">tls_compression_negotiation_timeout (context)</a>. The UM Router peer link's negotiation timeout is hard-coded to 5 seconds.</p>
 <p>See the UM Router configuration DTD for details.</p>
 <p><br />
  </p>
@@ -646,7 +569,7 @@ Version Interoperability&nbsp;&nbsp;<small><a href="#versioninteroperability">&l
 High-resolution Timestamps&nbsp;&nbsp;<small><a href="#highresolutiontimestamps">&lt;-</a></small></h1>
 <p>This section introduces the use of high-resolution timestamps with LBT-RM.</p>
 <p>The Ultra Messaging (UM) high-resolution message timestamp feature leverages the hardware timestamping function of certain Solarflare network interface cards (NICs) to measure sub-microsecond times that packets are transmitted and received. Solarflare's NICs and Onload kernel-bypass driver implement PTP to synchronize timestamps across the network, allowing very accurate one-way latency measurements. The UM timestamp feature requires Solarflare OpenOnload version 201509 or later.</p>
-<p>For subscribers, each message's receive timestamp is delivered in the message's header structure (for C programs, <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#aaa7a945411e63884f12918417e8d117c">lbm_msg_t</a> field <b>hr_timestamp</b>, of type <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#a60ce419ca9bccc4d2b61b9acb70fe30e">lbm_timespec_t</a>). Each timestamp is a structure of 32 bits worth of seconds and 32 bits worth of nanoseconds. When both values are zero, the timestamp is not available.</p>
+<p>For subscribers, each message's receive timestamp is delivered in the message's header structure (for C programs, <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#aaa7a945411e63884f12918417e8d117c">lbm_msg_t</a> field <b>hr_timestamp</b>, of type <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#a60ce419ca9bccc4d2b61b9acb70fe30e">lbm_timespec_t</a>). Each timestamp is a structure of 32 bits worth of seconds and 32 bits worth of nanoseconds. When both values are zero, the timestamp is not available.</p>
 <p>For publishers, each message's transmit timestamp is delivered via the source event callback (for C programs, event type LBM_SRC_EVENT_TIMESTAMP). The same timestamp structure as above is delivered with the event, as well as the message's sequence number. Sending applications can be informed of the outgoing sequence number range of each message by using the extended form of the send function and supplying the LBM_SRC_SEND_EX_FLAG_SEQUENCE_NUMBER_INFO flag. This causes the LBM_SRC_EVENT_SEQUENCE_NUMBER_INFO event to be delivered to the source event handler.</p>
 <p><br />
  </p>
@@ -671,9 +594,9 @@ Timestamp Restrictions&nbsp;&nbsp;<small><a href="#timestamprestrictions">&lt;-<
 <li>
 <b>UM Fragmentation, send-side</b>: If user messages are too large to be contained in a single datagram, UM will fragment the message into multiple datagrams. On the send side, each datagram will trigger delivery of a timestamp. <ul>
 <li>
-UM Fragmentation, receive-side with <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grpmajoroptions.html#ordereddeliveryreceiver">ordered_delivery (receiver)</a> set to 0 (arrival): Arrival-order delivery will result in each fragment being delivered separately, as it is received. Each fragment's message header will contain a timestamp. Arrival order delivery provides an accurate timestamp of when the complete message is received (although, as mentioned above, any fragment recovered via OTR or the Persistent Store will not have a timestamp). </li>
+UM Fragmentation, receive-side with <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpmajoroptions.html#ordereddeliveryreceiver">ordered_delivery (receiver)</a> set to 0 (arrival): Arrival-order delivery will result in each fragment being delivered separately, as it is received. Each fragment's message header will contain a timestamp. Arrival order delivery provides an accurate timestamp of when the complete message is received (although, as mentioned above, any fragment recovered via OTR or the Persistent Store will not have a timestamp). </li>
 <li>
-UM Fragmentation, receive-side with <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grpmajoroptions.html#ordereddeliveryreceiver">ordered_delivery (receiver)</a> set to 1 or -1, (reassembly): Delivery with reassembly results in a single timestamp included in the message header. That timestamp corresponds to the arrival of the last fragment of the message (although, as mentioned above, any fragment recovered via OTR or the Persistent Store will not have a timestamp). Note that this is not necessarily the last fragment received; if an intermediate datagram is lost and subsequently re-transmitted after a delay, that intermediate datagram will be the last one received, but its timestamp will not be used for the message. For example, if a three-fragment message is received in the order of F0, F2, F1, the timestamp for the message will correspond to F2, the last fragment of the message. If fragmented messages are being sent, and an accurate time of message completion is needed, arrival order delivery must be used. </li>
+UM Fragmentation, receive-side with <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpmajoroptions.html#ordereddeliveryreceiver">ordered_delivery (receiver)</a> set to 1 or -1, (reassembly): Delivery with reassembly results in a single timestamp included in the message header. That timestamp corresponds to the arrival of the last fragment of the message (although, as mentioned above, any fragment recovered via OTR or the Persistent Store will not have a timestamp). Note that this is not necessarily the last fragment received; if an intermediate datagram is lost and subsequently re-transmitted after a delay, that intermediate datagram will be the last one received, but its timestamp will not be used for the message. For example, if a three-fragment message is received in the order of F0, F2, F1, the timestamp for the message will correspond to F2, the last fragment of the message. If fragmented messages are being sent, and an accurate time of message completion is needed, arrival order delivery must be used. </li>
 </ul>
 </li>
 <li>
@@ -687,9 +610,9 @@ UM Fragmentation, receive-side with <a class="elRef" doxygen="/29W/Amun/home/sfo
 Timestamp Configuration Summary&nbsp;&nbsp;<small><a href="#timestampconfigurationsummary">&lt;-</a></small></h2>
 <ul>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grptransportlbtrmoperation.html#transportlbtrmsourcetimestampcontext">transport_lbtrm_source_timestamp (context)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grptransportlbtrmoperation.html#transportlbtrmsourcetimestampcontext">transport_lbtrm_source_timestamp (context)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grptransportlbtrmoperation.html#transportlbtrmreceivertimestampcontext">transport_lbtrm_receiver_timestamp (context)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grptransportlbtrmoperation.html#transportlbtrmreceivertimestampcontext">transport_lbtrm_receiver_timestamp (context)</a> </li>
 </ul>
 <p><br />
  </p>
@@ -698,9 +621,9 @@ Unicast Immediate Messaging&nbsp;&nbsp;<small><a href="#unicastimmediatemessagin
 <p>Unicast Immediate Messaging (UIM) deviates from the normal publish/subscribe paradigm by allowing the sending application to send messages to a specific destination application context. Various features within UM make use of UIMs transparently to the application. For example, a persistent receiver sends consumption acknowledgements to the Store using UIM messages.</p>
 <p>The application can make direct use of UIM in two ways: </p><ul>
 <li>
-Calling a UIM send API function. See <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#a497d77b133cea1547c3346fcba99872a">lbm_unicast_immediate_message()</a> and <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#ae011c7a66e1db1f012d7f9633dbd321d">lbm_unicast_immediate_request()</a>. </li>
+Calling a UIM send API function. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#a497d77b133cea1547c3346fcba99872a">lbm_unicast_immediate_message()</a> and <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#ae011c7a66e1db1f012d7f9633dbd321d">lbm_unicast_immediate_request()</a>. </li>
 <li>
-Sending a response to a message using the <a class="el" href="fundamentalconcepts.html#requestresponse">Request/Response</a> feature. See <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#a0bbc01b600ccc2ae874474e35955eb85">lbm_send_response()</a>. </li>
+Sending a response to a message using the <a class="el" href="fundamentalconcepts.html#requestresponse">Request/Response</a> feature. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#a0bbc01b600ccc2ae874474e35955eb85">lbm_send_response()</a>. </li>
 </ul>
 <p>A UIM message can be associated with a topic string, but that topic is not used to determine where the message is sent to. Instead, the topic string is included in the message header, and the application must specify the destination of the desired context in the UIM send call.</p>
 <p>UIM messages are sent using the TCP protocol; no other protocol is supported for UIM. The TCP connection is created dynamically as-needed, when a message is sent. That is, when an application sends its first UIM message to a particular destination context, the sender's context holds the message and initiates the TCP connection. When the connection is accepted by the destination context, the sender sends the message. When the message is fully sent, the sender will keep the TCP connection open for a period of time in case more UIMs are sent to the same destination context. See <a class="el" href="umfeatures.html#uimconnectionmanagement">UIM Connection Management</a>.</p>
@@ -710,14 +633,14 @@ Sending a response to a message using the <a class="el" href="fundamentalconcept
 UIM Addressing&nbsp;&nbsp;<small><a href="#uimaddressing">&lt;-</a></small></h2>
 <p>There are three ways to specify the destination address of a UIM: </p><ul>
 <li>
-Implicit &ndash; this method is used when a response is sent using the <a class="el" href="fundamentalconcepts.html#requestresponse">Request/Response</a> feature. See <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#a0bbc01b600ccc2ae874474e35955eb85">lbm_send_response()</a> for details. </li>
+Implicit &ndash; this method is used when a response is sent using the <a class="el" href="fundamentalconcepts.html#requestresponse">Request/Response</a> feature. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#a0bbc01b600ccc2ae874474e35955eb85">lbm_send_response()</a> for details. </li>
 <li>
-Explicit &ndash; this method uses a string of the form: "TCP:ip:port" (no UM router) or "TCP:domain:ip:port" (for a routed UM network). See <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#a497d77b133cea1547c3346fcba99872a">lbm_unicast_immediate_message()</a> for details. </li>
+Explicit &ndash; this method uses a string of the form: "TCP:ip:port" (no UM router) or "TCP:domain:ip:port" (for a routed UM network). See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#a497d77b133cea1547c3346fcba99872a">lbm_unicast_immediate_message()</a> for details. </li>
 <li>
 Source &ndash; this method uses a source string to send messages to the context which hosts a given source. See <a class="el" href="umobjects.html#sendingtosources">Sending to Sources</a> for details. </li>
 </ul>
 <p>In the Explicit addressing method, the "ip" and "port" refer to the binding of the destination context's UIM port. By default, when a context is created, UM will select values from a range of possibilities for ip and port. However, this makes it difficult for a sender to construct an explicit address since the ip and port are not deterministic.</p>
-<p>One solution is to explicitly set the ip and port for the context's UIM port using the configuration options: <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grpunicastimmediatemessagingnetwork.html#requesttcpportcontext">request_tcp_port (context)</a> and <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grpunicastimmediatemessagingnetwork.html#requesttcpinterfacecontext">request_tcp_interface (context)</a>.</p>
+<p>One solution is to explicitly set the ip and port for the context's UIM port using the configuration options: <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpunicastimmediatemessagingnetwork.html#requesttcpportcontext">request_tcp_port (context)</a> and <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpunicastimmediatemessagingnetwork.html#requesttcpinterfacecontext">request_tcp_interface (context)</a>.</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="receivingauim"></a>
@@ -728,8 +651,8 @@ UIMs with a topic. </li>
 <li>
 UIMs with no topic (topicless). </li>
 </ul>
-<p>To receive UIM messages with a topic, an application simply creates a normal receiver for that topic. Alternatively, it can create a wildcard receiver for a matching topic pattern. Finally, the application can also register a callback specifically for UIM messages that contain a topic but for which no matching receiver exists, using <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grpmulticastimmediatemessagingoperation.html#immediatemessagetopicreceiverfunctioncontext">immediate_message_topic_receiver_function (context)</a>. Alternatively, <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#abdefbb3bd3ff3a3b2ec6e20ca2f5dc19">lbm_context_rcv_immediate_topic_msgs()</a> can be used.</p>
-<p>To receive UIM messages with no topic (topicless), the application must register a callback for topicless messages, using <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grpmulticastimmediatemessagingoperation.html#immediatemessagereceiverfunctioncontext">immediate_message_receiver_function (context)</a>). Alternatively, <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#a374f135dddf7794130509f97b1e96cf8">lbm_context_rcv_immediate_msgs()</a> can be used.</p>
+<p>To receive UIM messages with a topic, an application simply creates a normal receiver for that topic. Alternatively, it can create a wildcard receiver for a matching topic pattern. Finally, the application can also register a callback specifically for UIM messages that contain a topic but for which no matching receiver exists, using <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpmulticastimmediatemessagingoperation.html#immediatemessagetopicreceiverfunctioncontext">immediate_message_topic_receiver_function (context)</a>. Alternatively, <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#abdefbb3bd3ff3a3b2ec6e20ca2f5dc19">lbm_context_rcv_immediate_topic_msgs()</a> can be used.</p>
+<p>To receive UIM messages with no topic (topicless), the application must register a callback for topicless messages, using <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpmulticastimmediatemessagingoperation.html#immediatemessagereceiverfunctioncontext">immediate_message_receiver_function (context)</a>). Alternatively, <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#a374f135dddf7794130509f97b1e96cf8">lbm_context_rcv_immediate_msgs()</a> can be used.</p>
 <p>Note that only the specified destination context will deliver the message. If other applications have a receiver for that same topic, they will not receive a copy of that UIM message.</p>
 <p><b>UIM Port</b></p>
 <p>To receive UIMs, a context must bind to and listen on the "UIM Port", also known as the "Request Port". See <a class="el" href="umfeatures.html#uimaddressing">UIM Addressing</a> for details.</p>
@@ -739,21 +662,21 @@ UIMs with no topic (topicless). </li>
 Sending a UIM&nbsp;&nbsp;<small><a href="#sendingauim">&lt;-</a></small></h2>
 <p>The following APIs are used to send application UIM messages: </p><ul>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#a497d77b133cea1547c3346fcba99872a">lbm_unicast_immediate_message()</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#a497d77b133cea1547c3346fcba99872a">lbm_unicast_immediate_message()</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#ae011c7a66e1db1f012d7f9633dbd321d">lbm_unicast_immediate_request()</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#ae011c7a66e1db1f012d7f9633dbd321d">lbm_unicast_immediate_request()</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#a0bbc01b600ccc2ae874474e35955eb85">lbm_send_response()</a> &ndash; see <a class="el" href="fundamentalconcepts.html#requestresponse">Request/Response</a> for more information. </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#a0bbc01b600ccc2ae874474e35955eb85">lbm_send_response()</a> &ndash; see <a class="el" href="fundamentalconcepts.html#requestresponse">Request/Response</a> for more information. </li>
 <li>
 </li>
 </ul>
-<p>For the <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#a497d77b133cea1547c3346fcba99872a">lbm_unicast_immediate_message()</a> and <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#ae011c7a66e1db1f012d7f9633dbd321d">lbm_unicast_immediate_request()</a> APIs, the user has a choice between sending messages with a topic or without a topic (topicless). With the C API, passing a NULL pointer for the topic string sends a topicless message.</p>
+<p>For the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#a497d77b133cea1547c3346fcba99872a">lbm_unicast_immediate_message()</a> and <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#ae011c7a66e1db1f012d7f9633dbd321d">lbm_unicast_immediate_request()</a> APIs, the user has a choice between sending messages with a topic or without a topic (topicless). With the C API, passing a NULL pointer for the topic string sends a topicless message.</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="uimconnectionmanagement"></a>
 UIM Connection Management&nbsp;&nbsp;<small><a href="#uimconnectionmanagement">&lt;-</a></small></h2>
 <p>The act of sending a UIM message will check to see if the context already has a TCP connection open to the destination context. If so, the existing connection is used to send the UIM. Otherwise, UM will initiate a new TCP connection to the destination context.</p>
-<p>Once the message is sent, an activity deletion timer is started for the connection; see <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grpunicastimmediatemessagingoperation.html#responsetcpdeletiontimeoutcontext">response_tcp_deletion_timeout (context)</a>. If another UIM message is sent to the same destination, the activity deletion timer is canceled and restarted. Thus, if messages are sent periodically with a shorter period than the activity deletion timer, the TCP connection will remain established.</p>
+<p>Once the message is sent, an activity deletion timer is started for the connection; see <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpunicastimmediatemessagingoperation.html#responsetcpdeletiontimeoutcontext">response_tcp_deletion_timeout (context)</a>. If another UIM message is sent to the same destination, the activity deletion timer is canceled and restarted. Thus, if messages are sent periodically with a shorter period than the activity deletion timer, the TCP connection will remain established.</p>
 <p>However, if no messages are sent for more time than the activity deletion timer, the timer will expire and the TCP connection will be deleted and resources cleaned up.</p>
 <p>An exception to this workflow exists for the <a class="el" href="fundamentalconcepts.html#requestresponse">Request/Response</a> feature. When a request message is received by a context, the context automatically initiates a connection to the requester, even though the application has not yet sent its response UIM. The activity deletion timer is not started at this time. When the application's receiver callback is invoked with the request message, the message contains a reference to a response object. This response object is used for sending response UIMs back to the requester. However, the act of sending these responses also does not start the activity deletion timer for the TCP connection. The activity deletion timer is only started when the response object is deleted (usually implicitly when the message itself is deleted, usually as a result of returning from the receiver callback).</p>
 <p>Note that the application that receives a request has the option of retaining the message, which delays deletion of the message until the application explicitly decides to delete it. In this case, the TCP connection is held open for as long as the application retains the response object. When the application has finished sending any and all of its responses to the request and does not need the request object any more, it deletes the request object. This starts the activity deletion timer running.</p>
@@ -764,20 +687,20 @@ UIM Connection Management&nbsp;&nbsp;<small><a href="#uimconnectionmanagement">&
 Multicast Immediate Messaging&nbsp;&nbsp;<small><a href="#multicastimmediatemessaging">&lt;-</a></small></h1>
 <p>Multicast Immediate Messaging (MIM) is not recommended for general use. It is inefficient and can affect the operation of all applications on a UM network. This is partly because every message sent via the MIM protocol is distributed to <em>every</em> other application on the network, regardless of that application's interest in such messages.</p>
 <p>MIM uses the same reliable multicast protocol as normal LBT-RM sources. MIM messages can be sent to a topic, in which case each receiving context will filter that message, discarding it if no receiver exists for that topic. MIM avoids using Topic Resolution by including the full topic string in the message, and sending it to a multicast group that all application contexts are configured to use.</p>
-<p>A receiving context will receive the message and check to see if the application created a receiver for the topic. If so, then the message is delivered. However, if no receiver exists for that topic, the context checks to see if <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grpmulticastimmediatemessagingoperation.html#immediatemessagetopicreceiverfunctioncontext">immediate_message_topic_receiver_function (context)</a> is configured. If so, then the message is delivered. But if neither exists, then the receiving context discards the message.</p>
-<p>It is also possible to send a "topicless" message via MIM. The recipient context must have configured a topicless receiver using <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grpmulticastimmediatemessagingoperation.html#immediatemessagereceiverfunctioncontext">immediate_message_receiver_function (context)</a>; otherwise the message is discarded.</p>
+<p>A receiving context will receive the message and check to see if the application created a receiver for the topic. If so, then the message is delivered. However, if no receiver exists for that topic, the context checks to see if <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpmulticastimmediatemessagingoperation.html#immediatemessagetopicreceiverfunctioncontext">immediate_message_topic_receiver_function (context)</a> is configured. If so, then the message is delivered. But if neither exists, then the receiving context discards the message.</p>
+<p>It is also possible to send a "topicless" message via MIM. The recipient context must have configured a topicless receiver using <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpmulticastimmediatemessagingoperation.html#immediatemessagereceiverfunctioncontext">immediate_message_receiver_function (context)</a>; otherwise the message is discarded.</p>
 <p>A valid use case for MIM might be an application that starts running, sends a request message, gets back a response, and then exits. With this kind of short-lived application, it can be a burden to create a source and wait for it to resolve. With MIM, topic resolution is skipped, so no delay is needed prior to sending.</p>
 <p>MIM is typically not used for normal Streaming data because messages are somewhat less efficiently handled than source-based messages. Inefficiencies derive from larger message sizes due to the inclusion of the topic name, and on the receiving side, the MIM Delivery Controller hashing of topic names to find receivers, which consumes some extra CPU. If you have a high-message-rate stream, you should use a source-based method and not MIM. If head-loss is a concern and delay before sending is not feasible, then consider using late join (although this replaces head-loss with some head latency).</p>
-<p>Note: Multicast Immediate Messaging can benefit from hardware acceleration. See <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grptransportacceleration.html">Transport Acceleration Options</a> for more information</p>
+<p>Note: Multicast Immediate Messaging can benefit from hardware acceleration. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grptransportacceleration.html">Transport Acceleration Options</a> for more information</p>
 <dl class="section note"><dt>Note</dt><dd>MIM is not compatible with Queuing, including ULB.</dd></dl>
 <p><br />
  </p>
 <h2><a class="anchor" id="temporarytransportsession"></a>
 Temporary Transport Session&nbsp;&nbsp;<small><a href="#temporarytransportsession">&lt;-</a></small></h2>
-<p>MIM uses the same reliable multicast algorithms as LBT-RM. When a sending application sends a message with <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#a24e5bff3a70e571bb12024af67b47cbb">lbm_multicast_immediate_message()</a>, MIM creates a temporary Transport Session. Note that no topic-level source object is created.</p>
-<p>MIM automatically deletes the temporary Transport Session after a period of inactivity defined by <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grpmulticastimmediatemessagingoperation.html#mimsrcdeletiontimeoutcontext">mim_src_deletion_timeout (context)</a> which defaults to 30 seconds. A subsequent send creates a new Transport Session. Due to the possibility of head-loss in the switch, it is recommended that sending applications use a long deletion timeout if they continue to use MIM after significant periods of inactivity.</p>
+<p>MIM uses the same reliable multicast algorithms as LBT-RM. When a sending application sends a message with <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#a24e5bff3a70e571bb12024af67b47cbb">lbm_multicast_immediate_message()</a>, MIM creates a temporary Transport Session. Note that no topic-level source object is created.</p>
+<p>MIM automatically deletes the temporary Transport Session after a period of inactivity defined by <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpmulticastimmediatemessagingoperation.html#mimsrcdeletiontimeoutcontext">mim_src_deletion_timeout (context)</a> which defaults to 30 seconds. A subsequent send creates a new Transport Session. Due to the possibility of head-loss in the switch, it is recommended that sending applications use a long deletion timeout if they continue to use MIM after significant periods of inactivity.</p>
 <p>MIM forces all topics across all sending applications to be concentrated onto a single multicast address to which ALL applications listen, even if they aren't interested in any of the topics. Thus, all topic filtering must happen in UM.</p>
-<p>MIM can also be used to send an UM request message with <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#a54f3933e4dd154a9c7bb72598d0d9ef1">lbm_multicast_immediate_request()</a>. For example, an application can use MIM to request initialization information right when it starts up. MIM sends the response directly to the initializing application, avoiding the topic resolution delay inherent in the normal source-based <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#ad4d06f66b8404684e191ca178e0cc09b">lbm_send_request()</a> function.</p>
+<p>MIM can also be used to send an UM request message with <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#a54f3933e4dd154a9c7bb72598d0d9ef1">lbm_multicast_immediate_request()</a>. For example, an application can use MIM to request initialization information right when it starts up. MIM sends the response directly to the initializing application, avoiding the topic resolution delay inherent in the normal source-based <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#ad4d06f66b8404684e191ca178e0cc09b">lbm_send_request()</a> function.</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="mimnotifications"></a>
@@ -787,9 +710,9 @@ MIM Notifications&nbsp;&nbsp;<small><a href="#mimnotifications">&lt;-</a></small
 <li>
 When a sending application's MIM Transport Session times out and is deleted, the receiving applications do not receive an EOS notification. </li>
 <li>
-Applications with a source notification callback (<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grpmajoroptions.html#resolversourcenotificationfunctioncontext">resolver_source_notification_function (context)</a>) are not informed of a MIM sender. This is because source notification is based on Topic Resolution, and MIM does not use it. </li>
+Applications with a source notification callback (<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpmajoroptions.html#resolversourcenotificationfunctioncontext">resolver_source_notification_function (context)</a>) are not informed of a MIM sender. This is because source notification is based on Topic Resolution, and MIM does not use it. </li>
 <li>
-MIM sending supports the non-blocking flag. However, it does not provide an <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#aa905cb268bbee255c71b74694370fe61">LBM_SRC_EVENT_WAKEUP</a> notification when the MIM session becomes writable again. </li>
+MIM sending supports the non-blocking flag. However, it does not provide an <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#aa905cb268bbee255c71b74694370fe61">LBM_SRC_EVENT_WAKEUP</a> notification when the MIM session becomes writable again. </li>
 <li>
 MIM sends unrecoverable loss notifications to a context callback, not to a receiver callback. See <a class="el" href="umfeatures.html#mimlosshandling">MIM Loss Handling</a>. </li>
 </ul>
@@ -797,9 +720,9 @@ MIM sends unrecoverable loss notifications to a context callback, not to a recei
  </p>
 <h2><a class="anchor" id="receivingimmediatemessages"></a>
 Receiving Immediate Messages&nbsp;&nbsp;<small><a href="#receivingimmediatemessages">&lt;-</a></small></h2>
-<p>To receive MIM messages with a topic, an application simply creates a normal receiver for that topic. Alternatively, it can create a wildcard receiver for a matching topic pattern. Finally, the application can also register a callback specifically for UIM messages that contain a topic but for which no matching receiver exists, using <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grpmulticastimmediatemessagingoperation.html#immediatemessagetopicreceiverfunctioncontext">immediate_message_topic_receiver_function (context)</a>. Alternatively, <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#abdefbb3bd3ff3a3b2ec6e20ca2f5dc19">lbm_context_rcv_immediate_topic_msgs()</a> can be used.</p>
-<p>To receive MIM messages with no topic (topicless), the application must register a callback for topicless messages, using <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grpmulticastimmediatemessagingoperation.html#immediatemessagereceiverfunctioncontext">immediate_message_receiver_function (context)</a>). Alternatively, <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#a374f135dddf7794130509f97b1e96cf8">lbm_context_rcv_immediate_msgs()</a> can be used.</p>
-<p>If needed, an application can send topicless messages using MIM. A MIM sender passes in a NULL string instead of a topic name. The message goes out on the MIM multicast address and is received by all other receivers. A receiving application can use <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#a374f135dddf7794130509f97b1e96cf8">lbm_context_rcv_immediate_msgs()</a> to set the callback procedure and delivery method for non-topic immediate messages.</p>
+<p>To receive MIM messages with a topic, an application simply creates a normal receiver for that topic. Alternatively, it can create a wildcard receiver for a matching topic pattern. Finally, the application can also register a callback specifically for UIM messages that contain a topic but for which no matching receiver exists, using <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpmulticastimmediatemessagingoperation.html#immediatemessagetopicreceiverfunctioncontext">immediate_message_topic_receiver_function (context)</a>. Alternatively, <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#abdefbb3bd3ff3a3b2ec6e20ca2f5dc19">lbm_context_rcv_immediate_topic_msgs()</a> can be used.</p>
+<p>To receive MIM messages with no topic (topicless), the application must register a callback for topicless messages, using <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpmulticastimmediatemessagingoperation.html#immediatemessagereceiverfunctioncontext">immediate_message_receiver_function (context)</a>). Alternatively, <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#a374f135dddf7794130509f97b1e96cf8">lbm_context_rcv_immediate_msgs()</a> can be used.</p>
+<p>If needed, an application can send topicless messages using MIM. A MIM sender passes in a NULL string instead of a topic name. The message goes out on the MIM multicast address and is received by all other receivers. A receiving application can use <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#a374f135dddf7794130509f97b1e96cf8">lbm_context_rcv_immediate_msgs()</a> to set the callback procedure and delivery method for non-topic immediate messages.</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="mimandwildcardreceivers"></a>
@@ -810,20 +733,20 @@ MIM and Wildcard Receivers&nbsp;&nbsp;<small><a href="#mimandwildcardreceivers">
  </p>
 <h2><a class="anchor" id="mimlosshandling"></a>
 MIM Loss Handling&nbsp;&nbsp;<small><a href="#mimlosshandling">&lt;-</a></small></h2>
-<p>The receiving application can set up a context callback to be notified of MIM unrecoverable loss (<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#a7129f39b95974676e0ca74d88f58c498">lbm_mim_unrecloss_function_cb()</a>). It is not possible to do this notification on a topic basis because the receiving UM has no way of knowing which topics were affected by the loss.</p>
+<p>The receiving application can set up a context callback to be notified of MIM unrecoverable loss (<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#a7129f39b95974676e0ca74d88f58c498">lbm_mim_unrecloss_function_cb()</a>). It is not possible to do this notification on a topic basis because the receiving UM has no way of knowing which topics were affected by the loss.</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="mimconfiguration"></a>
 MIM Configuration&nbsp;&nbsp;<small><a href="#mimconfiguration">&lt;-</a></small></h2>
-<p>As of UM 3.1, MIM supports ordered delivery. As of UM 3.3.2, the MIM configuration option, <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grpmulticastimmediatemessagingoperation.html#mimordereddeliverycontext">mim_ordered_delivery (context)</a> defaults to ordered delivery.</p>
+<p>As of UM 3.1, MIM supports ordered delivery. As of UM 3.3.2, the MIM configuration option, <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpmulticastimmediatemessagingoperation.html#mimordereddeliverycontext">mim_ordered_delivery (context)</a> defaults to ordered delivery.</p>
 <p>See the <a href="../Config/index.html">UM Configuration Guide</a> for the descriptions of the MIM configuration options:</p>
 <ul>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grpmulticastimmediatemessagingnetwork.html">Multicast Immediate Messaging Network Options</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpmulticastimmediatemessagingnetwork.html">Multicast Immediate Messaging Network Options</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grpmulticastimmediatemessagingreliability.html">Multicast Immediate Messaging Reliability Options</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpmulticastimmediatemessagingreliability.html">Multicast Immediate Messaging Reliability Options</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grpmulticastimmediatemessagingoperation.html">Multicast Immediate Messaging Operation Options</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpmulticastimmediatemessagingoperation.html">Multicast Immediate Messaging Operation Options</a> </li>
 </ul>
 <p><br />
  </p>
@@ -847,18 +770,7 @@ Run <b>lbmrcv -v topicName</b> </li>
 Run <b>lbmimsg topicName</b> </li>
 </ol>
 <p>The lbmrcv output should resemble the following:</p>
-<pre class="fragment">Immediate messaging target: TCP:10.29.1.78:14391
-1     secs.  0     Kmsgs/sec.  0     Kbps
-1     secs.  0     Kmsgs/sec.  0     Kbps
-1     secs.  0     Kmsgs/sec.  0     Kbps
-[topicName][LBTRM:10.29.1.78:14390:644c8862:224.10.10.21:14401][0], 25 bytes
-[topicName][LBTRM:10.29.1.78:14390:644c8862:224.10.10.21:14401][1], 25 bytes
-[topicName][LBTRM:10.29.1.78:14390:644c8862:224.10.10.21:14401][2], 25 bytes
-[topicName][LBTRM:10.29.1.78:14390:644c8862:224.10.10.21:14401][3], 25 bytes
-[topicName][LBTRM:10.29.1.78:14390:644c8862:224.10.10.21:14401][4], 25 bytes
-[topicName][LBTRM:10.29.1.78:14390:644c8862:224.10.10.21:14401][5], 25 bytes
-[topicName][LBTRM:10.29.1.78:14390:644c8862:224.10.10.21:14401][6], 25 bytes
-</pre><p>Each line in the lbmrcv output is a message received, showing the topic name, transport type, receiver IP:Port, multicast address and message number.</p>
+<div class="fragment"><div class="line">Immediate messaging target: TCP:10.29.1.78:14391</div><div class="line">1     secs.  0     Kmsgs/sec.  0     Kbps</div><div class="line">1     secs.  0     Kmsgs/sec.  0     Kbps</div><div class="line">1     secs.  0     Kmsgs/sec.  0     Kbps</div><div class="line">[topicName][LBTRM:10.29.1.78:14390:644c8862:224.10.10.21:14401][0], 25 bytes</div><div class="line">[topicName][LBTRM:10.29.1.78:14390:644c8862:224.10.10.21:14401][1], 25 bytes</div><div class="line">[topicName][LBTRM:10.29.1.78:14390:644c8862:224.10.10.21:14401][2], 25 bytes</div><div class="line">[topicName][LBTRM:10.29.1.78:14390:644c8862:224.10.10.21:14401][3], 25 bytes</div><div class="line">[topicName][LBTRM:10.29.1.78:14390:644c8862:224.10.10.21:14401][4], 25 bytes</div><div class="line">[topicName][LBTRM:10.29.1.78:14390:644c8862:224.10.10.21:14401][5], 25 bytes</div><div class="line">[topicName][LBTRM:10.29.1.78:14390:644c8862:224.10.10.21:14401][6], 25 bytes</div></div><!-- fragment --><p>Each line in the lbmrcv output is a message received, showing the topic name, transport type, receiver IP:Port, multicast address and message number.</p>
 <p><b>lbmireq.c</b></p>
 <p>Sending an UM request by MIM can be demonstrated with lbmireq and lbmrcv, which shows a single request being sent by lbmireq and received by lbmrcv. (lbmrcv sends no response.)</p>
 <ol>
@@ -868,28 +780,8 @@ Run <b>lbmrcv -v topicName</b> </li>
 Run <b>lbmireq topicName</b> </li>
 </ol>
 <p>The lbmrcv output should resemble the following:</p>
-<pre class="fragment">$ lbmrcv -v topicName
-Immediate messaging target: TCP:10.29.1.78:14391
-1     secs.  0     Kmsgs/sec.  0     Kbps
-1     secs.  0     Kmsgs/sec.  0     Kbps
-1     secs.  0     Kmsgs/sec.  0     Kbps
-[topicName][LBTRM:10.29.1.78:14390:92100885:224.10.10.21:14401][0],   Request
-1     secs.  0     Kmsgs/sec.  0     Kbps
-1     secs.  0     Kmsgs/sec.  0     Kbps
-1     secs.  0     Kmsgs/sec.  0     Kbps
-1     secs.  0     Kmsgs/sec.  0     Kbps
-1     secs.  0     Kmsgs/sec.  0     Kbps
-1     secs.  0     Kmsgs/sec.  0     Kbps
-</pre><p>The lbmireq output should resemble the following:</p>
-<pre class="fragment">$ lbmireq topicName
-Using TCP port 4392 for responses
-Sending 1 requests of size 25 bytes to target &lt;&gt; topic &lt;topicName&gt;
-Sending request 0
-Sent request 0. Pausing 5 seconds.
-Done waiting for responses. 0 responses (0 bytes) received. Deleting request
-Quitting...
-Lingering for 5 seconds...
-</pre> </div></div><!-- contents -->
+<div class="fragment"><div class="line">$ lbmrcv -v topicName</div><div class="line">Immediate messaging target: TCP:10.29.1.78:14391</div><div class="line">1     secs.  0     Kmsgs/sec.  0     Kbps</div><div class="line">1     secs.  0     Kmsgs/sec.  0     Kbps</div><div class="line">1     secs.  0     Kmsgs/sec.  0     Kbps</div><div class="line">[topicName][LBTRM:10.29.1.78:14390:92100885:224.10.10.21:14401][0],   Request</div><div class="line">1     secs.  0     Kmsgs/sec.  0     Kbps</div><div class="line">1     secs.  0     Kmsgs/sec.  0     Kbps</div><div class="line">1     secs.  0     Kmsgs/sec.  0     Kbps</div><div class="line">1     secs.  0     Kmsgs/sec.  0     Kbps</div><div class="line">1     secs.  0     Kmsgs/sec.  0     Kbps</div><div class="line">1     secs.  0     Kmsgs/sec.  0     Kbps</div></div><!-- fragment --><p>The lbmireq output should resemble the following:</p>
+<div class="fragment"><div class="line">$ lbmireq topicName</div><div class="line">Using TCP port 4392 <span class="keywordflow">for</span> responses</div><div class="line">Sending 1 requests of size 25 bytes to target &lt;&gt; topic &lt;topicName&gt;</div><div class="line">Sending request 0</div><div class="line">Sent request 0. Pausing 5 seconds.</div><div class="line">Done waiting <span class="keywordflow">for</span> responses. 0 responses (0 bytes) received. Deleting request</div><div class="line">Quitting...</div><div class="line">Lingering for 5 seconds...</div></div><!-- fragment --> </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.8.11-->
 </body>

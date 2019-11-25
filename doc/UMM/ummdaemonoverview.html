@@ -85,20 +85,7 @@ Optional: see <a class="el" href="ummdaemonoverview.html#securingummdaemoncommun
 <h2><a class="anchor" id="ummpropertiesfile"></a>
 umm.properties File&nbsp;&nbsp;<small><a href="#ummpropertiesfile">&lt;-</a></small></h2>
 <p>Contains database information such as the database username, password and driver. The simplest way to configure UMM is to edit this file to reflect your configuration database. The other two batch files or shell scripts automatically look to umm.properties for database information. This file, however, is optional. You could specify database information with options in the UMM Daemon and UMM GUI batch files or shell scripts. The umm.properties provided with installation appears below.</p>
-<pre class="fragment">################## mySQL example ##############################
-LBM_LICENSE_FILENAME=lbm.lic
-database_password=admin
-database_jdbc_object=com.mysql.jdbc.Driver
-database_username=admin
-db_url=jdbc:mysql://10.29.3.112:3306/name
-secure="false"      #Only used by ummd.
-port="15701"    #Only used by ummd.
-################## Oracle example ##############################
-#database_password=admin
-#database_jdbc_object=oracle.jdbc.driver.OracleDriver
-#database_username=system
-#db_url=jdbc:oracle:thin:@//localhost:1521/xe
-</pre><p><br />
+<div class="fragment"><div class="line"><span class="preprocessor">################## mySQL example ##############################</span></div><div class="line">LBM_LICENSE_FILENAME=lbm.lic</div><div class="line">database_password=admin</div><div class="line">database_jdbc_object=<a class="codeRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMM/javaapi.tag:../JavaAPI/" href="../JavaAPI/classcom_1_1latencybusters_1_1lbm_1_1LBM.html">com</a>.mysql.jdbc.Driver</div><div class="line">database_username=admin</div><div class="line">db_url=jdbc:mysql:<span class="comment">//10.29.3.112:3306/name</span></div><div class="line">secure=<span class="stringliteral">&quot;false&quot;</span>      #Only used by ummd.</div><div class="line">port=<span class="stringliteral">&quot;15701&quot;</span>    #Only used by ummd.</div><div class="line">################## Oracle example ##############################</div><div class="line"><span class="preprocessor">#database_password=admin</span></div><div class="line"><span class="preprocessor">#database_jdbc_object=oracle.jdbc.driver.OracleDriver</span></div><div class="line"><span class="preprocessor">#database_username=system</span></div><div class="line"><span class="preprocessor">#db_url=jdbc:oracle:thin:@//localhost:1521/xe</span></div></div><!-- fragment --><p><br />
  </p>
 <h2><a class="anchor" id="ummdbatorummdshfile"></a>
 ummd.bat or ummd.sh File&nbsp;&nbsp;<small><a href="#ummdbatorummdshfile">&lt;-</a></small></h2>
@@ -142,7 +129,7 @@ Your application tries to connect in a round robin fashion if the daemon with in
 <li>
 The UMM Daemon closes the connection with your application. </li>
 </ol>
-<p>You can specify the same information directly in your applications with the C API, <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMM/api.tag:../API/" href="../API/lbm_8h.html#aab029e3f210b40f3fded64fec2a27a02">lbm_set_umm_info()</a>, and the Java API and .NET API, <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMM/javaapi.tag:../JavaAPI/" href="../JavaAPI/classcom_1_1latencybusters_1_1lbm_1_1LBM.html#a030233dfb74d4413749182124211c570">com::latencybusters::lbm::LBM::setUmmInfo()</a>. These must be the first calls made by your applications.</p>
+<p>You can specify the same information directly in your applications with the C API, <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMM/api.tag:../API/" href="../API/lbm_8h.html#aab029e3f210b40f3fded64fec2a27a02">lbm_set_umm_info()</a>, and the Java API and .NET API, <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMM/javaapi.tag:../JavaAPI/" href="../JavaAPI/classcom_1_1latencybusters_1_1lbm_1_1LBM.html#a030233dfb74d4413749182124211c570">com::latencybusters::lbm::LBM::setUmmInfo()</a>. These must be the first calls made by your applications.</p>
 <p><br />
  </p>
 <h1><a class="anchor" id="configuringtheummdatabase"></a>
@@ -195,8 +182,7 @@ MySQL Considerations&nbsp;&nbsp;<small><a href="#mysqlconsiderations">&lt;-</a><
 <p class="endli"></p>
 </li>
 <li>
-From the MySQL command prompt, run: <pre class="fragment">LOAD DATA INFILE 'mysql_templates.txt' INTO TABLE TEMPLATE;
-</pre> (This script loads the example configuration templates for low latency and high throughput. These templates appear in the UMM GUI under Templates in the object tree in the left pane.) </li>
+From the MySQL command prompt, run: <div class="fragment"><div class="line">LOAD DATA INFILE <span class="stringliteral">&#39;mysql_templates.txt&#39;</span> INTO TABLE TEMPLATE;</div></div><!-- fragment --> (This script loads the example configuration templates for low latency and high throughput. These templates appear in the UMM GUI under Templates in the object tree in the left pane.) </li>
 </ol>
 <p>You can now start the UMM Daemon on the command line or with the ummd.bat batch file or the ummd.sh shell script.</p>
 <p><br />
@@ -206,22 +192,18 @@ Securing UMM Daemon Communication with SSL&nbsp;&nbsp;<small><a href="#securingu
 <p>UMM allows you to secure the TCP transmission of UMM credentials and UM license keys between the UMM Daemon and UM applications using Secure Sockets Layer (SSL). You can implement a certificate-less, Transport Layer Security (TLS) option or provide your own certificate to authenticate the UMM Daemon. The following procedure explains how to secure UMM Daemon communications.</p>
 <ol>
 <li>
-<p class="startli">In the umm.properties, set the secure option to true. </p><pre class="fragment">secure=true
-</pre><p> If you run the UMM Daemon from the command line, use -s true.</p>
+<p class="startli">In the umm.properties, set the secure option to true. </p><div class="fragment"><div class="line">secure=<span class="keyword">true</span></div></div><!-- fragment --><p> If you run the UMM Daemon from the command line, use -s true.</p>
 <p class="endli"></p>
 </li>
 <li>
-<p class="startli">In the Connecting Your Applications to the UMM Daemon, pre-pend the application information with ssl:. </p><pre class="fragment">export LBM_UMM_INFO=ssl:lbmrcv:default:default@10.29.3.95:21273
-</pre><p class="endli"></p>
+<p class="startli">In the Connecting Your Applications to the UMM Daemon, pre-pend the application information with ssl:. </p><div class="fragment"><div class="line">export LBM_UMM_INFO=ssl:lbmrcv:<span class="keywordflow">default</span>:<span class="keywordflow">default</span>@10.29.3.95:21273</div></div><!-- fragment --><p class="endli"></p>
 </li>
 <li>
-<p class="startli">To specify a certificate, insert the certificate path and filename as shown below. Be sure to also configure ummd.bat or ummd.sh with your keystore. </p><pre class="fragment">export LBM_UMM_INFO=ssl_cert_file=path/filename:lbmrcv:default:default@10.29.3.95:21273
-</pre><p>A password for the certificate file is optional and would be specified as follows.</p>
-<pre class="fragment">export LBM_UMM_INFO=ssl_cert_file=path/filename:ssl_cert_file_password=psswrd:
-lbmrcv:default:default@10.29.3.95:21273
-</pre> </li>
+<p class="startli">To specify a certificate, insert the certificate path and filename as shown below. Be sure to also configure ummd.bat or ummd.sh with your keystore. </p><div class="fragment"><div class="line">export LBM_UMM_INFO=ssl_cert_file=path/filename:lbmrcv:<span class="keywordflow">default</span>:<span class="keywordflow">default</span>@10.29.3.95:21273</div></div><!-- fragment --><p>A password for the certificate file is optional and would be specified as follows.</p>
+<div class="fragment"><div class="line">export LBM_UMM_INFO=ssl_cert_file=path/filename:ssl_cert_file_password=psswrd:</div><div class="line">lbmrcv:<span class="keywordflow">default</span>:<span class="keywordflow">default</span>@10.29.3.95:21273</div></div><!-- fragment --> </li>
 </ol>
-<p>You can specify the same information directly in your applications with the C API, <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMM/api.tag:../API/" href="../API/lbm_8h.html#aab029e3f210b40f3fded64fec2a27a02">lbm_set_umm_info()</a>, and the Java API and .NET API, <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMM/javaapi.tag:../JavaAPI/" href="../JavaAPI/classcom_1_1latencybusters_1_1lbm_1_1LBM.html#a030233dfb74d4413749182124211c570">com::latencybusters::lbm::LBM::setUmmInfo()</a>. These must be the first calls made by your applications. </p>
+<p>You can specify the same information directly in your applications with the C API, <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMM/api.tag:../API/" href="../API/lbm_8h.html#aab029e3f210b40f3fded64fec2a27a02">lbm_set_umm_info()</a>, and the Java API and .NET API, <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMM/javaapi.tag:../JavaAPI/" href="../JavaAPI/classcom_1_1latencybusters_1_1lbm_1_1LBM.html#a030233dfb74d4413749182124211c570">com::latencybusters::lbm::LBM::setUmmInfo()</a>. These must be the first calls made by your applications.</p>
+<p>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMM/design.tag:../Design/" href="../Design/umfeatures.html#openssldependency">OpenSSL Dependency</a> for information about the linkage between applications and the OpenSSL libraries. </p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.8.11-->

@@ -19,8 +19,7 @@ var NAVTREE =
       [ "Late Join", "fundamentalconcepts.html#latejoin", null ],
       [ "Request/Response", "fundamentalconcepts.html#requestresponse", null ],
       [ "UM Transports", "fundamentalconcepts.html#umtransports", [
-        [ "Transport Sessions", "fundamentalconcepts.html#transportsessions", null ],
-        [ "Multi-Transport Threads", "fundamentalconcepts.html#multitransportthreads", null ]
+        [ "Transport Sessions", "fundamentalconcepts.html#transportsessions", null ]
       ] ],
       [ "Event Delivery", "fundamentalconcepts.html#eventdelivery", null ],
       [ "Rate Controls", "fundamentalconcepts.html#ratecontrols", [
@@ -177,7 +176,8 @@ var NAVTREE =
         [ "TLS and Persistence", "umfeatures.html#tlsandpersistence", null ],
         [ "TLS and Queuing", "umfeatures.html#tlsandqueuing", null ],
         [ "TLS and the Dynamic Routing Option (DRO)", "umfeatures.html#tlsandthedynamicroutingoptiondro", null ],
-        [ "TLS and Compression", "umfeatures.html#tlsandcompression", null ]
+        [ "TLS and Compression", "umfeatures.html#tlsandcompression", null ],
+        [ "OpenSSL Dependency", "umfeatures.html#openssldependency", null ]
       ] ],
       [ "Compressed TCP", "umfeatures.html#compressedtcp", [
         [ "Compression Configuration", "umfeatures.html#compressionconfiguration", null ],
@@ -257,6 +257,11 @@ var NAVTREE =
       ] ]
     ] ],
     [ "Advanced Optimizations", "advancedoptimizations.html", [
+      [ "Receive Thread Busy Waiting", "advancedoptimizations.html#receivethreadbusywaiting", [
+        [ "Network Socket Busy Waiting", "advancedoptimizations.html#networksocketbusywaiting", null ],
+        [ "IPC Transport Busy Waiting", "advancedoptimizations.html#ipctransportbusywaiting", null ],
+        [ "SMX Transport Busy Waiting", "advancedoptimizations.html#smxtransportbusywaiting", null ]
+      ] ],
       [ "Receive Buffer Recycling", "advancedoptimizations.html#receivebufferrecycling", [
         [ "Receive Buffer Recycling Restrictions", "advancedoptimizations.html#receivebufferrecyclingrestrictions", null ]
       ] ],
@@ -399,8 +404,8 @@ var NAVTREE =
       [ "Glossary H", "umglossary.html#glossaryh", null ],
       [ "Glossary I", "umglossary.html#glossaryi", null ],
       [ "Glossary J", "umglossary.html#glossaryj", null ],
-      [ "Glossary L", "umglossary.html#glossaryl", null ],
       [ "Glossary K", "umglossary.html#glossaryk", null ],
+      [ "Glossary L", "umglossary.html#glossaryl", null ],
       [ "Glossary M", "umglossary.html#glossarym", null ],
       [ "Glossary N", "umglossary.html#glossaryn", null ],
       [ "Glossary O", "umglossary.html#glossaryo", null ],
@@ -420,7 +425,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "advancedoptimizations.html",
-"umfeatures.html#latejoinwithump"
+"umfeatures.html#encryptedtcp"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

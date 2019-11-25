@@ -84,20 +84,7 @@ $(document).ready(function(){initNavTree('srsdaemonstatistics.html','');});
 <h1><a class="anchor" id="messagetypesrsstats"></a>
 Message Type: SRS_STATS&nbsp;&nbsp;<small><a href="#messagetypesrsstats">&lt;-</a></small></h1>
 <p>Message type SRS_STATS contains information about the overall state of the SRS service.</p>
-<p><b>EXAMPLE:</b> </p><pre class="fragment">{ 
-  "monitorInfoCategory": "SRS_STATS",
-  "stats": [
-    { 
-      "name": "clients.inactive.SIR.count",
-      "value": 0
-    },
-    { 
-      "name": "clients.next.client.ID",
-      "value": 17
-    }
-  ]
-}
-</pre><p> This example has two statistics. Be aware that a given message can have any number of statistic entries.</p>
+<p><b>EXAMPLE:</b> </p><div class="fragment"><div class="line">{ </div><div class="line">  <span class="stringliteral">&quot;monitorInfoCategory&quot;</span>: <span class="stringliteral">&quot;SRS_STATS&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;stats&quot;</span>: [</div><div class="line">    { </div><div class="line">      <span class="stringliteral">&quot;name&quot;</span>: <span class="stringliteral">&quot;clients.inactive.SIR.count&quot;</span>,</div><div class="line">      <span class="stringliteral">&quot;value&quot;</span>: 0</div><div class="line">    },</div><div class="line">    { </div><div class="line">      <span class="stringliteral">&quot;name&quot;</span>: <span class="stringliteral">&quot;clients.next.client.ID&quot;</span>,</div><div class="line">      <span class="stringliteral">&quot;value&quot;</span>: 17</div><div class="line">    }</div><div class="line">  ]</div><div class="line">}</div></div><!-- fragment --><p> This example has two statistics. Be aware that a given message can have any number of statistic entries.</p>
 <p>Overall structure of message: </p><center> <table class="doxtable">
 <tr>
 <th>Field</th><th>Description </th></tr>
@@ -138,20 +125,7 @@ Message Type: SRS_STATS&nbsp;&nbsp;<small><a href="#messagetypesrsstats">&lt;-</
 <h1><a class="anchor" id="messagetypesrserrorstats"></a>
 Message Type: SRS_ERROR_STATS&nbsp;&nbsp;<small><a href="#messagetypesrserrorstats">&lt;-</a></small></h1>
 <p>Message type SRS_ERROR_STATS contains counters for errors detected by the SRS service. These types of errors should not be happening in a properly configured network; context support if the counters are increasing frequently.</p>
-<p><b>EXAMPLE:</b> </p><pre class="fragment">{ 
-  "monitorInfoCategory": "SRS_ERROR_STATS",
-  "stats": [
-    { 
-      "name": "clients.duplicate.SIR.count",
-      "value": 0
-    },
-    {
-      "name": "clients.invalid.SDR.no.OTID.match.count",
-      "value": 17
-    }
-  ]
-}
-</pre><p> This example has two statistics. Be aware that a given message can have any number of statistic entries.</p>
+<p><b>EXAMPLE:</b> </p><div class="fragment"><div class="line">{ </div><div class="line">  <span class="stringliteral">&quot;monitorInfoCategory&quot;</span>: <span class="stringliteral">&quot;SRS_ERROR_STATS&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;stats&quot;</span>: [</div><div class="line">    { </div><div class="line">      <span class="stringliteral">&quot;name&quot;</span>: <span class="stringliteral">&quot;clients.duplicate.SIR.count&quot;</span>,</div><div class="line">      <span class="stringliteral">&quot;value&quot;</span>: 0</div><div class="line">    },</div><div class="line">    {</div><div class="line">      <span class="stringliteral">&quot;name&quot;</span>: <span class="stringliteral">&quot;clients.invalid.SDR.no.OTID.match.count&quot;</span>,</div><div class="line">      <span class="stringliteral">&quot;value&quot;</span>: 17</div><div class="line">    }</div><div class="line">  ]</div><div class="line">}</div></div><!-- fragment --><p> This example has two statistics. Be aware that a given message can have any number of statistic entries.</p>
 <p>Overall structure of message: </p><center> <table class="doxtable">
 <tr>
 <th>Field</th><th>Description </th></tr>
@@ -187,25 +161,7 @@ Message Type: SRS_ERROR_STATS&nbsp;&nbsp;<small><a href="#messagetypesrserrorsta
 <h1><a class="anchor" id="messagetypeumclientstats"></a>
 Message Type: UM_CLIENT_STATS&nbsp;&nbsp;<small><a href="#messagetypeumclientstats">&lt;-</a></small></h1>
 <p>Message type UM_CLIENT_STATS contains information related to an individual connected context. Multiple instances of this message can be sent, one per connected context.</p>
-<p><b>EXAMPLE:</b> </p><pre class="fragment">{
-  "monitorInfoCategory": "UM_CLIENT_STATS",
-  "srsRegistrationInfo": {
-    "ip": "10.29.3.43",
-    "port": "60681",
-    "sessionId": "0x9739b88f"
-  },
-  "stats": [
-    {
-      "name": "client.SIR.received.count",
-      "value": 1
-    },
-    {
-      "name": "client.SDR.received.count",
-      "value": 0
-    }
-  ]
-}
-</pre><p> This example has two statistics. Be aware that a given message can have any number of statistic entries.</p>
+<p><b>EXAMPLE:</b> </p><div class="fragment"><div class="line">{</div><div class="line">  <span class="stringliteral">&quot;monitorInfoCategory&quot;</span>: <span class="stringliteral">&quot;UM_CLIENT_STATS&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;srsRegistrationInfo&quot;</span>: {</div><div class="line">    <span class="stringliteral">&quot;ip&quot;</span>: <span class="stringliteral">&quot;10.29.3.43&quot;</span>,</div><div class="line">    <span class="stringliteral">&quot;port&quot;</span>: <span class="stringliteral">&quot;60681&quot;</span>,</div><div class="line">    <span class="stringliteral">&quot;sessionId&quot;</span>: <span class="stringliteral">&quot;0x9739b88f&quot;</span></div><div class="line">  },</div><div class="line">  <span class="stringliteral">&quot;stats&quot;</span>: [</div><div class="line">    {</div><div class="line">      <span class="stringliteral">&quot;name&quot;</span>: <span class="stringliteral">&quot;client.SIR.received.count&quot;</span>,</div><div class="line">      <span class="stringliteral">&quot;value&quot;</span>: 1</div><div class="line">    },</div><div class="line">    {</div><div class="line">      <span class="stringliteral">&quot;name&quot;</span>: <span class="stringliteral">&quot;client.SDR.received.count&quot;</span>,</div><div class="line">      <span class="stringliteral">&quot;value&quot;</span>: 0</div><div class="line">    }</div><div class="line">  ]</div><div class="line">}</div></div><!-- fragment --><p> This example has two statistics. Be aware that a given message can have any number of statistic entries.</p>
 <p>Overall structure of message: </p><center> <table class="doxtable">
 <tr>
 <th>Field</th><th>Description </th></tr>
@@ -216,7 +172,7 @@ Message Type: UM_CLIENT_STATS&nbsp;&nbsp;<small><a href="#messagetypeumclientsta
 <tr>
 <td><b>.&#160;.&#160;srsRegistrationInfo.ip</b></td><td>IP address of the context. </td></tr>
 <tr>
-<td><b>.&#160;.&#160;srsRegistrationInfo.port</b></td><td>TCP "source port" the context used locally for its SRS connection. See <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grpudpbasedresolveroperation.html#resolverservicecontext">resolver_service (context)</a>. </td></tr>
+<td><b>.&#160;.&#160;srsRegistrationInfo.port</b></td><td>TCP "source port" the context used locally for its SRS connection. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpudpbasedresolveroperation.html#resolverservicecontext">resolver_service (context)</a>. </td></tr>
 <tr>
 <td><b>.&#160;.&#160;srsRegistrationInfo.sessionId</b></td><td>The unique identifier assigned by the SRS to this connection. </td></tr>
 <tr>
@@ -251,25 +207,7 @@ Message Type: UM_CLIENT_STATS&nbsp;&nbsp;<small><a href="#messagetypeumclientsta
 <h1><a class="anchor" id="messagetypeumclienterrorstats"></a>
 Message Type: UM_CLIENT_ERROR_STATS&nbsp;&nbsp;<small><a href="#messagetypeumclienterrorstats">&lt;-</a></small></h1>
 <p>Message type UM_CLIENT_ERROR_STATS contains error counters related to an individual connected context. Multiple instances of this message can be sent, one per connected context. These types of errors should not be happening in a properly configured network; context support if the counters are increasing frequently.</p>
-<p><b>EXAMPLE:</b> </p><pre class="fragment">{
-  "monitorInfoCategory": "UM_CLIENT_ERROR_STATS",
-  "srsRegistrationInfo": {
-    "ip": "10.29.3.43",
-    "port": "60681",
-    "sessionId": "0x9739b88f"
-  },
-  "stats": [
-    {
-      "name": "client.invalid.SRS.message.received.count",
-      "value": 1
-    },
-    {
-      "name": "client.invalid.SDR.received.count",
-      "value": 0
-    }
-  ]
-}
-</pre><p> This example has two statistics. Be aware that a given message can have any number of statistic entries.</p>
+<p><b>EXAMPLE:</b> </p><div class="fragment"><div class="line">{</div><div class="line">  <span class="stringliteral">&quot;monitorInfoCategory&quot;</span>: <span class="stringliteral">&quot;UM_CLIENT_ERROR_STATS&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;srsRegistrationInfo&quot;</span>: {</div><div class="line">    <span class="stringliteral">&quot;ip&quot;</span>: <span class="stringliteral">&quot;10.29.3.43&quot;</span>,</div><div class="line">    <span class="stringliteral">&quot;port&quot;</span>: <span class="stringliteral">&quot;60681&quot;</span>,</div><div class="line">    <span class="stringliteral">&quot;sessionId&quot;</span>: <span class="stringliteral">&quot;0x9739b88f&quot;</span></div><div class="line">  },</div><div class="line">  <span class="stringliteral">&quot;stats&quot;</span>: [</div><div class="line">    {</div><div class="line">      <span class="stringliteral">&quot;name&quot;</span>: <span class="stringliteral">&quot;client.invalid.SRS.message.received.count&quot;</span>,</div><div class="line">      <span class="stringliteral">&quot;value&quot;</span>: 1</div><div class="line">    },</div><div class="line">    {</div><div class="line">      <span class="stringliteral">&quot;name&quot;</span>: <span class="stringliteral">&quot;client.invalid.SDR.received.count&quot;</span>,</div><div class="line">      <span class="stringliteral">&quot;value&quot;</span>: 0</div><div class="line">    }</div><div class="line">  ]</div><div class="line">}</div></div><!-- fragment --><p> This example has two statistics. Be aware that a given message can have any number of statistic entries.</p>
 <p>Overall structure of message: </p><center> <table class="doxtable">
 <tr>
 <th>Field</th><th>Description </th></tr>
@@ -280,7 +218,7 @@ Message Type: UM_CLIENT_ERROR_STATS&nbsp;&nbsp;<small><a href="#messagetypeumcli
 <tr>
 <td><b>.&#160;.&#160;srsRegistrationInfo.ip</b></td><td>IP address of the context. </td></tr>
 <tr>
-<td><b>.&#160;.&#160;srsRegistrationInfo.port</b></td><td>TCP "source port" the context used locally for its SRS connection. See <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grpudpbasedresolveroperation.html#resolverservicecontext">resolver_service (context)</a>. </td></tr>
+<td><b>.&#160;.&#160;srsRegistrationInfo.port</b></td><td>TCP "source port" the context used locally for its SRS connection. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpudpbasedresolveroperation.html#resolverservicecontext">resolver_service (context)</a>. </td></tr>
 <tr>
 <td><b>.&#160;.&#160;srsRegistrationInfo.sessionId</b></td><td>The unique identifier assigned by the SRS to this connection. </td></tr>
 <tr>
@@ -309,22 +247,7 @@ Message Type: CONNECTION_EVENTS&nbsp;&nbsp;<small><a href="#messagetypeconnectio
 <h2><a class="anchor" id="messagesubtypeumclientconnect"></a>
 Message Subtype: UM_CLIENT_CONNECT&nbsp;&nbsp;<small><a href="#messagesubtypeumclientconnect">&lt;-</a></small></h2>
 <p>Message type CONNECTION_EVENTS, sub-type UM_CLIENT_CONNECT, logs a single connect of a context to the SRS.</p>
-<pre class="fragment">{
-  "monitorInfoCategory": "CONNECTION_EVENTS",
-  "srsRegistrationInfo": {
-    "ip": "10.29.3.42",
-    "port": "41873",
-    "sessionId": "0xaecbff98"
-  },
-  "connectionEventType": "UM_CLIENT_CONNECT",
-  "events": [
-    {
-      "connectionEventType": "UM_CLIENT_CONNECT",
-      "connectionEventTime": "Thu Jan 24 00:28:26 CET 2019",
-    }
-  ]
-}
-</pre><p>Overall structure of message: </p><center> <table class="doxtable">
+<div class="fragment"><div class="line">{</div><div class="line">  <span class="stringliteral">&quot;monitorInfoCategory&quot;</span>: <span class="stringliteral">&quot;CONNECTION_EVENTS&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;srsRegistrationInfo&quot;</span>: {</div><div class="line">    <span class="stringliteral">&quot;ip&quot;</span>: <span class="stringliteral">&quot;10.29.3.42&quot;</span>,</div><div class="line">    <span class="stringliteral">&quot;port&quot;</span>: <span class="stringliteral">&quot;41873&quot;</span>,</div><div class="line">    <span class="stringliteral">&quot;sessionId&quot;</span>: <span class="stringliteral">&quot;0xaecbff98&quot;</span></div><div class="line">  },</div><div class="line">  <span class="stringliteral">&quot;connectionEventType&quot;</span>: <span class="stringliteral">&quot;UM_CLIENT_CONNECT&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;events&quot;</span>: [</div><div class="line">    {</div><div class="line">      <span class="stringliteral">&quot;connectionEventType&quot;</span>: <span class="stringliteral">&quot;UM_CLIENT_CONNECT&quot;</span>,</div><div class="line">      <span class="stringliteral">&quot;connectionEventTime&quot;</span>: <span class="stringliteral">&quot;Thu Jan 24 00:28:26 CET 2019&quot;</span>,</div><div class="line">    }</div><div class="line">  ]</div><div class="line">}</div></div><!-- fragment --><p>Overall structure of message: </p><center> <table class="doxtable">
 <tr>
 <th>Field</th><th>Description </th></tr>
 <tr>
@@ -334,7 +257,7 @@ Message Subtype: UM_CLIENT_CONNECT&nbsp;&nbsp;<small><a href="#messagesubtypeumc
 <tr>
 <td><b>.&#160;.&#160;srsRegistrationInfo.ip</b></td><td>IP address of the context. </td></tr>
 <tr>
-<td><b>.&#160;.&#160;srsRegistrationInfo.port</b></td><td>TCP "source port" the context used locally for its SRS connection. See <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grpudpbasedresolveroperation.html#resolverservicecontext">resolver_service (context)</a>. </td></tr>
+<td><b>.&#160;.&#160;srsRegistrationInfo.port</b></td><td>TCP "source port" the context used locally for its SRS connection. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpudpbasedresolveroperation.html#resolverservicecontext">resolver_service (context)</a>. </td></tr>
 <tr>
 <td><b>.&#160;.&#160;srsRegistrationInfo.sessionId</b></td><td>The unique identifier assigned by the SRS to this connection. </td></tr>
 <tr>
@@ -351,27 +274,7 @@ Message Subtype: UM_CLIENT_CONNECT&nbsp;&nbsp;<small><a href="#messagesubtypeumc
 <h2><a class="anchor" id="messagesubtypeumclientdisconnect"></a>
 Message Subtype: UM_CLIENT_DISCONNECT&nbsp;&nbsp;<small><a href="#messagesubtypeumclientdisconnect">&lt;-</a></small></h2>
 <p>Message type CONNECTION_EVENTS, sub-type UM_CLIENT_DISCONNECT, logs a single disconnect of a context to the SRS.</p>
-<pre class="fragment">{
-  "monitorInfoCategory": "CONNECTION_EVENTS",
-  "srsRegistrationInfo": {
-    "ip": "10.29.3.42",
-    "port": "35350",
-    "sessionId": "0x0388cf20"
-  },
-  "connectionEventType": "UM_CLIENT_DISCONNECT",
-  "events": [
-    {
-      "srsRegistrationInfo": {
-        "ip": "10.29.3.42",
-        "port": "35350",
-        "sessionId": "0x0388cf20"
-      },
-      "connectionEventType": "UM_CLIENT_DISCONNECT",
-      "connectionEventTime": "Wed Jan 30 23:50:30 CET 2019",
-    }
-  ]
-}
-</pre><p>Overall structure of message: </p><center> <table class="doxtable">
+<div class="fragment"><div class="line">{</div><div class="line">  <span class="stringliteral">&quot;monitorInfoCategory&quot;</span>: <span class="stringliteral">&quot;CONNECTION_EVENTS&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;srsRegistrationInfo&quot;</span>: {</div><div class="line">    <span class="stringliteral">&quot;ip&quot;</span>: <span class="stringliteral">&quot;10.29.3.42&quot;</span>,</div><div class="line">    <span class="stringliteral">&quot;port&quot;</span>: <span class="stringliteral">&quot;35350&quot;</span>,</div><div class="line">    <span class="stringliteral">&quot;sessionId&quot;</span>: <span class="stringliteral">&quot;0x0388cf20&quot;</span></div><div class="line">  },</div><div class="line">  <span class="stringliteral">&quot;connectionEventType&quot;</span>: <span class="stringliteral">&quot;UM_CLIENT_DISCONNECT&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;events&quot;</span>: [</div><div class="line">    {</div><div class="line">      <span class="stringliteral">&quot;srsRegistrationInfo&quot;</span>: {</div><div class="line">        <span class="stringliteral">&quot;ip&quot;</span>: <span class="stringliteral">&quot;10.29.3.42&quot;</span>,</div><div class="line">        <span class="stringliteral">&quot;port&quot;</span>: <span class="stringliteral">&quot;35350&quot;</span>,</div><div class="line">        <span class="stringliteral">&quot;sessionId&quot;</span>: <span class="stringliteral">&quot;0x0388cf20&quot;</span></div><div class="line">      },</div><div class="line">      <span class="stringliteral">&quot;connectionEventType&quot;</span>: <span class="stringliteral">&quot;UM_CLIENT_DISCONNECT&quot;</span>,</div><div class="line">      <span class="stringliteral">&quot;connectionEventTime&quot;</span>: <span class="stringliteral">&quot;Wed Jan 30 23:50:30 CET 2019&quot;</span>,</div><div class="line">    }</div><div class="line">  ]</div><div class="line">}</div></div><!-- fragment --><p>Overall structure of message: </p><center> <table class="doxtable">
 <tr>
 <th>Field</th><th>Description </th></tr>
 <tr>
@@ -381,7 +284,7 @@ Message Subtype: UM_CLIENT_DISCONNECT&nbsp;&nbsp;<small><a href="#messagesubtype
 <tr>
 <td><b>.&#160;.&#160;srsRegistrationInfo.ip</b></td><td>IP address of the context. </td></tr>
 <tr>
-<td><b>.&#160;.&#160;srsRegistrationInfo.port</b></td><td>TCP "source port" the context used locally for its SRS connection. See <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grpudpbasedresolveroperation.html#resolverservicecontext">resolver_service (context)</a>. </td></tr>
+<td><b>.&#160;.&#160;srsRegistrationInfo.port</b></td><td>TCP "source port" the context used locally for its SRS connection. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpudpbasedresolveroperation.html#resolverservicecontext">resolver_service (context)</a>. </td></tr>
 <tr>
 <td><b>.&#160;.&#160;srsRegistrationInfo.sessionId</b></td><td>The unique identifier assigned by the SRS to this connection. </td></tr>
 <tr>
@@ -393,7 +296,7 @@ Message Subtype: UM_CLIENT_DISCONNECT&nbsp;&nbsp;<small><a href="#messagesubtype
 <tr>
 <td><b>.&#160;.&#160;.&#160;.&#160;events[].srsRegistrationInfo.ip</b></td><td>IP address of the context. </td></tr>
 <tr>
-<td><b>.&#160;.&#160;.&#160;.&#160;events[].srsRegistrationInfo.port</b></td><td>TCP "source port" the context used locally for its SRS connection. See <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grpudpbasedresolveroperation.html#resolverservicecontext">resolver_service (context)</a>. </td></tr>
+<td><b>.&#160;.&#160;.&#160;.&#160;events[].srsRegistrationInfo.port</b></td><td>TCP "source port" the context used locally for its SRS connection. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpudpbasedresolveroperation.html#resolverservicecontext">resolver_service (context)</a>. </td></tr>
 <tr>
 <td><b>.&#160;.&#160;.&#160;.&#160;event[].srsRegistrationInfo.sessionId</b></td><td>The unique identifier assigned by the SRS to this connection. </td></tr>
 <tr>
@@ -406,24 +309,7 @@ Message Subtype: UM_CLIENT_DISCONNECT&nbsp;&nbsp;<small><a href="#messagesubtype
 <h2><a class="anchor" id="messagesubtypessirandsdr"></a>
 Message Subtypes: SIR and SDR&nbsp;&nbsp;<small><a href="#messagesubtypessirandsdr">&lt;-</a></small></h2>
 <p>Message type CONNECTION_EVENTS, sub-types SIR and SDR, log a single context source creation or deletion message to the SRS.</p>
-<pre class="fragment">{
-  "monitorInfoCategory": "CONNECTION_EVENTS",
-  "srsRegistrationInfo": {
-    "ip": "10.29.3.43",
-    "port": "60809",
-    "sessionId": "0x1c668bad"
-  },
-  "connectionEventType": "SIR" or "SDR",
-  "events": [
-    {
-      "topic": "srs_topic",
-      "source": "LBTRM:10.29.3.43:24000:47b87920:225.11.28.85:14400",
-      "connectionEventType": "SIR" or "SDR",
-      "connectionEventTime": "Fri Feb 1 02:16:06 CET 2019",
-    }
-  ]
-}
-</pre><p>Overall structure of message: </p><center> <table class="doxtable">
+<div class="fragment"><div class="line">{</div><div class="line">  <span class="stringliteral">&quot;monitorInfoCategory&quot;</span>: <span class="stringliteral">&quot;CONNECTION_EVENTS&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;srsRegistrationInfo&quot;</span>: {</div><div class="line">    <span class="stringliteral">&quot;ip&quot;</span>: <span class="stringliteral">&quot;10.29.3.43&quot;</span>,</div><div class="line">    <span class="stringliteral">&quot;port&quot;</span>: <span class="stringliteral">&quot;60809&quot;</span>,</div><div class="line">    <span class="stringliteral">&quot;sessionId&quot;</span>: <span class="stringliteral">&quot;0x1c668bad&quot;</span></div><div class="line">  },</div><div class="line">  <span class="stringliteral">&quot;connectionEventType&quot;</span>: <span class="stringliteral">&quot;SIR&quot;</span> or <span class="stringliteral">&quot;SDR&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;events&quot;</span>: [</div><div class="line">    {</div><div class="line">      <span class="stringliteral">&quot;topic&quot;</span>: <span class="stringliteral">&quot;srs_topic&quot;</span>,</div><div class="line">      <span class="stringliteral">&quot;source&quot;</span>: <span class="stringliteral">&quot;LBTRM:10.29.3.43:24000:47b87920:225.11.28.85:14400&quot;</span>,</div><div class="line">      <span class="stringliteral">&quot;connectionEventType&quot;</span>: <span class="stringliteral">&quot;SIR&quot;</span> or <span class="stringliteral">&quot;SDR&quot;</span>,</div><div class="line">      <span class="stringliteral">&quot;connectionEventTime&quot;</span>: <span class="stringliteral">&quot;Fri Feb 1 02:16:06 CET 2019&quot;</span>,</div><div class="line">    }</div><div class="line">  ]</div><div class="line">}</div></div><!-- fragment --><p>Overall structure of message: </p><center> <table class="doxtable">
 <tr>
 <th>Field</th><th>Description </th></tr>
 <tr>
@@ -433,7 +319,7 @@ Message Subtypes: SIR and SDR&nbsp;&nbsp;<small><a href="#messagesubtypessirands
 <tr>
 <td><b>.&#160;.&#160;srsRegistrationInfo.ip</b></td><td>IP address of the context. </td></tr>
 <tr>
-<td><b>.&#160;.&#160;srsRegistrationInfo.port</b></td><td>TCP "source port" the context used locally for its SRS connection. See <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grpudpbasedresolveroperation.html#resolverservicecontext">resolver_service (context)</a>. </td></tr>
+<td><b>.&#160;.&#160;srsRegistrationInfo.port</b></td><td>TCP "source port" the context used locally for its SRS connection. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpudpbasedresolveroperation.html#resolverservicecontext">resolver_service (context)</a>. </td></tr>
 <tr>
 <td><b>.&#160;.&#160;srsRegistrationInfo.sessionId</b></td><td>The unique identifier assigned by the SRS to this connection. </td></tr>
 <tr>
@@ -450,20 +336,7 @@ Message Subtypes: SIR and SDR&nbsp;&nbsp;<small><a href="#messagesubtypessirands
 <h1><a class="anchor" id="messagetypeconfigopts"></a>
 Message Type: CONFIG_OPTS&nbsp;&nbsp;<small><a href="#messagetypeconfigopts">&lt;-</a></small></h1>
 <p>Message type CONFIG_OPTS contains SRS configuration information.</p>
-<p><b>EXAMPLE:</b> </p><pre class="fragment">{
-  "monitorInfoCategory": "CONFIG_OPTS",
-  "configOptions": [
-    {
-      "name": "um-srs.daemon-monitor.lbm-attributes.context.context_name",
-      "value": "statsLbmContext",
-    },
-    {
-      "name": "um-srs.daemon-monitor.lbm-attributes.context.default_interface",
-      "value": "192.168.0.0/24",
-    }
-  ]
-}
-</pre><p> This example has two options. Be aware that a given message can have any number of option entries.</p>
+<p><b>EXAMPLE:</b> </p><div class="fragment"><div class="line">{</div><div class="line">  <span class="stringliteral">&quot;monitorInfoCategory&quot;</span>: <span class="stringliteral">&quot;CONFIG_OPTS&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;configOptions&quot;</span>: [</div><div class="line">    {</div><div class="line">      <span class="stringliteral">&quot;name&quot;</span>: <span class="stringliteral">&quot;um-srs.daemon-monitor.lbm-attributes.context.context_name&quot;</span>,</div><div class="line">      <span class="stringliteral">&quot;value&quot;</span>: <span class="stringliteral">&quot;statsLbmContext&quot;</span>,</div><div class="line">    },</div><div class="line">    {</div><div class="line">      <span class="stringliteral">&quot;name&quot;</span>: <span class="stringliteral">&quot;um-srs.daemon-monitor.lbm-attributes.context.default_interface&quot;</span>,</div><div class="line">      <span class="stringliteral">&quot;value&quot;</span>: <span class="stringliteral">&quot;192.168.0.0/24&quot;</span>,</div><div class="line">    }</div><div class="line">  ]</div><div class="line">}</div></div><!-- fragment --><p> This example has two options. Be aware that a given message can have any number of option entries.</p>
 <p>Overall structure of message: </p><center> <table class="doxtable">
 <tr>
 <th>Field</th><th>Description </th></tr>
@@ -544,7 +417,7 @@ Message Type: CONFIG_OPTS&nbsp;&nbsp;<small><a href="#messagetypeconfigopts">&lt
 <tr>
 <td><b>um-srs.daemon-monitor.remote-config-changes-request.allow</b> </td><td>Value for '<b>allow</b>' attribute to SRS configuration element <a class="el" href="srsconfigurationfile.html#srselementremoteconfigchangesrequest">&lt;remote-config-changes-request&gt;</a>. </td></tr>
 <tr>
-<td><b>um-srs.daemon-monitor.lbm-attributes.lbmConfigOptionScope.lbmConfigOptionName</b> </td><td><p class="starttd">A UM configuration option, as documented in <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/index.html#configurationoverview">Configuration Overview</a>, where 'lbmConfigOptionScope' is the option scope ('context', 'source', etc) and 'lbmConfigOptionName' is the option name.</p>
+<td><b>um-srs.daemon-monitor.lbm-attributes.lbmConfigOptionScope.lbmConfigOptionName</b> </td><td><p class="starttd">A UM configuration option, as documented in <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/config.tag:../Config/" href="../Config/index.html#configurationoverview">Configuration Overview</a>, where 'lbmConfigOptionScope' is the option scope ('context', 'source', etc) and 'lbmConfigOptionName' is the option name.</p>
 <p class="endtd"></p>
 </td></tr>
 </table>
@@ -553,20 +426,7 @@ Message Type: CONFIG_OPTS&nbsp;&nbsp;<small><a href="#messagetypeconfigopts">&lt
 <h1><a class="anchor" id="messagetypeinternalconfigopts"></a>
 Message Type: INTERNAL_CONFIG_OPTS&nbsp;&nbsp;<small><a href="#messagetypeinternalconfigopts">&lt;-</a></small></h1>
 <p>Message type INTERNAL_CONFIG_OPTS contains SRS internal configuration information. These options are not intended for application use.</p>
-<p><b>EXAMPLE:</b> </p><pre class="fragment">{
-  "monitorInfoCategory": "INTERNAL_CONFIG_OPTS",
-  "configOptions": [
-    {
-      "name": "um-srs.srs.otidmap.async-receiver-distribution",
-      "value": "false",
-    },
-    { 
-      "name": "um-srs.srs.otidmap.shards",
-      "value": "4",
-    } 
-  ]   
-}
-</pre><p> This example has two options. Be aware that a given message can have any number of option entries.</p>
+<p><b>EXAMPLE:</b> </p><div class="fragment"><div class="line">{</div><div class="line">  <span class="stringliteral">&quot;monitorInfoCategory&quot;</span>: <span class="stringliteral">&quot;INTERNAL_CONFIG_OPTS&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;configOptions&quot;</span>: [</div><div class="line">    {</div><div class="line">      <span class="stringliteral">&quot;name&quot;</span>: <span class="stringliteral">&quot;um-srs.srs.otidmap.async-receiver-distribution&quot;</span>,</div><div class="line">      <span class="stringliteral">&quot;value&quot;</span>: <span class="stringliteral">&quot;false&quot;</span>,</div><div class="line">    },</div><div class="line">    { </div><div class="line">      <span class="stringliteral">&quot;name&quot;</span>: <span class="stringliteral">&quot;um-srs.srs.otidmap.shards&quot;</span>,</div><div class="line">      <span class="stringliteral">&quot;value&quot;</span>: <span class="stringliteral">&quot;4&quot;</span>,</div><div class="line">    } </div><div class="line">  ]   </div><div class="line">}</div></div><!-- fragment --><p> This example has two options. Be aware that a given message can have any number of option entries.</p>
 <p>Overall structure of message: </p><center> <table class="doxtable">
 <tr>
 <th>Field</th><th>Description </th></tr>
@@ -594,21 +454,13 @@ Message Type: INTERNAL_CONFIG_OPTS&nbsp;&nbsp;<small><a href="#messagetypeintern
 <h1><a class="anchor" id="requesttypereportsrsversion"></a>
 Request Type: REPORT_SRS_VERSION&nbsp;&nbsp;<small><a href="#requesttypereportsrsversion">&lt;-</a></small></h1>
 <p>Request type REPORT_SRS_VERSION is sent by a monitoring application to determine the software version of the SRS.</p>
-<pre class="fragment">{
-  "commandMessageType": "REPORT_SRS_VERSION"
-}
-</pre><p>The SRS will send a response of the form: </p><pre class="fragment">SRS Version 6.12
-</pre><p><br />
+<div class="fragment"><div class="line">{</div><div class="line">  <span class="stringliteral">&quot;commandMessageType&quot;</span>: <span class="stringliteral">&quot;REPORT_SRS_VERSION&quot;</span></div><div class="line">}</div></div><!-- fragment --><p>The SRS will send a response of the form: </p><div class="fragment"><div class="line">SRS Version 6.12</div></div><!-- fragment --><p><br />
  </p>
 <h1><a class="anchor" id="requesttypereportmonitorinfo"></a>
 Request Type: REPORT_MONITOR_INFO&nbsp;&nbsp;<small><a href="#requesttypereportmonitorinfo">&lt;-</a></small></h1>
 <p>Request type REPORT_MONITOR_INFO is sent by a monitoring application to initiate an immediate publishing of monitoring data.</p>
 <p>The SRS will only process this request if the configuration contains <a class="el" href="srsconfigurationfile.html#srselementremotesnapshotrequest">&lt;remote-snapshot-request allow="true"/&gt;</a>.</p>
-<pre class="fragment">{
-  "commandMessageType": "REPORT_MONITOR_INFO",
-  "monitorInfoCategory": "SRS_STATS"
-}
-</pre><p>Where the <code>"monitorInfoCategory"</code> field is set to one of the following: </p><ul>
+<div class="fragment"><div class="line">{</div><div class="line">  <span class="stringliteral">&quot;commandMessageType&quot;</span>: <span class="stringliteral">&quot;REPORT_MONITOR_INFO&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;monitorInfoCategory&quot;</span>: <span class="stringliteral">&quot;SRS_STATS&quot;</span></div><div class="line">}</div></div><!-- fragment --><p>Where the <code>"monitorInfoCategory"</code> field is set to one of the following: </p><ul>
 <li>
 SRS_STATS </li>
 <li>
@@ -624,20 +476,14 @@ CONFIG_OPTS </li>
 <li>
 INTERNAL_CONFIG_OPTS </li>
 </ul>
-<p>The SRS will send a response of the form: </p><pre class="fragment">snap SRS_STATS - OK!
-</pre><p> Note that "SRS_STATS" is replaced by the requested category.</p>
+<p>The SRS will send a response of the form: </p><div class="fragment"><div class="line">snap SRS_STATS - OK!</div></div><!-- fragment --><p> Note that "SRS_STATS" is replaced by the requested category.</p>
 <p><br />
  </p>
 <h1><a class="anchor" id="requesttypesetpublishinginterval"></a>
 Request Type: SET_PUBLISHING_INTERVAL&nbsp;&nbsp;<small><a href="#requesttypesetpublishinginterval">&lt;-</a></small></h1>
 <p>Request type SET_PUBLISHING_INTERVAL is sent by a monitoring application to Modify the publishing intervals for a running SRS. Note that SRS does not persist the new interval value; if the SRS is restarted, the value returns to the value configured via <a class="el" href="srsconfigurationfile.html#srselementdaemonmonitor">&lt;daemon-monitor&gt;</a>.</p>
 <p>The SRS will only process this request if the configuration contains <a class="el" href="srsconfigurationfile.html#srselementremoteconfigchangesrequest">&lt;remote-config-changes-request allow="true"/&gt;</a>.</p>
-<pre class="fragment">{     
-  "commandMessageType": "SET_PUBLISHING_INTERVAL",
-  "monitorInfoCategory": "SRS_STATS",
-  "publishingInterval": 60000
-}
-</pre><p>Where the <code>"monitorInfoCategory"</code> field is set to one of the following: </p><ul>
+<div class="fragment"><div class="line">{     </div><div class="line">  <span class="stringliteral">&quot;commandMessageType&quot;</span>: <span class="stringliteral">&quot;SET_PUBLISHING_INTERVAL&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;monitorInfoCategory&quot;</span>: <span class="stringliteral">&quot;SRS_STATS&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;publishingInterval&quot;</span>: 60000</div><div class="line">}</div></div><!-- fragment --><p>Where the <code>"monitorInfoCategory"</code> field is set to one of the following: </p><ul>
 <li>
 SRS_STATS </li>
 <li>
@@ -653,8 +499,7 @@ CONFIG_OPTS </li>
 <li>
 INTERNAL_CONFIG_OPTS </li>
 </ul>
-<p>The SRS will send a response of the form: </p><pre class="fragment">SRS_STATS 60000 - OK!
-</pre><p> Note that "SRS_STATS" is replaced by the requested category. </p>
+<p>The SRS will send a response of the form: </p><div class="fragment"><div class="line">SRS_STATS 60000 - OK!</div></div><!-- fragment --><p> Note that "SRS_STATS" is replaced by the requested category. </p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.8.11-->

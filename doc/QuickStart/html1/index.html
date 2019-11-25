@@ -56,7 +56,7 @@ $(document).ready(function(){initNavTree('index.html','');});
 <div class="contents">
 <div class="textblock"><p> 
 <img src="infa_logo.png" width="400" height="138" alt="Informatica"/><br/><br/>
-<big><b>Ultra Messaging</b></big> <small>(Version 6.12)</small><br/>
+<big><b>Ultra Messaging</b></big> <small>(Version 6.12.1)</small><br/>
 <br/><br/><br/>
 <center class="mytitle">Quick Start Guide</center>
 <br/><br/><br/>
@@ -74,7 +74,7 @@ Introduction&nbsp;&nbsp;<small><a href="#firstsect">&lt;-</a></small></h1>
 <p>The information in this documentation is subject to change without notice. If you find any problems in this documentation, please report them to us in writing at Informatica LLC 2100 Seaport Blvd. Redwood City, CA 94063.</p>
 <p>Informatica products are warranted according to the terms and conditions of the agreements under which they are provided. <br />
 INFORMATICA LLC PROVIDES THE INFORMATION IN THIS DOCUMENT "AS IS" WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING WITHOUT ANY WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND ANY WARRANTY OR CONDITION OF NON-INFRINGEMENT.</p>
-<p>See <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/QuickStart/design.tag:../../Design/" href="../../Design/umglossary.html">UM Glossary</a> for Ultra Messaging terminology, abbreviations, and acronyms.</p>
+<p>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/QuickStart/design.tag:../../Design/" href="../../Design/umglossary.html">UM Glossary</a> for Ultra Messaging terminology, abbreviations, and acronyms.</p>
 <p><br />
  </p>
 <h1><a class="anchor" id="ultramessagingbinaryquickstart"></a>
@@ -110,18 +110,12 @@ Binary Quick Start on Microsoft Windows&nbsp;&nbsp;<small><a href="#binaryquicks
 <ol>
 <li>
 <p class="startli">Open a command prompt window on the machine you want to use for receiving messages and enter the command lbmrcv topic to start a receiver. Note that topic can be any string. You should see output that looks something like this:</p>
-<pre class="fragment">1.006 secs.   0.0 Kmsgs/sec.   0.0 Kbps
-1.019 secs.   0.0 Kmsgs/sec.   0.0 Kbps
-1.010 secs.   0.0 Kmsgs/sec.   0.0 Kbps
-</pre><p>A new line will be printed about once per second showing the elapsed time, messages received, and data received. As long as there are no sources yet running on topic, the number of messages received will continue to be zero.</p>
+<div class="fragment"><div class="line">1.006 secs.   0.0 Kmsgs/sec.   0.0 Kbps</div><div class="line">1.019 secs.   0.0 Kmsgs/sec.   0.0 Kbps</div><div class="line">1.010 secs.   0.0 Kmsgs/sec.   0.0 Kbps</div></div><!-- fragment --><p>A new line will be printed about once per second showing the elapsed time, messages received, and data received. As long as there are no sources yet running on topic, the number of messages received will continue to be zero.</p>
 <p class="endli"></p>
 </li>
 <li>
 <p class="startli">Open a command prompt window on the machine you want to use for sending messages and enter the command lbmsrc topic to start sending messages. The receiver will automatically discover the source, at which time its output will change to something like this:</p>
-<pre class="fragment">1.010 secs. 451.9 Kmsgs/sec.  90.4 Mbps
-1.010 secs. 451.4 Kmsgs/sec.  90.3 Mbps
-1.010 secs. 445.1 Kmsgs/sec.  89.0 Mbps
-</pre><p class="endli"></p>
+<div class="fragment"><div class="line">1.010 secs. 451.9 Kmsgs/sec.  90.4 Mbps</div><div class="line">1.010 secs. 451.4 Kmsgs/sec.  90.3 Mbps</div><div class="line">1.010 secs. 445.1 Kmsgs/sec.  89.0 Mbps</div></div><!-- fragment --><p class="endli"></p>
 </li>
 <li>
 <p class="startli">With no options given, the source will send 10,000,000 small (25 byte) messages. If you would like to test different size packets or number of packets sent, you can set options. Enter lbmsrc -h at the command line, you will get a list of options you can control.</p>
@@ -142,18 +136,12 @@ Binary Quick Start on Unix&nbsp;&nbsp;<small><a href="#binaryquickstartonunix">&
 <ol>
 <li>
 <p class="startli">Open a command prompt window on the machine you want to use for receiving messages and enter the command lbmrcv topic to start a receiver. Note that topic can be any string. You should see output that looks something like this:</p>
-<pre class="fragment">1.006 secs.   0.0 Kmsgs/sec.   0.0 Kbps
-1.019 secs.   0.0 Kmsgs/sec.   0.0 Kbps
-1.010 secs.   0.0 Kmsgs/sec.   0.0 Kbps
-</pre><p>A new line will be printed about once per second showing the elapsed time, messages received, and data received. As long as there are no sources yet running on topic, the number of messages received will continue to be zero.</p>
+<div class="fragment"><div class="line">1.006 secs.   0.0 Kmsgs/sec.   0.0 Kbps</div><div class="line">1.019 secs.   0.0 Kmsgs/sec.   0.0 Kbps</div><div class="line">1.010 secs.   0.0 Kmsgs/sec.   0.0 Kbps</div></div><!-- fragment --><p>A new line will be printed about once per second showing the elapsed time, messages received, and data received. As long as there are no sources yet running on topic, the number of messages received will continue to be zero.</p>
 <p class="endli"></p>
 </li>
 <li>
 <p class="startli">Open a command prompt window on the machine you want to use for sending messages and enter the command lbmsrc topic to start sending messages. The receiver will automatically discover the source, at which time its output will change to something like this:</p>
-<pre class="fragment">1.010 secs. 451.9 Kmsgs/sec.  90.4 Mbps
-1.010 secs. 451.4 Kmsgs/sec.  90.3 Mbps
-1.010 secs. 445.1 Kmsgs/sec.  89.0 Mbps
-</pre><p class="endli"></p>
+<div class="fragment"><div class="line">1.010 secs. 451.9 Kmsgs/sec.  90.4 Mbps</div><div class="line">1.010 secs. 451.4 Kmsgs/sec.  90.3 Mbps</div><div class="line">1.010 secs. 445.1 Kmsgs/sec.  89.0 Mbps</div></div><!-- fragment --><p class="endli"></p>
 </li>
 <li>
 <p class="startli">With no options given, the source will send 10,000,000 small (25 byte) messages. If you would like to test different size packets or number of packets sent, you can set options. Enter lbmsrc -h at the command line, you will get a list of options you can control.</p>
@@ -213,14 +201,15 @@ Ultra Messaging Programming Quick Start&nbsp;&nbsp;<small><a href="#ultramessagi
 <p>The C programs below contain the minimum code and supporting material. Their purpose is to verify that the user's build and run-time environments are set up correctly. They also give a basic introduction to the Ultra Messaging API.</p>
 <p>We also have equivalent Java and C# programs available in source form. See <a href="../../java_example/MinSrc.java">MinSrc.java</a> and <a href="../../java_example/MinRcv.java">MinRcv.java</a> or <a href="../../dotnet_example/MinSrc.cs">MinSrc.cs</a> and <a href="../../dotnet_example/MinRcv.cs">MinRcv.cs</a>. We also have an example of how application callbacks are coded in C++ programs. See <a href="../../example/minrcv.cpp">minrcv.cpp</a>.</p>
 <p>(Most browsers let you right-click on a link and use the "save link target" function, or some variation.)</p>
+<dl class="section note"><dt>Note</dt><dd>There are build .NET instructions in the initial comment blocks of MinSrc.cs and MinRcv.cs which are oriented towards the Windows development environment. For information related to .NET on Linux, see <a href="../../DotNetAPI/index.html#umnetonlinux">UM .NET on Linux</a>.</dd></dl>
 <p>Note that these programs do not allow the user to override any of the default configuration values. As a result, operation is fixed according to the normal LBM defaults; for example TCP is the transport protocol, topic resolution is performed using multicast, etc. See the <a href="../../Config/index.html">Ultra Messaging Configuration Guide</a>.</p>
 <p>The Source Code Examples tab on the left panel provides a much richer set of source files that use a wide variety of features. However, those programs double as performance testing tools, so they tend to be more complex than just demonstrating the features. We recommend to first build and run these minimal examples.</p>
 <p>This source code example is provided by Informatica for educational and evaluation purposes only.</p>
 <p>Error handling in these programs is primitive. A production program would want to have better error handling, but for the purposes of a minimal example, it would just be a distraction. Also, a production program would want to support a configuration file to override default values on options.</p>
 <p><br />
  </p>
-<h2><a class="anchor" id="buildingnoteswindows"></a>
-Building Notes: Windows&nbsp;&nbsp;<small><a href="#buildingnoteswindows">&lt;-</a></small></h2>
+<h2><a class="anchor" id="buildingnotesconwindows"></a>
+Building Notes: C on Windows&nbsp;&nbsp;<small><a href="#buildingnotesconwindows">&lt;-</a></small></h2>
 <p>When building on Windows, the following notes are applicable.</p>
 <ul>
 <li>
@@ -244,132 +233,36 @@ The install procedure should already have added the LBM bin directory to the Win
 </ul>
 <p><br />
  </p>
-<h2><a class="anchor" id="buildingnotesunix"></a>
-Building Notes: Unix&nbsp;&nbsp;<small><a href="#buildingnotesunix">&lt;-</a></small></h2>
+<h2><a class="anchor" id="buildingnotesconunix"></a>
+Building Notes: C on Unix&nbsp;&nbsp;<small><a href="#buildingnotesconunix">&lt;-</a></small></h2>
 <p>When building on Unix, the following notes are applicable.</p>
 <ul>
 <li>
-<p class="startli">Sample build command: </p><pre class="fragment">cc -I$HOME/lbm/&lt;VERS&gt;/&lt;PLATFORM&gt;/include
-   -L$HOME/lbm/&lt;VERS&gt;/&lt;PLATFORM&gt;/lib -llbm -lm -o min_src min_src.c
-</pre><p> (This should be all one line.)</p>
+<p class="startli">Sample build command: </p><div class="fragment"><div class="line">cc -I$HOME/lbm/&lt;VERS&gt;/&lt;PLATFORM&gt;/include</div><div class="line">   -L$HOME/lbm/&lt;VERS&gt;/&lt;PLATFORM&gt;/lib -llbm -lm -o min_src min_src.c</div></div><!-- fragment --><p> (This should be all one line.)</p>
 <p class="endli"></p>
 </li>
 <li>
 <p class="startli">The appropriate library search path should be updated to include the Ultra Messaging <code>lib/</code> directory. For example, on Linux:</p>
-<pre class="fragment">LD_LIBRARY_PATH="$HOME/lbm/&lt;VERS&gt;/&lt;PLATFORM&gt;/lib:$LD_LIBRARY_PATH"
-export LD_LIBRARY_PATH
-</pre><p class="endli">(For other flavors of Unix, see <a href="http://bhami.com/rosetta.html">http://bhami.com/rosetta.html</a>.) Alternatively, the shared library can be copied from the LBM <code>lib/</code> directory to a directory which is already in the library search path. </p>
+<div class="fragment"><div class="line">LD_LIBRARY_PATH=<span class="stringliteral">&quot;$HOME/lbm/&lt;VERS&gt;/&lt;PLATFORM&gt;/lib:$LD_LIBRARY_PATH&quot;</span></div><div class="line">export LD_LIBRARY_PATH</div></div><!-- fragment --><p class="endli">(For other flavors of Unix, see <a href="http://bhami.com/rosetta.html">http://bhami.com/rosetta.html</a>.) Alternatively, the shared library can be copied from the LBM <code>lib/</code> directory to a directory which is already in the library search path. </p>
 </li>
 </ul>
 <p><br />
  </p>
 <h2><a class="anchor" id="minimalultramessagingsourceimplementation"></a>
 Minimal Ultra Messaging Source Implementation&nbsp;&nbsp;<small><a href="#minimalultramessagingsourceimplementation">&lt;-</a></small></h2>
-<p>This is a source code listing of a minimal source (sender) program. Examples also include equivalent Java and C# programs available in source form. See <a href="../../java_example/MinSrc.java">MinSrc.java</a> and <a href="../../dotnet_example/MinSrc.cs">MinSrc.cs</a>.</p>
-<pre class="fragment">/*
-"minsrc.c: minimal application that sends to a given topic.
- *
- * Copyright (c) 2005-2019 Informatica Corporation. All Rights Reserved.
- * Permission is granted to licensees to use
- * or alter this software for any purpose, including commercial applications,
- * according to the terms laid out in the Software License Agreement.
- *
- * This source code example is provided by Informatica for educational
- * and evaluation purposes only.
- *
- * THE SOFTWARE IS PROVIDED "AS IS" AND INFORMATICA DISCLAIMS ALL WARRANTIES
- * EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION, ANY IMPLIED WARRANTIES OF
- * NON-INFRINGEMENT, MERCHANTABILITY OR FITNESS FOR A PARTICULAR
- * PURPOSE.  INFORMATICA DOES NOT WARRANT THAT USE OF THE SOFTWARE WILL BE
- * UNINTERRUPTED OR ERROR-FREE.  INFORMATICA SHALL NOT, UNDER ANY CIRCUMSTANCES, BE
- * LIABLE TO LICENSEE FOR LOST PROFITS, CONSEQUENTIAL, INCIDENTAL, SPECIAL OR
- * INDIRECT DAMAGES ARISING OUT OF OR RELATED TO THIS AGREEMENT OR THE
- * TRANSACTIONS CONTEMPLATED HEREUNDER, EVEN IF INFORMATICA HAS BEEN APPRISED OF
- * THE LIKELIHOOD OF SUCH DAMAGES.
- */
-
-/* Explanatory notes referenced in this file are in the Quick Start guide. */
-
-#include &lt;stdio.h&gt;
-
-#if defined(_MSC_VER)
-/* Windows-only includes */
-#include &lt;winsock2.h&gt;
-#define SLEEP(s) Sleep((s)*1000)
-#else
-/* Unix-only includes */
-#include &lt;stdlib.h&gt;
-#include &lt;unistd.h&gt;
-#define SLEEP(s) sleep(s)
-#endif
-
-#include &lt;lbm/lbm.h&gt;
-
-main()
-{
-  lbm_context_t *ctx;    /* pointer to context object */
-  lbm_topic_t *topic;    /* pointer to topic object */
-  lbm_src_t *src;        /* pointer to source (sender) object */
-  int err;               /* return status of lbm functions (true=error) */
-
-#if defined(_MSC_VER)
-  /* windows-specific code */
-  WSADATA wsadata;
-  int wsStat = WSAStartup(MAKEWORD(2,2), &amp;wsadata);
-  if (wsStat != 0) {
-    printf("line %d: wsStat=%d\n",__LINE__,wsStat); exit(1);
-  }
-#endif
-
-  err = lbm_context_create(&amp;ctx, NULL, NULL, NULL);  /* See Note #1 */
-  if (err) {
-    printf("line %d: %s\n", __LINE__, lbm_errmsg()); exit(1);
-  }
-
-  err = lbm_src_topic_alloc(&amp;topic, ctx, "Greeting", NULL);  /* See Note #2 */
-  if (err) {
-    printf("line %d: %s\n", __LINE__, lbm_errmsg()); exit(1);
-  }
-
-  err = lbm_src_create(&amp;src, ctx, topic, NULL, NULL, NULL);  /* See Note #3 */
-  if (err) {
-    printf("line %d: %s\n", __LINE__, lbm_errmsg()); exit(1);
-  }
-
-  SLEEP(1);  /* See Note #4 */
-
-  err = lbm_src_send(src, "Hello!", 6, LBM_MSG_FLUSH | LBM_SRC_BLOCK);  /* See Note #5 */
-  if (err) {
-    printf("line %d: %s\n", __LINE__, lbm_errmsg()); exit(1);
-  }
-
-  SLEEP(2);  /* See Note #6 */
-
-  /* Finished all sending to this topic, delete the source object. */
-
-  err = lbm_src_delete(src);
-
-  /* Do not need to delete the topic object - LBM keeps track of topic
-   * objects and deletes them as-needed.  */
-
-  /* Finished with all LBM functions, delete the context object. */
-  err = lbm_context_delete(ctx);
-
-#if defined(_MSC_VER)
-  WSACleanup();
-#endif
-}  /* main */</pre><p>Notes:</p>
+<p>This is a source code listing of a minimal source (sender) program. Examples also include equivalent Java and C# programs available in source form. See <a href="../../java_example/MinSrc.java">MinSrc.java</a> and <a href="../../dotnet_example/MinSrc.cs">MinSrc.cs</a>. (There are build .NET instructions in the initial comment blocks of MinSrc.cs and MinRcv.cs which are oriented towards the Windows development environment. For information related to .NET on Linux, see <a href="../../DotNetAPI/index.html#umnetonlinux">UM .NET on Linux</a>.)</p>
+<div class="fragment"><div class="line"><span class="comment">/*</span></div><div class="line"><span class="comment">&quot;minsrc.c: minimal application that sends to a given topic.</span></div><div class="line"><span class="comment">  </span></div><div class="line"><span class="comment"> * Copyright (c) 2005-2019 Informatica Corporation. All Rights Reserved.</span></div><div class="line"><span class="comment"> * Permission is granted to licensees to use</span></div><div class="line"><span class="comment"> * or alter this software for any purpose, including commercial applications,</span></div><div class="line"><span class="comment"> * according to the terms laid out in the Software License Agreement.</span></div><div class="line"><span class="comment">  </span></div><div class="line"><span class="comment"> * This source code example is provided by Informatica for educational</span></div><div class="line"><span class="comment"> * and evaluation purposes only.</span></div><div class="line"><span class="comment">  </span></div><div class="line"><span class="comment"> * THE SOFTWARE IS PROVIDED &quot;AS IS&quot; AND INFORMATICA DISCLAIMS ALL WARRANTIES</span></div><div class="line"><span class="comment"> * EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION, ANY IMPLIED WARRANTIES OF</span></div><div class="line"><span class="comment"> * NON-INFRINGEMENT, MERCHANTABILITY OR FITNESS FOR A PARTICULAR</span></div><div class="line"><span class="comment"> * PURPOSE.  INFORMATICA DOES NOT WARRANT THAT USE OF THE SOFTWARE WILL BE</span></div><div class="line"><span class="comment"> * UNINTERRUPTED OR ERROR-FREE.  INFORMATICA SHALL NOT, UNDER ANY CIRCUMSTANCES, BE</span></div><div class="line"><span class="comment"> * LIABLE TO LICENSEE FOR LOST PROFITS, CONSEQUENTIAL, INCIDENTAL, SPECIAL OR</span></div><div class="line"><span class="comment"> * INDIRECT DAMAGES ARISING OUT OF OR RELATED TO THIS AGREEMENT OR THE</span></div><div class="line"><span class="comment"> * TRANSACTIONS CONTEMPLATED HEREUNDER, EVEN IF INFORMATICA HAS BEEN APPRISED OF</span></div><div class="line"><span class="comment"> * THE LIKELIHOOD OF SUCH DAMAGES.</span></div><div class="line"><span class="comment"> */</span></div><div class="line"></div><div class="line"><span class="comment">/* Explanatory notes referenced in this file are in the Quick Start guide. */</span></div><div class="line"></div><div class="line"><span class="preprocessor">#include &lt;stdio.h&gt;</span></div><div class="line"></div><div class="line"><span class="preprocessor">#if defined(_MSC_VER)</span></div><div class="line"><span class="comment">/* Windows-only includes */</span></div><div class="line"><span class="preprocessor">#include &lt;winsock2.h&gt;</span></div><div class="line"><span class="preprocessor">#define SLEEP(s) Sleep((s)*1000)</span></div><div class="line"><span class="preprocessor">#else</span></div><div class="line"><span class="comment">/* Unix-only includes */</span></div><div class="line"><span class="preprocessor">#include &lt;stdlib.h&gt;</span></div><div class="line"><span class="preprocessor">#include &lt;unistd.h&gt;</span></div><div class="line"><span class="preprocessor">#define SLEEP(s) sleep(s)</span></div><div class="line"><span class="preprocessor">#endif</span></div><div class="line"></div><div class="line"><span class="preprocessor">#include &lt;lbm/lbm.h&gt;</span></div><div class="line"></div><div class="line">main()</div><div class="line">{</div><div class="line">  <a class="codeRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/QuickStart/api.tag:../../API/" href="../../API/lbm_8h.html#a9f6ec97839a8f264eb4059de01174f3c">lbm_context_t</a> *ctx;    <span class="comment">/* pointer to context object */</span></div><div class="line">  <a class="codeRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/QuickStart/api.tag:../../API/" href="../../API/lbm_8h.html#a3f0c8cba0e6f00fe7ae0ed717405e46d">lbm_topic_t</a> *topic;    <span class="comment">/* pointer to topic object */</span></div><div class="line">  <a class="codeRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/QuickStart/api.tag:../../API/" href="../../API/lbm_8h.html#a717ff27bb10ae7800330c21d810dffb8">lbm_src_t</a> *src;        <span class="comment">/* pointer to source (sender) object */</span></div><div class="line">  <span class="keywordtype">int</span> err;               <span class="comment">/* return status of lbm functions (true=error) */</span></div><div class="line"></div><div class="line"><span class="preprocessor">#if defined(_MSC_VER)</span></div><div class="line">  <span class="comment">/* windows-specific code */</span></div><div class="line">  WSADATA wsadata;</div><div class="line">  <span class="keywordtype">int</span> wsStat = WSAStartup(MAKEWORD(2,2), &amp;wsadata);</div><div class="line">  <span class="keywordflow">if</span> (wsStat != 0) {</div><div class="line">    printf(<span class="stringliteral">&quot;line %d: wsStat=%d\n&quot;</span>,__LINE__,wsStat); exit(1);</div><div class="line">  }</div><div class="line"><span class="preprocessor">#endif</span></div><div class="line"></div><div class="line">  err = <a class="codeRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/QuickStart/api.tag:../../API/" href="../../API/lbm_8h.html#a8058947690bd0995bc2c59d4a61b462f">lbm_context_create</a>(&amp;ctx, NULL, NULL, NULL);  <span class="comment">/* See Note #1 */</span></div><div class="line">  <span class="keywordflow">if</span> (err) {</div><div class="line">    printf(<span class="stringliteral">&quot;line %d: %s\n&quot;</span>, __LINE__, <a class="codeRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/QuickStart/api.tag:../../API/" href="../../API/lbm_8h.html#a22a4650d3a5b649c84a0c05adedcc055">lbm_errmsg</a>()); exit(1);</div><div class="line">  }</div><div class="line"></div><div class="line">  err = <a class="codeRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/QuickStart/api.tag:../../API/" href="../../API/lbm_8h.html#a1ba60407fa2bde0997aab6d5a5d2da1a">lbm_src_topic_alloc</a>(&amp;topic, ctx, <span class="stringliteral">&quot;Greeting&quot;</span>, NULL);  <span class="comment">/* See Note #2 */</span></div><div class="line">  <span class="keywordflow">if</span> (err) {</div><div class="line">    printf(<span class="stringliteral">&quot;line %d: %s\n&quot;</span>, __LINE__, <a class="codeRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/QuickStart/api.tag:../../API/" href="../../API/lbm_8h.html#a22a4650d3a5b649c84a0c05adedcc055">lbm_errmsg</a>()); exit(1);</div><div class="line">  }</div><div class="line"></div><div class="line">  err = <a class="codeRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/QuickStart/api.tag:../../API/" href="../../API/lbm_8h.html#ab8dd76271bf9df7a5f88476d431f523e">lbm_src_create</a>(&amp;src, ctx, topic, NULL, NULL, NULL);  <span class="comment">/* See Note #3 */</span></div><div class="line">  <span class="keywordflow">if</span> (err) {</div><div class="line">    printf(<span class="stringliteral">&quot;line %d: %s\n&quot;</span>, __LINE__, <a class="codeRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/QuickStart/api.tag:../../API/" href="../../API/lbm_8h.html#a22a4650d3a5b649c84a0c05adedcc055">lbm_errmsg</a>()); exit(1);</div><div class="line">  }</div><div class="line"></div><div class="line">  SLEEP(1);  <span class="comment">/* See Note #4 */</span></div><div class="line"></div><div class="line">  err = <a class="codeRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/QuickStart/api.tag:../../API/" href="../../API/lbm_8h.html#a91f4b9cb04fe1323ec56833211cc5cb7">lbm_src_send</a>(src, <span class="stringliteral">&quot;Hello!&quot;</span>, 6, LBM_MSG_FLUSH | LBM_SRC_BLOCK);  <span class="comment">/* See Note #5 */</span></div><div class="line">  <span class="keywordflow">if</span> (err) {</div><div class="line">    printf(<span class="stringliteral">&quot;line %d: %s\n&quot;</span>, __LINE__, <a class="codeRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/QuickStart/api.tag:../../API/" href="../../API/lbm_8h.html#a22a4650d3a5b649c84a0c05adedcc055">lbm_errmsg</a>()); exit(1);</div><div class="line">  }</div><div class="line"></div><div class="line">  SLEEP(2);  <span class="comment">/* See Note #6 */</span></div><div class="line"></div><div class="line">  <span class="comment">/* Finished all sending to this topic, delete the source object. */</span></div><div class="line"></div><div class="line">  err = <a class="codeRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/QuickStart/api.tag:../../API/" href="../../API/lbm_8h.html#a29d45db8f76835b4ae78f4568c25712f">lbm_src_delete</a>(src);</div><div class="line"></div><div class="line">  <span class="comment">/* Do not need to delete the topic object - LBM keeps track of topic</span></div><div class="line"><span class="comment">   * objects and deletes them as-needed.  */</span></div><div class="line"></div><div class="line">  <span class="comment">/* Finished with all LBM functions, delete the context object. */</span></div><div class="line">  err = <a class="codeRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/QuickStart/api.tag:../../API/" href="../../API/lbm_8h.html#a962bfceb336c65191ba08497ac70602b">lbm_context_delete</a>(ctx);</div><div class="line"></div><div class="line"><span class="preprocessor">#if defined(_MSC_VER)</span></div><div class="line">  WSACleanup();</div><div class="line"><span class="preprocessor">#endif</span></div><div class="line"><span class="preprocessor">}  </span><span class="comment">/* main */</span><span class="preprocessor"></span></div></div><!-- fragment --><p>Notes:</p>
 <ol>
 <li>
-<p class="startli">Create a context object. A context is an environment in which LBM functions. Note that the first parameter is a pointer to a pointer variable; <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/QuickStart/api.tag:../../API/" href="../../API/lbm_8h.html#a8058947690bd0995bc2c59d4a61b462f">lbm_context_create()</a> writes the pointer to the context object into "ctx". Also, by passing NULL to the context attribute parameter, the default option values are used. For most applications only a single context is required regardless of how many sources and receivers are created.</p>
+<p class="startli">Create a context object. A context is an environment in which LBM functions. Note that the first parameter is a pointer to a pointer variable; <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/QuickStart/api.tag:../../API/" href="../../API/lbm_8h.html#a8058947690bd0995bc2c59d4a61b462f">lbm_context_create()</a> writes the pointer to the context object into "ctx". Also, by passing NULL to the context attribute parameter, the default option values are used. For most applications only a single context is required regardless of how many sources and receivers are created.</p>
 <p class="endli"></p>
 </li>
 <li>
-<p class="startli">Allocate a topic object. A topic object is little more than a string (the topic name). During operation, LBM keeps some state information in the topic object as well. The topic is bound to the containing context, and will also be bound to a source object. Note that the first parameter is a pointer to a pointer variable; <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/QuickStart/api.tag:../../API/" href="../../API/lbm_8h.html#a1ba60407fa2bde0997aab6d5a5d2da1a">lbm_src_topic_alloc()</a> writes the pointer to the topic object into "topic". Also, by passing NULL to the source topic attribute, the default option values are used. The string "Greeting" is the topic string.</p>
+<p class="startli">Allocate a topic object. A topic object is little more than a string (the topic name). During operation, LBM keeps some state information in the topic object as well. The topic is bound to the containing context, and will also be bound to a source object. Note that the first parameter is a pointer to a pointer variable; <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/QuickStart/api.tag:../../API/" href="../../API/lbm_8h.html#a1ba60407fa2bde0997aab6d5a5d2da1a">lbm_src_topic_alloc()</a> writes the pointer to the topic object into "topic". Also, by passing NULL to the source topic attribute, the default option values are used. The string "Greeting" is the topic string.</p>
 <p class="endli"></p>
 </li>
 <li>
-<p class="startli">Create the source object. A source object is used to send messages. It must be bound to a topic. Note that the first parameter is a pointer to a pointer variable; <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/QuickStart/api.tag:../../API/" href="../../API/lbm_8h.html#ab8dd76271bf9df7a5f88476d431f523e">lbm_src_create()</a> writes the pointer to the source object to into "src". Use of the third and fourth parameters is optional but recommended in a production program - some source events can be important to the application. The last parameter is an optional event queue (not used in this example).</p>
+<p class="startli">Create the source object. A source object is used to send messages. It must be bound to a topic. Note that the first parameter is a pointer to a pointer variable; <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/QuickStart/api.tag:../../API/" href="../../API/lbm_8h.html#ab8dd76271bf9df7a5f88476d431f523e">lbm_src_create()</a> writes the pointer to the source object to into "src". Use of the third and fourth parameters is optional but recommended in a production program - some source events can be important to the application. The last parameter is an optional event queue (not used in this example).</p>
 <p class="endli"></p>
 </li>
 <li>
@@ -377,151 +270,22 @@ main()
 <p class="endli"></p>
 </li>
 <li>
-<p class="startli">Send a message to the "Greeting" topic. The flags make sure the call to <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/QuickStart/api.tag:../../API/" href="../../API/lbm_8h.html#a91f4b9cb04fe1323ec56833211cc5cb7">lbm_src_send()</a> doesn't return until the message is sent. Note that while this ensures low latency, flushing every message carries a heavy efficiency cost. See <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/QuickStart/design.tag:../../Design/" href="../../Design/architecture.html#intelligentbatching">Intelligent Batching</a> for more information.</p>
+<p class="startli">Send a message to the "Greeting" topic. The flags make sure the call to <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/QuickStart/api.tag:../../API/" href="../../API/lbm_8h.html#a91f4b9cb04fe1323ec56833211cc5cb7">lbm_src_send()</a> doesn't return until the message is sent. Note that while this ensures low latency, flushing every message carries a heavy efficiency cost. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/QuickStart/design.tag:../../Design/" href="../../Design/architecture.html#intelligentbatching">Intelligent Batching</a> for more information.</p>
 <p class="endli"></p>
 </li>
 <li>
-<p class="startli">For some transport types (mostly UDP-based), a short delay before deleting the source is advisable. Even though the message is sent, there may have been packet loss, and some transports need a bit of time to request re-transmission. Also, if the above <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/QuickStart/api.tag:../../API/" href="../../API/lbm_8h.html#a91f4b9cb04fe1323ec56833211cc5cb7">lbm_src_send()</a> call didn't include the flush, some time might also be needed to empty the batching buffer.</p>
+<p class="startli">For some transport types (mostly UDP-based), a short delay before deleting the source is advisable. Even though the message is sent, there may have been packet loss, and some transports need a bit of time to request re-transmission. Also, if the above <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/QuickStart/api.tag:../../API/" href="../../API/lbm_8h.html#a91f4b9cb04fe1323ec56833211cc5cb7">lbm_src_send()</a> call didn't include the flush, some time might also be needed to empty the batching buffer.</p>
 <p class="endli"><br />
  </p>
 </li>
 </ol>
 <h2><a class="anchor" id="minimalultramessagingreceiverimplementation"></a>
 Minimal Ultra Messaging Receiver Implementation&nbsp;&nbsp;<small><a href="#minimalultramessagingreceiverimplementation">&lt;-</a></small></h2>
-<p>This is a source code listing of a minimal receiver program. Examples also include equivalent Java, C#, and C++ programs available in source form. See <a href="../../java_example/MinRcv.java">MinRcv.java</a>, <a href="../../dotnet_example/MinRcv.cs">MinRcv.cs</a>, and <a href="../../example/minrcv.cpp">minrcv.cpp</a>.</p>
-<pre class="fragment">/*
-"minrcv.c: minimal application that receives messages from a given topic.
- *
- * Copyright (c) 2005-2019 Informatica Corporation. All Rights Reserved.
- * Permission is granted to licensees to use
- * or alter this software for any purpose, including commercial applications,
- * according to the terms laid out in the Software License Agreement.
- *
- * This source code example is provided by Informatica for educational
- * and evaluation purposes only.
- *
- * THE SOFTWARE IS PROVIDED "AS IS" AND INFORMATICA DISCLAIMS ALL WARRANTIES
- * EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION, ANY IMPLIED WARRANTIES OF
- * NON-INFRINGEMENT, MERCHANTABILITY OR FITNESS FOR A PARTICULAR
- * PURPOSE.  INFORMATICA DOES NOT WARRANT THAT USE OF THE SOFTWARE WILL BE
- * UNINTERRUPTED OR ERROR-FREE.  INFORMATICA SHALL NOT, UNDER ANY CIRCUMSTANCES, BE
- * LIABLE TO LICENSEE FOR LOST PROFITS, CONSEQUENTIAL, INCIDENTAL, SPECIAL OR
- * INDIRECT DAMAGES ARISING OUT OF OR RELATED TO THIS AGREEMENT OR THE
- * TRANSACTIONS CONTEMPLATED HEREUNDER, EVEN IF INFORMATICA HAS BEEN APPRISED OF
- * THE LIKELIHOOD OF SUCH DAMAGES.
- */
-
-/* Explanatory notes referenced in this file are in the Quick Start guide. */
-
-#include &lt;stdio.h&gt;
-
-#if defined(_MSC_VER)
-/* Windows-only includes */
-#include &lt;winsock2.h&gt;
-#define SLEEP(s) Sleep((s)*1000)
-#else
-/* Unix-only includes */
-#include &lt;stdlib.h&gt;
-#include &lt;unistd.h&gt;
-#define SLEEP(s) sleep(s)
-#endif
-
-#include &lt;lbm/lbm.h&gt;
-
-/*
- * A global variable is used to communicate from the receiver callback to
- * the main application thread.
- */
-int msgs_rcvd = 0;
-
-int app_rcv_callback(lbm_rcv_t *rcv, lbm_msg_t *msg, void *clientd)  /* See Note #1 */
-{
-  /* There are several different events that can cause the receiver callback
-   * to be called.  Decode the event that caused this.  */
-  switch (msg-&gt;type)
-  {
-  case LBM_MSG_DATA:    /* a received message */
-    printf("Received %d bytes on topic %s: '%.*s'\n",  /* See note #2 */
-           msg-&gt;len, msg-&gt;topic_name, msg-&gt;len, msg-&gt;data);
-
-    /* Tell main thread that we've received our message. */
-    ++ msgs_rcvd;
-    break;
-
-  case LBM_MSG_BOS:
-    printf("[%s][%s], Beginning of Transport Session\n", msg-&gt;topic_name, msg-&gt;source);
-    break;
-
-  case LBM_MSG_EOS:
-    printf("[%s][%s], End of Transport Session\n", msg-&gt;topic_name, msg-&gt;source);
-    break;
-
-  default:    /* unexpected receiver event */
-    printf("Received lbm_msg_t type %x [%s][%s]\n", msg-&gt;type, msg-&gt;topic_name, msg-&gt;source);
-    break;
-  }  /* switch msg-&gt;type */
-
-  return 0;
-}  /* app_rcv_callback */
-
-
-main()
-{
-  lbm_context_t *ctx;    /* pointer to context object */
-  lbm_topic_t *topic;    /* pointer to topic object */
-  lbm_rcv_t *rcv;        /* pointer to receiver object */
-  int err;               /* return status of lbm functions (non-zero=error) */
-
-#if defined(_MSC_VER)
-  /* windows-specific code */
-  WSADATA wsadata;
-  int wsStat = WSAStartup(MAKEWORD(2,2), &amp;wsadata);
-  if (wsStat != 0) {
-    printf("line %d: wsStat=%d\n",__LINE__,wsStat); exit(1);
-  }
-#endif
-
-  err = lbm_context_create(&amp;ctx, NULL, NULL, NULL);  /* See note #3 */
-  if (err) {
-    printf("line %d: %s\n", __LINE__, lbm_errmsg()); exit(1);
-  }
-
-  err = lbm_rcv_topic_lookup(&amp;topic, ctx, "Greeting", NULL);  /* See note #4 */
-  if (err) {
-    printf("line %d: %s\n", __LINE__, lbm_errmsg()); exit(1);
-  }
-
-  err = lbm_rcv_create(&amp;rcv, ctx, topic, app_rcv_callback, NULL, NULL);  /* See note #5 */
-  if (err) {
-    printf("line %d: %s\n", __LINE__, lbm_errmsg()); exit(1);
-  }
-
-  while (msgs_rcvd == 0) {
-    SLEEP(1);
-  }
-
-  /* Finished all receiving from this topic, delete the receiver object. */
-  err = lbm_rcv_delete(rcv);
-  if (err) {
-    printf("line %d: %s\n", __LINE__, lbm_errmsg()); exit(1);
-  }
-
-  /* Do not need to delete the topic object - LBM keeps track of topic
-   * objects and deletes them as-needed.  */
-
-  /* Finished with all LBM functions, delete the context object. */
-  err = lbm_context_delete(ctx);
-  if (err) {
-    printf("line %d: %s\n", __LINE__, lbm_errmsg()); exit(1);
-  }
-
-#if defined(_MSC_VER)
-  WSACleanup();
-#endif
-}  /* main */</pre><p>Notes:</p>
+<p>This is a source code listing of a minimal receiver program. Examples also include equivalent Java, C#, and C++ programs available in source form. See <a href="../../java_example/MinRcv.java">MinRcv.java</a>, <a href="../../dotnet_example/MinRcv.cs">MinRcv.cs</a>, and <a href="../../example/minrcv.cpp">minrcv.cpp</a>. (There are build .NET instructions in the initial comment blocks of MinSrc.cs and MinRcv.cs which are oriented towards the Windows development environment. For information related to .NET on Linux, see <a href="../../DotNetAPI/index.html#umnetonlinux">UM .NET on Linux</a>.)</p>
+<div class="fragment"><div class="line"><span class="comment">/*</span></div><div class="line"><span class="comment">&quot;minrcv.c: minimal application that receives messages from a given topic.</span></div><div class="line"><span class="comment">  </span></div><div class="line"><span class="comment"> * Copyright (c) 2005-2019 Informatica Corporation. All Rights Reserved.</span></div><div class="line"><span class="comment"> * Permission is granted to licensees to use</span></div><div class="line"><span class="comment"> * or alter this software for any purpose, including commercial applications,</span></div><div class="line"><span class="comment"> * according to the terms laid out in the Software License Agreement.</span></div><div class="line"><span class="comment">  </span></div><div class="line"><span class="comment"> * This source code example is provided by Informatica for educational</span></div><div class="line"><span class="comment"> * and evaluation purposes only.</span></div><div class="line"><span class="comment">  </span></div><div class="line"><span class="comment"> * THE SOFTWARE IS PROVIDED &quot;AS IS&quot; AND INFORMATICA DISCLAIMS ALL WARRANTIES</span></div><div class="line"><span class="comment"> * EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION, ANY IMPLIED WARRANTIES OF</span></div><div class="line"><span class="comment"> * NON-INFRINGEMENT, MERCHANTABILITY OR FITNESS FOR A PARTICULAR</span></div><div class="line"><span class="comment"> * PURPOSE.  INFORMATICA DOES NOT WARRANT THAT USE OF THE SOFTWARE WILL BE</span></div><div class="line"><span class="comment"> * UNINTERRUPTED OR ERROR-FREE.  INFORMATICA SHALL NOT, UNDER ANY CIRCUMSTANCES, BE</span></div><div class="line"><span class="comment"> * LIABLE TO LICENSEE FOR LOST PROFITS, CONSEQUENTIAL, INCIDENTAL, SPECIAL OR</span></div><div class="line"><span class="comment"> * INDIRECT DAMAGES ARISING OUT OF OR RELATED TO THIS AGREEMENT OR THE</span></div><div class="line"><span class="comment"> * TRANSACTIONS CONTEMPLATED HEREUNDER, EVEN IF INFORMATICA HAS BEEN APPRISED OF</span></div><div class="line"><span class="comment"> * THE LIKELIHOOD OF SUCH DAMAGES.</span></div><div class="line"><span class="comment"> */</span></div><div class="line"></div><div class="line"><span class="comment">/* Explanatory notes referenced in this file are in the Quick Start guide. */</span></div><div class="line"></div><div class="line"><span class="preprocessor">#include &lt;stdio.h&gt;</span></div><div class="line"></div><div class="line"><span class="preprocessor">#if defined(_MSC_VER)</span></div><div class="line"><span class="comment">/* Windows-only includes */</span></div><div class="line"><span class="preprocessor">#include &lt;winsock2.h&gt;</span></div><div class="line"><span class="preprocessor">#define SLEEP(s) Sleep((s)*1000)</span></div><div class="line"><span class="preprocessor">#else</span></div><div class="line"><span class="comment">/* Unix-only includes */</span></div><div class="line"><span class="preprocessor">#include &lt;stdlib.h&gt;</span></div><div class="line"><span class="preprocessor">#include &lt;unistd.h&gt;</span></div><div class="line"><span class="preprocessor">#define SLEEP(s) sleep(s)</span></div><div class="line"><span class="preprocessor">#endif</span></div><div class="line"></div><div class="line"><span class="preprocessor">#include &lt;lbm/lbm.h&gt;</span></div><div class="line"></div><div class="line"><span class="comment">/*</span></div><div class="line"><span class="comment"> * A global variable is used to communicate from the receiver callback to</span></div><div class="line"><span class="comment"> * the main application thread.</span></div><div class="line"><span class="comment"> */</span></div><div class="line"><span class="keywordtype">int</span> msgs_rcvd = 0;</div><div class="line"></div><div class="line"><span class="keywordtype">int</span> app_rcv_callback(<a class="codeRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/QuickStart/api.tag:../../API/" href="../../API/lbm_8h.html#a0a4af6b8247cc5a0a24a8578fb6e83bd">lbm_rcv_t</a> *rcv, <a class="codeRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/QuickStart/api.tag:../../API/" href="../../API/structlbm__msg__t__stct.html">lbm_msg_t</a> *msg, <span class="keywordtype">void</span> *clientd)  <span class="comment">/* See Note #1 */</span></div><div class="line">{</div><div class="line">  <span class="comment">/* There are several different events that can cause the receiver callback</span></div><div class="line"><span class="comment">   * to be called.  Decode the event that caused this.  */</span></div><div class="line">  <span class="keywordflow">switch</span> (msg-&gt;<a class="codeRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/QuickStart/api.tag:../../API/" href="../../API/structlbm__msg__t__stct.html#ab25327dc4b4ebf527106f6e708dbc05f">type</a>)</div><div class="line">  {</div><div class="line">  <span class="keywordflow">case</span> <a class="codeRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/QuickStart/api.tag:../../API/" href="../../API/lbm_8h.html#aa47eb604db7dc9fd53f9650ed940e058">LBM_MSG_DATA</a>:    <span class="comment">/* a received message */</span></div><div class="line">    printf(<span class="stringliteral">&quot;Received %d bytes on topic %s: &#39;%.*s&#39;\n&quot;</span>,  <span class="comment">/* See note #2 */</span></div><div class="line">           msg-&gt;<a class="codeRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/QuickStart/api.tag:../../API/" href="../../API/structlbm__msg__t__stct.html#ab9f3f61c570287caafa36f1297d73473">len</a>, msg-&gt;<a class="codeRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/QuickStart/api.tag:../../API/" href="../../API/structlbm__msg__t__stct.html#ae7d21878e72939c165a5a3ac565390c3">topic_name</a>, msg-&gt;<a class="codeRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/QuickStart/api.tag:../../API/" href="../../API/structlbm__msg__t__stct.html#ab9f3f61c570287caafa36f1297d73473">len</a>, msg-&gt;<a class="codeRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/QuickStart/api.tag:../../API/" href="../../API/structlbm__msg__t__stct.html#a9c7d600dd9794c09b82732e2c233392b">data</a>);</div><div class="line"></div><div class="line">    <span class="comment">/* Tell main thread that we&#39;ve received our message. */</span></div><div class="line">    ++ msgs_rcvd;</div><div class="line">    <span class="keywordflow">break</span>;</div><div class="line"></div><div class="line">  <span class="keywordflow">case</span> <a class="codeRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/QuickStart/api.tag:../../API/" href="../../API/lbm_8h.html#ab5489080adc7157549a9930b30c68425">LBM_MSG_BOS</a>:</div><div class="line">    printf(<span class="stringliteral">&quot;[%s][%s], Beginning of Transport Session\n&quot;</span>, msg-&gt;<a class="codeRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/QuickStart/api.tag:../../API/" href="../../API/structlbm__msg__t__stct.html#ae7d21878e72939c165a5a3ac565390c3">topic_name</a>, msg-&gt;<a class="codeRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/QuickStart/api.tag:../../API/" href="../../API/structlbm__msg__t__stct.html#a6631c87ac29792705794d46c4e1cda06">source</a>);</div><div class="line">    <span class="keywordflow">break</span>;</div><div class="line"></div><div class="line">  <span class="keywordflow">case</span> <a class="codeRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/QuickStart/api.tag:../../API/" href="../../API/lbm_8h.html#a2647b87f92adb5a34ea129fbfeeed5a3">LBM_MSG_EOS</a>:</div><div class="line">    printf(<span class="stringliteral">&quot;[%s][%s], End of Transport Session\n&quot;</span>, msg-&gt;<a class="codeRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/QuickStart/api.tag:../../API/" href="../../API/structlbm__msg__t__stct.html#ae7d21878e72939c165a5a3ac565390c3">topic_name</a>, msg-&gt;<a class="codeRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/QuickStart/api.tag:../../API/" href="../../API/structlbm__msg__t__stct.html#a6631c87ac29792705794d46c4e1cda06">source</a>);</div><div class="line">    <span class="keywordflow">break</span>;</div><div class="line"></div><div class="line">  <span class="keywordflow">default</span>:    <span class="comment">/* unexpected receiver event */</span></div><div class="line">    printf(<span class="stringliteral">&quot;Received lbm_msg_t type %x [%s][%s]\n&quot;</span>, msg-&gt;<a class="codeRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/QuickStart/api.tag:../../API/" href="../../API/structlbm__msg__t__stct.html#ab25327dc4b4ebf527106f6e708dbc05f">type</a>, msg-&gt;<a class="codeRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/QuickStart/api.tag:../../API/" href="../../API/structlbm__msg__t__stct.html#ae7d21878e72939c165a5a3ac565390c3">topic_name</a>, msg-&gt;<a class="codeRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/QuickStart/api.tag:../../API/" href="../../API/structlbm__msg__t__stct.html#a6631c87ac29792705794d46c4e1cda06">source</a>);</div><div class="line">    <span class="keywordflow">break</span>;</div><div class="line">  }  <span class="comment">/* switch msg-&gt;type */</span></div><div class="line"></div><div class="line">  <span class="keywordflow">return</span> 0;</div><div class="line">}  <span class="comment">/* app_rcv_callback */</span></div><div class="line"></div><div class="line"></div><div class="line">main()</div><div class="line">{</div><div class="line">  <a class="codeRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/QuickStart/api.tag:../../API/" href="../../API/lbm_8h.html#a9f6ec97839a8f264eb4059de01174f3c">lbm_context_t</a> *ctx;    <span class="comment">/* pointer to context object */</span></div><div class="line">  <a class="codeRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/QuickStart/api.tag:../../API/" href="../../API/lbm_8h.html#a3f0c8cba0e6f00fe7ae0ed717405e46d">lbm_topic_t</a> *topic;    <span class="comment">/* pointer to topic object */</span></div><div class="line">  <a class="codeRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/QuickStart/api.tag:../../API/" href="../../API/lbm_8h.html#a0a4af6b8247cc5a0a24a8578fb6e83bd">lbm_rcv_t</a> *rcv;        <span class="comment">/* pointer to receiver object */</span></div><div class="line">  <span class="keywordtype">int</span> err;               <span class="comment">/* return status of lbm functions (non-zero=error) */</span></div><div class="line"></div><div class="line"><span class="preprocessor">#if defined(_MSC_VER)</span></div><div class="line">  <span class="comment">/* windows-specific code */</span></div><div class="line">  WSADATA wsadata;</div><div class="line">  <span class="keywordtype">int</span> wsStat = WSAStartup(MAKEWORD(2,2), &amp;wsadata);</div><div class="line">  <span class="keywordflow">if</span> (wsStat != 0) {</div><div class="line">    printf(<span class="stringliteral">&quot;line %d: wsStat=%d\n&quot;</span>,__LINE__,wsStat); exit(1);</div><div class="line">  }</div><div class="line"><span class="preprocessor">#endif</span></div><div class="line"></div><div class="line">  err = <a class="codeRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/QuickStart/api.tag:../../API/" href="../../API/lbm_8h.html#a8058947690bd0995bc2c59d4a61b462f">lbm_context_create</a>(&amp;ctx, NULL, NULL, NULL);  <span class="comment">/* See note #3 */</span></div><div class="line">  <span class="keywordflow">if</span> (err) {</div><div class="line">    printf(<span class="stringliteral">&quot;line %d: %s\n&quot;</span>, __LINE__, <a class="codeRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/QuickStart/api.tag:../../API/" href="../../API/lbm_8h.html#a22a4650d3a5b649c84a0c05adedcc055">lbm_errmsg</a>()); exit(1);</div><div class="line">  }</div><div class="line"></div><div class="line">  err = <a class="codeRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/QuickStart/api.tag:../../API/" href="../../API/lbm_8h.html#a3de8a6a659896f76475c453683db4e18">lbm_rcv_topic_lookup</a>(&amp;topic, ctx, <span class="stringliteral">&quot;Greeting&quot;</span>, NULL);  <span class="comment">/* See note #4 */</span></div><div class="line">  <span class="keywordflow">if</span> (err) {</div><div class="line">    printf(<span class="stringliteral">&quot;line %d: %s\n&quot;</span>, __LINE__, <a class="codeRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/QuickStart/api.tag:../../API/" href="../../API/lbm_8h.html#a22a4650d3a5b649c84a0c05adedcc055">lbm_errmsg</a>()); exit(1);</div><div class="line">  }</div><div class="line"></div><div class="line">  err = <a class="codeRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/QuickStart/api.tag:../../API/" href="../../API/lbm_8h.html#aa7491c50fefbc2b70f8035fce7ac1477">lbm_rcv_create</a>(&amp;rcv, ctx, topic, app_rcv_callback, NULL, NULL);  <span class="comment">/* See note #5 */</span></div><div class="line">  <span class="keywordflow">if</span> (err) {</div><div class="line">    printf(<span class="stringliteral">&quot;line %d: %s\n&quot;</span>, __LINE__, <a class="codeRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/QuickStart/api.tag:../../API/" href="../../API/lbm_8h.html#a22a4650d3a5b649c84a0c05adedcc055">lbm_errmsg</a>()); exit(1);</div><div class="line">  }</div><div class="line"></div><div class="line">  <span class="keywordflow">while</span> (msgs_rcvd == 0) {</div><div class="line">    SLEEP(1);</div><div class="line">  }</div><div class="line"></div><div class="line">  <span class="comment">/* Finished all receiving from this topic, delete the receiver object. */</span></div><div class="line">  err = <a class="codeRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/QuickStart/api.tag:../../API/" href="../../API/lbm_8h.html#a8d5e8713f5ae776330b23a1e371f934d">lbm_rcv_delete</a>(rcv);</div><div class="line">  <span class="keywordflow">if</span> (err) {</div><div class="line">    printf(<span class="stringliteral">&quot;line %d: %s\n&quot;</span>, __LINE__, <a class="codeRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/QuickStart/api.tag:../../API/" href="../../API/lbm_8h.html#a22a4650d3a5b649c84a0c05adedcc055">lbm_errmsg</a>()); exit(1);</div><div class="line">  }</div><div class="line"></div><div class="line">  <span class="comment">/* Do not need to delete the topic object - LBM keeps track of topic</span></div><div class="line"><span class="comment">   * objects and deletes them as-needed.  */</span></div><div class="line"></div><div class="line">  <span class="comment">/* Finished with all LBM functions, delete the context object. */</span></div><div class="line">  err = <a class="codeRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/QuickStart/api.tag:../../API/" href="../../API/lbm_8h.html#a962bfceb336c65191ba08497ac70602b">lbm_context_delete</a>(ctx);</div><div class="line">  <span class="keywordflow">if</span> (err) {</div><div class="line">    printf(<span class="stringliteral">&quot;line %d: %s\n&quot;</span>, __LINE__, <a class="codeRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/QuickStart/api.tag:../../API/" href="../../API/lbm_8h.html#a22a4650d3a5b649c84a0c05adedcc055">lbm_errmsg</a>()); exit(1);</div><div class="line">  }</div><div class="line"></div><div class="line"><span class="preprocessor">#if defined(_MSC_VER)</span></div><div class="line">  WSACleanup();</div><div class="line"><span class="preprocessor">#endif</span></div><div class="line"><span class="preprocessor">}  </span><span class="comment">/* main */</span><span class="preprocessor"></span></div></div><!-- fragment --><p>Notes:</p>
 <ol>
 <li>
-<p class="startli">LBM passes received messages to the application by means of a callback. I.e. the LBM context thread reads the network socket, performs its higher-level protocol functions, and then calls an application-level function that was set up during initialization. This callback function has some severe limitations placed upon it. It must execute very quickly; any potentially blocking calls it might make will interfere with the proper execution of the LBM context thread. One common desire is for the receive function to send an LBM message (via <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/QuickStart/api.tag:../../API/" href="../../API/lbm_8h.html#a91f4b9cb04fe1323ec56833211cc5cb7">lbm_src_send()</a>), however this has the potential to produce a deadlock condition. If it is desired for the receive callback function to call LBM or other potentially blocking functions, it is strongly advised to make use of an event queue, which causes the callback to be executed from an application thread. See the example tool <a href="../../example/lbmrcvq.c">lbmrcvq.c</a> for an example of using a receiver event queue.</p>
+<p class="startli">LBM passes received messages to the application by means of a callback. I.e. the LBM context thread reads the network socket, performs its higher-level protocol functions, and then calls an application-level function that was set up during initialization. This callback function has some severe limitations placed upon it. It must execute very quickly; any potentially blocking calls it might make will interfere with the proper execution of the LBM context thread. One common desire is for the receive function to send an LBM message (via <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/QuickStart/api.tag:../../API/" href="../../API/lbm_8h.html#a91f4b9cb04fe1323ec56833211cc5cb7">lbm_src_send()</a>), however this has the potential to produce a deadlock condition. If it is desired for the receive callback function to call LBM or other potentially blocking functions, it is strongly advised to make use of an event queue, which causes the callback to be executed from an application thread. See the example tool <a href="../../example/lbmrcvq.c">lbmrcvq.c</a> for an example of using a receiver event queue.</p>
 <p class="endli"></p>
 </li>
 <li>
@@ -529,15 +293,15 @@ main()
 <p class="endli"></p>
 </li>
 <li>
-<p class="startli">Create a context object. A context is an environment in which LBM functions. Note that the first parameter is a pointer to a pointer variable; <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/QuickStart/api.tag:../../API/" href="../../API/lbm_8h.html#a8058947690bd0995bc2c59d4a61b462f">lbm_context_create()</a> writes the pointer to the context object into "ctx". Also, by passing NULL to the context attribute parameter, the default option values are used. For most applications only a single context is required regardless of how many sources and receivers are created.</p>
+<p class="startli">Create a context object. A context is an environment in which LBM functions. Note that the first parameter is a pointer to a pointer variable; <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/QuickStart/api.tag:../../API/" href="../../API/lbm_8h.html#a8058947690bd0995bc2c59d4a61b462f">lbm_context_create()</a> writes the pointer to the context object into "ctx". Also, by passing NULL to the context attribute parameter, the default option values are used. For most applications only a single context is required regardless of how many sources and receivers are created.</p>
 <p class="endli"></p>
 </li>
 <li>
-<p class="startli">Lookup a topic object. A topic object is little more than a string (the topic name). During operation, LBM keeps some state information in the topic object as well. The topic is bound to the containing context, and will also be bound to a receiver object. Note that the first parameter is a pointer to a pointer variable; <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/QuickStart/api.tag:../../API/" href="../../API/lbm_8h.html#a3de8a6a659896f76475c453683db4e18">lbm_rcv_topic_lookup()</a> writes the pointer to the topic object into "topic". Also, by passing NULL to the source topic attribute, the default option values are used. The string "Greeting" is the topic string.</p>
+<p class="startli">Lookup a topic object. A topic object is little more than a string (the topic name). During operation, LBM keeps some state information in the topic object as well. The topic is bound to the containing context, and will also be bound to a receiver object. Note that the first parameter is a pointer to a pointer variable; <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/QuickStart/api.tag:../../API/" href="../../API/lbm_8h.html#a3de8a6a659896f76475c453683db4e18">lbm_rcv_topic_lookup()</a> writes the pointer to the topic object into "topic". Also, by passing NULL to the source topic attribute, the default option values are used. The string "Greeting" is the topic string.</p>
 <p class="endli"></p>
 </li>
 <li>
-Create the receiver object and bind it to a topic. Note that the first parameter is a pointer to a pointer variable; <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/QuickStart/api.tag:../../API/" href="../../API/lbm_8h.html#aa7491c50fefbc2b70f8035fce7ac1477">lbm_rcv_create()</a> writes the pointer to the source object to into "rcv". The second and third parameters are the function and application data pointers. When a message is received, the function is called with the data pointer passed in as its last parameter. The last parameter is an optional event queue (not used in this example). </li>
+Create the receiver object and bind it to a topic. Note that the first parameter is a pointer to a pointer variable; <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/QuickStart/api.tag:../../API/" href="../../API/lbm_8h.html#aa7491c50fefbc2b70f8035fce7ac1477">lbm_rcv_create()</a> writes the pointer to the source object to into "rcv". The second and third parameters are the function and application data pointers. When a message is received, the function is called with the data pointer passed in as its last parameter. The last parameter is an optional event queue (not used in this example). </li>
 </ol>
 <p><br />
  </p>
@@ -571,7 +335,7 @@ Unicast-Only Operation&nbsp;&nbsp;<small><a href="#unicastonlyoperation">&lt;-</
 <li>
 Dest_Port is the resolver daemon's UDP port (previously resolver_unicast_destination_port). </li>
 </ul>
-<p>For more information, see <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/QuickStart/config.tag:../../Config/" href="../../Config/grpunicastresolvernetwork.html#resolverunicastdaemoncontext">resolver_unicast_daemon (context)</a>.</p>
+<p>For more information, see <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/QuickStart/config.tag:../../Config/" href="../../Config/grpunicastresolvernetwork.html#resolverunicastdaemoncontext">resolver_unicast_daemon (context)</a>.</p>
 <p class="endli"></p>
 </li>
 <li>
@@ -589,7 +353,7 @@ Starting Ultra Messaging Dynamic Routing Option&nbsp;&nbsp;<small><a href="#star
 <p>The UM Router bridges disjoint topic resolution domains by forwarding multicast and/or unicast topic resolution traffic. Before installing and starting a UM Router daemon (tnwgd) clear objectives and proper planning are very important. Approach this planning with the consideration that a UM Router condenses your network into a single process. You must be clear about the traffic you expect to forward through a UM Router. The following highlights some other specifics.</p>
 <ul>
 <li>
-<p class="startli">Know your Topic Resolution Domains. See <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/QuickStart/gateway.tag:../../Gateway/" href="../../Gateway/droarchitecture.html#topicresolutiondomains">Topic Resolution Domains</a>.</p>
+<p class="startli">Know your Topic Resolution Domains. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/QuickStart/gateway.tag:../../Gateway/" href="../../Gateway/droarchitecture.html#topicresolutiondomains">Topic Resolution Domains</a>.</p>
 <p class="endli"></p>
 </li>
 <li>
@@ -685,7 +449,7 @@ Persistent Store Daemon&nbsp;&nbsp;<small><a href="#persistentstoredaemon">&lt;-
 Start the daemon. <br />
 <code>$ umestored config.xml</code> </li>
 </ol>
-<p>See also <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/QuickStart/ume.tag:../../UME/" href="../../UME/manpagesforstore.html#umestoredmanpage">Umestored Man Page</a>.</p>
+<p>See also <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/QuickStart/ume.tag:../../UME/" href="../../UME/manpagesforstore.html#umestoredmanpage">Umestored Man Page</a>.</p>
 <p><br />
  </p>
 <h1><a class="anchor" id="nextsteps"></a>

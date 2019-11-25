@@ -131,6 +131,7 @@ var NAVTREE =
         [ "datagram_acceleration_functions (context)", "index.html#datagramaccelerationfunctionscontext", null ],
         [ "default_interface (context)", "index.html#defaultinterfacecontext", null ],
         [ "fd_management_type (context)", "index.html#fdmanagementtypecontext", null ],
+        [ "file_descriptor_management_behavior (context)", "index.html#filedescriptormanagementbehaviorcontext", null ],
         [ "message_selector (receiver)", "index.html#messageselectorreceiver", null ],
         [ "multiple_receive_maximum_datagrams (context)", "index.html#multiplereceivemaximumdatagramscontext", null ],
         [ "operational_mode (context)", "index.html#operationalmodecontext", null ],
@@ -772,8 +773,8 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "index.html",
-"index.html#resolveradvertisementminimumsustaindurationsource",
-"index.html#transporttcpusesessionidsource"
+"index.html#resolveradvertisementminimuminitialintervalsource",
+"index.html#transporttcpsendersocketbuffersource"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

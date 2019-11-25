@@ -2,21 +2,18 @@ var NAVTREE =
 [
   [ "Release Notes", "index.html", [
     [ "Introduction", "index.html#firstsect", null ],
-    [ "UM Version 6.12", "index.html#umversion6_12", [
-      [ "Enhancements for 6.12", "index.html#enhancementsfor6_12", [
-        [ "Streaming Enhancements for 6.12", "index.html#streamingenhancementsfor6_12", null ],
-        [ "Persistence Enhancements for 6.12", "index.html#persistenceenhancementsfor6_12", null ],
-        [ "Queuing Enhancements for 6.12", "index.html#queuingenhancementsfor6_12", null ],
-        [ "Dynamic Router Enhancements for 6.12", "index.html#dynamicrouterenhancementsfor6_12", null ]
+    [ "UM Version 6.12.1", "index.html#umversion6_12_1", [
+      [ "Enhancements for 6.12.1", "index.html#enhancementsfor6_12_1", [
+        [ "Streaming Enhancements for 6.12.1", "index.html#streamingenhancementsfor6_12_1", null ],
+        [ "Persistence Enhancements for 6.12.1", "index.html#persistenceenhancementsfor6_12_1", null ],
+        [ "Queuing Enhancements for 6.12.1", "index.html#queuingenhancementsfor6_12_1", null ],
+        [ "Dynamic Router Enhancements for 6.12.1", "index.html#dynamicrouterenhancementsfor6_12_1", null ]
       ] ],
-      [ "Fixed Limitations for 6.12", "index.html#fixedlimitationsfor6_12", [
-        [ "Streaming Fixed Limitations for 6.12", "index.html#streamingfixedlimitationsfor6_12", null ],
-        [ "Persistence Fixed Limitations for 6.12", "index.html#persistencefixedlimitationsfor6_12", null ],
-        [ "Queuing Fixed Limitations for 6.12", "index.html#queuingfixedlimitationsfor6_12", null ],
-        [ "Dynamic Router Fixed Limitations for 6.12", "index.html#dynamicrouterfixedlimitationsfor6_12", null ]
-      ] ],
-      [ "Special Upgrade Instructions for 6.12", "index.html#specialupgradeinsructionsfor6_12", [
-        [ "Smart Source Header Size Change", "index.html#smartsourceheadersizechange", null ]
+      [ "Fixed Limitations for 6.12.1", "index.html#fixedlimitationsfor6_12_1", [
+        [ "Streaming Fixed Limitations for 6.12.1", "index.html#streamingfixedlimitationsfor6_12_1", null ],
+        [ "Persistence Fixed Limitations for 6.12.1", "index.html#persistencefixedlimitationsfor6_12_1", null ],
+        [ "Queuing Fixed Limitations for 6.12.1", "index.html#queuingfixedlimitationsfor6_12_1", null ],
+        [ "Dynamic Router Fixed Limitations for 6.12.1", "index.html#dynamicrouterfixedlimitationsfor6_12_1", null ]
       ] ]
     ] ],
     [ "Known Limitations", "index.html#knownlimitations", [
@@ -33,6 +30,23 @@ var NAVTREE =
       [ "Upgrading Brokered Queuing and JMS", "index.html#upgradingbrokeredqueueingandjms", null ],
       [ "Upgrading From Version Pre-6.0", "index.html#upgradingfromversionpre60", [
         [ "Log Messages During Upgrade", "index.html#logmessagesduringupgrade", null ]
+      ] ]
+    ] ],
+    [ "UM Version 6.12", "index.html#umversion6_12", [
+      [ "Enhancements for 6.12", "index.html#enhancementsfor6_12", [
+        [ "Streaming Enhancements for 6.12", "index.html#streamingenhancementsfor6_12", null ],
+        [ "Persistence Enhancements for 6.12", "index.html#persistenceenhancementsfor6_12", null ],
+        [ "Queuing Enhancements for 6.12", "index.html#queuingenhancementsfor6_12", null ],
+        [ "Dynamic Router Enhancements for 6.12", "index.html#dynamicrouterenhancementsfor6_12", null ]
+      ] ],
+      [ "Fixed Limitations for 6.12", "index.html#fixedlimitationsfor6_12", [
+        [ "Streaming Fixed Limitations for 6.12", "index.html#streamingfixedlimitationsfor6_12", null ],
+        [ "Persistence Fixed Limitations for 6.12", "index.html#persistencefixedlimitationsfor6_12", null ],
+        [ "Queuing Fixed Limitations for 6.12", "index.html#queuingfixedlimitationsfor6_12", null ],
+        [ "Dynamic Router Fixed Limitations for 6.12", "index.html#dynamicrouterfixedlimitationsfor6_12", null ]
+      ] ],
+      [ "Special Upgrade Instructions for 6.12", "index.html#specialupgradeinsructionsfor6_12", [
+        [ "Smart Source Header Size Change", "index.html#smartsourceheadersizechange", null ]
       ] ]
     ] ],
     [ "UM Version 6.11.1", "index.html#umversion6_11_1", [

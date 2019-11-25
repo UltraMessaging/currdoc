@@ -10,6 +10,7 @@ var classcom_1_1latencybusters_1_1lbm_1_1LBM =
     [ "getLicenseUMMNMValid", "classcom_1_1latencybusters_1_1lbm_1_1LBM.html#a636874018f437824cd6d372438af9bf2", null ],
     [ "getLicenseVDSValid", "classcom_1_1latencybusters_1_1lbm_1_1LBM.html#ad7bfd1c3c034038ad2817ad0e786d441", null ],
     [ "lbmLogDebugMessage", "classcom_1_1latencybusters_1_1lbm_1_1LBM.html#aae9dfd7f936f662fbc63e60dac463dbe", null ],
+    [ "legalInfo", "classcom_1_1latencybusters_1_1lbm_1_1LBM.html#a50918bad8dd03421495869914c04300b", null ],
     [ "log", "classcom_1_1latencybusters_1_1lbm_1_1LBM.html#a898c86e9e9fd3a0cdf5b44f3789577c0", null ],
     [ "setConfiguration", "classcom_1_1latencybusters_1_1lbm_1_1LBM.html#a16611e3f888c3574327f5e1856341553", null ],
     [ "setConfigurationXml", "classcom_1_1latencybusters_1_1lbm_1_1LBM.html#a7cb4d417d2890ff3d02db0cf009c6e47", null ],

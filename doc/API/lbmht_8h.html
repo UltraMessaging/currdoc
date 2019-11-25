@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">UM C API
-   &#160;<span id="projectnumber">6.12</span>
+   &#160;<span id="projectnumber">6.12.1</span>
    </div>
   </td>
  </tr>
@@ -76,7 +76,7 @@ $(document).ready(function(){initNavTree('lbmht_8h.html','');});
 </div><!--header-->
 <div class="contents">
 
-<p>Ultra Messaging (UM) HyperTopic API.  
+<p>WARNING: the HyperTopic feature is deprecated and will be removed from a future release.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;lbm/lbm.h&quot;</code><br />
 </div>
@@ -148,21 +148,15 @@ Functions</h2></td></tr>
 <tr class="separator:a288b00b902db2b7f53871faf2df25a54"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Ultra Messaging (UM) HyperTopic API. </p>
-<dl class="section author"><dt>Author</dt><dd>M. Garwood - Informatica Corporation </dd></dl>
-<dl class="section version"><dt>Version</dt><dd></dd></dl>
-<dl class="section rcs"><dt>Id</dt><dd>//UMprod/DEV_HF_6_12/29West/lbm/src/lib/lbm/lbmht.h#1 </dd></dl>
-<p>The Ultra Messaging (UM) HyperTopic API Description. Included are types, constants, and functions related to the API. Contents are subject to change.</p>
+<div class="textblock"><p>WARNING: the HyperTopic feature is deprecated and will be removed from a future release. </p>
+<p>Informatica recommends using normal wildcard receivers with "PCRE" regular expression pattern matching.</p>
 <p>All of the documentation and software included in this and any other Informatica Corporation Ultra Messaging Releases Copyright (C) Informatica Corporation. All rights reserved.</p>
 <p>Redistribution and use in source and binary forms, with or without modification, are permitted only as covered by the terms of a valid software license agreement with Informatica Corporation.</p>
 <p>Copyright (C) 2006-2019, Informatica Corporation. All Rights Reserved.</p>
-<p>THE SOFTWARE IS PROVIDED "AS IS" AND INFORMATICA DISCLAIMS ALL WARRANTIES EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION, ANY IMPLIED WARRANTIES OF NON-INFRINGEMENT, MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE. INFORMATICA DOES NOT WARRANT THAT USE OF THE SOFTWARE WILL BE UNINTERRUPTED OR ERROR-FREE. INFORMATICA SHALL NOT, UNDER ANY CIRCUMSTANCES, BE LIABLE TO LICENSEE FOR LOST PROFITS, CONSEQUENTIAL, INCIDENTAL, SPECIAL OR INDIRECT DAMAGES ARISING OUT OF OR RELATED TO THIS AGREEMENT OR THE TRANSACTIONS CONTEMPLATED HEREUNDER, EVEN IF INFORMATICA HAS BEEN APPRISED OF THE LIKELIHOOD OF SUCH DAMAGES. </p><pre class="fragment">The LBM HyperTopic API provides a mechanism to enable the efficient
-reception of messages sent over any LBM transport (especially an immediate
-messaging transport) where the message topic conforms to a simple
-hierarchical wildcard topic structure.
-
-The hierarchical topic supported by this API has a BNF grammar as follows:
-</pre> <div class="fragment"><div class="line">&lt;ht-topic&gt; ::= &lt;ht-prefix&gt; &lt;ht-topic-comps&gt; </div><div class="line">             | &lt;ht-topic-comps&gt;</div><div class="line">&lt;ht-topic-comps&gt; ::= &lt;ht-topic-comp&gt; <span class="stringliteral">&quot;/&quot;</span> &lt;ht-topic-comps&gt;</div><div class="line">                   | &lt;ht-topic-comp&gt; <span class="stringliteral">&quot;/&gt;&quot;</span></div><div class="line">                   | &lt;ht-topic-comp&gt;</div><div class="line">                   | <span class="stringliteral">&quot;&gt;&quot;</span></div><div class="line">&lt;ht-topic-comp&gt; ::= &lt;text&gt;</div><div class="line">                  | <span class="stringliteral">&quot;*&quot;</span></div><div class="line">                  | <span class="stringliteral">&quot;&quot;</span></div><div class="line">&lt;ht-prefix&gt; ::= &lt;text&gt;</div></div><!-- fragment --><p> The "*" token in the above grammar will match any sequence of characters excluding a "/". The "&gt;" token will match any sequence of characters including a "/" (until the end of the topic string).</p>
+<p>THE SOFTWARE IS PROVIDED "AS IS" AND INFORMATICA DISCLAIMS ALL WARRANTIES EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION, ANY IMPLIED WARRANTIES OF NON-INFRINGEMENT, MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE. INFORMATICA DOES NOT WARRANT THAT USE OF THE SOFTWARE WILL BE UNINTERRUPTED OR ERROR-FREE. INFORMATICA SHALL NOT, UNDER ANY CIRCUMSTANCES, BE LIABLE TO LICENSEE FOR LOST PROFITS, CONSEQUENTIAL, INCIDENTAL, SPECIAL OR INDIRECT DAMAGES ARISING OUT OF OR RELATED TO THIS AGREEMENT OR THE TRANSACTIONS CONTEMPLATED HEREUNDER, EVEN IF INFORMATICA HAS BEEN APPRISED OF THE LIKELIHOOD OF SUCH DAMAGES.</p>
+<p>The LBM HyperTopic API provides a mechanism to enable the efficient reception of messages sent over any LBM transport (especially an immediate messaging transport) where the message topic conforms to a simple hierarchical wildcard topic structure.</p>
+<p>The hierarchical topic supported by this API has a BNF grammar as follows:</p>
+<div class="fragment"><div class="line">&lt;ht-topic&gt; ::= &lt;ht-prefix&gt; &lt;ht-topic-comps&gt; </div><div class="line">             | &lt;ht-topic-comps&gt;</div><div class="line">&lt;ht-topic-comps&gt; ::= &lt;ht-topic-comp&gt; <span class="stringliteral">&quot;/&quot;</span> &lt;ht-topic-comps&gt;</div><div class="line">                   | &lt;ht-topic-comp&gt; <span class="stringliteral">&quot;/&gt;&quot;</span></div><div class="line">                       | &lt;ht-topic-comp&gt;</div><div class="line">                   | <span class="stringliteral">&quot;&gt;&quot;</span></div><div class="line">&lt;ht-topic-comp&gt; ::= &lt;text&gt;</div><div class="line">                  | <span class="stringliteral">&quot;*&quot;</span></div><div class="line">                  | <span class="stringliteral">&quot;&quot;</span></div><div class="line">&lt;ht-prefix&gt; ::= &lt;text&gt;</div></div><!-- fragment --><p>The "*" token in the above grammar will match any sequence of characters excluding a "/". The "&gt;" token will match any sequence of characters including a "/" (until the end of the topic string).</p>
 <p>The grammar supports a prefix string that can be applied to effectively implement a namespace for each instance of a HyperTopic receiver.</p>
 <p>A HyperTopic receiver is initialized using the <a class="el" href="lbmht_8h.html#a34b3003fe41f792fdefac41c27ee6f1f" title="Initialize a HyperTopic receiver. ">lbm_hypertopic_rcv_init()</a> API function. This function sets the HyperTopic namespace prefix and an optional event queue to be used for messages received on all topics which are part of the HyperTopic namespace.</p>
 <p>The <a class="el" href="lbmht_8h.html#a438ebbf852ee7159eb9e23508328968d" title="Add a topic pattern to the set of topics being received by a HyperTopic receiver. ...">lbm_hypertopic_rcv_add()</a> and <a class="el" href="lbmht_8h.html#a82f14dc097c8bc6e6eb75403017af2ac" title="Delete a previously added topic from a HyperTopic receiver topic set. ">lbm_hypertopic_rcv_delete()</a> functions are used to add and remove topic patterns to the HyperTopic namespace. Unlike non-HyperTopic receiver creation and deletion functions, these functions take the same set of arguments which include a pointer to the HyperTopic receiver object, the topic pattern, received message callback function and client data pointer (passed with message to the callback function. The <a class="el" href="lbmht_8h.html#a82f14dc097c8bc6e6eb75403017af2ac" title="Delete a previously added topic from a HyperTopic receiver topic set. ">lbm_hypertopic_rcv_delete()</a> API function also accepts an optional designation for a callback function to be called once all message callbacks for the topic being deleted have completed.</p>

@@ -101,14 +101,14 @@ Repository Thresholds and Limits&nbsp;&nbsp;<small><a href="#repositorythreshold
 <p>UM configuration options control source repositories for all the sources sending within the context. The default for these options, listed below, are 0 (zero) which makes the like-name option for the repository in the umestored XML configuration file active.</p>
 <ul>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umerepositorydiskfilesizelimitsource">ume_repository_disk_file_size_limit (source)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umerepositorydiskfilesizelimitsource">ume_repository_disk_file_size_limit (source)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umerepositorysizelimitsource">ume_repository_size_limit (source)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umerepositorysizelimitsource">ume_repository_size_limit (source)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umerepositorysizethresholdsource">ume_repository_size_threshold (source)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umerepositorysizethresholdsource">ume_repository_size_threshold (source)</a> </li>
 </ul>
-<p>See <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html">Ultra Messaging Persistence Options</a>.</p>
-<p>Note: The above configuration options' default values can be altered for individual sources and receivers by calling <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UME/api.tag:../API/" href="../API/lbm_8h.html#a96ea052dce2e6376684cbf2003407cbf">lbm_src_topic_attr_setopt()</a> before you allocate the topic.</p>
+<p>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html">Ultra Messaging Persistence Options</a>.</p>
+<p>Note: The above configuration options' default values can be altered for individual sources and receivers by calling <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UME/api.tag:../API/" href="../API/lbm_8h.html#a96ea052dce2e6376684cbf2003407cbf">lbm_src_topic_attr_setopt()</a> before you allocate the topic.</p>
 <p>The umestored configuration options for source/topic repositories explained below can also be used to control threshold and limit behavior. See <a class="el" href="configurationreferenceforumestored.html#optionsforatopicsume-attributeselement">Options for a Topic's ume-attributes Element</a> for complete information about the following repository options.</p>
 <dl class="section note"><dt>Note</dt><dd>Whether you use the UM configuration options mentioned above or the source repository options explained below to control source repository threshold and limit behavior, remember the values you configure apply to a single source sending to the store. If you use the default repository size limit of 48 MB and you have 1,000 sources sending to the store, UM creates a store with 1,000 source repositories of 48 MB each, which requires a store with approximately 48 GB of memory. And if you use the default disk file size limit of 100 MB and you have 1,000 sources sending to the store, UM creates a store with 1,000 source repositories of 100 MB each, which requires a store with disk storage capacity of approximately 100 GB.</dd></dl>
 <p><b>Memory Repository</b></p>
@@ -168,51 +168,34 @@ Sources using named stores issue an information message to the application every
 <p>Configure store for a single interface and port.</p>
 <ol>
 <li>
-<p class="startli">Identify the store with only the interface:port, specified in umestored configuration file. </p><pre class="fragment">&lt;store name="newyork-1" port="14567" interface="10.29.3.16"&gt;
-</pre><p class="endli"></p>
+<p class="startli">Identify the store with only the interface:port, specified in umestored configuration file. </p><div class="fragment"><div class="line">&lt;store name=<span class="stringliteral">&quot;newyork-1&quot;</span> port=<span class="stringliteral">&quot;14567&quot;</span> interface=<span class="stringliteral">&quot;10.29.3.16&quot;</span>&gt;</div></div><!-- fragment --><p class="endli"></p>
 </li>
 <li>
-Add the interface:port to <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umestoresource">ume_store (source)</a> so sources can find and register with the store. <pre class="fragment">source ume_store 10.29.3.16:14567
-</pre> </li>
+Add the interface:port to <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umestoresource">ume_store (source)</a> so sources can find and register with the store. <div class="fragment"><div class="line">source ume_store 10.29.3.16:14567</div></div><!-- fragment --> </li>
 </ol>
 <p>To run the store on a different machine for any reason, you must change both the umestored XML configuration file and the UM configuration file.</p>
 <p><b>Using a Range of Interfaces</b></p>
 <p>Configure a store with a range of IP addresses.</p>
 <ol>
 <li>
-<p class="startli">Identify the store with a range of interfaces specified in the umestored configuration file. </p><pre class="fragment">&lt;store name="newyork-1" port="14567" interface="10.29.3.16/25"&gt;`
-</pre><p class="endli"></p>
+<p class="startli">Identify the store with a range of interfaces specified in the umestored configuration file. </p><div class="fragment"><div class="line">&lt;store name=<span class="stringliteral">&quot;newyork-1&quot;</span> port=<span class="stringliteral">&quot;14567&quot;</span> interface=<span class="stringliteral">&quot;10.29.3.16/25&quot;</span>&gt;`</div></div><!-- fragment --><p class="endli"></p>
 </li>
 <li>
-Add the active interface to <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umestoresource">ume_store (source)</a> so sources can find and register with the store. You can only specify one interface in the configuration file. <pre class="fragment">source ume_store 10.29.3.16:14567
-</pre> </li>
+Add the active interface to <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umestoresource">ume_store (source)</a> so sources can find and register with the store. You can only specify one interface in the configuration file. <div class="fragment"><div class="line">source ume_store 10.29.3.16:14567</div></div><!-- fragment --> </li>
 </ol>
-<p>To run the store on a different machine, you must only change the interface specified in the <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umestoresource">ume_store (source)</a> UM configuration option, provided you use one of the interfaces in the range specified in in the umestored configuration file.</p>
+<p>To run the store on a different machine, you must only change the interface specified in the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umestoresource">ume_store (source)</a> UM configuration option, provided you use one of the interfaces in the range specified in in the umestored configuration file.</p>
 <p><b>Using a Store (context) Name</b></p>
 <p>Configure a store with a name instead of just IP:port. '<code>0.0.0.0</code>' (<code>INADDR_ANY</code>) or no value is the default for the store's interface attribute.</p>
 <ol>
 <li>
 <p class="startli">Identify the store with a <a class="el" href="configurationreferenceforumestored.html#umecfgcontextname">context-name</a> option that resolves to the interface and port - or range of interfaces and port - specified in the umestored configuration file:</p>
-<pre class="fragment">&lt;store name="newyork-1" port="14567" interface="0.0.0.0"&gt;
-&lt;ume-attributes&gt;
-   &lt;option name="context-name" type="store" value="NEWYORK-1"/&gt;
-&lt;/ume-attributes&gt;
-</pre><p>OR</p>
-<pre class="fragment">&lt;store name="newyork-1" port="14567" interface="10.29.3.16"&gt;
-&lt;ume-attributes&gt;
-   &lt;option name="context-name" type="store" value="NEWYORK-1"/&gt;
-&lt;/ume-attributes&gt;
-</pre><p>OR</p>
-<pre class="fragment">&lt;store name="newyork-1" port="14567" interface="10.29.3.16/25"&gt;
-&lt;ume-attributes&gt;
-   &lt;option name="context-name" type="store" value="NEWYORK-1"/&gt;
-&lt;/ume-attributes&gt;
-</pre><p class="endli"></p>
+<div class="fragment"><div class="line">&lt;store name=<span class="stringliteral">&quot;newyork-1&quot;</span> port=<span class="stringliteral">&quot;14567&quot;</span> interface=<span class="stringliteral">&quot;0.0.0.0&quot;</span>&gt;</div><div class="line">&lt;ume-attributes&gt;</div><div class="line">   &lt;option name=<span class="stringliteral">&quot;context-name&quot;</span> type=<span class="stringliteral">&quot;store&quot;</span> value=<span class="stringliteral">&quot;NEWYORK-1&quot;</span>/&gt;</div><div class="line">&lt;/ume-attributes&gt;</div></div><!-- fragment --><p>OR</p>
+<div class="fragment"><div class="line">&lt;store name=<span class="stringliteral">&quot;newyork-1&quot;</span> port=<span class="stringliteral">&quot;14567&quot;</span> interface=<span class="stringliteral">&quot;10.29.3.16&quot;</span>&gt;</div><div class="line">&lt;ume-attributes&gt;</div><div class="line">   &lt;option name=<span class="stringliteral">&quot;context-name&quot;</span> type=<span class="stringliteral">&quot;store&quot;</span> value=<span class="stringliteral">&quot;NEWYORK-1&quot;</span>/&gt;</div><div class="line">&lt;/ume-attributes&gt;</div></div><!-- fragment --><p>OR</p>
+<div class="fragment"><div class="line">&lt;store name=<span class="stringliteral">&quot;newyork-1&quot;</span> port=<span class="stringliteral">&quot;14567&quot;</span> interface=<span class="stringliteral">&quot;10.29.3.16/25&quot;</span>&gt;</div><div class="line">&lt;ume-attributes&gt;</div><div class="line">   &lt;option name=<span class="stringliteral">&quot;context-name&quot;</span> type=<span class="stringliteral">&quot;store&quot;</span> value=<span class="stringliteral">&quot;NEWYORK-1&quot;</span>/&gt;</div><div class="line">&lt;/ume-attributes&gt;</div></div><!-- fragment --><p class="endli"></p>
 </li>
 <li>
-<p class="startli">Add the store's context name to <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umestorenamesource">ume_store_name (source)</a> so sources can find and register with the store.</p>
-<pre class="fragment">source ume_store_name NEWYORK-1
-</pre> </li>
+<p class="startli">Add the store's context name to <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umestorenamesource">ume_store_name (source)</a> so sources can find and register with the store.</p>
+<div class="fragment"><div class="line">source ume_store_name NEWYORK-1</div></div><!-- fragment --> </li>
 </ol>
 <p>You do not have to make any configuration changes to run NEWYORK-1 on another machine, provided the new interface matches one of those specified in the umestored configuration file. This includes running the store in a different topic resolution domain. </p>
 </div></div><!-- contents -->

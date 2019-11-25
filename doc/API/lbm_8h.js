@@ -153,6 +153,8 @@ var lbm_8h =
     [ "lbm_context_retrieve_src_transport_stats", "lbm_8h.html#a21632cb5bf674584a34b098afe6abd14", null ],
     [ "LBM_CTX_ATTR_COMPRESSION_LZ4", "lbm_8h.html#abf58cd85f73e58500324add46ac85e1d", null ],
     [ "LBM_CTX_ATTR_COMPRESSION_NONE", "lbm_8h.html#a4a071ec3806bd1094788efbbeffc8d63", null ],
+    [ "LBM_CTX_ATTR_FD_MANAGEMENT_BEHAVIOR_BUSY_WAIT", "lbm_8h.html#aa0646e154498ee9bec2bfad48b9506c3", null ],
+    [ "LBM_CTX_ATTR_FD_MANAGEMENT_BEHAVIOR_PEND", "lbm_8h.html#a71b45edaa10abf8b8c73ae04e8c51707", null ],
     [ "LBM_CTX_ATTR_FDTYPE_DEVPOLL", "lbm_8h.html#a9eba3bf6d5882ef088bac115cdc75239", null ],
     [ "LBM_CTX_ATTR_FDTYPE_EPOLL", "lbm_8h.html#a27d26c66764804647024eb845fc7d53d", null ],
     [ "LBM_CTX_ATTR_FDTYPE_KQUEUE", "lbm_8h.html#ad8477736b87c664e209da14b34aebd29", null ],

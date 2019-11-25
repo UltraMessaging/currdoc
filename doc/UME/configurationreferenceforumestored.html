@@ -66,23 +66,7 @@ $(document).ready(function(){initNavTree('configurationreferenceforumestored.htm
 Stores section - holds parameters for any persistent stores and also the topics to be persisted. </li>
 </ul>
 <p><b>High Level Store Configuration File:</b></p>
-<pre class="fragment">&lt;ume-store version="1.3"&gt;
-  &lt;daemon&gt;
-    Daemon configuration options
-  &lt;/daemon&gt;
-  &lt;stores&gt;
-    &lt;store attributes&gt;
-      &lt;topics&gt;
-        &lt;topic attributes&gt;
-          &lt;ume-attributes&gt;
-            &lt;option attributes/&gt;
-          &lt;/ume-attributes&gt;
-        &lt;/topic&gt;
-      &lt;/topics&gt;
-    &lt;/store&gt;
-  &lt;/stores&gt;
-&lt;/ume-store&gt;
-</pre><p><br />
+<div class="fragment"><div class="line">&lt;ume-store version=<span class="stringliteral">&quot;1.3&quot;</span>&gt;</div><div class="line">  &lt;daemon&gt;</div><div class="line">    Daemon configuration options</div><div class="line">  &lt;/daemon&gt;</div><div class="line">  &lt;stores&gt;</div><div class="line">    &lt;store attributes&gt;</div><div class="line">      &lt;topics&gt;</div><div class="line">        &lt;topic attributes&gt;</div><div class="line">          &lt;ume-attributes&gt;</div><div class="line">            &lt;option attributes/&gt;</div><div class="line">          &lt;/ume-attributes&gt;</div><div class="line">        &lt;/topic&gt;</div><div class="line">      &lt;/topics&gt;</div><div class="line">    &lt;/store&gt;</div><div class="line">  &lt;/stores&gt;</div><div class="line">&lt;/ume-store&gt;</div></div><!-- fragment --><p><br />
  </p>
 <h1><a class="anchor" id="storexmlconfigurationfileelements"></a>
 Store XML Configuration File Elements&nbsp;&nbsp;<small><a href="#storexmlconfigurationfileelements">&lt;-</a></small></h1>
@@ -102,11 +86,7 @@ UMP Element "&lt;ume-store&gt;"&nbsp;&nbsp;<small><a href="#umeelementumestore">
 <tr>
 <td><b>version</b> </td><td>Version number of UME store XML DTD that the configuration file corresponds to. See <a class="el" href="configurationreferenceforumestored.html#umestoredconfigurationdtd">umestored Configuration DTD</a> for a description of the different versions. Users are encouraged to update their Store configuration files to correspond to the latest version supported by the Store software in use. </td><td>string </td><td>(no default; must be specified) </td></tr>
 </table>
-<p><b>Example:</b> </p><pre class="fragment">&lt;?xml version="1.0"?&gt;
-&lt;ume-store version="1.3"&gt;
-  ...
-&lt;/ume-store&gt;
-</pre><hr/>
+<p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;?xml version=<span class="stringliteral">&quot;1.0&quot;</span>?&gt;</div><div class="line">&lt;ume-store version=<span class="stringliteral">&quot;1.3&quot;</span>&gt;</div><div class="line">  ...</div><div class="line">&lt;/ume-store&gt;</div></div><!-- fragment --><hr/>
 <p> <br />
  </p>
 <h2><a class="anchor" id="umeelementstores"></a>
@@ -122,14 +102,7 @@ UMP Element "&lt;stores&gt;"&nbsp;&nbsp;<small><a href="#umeelementstores">&lt;-
 <li>
 <b>Children:</b> <a class="el" href="configurationreferenceforumestored.html#umeelementstore">&lt;store&gt;</a> </li>
 </ul>
-<p><b>Example:</b> </p><pre class="fragment">&lt;?xml version="1.0"?&gt;
-&lt;ume-store version="1.3"&gt;
-  &lt;stores&gt;
-    ...
-  &lt;/stores&gt;
-  ...
-&lt;/ume-store&gt;
-</pre><hr/>
+<p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;?xml version=<span class="stringliteral">&quot;1.0&quot;</span>?&gt;</div><div class="line">&lt;ume-store version=<span class="stringliteral">&quot;1.3&quot;</span>&gt;</div><div class="line">  &lt;stores&gt;</div><div class="line">    ...</div><div class="line">  &lt;/stores&gt;</div><div class="line">  ...</div><div class="line">&lt;/ume-store&gt;</div></div><!-- fragment --><hr/>
 <p> <br />
  </p>
 <h2><a class="anchor" id="umeelementstore"></a>
@@ -153,17 +126,7 @@ UMP Element "&lt;store&gt;"&nbsp;&nbsp;<small><a href="#umeelementstore">&lt;-</
 <tr>
 <td><b>port</b> </td><td>TCP port where umestored should listen for connection requests to this store. </td><td>string </td><td>(no default; must be specified) </td></tr>
 </table>
-<p><b>Example:</b> </p><pre class="fragment">&lt;?xml version="1.0"?&gt;
-&lt;ume-store version="1.3"&gt;
-  &lt;stores&gt;
-    &lt;store name="MyStore1" interface="10.1.2.3" port="12000"&gt;
-      ...
-    &lt;/store&gt;
-    ...
-  &lt;/stores&gt;
-  ...
-&lt;/ume-store&gt;
-</pre><hr/>
+<p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;?xml version=<span class="stringliteral">&quot;1.0&quot;</span>?&gt;</div><div class="line">&lt;ume-store version=<span class="stringliteral">&quot;1.3&quot;</span>&gt;</div><div class="line">  &lt;stores&gt;</div><div class="line">    &lt;store name=<span class="stringliteral">&quot;MyStore1&quot;</span> interface=<span class="stringliteral">&quot;10.1.2.3&quot;</span> port=<span class="stringliteral">&quot;12000&quot;</span>&gt;</div><div class="line">      ...</div><div class="line">    &lt;/store&gt;</div><div class="line">    ...</div><div class="line">  &lt;/stores&gt;</div><div class="line">  ...</div><div class="line">&lt;/ume-store&gt;</div></div><!-- fragment --><hr/>
 <p> <br />
  </p>
 <h2><a class="anchor" id="umeelementtopics"></a>
@@ -175,20 +138,7 @@ UMP Element "&lt;topics&gt;"&nbsp;&nbsp;<small><a href="#umeelementtopics">&lt;-
 <li>
 <b>Children:</b> <a class="el" href="configurationreferenceforumestored.html#umeelementtopic">&lt;topic&gt;</a> </li>
 </ul>
-<p><b>Example:</b> </p><pre class="fragment">&lt;?xml version="1.0"?&gt;
-&lt;ume-store version="1.3"&gt;
-  &lt;stores&gt;
-    &lt;store name="MyStore1" interface="10.1.2.3" port="12000"&gt;
-      &lt;topics&gt;
-        ...
-      &lt;/topics&gt;
-      ...
-    &lt;/store&gt;
-    ...
-  &lt;/stores&gt;
-  ...
-&lt;/ume-store&gt;
-</pre><hr/>
+<p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;?xml version=<span class="stringliteral">&quot;1.0&quot;</span>?&gt;</div><div class="line">&lt;ume-store version=<span class="stringliteral">&quot;1.3&quot;</span>&gt;</div><div class="line">  &lt;stores&gt;</div><div class="line">    &lt;store name=<span class="stringliteral">&quot;MyStore1&quot;</span> interface=<span class="stringliteral">&quot;10.1.2.3&quot;</span> port=<span class="stringliteral">&quot;12000&quot;</span>&gt;</div><div class="line">      &lt;topics&gt;</div><div class="line">        ...</div><div class="line">      &lt;/topics&gt;</div><div class="line">      ...</div><div class="line">    &lt;/store&gt;</div><div class="line">    ...</div><div class="line">  &lt;/stores&gt;</div><div class="line">  ...</div><div class="line">&lt;/ume-store&gt;</div></div><!-- fragment --><hr/>
 <p> <br />
  </p>
 <h2><a class="anchor" id="umeelementtopic"></a>
@@ -211,26 +161,7 @@ UMP Element "&lt;topic&gt;"&nbsp;&nbsp;<small><a href="#umeelementtopic">&lt;-</
 <b><code>"regexp"</code></b> - Posix regular expression. <b>Deprecated; do not use.</b> </td><td><b>direct</b> </td></tr>
 </table>
 <p><b>Example:</b> </p>
-<p>In this example, the topic "NYSE.xyz" and all topics that start with "alert." are persisted in the "MyStore1" store instance. </p><pre class="fragment">&lt;?xml version="1.0"?&gt;
-&lt;ume-store version="1.3"&gt;
-  &lt;stores&gt;
-    &lt;store name="MyStore1" interface="10.1.2.3" port="12000"&gt;
-      &lt;topics&gt;
-        &lt;topic pattern="NYSE.xyz" type="direct"&gt;
-          ...
-        &lt;/topic&gt;
-        &lt;topic pattern="^alert\..*" type="pcre"&gt;
-          ...
-        &lt;/topic&gt;
-        ...
-      &lt;/topics&gt;
-      ...
-    &lt;/store&gt;
-    ...
-  &lt;/stores&gt;
-  ...
-&lt;/ume-store&gt;
-</pre><hr/>
+<p>In this example, the topic "NYSE.xyz" and all topics that start with "alert." are persisted in the "MyStore1" store instance. </p><div class="fragment"><div class="line">&lt;?xml version=<span class="stringliteral">&quot;1.0&quot;</span>?&gt;</div><div class="line">&lt;ume-store version=<span class="stringliteral">&quot;1.3&quot;</span>&gt;</div><div class="line">  &lt;stores&gt;</div><div class="line">    &lt;store name=<span class="stringliteral">&quot;MyStore1&quot;</span> interface=<span class="stringliteral">&quot;10.1.2.3&quot;</span> port=<span class="stringliteral">&quot;12000&quot;</span>&gt;</div><div class="line">      &lt;topics&gt;</div><div class="line">        &lt;topic pattern=<span class="stringliteral">&quot;NYSE.xyz&quot;</span> type=<span class="stringliteral">&quot;direct&quot;</span>&gt;</div><div class="line">          ...</div><div class="line">        &lt;/topic&gt;</div><div class="line">        &lt;topic pattern=<span class="stringliteral">&quot;^alert\..*&quot;</span> type=<span class="stringliteral">&quot;pcre&quot;</span>&gt;</div><div class="line">          ...</div><div class="line">        &lt;/topic&gt;</div><div class="line">        ...</div><div class="line">      &lt;/topics&gt;</div><div class="line">      ...</div><div class="line">    &lt;/store&gt;</div><div class="line">    ...</div><div class="line">  &lt;/stores&gt;</div><div class="line">  ...</div><div class="line">&lt;/ume-store&gt;</div></div><!-- fragment --><hr/>
 <p> <br />
  </p>
 <h2><a class="anchor" id="umeelementumeattributes"></a>
@@ -245,29 +176,7 @@ UMP Element "&lt;ume-attributes&gt;"&nbsp;&nbsp;<small><a href="#umeelementumeat
 <b>Children:</b> <a class="el" href="configurationreferenceforumestored.html#umeelementoption">&lt;option&gt;</a> </li>
 </ul>
 <p><b>Example:</b> </p>
-<p>In this example, some options are at the "store" level and apply to all topics. Other options are specific to the topic "NYSE.xyz". </p><pre class="fragment">&lt;?xml version="1.0"?&gt;
-&lt;ume-store version="1.3"&gt;
-  &lt;stores&gt;
-    &lt;store name="MyStore1" interface="10.1.2.3" port="12000"&gt;
-      &lt;ume-attributes&gt;
-        ...
-      &lt;/ume-attributes&gt;
-      &lt;topics&gt;
-        &lt;topic pattern="NYSE.xyz" type="direct"&gt;
-          &lt;ume-attributes&gt;
-            ...
-          &lt;/ume-attributes&gt;
-          ...
-        &lt;/topic&gt;
-        ...
-      &lt;/topics&gt;
-      ...
-    &lt;/store&gt;
-    ...
-  &lt;/stores&gt;
-  ...
-&lt;/ume-store&gt;
-</pre><hr/>
+<p>In this example, some options are at the "store" level and apply to all topics. Other options are specific to the topic "NYSE.xyz". </p><div class="fragment"><div class="line">&lt;?xml version=<span class="stringliteral">&quot;1.0&quot;</span>?&gt;</div><div class="line">&lt;ume-store version=<span class="stringliteral">&quot;1.3&quot;</span>&gt;</div><div class="line">  &lt;stores&gt;</div><div class="line">    &lt;store name=<span class="stringliteral">&quot;MyStore1&quot;</span> interface=<span class="stringliteral">&quot;10.1.2.3&quot;</span> port=<span class="stringliteral">&quot;12000&quot;</span>&gt;</div><div class="line">      &lt;ume-attributes&gt;</div><div class="line">        ...</div><div class="line">      &lt;/ume-attributes&gt;</div><div class="line">      &lt;topics&gt;</div><div class="line">        &lt;topic pattern=<span class="stringliteral">&quot;NYSE.xyz&quot;</span> type=<span class="stringliteral">&quot;direct&quot;</span>&gt;</div><div class="line">          &lt;ume-attributes&gt;</div><div class="line">            ...</div><div class="line">          &lt;/ume-attributes&gt;</div><div class="line">          ...</div><div class="line">        &lt;/topic&gt;</div><div class="line">        ...</div><div class="line">      &lt;/topics&gt;</div><div class="line">      ...</div><div class="line">    &lt;/store&gt;</div><div class="line">    ...</div><div class="line">  &lt;/stores&gt;</div><div class="line">  ...</div><div class="line">&lt;/ume-store&gt;</div></div><!-- fragment --><hr/>
 <p> <br />
  </p>
 <h2><a class="anchor" id="umeelementoption"></a>
@@ -291,36 +200,12 @@ UMP Element "&lt;option&gt;"&nbsp;&nbsp;<small><a href="#umeelementoption">&lt;-
 <td><b>value</b> </td><td>Value for option. </td><td>string </td><td>(no default; must be specified) </td></tr>
 </table>
 <p><b>Example:</b> </p>
-<p>In this example, some options are at the "store" level and apply to all topics. Other options are specific to the topic "NYSE.xyz". </p><pre class="fragment">&lt;?xml version="1.0"?&gt;
-&lt;ume-store version="1.3"&gt;
-  &lt;stores&gt;
-    &lt;store name="MyStore1" interface="10.1.2.3" port="12000"&gt;
-      &lt;ume-attributes&gt;
-        &lt;option type="lbm-context" name="fd_management_type" value="epoll"/&gt;
-        ...
-      &lt;/ume-attributes&gt;
-      &lt;topics&gt;
-        &lt;topic pattern="NYSE.xyz" type="direct"&gt;
-          &lt;ume-attributes&gt;
-            &lt;option type="..." name="..." value="..."/&gt;
-            ...
-          &lt;/ume-attributes&gt;
-          ...
-        &lt;/topic&gt;
-        ...
-      &lt;/topics&gt;
-      ...
-    &lt;/store&gt;
-    ...
-  &lt;/stores&gt;
-  ...
-&lt;/ume-store&gt;
-</pre><hr/>
+<p>In this example, some options are at the "store" level and apply to all topics. Other options are specific to the topic "NYSE.xyz". </p><div class="fragment"><div class="line">&lt;?xml version=<span class="stringliteral">&quot;1.0&quot;</span>?&gt;</div><div class="line">&lt;ume-store version=<span class="stringliteral">&quot;1.3&quot;</span>&gt;</div><div class="line">  &lt;stores&gt;</div><div class="line">    &lt;store name=<span class="stringliteral">&quot;MyStore1&quot;</span> interface=<span class="stringliteral">&quot;10.1.2.3&quot;</span> port=<span class="stringliteral">&quot;12000&quot;</span>&gt;</div><div class="line">      &lt;ume-attributes&gt;</div><div class="line">        &lt;option type=<span class="stringliteral">&quot;lbm-context&quot;</span> name=<span class="stringliteral">&quot;fd_management_type&quot;</span> value=<span class="stringliteral">&quot;epoll&quot;</span>/&gt;</div><div class="line">        ...</div><div class="line">      &lt;/ume-attributes&gt;</div><div class="line">      &lt;topics&gt;</div><div class="line">        &lt;topic pattern=<span class="stringliteral">&quot;NYSE.xyz&quot;</span> type=<span class="stringliteral">&quot;direct&quot;</span>&gt;</div><div class="line">          &lt;ume-attributes&gt;</div><div class="line">            &lt;option type=<span class="stringliteral">&quot;...&quot;</span> name=<span class="stringliteral">&quot;...&quot;</span> value=<span class="stringliteral">&quot;...&quot;</span>/&gt;</div><div class="line">            ...</div><div class="line">          &lt;/ume-attributes&gt;</div><div class="line">          ...</div><div class="line">        &lt;/topic&gt;</div><div class="line">        ...</div><div class="line">      &lt;/topics&gt;</div><div class="line">      ...</div><div class="line">    &lt;/store&gt;</div><div class="line">    ...</div><div class="line">  &lt;/stores&gt;</div><div class="line">  ...</div><div class="line">&lt;/ume-store&gt;</div></div><!-- fragment --><hr/>
 <p> <br />
  </p>
 <h2><a class="anchor" id="umeelementpublishinginterval"></a>
 UMP Element "&lt;publishing-interval&gt;"&nbsp;&nbsp;<small><a href="#umeelementpublishinginterval">&lt;-</a></small></h2>
-<p>Set how often the store publishes its daemon stats. See <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UME/design.tag:../Design/" href="../Design/umobjects.html#daemonstatistics">Daemon Statistics</a> for general information on Daemon Statistics.</p>
+<p>Set how often the store publishes its daemon stats. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UME/design.tag:../Design/" href="../Design/umobjects.html#daemonstatistics">Daemon Statistics</a> for general information on Daemon Statistics.</p>
 <ul>
 <li>
 <b>Parent:</b> <a class="el" href="configurationreferenceforumestored.html#umeelementstore">&lt;store&gt;</a>, <a class="el" href="configurationreferenceforumestored.html#umeelementdaemonmonitor">&lt;daemon-monitor&gt;</a> </li>
@@ -328,32 +213,12 @@ UMP Element "&lt;publishing-interval&gt;"&nbsp;&nbsp;<small><a href="#umeelement
 <b>Children:</b> <a class="el" href="configurationreferenceforumestored.html#umeelementgroup">&lt;group&gt;</a> </li>
 </ul>
 <p><b>Example:</b> </p>
-<p>Daemon Statistics are configured at both the daemon level and at the store level. </p><pre class="fragment">&lt;?xml version="1.0"?&gt;
-&lt;ume-store version="1.3"&gt;
-  &lt;daemon&gt;
-    &lt;daemon-monitor topic="bozo"&gt;
-      &lt;publishing-interval&gt;
-        ...
-      &lt;/publishing-interval&gt;
-    &lt;/daemon-monitor&gt;
-  &lt;/daemon&gt;
-  &lt;stores&gt;
-    &lt;store name="MyStore1" interface="10.1.2.3" port="12000"&gt;
-      &lt;publishing-interval&gt;
-        ...
-      &lt;/publishing-interval&gt;
-      ...
-    &lt;/store&gt;
-    ...
-  &lt;/stores&gt;
-  ...
-&lt;/ume-store&gt;
-</pre><hr/>
+<p>Daemon Statistics are configured at both the daemon level and at the store level. </p><div class="fragment"><div class="line">&lt;?xml version=<span class="stringliteral">&quot;1.0&quot;</span>?&gt;</div><div class="line">&lt;ume-store version=<span class="stringliteral">&quot;1.3&quot;</span>&gt;</div><div class="line">  &lt;daemon&gt;</div><div class="line">    &lt;daemon-monitor topic=<span class="stringliteral">&quot;bozo&quot;</span>&gt;</div><div class="line">      &lt;publishing-interval&gt;</div><div class="line">        ...</div><div class="line">      &lt;/publishing-interval&gt;</div><div class="line">    &lt;/daemon-monitor&gt;</div><div class="line">  &lt;/daemon&gt;</div><div class="line">  &lt;stores&gt;</div><div class="line">    &lt;store name=<span class="stringliteral">&quot;MyStore1&quot;</span> interface=<span class="stringliteral">&quot;10.1.2.3&quot;</span> port=<span class="stringliteral">&quot;12000&quot;</span>&gt;</div><div class="line">      &lt;publishing-interval&gt;</div><div class="line">        ...</div><div class="line">      &lt;/publishing-interval&gt;</div><div class="line">      ...</div><div class="line">    &lt;/store&gt;</div><div class="line">    ...</div><div class="line">  &lt;/stores&gt;</div><div class="line">  ...</div><div class="line">&lt;/ume-store&gt;</div></div><!-- fragment --><hr/>
 <p> <br />
  </p>
 <h2><a class="anchor" id="umeelementgroup"></a>
 UMP Element "&lt;group&gt;"&nbsp;&nbsp;<small><a href="#umeelementgroup">&lt;-</a></small></h2>
-<p>Configures the rate at which one particular grouping of Daemon Statistics messages are published. See <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UME/design.tag:../Design/" href="../Design/umobjects.html#daemonstatistics">Daemon Statistics</a> for general information on Daemon Statistics.</p>
+<p>Configures the rate at which one particular grouping of Daemon Statistics messages are published. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UME/design.tag:../Design/" href="../Design/umobjects.html#daemonstatistics">Daemon Statistics</a> for general information on Daemon Statistics.</p>
 <ul>
 <li>
 <b>Parent:</b> <a class="el" href="configurationreferenceforumestored.html#umeelementpublishinginterval">&lt;publishing-interval&gt;</a> </li>
@@ -363,41 +228,17 @@ UMP Element "&lt;group&gt;"&nbsp;&nbsp;<small><a href="#umeelementgroup">&lt;-</
 <th>Attribute </th><th>Description </th><th>Valid Values </th><th>Default Value </th></tr>
 <tr>
 <td><b>name</b> </td><td>Name of statistics group being configured. </td><td><b><code>"default"</code></b> - Sets a default interval for all message types. <br />
-<b><code>"store"</code></b> - Sets the interval for messages of type <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UME/api.tag:../API/" href="../API/umedmonmsgs_8h.html#aeeb55ed0b759e6316cdedc3c990dfe26">umestore_store_dmon_stat_msg_t</a>. <br />
-<b><code>"source"</code></b> - Sets the interval for messages of type <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UME/api.tag:../API/" href="../API/umedmonmsgs_8h.html#a88ce572fd35203194ada676661d2f54b">umestore_repo_dmon_stat_msg_t</a>. <br />
-<b><code>"receiver"</code></b> - Sets the interval for messages of type <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UME/api.tag:../API/" href="../API/umedmonmsgs_8h.html#a3829efae398d994795fb395097626709">umestore_rcv_dmon_stat_msg_t</a>. <br />
-<b><code>"disk"</code></b> - Sets the interval for messages of type <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UME/api.tag:../API/" href="../API/umedmonmsgs_8h.html#a3ed32f1017abda98dbac7f228d7c506b">umestore_disk_dmon_stat_msg_t</a>. <br />
+<b><code>"store"</code></b> - Sets the interval for messages of type <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UME/api.tag:../API/" href="../API/umedmonmsgs_8h.html#aeeb55ed0b759e6316cdedc3c990dfe26">umestore_store_dmon_stat_msg_t</a>. <br />
+<b><code>"source"</code></b> - Sets the interval for messages of type <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UME/api.tag:../API/" href="../API/umedmonmsgs_8h.html#a88ce572fd35203194ada676661d2f54b">umestore_repo_dmon_stat_msg_t</a>. <br />
+<b><code>"receiver"</code></b> - Sets the interval for messages of type <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UME/api.tag:../API/" href="../API/umedmonmsgs_8h.html#a3829efae398d994795fb395097626709">umestore_rcv_dmon_stat_msg_t</a>. <br />
+<b><code>"disk"</code></b> - Sets the interval for messages of type <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UME/api.tag:../API/" href="../API/umedmonmsgs_8h.html#a3ed32f1017abda98dbac7f228d7c506b">umestore_disk_dmon_stat_msg_t</a>. <br />
 <b><code>"config"</code></b> - Sets the interval for messages of types umestore_*_dmon_config_msg_t. <br />
 <b><code>"memory"</code></b> - Sets the interval for messages of type umestore_smart_heap_dmon_stat_msg_t. </td><td>(no default; must be specified) </td></tr>
 <tr>
 <td><b>ivl</b> </td><td>Time, in seconds, between publishing the statistics group being configured. </td><td>string </td><td>(no default; must be specified) </td></tr>
 </table>
 <p><b>Example:</b> </p>
-<p>Daemon Statistics are configured at both the daemon level and at the store level. </p><pre class="fragment">&lt;?xml version="1.0"?&gt;
-&lt;ume-store version="1.3"&gt;
-  &lt;daemon&gt;
-    &lt;daemon-monitor topic="bozo"&gt;
-      &lt;publishing-interval&gt;
-        &lt;group name="default" ivl="10"/&gt;
-        &lt;group name="store" ivl="20"/&gt;
-        ...
-      &lt;/publishing-interval&gt;
-    &lt;/daemon-monitor&gt;
-  &lt;/daemon&gt;
-  &lt;stores&gt;
-    &lt;store name="MyStore1" interface="10.1.2.3" port="12000"&gt;
-      &lt;publishing-interval&gt;
-        &lt;group name="default" ivl="10"/&gt;
-        &lt;group name="store" ivl="20"/&gt;
-        ...
-      &lt;/publishing-interval&gt;
-      ...
-    &lt;/store&gt;
-    ...
-  &lt;/stores&gt;
-  ...
-&lt;/ume-store&gt;
-</pre><hr/>
+<p>Daemon Statistics are configured at both the daemon level and at the store level. </p><div class="fragment"><div class="line">&lt;?xml version=<span class="stringliteral">&quot;1.0&quot;</span>?&gt;</div><div class="line">&lt;ume-store version=<span class="stringliteral">&quot;1.3&quot;</span>&gt;</div><div class="line">  &lt;daemon&gt;</div><div class="line">    &lt;daemon-monitor topic=<span class="stringliteral">&quot;bozo&quot;</span>&gt;</div><div class="line">      &lt;publishing-interval&gt;</div><div class="line">        &lt;group name=<span class="stringliteral">&quot;default&quot;</span> ivl=<span class="stringliteral">&quot;10&quot;</span>/&gt;</div><div class="line">        &lt;group name=<span class="stringliteral">&quot;store&quot;</span> ivl=<span class="stringliteral">&quot;20&quot;</span>/&gt;</div><div class="line">        ...</div><div class="line">      &lt;/publishing-interval&gt;</div><div class="line">    &lt;/daemon-monitor&gt;</div><div class="line">  &lt;/daemon&gt;</div><div class="line">  &lt;stores&gt;</div><div class="line">    &lt;store name=<span class="stringliteral">&quot;MyStore1&quot;</span> interface=<span class="stringliteral">&quot;10.1.2.3&quot;</span> port=<span class="stringliteral">&quot;12000&quot;</span>&gt;</div><div class="line">      &lt;publishing-interval&gt;</div><div class="line">        &lt;group name=<span class="stringliteral">&quot;default&quot;</span> ivl=<span class="stringliteral">&quot;10&quot;</span>/&gt;</div><div class="line">        &lt;group name=<span class="stringliteral">&quot;store&quot;</span> ivl=<span class="stringliteral">&quot;20&quot;</span>/&gt;</div><div class="line">        ...</div><div class="line">      &lt;/publishing-interval&gt;</div><div class="line">      ...</div><div class="line">    &lt;/store&gt;</div><div class="line">    ...</div><div class="line">  &lt;/stores&gt;</div><div class="line">  ...</div><div class="line">&lt;/ume-store&gt;</div></div><!-- fragment --><hr/>
 <p> <br />
  </p>
 <h2><a class="anchor" id="umeelementdaemon"></a>
@@ -409,19 +250,12 @@ UMP Element "&lt;daemon&gt;"&nbsp;&nbsp;<small><a href="#umeelementdaemon">&lt;-
 <li>
 <b>Children:</b> <a class="el" href="configurationreferenceforumestored.html#umeelementlog">&lt;log&gt;</a>, <a class="el" href="configurationreferenceforumestored.html#umeelementuid">&lt;uid&gt;</a>, <a class="el" href="configurationreferenceforumestored.html#umeelementpidfile">&lt;pidfile&gt;</a>, <a class="el" href="configurationreferenceforumestored.html#umeelementgid">&lt;gid&gt;</a>, <a class="el" href="configurationreferenceforumestored.html#umeelementlbmconfig">&lt;lbm-config&gt;</a>, <a class="el" href="configurationreferenceforumestored.html#umeelementxmlconfig">&lt;xml-config&gt;</a>, <a class="el" href="configurationreferenceforumestored.html#umeelementlbmlicensefile">&lt;lbm-license-file&gt;</a>, <a class="el" href="configurationreferenceforumestored.html#umeelementwebmonitor">&lt;web-monitor&gt;</a>, <a class="el" href="configurationreferenceforumestored.html#umeelementdaemonmonitor">&lt;daemon-monitor&gt;</a> </li>
 </ul>
-<p><b>Example:</b> </p><pre class="fragment">&lt;?xml version="1.0"?&gt;
-&lt;ume-store version="1.3"&gt;
-  &lt;daemon&gt;
-    ...
-  &lt;/daemon&gt;
-  ...
-&lt;/ume-store&gt;
-</pre><hr/>
+<p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;?xml version=<span class="stringliteral">&quot;1.0&quot;</span>?&gt;</div><div class="line">&lt;ume-store version=<span class="stringliteral">&quot;1.3&quot;</span>&gt;</div><div class="line">  &lt;daemon&gt;</div><div class="line">    ...</div><div class="line">  &lt;/daemon&gt;</div><div class="line">  ...</div><div class="line">&lt;/ume-store&gt;</div></div><!-- fragment --><hr/>
 <p> <br />
  </p>
 <h2><a class="anchor" id="umeelementdaemonmonitor"></a>
 UMP Element "&lt;daemon-monitor&gt;"&nbsp;&nbsp;<small><a href="#umeelementdaemonmonitor">&lt;-</a></small></h2>
-<p>The daemon-monitor element configures the store daemon for <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UME/design.tag:../Design/" href="../Design/umobjects.html#daemonstatistics">Daemon Statistics</a>.</p>
+<p>The daemon-monitor element configures the store daemon for <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UME/design.tag:../Design/" href="../Design/umobjects.html#daemonstatistics">Daemon Statistics</a>.</p>
 <ul>
 <li>
 <b>Parent:</b> <a class="el" href="configurationreferenceforumestored.html#umeelementdaemon">&lt;daemon&gt;</a> </li>
@@ -435,23 +269,12 @@ UMP Element "&lt;daemon-monitor&gt;"&nbsp;&nbsp;<small><a href="#umeelementdaemo
 <td><b>topic</b> </td><td>Topic name for used to publish daemon statistics. </td><td>string </td><td><b><code>"umestore.monitor"</code></b> </td></tr>
 </table>
 <p><b>Example:</b> </p>
-<p>Daemon Statistics are configured at both the daemon level and at the store level. </p><pre class="fragment">&lt;?xml version="1.0"?&gt;
-&lt;ume-store version="1.3"&gt;
-  &lt;daemon&gt;
-    &lt;daemon-monitor topic="bozo"&gt;
-      &lt;publishing-interval&gt;
-        ...
-      &lt;/publishing-interval&gt;
-    &lt;/daemon-monitor&gt;
-  &lt;/daemon&gt;
-  ...
-&lt;/ume-store&gt;
-</pre><hr/>
+<p>Daemon Statistics are configured at both the daemon level and at the store level. </p><div class="fragment"><div class="line">&lt;?xml version=<span class="stringliteral">&quot;1.0&quot;</span>?&gt;</div><div class="line">&lt;ume-store version=<span class="stringliteral">&quot;1.3&quot;</span>&gt;</div><div class="line">  &lt;daemon&gt;</div><div class="line">    &lt;daemon-monitor topic=<span class="stringliteral">&quot;bozo&quot;</span>&gt;</div><div class="line">      &lt;publishing-interval&gt;</div><div class="line">        ...</div><div class="line">      &lt;/publishing-interval&gt;</div><div class="line">    &lt;/daemon-monitor&gt;</div><div class="line">  &lt;/daemon&gt;</div><div class="line">  ...</div><div class="line">&lt;/ume-store&gt;</div></div><!-- fragment --><hr/>
 <p> <br />
  </p>
 <h2><a class="anchor" id="umeelementremoteconfigchangesrequest"></a>
 UMP Element "&lt;remote-config-changes-request&gt;"&nbsp;&nbsp;<small><a href="#umeelementremoteconfigchangesrequest">&lt;-</a></small></h2>
-<p>Controls if the daemon will respond to requests from monitoring applications. See <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UME/design.tag:../Design/" href="../Design/umobjects.html#daemonstatisticsrequests">Daemon Statistics Requests</a>.</p>
+<p>Controls if the daemon will respond to requests from monitoring applications. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UME/design.tag:../Design/" href="../Design/umobjects.html#daemonstatisticsrequests">Daemon Statistics Requests</a>.</p>
 <ul>
 <li>
 <b>Parent:</b> <a class="el" href="configurationreferenceforumestored.html#umeelementdaemonmonitor">&lt;daemon-monitor&gt;</a> </li>
@@ -464,23 +287,12 @@ UMP Element "&lt;remote-config-changes-request&gt;"&nbsp;&nbsp;<small><a href="#
 <b><code>"1"</code></b> - Enable request handling. </td><td><b><code>"0"</code></b> </td></tr>
 </table>
 <p><b>Example:</b> </p>
-<p>Daemon Statistics are configured at both the daemon level and at the store level. </p><pre class="fragment">&lt;?xml version="1.0"?&gt;
-&lt;ume-store version="1.3"&gt;
-  &lt;daemon&gt;
-    &lt;daemon-monitor topic="bozo"&gt;
-      &lt;remote-config-changes-request allow="1"/&gt;
-        ...
-      &lt;/publishing-interval&gt;
-    &lt;/daemon-monitor&gt;
-  &lt;/daemon&gt;
-  ...
-&lt;/ume-store&gt;
-</pre><hr/>
+<p>Daemon Statistics are configured at both the daemon level and at the store level. </p><div class="fragment"><div class="line">&lt;?xml version=<span class="stringliteral">&quot;1.0&quot;</span>?&gt;</div><div class="line">&lt;ume-store version=<span class="stringliteral">&quot;1.3&quot;</span>&gt;</div><div class="line">  &lt;daemon&gt;</div><div class="line">    &lt;daemon-monitor topic=<span class="stringliteral">&quot;bozo&quot;</span>&gt;</div><div class="line">      &lt;remote-config-changes-request allow=<span class="stringliteral">&quot;1&quot;</span>/&gt;</div><div class="line">        ...</div><div class="line">      &lt;/publishing-interval&gt;</div><div class="line">    &lt;/daemon-monitor&gt;</div><div class="line">  &lt;/daemon&gt;</div><div class="line">  ...</div><div class="line">&lt;/ume-store&gt;</div></div><!-- fragment --><hr/>
 <p> <br />
  </p>
 <h2><a class="anchor" id="umeelementremotesnapshotrequest"></a>
 UMP Element "&lt;remote-snapshot-request&gt;"&nbsp;&nbsp;<small><a href="#umeelementremotesnapshotrequest">&lt;-</a></small></h2>
-<p>Controls if the daemon will respond to requests from monitoring applications. See <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UME/design.tag:../Design/" href="../Design/umobjects.html#daemonstatisticsrequests">Daemon Statistics Requests</a>.</p>
+<p>Controls if the daemon will respond to requests from monitoring applications. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UME/design.tag:../Design/" href="../Design/umobjects.html#daemonstatisticsrequests">Daemon Statistics Requests</a>.</p>
 <ul>
 <li>
 <b>Parent:</b> <a class="el" href="configurationreferenceforumestored.html#umeelementdaemonmonitor">&lt;daemon-monitor&gt;</a> </li>
@@ -493,18 +305,7 @@ UMP Element "&lt;remote-snapshot-request&gt;"&nbsp;&nbsp;<small><a href="#umeele
 <b><code>"1"</code></b> - Enable request handling. </td><td><b><code>"0"</code></b> </td></tr>
 </table>
 <p><b>Example:</b> </p>
-<p>Daemon Statistics are configured at both the daemon level and at the store level. </p><pre class="fragment">&lt;?xml version="1.0"?&gt;
-&lt;ume-store version="1.3"&gt;
-  &lt;daemon&gt;
-    &lt;daemon-monitor topic="bozo"&gt;
-      &lt;remote-snapshot-request allow="1"/&gt;
-        ...
-      &lt;/publishing-interval&gt;
-    &lt;/daemon-monitor&gt;
-  &lt;/daemon&gt;
-  ...
-&lt;/ume-store&gt;
-</pre><hr/>
+<p>Daemon Statistics are configured at both the daemon level and at the store level. </p><div class="fragment"><div class="line">&lt;?xml version=<span class="stringliteral">&quot;1.0&quot;</span>?&gt;</div><div class="line">&lt;ume-store version=<span class="stringliteral">&quot;1.3&quot;</span>&gt;</div><div class="line">  &lt;daemon&gt;</div><div class="line">    &lt;daemon-monitor topic=<span class="stringliteral">&quot;bozo&quot;</span>&gt;</div><div class="line">      &lt;remote-snapshot-request allow=<span class="stringliteral">&quot;1&quot;</span>/&gt;</div><div class="line">        ...</div><div class="line">      &lt;/publishing-interval&gt;</div><div class="line">    &lt;/daemon-monitor&gt;</div><div class="line">  &lt;/daemon&gt;</div><div class="line">  ...</div><div class="line">&lt;/ume-store&gt;</div></div><!-- fragment --><hr/>
 <p> <br />
  </p>
 <h2><a class="anchor" id="umeelementlbmconfig"></a>
@@ -521,19 +322,7 @@ UMP Element "&lt;lbm-config&gt;"&nbsp;&nbsp;<small><a href="#umeelementlbmconfig
 <td><b>xml:space</b> </td><td>Specifies how whitespace (tabs, spaces, linefeeds) are handled in the element content. </td><td><b><code>"default"</code></b> - Trim leading and trailing whitespace, and compress multiple whitespace characters into a single space. <br />
 <b><code>"preserve"</code></b> - Retain whitespace exactly as entered. </td><td><b>default</b> </td></tr>
 </table>
-<p><b>Example:</b> </p><pre class="fragment">&lt;?xml version="1.0"?&gt;
-&lt;ume-store version="1.3"&gt;
-  &lt;daemon&gt;
-    &lt;lbm-config&gt;/etc/ump/store0.cfg&lt;/lbm-config&gt;
-    ...
-    &lt;daemon-monitor topic="bozo"&gt;
-      &lt;lbm-config&gt;/etc/ump/store0_dmon.cfg&lt;/lbm-config&gt;
-      ...
-    &lt;/daemon-monitor&gt;
-  &lt;/daemon&gt;
-  ...
-&lt;/ume-store&gt;
-</pre><hr/>
+<p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;?xml version=<span class="stringliteral">&quot;1.0&quot;</span>?&gt;</div><div class="line">&lt;ume-store version=<span class="stringliteral">&quot;1.3&quot;</span>&gt;</div><div class="line">  &lt;daemon&gt;</div><div class="line">    &lt;lbm-config&gt;/etc/ump/store0.cfg&lt;/lbm-config&gt;</div><div class="line">    ...</div><div class="line">    &lt;daemon-monitor topic=<span class="stringliteral">&quot;bozo&quot;</span>&gt;</div><div class="line">      &lt;lbm-config&gt;/etc/ump/store0_dmon.cfg&lt;/lbm-config&gt;</div><div class="line">      ...</div><div class="line">    &lt;/daemon-monitor&gt;</div><div class="line">  &lt;/daemon&gt;</div><div class="line">  ...</div><div class="line">&lt;/ume-store&gt;</div></div><!-- fragment --><hr/>
 <p> <br />
  </p>
 <h2><a class="anchor" id="umeelementwebmonitor"></a>
@@ -551,15 +340,7 @@ UMP Element "&lt;web-monitor&gt;"&nbsp;&nbsp;<small><a href="#umeelementwebmonit
 <td><b>xml:space</b> </td><td>Specifies how whitespace (tabs, spaces, linefeeds) are handled in the element content. </td><td><b><code>"default"</code></b> - Trim leading and trailing whitespace, and compress multiple whitespace characters into a single space. <br />
 <b><code>"preserve"</code></b> - Retain whitespace exactly as entered. </td><td><b>default</b> </td></tr>
 </table>
-<p><b>Example:</b> </p><pre class="fragment">&lt;?xml version="1.0"?&gt;
-&lt;ume-store version="1.3"&gt;
-  &lt;daemon&gt;
-    &lt;web-monitor&gt;*:8080&lt;/web-monitor&gt;
-    ...
-  &lt;/daemon&gt;
-  ...
-&lt;/ume-store&gt;
-</pre><hr/>
+<p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;?xml version=<span class="stringliteral">&quot;1.0&quot;</span>?&gt;</div><div class="line">&lt;ume-store version=<span class="stringliteral">&quot;1.3&quot;</span>&gt;</div><div class="line">  &lt;daemon&gt;</div><div class="line">    &lt;web-monitor&gt;*:8080&lt;/web-monitor&gt;</div><div class="line">    ...</div><div class="line">  &lt;/daemon&gt;</div><div class="line">  ...</div><div class="line">&lt;/ume-store&gt;</div></div><!-- fragment --><hr/>
 <p> <br />
  </p>
 <h2><a class="anchor" id="umeelementlbmlicensefile"></a>
@@ -593,17 +374,9 @@ UMP Element "&lt;xml-config&gt;"&nbsp;&nbsp;<small><a href="#umeelementxmlconfig
 <td><b>xml:space</b> </td><td>Specifies how whitespace (tabs, spaces, linefeeds) are handled in the element content. </td><td><b><code>"default"</code></b> - Trim leading and trailing whitespace, and compress multiple whitespace characters into a single space. <br />
 <b><code>"preserve"</code></b> - Retain whitespace exactly as entered. </td><td><b>default</b> </td></tr>
 <tr>
-<td><b>application-name</b> </td><td>Specifies the "application name" of the store process, for use within the UM XML configuration file. See <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UME/config.tag:../Config/" href="../Config/xmlconfigurationfiles.html#xmlapplicationnames">XML Application Names</a> for more information on application names. </td><td>string </td><td><b><code>"umestored"</code></b> </td></tr>
+<td><b>application-name</b> </td><td>Specifies the "application name" of the store process, for use within the UM XML configuration file. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UME/config.tag:../Config/" href="../Config/xmlconfigurationfiles.html#xmlapplicationnames">XML Application Names</a> for more information on application names. </td><td>string </td><td><b><code>"umestored"</code></b> </td></tr>
 </table>
-<p><b>Example:</b> </p><pre class="fragment">&lt;?xml version="1.0"?&gt;
-&lt;ume-store version="1.3"&gt;
-  &lt;daemon&gt;
-    &lt;xml-config&gt;/etc/ump/store01_um.xml&lt;/xml-config&gt;
-    ...
-  &lt;/daemon&gt;
-  ...
-&lt;/ume-store&gt;
-</pre><hr/>
+<p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;?xml version=<span class="stringliteral">&quot;1.0&quot;</span>?&gt;</div><div class="line">&lt;ume-store version=<span class="stringliteral">&quot;1.3&quot;</span>&gt;</div><div class="line">  &lt;daemon&gt;</div><div class="line">    &lt;xml-config&gt;/etc/ump/store01_um.xml&lt;/xml-config&gt;</div><div class="line">    ...</div><div class="line">  &lt;/daemon&gt;</div><div class="line">  ...</div><div class="line">&lt;/ume-store&gt;</div></div><!-- fragment --><hr/>
 <p> <br />
  </p>
 <h2><a class="anchor" id="umeelementgid"></a>
@@ -620,15 +393,7 @@ UMP Element "&lt;gid&gt;"&nbsp;&nbsp;<small><a href="#umeelementgid">&lt;-</a></
 <td><b>xml:space</b> </td><td>Specifies how whitespace (tabs, spaces, linefeeds) are handled in the element content. </td><td><b><code>"default"</code></b> - Trim leading and trailing whitespace, and compress multiple whitespace characters into a single space. <br />
 <b><code>"preserve"</code></b> - Retain whitespace exactly as entered. </td><td><b>default</b> </td></tr>
 </table>
-<p><b>Example:</b> </p><pre class="fragment">&lt;?xml version="1.0"?&gt;
-&lt;ume-store version="1.3"&gt;
-  &lt;daemon&gt;
-    &lt;gid&gt;1234&lt;/gid&gt;
-    ...
-  &lt;/daemon&gt;
-  ...
-&lt;/ume-store&gt;
-</pre><hr/>
+<p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;?xml version=<span class="stringliteral">&quot;1.0&quot;</span>?&gt;</div><div class="line">&lt;ume-store version=<span class="stringliteral">&quot;1.3&quot;</span>&gt;</div><div class="line">  &lt;daemon&gt;</div><div class="line">    &lt;gid&gt;1234&lt;/gid&gt;</div><div class="line">    ...</div><div class="line">  &lt;/daemon&gt;</div><div class="line">  ...</div><div class="line">&lt;/ume-store&gt;</div></div><!-- fragment --><hr/>
 <p> <br />
  </p>
 <h2><a class="anchor" id="umeelementpidfile"></a>
@@ -645,15 +410,7 @@ UMP Element "&lt;pidfile&gt;"&nbsp;&nbsp;<small><a href="#umeelementpidfile">&lt
 <td><b>xml:space</b> </td><td>Specifies how whitespace (tabs, spaces, linefeeds) are handled in the element content. </td><td><b><code>"default"</code></b> - Trim leading and trailing whitespace, and compress multiple whitespace characters into a single space. <br />
 <b><code>"preserve"</code></b> - Retain whitespace exactly as entered. </td><td><b>default</b> </td></tr>
 </table>
-<p><b>Example:</b> </p><pre class="fragment">&lt;?xml version="1.0"?&gt;
-&lt;ume-store version="1.3"&gt;
-  &lt;daemon&gt;
-    &lt;pidfile&gt;/var/run/store01.pid&lt;/pidfile&gt;
-    ...
-  &lt;/daemon&gt;
-  ...
-&lt;/ume-store&gt;
-</pre><hr/>
+<p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;?xml version=<span class="stringliteral">&quot;1.0&quot;</span>?&gt;</div><div class="line">&lt;ume-store version=<span class="stringliteral">&quot;1.3&quot;</span>&gt;</div><div class="line">  &lt;daemon&gt;</div><div class="line">    &lt;pidfile&gt;/var/run/store01.pid&lt;/pidfile&gt;</div><div class="line">    ...</div><div class="line">  &lt;/daemon&gt;</div><div class="line">  ...</div><div class="line">&lt;/ume-store&gt;</div></div><!-- fragment --><hr/>
 <p> <br />
  </p>
 <h2><a class="anchor" id="umeelementuid"></a>
@@ -670,15 +427,7 @@ UMP Element "&lt;uid&gt;"&nbsp;&nbsp;<small><a href="#umeelementuid">&lt;-</a></
 <td><b>xml:space</b> </td><td>Specifies how whitespace (tabs, spaces, linefeeds) are handled in the element content. </td><td><b><code>"default"</code></b> - Trim leading and trailing whitespace, and compress multiple whitespace characters into a single space. <br />
 <b><code>"preserve"</code></b> - Retain whitespace exactly as entered. </td><td><b>default</b> </td></tr>
 </table>
-<p><b>Example:</b> </p><pre class="fragment">&lt;?xml version="1.0"?&gt;
-&lt;ume-store version="1.3"&gt;
-  &lt;daemon&gt;
-    &lt;uid&gt;1234&lt;/uid&gt;
-    ...
-  &lt;/daemon&gt;
-  ...
-&lt;/ume-store&gt;
-</pre><hr/>
+<p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;?xml version=<span class="stringliteral">&quot;1.0&quot;</span>?&gt;</div><div class="line">&lt;ume-store version=<span class="stringliteral">&quot;1.3&quot;</span>&gt;</div><div class="line">  &lt;daemon&gt;</div><div class="line">    &lt;uid&gt;1234&lt;/uid&gt;</div><div class="line">    ...</div><div class="line">  &lt;/daemon&gt;</div><div class="line">  ...</div><div class="line">&lt;/ume-store&gt;</div></div><!-- fragment --><hr/>
 <p> <br />
  </p>
 <h2><a class="anchor" id="umeelementlog"></a>
@@ -706,15 +455,7 @@ UMP Element "&lt;log&gt;"&nbsp;&nbsp;<small><a href="#umeelementlog">&lt;-</a></
 <td><b>xml:space</b> </td><td>Specifies how whitespace (tabs, spaces, linefeeds) are handled in the element content. </td><td><b><code>"default"</code></b> - Trim leading and trailing whitespace, and compress multiple whitespace characters into a single space. <br />
 <b><code>"preserve"</code></b> - Retain whitespace exactly as entered. </td><td><b>default</b> </td></tr>
 </table>
-<p><b>Example:</b> </p><pre class="fragment">&lt;?xml version="1.0"?&gt;
-&lt;ume-store version="1.3"&gt;
-  &lt;daemon&gt;
-    &lt;log type="file" size="23" frequency="daily"&gt;/var/log/store01.log&lt;/log&gt;
-    ...
-  &lt;/daemon&gt;
-  ...
-&lt;/ume-store&gt;
-</pre><p><br />
+<p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;?xml version=<span class="stringliteral">&quot;1.0&quot;</span>?&gt;</div><div class="line">&lt;ume-store version=<span class="stringliteral">&quot;1.3&quot;</span>&gt;</div><div class="line">  &lt;daemon&gt;</div><div class="line">    &lt;log type=<span class="stringliteral">&quot;file&quot;</span> size=<span class="stringliteral">&quot;23&quot;</span> frequency=<span class="stringliteral">&quot;daily&quot;</span>&gt;/var/log/store01.log&lt;/log&gt;</div><div class="line">    ...</div><div class="line">  &lt;/daemon&gt;</div><div class="line">  ...</div><div class="line">&lt;/ume-store&gt;</div></div><!-- fragment --><p><br />
  </p>
 <h1><a class="anchor" id="optionsforastoresumeattributeselement"></a>
 Options for a Store's ume-attributes Element&nbsp;&nbsp;<small><a href="#optionsforastoresumeattributeselement">&lt;-</a></small></h1>
@@ -726,9 +467,9 @@ Options for UM&nbsp;&nbsp;<small><a href="#optionsforum">&lt;-</a></small></h2>
 <p>Options with a type of "lbm-source", "lbm-receiver", or "lbm-context" are UM configuration options, which the store passes to the UM library.</p>
 <p>For example, the option element: <br />
 <code>&lt;option type="lbm-context" name="transport_lbtrm_receiver_socket_buffer" value="1048576"/&gt;</code> <br />
-sets the UM configuration option <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UME/config.tag:../Config/" href="../Config/grptransportlbtrmreliability.html#transportlbtrmreceiversocketbuffercontext">transport_lbtrm_receiver_socket_buffer (context)</a> (receiver socket buffer size for LBT-RM) to 1 megabyte.</p>
+sets the UM configuration option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grptransportlbtrmreliability.html#transportlbtrmreceiversocketbuffercontext">transport_lbtrm_receiver_socket_buffer (context)</a> (receiver socket buffer size for LBT-RM) to 1 megabyte.</p>
 <p>See the <a href="../Config/index.html">UM Configuration Guide</a> for the full list of UM configuration options.</p>
-<dl class="section note"><dt>Note</dt><dd>Some UM options specify interfaces, which can be done by supplying the device name of the interface. Special care must be taken when supplying device names. See <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UME/config.tag:../Config/" href="../Config/generalconfigurationguidelines.html#interfacedevicenamesandxml">Interface Device Names and XML</a> for details.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Some UM options specify interfaces, which can be done by supplying the device name of the interface. Special care must be taken when supplying device names. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UME/config.tag:../Config/" href="../Config/generalconfigurationguidelines.html#interfacedevicenamesandxml">Interface Device Names and XML</a> for details.</dd></dl>
 <p><br />
  </p>
 <h2><a class="anchor" id="storeoptions"></a>
@@ -792,11 +533,11 @@ Options for a Topic's ume-attributes Element&nbsp;&nbsp;<small><a href="#options
 <p class="endtd"><a class="anchor" id="umecfgrepositorysizethreshold"></a></p>
 </td></tr>
 <tr>
-<td>repository-size-threshold </td><td>For topics with a repository-type of memory, disk or reduced-fd, specifies the minimum number of message bytes (includes payload, headers, and store structure overhead) retained for a topic before the repository starts to delete old messages. Pertains to a memory store or the memory cache of a disk or reduced-fd repository. For RPP repositories, this value only includes message payload. Also for RPP, the source may optionally override this value with a value less than or equal with the source configuration option <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umerepositorysizethresholdsource">ume_repository_size_threshold (source)</a>. (units: bytes) </td><td><p class="starttd">25165824 (24 MB)</p>
+<td>repository-size-threshold </td><td>For topics with a repository-type of memory, disk or reduced-fd, specifies the minimum number of message bytes (includes payload, headers, and store structure overhead) retained for a topic before the repository starts to delete old messages. Pertains to a memory store or the memory cache of a disk or reduced-fd repository. For RPP repositories, this value only includes message payload. Also for RPP, the source may optionally override this value with a value less than or equal with the source configuration option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umerepositorysizethresholdsource">ume_repository_size_threshold (source)</a>. (units: bytes) </td><td><p class="starttd">25165824 (24 MB)</p>
 <p class="endtd"><a class="anchor" id="umecfgrepositorysizelimit"></a></p>
 </td></tr>
 <tr>
-<td>repository-size-limit </td><td>For topics with a repository-type of memory, disk or reduced-fd, specifies the maximum number of message bytes (includes payload, headers, and store structure overhead) retained for each source. Pertains to a memory store or the memory cache of a disk or reduced-fd repository. For RPP repositories, this value only includes message payload. Also for RPP, the source may optionally override this value with a value less than or equal with the source configuration option <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umerepositorysizelimitsource">ume_repository_size_limit (source)</a> (units: bytes) </td><td><p class="starttd">50331648 (48 MB)</p>
+<td>repository-size-limit </td><td>For topics with a repository-type of memory, disk or reduced-fd, specifies the maximum number of message bytes (includes payload, headers, and store structure overhead) retained for each source. Pertains to a memory store or the memory cache of a disk or reduced-fd repository. For RPP repositories, this value only includes message payload. Also for RPP, the source may optionally override this value with a value less than or equal with the source configuration option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umerepositorysizelimitsource">ume_repository_size_limit (source)</a> (units: bytes) </td><td><p class="starttd">50331648 (48 MB)</p>
 <p class="endtd"><a class="anchor" id="umecfgrepositoryagethreshold"></a></p>
 </td></tr>
 <tr>
@@ -816,7 +557,7 @@ Options for a Topic's ume-attributes Element&nbsp;&nbsp;<small><a href="#options
 <p class="endtd"><a class="anchor" id="umecfgrepositorydiskfilesizelimit"></a></p>
 </td></tr>
 <tr>
-<td>repository-disk-file-size-limit </td><td>For topics with a <a class="el" href="configurationreferenceforumestored.html#umecfgrepositorytype">repository-type</a> of disk or reduced-fd, specifies the maximum amount of disk space that will be used to store retained messages. A minimum value of 196992 is enforced. For RPP, the source may optionally override this value with a value less than or equal with the source configuration option <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umerepositorydiskfilesizelimitsource">ume_repository_disk_file_size_limit (source)</a>. (units: bytes) </td><td><p class="starttd">104857600 (100 MB)</p>
+<td>repository-disk-file-size-limit </td><td>For topics with a <a class="el" href="configurationreferenceforumestored.html#umecfgrepositorytype">repository-type</a> of disk or reduced-fd, specifies the maximum amount of disk space that will be used to store retained messages. A minimum value of 196992 is enforced. For RPP, the source may optionally override this value with a value less than or equal with the source configuration option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umerepositorydiskfilesizelimitsource">ume_repository_disk_file_size_limit (source)</a>. (units: bytes) </td><td><p class="starttd">104857600 (100 MB)</p>
 <p class="endtd"><a class="anchor" id="umecfgrepositorydiskfilepreallocate"></a></p>
 </td></tr>
 <tr>
@@ -832,19 +573,19 @@ Options for a Topic's ume-attributes Element&nbsp;&nbsp;<small><a href="#options
 <p class="endtd"><a class="anchor" id="umecfgsourceactivitytimeout"></a></p>
 </td></tr>
 <tr>
-<td>source-activity-timeout </td><td>Establishes the period of time from a source's last activity to the release of the source's RegID. Stores return an error to any new source requesting the source's RegID during this period. If proxy sources are enabled (<a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeproxysourcesource">ume_proxy_source (source)</a>) the store does not release the source's RegID and UM elects a proxy source. If neither proxy sources nor <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umestatelifetimesource">ume_state_lifetime (source)</a> are configured, the store also deletes the source's state and cache. Can be overridden by <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeactivitytimeoutsource">ume_activity_timeout (source)</a>. See also <a class="el" href="persistencefaulttolerance.html#persistenceproxysources">Persistence Proxy Sources</a>. (units: milliseconds) </td><td><p class="starttd">30000 (30 seconds)</p>
+<td>source-activity-timeout </td><td>Establishes the period of time from a source's last activity to the release of the source's RegID. Stores return an error to any new source requesting the source's RegID during this period. If proxy sources are enabled (<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeproxysourcesource">ume_proxy_source (source)</a>) the store does not release the source's RegID and UM elects a proxy source. If neither proxy sources nor <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umestatelifetimesource">ume_state_lifetime (source)</a> are configured, the store also deletes the source's state and cache. Can be overridden by <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeactivitytimeoutsource">ume_activity_timeout (source)</a>. See also <a class="el" href="persistencefaulttolerance.html#persistenceproxysources">Persistence Proxy Sources</a>. (units: milliseconds) </td><td><p class="starttd">30000 (30 seconds)</p>
 <p class="endtd"><a class="anchor" id="umecfgsourcestatelifetime"></a></p>
 </td></tr>
 <tr>
-<td>source-state-lifetime </td><td>Establishes the period of time from a source's last activity to the deletion of the source's state and cache by the store, regardless of whether a proxy source has been created or not. You can also configure <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umestatelifetimesource">ume_state_lifetime (source)</a> for the source. The store uses whichever is shorter. See also <a class="el" href="persistencefaulttolerance.html#persistenceproxysources">Persistence Proxy Sources</a>. (units: milliseconds) </td><td><p class="starttd">0 (zero)</p>
+<td>source-state-lifetime </td><td>Establishes the period of time from a source's last activity to the deletion of the source's state and cache by the store, regardless of whether a proxy source has been created or not. You can also configure <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umestatelifetimesource">ume_state_lifetime (source)</a> for the source. The store uses whichever is shorter. See also <a class="el" href="persistencefaulttolerance.html#persistenceproxysources">Persistence Proxy Sources</a>. (units: milliseconds) </td><td><p class="starttd">0 (zero)</p>
 <p class="endtd"><a class="anchor" id="umecfgreceiveractivitytimeout"></a></p>
 </td></tr>
 <tr>
-<td>receiver-activity-timeout </td><td>Establishes the period of time from a receiver's last activity to the release of the receiver's RegID. Stores return an error to any new request for the receiver's RegID during this period. Can be overridden by <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeactivitytimeoutsource">ume_activity_timeout (source)</a>. See also <a class="el" href="persistencefaulttolerance.html#persistenceproxysources">Persistence Proxy Sources</a>. (units: milliseconds) </td><td><p class="starttd">30000 (30 seconds)</p>
+<td>receiver-activity-timeout </td><td>Establishes the period of time from a receiver's last activity to the release of the receiver's RegID. Stores return an error to any new request for the receiver's RegID during this period. Can be overridden by <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeactivitytimeoutsource">ume_activity_timeout (source)</a>. See also <a class="el" href="persistencefaulttolerance.html#persistenceproxysources">Persistence Proxy Sources</a>. (units: milliseconds) </td><td><p class="starttd">30000 (30 seconds)</p>
 <p class="endtd"><a class="anchor" id="umecfgreceiverstatelifetime"></a></p>
 </td></tr>
 <tr>
-<td>receiver-state-lifetime </td><td>Establishes the period of time from a receiver's last activity to the deletion of the receiver's state and cache by the store. You can also configure <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umestatelifetimereceiver">ume_state_lifetime (receiver)</a> for the receiver. The store uses whichever is shorter. See also <a class="el" href="persistencefaulttolerance.html#persistenceproxysources">Persistence Proxy Sources</a>. (units: milliseconds) </td><td><p class="starttd">0 (zero)</p>
+<td>receiver-state-lifetime </td><td>Establishes the period of time from a receiver's last activity to the deletion of the receiver's state and cache by the store. You can also configure <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umestatelifetimereceiver">ume_state_lifetime (receiver)</a> for the receiver. The store uses whichever is shorter. See also <a class="el" href="persistencefaulttolerance.html#persistenceproxysources">Persistence Proxy Sources</a>. (units: milliseconds) </td><td><p class="starttd">0 (zero)</p>
 <p class="endtd"><a class="anchor" id="umecfgsourcecheckinterval"></a></p>
 </td></tr>
 <tr>
@@ -872,19 +613,19 @@ Options for a Topic's ume-attributes Element&nbsp;&nbsp;<small><a href="#options
 <p class="endtd"><a class="anchor" id="umecfgrepositoryallowreceiverpacedpersistence"></a></p>
 </td></tr>
 <tr>
-<td>repository-allow-receiver-paced-persistence </td><td>Specifies if the repository allows receiver-paced persistence (1). If allowed, the source may optionally request RPP with <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umereceiverpacedpersistencesource">ume_receiver_paced_persistence (source)</a>. Both must be done for RPP to be in effect. </td><td><p class="starttd">0 (store does not allow the source to specify RPP)</p>
+<td>repository-allow-receiver-paced-persistence </td><td>Specifies if the repository allows receiver-paced persistence (1). If allowed, the source may optionally request RPP with <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umereceiverpacedpersistencesource">ume_receiver_paced_persistence (source)</a>. Both must be done for RPP to be in effect. </td><td><p class="starttd">0 (store does not allow the source to specify RPP)</p>
 <p class="endtd"><a class="anchor" id="umecfgrepositoryallowackonreception"></a></p>
 </td></tr>
 <tr>
-<td>repository-allow-ack-on-reception </td><td>For RPP, specifies if the repository allows the repository to perform "ack on reception" (1). If allowed, the source may optionally request "ack on reception" with <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umerepositoryackonreceptionsource">ume_repository_ack_on_reception (source)</a>. Both must be done for "ack on reception" to be in effect. For SPP and memory stores, this option has no effect. See <a class="el" href="operationalview.html#rppnormaloperation">RPP Normal Operation</a> for more information. </td><td><p class="starttd">0 (store does not allow the source to specify ack-on-reception behavior)</p>
+<td>repository-allow-ack-on-reception </td><td>For RPP, specifies if the repository allows the repository to perform "ack on reception" (1). If allowed, the source may optionally request "ack on reception" with <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umerepositoryackonreceptionsource">ume_repository_ack_on_reception (source)</a>. Both must be done for "ack on reception" to be in effect. For SPP and memory stores, this option has no effect. See <a class="el" href="operationalview.html#rppnormaloperation">RPP Normal Operation</a> for more information. </td><td><p class="starttd">0 (store does not allow the source to specify ack-on-reception behavior)</p>
 <p class="endtd"><a class="anchor" id="umecfgrepositorydiskwritedelay"></a></p>
 </td></tr>
 <tr>
-<td>repository-disk-write-delay </td><td>For topics with a repository-type of disk or reduced-fd, specifies the maximum delay in milliseconds after message reception before the repository persists a message to disk. For RPP, the source may optionally override this value with a value less than or equal with the source configuration option <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umewritedelaysource">ume_write_delay (source)</a>. (units: milliseconds) </td><td><p class="starttd">0 milliseconds</p>
+<td>repository-disk-write-delay </td><td>For topics with a repository-type of disk or reduced-fd, specifies the maximum delay in milliseconds after message reception before the repository persists a message to disk. For RPP, the source may optionally override this value with a value less than or equal with the source configuration option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umewritedelaysource">ume_write_delay (source)</a>. (units: milliseconds) </td><td><p class="starttd">0 milliseconds</p>
 <p class="endtd"><a class="anchor" id="umecfgsourceflightsizebytesmaximum"></a></p>
 </td></tr>
 <tr>
-<td>source-flight-size-bytes-maximum </td><td>With RPP, specifies the maximum number of in-flight payload bytes that the source is allowed to configure with <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeflightsizebytessource">ume_flight_size_bytes (source)</a>. If the source attempts to configure <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeflightsizebytessource">ume_flight_size_bytes (source)</a> greater than the store's <a class="el" href="configurationreferenceforumestored.html#umecfgsourceflightsizebytesmaximum">source-flight-size-bytes-maximum</a>, the source registration is rejected. For SPP stores, this option has no effect (i.e. the source is not restricted in its configuration). See <a class="el" href="operationalview.html#persistenceflightsize">Persistence Flight Size</a> for more information. (units: bytes) </td><td>4194304 bytes (4MB) </td></tr>
+<td>source-flight-size-bytes-maximum </td><td>With RPP, specifies the maximum number of in-flight payload bytes that the source is allowed to configure with <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeflightsizebytessource">ume_flight_size_bytes (source)</a>. If the source attempts to configure <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeflightsizebytessource">ume_flight_size_bytes (source)</a> greater than the store's <a class="el" href="configurationreferenceforumestored.html#umecfgsourceflightsizebytesmaximum">source-flight-size-bytes-maximum</a>, the source registration is rejected. For SPP stores, this option has no effect (i.e. the source is not restricted in its configuration). See <a class="el" href="operationalview.html#persistenceflightsize">Persistence Flight Size</a> for more information. (units: bytes) </td><td>4194304 bytes (4MB) </td></tr>
 </table>
 <p><br />
  </p>
@@ -892,25 +633,7 @@ Options for a Topic's ume-attributes Element&nbsp;&nbsp;<small><a href="#options
 Option Types for ume-attributes Elements&nbsp;&nbsp;<small><a href="#optiontypesforumeattributeselements">&lt;-</a></small></h1>
 <p>As mentioned in <a class="el" href="configurationreferenceforumestored.html#optionsforastoresumeattributeselement">Options for a Store's ume-attributes Element</a>, all options configured for '<code>&lt;ume-attributes&gt;</code>' require an '<code>&lt;option&gt;</code>' type, which specifies the scope of the option.</p>
 <p>For example, here is a store configuration which illustrates several options being set of varying types:</p>
-<pre class="fragment">&lt;?xml version="1.0"?&gt;
-  &lt;stores&gt;
-    &lt;store name="test-store" port="14567"&gt;
-      &lt;ume-attributes&gt;
-        &lt;option type="store" name="disk-cache-directory" value="cache"/&gt;
-        &lt;option type="lbm-context" name="transport_lbtrm_rate_interval" value="100"/&gt;
-      &lt;/ume-attributes&gt;
-      &lt;topics&gt;
-        &lt;topic pattern="test.*" type="PCRE"&gt;
-          &lt;ume-attributes&gt;
-            &lt;option type="lbm-receiver" name="transport_lbtrm_send_naks" value="0"/&gt;
-            &lt;option type="lbm-source" name="transport" value="lbtru"/&gt;
-            &lt;option type="store" name="repository-size-limit" value="209715200"/&gt;
-          &lt;/ume-attributes&gt;
-        &lt;/topic&gt;
-      &lt;/topics&gt;
-    &lt;/store&gt;
-  &lt;/stores&gt;
-</pre><p>The following table describes the Option Types:</p>
+<div class="fragment"><div class="line">&lt;?xml version=<span class="stringliteral">&quot;1.0&quot;</span>?&gt;</div><div class="line">  &lt;stores&gt;</div><div class="line">    &lt;store name=<span class="stringliteral">&quot;test-store&quot;</span> port=<span class="stringliteral">&quot;14567&quot;</span>&gt;</div><div class="line">      &lt;ume-attributes&gt;</div><div class="line">        &lt;option type=<span class="stringliteral">&quot;store&quot;</span> name=<span class="stringliteral">&quot;disk-cache-directory&quot;</span> value=<span class="stringliteral">&quot;cache&quot;</span>/&gt;</div><div class="line">        &lt;option type=<span class="stringliteral">&quot;lbm-context&quot;</span> name=<span class="stringliteral">&quot;transport_lbtrm_rate_interval&quot;</span> value=<span class="stringliteral">&quot;100&quot;</span>/&gt;</div><div class="line">      &lt;/ume-attributes&gt;</div><div class="line">      &lt;topics&gt;</div><div class="line">        &lt;topic pattern=<span class="stringliteral">&quot;test.*&quot;</span> type=<span class="stringliteral">&quot;PCRE&quot;</span>&gt;</div><div class="line">          &lt;ume-attributes&gt;</div><div class="line">            &lt;option type=<span class="stringliteral">&quot;lbm-receiver&quot;</span> name=<span class="stringliteral">&quot;transport_lbtrm_send_naks&quot;</span> value=<span class="stringliteral">&quot;0&quot;</span>/&gt;</div><div class="line">            &lt;option type=<span class="stringliteral">&quot;lbm-source&quot;</span> name=<span class="stringliteral">&quot;transport&quot;</span> value=<span class="stringliteral">&quot;lbtru&quot;</span>/&gt;</div><div class="line">            &lt;option type=<span class="stringliteral">&quot;store&quot;</span> name=<span class="stringliteral">&quot;repository-size-limit&quot;</span> value=<span class="stringliteral">&quot;209715200&quot;</span>/&gt;</div><div class="line">          &lt;/ume-attributes&gt;</div><div class="line">        &lt;/topic&gt;</div><div class="line">      &lt;/topics&gt;</div><div class="line">    &lt;/store&gt;</div><div class="line">  &lt;/stores&gt;</div></div><!-- fragment --><p>The following table describes the Option Types:</p>
 <table class="doxtable">
 <tr>
 <th>Option Type </th><th>Description </th><th><p class="starttd">Default Value</p>
@@ -955,105 +678,18 @@ umestored Configuration DTD&nbsp;&nbsp;<small><a href="#umestoredconfigurationdt
 <td>1.3 </td><td>November 2016 </td><td>UM 6.10 </td><td>Addition of '<code>&lt;xml-config&gt;</code>' element (under '<code>&lt;daemon&gt;</code>'). </td></tr>
 </table>
 <p>Here is the current version:</p>
-<pre class="fragment">&lt;!ELEMENT ume-store (daemon, stores?)&gt; 
-&lt;!ATTLIST ume-store version CDATA #REQUIRED&gt; 
-&lt;!ELEMENT daemon (log | uid | pidfile | gid | lbm-config | xml-config | lbm-license-file | web-monitor | daemon-monitor)*&gt; 
-&lt;!ELEMENT log ( #PCDATA )&gt; 
-&lt;!ATTLIST log type (file | console) "console"&gt; 
-&lt;!ATTLIST log frequency (disable | daily | hourly | test) "disable"&gt; 
-&lt;!ATTLIST log size CDATA #IMPLIED&gt; 
-&lt;!ATTLIST log xml:space (default | preserve) "default"&gt;
-&lt;!ELEMENT pidfile ( #PCDATA )&gt; 
-&lt;!ATTLIST pidfile xml:space (default | preserve) "default"&gt;
-&lt;!ELEMENT uid ( #PCDATA )&gt; 
-&lt;!ATTLIST uid xml:space (default | preserve) "default"&gt;
-&lt;!ELEMENT gid ( #PCDATA )&gt; 
-&lt;!ATTLIST gid xml:space (default | preserve) "default"&gt;
-&lt;!ELEMENT lbm-config ( #PCDATA )&gt; 
-&lt;!ATTLIST lbm-config xml:space (default | preserve) "default"&gt;
-&lt;!ELEMENT xml-config ( #PCDATA )&gt; 
-&lt;!ATTLIST xml-config xml:space (default | preserve) "default"&gt;
-&lt;!ATTLIST xml-config application-name CDATA #IMPLIED&gt; 
-&lt;!ELEMENT lbm-license-file ( #PCDATA )&gt; 
-&lt;!ATTLIST lbm-license-file xml:space (default | preserve) "default"&gt;
-&lt;!ELEMENT web-monitor ( #PCDATA )&gt; 
-&lt;!ATTLIST web-monitor xml:space (default | preserve) "default"&gt;
-&lt;!ELEMENT stores (store*)&gt; 
-&lt;!ELEMENT store (publishing-interval | ume-attributes | topics)+&gt; 
-&lt;!ATTLIST store name CDATA #REQUIRED&gt; 
-&lt;!ATTLIST store interface CDATA #IMPLIED&gt; 
-&lt;!ATTLIST store port CDATA #REQUIRED&gt; 
-&lt;!ELEMENT topics (topic+)&gt; 
-&lt;!ELEMENT topic (ume-attributes*)&gt; 
-&lt;!ATTLIST topic pattern CDATA #REQUIRED&gt; 
-&lt;!ATTLIST topic type (direct | PCRE | regexp) #IMPLIED&gt; 
-&lt;!ELEMENT ume-attributes (option+)&gt; 
-&lt;!ELEMENT option EMPTY&gt; 
-&lt;!ATTLIST option type (lbm-receiver | lbm-context | lbm-source | store) #IMPLIED&gt; 
-&lt;!ATTLIST option name CDATA #REQUIRED&gt; 
-&lt;!ATTLIST option value CDATA #REQUIRED&gt; 
-&lt;!ELEMENT daemon-monitor (lbm-config | publishing-interval | remote-snapshot-request | remote-config-changes-request)*&gt; 
-&lt;!ATTLIST daemon-monitor topic CDATA "umestore.monitor"&gt; 
-&lt;!ELEMENT publishing-interval (group+)&gt; 
-&lt;!ELEMENT group EMPTY&gt; 
-&lt;!ATTLIST group name (default | store | source | receiver | disk | config | memory) #REQUIRED&gt; 
-&lt;!ATTLIST group ivl CDATA #REQUIRED&gt; 
-&lt;!ELEMENT remote-snapshot-request EMPTY&gt; 
-&lt;!ATTLIST remote-snapshot-request allow (0 | 1) "0"&gt; 
-&lt;!ELEMENT remote-config-changes-request EMPTY&gt; 
-&lt;!ATTLIST remote-config-changes-request allow (0 | 1) "0"&gt; </pre><p><br />
+<div class="fragment"><div class="line">&lt;!ELEMENT ume-store (daemon, stores?)&gt; </div><div class="line">&lt;!ATTLIST ume-store version CDATA #REQUIRED&gt; </div><div class="line">&lt;!ELEMENT daemon (log | uid | pidfile | gid | lbm-config | xml-config | lbm-license-file | web-monitor | daemon-monitor)*&gt; </div><div class="line">&lt;!ELEMENT log ( #PCDATA )&gt; </div><div class="line">&lt;!ATTLIST log type (file | console) <span class="stringliteral">&quot;console&quot;</span>&gt; </div><div class="line">&lt;!ATTLIST log frequency (disable | daily | hourly | test) <span class="stringliteral">&quot;disable&quot;</span>&gt; </div><div class="line">&lt;!ATTLIST log size CDATA #IMPLIED&gt; </div><div class="line">&lt;!ATTLIST log xml:space (<span class="keywordflow">default</span> | preserve) <span class="stringliteral">&quot;default&quot;</span>&gt;</div><div class="line">&lt;!ELEMENT pidfile ( #PCDATA )&gt; </div><div class="line">&lt;!ATTLIST pidfile xml:space (<span class="keywordflow">default</span> | preserve) <span class="stringliteral">&quot;default&quot;</span>&gt;</div><div class="line">&lt;!ELEMENT uid ( #PCDATA )&gt; </div><div class="line">&lt;!ATTLIST uid xml:space (<span class="keywordflow">default</span> | preserve) <span class="stringliteral">&quot;default&quot;</span>&gt;</div><div class="line">&lt;!ELEMENT gid ( #PCDATA )&gt; </div><div class="line">&lt;!ATTLIST gid xml:space (<span class="keywordflow">default</span> | preserve) <span class="stringliteral">&quot;default&quot;</span>&gt;</div><div class="line">&lt;!ELEMENT lbm-config ( #PCDATA )&gt; </div><div class="line">&lt;!ATTLIST lbm-config xml:space (<span class="keywordflow">default</span> | preserve) <span class="stringliteral">&quot;default&quot;</span>&gt;</div><div class="line">&lt;!ELEMENT xml-config ( #PCDATA )&gt; </div><div class="line">&lt;!ATTLIST xml-config xml:space (<span class="keywordflow">default</span> | preserve) <span class="stringliteral">&quot;default&quot;</span>&gt;</div><div class="line">&lt;!ATTLIST xml-config application-name CDATA #IMPLIED&gt; </div><div class="line">&lt;!ELEMENT lbm-license-file ( #PCDATA )&gt; </div><div class="line">&lt;!ATTLIST lbm-license-file xml:space (<span class="keywordflow">default</span> | preserve) <span class="stringliteral">&quot;default&quot;</span>&gt;</div><div class="line">&lt;!ELEMENT web-monitor ( #PCDATA )&gt; </div><div class="line">&lt;!ATTLIST web-monitor xml:space (<span class="keywordflow">default</span> | preserve) <span class="stringliteral">&quot;default&quot;</span>&gt;</div><div class="line">&lt;!ELEMENT stores (store*)&gt; </div><div class="line">&lt;!ELEMENT store (publishing-interval | ume-attributes | topics)+&gt; </div><div class="line">&lt;!ATTLIST store name CDATA #REQUIRED&gt; </div><div class="line">&lt;!ATTLIST store <span class="keyword">interface </span>CDATA #IMPLIED&gt; </div><div class="line">&lt;!ATTLIST store port CDATA #REQUIRED&gt; </div><div class="line">&lt;!ELEMENT topics (topic+)&gt; </div><div class="line">&lt;!ELEMENT topic (ume-attributes*)&gt; </div><div class="line">&lt;!ATTLIST topic pattern CDATA #REQUIRED&gt; </div><div class="line">&lt;!ATTLIST topic type (direct | PCRE | regexp) <span class="preprocessor">#IMPLIED&gt; </span></div><div class="line">&lt;!ELEMENT ume-attributes (option+)&gt; </div><div class="line">&lt;!ELEMENT option EMPTY&gt; </div><div class="line">&lt;!ATTLIST option type (lbm-receiver | lbm-context | lbm-source | store) <span class="preprocessor">#IMPLIED&gt; </span></div><div class="line">&lt;!ATTLIST option name CDATA #REQUIRED&gt; </div><div class="line">&lt;!ATTLIST option value CDATA #REQUIRED&gt; </div><div class="line">&lt;!ELEMENT daemon-monitor (lbm-config | publishing-interval | remote-snapshot-request | remote-config-changes-request)*&gt; </div><div class="line">&lt;!ATTLIST daemon-monitor topic CDATA <span class="stringliteral">&quot;umestore.monitor&quot;</span>&gt; </div><div class="line">&lt;!ELEMENT publishing-interval (group+)&gt; </div><div class="line">&lt;!ELEMENT group EMPTY&gt; </div><div class="line">&lt;!ATTLIST group name (<span class="keywordflow">default</span> | store | source | receiver | disk | config | memory) <span class="preprocessor">#REQUIRED&gt; </span></div><div class="line">&lt;!ATTLIST group ivl CDATA #REQUIRED&gt; </div><div class="line">&lt;!ELEMENT remote-snapshot-request EMPTY&gt; </div><div class="line">&lt;!ATTLIST remote-snapshot-request allow (0 | 1) <span class="stringliteral">&quot;0&quot;</span>&gt; </div><div class="line">&lt;!ELEMENT remote-config-changes-request EMPTY&gt; </div><div class="line">&lt;!ATTLIST remote-config-changes-request allow (0 | 1) <span class="stringliteral">&quot;0&quot;</span>&gt; </div></div><!-- fragment --><p><br />
  </p>
 <h1><a class="anchor" id="storeconfigurationexample"></a>
 Store Configuration Example&nbsp;&nbsp;<small><a href="#storeconfigurationexample">&lt;-</a></small></h1>
 <p>Store daemon with one store.</p>
-<pre class="fragment">&lt;?xml version="1.0"?&gt;
-&lt;ume-store version="1.3"&gt;
-  &lt;daemon&gt;
-    &lt;log&gt;stored.log&lt;/log&gt;
-    &lt;pidfile&gt;stored.pid&lt;/pidfile&gt;
-    &lt;web-monitor&gt;*:15304&lt;/web-monitor&gt;
-  &lt;/daemon&gt;
-
-  &lt;stores&gt;
-    &lt;store name="test-store" port="14567"&gt;
-      &lt;ume-attributes&gt;
-        &lt;option type="store" name="disk-cache-directory" value="cache"/&gt;
-        &lt;option type="store" name="disk-state-directory" value="state"/&gt;
-        &lt;option type="store" name="context-name" value="remote-store"/&gt;
-      &lt;/ume-attributes&gt;
-      &lt;topics&gt;
-        &lt;topic pattern="test.*" type="PCRE"&gt;
-          &lt;ume-attributes&gt;
-            &lt;option type="store" name="repository-type" value="disk"/&gt;
-            &lt;option type="store" name="repository-size-threshold" value="104857600"/&gt;
-            &lt;option type="store" name="repository-size-limit" value="209715200"/&gt;
-            &lt;option type="store" name="repository-disk-file-size-limit" value="1073741824"/&gt;
-            &lt;option type="store" name="source-activity-timeout" value="120000"/&gt;
-            &lt;option type="store" name="receiver-activity-timeout" value="120000"/&gt;
-            &lt;option type="store" name="retransmission-request-forwarding" value="0"/&gt;
-          &lt;/ume-attributes&gt;
-        &lt;/topic&gt;
-      &lt;/topics&gt;
-    &lt;/store&gt;
-  &lt;/stores&gt;
-&lt;/ume-store&gt;
-</pre><p><br />
+<div class="fragment"><div class="line">&lt;?xml version=<span class="stringliteral">&quot;1.0&quot;</span>?&gt;</div><div class="line">&lt;ume-store version=<span class="stringliteral">&quot;1.3&quot;</span>&gt;</div><div class="line">  &lt;daemon&gt;</div><div class="line">    &lt;log&gt;stored.log&lt;/log&gt;</div><div class="line">    &lt;pidfile&gt;stored.pid&lt;/pidfile&gt;</div><div class="line">    &lt;web-monitor&gt;*:15304&lt;/web-monitor&gt;</div><div class="line">  &lt;/daemon&gt;</div><div class="line"></div><div class="line">  &lt;stores&gt;</div><div class="line">    &lt;store name=<span class="stringliteral">&quot;test-store&quot;</span> port=<span class="stringliteral">&quot;14567&quot;</span>&gt;</div><div class="line">      &lt;ume-attributes&gt;</div><div class="line">        &lt;option type=<span class="stringliteral">&quot;store&quot;</span> name=<span class="stringliteral">&quot;disk-cache-directory&quot;</span> value=<span class="stringliteral">&quot;cache&quot;</span>/&gt;</div><div class="line">        &lt;option type=<span class="stringliteral">&quot;store&quot;</span> name=<span class="stringliteral">&quot;disk-state-directory&quot;</span> value=<span class="stringliteral">&quot;state&quot;</span>/&gt;</div><div class="line">        &lt;option type=<span class="stringliteral">&quot;store&quot;</span> name=<span class="stringliteral">&quot;context-name&quot;</span> value=<span class="stringliteral">&quot;remote-store&quot;</span>/&gt;</div><div class="line">      &lt;/ume-attributes&gt;</div><div class="line">      &lt;topics&gt;</div><div class="line">        &lt;topic pattern=<span class="stringliteral">&quot;test.*&quot;</span> type=<span class="stringliteral">&quot;PCRE&quot;</span>&gt;</div><div class="line">          &lt;ume-attributes&gt;</div><div class="line">            &lt;option type=<span class="stringliteral">&quot;store&quot;</span> name=<span class="stringliteral">&quot;repository-type&quot;</span> value=<span class="stringliteral">&quot;disk&quot;</span>/&gt;</div><div class="line">            &lt;option type=<span class="stringliteral">&quot;store&quot;</span> name=<span class="stringliteral">&quot;repository-size-threshold&quot;</span> value=<span class="stringliteral">&quot;104857600&quot;</span>/&gt;</div><div class="line">            &lt;option type=<span class="stringliteral">&quot;store&quot;</span> name=<span class="stringliteral">&quot;repository-size-limit&quot;</span> value=<span class="stringliteral">&quot;209715200&quot;</span>/&gt;</div><div class="line">            &lt;option type=<span class="stringliteral">&quot;store&quot;</span> name=<span class="stringliteral">&quot;repository-disk-file-size-limit&quot;</span> value=<span class="stringliteral">&quot;1073741824&quot;</span>/&gt;</div><div class="line">            &lt;option type=<span class="stringliteral">&quot;store&quot;</span> name=<span class="stringliteral">&quot;source-activity-timeout&quot;</span> value=<span class="stringliteral">&quot;120000&quot;</span>/&gt;</div><div class="line">            &lt;option type=<span class="stringliteral">&quot;store&quot;</span> name=<span class="stringliteral">&quot;receiver-activity-timeout&quot;</span> value=<span class="stringliteral">&quot;120000&quot;</span>/&gt;</div><div class="line">            &lt;option type=<span class="stringliteral">&quot;store&quot;</span> name=<span class="stringliteral">&quot;retransmission-request-forwarding&quot;</span> value=<span class="stringliteral">&quot;0&quot;</span>/&gt;</div><div class="line">          &lt;/ume-attributes&gt;</div><div class="line">        &lt;/topic&gt;</div><div class="line">      &lt;/topics&gt;</div><div class="line">    &lt;/store&gt;</div><div class="line">  &lt;/stores&gt;</div><div class="line">&lt;/ume-store&gt;</div></div><!-- fragment --><p><br />
  </p>
 <h2><a class="anchor" id="xmlconfigtag"></a>
 xml-config Tag&nbsp;&nbsp;<small><a href="#xmlconfigtag">&lt;-</a></small></h2>
 <p>The '<code>&lt;xml-config&gt;</code>' tag is used to load a UM configuration file which is used by the store as it creates UM objects (contexts, receivers, etc.). This example applies the configuration specified in the "tnwgd" application tag of the file "lbm_cfg.xml":</p>
-<pre class="fragment">&lt;ume-store version="1.3"&gt;
-    &lt;daemon&gt;
-        ...
-        &lt;xml-config application-name="tnwgd"&gt;lbm_cfg.xml&lt;/lbm-xmlconfig&gt;
-    &lt;/daemon&gt;
-</pre><p>If an '<code>application-name</code>' attribute is not supplied, "umestored" is assumed. If it is desired to load the unnamed configuration, use an empty application name as follows:</p>
-<pre class="fragment">&lt;ume-store version="1.3"&gt;
-    &lt;daemon&gt;
-        ...
-        &lt;xml-config application-name=""&gt;lbm_cfg.xml&lt;/lbm-xmlconfig&gt;
-    &lt;/daemon&gt;
-</pre> </div></div><!-- contents -->
+<div class="fragment"><div class="line">&lt;ume-store version=<span class="stringliteral">&quot;1.3&quot;</span>&gt;</div><div class="line">    &lt;daemon&gt;</div><div class="line">        ...</div><div class="line">        &lt;xml-config application-name=<span class="stringliteral">&quot;tnwgd&quot;</span>&gt;lbm_cfg.xml&lt;/lbm-xmlconfig&gt;</div><div class="line">    &lt;/daemon&gt;</div></div><!-- fragment --><p>If an '<code>application-name</code>' attribute is not supplied, "umestored" is assumed. If it is desired to load the unnamed configuration, use an empty application name as follows:</p>
+<div class="fragment"><div class="line">&lt;ume-store version=<span class="stringliteral">&quot;1.3&quot;</span>&gt;</div><div class="line">    &lt;daemon&gt;</div><div class="line">        ...</div><div class="line">        &lt;xml-config application-name=<span class="stringliteral">&quot;&quot;</span>&gt;lbm_cfg.xml&lt;/lbm-xmlconfig&gt;</div><div class="line">    &lt;/daemon&gt;</div></div><!-- fragment --> </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.8.11-->
 </body>

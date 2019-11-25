@@ -2,6 +2,10 @@ var NAVTREE =
 [
   [ "UM Java API", "index.html", [
     [ "Introduction", "index.html", [
+      [ "UM Java API", "index.html#umjavaapi", [
+        [ "Using UM Java on Windows", "index.html#usingumjavaonwindows", null ],
+        [ "Using UM Java on Unix", "index.html#usingumjavaonunix", null ]
+      ] ],
       [ "Java Native Interface (JNI)", "index.html#javanativeinterfacejni", null ],
       [ "Garbage Collection", "index.html#garbagecollection", null ],
       [ "Zero Object Delivery (ZOD)", "index.html#zeroobjectdeliveryzod", null ],
@@ -25,28 +29,28 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 ".html",
-"classcom_1_1latencybusters_1_1lbm_1_1LBM.html#ac29ceceec8a72e6c87924b8f7bdc8a8c",
-"classcom_1_1latencybusters_1_1lbm_1_1LBMContextEvent.html#af03a0ef811ba61fa57d29aa52e60fb81",
-"classcom_1_1latencybusters_1_1lbm_1_1LBMHotFailoverReceiver.html#a1c2c2d94e2be9f0f8d08ef1785783b53",
-"classcom_1_1latencybusters_1_1lbm_1_1LBMMessage.html#a996ca5c8692ade90ca66b14ec61525a1",
-"classcom_1_1latencybusters_1_1lbm_1_1LBMReceiver.html#ab0007800cdb6ed4ab3d438f664d7b952",
-"classcom_1_1latencybusters_1_1lbm_1_1LBMSource.html#acd1e9c7df5c07b586b87de54b6a3ef90",
-"classcom_1_1latencybusters_1_1lbm_1_1LBMXSPAttributes.html",
-"classcom_1_1latencybusters_1_1lbm_1_1UMQSourceEventMessageIdInfo.html#a5024b523c03c9279b0e01db5dc268a6a",
-"classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMArrayDecimal.html#a88e9367208c399ee96f7ebdee9115afe",
-"classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMArrayInt16.html#a7f4f5c9ddb8d33822f0d823f75725da3",
-"classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMArrayInt8.html#a78fdd2ff35279704282c193b4975cc47",
-"classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMArrayTimestamp.html#a45b1b53134202fdbebac5f6bd7c4c10b",
-"classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMArrayUint64.html#a35291723a0fbc070e83570d42ce8dd49",
-"classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMBadTypeException.html#ac2aee59d9926982fc3610c449985493d",
-"classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMFieldDecimal.html#a26e93064f2d7f328694318a9cae291e2",
-"classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMFieldInt16.html#a5c2562895ea53e6063044c191debcdd8",
-"classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMFieldInt8.html#a83f3c430d15517e7eb1377209db9f482",
-"classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMFieldTimestamp.html#a8f1c72c1c58174efc4cc0d9ca123f5a8",
-"classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMFieldUint64.html#aac9dbce5ce860e341645cdb26681be73",
-"classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMRawBlob.html#a50bda230634f514873c22e22becfa3af",
-"classcom_1_1latencybusters_1_1pdm_1_1PDMDeserializer.html#a09ab54a58b7c9ec47bfefd7130672f3a",
-"classcom_1_1latencybusters_1_1pdm_1_1PDMSerializer.html#a7cc51af45f60a8f39124ffa82d8f8835"
+"classcom_1_1latencybusters_1_1lbm_1_1LBM.html#ac1f0d5296c4168baec13d1fc7c1d5adf",
+"classcom_1_1latencybusters_1_1lbm_1_1LBMContextEvent.html#aeb38dfcd7f62db8ee0b26d90c12220b0",
+"classcom_1_1latencybusters_1_1lbm_1_1LBMHotFailoverReceiver.html#a1b652fb12ddfeaa7d5906b2ffda9385f",
+"classcom_1_1latencybusters_1_1lbm_1_1LBMMessage.html#a97d2845b671714b868cfb02916ef96ba",
+"classcom_1_1latencybusters_1_1lbm_1_1LBMReceiver.html#aa8278f8482aacccfd53c16b010a2d245",
+"classcom_1_1latencybusters_1_1lbm_1_1LBMSource.html#abd8766e77947c62b9ba02a5bc7e5359b",
+"classcom_1_1latencybusters_1_1lbm_1_1LBMXSP.html#af4a584daedb3c66c9c043c6c793d9189",
+"classcom_1_1latencybusters_1_1lbm_1_1UMQSourceEventMessageIdInfo.html",
+"classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMArrayDecimal.html#a8838e0538aa645168917a9df715fc332",
+"classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMArrayInt16.html#a7b3dcca9e7d6e1b486dcb3605a98827b",
+"classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMArrayInt8.html#a7831d7efe7b3c7e573a1277534897a59",
+"classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMArrayTimestamp.html#a42e12fa17653de24e7cb106a2b9c527d",
+"classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMArrayUint64.html#a2f100c99bf76503ef859d4e31d273b58",
+"classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMBadTypeException.html#aaa6eb0ae1fb63b3895945f44520a1647",
+"classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMFieldDecimal.html#a24163ff246f6d6243691d5d255769d09",
+"classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMFieldInt16.html#a55c168c124c725514237841570ae6bc1",
+"classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMFieldInt8.html#a8127cf2f59c71bf7950083d02ed7870c",
+"classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMFieldTimestamp.html#a8ef94fae133b60d5d1328b6c068ab109",
+"classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMFieldUint64.html#aabc17989328f892b2299d613a281de62",
+"classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMRawBlob.html#a3c03c8646702b8e1196d0d325bd37d06",
+"classcom_1_1latencybusters_1_1pdm_1_1PDMDeserializer.html",
+"classcom_1_1latencybusters_1_1pdm_1_1PDMSerializer.html#a78a1aa4d375cd55c69ccbbe85d5620a7"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

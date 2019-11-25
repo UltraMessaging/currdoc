@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">UM C API
-   &#160;<span id="projectnumber">6.12</span>
+   &#160;<span id="projectnumber">6.12.1</span>
    </div>
   </td>
  </tr>
@@ -66,7 +66,7 @@ $(document).ready(function(){initNavTree('index.html','');});
 <div class="contents">
 <div class="textblock"><p> 
 <img src="infa_logo.png" width="400" height="138" alt="Informatica"/><br/><br/>
-<big><b>Ultra Messaging</b></big> <small>(Version 6.12)</small><br/>
+<big><b>Ultra Messaging</b></big> <small>(Version 6.12.1)</small><br/>
 <br/><br/><br/>
 <center class="mytitle">Ultra Messaging C API</center>
 <br/><br/><br/>
@@ -79,7 +79,22 @@ $(document).ready(function(){initNavTree('index.html','');});
 <p>This software is protected by patents as detailed at <a href="https://www.informatica.com/legal/patents.html">https://www.informatica.com/legal/patents.html</a>.</p>
 <p>The information in this documentation is subject to change without notice. If you find any problems in this documentation, please report them to us in writing at Informatica LLC 2100 Seaport Blvd. Redwood City, CA 94063.</p>
 <p>Informatica products are warranted according to the terms and conditions of the agreements under which they are provided. <br />
-INFORMATICA LLC PROVIDES THE INFORMATION IN THIS DOCUMENT "AS IS" WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING WITHOUT ANY WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND ANY WARRANTY OR CONDITION OF NON-INFRINGEMENT. </p>
+INFORMATICA LLC PROVIDES THE INFORMATION IN THIS DOCUMENT "AS IS" WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING WITHOUT ANY WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND ANY WARRANTY OR CONDITION OF NON-INFRINGEMENT.</p>
+<p><br />
+ </p>
+<h1><a class="anchor" id="umcapi"></a>
+UM C API</h1>
+<p>To use the UM C API, you must access the UM headers (<code>".h"</code> files), and native libraries (dynamic or static). Note that these files are platform dependent and are contained in the platform-specific packages.</p>
+<p><br />
+ </p>
+<h2><a class="anchor" id="usingumconwindows"></a>
+Using UM C on Windows</h2>
+<p>To run C applications on Windows, the OS needs to be able to find the native UM library, <code>"lbm.dll"</code>. A typical way to accomplish this is to include the <code>"bin"</code> folder in the system PATH. For example: </p><div class="fragment"><div class="line">C:\Program Files\Informatica\UMS_6.12.1\Win2k-x86_64\bin</div></div><!-- fragment --><p> (Replace "UMS_6.12.1" with your UM version.)</p>
+<p><br />
+ </p>
+<h2><a class="anchor" id="usingumconunix"></a>
+Using UM C on Unix</h2>
+<p>To run C applications on Unix, the OS needs to be able to find the native UM library, <code>"liblbm.so"</code>. A typical way to accomplish this is to set the environment variable <code>"LD_LIBRARY_PATH"</code> to point at the UM library directory. For example: </p><div class="fragment"><div class="line">LD_LIBRARY_PATH=/um_home/UMS_6.12.1/Linux-glibc-2.17-x86_64/lib</div><div class="line">export LD_LIBRARY_PATH</div></div><!-- fragment --><p> (Replace <code>"/um_home/UMS_6.12.1/Linux-glibc-2.17-x86_64"</code> with the path where your version of UM is installed.) In there you will find the UM native libraries. </p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

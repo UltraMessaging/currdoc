@@ -1,7 +1,12 @@
 var NAVTREE =
 [
   [ "UM .NET API", "index.html", [
-    [ "Introduction", "index.html", null ],
+    [ "Introduction", "index.html", [
+      [ "UM .NET API", "index.html#umnetapi", [
+        [ "Using UM .NET on Windows", "index.html#usingumnetonwindows", null ],
+        [ "Using UM .NET on Linux", "index.html#usingumnetonlinux", null ]
+      ] ]
+    ] ],
     [ "Packages", null, [
       [ "Packages", "namespaces.html", "namespaces" ],
       [ "Package Functions", "namespacemembers.html", [

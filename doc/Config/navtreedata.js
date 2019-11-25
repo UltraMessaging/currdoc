@@ -131,6 +131,7 @@ var NAVTREE =
         [ "datagram_acceleration_functions (context)", "grpmajoroptions.html#datagramaccelerationfunctionscontext", null ],
         [ "default_interface (context)", "grpmajoroptions.html#defaultinterfacecontext", null ],
         [ "fd_management_type (context)", "grpmajoroptions.html#fdmanagementtypecontext", null ],
+        [ "file_descriptor_management_behavior (context)", "grpmajoroptions.html#filedescriptormanagementbehaviorcontext", null ],
         [ "message_selector (receiver)", "grpmajoroptions.html#messageselectorreceiver", null ],
         [ "multiple_receive_maximum_datagrams (context)", "grpmajoroptions.html#multiplereceivemaximumdatagramscontext", null ],
         [ "operational_mode (context)", "grpmajoroptions.html#operationalmodecontext", null ],
@@ -772,8 +773,8 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "accesstocurrentoperatingoptions.html",
-"grpmulticastresolvernetwork.html#resolvermulticastincomingportcontext",
-"grpultramessagingpersistence.html#umerepositoryackonreceptionsource"
+"grpmulticastresolvernetwork.html#resolvermulticastincomingaddresscontext",
+"grpultramessagingpersistence.html#umeregistrationintervalsource"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

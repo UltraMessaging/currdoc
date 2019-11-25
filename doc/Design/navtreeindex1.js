@@ -1,5 +1,8 @@
 var NAVTREEINDEX1 =
 {
+"umfeatures.html#encryptedtcp":[5,3],
+"umfeatures.html#highresolutiontimestamps":[5,5],
+"umfeatures.html#latejoinoptionssummary":[5,1,1],
 "umfeatures.html#latejoinwithump":[5,1,0],
 "umfeatures.html#mimandwildcardreceivers":[5,7,3],
 "umfeatures.html#mimconfiguration":[5,7,5],
@@ -8,6 +11,7 @@ var NAVTREEINDEX1 =
 "umfeatures.html#mimnotifications":[5,7,1],
 "umfeatures.html#multicastimmediatemessaging":[5,7],
 "umfeatures.html#offtransportrecoveryotr":[5,2],
+"umfeatures.html#openssldependency":[5,3,9],
 "umfeatures.html#otherxspoperations":[5,0,3],
 "umfeatures.html#otroptionssummary":[5,2,2],
 "umfeatures.html#otrwithsequencenumberordereddelivery":[5,2,0],
@@ -51,8 +55,8 @@ var NAVTREEINDEX1 =
 "umglossary.html#glossaryh":[14,7],
 "umglossary.html#glossaryi":[14,8],
 "umglossary.html#glossaryj":[14,9],
-"umglossary.html#glossaryk":[14,11],
-"umglossary.html#glossaryl":[14,10],
+"umglossary.html#glossaryk":[14,10],
+"umglossary.html#glossaryl":[14,11],
 "umglossary.html#glossarym":[14,12],
 "umglossary.html#glossaryn":[14,13],
 "umglossary.html#glossaryo":[14,14],

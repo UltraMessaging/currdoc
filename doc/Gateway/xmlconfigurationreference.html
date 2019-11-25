@@ -63,109 +63,7 @@ File Structure&nbsp;&nbsp;<small><a href="#filestructure">&lt;-</a></small></h1>
 <p>An XML UM Router configuration file generally comprises two primary elements: <code>&lt;daemon&gt;</code> and <code>&lt;portals&gt;</code>. Organized and contained within these are option value assignments. <code>&lt;daemon&gt;</code> sub-containers let you set options global to the UM Router. <code>&lt;portals&gt;</code> sub-containers let you configure each portal in the UM Router individually.</p>
 <p>In general, the order of the elements is important. Please refer to the examples and ensure proper element ordering.</p>
 <p>XML UM Router configuration files use the high-level structure shown in the following example. This example includes only some container elements, and only some options.</p>
-<pre class="fragment">&lt;?xml version="1.0" encoding="UTF-8" ?&gt;
-&lt;tnw-gateway version="1.0"&gt;
-  &lt;daemon&gt;
-    &lt;log type="console"/&gt;
-    &lt;uid&gt;0&lt;/uid&gt;
-    &lt;gid&gt;0&lt;/gid&gt;
-    &lt;pidfile&gt;/path/file.pid&lt;/pidfile&gt;
-    &lt;lbm-license-file&gt;/path/file.lic&lt;/lbm-license-file&gt;
-    &lt;topicmap/&gt;
-    &lt;patternmap/&gt;
-    &lt;monitor&gt;
-      &lt;transport-module/&gt;
-      &lt;format-module/&gt;
-    &lt;/monitor&gt;
-    &lt;web-monitor&gt;*:21000&lt;/web-monitor&gt;
-    &lt;propagation-delay/&gt;
-    &lt;xml-config&gt;sample-config.xml&lt;/xml-config&gt;
-  &lt;/daemon&gt;
-  &lt;portals&gt;
-    &lt;endpoint&gt;
-      &lt;name&gt;Endpoint_1&lt;/name&gt;
-      &lt;domain-id&gt;1&lt;/domain-id&gt;
-      &lt;cost&gt;1&lt;/cost&gt;
-      &lt;lbm-config&gt;endpoint2.cfg&lt;/lbm-config&gt;
-      &lt;lbm-attributes&gt;
-        &lt;option name="context_name" scope="context" value="endpt_1" /&gt;
-      &lt;/lbm-attributes&gt;
-      &lt;acl&gt;
-        &lt;inbound&gt;
-          &lt;ace match="accept"&gt;
-            &lt;topic&gt;ABC123&lt;/topic&gt;
-            &lt;pcre-pattern &gt;pattern&lt;/pcre-pattern &gt;
-            &lt;regex-pattern &gt;pattern&lt;/regex-pattern &gt;
-            &lt;transport/&gt;
-            &lt;source-ip/&gt;
-            &lt;multicast-group/&gt;
-            &lt;udp-source-port/&gt;
-            &lt;udp-destination-port/&gt;
-            &lt;tcp-source-port/&gt;
-            &lt;xport-id/&gt;
-          &lt;/ace&gt;
-        &lt;/inbound&gt;
-        &lt;outbound&gt;
-          &lt;ace match="accept"&gt;
-            &lt;topic&gt;ABC123&lt;/topic&gt;
-            &lt;pcre-pattern &gt;pattern&lt;/pcre-pattern &gt;
-            &lt;regex-pattern &gt;pattern&lt;/regex-pattern &gt;
-            &lt;transport/&gt;
-            &lt;source-ip/&gt;
-            &lt;multicast-group/&gt;
-            &lt;udp-source-port/&gt;
-            &lt;udp-destination-port/&gt;
-            &lt;tcp-source-port/&gt;
-            &lt;xport-id/&gt;
-          &lt;/ace&gt;
-        &lt;/outbound&gt;
-      &lt;/acl&gt;
-    &lt;/endpoint&gt;
-    &lt;peer&gt;
-      &lt;name&gt;Peer_1&lt;/name&gt;
-      &lt;cost&gt;1&lt;/cost&gt;
-      &lt;single-tcp&gt;
-        &lt;interface&gt;
-        &lt;receive-buffer&gt;
-        &lt;send-buffer&gt;
-        &lt;keepalive&gt;
-        &lt;nodelay&gt;
-        &lt;initiator&gt;
-          &lt;address&gt;
-          &lt;port&gt;
-        &lt;/initiator&gt;
-        &lt;acceptor&gt;
-          &lt;listen-port&gt;
-        &lt;/acceptor&gt;
-      &lt;/single-tcp&gt;
-      &lt;max-queue&gt;
-      &lt;max-datagram&gt;
-      &lt;batching&gt;
-        &lt;min-length&gt;
-        &lt;batch-interval&gt;
-      &lt;/batching&gt;
-      &lt;lbm-config&gt;peer1.cfg&lt;/lbm-config&gt;
-      &lt;lbm-attributes&gt;
-        &lt;option name="name" scope="scope" value="value" /&gt;
-      &lt;/lbm-attributes&gt;
-      &lt;acl&gt; (see above)
-      &lt;topic-purge&gt;
-      &lt;topic-interest-generate&gt;
-      &lt;topic-domain-activity&gt;
-      &lt;pattern-purge&gt;
-      &lt;pattern-interest-generate&gt;
-      &lt;pattern-domain-activity&gt;
-      &lt;topic-use-check/&gt;
-      &lt;pattern-use-check&gt;
-      &lt;source-context-name&gt;
-      &lt;receiver-context-name&gt;
-      &lt;sqn-window&gt;
-      &lt;context-query&gt;
-      &lt;gateway-keepalive&gt;
-    &lt;/peer&gt;
-  &lt;/portals&gt;
-&lt;/tnw-gateway&gt;
-</pre><p><br />
+<div class="fragment"><div class="line">&lt;?xml version=<span class="stringliteral">&quot;1.0&quot;</span> encoding=<span class="stringliteral">&quot;UTF-8&quot;</span> ?&gt;</div><div class="line">&lt;tnw-gateway version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div><div class="line">  &lt;daemon&gt;</div><div class="line">    &lt;log type=<span class="stringliteral">&quot;console&quot;</span>/&gt;</div><div class="line">    &lt;uid&gt;0&lt;/uid&gt;</div><div class="line">    &lt;gid&gt;0&lt;/gid&gt;</div><div class="line">    &lt;pidfile&gt;/path/file.pid&lt;/pidfile&gt;</div><div class="line">    &lt;lbm-license-file&gt;/path/file.lic&lt;/lbm-license-file&gt;</div><div class="line">    &lt;topicmap/&gt;</div><div class="line">    &lt;patternmap/&gt;</div><div class="line">    &lt;monitor&gt;</div><div class="line">      &lt;transport-module/&gt;</div><div class="line">      &lt;format-module/&gt;</div><div class="line">    &lt;/monitor&gt;</div><div class="line">    &lt;web-monitor&gt;*:21000&lt;/web-monitor&gt;</div><div class="line">    &lt;propagation-delay/&gt;</div><div class="line">    &lt;xml-config&gt;sample-config.xml&lt;/xml-config&gt;</div><div class="line">  &lt;/daemon&gt;</div><div class="line">  &lt;portals&gt;</div><div class="line">    &lt;endpoint&gt;</div><div class="line">      &lt;name&gt;Endpoint_1&lt;/name&gt;</div><div class="line">      &lt;domain-<span class="keywordtype">id</span>&gt;1&lt;/domain-<span class="keywordtype">id</span>&gt;</div><div class="line">      &lt;cost&gt;1&lt;/cost&gt;</div><div class="line">      &lt;lbm-config&gt;endpoint2.cfg&lt;/lbm-config&gt;</div><div class="line">      &lt;lbm-attributes&gt;</div><div class="line">        &lt;option name=<span class="stringliteral">&quot;context_name&quot;</span> scope=<span class="stringliteral">&quot;context&quot;</span> value=<span class="stringliteral">&quot;endpt_1&quot;</span> /&gt;</div><div class="line">      &lt;/lbm-attributes&gt;</div><div class="line">      &lt;acl&gt;</div><div class="line">        &lt;inbound&gt;</div><div class="line">          &lt;ace match=<span class="stringliteral">&quot;accept&quot;</span>&gt;</div><div class="line">            &lt;topic&gt;ABC123&lt;/topic&gt;</div><div class="line">            &lt;pcre-pattern &gt;pattern&lt;/pcre-pattern &gt;</div><div class="line">            &lt;regex-pattern &gt;pattern&lt;/regex-pattern &gt;</div><div class="line">            &lt;transport/&gt;</div><div class="line">            &lt;source-ip/&gt;</div><div class="line">            &lt;multicast-group/&gt;</div><div class="line">            &lt;udp-source-port/&gt;</div><div class="line">            &lt;udp-destination-port/&gt;</div><div class="line">            &lt;tcp-source-port/&gt;</div><div class="line">            &lt;xport-<span class="keywordtype">id</span>/&gt;</div><div class="line">          &lt;/ace&gt;</div><div class="line">        &lt;/inbound&gt;</div><div class="line">        &lt;outbound&gt;</div><div class="line">          &lt;ace match=<span class="stringliteral">&quot;accept&quot;</span>&gt;</div><div class="line">            &lt;topic&gt;ABC123&lt;/topic&gt;</div><div class="line">            &lt;pcre-pattern &gt;pattern&lt;/pcre-pattern &gt;</div><div class="line">            &lt;regex-pattern &gt;pattern&lt;/regex-pattern &gt;</div><div class="line">            &lt;transport/&gt;</div><div class="line">            &lt;source-ip/&gt;</div><div class="line">            &lt;multicast-group/&gt;</div><div class="line">            &lt;udp-source-port/&gt;</div><div class="line">            &lt;udp-destination-port/&gt;</div><div class="line">            &lt;tcp-source-port/&gt;</div><div class="line">            &lt;xport-<span class="keywordtype">id</span>/&gt;</div><div class="line">          &lt;/ace&gt;</div><div class="line">        &lt;/outbound&gt;</div><div class="line">      &lt;/acl&gt;</div><div class="line">    &lt;/endpoint&gt;</div><div class="line">    &lt;peer&gt;</div><div class="line">      &lt;name&gt;Peer_1&lt;/name&gt;</div><div class="line">      &lt;cost&gt;1&lt;/cost&gt;</div><div class="line">      &lt;single-tcp&gt;</div><div class="line">        &lt;interface&gt;</div><div class="line">        &lt;receive-buffer&gt;</div><div class="line">        &lt;send-buffer&gt;</div><div class="line">        &lt;keepalive&gt;</div><div class="line">        &lt;nodelay&gt;</div><div class="line">        &lt;initiator&gt;</div><div class="line">          &lt;address&gt;</div><div class="line">          &lt;port&gt;</div><div class="line">        &lt;/initiator&gt;</div><div class="line">        &lt;acceptor&gt;</div><div class="line">          &lt;listen-port&gt;</div><div class="line">        &lt;/acceptor&gt;</div><div class="line">      &lt;/single-tcp&gt;</div><div class="line">      &lt;max-queue&gt;</div><div class="line">      &lt;max-datagram&gt;</div><div class="line">      &lt;batching&gt;</div><div class="line">        &lt;min-length&gt;</div><div class="line">        &lt;batch-interval&gt;</div><div class="line">      &lt;/batching&gt;</div><div class="line">      &lt;lbm-config&gt;peer1.cfg&lt;/lbm-config&gt;</div><div class="line">      &lt;lbm-attributes&gt;</div><div class="line">        &lt;option name=<span class="stringliteral">&quot;name&quot;</span> scope=<span class="stringliteral">&quot;scope&quot;</span> value=<span class="stringliteral">&quot;value&quot;</span> /&gt;</div><div class="line">      &lt;/lbm-attributes&gt;</div><div class="line">      &lt;acl&gt; (see above)</div><div class="line">      &lt;topic-purge&gt;</div><div class="line">      &lt;topic-interest-generate&gt;</div><div class="line">      &lt;topic-domain-activity&gt;</div><div class="line">      &lt;pattern-purge&gt;</div><div class="line">      &lt;pattern-interest-generate&gt;</div><div class="line">      &lt;pattern-domain-activity&gt;</div><div class="line">      &lt;topic-use-check/&gt;</div><div class="line">      &lt;pattern-use-check&gt;</div><div class="line">      &lt;source-context-name&gt;</div><div class="line">      &lt;receiver-context-name&gt;</div><div class="line">      &lt;sqn-window&gt;</div><div class="line">      &lt;context-query&gt;</div><div class="line">      &lt;gateway-keepalive&gt;</div><div class="line">    &lt;/peer&gt;</div><div class="line">  &lt;/portals&gt;</div><div class="line">&lt;/tnw-gateway&gt;</div></div><!-- fragment --><p><br />
  </p>
 <h1><a class="anchor" id="elementsreference"></a>
 Elements Reference&nbsp;&nbsp;<small><a href="#elementsreference">&lt;-</a></small></h1>
@@ -185,15 +83,7 @@ Router Element "&lt;tnw-gateway&gt;"&nbsp;&nbsp;<small><a href="#droelementtnwga
 <tr>
 <td><b>version</b> </td><td>The version of the DTD, which is currently. (This is not the product version.) </td><td><b><code>"1.0"</code></b> - Current version of DTD. </td><td>(no default; must be specified) </td></tr>
 </table>
-<p><b>Example:</b> </p><pre class="fragment">&lt;tnw-gateway version="1.0"&gt;
-  &lt;daemon&gt;
-    ...
-  &lt;/daemon&gt;
-  &lt;portals&gt;
-    ...
-  &lt;/portals&gt;
-&lt;/tnw-gateway&gt;
-</pre><hr/>
+<p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;tnw-gateway version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div><div class="line">  &lt;daemon&gt;</div><div class="line">    ...</div><div class="line">  &lt;/daemon&gt;</div><div class="line">  &lt;portals&gt;</div><div class="line">    ...</div><div class="line">  &lt;/portals&gt;</div><div class="line">&lt;/tnw-gateway&gt;</div></div><!-- fragment --><hr/>
 <p> <br />
  </p>
 <h2><a class="anchor" id="droelementportals"></a>
@@ -205,18 +95,7 @@ Router Element "&lt;portals&gt;"&nbsp;&nbsp;<small><a href="#droelementportals">
 <li>
 <b>Children:</b> <a class="el" href="xmlconfigurationreference.html#droelementendpoint">&lt;endpoint&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementpeer">&lt;peer&gt;</a> </li>
 </ul>
-<p><b>Example:</b> </p><pre class="fragment">&lt;tnw-gateway version="1.0"&gt;
-  &lt;portals&gt;
-  &lt;daemon&gt;
-    ...
-  &lt;/daemon&gt;
-    &lt;endpoint&gt;
-      ...
-    &lt;/endpoint&gt;
-    ...
-  &lt;/portals&gt;
-&lt;/tnw-gateway&gt;
-</pre><hr/>
+<p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;tnw-gateway version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div><div class="line">  &lt;portals&gt;</div><div class="line">  &lt;daemon&gt;</div><div class="line">    ...</div><div class="line">  &lt;/daemon&gt;</div><div class="line">    &lt;endpoint&gt;</div><div class="line">      ...</div><div class="line">    &lt;/endpoint&gt;</div><div class="line">    ...</div><div class="line">  &lt;/portals&gt;</div><div class="line">&lt;/tnw-gateway&gt;</div></div><!-- fragment --><hr/>
 <p> <br />
  </p>
 <h2><a class="anchor" id="droelementpeer"></a>
@@ -228,22 +107,12 @@ Router Element "&lt;peer&gt;"&nbsp;&nbsp;<small><a href="#droelementpeer">&lt;-<
 <li>
 <b>Children:</b> <a class="el" href="xmlconfigurationreference.html#droelementname">&lt;name&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementcost">&lt;cost&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementsourcemap">&lt;sourcemap&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementtcp">&lt;tcp&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementsingletcp">&lt;single-tcp&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementsourcedeletiondelay">&lt;source-deletion-delay&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementmaxqueue">&lt;max-queue&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementsmartbatch">&lt;smart-batch&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementmaxdatagram">&lt;max-datagram&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementbatching">&lt;batching&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementlbmconfig">&lt;lbm-config&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementlbmattributes">&lt;lbm-attributes&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementacl">&lt;acl&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementtopicpurge">&lt;topic-purge&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementtopicinterestgenerate">&lt;topic-interest-generate&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementtopicdomainactivity">&lt;topic-domain-activity&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementpatternpurge">&lt;pattern-purge&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementpatterninterestgenerate">&lt;pattern-interest-generate&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementpatterndomainactivity">&lt;pattern-domain-activity&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementtopicusecheck">&lt;topic-use-check&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementpatternusecheck">&lt;pattern-use-check&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementsourcecontextname">&lt;source-context-name&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementreceivercontextname">&lt;receiver-context-name&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementsqnwindow">&lt;sqn-window&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementcontextquery">&lt;context-query&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementgatewaykeepalive">&lt;gateway-keepalive&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementpublishinginterval">&lt;publishing-interval&gt;</a> </li>
 </ul>
-<p><b>Example:</b> </p><pre class="fragment">&lt;tnw-gateway version="1.0"&gt;
-  &lt;portals&gt;
-  &lt;daemon&gt;
-    ...
-  &lt;/daemon&gt;
-    &lt;peer&gt;
-    &lt;/peer&gt;
-    ...
-  &lt;/portals&gt;
-&lt;/tnw-gateway&gt;
-</pre><hr/>
+<p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;tnw-gateway version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div><div class="line">  &lt;portals&gt;</div><div class="line">  &lt;daemon&gt;</div><div class="line">    ...</div><div class="line">  &lt;/daemon&gt;</div><div class="line">    &lt;peer&gt;</div><div class="line">    &lt;/peer&gt;</div><div class="line">    ...</div><div class="line">  &lt;/portals&gt;</div><div class="line">&lt;/tnw-gateway&gt;</div></div><!-- fragment --><hr/>
 <p> <br />
  </p>
 <h2><a class="anchor" id="droelementpublishinginterval"></a>
 Router Element "&lt;publishing-interval&gt;"&nbsp;&nbsp;<small><a href="#droelementpublishinginterval">&lt;-</a></small></h2>
-<p>Configures the rate at which Daemon Statistics messages are published. See <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Gateway/design.tag:../Design/" href="../Design/umobjects.html#daemonstatistics">Daemon Statistics</a> for general information on Daemon Statistics.</p>
+<p>Configures the rate at which Daemon Statistics messages are published. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Gateway/design.tag:../Design/" href="../Design/umobjects.html#daemonstatistics">Daemon Statistics</a> for general information on Daemon Statistics.</p>
 <ul>
 <li>
 <b>Cardinality:</b> 0 .. 1 </li>
@@ -252,26 +121,12 @@ Router Element "&lt;publishing-interval&gt;"&nbsp;&nbsp;<small><a href="#droelem
 <li>
 <b>Children:</b> <a class="el" href="xmlconfigurationreference.html#droelementgroup">&lt;group&gt;</a> </li>
 </ul>
-<p><b>Example:</b> </p><pre class="fragment">&lt;tnw-gateway version="1.0"&gt;
-  &lt;daemon&gt;
-    &lt;daemon-monitor topic="umrouter.1"&gt;
-      &lt;lbm-config&gt;/path/umrouter_monitor.cfg&lt;/lbm-config&gt;
-      &lt;publishing-interval&gt;
-        &lt;group name="default" ivl="5"&gt;
-        &lt;group name="gateway-config" ivl="30"&gt;
-        &lt;group name="portal-config" ivl="30"&gt;
-      &lt;/publishing-interval&gt;
-      ...
-    &lt;/daemon-monitor&gt;
-  &lt;/daemon&gt;
-  ...
-&lt;/tnw-gateway&gt;
-</pre><hr/>
+<p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;tnw-gateway version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div><div class="line">  &lt;daemon&gt;</div><div class="line">    &lt;daemon-monitor topic=<span class="stringliteral">&quot;umrouter.1&quot;</span>&gt;</div><div class="line">      &lt;lbm-config&gt;/path/umrouter_monitor.cfg&lt;/lbm-config&gt;</div><div class="line">      &lt;publishing-interval&gt;</div><div class="line">        &lt;group name=<span class="stringliteral">&quot;default&quot;</span> ivl=<span class="stringliteral">&quot;5&quot;</span>&gt;</div><div class="line">        &lt;group name=<span class="stringliteral">&quot;gateway-config&quot;</span> ivl=<span class="stringliteral">&quot;30&quot;</span>&gt;</div><div class="line">        &lt;group name=<span class="stringliteral">&quot;portal-config&quot;</span> ivl=<span class="stringliteral">&quot;30&quot;</span>&gt;</div><div class="line">      &lt;/publishing-interval&gt;</div><div class="line">      ...</div><div class="line">    &lt;/daemon-monitor&gt;</div><div class="line">  &lt;/daemon&gt;</div><div class="line">  ...</div><div class="line">&lt;/tnw-gateway&gt;</div></div><!-- fragment --><hr/>
 <p> <br />
  </p>
 <h2><a class="anchor" id="droelementgroup"></a>
 Router Element "&lt;group&gt;"&nbsp;&nbsp;<small><a href="#droelementgroup">&lt;-</a></small></h2>
-<p>Configures the rate at which one particular grouping of Daemon Statistics messages are published. See <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Gateway/design.tag:../Design/" href="../Design/umobjects.html#daemonstatistics">Daemon Statistics</a> for general information on Daemon Statistics.</p>
+<p>Configures the rate at which one particular grouping of Daemon Statistics messages are published. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Gateway/design.tag:../Design/" href="../Design/umobjects.html#daemonstatistics">Daemon Statistics</a> for general information on Daemon Statistics.</p>
 <ul>
 <li>
 <b>Parent:</b> <a class="el" href="xmlconfigurationreference.html#droelementpublishinginterval">&lt;publishing-interval&gt;</a> </li>
@@ -281,29 +136,15 @@ Router Element "&lt;group&gt;"&nbsp;&nbsp;<small><a href="#droelementgroup">&lt;
 <th>Attribute </th><th>Description </th><th>Valid Values </th><th>Default Value </th></tr>
 <tr>
 <td><b>name</b> </td><td>Name of statistics group being configured. </td><td><b><code>"default"</code></b> - Sets a default interval for all message types. <br />
-<b><code>"gateway-config"</code></b> - Sets the interval for messages of type <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Gateway/api.tag:../API/" href="../API/tnwgdmonmsgs_8h.html#a9d9ec1a3f772ba37b376ace807eb5fb5">tnwg_dstat_gatewaycfg_msg_t</a>. <br />
-<b><code>"route-manager-topology"</code></b> - Sets the interval for messages of types <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Gateway/api.tag:../API/" href="../API/tnwgdmonmsgs_8h.html#a7a5cbf4cf63c2cad889ccb73e209211a">tnwg_rm_stat_grp_msg_t</a>. <br />
-<b><code>"malloc-info"</code></b> - Sets the interval for messages of type <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Gateway/api.tag:../API/" href="../API/tnwgdmonmsgs_8h.html#a244e8fc593a4f6ba155d19321ada47b4">tnwg_dstat_mallinfo_msg_t</a>. <br />
-<b><code>"portal-config"</code></b> - Sets the interval for messages of type <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Gateway/api.tag:../API/" href="../API/tnwgdmonmsgs_8h.html#ad401470ed9be21b3ebca145fb79459b3">tnwg_pcfg_stat_grp_msg_t</a>. <br />
-<b><code>"portal-stats"</code></b> - Sets the interval for messages of type <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Gateway/api.tag:../API/" href="../API/tnwgdmonmsgs_8h.html#a4c9cd731d8196ad64534fa1c4240ef6c">tnwg_dstat_portalstats_msg_t</a> </td><td>(no default; must be specified) </td></tr>
+<b><code>"gateway-config"</code></b> - Sets the interval for messages of type <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Gateway/api.tag:../API/" href="../API/tnwgdmonmsgs_8h.html#a9d9ec1a3f772ba37b376ace807eb5fb5">tnwg_dstat_gatewaycfg_msg_t</a>. <br />
+<b><code>"route-manager-topology"</code></b> - Sets the interval for messages of types <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Gateway/api.tag:../API/" href="../API/tnwgdmonmsgs_8h.html#a7a5cbf4cf63c2cad889ccb73e209211a">tnwg_rm_stat_grp_msg_t</a>. <br />
+<b><code>"malloc-info"</code></b> - Sets the interval for messages of type <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Gateway/api.tag:../API/" href="../API/tnwgdmonmsgs_8h.html#a244e8fc593a4f6ba155d19321ada47b4">tnwg_dstat_mallinfo_msg_t</a>. <br />
+<b><code>"portal-config"</code></b> - Sets the interval for messages of type <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Gateway/api.tag:../API/" href="../API/tnwgdmonmsgs_8h.html#ad401470ed9be21b3ebca145fb79459b3">tnwg_pcfg_stat_grp_msg_t</a>. <br />
+<b><code>"portal-stats"</code></b> - Sets the interval for messages of type <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Gateway/api.tag:../API/" href="../API/tnwgdmonmsgs_8h.html#a4c9cd731d8196ad64534fa1c4240ef6c">tnwg_dstat_portalstats_msg_t</a> </td><td>(no default; must be specified) </td></tr>
 <tr>
 <td><b>ivl</b> </td><td>Time, in seconds, between publishing the statistics group being configured. </td><td>string </td><td>(no default; must be specified) </td></tr>
 </table>
-<p><b>Example:</b> </p><pre class="fragment">&lt;tnw-gateway version="1.0"&gt;
-  &lt;daemon&gt;
-    &lt;daemon-monitor topic="umrouter.1"&gt;
-      &lt;lbm-config&gt;/path/umrouter_monitor.cfg&lt;/lbm-config&gt;
-      &lt;publishing-interval&gt;
-        &lt;group name="default" ivl="5"&gt;
-        &lt;group name="gateway-config" ivl="30"&gt;
-        &lt;group name="portal-config" ivl="30"&gt;
-      &lt;/publishing-interval&gt;
-      ...
-    &lt;/daemon-monitor&gt;
-  &lt;/daemon&gt;
-  ...
-&lt;/tnw-gateway&gt;
-</pre><hr/>
+<p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;tnw-gateway version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div><div class="line">  &lt;daemon&gt;</div><div class="line">    &lt;daemon-monitor topic=<span class="stringliteral">&quot;umrouter.1&quot;</span>&gt;</div><div class="line">      &lt;lbm-config&gt;/path/umrouter_monitor.cfg&lt;/lbm-config&gt;</div><div class="line">      &lt;publishing-interval&gt;</div><div class="line">        &lt;group name=<span class="stringliteral">&quot;default&quot;</span> ivl=<span class="stringliteral">&quot;5&quot;</span>&gt;</div><div class="line">        &lt;group name=<span class="stringliteral">&quot;gateway-config&quot;</span> ivl=<span class="stringliteral">&quot;30&quot;</span>&gt;</div><div class="line">        &lt;group name=<span class="stringliteral">&quot;portal-config&quot;</span> ivl=<span class="stringliteral">&quot;30&quot;</span>&gt;</div><div class="line">      &lt;/publishing-interval&gt;</div><div class="line">      ...</div><div class="line">    &lt;/daemon-monitor&gt;</div><div class="line">  &lt;/daemon&gt;</div><div class="line">  ...</div><div class="line">&lt;/tnw-gateway&gt;</div></div><!-- fragment --><hr/>
 <p> <br />
  </p>
 <h2><a class="anchor" id="droelementgatewaykeepalive"></a>
@@ -326,15 +167,7 @@ Router Element "&lt;gateway-keepalive&gt;"&nbsp;&nbsp;<small><a href="#droelemen
 <tr>
 <td><b>timeout</b> </td><td>Maximum time, in milliseconds, a peer can receive nothing from the companion before determining the connection is dead and disconnecting. We recommend setting this to 3 times the interval value. </td><td>string </td><td><b><code>"15000"</code></b> </td></tr>
 </table>
-<p><b>Example:</b> </p><pre class="fragment">&lt;tnw-gateway version="1.0"&gt;
-  ...
-  &lt;portals&gt;
-    &lt;peer&gt;
-      &lt;gateway-keepalive idle="no" interval="1000"/&gt;
-    &lt;/peer&gt;
-  &lt;/portals&gt;
-&lt;/tnw-gateway&gt;
-</pre><hr/>
+<p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;tnw-gateway version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div><div class="line">  ...</div><div class="line">  &lt;portals&gt;</div><div class="line">    &lt;peer&gt;</div><div class="line">      &lt;gateway-keepalive idle=<span class="stringliteral">&quot;no&quot;</span> interval=<span class="stringliteral">&quot;1000&quot;</span>/&gt;</div><div class="line">    &lt;/peer&gt;</div><div class="line">  &lt;/portals&gt;</div><div class="line">&lt;/tnw-gateway&gt;</div></div><!-- fragment --><hr/>
 <p> <br />
  </p>
 <h2><a class="anchor" id="droelementcontextquery"></a>
@@ -358,15 +191,7 @@ Router Element "&lt;context-query&gt;"&nbsp;&nbsp;<small><a href="#droelementcon
 <tr>
 <td><b>timeout</b> </td><td>Minimum time (in seconds) a context query must be unanswered before it is removed for the portal. Before changing the value of this option, please contact Informatica Support. </td><td>string </td><td><b><code>"900"</code></b> </td></tr>
 </table>
-<p><b>Example:</b> </p><pre class="fragment">&lt;tnw-gateway version="1.0"&gt;
-  ...
-  &lt;portals&gt;
-    &lt;endpoint&gt;
-      &lt;context-query periodic-interval="25000" max-contexts="15" interval="180" timeout="875"/&gt;
-    &lt;/endpoint&gt;
-  &lt;/portals&gt;
-&lt;/tnw-gateway&gt;
-</pre><hr/>
+<p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;tnw-gateway version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div><div class="line">  ...</div><div class="line">  &lt;portals&gt;</div><div class="line">    &lt;endpoint&gt;</div><div class="line">      &lt;context-query periodic-interval=<span class="stringliteral">&quot;25000&quot;</span> max-contexts=<span class="stringliteral">&quot;15&quot;</span> interval=<span class="stringliteral">&quot;180&quot;</span> timeout=<span class="stringliteral">&quot;875&quot;</span>/&gt;</div><div class="line">    &lt;/endpoint&gt;</div><div class="line">  &lt;/portals&gt;</div><div class="line">&lt;/tnw-gateway&gt;</div></div><!-- fragment --><hr/>
 <p> <br />
  </p>
 <h2><a class="anchor" id="droelementsqnwindow"></a>
@@ -386,15 +211,7 @@ Router Element "&lt;sqn-window&gt;"&nbsp;&nbsp;<small><a href="#droelementsqnwin
 <tr>
 <td><b>increment</b> </td><td>Determines the minimum increment, in topic (fragment) sequence numbers, by which the sequence number window is moved when the window size (below) is exceeded. Must be a multiple of 8, an even divisor of the window size, and less the window size. Before changing the value of this option, please contact Informatica Support. </td><td>string </td><td><b><code>"2048"</code></b> </td></tr>
 </table>
-<p><b>Example:</b> </p><pre class="fragment">&lt;tnw-gateway version="1.0"&gt;
-  ...
-  &lt;portals&gt;
-    &lt;endpoint&gt;
-      &lt;sqn-window size="1024" increment="512"/&gt;
-    &lt;/endpoint&gt;
-  &lt;/portals&gt;
-&lt;/tnw-gateway&gt;
-</pre><hr/>
+<p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;tnw-gateway version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div><div class="line">  ...</div><div class="line">  &lt;portals&gt;</div><div class="line">    &lt;endpoint&gt;</div><div class="line">      &lt;sqn-window size=<span class="stringliteral">&quot;1024&quot;</span> increment=<span class="stringliteral">&quot;512&quot;</span>/&gt;</div><div class="line">    &lt;/endpoint&gt;</div><div class="line">  &lt;/portals&gt;</div><div class="line">&lt;/tnw-gateway&gt;</div></div><!-- fragment --><hr/>
 <p> <br />
  </p>
 <h2><a class="anchor" id="droelementreceivercontextname"></a>
@@ -413,15 +230,7 @@ Router Element "&lt;receiver-context-name&gt;"&nbsp;&nbsp;<small><a href="#droel
 <td><b>xml:space</b> </td><td>Specifies how whitespace (tabs, spaces, linefeeds) are handled in the element content. </td><td><b><code>"default"</code></b> - Trim leading and trailing whitespace, and compress multiple whitespace characters into a single space. <br />
 <b><code>"preserve"</code></b> - Retain whitespace exactly as entered. </td><td><b>default</b> </td></tr>
 </table>
-<p><b>Example:</b> </p><pre class="fragment">&lt;tnw-gateway version="1.0"&gt;
-  ...
-  &lt;portals&gt;
-    &lt;endpoint&gt;
-      &lt;receiver-context-name&gt;RcvrContext01&lt;/source-context-name&gt;
-    &lt;/endpoint&gt;                 
-  &lt;/portals&gt;
-&lt;/tnw-gateway&gt;
-</pre><hr/>
+<p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;tnw-gateway version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div><div class="line">  ...</div><div class="line">  &lt;portals&gt;</div><div class="line">    &lt;endpoint&gt;</div><div class="line">      &lt;receiver-context-name&gt;RcvrContext01&lt;/source-context-name&gt;</div><div class="line">    &lt;/endpoint&gt;                 </div><div class="line">  &lt;/portals&gt;</div><div class="line">&lt;/tnw-gateway&gt;</div></div><!-- fragment --><hr/>
 <p> <br />
  </p>
 <h2><a class="anchor" id="droelementsourcecontextname"></a>
@@ -440,15 +249,7 @@ Router Element "&lt;source-context-name&gt;"&nbsp;&nbsp;<small><a href="#droelem
 <td><b>xml:space</b> </td><td>Specifies how whitespace (tabs, spaces, linefeeds) are handled in the element content. </td><td><b><code>"default"</code></b> - Trim leading and trailing whitespace, and compress multiple whitespace characters into a single space. <br />
 <b><code>"preserve"</code></b> - Retain whitespace exactly as entered. </td><td><b>default</b> </td></tr>
 </table>
-<p><b>Example:</b> </p><pre class="fragment">&lt;tnw-gateway version="1.0"&gt;
-  ...
-  &lt;portals&gt;
-    &lt;endpoint&gt;
-      &lt;source-context-name&gt;SourceContext01&lt;/source-context-name&gt;
-    &lt;/endpoint&gt;                 
-  &lt;/portals&gt;
-&lt;/tnw-gateway&gt;
-</pre><hr/>
+<p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;tnw-gateway version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div><div class="line">  ...</div><div class="line">  &lt;portals&gt;</div><div class="line">    &lt;endpoint&gt;</div><div class="line">      &lt;source-context-name&gt;SourceContext01&lt;/source-context-name&gt;</div><div class="line">    &lt;/endpoint&gt;                 </div><div class="line">  &lt;/portals&gt;</div><div class="line">&lt;/tnw-gateway&gt;</div></div><!-- fragment --><hr/>
 <p> <br />
  </p>
 <h2><a class="anchor" id="droelementpatternusecheck"></a>
@@ -614,21 +415,7 @@ Router Element "&lt;acl&gt;"&nbsp;&nbsp;<small><a href="#droelementacl">&lt;-</a
 <li>
 <b>Children:</b> <a class="el" href="xmlconfigurationreference.html#droelementinbound">&lt;inbound&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementoutbound">&lt;outbound&gt;</a> </li>
 </ul>
-<p><b>Example:</b> </p><pre class="fragment">&lt;tnw-gateway version="1.0"&gt;
-  ...
-  &lt;portals&gt;
-    &lt;endpoint&gt;
-      &lt;acl&gt;
-        &lt;inbound&gt;
-          &lt;ace&gt;
-            &lt;topic&gt;AAA&lt;/topic&gt;
-          &lt;/ace&gt;
-        &lt;/inbound&gt;
-      &lt;/acl&gt;
-    &lt;/endpoint&gt;
-  &lt;/portals&gt;
-&lt;/tnw-gateway&gt;
-</pre><hr/>
+<p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;tnw-gateway version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div><div class="line">  ...</div><div class="line">  &lt;portals&gt;</div><div class="line">    &lt;endpoint&gt;</div><div class="line">      &lt;acl&gt;</div><div class="line">        &lt;inbound&gt;</div><div class="line">          &lt;ace&gt;</div><div class="line">            &lt;topic&gt;AAA&lt;/topic&gt;</div><div class="line">          &lt;/ace&gt;</div><div class="line">        &lt;/inbound&gt;</div><div class="line">      &lt;/acl&gt;</div><div class="line">    &lt;/endpoint&gt;</div><div class="line">  &lt;/portals&gt;</div><div class="line">&lt;/tnw-gateway&gt;</div></div><!-- fragment --><hr/>
 <p> <br />
  </p>
 <h2><a class="anchor" id="droelementoutbound"></a>
@@ -642,21 +429,7 @@ Router Element "&lt;outbound&gt;"&nbsp;&nbsp;<small><a href="#droelementoutbound
 <li>
 <b>Children:</b> <a class="el" href="xmlconfigurationreference.html#droelementace">&lt;ace&gt;</a> </li>
 </ul>
-<p><b>Example:</b> </p><pre class="fragment">&lt;tnw-gateway version="1.0"&gt;
-  ...
-  &lt;portals&gt;
-    &lt;endpoint&gt;
-      &lt;acl&gt;
-        &lt;outbound&gt;
-          &lt;ace&gt;
-            &lt;pcre-pattern&gt;A[AB]A&lt;/pcre-pattern&gt;
-          &lt;/ace&gt;
-        &lt;/outbound&gt;
-      &lt;/acl&gt;
-    &lt;/endpoint&gt;
-  &lt;/portals&gt;
-&lt;/tnw-gateway&gt;
-</pre><hr/>
+<p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;tnw-gateway version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div><div class="line">  ...</div><div class="line">  &lt;portals&gt;</div><div class="line">    &lt;endpoint&gt;</div><div class="line">      &lt;acl&gt;</div><div class="line">        &lt;outbound&gt;</div><div class="line">          &lt;ace&gt;</div><div class="line">            &lt;pcre-pattern&gt;A[AB]A&lt;/pcre-pattern&gt;</div><div class="line">          &lt;/ace&gt;</div><div class="line">        &lt;/outbound&gt;</div><div class="line">      &lt;/acl&gt;</div><div class="line">    &lt;/endpoint&gt;</div><div class="line">  &lt;/portals&gt;</div><div class="line">&lt;/tnw-gateway&gt;</div></div><!-- fragment --><hr/>
 <p> <br />
  </p>
 <h2><a class="anchor" id="droelementace"></a>
@@ -675,29 +448,7 @@ Router Element "&lt;ace&gt;"&nbsp;&nbsp;<small><a href="#droelementace">&lt;-</a
 <td><b>match</b> </td><td>This required attribute determines what to do with matched messages. </td><td><b><code>"accept"</code></b> - Pass the message. <br />
 <b><code>"reject"</code></b> - Block the message. </td><td>(no default; must be specified) </td></tr>
 </table>
-<p><b>Example:</b> </p><pre class="fragment">&lt;tnw-gateway version="1.0"&gt;
-  &lt;portals&gt;
-    &lt;endpoint&gt;
-      &lt;name&gt;LAN1&lt;/name&gt;
-      &lt;lbm-config&gt;lan1.cfg&lt;/lbm-config&gt;
-      &lt;domain-id&gt;1&lt;/domain-id&gt;
-        &lt;acl&gt;
-          &lt;inbound&gt;
-            &lt;ace match="accept"&gt;
-              &lt;topic&gt;ABC&lt;/topic&gt;
-            &lt;/ace&gt;
-            &lt;ace match="accept"&gt;
-              &lt;topic&gt;DEF&lt;/topic&gt;
-              &lt;transport value=lbt-rm comparison=eq/&gt;
-            &lt;/ace&gt;
-            &lt;ace match="accept"&gt;
-              &lt;topic&gt;GHI&lt;/topic&gt;
-            &lt;/ace&gt;
-          &lt;/inbound&gt;
-        &lt;/acl&gt;
-    &lt;/endpoint&gt;
-    ...
-</pre><hr/>
+<p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;tnw-gateway version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div><div class="line">  &lt;portals&gt;</div><div class="line">    &lt;endpoint&gt;</div><div class="line">      &lt;name&gt;LAN1&lt;/name&gt;</div><div class="line">      &lt;lbm-config&gt;lan1.cfg&lt;/lbm-config&gt;</div><div class="line">      &lt;domain-<span class="keywordtype">id</span>&gt;1&lt;/domain-<span class="keywordtype">id</span>&gt;</div><div class="line">        &lt;acl&gt;</div><div class="line">          &lt;inbound&gt;</div><div class="line">            &lt;ace match=<span class="stringliteral">&quot;accept&quot;</span>&gt;</div><div class="line">              &lt;topic&gt;ABC&lt;/topic&gt;</div><div class="line">            &lt;/ace&gt;</div><div class="line">            &lt;ace match=<span class="stringliteral">&quot;accept&quot;</span>&gt;</div><div class="line">              &lt;topic&gt;DEF&lt;/topic&gt;</div><div class="line">              &lt;transport value=lbt-rm comparison=eq/&gt;</div><div class="line">            &lt;/ace&gt;</div><div class="line">            &lt;ace match=<span class="stringliteral">&quot;accept&quot;</span>&gt;</div><div class="line">              &lt;topic&gt;GHI&lt;/topic&gt;</div><div class="line">            &lt;/ace&gt;</div><div class="line">          &lt;/inbound&gt;</div><div class="line">        &lt;/acl&gt;</div><div class="line">    &lt;/endpoint&gt;</div><div class="line">    ...</div></div><!-- fragment --><hr/>
 <p> <br />
  </p>
 <h2><a class="anchor" id="droelementxportid"></a>
@@ -726,10 +477,7 @@ Router Element "&lt;xport-id&gt;"&nbsp;&nbsp;<small><a href="#droelementxportid"
 <b><code>"ge"</code></b> - Matches if greater than or equal to. <br />
 <b><code>"greaterthanequal"</code></b> - Matches if greater than or equal to. </td><td>(no default; must be specified) </td></tr>
 </table>
-<p><b>Example:</b> </p><pre class="fragment">            &lt;ace match="accept"&gt;
-              &lt;xport-id comparison="equal" value="1234"/&gt;
-            &lt;/ace&gt;
-</pre><hr/>
+<p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;ace match=<span class="stringliteral">&quot;accept&quot;</span>&gt;</div><div class="line">  &lt;xport-<span class="keywordtype">id</span> comparison=<span class="stringliteral">&quot;equal&quot;</span> value=<span class="stringliteral">&quot;1234&quot;</span>/&gt;</div><div class="line">&lt;/ace&gt;</div></div><!-- fragment --><hr/>
 <p> <br />
  </p>
 <h2><a class="anchor" id="droelementtcpsourceport"></a>
@@ -758,10 +506,7 @@ Router Element "&lt;tcp-source-port&gt;"&nbsp;&nbsp;<small><a href="#droelementt
 <b><code>"ge"</code></b> - Matches if greater than or equal to. <br />
 <b><code>"greaterthanequal"</code></b> - Matches if greater than or equal to. </td><td>(no default; must be specified) </td></tr>
 </table>
-<p><b>Example:</b> </p><pre class="fragment">            &lt;ace match="accept"&gt;
-              &lt;tcp-source-port comparison="equal" value="1234"/&gt;
-            &lt;/ace&gt;
-</pre><hr/>
+<p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;ace match=<span class="stringliteral">&quot;accept&quot;</span>&gt;</div><div class="line">  &lt;tcp-source-port comparison=<span class="stringliteral">&quot;equal&quot;</span> value=<span class="stringliteral">&quot;1234&quot;</span>/&gt;</div><div class="line">&lt;/ace&gt;</div></div><!-- fragment --><hr/>
 <p> <br />
  </p>
 <h2><a class="anchor" id="droelementudpdestinationport"></a>
@@ -790,10 +535,7 @@ Router Element "&lt;udp-destination-port&gt;"&nbsp;&nbsp;<small><a href="#droele
 <b><code>"ge"</code></b> - Matches if greater than or equal to. <br />
 <b><code>"greaterthanequal"</code></b> - Matches if greater than or equal to. </td><td>(no default; must be specified) </td></tr>
 </table>
-<p><b>Example:</b> </p><pre class="fragment">            &lt;ace match="accept"&gt;
-              &lt; udp-destination-port comparison="equal" value="1234"/&gt;
-            &lt;/ace&gt;
-</pre><hr/>
+<p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;ace match=<span class="stringliteral">&quot;accept&quot;</span>&gt;</div><div class="line">  &lt; udp-destination-port comparison=<span class="stringliteral">&quot;equal&quot;</span> value=<span class="stringliteral">&quot;1234&quot;</span>/&gt;</div><div class="line">&lt;/ace&gt;</div></div><!-- fragment --><hr/>
 <p> <br />
  </p>
 <h2><a class="anchor" id="droelementudpsourceport"></a>
@@ -822,10 +564,7 @@ Router Element "&lt;udp-source-port&gt;"&nbsp;&nbsp;<small><a href="#droelementu
 <b><code>"ge"</code></b> - Matches if greater than or equal to. <br />
 <b><code>"greaterthanequal"</code></b> - Matches if greater than or equal to. </td><td>(no default; must be specified) </td></tr>
 </table>
-<p><b>Example:</b> </p><pre class="fragment">            &lt;ace match="accept"&gt;
-              &lt; udp-source-port comparison="equal" value="1234"/&gt;
-            &lt;/ace&gt;
-</pre><hr/>
+<p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;ace match=<span class="stringliteral">&quot;accept&quot;</span>&gt;</div><div class="line">  &lt; udp-source-port comparison=<span class="stringliteral">&quot;equal&quot;</span> value=<span class="stringliteral">&quot;1234&quot;</span>/&gt;</div><div class="line">&lt;/ace&gt;</div></div><!-- fragment --><hr/>
 <p> <br />
  </p>
 <h2><a class="anchor" id="droelementmulticastgroup"></a>
@@ -854,10 +593,7 @@ Router Element "&lt;multicast-group&gt;"&nbsp;&nbsp;<small><a href="#droelementm
 <b><code>"ge"</code></b> - Matches if greater than or equal to. <br />
 <b><code>"greaterthanequal"</code></b> - Matches if greater than or equal to. </td><td>(no default; must be specified) </td></tr>
 </table>
-<p><b>Example:</b> </p><pre class="fragment">            &lt;ace match="accept"&gt;
-              &lt; multicast-group comparison="equal" value="1234"/&gt;
-            &lt;/ace&gt;
-</pre><hr/>
+<p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;ace match=<span class="stringliteral">&quot;accept&quot;</span>&gt;</div><div class="line">  &lt; multicast-group comparison=<span class="stringliteral">&quot;equal&quot;</span> value=<span class="stringliteral">&quot;1234&quot;</span>/&gt;</div><div class="line">&lt;/ace&gt;</div></div><!-- fragment --><hr/>
 <p> <br />
  </p>
 <h2><a class="anchor" id="droelementsourceip"></a>
@@ -886,10 +622,7 @@ Router Element "&lt;source-ip&gt;"&nbsp;&nbsp;<small><a href="#droelementsourcei
 <b><code>"ge"</code></b> - Matches if greater than or equal to. <br />
 <b><code>"greaterthanequal"</code></b> - Matches if greater than or equal to. </td><td>(no default; must be specified) </td></tr>
 </table>
-<p><b>Example:</b> </p><pre class="fragment">            &lt;ace match="accept"&gt;
-              &lt; source-ip comparison="equal" value="1234"/&gt;
-            &lt;/ace&gt;
-</pre><hr/>
+<p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;ace match=<span class="stringliteral">&quot;accept&quot;</span>&gt;</div><div class="line">  &lt; source-ip comparison=<span class="stringliteral">&quot;equal&quot;</span> value=<span class="stringliteral">&quot;1234&quot;</span>/&gt;</div><div class="line">&lt;/ace&gt;</div></div><!-- fragment --><hr/>
 <p> <br />
  </p>
 <h2><a class="anchor" id="droelementtransport"></a>
@@ -916,10 +649,7 @@ Router Element "&lt;transport&gt;"&nbsp;&nbsp;<small><a href="#droelementtranspo
 <b><code>"ne"</code></b> - Matches if not equal. <br />
 <b><code>"notequal"</code></b> - Matches if not equal. </td><td>(no default; must be specified) </td></tr>
 </table>
-<p><b>Example:</b> </p><pre class="fragment">            &lt;ace match="accept"&gt;
-              &lt;transport comparison="equal" value="lbtrm"/&gt;
-            &lt;/ace&gt;
-</pre><hr/>
+<p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;ace match=<span class="stringliteral">&quot;accept&quot;</span>&gt;</div><div class="line">  &lt;transport comparison=<span class="stringliteral">&quot;equal&quot;</span> value=<span class="stringliteral">&quot;lbtrm&quot;</span>/&gt;</div><div class="line">&lt;/ace&gt;</div></div><!-- fragment --><hr/>
 <p> <br />
  </p>
 <h2><a class="anchor" id="droelementregexpattern"></a>
@@ -953,10 +683,7 @@ Router Element "&lt;pcre-pattern&gt;"&nbsp;&nbsp;<small><a href="#droelementpcre
 <td><b>xml:space</b> </td><td>Specifies how whitespace (tabs, spaces, linefeeds) are handled in the element content. </td><td><b><code>"default"</code></b> - Trim leading and trailing whitespace, and compress multiple whitespace characters into a single space. <br />
 <b><code>"preserve"</code></b> - Retain whitespace exactly as entered. </td><td><b>default</b> </td></tr>
 </table>
-<p><b>Example:</b> </p><pre class="fragment">            &lt;ace match="accept"&gt;
-              &lt;pcre-pattern&gt;ABC.*&lt;/pcre-pattern&gt;
-            &lt;/ace&gt;
-</pre><hr/>
+<p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;ace match=<span class="stringliteral">&quot;accept&quot;</span>&gt;</div><div class="line">  &lt;pcre-pattern&gt;ABC.*&lt;/pcre-pattern&gt;</div><div class="line">&lt;/ace&gt;</div></div><!-- fragment --><hr/>
 <p> <br />
  </p>
 <h2><a class="anchor" id="droelementtopic"></a>
@@ -973,10 +700,7 @@ Router Element "&lt;topic&gt;"&nbsp;&nbsp;<small><a href="#droelementtopic">&lt;
 <td><b>xml:space</b> </td><td>Specifies how whitespace (tabs, spaces, linefeeds) are handled in the element content. </td><td><b><code>"default"</code></b> - Trim leading and trailing whitespace, and compress multiple whitespace characters into a single space. <br />
 <b><code>"preserve"</code></b> - Retain whitespace exactly as entered. </td><td><b>default</b> </td></tr>
 </table>
-<p><b>Example:</b> </p><pre class="fragment">            &lt;ace match="accept"&gt;
-              &lt;topic&gt;ABC&lt;/topic&gt;
-            &lt;/ace&gt;
-</pre><hr/>
+<p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;ace match=<span class="stringliteral">&quot;accept&quot;</span>&gt;</div><div class="line">  &lt;topic&gt;ABC&lt;/topic&gt;</div><div class="line">&lt;/ace&gt;</div></div><!-- fragment --><hr/>
 <p> <br />
  </p>
 <h2><a class="anchor" id="droelementinbound"></a>
@@ -990,21 +714,7 @@ Router Element "&lt;inbound&gt;"&nbsp;&nbsp;<small><a href="#droelementinbound">
 <li>
 <b>Children:</b> <a class="el" href="xmlconfigurationreference.html#droelementace">&lt;ace&gt;</a> </li>
 </ul>
-<p><b>Example:</b> </p><pre class="fragment">&lt;tnw-gateway version="1.0"&gt;
-  ...
-  &lt;portals&gt;
-    &lt;endpoint&gt;
-      &lt;acl&gt;
-        &lt;inbound&gt;
-          &lt;ace&gt;
-            &lt;topic&gt;AAA&lt;/topic&gt;
-          &lt;/ace&gt;
-        &lt;/inbound&gt;
-      &lt;/acl&gt;
-    &lt;/endpoint&gt;
-  &lt;/portals&gt;
-&lt;/tnw-gateway&gt;
-</pre><hr/>
+<p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;tnw-gateway version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div><div class="line">  ...</div><div class="line">  &lt;portals&gt;</div><div class="line">    &lt;endpoint&gt;</div><div class="line">      &lt;acl&gt;</div><div class="line">        &lt;inbound&gt;</div><div class="line">          &lt;ace&gt;</div><div class="line">            &lt;topic&gt;AAA&lt;/topic&gt;</div><div class="line">          &lt;/ace&gt;</div><div class="line">        &lt;/inbound&gt;</div><div class="line">      &lt;/acl&gt;</div><div class="line">    &lt;/endpoint&gt;</div><div class="line">  &lt;/portals&gt;</div><div class="line">&lt;/tnw-gateway&gt;</div></div><!-- fragment --><hr/>
 <p> <br />
  </p>
 <h2><a class="anchor" id="droelementlbmattributes"></a>
@@ -1018,27 +728,13 @@ Router Element "&lt;lbm-attributes&gt;"&nbsp;&nbsp;<small><a href="#droelementlb
 <li>
 <b>Children:</b> <a class="el" href="xmlconfigurationreference.html#droelementoption">&lt;option&gt;</a> </li>
 </ul>
-<p><b>Example:</b> </p><pre class="fragment">&lt;tnw-gateway version="1.0"&gt;
-  ...
-  &lt;portals&gt;
-    &lt;endpoint&gt;
-      &lt;name&gt;E2&lt;/name&gt;
-      &lt;domain-id&gt;1&lt;/domain-id&gt;
-      &lt;lbm-attributes&gt;
-        &lt;option scope="context" name="request_tcp_interface" value="10.28.5.5" /&gt;
-        &lt;option scope="context" name="response_tcp_interface" value="127.0.0.1" /&gt;
-      &lt;/lbm-attributes&gt;
-      ...
-    &lt;/endpoint&gt;
-  &lt;/portals&gt;
-&lt;/tnw-gateway&gt;
-</pre><hr/>
+<p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;tnw-gateway version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div><div class="line">  ...</div><div class="line">  &lt;portals&gt;</div><div class="line">    &lt;endpoint&gt;</div><div class="line">      &lt;name&gt;E2&lt;/name&gt;</div><div class="line">      &lt;domain-<span class="keywordtype">id</span>&gt;1&lt;/domain-<span class="keywordtype">id</span>&gt;</div><div class="line">      &lt;lbm-attributes&gt;</div><div class="line">        &lt;option scope=<span class="stringliteral">&quot;context&quot;</span> name=<span class="stringliteral">&quot;request_tcp_interface&quot;</span> value=<span class="stringliteral">&quot;10.28.5.5&quot;</span> /&gt;</div><div class="line">        &lt;option scope=<span class="stringliteral">&quot;context&quot;</span> name=<span class="stringliteral">&quot;response_tcp_interface&quot;</span> value=<span class="stringliteral">&quot;127.0.0.1&quot;</span> /&gt;</div><div class="line">      &lt;/lbm-attributes&gt;</div><div class="line">      ...</div><div class="line">    &lt;/endpoint&gt;</div><div class="line">  &lt;/portals&gt;</div><div class="line">&lt;/tnw-gateway&gt;</div></div><!-- fragment --><hr/>
 <p> <br />
  </p>
 <h2><a class="anchor" id="droelementoption"></a>
 Router Element "&lt;option&gt;"&nbsp;&nbsp;<small><a href="#droelementoption">&lt;-</a></small></h2>
 <p>Lets you set an individual UM configuration option without referencing a UM configuration file. This value overrides any values set via files referenced by <a class="el" href="xmlconfigurationreference.html#droelementlbmconfig">&lt;lbm-config&gt;</a>.</p>
-<dl class="section note"><dt>Note</dt><dd>Some UM options specify interfaces, which can be done by supplying the device name of the interface. Special care must be taken when supplying device names. See <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Gateway/config.tag:../Config/" href="../Config/generalconfigurationguidelines.html#interfacedevicenamesandxml">Interface Device Names and XML</a> for details.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Some UM options specify interfaces, which can be done by supplying the device name of the interface. Special care must be taken when supplying device names. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Gateway/config.tag:../Config/" href="../Config/generalconfigurationguidelines.html#interfacedevicenamesandxml">Interface Device Names and XML</a> for details.</dd></dl>
 <ul>
 <li>
 <b>Parent:</b> <a class="el" href="xmlconfigurationreference.html#droelementlbmattributes">&lt;lbm-attributes&gt;</a> </li>
@@ -1057,21 +753,7 @@ Router Element "&lt;option&gt;"&nbsp;&nbsp;<small><a href="#droelementoption">&l
 <tr>
 <td><b>value</b> </td><td>The value for the option. </td><td>string </td><td>(no default; must be specified) </td></tr>
 </table>
-<p><b>Example:</b> </p><pre class="fragment">&lt;tnw-gateway version="1.0"&gt;
-  ...
-  &lt;portals&gt;
-    &lt;endpoint&gt;
-      &lt;name&gt;E2&lt;/name&gt;
-      &lt;domain-id&gt;1&lt;/domain-id&gt;
-      &lt;lbm-attributes&gt;
-        &lt;option scope="context" name="request_tcp_interface" value="10.28.5.5" /&gt;
-        &lt;option scope="context" name="response_tcp_interface" value="127.0.0.1" /&gt;
-      &lt;/lbm-attributes&gt;
-      ...
-    &lt;/endpoint&gt;
-  &lt;/portals&gt;
-&lt;/tnw-gateway&gt;
-</pre><hr/>
+<p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;tnw-gateway version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div><div class="line">  ...</div><div class="line">  &lt;portals&gt;</div><div class="line">    &lt;endpoint&gt;</div><div class="line">      &lt;name&gt;E2&lt;/name&gt;</div><div class="line">      &lt;domain-<span class="keywordtype">id</span>&gt;1&lt;/domain-<span class="keywordtype">id</span>&gt;</div><div class="line">      &lt;lbm-attributes&gt;</div><div class="line">        &lt;option scope=<span class="stringliteral">&quot;context&quot;</span> name=<span class="stringliteral">&quot;request_tcp_interface&quot;</span> value=<span class="stringliteral">&quot;10.28.5.5&quot;</span> /&gt;</div><div class="line">        &lt;option scope=<span class="stringliteral">&quot;context&quot;</span> name=<span class="stringliteral">&quot;response_tcp_interface&quot;</span> value=<span class="stringliteral">&quot;127.0.0.1&quot;</span> /&gt;</div><div class="line">      &lt;/lbm-attributes&gt;</div><div class="line">      ...</div><div class="line">    &lt;/endpoint&gt;</div><div class="line">  &lt;/portals&gt;</div><div class="line">&lt;/tnw-gateway&gt;</div></div><!-- fragment --><hr/>
 <p> <br />
  </p>
 <h2><a class="anchor" id="droelementlbmconfig"></a>
@@ -1090,18 +772,7 @@ Router Element "&lt;lbm-config&gt;"&nbsp;&nbsp;<small><a href="#droelementlbmcon
 <b><code>"preserve"</code></b> - Retain whitespace exactly as entered. </td><td><b>default</b> </td></tr>
 </table>
 <p>Specifies the UM configuration file that contains configuration options associated with this portal.</p>
-<p><b>Example:</b> </p><pre class="fragment">&lt;tnw-gateway version="1.0"&gt;
-  ...
-  &lt;portals&gt;
-    &lt;endpoint&gt;
-      &lt;name&gt;E2&lt;/name&gt;
-      &lt;domain-id&gt;1&lt;/domain-id&gt;
-      &lt;lbm-config&gt;/path/endpoint2.cfg&lt;/lbm-config&gt;
-      ...
-    &lt;/endpoint&gt;
-  &lt;/portals&gt;
-&lt;/tnw-gateway&gt;
-</pre><hr/>
+<p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;tnw-gateway version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div><div class="line">  ...</div><div class="line">  &lt;portals&gt;</div><div class="line">    &lt;endpoint&gt;</div><div class="line">      &lt;name&gt;E2&lt;/name&gt;</div><div class="line">      &lt;domain-<span class="keywordtype">id</span>&gt;1&lt;/domain-<span class="keywordtype">id</span>&gt;</div><div class="line">      &lt;lbm-config&gt;/path/endpoint2.cfg&lt;/lbm-config&gt;</div><div class="line">      ...</div><div class="line">    &lt;/endpoint&gt;</div><div class="line">  &lt;/portals&gt;</div><div class="line">&lt;/tnw-gateway&gt;</div></div><!-- fragment --><hr/>
 <p> <br />
  </p>
 <h2><a class="anchor" id="droelementbatching"></a>
@@ -1115,19 +786,7 @@ Router Element "&lt;batching&gt;"&nbsp;&nbsp;<small><a href="#droelementbatching
 <li>
 <b>Children:</b> <a class="el" href="xmlconfigurationreference.html#droelementminlength">&lt;min-length&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementbatchinterval">&lt;batch-interval&gt;</a> </li>
 </ul>
-<p><b>Example:</b> </p><pre class="fragment">&lt;tnw-gateway version="1.0"&gt;
-      . . .
-      . . .
-  &lt;portals&gt;
-    &lt;peer&gt;
-      &lt;batching&gt;
-        &lt;min-length&gt;4096&lt;/min-length&gt;
-        &lt;batch-interval&gt;500&lt;/batch-interval&gt;
-      &lt;/batching&gt;
-    &lt;/peer&gt;
-  &lt;/portals&gt;
-&lt;/tnw-gateway&gt;
-</pre><hr/>
+<p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;tnw-gateway version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div><div class="line">      . . .</div><div class="line">      . . .</div><div class="line">  &lt;portals&gt;</div><div class="line">    &lt;peer&gt;</div><div class="line">      &lt;batching&gt;</div><div class="line">        &lt;min-length&gt;4096&lt;/min-length&gt;</div><div class="line">        &lt;batch-interval&gt;500&lt;/batch-interval&gt;</div><div class="line">      &lt;/batching&gt;</div><div class="line">    &lt;/peer&gt;</div><div class="line">  &lt;/portals&gt;</div><div class="line">&lt;/tnw-gateway&gt;</div></div><!-- fragment --><hr/>
 <p> <br />
  </p>
 <h2><a class="anchor" id="droelementbatchinterval"></a>
@@ -1139,18 +798,7 @@ Router Element "&lt;batch-interval&gt;"&nbsp;&nbsp;<small><a href="#droelementba
 <li>
 <b>Parent:</b> <a class="el" href="xmlconfigurationreference.html#droelementbatching">&lt;batching&gt;</a> </li>
 </ul>
-<p><b>Example:</b> </p><pre class="fragment">&lt;tnw-gateway version="1.0"&gt;
-  ...
-  &lt;portals&gt;
-    &lt;peer&gt;
-      &lt;batching&gt;
-        &lt;min-length&gt;4096&lt;/min-length&gt;
-        &lt;batch-interval&gt;500&lt;/batch-interval&gt;
-      &lt;/batching&gt;
-    &lt;/peer&gt;
-  &lt;/portals&gt;
-&lt;/tnw-gateway&gt;
-</pre><hr/>
+<p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;tnw-gateway version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div><div class="line">  ...</div><div class="line">  &lt;portals&gt;</div><div class="line">    &lt;peer&gt;</div><div class="line">      &lt;batching&gt;</div><div class="line">        &lt;min-length&gt;4096&lt;/min-length&gt;</div><div class="line">        &lt;batch-interval&gt;500&lt;/batch-interval&gt;</div><div class="line">      &lt;/batching&gt;</div><div class="line">    &lt;/peer&gt;</div><div class="line">  &lt;/portals&gt;</div><div class="line">&lt;/tnw-gateway&gt;</div></div><!-- fragment --><hr/>
 <p> <br />
  </p>
 <h2><a class="anchor" id="droelementminlength"></a>
@@ -1162,18 +810,7 @@ Router Element "&lt;min-length&gt;"&nbsp;&nbsp;<small><a href="#droelementminlen
 <li>
 <b>Parent:</b> <a class="el" href="xmlconfigurationreference.html#droelementbatching">&lt;batching&gt;</a> </li>
 </ul>
-<p><b>Example:</b> </p><pre class="fragment">&lt;tnw-gateway version="1.0"&gt;
-  ... 
-  &lt;portals&gt;
-    &lt;peer&gt;
-      &lt;batching&gt;
-        &lt;min-length&gt;4096&lt;/min-length&gt;
-        &lt;batch-interval&gt;500&lt;/batch-interval&gt;
-      &lt;/batching&gt;
-    &lt;/peer&gt;
-  &lt;/portals&gt;
-&lt;/tnw-gateway&gt;
-</pre><hr/>
+<p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;tnw-gateway version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div><div class="line">  ... </div><div class="line">  &lt;portals&gt;</div><div class="line">    &lt;peer&gt;</div><div class="line">      &lt;batching&gt;</div><div class="line">        &lt;min-length&gt;4096&lt;/min-length&gt;</div><div class="line">        &lt;batch-interval&gt;500&lt;/batch-interval&gt;</div><div class="line">      &lt;/batching&gt;</div><div class="line">    &lt;/peer&gt;</div><div class="line">  &lt;/portals&gt;</div><div class="line">&lt;/tnw-gateway&gt;</div></div><!-- fragment --><hr/>
 <p> <br />
  </p>
 <h2><a class="anchor" id="droelementmaxdatagram"></a>
@@ -1185,15 +822,7 @@ Router Element "&lt;max-datagram&gt;"&nbsp;&nbsp;<small><a href="#droelementmaxd
 <li>
 <b>Parent:</b> <a class="el" href="xmlconfigurationreference.html#droelementpeer">&lt;peer&gt;</a> </li>
 </ul>
-<p><b>Example:</b> </p><pre class="fragment">&lt;tnw-gateway version="1.0"&gt;
-  ...
-  &lt;portals&gt;
-    &lt;peer&gt;
-      &lt;max-datagram&gt;50000&lt;/max-datagram&gt;
-    &lt;/peer&gt;
-  &lt;/portals&gt;
-&lt;/tnw-gateway&gt;
-</pre><hr/>
+<p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;tnw-gateway version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div><div class="line">  ...</div><div class="line">  &lt;portals&gt;</div><div class="line">    &lt;peer&gt;</div><div class="line">      &lt;max-datagram&gt;50000&lt;/max-datagram&gt;</div><div class="line">    &lt;/peer&gt;</div><div class="line">  &lt;/portals&gt;</div><div class="line">&lt;/tnw-gateway&gt;</div></div><!-- fragment --><hr/>
 <p> <br />
  </p>
 <h2><a class="anchor" id="droelementsmartbatch"></a>
@@ -1207,19 +836,7 @@ Router Element "&lt;smart-batch&gt;"&nbsp;&nbsp;<small><a href="#droelementsmart
 <li>
 <b>Parent:</b> <a class="el" href="xmlconfigurationreference.html#droelementendpoint">&lt;endpoint&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementpeer">&lt;peer&gt;</a> </li>
 </ul>
-<p><b>Example:</b> </p><pre class="fragment">&lt;tnw-gateway version="1.0"&gt;
-      . . .
-      . . .
-  &lt;portals&gt;
-    &lt;peer&gt;
-      &lt;smart-batch&gt;1&lt;/smart-batch&gt;
-      &lt;batching&gt;
-        &lt;min-length&gt;4096&lt;/min-length&gt;
-      &lt;/batching&gt;
-    &lt;/peer&gt;
-  &lt;/portals&gt;
-&lt;/tnw-gateway&gt;
-</pre><hr/>
+<p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;tnw-gateway version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div><div class="line">      . . .</div><div class="line">      . . .</div><div class="line">  &lt;portals&gt;</div><div class="line">    &lt;peer&gt;</div><div class="line">      &lt;smart-batch&gt;1&lt;/smart-batch&gt;</div><div class="line">      &lt;batching&gt;</div><div class="line">        &lt;min-length&gt;4096&lt;/min-length&gt;</div><div class="line">      &lt;/batching&gt;</div><div class="line">    &lt;/peer&gt;</div><div class="line">  &lt;/portals&gt;</div><div class="line">&lt;/tnw-gateway&gt;</div></div><!-- fragment --><hr/>
 <p> <br />
  </p>
 <h2><a class="anchor" id="droelementmaxqueue"></a>
@@ -1231,20 +848,7 @@ Router Element "&lt;max-queue&gt;"&nbsp;&nbsp;<small><a href="#droelementmaxqueu
 <li>
 <b>Parent:</b> <a class="el" href="xmlconfigurationreference.html#droelementendpoint">&lt;endpoint&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementpeer">&lt;peer&gt;</a> </li>
 </ul>
-<p><b>Example:</b> </p><pre class="fragment">&lt;tnw-gateway version="1.0"&gt;
-  &lt;daemon&gt;
-  ...
-  &lt;/daemon&gt;
-  &lt;portals&gt;
-    &lt;endpoint&gt;
-      &lt;name&gt;E1&lt;/name&gt;
-      &lt;domain-id&gt;1&lt;/domain-id&gt;
-      &lt;max-queue&gt;500000&lt;/max-queue&gt;
-      ...
-    &lt;/endpoint&gt;
-  &lt;/portals&gt;
-&lt;/tnw-gateway&gt;
-</pre><hr/>
+<p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;tnw-gateway version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div><div class="line">  &lt;daemon&gt;</div><div class="line">  ...</div><div class="line">  &lt;/daemon&gt;</div><div class="line">  &lt;portals&gt;</div><div class="line">    &lt;endpoint&gt;</div><div class="line">      &lt;name&gt;E1&lt;/name&gt;</div><div class="line">      &lt;domain-<span class="keywordtype">id</span>&gt;1&lt;/domain-<span class="keywordtype">id</span>&gt;</div><div class="line">      &lt;max-queue&gt;500000&lt;/max-queue&gt;</div><div class="line">      ...</div><div class="line">    &lt;/endpoint&gt;</div><div class="line">  &lt;/portals&gt;</div><div class="line">&lt;/tnw-gateway&gt;</div></div><!-- fragment --><hr/>
 <p> <br />
  </p>
 <h2><a class="anchor" id="droelementsourcedeletiondelay"></a>
@@ -1256,20 +860,7 @@ Router Element "&lt;source-deletion-delay&gt;"&nbsp;&nbsp;<small><a href="#droel
 <li>
 <b>Parent:</b> <a class="el" href="xmlconfigurationreference.html#droelementendpoint">&lt;endpoint&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementpeer">&lt;peer&gt;</a> </li>
 </ul>
-<p><b>Example:</b> </p><pre class="fragment">&lt;tnw-gateway version="1.0"&gt;
-  &lt;daemon&gt;
-  ...
-  &lt;/daemon&gt;
-  &lt;portals&gt;
-    &lt;endpoint&gt;
-      &lt;name&gt;E1&lt;/name&gt;
-      &lt;domain-id&gt;1&lt;/domain-id&gt;
-      &lt;source-deletion-delay&gt;500&lt;/source-deletion-delay&gt;
-      ...
-    &lt;/endpoint&gt;
-  &lt;/portals&gt;
-&lt;/tnw-gateway&gt;
-</pre><hr/>
+<p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;tnw-gateway version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div><div class="line">  &lt;daemon&gt;</div><div class="line">  ...</div><div class="line">  &lt;/daemon&gt;</div><div class="line">  &lt;portals&gt;</div><div class="line">    &lt;endpoint&gt;</div><div class="line">      &lt;name&gt;E1&lt;/name&gt;</div><div class="line">      &lt;domain-<span class="keywordtype">id</span>&gt;1&lt;/domain-<span class="keywordtype">id</span>&gt;</div><div class="line">      &lt;source-deletion-delay&gt;500&lt;/source-deletion-delay&gt;</div><div class="line">      ...</div><div class="line">    &lt;/endpoint&gt;</div><div class="line">  &lt;/portals&gt;</div><div class="line">&lt;/tnw-gateway&gt;</div></div><!-- fragment --><hr/>
 <p> <br />
  </p>
 <h2><a class="anchor" id="droelementsingletcp"></a>
@@ -1281,21 +872,7 @@ Router Element "&lt;single-tcp&gt;"&nbsp;&nbsp;<small><a href="#droelementsingle
 <li>
 <b>Children:</b> <a class="el" href="xmlconfigurationreference.html#droelementinterface">&lt;interface&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementreceivebuffer">&lt;receive-buffer&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementsendbuffer">&lt;send-buffer&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementkeepalive">&lt;keepalive&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementnodelay">&lt;nodelay&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementcompression">&lt;compression&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementtls">&lt;tls&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementinitiator">&lt;initiator&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementacceptor">&lt;acceptor&gt;</a> </li>
 </ul>
-<p><b>Example:</b> </p><pre class="fragment">&lt;tnw-gateway version="1.0"&gt;
-  ...
-  &lt;portals&gt;
-    &lt;peer&gt;
-      &lt;single-tcp&gt;
-        &lt;interface&gt;10.28.5.5/24&lt;/interface&gt;
-        &lt;acceptor&gt;
-          &lt;listen-port&gt;23746&lt;/listen-port&gt;
-        &lt;/acceptor&gt;
-        ...
-      &lt;/single-tcp&gt;
-    &lt;/peer&gt;
-  &lt;/portals&gt;
-&lt;/tnw-gateway&gt;
-</pre><hr/>
+<p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;tnw-gateway version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div><div class="line">  ...</div><div class="line">  &lt;portals&gt;</div><div class="line">    &lt;peer&gt;</div><div class="line">      &lt;single-tcp&gt;</div><div class="line">        &lt;interface&gt;10.28.5.5/24&lt;/interface&gt;</div><div class="line">        &lt;acceptor&gt;</div><div class="line">          &lt;listen-port&gt;23746&lt;/listen-port&gt;</div><div class="line">        &lt;/acceptor&gt;</div><div class="line">        ...</div><div class="line">      &lt;/single-tcp&gt;</div><div class="line">    &lt;/peer&gt;</div><div class="line">  &lt;/portals&gt;</div><div class="line">&lt;/tnw-gateway&gt;</div></div><!-- fragment --><hr/>
 <p> <br />
  </p>
 <h2><a class="anchor" id="droelementacceptor"></a>
@@ -1307,20 +884,7 @@ Router Element "&lt;acceptor&gt;"&nbsp;&nbsp;<small><a href="#droelementacceptor
 <li>
 <b>Children:</b> <a class="el" href="xmlconfigurationreference.html#droelementlistenport">&lt;listen-port&gt;</a> </li>
 </ul>
-<p><b>Example:</b> </p><pre class="fragment">&lt;tnw-gateway version="1.0"&gt;
-  ...
-  &lt;portals&gt;
-    &lt;peer&gt;
-      &lt;single-tcp&gt;
-        &lt;acceptor&gt;
-          &lt;listen-port&gt;25000&lt;/port&gt;
-        &lt;/acceptor&gt;
-        ...
-      &lt;/single-tcp&gt;
-    &lt;/peer&gt;
-  &lt;/portals&gt;
-&lt;/tnw-gateway&gt;
-</pre><hr/>
+<p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;tnw-gateway version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div><div class="line">  ...</div><div class="line">  &lt;portals&gt;</div><div class="line">    &lt;peer&gt;</div><div class="line">      &lt;single-tcp&gt;</div><div class="line">        &lt;acceptor&gt;</div><div class="line">          &lt;listen-port&gt;25000&lt;/port&gt;</div><div class="line">        &lt;/acceptor&gt;</div><div class="line">        ...</div><div class="line">      &lt;/single-tcp&gt;</div><div class="line">    &lt;/peer&gt;</div><div class="line">  &lt;/portals&gt;</div><div class="line">&lt;/tnw-gateway&gt;</div></div><!-- fragment --><hr/>
 <p> <br />
  </p>
 <h2><a class="anchor" id="droelementlistenport"></a>
@@ -1330,20 +894,7 @@ Router Element "&lt;listen-port&gt;"&nbsp;&nbsp;<small><a href="#droelementliste
 <li>
 <b>Parent:</b> <a class="el" href="xmlconfigurationreference.html#droelementtcp">&lt;tcp&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementacceptor">&lt;acceptor&gt;</a> </li>
 </ul>
-<p><b>Example:</b> </p><pre class="fragment">&lt;tnw-gateway version="1.0"&gt;
-  ...
-  &lt;portals&gt;
-    &lt;peer&gt;
-      &lt;single-tcp&gt;
-        &lt;acceptor&gt;
-          &lt;listen-port&gt;46000&lt;/listen-port&gt;
-        &lt;/acceptor&gt;
-        ...
-      &lt;/single-tcp&gt;
-    &lt;/peer&gt;
-  &lt;/portals&gt;
-&lt;/tnw-gateway&gt;
-</pre><hr/>
+<p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;tnw-gateway version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div><div class="line">  ...</div><div class="line">  &lt;portals&gt;</div><div class="line">    &lt;peer&gt;</div><div class="line">      &lt;single-tcp&gt;</div><div class="line">        &lt;acceptor&gt;</div><div class="line">          &lt;listen-port&gt;46000&lt;/listen-port&gt;</div><div class="line">        &lt;/acceptor&gt;</div><div class="line">        ...</div><div class="line">      &lt;/single-tcp&gt;</div><div class="line">    &lt;/peer&gt;</div><div class="line">  &lt;/portals&gt;</div><div class="line">&lt;/tnw-gateway&gt;</div></div><!-- fragment --><hr/>
 <p> <br />
  </p>
 <h2><a class="anchor" id="droelementinitiator"></a>
@@ -1361,21 +912,7 @@ Router Element "&lt;initiator&gt;"&nbsp;&nbsp;<small><a href="#droelementinitiat
 <tr>
 <td><b>reconnect-interval</b> </td><td>The time interval, in milliseconds, to wait before reconnecting to the companion portal if this connection is interrupted. </td><td>string </td><td><b><code>"5000"</code></b> </td></tr>
 </table>
-<p><b>Example:</b> </p><pre class="fragment">&lt;tnw-gateway version="1.0"&gt;
-  ...
-  &lt;portals&gt;
-    &lt;peer&gt;
-      &lt;single-tcp&gt;
-        &lt;initiator&gt;
-          &lt;address&gt;10.28.3.91&lt;/address&gt;
-          &lt;port&gt;25000&lt;/port&gt;
-        &lt;/initiator&gt;
-        ...
-      &lt;/single-tcp&gt;
-    &lt;/peer&gt;
-  &lt;/portals&gt;
-&lt;/tnw-gateway&gt;
-</pre><hr/>
+<p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;tnw-gateway version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div><div class="line">  ...</div><div class="line">  &lt;portals&gt;</div><div class="line">    &lt;peer&gt;</div><div class="line">      &lt;single-tcp&gt;</div><div class="line">        &lt;initiator&gt;</div><div class="line">          &lt;address&gt;10.28.3.91&lt;/address&gt;</div><div class="line">          &lt;port&gt;25000&lt;/port&gt;</div><div class="line">        &lt;/initiator&gt;</div><div class="line">        ...</div><div class="line">      &lt;/single-tcp&gt;</div><div class="line">    &lt;/peer&gt;</div><div class="line">  &lt;/portals&gt;</div><div class="line">&lt;/tnw-gateway&gt;</div></div><!-- fragment --><hr/>
 <p> <br />
  </p>
 <h2><a class="anchor" id="droelementport"></a>
@@ -1385,21 +922,7 @@ Router Element "&lt;port&gt;"&nbsp;&nbsp;<small><a href="#droelementport">&lt;-<
 <li>
 <b>Parent:</b> <a class="el" href="xmlconfigurationreference.html#droelementcompanion">&lt;companion&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementinitiator">&lt;initiator&gt;</a> </li>
 </ul>
-<p><b>Example:</b> </p><pre class="fragment">&lt;tnw-gateway version="1.0"&gt;
-  ...
-  &lt;portals&gt;
-    &lt;peer&gt;
-      &lt;single-tcp&gt;
-        &lt;initiator&gt;
-          &lt;address&gt;10.28.3.91&lt;/address&gt;
-          &lt;port&gt;25000&lt;/port&gt;
-        &lt;/initiator&gt;
-        ...
-      &lt;/single-tcp&gt;
-    &lt;/peer&gt;
-  &lt;/portals&gt;
-&lt;/tnw-gateway&gt;
-</pre><hr/>
+<p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;tnw-gateway version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div><div class="line">  ...</div><div class="line">  &lt;portals&gt;</div><div class="line">    &lt;peer&gt;</div><div class="line">      &lt;single-tcp&gt;</div><div class="line">        &lt;initiator&gt;</div><div class="line">          &lt;address&gt;10.28.3.91&lt;/address&gt;</div><div class="line">          &lt;port&gt;25000&lt;/port&gt;</div><div class="line">        &lt;/initiator&gt;</div><div class="line">        ...</div><div class="line">      &lt;/single-tcp&gt;</div><div class="line">    &lt;/peer&gt;</div><div class="line">  &lt;/portals&gt;</div><div class="line">&lt;/tnw-gateway&gt;</div></div><!-- fragment --><hr/>
 <p> <br />
  </p>
 <h2><a class="anchor" id="droelementaddress"></a>
@@ -1409,21 +932,7 @@ Router Element "&lt;address&gt;"&nbsp;&nbsp;<small><a href="#droelementaddress">
 <li>
 <b>Parent:</b> <a class="el" href="xmlconfigurationreference.html#droelementcompanion">&lt;companion&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementinitiator">&lt;initiator&gt;</a> </li>
 </ul>
-<p><b>Example:</b> </p><pre class="fragment">&lt;tnw-gateway version="1.0"&gt;
-  ...
-  &lt;portals&gt;
-    &lt;peer&gt;
-      &lt;single-tcp&gt;
-        &lt;initiator&gt;
-          &lt;address&gt;10.28.3.91&lt;/address&gt;
-          &lt;port&gt;25000&lt;/port&gt;
-        &lt;/initiator&gt;
-        ...
-      &lt;/single-tcp&gt;
-    &lt;/peer&gt;
-  &lt;/portals&gt;
-&lt;/tnw-gateway&gt;
-</pre><hr/>
+<p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;tnw-gateway version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div><div class="line">  ...</div><div class="line">  &lt;portals&gt;</div><div class="line">    &lt;peer&gt;</div><div class="line">      &lt;single-tcp&gt;</div><div class="line">        &lt;initiator&gt;</div><div class="line">          &lt;address&gt;10.28.3.91&lt;/address&gt;</div><div class="line">          &lt;port&gt;25000&lt;/port&gt;</div><div class="line">        &lt;/initiator&gt;</div><div class="line">        ...</div><div class="line">      &lt;/single-tcp&gt;</div><div class="line">    &lt;/peer&gt;</div><div class="line">  &lt;/portals&gt;</div><div class="line">&lt;/tnw-gateway&gt;</div></div><!-- fragment --><hr/>
 <p> <br />
  </p>
 <h2><a class="anchor" id="droelementtls"></a>
@@ -1437,25 +946,7 @@ Router Element "&lt;tls&gt;"&nbsp;&nbsp;<small><a href="#droelementtls">&lt;-</a
 <li>
 <b>Children:</b> <a class="el" href="xmlconfigurationreference.html#droelementcertificate">&lt;certificate&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementcertificatekey">&lt;certificate-key&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementcertificatekeypassword">&lt;certificate-key-password&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementtrustedcertificates">&lt;trusted-certificates&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementciphersuites">&lt;cipher-suites&gt;</a> </li>
 </ul>
-<p><b>Example:</b> </p><pre class="fragment">&lt;tnw-gateway version="1.0"&gt;
-  ...
-  &lt;portals&gt;
-    &lt;peer&gt;
-      &lt;single-tcp&gt;
-        &lt;tls&gt;
-          &lt;certificate&gt;test.crt&lt;certificate&gt;
-          &lt;certificate-key&gt;test.key&lt;certificate-key&gt;
-          &lt;certificate-key-password&gt;
-            CorrectHorseBatteryStaple
-          &lt;/certificate-key-password&gt;
-          &lt;trusted-certificates&gt;peers.crt&lt;trusted-certificates&gt;
-        &lt;/tls&gt;
-        ...
-      &lt;/single-tcp&gt;
-    &lt;/peer&gt;
-  &lt;/portals&gt;
-&lt;/tnw-gateway&gt;
-</pre><hr/>
+<p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;tnw-gateway version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div><div class="line">  ...</div><div class="line">  &lt;portals&gt;</div><div class="line">    &lt;peer&gt;</div><div class="line">      &lt;single-tcp&gt;</div><div class="line">        &lt;tls&gt;</div><div class="line">          &lt;certificate&gt;test.crt&lt;certificate&gt;</div><div class="line">          &lt;certificate-key&gt;test.key&lt;certificate-key&gt;</div><div class="line">          &lt;certificate-key-password&gt;</div><div class="line">            CorrectHorseBatteryStaple</div><div class="line">          &lt;/certificate-key-password&gt;</div><div class="line">          &lt;trusted-certificates&gt;peers.crt&lt;trusted-certificates&gt;</div><div class="line">        &lt;/tls&gt;</div><div class="line">        ...</div><div class="line">      &lt;/single-tcp&gt;</div><div class="line">    &lt;/peer&gt;</div><div class="line">  &lt;/portals&gt;</div><div class="line">&lt;/tnw-gateway&gt;</div></div><!-- fragment --><hr/>
 <p> <br />
  </p>
 <h2><a class="anchor" id="droelementciphersuites"></a>
@@ -1468,21 +959,7 @@ Router Element "&lt;cipher-suites&gt;"&nbsp;&nbsp;<small><a href="#droelementcip
 <li>
 <b>Parent:</b> <a class="el" href="xmlconfigurationreference.html#droelementtls">&lt;tls&gt;</a> </li>
 </ul>
-<p><b>Example:</b> </p><pre class="fragment">&lt;tnw-gateway version="1.0"&gt;
-  ...
-  &lt;portals&gt;
-    &lt;peer&gt;
-      &lt;single-tcp&gt;
-        &lt;tls&gt;
-          &lt;cipher-suites&gt;TLS_DHE_RSA_WITH_AES_256_GCM_SHA384&lt;cipher-suites&gt;
-          ...
-        &lt;/tls&gt;
-        ...
-      &lt;/single-tcp&gt;
-    &lt;/peer&gt;
-  &lt;/portals&gt;
-&lt;/tnw-gateway&gt;
-</pre><hr/>
+<p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;tnw-gateway version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div><div class="line">  ...</div><div class="line">  &lt;portals&gt;</div><div class="line">    &lt;peer&gt;</div><div class="line">      &lt;single-tcp&gt;</div><div class="line">        &lt;tls&gt;</div><div class="line">          &lt;cipher-suites&gt;TLS_DHE_RSA_WITH_AES_256_GCM_SHA384&lt;cipher-suites&gt;</div><div class="line">          ...</div><div class="line">        &lt;/tls&gt;</div><div class="line">        ...</div><div class="line">      &lt;/single-tcp&gt;</div><div class="line">    &lt;/peer&gt;</div><div class="line">  &lt;/portals&gt;</div><div class="line">&lt;/tnw-gateway&gt;</div></div><!-- fragment --><hr/>
 <p> <br />
  </p>
 <h2><a class="anchor" id="droelementtrustedcertificates"></a>
@@ -1494,21 +971,7 @@ Router Element "&lt;trusted-certificates&gt;"&nbsp;&nbsp;<small><a href="#droele
 <li>
 <b>Parent:</b> <a class="el" href="xmlconfigurationreference.html#droelementtls">&lt;tls&gt;</a> </li>
 </ul>
-<p><b>Example:</b> </p><pre class="fragment">&lt;tnw-gateway version="1.0"&gt;
-  ...
-  &lt;portals&gt;
-    &lt;peer&gt;
-      &lt;single-tcp&gt;
-        &lt;tls&gt;
-          &lt;trusted-certificates&gt;peers.crt&lt;trusted-certificates&gt;
-          ...
-        &lt;/tls&gt;
-        ...
-      &lt;/single-tcp&gt;
-    &lt;/peer&gt;
-  &lt;/portals&gt;
-&lt;/tnw-gateway&gt;
-</pre><hr/>
+<p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;tnw-gateway version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div><div class="line">  ...</div><div class="line">  &lt;portals&gt;</div><div class="line">    &lt;peer&gt;</div><div class="line">      &lt;single-tcp&gt;</div><div class="line">        &lt;tls&gt;</div><div class="line">          &lt;trusted-certificates&gt;peers.crt&lt;trusted-certificates&gt;</div><div class="line">          ...</div><div class="line">        &lt;/tls&gt;</div><div class="line">        ...</div><div class="line">      &lt;/single-tcp&gt;</div><div class="line">    &lt;/peer&gt;</div><div class="line">  &lt;/portals&gt;</div><div class="line">&lt;/tnw-gateway&gt;</div></div><!-- fragment --><hr/>
 <p> <br />
  </p>
 <h2><a class="anchor" id="droelementcertificatekeypassword"></a>
@@ -1520,23 +983,7 @@ Router Element "&lt;certificate-key-password&gt;"&nbsp;&nbsp;<small><a href="#dr
 <li>
 <b>Parent:</b> <a class="el" href="xmlconfigurationreference.html#droelementtls">&lt;tls&gt;</a> </li>
 </ul>
-<p><b>Example:</b> </p><pre class="fragment">&lt;tnw-gateway version="1.0"&gt;
-  ...
-  &lt;portals&gt;
-    &lt;peer&gt;
-      &lt;single-tcp&gt;
-        &lt;tls&gt;
-          &lt;certificate-key-password&gt;
-            CorrectHorseBatteryStaple
-          &lt;/certificate-key-password&gt;
-          ...
-        &lt;/tls&gt;
-        ...
-      &lt;/single-tcp&gt;
-    &lt;/peer&gt;
-  &lt;/portals&gt;
-&lt;/tnw-gateway&gt;
-</pre><hr/>
+<p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;tnw-gateway version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div><div class="line">  ...</div><div class="line">  &lt;portals&gt;</div><div class="line">    &lt;peer&gt;</div><div class="line">      &lt;single-tcp&gt;</div><div class="line">        &lt;tls&gt;</div><div class="line">          &lt;certificate-key-password&gt;</div><div class="line">            CorrectHorseBatteryStaple</div><div class="line">          &lt;/certificate-key-password&gt;</div><div class="line">          ...</div><div class="line">        &lt;/tls&gt;</div><div class="line">        ...</div><div class="line">      &lt;/single-tcp&gt;</div><div class="line">    &lt;/peer&gt;</div><div class="line">  &lt;/portals&gt;</div><div class="line">&lt;/tnw-gateway&gt;</div></div><!-- fragment --><hr/>
 <p> <br />
  </p>
 <h2><a class="anchor" id="droelementcertificatekey"></a>
@@ -1546,21 +993,7 @@ Router Element "&lt;certificate-key&gt;"&nbsp;&nbsp;<small><a href="#droelementc
 <li>
 <b>Parent:</b> <a class="el" href="xmlconfigurationreference.html#droelementtls">&lt;tls&gt;</a> </li>
 </ul>
-<p><b>Example:</b> </p><pre class="fragment">&lt;tnw-gateway version="1.0"&gt;
-  ...
-  &lt;portals&gt;
-    &lt;peer&gt;
-      &lt;single-tcp&gt;
-        &lt;tls&gt;
-          &lt;certificate-key&gt;test.key&lt;certificate-key&gt;
-          ...
-        &lt;/tls&gt;
-        ...
-      &lt;/single-tcp&gt;
-    &lt;/peer&gt;
-  &lt;/portals&gt;
-&lt;/tnw-gateway&gt;
-</pre><hr/>
+<p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;tnw-gateway version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div><div class="line">  ...</div><div class="line">  &lt;portals&gt;</div><div class="line">    &lt;peer&gt;</div><div class="line">      &lt;single-tcp&gt;</div><div class="line">        &lt;tls&gt;</div><div class="line">          &lt;certificate-key&gt;test.key&lt;certificate-key&gt;</div><div class="line">          ...</div><div class="line">        &lt;/tls&gt;</div><div class="line">        ...</div><div class="line">      &lt;/single-tcp&gt;</div><div class="line">    &lt;/peer&gt;</div><div class="line">  &lt;/portals&gt;</div><div class="line">&lt;/tnw-gateway&gt;</div></div><!-- fragment --><hr/>
 <p> <br />
  </p>
 <h2><a class="anchor" id="droelementcertificate"></a>
@@ -1570,21 +1003,7 @@ Router Element "&lt;certificate&gt;"&nbsp;&nbsp;<small><a href="#droelementcerti
 <li>
 <b>Parent:</b> <a class="el" href="xmlconfigurationreference.html#droelementtls">&lt;tls&gt;</a> </li>
 </ul>
-<p><b>Example:</b> </p><pre class="fragment">&lt;tnw-gateway version="1.0"&gt;
-  ...
-  &lt;portals&gt;
-    &lt;peer&gt;
-      &lt;single-tcp&gt;
-        &lt;tls&gt;
-          &lt;certificate&gt;test.crt&lt;certificate&gt;
-          ...
-        &lt;/tls&gt;
-        ...
-      &lt;/single-tcp&gt;
-    &lt;/peer&gt;
-  &lt;/portals&gt;
-&lt;/tnw-gateway&gt;
-</pre><hr/>
+<p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;tnw-gateway version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div><div class="line">  ...</div><div class="line">  &lt;portals&gt;</div><div class="line">    &lt;peer&gt;</div><div class="line">      &lt;single-tcp&gt;</div><div class="line">        &lt;tls&gt;</div><div class="line">          &lt;certificate&gt;test.crt&lt;certificate&gt;</div><div class="line">          ...</div><div class="line">        &lt;/tls&gt;</div><div class="line">        ...</div><div class="line">      &lt;/single-tcp&gt;</div><div class="line">    &lt;/peer&gt;</div><div class="line">  &lt;/portals&gt;</div><div class="line">&lt;/tnw-gateway&gt;</div></div><!-- fragment --><hr/>
 <p> <br />
  </p>
 <h2><a class="anchor" id="droelementcompression"></a>
@@ -1596,18 +1015,7 @@ Router Element "&lt;compression&gt;"&nbsp;&nbsp;<small><a href="#droelementcompr
 <li>
 <b>Parent:</b> <a class="el" href="xmlconfigurationreference.html#droelementtcp">&lt;tcp&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementsingletcp">&lt;single-tcp&gt;</a> </li>
 </ul>
-<p><b>Example:</b> </p><pre class="fragment">&lt;tnw-gateway version="1.0"&gt;
-  ...
-  &lt;portals&gt;
-    &lt;peer&gt;
-      &lt;single-tcp&gt;
-        &lt;compression&gt;LZ4&lt;/compression&gt;
-        ...
-      &lt;/single-tcp&gt;
-    &lt;/peer&gt;
-  &lt;/portals&gt;
-&lt;/tnw-gateway&gt;
-</pre><hr/>
+<p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;tnw-gateway version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div><div class="line">  ...</div><div class="line">  &lt;portals&gt;</div><div class="line">    &lt;peer&gt;</div><div class="line">      &lt;single-tcp&gt;</div><div class="line">        &lt;compression&gt;LZ4&lt;/compression&gt;</div><div class="line">        ...</div><div class="line">      &lt;/single-tcp&gt;</div><div class="line">    &lt;/peer&gt;</div><div class="line">  &lt;/portals&gt;</div><div class="line">&lt;/tnw-gateway&gt;</div></div><!-- fragment --><hr/>
 <p> <br />
  </p>
 <h2><a class="anchor" id="droelementnodelay"></a>
@@ -1620,18 +1028,7 @@ Router Element "&lt;nodelay&gt;"&nbsp;&nbsp;<small><a href="#droelementnodelay">
 <li>
 <b>Parent:</b> <a class="el" href="xmlconfigurationreference.html#droelementtcp">&lt;tcp&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementsingletcp">&lt;single-tcp&gt;</a> </li>
 </ul>
-<p><b>Example:</b> </p><pre class="fragment">&lt;tnw-gateway version="1.0"&gt;
-  ...
-  &lt;portals&gt;
-    &lt;peer&gt;
-      &lt;single-tcp&gt;
-        &lt;nodelay/&gt;
-        ...
-      &lt;/single-tcp&gt;
-    &lt;/peer&gt;
-  &lt;/portals&gt;
-&lt;/tnw-gateway&gt;
-</pre><hr/>
+<p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;tnw-gateway version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div><div class="line">  ...</div><div class="line">  &lt;portals&gt;</div><div class="line">    &lt;peer&gt;</div><div class="line">      &lt;single-tcp&gt;</div><div class="line">        &lt;nodelay/&gt;</div><div class="line">        ...</div><div class="line">      &lt;/single-tcp&gt;</div><div class="line">    &lt;/peer&gt;</div><div class="line">  &lt;/portals&gt;</div><div class="line">&lt;/tnw-gateway&gt;</div></div><!-- fragment --><hr/>
 <p> <br />
  </p>
 <h2><a class="anchor" id="droelementkeepalive"></a>
@@ -1643,20 +1040,7 @@ Router Element "&lt;keepalive&gt;"&nbsp;&nbsp;<small><a href="#droelementkeepali
 <li>
 <b>Parent:</b> <a class="el" href="xmlconfigurationreference.html#droelementtcp">&lt;tcp&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementsingletcp">&lt;single-tcp&gt;</a> </li>
 </ul>
-<p><b>Example:</b> </p><pre class="fragment">&lt;tnw-gateway version="1.0"&gt;
-      . . .
-      . . .
-  &lt;portals&gt;
-    &lt;peer&gt;
-      &lt;single-tcp&gt;
-        &lt;keepalive/&gt;
-      . . .
-      . . .
-      &lt;/single-tcp&gt;
-    &lt;/peer&gt;
-  &lt;/portals&gt;
-&lt;/tnw-gateway&gt;
-</pre><hr/>
+<p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;tnw-gateway version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div><div class="line">      . . .</div><div class="line">      . . .</div><div class="line">  &lt;portals&gt;</div><div class="line">    &lt;peer&gt;</div><div class="line">      &lt;single-tcp&gt;</div><div class="line">        &lt;keepalive/&gt;</div><div class="line">      . . .</div><div class="line">      . . .</div><div class="line">      &lt;/single-tcp&gt;</div><div class="line">    &lt;/peer&gt;</div><div class="line">  &lt;/portals&gt;</div><div class="line">&lt;/tnw-gateway&gt;</div></div><!-- fragment --><hr/>
 <p> <br />
  </p>
 <h2><a class="anchor" id="droelementsendbuffer"></a>
@@ -1668,18 +1052,7 @@ Router Element "&lt;send-buffer&gt;"&nbsp;&nbsp;<small><a href="#droelementsendb
 <li>
 <b>Parent:</b> <a class="el" href="xmlconfigurationreference.html#droelementtcp">&lt;tcp&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementsingletcp">&lt;single-tcp&gt;</a> </li>
 </ul>
-<p><b>Example:</b> </p><pre class="fragment">&lt;tnw-gateway version="1.0"&gt;
-  ...
-  &lt;portals&gt;
-    &lt;peer&gt;
-      &lt;single-tcp&gt;
-        &lt;send-buffer&gt;128000&lt;/send-buffer&gt;
-        ...
-      &lt;/single-tcp&gt;
-    &lt;/peer&gt;
-  &lt;/portals&gt;
-&lt;/tnw-gateway&gt;
-</pre><hr/>
+<p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;tnw-gateway version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div><div class="line">  ...</div><div class="line">  &lt;portals&gt;</div><div class="line">    &lt;peer&gt;</div><div class="line">      &lt;single-tcp&gt;</div><div class="line">        &lt;send-buffer&gt;128000&lt;/send-buffer&gt;</div><div class="line">        ...</div><div class="line">      &lt;/single-tcp&gt;</div><div class="line">    &lt;/peer&gt;</div><div class="line">  &lt;/portals&gt;</div><div class="line">&lt;/tnw-gateway&gt;</div></div><!-- fragment --><hr/>
 <p> <br />
  </p>
 <h2><a class="anchor" id="droelementreceivebuffer"></a>
@@ -1691,18 +1064,7 @@ Router Element "&lt;receive-buffer&gt;"&nbsp;&nbsp;<small><a href="#droelementre
 <li>
 <b>Parent:</b> <a class="el" href="xmlconfigurationreference.html#droelementtcp">&lt;tcp&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementsingletcp">&lt;single-tcp&gt;</a> </li>
 </ul>
-<p><b>Example:</b> </p><pre class="fragment">&lt;tnw-gateway version="1.0"&gt;
-  ...
-  &lt;portals&gt;
-    &lt;peer&gt;
-      &lt;single-tcp&gt;
-        &lt;receive-buffer&gt;128000&lt;/receive-buffer&gt;
-        ...
-      &lt;/single-tcp&gt;
-    &lt;/peer&gt;
-  &lt;/portals&gt;
-&lt;/tnw-gateway&gt;
-</pre><hr/>
+<p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;tnw-gateway version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div><div class="line">  ...</div><div class="line">  &lt;portals&gt;</div><div class="line">    &lt;peer&gt;</div><div class="line">      &lt;single-tcp&gt;</div><div class="line">        &lt;receive-buffer&gt;128000&lt;/receive-buffer&gt;</div><div class="line">        ...</div><div class="line">      &lt;/single-tcp&gt;</div><div class="line">    &lt;/peer&gt;</div><div class="line">  &lt;/portals&gt;</div><div class="line">&lt;/tnw-gateway&gt;</div></div><!-- fragment --><hr/>
 <p> <br />
  </p>
 <h2><a class="anchor" id="droelementinterface"></a>
@@ -1714,18 +1076,7 @@ Router Element "&lt;interface&gt;"&nbsp;&nbsp;<small><a href="#droelementinterfa
 <li>
 <b>Parent:</b> <a class="el" href="xmlconfigurationreference.html#droelementtcp">&lt;tcp&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementsingletcp">&lt;single-tcp&gt;</a> </li>
 </ul>
-<p><b>Example:</b> </p><pre class="fragment">&lt;tnw-gateway version="1.0"&gt;
-  ...
-  &lt;portals&gt;
-    &lt;peer&gt;
-      &lt;single-tcp&gt;
-        &lt;interface&gt;10.28.5.5/24&lt;/interface&gt;
-        ...
-      &lt;/single-tcp&gt;
-    &lt;/peer&gt;
-  &lt;/portals&gt;
-&lt;/tnw-gateway&gt;
-</pre><hr/>
+<p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;tnw-gateway version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div><div class="line">  ...</div><div class="line">  &lt;portals&gt;</div><div class="line">    &lt;peer&gt;</div><div class="line">      &lt;single-tcp&gt;</div><div class="line">        &lt;interface&gt;10.28.5.5/24&lt;/interface&gt;</div><div class="line">        ...</div><div class="line">      &lt;/single-tcp&gt;</div><div class="line">    &lt;/peer&gt;</div><div class="line">  &lt;/portals&gt;</div><div class="line">&lt;/tnw-gateway&gt;</div></div><!-- fragment --><hr/>
 <p> <br />
  </p>
 <h2><a class="anchor" id="droelementtcp"></a>
@@ -1773,18 +1124,7 @@ Router Element "&lt;sourcemap&gt;"&nbsp;&nbsp;<small><a href="#droelementsourcem
 <tr>
 <td><b>size</b> </td><td>Number of entries in the source map. Value must be a power of 2 (e.g., 1024, 2048, ...). </td><td>string </td><td><b><code>"131072"</code></b> </td></tr>
 </table>
-<p><b>Example:</b> </p><pre class="fragment">&lt;tnw-gateway version="1.0"&gt;
-      . . .
-      . . .
-  &lt;portals&gt;
-    &lt;peer&gt;
-      &lt;sourcemap size="131072"/&gt;
-      . . .
-      . . .
-    &lt;/peer&gt;
-  &lt;/portals&gt;
-&lt;/tnw-gateway&gt;
-</pre><hr/>
+<p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;tnw-gateway version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div><div class="line">      . . .</div><div class="line">      . . .</div><div class="line">  &lt;portals&gt;</div><div class="line">    &lt;peer&gt;</div><div class="line">      &lt;sourcemap size=<span class="stringliteral">&quot;131072&quot;</span>/&gt;</div><div class="line">      . . .</div><div class="line">      . . .</div><div class="line">    &lt;/peer&gt;</div><div class="line">  &lt;/portals&gt;</div><div class="line">&lt;/tnw-gateway&gt;</div></div><!-- fragment --><hr/>
 <p> <br />
  </p>
 <h2><a class="anchor" id="droelementcost"></a>
@@ -1796,20 +1136,7 @@ Router Element "&lt;cost&gt;"&nbsp;&nbsp;<small><a href="#droelementcost">&lt;-<
 <li>
 <b>Parent:</b> <a class="el" href="xmlconfigurationreference.html#droelementendpoint">&lt;endpoint&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementpeer">&lt;peer&gt;</a> </li>
 </ul>
-<p><b>Example:</b> </p><pre class="fragment">&lt;tnw-gateway version="1.0"&gt;
-  &lt;daemon&gt;
-  ...
-  &lt;/daemon&gt;
-  &lt;portals&gt;
-    &lt;endpoint&gt;
-      &lt;name&gt;E1&lt;/name&gt;
-      &lt;domain-id&gt;1&lt;/domain-id&gt;
-      &lt;cost&gt;25&lt;/cost&gt;
-      ...
-    &lt;/endpoint&gt;
-  &lt;/portals&gt;
-&lt;/tnw-gateway&gt;
-</pre><hr/>
+<p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;tnw-gateway version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div><div class="line">  &lt;daemon&gt;</div><div class="line">  ...</div><div class="line">  &lt;/daemon&gt;</div><div class="line">  &lt;portals&gt;</div><div class="line">    &lt;endpoint&gt;</div><div class="line">      &lt;name&gt;E1&lt;/name&gt;</div><div class="line">      &lt;domain-<span class="keywordtype">id</span>&gt;1&lt;/domain-<span class="keywordtype">id</span>&gt;</div><div class="line">      &lt;cost&gt;25&lt;/cost&gt;</div><div class="line">      ...</div><div class="line">    &lt;/endpoint&gt;</div><div class="line">  &lt;/portals&gt;</div><div class="line">&lt;/tnw-gateway&gt;</div></div><!-- fragment --><hr/>
 <p> <br />
  </p>
 <h2><a class="anchor" id="droelementname"></a>
@@ -1828,19 +1155,7 @@ Router Element "&lt;name&gt;"&nbsp;&nbsp;<small><a href="#droelementname">&lt;-<
 <td><b>xml:space</b> </td><td>Specifies how whitespace (tabs, spaces, linefeeds) are handled in the element content. </td><td><b><code>"default"</code></b> - Trim leading and trailing whitespace, and compress multiple whitespace characters into a single space. <br />
 <b><code>"preserve"</code></b> - Retain whitespace exactly as entered. </td><td><b>default</b> </td></tr>
 </table>
-<p><b>Example:</b> </p><pre class="fragment">&lt;tnw-gateway version="1.0"&gt;
-  &lt;daemon&gt;
-    &lt;name&gt;UM Router1&lt;/name&gt;
-  &lt;/daemon&gt;
-  &lt;portals&gt;
-    &lt;endpoint&gt;
-      &lt;name&gt;endpoint1&lt;/name&gt;
-      ...
-    &lt;/endpoint&gt;
-  &lt;/portals&gt;
-  ...
-&lt;/tnw-gateway&gt;
-</pre><hr/>
+<p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;tnw-gateway version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div><div class="line">  &lt;daemon&gt;</div><div class="line">    &lt;name&gt;UM Router1&lt;/name&gt;</div><div class="line">  &lt;/daemon&gt;</div><div class="line">  &lt;portals&gt;</div><div class="line">    &lt;endpoint&gt;</div><div class="line">      &lt;name&gt;endpoint1&lt;/name&gt;</div><div class="line">      ...</div><div class="line">    &lt;/endpoint&gt;</div><div class="line">  &lt;/portals&gt;</div><div class="line">  ...</div><div class="line">&lt;/tnw-gateway&gt;</div></div><!-- fragment --><hr/>
 <p> <br />
  </p>
 <h2><a class="anchor" id="droelementendpoint"></a>
@@ -1852,20 +1167,7 @@ Router Element "&lt;endpoint&gt;"&nbsp;&nbsp;<small><a href="#droelementendpoint
 <li>
 <b>Children:</b> <a class="el" href="xmlconfigurationreference.html#droelementname">&lt;name&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementdomainid">&lt;domain-id&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementcost">&lt;cost&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementsourcedeletiondelay">&lt;source-deletion-delay&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementmaxqueue">&lt;max-queue&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementsmartbatch">&lt;smart-batch&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementlbmconfig">&lt;lbm-config&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementlbmattributes">&lt;lbm-attributes&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementacl">&lt;acl&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementtopicresolution">&lt;topic-resolution&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementlatejoin">&lt;late-join&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementtopicpurge">&lt;topic-purge&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementtopicinterestgenerate">&lt;topic-interest-generate&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementtopicdomainactivity">&lt;topic-domain-activity&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementpatternpurge">&lt;pattern-purge&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementpatterninterestgenerate">&lt;pattern-interest-generate&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementpatterndomainactivity">&lt;pattern-domain-activity&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementremotetopic">&lt;remote-topic&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementremotepattern">&lt;remote-pattern&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementsourcecontextname">&lt;source-context-name&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementreceivercontextname">&lt;receiver-context-name&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementsqnwindow">&lt;sqn-window&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementcontextquery">&lt;context-query&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementpublishinginterval">&lt;publishing-interval&gt;</a> </li>
 </ul>
-<p><b>Example:</b> </p><pre class="fragment">&lt;tnw-gateway version="1.0"&gt;
-  &lt;daemon&gt;
-  ...
-  &lt;/daemon&gt;
-  &lt;portals&gt;
-    &lt;endpoint&gt;
-      &lt;name&gt;E1&lt;/name&gt;
-      &lt;domain-id&gt;1&lt;/domain-id&gt;
-      &lt;cost&gt;1&lt;/cost&gt;
-      ...
-    &lt;/endpoint&gt;
-  &lt;/portals&gt;
-&lt;/tnw-gateway&gt;
-</pre><hr/>
+<p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;tnw-gateway version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div><div class="line">  &lt;daemon&gt;</div><div class="line">  ...</div><div class="line">  &lt;/daemon&gt;</div><div class="line">  &lt;portals&gt;</div><div class="line">    &lt;endpoint&gt;</div><div class="line">      &lt;name&gt;E1&lt;/name&gt;</div><div class="line">      &lt;domain-<span class="keywordtype">id</span>&gt;1&lt;/domain-<span class="keywordtype">id</span>&gt;</div><div class="line">      &lt;cost&gt;1&lt;/cost&gt;</div><div class="line">      ...</div><div class="line">    &lt;/endpoint&gt;</div><div class="line">  &lt;/portals&gt;</div><div class="line">&lt;/tnw-gateway&gt;</div></div><!-- fragment --><hr/>
 <p> <br />
  </p>
 <h2><a class="anchor" id="droelementremotepattern"></a>
@@ -1887,15 +1189,7 @@ Router Element "&lt;remote-pattern&gt;"&nbsp;&nbsp;<small><a href="#droelementre
 <tr>
 <td><b>timeout</b> </td><td>Minimum time (in milliseconds) remote interest for a pattern must be refreshed before interest is removed for that domain. Before changing the value of this option, please contact Informatica Support. </td><td>string </td><td><b><code>"300000"</code></b> </td></tr>
 </table>
-<p><b>Example:</b> </p><pre class="fragment">&lt;tnw-gateway version="1.0"&gt;
-  ...
-  &lt;portals&gt;
-    &lt;endpoint&gt;
-      &lt;remote-pattern check-interval="80000" max-topics="80" timeout="250000"/&gt;
-    &lt;/endpoint&gt;
-  &lt;/portals&gt;
-&lt;/tnw-gateway&gt;
-</pre><hr/>
+<p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;tnw-gateway version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div><div class="line">  ...</div><div class="line">  &lt;portals&gt;</div><div class="line">    &lt;endpoint&gt;</div><div class="line">      &lt;remote-pattern check-interval=<span class="stringliteral">&quot;80000&quot;</span> max-topics=<span class="stringliteral">&quot;80&quot;</span> timeout=<span class="stringliteral">&quot;250000&quot;</span>/&gt;</div><div class="line">    &lt;/endpoint&gt;</div><div class="line">  &lt;/portals&gt;</div><div class="line">&lt;/tnw-gateway&gt;</div></div><!-- fragment --><hr/>
 <p> <br />
  </p>
 <h2><a class="anchor" id="droelementremotetopic"></a>
@@ -1917,16 +1211,7 @@ Router Element "&lt;remote-topic&gt;"&nbsp;&nbsp;<small><a href="#droelementremo
 <tr>
 <td><b>timeout</b> </td><td>Minimum time (in milliseconds) remote interest for a topic must be refreshed before interest is removed for that domain. Before changing the value of this option, please contact Informatica Support. </td><td>string </td><td><b><code>"300000"</code></b> </td></tr>
 </table>
-<p><b>Example:</b> </p><pre class="fragment">&lt;tnw-gateway version="1.0"&gt;
-      . . .
-      . . .
-  &lt;portals&gt;
-    &lt;endpoint&gt;
-      &lt;remote-topic check-interval="80000" max-topics="80" timeout="250000"/&gt;
-    &lt;/endpoint&gt;                 
-  &lt;/portals&gt;
-&lt;/tnw-gateway&gt;
-</pre><hr/>
+<p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;tnw-gateway version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div><div class="line">      . . .</div><div class="line">      . . .</div><div class="line">  &lt;portals&gt;</div><div class="line">    &lt;endpoint&gt;</div><div class="line">      &lt;remote-topic check-interval=<span class="stringliteral">&quot;80000&quot;</span> max-topics=<span class="stringliteral">&quot;80&quot;</span> timeout=<span class="stringliteral">&quot;250000&quot;</span>/&gt;</div><div class="line">    &lt;/endpoint&gt;                 </div><div class="line">  &lt;/portals&gt;</div><div class="line">&lt;/tnw-gateway&gt;</div></div><!-- fragment --><hr/>
 <p> <br />
  </p>
 <h2><a class="anchor" id="droelementlatejoin"></a>
@@ -1963,20 +1248,7 @@ Router Element "&lt;topic-resolution&gt;"&nbsp;&nbsp;<small><a href="#droelement
 <li>
 <b>Children:</b> <a class="el" href="xmlconfigurationreference.html#droelementtopicusequery">&lt;topic-use-query&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementpatternusequery">&lt;pattern-use-query&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementremotetopicinterest">&lt;remote-topic-interest&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementremotepatterninterest">&lt;remote-pattern-interest&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementdomainroute">&lt;domain-route&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementinitialrequest">&lt;initial-request&gt;</a> </li>
 </ul>
-<p><b>Example:</b> </p><pre class="fragment">&lt;tnw-gateway version="1.0"&gt;
-      . . .
-      . . .
-  &lt;portals&gt;
-    &lt;endpoint&gt;
-      &lt;topic-resolution&gt;
-        &lt;initial-request&gt;
-          &lt;rate-limit/&gt;
-        &lt;/initial-request&gt;
-      &lt;/topic-resolution&gt;
-    &lt;/endpoint&gt;
-  &lt;/portals&gt;
-&lt;/tnw-gateway&gt;
-</pre><hr/>
+<p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;tnw-gateway version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div><div class="line">      . . .</div><div class="line">      . . .</div><div class="line">  &lt;portals&gt;</div><div class="line">    &lt;endpoint&gt;</div><div class="line">      &lt;topic-resolution&gt;</div><div class="line">        &lt;initial-request&gt;</div><div class="line">          &lt;rate-limit/&gt;</div><div class="line">        &lt;/initial-request&gt;</div><div class="line">      &lt;/topic-resolution&gt;</div><div class="line">    &lt;/endpoint&gt;</div><div class="line">  &lt;/portals&gt;</div><div class="line">&lt;/tnw-gateway&gt;</div></div><!-- fragment --><hr/>
 <p> <br />
  </p>
 <h2><a class="anchor" id="droelementinitialrequest"></a>
@@ -1996,18 +1268,7 @@ Router Element "&lt;initial-request&gt;"&nbsp;&nbsp;<small><a href="#droelementi
 <tr>
 <td><b>duration</b> </td><td>The minimum duration for which the initial topic resolution requests are sent. Before changing the value of this option, please contact Informatica Support. </td><td>string </td><td><b><code>"10"</code></b> </td></tr>
 </table>
-<p><b>Example:</b> </p><pre class="fragment">&lt;tnw-gateway version="1.0"&gt;
-  ...
-  &lt;portals&gt;
-    &lt;endpoint&gt;
-      &lt;topic-resolution&gt;
-        &lt;initial-request duration="15" periodic-interval="800"/&gt;
-        &lt;/topic-use-query&gt;
-      &lt;/topic-resolution&gt;
-    &lt;/endpoint&gt;
-  &lt;/portals&gt;
-&lt;/tnw-gateway&gt;
-</pre><hr/>
+<p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;tnw-gateway version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div><div class="line">  ...</div><div class="line">  &lt;portals&gt;</div><div class="line">    &lt;endpoint&gt;</div><div class="line">      &lt;topic-resolution&gt;</div><div class="line">        &lt;initial-request duration=<span class="stringliteral">&quot;15&quot;</span> periodic-interval=<span class="stringliteral">&quot;800&quot;</span>/&gt;</div><div class="line">        &lt;/topic-use-query&gt;</div><div class="line">      &lt;/topic-resolution&gt;</div><div class="line">    &lt;/endpoint&gt;</div><div class="line">  &lt;/portals&gt;</div><div class="line">&lt;/tnw-gateway&gt;</div></div><!-- fragment --><hr/>
 <p> <br />
  </p>
 <h2><a class="anchor" id="droelementdomainroute"></a>
@@ -2029,19 +1290,7 @@ Router Element "&lt;domain-route&gt;"&nbsp;&nbsp;<small><a href="#droelementdoma
 <tr>
 <td><b>max-interval</b> </td><td>The maximum interval, in milliseconds, between domain route messages being sent for each domain. </td><td>string </td><td><b><code>"1000"</code></b> </td></tr>
 </table>
-<p><b>Example:</b> </p><pre class="fragment">&lt;tnw-gateway version="1.0"&gt;
-  ...
-  &lt;portals&gt;
-    &lt;endpoint&gt;
-      &lt;topic-resolution&gt;
-        &lt;domain-route min-interval="100" max-interval="1000"&gt;
-          &lt;rate-limit bps="0" objects-per-second="50"/&gt;
-        &lt;/domain-route&gt;
-      &lt;/topic-resolution&gt;
-    &lt;/endpoint&gt;
-  &lt;/portals&gt;
-&lt;/tnw-gateway&gt;
-</pre><hr/>
+<p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;tnw-gateway version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div><div class="line">  ...</div><div class="line">  &lt;portals&gt;</div><div class="line">    &lt;endpoint&gt;</div><div class="line">      &lt;topic-resolution&gt;</div><div class="line">        &lt;domain-route min-interval=<span class="stringliteral">&quot;100&quot;</span> max-interval=<span class="stringliteral">&quot;1000&quot;</span>&gt;</div><div class="line">          &lt;rate-limit bps=<span class="stringliteral">&quot;0&quot;</span> objects-per-second=<span class="stringliteral">&quot;50&quot;</span>/&gt;</div><div class="line">        &lt;/domain-route&gt;</div><div class="line">      &lt;/topic-resolution&gt;</div><div class="line">    &lt;/endpoint&gt;</div><div class="line">  &lt;/portals&gt;</div><div class="line">&lt;/tnw-gateway&gt;</div></div><!-- fragment --><hr/>
 <p> <br />
  </p>
 <h2><a class="anchor" id="droelementratelimit"></a>
@@ -2069,19 +1318,7 @@ Router Element "&lt;rate-limit&gt;"&nbsp;&nbsp;<small><a href="#droelementrateli
 <p class="endtd"></p>
 </td></tr>
 </table>
-<p><b>Example:</b> </p><pre class="fragment">&lt;tnw-gateway version="1.0"&gt;
-  ...
-  &lt;portals&gt;
-    &lt;endpoint&gt;
-      &lt;topic-resolution&gt;
-        &lt;topic-use-query max="6" periodic-interval="250000" timeout="4000"/&gt;
-          &lt;rate-limit bps="550000" objects-per-second="0"/&gt;
-        &lt;/topic-use-query&gt;
-      &lt;/topic-resolution&gt;
-    &lt;/endpoint&gt;
-  &lt;/portals&gt;
-&lt;/tnw-gateway&gt;
-</pre><hr/>
+<p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;tnw-gateway version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div><div class="line">  ...</div><div class="line">  &lt;portals&gt;</div><div class="line">    &lt;endpoint&gt;</div><div class="line">      &lt;topic-resolution&gt;</div><div class="line">        &lt;topic-use-query max=<span class="stringliteral">&quot;6&quot;</span> periodic-interval=<span class="stringliteral">&quot;250000&quot;</span> timeout=<span class="stringliteral">&quot;4000&quot;</span>/&gt;</div><div class="line">          &lt;rate-limit bps=<span class="stringliteral">&quot;550000&quot;</span> objects-per-second=<span class="stringliteral">&quot;0&quot;</span>/&gt;</div><div class="line">        &lt;/topic-use-query&gt;</div><div class="line">      &lt;/topic-resolution&gt;</div><div class="line">    &lt;/endpoint&gt;</div><div class="line">  &lt;/portals&gt;</div><div class="line">&lt;/tnw-gateway&gt;</div></div><!-- fragment --><hr/>
 <p> <br />
  </p>
 <h2><a class="anchor" id="droelementremotepatterninterest"></a>
@@ -2103,19 +1340,7 @@ Router Element "&lt;remote-pattern-interest&gt;"&nbsp;&nbsp;<small><a href="#dro
 <tr>
 <td><b>max-interval</b> </td><td>The maximum interval, in milliseconds, between pattern interest messages being sent for each pattern the portal has interest in. </td><td>string </td><td><b><code>"60000"</code></b> </td></tr>
 </table>
-<p><b>Example:</b> </p><pre class="fragment">&lt;tnw-gateway version="1.0"&gt;
-  ...
-  &lt;portals&gt;
-    &lt;endpoint&gt;
-      &lt;topic-resolution&gt;
-        &lt;remote-pattern-interest min-interval="1000" max-interval="90000"&gt;
-          &lt;rate-limit/&gt;
-        &lt;/remote-pattern-interest&gt;
-      &lt;/topic-resolution&gt;
-    &lt;/endpoint&gt;
-  &lt;/portals&gt;
-&lt;/tnw-gateway&gt;
-</pre><hr/>
+<p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;tnw-gateway version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div><div class="line">  ...</div><div class="line">  &lt;portals&gt;</div><div class="line">    &lt;endpoint&gt;</div><div class="line">      &lt;topic-resolution&gt;</div><div class="line">        &lt;remote-pattern-interest min-interval=<span class="stringliteral">&quot;1000&quot;</span> max-interval=<span class="stringliteral">&quot;90000&quot;</span>&gt;</div><div class="line">          &lt;rate-limit/&gt;</div><div class="line">        &lt;/remote-pattern-interest&gt;</div><div class="line">      &lt;/topic-resolution&gt;</div><div class="line">    &lt;/endpoint&gt;</div><div class="line">  &lt;/portals&gt;</div><div class="line">&lt;/tnw-gateway&gt;</div></div><!-- fragment --><hr/>
 <p> <br />
  </p>
 <h2><a class="anchor" id="droelementremotetopicinterest"></a>
@@ -2137,19 +1362,7 @@ Router Element "&lt;remote-topic-interest&gt;"&nbsp;&nbsp;<small><a href="#droel
 <tr>
 <td><b>max-interval</b> </td><td>The maximum interval, in milliseconds, between topic interest messages being sent for each topic the portal has interest in. </td><td>string </td><td><b><code>"60000"</code></b> </td></tr>
 </table>
-<p><b>Example:</b> </p><pre class="fragment">&lt;tnw-gateway version="1.0"&gt;
-  ...
-  &lt;portals&gt;
-    &lt;endpoint&gt;
-      &lt;topic-resolution&gt;
-        &lt;remote-topic-interest min-interval="1000" max-interval="90000"&gt;
-          &lt;rate-limit/&gt;
-        &lt;/remote-topic-interest&gt;
-      &lt;/topic-resolution&gt;
-    &lt;/endpoint&gt;
-  &lt;/portals&gt;
-&lt;/tnw-gateway&gt;
-</pre><hr/>
+<p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;tnw-gateway version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div><div class="line">  ...</div><div class="line">  &lt;portals&gt;</div><div class="line">    &lt;endpoint&gt;</div><div class="line">      &lt;topic-resolution&gt;</div><div class="line">        &lt;remote-topic-interest min-interval=<span class="stringliteral">&quot;1000&quot;</span> max-interval=<span class="stringliteral">&quot;90000&quot;</span>&gt;</div><div class="line">          &lt;rate-limit/&gt;</div><div class="line">        &lt;/remote-topic-interest&gt;</div><div class="line">      &lt;/topic-resolution&gt;</div><div class="line">    &lt;/endpoint&gt;</div><div class="line">  &lt;/portals&gt;</div><div class="line">&lt;/tnw-gateway&gt;</div></div><!-- fragment --><hr/>
 <p> <br />
  </p>
 <h2><a class="anchor" id="droelementpatternusequery"></a>
@@ -2173,19 +1386,7 @@ Router Element "&lt;pattern-use-query&gt;"&nbsp;&nbsp;<small><a href="#droelemen
 <tr>
 <td><b>periodic-interval</b> </td><td>The interval, in milliseconds, between periodic pattern use queries being sent for each pattern the portal has interest in. Before changing the value of this option, please contact Informatica Support. </td><td>string </td><td><b><code>"300000"</code></b> </td></tr>
 </table>
-<p><b>Example:</b> </p><pre class="fragment">&lt;tnw-gateway version="1.0"&gt;
-  ...
-  &lt;portals&gt;
-    &lt;endpoint&gt;
-      &lt;topic-resolution&gt;
-        &lt;pattern-use-query max="6" periodic-interval="250000" timeout="4000"&gt;
-          &lt;rate-limit/&gt;
-        &lt;/topic-use-query&gt;
-      &lt;/topic-resolution&gt;
-    &lt;/endpoint&gt;
-  &lt;/portals&gt;
-&lt;/tnw-gateway&gt;
-</pre><hr/>
+<p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;tnw-gateway version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div><div class="line">  ...</div><div class="line">  &lt;portals&gt;</div><div class="line">    &lt;endpoint&gt;</div><div class="line">      &lt;topic-resolution&gt;</div><div class="line">        &lt;pattern-use-query max=<span class="stringliteral">&quot;6&quot;</span> periodic-interval=<span class="stringliteral">&quot;250000&quot;</span> timeout=<span class="stringliteral">&quot;4000&quot;</span>&gt;</div><div class="line">          &lt;rate-limit/&gt;</div><div class="line">        &lt;/topic-use-query&gt;</div><div class="line">      &lt;/topic-resolution&gt;</div><div class="line">    &lt;/endpoint&gt;</div><div class="line">  &lt;/portals&gt;</div><div class="line">&lt;/tnw-gateway&gt;</div></div><!-- fragment --><hr/>
 <p> <br />
  </p>
 <h2><a class="anchor" id="droelementtopicusequery"></a>
@@ -2209,19 +1410,7 @@ Router Element "&lt;topic-use-query&gt;"&nbsp;&nbsp;<small><a href="#droelementt
 <tr>
 <td><b>periodic-interval</b> </td><td>The interval, in milliseconds, between periodic topic use queries being sent for each topic the portal has interest in. Before changing the value of this option, please contact Informatica Support. </td><td>string </td><td><b><code>"300000"</code></b> </td></tr>
 </table>
-<p><b>Example:</b> </p><pre class="fragment">&lt;tnw-gateway version="1.0"&gt;
-  ...
-  &lt;portals&gt;
-    &lt;endpoint&gt;
-      &lt;topic-resolution&gt;
-        &lt;topic-use-query max="6" periodic-interval="250000" timeout="4000"&gt;
-          &lt;rate-limit/&gt;
-        &lt;/topic-use-query&gt;
-      &lt;/topic-resolution&gt;
-    &lt;/endpoint&gt;
-  &lt;/portals&gt;
-&lt;/tnw-gateway&gt;
-</pre><hr/>
+<p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;tnw-gateway version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div><div class="line">  ...</div><div class="line">  &lt;portals&gt;</div><div class="line">    &lt;endpoint&gt;</div><div class="line">      &lt;topic-resolution&gt;</div><div class="line">        &lt;topic-use-query max=<span class="stringliteral">&quot;6&quot;</span> periodic-interval=<span class="stringliteral">&quot;250000&quot;</span> timeout=<span class="stringliteral">&quot;4000&quot;</span>&gt;</div><div class="line">          &lt;rate-limit/&gt;</div><div class="line">        &lt;/topic-use-query&gt;</div><div class="line">      &lt;/topic-resolution&gt;</div><div class="line">    &lt;/endpoint&gt;</div><div class="line">  &lt;/portals&gt;</div><div class="line">&lt;/tnw-gateway&gt;</div></div><!-- fragment --><hr/>
 <p> <br />
  </p>
 <h2><a class="anchor" id="droelementdomainid"></a>
@@ -2231,18 +1420,7 @@ Router Element "&lt;domain-id&gt;"&nbsp;&nbsp;<small><a href="#droelementdomaini
 <li>
 <b>Parent:</b> <a class="el" href="xmlconfigurationreference.html#droelementendpoint">&lt;endpoint&gt;</a> </li>
 </ul>
-<p><b>Example:</b> </p><pre class="fragment">&lt;tnw-gateway version="1.0"&gt;
-  ...
-  &lt;portals&gt;
-    &lt;endpoint&gt;
-      &lt;name&gt;E1&lt;/name&gt;
-      &lt;domain-id&gt;1&lt;/domain-id&gt;
-      &lt;cost&gt;1&lt;/cost&gt;
-      ...
-    &lt;/endpoint&gt;
-  &lt;/portals&gt;
-&lt;/tnw-gateway&gt;
-</pre><hr/>
+<p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;tnw-gateway version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div><div class="line">  ...</div><div class="line">  &lt;portals&gt;</div><div class="line">    &lt;endpoint&gt;</div><div class="line">      &lt;name&gt;E1&lt;/name&gt;</div><div class="line">      &lt;domain-<span class="keywordtype">id</span>&gt;1&lt;/domain-<span class="keywordtype">id</span>&gt;</div><div class="line">      &lt;cost&gt;1&lt;/cost&gt;</div><div class="line">      ...</div><div class="line">    &lt;/endpoint&gt;</div><div class="line">  &lt;/portals&gt;</div><div class="line">&lt;/tnw-gateway&gt;</div></div><!-- fragment --><hr/>
 <p> <br />
  </p>
 <h2><a class="anchor" id="droelementdaemon"></a>
@@ -2256,13 +1434,7 @@ Router Element "&lt;daemon&gt;"&nbsp;&nbsp;<small><a href="#droelementdaemon">&l
 <li>
 <b>Children:</b> <a class="el" href="xmlconfigurationreference.html#droelementname">&lt;name&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementlog">&lt;log&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementuid">&lt;uid&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementgid">&lt;gid&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementpidfile">&lt;pidfile&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementlbmlicensefile">&lt;lbm-license-file&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementtopicmap">&lt;topicmap&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementpatternmap">&lt;patternmap&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementmonitor">&lt;monitor&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementwebmonitor">&lt;web-monitor&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementdaemonmonitor">&lt;daemon-monitor&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementpropagationdelay">&lt;propagation-delay&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementxmlconfig">&lt;xml-config&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementrouteinfo">&lt;route-info&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementrouterecalculation">&lt;route-recalculation&gt;</a> </li>
 </ul>
-<p><b>Example:</b> </p><pre class="fragment">&lt;tnw-gateway version="1.0"&gt;
-  &lt;daemon&gt;
-    ...
-  &lt;/daemon&gt;
-  ...
-&lt;/tnw-gateway&gt;
-</pre><hr/>
+<p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;tnw-gateway version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div><div class="line">  &lt;daemon&gt;</div><div class="line">    ...</div><div class="line">  &lt;/daemon&gt;</div><div class="line">  ...</div><div class="line">&lt;/tnw-gateway&gt;</div></div><!-- fragment --><hr/>
 <p> <br />
  </p>
 <h2><a class="anchor" id="droelementrouterecalculation"></a>
@@ -2282,14 +1454,7 @@ Router Element "&lt;route-recalculation&gt;"&nbsp;&nbsp;<small><a href="#droelem
 <tr>
 <td><b>warning-interval</b> </td><td>How long, in milliseconds, the UM Router waits before warning that a route recalculation is being held up due to a non-converging topology. </td><td>string </td><td><b><code>"10000"</code></b> </td></tr>
 </table>
-<p><b>Example:</b> </p><pre class="fragment">&lt;tnw-gateway version="1.0"&gt;
-  &lt;daemon&gt;
-    ...
-    &lt;route-recalculation backoff-interval="5000" warning-interval="10000"/&gt;
-  &lt;/daemon&gt;
-  ...
-&lt;/tnw-gateway&gt;
-</pre><hr/>
+<p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;tnw-gateway version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div><div class="line">  &lt;daemon&gt;</div><div class="line">    ...</div><div class="line">    &lt;route-recalculation backoff-interval=<span class="stringliteral">&quot;5000&quot;</span> warning-interval=<span class="stringliteral">&quot;10000&quot;</span>/&gt;</div><div class="line">  &lt;/daemon&gt;</div><div class="line">  ...</div><div class="line">&lt;/tnw-gateway&gt;</div></div><!-- fragment --><hr/>
 <p> <br />
  </p>
 <h2><a class="anchor" id="droelementrouteinfo"></a>
@@ -2313,14 +1478,7 @@ Router Element "&lt;route-info&gt;"&nbsp;&nbsp;<small><a href="#droelementroutei
 <tr>
 <td><b>max-hop-count</b> </td><td>The maximum number of UM Routers a route information message can traverse before being discarded. </td><td>string </td><td><b><code>"100"</code></b> </td></tr>
 </table>
-<p><b>Example:</b> </p><pre class="fragment">&lt;tnw-gateway version="1.0"&gt;
-  &lt;daemon&gt;
-    ...
-    &lt;route-info propagation-interval="1000" check-interval="750" timeout="4000" max-hop-count="100"/&gt;
-  &lt;/daemon&gt;
-  ...
-&lt;/tnw-gateway&gt;
-</pre><hr/>
+<p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;tnw-gateway version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div><div class="line">  &lt;daemon&gt;</div><div class="line">    ...</div><div class="line">    &lt;route-info propagation-interval=<span class="stringliteral">&quot;1000&quot;</span> check-interval=<span class="stringliteral">&quot;750&quot;</span> timeout=<span class="stringliteral">&quot;4000&quot;</span> max-hop-count=<span class="stringliteral">&quot;100&quot;</span>/&gt;</div><div class="line">  &lt;/daemon&gt;</div><div class="line">  ...</div><div class="line">&lt;/tnw-gateway&gt;</div></div><!-- fragment --><hr/>
 <p> <br />
  </p>
 <h2><a class="anchor" id="droelementxmlconfig"></a>
@@ -2339,14 +1497,7 @@ Router Element "&lt;xml-config&gt;"&nbsp;&nbsp;<small><a href="#droelementxmlcon
 <td><b>xml:space</b> </td><td>Specifies how whitespace (tabs, spaces, linefeeds) are handled in the element content. </td><td><b><code>"default"</code></b> - Trim leading and trailing whitespace, and compress multiple whitespace characters into a single space. <br />
 <b><code>"preserve"</code></b> - Retain whitespace exactly as entered. </td><td><b>default</b> </td></tr>
 </table>
-<p><b>Example:</b> </p><pre class="fragment">&lt;tnw-gateway version="1.0"&gt;
-  &lt;daemon&gt;
-    ...
-    &lt;xml-config&gt;configfile.xml&lt;/xml-config&gt;
-  &lt;/daemon&gt;
-  ...
-&lt;/tnw-gateway&gt;
-</pre><hr/>
+<p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;tnw-gateway version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div><div class="line">  &lt;daemon&gt;</div><div class="line">    ...</div><div class="line">    &lt;xml-config&gt;configfile.xml&lt;/xml-config&gt;</div><div class="line">  &lt;/daemon&gt;</div><div class="line">  ...</div><div class="line">&lt;/tnw-gateway&gt;</div></div><!-- fragment --><hr/>
 <p> <br />
  </p>
 <h2><a class="anchor" id="droelementpropagationdelay"></a>
@@ -2369,7 +1520,7 @@ Router Element "&lt;propagation-delay&gt;"&nbsp;&nbsp;<small><a href="#droelemen
  </p>
 <h2><a class="anchor" id="droelementdaemonmonitor"></a>
 Router Element "&lt;daemon-monitor&gt;"&nbsp;&nbsp;<small><a href="#droelementdaemonmonitor">&lt;-</a></small></h2>
-<p>Configures the Daemon Statistics feature. See <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Gateway/design.tag:../Design/" href="../Design/umobjects.html#daemonstatistics">Daemon Statistics</a> for general information on Daemon Statistics.</p>
+<p>Configures the Daemon Statistics feature. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Gateway/design.tag:../Design/" href="../Design/umobjects.html#daemonstatistics">Daemon Statistics</a> for general information on Daemon Statistics.</p>
 <ul>
 <li>
 <b>Cardinality:</b> 0 .. 1 </li>
@@ -2384,26 +1535,12 @@ Router Element "&lt;daemon-monitor&gt;"&nbsp;&nbsp;<small><a href="#droelementda
 <tr>
 <td><b>topic</b> </td><td>Topic name to use for publishing Daemon Statistics. </td><td>string </td><td><b><code>"tnwgd.monitor"</code></b> </td></tr>
 </table>
-<p><b>Example:</b> </p><pre class="fragment">&lt;tnw-gateway version="1.0"&gt;
-  &lt;daemon&gt;
-    ...
-    &lt;daemon-monitor topic="umrouter.1"&gt;
-      &lt;lbm-config&gt;/path/umrouter_monitor.cfg&lt;/lbm-config&gt;
-      &lt;publishing-interval&gt;
-        ...
-      &lt;/publishing-interval&gt;
-      &lt;remote-snapshot-request allow="1"/&gt;
-      &lt;remote-config-changes-request allow="0"/&gt;
-    &lt;/daemon-monitor&gt;
-  &lt;/daemon&gt;
-  ...
-&lt;/tnw-gateway&gt;
-</pre><hr/>
+<p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;tnw-gateway version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div><div class="line">  &lt;daemon&gt;</div><div class="line">    ...</div><div class="line">    &lt;daemon-monitor topic=<span class="stringliteral">&quot;umrouter.1&quot;</span>&gt;</div><div class="line">      &lt;lbm-config&gt;/path/umrouter_monitor.cfg&lt;/lbm-config&gt;</div><div class="line">      &lt;publishing-interval&gt;</div><div class="line">        ...</div><div class="line">      &lt;/publishing-interval&gt;</div><div class="line">      &lt;remote-snapshot-request allow=<span class="stringliteral">&quot;1&quot;</span>/&gt;</div><div class="line">      &lt;remote-config-changes-request allow=<span class="stringliteral">&quot;0&quot;</span>/&gt;</div><div class="line">    &lt;/daemon-monitor&gt;</div><div class="line">  &lt;/daemon&gt;</div><div class="line">  ...</div><div class="line">&lt;/tnw-gateway&gt;</div></div><!-- fragment --><hr/>
 <p> <br />
  </p>
 <h2><a class="anchor" id="droelementremoteconfigchangesrequest"></a>
 Router Element "&lt;remote-config-changes-request&gt;"&nbsp;&nbsp;<small><a href="#droelementremoteconfigchangesrequest">&lt;-</a></small></h2>
-<p>Configures whether the UM Router will respond to monitoring apps requests to change the rate at which Daemon Statistics messages are published. See <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Gateway/design.tag:../Design/" href="../Design/umobjects.html#daemonstatistics">Daemon Statistics</a> for general information on Daemon Statistics.</p>
+<p>Configures whether the UM Router will respond to monitoring apps requests to change the rate at which Daemon Statistics messages are published. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Gateway/design.tag:../Design/" href="../Design/umobjects.html#daemonstatistics">Daemon Statistics</a> for general information on Daemon Statistics.</p>
 <ul>
 <li>
 <b>Cardinality:</b> 0 .. 1 </li>
@@ -2417,26 +1554,12 @@ Router Element "&lt;remote-config-changes-request&gt;"&nbsp;&nbsp;<small><a href
 <td><b>allow</b> </td><td>Enable or disable change requests. </td><td><b><code>"0"</code></b> - Ignore change requests. <br />
 <b><code>"1"</code></b> - Respond to change requests. </td><td><b><code>"0"</code></b> </td></tr>
 </table>
-<p><b>Example:</b> </p><pre class="fragment">&lt;tnw-gateway version="1.0"&gt;
-  &lt;daemon&gt;
-    ...
-    &lt;daemon-monitor topic="umrouter.1"&gt;
-      &lt;lbm-config&gt;/path/umrouter_monitor.cfg&lt;/lbm-config&gt;
-      &lt;publishing-interval&gt;
-        ...
-      &lt;/publishing-interval&gt;
-      &lt;remote-snapshot-request allow="1"/&gt;
-      &lt;remote-config-changes-request allow="0"/&gt;
-    &lt;/daemon-monitor&gt;
-  &lt;/daemon&gt;
-  ...
-&lt;/tnw-gateway&gt;
-</pre><hr/>
+<p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;tnw-gateway version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div><div class="line">  &lt;daemon&gt;</div><div class="line">    ...</div><div class="line">    &lt;daemon-monitor topic=<span class="stringliteral">&quot;umrouter.1&quot;</span>&gt;</div><div class="line">      &lt;lbm-config&gt;/path/umrouter_monitor.cfg&lt;/lbm-config&gt;</div><div class="line">      &lt;publishing-interval&gt;</div><div class="line">        ...</div><div class="line">      &lt;/publishing-interval&gt;</div><div class="line">      &lt;remote-snapshot-request allow=<span class="stringliteral">&quot;1&quot;</span>/&gt;</div><div class="line">      &lt;remote-config-changes-request allow=<span class="stringliteral">&quot;0&quot;</span>/&gt;</div><div class="line">    &lt;/daemon-monitor&gt;</div><div class="line">  &lt;/daemon&gt;</div><div class="line">  ...</div><div class="line">&lt;/tnw-gateway&gt;</div></div><!-- fragment --><hr/>
 <p> <br />
  </p>
 <h2><a class="anchor" id="droelementremotesnapshotrequest"></a>
 Router Element "&lt;remote-snapshot-request&gt;"&nbsp;&nbsp;<small><a href="#droelementremotesnapshotrequest">&lt;-</a></small></h2>
-<p>Configures whether the UM Router will respond to monitoring apps requests to send on-demand snapshots of daemon statistics. See <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Gateway/design.tag:../Design/" href="../Design/umobjects.html#daemonstatistics">Daemon Statistics</a> for general information on Daemon Statistics.</p>
+<p>Configures whether the UM Router will respond to monitoring apps requests to send on-demand snapshots of daemon statistics. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Gateway/design.tag:../Design/" href="../Design/umobjects.html#daemonstatistics">Daemon Statistics</a> for general information on Daemon Statistics.</p>
 <ul>
 <li>
 <b>Cardinality:</b> 0 .. 1 </li>
@@ -2450,28 +1573,14 @@ Router Element "&lt;remote-snapshot-request&gt;"&nbsp;&nbsp;<small><a href="#dro
 <td><b>allow</b> </td><td>Enable or disable snapshot requests. </td><td><b><code>"0"</code></b> - Ignore snapshot requests. <br />
 <b><code>"1"</code></b> - Respond to snapshot requests. </td><td><b><code>"0"</code></b> </td></tr>
 </table>
-<p><b>Example:</b> </p><pre class="fragment">&lt;tnw-gateway version="1.0"&gt;
-  &lt;daemon&gt;
-    ...
-    &lt;daemon-monitor topic="umrouter.1"&gt;
-      &lt;lbm-config&gt;/path/umrouter_monitor.cfg&lt;/lbm-config&gt;
-      &lt;publishing-interval&gt;
-        ...
-      &lt;/publishing-interval&gt;
-      &lt;remote-snapshot-request allow="1"/&gt;
-      &lt;remote-config-changes-request allow="0"/&gt;
-    &lt;/daemon-monitor&gt;
-  &lt;/daemon&gt;
-  ...
-&lt;/tnw-gateway&gt;
-</pre><hr/>
+<p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;tnw-gateway version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div><div class="line">  &lt;daemon&gt;</div><div class="line">    ...</div><div class="line">    &lt;daemon-monitor topic=<span class="stringliteral">&quot;umrouter.1&quot;</span>&gt;</div><div class="line">      &lt;lbm-config&gt;/path/umrouter_monitor.cfg&lt;/lbm-config&gt;</div><div class="line">      &lt;publishing-interval&gt;</div><div class="line">        ...</div><div class="line">      &lt;/publishing-interval&gt;</div><div class="line">      &lt;remote-snapshot-request allow=<span class="stringliteral">&quot;1&quot;</span>/&gt;</div><div class="line">      &lt;remote-config-changes-request allow=<span class="stringliteral">&quot;0&quot;</span>/&gt;</div><div class="line">    &lt;/daemon-monitor&gt;</div><div class="line">  &lt;/daemon&gt;</div><div class="line">  ...</div><div class="line">&lt;/tnw-gateway&gt;</div></div><!-- fragment --><hr/>
 <p> <br />
  </p>
 <h2><a class="anchor" id="droelementwebmonitor"></a>
 Router Element "&lt;web-monitor&gt;"&nbsp;&nbsp;<small><a href="#droelementwebmonitor">&lt;-</a></small></h2>
 <p>Identifies the address for the web monitor, in the form of interface:port. You can use "*" to specify the local host.</p>
 <p>Omit this element to disable the web monitor.</p>
-<p>See <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Gateway/design.tag:../Design/" href="../Design/fundamentalconcepts.html#webmonsecurity">Webmon Security</a> for important security information.</p>
+<p>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Gateway/design.tag:../Design/" href="../Design/fundamentalconcepts.html#webmonsecurity">Webmon Security</a> for important security information.</p>
 <ul>
 <li>
 <b>Cardinality:</b> 0 .. 1 </li>
@@ -2485,14 +1594,7 @@ Router Element "&lt;web-monitor&gt;"&nbsp;&nbsp;<small><a href="#droelementwebmo
 <td><b>xml:space</b> </td><td>Specifies how whitespace (tabs, spaces, linefeeds) are handled in the element content. </td><td><b><code>"default"</code></b> - Trim leading and trailing whitespace, and compress multiple whitespace characters into a single space. <br />
 <b><code>"preserve"</code></b> - Retain whitespace exactly as entered. </td><td><b>default</b> </td></tr>
 </table>
-<p><b>Example:</b> </p><pre class="fragment">&lt;tnw-gateway version="1.0"&gt;
-  &lt;daemon&gt;
-    ...
-    &lt;web-monitor&gt;*:21001&lt;/web-monitor&gt;
-  &lt;/daemon&gt;
-  ...
-&lt;/tnw-gateway&gt;
-</pre><hr/>
+<p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;tnw-gateway version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div><div class="line">  &lt;daemon&gt;</div><div class="line">    ...</div><div class="line">    &lt;web-monitor&gt;*:21001&lt;/web-monitor&gt;</div><div class="line">  &lt;/daemon&gt;</div><div class="line">  ...</div><div class="line">&lt;/tnw-gateway&gt;</div></div><!-- fragment --><hr/>
 <p> <br />
  </p>
 <h2><a class="anchor" id="droelementmonitor"></a>
@@ -2512,17 +1614,7 @@ Router Element "&lt;monitor&gt;"&nbsp;&nbsp;<small><a href="#droelementmonitor">
 <tr>
 <td><b>interval</b> </td><td>Monitoring interval, in seconds. 0 disables monitoring. </td><td>string </td><td><b><code>"0"</code></b> </td></tr>
 </table>
-<p><b>Example:</b> </p><pre class="fragment">&lt;tnw-gateway version="1.0"&gt;
-  &lt;daemon&gt;
-    ...
-    &lt;monitor interval="30"&gt;
-      &lt;transport-module module="lbm" options="config=/cfgs/TD1.cfg;topic=stats"/&gt;
-      &lt;format-module options="config=/cfgs/TD1.cfg;separator=|"/&gt;
-    &lt;/monitor&gt;  
-  &lt;/daemon&gt;
-  ...
-&lt;/tnw-gateway&gt;
-</pre><hr/>
+<p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;tnw-gateway version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div><div class="line">  &lt;daemon&gt;</div><div class="line">    ...</div><div class="line">    &lt;monitor interval=<span class="stringliteral">&quot;30&quot;</span>&gt;</div><div class="line">      &lt;transport-module module=<span class="stringliteral">&quot;lbm&quot;</span> options=<span class="stringliteral">&quot;config=/cfgs/TD1.cfg;topic=stats&quot;</span>/&gt;</div><div class="line">      &lt;format-module options=<span class="stringliteral">&quot;config=/cfgs/TD1.cfg;separator=|&quot;</span>/&gt;</div><div class="line">    &lt;/monitor&gt;  </div><div class="line">  &lt;/daemon&gt;</div><div class="line">  ...</div><div class="line">&lt;/tnw-gateway&gt;</div></div><!-- fragment --><hr/>
 <p> <br />
  </p>
 <h2><a class="anchor" id="droelementformatmodule"></a>
@@ -2542,17 +1634,7 @@ Router Element "&lt;format-module&gt;"&nbsp;&nbsp;<small><a href="#droelementfor
 <tr>
 <td><b>options</b> </td><td>Option string to be passed to the formatting module. Available option is <b>"separator"</b> (defaults to comma). </td><td>string </td><td>(if omitted, no options are passed to the formatting module) </td></tr>
 </table>
-<p><b>Example:</b> </p><pre class="fragment">&lt;tnw-gateway version="1.0"&gt;
-  &lt;daemon&gt;
-    ...
-    &lt;monitor interval="30"&gt;
-      &lt;transport-module module="lbm" options="config=/cfgs/TD1.cfg;topic=stats"/&gt;
-      &lt;format-module options="separator=|"/&gt;
-    &lt;/monitor&gt;  
-  &lt;/daemon&gt;
-  ...
-&lt;/tnw-gateway&gt;
-</pre><hr/>
+<p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;tnw-gateway version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div><div class="line">  &lt;daemon&gt;</div><div class="line">    ...</div><div class="line">    &lt;monitor interval=<span class="stringliteral">&quot;30&quot;</span>&gt;</div><div class="line">      &lt;transport-module module=<span class="stringliteral">&quot;lbm&quot;</span> options=<span class="stringliteral">&quot;config=/cfgs/TD1.cfg;topic=stats&quot;</span>/&gt;</div><div class="line">      &lt;format-module options=<span class="stringliteral">&quot;separator=|&quot;</span>/&gt;</div><div class="line">    &lt;/monitor&gt;  </div><div class="line">  &lt;/daemon&gt;</div><div class="line">  ...</div><div class="line">&lt;/tnw-gateway&gt;</div></div><!-- fragment --><hr/>
 <p> <br />
  </p>
 <h2><a class="anchor" id="droelementtransportmodule"></a>
@@ -2574,29 +1656,8 @@ Router Element "&lt;transport-module&gt;"&nbsp;&nbsp;<small><a href="#droelement
 <tr>
 <td><b>options</b> </td><td>Option string to be passed to the transport module. Available options are <b>"config"</b> (configuration file pathname) and <b>"topic"</b> (the topic name to use for sending and receiving statistics; defaults to "/29west/statistics"). </td><td>string </td><td>(if omitted, no options are passed to the transport module) </td></tr>
 </table>
-<p><b>Example</b> <b>1</b>: </p><pre class="fragment">&lt;tnw-gateway version="1.0"&gt;
-  &lt;daemon&gt;
-    ...
-    &lt;monitor interval=30&gt;
-      &lt;transport-module module="lbm" options="config=/cfgs/TD1.cfg;topic=stats"/&gt;
-      &lt;format-module options="config=/cfgs/TD1.cfg;separator=|"/&gt;
-    &lt;/monitor&gt;  
-  &lt;/daemon&gt;
-  ...
-&lt;/tnw-gateway&gt;
-</pre><p><b>Example</b> <b>2</b>:</p>
-<p>Monitoring configuration options can be supplied directly in the XML. </p><pre class="fragment">&lt;tnw-gateway version="1.0"&gt;
-  &lt;daemon&gt;
-    ...
-    &lt;monitor interval=30&gt;
-      &lt;transport-module module="lbm"
-        options="config=/cfgs/TD1.cfg;context|request_tcp_interface=192.168.135.131"/&gt;
-      &lt;format-module options="config=/cfgs/TD1.cfg;separator=|"/&gt;
-    &lt;/monitor&gt;  
-  &lt;/daemon&gt;
-  ...
-&lt;/tnw-gateway&gt;
-</pre><hr/>
+<p><b>Example</b> <b>1</b>: </p><div class="fragment"><div class="line">&lt;tnw-gateway version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div><div class="line">  &lt;daemon&gt;</div><div class="line">    ...</div><div class="line">    &lt;monitor interval=30&gt;</div><div class="line">      &lt;transport-module module=<span class="stringliteral">&quot;lbm&quot;</span> options=<span class="stringliteral">&quot;config=/cfgs/TD1.cfg;topic=stats&quot;</span>/&gt;</div><div class="line">      &lt;format-module options=<span class="stringliteral">&quot;config=/cfgs/TD1.cfg;separator=|&quot;</span>/&gt;</div><div class="line">    &lt;/monitor&gt;  </div><div class="line">  &lt;/daemon&gt;</div><div class="line">  ...</div><div class="line">&lt;/tnw-gateway&gt;</div></div><!-- fragment --><p><b>Example</b> <b>2</b>:</p>
+<p>Monitoring configuration options can be supplied directly in the XML. </p><div class="fragment"><div class="line">&lt;tnw-gateway version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div><div class="line">  &lt;daemon&gt;</div><div class="line">    ...</div><div class="line">    &lt;monitor interval=30&gt;</div><div class="line">      &lt;transport-module module=<span class="stringliteral">&quot;lbm&quot;</span></div><div class="line">        options=<span class="stringliteral">&quot;config=/cfgs/TD1.cfg;context|request_tcp_interface=192.168.135.131&quot;</span>/&gt;</div><div class="line">      &lt;format-module options=<span class="stringliteral">&quot;config=/cfgs/TD1.cfg;separator=|&quot;</span>/&gt;</div><div class="line">    &lt;/monitor&gt;  </div><div class="line">  &lt;/daemon&gt;</div><div class="line">  ...</div><div class="line">&lt;/tnw-gateway&gt;</div></div><!-- fragment --><hr/>
 <p> <br />
  </p>
 <h2><a class="anchor" id="droelementpatternmap"></a>
@@ -2612,21 +1673,14 @@ Router Element "&lt;patternmap&gt;"&nbsp;&nbsp;<small><a href="#droelementpatter
 <tr>
 <th>Attribute </th><th>Description </th><th>Valid Values </th><th>Default Value </th></tr>
 <tr>
-<td><b>hash-function</b> </td><td>Topic resolution hash function to use. Informatica recommends the default. See <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Gateway/config.tag:../Config/" href="../Config/grpudpbasedresolveroperation.html#resolverstringhashfunctioncontext">resolver_string_hash_function (context)</a> for more information. </td><td><b><code>"classic"</code></b> - UM's original hash function. May be better for certain specialized topic names. <br />
+<td><b>hash-function</b> </td><td>Topic resolution hash function to use. Informatica recommends the default. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Gateway/config.tag:../Config/" href="../Config/grpudpbasedresolveroperation.html#resolverstringhashfunctioncontext">resolver_string_hash_function (context)</a> for more information. </td><td><b><code>"classic"</code></b> - UM's original hash function. May be better for certain specialized topic names. <br />
 <b><code>"djb2"</code></b> - The Dan Bernstein algorithm from comp.lang.c. May be better for topic names have a changing prefix with a constant suffix. <br />
 <b><code>"sdbm"</code></b> - Sdbm database library (used in Berkeley DB). May be better for certain specialized topic names. <br />
 <b><code>"murmur2"</code></b> - Good all-around hash function by Austin Appleby. </td><td><b><code>"murmur2"</code></b> </td></tr>
 <tr>
 <td><b>size</b> </td><td>Number of buckets in hash table. Should be a prime number. </td><td>string </td><td><b><code>"131111"</code></b> </td></tr>
 </table>
-<p><b>Example:</b> </p><pre class="fragment">&lt;tnw-gateway version="1.0"&gt;
-  &lt;daemon&gt;
-    ...
-    &lt;patternmap hash-function="murmur2" size="131111"&gt;
-  &lt;/daemon&gt;
-  ...
-&lt;/tnw-gateway&gt;
-</pre><hr/>
+<p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;tnw-gateway version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div><div class="line">  &lt;daemon&gt;</div><div class="line">    ...</div><div class="line">    &lt;patternmap hash-<span class="keyword">function</span>=<span class="stringliteral">&quot;murmur2&quot;</span> size=<span class="stringliteral">&quot;131111&quot;</span>&gt;</div><div class="line">  &lt;/daemon&gt;</div><div class="line">  ...</div><div class="line">&lt;/tnw-gateway&gt;</div></div><!-- fragment --><hr/>
 <p> <br />
  </p>
 <h2><a class="anchor" id="droelementtopicmap"></a>
@@ -2642,21 +1696,14 @@ Router Element "&lt;topicmap&gt;"&nbsp;&nbsp;<small><a href="#droelementtopicmap
 <tr>
 <th>Attribute </th><th>Description </th><th>Valid Values </th><th>Default Value </th></tr>
 <tr>
-<td><b>hash-function</b> </td><td>Topic resolution hash function to use. Informatica recommends the default. See <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/Gateway/config.tag:../Config/" href="../Config/grpudpbasedresolveroperation.html#resolverstringhashfunctioncontext">resolver_string_hash_function (context)</a> for more information. </td><td><b><code>"classic"</code></b> - UM's original hash function. May be better for certain specialized topic names. <br />
+<td><b>hash-function</b> </td><td>Topic resolution hash function to use. Informatica recommends the default. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Gateway/config.tag:../Config/" href="../Config/grpudpbasedresolveroperation.html#resolverstringhashfunctioncontext">resolver_string_hash_function (context)</a> for more information. </td><td><b><code>"classic"</code></b> - UM's original hash function. May be better for certain specialized topic names. <br />
 <b><code>"djb2"</code></b> - The Dan Bernstein algorithm from comp.lang.c. May be better for topic names have a changing prefix with a constant suffix. <br />
 <b><code>"sdbm"</code></b> - Sdbm database library (used in Berkeley DB). May be better for certain specialized topic names. <br />
 <b><code>"murmur2"</code></b> - Good all-around hash function by Austin Appleby. </td><td><b><code>"murmur2"</code></b> </td></tr>
 <tr>
 <td><b>size</b> </td><td>Number of buckets in hash table. Should be a prime number. </td><td>string </td><td><b><code>"131111"</code></b> </td></tr>
 </table>
-<p><b>Example:</b> </p><pre class="fragment">&lt;tnw-gateway version="1.0"&gt;
-  &lt;daemon&gt;
-    ...
-    &lt;topicmap hash-function="murmur2" size="131111"&gt;
-  &lt;/daemon&gt;
-  ...
-&lt;/tnw-gateway&gt;
-</pre><hr/>
+<p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;tnw-gateway version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div><div class="line">  &lt;daemon&gt;</div><div class="line">    ...</div><div class="line">    &lt;topicmap hash-<span class="keyword">function</span>=<span class="stringliteral">&quot;murmur2&quot;</span> size=<span class="stringliteral">&quot;131111&quot;</span>&gt;</div><div class="line">  &lt;/daemon&gt;</div><div class="line">  ...</div><div class="line">&lt;/tnw-gateway&gt;</div></div><!-- fragment --><hr/>
 <p> <br />
  </p>
 <h2><a class="anchor" id="droelementlbmlicensefile"></a>
@@ -2675,16 +1722,7 @@ Router Element "&lt;lbm-license-file&gt;"&nbsp;&nbsp;<small><a href="#droelement
 <td><b>xml:space</b> </td><td>Specifies how whitespace (tabs, spaces, linefeeds) are handled in the element content. </td><td><b><code>"default"</code></b> - Trim leading and trailing whitespace, and compress multiple whitespace characters into a single space. <br />
 <b><code>"preserve"</code></b> - Retain whitespace exactly as entered. </td><td><b>default</b> </td></tr>
 </table>
-<p><b>Example:</b> </p><pre class="fragment">&lt;tnw-gateway version="1.0"&gt;
-  &lt;daemon&gt;
-      . . .
-    &lt;lbm-license-file&gt;lic0014.txt&lt;/lbm-license-file&gt;
-      . . .
-  &lt;/daemon&gt;
-      . . .
-      . . .
-&lt;/tnw-gateway&gt;
-</pre><hr/>
+<p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;tnw-gateway version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div><div class="line">  &lt;daemon&gt;</div><div class="line">      . . .</div><div class="line">    &lt;lbm-license-file&gt;lic0014.txt&lt;/lbm-license-file&gt;</div><div class="line">      . . .</div><div class="line">  &lt;/daemon&gt;</div><div class="line">      . . .</div><div class="line">      . . .</div><div class="line">&lt;/tnw-gateway&gt;</div></div><!-- fragment --><hr/>
 <p> <br />
  </p>
 <h2><a class="anchor" id="droelementpidfile"></a>
@@ -2703,14 +1741,7 @@ Router Element "&lt;pidfile&gt;"&nbsp;&nbsp;<small><a href="#droelementpidfile">
 <td><b>xml:space</b> </td><td>Specifies how whitespace (tabs, spaces, linefeeds) are handled in the element content. </td><td><b><code>"default"</code></b> - Trim leading and trailing whitespace, and compress multiple whitespace characters into a single space. <br />
 <b><code>"preserve"</code></b> - Retain whitespace exactly as entered. </td><td><b>default</b> </td></tr>
 </table>
-<p><b>Example:</b> </p><pre class="fragment">&lt;tnw-gateway version="1.0"&gt;
-  &lt;daemon&gt;
-    ...
-    &lt;pidfile&gt;\var\run\dro01.pid&lt;/pidfile&gt;
-  &lt;/daemon&gt;
-  ...
-&lt;/tnw-gateway&gt;
-</pre><hr/>
+<p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;tnw-gateway version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div><div class="line">  &lt;daemon&gt;</div><div class="line">    ...</div><div class="line">    &lt;pidfile&gt;\var\run\dro01.pid&lt;/pidfile&gt;</div><div class="line">  &lt;/daemon&gt;</div><div class="line">  ...</div><div class="line">&lt;/tnw-gateway&gt;</div></div><!-- fragment --><hr/>
 <p> <br />
  </p>
 <h2><a class="anchor" id="droelementgid"></a>
@@ -2722,14 +1753,7 @@ Router Element "&lt;gid&gt;"&nbsp;&nbsp;<small><a href="#droelementgid">&lt;-</a
 <li>
 <b>Parent:</b> <a class="el" href="xmlconfigurationreference.html#droelementdaemon">&lt;daemon&gt;</a> </li>
 </ul>
-<p><b>Example:</b> </p><pre class="fragment">&lt;tnw-gateway version="1.0"&gt;
-  &lt;daemon&gt;
-    ...
-    &lt;gid&gt;1234&lt;/gid&gt;
-  &lt;/daemon&gt;
-  ...
-&lt;/tnw-gateway&gt;
-</pre><hr/>
+<p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;tnw-gateway version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div><div class="line">  &lt;daemon&gt;</div><div class="line">    ...</div><div class="line">    &lt;gid&gt;1234&lt;/gid&gt;</div><div class="line">  &lt;/daemon&gt;</div><div class="line">  ...</div><div class="line">&lt;/tnw-gateway&gt;</div></div><!-- fragment --><hr/>
 <p> <br />
  </p>
 <h2><a class="anchor" id="droelementuid"></a>
@@ -2741,14 +1765,7 @@ Router Element "&lt;uid&gt;"&nbsp;&nbsp;<small><a href="#droelementuid">&lt;-</a
 <li>
 <b>Parent:</b> <a class="el" href="xmlconfigurationreference.html#droelementdaemon">&lt;daemon&gt;</a> </li>
 </ul>
-<p><b>Example:</b> </p><pre class="fragment">&lt;tnw-gateway version="1.0"&gt;
-  &lt;daemon&gt;
-    ...
-    &lt;uid&gt;5555&lt;/uid&gt;
-  &lt;/daemon&gt;
-  ...
-&lt;/tnw-gateway&gt;
-</pre><hr/>
+<p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;tnw-gateway version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div><div class="line">  &lt;daemon&gt;</div><div class="line">    ...</div><div class="line">    &lt;uid&gt;5555&lt;/uid&gt;</div><div class="line">  &lt;/daemon&gt;</div><div class="line">  ...</div><div class="line">&lt;/tnw-gateway&gt;</div></div><!-- fragment --><hr/>
 <p> <br />
  </p>
 <h2><a class="anchor" id="droelementlog"></a>
@@ -2778,294 +1795,12 @@ Router Element "&lt;log&gt;"&nbsp;&nbsp;<small><a href="#droelementlog">&lt;-</a
 <td><b>xml:space</b> </td><td>Specifies how whitespace (tabs, spaces, linefeeds) are handled in the element content. </td><td><b><code>"default"</code></b> - Trim leading and trailing whitespace, and compress multiple whitespace characters into a single space. <br />
 <b><code>"preserve"</code></b> - Retain whitespace exactly as entered. </td><td><b>default</b> </td></tr>
 </table>
-<p><b>Example:</b> </p><pre class="fragment">&lt;tnw-gateway version="1.0"&gt;
-  &lt;daemon&gt;
-    ...
-    &lt;log type="syslog"/&gt;
-  &lt;/daemon&gt;
-  ...
-&lt;/tnw-gateway&gt;
-</pre><p><br />
+<p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;tnw-gateway version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div><div class="line">  &lt;daemon&gt;</div><div class="line">    ...</div><div class="line">    &lt;log type=<span class="stringliteral">&quot;syslog&quot;</span>/&gt;</div><div class="line">  &lt;/daemon&gt;</div><div class="line">  ...</div><div class="line">&lt;/tnw-gateway&gt;</div></div><!-- fragment --><p><br />
  </p>
 <h1><a class="anchor" id="umrouterconfigurationdtd"></a>
 UM Router Configuration DTD&nbsp;&nbsp;<small><a href="#umrouterconfigurationdtd">&lt;-</a></small></h1>
 <p>Here is the XML configuration DTD with the comments removed. To see the DTD with comments included, enter <code>tnwgd --dump-dtd</code>.</p>
-<pre class="fragment">&lt;!ELEMENT tnw-gateway (daemon?, portals)&gt;
-&lt;!ATTLIST tnw-gateway
-          version (1.0) #REQUIRED
-&gt;
-&lt;!ELEMENT daemon (name?, log?, uid?, gid?, pidfile?, lbm-license-file?, topicmap?, patternmap?, monitor?, web-monitor?, daemon-monitor?, propagation-delay?, xml-config?, route-info?, route-recalculation?)&gt;
-&lt;!ELEMENT log ( #PCDATA )&gt;
-&lt;!ATTLIST log
-          type (file | syslog | console) "console"
-          frequency (disable | daily | hourly | test) "disable"
-          size CDATA "0"
-          xml:space (default | preserve) "default"
-&gt;
-&lt;!ELEMENT pidfile ( #PCDATA )&gt;
-&lt;!ATTLIST pidfile xml:space (default | preserve) "default"&gt;
-&lt;!ELEMENT uid ( #PCDATA )&gt;
-&lt;!ELEMENT gid ( #PCDATA )&gt;
-&lt;!ELEMENT lbm-license-file ( #PCDATA )&gt;
-&lt;!ATTLIST lbm-license-file xml:space (default | preserve) "default"&gt;
-&lt;!ELEMENT topicmap EMPTY&gt;
-&lt;!ATTLIST topicmap
-          hash-function ( classic | djb2 | sdbm | murmur2 ) "murmur2"
-          size CDATA "131111"
-&gt;
-&lt;!ELEMENT patternmap EMPTY&gt;
-&lt;!ATTLIST patternmap
-          hash-function ( classic | djb2 | sdbm | murmur2 ) "murmur2"
-          size CDATA "131111"
-&gt;
-&lt;!ELEMENT portals (endpoint | peer)+&gt;
-&lt;!ELEMENT endpoint (name, domain-id, cost?, source-deletion-delay?, max-queue?, smart-batch?, lbm-config?, lbm-attributes?, acl?, topic-resolution?, late-join?, topic-purge?, topic-interest-generate?, topic-domain-activity?, pattern-purge?, pattern-interest-generate?, pattern-domain-activity?, remote-topic?, remote-pattern?, source-context-name?, receiver-context-name?, sqn-window?, context-query?, publishing-interval? )&gt;
-&lt;!ELEMENT peer (name, cost?, sourcemap?, (tcp | single-tcp), source-deletion-delay?, max-queue?, smart-batch?, max-datagram?, batching?, lbm-config?, lbm-attributes?, acl?, topic-purge?, topic-interest-generate?, topic-domain-activity?, pattern-purge?, pattern-interest-generate?, pattern-domain-activity?, topic-use-check?, pattern-use-check?, source-context-name?, receiver-context-name?, sqn-window?, context-query?, gateway-keepalive?, publishing-interval? )&gt;
-&lt;!ELEMENT name ( #PCDATA )&gt;
-&lt;!ATTLIST name xml:space (default | preserve) "default"&gt;
-&lt;!ELEMENT domain-id ( #PCDATA )&gt;
-&lt;!ELEMENT cost ( #PCDATA )&gt;
-&lt;!ELEMENT source-deletion-delay ( #PCDATA )&gt;
-&lt;!ELEMENT sourcemap EMPTY&gt;
-&lt;!ATTLIST sourcemap
-          size CDATA "131072"
-&gt;
-&lt;!ELEMENT tcp (interface?, listen-port, receive-buffer?, send-buffer?, keepalive?, nodelay?, compression?, tls?, companion )&gt;
-&lt;!ELEMENT interface ( #PCDATA )&gt;
-&lt;!ELEMENT listen-port ( #PCDATA )&gt;
-&lt;!ELEMENT receive-buffer ( #PCDATA )&gt;
-&lt;!ELEMENT send-buffer ( #PCDATA )&gt;
-&lt;!ELEMENT keepalive EMPTY &gt;
-&lt;!ELEMENT nodelay EMPTY &gt;
-&lt;!ELEMENT companion (address, port)&gt;
-&lt;!ELEMENT compression ( #PCDATA )&gt;
-&lt;!ELEMENT tls (certificate, certificate-key, certificate-key-password?, trusted-certificates?, cipher-suites? )&gt;
-&lt;!ELEMENT certificate ( #PCDATA )&gt;
-&lt;!ELEMENT certificate-key ( #PCDATA )&gt;
-&lt;!ELEMENT certificate-key-password ( #PCDATA )&gt;
-&lt;!ELEMENT trusted-certificates ( #PCDATA )&gt;
-&lt;!ELEMENT cipher-suites ( #PCDATA )&gt;
-&lt;!ATTLIST companion
-          reconnect-interval CDATA "5000"
-&gt;
-&lt;!ELEMENT address ( #PCDATA )&gt;
-&lt;!ELEMENT port ( #PCDATA )&gt;
-&lt;!ELEMENT single-tcp (interface?, receive-buffer?, send-buffer?, keepalive?, nodelay?, compression?, tls?, (initiator | acceptor ) )&gt;
-&lt;!ELEMENT initiator (address, port)&gt;
-&lt;!ATTLIST initiator
-          reconnect-interval CDATA "5000"
-&gt;
-&lt;!ELEMENT acceptor (listen-port)&gt;
-&lt;!ELEMENT max-queue ( #PCDATA )&gt;
-&lt;!ELEMENT smart-batch ( #PCDATA )&gt;
-&lt;!ELEMENT max-datagram ( #PCDATA )&gt;
-&lt;!ELEMENT batching (min-length?, batch-interval?)&gt;
-&lt;!ELEMENT min-length ( #PCDATA )&gt;
-&lt;!ELEMENT batch-interval ( #PCDATA )&gt;
-&lt;!ELEMENT lbm-config ( #PCDATA )&gt;
-&lt;!ATTLIST lbm-config xml:space (default | preserve) "default"&gt;
-&lt;!ELEMENT lbm-attributes (option+)&gt;
-&lt;!ELEMENT option EMPTY&gt;
-&lt;!ATTLIST option
-          scope (receiver | context | source | wildcard_receiver | event_queue) #REQUIRED
-          name CDATA #REQUIRED
-          value CDATA #REQUIRED
-&gt;
-&lt;!ELEMENT acl (inbound?, outbound?)&gt;
-&lt;!ELEMENT inbound (ace+)&gt;
-&lt;!ELEMENT outbound (ace+)&gt;
-&lt;!ELEMENT ace (topic | pcre-pattern | regex-pattern | transport | source-ip | multicast-group | udp-source-port | udp-destination-port | tcp-source-port | xport-id)+ &gt;
-&lt;!ATTLIST ace match (accept | reject) #REQUIRED &gt;
-&lt;!ELEMENT topic ( #PCDATA )&gt;
-&lt;!ATTLIST topic
-          xml:space (default | preserve) "default"
-&gt;
-&lt;!ELEMENT pcre-pattern ( #PCDATA )&gt;
-&lt;!ATTLIST pcre-pattern
-          xml:space (default | preserve) "default"
-&gt;
-&lt;!ELEMENT regex-pattern ( #PCDATA )&gt;
-&lt;!ATTLIST regex-pattern
-          xml:space (default | preserve) "default"
-&gt;
-&lt;!ELEMENT transport EMPTY&gt;
-&lt;!ATTLIST transport
-          value (tcp | lbt-rm | lbtrm | lbt-ru | lbtru | lbt-ipc | lbtipc) #REQUIRED
-          comparison (eq | equal | ne | notequal) #REQUIRED
-&gt;
-&lt;!ELEMENT source-ip EMPTY&gt;
-&lt;!ATTLIST source-ip
-          value CDATA #REQUIRED
-          comparison (eq | equal | ne | notequal | lt | lessthan | le | lessthanequal | gt | greaterthan | ge | greaterthanequal) #REQUIRED
-&gt;
-&lt;!ELEMENT multicast-group EMPTY&gt;
-&lt;!ATTLIST multicast-group
-          value CDATA #REQUIRED
-          comparison (eq | equal | ne | notequal | lt | lessthan | le | lessthanequal | gt | greaterthan | ge | greaterthanequal) #REQUIRED
-&gt;
-&lt;!ELEMENT udp-source-port EMPTY&gt;
-&lt;!ATTLIST udp-source-port
-          value CDATA #REQUIRED
-          comparison (eq | equal | ne | notequal | lt | lessthan | le | lessthanequal | gt | greaterthan | ge | greaterthanequal) #REQUIRED
-&gt;
-&lt;!ELEMENT udp-destination-port EMPTY&gt;
-&lt;!ATTLIST udp-destination-port
-          value CDATA #REQUIRED
-          comparison (eq | equal | ne | notequal | lt | lessthan | le | lessthanequal | gt | greaterthan | ge | greaterthanequal) #REQUIRED
-&gt;
-&lt;!ELEMENT tcp-source-port EMPTY&gt;
-&lt;!ATTLIST tcp-source-port
-          value CDATA #REQUIRED
-          comparison (eq | equal | ne | notequal | lt | lessthan | le | lessthanequal | gt | greaterthan | ge | greaterthanequal) #REQUIRED
-&gt;
-&lt;!ELEMENT xport-id EMPTY&gt;
-&lt;!ATTLIST xport-id
-          value CDATA #REQUIRED
-          comparison (eq | equal | ne | notequal | lt | lessthan | le | lessthanequal | gt | greaterthan | ge | greaterthanequal) #REQUIRED
-&gt;
-&lt;!ELEMENT topic-resolution (topic-use-query?, pattern-use-query?, remote-topic-interest?, remote-pattern-interest?, domain-route?, initial-request? )&gt;
-&lt;!ELEMENT topic-use-query (rate-limit? ) &gt;
-&lt;!ATTLIST topic-use-query
-          timeout CDATA "3000"
-          max CDATA "5"
-          periodic-interval CDATA "300000"
-&gt;
-&lt;!ELEMENT pattern-use-query (rate-limit? ) &gt;
-&lt;!ATTLIST pattern-use-query
-          timeout CDATA "3000"
-          max CDATA "5"
-          periodic-interval CDATA "300000"
-&gt;
-&lt;!ELEMENT remote-topic-interest (rate-limit? ) &gt;
-&lt;!ATTLIST remote-topic-interest
-          min-interval CDATA "1000"
-          max-interval CDATA "60000"
-&gt;
-&lt;!ELEMENT remote-pattern-interest (rate-limit? ) &gt;
-&lt;!ATTLIST remote-pattern-interest
-          min-interval CDATA "1000"
-          max-interval CDATA "60000"
-&gt;
-&lt;!ELEMENT domain-route (rate-limit? ) &gt;
-&lt;!ATTLIST domain-route
-          min-interval CDATA "100"
-          max-interval CDATA "1000"
-&gt;
-&lt;!ELEMENT rate-limit EMPTY&gt;
-&lt;!ATTLIST rate-limit
-          bps CDATA #IMPLIED
-          objects-per-second CDATA #IMPLIED
-&gt;
-&lt;!ELEMENT initial-request EMPTY&gt;
-&lt;!ATTLIST initial-request
-          periodic-interval CDATA "1000"
-          duration CDATA "10"
-&gt;
-&lt;!ELEMENT late-join EMPTY&gt;
-&lt;!ATTLIST late-join
-          provide ( source | always | never ) "source"
-          forward ( yes | no ) "yes"
-&gt;
-&lt;!ELEMENT topic-purge EMPTY&gt;
-&lt;!ATTLIST topic-purge periodic-interval CDATA #IMPLIED&gt;
-&lt;!ELEMENT topic-interest-generate EMPTY&gt;
-&lt;!ATTLIST topic-interest-generate
-          periodic-interval CDATA #IMPLIED
-          max-topics CDATA #IMPLIED
-          interval CDATA #IMPLIED
-&gt;
-&lt;!ELEMENT topic-domain-activity EMPTY&gt;
-&lt;!ATTLIST topic-domain-activity timeout CDATA #IMPLIED&gt;
-&lt;!ELEMENT pattern-purge EMPTY&gt;
-&lt;!ATTLIST pattern-purge periodic-interval CDATA #IMPLIED&gt;
-&lt;!ELEMENT pattern-interest-generate EMPTY&gt;
-&lt;!ATTLIST pattern-interest-generate
-          periodic-interval CDATA #IMPLIED
-          max-patterns CDATA #IMPLIED
-          interval CDATA #IMPLIED
-&gt;
-&lt;!ELEMENT pattern-domain-activity EMPTY&gt;
-&lt;!ATTLIST pattern-domain-activity timeout CDATA #IMPLIED&gt;
-&lt;!ELEMENT remote-topic EMPTY&gt;
-&lt;!ATTLIST remote-topic
-          check-interval CDATA "90000"
-          max-topics CDATA "100"
-          timeout CDATA "300000"
-&gt;
-&lt;!ELEMENT remote-pattern EMPTY&gt;
-&lt;!ATTLIST remote-pattern
-          check-interval CDATA "90000"
-          max-patterns CDATA "100"
-          timeout CDATA "300000"
-&gt;
-&lt;!ELEMENT topic-use-check EMPTY&gt;
-&lt;!ATTLIST topic-use-check periodic-interval CDATA #IMPLIED&gt;
-&lt;!ELEMENT pattern-use-check EMPTY&gt;
-&lt;!ATTLIST pattern-use-check periodic-interval CDATA #IMPLIED&gt;
-&lt;!ELEMENT monitor (transport-module?, format-module?)&gt;
-&lt;!ATTLIST monitor
-          interval CDATA "0"
-&gt;
-&lt;!ELEMENT transport-module EMPTY&gt;
-&lt;!ATTLIST transport-module
-          module (lbm | lbmsnmp | udp) "lbm"
-          options CDATA #IMPLIED
-&gt;
-&lt;!ELEMENT format-module EMPTY&gt;
-&lt;!ATTLIST format-module
-          module (csv) "csv"
-          options CDATA #IMPLIED
-&gt;
-&lt;!ELEMENT web-monitor ( #PCDATA )&gt;
-&lt;!ATTLIST web-monitor xml:space (default | preserve) "default"&gt;
-&lt;!ELEMENT propagation-delay EMPTY&gt;
-&lt;!ATTLIST propagation-delay delta CDATA #IMPLIED&gt;
-&lt;!ELEMENT xml-config ( #PCDATA )&gt;
-&lt;!ATTLIST xml-config xml:space (default | preserve) "default"&gt;
-&lt;!ELEMENT source-context-name ( #PCDATA )&gt;
-&lt;!ATTLIST source-context-name xml:space (default | preserve) "default"&gt;
-&lt;!ELEMENT receiver-context-name ( #PCDATA )&gt;
-&lt;!ATTLIST receiver-context-name xml:space (default | preserve) "default"&gt;
-&lt;!ELEMENT sqn-window EMPTY&gt;
-&lt;!ATTLIST sqn-window
-          size CDATA "16384"
-          increment CDATA "2048"
-&gt;
-&lt;!ELEMENT context-query EMPTY&gt;
-&lt;!ATTLIST context-query
-          periodic-interval CDATA #IMPLIED
-          max-contexts CDATA #IMPLIED
-          interval CDATA #IMPLIED
-          timeout CDATA #IMPLIED
-&gt;
-&lt;!ELEMENT gateway-keepalive EMPTY&gt;
-&lt;!ATTLIST gateway-keepalive
-          idle ( yes | no ) "yes"
-          interval CDATA "5000"
-          timeout CDATA "15000"
-&gt;
-&lt;!ELEMENT route-info EMPTY&gt;
-&lt;!ATTLIST route-info
-          propagation-interval CDATA "1000"
-          check-interval CDATA "750"
-          timeout CDATA "4000"
-          max-hop-count CDATA "100"
-&gt;
-&lt;!ELEMENT route-recalculation EMPTY&gt;
-&lt;!ATTLIST route-recalculation
-          backoff-interval CDATA "5000"
-          warning-interval CDATA "10000"
-&gt;
-&lt;!ELEMENT daemon-monitor (lbm-config?, publishing-interval?, remote-snapshot-request?, remote-config-changes-request?)&gt;
-&lt;!ATTLIST daemon-monitor topic CDATA "tnwgd.monitor"&gt;
-&lt;!ELEMENT publishing-interval (group+)&gt;
-&lt;!ELEMENT group EMPTY&gt;
-&lt;!ATTLIST group name (default | gateway-config | route-manager-topology | malloc-info | portal-config | portal-stats ) #REQUIRED&gt;
-&lt;!ATTLIST group ivl CDATA #REQUIRED&gt;
-&lt;!ELEMENT remote-snapshot-request EMPTY&gt;
-&lt;!ATTLIST remote-snapshot-request allow (0 | 1) "0"&gt;
-&lt;!ELEMENT remote-config-changes-request EMPTY&gt;
-&lt;!ATTLIST remote-config-changes-request allow (0 | 1) "0"&gt;</pre> </div></div><!-- contents -->
+<div class="fragment"><div class="line">&lt;!ELEMENT tnw-gateway (daemon?, portals)&gt;</div><div class="line">&lt;!ATTLIST tnw-gateway</div><div class="line">          version (1.0) <span class="preprocessor">#REQUIRED</span></div><div class="line">&gt;</div><div class="line">&lt;!ELEMENT daemon (name?, log?, uid?, gid?, pidfile?, lbm-license-file?, topicmap?, patternmap?, monitor?, web-monitor?, daemon-monitor?, propagation-delay?, xml-config?, route-info?, route-recalculation?)&gt;</div><div class="line">&lt;!ELEMENT log ( #PCDATA )&gt;</div><div class="line">&lt;!ATTLIST log</div><div class="line">          type (file | syslog | console) <span class="stringliteral">&quot;console&quot;</span></div><div class="line">          frequency (disable | daily | hourly | test) <span class="stringliteral">&quot;disable&quot;</span></div><div class="line">          size CDATA <span class="stringliteral">&quot;0&quot;</span></div><div class="line">          xml:space (<span class="keywordflow">default</span> | preserve) <span class="stringliteral">&quot;default&quot;</span></div><div class="line">&gt;</div><div class="line">&lt;!ELEMENT pidfile ( #PCDATA )&gt;</div><div class="line">&lt;!ATTLIST pidfile xml:space (<span class="keywordflow">default</span> | preserve) <span class="stringliteral">&quot;default&quot;</span>&gt;</div><div class="line">&lt;!ELEMENT uid ( #PCDATA )&gt;</div><div class="line">&lt;!ELEMENT gid ( #PCDATA )&gt;</div><div class="line">&lt;!ELEMENT lbm-license-file ( #PCDATA )&gt;</div><div class="line">&lt;!ATTLIST lbm-license-file xml:space (<span class="keywordflow">default</span> | preserve) <span class="stringliteral">&quot;default&quot;</span>&gt;</div><div class="line">&lt;!ELEMENT topicmap EMPTY&gt;</div><div class="line">&lt;!ATTLIST topicmap</div><div class="line">          hash-<span class="keyword">function</span> ( classic | djb2 | sdbm | murmur2 ) <span class="stringliteral">&quot;murmur2&quot;</span></div><div class="line">          size CDATA <span class="stringliteral">&quot;131111&quot;</span></div><div class="line">&gt;</div><div class="line">&lt;!ELEMENT patternmap EMPTY&gt;</div><div class="line">&lt;!ATTLIST patternmap</div><div class="line">          hash-<span class="keyword">function</span> ( classic | djb2 | sdbm | murmur2 ) <span class="stringliteral">&quot;murmur2&quot;</span></div><div class="line">          size CDATA <span class="stringliteral">&quot;131111&quot;</span></div><div class="line">&gt;</div><div class="line">&lt;!ELEMENT portals (endpoint | peer)+&gt;</div><div class="line">&lt;!ELEMENT endpoint (name, domain-<span class="keywordtype">id</span>, cost?, source-deletion-delay?, max-queue?, smart-batch?, lbm-config?, lbm-attributes?, acl?, topic-resolution?, late-join?, topic-purge?, topic-interest-generate?, topic-domain-activity?, pattern-purge?, pattern-interest-generate?, pattern-domain-activity?, remote-topic?, remote-pattern?, source-context-name?, receiver-context-name?, sqn-window?, context-query?, publishing-interval? )&gt;</div><div class="line">&lt;!ELEMENT peer (name, cost?, sourcemap?, (tcp | single-tcp), source-deletion-delay?, max-queue?, smart-batch?, max-datagram?, batching?, lbm-config?, lbm-attributes?, acl?, topic-purge?, topic-interest-generate?, topic-domain-activity?, pattern-purge?, pattern-interest-generate?, pattern-domain-activity?, topic-use-check?, pattern-use-check?, source-context-name?, receiver-context-name?, sqn-window?, context-query?, gateway-keepalive?, publishing-interval? )&gt;</div><div class="line">&lt;!ELEMENT name ( #PCDATA )&gt;</div><div class="line">&lt;!ATTLIST name xml:space (<span class="keywordflow">default</span> | preserve) <span class="stringliteral">&quot;default&quot;</span>&gt;</div><div class="line">&lt;!ELEMENT domain-id ( #PCDATA )&gt;</div><div class="line">&lt;!ELEMENT cost ( #PCDATA )&gt;</div><div class="line">&lt;!ELEMENT source-deletion-delay ( #PCDATA )&gt;</div><div class="line">&lt;!ELEMENT sourcemap EMPTY&gt;</div><div class="line">&lt;!ATTLIST sourcemap</div><div class="line">          size CDATA <span class="stringliteral">&quot;131072&quot;</span></div><div class="line">&gt;</div><div class="line">&lt;!ELEMENT tcp (interface?, listen-port, receive-buffer?, send-buffer?, keepalive?, nodelay?, compression?, tls?, companion )&gt;</div><div class="line">&lt;!ELEMENT interface ( #PCDATA )&gt;</div><div class="line">&lt;!ELEMENT listen-port ( #PCDATA )&gt;</div><div class="line">&lt;!ELEMENT receive-buffer ( #PCDATA )&gt;</div><div class="line">&lt;!ELEMENT send-buffer ( #PCDATA )&gt;</div><div class="line">&lt;!ELEMENT keepalive EMPTY &gt;</div><div class="line">&lt;!ELEMENT nodelay EMPTY &gt;</div><div class="line">&lt;!ELEMENT companion (address, port)&gt;</div><div class="line">&lt;!ELEMENT compression ( #PCDATA )&gt;</div><div class="line">&lt;!ELEMENT tls (certificate, certificate-key, certificate-key-password?, trusted-certificates?, cipher-suites? )&gt;</div><div class="line">&lt;!ELEMENT certificate ( #PCDATA )&gt;</div><div class="line">&lt;!ELEMENT certificate-key ( #PCDATA )&gt;</div><div class="line">&lt;!ELEMENT certificate-key-password ( #PCDATA )&gt;</div><div class="line">&lt;!ELEMENT trusted-certificates ( #PCDATA )&gt;</div><div class="line">&lt;!ELEMENT cipher-suites ( #PCDATA )&gt;</div><div class="line">&lt;!ATTLIST companion</div><div class="line">          reconnect-interval CDATA <span class="stringliteral">&quot;5000&quot;</span></div><div class="line">&gt;</div><div class="line">&lt;!ELEMENT address ( #PCDATA )&gt;</div><div class="line">&lt;!ELEMENT port ( #PCDATA )&gt;</div><div class="line">&lt;!ELEMENT single-tcp (interface?, receive-buffer?, send-buffer?, keepalive?, nodelay?, compression?, tls?, (initiator | acceptor ) )&gt;</div><div class="line">&lt;!ELEMENT initiator (address, port)&gt;</div><div class="line">&lt;!ATTLIST initiator</div><div class="line">          reconnect-interval CDATA <span class="stringliteral">&quot;5000&quot;</span></div><div class="line">&gt;</div><div class="line">&lt;!ELEMENT acceptor (listen-port)&gt;</div><div class="line">&lt;!ELEMENT max-queue ( #PCDATA )&gt;</div><div class="line">&lt;!ELEMENT smart-batch ( #PCDATA )&gt;</div><div class="line">&lt;!ELEMENT max-datagram ( #PCDATA )&gt;</div><div class="line">&lt;!ELEMENT batching (min-length?, batch-interval?)&gt;</div><div class="line">&lt;!ELEMENT min-length ( #PCDATA )&gt;</div><div class="line">&lt;!ELEMENT batch-interval ( #PCDATA )&gt;</div><div class="line">&lt;!ELEMENT lbm-config ( #PCDATA )&gt;</div><div class="line">&lt;!ATTLIST lbm-config xml:space (<span class="keywordflow">default</span> | preserve) <span class="stringliteral">&quot;default&quot;</span>&gt;</div><div class="line">&lt;!ELEMENT lbm-attributes (option+)&gt;</div><div class="line">&lt;!ELEMENT option EMPTY&gt;</div><div class="line">&lt;!ATTLIST option</div><div class="line">          scope (receiver | context | source | wildcard_receiver | event_queue) <span class="preprocessor">#REQUIRED</span></div><div class="line">          name CDATA #REQUIRED</div><div class="line">          value CDATA #REQUIRED</div><div class="line">&gt;</div><div class="line">&lt;!ELEMENT acl (inbound?, outbound?)&gt;</div><div class="line">&lt;!ELEMENT inbound (ace+)&gt;</div><div class="line">&lt;!ELEMENT outbound (ace+)&gt;</div><div class="line">&lt;!ELEMENT ace (topic | pcre-pattern | regex-pattern | transport | source-ip | multicast-group | udp-source-port | udp-destination-port | tcp-source-port | xport-<span class="keywordtype">id</span>)+ &gt;</div><div class="line">&lt;!ATTLIST ace match (accept | reject) <span class="preprocessor">#REQUIRED &gt;</span></div><div class="line">&lt;!ELEMENT topic ( #PCDATA )&gt;</div><div class="line">&lt;!ATTLIST topic</div><div class="line">          xml:space (<span class="keywordflow">default</span> | preserve) <span class="stringliteral">&quot;default&quot;</span></div><div class="line">&gt;</div><div class="line">&lt;!ELEMENT pcre-pattern ( #PCDATA )&gt;</div><div class="line">&lt;!ATTLIST pcre-pattern</div><div class="line">          xml:space (<span class="keywordflow">default</span> | preserve) <span class="stringliteral">&quot;default&quot;</span></div><div class="line">&gt;</div><div class="line">&lt;!ELEMENT regex-pattern ( #PCDATA )&gt;</div><div class="line">&lt;!ATTLIST regex-pattern</div><div class="line">          xml:space (<span class="keywordflow">default</span> | preserve) <span class="stringliteral">&quot;default&quot;</span></div><div class="line">&gt;</div><div class="line">&lt;!ELEMENT transport EMPTY&gt;</div><div class="line">&lt;!ATTLIST transport</div><div class="line">          value (tcp | lbt-rm | lbtrm | lbt-ru | lbtru | lbt-ipc | lbtipc) <span class="preprocessor">#REQUIRED</span></div><div class="line">          comparison (eq | equal | ne | notequal) <span class="preprocessor">#REQUIRED</span></div><div class="line">&gt;</div><div class="line">&lt;!ELEMENT source-ip EMPTY&gt;</div><div class="line">&lt;!ATTLIST source-ip</div><div class="line">          value CDATA #REQUIRED</div><div class="line">          comparison (eq | equal | ne | notequal | lt | lessthan | le | lessthanequal | gt | greaterthan | ge | greaterthanequal) <span class="preprocessor">#REQUIRED</span></div><div class="line">&gt;</div><div class="line">&lt;!ELEMENT multicast-group EMPTY&gt;</div><div class="line">&lt;!ATTLIST multicast-group</div><div class="line">          value CDATA #REQUIRED</div><div class="line">          comparison (eq | equal | ne | notequal | lt | lessthan | le | lessthanequal | gt | greaterthan | ge | greaterthanequal) <span class="preprocessor">#REQUIRED</span></div><div class="line">&gt;</div><div class="line">&lt;!ELEMENT udp-source-port EMPTY&gt;</div><div class="line">&lt;!ATTLIST udp-source-port</div><div class="line">          value CDATA #REQUIRED</div><div class="line">          comparison (eq | equal | ne | notequal | lt | lessthan | le | lessthanequal | gt | greaterthan | ge | greaterthanequal) <span class="preprocessor">#REQUIRED</span></div><div class="line">&gt;</div><div class="line">&lt;!ELEMENT udp-destination-port EMPTY&gt;</div><div class="line">&lt;!ATTLIST udp-destination-port</div><div class="line">          value CDATA #REQUIRED</div><div class="line">          comparison (eq | equal | ne | notequal | lt | lessthan | le | lessthanequal | gt | greaterthan | ge | greaterthanequal) <span class="preprocessor">#REQUIRED</span></div><div class="line">&gt;</div><div class="line">&lt;!ELEMENT tcp-source-port EMPTY&gt;</div><div class="line">&lt;!ATTLIST tcp-source-port</div><div class="line">          value CDATA #REQUIRED</div><div class="line">          comparison (eq | equal | ne | notequal | lt | lessthan | le | lessthanequal | gt | greaterthan | ge | greaterthanequal) <span class="preprocessor">#REQUIRED</span></div><div class="line">&gt;</div><div class="line">&lt;!ELEMENT xport-<span class="keywordtype">id</span> EMPTY&gt;</div><div class="line">&lt;!ATTLIST xport-<span class="keywordtype">id</span></div><div class="line">          value CDATA #REQUIRED</div><div class="line">          comparison (eq | equal | ne | notequal | lt | lessthan | le | lessthanequal | gt | greaterthan | ge | greaterthanequal) <span class="preprocessor">#REQUIRED</span></div><div class="line">&gt;</div><div class="line">&lt;!ELEMENT topic-resolution (topic-use-query?, pattern-use-query?, remote-topic-interest?, remote-pattern-interest?, domain-route?, initial-request? )&gt;</div><div class="line">&lt;!ELEMENT topic-use-query (rate-limit? ) &gt;</div><div class="line">&lt;!ATTLIST topic-use-query</div><div class="line">          timeout CDATA <span class="stringliteral">&quot;3000&quot;</span></div><div class="line">          max CDATA <span class="stringliteral">&quot;5&quot;</span></div><div class="line">          periodic-interval CDATA <span class="stringliteral">&quot;300000&quot;</span></div><div class="line">&gt;</div><div class="line">&lt;!ELEMENT pattern-use-query (rate-limit? ) &gt;</div><div class="line">&lt;!ATTLIST pattern-use-query</div><div class="line">          timeout CDATA <span class="stringliteral">&quot;3000&quot;</span></div><div class="line">          max CDATA <span class="stringliteral">&quot;5&quot;</span></div><div class="line">          periodic-interval CDATA <span class="stringliteral">&quot;300000&quot;</span></div><div class="line">&gt;</div><div class="line">&lt;!ELEMENT remote-topic-interest (rate-limit? ) &gt;</div><div class="line">&lt;!ATTLIST remote-topic-interest</div><div class="line">          min-interval CDATA <span class="stringliteral">&quot;1000&quot;</span></div><div class="line">          max-interval CDATA <span class="stringliteral">&quot;60000&quot;</span></div><div class="line">&gt;</div><div class="line">&lt;!ELEMENT remote-pattern-interest (rate-limit? ) &gt;</div><div class="line">&lt;!ATTLIST remote-pattern-interest</div><div class="line">          min-interval CDATA <span class="stringliteral">&quot;1000&quot;</span></div><div class="line">          max-interval CDATA <span class="stringliteral">&quot;60000&quot;</span></div><div class="line">&gt;</div><div class="line">&lt;!ELEMENT domain-route (rate-limit? ) &gt;</div><div class="line">&lt;!ATTLIST domain-route</div><div class="line">          min-interval CDATA <span class="stringliteral">&quot;100&quot;</span></div><div class="line">          max-interval CDATA <span class="stringliteral">&quot;1000&quot;</span></div><div class="line">&gt;</div><div class="line">&lt;!ELEMENT rate-limit EMPTY&gt;</div><div class="line">&lt;!ATTLIST rate-limit</div><div class="line">          bps CDATA #IMPLIED</div><div class="line">          objects-per-second CDATA #IMPLIED</div><div class="line">&gt;</div><div class="line">&lt;!ELEMENT initial-request EMPTY&gt;</div><div class="line">&lt;!ATTLIST initial-request</div><div class="line">          periodic-interval CDATA <span class="stringliteral">&quot;1000&quot;</span></div><div class="line">          duration CDATA <span class="stringliteral">&quot;10&quot;</span></div><div class="line">&gt;</div><div class="line">&lt;!ELEMENT late-join EMPTY&gt;</div><div class="line">&lt;!ATTLIST late-join</div><div class="line">          provide ( source | always | never ) <span class="stringliteral">&quot;source&quot;</span></div><div class="line">          forward ( yes | no ) <span class="stringliteral">&quot;yes&quot;</span></div><div class="line">&gt;</div><div class="line">&lt;!ELEMENT topic-purge EMPTY&gt;</div><div class="line">&lt;!ATTLIST topic-purge periodic-interval CDATA #IMPLIED&gt;</div><div class="line">&lt;!ELEMENT topic-interest-generate EMPTY&gt;</div><div class="line">&lt;!ATTLIST topic-interest-generate</div><div class="line">          periodic-interval CDATA #IMPLIED</div><div class="line">          max-topics CDATA #IMPLIED</div><div class="line">          interval CDATA #IMPLIED</div><div class="line">&gt;</div><div class="line">&lt;!ELEMENT topic-domain-activity EMPTY&gt;</div><div class="line">&lt;!ATTLIST topic-domain-activity timeout CDATA #IMPLIED&gt;</div><div class="line">&lt;!ELEMENT pattern-purge EMPTY&gt;</div><div class="line">&lt;!ATTLIST pattern-purge periodic-interval CDATA #IMPLIED&gt;</div><div class="line">&lt;!ELEMENT pattern-interest-generate EMPTY&gt;</div><div class="line">&lt;!ATTLIST pattern-interest-generate</div><div class="line">          periodic-interval CDATA #IMPLIED</div><div class="line">          max-patterns CDATA #IMPLIED</div><div class="line">          interval CDATA #IMPLIED</div><div class="line">&gt;</div><div class="line">&lt;!ELEMENT pattern-domain-activity EMPTY&gt;</div><div class="line">&lt;!ATTLIST pattern-domain-activity timeout CDATA #IMPLIED&gt;</div><div class="line">&lt;!ELEMENT remote-topic EMPTY&gt;</div><div class="line">&lt;!ATTLIST remote-topic</div><div class="line">          check-interval CDATA <span class="stringliteral">&quot;90000&quot;</span></div><div class="line">          max-topics CDATA <span class="stringliteral">&quot;100&quot;</span></div><div class="line">          timeout CDATA <span class="stringliteral">&quot;300000&quot;</span></div><div class="line">&gt;</div><div class="line">&lt;!ELEMENT remote-pattern EMPTY&gt;</div><div class="line">&lt;!ATTLIST remote-pattern</div><div class="line">          check-interval CDATA <span class="stringliteral">&quot;90000&quot;</span></div><div class="line">          max-patterns CDATA <span class="stringliteral">&quot;100&quot;</span></div><div class="line">          timeout CDATA <span class="stringliteral">&quot;300000&quot;</span></div><div class="line">&gt;</div><div class="line">&lt;!ELEMENT topic-use-check EMPTY&gt;</div><div class="line">&lt;!ATTLIST topic-use-check periodic-interval CDATA #IMPLIED&gt;</div><div class="line">&lt;!ELEMENT pattern-use-check EMPTY&gt;</div><div class="line">&lt;!ATTLIST pattern-use-check periodic-interval CDATA #IMPLIED&gt;</div><div class="line">&lt;!ELEMENT monitor (transport-module?, format-module?)&gt;</div><div class="line">&lt;!ATTLIST monitor</div><div class="line">          interval CDATA <span class="stringliteral">&quot;0&quot;</span></div><div class="line">&gt;</div><div class="line">&lt;!ELEMENT transport-module EMPTY&gt;</div><div class="line">&lt;!ATTLIST transport-module</div><div class="line">          module (lbm | lbmsnmp | udp) <span class="stringliteral">&quot;lbm&quot;</span></div><div class="line">          options CDATA #IMPLIED</div><div class="line">&gt;</div><div class="line">&lt;!ELEMENT format-module EMPTY&gt;</div><div class="line">&lt;!ATTLIST format-module</div><div class="line">          module (csv) <span class="stringliteral">&quot;csv&quot;</span></div><div class="line">          options CDATA #IMPLIED</div><div class="line">&gt;</div><div class="line">&lt;!ELEMENT web-monitor ( #PCDATA )&gt;</div><div class="line">&lt;!ATTLIST web-monitor xml:space (<span class="keywordflow">default</span> | preserve) <span class="stringliteral">&quot;default&quot;</span>&gt;</div><div class="line">&lt;!ELEMENT propagation-delay EMPTY&gt;</div><div class="line">&lt;!ATTLIST propagation-delay delta CDATA #IMPLIED&gt;</div><div class="line">&lt;!ELEMENT xml-config ( #PCDATA )&gt;</div><div class="line">&lt;!ATTLIST xml-config xml:space (<span class="keywordflow">default</span> | preserve) <span class="stringliteral">&quot;default&quot;</span>&gt;</div><div class="line">&lt;!ELEMENT source-context-name ( #PCDATA )&gt;</div><div class="line">&lt;!ATTLIST source-context-name xml:space (<span class="keywordflow">default</span> | preserve) <span class="stringliteral">&quot;default&quot;</span>&gt;</div><div class="line">&lt;!ELEMENT receiver-context-name ( #PCDATA )&gt;</div><div class="line">&lt;!ATTLIST receiver-context-name xml:space (<span class="keywordflow">default</span> | preserve) <span class="stringliteral">&quot;default&quot;</span>&gt;</div><div class="line">&lt;!ELEMENT sqn-window EMPTY&gt;</div><div class="line">&lt;!ATTLIST sqn-window</div><div class="line">          size CDATA <span class="stringliteral">&quot;16384&quot;</span></div><div class="line">          increment CDATA <span class="stringliteral">&quot;2048&quot;</span></div><div class="line">&gt;</div><div class="line">&lt;!ELEMENT context-query EMPTY&gt;</div><div class="line">&lt;!ATTLIST context-query</div><div class="line">          periodic-interval CDATA #IMPLIED</div><div class="line">          max-contexts CDATA #IMPLIED</div><div class="line">          interval CDATA #IMPLIED</div><div class="line">          timeout CDATA #IMPLIED</div><div class="line">&gt;</div><div class="line">&lt;!ELEMENT gateway-keepalive EMPTY&gt;</div><div class="line">&lt;!ATTLIST gateway-keepalive</div><div class="line">          idle ( yes | no ) <span class="stringliteral">&quot;yes&quot;</span></div><div class="line">          interval CDATA <span class="stringliteral">&quot;5000&quot;</span></div><div class="line">          timeout CDATA <span class="stringliteral">&quot;15000&quot;</span></div><div class="line">&gt;</div><div class="line">&lt;!ELEMENT route-info EMPTY&gt;</div><div class="line">&lt;!ATTLIST route-info</div><div class="line">          propagation-interval CDATA <span class="stringliteral">&quot;1000&quot;</span></div><div class="line">          check-interval CDATA <span class="stringliteral">&quot;750&quot;</span></div><div class="line">          timeout CDATA <span class="stringliteral">&quot;4000&quot;</span></div><div class="line">          max-hop-count CDATA <span class="stringliteral">&quot;100&quot;</span></div><div class="line">&gt;</div><div class="line">&lt;!ELEMENT route-recalculation EMPTY&gt;</div><div class="line">&lt;!ATTLIST route-recalculation</div><div class="line">          backoff-interval CDATA <span class="stringliteral">&quot;5000&quot;</span></div><div class="line">          warning-interval CDATA <span class="stringliteral">&quot;10000&quot;</span></div><div class="line">&gt;</div><div class="line">&lt;!ELEMENT daemon-monitor (lbm-config?, publishing-interval?, remote-snapshot-request?, remote-config-changes-request?)&gt;</div><div class="line">&lt;!ATTLIST daemon-monitor topic CDATA <span class="stringliteral">&quot;tnwgd.monitor&quot;</span>&gt;</div><div class="line">&lt;!ELEMENT publishing-interval (group+)&gt;</div><div class="line">&lt;!ELEMENT group EMPTY&gt;</div><div class="line">&lt;!ATTLIST group name (<span class="keywordflow">default</span> | gateway-config | route-manager-topology | malloc-info | portal-config | portal-stats ) <span class="preprocessor">#REQUIRED&gt;</span></div><div class="line">&lt;!ATTLIST group ivl CDATA #REQUIRED&gt;</div><div class="line">&lt;!ELEMENT remote-snapshot-request EMPTY&gt;</div><div class="line">&lt;!ATTLIST remote-snapshot-request allow (0 | 1) <span class="stringliteral">&quot;0&quot;</span>&gt;</div><div class="line">&lt;!ELEMENT remote-config-changes-request EMPTY&gt;</div><div class="line">&lt;!ATTLIST remote-config-changes-request allow (0 | 1) <span class="stringliteral">&quot;0&quot;</span>&gt;</div></div><!-- fragment --> </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.8.11-->
 </body>

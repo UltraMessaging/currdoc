@@ -8,8 +8,8 @@ var NAVTREE =
       [ "Binary Evaluation Notes", "ultramessagingbinaryquickstart.html#binaryevaluationnotes", null ]
     ] ],
     [ "Ultra Messaging Programming Quick Start", "ultramessagingprogrammingquickstart.html", [
-      [ "Building Notes: Windows", "ultramessagingprogrammingquickstart.html#buildingnoteswindows", null ],
-      [ "Building Notes: Unix", "ultramessagingprogrammingquickstart.html#buildingnotesunix", null ],
+      [ "Building Notes: C on Windows", "ultramessagingprogrammingquickstart.html#buildingnotesconwindows", null ],
+      [ "Building Notes: C on Unix", "ultramessagingprogrammingquickstart.html#buildingnotesconunix", null ],
       [ "Minimal Ultra Messaging Source Implementation", "ultramessagingprogrammingquickstart.html#minimalultramessagingsourceimplementation", null ],
       [ "Minimal Ultra Messaging Receiver Implementation", "ultramessagingprogrammingquickstart.html#minimalultramessagingreceiverimplementation", null ]
     ] ],

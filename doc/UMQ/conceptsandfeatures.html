@@ -67,9 +67,8 @@ Brokered Context&nbsp;&nbsp;<small><a href="#brokeredcontext">&lt;-</a></small><
 <p>The brokered context establishes the environment for an Ultra Messaging queuing system.</p>
 <p>When you build an Ultra Messaging queuing system, you must create a context and define the broker for the context. You can have multiple brokered contexts in a queuing system.</p>
 <p>You can define the broker for the context in the client configuration file or in the application code. When you define the broker for a context, you must specify the IP address of the machine that hosts the broker and the Advanced Message Queuing Protocol (AMQP) listening port.</p>
-<p>To define the broker for a brokered context in a configuration file, the option <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/config.tag:../Config/" href="../Config/grpmajoroptions.html#brokercontext">broker (context)</a> as follows:</p>
-<pre class="fragment">context broker broker_ip_address:port
-</pre><p>For more information about the Ultra Messaging context, see <a class="elRef" doxygen="/29W/Amun/home/sford/sfordmac_DEV_HF_6_12/29West/lbm/doc/UMQ/design.tag:../Design/" href="../Design/fundamentalconcepts.html#contextobject">Context Object</a>.</p>
+<p>To define the broker for a brokered context in a configuration file, the option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMQ/config.tag:../Config/" href="../Config/grpmajoroptions.html#brokercontext">broker (context)</a> as follows:</p>
+<div class="fragment"><div class="line">context broker broker_ip_address:port</div></div><!-- fragment --><p>For more information about the Ultra Messaging context, see <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UMQ/design.tag:../Design/" href="../Design/fundamentalconcepts.html#contextobject">Context Object</a>.</p>
 <p><br />
  </p>
 <h1><a class="anchor" id="brokeredsource"></a>
@@ -79,8 +78,7 @@ Brokered Source&nbsp;&nbsp;<small><a href="#brokeredsource">&lt;-</a></small></h
 <p>When you create a source, you must specify the name of a message destination. The broker creates a queue destination with the specified name. If you create multiple sources, specify a different message destination for each source. A source sends messages to the message destination associated with it.</p>
 <p>You can configure the source in the configuration file or in the application code. When you configure the source for a brokered context, you must set the transport option to broker.</p>
 <p>To set up the broker transport for a source in the client configuration file, include the following parameter:</p>
-<pre class="fragment">source transport broker
-</pre><p><br />
+<div class="fragment"><div class="line">source transport broker</div></div><!-- fragment --><p><br />
  </p>
 <h2><a class="anchor" id="sourceeventconcepts"></a>
 Source Event Concepts&nbsp;&nbsp;<small><a href="#sourceeventconcepts">&lt;-</a></small></h2>
@@ -171,20 +169,7 @@ Composite Destinations&nbsp;&nbsp;<small><a href="#compositedestinations">&lt;-<
 Composite Destination Configuration&nbsp;&nbsp;<small><a href="#compositedestinationconfiguration">&lt;-</a></small></h2>
 <p>You configure the composite destination in the Ultra Messaging message broker. Use the broker configuration file to set up the logical and physical queues for the composite destination.</p>
 <p>The following XML code shows an example of a configuration for a composite destination:</p>
-<pre class="fragment">&lt;destinationInterceptors&gt;
-    &lt;virtualDestinationInterceptor&gt;
-        &lt;virtualDestinations&gt;
-            &lt;compositeQueue name="VirtQueue0"&gt;
-                &lt;forwardTo&gt;
-                    &lt;queue physicalName="QueueA" /&gt;
-                    &lt;queue physicalName="QueueB" /&gt;
-                    &lt;queue physicalName="QueueC" /&gt;
-                &lt;/forwardTo&gt;
-            &lt;/compositeQueue&gt;
-        &lt;/virtualDestinations&gt;
-    &lt;/virtualDestinationInterceptor&gt;
-&lt;/destinationInterceptors&gt;
-</pre><p><br />
+<div class="fragment"><div class="line">&lt;destinationInterceptors&gt;</div><div class="line">    &lt;virtualDestinationInterceptor&gt;</div><div class="line">        &lt;virtualDestinations&gt;</div><div class="line">            &lt;compositeQueue name=<span class="stringliteral">&quot;VirtQueue0&quot;</span>&gt;</div><div class="line">                &lt;forwardTo&gt;</div><div class="line">                    &lt;queue physicalName=<span class="stringliteral">&quot;QueueA&quot;</span> /&gt;</div><div class="line">                    &lt;queue physicalName=<span class="stringliteral">&quot;QueueB&quot;</span> /&gt;</div><div class="line">                    &lt;queue physicalName=<span class="stringliteral">&quot;QueueC&quot;</span> /&gt;</div><div class="line">                &lt;/forwardTo&gt;</div><div class="line">            &lt;/compositeQueue&gt;</div><div class="line">        &lt;/virtualDestinations&gt;</div><div class="line">    &lt;/virtualDestinationInterceptor&gt;</div><div class="line">&lt;/destinationInterceptors&gt;</div></div><!-- fragment --><p><br />
  </p>
 <h1><a class="anchor" id="messagelifetime"></a>
 Message Lifetime&nbsp;&nbsp;<small><a href="#messagelifetime">&lt;-</a></small></h1>

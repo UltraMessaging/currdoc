@@ -59,39 +59,24 @@ $(document).ready(function(){initNavTree('generalconfigurationguidelines.html','
 <h1><a class="anchor" id="casesensitivity"></a>
 Case Sensitivity&nbsp;&nbsp;<small><a href="#casesensitivity">&lt;-</a></small></h1>
 <p>All Ultra Messaging scope, option, and value strings are case-insensitive. Thus, the following are identical:</p>
-<pre class="fragment">context fd_management_type wincompport
-Context Fd_Management_Type WinCompPort
-CONTEXT FD_MANAGEMENT_TYPE WINCOMPPORT
-</pre><p><br />
+<div class="fragment"><div class="line">context fd_management_type wincompport</div><div class="line">Context Fd_Management_Type WinCompPort</div><div class="line">CONTEXT FD_MANAGEMENT_TYPE WINCOMPPORT</div></div><!-- fragment --><p><br />
  </p>
 <h1><a class="anchor" id="specifyinginterfaces"></a>
 Specifying Interfaces&nbsp;&nbsp;<small><a href="#specifyinginterfaces">&lt;-</a></small></h1>
 <p>The <b>*_interface</b> options require a network interface, usually supplied as a string (from a configuration file or in source code via <b>*_attr_str_setopt()</b>), the syntax used for network interface specifications is <a href="https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#CIDR_notation">CIDR notation</a>:</p>
 <p><em><b>a.b.c.d/num</b></em></p>
 <p>where '<em><b>num</b></em>' is the optional number of leading 1 bits in the netmask. If the '<em><b>/num</b></em>' is omitted, it defaults to 32 (netmask 255.255.255.255), which means that it must be an exact match for the interface's IP address. However, if '<em><b>/num</b></em>' is supplied, it tells Ultra Messaging to find an interface within that network. This makes it easier to share a configuration file between many (possibly multi-homed) machines on the same network.</p>
-<p>For example: </p><pre class="fragment">context resolver_unicast_interface 192.168.0.0/24
-</pre><p>specifies a netmask of 255.255.255.0 and would match the interface 192.168.0.3 on one host, and 192.168.0.251 on another host.</p>
+<p>For example: </p><div class="fragment"><div class="line">context resolver_unicast_interface 192.168.0.0/24</div></div><!-- fragment --><p>specifies a netmask of 255.255.255.0 and would match the interface 192.168.0.3 on one host, and 192.168.0.251 on another host.</p>
 <p>You can also set network interfaces by device name. When setting a configuration option's interface by device name, you must use double quotes, as illustrated below.</p>
-<pre class="fragment">context resolver_unicast_interface "en0"
-</pre><p>Finally, you can also set network interfaces by DNS host name. When setting a configuration option's interface by DNS name, simply replace the dotted IP address with the host name, as illustrated below.</p>
-<pre class="fragment">context resolver_unicast_interface myhost.mydomain.com/24
-</pre><p>Notice the use of the optional netmask even though the host name will typically resolve to a specific host IP address. In this case, UM will zero out the host bits of <b>myhost</b>'s address and find any interface within that network. If the netmask is omitted, an exact match to <b>myhost</b>'s address is needed.</p>
+<div class="fragment"><div class="line">context resolver_unicast_interface <span class="stringliteral">&quot;en0&quot;</span></div></div><!-- fragment --><p>Finally, you can also set network interfaces by DNS host name. When setting a configuration option's interface by DNS name, simply replace the dotted IP address with the host name, as illustrated below.</p>
+<div class="fragment"><div class="line">context resolver_unicast_interface myhost.mydomain.com/24</div></div><!-- fragment --><p>Notice the use of the optional netmask even though the host name will typically resolve to a specific host IP address. In this case, UM will zero out the host bits of <b>myhost</b>'s address and find any interface within that network. If the netmask is omitted, an exact match to <b>myhost</b>'s address is needed.</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="interfacedevicenamesandxml"></a>
 Interface Device Names and XML&nbsp;&nbsp;<small><a href="#interfacedevicenamesandxml">&lt;-</a></small></h2>
 <p>As mentioned above, when a device name is supplied as an interface specification, the device name must be enclosed in double quotes. This presents a problem when the configuration option is specified within an XML file. In XML files, the values for all options must be enclosed in double quotes, but those quotes are only used by the XML parser to delimit the value. The quote characters themselves are not passed to the UM configuration parser. But the UM configuration parser needs the double quotes to indicate that the device name is being used.</p>
 <p>The solution is to use the "&amp;quot;" escape when specifying device names for interfaces within an XML file. The XML parser will convert those to actual double quote characters as part of the value passed to UM.</p>
-<p>For example: </p><pre class="fragment">&lt;options type="context"&gt;
-  &lt;option name="resolver_multicast_interface" default-value="&amp;quot;en0&amp;quot;"&gt;
-  &lt;/option&gt;
-&lt;/options&gt;
-</pre><p>Another example: </p><pre class="fragment">&lt;options type="context"&gt;
-  &lt;option name="monitor_transport_opts"
-    default-value="context|resolver_multicast_interface=&amp;quot;en0&amp;quot;;source|transport=lbt-rm"&gt;
-  &lt;/option&gt;
-&lt;/options&gt;
-</pre><p> (The repeated semicolon looks strange; the first one closes the "&amp;quot;", and the second one separates the resolver_multicast_interface option from the transport option.)</p>
+<p>For example: </p><div class="fragment"><div class="line">&lt;options type=<span class="stringliteral">&quot;context&quot;</span>&gt;</div><div class="line">  &lt;option name=<span class="stringliteral">&quot;resolver_multicast_interface&quot;</span> <span class="keywordflow">default</span>-value=<span class="stringliteral">&quot;&amp;quot;en0&amp;quot;&quot;</span>&gt;</div><div class="line">  &lt;/option&gt;</div><div class="line">&lt;/options&gt;</div></div><!-- fragment --><p>Another example: </p><div class="fragment"><div class="line">&lt;options type=<span class="stringliteral">&quot;context&quot;</span>&gt;</div><div class="line">  &lt;option name=<span class="stringliteral">&quot;monitor_transport_opts&quot;</span></div><div class="line">    <span class="keywordflow">default</span>-value=<span class="stringliteral">&quot;context|resolver_multicast_interface=&amp;quot;en0&amp;quot;;source|transport=lbt-rm&quot;</span>&gt;</div><div class="line">  &lt;/option&gt;</div><div class="line">&lt;/options&gt;</div></div><!-- fragment --><p> (The repeated semicolon looks strange; the first one closes the "&amp;quot;", and the second one separates the resolver_multicast_interface option from the transport option.)</p>
 <p><br />
  </p>
 <h1><a class="anchor" id="socketbuffersizes"></a>
@@ -117,15 +102,9 @@ Ephemeral Ports&nbsp;&nbsp;<small><a href="#ephemeralports">&lt;-</a></small></h
 <h2><a class="anchor" id="networkvshostorder"></a>
 Network VS Host Order&nbsp;&nbsp;<small><a href="#networkvshostorder">&lt;-</a></small></h2>
 <p>When the UM C API is used to set configuration options programmatically, port numbers can be specified as a string or as a binary value. For example, here is an option being set by binary value:</p>
-<pre class="fragment">unsigned short int optval = 4901;  /* host byte order required */
-size_t optlen = sizeof(optval);
-rc = lbm_context_attr_setopt(attrib, "transport_tcp_port_low", &amp;optval, optlen);
-</pre><p>See <a class="el" href="attributesobjects.html#settinganoptionfromabinaryvalue">Setting an Option from a Binary Value</a>.</p>
+<div class="fragment"><div class="line"><span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> <span class="keywordtype">int</span> optval = 4901;  <span class="comment">/* host byte order required */</span></div><div class="line"><span class="keywordtype">size_t</span> optlen = <span class="keyword">sizeof</span>(optval);</div><div class="line">rc = <a class="codeRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#ab67f641d5a0ad1a9fe53d415da58d961">lbm_context_attr_setopt</a>(attrib, <span class="stringliteral">&quot;transport_tcp_port_low&quot;</span>, &amp;optval, optlen);</div></div><!-- fragment --><p>See <a class="el" href="attributesobjects.html#settinganoptionfromabinaryvalue">Setting an Option from a Binary Value</a>.</p>
 <p>There are some port options whose binary values must be supplied in network order. For example:</p>
-<pre class="fragment">unsigned short int optval = htons(4901);  /* network byte order required */
-size_t optlen = sizeof(optval);
-rc = lbm_source_attr_setopt(attrib, "transport_tcp_port", &amp;optval, optlen);
-</pre><p>It is generally the case where setting a port to a specific value (i.e. not setting up a range) requires network order. Whereas setting the high and low port values of a range are done in host order.</p>
+<div class="fragment"><div class="line"><span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> <span class="keywordtype">int</span> optval = htons(4901);  <span class="comment">/* network byte order required */</span></div><div class="line"><span class="keywordtype">size_t</span> optlen = <span class="keyword">sizeof</span>(optval);</div><div class="line">rc = lbm_source_attr_setopt(attrib, <span class="stringliteral">&quot;transport_tcp_port&quot;</span>, &amp;optval, optlen);</div></div><!-- fragment --><p>It is generally the case where setting a port to a specific value (i.e. not setting up a range) requires network order. Whereas setting the high and low port values of a range are done in host order.</p>
 <p>The reference documentation for each port option specifies the byte order required when binary values are being specified. For example, <a class="el" href="grptransporttcpnetwork.html#transporttcpportsource">transport_tcp_port (source)</a> has a table row that says: </p><table class="doxtable">
 <tr>
 <td><em>Byte order:</em> </td><td>Network </td></tr>
