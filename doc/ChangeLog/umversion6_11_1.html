@@ -55,7 +55,7 @@ $(document).ready(function(){initNavTree('umversion6_11_1.html','');});
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p>The most-significant update to UM version 6.11.1 is a set of performance improvements to the Persistent Store daemon. Some performance improvements were also applied to the data receive path for applications.</p>
-<dl class="section attention"><dt>Attention</dt><dd>See <a class="el" href="umversion6_11_1.html#deprecationsfor6111">Deprecations for 6.11.1</a> for important information regarding future platform support for UM daemons.</dd></dl>
+<dl class="section attention"><dt>Attention</dt><dd>See <a class="el" href="deprecations.html#deprecationsfor6111">Deprecations for 6.11.1</a> for important information regarding future platform support for UM daemons.</dd></dl>
 <p><br />
  </p>
 <h1><a class="anchor" id="enhancementsfor6_11_1"></a>
@@ -124,7 +124,7 @@ Persistence Fixed Limitations for 6.11.1&nbsp;&nbsp;<small><a href="#persistence
 <p class="endtd"></p>
 </th></tr>
 <tr>
-<td>10332, 10409 </td><td><p class="starttd"><b>FIXED:</b> <em>When the Persistent Store is configured to publish <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/ChangeLog/ume.tag:../UME/" href="../UME/storedaemonstatistics.html">Daemon Statistics</a>, there is a small chance that it will fail to initialize properly. It might log the error:</em> <br />
+<td>10332, 10409 </td><td><p class="starttd"><b>FIXED:</b> <em>When the Persistent Store is configured to publish <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/ChangeLog/ume.tag:../UME/" href="../UME/storedaemonstatistics.html">Daemon Statistics</a>, there is a small chance that it will fail to initialize properly. It might log the error:</em> <br />
 <code>[CRITICAL]: Store-10184-80: umestore_dmon_publish: CoreApi-5688-2996: src must be valid</code> <br />
 <em>and could exit with a segmentation fault.</em></p>
 <p class="endtd"></p>
@@ -134,7 +134,7 @@ Persistence Fixed Limitations for 6.11.1&nbsp;&nbsp;<small><a href="#persistence
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>10404, 10411</td><td><p class="starttd"><b>FIXED:</b> <em>When using <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/ChangeLog/ume.tag:../UME/" href="../UME/operationalview.html#receiverpacedpersistenceoperations">RPP</a> with <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/ChangeLog/ume.tag:../UME/" href="../UME/configurationreferenceforumestored.html#umecfgrepositorytype">repository-type</a> "disk", it is possible for a <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umereceiverpacedpersistencereceiver">blocking receiver</a> to get unrecoverable loss. This loss can be accompanied by the following warning in the Persistent Store log file:</em> <br />
+<td>10404, 10411</td><td><p class="starttd"><b>FIXED:</b> <em>When using <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/ChangeLog/ume.tag:../UME/" href="../UME/operationalview.html#receiverpacedpersistenceoperations">RPP</a> with <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/ChangeLog/ume.tag:../UME/" href="../UME/configurationreferenceforumestored.html#umecfgrepositorytype">repository-type</a> "disk", it is possible for a <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umereceiverpacedpersistencereceiver">blocking receiver</a> to get unrecoverable loss. This loss can be accompanied by the following warning in the Persistent Store log file:</em> <br />
 <code>[WARNING]: WARNING: failed assertion [ntohl(ohdr-&gt;sqn)==rec-&gt;sqn]</code></p>
 <p class="endtd"></p>
 </td></tr>
@@ -159,39 +159,6 @@ Dynamic Router Fixed Limitations for 6.11.1&nbsp;&nbsp;<small><a href="#dynamicr
 <li>
 None. </li>
 </ul>
-<p><br />
- </p>
-<h1><a class="anchor" id="deprecationsfor6111"></a>
-Deprecations for 6.11.1&nbsp;&nbsp;<small><a href="#deprecationsfor6111">&lt;-</a></small></h1>
-<dl class="section attention"><dt>Attention</dt><dd>This section of the 6.11.1 release notes announced the deprecation of certain platforms for UM daemons, claiming that they would be discontinued in UM version 6.12. However, some users requested more time for the transition. As of UM version 6.12, these deprecated daemon platforms have not yet been removed, and are therefore still fully supported in 6.12 (contrary to what is written below). See <a class="el" href="upgradeprocedure.html#platformdeprecationsfordaemons">Platform Deprecations for Daemons</a>.</dd></dl>
-<p>Starting with UM version 6.12, the UM daemons will no longer be available on certain platforms.</p>
-<dl class="section note"><dt>Note</dt><dd>User applications will continue to be fully supported on all platforms. These deprecations only apply to UM daemon executables, such as the Store Daemon and the Dynamic Router daemon.</dd></dl>
-<p>UM daemons will continue to be available on the following platforms: </p><ul>
-<li>
-Persistent Store daemon ("stored"): Linux 64-bit, Windows 64-bit. </li>
-<li>
-UM Dynamic Router daemon ("tnwgd"): Linux 64-bit, Windows 64 and 32-bit. </li>
-<li>
-UM Manager daemon ("ummd"): Linux 64-bit, Windows 64-bit. </li>
-<li>
-UM Resolution daemon ("lbmrd"): Linux 64-bit, Windows 64-bit. </li>
-<li>
-UM Queue Broker (ActiveMQ): Linux 64-bit, Windows 64-bit. </li>
-</ul>
-<p>The planned deprecated daemon platforms are: </p><ul>
-<li>
-Solaris (X86 and Sparc) </li>
-<li>
-AIX </li>
-<li>
-MacOS </li>
-<li>
-Linux 32-bit </li>
-<li>
-Windows 32-bit (except Dynamic Router "tnwgd", which will continue on 32-bit) </li>
-</ul>
-<p>User applications deployed on these platforms will fully interoperate with daemons running on the reduced set of platforms.</p>
-<p>Please contact support if any of these planned deprecations interfere with your existing or planned deployments. </p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.8.11-->

@@ -1,5 +1,6 @@
 var NAVTREEINDEX2 =
 {
+"grpultramessagingpersistence.html#umeregistrationintervalreceiver":[37,0,25],
 "grpultramessagingpersistence.html#umeregistrationintervalsource":[37,0,26],
 "grpultramessagingpersistence.html#umerepositoryackonreceptionsource":[37,0,27],
 "grpultramessagingpersistence.html#umerepositorydiskfilesizelimitsource":[37,0,28],
@@ -109,10 +110,11 @@ var NAVTREEINDEX2 =
 "index.html":[0],
 "index.html#assignmentflow":[0,0,1],
 "index.html#assignmentmethods":[0,0,0],
-"index.html#configurationfiles":[0,0,5],
+"index.html#configurationerrorhandling":[0,0,4],
+"index.html#configurationfiles":[0,0,6],
 "index.html#configurationoverview":[0,0],
 "index.html#definitions":[0,0,2],
-"index.html#hostnameresolution":[0,0,4],
+"index.html#hostnameresolution":[0,0,5],
 "index.html#plaintextconfigurationfileformat":[0,2],
 "index.html#plaintextconfigurationfiles":[0,1],
 "index.html#readingplaintextconfigurationfiles":[0,1,0],

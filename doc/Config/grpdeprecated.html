@@ -122,7 +122,7 @@ implicit_batching_type (source)&nbsp;&nbsp;<small><a href="#implicitbatchingtype
 <tr>
 <th>String value </th><th>Integer value </th><th>Description </th></tr>
 <tr>
-<td>"default" </td><td>LBM_SRC_TOPIC_ATTR_IMPLICIT_BATCH_TYPE_DEFAULT </td><td>Implicit batching is controlled entirely by the <a class="el" href="grpimplicitbatching.html#implicitbatchingminimumlengthsource">implicit_batching_minimum_length (source)</a> and <a class="el" href="grpimplicitbatching.html#implicitbatchingintervalsource">implicit_batching_interval (source)</a> options. Refer to <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Config/design.tag:../Design/" href="../Design/architecture.html#messagebatching">Message Batching</a> for additional information. <b>Default for all.</b> </td></tr>
+<td>"default" </td><td>LBM_SRC_TOPIC_ATTR_IMPLICIT_BATCH_TYPE_DEFAULT </td><td>Implicit batching is controlled entirely by the <a class="el" href="grpimplicitbatching.html#implicitbatchingminimumlengthsource">implicit_batching_minimum_length (source)</a> and <a class="el" href="grpimplicitbatching.html#implicitbatchingintervalsource">implicit_batching_interval (source)</a> options. Refer to <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Config/design.tag:../Design/" href="../Design/architecture.html#messagebatching">Message Batching</a> for additional information. <b>Default for all.</b> </td></tr>
 <tr>
 <td>"adaptive" </td><td>LBM_SRC_TOPIC_ATTR_IMPLICIT_BATCH_TYPE_ADAPTIVE </td><td>Source-paced batching method that attempts to adjust the amount of messages sent in each batch automatically. The options, <a class="el" href="grpimplicitbatching.html#implicitbatchingminimumlengthsource">implicit_batching_minimum_length (source)</a> and <a class="el" href="grpimplicitbatching.html#implicitbatchingintervalsource">implicit_batching_interval (source)</a>, limit batch sizes and intervals but sizes and intervals will usually be much smaller. Setting this option may have a negative impact on maximum throughput. </td></tr>
 </table>
@@ -153,12 +153,12 @@ network_compatibility_mode (context)&nbsp;&nbsp;<small><a href="#networkcompatib
 <h2><a class="anchor" id="otrrequestdurationreceiver"></a>
 otr_request_duration (receiver)&nbsp;&nbsp;<small><a href="#otrrequestdurationreceiver">&lt;-</a></small></h2>
 <dl class="section user"><dt></dt><dd>The length of time a receiver continues to send OTR lost-message requests before giving up. This option is deprecated in favor of <a class="el" href="grpofftransportrecovery.html#otrrequestmessagetimeoutreceiver">otr_request_message_timeout (receiver)</a>. </dd></dl>
-<dl class="section user"><dt></dt><dd>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Config/design.tag:../Design/" href="../Design/umfeatures.html#offtransportrecoveryotr">Off-Transport Recovery (OTR)</a>.</dd></dl>
+<dl class="section user"><dt></dt><dd>See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Config/design.tag:../Design/" href="../Design/umfeatures.html#offtransportrecoveryotr">Off-Transport Recovery (OTR)</a>.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>receiver </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
 <tr>
 <td><em>Units:</em> </td><td>milliseconds </td></tr>
 <tr>
@@ -184,7 +184,7 @@ pattern_callback (wildcard_receiver)&nbsp;&nbsp;<small><a href="#patterncallback
 <tr>
 <td><em>Scope:</em> </td><td>wildcard_receiver </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a7b6a386398e2006a07c3387d444f9ec1">lbm_wildcard_rcv_compare_func_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a7b6a386398e2006a07c3387d444f9ec1">lbm_wildcard_rcv_compare_func_t</a></b> </td></tr>
 <tr>
 <td><em>Default value:</em> </td><td>NULL </td></tr>
 <tr>
@@ -226,7 +226,7 @@ rcv_sync_cache_timeout (receiver)&nbsp;&nbsp;<small><a href="#rcvsynccachetimeou
 <tr>
 <td><em>Scope:</em> </td><td>receiver </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
 <tr>
 <td><em>Units:</em> </td><td>milliseconds </td></tr>
 <tr>
@@ -246,7 +246,7 @@ rcv_sync_cache_timeout (receiver)&nbsp;&nbsp;<small><a href="#rcvsynccachetimeou
 <h2><a class="anchor" id="receivethreadpoolsizecontext"></a>
 receive_thread_pool_size (context)&nbsp;&nbsp;<small><a href="#receivethreadpoolsizecontext">&lt;-</a></small></h2>
 <dl class="section user"><dt></dt><dd>This option no longer functions. </dd></dl>
-<dl class="section user"><dt></dt><dd>It used to define the maximum number of threads available for transports (excluding the context thread). The MTT feature is replaced in 6.11 and beyond by <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Config/design.tag:../Design/" href="../Design/umfeatures.html#transportservicesproviderxsp">Transport Services Provider (XSP)</a>.</dd></dl>
+<dl class="section user"><dt></dt><dd>It used to define the maximum number of threads available for transports (excluding the context thread). The MTT feature is replaced in 6.11 and beyond by <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Config/design.tag:../Design/" href="../Design/umfeatures.html#transportservicesproviderxsp">Transport Services Provider (XSP)</a>.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>context </td></tr>
@@ -317,12 +317,12 @@ resolver_active_threshold (context)&nbsp;&nbsp;<small><a href="#resolveractiveth
 <h2><a class="anchor" id="resolvercontextadvertisementintervalcontext"></a>
 resolver_context_advertisement_interval (context)&nbsp;&nbsp;<small><a href="#resolvercontextadvertisementintervalcontext">&lt;-</a></small></h2>
 <dl class="section user"><dt></dt><dd>Interval between context advertisements. </dd></dl>
-<dl class="section user"><dt></dt><dd>Setting this option to 0 disables context advertisements, though UM Router and other functionality depends upon context advertisements, so a value of 0 is not generally recommended.</dd></dl>
+<dl class="section user"><dt></dt><dd>Setting this option to 0 disables context advertisements, though DRO and other functionality depends upon context advertisements, so a value of 0 is not generally recommended.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>context </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
 <tr>
 <td><em>Units:</em> </td><td>milliseconds </td></tr>
 <tr>
@@ -458,7 +458,7 @@ resolver_unicast_destination_port (context)&nbsp;&nbsp;<small><a href="#resolver
 <tr>
 <td><em>Scope:</em> </td><td>context </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a86897f2fdd66aa7021683a4e72a4537b">lbm_uint16_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a86897f2fdd66aa7021683a4e72a4537b">lbm_uint16_t</a></b> </td></tr>
 <tr>
 <td><em>Default value:</em> </td><td>15380 </td></tr>
 <tr>
@@ -479,7 +479,7 @@ resolver_unicast_port (context)&nbsp;&nbsp;<small><a href="#resolverunicastportc
 <tr>
 <td><em>Scope:</em> </td><td>context </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a86897f2fdd66aa7021683a4e72a4537b">lbm_uint16_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a86897f2fdd66aa7021683a4e72a4537b">lbm_uint16_t</a></b> </td></tr>
 <tr>
 <td><em>Default value:</em> </td><td>0 (pick open port) </td></tr>
 <tr>
@@ -495,7 +495,7 @@ resolver_unicast_port (context)&nbsp;&nbsp;<small><a href="#resolverunicastportc
 <h2><a class="anchor" id="retransmitmessagemaptableszsource"></a>
 retransmit_message_map_tablesz (source)&nbsp;&nbsp;<small><a href="#retransmitmessagemaptableszsource">&lt;-</a></small></h2>
 <dl class="section user"><dt></dt><dd>The size of the hash table that the source uses to store messages for the retention policy in effect. </dd></dl>
-<dl class="section user"><dt></dt><dd>A larger table means more messages can be stored more efficiently, but takes up more memory. A smaller table uses less memory, but costs more CPU time as more messages are retained. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Config/design.tag:../Design/" href="../Design/umfeatures.html#configuringlatejoinforlargenumbersofmessages">Configuring Late Join for Large Numbers of Messages</a> for additional information.</dd></dl>
+<dl class="section user"><dt></dt><dd>A larger table means more messages can be stored more efficiently, but takes up more memory. A smaller table uses less memory, but costs more CPU time as more messages are retained. See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Config/design.tag:../Design/" href="../Design/umfeatures.html#configuringlatejoinforlargenumbersofmessages">Configuring Late Join for Large Numbers of Messages</a> for additional information.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>source </td></tr>
@@ -514,13 +514,13 @@ retransmit_message_map_tablesz (source)&nbsp;&nbsp;<small><a href="#retransmitme
 <h2><a class="anchor" id="retransmitrequestgenerationintervalreceiver"></a>
 retransmit_request_generation_interval (receiver)&nbsp;&nbsp;<small><a href="#retransmitrequestgenerationintervalreceiver">&lt;-</a></small></h2>
 <dl class="section user"><dt></dt><dd>The maximum interval between when a receiver first sends a retransmission request and when the receiver stops and reports loss on the remaining RXs not received. </dd></dl>
-<dl class="section user"><dt></dt><dd>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Config/design.tag:../Design/" href="../Design/umfeatures.html#configuringlatejoinforlargenumbersofmessages">Configuring Late Join for Large Numbers of Messages</a> for additional information. </dd></dl>
+<dl class="section user"><dt></dt><dd>See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Config/design.tag:../Design/" href="../Design/umfeatures.html#configuringlatejoinforlargenumbersofmessages">Configuring Late Join for Large Numbers of Messages</a> for additional information. </dd></dl>
 <dl class="section user"><dt></dt><dd>This option is deprecated and has no effect. Use <a class="el" href="grplatejoin.html#retransmitrequestmessagetimeoutreceiver">retransmit_request_message_timeout (receiver)</a> instead.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>receiver </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
 <tr>
 <td><em>Units:</em> </td><td>milliseconds </td></tr>
 <tr>
@@ -537,12 +537,12 @@ retransmit_request_generation_interval (receiver)&nbsp;&nbsp;<small><a href="#re
 retransmit_retention_age_threshold (source)&nbsp;&nbsp;<small><a href="#retransmitretentionagethresholdsource">&lt;-</a></small></h2>
 <dl class="section user"><dt></dt><dd>Specifies the minimum age of messages in the retained message buffer before UM can delete them. UM cannot delete any messages younger than this value. </dd></dl>
 <dl class="section user"><dt></dt><dd>For UMS Late Joins, this and <a class="el" href="grplatejoin.html#retransmitretentionsizethresholdsource">retransmit_retention_size_threshold (source)</a> are the only options that affect the retention buffer size. For UME, these two options combined with <a class="el" href="grplatejoin.html#retransmitretentionsizelimitsource">retransmit_retention_size_limit (source)</a> affect the retention buffer size. UM deletes a message when it meets all configured threshold criteria, i.e., the message is older than this option (if set), and the size of the retention buffer exceeds the <b><code>retransmit_retention_size_threshold</code></b> (if set). A value of 0 sets the age threshold to be always triggered, in which case deletion is determined by other threshold criteria. </dd></dl>
-<dl class="section user"><dt></dt><dd>With <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Config/design.tag:../Design/" href="../Design/advancedoptimizations.html#smartsources">Smart Sources</a>, this option is ignored. Retention buffers are preallocated and are never deleted.</dd></dl>
+<dl class="section user"><dt></dt><dd>With <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Config/design.tag:../Design/" href="../Design/advancedoptimizations.html#smartsources">Smart Sources</a>, this option is ignored. Retention buffers are preallocated and are never deleted.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>source </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
 <tr>
 <td><em>Units:</em> </td><td>seconds </td></tr>
 <tr>
@@ -557,13 +557,13 @@ retransmit_retention_age_threshold (source)&nbsp;&nbsp;<small><a href="#retransm
  </p>
 <h2><a class="anchor" id="sourcecostevaluationfunctioncontext"></a>
 source_cost_evaluation_function (context)&nbsp;&nbsp;<small><a href="#sourcecostevaluationfunctioncontext">&lt;-</a></small></h2>
-<dl class="section user"><dt></dt><dd>Callback function that you can use in the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#aa64bebee6bbc028343e6464e4c72c637">lbm_src_cost_function_cb()</a> to evaluate or determine the cost of a message path. </dd></dl>
-<dl class="section user"><dt></dt><dd>The UM Router (DRO) evaluates the cost of any new topic it detects. The callback supplied with this option can affect the cost of topics to bias the UM Router toward certain message paths.</dd></dl>
+<dl class="section user"><dt></dt><dd>Callback function that you can use in the <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#aa64bebee6bbc028343e6464e4c72c637">lbm_src_cost_function_cb()</a> to evaluate or determine the cost of a message path. </dd></dl>
+<dl class="section user"><dt></dt><dd>The DRO evaluates the cost of any new topic it detects. The callback supplied with this option can affect the cost of topics to bias the DRO toward certain message paths.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>context </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a193a404edca104c3852b6c44d8f04ce5">lbm_src_cost_func_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a193a404edca104c3852b6c44d8f04ce5">lbm_src_cost_func_t</a></b> </td></tr>
 <tr>
 <td><em>Default value:</em> </td><td>NULL </td></tr>
 <tr>
@@ -651,14 +651,14 @@ transport_lbtipc_client_activity_timeout (source)&nbsp;&nbsp;<small><a href="#tr
 <h2><a class="anchor" id="transportlbtrdmadatagrammaxsizecontext"></a>
 transport_lbtrdma_datagram_max_size (context)&nbsp;&nbsp;<small><a href="#transportlbtrdmadatagrammaxsizecontext">&lt;-</a></small></h2>
 <dl class="section user"><dt></dt><dd>The maximum datagram size that can be generated for a LBT-RDMA transport session. The default value is 4096, the minimum is 500 bytes, and the maximum is 4096. </dd></dl>
-<dl class="section user"><dt></dt><dd>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Config/design.tag:../Design/" href="../Design/architecture.html#messagefragmentationandreassembly">Message Fragmentation and Reassembly</a> for more information. </dd></dl>
+<dl class="section user"><dt></dt><dd>See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Config/design.tag:../Design/" href="../Design/architecture.html#messagefragmentationandreassembly">Message Fragmentation and Reassembly</a> for more information. </dd></dl>
 <dl class="section user"><dt></dt><dd></dd></dl>
-<dl class="section warning"><dt>Warning</dt><dd>When the DRO is in use, it is recommended that all UM applications and components (including the DRO and Persistent Store) share the same maximum datagram size setting. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Config/gateway.tag:../Gateway/" href="../Gateway/umrouterconcepts.html#protocolconversion">Protocol Conversion</a>.</dd></dl>
+<dl class="section warning"><dt>Warning</dt><dd>When the DRO is in use, it is recommended that all UM applications and components (including the DRO and Persistent Store) share the same maximum datagram size setting. See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Config/gateway.tag:../Gateway/" href="../Gateway/umrouterconcepts.html#protocolconversion">Protocol Conversion</a>.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>context </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#abdb96b55cc467a75e1f9ec0036dbc14b">lbm_uint_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#abdb96b55cc467a75e1f9ec0036dbc14b">lbm_uint_t</a></b> </td></tr>
 <tr>
 <td><em>Units:</em> </td><td>bytes </td></tr>
 <tr>
@@ -684,7 +684,7 @@ transport_lbtrdma_interface (source)&nbsp;&nbsp;<small><a href="#transportlbtrdm
 <tr>
 <td><em>Scope:</em> </td><td>source </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a0b66a5b33839617b2a822e4a20a8d535">lbm_ipv4_address_mask_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a0b66a5b33839617b2a822e4a20a8d535">lbm_ipv4_address_mask_t</a></b> </td></tr>
 <tr>
 <td><em>Default value:</em> </td><td>0.0.0.0 (INADDR_ANY) </td></tr>
 <tr>
@@ -707,7 +707,7 @@ transport_lbtrdma_maximum_ports (context)&nbsp;&nbsp;<small><a href="#transportl
 <tr>
 <td><em>Scope:</em> </td><td>context </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a86897f2fdd66aa7021683a4e72a4537b">lbm_uint16_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a86897f2fdd66aa7021683a4e72a4537b">lbm_uint16_t</a></b> </td></tr>
 <tr>
 <td><em>Units:</em> </td><td>number of ports </td></tr>
 <tr>
@@ -733,7 +733,7 @@ transport_lbtrdma_port (source)&nbsp;&nbsp;<small><a href="#transportlbtrdmaport
 <tr>
 <td><em>Scope:</em> </td><td>source </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a86897f2fdd66aa7021683a4e72a4537b">lbm_uint16_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a86897f2fdd66aa7021683a4e72a4537b">lbm_uint16_t</a></b> </td></tr>
 <tr>
 <td><em>Default value:</em> </td><td>0 (zero) </td></tr>
 <tr>
@@ -758,7 +758,7 @@ transport_lbtrdma_port_high (context)&nbsp;&nbsp;<small><a href="#transportlbtrd
 <tr>
 <td><em>Scope:</em> </td><td>context </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a86897f2fdd66aa7021683a4e72a4537b">lbm_uint16_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a86897f2fdd66aa7021683a4e72a4537b">lbm_uint16_t</a></b> </td></tr>
 <tr>
 <td><em>Default value:</em> </td><td>20,020 </td></tr>
 <tr>
@@ -781,7 +781,7 @@ transport_lbtrdma_port_low (context)&nbsp;&nbsp;<small><a href="#transportlbtrdm
 <tr>
 <td><em>Scope:</em> </td><td>context </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a86897f2fdd66aa7021683a4e72a4537b">lbm_uint16_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a86897f2fdd66aa7021683a4e72a4537b">lbm_uint16_t</a></b> </td></tr>
 <tr>
 <td><em>Default value:</em> </td><td>20,001 </td></tr>
 <tr>
@@ -833,7 +833,7 @@ transport_lbtrdma_receiver_thread_behavior (context)&nbsp;&nbsp;<small><a href="
 transport_lbtrdma_transmission_window_size (source)&nbsp;&nbsp;<small><a href="#transportlbtrdmatransmissionwindowsizesource">&lt;-</a></small></h2>
 <dl class="section user"><dt></dt><dd>Size of an LBT-RDMA transport's shared memory area. </dd></dl>
 <dl class="section user"><dt></dt><dd>This value may vary across platforms. The actual size of the shared memory area equals the value you specify for this option plus about 64 KB for header information. The minimum value for this option is 65,536. </dd></dl>
-<dl class="section user"><dt></dt><dd>Refer to <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Config/design.tag:../Design/" href="../Design/fundamentalconcepts.html#sourceobject">Source Object</a> for additional information.</dd></dl>
+<dl class="section user"><dt></dt><dd>Refer to <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Config/design.tag:../Design/" href="../Design/fundamentalconcepts.html#sourceobject">Source Object</a> for additional information.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>source </td></tr>
@@ -902,7 +902,7 @@ ume_primary_store_port (source)&nbsp;&nbsp;<small><a href="#umeprimarystoreports
 <tr>
 <td><em>Scope:</em> </td><td>source </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a86897f2fdd66aa7021683a4e72a4537b">lbm_uint16_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a86897f2fdd66aa7021683a4e72a4537b">lbm_uint16_t</a></b> </td></tr>
 <tr>
 <td><em>Default value:</em> </td><td>14567 </td></tr>
 <tr>
@@ -923,7 +923,7 @@ ume_registration_id (source)&nbsp;&nbsp;<small><a href="#umeregistrationidsource
 <tr>
 <td><em>Scope:</em> </td><td>source </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#abdb96b55cc467a75e1f9ec0036dbc14b">lbm_uint_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#abdb96b55cc467a75e1f9ec0036dbc14b">lbm_uint_t</a></b> </td></tr>
 <tr>
 <td><em>Units:</em> </td><td>identifier </td></tr>
 <tr>
@@ -1042,7 +1042,7 @@ ume_secondary_store_port (source)&nbsp;&nbsp;<small><a href="#umesecondarystorep
 <tr>
 <td><em>Scope:</em> </td><td>source </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a86897f2fdd66aa7021683a4e72a4537b">lbm_uint16_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a86897f2fdd66aa7021683a4e72a4537b">lbm_uint16_t</a></b> </td></tr>
 <tr>
 <td><em>Default value:</em> </td><td>14567 </td></tr>
 <tr>
@@ -1084,7 +1084,7 @@ ume_tertiary_store_port (source)&nbsp;&nbsp;<small><a href="#umetertiarystorepor
 <tr>
 <td><em>Scope:</em> </td><td>source </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a86897f2fdd66aa7021683a4e72a4537b">lbm_uint16_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a86897f2fdd66aa7021683a4e72a4537b">lbm_uint16_t</a></b> </td></tr>
 <tr>
 <td><em>Default value:</em> </td><td>14567 </td></tr>
 <tr>
@@ -1100,7 +1100,7 @@ ume_tertiary_store_port (source)&nbsp;&nbsp;<small><a href="#umetertiarystorepor
 <h2><a class="anchor" id="umqflightsizecontext"></a>
 umq_flight_size (context)&nbsp;&nbsp;<small><a href="#umqflightsizecontext">&lt;-</a></small></h2>
 <dl class="section user"><dt></dt><dd>Specifies the number of Multicast Immediate Messages allowed to be in flight (unstabilized at a queue) before a new message send either blocks or triggers a notification (source event). </dd></dl>
-<dl class="section user"><dt></dt><dd>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Config/umq.tag:../UMQ/" href="../UMQ/ultraloadbalancingulb.html">Ultra Load Balancing (ULB)</a>.</dd></dl>
+<dl class="section user"><dt></dt><dd>See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Config/umq.tag:../UMQ/" href="../UMQ/ultraloadbalancingulb.html">Ultra Load Balancing (ULB)</a>.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>context </td></tr>
@@ -1125,7 +1125,7 @@ umq_flight_size (context)&nbsp;&nbsp;<small><a href="#umqflightsizecontext">&lt;
 <h2><a class="anchor" id="umqflightsizesource"></a>
 umq_flight_size (source)&nbsp;&nbsp;<small><a href="#umqflightsizesource">&lt;-</a></small></h2>
 <dl class="section user"><dt></dt><dd>Specifies the number of messages allowed to be in flight (unstabilized at a queue) before a new message send either blocks or triggers a notification (source event). </dd></dl>
-<dl class="section user"><dt></dt><dd>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Config/umq.tag:../UMQ/" href="../UMQ/ultraloadbalancingulb.html">Ultra Load Balancing (ULB)</a>.</dd></dl>
+<dl class="section user"><dt></dt><dd>See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Config/umq.tag:../UMQ/" href="../UMQ/ultraloadbalancingulb.html">Ultra Load Balancing (ULB)</a>.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>source </td></tr>
@@ -1149,7 +1149,8 @@ umq_flight_size (source)&nbsp;&nbsp;<small><a href="#umqflightsizesource">&lt;-<
  </p>
 <h2><a class="anchor" id="umqflightsizebehaviorcontext"></a>
 umq_flight_size_behavior (context)&nbsp;&nbsp;<small><a href="#umqflightsizebehaviorcontext">&lt;-</a></small></h2>
-<dl class="section user"><dt></dt><dd>The behavior that UMQ follows when a Multicast Immediate Message send exceeds the context's flight size. </dd></dl>
+<dl class="section user"><dt></dt><dd>The behavior that UMQ follows when a MIM send exceeds the context's flight size. </dd></dl>
+<dl class="section user"><dt></dt><dd>See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Config/design.tag:../Design/" href="../Design/umfeatures.html#multicastimmediatemessaging">Multicast Immediate Messaging</a> for general information about MIM. </dd></dl>
 <dl class="section user"><dt></dt><dd>See <a class="el" href="grpdeprecated.html#umqflightsizesource">umq_flight_size (source)</a>.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
@@ -1216,12 +1217,12 @@ umq_flight_size_behavior (source)&nbsp;&nbsp;<small><a href="#umqflightsizebehav
 <h2><a class="anchor" id="umqmessageretransmissionintervalcontext"></a>
 umq_message_retransmission_interval (context)&nbsp;&nbsp;<small><a href="#umqmessageretransmissionintervalcontext">&lt;-</a></small></h2>
 <dl class="section user"><dt></dt><dd>The interval between retransmissions of data messages when submitting to a Queue. </dd></dl>
-<dl class="section user"><dt></dt><dd>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Config/design.tag:../Design/" href="../Design/fundamentalconcepts.html#queuing">Queuing</a>.</dd></dl>
+<dl class="section user"><dt></dt><dd>See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Config/design.tag:../Design/" href="../Design/fundamentalconcepts.html#queuing">Queuing</a>.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>context </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
 <tr>
 <td><em>Units:</em> </td><td>milliseconds </td></tr>
 <tr>
@@ -1275,12 +1276,12 @@ umq_message_stability_notification (context)&nbsp;&nbsp;<small><a href="#umqmess
 umq_msg_total_lifetime (context)&nbsp;&nbsp;<small><a href="#umqmsgtotallifetimecontext">&lt;-</a></small></h2>
 <dl class="section user"><dt></dt><dd>Establishes the period of time from when a queue receives a message, or, for ULB, when a source sends a message, until the time the message cannot be assigned or reassigned to a receiver. The queue deletes the message upon expiration of the lifetime. </dd></dl>
 <dl class="section user"><dt></dt><dd>You can also set UMQ umestored option message-total-lifetime for the source's topic on the queue. However, the message-total-lifetime option is overridden by any value assigned to umq_msg_total_lifetime (source). The default value of 0 (zero) disables this option. </dd></dl>
-<dl class="section user"><dt></dt><dd>Note: This option is overridden by any message lifetime value set using send call, <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a091b5806bf18d10ebd0d9117e0c70229">lbm_src_send_ex()</a>.</dd></dl>
+<dl class="section user"><dt></dt><dd>Note: This option is overridden by any message lifetime value set using send call, <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a091b5806bf18d10ebd0d9117e0c70229">lbm_src_send_ex()</a>.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>context </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
 <tr>
 <td><em>Units:</em> </td><td>milliseconds </td></tr>
 <tr>
@@ -1300,12 +1301,12 @@ umq_msg_total_lifetime (context)&nbsp;&nbsp;<small><a href="#umqmsgtotallifetime
 <h2><a class="anchor" id="umqqueuecheckintervalcontext"></a>
 umq_queue_check_interval (context)&nbsp;&nbsp;<small><a href="#umqqueuecheckintervalcontext">&lt;-</a></small></h2>
 <dl class="section user"><dt></dt><dd>The interval between activity checks of the individual UMQ queues. </dd></dl>
-<dl class="section user"><dt></dt><dd>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Config/design.tag:../Design/" href="../Design/fundamentalconcepts.html#queuing">Queuing</a>.</dd></dl>
+<dl class="section user"><dt></dt><dd>See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Config/design.tag:../Design/" href="../Design/fundamentalconcepts.html#queuing">Queuing</a>.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>context </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
 <tr>
 <td><em>Units:</em> </td><td>milliseconds </td></tr>
 <tr>
@@ -1325,7 +1326,7 @@ umq_queue_check_interval (context)&nbsp;&nbsp;<small><a href="#umqqueuecheckinte
 <h2><a class="anchor" id="umqqueuenamesource"></a>
 umq_queue_name (source)&nbsp;&nbsp;<small><a href="#umqqueuenamesource">&lt;-</a></small></h2>
 <dl class="section user"><dt></dt><dd>The queue to submit messages to when sending. </dd></dl>
-<dl class="section user"><dt></dt><dd>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Config/design.tag:../Design/" href="../Design/fundamentalconcepts.html#queuing">Queuing</a>.</dd></dl>
+<dl class="section user"><dt></dt><dd>See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Config/design.tag:../Design/" href="../Design/fundamentalconcepts.html#queuing">Queuing</a>.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>source </td></tr>
@@ -1346,7 +1347,7 @@ umq_queue_name (source)&nbsp;&nbsp;<small><a href="#umqqueuenamesource">&lt;-</a
 <h2><a class="anchor" id="umqqueueparticipantsonlysource"></a>
 umq_queue_participants_only (source)&nbsp;&nbsp;<small><a href="#umqqueueparticipantsonlysource">&lt;-</a></small></h2>
 <dl class="section user"><dt></dt><dd>Flag indicating the source only desires queue participants to listen to the topic. </dd></dl>
-<dl class="section user"><dt></dt><dd>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Config/design.tag:../Design/" href="../Design/fundamentalconcepts.html#queuing">Queuing</a>.</dd></dl>
+<dl class="section user"><dt></dt><dd>See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Config/design.tag:../Design/" href="../Design/fundamentalconcepts.html#queuing">Queuing</a>.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>source </td></tr>
@@ -1384,7 +1385,7 @@ umq_queue_query_interval (context)&nbsp;&nbsp;<small><a href="#umqqueuequeryinte
 <tr>
 <td><em>Scope:</em> </td><td>context </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
 <tr>
 <td><em>Units:</em> </td><td>milliseconds </td></tr>
 <tr>
@@ -1404,7 +1405,7 @@ umq_queue_query_interval (context)&nbsp;&nbsp;<small><a href="#umqqueuequeryinte
 <h2><a class="anchor" id="umqrequirequeueauthenticationcontext"></a>
 umq_require_queue_authentication (context)&nbsp;&nbsp;<small><a href="#umqrequirequeueauthenticationcontext">&lt;-</a></small></h2>
 <dl class="section user"><dt></dt><dd>Indicates if an application requires a queue to authenticate itself before accepting the queue's responses to Queue Browser commands. </dd></dl>
-<dl class="section user"><dt></dt><dd>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Config/design.tag:../Design/" href="../Design/fundamentalconcepts.html#queuing">Queuing</a>.</dd></dl>
+<dl class="section user"><dt></dt><dd>See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Config/design.tag:../Design/" href="../Design/fundamentalconcepts.html#queuing">Queuing</a>.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>context </td></tr>
@@ -1593,7 +1594,7 @@ umq_retention_intragroup_stability_behavior (source)&nbsp;&nbsp;<small><a href="
 <h2><a class="anchor" id="usetransportthreadreceiver"></a>
 use_transport_thread (receiver)&nbsp;&nbsp;<small><a href="#usetransportthreadreceiver">&lt;-</a></small></h2>
 <dl class="section user"><dt></dt><dd>This option no longer functions. </dd></dl>
-<dl class="section user"><dt></dt><dd>It used to determine whether UM uses a thread from the receiver thread pool to process message data or if it uses the context thread, which is the default. The MTT feature is replaced in 6.11 and beyond by <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Config/design.tag:../Design/" href="../Design/umfeatures.html#transportservicesproviderxsp">Transport Services Provider (XSP)</a>.</dd></dl>
+<dl class="section user"><dt></dt><dd>It used to determine whether UM uses a thread from the receiver thread pool to process message data or if it uses the context thread, which is the default. The MTT feature is replaced in 6.11 and beyond by <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Config/design.tag:../Design/" href="../Design/umfeatures.html#transportservicesproviderxsp">Transport Services Provider (XSP)</a>.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>receiver </td></tr>

@@ -77,7 +77,13 @@ Preventing NAK Storms with NAK Intervals&nbsp;&nbsp;<small><a href="#preventingn
 </ul>
 </dd></dl>
 <dl class="section user"><dt><b>Recommendation</b>:</dt><dd>Set the NAK generation interval to at least 2x the NAK backoff interval.</dd></dl>
-<dl class="section user"><dt><b>Example</b>:</dt><dd><div class="fragment"><div class="line"><span class="preprocessor">#</span></div><div class="line"><span class="preprocessor"># To avoid NAK storms, set NAK generation interval to at least 2x the</span></div><div class="line"><span class="preprocessor"># NAK backoff interval.</span></div><div class="line"><span class="preprocessor">#</span></div><div class="line">receiver transport_lbtrm_nak_backoff_interval 200       # .2 seconds</div><div class="line">receiver transport_lbtrm_nak_generation_interval 10000  # 10 seconds</div></div><!-- fragment --></dd></dl>
+<dl class="section user"><dt><b>Example</b>:</dt><dd><pre class="fragment">#
+# To avoid NAK storms, set NAK generation interval to at least 2x the
+# NAK backoff interval.
+#
+receiver transport_lbtrm_nak_backoff_interval 200       # .2 seconds
+receiver transport_lbtrm_nak_generation_interval 10000  # 10 seconds
+</pre></dd></dl>
 <dl class="section user"><dt><b>See</b> <b>also</b>:</dt><dd><a class="el" href="grptransportlbtrmreliability.html">Transport LBT-RM Reliability Options</a> <br />
 <a class="el" href="grptransportlbtrureliability.html">Transport LBT-RU Reliability Options</a> <br />
 <a class="el" href="grpmulticastimmediatemessagingreliability.html">Multicast Immediate Messaging Reliability Options</a></dd></dl>
@@ -98,7 +104,13 @@ Preventing Tail Loss With TSNI and NAK Interval Options&nbsp;&nbsp;<small><a hre
 </ul>
 </dd></dl>
 <dl class="section user"><dt><b>Recommendation</b>:</dt><dd>Set the TSNI active threshold to at least 4x the topic sequence number info interval (TSNI) plus the NAK generation interval.</dd></dl>
-<dl class="section user"><dt><b>Example</b>:</dt><dd><div class="fragment"><div class="line"><span class="preprocessor">#</span></div><div class="line"><span class="preprocessor"># NOTE: transport_topic_sequence_number_info_active_threshold is in seconds.</span></div><div class="line"><span class="preprocessor">#</span></div><div class="line">source   transport_topic_sequence_number_info_interval 2000</div><div class="line">receiver transport_lbtrm_nak_generation_interval       10000</div><div class="line">source   transport_topic_sequence_number_info_active_threshold 60</div></div><!-- fragment --></dd></dl>
+<dl class="section user"><dt><b>Example</b>:</dt><dd><pre class="fragment">#
+# NOTE: transport_topic_sequence_number_info_active_threshold is in seconds.
+#
+source   transport_topic_sequence_number_info_interval 2000
+receiver transport_lbtrm_nak_generation_interval       10000
+source   transport_topic_sequence_number_info_active_threshold 60
+</pre></dd></dl>
 <dl class="section user"><dt><b>See</b> <b>also</b>:</dt><dd><a class="el" href="grptransportlbtrmreliability.html">Transport LBT-RM Reliability Options</a> <br />
 <a class="el" href="grptransportlbtrureliability.html">Transport LBT-RU Reliability Options</a></dd></dl>
 <p><br />
@@ -114,7 +126,14 @@ Preventing IPC Receiver Deafness With Keepalive Options&nbsp;&nbsp;<small><a hre
 </ul>
 </dd></dl>
 <dl class="section user"><dt><b>Recommendations</b>:</dt><dd>Set the activity timeout to at least 2x the session message interval</dd></dl>
-<dl class="section user"><dt><b>Example</b>:</dt><dd><div class="fragment"><div class="line"><span class="preprocessor">#</span></div><div class="line"><span class="preprocessor"># To avoid receiver deafness:</span></div><div class="line"><span class="preprocessor"># - set client activity timeout to at least 2x the acknowledgement interval.</span></div><div class="line"><span class="preprocessor"># - set activity timeout to at least 2x the session message interval.</span></div><div class="line"><span class="preprocessor">#</span></div><div class="line">receiver transport_lbtipc_activity_timeout 60000</div><div class="line">source   transport_lbtipc_sm_interval      10000</div></div><!-- fragment --></dd></dl>
+<dl class="section user"><dt><b>Example</b>:</dt><dd><pre class="fragment">#
+# To avoid receiver deafness:
+# - set client activity timeout to at least 2x the acknowledgement interval.
+# - set activity timeout to at least 2x the session message interval.
+#
+receiver transport_lbtipc_activity_timeout 60000
+source   transport_lbtipc_sm_interval      10000
+</pre></dd></dl>
 <dl class="section user"><dt><b>See</b> <b>also</b>:</dt><dd><a class="el" href="grptransportlbtipcoperation.html">Transport LBT-IPC Operation Options</a></dd></dl>
 <p><br />
  </p>
@@ -133,7 +152,15 @@ Preventing Erroneous LBT-RM/LBT-RU Session Timeouts&nbsp;&nbsp;<small><a href="#
 </ul>
 </dd></dl>
 <dl class="section user"><dt><b>Recommendations</b>:</dt><dd>Set the receiver LBT-RM or LBT-RU activity timeout to at least 3x the source session message maximum interval.</dd></dl>
-<dl class="section user"><dt><b>Example</b>:</dt><dd><div class="fragment"><div class="line"><span class="preprocessor">#</span></div><div class="line"><span class="preprocessor"># To avoid erroneous session timeouts, set receiver transport activity</span></div><div class="line"><span class="preprocessor"># timeout to at least 3x the source session message maximum interval.</span></div><div class="line"><span class="preprocessor">#</span></div><div class="line">receiver  transport_lbtrm_activity_timeout    60000</div><div class="line">source    transport_lbtrm_sm_maximum_interval 10000</div><div class="line">receiver  transport_lbtru_activity_timeout    60000</div><div class="line">source    transport_lbtru_sm_maximum_interval 10000</div></div><!-- fragment --></dd></dl>
+<dl class="section user"><dt><b>Example</b>:</dt><dd><pre class="fragment">#
+# To avoid erroneous session timeouts, set receiver transport activity
+# timeout to at least 3x the source session message maximum interval.
+#
+receiver  transport_lbtrm_activity_timeout    60000
+source    transport_lbtrm_sm_maximum_interval 10000
+receiver  transport_lbtru_activity_timeout    60000
+source    transport_lbtru_sm_maximum_interval 10000
+</pre></dd></dl>
 <dl class="section user"><dt><b>See</b> <b>also</b>:</dt><dd><a class="el" href="grptransportlbtrmoperation.html">Transport LBT-RM Operation Options</a> <br />
 <a class="el" href="grptransportlbtruoperation.html">Transport LBT-RU Operation Options</a></dd></dl>
 <p><br />
@@ -149,7 +176,13 @@ Preventing Errors Due to Bad Multicast Address Ranges&nbsp;&nbsp;<small><a href=
 </ul>
 </dd></dl>
 <dl class="section user"><dt><b>Recommendations</b>:</dt><dd>Ensure that the intended low and high values for LBT-RM multicast addresses are not reversed</dd></dl>
-<dl class="section user"><dt><b>Example</b>:</dt><dd><div class="fragment"><div class="line"><span class="preprocessor">#</span></div><div class="line"><span class="preprocessor"># To avoid incorrect LBT-RM multicast address ranges, ensure that you have not</span></div><div class="line"><span class="preprocessor"># reversed the low and high values.</span></div><div class="line"><span class="preprocessor">#</span></div><div class="line">context transport_lbtrm_multicast_address_low 224.10.10.10</div><div class="line">context transport_lbtrm_multicast_address_high 224.10.10.14</div></div><!-- fragment --></dd></dl>
+<dl class="section user"><dt><b>Example</b>:</dt><dd><pre class="fragment">#
+# To avoid incorrect LBT-RM multicast address ranges, ensure that you have not
+# reversed the low and high values.
+#
+context transport_lbtrm_multicast_address_low 224.10.10.10
+context transport_lbtrm_multicast_address_high 224.10.10.14
+</pre></dd></dl>
 <dl class="section user"><dt><b>See</b> <b>also</b>:</dt><dd><a class="el" href="grptransportlbtrmnetwork.html">Transport LBT-RM Network Options</a></dd></dl>
 <p><br />
  </p>
@@ -164,7 +197,13 @@ Preventing Store Timeouts&nbsp;&nbsp;<small><a href="#preventingstoretimeouts">&
 </ul>
 </dd></dl>
 <dl class="section user"><dt><b>Recommendations</b>:</dt><dd>Set the store activity timeout to at least 5x the activity check interval</dd></dl>
-<dl class="section user"><dt><b>Example</b>:</dt><dd><div class="fragment"><div class="line"><span class="preprocessor">#</span></div><div class="line"><span class="preprocessor"># To avoid erroneous store activity timeouts, set the activity</span></div><div class="line"><span class="preprocessor"># timeout to at least 5x the activity check interval.</span></div><div class="line"><span class="preprocessor">#</span></div><div class="line">source ume_store_activity_timeout 3000</div><div class="line">source ume_store_check_interval 500</div></div><!-- fragment --></dd></dl>
+<dl class="section user"><dt><b>Example</b>:</dt><dd><pre class="fragment">#
+# To avoid erroneous store activity timeouts, set the activity
+# timeout to at least 5x the activity check interval.
+#
+source ume_store_activity_timeout 3000
+source ume_store_check_interval 500
+</pre></dd></dl>
 <p><br />
  </p>
 <h1><a class="anchor" id="preventingulbtimeouts"></a>
@@ -186,7 +225,16 @@ Preventing ULB Timeouts&nbsp;&nbsp;<small><a href="#preventingulbtimeouts">&lt;-
 <dl class="section user"><dt><b>Recommendations</b>:</dt><dd>Set the ULB source activity timeout to at least 5x the ULB source activity check interval. <br />
 Set the ULB application set message reassignment timeout to at least 5x the ULB check interval. <br />
 Set the ULB receiver activity timeout to at least 5x the ULB check interval.</dd></dl>
-<dl class="section user"><dt><b>Example</b>:</dt><dd><div class="fragment"><div class="line"><span class="preprocessor">#</span></div><div class="line"><span class="preprocessor"># To avoid erroneous ULB source, receiver or application set message activity</span></div><div class="line"><span class="preprocessor"># timeouts, set the activity timeout to at least 5x the activity check interval.</span></div><div class="line"><span class="preprocessor">#</span></div><div class="line">receiver umq_ulb_source_activity_timeout 10000</div><div class="line">receiver umq_ulb_source_check_interval   1000</div><div class="line">source   umq_ulb_application_set_message_reassignment_timeout 50000</div><div class="line">source   umq_ulb_application_set_receiver_activity_timeout    10000</div><div class="line">source   umq_ulb_check_interval 1000</div></div><!-- fragment --></dd></dl>
+<dl class="section user"><dt><b>Example</b>:</dt><dd><pre class="fragment">#
+# To avoid erroneous ULB source, receiver or application set message activity
+# timeouts, set the activity timeout to at least 5x the activity check interval.
+#
+receiver umq_ulb_source_activity_timeout 10000
+receiver umq_ulb_source_check_interval   1000
+source   umq_ulb_application_set_message_reassignment_timeout 50000
+source   umq_ulb_application_set_receiver_activity_timeout    10000
+source   umq_ulb_check_interval 1000
+</pre></dd></dl>
 <dl class="section user"><dt><b>See</b> <b>also</b>:</dt><dd><a class="el" href="grpultramessagingqueuing.html">Ultra Messaging Queuing Options</a> ]]])</dd></dl>
 <p><br />
  </p>
@@ -201,7 +249,13 @@ Preventing Unicast Resolver Daemon Timeouts&nbsp;&nbsp;<small><a href="#preventi
 </ul>
 </dd></dl>
 <dl class="section user"><dt><b>Recommendations</b>:</dt><dd>Set the unicast resolver daemon activity timeout to at least 5x the activity check interval. Or, if activity notification is not desired, set both options to 0.</dd></dl>
-<dl class="section user"><dt><b>Example</b>:</dt><dd><div class="fragment"><div class="line"><span class="preprocessor">#</span></div><div class="line"><span class="preprocessor"># To avoid erroneous unicast resolver daemon timeouts, set the activity</span></div><div class="line"><span class="preprocessor"># timeout to at least 5x the activity check interval.</span></div><div class="line"><span class="preprocessor">#</span></div><div class="line">context resolver_unicast_activity_timeout 1000</div><div class="line">context resolver_unicast_check_interval 200</div></div><!-- fragment --></dd></dl>
+<dl class="section user"><dt><b>Example</b>:</dt><dd><pre class="fragment">#
+# To avoid erroneous unicast resolver daemon timeouts, set the activity
+# timeout to at least 5x the activity check interval.
+#
+context resolver_unicast_activity_timeout 1000
+context resolver_unicast_check_interval 200
+</pre></dd></dl>
 <dl class="section user"><dt><b>See</b> <b>also</b>:</dt><dd><a class="el" href="grpudpbasedresolveroperation.html">UDP-Based Resolver Operation Options</a></dd></dl>
 <p><br />
  </p>
@@ -222,7 +276,14 @@ Preventing Undetected Late Join Loss&nbsp;&nbsp;<small><a href="#preventingundet
 </ul>
 </dd></dl>
 <dl class="section user"><dt><b>Recommendations</b>:</dt><dd>Set the Late Join retransmit request interval to a value less than its transport's activity timeout value</dd></dl>
-<dl class="section user"><dt><b>Example</b>:</dt><dd><div class="fragment"><div class="line"><span class="preprocessor">#</span></div><div class="line"><span class="preprocessor"># To avoid a transport inactivity timeout while requesting Late Join</span></div><div class="line"><span class="preprocessor"># retransmissions, set the Late Join retransmit request interval to a value</span></div><div class="line"><span class="preprocessor"># less than its transport&#39;s activity timeout.</span></div><div class="line"><span class="preprocessor">#</span></div><div class="line">receiver retransmit_request_generation_interval 10000</div><div class="line">receiver transport_lbtrm_activity_timeout 60000</div></div><!-- fragment --></dd></dl>
+<dl class="section user"><dt><b>Example</b>:</dt><dd><pre class="fragment">#
+# To avoid a transport inactivity timeout while requesting Late Join
+# retransmissions, set the Late Join retransmit request interval to a value
+# less than its transport's activity timeout.
+#
+receiver retransmit_request_generation_interval 10000
+receiver transport_lbtrm_activity_timeout 60000
+</pre></dd></dl>
 <dl class="section user"><dt><b>See</b> <b>also</b>:</dt><dd><a class="el" href="grplatejoin.html">Late Join Options</a></dd></dl>
 <p><br />
  </p>
@@ -243,7 +304,15 @@ Preventing Undetected Loss&nbsp;&nbsp;<small><a href="#preventingundetectedloss"
 <dl class="section user"><dt><b>Recommendations</b>:</dt><dd>For LBT-RM, set the transport activity timeout to value greater than the sum of the delivery control loss check interval and the NAK generation interval. Also, set the NAK generation interval to at least 4x the delivery control loss check interval. <br />
 For LBT-RU, set the transport activity timeout to value greater than the delivery control loss check interval <br />
 For UMP, always enable and set accordingly the delivery control loss check interval when configuring a store</dd></dl>
-<dl class="section user"><dt><b>Example</b>:</dt><dd><div class="fragment"><div class="line"><span class="preprocessor">#</span></div><div class="line"><span class="preprocessor"># To avoid undetected or unreported loss, set NAK generation to 4x the delivery</span></div><div class="line"><span class="preprocessor"># control check interval, and ensure that these two combined are less than the</span></div><div class="line"><span class="preprocessor"># transport activity timeout</span></div><div class="line"><span class="preprocessor">#</span></div><div class="line">receiver delivery_control_loss_check_interval 2500</div><div class="line">receiver transport_lbtrm_activity_timeout 60000</div><div class="line">receiver transport_lbtrm_nak_generation_interval 10000</div></div><!-- fragment --></dd></dl>
+<dl class="section user"><dt><b>Example</b>:</dt><dd><pre class="fragment">#
+# To avoid undetected or unreported loss, set NAK generation to 4x the delivery
+# control check interval, and ensure that these two combined are less than the
+# transport activity timeout
+#
+receiver delivery_control_loss_check_interval 2500
+receiver transport_lbtrm_activity_timeout 60000
+receiver transport_lbtrm_nak_generation_interval 10000
+</pre></dd></dl>
 <dl class="section user"><dt><b>See</b> <b>also</b>:</dt><dd><a class="el" href="grpdeliverycontrol.html">Delivery Control Options</a></dd></dl>
 <p><br />
  </p>
@@ -272,7 +341,16 @@ Preventing Store Registration Hangs&nbsp;&nbsp;<small><a href="#preventingstorer
 <p>The sri_request "interval" and "maximum" options multiply to define a duration over which the receiver requests Store Information Records (SRI) messages from the source. Similarly, the transport_topic_sequence_number_info_request "interval" and "maximum" options multiply to define a duration over which the receiver requests Transport Topic Sequence Number Info (TSNI) messages from the source.</p>
 <dl class="section user"><dt><b>Recommendations</b>:</dt><dd></dd></dl>
 <p>The two request durations should be twice the value of the appropriate transport activity timer.</p>
-<dl class="section user"><dt><b>Example</b>:</dt><dd><div class="fragment"><div class="line"><span class="preprocessor">#</span></div><div class="line"><span class="preprocessor"># To avoid hung store registration, set the durations of the SRI and TSNI</span></div><div class="line"><span class="preprocessor"># requests to 2x the transport activity timeout.</span></div><div class="line"><span class="preprocessor"># </span></div><div class="line">receiver transport_lbtrm_activity_timeout 60000</div><div class="line">receiver ume_sri_request_maximum 120</div><div class="line">receiver ume_sri_request_interval 1000</div><div class="line">receiver transport_topic_sequence_number_info_request_maximum 120</div><div class="line">receiver transport_topic_sequence_number_info_request_interval 1000</div></div><!-- fragment --></dd></dl>
+<dl class="section user"><dt><b>Example</b>:</dt><dd><pre class="fragment">#
+# To avoid hung store registration, set the durations of the SRI and TSNI
+# requests to 2x the transport activity timeout.
+# 
+receiver transport_lbtrm_activity_timeout 60000
+receiver ume_sri_request_maximum 120
+receiver ume_sri_request_interval 1000
+receiver transport_topic_sequence_number_info_request_maximum 120
+receiver transport_topic_sequence_number_info_request_interval 1000
+</pre></dd></dl>
 <dl class="section warning"><dt>Warning</dt><dd>As of this version of UM, the default values for these options do not satisfy this recommendation. Users are advised to double the values for umesrirequestmaximumreceiver and <a class="el" href="grpmajoroptions.html#transporttopicsequencenumberinforequestmaximumreceiver">transport_topic_sequence_number_info_request_maximum (receiver)</a>. </dd></dl>
 </div></div><!-- contents -->
 </div><!-- doc-content -->

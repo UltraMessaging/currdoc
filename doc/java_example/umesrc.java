@@ -11,7 +11,7 @@ import java.util.concurrent.Semaphore;
 import org.openmdx.uses.gnu.getopt.*;
 
 /*
-  Copyright (c) 2005-2019 Informatica Corporation  Permission is granted to licensees to use
+  Copyright (c) 2005-2020 Informatica Corporation  Permission is granted to licensees to use
   or alter this software for any purpose, including commercial applications,
   according to the terms laid out in the Software License Agreement.
 

@@ -13,11 +13,11 @@
 !IF "$(PLATFORM)" == "x64"
 LBM_INCLUDE_DIR=../../Win2k-x86_64/include
 LBM_LIB_DIR=../../Win2k-x86_64/lib
-MACHINE=I386
+UMESNAPREPO=umesnaprepo.exe
 !ELSE
 LBM_INCLUDE_DIR=../../Win2k-i386/include
 LBM_LIB_DIR=../../Win2k-i386/lib
-MACHINE=X64
+UMESNAPREPO=
 !ENDIF
 
 # `LBM_BUILD_TYPE' corresponds to the type of LBM libraries
@@ -87,9 +87,9 @@ UMP_EXES=umesrc.exe umercv.exe
 UMQ_EXES=umqrcv.exe umqsrc.exe lbmhfxrcv.exe
 
 !IF "$(PRODUCT)"=="UMQ"
-BLDEXES=$(EXES) $(UMP_EXES) $(UMQ_EXES)
+BLDEXES=$(EXES) $(UMP_EXES) $(UMQ_EXES) $(UMESNAPREPO)
 !ELSEIF "$(PRODUCT)"=="UMP"
-BLDEXES=$(EXES) $(UMP_EXES)
+BLDEXES=$(EXES) $(UMP_EXES) $(UMESNAPREPO)
 !ELSEIF "$(PRODUCT)"=="UMS"
 BLDEXES=$(EXES)
 !ELSEIF "$(PRODUCT)"==""
@@ -220,6 +220,10 @@ TNWGDCMD.exe:	$(TNWGDCMD_OBJS)
 UMEDMON_OBJS = umedmon.obj getopt.obj
 UMEDMON.exe:	$(UMEDMON_OBJS)
 	$(LINK) /OUT:umedmon.exe $(conflags) $(conlibsmt) $(LDFLAGS) /SUBSYSTEM:console $(UMEDMON_OBJS) $(LBMLIB)
+
+UMESNAP_OBJS = umesnaprepo.obj getopt.obj
+UMESNAPREPO.exe:	$(UMESNAP_OBJS)
+	$(LINK) /OUT:umesnaprepo.exe $(conflags) $(conlibsmt) $(LDFLAGS) /SUBSYSTEM:console $(UMESNAP_OBJS) $(LBMLIB)
 
 UMEDCMD_OBJS = umedcmd.obj getopt.obj
 UMEDCMD.exe:	$(UMEDCMD_OBJS)

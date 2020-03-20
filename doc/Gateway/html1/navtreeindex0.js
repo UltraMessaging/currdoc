@@ -159,6 +159,7 @@ var NAVTREEINDEX0 =
 "index.html#topologyinfopage":[7,0,3],
 "index.html#transittrdlinkconfiguration":[3,2,2],
 "index.html#umfeaturecompatibility":[2,7],
+"index.html#umrouterandtransportsessions":[1,2,0],
 "index.html#umrouterandumxmlconfigurationusecases":[3,3,1],
 "index.html#umrouterconcepts":[2],
 "index.html#umrouterconfigurationdtd":[5,2],

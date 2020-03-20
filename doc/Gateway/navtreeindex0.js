@@ -6,6 +6,7 @@ var NAVTREEINDEX0 =
 "droarchitecture.html#proxysourcesandproxyreceivers":[1,2],
 "droarchitecture.html#routing":[1,3],
 "droarchitecture.html#topicresolutiondomains":[1,1],
+"droarchitecture.html#umrouterandtransportsessions":[1,2,0],
 "droarchitecture.html#umrouterportals":[1,0],
 "index.html":[],
 "index.html":[0],

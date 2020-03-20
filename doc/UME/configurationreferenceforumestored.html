@@ -54,9 +54,10 @@ $(document).ready(function(){initNavTree('configurationreferenceforumestored.htm
 <div class="title">Configuration Reference for Umestored </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>The operating parameters for umestored come from an XML configuration file that must be supplied on the command line (see <a class="el" href="manpagesforstore.html">Man Pages for Store</a>. Umestored contains a UM context and receivers that may be configured with default values through a UM configuration file referenced in the XML configuration file. Default UM options my be overridden for each configured store using the XML configuration file.</p>
-<p>You configure umestored to instantiate stores with the umestored XML configuration file, which Ultra Messaging reads at start up.</p>
-<p>The umestored XML configuration file for persistence has the following sections.</p>
+<div class="textblock"><p>The operating parameters for <code>umestored</code> come from an XML configuration file that must be supplied on the command line (see <a class="el" href="manpagesforstore.html">Man Pages for Store</a>). Umestored contains a UM context and receivers that may be configured with default values through a UM configuration file referenced in the XML configuration file. Default UM options my be overridden for each configured store using the XML configuration file.</p>
+<p>An overview of the file format can be seen in the <a class="el" href="configurationreferenceforumestored.html#umestoredconfigurationdtd">umestored Configuration DTD</a>.</p>
+<p>You configure <code>umestored</code> to instantiate stores with the <code>umestored</code> XML configuration file, which Ultra Messaging reads at start up.</p>
+<p>The <code>umestored</code> XML configuration file for persistence has the following sections:</p>
 <ul>
 <li>
 <p class="startli">Daemon section - holds administrative parameters for such things as the location of log files, the UM Configuration File, etc.</p>
@@ -120,11 +121,11 @@ UMP Element "&lt;store&gt;"&nbsp;&nbsp;<small><a href="#umeelementstore">&lt;-</
 <tr>
 <th>Attribute </th><th>Description </th><th>Valid Values </th><th>Default Value </th></tr>
 <tr>
-<td><b>name</b> </td><td>Identifies log messages for this store instance in the umestored log file. </td><td>attr_name </td><td>(no default; must be specified) </td></tr>
+<td><b>name</b> </td><td>Identifies log messages for this store instance in the <code>umestored</code> log file. </td><td>attr_name </td><td>(no default; must be specified) </td></tr>
 <tr>
-<td><b>interface</b> </td><td>Specifies the IP address over which umestored accepts connection requests for this store. You can specify a single IP address, such as 10.29.3.16, or a range of addresses, 10.29.3.16/25. See also <a class="el" href="persistencearchitecture.html#identifyingpersistentstores">Identifying Persistent Stores</a>. </td><td>string </td><td><b><code>"0.0.0.0"</code></b> (INADDR_ANY) </td></tr>
+<td><b>interface</b> </td><td>Specifies the IP address over which <code>umestored</code> accepts connection requests for this store. You can specify a single IP address, such as 10.29.3.16, or a range of addresses, 10.29.3.16/25. See also <a class="el" href="persistencearchitecture.html#identifyingpersistentstores">Identifying Persistent Stores</a>. </td><td>string </td><td><b><code>"0.0.0.0"</code></b> (INADDR_ANY) </td></tr>
 <tr>
-<td><b>port</b> </td><td>TCP port where umestored should listen for connection requests to this store. </td><td>string </td><td>(no default; must be specified) </td></tr>
+<td><b>port</b> </td><td>TCP port where <code>umestored</code> should listen for connection requests to this store. </td><td>string </td><td>(no default; must be specified) </td></tr>
 </table>
 <p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;?xml version=<span class="stringliteral">&quot;1.0&quot;</span>?&gt;</div><div class="line">&lt;ume-store version=<span class="stringliteral">&quot;1.3&quot;</span>&gt;</div><div class="line">  &lt;stores&gt;</div><div class="line">    &lt;store name=<span class="stringliteral">&quot;MyStore1&quot;</span> interface=<span class="stringliteral">&quot;10.1.2.3&quot;</span> port=<span class="stringliteral">&quot;12000&quot;</span>&gt;</div><div class="line">      ...</div><div class="line">    &lt;/store&gt;</div><div class="line">    ...</div><div class="line">  &lt;/stores&gt;</div><div class="line">  ...</div><div class="line">&lt;/ume-store&gt;</div></div><!-- fragment --><hr/>
 <p> <br />
@@ -205,7 +206,7 @@ UMP Element "&lt;option&gt;"&nbsp;&nbsp;<small><a href="#umeelementoption">&lt;-
  </p>
 <h2><a class="anchor" id="umeelementpublishinginterval"></a>
 UMP Element "&lt;publishing-interval&gt;"&nbsp;&nbsp;<small><a href="#umeelementpublishinginterval">&lt;-</a></small></h2>
-<p>Set how often the store publishes its daemon stats. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UME/design.tag:../Design/" href="../Design/umobjects.html#daemonstatistics">Daemon Statistics</a> for general information on Daemon Statistics.</p>
+<p>Set how often the store publishes its Daemon Stats. See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/UME/design.tag:../Design/" href="../Design/umobjects.html#daemonstatistics">Daemon Statistics</a> for general information on Daemon Statistics.</p>
 <ul>
 <li>
 <b>Parent:</b> <a class="el" href="configurationreferenceforumestored.html#umeelementstore">&lt;store&gt;</a>, <a class="el" href="configurationreferenceforumestored.html#umeelementdaemonmonitor">&lt;daemon-monitor&gt;</a> </li>
@@ -218,7 +219,7 @@ UMP Element "&lt;publishing-interval&gt;"&nbsp;&nbsp;<small><a href="#umeelement
  </p>
 <h2><a class="anchor" id="umeelementgroup"></a>
 UMP Element "&lt;group&gt;"&nbsp;&nbsp;<small><a href="#umeelementgroup">&lt;-</a></small></h2>
-<p>Configures the rate at which one particular grouping of Daemon Statistics messages are published. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UME/design.tag:../Design/" href="../Design/umobjects.html#daemonstatistics">Daemon Statistics</a> for general information on Daemon Statistics.</p>
+<p>Configures the rate at which one particular grouping of Daemon Statistics messages are published. See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/UME/design.tag:../Design/" href="../Design/umobjects.html#daemonstatistics">Daemon Statistics</a> for general information on Daemon Statistics.</p>
 <ul>
 <li>
 <b>Parent:</b> <a class="el" href="configurationreferenceforumestored.html#umeelementpublishinginterval">&lt;publishing-interval&gt;</a> </li>
@@ -228,10 +229,10 @@ UMP Element "&lt;group&gt;"&nbsp;&nbsp;<small><a href="#umeelementgroup">&lt;-</
 <th>Attribute </th><th>Description </th><th>Valid Values </th><th>Default Value </th></tr>
 <tr>
 <td><b>name</b> </td><td>Name of statistics group being configured. </td><td><b><code>"default"</code></b> - Sets a default interval for all message types. <br />
-<b><code>"store"</code></b> - Sets the interval for messages of type <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UME/api.tag:../API/" href="../API/umedmonmsgs_8h.html#aeeb55ed0b759e6316cdedc3c990dfe26">umestore_store_dmon_stat_msg_t</a>. <br />
-<b><code>"source"</code></b> - Sets the interval for messages of type <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UME/api.tag:../API/" href="../API/umedmonmsgs_8h.html#a88ce572fd35203194ada676661d2f54b">umestore_repo_dmon_stat_msg_t</a>. <br />
-<b><code>"receiver"</code></b> - Sets the interval for messages of type <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UME/api.tag:../API/" href="../API/umedmonmsgs_8h.html#a3829efae398d994795fb395097626709">umestore_rcv_dmon_stat_msg_t</a>. <br />
-<b><code>"disk"</code></b> - Sets the interval for messages of type <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UME/api.tag:../API/" href="../API/umedmonmsgs_8h.html#a3ed32f1017abda98dbac7f228d7c506b">umestore_disk_dmon_stat_msg_t</a>. <br />
+<b><code>"store"</code></b> - Sets the interval for messages of type <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/UME/api.tag:../API/" href="../API/umedmonmsgs_8h.html#aeeb55ed0b759e6316cdedc3c990dfe26">umestore_store_dmon_stat_msg_t</a>. <br />
+<b><code>"source"</code></b> - Sets the interval for messages of type <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/UME/api.tag:../API/" href="../API/umedmonmsgs_8h.html#a88ce572fd35203194ada676661d2f54b">umestore_repo_dmon_stat_msg_t</a>. <br />
+<b><code>"receiver"</code></b> - Sets the interval for messages of type <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/UME/api.tag:../API/" href="../API/umedmonmsgs_8h.html#a3829efae398d994795fb395097626709">umestore_rcv_dmon_stat_msg_t</a>. <br />
+<b><code>"disk"</code></b> - Sets the interval for messages of type <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/UME/api.tag:../API/" href="../API/umedmonmsgs_8h.html#a3ed32f1017abda98dbac7f228d7c506b">umestore_disk_dmon_stat_msg_t</a>. <br />
 <b><code>"config"</code></b> - Sets the interval for messages of types umestore_*_dmon_config_msg_t. <br />
 <b><code>"memory"</code></b> - Sets the interval for messages of type umestore_smart_heap_dmon_stat_msg_t. </td><td>(no default; must be specified) </td></tr>
 <tr>
@@ -255,7 +256,7 @@ UMP Element "&lt;daemon&gt;"&nbsp;&nbsp;<small><a href="#umeelementdaemon">&lt;-
  </p>
 <h2><a class="anchor" id="umeelementdaemonmonitor"></a>
 UMP Element "&lt;daemon-monitor&gt;"&nbsp;&nbsp;<small><a href="#umeelementdaemonmonitor">&lt;-</a></small></h2>
-<p>The daemon-monitor element configures the store daemon for <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UME/design.tag:../Design/" href="../Design/umobjects.html#daemonstatistics">Daemon Statistics</a>.</p>
+<p>The daemon-monitor element configures the store daemon for <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/UME/design.tag:../Design/" href="../Design/umobjects.html#daemonstatistics">Daemon Statistics</a>.</p>
 <ul>
 <li>
 <b>Parent:</b> <a class="el" href="configurationreferenceforumestored.html#umeelementdaemon">&lt;daemon&gt;</a> </li>
@@ -274,7 +275,8 @@ UMP Element "&lt;daemon-monitor&gt;"&nbsp;&nbsp;<small><a href="#umeelementdaemo
  </p>
 <h2><a class="anchor" id="umeelementremoteconfigchangesrequest"></a>
 UMP Element "&lt;remote-config-changes-request&gt;"&nbsp;&nbsp;<small><a href="#umeelementremoteconfigchangesrequest">&lt;-</a></small></h2>
-<p>Controls if the daemon will respond to requests from monitoring applications. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UME/design.tag:../Design/" href="../Design/umobjects.html#daemonstatisticsrequests">Daemon Statistics Requests</a>.</p>
+<p>Controls if the daemon will respond to requests from monitoring applications. See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/UME/design.tag:../Design/" href="../Design/umobjects.html#daemonstatisticsrequests">Daemon Statistics Requests</a> for general information, <a class="el" href="storedaemonstatistics.html#storedaemonstatisticsrequests">Store Daemon Statistics Requests</a> for Store-specific requests.</p>
+<dl class="section warning"><dt>Warning</dt><dd>If misused, the Daemon Statistics Requests feature allows a user to interfere with the messaging infrastructure in potentially disruptive ways. By default, this feature is disabled. However, especially if you have enabled the <a class="el" href="configurationreferenceforumestored.html#umeelementremoteconfigchangesrequest">UMP Element "&lt;remote-config-changes-request&gt;"</a>, Informatica recommends <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/UME/design.tag:../Design/" href="../Design/umobjects.html#securingdaemonstatisticsrequests">Securing Daemon Statistics Requests</a>.</dd></dl>
 <ul>
 <li>
 <b>Parent:</b> <a class="el" href="configurationreferenceforumestored.html#umeelementdaemonmonitor">&lt;daemon-monitor&gt;</a> </li>
@@ -292,7 +294,7 @@ UMP Element "&lt;remote-config-changes-request&gt;"&nbsp;&nbsp;<small><a href="#
  </p>
 <h2><a class="anchor" id="umeelementremotesnapshotrequest"></a>
 UMP Element "&lt;remote-snapshot-request&gt;"&nbsp;&nbsp;<small><a href="#umeelementremotesnapshotrequest">&lt;-</a></small></h2>
-<p>Controls if the daemon will respond to requests from monitoring applications. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UME/design.tag:../Design/" href="../Design/umobjects.html#daemonstatisticsrequests">Daemon Statistics Requests</a>.</p>
+<p>Controls if the daemon will respond to requests from monitoring applications. See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/UME/design.tag:../Design/" href="../Design/umobjects.html#daemonstatisticsrequests">Daemon Statistics Requests</a>.</p>
 <ul>
 <li>
 <b>Parent:</b> <a class="el" href="configurationreferenceforumestored.html#umeelementdaemonmonitor">&lt;daemon-monitor&gt;</a> </li>
@@ -311,6 +313,7 @@ UMP Element "&lt;remote-snapshot-request&gt;"&nbsp;&nbsp;<small><a href="#umeele
 <h2><a class="anchor" id="umeelementlbmconfig"></a>
 UMP Element "&lt;lbm-config&gt;"&nbsp;&nbsp;<small><a href="#umeelementlbmconfig">&lt;-</a></small></h2>
 <p>Pathname for UM configuration file which is used to configure UM for either the store or for daemon statistics, depending on the parent element.</p>
+<p>Note that as of UM version 6.13, if one or more errors are discovered in the UM configuration file, the errors are written to the log file and the Store continues running. I.e. errors in the UM configuration file are treated as warnings. See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/UME/config.tag:../Config/" href="../Config/index.html#configurationerrorhandling">Configuration Error Handling</a> for an explanation.</p>
 <ul>
 <li>
 <b>Parent:</b> <a class="el" href="configurationreferenceforumestored.html#umeelementdaemon">&lt;daemon&gt;</a>, <a class="el" href="configurationreferenceforumestored.html#umeelementdaemonmonitor">&lt;daemon-monitor&gt;</a> </li>
@@ -319,7 +322,7 @@ UMP Element "&lt;lbm-config&gt;"&nbsp;&nbsp;<small><a href="#umeelementlbmconfig
 <tr>
 <th>Attribute </th><th>Description </th><th>Valid Values </th><th>Default Value </th></tr>
 <tr>
-<td><b>xml:space</b> </td><td>Specifies how whitespace (tabs, spaces, linefeeds) are handled in the element content. </td><td><b><code>"default"</code></b> - Trim leading and trailing whitespace, and compress multiple whitespace characters into a single space. <br />
+<td><b>xml:space</b> </td><td>Specifies how whitespace (tabs, spaces, linefeeds) are handled in the element content. See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/UME/design.tag:../Design/" href="../Design/fundamentalconcepts.html#xmlspaceattribute">xml:space Attribute</a>. </td><td><b><code>"default"</code></b> - Trim whitespace. <br />
 <b><code>"preserve"</code></b> - Retain whitespace exactly as entered. </td><td><b>default</b> </td></tr>
 </table>
 <p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;?xml version=<span class="stringliteral">&quot;1.0&quot;</span>?&gt;</div><div class="line">&lt;ume-store version=<span class="stringliteral">&quot;1.3&quot;</span>&gt;</div><div class="line">  &lt;daemon&gt;</div><div class="line">    &lt;lbm-config&gt;/etc/ump/store0.cfg&lt;/lbm-config&gt;</div><div class="line">    ...</div><div class="line">    &lt;daemon-monitor topic=<span class="stringliteral">&quot;bozo&quot;</span>&gt;</div><div class="line">      &lt;lbm-config&gt;/etc/ump/store0_dmon.cfg&lt;/lbm-config&gt;</div><div class="line">      ...</div><div class="line">    &lt;/daemon-monitor&gt;</div><div class="line">  &lt;/daemon&gt;</div><div class="line">  ...</div><div class="line">&lt;/ume-store&gt;</div></div><!-- fragment --><hr/>
@@ -337,7 +340,7 @@ UMP Element "&lt;web-monitor&gt;"&nbsp;&nbsp;<small><a href="#umeelementwebmonit
 <tr>
 <th>Attribute </th><th>Description </th><th>Valid Values </th><th>Default Value </th></tr>
 <tr>
-<td><b>xml:space</b> </td><td>Specifies how whitespace (tabs, spaces, linefeeds) are handled in the element content. </td><td><b><code>"default"</code></b> - Trim leading and trailing whitespace, and compress multiple whitespace characters into a single space. <br />
+<td><b>xml:space</b> </td><td>Specifies how whitespace (tabs, spaces, linefeeds) are handled in the element content. See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/UME/design.tag:../Design/" href="../Design/fundamentalconcepts.html#xmlspaceattribute">xml:space Attribute</a>. </td><td><b><code>"default"</code></b> - Trim whitespace. <br />
 <b><code>"preserve"</code></b> - Retain whitespace exactly as entered. </td><td><b>default</b> </td></tr>
 </table>
 <p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;?xml version=<span class="stringliteral">&quot;1.0&quot;</span>?&gt;</div><div class="line">&lt;ume-store version=<span class="stringliteral">&quot;1.3&quot;</span>&gt;</div><div class="line">  &lt;daemon&gt;</div><div class="line">    &lt;web-monitor&gt;*:8080&lt;/web-monitor&gt;</div><div class="line">    ...</div><div class="line">  &lt;/daemon&gt;</div><div class="line">  ...</div><div class="line">&lt;/ume-store&gt;</div></div><!-- fragment --><hr/>
@@ -354,7 +357,7 @@ UMP Element "&lt;lbm-license-file&gt;"&nbsp;&nbsp;<small><a href="#umeelementlbm
 <tr>
 <th>Attribute </th><th>Description </th><th>Valid Values </th><th>Default Value </th></tr>
 <tr>
-<td><b>xml:space</b> </td><td>Specifies how whitespace (tabs, spaces, linefeeds) are handled in the element content. </td><td><b><code>"default"</code></b> - Trim leading and trailing whitespace, and compress multiple whitespace characters into a single space. <br />
+<td><b>xml:space</b> </td><td>Specifies how whitespace (tabs, spaces, linefeeds) are handled in the element content. See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/UME/design.tag:../Design/" href="../Design/fundamentalconcepts.html#xmlspaceattribute">xml:space Attribute</a>. </td><td><b><code>"default"</code></b> - Trim whitespace. <br />
 <b><code>"preserve"</code></b> - Retain whitespace exactly as entered. </td><td><b>default</b> </td></tr>
 </table>
 <hr/>
@@ -362,7 +365,7 @@ UMP Element "&lt;lbm-license-file&gt;"&nbsp;&nbsp;<small><a href="#umeelementlbm
  </p>
 <h2><a class="anchor" id="umeelementxmlconfig"></a>
 UMP Element "&lt;xml-config&gt;"&nbsp;&nbsp;<small><a href="#umeelementxmlconfig">&lt;-</a></small></h2>
-<p>Pathname for UM XML configuration file. See also <a class="el" href="configurationreferenceforumestored.html#umeelementlbmconfig">UMP Element "&lt;lbm-config&gt;"</a>.</p>
+<p>Pathname for UM XML configuration file. See also <a class="el" href="configurationreferenceforumestored.html#umeelementlbmconfig">&lt;lbm-config&gt;</a>.</p>
 <ul>
 <li>
 <b>Parent:</b> <a class="el" href="configurationreferenceforumestored.html#umeelementdaemon">&lt;daemon&gt;</a> </li>
@@ -371,10 +374,10 @@ UMP Element "&lt;xml-config&gt;"&nbsp;&nbsp;<small><a href="#umeelementxmlconfig
 <tr>
 <th>Attribute </th><th>Description </th><th>Valid Values </th><th>Default Value </th></tr>
 <tr>
-<td><b>xml:space</b> </td><td>Specifies how whitespace (tabs, spaces, linefeeds) are handled in the element content. </td><td><b><code>"default"</code></b> - Trim leading and trailing whitespace, and compress multiple whitespace characters into a single space. <br />
+<td><b>xml:space</b> </td><td>Specifies how whitespace (tabs, spaces, linefeeds) are handled in the element content. See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/UME/design.tag:../Design/" href="../Design/fundamentalconcepts.html#xmlspaceattribute">xml:space Attribute</a>. </td><td><b><code>"default"</code></b> - Trim whitespace. <br />
 <b><code>"preserve"</code></b> - Retain whitespace exactly as entered. </td><td><b>default</b> </td></tr>
 <tr>
-<td><b>application-name</b> </td><td>Specifies the "application name" of the store process, for use within the UM XML configuration file. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UME/config.tag:../Config/" href="../Config/xmlconfigurationfiles.html#xmlapplicationnames">XML Application Names</a> for more information on application names. </td><td>string </td><td><b><code>"umestored"</code></b> </td></tr>
+<td><b>application-name</b> </td><td>Specifies the "application name" of the store process, for use within the UM XML configuration file. See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/UME/config.tag:../Config/" href="../Config/xmlconfigurationfiles.html#xmlapplicationnames">XML Application Names</a> for more information on application names. </td><td>string </td><td><b><code>"umestored"</code></b> </td></tr>
 </table>
 <p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;?xml version=<span class="stringliteral">&quot;1.0&quot;</span>?&gt;</div><div class="line">&lt;ume-store version=<span class="stringliteral">&quot;1.3&quot;</span>&gt;</div><div class="line">  &lt;daemon&gt;</div><div class="line">    &lt;xml-config&gt;/etc/ump/store01_um.xml&lt;/xml-config&gt;</div><div class="line">    ...</div><div class="line">  &lt;/daemon&gt;</div><div class="line">  ...</div><div class="line">&lt;/ume-store&gt;</div></div><!-- fragment --><hr/>
 <p> <br />
@@ -390,7 +393,7 @@ UMP Element "&lt;gid&gt;"&nbsp;&nbsp;<small><a href="#umeelementgid">&lt;-</a></
 <tr>
 <th>Attribute </th><th>Description </th><th>Valid Values </th><th>Default Value </th></tr>
 <tr>
-<td><b>xml:space</b> </td><td>Specifies how whitespace (tabs, spaces, linefeeds) are handled in the element content. </td><td><b><code>"default"</code></b> - Trim leading and trailing whitespace, and compress multiple whitespace characters into a single space. <br />
+<td><b>xml:space</b> </td><td>Specifies how whitespace (tabs, spaces, linefeeds) are handled in the element content. See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/UME/design.tag:../Design/" href="../Design/fundamentalconcepts.html#xmlspaceattribute">xml:space Attribute</a>. </td><td><b><code>"default"</code></b> - Trim whitespace. <br />
 <b><code>"preserve"</code></b> - Retain whitespace exactly as entered. </td><td><b>default</b> </td></tr>
 </table>
 <p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;?xml version=<span class="stringliteral">&quot;1.0&quot;</span>?&gt;</div><div class="line">&lt;ume-store version=<span class="stringliteral">&quot;1.3&quot;</span>&gt;</div><div class="line">  &lt;daemon&gt;</div><div class="line">    &lt;gid&gt;1234&lt;/gid&gt;</div><div class="line">    ...</div><div class="line">  &lt;/daemon&gt;</div><div class="line">  ...</div><div class="line">&lt;/ume-store&gt;</div></div><!-- fragment --><hr/>
@@ -407,7 +410,7 @@ UMP Element "&lt;pidfile&gt;"&nbsp;&nbsp;<small><a href="#umeelementpidfile">&lt
 <tr>
 <th>Attribute </th><th>Description </th><th>Valid Values </th><th>Default Value </th></tr>
 <tr>
-<td><b>xml:space</b> </td><td>Specifies how whitespace (tabs, spaces, linefeeds) are handled in the element content. </td><td><b><code>"default"</code></b> - Trim leading and trailing whitespace, and compress multiple whitespace characters into a single space. <br />
+<td><b>xml:space</b> </td><td>Specifies how whitespace (tabs, spaces, linefeeds) are handled in the element content. See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/UME/design.tag:../Design/" href="../Design/fundamentalconcepts.html#xmlspaceattribute">xml:space Attribute</a>. </td><td><b><code>"default"</code></b> - Trim whitespace. <br />
 <b><code>"preserve"</code></b> - Retain whitespace exactly as entered. </td><td><b>default</b> </td></tr>
 </table>
 <p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;?xml version=<span class="stringliteral">&quot;1.0&quot;</span>?&gt;</div><div class="line">&lt;ume-store version=<span class="stringliteral">&quot;1.3&quot;</span>&gt;</div><div class="line">  &lt;daemon&gt;</div><div class="line">    &lt;pidfile&gt;/var/run/store01.pid&lt;/pidfile&gt;</div><div class="line">    ...</div><div class="line">  &lt;/daemon&gt;</div><div class="line">  ...</div><div class="line">&lt;/ume-store&gt;</div></div><!-- fragment --><hr/>
@@ -424,7 +427,7 @@ UMP Element "&lt;uid&gt;"&nbsp;&nbsp;<small><a href="#umeelementuid">&lt;-</a></
 <tr>
 <th>Attribute </th><th>Description </th><th>Valid Values </th><th>Default Value </th></tr>
 <tr>
-<td><b>xml:space</b> </td><td>Specifies how whitespace (tabs, spaces, linefeeds) are handled in the element content. </td><td><b><code>"default"</code></b> - Trim leading and trailing whitespace, and compress multiple whitespace characters into a single space. <br />
+<td><b>xml:space</b> </td><td>Specifies how whitespace (tabs, spaces, linefeeds) are handled in the element content. See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/UME/design.tag:../Design/" href="../Design/fundamentalconcepts.html#xmlspaceattribute">xml:space Attribute</a>. </td><td><b><code>"default"</code></b> - Trim whitespace. <br />
 <b><code>"preserve"</code></b> - Retain whitespace exactly as entered. </td><td><b>default</b> </td></tr>
 </table>
 <p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;?xml version=<span class="stringliteral">&quot;1.0&quot;</span>?&gt;</div><div class="line">&lt;ume-store version=<span class="stringliteral">&quot;1.3&quot;</span>&gt;</div><div class="line">  &lt;daemon&gt;</div><div class="line">    &lt;uid&gt;1234&lt;/uid&gt;</div><div class="line">    ...</div><div class="line">  &lt;/daemon&gt;</div><div class="line">  ...</div><div class="line">&lt;/ume-store&gt;</div></div><!-- fragment --><hr/>
@@ -452,7 +455,7 @@ UMP Element "&lt;log&gt;"&nbsp;&nbsp;<small><a href="#umeelementlog">&lt;-</a></
 <tr>
 <td><b>size</b> </td><td>Size (in MB, i.e. 2**20, or 1,048,576) of current log file at which it is rolled. Specify 0 to disable rolling by log file size. </td><td>string </td><td><b><code>"10"</code></b> </td></tr>
 <tr>
-<td><b>xml:space</b> </td><td>Specifies how whitespace (tabs, spaces, linefeeds) are handled in the element content. </td><td><b><code>"default"</code></b> - Trim leading and trailing whitespace, and compress multiple whitespace characters into a single space. <br />
+<td><b>xml:space</b> </td><td>Specifies how whitespace (tabs, spaces, linefeeds) are handled in the element content. See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/UME/design.tag:../Design/" href="../Design/fundamentalconcepts.html#xmlspaceattribute">xml:space Attribute</a>. </td><td><b><code>"default"</code></b> - Trim whitespace. <br />
 <b><code>"preserve"</code></b> - Retain whitespace exactly as entered. </td><td><b>default</b> </td></tr>
 </table>
 <p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;?xml version=<span class="stringliteral">&quot;1.0&quot;</span>?&gt;</div><div class="line">&lt;ume-store version=<span class="stringliteral">&quot;1.3&quot;</span>&gt;</div><div class="line">  &lt;daemon&gt;</div><div class="line">    &lt;log type=<span class="stringliteral">&quot;file&quot;</span> size=<span class="stringliteral">&quot;23&quot;</span> frequency=<span class="stringliteral">&quot;daily&quot;</span>&gt;/var/log/store01.log&lt;/log&gt;</div><div class="line">    ...</div><div class="line">  &lt;/daemon&gt;</div><div class="line">  ...</div><div class="line">&lt;/ume-store&gt;</div></div><!-- fragment --><p><br />
@@ -467,9 +470,9 @@ Options for UM&nbsp;&nbsp;<small><a href="#optionsforum">&lt;-</a></small></h2>
 <p>Options with a type of "lbm-source", "lbm-receiver", or "lbm-context" are UM configuration options, which the store passes to the UM library.</p>
 <p>For example, the option element: <br />
 <code>&lt;option type="lbm-context" name="transport_lbtrm_receiver_socket_buffer" value="1048576"/&gt;</code> <br />
-sets the UM configuration option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grptransportlbtrmreliability.html#transportlbtrmreceiversocketbuffercontext">transport_lbtrm_receiver_socket_buffer (context)</a> (receiver socket buffer size for LBT-RM) to 1 megabyte.</p>
+sets the UM configuration option <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/UME/config.tag:../Config/" href="../Config/grptransportlbtrmreliability.html#transportlbtrmreceiversocketbuffercontext">transport_lbtrm_receiver_socket_buffer (context)</a> (receiver socket buffer size for LBT-RM) to 1 megabyte.</p>
 <p>See the <a href="../Config/index.html">UM Configuration Guide</a> for the full list of UM configuration options.</p>
-<dl class="section note"><dt>Note</dt><dd>Some UM options specify interfaces, which can be done by supplying the device name of the interface. Special care must be taken when supplying device names. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UME/config.tag:../Config/" href="../Config/generalconfigurationguidelines.html#interfacedevicenamesandxml">Interface Device Names and XML</a> for details.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Some UM options specify interfaces, which can be done by supplying the device name of the interface. Special care must be taken when supplying device names. See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/UME/config.tag:../Config/" href="../Config/generalconfigurationguidelines.html#interfacedevicenamesandxml">Interface Device Names and XML</a> for details.</dd></dl>
 <p><br />
  </p>
 <h2><a class="anchor" id="storeoptions"></a>
@@ -497,7 +500,7 @@ sets the store's disk cache directory.</p>
 <p class="endtd"><a class="anchor" id="umecfgcontextname"></a></p>
 </td></tr>
 <tr>
-<td>context-name </td><td>Name of the store that can be used by sources to refer to the store instead of the address:port. Restricted to 128 characters in length, and may contain only alphanumeric characters, hyphens, and underscores. A store runs in its own context, so the store's context name can be used to identify the store. UM automatically resolves store names, which can facilitate persistent operation across the UM Router. A context name must be unique across the entire network and not be the same as any context names used in a UMM XML configuration. See also <a class="el" href="persistencearchitecture.html#identifyingpersistentstores">Identifying Persistent Stores</a> </td><td><p class="starttd">None.</p>
+<td>context-name </td><td>Name of the store that can be used by sources to refer to the store instead of the address:port. Restricted to 128 characters in length, and may contain only alphanumeric characters, hyphens, and underscores. A store runs in its own context, so the store's context name can be used to identify the store. UM automatically resolves store names, which can facilitate persistent operation across the <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/UME/design.tag:../Design/" href="../Design/fundamentalconcepts.html#umrouter">DRO</a>. A context name must be unique across the entire network and not be the same as any context names used in a UMM XML configuration. See also <a class="el" href="persistencearchitecture.html#identifyingpersistentstores">Identifying Persistent Stores</a> </td><td><p class="starttd">None.</p>
 <p class="endtd"><a class="anchor" id="umecfgretransmissionrequestprocessingrate"></a></p>
 </td></tr>
 <tr>
@@ -515,77 +518,77 @@ Options for a Topic's ume-attributes Element&nbsp;&nbsp;<small><a href="#options
 <p class="endtd"><a class="anchor" id="umecfgretransmissionrequestforwarding"></a></p>
 </th></tr>
 <tr>
-<td>retransmission-request-forwarding </td><td>If enabled (value = 1), the store forwards retransmission requests to sources if and only if the store does not have the data. If disabled (value = 0), the store services retransmission requests for data it has, and does not forward requests to sources for data it does not have. </td><td><p class="starttd">0 (store services retransmission requests and does not forward requests)</p>
+<td>retransmission-request-forwarding </td><td>If enabled (value = 1), the store forwards retransmission requests to sources if and only if the store does not have the data. If disabled (value = 0), the store services retransmission requests for data it has, and does not forward requests to sources for data it does not have. (This option should not be enabled if you anticipate using the <a class="el" href="storedaemonstatistics.html#requestmarkstoredmessageinvalid">Request: Mark Stored Message Invalid</a> feature.) </td><td><p class="starttd">0 (store services retransmission requests and does not forward requests)</p>
 <p class="endtd"><a class="anchor" id="umecfgrepositorytype"></a></p>
 </td></tr>
 <tr>
 <td>repository-type </td><td>Specifies how messages should be retained by the store. Possible values: <ul>
 <li>
-<code>"no-cache"</code> does not retain messages, only state information. </li>
-<li>
 <code>"memory"</code> retains messages only in the (presumably volatile) main memory of the store. </li>
 <li>
-<code>"disk"</code> retains messages to (presumably non-volatile) disk storage as quickly as possible. In addition, messages are cached in main memory for a time as well. </li>
+<code>"disk"</code> retains messages to disk storage. In addition, messages are cached in main memory for a time as well. </li>
 <li>
-<code>"reduced-fd"</code> retains messages in disk storage using significantly fewer File Descriptors. Use of this repository type may impact performance. (See <a class="el" href="persistencearchitecture.html#persistentstorearchitecture">Persistent Store Architecture</a>.) The <code>"reduced-fd"</code> disk storage option is not available on Microsoft Windows. </li>
+<code>"no-cache"</code> deprecated type does not retain messages, only state information. This type should not be used, as it will be removed in a future UM version. Contact Informatica Support to devise a plan to migrate away from its use. </li>
+<li>
+<code>"reduced-fd"</code> deprecated type which retains messages to disk storage in a lower-performing way (compared to "disk") that uses fewer OS File Descriptors. This type should not be used, as it will be removed in a future UM version. Contact Informatica Support to devise a plan to migrate away from its use. </li>
 </ul>
-</td><td><p class="starttd"><code>"no-cache"</code></p>
+</td><td><p class="starttd"><code>"memory"</code></p>
 <p class="endtd"><a class="anchor" id="umecfgrepositorysizethreshold"></a></p>
 </td></tr>
 <tr>
-<td>repository-size-threshold </td><td>For topics with a repository-type of memory, disk or reduced-fd, specifies the minimum number of message bytes (includes payload, headers, and store structure overhead) retained for a topic before the repository starts to delete old messages. Pertains to a memory store or the memory cache of a disk or reduced-fd repository. For RPP repositories, this value only includes message payload. Also for RPP, the source may optionally override this value with a value less than or equal with the source configuration option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umerepositorysizethresholdsource">ume_repository_size_threshold (source)</a>. (units: bytes) </td><td><p class="starttd">25165824 (24 MB)</p>
+<td>repository-size-threshold </td><td>For topics with a repository-type of memory or disk, specifies the minimum number of message bytes (includes payload, headers, and store structure overhead) retained for a topic before the repository starts to delete old messages. Pertains to a memory store or the memory cache of a disk repository. For RPP repositories, this value only includes message payload. Also for RPP, the source may optionally override this value with a value less than or equal with the source configuration option <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umerepositorysizethresholdsource">ume_repository_size_threshold (source)</a>. (units: bytes) </td><td><p class="starttd">25165824 (24 MB)</p>
 <p class="endtd"><a class="anchor" id="umecfgrepositorysizelimit"></a></p>
 </td></tr>
 <tr>
-<td>repository-size-limit </td><td>For topics with a repository-type of memory, disk or reduced-fd, specifies the maximum number of message bytes (includes payload, headers, and store structure overhead) retained for each source. Pertains to a memory store or the memory cache of a disk or reduced-fd repository. For RPP repositories, this value only includes message payload. Also for RPP, the source may optionally override this value with a value less than or equal with the source configuration option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umerepositorysizelimitsource">ume_repository_size_limit (source)</a> (units: bytes) </td><td><p class="starttd">50331648 (48 MB)</p>
+<td>repository-size-limit </td><td>For topics with a repository-type of memory, disk, specifies the maximum number of message bytes (includes payload, headers, and store structure overhead) retained for each source. Pertains to a memory store or the memory cache of a disk repository. For RPP repositories, this value only includes message payload. Also for RPP, the source may optionally override this value with a value less than or equal with the source configuration option <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umerepositorysizelimitsource">ume_repository_size_limit (source)</a> (units: bytes) </td><td><p class="starttd">50331648 (48 MB)</p>
 <p class="endtd"><a class="anchor" id="umecfgrepositoryagethreshold"></a></p>
 </td></tr>
 <tr>
-<td>repository-age-threshold </td><td>For topics with a repository-type of memory, disk or reduced-fd, specifies how long the repository keeps a message available. Pertains to a memory store or the memory cache of a disk or reduced-fd repository. The repository reclaims space used to store messages that exceed this threshold. A value of 0 means message age is not considered in retention decisions. (units: seconds) </td><td><p class="starttd">0</p>
+<td>repository-age-threshold </td><td>For topics with a repository-type of memory or disk, specifies how long the repository keeps a message available. Pertains to a memory store or the memory cache of a disk repository. The repository reclaims space used to store messages that exceed this threshold. A value of 0 means message age is not considered in retention decisions. (units: seconds) </td><td><p class="starttd">0</p>
 <p class="endtd"><a class="anchor" id="umecfgrepositorydiskmaxasynccbs"></a></p>
 </td></tr>
 <tr>
-<td>repository-disk-max-async-cbs </td><td>For topics with a repository-type of disk or reduced-fd, specifies the maximum number of outstanding async I/O callbacks for reading and writing messages to disk. (units: async callbacks) </td><td><p class="starttd">16 callbacks</p>
+<td>repository-disk-max-async-cbs </td><td>For topics with a repository-type of disk, specifies the maximum number of outstanding async I/O callbacks for reading and writing messages to disk. (units: async callbacks) </td><td><p class="starttd">16 callbacks</p>
 <p class="endtd"><a class="anchor" id="umecfgrepositorydiskmaxwriteasynccbs"></a></p>
 </td></tr>
 <tr>
-<td>repository-disk-max-write-async-cbs </td><td>For topics with a <a class="el" href="configurationreferenceforumestored.html#umecfgrepositorytype">repository-type</a> of disk or reduced-fd, specifies the maximum number of outstanding async I/O callbacks for writing messages to disk. Reducing this option can improve throughput by batching more fragments into a single write. (units: async callbacks) This option is deprecated. </td><td><p class="starttd">16 callbacks</p>
+<td>repository-disk-max-write-async-cbs </td><td>For topics with a <a class="el" href="configurationreferenceforumestored.html#umecfgrepositorytype">repository-type</a> of "disk", specifies the maximum number of outstanding async I/O callbacks for writing messages to disk. (units: async callbacks) This option is deprecated and must be set equal to 1. </td><td><p class="starttd">1 callback</p>
 <p class="endtd"><a class="anchor" id="umecfgrepositorydiskmaxreadasynccbs"></a></p>
 </td></tr>
 <tr>
-<td>repository-disk-max-read-async-cbs </td><td>For topics with a <a class="el" href="configurationreferenceforumestored.html#umecfgrepositorytype">repository-type</a> of disk or reduced-fd, specifies the maximum number of outstanding async I/O callbacks for reading messages from disk. Raising this value can improve recovery rates. For topics with a <a class="el" href="configurationreferenceforumestored.html#umecfgrepositorytype">repository-type</a> of reduced-fd, Informatica recommends a value of 200 times the number of expected receivers per topic. (units: async callbacks) </td><td><p class="starttd">16 callbacks</p>
+<td>repository-disk-max-read-async-cbs </td><td>For topics with a <a class="el" href="configurationreferenceforumestored.html#umecfgrepositorytype">repository-type</a> of "disk", specifies the maximum number of outstanding async I/O callbacks for reading messages from disk. A low value can lead to severely slower message recovery rates by receivers. (units: async callbacks) </td><td><p class="starttd">10,000 callbacks</p>
 <p class="endtd"><a class="anchor" id="umecfgrepositorydiskfilesizelimit"></a></p>
 </td></tr>
 <tr>
-<td>repository-disk-file-size-limit </td><td>For topics with a <a class="el" href="configurationreferenceforumestored.html#umecfgrepositorytype">repository-type</a> of disk or reduced-fd, specifies the maximum amount of disk space that will be used to store retained messages. A minimum value of 196992 is enforced. For RPP, the source may optionally override this value with a value less than or equal with the source configuration option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umerepositorydiskfilesizelimitsource">ume_repository_disk_file_size_limit (source)</a>. (units: bytes) </td><td><p class="starttd">104857600 (100 MB)</p>
+<td>repository-disk-file-size-limit </td><td>For topics with a <a class="el" href="configurationreferenceforumestored.html#umecfgrepositorytype">repository-type</a> of "disk", specifies the maximum amount of disk space that will be used to store retained messages. A minimum value of 196992 is enforced. For RPP, the source may optionally override this value with a value less than or equal with the source configuration option <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umerepositorydiskfilesizelimitsource">ume_repository_disk_file_size_limit (source)</a>. (units: bytes) </td><td><p class="starttd">104857600 (100 MB)</p>
 <p class="endtd"><a class="anchor" id="umecfgrepositorydiskfilepreallocate"></a></p>
 </td></tr>
 <tr>
-<td>repository-disk-file-preallocate </td><td>For topics with a <a class="el" href="configurationreferenceforumestored.html#umecfgrepositorytype">repository-type</a> of disk, if set to 1, UM pre-allocates a store's cache files to match their maximum size on disk (as configured by repository-disk-file-size-limit) upon creation, as opposed to growing to that size as the store receives new messages. For ext3/4 and NTFS file systems, this options creates a sparse file, which does not allocate all of the underlying data blocks. Advantages of pre-allocation include better performance on rotating disks due to less file fragmentation, and knowing that enough disk space exists for any new source that registers. Disadvantage is the time to create the cache files, especially if many sources register at once. </td><td><p class="starttd">0 (zero) - do not pre-allocate</p>
+<td>repository-disk-file-preallocate </td><td>For topics with a <a class="el" href="configurationreferenceforumestored.html#umecfgrepositorytype">repository-type</a> of "disk", if set to 1, UM pre-allocates a store's cache files to match their maximum size on disk (as configured by repository-disk-file-size-limit) upon creation, as opposed to growing to that size as the store receives new messages. For ext3/4 and NTFS file systems, this options creates a sparse file, which does not allocate all of the underlying data blocks. Advantages of pre-allocation include better performance on rotating disks due to less file fragmentation, and knowing that enough disk space exists for any new source that registers. Disadvantage is the time to create the cache files, especially if many sources register at once. </td><td><p class="starttd">0 (zero) - do not pre-allocate</p>
 <p class="endtd"><a class="anchor" id="umecfgrepositorydiskasyncbufferlength"></a></p>
 </td></tr>
 <tr>
-<td>repository-disk-async-buffer-length </td><td>For topics with a <a class="el" href="configurationreferenceforumestored.html#umecfgrepositorytype">repository-type</a> of disk or reduced-fd, specifies the size of the buffers that will be used in async I/O operations for reading and writing messages to disk. A minimum value of 65664 is enforced. (units: bytes) </td><td><p class="starttd">1024000</p>
+<td>repository-disk-async-buffer-length </td><td>For topics with a <a class="el" href="configurationreferenceforumestored.html#umecfgrepositorytype">repository-type</a> of "disk", specifies the size of the buffers that will be used in async I/O operations for reading and writing messages to disk. A minimum value of 65664 is enforced. (units: bytes) </td><td><p class="starttd">1024000</p>
 <p class="endtd"><a class="anchor" id="umecfgrepositorydiskmessagechecksum"></a></p>
 </td></tr>
 <tr>
-<td>repository-disk-message-checksum </td><td>For topics with a <a class="el" href="configurationreferenceforumestored.html#umecfgrepositorytype">repository-type</a> of disk or reduced-fd, specifies whether the messages saved to disk should include a checksum field or not for validation if the store is restarted. (units: flag) </td><td><p class="starttd">0 (disabled)</p>
+<td>repository-disk-message-checksum </td><td>For topics with a <a class="el" href="configurationreferenceforumestored.html#umecfgrepositorytype">repository-type</a> of "disk", specifies whether the messages saved to disk should include a checksum field or not for validation if the store is restarted. (units: flag) </td><td><p class="starttd">0 (disabled)</p>
 <p class="endtd"><a class="anchor" id="umecfgsourceactivitytimeout"></a></p>
 </td></tr>
 <tr>
-<td>source-activity-timeout </td><td>Establishes the period of time from a source's last activity to the release of the source's RegID. Stores return an error to any new source requesting the source's RegID during this period. If proxy sources are enabled (<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeproxysourcesource">ume_proxy_source (source)</a>) the store does not release the source's RegID and UM elects a proxy source. If neither proxy sources nor <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umestatelifetimesource">ume_state_lifetime (source)</a> are configured, the store also deletes the source's state and cache. Can be overridden by <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeactivitytimeoutsource">ume_activity_timeout (source)</a>. See also <a class="el" href="persistencefaulttolerance.html#persistenceproxysources">Persistence Proxy Sources</a>. (units: milliseconds) </td><td><p class="starttd">30000 (30 seconds)</p>
+<td>source-activity-timeout </td><td>Establishes the period of time from a source's last activity to the release of the source's RegID. Stores return an error to any new source requesting the source's RegID during this period. If proxy sources are enabled (<a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeproxysourcesource">ume_proxy_source (source)</a>) the store does not release the source's RegID and UM elects a proxy source. If neither proxy sources nor <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umestatelifetimesource">ume_state_lifetime (source)</a> are configured, the store also deletes the source's state and cache. Can be overridden by <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeactivitytimeoutsource">ume_activity_timeout (source)</a>. See also <a class="el" href="persistencefaulttolerance.html#persistenceproxysources">Persistence Proxy Sources</a>. (units: milliseconds) </td><td><p class="starttd">30000 (30 seconds)</p>
 <p class="endtd"><a class="anchor" id="umecfgsourcestatelifetime"></a></p>
 </td></tr>
 <tr>
-<td>source-state-lifetime </td><td>Establishes the period of time from a source's last activity to the deletion of the source's state and cache by the store, regardless of whether a proxy source has been created or not. You can also configure <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umestatelifetimesource">ume_state_lifetime (source)</a> for the source. The store uses whichever is shorter. See also <a class="el" href="persistencefaulttolerance.html#persistenceproxysources">Persistence Proxy Sources</a>. (units: milliseconds) </td><td><p class="starttd">0 (zero)</p>
+<td>source-state-lifetime </td><td>Establishes the period of time from a source's last activity to the deletion of the source's state and cache by the store, regardless of whether a proxy source has been created or not. You can also configure <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umestatelifetimesource">ume_state_lifetime (source)</a> for the source. The store uses whichever is shorter. See also <a class="el" href="persistencefaulttolerance.html#persistenceproxysources">Persistence Proxy Sources</a>. (units: milliseconds) </td><td><p class="starttd">0 (zero)</p>
 <p class="endtd"><a class="anchor" id="umecfgreceiveractivitytimeout"></a></p>
 </td></tr>
 <tr>
-<td>receiver-activity-timeout </td><td>Establishes the period of time from a receiver's last activity to the release of the receiver's RegID. Stores return an error to any new request for the receiver's RegID during this period. Can be overridden by <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeactivitytimeoutsource">ume_activity_timeout (source)</a>. See also <a class="el" href="persistencefaulttolerance.html#persistenceproxysources">Persistence Proxy Sources</a>. (units: milliseconds) </td><td><p class="starttd">30000 (30 seconds)</p>
+<td>receiver-activity-timeout </td><td>Establishes the period of time from a receiver's last activity to the release of the receiver's RegID. Stores return an error to any new request for the receiver's RegID during this period. Can be overridden by <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeactivitytimeoutreceiver">ume_activity_timeout (receiver)</a>. See also <a class="el" href="persistencefaulttolerance.html#persistenceproxysources">Persistence Proxy Sources</a>. (units: milliseconds) </td><td><p class="starttd">30000 (30 seconds)</p>
 <p class="endtd"><a class="anchor" id="umecfgreceiverstatelifetime"></a></p>
 </td></tr>
 <tr>
-<td>receiver-state-lifetime </td><td>Establishes the period of time from a receiver's last activity to the deletion of the receiver's state and cache by the store. You can also configure <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umestatelifetimereceiver">ume_state_lifetime (receiver)</a> for the receiver. The store uses whichever is shorter. See also <a class="el" href="persistencefaulttolerance.html#persistenceproxysources">Persistence Proxy Sources</a>. (units: milliseconds) </td><td><p class="starttd">0 (zero)</p>
+<td>receiver-state-lifetime </td><td>Establishes the period of time from a receiver's last activity to the deletion of the receiver's state and cache by the store. You can also configure <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umestatelifetimereceiver">ume_state_lifetime (receiver)</a> for the receiver. The store uses whichever is shorter. See also <a class="el" href="persistencefaulttolerance.html#persistenceproxysources">Persistence Proxy Sources</a>. (units: milliseconds) </td><td><p class="starttd">0 (zero)</p>
 <p class="endtd"><a class="anchor" id="umecfgsourcecheckinterval"></a></p>
 </td></tr>
 <tr>
@@ -613,19 +616,19 @@ Options for a Topic's ume-attributes Element&nbsp;&nbsp;<small><a href="#options
 <p class="endtd"><a class="anchor" id="umecfgrepositoryallowreceiverpacedpersistence"></a></p>
 </td></tr>
 <tr>
-<td>repository-allow-receiver-paced-persistence </td><td>Specifies if the repository allows receiver-paced persistence (1). If allowed, the source may optionally request RPP with <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umereceiverpacedpersistencesource">ume_receiver_paced_persistence (source)</a>. Both must be done for RPP to be in effect. </td><td><p class="starttd">0 (store does not allow the source to specify RPP)</p>
+<td>repository-allow-receiver-paced-persistence </td><td>Specifies if the repository allows receiver-paced persistence (1). If allowed, the source may optionally request RPP with <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umereceiverpacedpersistencesource">ume_receiver_paced_persistence (source)</a>. Both must be done for RPP to be in effect. </td><td><p class="starttd">0 (store does not allow the source to specify RPP)</p>
 <p class="endtd"><a class="anchor" id="umecfgrepositoryallowackonreception"></a></p>
 </td></tr>
 <tr>
-<td>repository-allow-ack-on-reception </td><td>For RPP, specifies if the repository allows the repository to perform "ack on reception" (1). If allowed, the source may optionally request "ack on reception" with <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umerepositoryackonreceptionsource">ume_repository_ack_on_reception (source)</a>. Both must be done for "ack on reception" to be in effect. For SPP and memory stores, this option has no effect. See <a class="el" href="operationalview.html#rppnormaloperation">RPP Normal Operation</a> for more information. </td><td><p class="starttd">0 (store does not allow the source to specify ack-on-reception behavior)</p>
+<td>repository-allow-ack-on-reception </td><td>For RPP, specifies if the repository allows the repository to perform "ack on reception" (1). If allowed, the source may optionally request "ack on reception" with <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umerepositoryackonreceptionsource">ume_repository_ack_on_reception (source)</a>. Both must be done for "ack on reception" to be in effect. For SPP and memory stores, this option has no effect. See <a class="el" href="operationalview.html#rppnormaloperation">RPP Normal Operation</a> for more information. </td><td><p class="starttd">0 (store does not allow the source to specify ack-on-reception behavior)</p>
 <p class="endtd"><a class="anchor" id="umecfgrepositorydiskwritedelay"></a></p>
 </td></tr>
 <tr>
-<td>repository-disk-write-delay </td><td>For topics with a repository-type of disk or reduced-fd, specifies the maximum delay in milliseconds after message reception before the repository persists a message to disk. For RPP, the source may optionally override this value with a value less than or equal with the source configuration option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umewritedelaysource">ume_write_delay (source)</a>. (units: milliseconds) </td><td><p class="starttd">0 milliseconds</p>
+<td>repository-disk-write-delay </td><td>For topics with a repository-type of disk, specifies the maximum delay in milliseconds after message reception before the repository persists a message to disk. For RPP, the source may optionally override this value with a value less than or equal with the source configuration option <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umewritedelaysource">ume_write_delay (source)</a>. (units: milliseconds) </td><td><p class="starttd">0 milliseconds</p>
 <p class="endtd"><a class="anchor" id="umecfgsourceflightsizebytesmaximum"></a></p>
 </td></tr>
 <tr>
-<td>source-flight-size-bytes-maximum </td><td>With RPP, specifies the maximum number of in-flight payload bytes that the source is allowed to configure with <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeflightsizebytessource">ume_flight_size_bytes (source)</a>. If the source attempts to configure <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeflightsizebytessource">ume_flight_size_bytes (source)</a> greater than the store's <a class="el" href="configurationreferenceforumestored.html#umecfgsourceflightsizebytesmaximum">source-flight-size-bytes-maximum</a>, the source registration is rejected. For SPP stores, this option has no effect (i.e. the source is not restricted in its configuration). See <a class="el" href="operationalview.html#persistenceflightsize">Persistence Flight Size</a> for more information. (units: bytes) </td><td>4194304 bytes (4MB) </td></tr>
+<td>source-flight-size-bytes-maximum </td><td>With RPP, specifies the maximum number of in-flight payload bytes that the source is allowed to configure with <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeflightsizebytessource">ume_flight_size_bytes (source)</a>. If the source attempts to configure <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeflightsizebytessource">ume_flight_size_bytes (source)</a> greater than the store's <a class="el" href="configurationreferenceforumestored.html#umecfgsourceflightsizebytesmaximum">source-flight-size-bytes-maximum</a>, the source registration is rejected. For SPP stores, this option has no effect (i.e. the source is not restricted in its configuration). See <a class="el" href="operationalview.html#persistenceflightsize">Persistence Flight Size</a> for more information. (units: bytes) </td><td>4194304 bytes (4MB) </td></tr>
 </table>
 <p><br />
  </p>

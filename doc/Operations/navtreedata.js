@@ -30,12 +30,12 @@ var NAVTREE =
         [ "Persistent Store Daemon Statistics", "monitoring.html#persistentstoredaemonstatistics", null ],
         [ "Detecting Persistent Store Failures", "monitoring.html#detectingpersistentstorefailures", null ]
       ] ],
-      [ "Monitoring the UM Router Daemon (tnwgd)", "monitoring.html#monitoringtheumrouterdaemontnwgd", [
-        [ "Monitoring UM Router Log File", "monitoring.html#monitoringumrouterlogfile", null ],
-        [ "UM Router Transport Statistics", "monitoring.html#umroutertransportstatistics", null ],
-        [ "UM Router Web Monitoring", "monitoring.html#umrouterwebmonitoring", null ],
-        [ "UM Router Daemon Statistics", "monitoring.html#op-umrouterdaemonstatistics", null ],
-        [ "Detecting UM Router Failures", "monitoring.html#detectingumrouterfailures", null ]
+      [ "Monitoring the DRO Daemon (tnwgd)", "monitoring.html#monitoringtheumrouterdaemontnwgd", [
+        [ "Monitoring DRO Log File", "monitoring.html#monitoringumrouterlogfile", null ],
+        [ "DRO Transport Statistics", "monitoring.html#umroutertransportstatistics", null ],
+        [ "DRO Web Monitoring", "monitoring.html#umrouterwebmonitoring", null ],
+        [ "DRO Daemon Statistics", "monitoring.html#op-umrouterdaemonstatistics", null ],
+        [ "Detecting DRO Failures", "monitoring.html#detectingumrouterfailures", null ]
       ] ],
       [ "Monitoring Messaging System Resources", "monitoring.html#monitoringmessagingsystemresources", [
         [ "Persistent Store System Considerations", "monitoring.html#persistentstoresystemconsiderations", null ],
@@ -53,9 +53,9 @@ var NAVTREE =
         [ "Restarting a Store", "startupshutdownprocedures.html#restartingastore", null ],
         [ "Common Startup and Shutdown Issues", "startupshutdownprocedures.html#commonstartupandshutdownissues", null ]
       ] ],
-      [ "UM Router (tnwgd)", "startupshutdownprocedures.html#umroutertnwgd", [
-        [ "Starting a UM Router", "startupshutdownprocedures.html#startingaumrouter", null ],
-        [ "Restarting a UM Router", "startupshutdownprocedures.html#restartingaumrouter", null ]
+      [ "DRO (tnwgd)", "startupshutdownprocedures.html#umroutertnwgd", [
+        [ "Starting a DRO", "startupshutdownprocedures.html#startingaumrouter", null ],
+        [ "Restarting a DRO", "startupshutdownprocedures.html#restartingaumrouter", null ]
       ] ],
       [ "UM Daemons as Windows Services", "startupshutdownprocedures.html#umdaemonsaswindowsservices", [
         [ "Install the Windows Service", "startupshutdownprocedures.html#installthewindowsservice", null ],
@@ -84,7 +84,7 @@ var NAVTREE =
         [ "Event Queue Statistics", "monitoringumwiththelbmmonapi.html#eventqueuestatistics", null ],
         [ "Source or Receiver Transport Statistics", "monitoringumwiththelbmmonapi.html#sourceorreceivertransportstatistics", null ]
       ] ],
-      [ "UM Monitoring API", "monitoringumwiththelbmmonapi.html#umsmonitoringapi", [
+      [ "\"lbmmon\" API", "monitoringumwiththelbmmonapi.html#lbmmonapi", [
         [ "Monitoring Process Flow", "monitoringumwiththelbmmonapi.html#monitoringprocessflow", null ],
         [ "API Framework Flexibility", "monitoringumwiththelbmmonapi.html#apiframeworkflexibility", null ],
         [ "Initial Monitoring Questions", "monitoringumwiththelbmmonapi.html#initialmonitoringquestions", null ],
@@ -116,7 +116,7 @@ var NAVTREE =
     [ "Troubleshooting UM Applications", "troubleshootingumapplications.html", [
       [ "Application Crashes", "troubleshootingumapplications.html#applicationcrashes", [
         [ "Persistent Store Crashed", "troubleshootingumapplications.html#persistentstorecrashed", null ],
-        [ "UM Router Crashed", "troubleshootingumapplications.html#umroutercrashed", null ],
+        [ "DRO Crashed", "troubleshootingumapplications.html#umroutercrashed", null ],
         [ "Excessive Resource Use", "troubleshootingumapplications.html#excessiveresourceuse", null ],
         [ "Crash on deletion of an object", "troubleshootingumapplications.html#crashondeletionofanobject", null ],
         [ "Datagram size mismatches", "troubleshootingumapplications.html#datagramsizemismatches", null ]

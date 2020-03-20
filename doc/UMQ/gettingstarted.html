@@ -90,14 +90,17 @@ Consult your Informatica sales engineer for the download procedure and appropria
 Download the installation files to the installation directory and run the installation script. </li>
 <li>
 <p class="startli">Locate the documentation .zip package and unzip it into the installation directory. For example:</p>
-<div class="fragment"><div class="line">unzip UMQ_6.12.1_doc.zip -d &lt;InstallDir&gt;/</div></div><!-- fragment --> </li>
+<pre class="fragment">unzip UMQ_6.13_doc.zip -d &lt;InstallDir&gt;/
+</pre> </li>
 <li>
 Copy the license file into a location that is accessible to the Ultra Messaging library. </li>
 <li>
-<p class="startli">Set the Ultra Messaging license environment variable to the full path name of the license file. For example: </p><div class="fragment"><div class="line">export LBM_LICENSE_FILENAME=/path/filename.lic</div></div><!-- fragment --><p class="endli"></p>
+<p class="startli">Set the Ultra Messaging license environment variable to the full path name of the license file. For example: </p><pre class="fragment">export LBM_LICENSE_FILENAME=/path/filename.lic
+</pre><p class="endli"></p>
 </li>
 <li>
-Add the library to the library path. For example, use the following line: <div class="fragment"><div class="line">export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:&lt;InstallDir&gt;/UMQ_6.12.1/&lt;platform&gt;/lib</div></div><!-- fragment --> </li>
+Add the library to the library path. For example, use the following line: <pre class="fragment">export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:&lt;InstallDir&gt;/UMQ_6.13/&lt;platform&gt;/lib
+</pre> </li>
 </ol>
 <p><br />
  </p>
@@ -106,19 +109,49 @@ Starting a Single-Node Queuing System&nbsp;&nbsp;<small><a href="#startingasingl
 <p>After you have installed Ultra Messaging, run the daemons and sample applications to verify successful installation.</p>
 <ol>
 <li>
-<p class="startli">Start the broker with the following command: </p><div class="fragment"><div class="line">&lt;InstallDir&gt;/UMQ_6.12.1/&lt;platform&gt;/broker/apache-activemq-5.10.0/bin/activemq start</div></div><!-- fragment --><p class="endli"></p>
+<p class="startli">Start the broker with the following command: </p><pre class="fragment">&lt;InstallDir&gt;/UMQ_6.13/&lt;platform&gt;/broker/apache-activemq-5.10.0/bin/activemq start
+</pre><p class="endli"></p>
 </li>
 <li>
-<p class="startli">Start the sample receiving application with the following commands: </p><div class="fragment"><div class="line">&lt;InstallDir&gt;/UMQ_6.12.1/&lt;platform&gt;/bin/umqrcv -B &lt;brokerIP:port&gt; -r 10 QueueDestA</div></div><!-- fragment --><p class="endli"></p>
+<p class="startli">Start the sample receiving application with the following commands: </p><pre class="fragment">&lt;InstallDir&gt;/UMQ_6.13/&lt;platform&gt;/bin/umqrcv -B &lt;brokerIP:port&gt; -r 10 QueueDestA
+</pre><p class="endli"></p>
 </li>
 <li>
-<p class="startli">In a second command window, start the sample sending application with the following command: </p><div class="fragment"><div class="line">&lt;InstallDir&gt;/UMQ_6.12.1/&lt;platform&gt;/bin/umqsrc -B &lt;brokerIP:port&gt; -M 10 QueueDestA</div></div><!-- fragment --><p>In the sending application window, you see output similar to the following example display: </p><div class="fragment"><div class="line">0 msgs/sec -&gt; 1 msgs/ivl, 0 msec ivl</div><div class="line">Using flight size of 1000</div><div class="line">Not <span class="keyword">using</span> UME Late Join.</div><div class="line">Using UMQ Message Stability Notification. Will not display events. Delaying <span class="keywordflow">for</span> 1 second</div><div class="line">UMQ queue <span class="stringliteral">&quot;(Broker: Default IP: 10.29.3.49 PORT: 5672 )&quot;</span>[0][Inst: 10.29.3.49/5672] [0] ctx registration. ID 92da70611c65ece4 Flags 0</div><div class="line">UMQ queue <span class="stringliteral">&quot;(Broker: Default IP: 10.29.3.49 PORT: 5672 )&quot;</span>[0] ctx registration complete. ID 92da70611c65ece4 Flags 0</div><div class="line">UMQ <span class="stringliteral">&quot;(Broker: Default IP: 10.29.3.49 PORT: 5672 )&quot;</span>[0] src registration complete. Flags 0</div><div class="line">Sending 10 messages of size 25 bytes to topic [QueueDestA]</div><div class="line">Sent 10 messages of size 25 bytes in 1.003 seconds.</div><div class="line">1.003 secs. 0.009965 Kmsgs/sec. 1.993 Kbps</div><div class="line">[BROKER], sent 10/1660, app sent 10 stable 0 inflight 10 Lingering <span class="keywordflow">for</span> 5 seconds...</div><div class="line">Deleting source</div><div class="line">Deleting context</div></div><!-- fragment --><p>In the receiving application window, you see messages being received, as in the following example display: </p><div class="fragment"><div class="line">Request port binding disabled, no immediate messaging target.</div><div class="line">UMQ queue <span class="stringliteral">&quot;(Broker: Default IP: 10.29.3.49 PORT: 5672 )&quot;</span>[0][Inst: 10.29.3.49/5672] [0] ctx registration. ID a1387d282ba177d2 Flags 0</div><div class="line">UMQ queue <span class="stringliteral">&quot;(Broker: Default IP: 10.29.3.49 PORT: 5672 )&quot;</span>[0] ctx registration complete. ID a1387d282ba177d2 Flags 0</div><div class="line">[QueueDestA][(Broker: Default IP: 10.29.3.49 PORT: 5672 )] UMQ <span class="stringliteral">&quot;(Broker: Default IP: 10.29.3.49 PORT: 5672 )&quot;</span>[0] registration complete. AssignID 0. Flags 0</div><div class="line">1.001 secs. 0</div><div class="line">1.001 secs. 0</div><div class="line">1.001 secs. 0</div><div class="line">1.001 secs. 0</div><div class="line">1.001 secs. 0</div><div class="line">1.001 secs. 0.009991 Kmsgs/sec.</div><div class="line">Quitting.... received 10 messages (0 reassigned, 0 resubmitted)</div></div><!-- fragment --><p class="endli"><br />
+<p class="startli">In a second command window, start the sample sending application with the following command: </p><pre class="fragment">&lt;InstallDir&gt;/UMQ_6.13/&lt;platform&gt;/bin/umqsrc -B &lt;brokerIP:port&gt; -M 10 QueueDestA
+</pre><p>In the sending application window, you see output similar to the following example display: </p><pre class="fragment">0 msgs/sec -&gt; 1 msgs/ivl, 0 msec ivl
+Using flight size of 1000
+Not using UME Late Join.
+Using UMQ Message Stability Notification. Will not display events. Delaying for 1 second
+UMQ queue "(Broker: Default IP: 10.29.3.49 PORT: 5672 )"[0][Inst: 10.29.3.49/5672] [0] ctx registration. ID 92da70611c65ece4 Flags 0
+UMQ queue "(Broker: Default IP: 10.29.3.49 PORT: 5672 )"[0] ctx registration complete. ID 92da70611c65ece4 Flags 0
+UMQ "(Broker: Default IP: 10.29.3.49 PORT: 5672 )"[0] src registration complete. Flags 0
+Sending 10 messages of size 25 bytes to topic [QueueDestA]
+Sent 10 messages of size 25 bytes in 1.003 seconds.
+1.003 secs. 0.009965 Kmsgs/sec. 1.993 Kbps
+[BROKER], sent 10/1660, app sent 10 stable 0 inflight 10 Lingering for 5 seconds...
+Deleting source
+Deleting context
+</pre><p>In the receiving application window, you see messages being received, as in the following example display: </p><pre class="fragment">Request port binding disabled, no immediate messaging target.
+UMQ queue "(Broker: Default IP: 10.29.3.49 PORT: 5672 )"[0][Inst: 10.29.3.49/5672] [0] ctx registration. ID a1387d282ba177d2 Flags 0
+UMQ queue "(Broker: Default IP: 10.29.3.49 PORT: 5672 )"[0] ctx registration complete. ID a1387d282ba177d2 Flags 0
+[QueueDestA][(Broker: Default IP: 10.29.3.49 PORT: 5672 )] UMQ "(Broker: Default IP: 10.29.3.49 PORT: 5672 )"[0] registration complete. AssignID 0. Flags 0
+1.001 secs. 0
+1.001 secs. 0
+1.001 secs. 0
+1.001 secs. 0
+1.001 secs. 0
+1.001 secs. 0.009991 Kmsgs/sec.
+Quitting.... received 10 messages (0 reassigned, 0 resubmitted)
+</pre><p class="endli"><br />
  </p>
 </li>
 </ol>
 <h1><a class="anchor" id="shuttingdownasinglenodebroker"></a>
 Shutting Down a Single-Node Broker&nbsp;&nbsp;<small><a href="#shuttingdownasinglenodebroker">&lt;-</a></small></h1>
-<p>Shut down the broker with the following command: </p><div class="fragment"><div class="line">&lt;InstallDir&gt;/UMQ_6.12.1/&lt;platform&gt;/broker/apache-activemq-5.10.0/bin/activemq stop</div><div class="line">Kmsgs/sec. 0 Kmsgs/sec. 0 Kmsgs/sec. 0 Kmsgs/sec. 0 Kmsgs/sec. 0</div><div class="line">Kbps Kbps Kbps Kbps Kbps 1.998 Kbps</div></div><!-- fragment --><p><br />
+<p>Shut down the broker with the following command: </p><pre class="fragment">&lt;InstallDir&gt;/UMQ_6.13/&lt;platform&gt;/broker/apache-activemq-5.10.0/bin/activemq stop
+Kmsgs/sec. 0 Kmsgs/sec. 0 Kmsgs/sec. 0 Kmsgs/sec. 0 Kmsgs/sec. 0
+Kbps Kbps Kbps Kbps Kbps 1.998 Kbps
+</pre><p><br />
  </p>
 <h1><a class="anchor" id="highavailabilityinstallation"></a>
 High Availability Installation&nbsp;&nbsp;<small><a href="#highavailabilityinstallation">&lt;-</a></small></h1>
@@ -130,28 +163,37 @@ Consult your Informatica sales engineer for the download procedure and appropria
 <li>
 Download the installation files to the installation directory of the first broker host and run the installation script. </li>
 <li>
-<p class="startli">Locate the documentation .zip package and unzip it into the installation directory. For example: </p><div class="fragment"><div class="line">unzip UMQ_6.12.1_doc.zip -d &lt;InstallDir&gt;/</div></div><!-- fragment --><p class="endli"></p>
+<p class="startli">Locate the documentation .zip package and unzip it into the installation directory. For example: </p><pre class="fragment">unzip UMQ_6.13_doc.zip -d &lt;InstallDir&gt;/
+</pre><p class="endli"></p>
 </li>
 <li>
 Copy the license file into a location that is accessible to the Ultra Messaging library. </li>
 <li>
-<p class="startli">Set the Ultra Messaging license environment variable to the full path name of the license file. For example: </p><div class="fragment"><div class="line">export LBM_LICENSE_FILENAME=/path/filename.lic</div></div><!-- fragment --><p class="endli"></p>
+<p class="startli">Set the Ultra Messaging license environment variable to the full path name of the license file. For example: </p><pre class="fragment">export LBM_LICENSE_FILENAME=/path/filename.lic
+</pre><p class="endli"></p>
 </li>
 <li>
-<p class="startli">Add the library to the library path. For example, use the following line: </p><div class="fragment"><div class="line">export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:&lt;InstallDir&gt;/UMQ_6.12.1/&lt;platform&gt;/lib</div></div><!-- fragment --><p class="endli"></p>
+<p class="startli">Add the library to the library path. For example, use the following line: </p><pre class="fragment">export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:&lt;InstallDir&gt;/UMQ_6.13/&lt;platform&gt;/lib
+</pre><p class="endli"></p>
 </li>
 <li>
 <p class="startli">A high availability broker node contains a working configuration directory and a default configuration directory for each unique node in a multiple node arrangement.</p>
-<p>Create the store repository directories. Then, depending on which host you are configuring, copy the default broker1, broker2, or broker3 configuration file to the working configuration directory with the following example commands: </p><div class="fragment"><div class="line">mkdir &lt;InstallDir&gt;/UMQ_6.12.1/&lt;platform&gt;/broker/store/</div><div class="line">mkdir &lt;InstallDir&gt;/UMQ_6.12.1/&lt;platform&gt;/broker/store/cache</div><div class="line">mkdir &lt;InstallDir&gt;/UMQ_6.12.1/&lt;platform&gt;/broker/store/state</div><div class="line">cp &lt;InstallDir&gt;/UMQ_6.12.1/&lt;platform&gt;/broker/deployments/three_replicating_brokers/broker1/um.xml &lt;InstallDir&gt;/UMQ_6.12.1/&lt;platform&gt;/broker</div></div><!-- fragment --><p class="endli"></p>
+<p>Create the store repository directories. Then, depending on which host you are configuring, copy the default broker1, broker2, or broker3 configuration file to the working configuration directory with the following example commands: </p><pre class="fragment">mkdir &lt;InstallDir&gt;/UMQ_6.13/&lt;platform&gt;/broker/store/
+mkdir &lt;InstallDir&gt;/UMQ_6.13/&lt;platform&gt;/broker/store/cache
+mkdir &lt;InstallDir&gt;/UMQ_6.13/&lt;platform&gt;/broker/store/state
+cp &lt;InstallDir&gt;/UMQ_6.13/&lt;platform&gt;/broker/deployments/three_replicating_brokers/broker1/um.xml &lt;InstallDir&gt;/UMQ_6.13/&lt;platform&gt;/broker
+</pre><p class="endli"></p>
 </li>
 <li>
-<p class="startli">Edit the um.xml configuration file that is in &lt;InstallDir&gt;/UMQ_6.12.1/&lt;platform&gt;/broker/ to set the resolver IP addresses and ports for all three nodes, as shown in the following example: </p><div class="fragment"><div class="line">&lt;option name=<span class="stringliteral">&quot;resolver_unicast_daemon&quot;</span> <span class="keywordflow">default</span>-value=<span class="stringliteral">&quot;10.33.200.201:21212&quot;</span>/&gt;</div><div class="line">&lt;option name=<span class="stringliteral">&quot;resolver_unicast_daemon&quot;</span> <span class="keywordflow">default</span>-value=<span class="stringliteral">&quot;10.33.200.202:21212&quot;</span>/&gt;</div><div class="line">&lt;option name=<span class="stringliteral">&quot;resolver_unicast_daemon&quot;</span> <span class="keywordflow">default</span>-value=<span class="stringliteral">&quot;10.33.200.203:21212&quot;</span>/&gt;</div></div><!-- fragment --><p> Also, set the local broker host interface addresses to the IP address of a network interface on the current broker host that has connectivity to the other broker hosts, and to the servers where the clients run, as shown in the following example: </p><div class="fragment"><div class="line">&lt;option name=<span class="stringliteral">&quot;resolver_multicast_interface&quot;</span> <span class="keywordflow">default</span>-value=<span class="stringliteral">&quot;10.33.200.201&quot;</span>/&gt;</div><div class="line">&lt;option name=<span class="stringliteral">&quot;resolver_unicast_interface&quot;</span> <span class="keywordflow">default</span>-value=<span class="stringliteral">&quot;10.33.200.201&quot;</span>/&gt;</div><div class="line">&lt;option name=<span class="stringliteral">&quot;request_tcp_interface&quot;</span> <span class="keywordflow">default</span>-value=<span class="stringliteral">&quot;10.33.200.201&quot;</span>/&gt;</div><div class="line">&lt;option name=<span class="stringliteral">&quot;response_tcp_interface&quot;</span> <span class="keywordflow">default</span>-value=<span class="stringliteral">&quot;10.33.200.201 &quot;</span>/&gt;</div></div><!-- fragment --><dl class="section note"><dt>Note</dt><dd>Do not change any values in the broker um.xml configuration file other than interfaces and addresses shown in this step.</dd></dl>
+<p class="startli">Edit the um.xml configuration file that is in &lt;InstallDir&gt;/UMQ_6.13/&lt;platform&gt;/broker/ to set the resolver IP addresses and ports for all three nodes, as shown in the following example: </p><div class="fragment"><div class="line">&lt;option name=<span class="stringliteral">&quot;resolver_unicast_daemon&quot;</span> <span class="keywordflow">default</span>-value=<span class="stringliteral">&quot;10.33.200.201:21212&quot;</span>/&gt;</div><div class="line">&lt;option name=<span class="stringliteral">&quot;resolver_unicast_daemon&quot;</span> <span class="keywordflow">default</span>-value=<span class="stringliteral">&quot;10.33.200.202:21212&quot;</span>/&gt;</div><div class="line">&lt;option name=<span class="stringliteral">&quot;resolver_unicast_daemon&quot;</span> <span class="keywordflow">default</span>-value=<span class="stringliteral">&quot;10.33.200.203:21212&quot;</span>/&gt;</div></div><!-- fragment --><p> Also, set the local broker host interface addresses to the IP address of a network interface on the current broker host that has connectivity to the other broker hosts, and to the servers where the clients run, as shown in the following example: </p><div class="fragment"><div class="line">&lt;option name=<span class="stringliteral">&quot;resolver_multicast_interface&quot;</span> <span class="keywordflow">default</span>-value=<span class="stringliteral">&quot;10.33.200.201&quot;</span>/&gt;</div><div class="line">&lt;option name=<span class="stringliteral">&quot;resolver_unicast_interface&quot;</span> <span class="keywordflow">default</span>-value=<span class="stringliteral">&quot;10.33.200.201&quot;</span>/&gt;</div><div class="line">&lt;option name=<span class="stringliteral">&quot;request_tcp_interface&quot;</span> <span class="keywordflow">default</span>-value=<span class="stringliteral">&quot;10.33.200.201&quot;</span>/&gt;</div><div class="line">&lt;option name=<span class="stringliteral">&quot;response_tcp_interface&quot;</span> <span class="keywordflow">default</span>-value=<span class="stringliteral">&quot;10.33.200.201 &quot;</span>/&gt;</div></div><!-- fragment --><dl class="section note"><dt>Note</dt><dd>Do not change any values in the broker um.xml configuration file other than interfaces and addresses shown in this step.</dd></dl>
 </li>
 <li>
-<p class="startli">Depending on which host you are configuring, copy the default broker1, broker2, or broker3 stored.xml configuration file to the working configuration directory with the following broker1 example command: </p><div class="fragment"><div class="line">cp &lt;InstallDir&gt;/UMQ_6.12.1/&lt;platform&gt;/broker/deployments/three_replicating_brokers/broker1/store/stored.xml &lt;InstallDir&gt;/UMQ_6.12.1/&lt;platform&gt;/broker/store</div></div><!-- fragment --><p class="endli"></p>
+<p class="startli">Depending on which host you are configuring, copy the default broker1, broker2, or broker3 stored.xml configuration file to the working configuration directory with the following broker1 example command: </p><pre class="fragment">cp &lt;InstallDir&gt;/UMQ_6.13/&lt;platform&gt;/broker/deployments/three_replicating_brokers/broker1/store/stored.xml &lt;InstallDir&gt;/UMQ_6.13/&lt;platform&gt;/broker/store
+</pre><p class="endli"></p>
 </li>
 <li>
-Depending on which host you are configuring, copy the default broker1, broker2, or broker3 ActiveMQ configuration file to the working configuration directory with the following broker1 example command: <div class="fragment"><div class="line">cp &lt;InstallDir&gt;/UMQ_6.12.1/&lt;platform&gt;/broker/deployments/three_replicating_brokers/broker1/apache-activemq-5.10.0/conf/activemq.xml &lt;InstallDir&gt;/UMQ_6.12.1/&lt;platform&gt;/broker/apache-activemq-5.10.0/conf</div></div><!-- fragment --> </li>
+Depending on which host you are configuring, copy the default broker1, broker2, or broker3 ActiveMQ configuration file to the working configuration directory with the following broker1 example command: <pre class="fragment">cp &lt;InstallDir&gt;/UMQ_6.13/&lt;platform&gt;/broker/deployments/three_replicating_brokers/broker1/apache-activemq-5.10.0/conf/activemq.xml &lt;InstallDir&gt;/UMQ_6.13/&lt;platform&gt;/broker/apache-activemq-5.10.0/conf
+</pre> </li>
 <li>
 <p class="startli">Repeat steps 1-10 for the second broker host, and again for the third broker host, making sure to copy the configuration files from ...three_replication_brokers/broker2/... or ...three_replication_brokers/broker3/... as needed.</p>
 <p class="endli"><br />
@@ -163,17 +205,48 @@ Starting a High Availability Queuing System&nbsp;&nbsp;<small><a href="#starting
 <p>After you have installed Ultra Messaging, run the daemons and sample applications to verify successful installation.</p>
 <ol>
 <li>
-On the first host, start the lbmrd resolver daemon with the following example command: <div class="fragment"><div class="line">&lt;InstallDir&gt;/UMQ_6.12.1/&lt;platform&gt;/bin/lbmrd -i 10.33.200.201 -p 21212 &amp;</div></div><!-- fragment --> </li>
+On the first host, start the lbmrd resolver daemon with the following example command: <pre class="fragment">&lt;InstallDir&gt;/UMQ_6.13/&lt;platform&gt;/bin/lbmrd -i 10.33.200.201 -p 21212 &amp;
+</pre> </li>
 <li>
-Start the umestored daemon with the following example commands: <div class="fragment"><div class="line">cd &lt;InstallDir&gt;/UMQ_6.12.1/&lt;platform&gt;/broker/store</div><div class="line">&lt;InstallDir&gt;/UMQ_6.12.1/&lt;platform&gt;/bin/umestored stored.xml &amp;</div></div><!-- fragment --> </li>
+Start the umestored daemon with the following example commands: <pre class="fragment">cd &lt;InstallDir&gt;/UMQ_6.13/&lt;platform&gt;/broker/store
+&lt;InstallDir&gt;/UMQ_6.13/&lt;platform&gt;/bin/umestored stored.xml &amp;
+</pre> </li>
 <li>
-Start the broker with the following example commands: <div class="fragment"><div class="line">cd &lt;InstallDir&gt;/UMQ_6.12.1/&lt;platform&gt;/broker/apache-activemq-5.10.0</div><div class="line">&lt;InstallDir&gt;/UMQ_6.12.1/&lt;platform&gt;/broker/apache-activemq-5.10.0/bin/activemq start</div></div><!-- fragment --> </li>
+Start the broker with the following example commands: <pre class="fragment">cd &lt;InstallDir&gt;/UMQ_6.13/&lt;platform&gt;/broker/apache-activemq-5.10.0
+&lt;InstallDir&gt;/UMQ_6.13/&lt;platform&gt;/broker/apache-activemq-5.10.0/bin/activemq start
+</pre> </li>
 <li>
 Repeat steps 1-3 on the second and third host. </li>
 <li>
-Start the sample receiving application with the following commands: <div class="fragment"><div class="line">&lt;InstallDir&gt;/UMQ_6.12.1/&lt;platform&gt;/bin/umqrcv -B &lt;broker1IP:port1,broker2IP:port2,broker3IP:port3&gt; -r 10 QueueDestA</div></div><!-- fragment --> </li>
+Start the sample receiving application with the following commands: <pre class="fragment">&lt;InstallDir&gt;/UMQ_6.13/&lt;platform&gt;/bin/umqrcv -B &lt;broker1IP:port1,broker2IP:port2,broker3IP:port3&gt; -r 10 QueueDestA
+</pre> </li>
 <li>
-<p class="startli">In a second command window, start the sample sending application with the following command: </p><div class="fragment"><div class="line">&lt;InstallDir&gt;/UMQ_6.12.1/&lt;platform&gt;/bin/umqsrc -B &lt;broker1IP:port1,broker2IP:port2,broker3IP:port3&gt; -M 10 QueueDestA</div></div><!-- fragment --><p>In the sending application window, you see output similar to the following example display: </p><div class="fragment"><div class="line">0 msgs/sec -&gt; 1 msgs/ivl, 0 msec ivl</div><div class="line">Using flight size of 1000</div><div class="line">Not <span class="keyword">using</span> UME Late Join.</div><div class="line">Using UMQ Message Stability Notification. Will not display events. Delaying <span class="keywordflow">for</span> 1 second</div><div class="line">LOG Level 4: Core-8901-03: BROKER: Disconnect detected <span class="keywordflow">while</span> establishing broker connection (10.29.3.85:5672).</div><div class="line">UMQ queue <span class="stringliteral">&quot;(Broker: Default IP: 10.29.3.49 PORT: 5672 )&quot;</span>[0][Inst: 10.29.3.49/5672] [0] ctx registration. ID f544ce868d92a087 Flags 0</div><div class="line">UMQ queue <span class="stringliteral">&quot;(Broker: Default IP: 10.29.3.49 PORT: 5672 )&quot;</span>[0] ctx registration complete. ID f544ce868d92a087 Flags 0</div><div class="line">UMQ <span class="stringliteral">&quot;(Broker: Default IP: 10.29.3.49 PORT: 5672 )&quot;</span>[0] src registration complete. Flags 0</div><div class="line">Sending 10 messages of size 25 bytes to topic [QueueTstA] Sent 10 messages of size 25 bytes in 1.003 seconds. 1.003 secs. 0.009972 Kmsgs/sec. 1.994 Kbps</div><div class="line">[BROKER], sent 10/1660, app sent 10 stable 0 inflight 10 Lingering <span class="keywordflow">for</span> 5 seconds...</div><div class="line">Deleting source Deleting context</div></div><!-- fragment --><p>In the receiving application window, you see messages being received, as in the following example display: </p><div class="fragment"><div class="line">Request port binding disabled, no immediate messaging target.</div><div class="line">LOG Level 4: Core-8901-03: BROKER: Disconnect detected <span class="keywordflow">while</span> establishing broker connection (10.29.3.85:5672).</div><div class="line">UMQ queue <span class="stringliteral">&quot;(Broker: Default IP: 10.29.3.49 PORT: 5672 )&quot;</span>[0][Inst: 10.29.3.49/5672] [0] ctx registration. ID a8c3c09a7ccb1476 Flags 0</div><div class="line">UMQ queue <span class="stringliteral">&quot;(Broker: Default IP: 10.29.3.49 PORT: 5672 )&quot;</span>[0] ctx registration complete. ID a8c3c09a7ccb1476 Flags 0</div><div class="line">[QueueTstA][(Broker: Default IP: 10.29.3.49 PORT: 5672 )] UMQ <span class="stringliteral">&quot;(Broker: Default IP: 10.29.3.49 PORT: 5672 )&quot;</span>[0] registration complete. AssignID 0. Flags 0</div><div class="line">1.001 secs. 0      Kmsgs/sec.  0          Kbps</div><div class="line">1.001 secs. 0      Kmsgs/sec.  0          Kbps</div><div class="line">1.001 secs. 0      Kmsgs/sec.  0          Kbps</div><div class="line">1.001 secs. 0      Kmsgs/sec.  0          Kbps</div><div class="line">1.001 secs. 0      Kmsgs/sec.  0          Kbps</div><div class="line">1.001 secs. 0.007993 Kmsgs/sec.  1.599 Kbps</div><div class="line">1.001 secs. 0.001998 Kmsgs/sec.  0.3996 Kbps</div><div class="line">Quitting.... received 10 messages (0 reassigned, 0 resubmitted)</div></div><!-- fragment --><p class="endli"><br />
+<p class="startli">In a second command window, start the sample sending application with the following command: </p><pre class="fragment">&lt;InstallDir&gt;/UMQ_6.13/&lt;platform&gt;/bin/umqsrc -B &lt;broker1IP:port1,broker2IP:port2,broker3IP:port3&gt; -M 10 QueueDestA
+</pre><p>In the sending application window, you see output similar to the following example display: </p><pre class="fragment">0 msgs/sec -&gt; 1 msgs/ivl, 0 msec ivl
+Using flight size of 1000
+Not using UME Late Join.
+Using UMQ Message Stability Notification. Will not display events. Delaying for 1 second
+LOG Level 4: Core-8901-03: BROKER: Disconnect detected while establishing broker connection (10.29.3.85:5672).
+UMQ queue "(Broker: Default IP: 10.29.3.49 PORT: 5672 )"[0][Inst: 10.29.3.49/5672] [0] ctx registration. ID f544ce868d92a087 Flags 0
+UMQ queue "(Broker: Default IP: 10.29.3.49 PORT: 5672 )"[0] ctx registration complete. ID f544ce868d92a087 Flags 0
+UMQ "(Broker: Default IP: 10.29.3.49 PORT: 5672 )"[0] src registration complete. Flags 0
+Sending 10 messages of size 25 bytes to topic [QueueTstA] Sent 10 messages of size 25 bytes in 1.003 seconds. 1.003 secs. 0.009972 Kmsgs/sec. 1.994 Kbps
+[BROKER], sent 10/1660, app sent 10 stable 0 inflight 10 Lingering for 5 seconds...
+Deleting source Deleting context
+</pre><p>In the receiving application window, you see messages being received, as in the following example display: </p><pre class="fragment">Request port binding disabled, no immediate messaging target.
+LOG Level 4: Core-8901-03: BROKER: Disconnect detected while establishing broker connection (10.29.3.85:5672).
+UMQ queue "(Broker: Default IP: 10.29.3.49 PORT: 5672 )"[0][Inst: 10.29.3.49/5672] [0] ctx registration. ID a8c3c09a7ccb1476 Flags 0
+UMQ queue "(Broker: Default IP: 10.29.3.49 PORT: 5672 )"[0] ctx registration complete. ID a8c3c09a7ccb1476 Flags 0
+[QueueTstA][(Broker: Default IP: 10.29.3.49 PORT: 5672 )] UMQ "(Broker: Default IP: 10.29.3.49 PORT: 5672 )"[0] registration complete. AssignID 0. Flags 0
+1.001 secs. 0      Kmsgs/sec.  0          Kbps
+1.001 secs. 0      Kmsgs/sec.  0          Kbps
+1.001 secs. 0      Kmsgs/sec.  0          Kbps
+1.001 secs. 0      Kmsgs/sec.  0          Kbps
+1.001 secs. 0      Kmsgs/sec.  0          Kbps
+1.001 secs. 0.007993 Kmsgs/sec.  1.599 Kbps
+1.001 secs. 0.001998 Kmsgs/sec.  0.3996 Kbps
+Quitting.... received 10 messages (0 reassigned, 0 resubmitted)
+</pre><p class="endli"><br />
  </p>
 </li>
 </ol>
@@ -182,7 +255,8 @@ Shutting Down High Availability Nodes&nbsp;&nbsp;<small><a href="#shuttingdownhi
 <p>To shut down a high availability queuing system node, perform the following steps:</p>
 <ol>
 <li>
-Shut down the broker with the following command: <div class="fragment"><div class="line">&lt;InstallDir&gt;/UMQ_6.12.1/&lt;platform&gt;/broker/apache-activemq-5.10.0/bin/activemq stop</div></div><!-- fragment --> </li>
+Shut down the broker with the following command: <pre class="fragment">&lt;InstallDir&gt;/UMQ_6.13/&lt;platform&gt;/broker/apache-activemq-5.10.0/bin/activemq stop
+</pre> </li>
 <li>
 Shut down the umestored process. </li>
 <li>

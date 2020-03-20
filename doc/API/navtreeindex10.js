@@ -1,5 +1,16 @@
 var NAVTREEINDEX10 =
 {
+"structlbm__msg__ume__deregistration__ex__t__stct.html#a0aa9e13f879639d2eabb627591bfe293":[4,0,27,2],
+"structlbm__msg__ume__deregistration__ex__t__stct.html#a18e985fa2fd4a7e8e0dcb726926a2182":[4,0,27,1],
+"structlbm__msg__ume__deregistration__ex__t__stct.html#a4b8582e9dd49b557b1786059fdeef3fa":[4,0,27,3],
+"structlbm__msg__ume__deregistration__ex__t__stct.html#a6827032e1b855702472a2f464d09773d":[4,0,27,4],
+"structlbm__msg__ume__deregistration__ex__t__stct.html#aa33531a4f352ab8e634e51d41e704691":[4,0,27,5],
+"structlbm__msg__ume__deregistration__ex__t__stct.html#ae59d53fa5e3435fb9bafb14abaca1a4d":[4,0,27,0],
+"structlbm__msg__ume__registration__complete__ex__t__stct.html":[4,0,28],
+"structlbm__msg__ume__registration__complete__ex__t__stct.html#a020b90070d750107b5bc006dd4a82fe9":[4,0,28,0],
+"structlbm__msg__ume__registration__complete__ex__t__stct.html#a118c90639b2359b138d580727f2c2eef":[4,0,28,2],
+"structlbm__msg__ume__registration__complete__ex__t__stct.html#aee71c36e8fe1a9d314f294b35a79d4b3":[4,0,28,1],
+"structlbm__msg__ume__registration__ex__t__stct.html":[4,0,29],
 "structlbm__msg__ume__registration__ex__t__stct.html#a2fd3cf7fdfdb852283cd8ba1cc0d1390":[4,0,29,0],
 "structlbm__msg__ume__registration__ex__t__stct.html#a3dbf592d420b0886e88c9e91e105d6e2":[4,0,29,1],
 "structlbm__msg__ume__registration__ex__t__stct.html#a46fc18fb82b632a259917e3c65790568":[4,0,29,6],
@@ -238,16 +249,5 @@ var NAVTREEINDEX10 =
 "structlbm__src__event__umq__registration__complete__ex__t__stct.html#af49711a40ea474f6123f8f1e59918c7c":[4,0,69,1],
 "structlbm__src__event__umq__stability__ack__info__ex__t__stct.html":[4,0,70],
 "structlbm__src__event__umq__stability__ack__info__ex__t__stct.html#a201941eefb329458612786bff13c827a":[4,0,70,8],
-"structlbm__src__event__umq__stability__ack__info__ex__t__stct.html#a2c648f4ecda7739df15500bb05feee2d":[4,0,70,5],
-"structlbm__src__event__umq__stability__ack__info__ex__t__stct.html#a3e9e9900646f2f4a3e21b444abf53a57":[4,0,70,0],
-"structlbm__src__event__umq__stability__ack__info__ex__t__stct.html#a54f10c24a78bef73f9c562f53b6b00b9":[4,0,70,7],
-"structlbm__src__event__umq__stability__ack__info__ex__t__stct.html#a6ab2e0b62c8f3f51a5a345d510cf27de":[4,0,70,2],
-"structlbm__src__event__umq__stability__ack__info__ex__t__stct.html#a6b1e7f4793deaa662958d25d58862966":[4,0,70,1],
-"structlbm__src__event__umq__stability__ack__info__ex__t__stct.html#a88a5094d48958e90354d23aba45b422d":[4,0,70,6],
-"structlbm__src__event__umq__stability__ack__info__ex__t__stct.html#acb1f92111954d8d5b89d27dbb3f89686":[4,0,70,4],
-"structlbm__src__event__umq__stability__ack__info__ex__t__stct.html#adb35ff21f08829cd982595a9ab467cbc":[4,0,70,3],
-"structlbm__src__event__umq__ulb__message__info__ex__t__stct.html":[4,0,71],
-"structlbm__src__event__umq__ulb__message__info__ex__t__stct.html#a0df096cc5cfbb63026cd8d4fec516c3c":[4,0,71,5],
-"structlbm__src__event__umq__ulb__message__info__ex__t__stct.html#a2525cb1251c17cd7c6f69e901e36564e":[4,0,71,1],
-"structlbm__src__event__umq__ulb__message__info__ex__t__stct.html#a50e32485887c4f917aceb405713a6cca":[4,0,71,0]
+"structlbm__src__event__umq__stability__ack__info__ex__t__stct.html#a2c648f4ecda7739df15500bb05feee2d":[4,0,70,5]
 };

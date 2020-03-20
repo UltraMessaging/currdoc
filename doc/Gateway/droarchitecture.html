@@ -57,19 +57,19 @@ $(document).ready(function(){initNavTree('droarchitecture.html','');});
 <div class="textblock"><p><br />
  </p>
 <h1><a class="anchor" id="umrouterportals"></a>
-UM Router Portals&nbsp;&nbsp;<small><a href="#umrouterportals">&lt;-</a></small></h1>
-<p>The UM Router uses interfaces, called portals, through which to pass data. A UM Router consists of two or more bidirectional portals that may be one of two types:</p>
+DRO Portals&nbsp;&nbsp;<small><a href="#umrouterportals">&lt;-</a></small></h1>
+<p>The DRO uses interfaces, called portals, through which to pass data. A DRO consists of two or more bidirectional portals that may be one of two types:</p>
 <ul>
 <li>
 An endpoint portal, which communicates directly to a UM topic resolution domain (TRD; see Topic Resolution Domains). </li>
 <li>
-A peer portal, which communicates via TCP with another peer portal (of another UM Router), allowing tunneling between UM Routers. Two peer portals connected to each other are referred to as companion peers, and utilize TCP connections for all data and control traffic (UDP is not supported for this). Compression and encryption can be applied to peer links. </li>
+A peer portal, which communicates via TCP with another peer portal (of another DRO), allowing tunneling between DROs. Two peer portals connected to each other are referred to as companion peers, and utilize TCP connections for all data and control traffic (UDP is not supported for this). Compression and encryption can be applied to peer links. </li>
 </ul>
-<p>The figure below shows a simple UM Router use case, where two UM Routers bridge an ISP to connect two TRDs.</p>
+<p>The figure below shows a simple DRO use case, where two DROs bridge an ISP to connect two TRDs.</p>
 <div class="image">
 <img src="portals.png" alt="portals.png"/>
 </div>
- <p>You configure portals in the UM Router's XML configuration file, specifying the portal's name, cost, UM Configuration, Access Control Lists and other attributes. See <a class="el" href="xmlconfigurationreference.html">XML Configuration Reference</a>.</p>
+ <p>You configure portals in the DRO's XML configuration file, specifying the portal's name, cost, UM Configuration, Access Control Lists and other attributes. See <a class="el" href="xmlconfigurationreference.html">XML Configuration Reference</a>.</p>
 <p><br />
  </p>
 <h1><a class="anchor" id="topicresolutiondomains"></a>
@@ -82,22 +82,30 @@ The contexts must use the same topic resolution UM configuration (i.e., resolver
 Contexts can communicate using the protocols required for both message transport and topic resolution traffic. </li>
 </ul>
 <p>For example, two contexts on separate machines in the same LAN are not in the same topic resolution domain if they use different resolver addresses. See Multicast Resolver Network Options. A topic resolution domain can span a WAN if the UM contexts on each side of a firewall use the same UM configuration and the firewall allows UDP traffic (multicast or unicast) to pass.</p>
-<p>Each endpoint portal must identify its associated topic resolution domain with a domain-id the UM Router's XML configuration file, as in the example below. All portals in the same TRD must have the same domain-id, and different TRDs networked together via UM Routers must have domain-ids unique to each other.</p>
+<p>Each endpoint portal must identify its associated topic resolution domain with a domain-id the DRO's XML configuration file, as in the example below. All portals in the same TRD must have the same domain-id, and different TRDs networked together via DROs must have domain-ids unique to each other.</p>
 <div class="fragment"><div class="line">&lt;portals&gt;</div><div class="line">  &lt;endpoint&gt;</div><div class="line">    &lt;name&gt;LAN100&lt;/name&gt;</div><div class="line">    &lt;domain-<span class="keywordtype">id</span>&gt;100&lt;/domain-<span class="keywordtype">id</span>&gt;</div><div class="line">    &lt;lbm-config&gt;lan100.cfg&lt;/lbm-config&gt;</div><div class="line">  &lt;/endpoint&gt;</div><div class="line">  &lt;endpoint&gt;</div><div class="line">    &lt;name&gt;LAN200&lt;/name&gt;</div><div class="line">    &lt;domain-<span class="keywordtype">id</span>&gt;200&lt;/domain-<span class="keywordtype">id</span>&gt;</div><div class="line">    &lt;lbm-config&gt;lan200.cfg&lt;/lbm-config&gt;</div><div class="line">  &lt;/endpoint&gt;</div><div class="line">&lt;/portals&gt;</div></div><!-- fragment --><p><br />
  </p>
 <h1><a class="anchor" id="proxysourcesandproxyreceivers"></a>
 Proxy Sources and Proxy Receivers&nbsp;&nbsp;<small><a href="#proxysourcesandproxyreceivers">&lt;-</a></small></h1>
-<p>To resolve a topic across a UM Router (described in <a class="el" href="umrouterconcepts.html#basicumrouteroperation">Basic UM Router Operation</a>), the UM Router creates, within portals, proxy sources and proxy receivers (shown in the figure below by their dashed lines). These proxies behave like their UM counterparts; they resolve topics on the TRDs like normal sources and receivers, and the UM Router internally passes data from one portal to the other. However unlike regular sources, proxy sources do not have retransmission retention buffers normally used for Late Join or OTR.</p>
+<p>To resolve a topic across a DRO (described in <a class="el" href="umrouterconcepts.html#basicumrouteroperation">Basic DRO Operation</a>), the DRO creates, within portals, proxy sources and proxy receivers (shown in the figure below by their dashed lines). These proxies behave like their UM counterparts; they resolve topics on the TRDs like normal sources and receivers, and the DRO internally passes data from one portal to the other. However unlike regular sources, proxy sources do not have retransmission retention buffers normally used for Late Join or OTR.</p>
 <div class="image">
 <img src="proxies.png" alt="proxies.png"/>
 </div>
- <p>Portals exist while the UM Router is running, however, the UM Router creates proxy sources and receivers during topic resolution and deletes them when the topic is retired.</p>
-<dl class="section note"><dt>Note</dt><dd>The proxy sources created by the UM Router are unrelated to proxy sources created by the UMP persistent store.</dd></dl>
+ <p>Portals exist while the DRO is running, however, the DRO creates proxy sources and receivers during topic resolution and deletes them when the topic is retired.</p>
+<dl class="section note"><dt>Note</dt><dd>The proxy sources created by the DRO are unrelated to proxy sources created by the UMP persistent store.</dd></dl>
+<p><br />
+ </p>
+<h2><a class="anchor" id="umrouterandtransportsessions"></a>
+DRO and Transport Sessions&nbsp;&nbsp;<small><a href="#umrouterandtransportsessions">&lt;-</a></small></h2>
+<p>When the DRO creates proxy receivers to get messages to forward, be aware that the <em>transport sessions</em> carrying those messages are not extended to the destination TRD. Instead, the proxy receiver simply takes the messages from the originating transport sessions and transfers them to the destination DRO's proxy sources. Those proxy sources create new transport sessions for those outgoing messages.</p>
+<p>The proxy sources' outgoing transport sessions are unrelated to the originating sources' transport sessions. They can even use different transport types, performing a protocol conversion. In fact, a single transport session can contain multiple sources from different originating publishing applications for the same topic. Alternatively, multiple sources from the same originating publishing application which are mapped to the same originating transport session can be split into multiple transport sessions by the proxy sources in a remote TRD.</p>
+<p>One consequence of the independence of incoming and outgoing transport sessions is that TCP flow control does not transit the DRO. A slow receiver in a remote TRD cannot "push back" on a fast source. In cases where a TCP transport session is slowed down due to one or more slow receivers, an intermediate DRO will eventually have to drop messages.</p>
+<dl class="section warning"><dt>Warning</dt><dd>A single source's "source string" will be different in different TRDs connected by DROs. See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Gateway/design.tag:../Design/" href="../Design/fundamentalconcepts.html#sourcestringsinaroutednetwork">Source Strings in a Routed Network</a> for details.</dd></dl>
 <p><br />
  </p>
 <h1><a class="anchor" id="routing"></a>
 Routing&nbsp;&nbsp;<small><a href="#routing">&lt;-</a></small></h1>
-<p>In multiple-UM Router environments where more than one UM Router can provide possible messaging pathways, the UM Routers are able to cooperatively determine and establish optimal routes. Also, the UM Router network is able to detect link or other UM Router outages and automatically reroute traffic as needed. See <a class="el" href="umrouterconcepts.html#routingtopologies">Routing Topologies</a> for more information. </p>
+<p>In multiple-DRO environments where more than one DRO can provide possible messaging pathways, the DROs are able to cooperatively determine and establish optimal routes. Also, the DRO network is able to detect link or other DRO outages and automatically reroute traffic as needed. See <a class="el" href="umrouterconcepts.html#routingtopologies">Routing Topologies</a> for more information. </p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.8.11-->

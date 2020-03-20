@@ -71,12 +71,8 @@ LBT-RM Datagram&nbsp;&nbsp;<small><a href="#lbtrmdatagramlossresultinginunrecove
 <h1><a class="anchor" id="lbtrmsourceignoringnaksforefficiency"></a>
 LBT-RM Source Ignoring NAKs for Efficiency&nbsp;&nbsp;<small><a href="#lbtrmsourceignoringnaksforefficiency">&lt;-</a></small></h1>
 <p>Bandwidth efficiency of an LBT-RM source may be improved by avoiding useless retransmissions. Consider the case of an LBT-RM source that has received a NAK for a datagram that it has just retransmitted. If the NAK and the retransmission crossed on the network, it is likely that the receiver generating the NAK will receive the retransmission just sent. If so, there's no need for the source to send another retransmission, so the NAK can be safely ignored.</p>
-<p>The image below illustrates the timing relationships.</p>
-<div class="image">
-<img src="LBTRM_NAK_Ignore_Interval.png" alt="LBTRM_NAK_Ignore_Interval.png"/>
-</div>
- <p>This shows NAKs for a given datagram being ignored for <a class="el" href="grptransportlbtrmreliability.html#transportlbtrmignoreintervalsource">transport_lbtrm_ignore_interval (source)</a> following the retransmission of that datagram. (The successive NAKs received by the source indicate that more than one receiver is subscribed to the source's topic.) A NAK will be serviced as normal following the passage of the interval.</p>
-<p>When ignoring a NAK, the source sends a NCF (NAK ConFirmation) instead of a retransmission, which starts a NAK suppression interval at the receiver.</p>
+<p>NAKs for a given datagram are ignored for <a class="el" href="grptransportlbtrmreliability.html#transportlbtrmignoreintervalsource">transport_lbtrm_ignore_interval (source)</a> following the retransmission of that datagram. A NAK will be serviced as normal following the passage of the interval.</p>
+<p>When ignoring a NAK, the source can send an NCF (NAK ConFirmation) instead of a retransmission. See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Config/design.tag:../Design/" href="../Design/transporttypes.html#naksuppression">NAK Suppression</a> for more information.</p>
 <p><br />
  </p>
 <h1><a class="anchor" id="lbtrmreceiversuppressingnakgeneration"></a>
@@ -86,7 +82,7 @@ LBT-RM Receiver Suppressing NAK Generation&nbsp;&nbsp;<small><a href="#lbtrmrece
 <div class="image">
 <img src="LBT_RM_Suppression_Interval.png" alt="LBT_RM_Suppression_Interval.png"/>
 </div>
- <p>Following the receipt of an NCF, a receiver suppresses all NAK generation until <a class="el" href="grptransportlbtrmreliability.html#transportlbtrmnaksuppressintervalreceiver">transport_lbtrm_nak_suppress_interval (receiver)</a> passes. NAK generation resumes with the usual <a class="el" href="grptransportlbtrmreliability.html#transportlbtrmnakbackoffintervalreceiver">transport_lbtrm_nak_backoff_interval (receiver)</a> if repair was not received during the suppression interval.</p>
+ <p>Following the receipt of an NCF, a receiver suppresses all NAK generation for that sequence number until <a class="el" href="grptransportlbtrmreliability.html#transportlbtrmnaksuppressintervalreceiver">transport_lbtrm_nak_suppress_interval (receiver)</a> passes. NAK generation resumes with the usual <a class="el" href="grptransportlbtrmreliability.html#transportlbtrmnakbackoffintervalreceiver">transport_lbtrm_nak_backoff_interval (receiver)</a> if repair was not received during the suppression interval.</p>
 <dl class="section note"><dt>Note</dt><dd>the actual length of the interval randomization period is between 1/2 and 3/2 of the configured interval value. In the diagram above, time periods are not drawn to scale to simplify the diagram.</dd></dl>
 <p><br />
  </p>
@@ -97,12 +93,13 @@ Reference&nbsp;&nbsp;<small><a href="#transportlbtrmreliabilityref">&lt;-</a></s
 <h2><a class="anchor" id="transportlbtrmignoreintervalsource"></a>
 transport_lbtrm_ignore_interval (source)&nbsp;&nbsp;<small><a href="#transportlbtrmignoreintervalsource">&lt;-</a></small></h2>
 <dl class="section user"><dt></dt><dd>The interval to ignore NAKs after a retransmission is sent. </dd></dl>
-<dl class="section user"><dt></dt><dd>This option affects the transport session underlying the source rather than the source itself. The transport session uses the value from the first source created on the session and ignores subsequent sources. Refer to <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Config/design.tag:../Design/" href="../Design/fundamentalconcepts.html#sourceobject">Source Object</a> for additional information.</dd></dl>
+<dl class="section user"><dt></dt><dd>This option affects the transport session underlying the source rather than the source itself. The transport session uses the value from the first source created on the session and ignores subsequent sources' configuration. </dd></dl>
+<dl class="section user"><dt></dt><dd>Refer to <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Config/design.tag:../Design/" href="../Design/fundamentalconcepts.html#sourceobject">Source Object</a> for additional information.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>source </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
 <tr>
 <td><em>Units:</em> </td><td>milliseconds </td></tr>
 <tr>
@@ -115,14 +112,16 @@ transport_lbtrm_ignore_interval (source)&nbsp;&nbsp;<small><a href="#transportlb
  </p>
 <h2><a class="anchor" id="transportlbtrmnakbackoffintervalreceiver"></a>
 transport_lbtrm_nak_backoff_interval (receiver)&nbsp;&nbsp;<small><a href="#transportlbtrmnakbackoffintervalreceiver">&lt;-</a></small></h2>
-<dl class="section user"><dt></dt><dd>For LBT-RM transport sessions only. The maximum interval between transmissions of a single NAK. </dd></dl>
-<dl class="section user"><dt></dt><dd>The actual time the receiver will wait to NAK again is random. The algorithm used to determine the time range is (1/2 * backoff_interval - 3/2 * backoff_interval). This can result in a wait interval longer than the specified value. This option affects the transport session underlying the receiver rather than the receiver itself. The transport session uses the value from the first receiver created on the session and ignores subsequent receivers. </dd></dl>
-<dl class="section user"><dt></dt><dd>See also <a class="el" href="grptransportlbtrmreliability.html#transportlbtrmnakbackoffintervalreceiver">transport_lbtrm_nak_backoff_interval (receiver)</a>.</dd></dl>
+<dl class="section user"><dt></dt><dd>The maximum interval between transmissions of LBT-RM NAKs for a given sequence number, after the first NAK. </dd></dl>
+<dl class="section user"><dt></dt><dd>When an LBT-RM receiver detects a sequence number gap, it delays an initial amount before sending its first NAK (controlled by <a class="el" href="grptransportlbtrmreliability.html#transportlbtrmnakinitialbackoffintervalreceiver">transport_lbtrm_nak_initial_backoff_interval (receiver)</a>), and then delays an a separately configurable time between sending subsequent NAKs for the same sequence number. This configuration option controls those subsequent delays. </dd></dl>
+<dl class="section user"><dt></dt><dd>The actual time the receiver will wait to NAK again is random. The algorithm used to determine the time range is (1/2 * backoff_interval - 3/2 * backoff_interval). This will result in a delay longer or shorter than the specified value. </dd></dl>
+<dl class="section user"><dt></dt><dd>This option affects the transport session underlying the receiver rather than the receiver itself. The transport session uses the value from the first receiver created on the session and ignores subsequent receivers' configuration. </dd></dl>
+<dl class="section user"><dt></dt><dd>See also <a class="el" href="grptransportlbtrmreliability.html#transportlbtrmnakinitialbackoffintervalreceiver">transport_lbtrm_nak_initial_backoff_interval (receiver)</a>.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>receiver </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
 <tr>
 <td><em>Units:</em> </td><td>milliseconds </td></tr>
 <tr>
@@ -136,13 +135,13 @@ transport_lbtrm_nak_backoff_interval (receiver)&nbsp;&nbsp;<small><a href="#tran
 <h2><a class="anchor" id="transportlbtrmnakgenerationintervalreceiver"></a>
 transport_lbtrm_nak_generation_interval (receiver)&nbsp;&nbsp;<small><a href="#transportlbtrmnakgenerationintervalreceiver">&lt;-</a></small></h2>
 <dl class="section user"><dt></dt><dd>The maximum time that a piece of data may be outstanding before the data is unrecoverably lost. </dd></dl>
-<dl class="section user"><dt></dt><dd>For LBT-RM transport sessions only. Although the minimum valid value is 5 milliseconds, larger values are advisable. This option affects the transport session underlying the receiver rather than the receiver itself. The transport session uses the value from the first receiver created on the session and ignores subsequent receivers. </dd></dl>
-<dl class="section user"><dt></dt><dd>Refer to <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Config/design.tag:../Design/" href="../Design/fundamentalconcepts.html#receiverobject">Receiver Object</a> and <a class="el" href="interrelatedconfigurationoptions.html">Interrelated Configuration Options</a> for additional information.</dd></dl>
+<dl class="section user"><dt></dt><dd>For LBT-RM transport sessions only. Although the minimum valid value is 5 milliseconds, larger values are advisable. This option affects the transport session underlying the receiver rather than the receiver itself. The transport session uses the value from the first receiver created on the session and ignores subsequent receivers' configuration. </dd></dl>
+<dl class="section user"><dt></dt><dd>Refer to <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Config/design.tag:../Design/" href="../Design/fundamentalconcepts.html#receiverobject">Receiver Object</a> and <a class="el" href="interrelatedconfigurationoptions.html">Interrelated Configuration Options</a> for additional information.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>receiver </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
 <tr>
 <td><em>Units:</em> </td><td>milliseconds </td></tr>
 <tr>
@@ -155,14 +154,16 @@ transport_lbtrm_nak_generation_interval (receiver)&nbsp;&nbsp;<small><a href="#t
  </p>
 <h2><a class="anchor" id="transportlbtrmnakinitialbackoffintervalreceiver"></a>
 transport_lbtrm_nak_initial_backoff_interval (receiver)&nbsp;&nbsp;<small><a href="#transportlbtrmnakinitialbackoffintervalreceiver">&lt;-</a></small></h2>
-<dl class="section user"><dt></dt><dd>For LBT-RM transport sessions only. The interval between loss detection and transmission of the first NAK. </dd></dl>
-<dl class="section user"><dt></dt><dd>The actual time the receiver will wait to NAK is random. The algorithm used to determine the time range is (1/2 * initial_backoff_interval - 3/2 * initial_backoff_interval). This can result in a wait interval longer than the specified value. A value of 0 indicates that the receiver should immediately send a NAK. Note that this is rarely a good idea; see <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Config/design.tag:../Design/" href="../Design/packetloss.html#umrecoveryoflostpackets">UM Recovery of Lost Packets</a>. </dd></dl>
+<dl class="section user"><dt></dt><dd>The interval between loss detection and transmission of the first LBT-RM NAK. </dd></dl>
+<dl class="section user"><dt></dt><dd>When an LBT-RM receiver detects a sequence number gap, it delays an initial amount before sending its first NAK controlled by this option, and then delays an a separately configurable time between sending subsequent NAKs for the same sequence number, controlled by <a class="el" href="grptransportlbtrmreliability.html#transportlbtrmnakbackoffintervalreceiver">transport_lbtrm_nak_backoff_interval (receiver)</a>. </dd></dl>
+<dl class="section user"><dt></dt><dd>The actual time the receiver will wait to NAK is random. The algorithm used to determine the time range is (1/2 * initial_backoff_interval - 3/2 * initial_backoff_interval). This will result in a delay longer or shorter than the specified value. A value of 0 indicates that the receiver should immediately send a NAK. Note that this is rarely a good idea; see <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Config/design.tag:../Design/" href="../Design/packetloss.html#umrecoveryoflostpackets">UM Recovery of Lost Packets</a>. </dd></dl>
+<dl class="section user"><dt></dt><dd>This option affects the transport session underlying the receiver rather than the receiver itself. The transport session uses the value from the first receiver created on the session and ignores subsequent receivers' configuration. </dd></dl>
 <dl class="section user"><dt></dt><dd>See also <a class="el" href="grptransportlbtrmreliability.html#transportlbtrmnakbackoffintervalreceiver">transport_lbtrm_nak_backoff_interval (receiver)</a>.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>receiver </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
 <tr>
 <td><em>Units:</em> </td><td>milliseconds </td></tr>
 <tr>
@@ -177,13 +178,15 @@ transport_lbtrm_nak_initial_backoff_interval (receiver)&nbsp;&nbsp;<small><a hre
  </p>
 <h2><a class="anchor" id="transportlbtrmnaksuppressintervalreceiver"></a>
 transport_lbtrm_nak_suppress_interval (receiver)&nbsp;&nbsp;<small><a href="#transportlbtrmnaksuppressintervalreceiver">&lt;-</a></small></h2>
-<dl class="section user"><dt></dt><dd>The maximum interval to suppress sending NAKs after an NCF or a NAK from another receiver. </dd></dl>
-<dl class="section user"><dt></dt><dd>For LBT-RM transport sessions only. This option affects the transport session underlying the receiver rather than the receiver itself. The transport session uses the value from the first receiver created on the session and ignores subsequent receivers. Refer to <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Config/design.tag:../Design/" href="../Design/fundamentalconcepts.html#receiverobject">Receiver Object</a> for additional information.</dd></dl>
+<dl class="section user"><dt></dt><dd>The time that an LBT-RM receiver will suppress sending a NAK for a missing datagram after an NCF is received from the source. </dd></dl>
+<dl class="section user"><dt></dt><dd>The source sends an NCF in response to a NAK which the source temporarily cannot retransmit. For example, if the source gets a NAK for a sequence number for which it has recently sent a retransmission, it will send an NCF with reason code "ignored". The receiver responds by suppressing NAKs for that sequence number for the interval configured by this option. See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Config/design.tag:../Design/" href="../Design/transporttypes.html#naksuppression">NAK Suppression</a> for more information about NCFs. </dd></dl>
+<dl class="section user"><dt></dt><dd>For LBT-RM transport sessions only. This option affects the transport session underlying the receiver rather than the receiver itself. The transport session uses the value from the first receiver created on the session and ignores subsequent receivers' configuration. </dd></dl>
+<dl class="section user"><dt></dt><dd>Refer to <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Config/design.tag:../Design/" href="../Design/fundamentalconcepts.html#receiverobject">Receiver Object</a> for additional information.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>receiver </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
 <tr>
 <td><em>Units:</em> </td><td>milliseconds </td></tr>
 <tr>
@@ -202,7 +205,7 @@ transport_lbtrm_receiver_socket_buffer (context)&nbsp;&nbsp;<small><a href="#tra
 <tr>
 <td><em>Scope:</em> </td><td>context </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
 <tr>
 <td><em>Units:</em> </td><td>bytes </td></tr>
 <tr>
@@ -216,8 +219,8 @@ transport_lbtrm_receiver_socket_buffer (context)&nbsp;&nbsp;<small><a href="#tra
 <h2><a class="anchor" id="transportlbtrmsendnaksreceiver"></a>
 transport_lbtrm_send_naks (receiver)&nbsp;&nbsp;<small><a href="#transportlbtrmsendnaksreceiver">&lt;-</a></small></h2>
 <dl class="section user"><dt></dt><dd>This flag indicates whether LBT-RM should send negative acknowledgements (NAKs) for missing packets or not. </dd></dl>
-<dl class="section user"><dt></dt><dd>For LBT-RM transport sessions only. This option affects the transport session underlying the receiver rather than the receiver itself. The transport session uses the value from the first receiver created on the session and ignores subsequent receivers. </dd></dl>
-<dl class="section user"><dt></dt><dd>Refer to <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Config/design.tag:../Design/" href="../Design/fundamentalconcepts.html#receiverobject">Receiver Object</a> for additional information.</dd></dl>
+<dl class="section user"><dt></dt><dd>For LBT-RM transport sessions only. This option affects the transport session underlying the receiver rather than the receiver itself. The transport session uses the value from the first receiver created on the session and ignores subsequent receivers' configuration. </dd></dl>
+<dl class="section user"><dt></dt><dd>Refer to <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Config/design.tag:../Design/" href="../Design/fundamentalconcepts.html#receiverobject">Receiver Object</a> for additional information.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>receiver </td></tr>
@@ -249,7 +252,7 @@ transport_lbtrm_source_socket_buffer (context)&nbsp;&nbsp;<small><a href="#trans
 <tr>
 <td><em>Scope:</em> </td><td>context </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
 <tr>
 <td><em>Units:</em> </td><td>bytes </td></tr>
 <tr>
@@ -282,7 +285,7 @@ transport_lbtrm_transmission_window_limit (source)&nbsp;&nbsp;<small><a href="#t
 <h2><a class="anchor" id="transportlbtrmtransmissionwindowsizesource"></a>
 transport_lbtrm_transmission_window_size (source)&nbsp;&nbsp;<small><a href="#transportlbtrmtransmissionwindowsizesource">&lt;-</a></small></h2>
 <dl class="section user"><dt></dt><dd>The maximum amount of buffered payload data, excluding UM headers, that the LBT-RM source is allowed to retain for retransmissions. </dd></dl>
-<dl class="section user"><dt></dt><dd>The minimum valid value is 65,536 bytes. This option affects the transport session underlying the source rather than the source itself. The transport session uses the value from the first source created on the session and ignores subsequent sources.</dd></dl>
+<dl class="section user"><dt></dt><dd>The minimum valid value is 65,536 bytes. This option affects the transport session underlying the source rather than the source itself. The transport session uses the value from the first source created on the session and ignores subsequent sources' configuration.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>source </td></tr>

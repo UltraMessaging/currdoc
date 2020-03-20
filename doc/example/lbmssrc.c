@@ -1,5 +1,5 @@
 /*
-  Copyright (c) 2005-2019 Informatica Corporation  Permission is granted to licensees to use
+  Copyright (c) 2005-2020 Informatica Corporation  Permission is granted to licensees to use
   or alter this software for any purpose, including commercial applications,
   according to the terms laid out in the Software License Agreement.
 
@@ -55,6 +55,7 @@
 #define DEFAULT_MAX_MESSAGES 10000000
 #define DEFAULT_DELAY_B4CLOSE 5
 #define MAX_MESSAGE_PROPERTIES_INTEGER_COUNT 16		/* SSRC_MAX_MSG_PROP_INT_CNT */
+#define MAX_MESSAGE_PROPERTIES_NAME_LEN 7			/* ssrc_MAX_MSG_PROP_NAME_LEN */
 
 #if defined(_WIN32)
 #   define SLEEP_SEC(x) Sleep((x)*1000)
@@ -401,6 +402,10 @@ void process_cmdline(int argc, char **argv,struct Options *opts)
 			rc = sscanf(optarg, "%d,%s", &opts->mprop_int_vals[opts->mprop_int_cnt], &opts->mprop_int_keys[opts->mprop_int_cnt][0]);
 			if (rc != 2) {
 				fprintf(stderr, "Failed to parse int-mprop: %s\n", optarg);
+				exit(1);
+			}
+			if (strlen(&opts->mprop_int_keys[opts->mprop_int_cnt][0]) > MAX_MESSAGE_PROPERTIES_NAME_LEN) {
+				fprintf(stderr, "Integer message property key name (%s) is too long. Maximum key name length is %d characters.\n", &opts->mprop_int_keys[opts->mprop_int_cnt][0], MAX_MESSAGE_PROPERTIES_NAME_LEN);
 				exit(1);
 			}
 			opts->mprop_int_cnt++;

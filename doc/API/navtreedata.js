@@ -23,6 +23,7 @@ var NAVTREE =
         [ "All", "globals.html", "globals_dup" ],
         [ "Functions", "globals_func.html", "globals_func" ],
         [ "Typedefs", "globals_type.html", "globals_type" ],
+        [ "Enumerations", "globals_enum.html", null ],
         [ "Enumerator", "globals_eval.html", null ],
         [ "Macros", "globals_defs.html", "globals_defs" ]
       ] ]
@@ -34,19 +35,19 @@ var NAVTREEINDEX =
 [
 "annotated.html",
 "group__get__elem__idx.html#ga325ed9448f8df35879aca7dbaa3cd834",
-"group__set__array__iter.html#ga6999be8dfd520b5ba7fc90f30083a43a",
+"group__set__array__iter.html#ga627aa743d58e66f1496f91af12b63630",
 "group__set__name.html#gaa414f35a772978cd1a8710d17b8b452b",
-"lbm_8h.html#a366727d0b5f3039e03b9c4bce8065da5",
-"lbm_8h.html#a73390cd27e1256aa75060803bdaf1a22",
-"lbm_8h.html#aae14099b91f2919f424e81f20ca10951",
-"lbm_8h.html#ae65a28c201d693e7b51e8906bd39d260",
-"lbmmontrlbmsnmp_h_page.html",
-"lbmsdm_8h.html#acde0a490355a4ec8cc36e528a1d9bd34",
-"structlbm__msg__ume__registration__ex__t__stct.html#a2fd3cf7fdfdb852283cd8ba1cc0d1390",
-"structlbm__src__event__umq__ulb__message__info__ex__t__stct.html#a51a9caf55a4736c5b918393cf39623b6",
-"structlbmmon__evq__statistics__func__t__stct.html",
-"structtnwg__dstat__peer__send__stats__t__stct.html#addb63088ed4587cd34ba98b59518c677",
-"tnwgdmonmsgs_8h.html#ac5224b9528702e4517b7ca3c0e98ce44"
+"lbm_8h.html#a35ae431b1329e9367e116ddc0ec1d998",
+"lbm_8h.html#a7149d94536c4ac1beb85d8a8f0c84ab8",
+"lbm_8h.html#aac3f8d58d98db9b2471982a44e157ae9",
+"lbm_8h.html#ae470da93b9bfbcf213afde0a9a95113e",
+"lbmmon_8h_source.html",
+"lbmsdm_8h.html#abed82baf7f470b522273a3e37c24c600ac82f36d04e9cb8dcc47e06290d60e937",
+"structlbm__msg__ume__deregistration__ex__t__stct.html#a0aa9e13f879639d2eabb627591bfe293",
+"structlbm__src__event__umq__stability__ack__info__ex__t__stct.html#a3e9e9900646f2f4a3e21b444abf53a57",
+"structlbm__ume__store__group__entry__t__stct.html#a994a567876b17683b2cf97eb4873de43",
+"structtnwg__dstat__peer__receive__stats__t__stct.html#a2416e05291afd35098913fe56e1b330f",
+"structumestore__repo__dmon__stat__msg__t__stct.html#a4a1ce5ee193563ad0c6833aabee99699"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

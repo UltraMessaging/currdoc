@@ -1,5 +1,5 @@
 /*
-  Copyright (c) 2005-2019 Informatica Corporation  Permission is granted to licensees to use
+  Copyright (c) 2005-2020 Informatica Corporation  Permission is granted to licensees to use
   or alter this software for any purpose, including commercial applications,
   according to the terms laid out in the Software License Agreement.
 
@@ -188,7 +188,9 @@ unsigned long long total_byte_count = 0;
 #endif /* _WIN32 */
 int unrec_count = 0;
 int total_unrec_count = 0;
+int curr_sequence_number = 0;
 int burst_loss = 0;
+int total_burst_loss_count = 0;
 int close_recv = 0;
 struct timeval data_start_tv;
 struct timeval data_end_tv;
@@ -236,11 +238,12 @@ void print_bw(FILE *fp, struct timeval *tv, int msgs, int bytes, int unrec, lbm_
 		fprintf(fp, "%-5.4g secs.  %-5.4g %cmsgs/sec.  %-5.4g %cbps",
 				sec, mps, mgscale, bps, bscale);
 	if (lost != 0 || unrec != 0 || burst_loss != 0) {
-		fprintf(fp, " [%lu pkts lost, %u msgs unrecovered, %d bursts]",
-				lost, unrec, burst_loss);
+		fprintf(fp, " [%lu pkts lost, %u msgs unrecovered, %d bursts (%u msgs)]",
+			lost, unrec, burst_loss, total_burst_loss_count);
 	}
 	fprintf(fp, "\n");
 	burst_loss = 0;
+	total_burst_loss_count = 0;
 }
 
 /* Print transport statistics */
@@ -567,6 +570,7 @@ int rcv_handle_msg(lbm_rcv_t *rcv, lbm_msg_t *msg, void *clientd)
 		break;
 	case LBM_MSG_UNRECOVERABLE_LOSS_BURST:
 		burst_loss++;
+		total_burst_loss_count = msg->sequence_number - curr_sequence_number;
 		if (opts->verbose) {
 			printf("[%s][%s][0x%x], LOST BURST\n", msg->topic_name, msg->source, msg->sequence_number);
 		}
@@ -674,6 +678,7 @@ int rcv_handle_msg(lbm_rcv_t *rcv, lbm_msg_t *msg, void *clientd)
 		printf("Unknown lbm_msg_t type 0x%x [%s][%s]\n", msg->type, msg->topic_name, msg->source);
 		break;
 	}
+	curr_sequence_number = msg->sequence_number;
 	/* LBM automatically deletes the lbm_msg_t object unless we retain it. */
 	return 0;
 }

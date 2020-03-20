@@ -5,15 +5,17 @@ var NAVTREE =
       [ "DRO Features", "index.html#drofeatures", null ]
     ] ],
     [ "DRO Architecture", "droarchitecture.html", [
-      [ "UM Router Portals", "droarchitecture.html#umrouterportals", null ],
+      [ "DRO Portals", "droarchitecture.html#umrouterportals", null ],
       [ "Topic Resolution Domains", "droarchitecture.html#topicresolutiondomains", null ],
-      [ "Proxy Sources and Proxy Receivers", "droarchitecture.html#proxysourcesandproxyreceivers", null ],
+      [ "Proxy Sources and Proxy Receivers", "droarchitecture.html#proxysourcesandproxyreceivers", [
+        [ "DRO and Transport Sessions", "droarchitecture.html#umrouterandtransportsessions", null ]
+      ] ],
       [ "Routing", "droarchitecture.html#routing", null ]
     ] ],
-    [ "UM Router Concepts", "umrouterconcepts.html", [
-      [ "Basic UM Router Operation", "umrouterconcepts.html#basicumrouteroperation", [
+    [ "DRO Concepts", "umrouterconcepts.html", [
+      [ "Basic DRO Operation", "umrouterconcepts.html#basicumrouteroperation", [
         [ "Interest and Use Queries", "umrouterconcepts.html#interestandusequeries", null ],
-        [ "UM Router Keepalive", "umrouterconcepts.html#umrouterkeepalive", null ],
+        [ "DRO Keepalive", "umrouterconcepts.html#umrouterkeepalive", null ],
         [ "Final Advertisements", "umrouterconcepts.html#finaladvertisements", null ],
         [ "More About Proxy Sources and Receivers", "umrouterconcepts.html#moreaboutproxysourcesandreceivers", null ],
         [ "Protocol Conversion", "umrouterconcepts.html#protocolconversion", null ]
@@ -21,7 +23,7 @@ var NAVTREE =
       [ "Multi-Hop Forwarding", "umrouterconcepts.html#multihopforwarding", null ],
       [ "Routing Wildcard Receivers", "umrouterconcepts.html#routingwildcardreceivers", null ],
       [ "Forwarding Costs", "umrouterconcepts.html#forwardingcosts", null ],
-      [ "UM Router Routing", "umrouterconcepts.html#umrouterrouting", null ],
+      [ "DRO Routing", "umrouterconcepts.html#umrouterrouting", null ],
       [ "Routing Topologies", "umrouterconcepts.html#routingtopologies", [
         [ "Direct Link", "umrouterconcepts.html#directlink", null ],
         [ "Single Link", "umrouterconcepts.html#singlelink", null ],
@@ -30,7 +32,7 @@ var NAVTREE =
         [ "Loop and Spur", "umrouterconcepts.html#loopandspur", null ],
         [ "Loop with Centralized TRD", "umrouterconcepts.html#loopwithcentralizedtrd", null ],
         [ "with centralized TRD", "umrouterconcepts.html#Star", null ],
-        [ "Star with Centralized UM Router", "umrouterconcepts.html#starwithcentralizedumrouter", null ],
+        [ "Star with Centralized DRO", "umrouterconcepts.html#starwithcentralizedumrouter", null ],
         [ "Mesh", "umrouterconcepts.html#mesh", null ],
         [ "Palm Tree", "umrouterconcepts.html#palmtree", null ],
         [ "Dumbbell", "umrouterconcepts.html#dumbbell", null ]
@@ -38,19 +40,19 @@ var NAVTREE =
       [ "Unsupported Configurations", "umrouterconcepts.html#unsupportedconfigurations", null ],
       [ "UM Feature Compatibility", "umrouterconcepts.html#umfeaturecompatibility", null ]
     ] ],
-    [ "UM Router Implementation", "umrouterimplementation.html", [
-      [ "UM Router Configuration Overview", "umrouterimplementation.html#umrouterconfigurationoverview", null ],
-      [ "Creating Applications for UM Router Compatibility", "umrouterimplementation.html#creatingapplicationsforumroutercompatibility", [
+    [ "DRO Implementation", "umrouterimplementation.html", [
+      [ "DRO Configuration Overview", "umrouterimplementation.html#umrouterconfigurationoverview", null ],
+      [ "Creating Applications for DRO Compatibility", "umrouterimplementation.html#creatingapplicationsforumroutercompatibility", [
         [ "Naming and Identification", "umrouterimplementation.html#namingandidentification", null ],
         [ "Portal Costs", "umrouterimplementation.html#portalcosts", null ],
         [ "Access Control Lists (ACL)", "umrouterimplementation.html#accesscontrollistsacl", null ],
         [ "Timers and Intervals", "umrouterimplementation.html#timersandintervals", null ],
         [ "Multicast Immediate Messaging Considerations", "umrouterimplementation.html#multicastimmediatemessagingconsiderations", null ],
-        [ "Persistence Over the UM Router", "umrouterimplementation.html#persistenceovertheumrouter", null ],
+        [ "Persistence Over the DRO", "umrouterimplementation.html#persistenceovertheumrouter", null ],
         [ "Late Join and Off-Transport Recovery", "umrouterimplementation.html#latejoinandofftransportrecovery", null ],
         [ "Topic Resolution Reliability", "umrouterimplementation.html#topicresolutionreliability", null ],
-        [ "BOS and EOS Behavior Over the UM Router", "umrouterimplementation.html#bosandeosbehaviorovertheumrouter", null ],
-        [ "UM Router Reliable Loss", "umrouterimplementation.html#umrouterreliableloss", null ]
+        [ "BOS and EOS Behavior Over the DRO", "umrouterimplementation.html#bosandeosbehaviorovertheumrouter", null ],
+        [ "DRO Reliable Loss", "umrouterimplementation.html#umrouterreliableloss", null ]
       ] ],
       [ "Topology Configuration Examples", "umrouterimplementation.html#topologyconfigurationexamples", [
         [ "Direct Link Configuration", "umrouterimplementation.html#directlinkconfiguration", null ],
@@ -61,16 +63,16 @@ var NAVTREE =
         [ "Star Configuration", "umrouterimplementation.html#starconfiguration", null ],
         [ "Mesh Configuration", "umrouterimplementation.html#meshconfiguration", null ]
       ] ],
-      [ "Using UM Configuration Files with the UM Router", "umrouterimplementation.html#usingumconfigurationfileswiththeumrouter", [
+      [ "Using UM Configuration Files with the DRO", "umrouterimplementation.html#usingumconfigurationfileswiththeumrouter", [
         [ "Setting Individual Endpoint Options", "umrouterimplementation.html#settingindividualendpointoptions", null ],
-        [ "UM Router and UM XML Configuration Use Cases", "umrouterimplementation.html#umrouterandumxmlconfigurationusecases", null ],
+        [ "DRO and UM XML Configuration Use Cases", "umrouterimplementation.html#umrouterandumxmlconfigurationusecases", null ],
         [ "Sample Configuration", "umrouterimplementation.html#sampleconfiguration", null ],
         [ "XML UM Configuration File", "umrouterimplementation.html#xmlumconfigurationfile", null ],
-        [ "XML UM Router Configuration File", "umrouterimplementation.html#xmlumrouterconfigurationfile", null ]
+        [ "XML DRO Configuration File", "umrouterimplementation.html#xmlumrouterconfigurationfile", null ]
       ] ],
-      [ "Running the UM Router Daemon", "umrouterimplementation.html#runningtheumrouterdaemon", null ]
+      [ "Running the DRO Daemon", "umrouterimplementation.html#runningtheumrouterdaemon", null ]
     ] ],
-    [ "Man Pages for UM Router", "manpagesforumrouter.html", [
+    [ "Man Pages for DRO", "manpagesforumrouter.html", [
       [ "Tnwgd Man Page", "manpagesforumrouter.html#tnwgdmanpage", null ],
       [ "Tnwgds Man Page", "manpagesforumrouter.html#tnwgdsmanpage", null ]
     ] ],
@@ -175,31 +177,31 @@ var NAVTREE =
         [ "Router Element \"<uid>\"", "xmlconfigurationreference.html#droelementuid", null ],
         [ "Router Element \"<log>\"", "xmlconfigurationreference.html#droelementlog", null ]
       ] ],
-      [ "UM Router Configuration DTD", "xmlconfigurationreference.html#umrouterconfigurationdtd", null ]
+      [ "DRO Configuration DTD", "xmlconfigurationreference.html#umrouterconfigurationdtd", null ]
     ] ],
-    [ "UM Router Daemon Statistics", "umrouterdaemonstatistics.html", [
-      [ "UM Router Daemon Statistics Structures", "umrouterdaemonstatistics.html#umrouterdaemonstatisticsstructures", [
-        [ "UM Router Daemon Statistics Byte Swapping", "umrouterdaemonstatistics.html#umrouterdaemonstatisticsbyteswapping", null ],
-        [ "UM Router Daemon Statistics String Buffers", "umrouterdaemonstatistics.html#umrouterdaemonstatisticsstructuresstringbuffers", null ]
+    [ "DRO Daemon Statistics", "umrouterdaemonstatistics.html", [
+      [ "DRO Daemon Statistics Structures", "umrouterdaemonstatistics.html#umrouterdaemonstatisticsstructures", [
+        [ "DRO Daemon Statistics Byte Swapping", "umrouterdaemonstatistics.html#umrouterdaemonstatisticsbyteswapping", null ],
+        [ "DRO Daemon Statistics String Buffers", "umrouterdaemonstatistics.html#umrouterdaemonstatisticsstructuresstringbuffers", null ]
       ] ],
-      [ "UM Router Daemon Statistics Configuration", "umrouterdaemonstatistics.html#umrouterdaemonstatisticsconfiguration", null ],
-      [ "UM Router Daemon Statistics Requests", "umrouterdaemonstatistics.html#umrouterdaemonstatisticsrequests", null ]
+      [ "DRO Daemon Statistics Configuration", "umrouterdaemonstatistics.html#umrouterdaemonstatisticsconfiguration", null ],
+      [ "DRO Daemon Statistics Requests", "umrouterdaemonstatistics.html#umrouterdaemonstatisticsrequests", null ]
     ] ],
-    [ "UM Router Monitoring", "umroutermonitoring.html", [
-      [ "UM Router Web Monitor", "umroutermonitoring.html#umrouterwebmonitor", [
+    [ "DRO Monitoring", "umroutermonitoring.html", [
+      [ "DRO Web Monitor", "umroutermonitoring.html#umrouterwebmonitor", [
         [ "Main Page", "umroutermonitoring.html#mainpage", null ],
         [ "Endpoint Portal Page", "umroutermonitoring.html#endpointportalpage", null ],
         [ "Peer Portal Page", "umroutermonitoring.html#peerportalpage", null ],
         [ "Topology Info Page", "umroutermonitoring.html#topologyinfopage", null ],
         [ "Path Info", "umroutermonitoring.html#pathinfo", null ]
       ] ],
-      [ "UM Router Log Messages", "umroutermonitoring.html#umrouterlogmessages", [
-        [ "UM Router Rolling Logs", "umroutermonitoring.html#umrouterrollinglogs", null ],
-        [ "Important UM Router Log Messages", "umroutermonitoring.html#importantumrouterlogmessages", null ]
+      [ "DRO Log Messages", "umroutermonitoring.html#umrouterlogmessages", [
+        [ "DRO Rolling Logs", "umroutermonitoring.html#umrouterrollinglogs", null ],
+        [ "Important DRO Log Messages", "umroutermonitoring.html#importantumrouterlogmessages", null ]
       ] ],
-      [ "UM Router Transport Stats", "umroutermonitoring.html#umroutertransportstats", null ]
+      [ "DRO Transport Stats", "umroutermonitoring.html#umroutertransportstats", null ]
     ] ],
-    [ "UM Router Glossary", "umrouterglossary.html", null ],
+    [ "DRO Glossary", "umrouterglossary.html", null ],
     [ "Comparison to Pre-6.0 UM Gateway", "comparisontopre60umgateway.html", [
       [ "Added Features and Differences", "comparisontopre60umgateway.html#addedfeaturesanddifferences", null ]
     ] ]

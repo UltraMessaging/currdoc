@@ -8,5 +8,6 @@ var files =
     [ "lbmsdm.h", "lbmsdm_8h.html", "lbmsdm_8h" ],
     [ "tnwgdmonmsgs.h", "tnwgdmonmsgs_8h.html", "tnwgdmonmsgs_8h" ],
     [ "umedmonmsgs.h", "umedmonmsgs_8h.html", "umedmonmsgs_8h" ],
+    [ "umeprofile.h", "umeprofile_8h.html", "umeprofile_8h" ],
     [ "umestored_main.h", "umestored__main_8h.html", "umestored__main_8h" ]
 ];

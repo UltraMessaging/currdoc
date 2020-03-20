@@ -7,6 +7,7 @@ var NAVTREE =
         [ "Assignment Flow", "index.html#assignmentflow", null ],
         [ "Definitions", "index.html#definitions", null ],
         [ "Which Method Should I Use?", "index.html#whichmethodshouldiuse", null ],
+        [ "Configuration Error Handling", "index.html#configurationerrorhandling", null ],
         [ "Host Name Resolution", "index.html#hostnameresolution", null ],
         [ "Configuration Files", "index.html#configurationfiles", null ]
       ] ],
@@ -187,6 +188,7 @@ var NAVTREE =
         [ "resolver_send_final_advertisements (source)", "index.html#resolversendfinaladvertisementssource", null ],
         [ "resolver_send_initial_advertisement (source)", "index.html#resolversendinitialadvertisementsource", null ],
         [ "resolver_service (context)", "index.html#resolverservicecontext", null ],
+        [ "resolver_service_interest_mode (context)", "index.html#resolverserviceinterestmodecontext", null ],
         [ "resolver_source_map_tablesz (context)", "index.html#resolversourcemaptableszcontext", null ],
         [ "resolver_string_hash_function (context)", "index.html#resolverstringhashfunctioncontext", null ],
         [ "resolver_string_hash_function_ex (context)", "index.html#resolverstringhashfunctionexcontext", null ],
@@ -773,8 +775,8 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "index.html",
-"index.html#resolveradvertisementminimuminitialintervalsource",
-"index.html#transporttcpsendersocketbuffersource"
+"index.html#resolveradvertisementminimuminitialdurationsource",
+"index.html#transporttcpreceiversocketbuffercontext"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

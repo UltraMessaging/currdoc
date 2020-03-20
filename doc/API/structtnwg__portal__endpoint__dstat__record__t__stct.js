@@ -5,6 +5,7 @@ var structtnwg__portal__endpoint__dstat__record__t__stct =
     [ "local_interest_pcre_patterns", "structtnwg__portal__endpoint__dstat__record__t__stct.html#a44c9fa2be0acf8665282d752d95ff132", null ],
     [ "local_interest_regex_patterns", "structtnwg__portal__endpoint__dstat__record__t__stct.html#a78ed001f0ad8fccd3e4d06263c247b38", null ],
     [ "local_interest_topics", "structtnwg__portal__endpoint__dstat__record__t__stct.html#a93621278e1fe555cfd402b1c7c9d66e7", null ],
+    [ "padding", "structtnwg__portal__endpoint__dstat__record__t__stct.html#a76a368845f108eb7bf9ecb5a2b9b0368", null ],
     [ "proxy_receivers", "structtnwg__portal__endpoint__dstat__record__t__stct.html#aad6fb664c1a082698a599808385dae77", null ],
     [ "proxy_sources", "structtnwg__portal__endpoint__dstat__record__t__stct.html#a03ea05c68e0105782c96b0d891e53944", null ],
     [ "receive_stats", "structtnwg__portal__endpoint__dstat__record__t__stct.html#abbcfde3ec087603f411fccf0ad4d973e", null ],

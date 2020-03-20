@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.11"/>
-<title>Dynamic Routing Guide: UM Router Concepts</title>
+<title>Dynamic Routing Guide: DRO Concepts</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -51,66 +51,66 @@ $(document).ready(function(){initNavTree('umrouterconcepts.html','');});
 <div id="doc-content">
 <div class="header">
   <div class="headertitle">
-<div class="title">UM Router Concepts </div>  </div>
+<div class="title">DRO Concepts </div>  </div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p><br />
  </p>
 <h1><a class="anchor" id="basicumrouteroperation"></a>
-Basic UM Router Operation&nbsp;&nbsp;<small><a href="#basicumrouteroperation">&lt;-</a></small></h1>
-<p>The diagram below shows a UM Router bridging topic resolution domains TRD1 and TRD2, for topic AAA, in a direct link configuration. Endpoint E1 contains a proxy receiver for topic AAA and endpoint E2 has a proxy source for topic AAA.</p>
+Basic DRO Operation&nbsp;&nbsp;<small><a href="#basicumrouteroperation">&lt;-</a></small></h1>
+<p>The diagram below shows a DRO bridging topic resolution domains TRD1 and TRD2, for topic AAA, in a direct link configuration. Endpoint E1 contains a proxy receiver for topic AAA and endpoint E2 has a proxy source for topic AAA.</p>
 <div class="image">
 <img src="basic_routing.png" alt="basic_routing.png"/>
 </div>
- <p>To establish topic resolution in an already-running UM Router, the following sequence typically occurs in an example like the above figure.</p>
+ <p>To establish topic resolution in an already-running DRO, the following sequence typically occurs in an example like the above figure.</p>
 <ol>
 <li>
 A receiver in TRD2 issues a TQR (Topic Query Record) for topic AAA. </li>
 <li>
-Portal E2 receives the TQR and passes information about topic AAA to all other portals in the UM Router. (In this case, E1 is the only other portal.) </li>
+Portal E2 receives the TQR and passes information about topic AAA to all other portals in the DRO. (In this case, E1 is the only other portal.) </li>
 <li>
-E1 immediately responds with three actions: a) create a proxy receiver for topic AAA, b) the new proxy receiver sends a TQR for AAA into TRD1, and c) E1 issues a Topic Interest message into TRD1 for the benefit of any other UM Routers that may be connected to that domain. </li>
+E1 immediately responds with three actions: a) create a proxy receiver for topic AAA, b) the new proxy receiver sends a TQR for AAA into TRD1, and c) E1 issues a Topic Interest message into TRD1 for the benefit of any other DROs that may be connected to that domain. </li>
 <li>
 A source for topic AAA in TRD1 sees the TQR and issues a TIR (Topic Information Record). </li>
 <li>
 E2 creates proxy source AAA, which then issues a TIR to TRD2. The receiver in TRD2 joins the transport, thus completing topic resolution. </li>
 <li>
-E1's AAA proxy receiver sees the TIR and requests that E2 (and any other interested portals in the UM Router, if there were any) create a proxy source for AAA. </li>
+E1's AAA proxy receiver sees the TIR and requests that E2 (and any other interested portals in the DRO, if there were any) create a proxy source for AAA. </li>
 </ol>
 <p><br />
  </p>
 <h2><a class="anchor" id="interestandusequeries"></a>
 Interest and Use Queries&nbsp;&nbsp;<small><a href="#interestandusequeries">&lt;-</a></small></h2>
-<p>When a UM Router starts, its endpoint portals issue a brief series of Topic Resolution Request messages to their respective topic resolution domains. This provokes quiescent receivers (and wildcard receivers) into sending Use Query Responses, indicating interest in various topics. Each portal then records this interest.</p>
+<p>When a DRO starts, its endpoint portals issue a brief series of Topic Resolution Request messages to their respective topic resolution domains. This provokes quiescent receivers (and wildcard receivers) into sending Use Query Responses, indicating interest in various topics. Each portal then records this interest.</p>
 <div class="image">
 <img src="dro_tr_1.png" alt="dro_tr_1.png"/>
 </div>
- <p>After a UM Router has been running, endpoint portals issue periodic Topic Use Queries and Pattern Use Queries (collectively referred to as simply Use Queries). Use Query Responses from UM contexts confirm that the receivers for these topics indeed still exist, thus maintaining these topics on the interest list. Autonomous TQRs also refresh interest and have the effect of suppressing the generation of Use Queries.</p>
+ <p>After a DRO has been running, endpoint portals issue periodic Topic Use Queries and Pattern Use Queries (collectively referred to as simply Use Queries). Use Query Responses from UM contexts confirm that the receivers for these topics indeed still exist, thus maintaining these topics on the interest list. Autonomous TQRs also refresh interest and have the effect of suppressing the generation of Use Queries.</p>
 <div class="image">
 <img src="dro_tr_2.png" alt="dro_tr_2.png"/>
 </div>
- <p>In the case of multi-hop UM Router configurations, UM Routers cannot detect interest for remote contexts via Use Queries or TQRs. They do this instead via Interest Messages. An endpoint portal generates periodic interest messages, which are picked up by adjacent UM Routers (i.e., the next hop over), at which time interest is refreshed.</p>
+ <p>In the case of multi-hop DRO configurations, DROs cannot detect interest for remote contexts via Use Queries or TQRs. They do this instead via Interest Messages. An endpoint portal generates periodic interest messages, which are picked up by adjacent DROs (i.e., the next hop over), at which time interest is refreshed.</p>
 <div class="image">
 <img src="dro_tr_3.png" alt="dro_tr_3.png"/>
 </div>
- <p>You can adjust intervals, limits, and durations for these topic resolution and interest mechanisms via UM Router configuration options (see <a class="el" href="xmlconfigurationreference.html">XML Configuration Reference</a>).</p>
+ <p>You can adjust intervals, limits, and durations for these topic resolution and interest mechanisms via DRO configuration options (see <a class="el" href="xmlconfigurationreference.html">XML Configuration Reference</a>).</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="umrouterkeepalive"></a>
-UM Router Keepalive&nbsp;&nbsp;<small><a href="#umrouterkeepalive">&lt;-</a></small></h2>
-<p>To maintain a reliable connection, peer portals exchange UM Router Keepalive signals. Keepalive intervals and connection timeouts are configurable on a per-portal basis. You can also set the UM Router to send keepalives only when traffic is idle, which is the default condition. When both traffic and keepalives go silent at a portal ingress, the portal considers the connection lost and disconnects the TCP link. After the disconnect, the portal tries to reconnect. See refeatewaykeepalive.</p>
+DRO Keepalive&nbsp;&nbsp;<small><a href="#umrouterkeepalive">&lt;-</a></small></h2>
+<p>To maintain a reliable connection, peer portals exchange DRO Keepalive signals. Keepalive intervals and connection timeouts are configurable on a per-portal basis. You can also set the DRO to send keepalives only when traffic is idle, which is the default condition. When both traffic and keepalives go silent at a portal ingress, the portal considers the connection lost and disconnects the TCP link. After the disconnect, the portal tries to reconnect. See <a class="el" href="xmlconfigurationreference.html#droelementgatewaykeepalive">&lt;gateway-keepalive&gt;</a>.</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="finaladvertisements"></a>
 Final Advertisements&nbsp;&nbsp;<small><a href="#finaladvertisements">&lt;-</a></small></h2>
-<p>UM Router proxy sources on endpoint portals, when deleted, send out a series of final advertisements. A final advertisement tells any receivers, including proxy receivers on other UM Routers, that the particular source has gone away. This triggers EOS and clean-up activities on the receiver relative to that specific source, which causes the receiver to begin querying according to its topic resolution configuration for the sustaining phase of querying.</p>
-<p>In short, final advertisements announce earlier detection of a source that has gone away, instead of transport timeout. This causes a faster transition to an alternative proxy source on a different UM Router if there is a change in the routing path.</p>
+<p>DRO proxy sources on endpoint portals, when deleted, send out a series of final advertisements. A final advertisement tells any receivers, including proxy receivers on other DROs, that the particular source has gone away. This triggers EOS and clean-up activities on the receiver relative to that specific source, which causes the receiver to begin querying according to its topic resolution configuration for the sustaining phase of querying.</p>
+<p>In short, final advertisements announce earlier detection of a source that has gone away, instead of transport timeout. This causes a faster transition to an alternative proxy source on a different DRO if there is a change in the routing path.</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="moreaboutproxysourcesandreceivers"></a>
 More About Proxy Sources and Receivers&nbsp;&nbsp;<small><a href="#moreaboutproxysourcesandreceivers">&lt;-</a></small></h2>
-<p>The domain-id is used by Interest Messages and other internal and UM Router-to-UM Router traffic to ensure forwarding of all messages (payload and topic resolution) to the correct recipients. This also has the effect of not creating proxy sources/receivers where they are not needed. Thus, UM Routers create proxy sources and receivers based solely on receiver interest.</p>
-<p>If more than one source sends on a given topic, the receiving portal's single proxy receiver for that topic receives all messages sent on that topic. The sending portal, however creates a proxy source for every source sending on the topic. The UM Router maintains a table of proxy sources, each keyed by an Originating Transport ID (OTID), enabling the proxy receiver to forward each message to the correct proxy source. An OTID uniquely identifies a source's transport session, and is included in topic advertisements.</p>
+<p>The domain-id is used by Interest Messages and other internal and DRO-to-DRO traffic to ensure forwarding of all messages (payload and topic resolution) to the correct recipients. This also has the effect of not creating proxy sources/receivers where they are not needed. Thus, DROs create proxy sources and receivers based solely on receiver interest.</p>
+<p>If more than one source sends on a given topic, the receiving portal's single proxy receiver for that topic receives all messages sent on that topic. The sending portal, however creates a proxy source for every source sending on the topic. The DRO maintains a table of proxy sources, each keyed by an Originating Transport ID (OTID), enabling the proxy receiver to forward each message to the correct proxy source. An OTID uniquely identifies a source's transport session, and is included in topic advertisements.</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="protocolconversion"></a>
@@ -124,48 +124,48 @@ context transport_lbtrm_datagram_max_size 8192
 context transport_lbtru_datagram_max_size 8192
 context transport_lbtipc_datagram_max_size 8192
 source transport_lbtsmx_datagram_max_size 8192
-</pre><p>See configuration options: <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Gateway/config.tag:../Config/" href="../Config/grptransporttcpoperation.html#transporttcpdatagrammaxsizecontext">transport_tcp_datagram_max_size (context)</a>, <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Gateway/config.tag:../Config/" href="../Config/grptransportlbtrmoperation.html#transportlbtrmdatagrammaxsizecontext">transport_lbtrm_datagram_max_size (context)</a>, <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Gateway/config.tag:../Config/" href="../Config/grptransportlbtruoperation.html#transportlbtrudatagrammaxsizecontext">transport_lbtru_datagram_max_size (context)</a>, <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Gateway/config.tag:../Config/" href="../Config/grptransportlbtipcoperation.html#transportlbtipcdatagrammaxsizecontext">transport_lbtipc_datagram_max_size (context)</a>, and <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Gateway/config.tag:../Config/" href="../Config/grptransportlbtsmxoperation.html#transportlbtsmxdatagrammaxsizesource">transport_lbtsmx_datagram_max_size (source)</a>.</p>
-<p>Also see <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Gateway/design.tag:../Design/" href="../Design/architecture.html#messagefragmentationandreassembly">Message Fragmentation and Reassembly</a>.</p>
-<p>Final note: the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Gateway/config.tag:../Config/" href="../Config/grpudpbasedresolveroperation.html#resolverdatagrammaxsizecontext">resolver_datagram_max_size (context)</a> option also needs to be made the same in all instances of UM, including DROs.</p>
+</pre><p>See configuration options: <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Gateway/config.tag:../Config/" href="../Config/grptransporttcpoperation.html#transporttcpdatagrammaxsizecontext">transport_tcp_datagram_max_size (context)</a>, <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Gateway/config.tag:../Config/" href="../Config/grptransportlbtrmoperation.html#transportlbtrmdatagrammaxsizecontext">transport_lbtrm_datagram_max_size (context)</a>, <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Gateway/config.tag:../Config/" href="../Config/grptransportlbtruoperation.html#transportlbtrudatagrammaxsizecontext">transport_lbtru_datagram_max_size (context)</a>, <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Gateway/config.tag:../Config/" href="../Config/grptransportlbtipcoperation.html#transportlbtipcdatagrammaxsizecontext">transport_lbtipc_datagram_max_size (context)</a>, and <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Gateway/config.tag:../Config/" href="../Config/grptransportlbtsmxoperation.html#transportlbtsmxdatagrammaxsizesource">transport_lbtsmx_datagram_max_size (source)</a>.</p>
+<p>Also see <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Gateway/design.tag:../Design/" href="../Design/architecture.html#messagefragmentationandreassembly">Message Fragmentation and Reassembly</a>.</p>
+<p>Final note: the <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Gateway/config.tag:../Config/" href="../Config/grpudpbasedresolveroperation.html#resolverdatagrammaxsizecontext">resolver_datagram_max_size (context)</a> option also needs to be made the same in all instances of UM, including DROs.</p>
 <p><br />
  </p>
 <h1><a class="anchor" id="multihopforwarding"></a>
 Multi-Hop Forwarding&nbsp;&nbsp;<small><a href="#multihopforwarding">&lt;-</a></small></h1>
-<p>UM can resolve topics across a span of multiple UM Routers. Consider a simple example UM Router deployment, as shown in the following figure.</p>
+<p>UM can resolve topics across a span of multiple DROs. Consider a simple example DRO deployment, as shown in the following figure.</p>
 <div class="image">
 <img src="multi_hop.png" alt="multi_hop.png"/>
 </div>
- <p>In this diagram, UM Router A has two endpoint portals connected to topic resolution domains TRD1 and TRD2. UM Router B also has two endpoint portals, which bridge TRD2 and TRD3. Endpoint portal names reflect the topic resolution domain to which they connect. For example, UM Router A endpoint E2 interfaces TRD2.</p>
+ <p>In this diagram, DRO A has two endpoint portals connected to topic resolution domains TRD1 and TRD2. DRO B also has two endpoint portals, which bridge TRD2 and TRD3. Endpoint portal names reflect the topic resolution domain to which they connect. For example, DRO A endpoint E2 interfaces TRD2.</p>
 <p>TRD1 has a source for topic AAA, and TRD3, an AAA receiver. The following sequence of events enables the forwarding of topic messages from source AAA to receiver AAA.</p>
 <ol>
 <li>
 Receiver AAA queries (issues a TQR). </li>
 <li>
-UM Router B, endpoint E3 (B-E3) receives the TQR and passes information about topic AAA to all other portals in the UM Router. In this case, B-E2 is the only other portal. </li>
+DRO B, endpoint E3 (B-E3) receives the TQR and passes information about topic AAA to all other portals in the DRO. In this case, B-E2 is the only other portal. </li>
 <li>
 In response, B-E2 creates a proxy receiver for AAA and sends a Topic Interest message for AAA into TRD2. The proxy receiver also issues a TQR, which in this case is ignored. </li>
 <li>
-UM Router A, endpoint E2 (A-E2) receives this Topic Interest message and passes information about topic AAA to all other portals in the UM Router. In this case, A-E1 is the only other portal. </li>
+DRO A, endpoint E2 (A-E2) receives this Topic Interest message and passes information about topic AAA to all other portals in the DRO. In this case, A-E1 is the only other portal. </li>
 <li>
 In response, A-E1 creates a proxy receiver for AAA and sends a Topic Interest message and TQR for AAA into TRD1. </li>
 <li>
 Source AAA responds to the TQR by sending a TIR for topic AAA. In this case, the Topic Interest message is ignored. </li>
 <li>
-The AAA proxy receiver created by A-E1 receives this TIR and requests that all UM Router A portals with an interest in topic AAA create a proxy source for AAA. </li>
+The AAA proxy receiver created by A-E1 receives this TIR and requests that all DRO A portals with an interest in topic AAA create a proxy source for AAA. </li>
 <li>
 In response, A-E2 creates a proxy source, which sends a TIR for topic AAA via TRD2. </li>
 <li>
-The AAA proxy receiver at B-E2 receives this TIR and requests that all UM Router B portals with an interest in topic AAA create a proxy source for AAA. </li>
+The AAA proxy receiver at B-E2 receives this TIR and requests that all DRO B portals with an interest in topic AAA create a proxy source for AAA. </li>
 <li>
 In response, B-E3 creates a proxy source, which sends a TIR for topic AAA via TRD3. The receiver in TRD3 joins the transport. </li>
 <li>
-Topic AAA has now been resolved across both UM Routers, which forward all topic messages sent by source AAA to receiver AAA. </li>
+Topic AAA has now been resolved across both DROs, which forward all topic messages sent by source AAA to receiver AAA. </li>
 </ol>
 <p><br />
  </p>
 <h1><a class="anchor" id="routingwildcardreceivers"></a>
 Routing Wildcard Receivers&nbsp;&nbsp;<small><a href="#routingwildcardreceivers">&lt;-</a></small></h1>
-<p>The UM Router supports topic resolution for wildcard receivers in a manner very similar to non-wildcard receivers. Wildcard receivers in a TRD issuing a WC-TQR cause corresponding proxy wildcard receivers to be created in portals, as shown in the following figure. The UM Router creates a single proxy source for pattern match.</p>
+<p>The DRO supports topic resolution for wildcard receivers in a manner very similar to non-wildcard receivers. Wildcard receivers in a TRD issuing a WC-TQR cause corresponding proxy wildcard receivers to be created in portals, as shown in the following figure. The DRO creates a single proxy source for pattern match.</p>
 <div class="image">
 <img src="wildcard.png" alt="wildcard.png"/>
 </div>
@@ -173,32 +173,32 @@ Routing Wildcard Receivers&nbsp;&nbsp;<small><a href="#routingwildcardreceivers"
  </p>
 <h1><a class="anchor" id="forwardingcosts"></a>
 Forwarding Costs&nbsp;&nbsp;<small><a href="#forwardingcosts">&lt;-</a></small></h1>
-<p>Forwarding a message through a UM Router incurs a cost in terms of latency, network bandwidth, and CPU utilization on the UM Router machine (which may in turn affect the latency of other forwarded messages). Transiting multiple UM Routers adds even more cumulative latency to a message. Other UM Router-related factors such as portal buffering, network bandwidth, switches, etc., can also add latency.</p>
+<p>Forwarding a message through a DRO incurs a cost in terms of latency, network bandwidth, and CPU utilization on the DRO machine (which may in turn affect the latency of other forwarded messages). Transiting multiple DROs adds even more cumulative latency to a message. Other DRO-related factors such as portal buffering, network bandwidth, switches, etc., can also add latency.</p>
 <p>Factors other than latency contribute to the cost of forwarding a message. Consider a message that can be sent from one domain to its destination domain over one of two paths. A three-hop path over 1Gbps links may be faster than a single-hop path over a 100Mbps link. Further, it may be the case that the 100Mbps link is more expensive or less reliable.</p>
-<p>You assign forwarding cost values on a per-portal basis. When summed over a path, these values determine the cost of that entire path. A network of UM Routers uses forwarding cost as the criterion for determining the best path over which to resolve a topic.</p>
+<p>You assign forwarding cost values on a per-portal basis. When summed over a path, these values determine the cost of that entire path. A network of DROs uses forwarding cost as the criterion for determining the best path over which to resolve a topic.</p>
 <p><br />
  </p>
 <h1><a class="anchor" id="umrouterrouting"></a>
-UM Router Routing&nbsp;&nbsp;<small><a href="#umrouterrouting">&lt;-</a></small></h1>
-<p>UM Routers have an awareness of other UM Routers in their network and how they are linked. Thus, they each maintain a topology map, which is periodically confirmed and updated. This map also includes forwarding cost information.</p>
-<p>Using this information, the UM Routers can cooperate during topic resolution to determine the best (lowest cost) path over which to resolve a topic or to route control information. They do this by totaling the costs of all portals along each candidate route, then comparing the totals.</p>
-<p>For example, the following figure shows two possible paths from TRD1 to TRD2: A-C (total route cost of 11) and B-D (total route cost of 7). In this case, the UM Routers select path B-D.</p>
+DRO Routing&nbsp;&nbsp;<small><a href="#umrouterrouting">&lt;-</a></small></h1>
+<p>DROs have an awareness of other DROs in their network and how they are linked. Thus, they each maintain a topology map, which is periodically confirmed and updated. This map also includes forwarding cost information.</p>
+<p>Using this information, the DROs can cooperate during topic resolution to determine the best (lowest cost) path over which to resolve a topic or to route control information. They do this by totaling the costs of all portals along each candidate route, then comparing the totals.</p>
+<p>For example, the following figure shows two possible paths from TRD1 to TRD2: A-C (total route cost of 11) and B-D (total route cost of 7). In this case, the DROs select path B-D.</p>
 <div class="image">
 <img src="routing.png" alt="routing.png"/>
 </div>
- <p>If a UM Router or link along path B-D should fail, the UM Routers detect this and reroute over path A-C. Similarly, if an administrator revises cost values along path B-D to exceed a total of 12, the UM Routers reroute to A-C.</p>
-<p>If the UM Routers find more than one path with the same lowest total cost value, i.e., a "tie", they select the path based on a node-ID selection algorithm. Since administrators do not have access to node IDs, this will appear to be a pseudo-random selection.</p>
-<dl class="section note"><dt>Note</dt><dd>You cannot configure parallel paths (such as for load balancing or Hot failover), as the UM Routers always select the lowest-cost path and only the lowest-cost path for all data between two points. However, you can devise an exception to this rule by configuring the destinations to be in different TRDs. For example, you can create an HFX Receiver bridging two receivers in different TRD contexts. The UM Routers route to both TRDs, and the HFX Receiver merges to a single stream for the application.</dd></dl>
+ <p>If a DRO or link along path B-D should fail, the DROs detect this and reroute over path A-C. Similarly, if an administrator revises cost values along path B-D to exceed a total of 12, the DROs reroute to A-C.</p>
+<p>If the DROs find more than one path with the same lowest total cost value, i.e., a "tie", they select the path based on a node-ID selection algorithm. Since administrators do not have access to node IDs, this will appear to be a pseudo-random selection.</p>
+<dl class="section note"><dt>Note</dt><dd>You cannot configure parallel paths (such as for load balancing or Hot failover), as the DROs always select the lowest-cost path and only the lowest-cost path for all data between two points. However, you can devise an exception to this rule by configuring the destinations to be in different TRDs. For example, you can create an HFX Receiver bridging two receivers in different TRD contexts. The DROs route to both TRDs, and the HFX Receiver merges to a single stream for the application.</dd></dl>
 <p><br />
  </p>
 <h1><a class="anchor" id="routingtopologies"></a>
 Routing Topologies&nbsp;&nbsp;<small><a href="#routingtopologies">&lt;-</a></small></h1>
-<p>You can configure multiple UM Routers in a variety of topologies. Following are several examples.</p>
+<p>You can configure multiple DROs in a variety of topologies. Following are several examples.</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="directlink"></a>
 Direct Link&nbsp;&nbsp;<small><a href="#directlink">&lt;-</a></small></h2>
-<p>The Direct Link configuration uses a single UM Router to directly connect two TRDs. For a configuration example, see <a class="el" href="umrouterimplementation.html#directlinkconfiguration">Direct Link Configuration</a>.</p>
+<p>The Direct Link configuration uses a single DRO to directly connect two TRDs. For a configuration example, see <a class="el" href="umrouterimplementation.html#directlinkconfiguration">Direct Link Configuration</a>.</p>
 <div class="image">
 <img src="direct_link.png" alt="direct_link.png"/>
 </div>
@@ -206,7 +206,7 @@ Direct Link&nbsp;&nbsp;<small><a href="#directlink">&lt;-</a></small></h2>
  </p>
 <h2><a class="anchor" id="singlelink"></a>
 Single Link&nbsp;&nbsp;<small><a href="#singlelink">&lt;-</a></small></h2>
-<p>A Single Link configuration connects two TRDs using a UM Router on each end of an intermediate link. The intermediate link can be a "peer" link, or a transit TRD. For configuration examples, see <a class="el" href="umrouterimplementation.html#peerlinkconfiguration">Peer Link Configuration</a> and <a class="el" href="umrouterimplementation.html#transittrdlinkconfiguration">Transit TRD Link Configuration</a>.</p>
+<p>A Single Link configuration connects two TRDs using a DRO on each end of an intermediate link. The intermediate link can be a "peer" link, or a transit TRD. For configuration examples, see <a class="el" href="umrouterimplementation.html#peerlinkconfiguration">Peer Link Configuration</a> and <a class="el" href="umrouterimplementation.html#transittrdlinkconfiguration">Transit TRD Link Configuration</a>.</p>
 <div class="image">
 <img src="single_link.png" alt="single_link.png"/>
 </div>
@@ -222,7 +222,7 @@ Parallel Links&nbsp;&nbsp;<small><a href="#parallellinks">&lt;-</a></small></h2>
  </p>
 <h2><a class="anchor" id="loops"></a>
 Loops&nbsp;&nbsp;<small><a href="#loops">&lt;-</a></small></h2>
-<p>Loops let you route packets back to the originating UM Router without reusing any paths. Also, if any peer-peer links are interrupted, the looped UM Routers are able to find an alternate route between any two TRDs.</p>
+<p>Loops let you route packets back to the originating DRO without reusing any paths. Also, if any peer-peer links are interrupted, the looped DROs are able to find an alternate route between any two TRDs.</p>
 <div class="image">
 <img src="loops.png" alt="loops.png"/>
 </div>
@@ -230,7 +230,7 @@ Loops&nbsp;&nbsp;<small><a href="#loops">&lt;-</a></small></h2>
  </p>
 <h2><a class="anchor" id="loopandspur"></a>
 Loop and Spur&nbsp;&nbsp;<small><a href="#loopandspur">&lt;-</a></small></h2>
-<p>The Loop and Spur has a one or more UM Routers tangential to the loop and accessible only through a single UM Router participating in the loop. For a configuration example, see <a class="el" href="umrouterimplementation.html#loopandspurconfiguration">Loop and Spur Configuration</a>.</p>
+<p>The Loop and Spur has a one or more DROs tangential to the loop and accessible only through a single DRO participating in the loop. For a configuration example, see <a class="el" href="umrouterimplementation.html#loopandspurconfiguration">Loop and Spur Configuration</a>.</p>
 <div class="image">
 <img src="loop_and_spur.png" alt="loop_and_spur.png"/>
 </div>
@@ -253,8 +253,8 @@ with centralized TRD&nbsp;&nbsp;<small><a href="#Star">&lt;-</a></small></h2>
  <p><br />
  </p>
 <h2><a class="anchor" id="starwithcentralizedumrouter"></a>
-Star with Centralized UM Router&nbsp;&nbsp;<small><a href="#starwithcentralizedumrouter">&lt;-</a></small></h2>
-<p>The Star with a centralized UM Router is the simplest way to bridge multiple TRDs. For a configuration example, see <a class="el" href="umrouterimplementation.html#starconfiguration">Star Configuration</a>.</p>
+Star with Centralized DRO&nbsp;&nbsp;<small><a href="#starwithcentralizedumrouter">&lt;-</a></small></h2>
+<p>The Star with a centralized DRO is the simplest way to bridge multiple TRDs. For a configuration example, see <a class="el" href="umrouterimplementation.html#starconfiguration">Star Configuration</a>.</p>
 <div class="image">
 <img src="star_central_dro.png" alt="star_central_dro.png"/>
 </div>
@@ -262,7 +262,7 @@ Star with Centralized UM Router&nbsp;&nbsp;<small><a href="#starwithcentralizedu
  </p>
 <h2><a class="anchor" id="mesh"></a>
 Mesh&nbsp;&nbsp;<small><a href="#mesh">&lt;-</a></small></h2>
-<p>The Mesh topology provides peer portal interconnects between many UM Routers, approaching an all-connected-to-all configuration. This provides multiple possible paths between any two TRDs in the mesh. Note that this diagram is illustrative of the ways the UM Routers may be interconnected, and not necessarily a practical or recommended application. For a configuration example, see <a class="el" href="umrouterimplementation.html#meshconfiguration">Mesh Configuration</a>.</p>
+<p>The Mesh topology provides peer portal interconnects between many DROs, approaching an all-connected-to-all configuration. This provides multiple possible paths between any two TRDs in the mesh. Note that this diagram is illustrative of the ways the DROs may be interconnected, and not necessarily a practical or recommended application. For a configuration example, see <a class="el" href="umrouterimplementation.html#meshconfiguration">Mesh Configuration</a>.</p>
 <div class="image">
 <img src="mesh.png" alt="mesh.png"/>
 </div>
@@ -286,16 +286,16 @@ Dumbbell&nbsp;&nbsp;<small><a href="#dumbbell">&lt;-</a></small></h2>
  </p>
 <h1><a class="anchor" id="unsupportedconfigurations"></a>
 Unsupported Configurations&nbsp;&nbsp;<small><a href="#unsupportedconfigurations">&lt;-</a></small></h1>
-<p>When designing UM Router networks, do not use any of the following topology constructs.</p>
-<p>Two peer-to-peer connections between the same two UM Routers:</p>
+<p>When designing DRO networks, do not use any of the following topology constructs.</p>
+<p>Two peer-to-peer connections between the same two DROs:</p>
 <div class="image">
 <img src="two_peers.png" alt="two_peers.png"/>
 </div>
- <p>Two endpoint connections from the same UM Router to the same TRD:</p>
+ <p>Two endpoint connections from the same DRO to the same TRD:</p>
 <div class="image">
 <img src="two_endpoints.png" alt="two_endpoints.png"/>
 </div>
- <p>Assigning two different Domain ID values (from different UM Routers) to the same TRD:</p>
+ <p>Assigning two different Domain ID values (from different DROs) to the same TRD:</p>
 <div class="image">
 <img src="two_domainids.png" alt="two_domainids.png"/>
 </div>
@@ -303,84 +303,84 @@ Unsupported Configurations&nbsp;&nbsp;<small><a href="#unsupportedconfigurations
  </p>
 <h1><a class="anchor" id="umfeaturecompatibility"></a>
 UM Feature Compatibility&nbsp;&nbsp;<small><a href="#umfeaturecompatibility">&lt;-</a></small></h1>
-<p>You must install the UM Dynamic Routing Option with its companion Ultra Messaging UMS, UMP, or UMQ product, and versions must match. While most UM features are compatible with the UM Router, some are not. Following is a table of features and their compatibilities with the UM Router.</p>
+<p>You must install the UM Dynamic Routing Option with its companion Ultra Messaging UMS, UMP, or UMQ product, and versions must match. While most UM features are compatible with the DRO, some are not. Following is a table of features and their compatibilities with the DRO.</p>
 <table class="doxtable">
 <tr>
-<th>UM Feature </th><th>UM Router Compatible? </th><th>Notes </th></tr>
+<th>UM Feature </th><th>DRO Compatible? </th><th>Notes </th></tr>
 <tr>
-<td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Gateway/config.tag:../Config/" href="../Config/grptransportacceleration.html">Transport Acceleration</a> </td><td>Yes </td><td></td></tr>
+<td>Connect and Disconnect Source Events </td><td>Yes, but see <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Gateway/design.tag:../Design/" href="../Design/fundamentalconcepts.html#sourceconnectanddisconnectevents">Source Connect and Disconnect Events</a> </td><td></td></tr>
 <tr>
-<td>Hot Failover (HF) </td><td>Yes </td><td>The UM Router can pass messages sent by HF publishers to HF receivers, however the UM Router itself cannot be configured to originate or terminate HF data streams. </td></tr>
+<td><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Gateway/design.tag:../Design/" href="../Design/umobjects.html#hotfailoverhf">Hot Failover (HF)</a> </td><td>Yes </td><td>The DRO can pass messages sent by HF publishers to HF receivers, however the DRO itself cannot be configured to originate or terminate HF data streams. </td></tr>
 <tr>
-<td>Hot Failover across contexts (HFX) </td><td>Yes </td><td></td></tr>
+<td><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Gateway/design.tag:../Design/" href="../Design/umobjects.html#hotfailoveracrossmultiplecontexts">Hot Failover Across Multiple Contexts</a> </td><td>Yes </td><td></td></tr>
 <tr>
-<td>Late Join </td><td>Yes </td><td></td></tr>
+<td><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Gateway/design.tag:../Design/" href="../Design/fundamentalconcepts.html#latejoin">Late Join</a> </td><td>Yes </td><td></td></tr>
 <tr>
-<td>Message Batching </td><td>Yes </td><td></td></tr>
+<td><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Gateway/design.tag:../Design/" href="../Design/architecture.html#messagebatching">Message Batching</a> </td><td>Yes </td><td></td></tr>
 <tr>
 <td>Monitoring/Statistics </td><td>Yes </td><td></td></tr>
 <tr>
-<td>Multicast Immediate Messaging (MIM) </td><td>Yes </td><td></td></tr>
+<td><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Gateway/design.tag:../Design/" href="../Design/umfeatures.html#multicastimmediatemessaging">Multicast Immediate Messaging</a> (MIM) </td><td>Yes </td><td></td></tr>
 <tr>
-<td>Multi-Transport Threads </td><td>No </td><td></td></tr>
+<td><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Gateway/design.tag:../Design/" href="../Design/umfeatures.html#offtransportrecoveryotr">Off-Transport Recovery (OTR)</a> </td><td>Yes </td><td></td></tr>
 <tr>
-<td>Off-Transport Recovery (OTR) </td><td>Yes </td><td></td></tr>
+<td><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Gateway/design.tag:../Design/" href="../Design/architecture.html#ordereddelivery">Ordered Delivery</a> </td><td>Yes </td><td></td></tr>
 <tr>
-<td>Ordered Delivery </td><td>Yes </td><td></td></tr>
+<td><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Gateway/design.tag:../Design/" href="../Design/umobjects.html#predefinedmessages">Pre-Defined Messages</a> (PDM) </td><td>Yes </td><td></td></tr>
 <tr>
-<td>Pre-Defined Messaging (PDM) </td><td>Yes </td><td></td></tr>
+<td><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Gateway/design.tag:../Design/" href="../Design/fundamentalconcepts.html#requestresponse">Request/Response</a> </td><td>Yes </td><td></td></tr>
 <tr>
-<td>Request/Response </td><td>Yes </td><td></td></tr>
+<td><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Gateway/design.tag:../Design/" href="../Design/umobjects.html#selfdescribingmessaging">Self Describing Messaging</a> (SDM) </td><td>Yes </td><td></td></tr>
 <tr>
-<td>Self-Describing Messaging (SDM) </td><td>Yes </td><td></td></tr>
+<td><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Gateway/design.tag:../Design/" href="../Design/advancedoptimizations.html#smartsources">Smart Sources</a> </td><td>Partial </td><td>The DRO does not support proxy sources sending data via Smart Sources. The DRO does accept ingress traffic to proxy receivers sent by Smart Sources. </td></tr>
 <tr>
-<td>Source Side Filtering </td><td>Yes </td><td>The UM Router supports transport source side filtering. You can activate this either at the originating TRD source, or at a downstream proxy source. </td></tr>
+<td>Source Side Filtering </td><td>Yes </td><td>The DRO supports transport source side filtering. You can activate this either at the originating TRD source, or at a downstream proxy source. </td></tr>
 <tr>
-<td>Transport LBT-IPC </td><td>Yes </td><td></td></tr>
+<td><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Gateway/design.tag:../Design/" href="../Design/fundamentalconcepts.html#sourcestring">Source String</a> </td><td>Yes, but see <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Gateway/design.tag:../Design/" href="../Design/fundamentalconcepts.html#sourcestringsinaroutednetwork">Source Strings in a Routed Network</a> </td><td></td></tr>
 <tr>
-<td>Transport LBT-RDMA </td><td>Yes </td><td></td></tr>
+<td><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Gateway/config.tag:../Config/" href="../Config/grptransportacceleration.html">Transport Acceleration</a> </td><td>Yes </td><td></td></tr>
 <tr>
-<td>Transport LBT-RM </td><td>Yes </td><td></td></tr>
+<td><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Gateway/design.tag:../Design/" href="../Design/transporttypes.html#transportlbtipc">Transport LBT-IPC</a> </td><td>Yes </td><td></td></tr>
 <tr>
-<td>Transport LBT-RU </td><td>Yes </td><td></td></tr>
+<td><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Gateway/design.tag:../Design/" href="../Design/transporttypes.html#transportlbtrm">Transport LBT-RM</a> </td><td>Yes </td><td></td></tr>
 <tr>
-<td>Transport LBT-SMX </td><td>Partial </td><td>The UM router does not support proxy sources sending data via LBT-SMX. Any proxy sources configured for LBT-SMX will be converted to TCP, with a log message warning of the transport change. The UM Router does accept LBT-SMX ingress traffic to proxy receivers. </td></tr>
+<td><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Gateway/design.tag:../Design/" href="../Design/transporttypes.html#transportlbtru">Transport LBT-RU</a> </td><td>Yes </td><td></td></tr>
 <tr>
-<td>Transport TCP </td><td>Yes </td><td></td></tr>
+<td><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Gateway/design.tag:../Design/" href="../Design/transporttypes.html#transportlbtsmx">Transport LBT-SMX</a> </td><td>Partial </td><td>The DRO does not support proxy sources sending data via LBT-SMX. Any proxy sources configured for LBT-SMX will be converted to TCP, with a log message warning of the transport change. The DRO does accept LBT-SMX ingress traffic to proxy receivers. </td></tr>
 <tr>
-<td>Transport TCP-LB </td><td>Yes </td><td></td></tr>
+<td><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Gateway/design.tag:../Design/" href="../Design/transporttypes.html#transporttcp">Transport TCP</a> </td><td>Yes </td><td></td></tr>
+<tr>
+<td><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Gateway/design.tag:../Design/" href="../Design/umfeatures.html#transportservicesproviderxsp">Transport Services Provider (XSP)</a> </td><td>No </td><td></td></tr>
 <tr>
 <td>JMS, via UMQ broker </td><td>No </td><td></td></tr>
 <tr>
-<td>UM Spectrum </td><td>Yes </td><td>The UM Router supports UM Spectrum traffic, but you cannot implement Spectrum channels in UM Router proxy sources or receivers. </td></tr>
+<td><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Gateway/design.tag:../Design/" href="../Design/umobjects.html#spectrum">Spectrum</a> </td><td>Yes </td><td>The DRO supports UM Spectrum traffic, but you cannot implement Spectrum channels in DRO proxy sources or receivers. </td></tr>
 <tr>
-<td>UMP Implicit/Explicit Acknowledgements </td><td>Yes </td><td></td></tr>
+<td>UMP Implicit and <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Gateway/ume.tag:../UME/" href="../UME/designingpersistenceapplications.html#explicitacknowledgments">Explicit Acknowledgments</a> </td><td>Yes </td><td></td></tr>
 <tr>
 <td>UMP Persistent Store </td><td>Yes </td><td></td></tr>
 <tr>
-<td>UMP Proxy Sources </td><td>Yes </td><td></td></tr>
+<td>UMP <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Gateway/ume.tag:../UME/" href="../UME/persistencefaulttolerance.html#persistenceproxysources">Persistence Proxy Sources</a> </td><td>Yes </td><td></td></tr>
 <tr>
-<td>UMP Quorum Consensus </td><td>Yes </td><td></td></tr>
+<td>UMP <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Gateway/ume.tag:../UME/" href="../UME/persistenceconcepts.html#quorumconsensusstorefailover">Quorum/Consensus Store Failover</a> </td><td>Yes </td><td></td></tr>
 <tr>
-<td>UMP Registration ID/Session Management </td><td>Yes </td><td></td></tr>
+<td>UMP <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Gateway/ume.tag:../UME/" href="../UME/designingpersistenceapplications.html#managingregidswithsessionids">Managing RegIDs with Session IDs</a> </td><td>Yes </td><td></td></tr>
 <tr>
-<td>UMP Receiver-Paced Persistence (RPP) </td><td>Yes </td><td></td></tr>
+<td>UMP <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Gateway/ume.tag:../UME/" href="../UME/operationalview.html#receiverpacedpersistenceoperations">Receiver-paced Persistence Operations</a> (RPP) </td><td>Yes </td><td></td></tr>
 <tr>
-<td>UMP Store Failover </td><td>Yes </td><td></td></tr>
+<td>UMQ <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Gateway/umq.tag:../UMQ/" href="../UMQ/index.html#umqoverview">Brokered Queuing</a> </td><td>No </td><td></td></tr>
 <tr>
-<td>UMQ Brokered Queuing </td><td>No </td><td></td></tr>
-<tr>
-<td>UMQ Ultra Load Balancing (ULB) </td><td>No </td><td></td></tr>
+<td>UMQ <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Gateway/umq.tag:../UMQ/" href="../UMQ/ultraloadbalancingulb.html">Ultra Load Balancing (ULB)</a> </td><td>No </td><td></td></tr>
 <tr>
 <td>Ultra Messaging Desktop Services (UMDS) </td><td>Not for client connectivity to the UMDS server </td><td></td></tr>
 <tr>
-<td>Ultra Messaging Manager (UMM) </td><td>Yes </td><td>Not for UM Router management </td></tr>
+<td>Ultra Messaging Manager (UMM) </td><td>Yes </td><td>Not for DRO management </td></tr>
 <tr>
 <td>UM SNMP Agent </td><td>No </td><td></td></tr>
 <tr>
 <td>UMCache </td><td>No </td><td></td></tr>
 <tr>
-<td>Wildcard Receivers </td><td>Yes </td><td></td></tr>
+<td><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Gateway/design.tag:../Design/" href="../Design/fundamentalconcepts.html#umwildcardreceivers">UM Wildcard Receivers</a> </td><td>Yes </td><td></td></tr>
 <tr>
 <td>Zero Object Delivery (ZOD) </td><td>Yes </td><td></td></tr>
 </table>

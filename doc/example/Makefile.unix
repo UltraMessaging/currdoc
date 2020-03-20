@@ -165,19 +165,19 @@ EXAMPLE_SRC = $(EXAMPLE_SRC_UMS)
 else ifeq ($(PRODUCT),UMP)
 EXAMPLE_SRC = $(EXAMPLE_SRC_UMS) $(EXAMPLE_SRC_UMP)
 ifeq ($(TARGET_PLATFORM),Linux-glibc-2.17-x86_64)
-EXAMPLE_EXE_EXTRA = umestored_example
+EXAMPLE_EXE_EXTRA = umestored_example umesnaprepo.c
 endif
 
 else ifeq ($(PRODUCT),UMQ)
 EXAMPLE_SRC = $(EXAMPLE_SRC_UMS) $(EXAMPLE_SRC_UMP) $(EXAMPLE_SRC_UMQ)
 ifeq ($(TARGET_PLATFORM),Linux-glibc-2.17-x86_64)
-EXAMPLE_EXE_EXTRA = umestored_example
+EXAMPLE_EXE_EXTRA = umestored_example umesnaprepo.c
 endif
 else
 $(error Invalid product: '$(PRODUCT)' entered.  Please specify a valid product (UMS, UMP, UMQ))
 endif
 
-EXAMPLE_INC         =  monmodopts.h replgetopt.h verifymsg.h
+EXAMPLE_INC         =  monmodopts.h replgetopt.h verifymsg.h umeprofile.h
 
 OTHER_SRC           =  getopt.c verifymsg.c
 
@@ -321,6 +321,9 @@ umercv:  umercv.c $(OTHER_SRC) $(EXAMPLE_INC)
 
 umesrc:  umesrc.c $(OTHER_SRC) $(EXAMPLE_INC)
 	$(CC) umesrc.c $(OTHER_SRC) -o  $@  $(GEN_CFLAGS) $(CFLAGS) -I$(LBM_INCLUDE_DIRS) -L$(LBM_LIB_DIRS) $(LBM_LIBS) $(GEN_LIBS) $(EXTRA_LIBS)
+
+umesnaprepo:  umesnaprepo.c $(OTHER_SRC) $(EXAMPLE_INC)
+	$(CC) umesnaprepo.c -o  $@  $(GEN_CFLAGS) $(CFLAGS) -I$(LBM_INCLUDE_DIRS) -L$(LBM_LIB_DIRS) $(UME_LIBS) $(LBM_LIBS) -lstdc++ $(GEN_LIBS) $(EXTRA_LIBS) $(SMRT_LIBS)
 
 umestored_example:  umestored_example.c
 	$(CC) umestored_example.c -o  $@  $(GEN_CFLAGS) $(CFLAGS) -I$(LBM_INCLUDE_DIRS) -L$(LBM_LIB_DIRS) $(UME_LIBS) $(LBM_LIBS) -lstdc++ $(GEN_LIBS) $(EXTRA_LIBS) $(SMRT_LIBS)

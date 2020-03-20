@@ -54,9 +54,9 @@ $(document).ready(function(){initNavTree('storewebmonitor.html','');});
 <div class="title">Store Web Monitor </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>The built-in web monitor (configured in the umestored XML configuration file) is a rich source of information about the health of a UM stores. This section contains a page-by-page guide to reading and interpreting the output of a UM web monitor, with just a couple example sources and one receiver using a single store.</p>
+<div class="textblock"><p>The built-in web monitor (configured in the <code>umestored</code> XML configuration file) is a rich source of information about the health of a UM stores. This section contains a page-by-page guide to reading and interpreting the output of a UM web monitor, with just a couple example sources and one receiver using a single store.</p>
 <dl class="section warning"><dt>Warning</dt><dd>The store's web monitor is not designed to be a highly-secure feature. Anybody with access to the network can access the web monitor pages.</dd></dl>
-<p>Users are expected to prevent unauthorized access to the web monitor through normal firewalling methods. Users who are unable to limit access to a level consistent with their overall security needs should disable the store web monitor (using <a class="el" href="configurationreferenceforumestored.html#umeelementwebmonitor">&lt;web-monitor&gt;</a>). See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UME/design.tag:../Design/" href="../Design/fundamentalconcepts.html#webmonsecurity">Webmon Security</a> for more information.</p>
+<p>Users are expected to prevent unauthorized access to the web monitor through normal firewalling methods. Users who are unable to limit access to a level consistent with their overall security needs should disable the store web monitor (using <a class="el" href="configurationreferenceforumestored.html#umeelementwebmonitor">&lt;web-monitor&gt;</a>). See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/UME/design.tag:../Design/" href="../Design/fundamentalconcepts.html#webmonsecurity">Webmon Security</a> for more information.</p>
 <dl class="section note"><dt>Note</dt><dd>the UM daemon designs are evolving away from simple web-based monitoring and towards a publish/subscribe model of distributing monitoring events and statistics.</dd></dl>
 <p><br />
  </p>
@@ -76,7 +76,7 @@ Store Web Monitor Stores Page&nbsp;&nbsp;<small><a href="#storewebmonitorstoresp
 <center> <div class="image">
 <img src="webmon_stores.png" alt="webmon_stores.png"/>
 </div>
-  </center><p>This page shows all the stores configured under the umestored process. If you had 5 stores configured, they would be numbered Store 0 through Store 4. Our example has only one store configured, "ume-test-store".</p>
+  </center><p>This page shows all the stores configured under the <code>umestored</code> process. If you had 5 stores configured, they would be numbered Store 0 through Store 4. Our example has only one store configured, "ume-test-store".</p>
 <p>Each store name is a clickable link, which displays the <a class="el" href="storewebmonitor.html#storewebmonitorstorepage">Store Web Monitor Store Page</a> for that store.</p>
 <p><br />
  </p>
@@ -156,7 +156,7 @@ Store Web Monitor Source Page&nbsp;&nbsp;<small><a href="#storewebmonitorsourcep
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>10.29.3.42.14392 </td><td><p class="starttd">The IP address and port of the source's UM configuration option, <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpunicastimmediatemessagingnetwork.html#requesttcpportcontext">request_tcp_port (context)</a>.</p>
+<td>10.29.3.42.14392 </td><td><p class="starttd">The IP address and port of the source's UM configuration option, <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/UME/config.tag:../Config/" href="../Config/grpunicastimmediatemessagingnetwork.html#requesttcpportcontext">request_tcp_port (context)</a>.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
@@ -185,7 +185,7 @@ Store Web Monitor Source Page&nbsp;&nbsp;<small><a href="#storewebmonitorsourcep
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>Repository </td><td><p class="starttd">disk is the type of repository. Possible values are memory, disk or reduced-fd.</p>
+<td>Repository </td><td><p class="starttd">disk is the type of repository. Possible values are "memory" or "disk".</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
@@ -233,7 +233,7 @@ Store Web Monitor Source Page&nbsp;&nbsp;<small><a href="#storewebmonitorsourcep
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>Sync: [c2f, c2f, c2f] </td><td><p class="starttd">Pertains to disk or reduced-fd repositories only. Sync format is: sync_complete_sqn, sync_sqn, contig_sqn <br />
+<td>Sync: [c2f, c2f, c2f] </td><td><p class="starttd">Pertains to disk repositories only. Sync format is: sync_complete_sqn, sync_sqn, contig_sqn <br />
 <br />
 </p><ul>
 <li>sync_complete_sqn, c2f, Most recent sequence number that the Operating System has confirmed persisting to disk. <br />
@@ -247,7 +247,7 @@ Store Web Monitor Source Page&nbsp;&nbsp;<small><a href="#storewebmonitorsourcep
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>In progress: 0 / 0 </td><td><p class="starttd">Pertains to disk or reduced-fd repositories only. In progress format is: num_ios_pending / num_read_ios_pending <br />
+<td>In progress: 0 / 0 </td><td><p class="starttd">Pertains to disk repositories only. In progress format is: num_ios_pending / num_read_ios_pending <br />
 <br />
 </p><ul>
 <li>num_ios_pending, 0, Number of disk writes the store has submitted to the Operation System. A disk write refers to the store persisting a message to disk. <br />
@@ -258,16 +258,16 @@ Store Web Monitor Source Page&nbsp;&nbsp;<small><a href="#storewebmonitorsourcep
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>Offsets: 0 / 190320 / 4294967296 </td><td><p class="starttd">Pertains to disk or reduced-fd repositories only. Offsets format is: start_offset, offset, max_offset <br />
+<td>Offsets: 0 / 190320 / 4294967296 </td><td><p class="starttd">Pertains to disk repositories only. Offsets format is: start_offset, offset, max_offset <br />
 <br />
 </p><ul>
-<li>start_offset, 0, The relative location of the first message, trail_sqn, in the disk. start_offset is 0 for a reduced-fd repository. <br />
+<li>start_offset, 0, The relative location of the first message, trail_sqn, in the disk. <br />
 <br />
 </li>
-<li>offset, 190320, The relative location of where the message , contig_sqn plus one will be written. offset represents the size of the repository on disk for a reduced-fd repository. <br />
+<li>offset, 190320, The relative location of where the message, contig_sqn plus one will be written. <br />
 <br />
 </li>
-<li>max_offset, 4294967296, The maximum size of the cache file. max_offset is the maximum repository size on disk for a reduced-fd repository.</li>
+<li>max_offset, 4294967296, The maximum size of the cache file.</li>
 </ul>
 <p class="endtd"></p>
 </td></tr>
@@ -321,7 +321,7 @@ Store Web Monitor Receiver Page&nbsp;&nbsp;<small><a href="#storewebmonitorrecei
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>10.29.3.42.14393 </td><td><p class="starttd">The IP address and port of the source's UM configuration option, <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpunicastimmediatemessagingnetwork.html#requesttcpportcontext">request_tcp_port (context)</a>.</p>
+<td>10.29.3.42.14393 </td><td><p class="starttd">The IP address and port of the source's UM configuration option, <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/UME/config.tag:../Config/" href="../Config/grpunicastimmediatemessagingnetwork.html#requesttcpportcontext">request_tcp_port (context)</a>.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>

@@ -6,11 +6,11 @@
 <div class="contents">
 <div class="textblock">
 <img src="infa_logo.png" width="400" height="138" alt="Informatica"/><br/><br/>
-<big><b>Ultra Messaging</b></big> <small>(Version 6.12.1)</small><br/>
+<big><b>Ultra Messaging</b></big> <small>(Version 6.13)</small><br/>
 <br/><br/><br/>
 <center class="mytitle">C Ultra Messaging Examples</center>
 <br/><br/><br/>
-<b>&copy; Copyright Informatica LLC 2004-2019.</b>
+<b>&copy; Copyright (C) 2004-2020, Informatica LLC. All Rights Reserved.</b>
 <p>This software and documentation are provided only under a separate license
 agreement containing restrictions on use and disclosure.
 No part of this document may be reproduced or transmitted in any form,
@@ -1597,44 +1597,6 @@ Available&nbsp;options:<br>
 </code>
 
 <hr>
-<p><a href=umedcmd.c><b><code>umedcmd.c</code></b></a> - 
-Purpose:&nbsp;application&nbsp;sends&nbsp;unicast&nbsp;immediate&nbsp;command&nbsp;messages&nbsp;to&nbsp;an&nbsp;umestore&nbsp;publishing&nbsp;daemon.<br>
-<code>Usage:&nbsp;umedcmd&nbsp;-T&nbsp;target_string&nbsp;-c&nbsp;config_file&nbsp;[command_string]<br>
-Available&nbsp;options:<br>
-&nbsp;&nbsp;-c&nbsp;filename&nbsp;=&nbsp;Use&nbsp;LBM&nbsp;configuration&nbsp;file&nbsp;filename.<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Multiple&nbsp;config&nbsp;files&nbsp;are&nbsp;allowed.<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Example:&nbsp;&nbsp;'-c&nbsp;file1.cfg&nbsp;-c&nbsp;file2.cfg'<br>
-&nbsp;&nbsp;-h&nbsp;=&nbsp;help<br>
-&nbsp;&nbsp;-L&nbsp;linger&nbsp;=&nbsp;linger&nbsp;for&nbsp;linger&nbsp;seconds&nbsp;before&nbsp;closing&nbsp;context<br>
-&nbsp;&nbsp;-T&nbsp;target&nbsp;=&nbsp;target&nbsp;for&nbsp;unicast&nbsp;immediate&nbsp;messages&nbsp;(mandatory)<br>
-***********************************************************************************<br>
-*&nbsp;help&nbsp;(print&nbsp;this&nbsp;message):&nbsp;h&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*<br>
-*&nbsp;&nbsp;&nbsp;quit&nbsp;(exit&nbsp;application):&nbsp;q&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*<br>
-*&nbsp;report&nbsp;store&nbsp;dmon&nbsp;version:&nbsp;version&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*<br>
-*&nbsp;&nbsp;&nbsp;set&nbsp;publishing&nbsp;interval:&nbsp;memory&nbsp;0-N&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*<br>
-*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;["store&nbsp;name"]&nbsp;src&nbsp;0-N&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*<br>
-*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;["store&nbsp;name"]&nbsp;rcv&nbsp;0-N&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*<br>
-*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;["store&nbsp;name"]&nbsp;disk&nbsp;0-N&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*<br>
-*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;["store&nbsp;name"]&nbsp;store&nbsp;0-N&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*<br>
-*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;["store&nbsp;name"]&nbsp;config&nbsp;0-N&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*<br>
-*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;snapshot&nbsp;all&nbsp;groups:&nbsp;["store&nbsp;name"]&nbsp;snap&nbsp;memory|src|rcv|disk|store|config&nbsp;*<br>
-***********************************************************************************<br>
-</code>
-
-<hr>
-<p><a href=umedmon.c><b><code>umedmon.c</code></b></a> - 
-Purpose:&nbsp;application&nbsp;that&nbsp;receives&nbsp;umestore&nbsp;daemon&nbsp;messages&nbsp;on&nbsp;the&nbsp;specified&nbsp;publishing&nbsp;topic.<br>
-<code>Usage:&nbsp;umedmon&nbsp;[-Ehv]&nbsp;[-c&nbsp;filename]&nbsp;publishing_topic<br>
-Available&nbsp;options:<br>
-&nbsp;&nbsp;-c,&nbsp;--config=FILE&nbsp;&nbsp;&nbsp;&nbsp;Use&nbsp;LBM&nbsp;configuration&nbsp;file&nbsp;FILE.<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Multiple&nbsp;config&nbsp;files&nbsp;are&nbsp;allowed.<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Example:&nbsp;&nbsp;'-c&nbsp;file1.cfg&nbsp;-c&nbsp;file2.cfg'<br>
-&nbsp;&nbsp;-E,&nbsp;--exit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;exit&nbsp;when&nbsp;source&nbsp;stops&nbsp;sending<br>
-&nbsp;&nbsp;-h,&nbsp;--help&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;display&nbsp;this&nbsp;help&nbsp;and&nbsp;exit<br>
-&nbsp;&nbsp;-v,&nbsp;--verbose&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;be&nbsp;verbose&nbsp;about&nbsp;incoming&nbsp;messages&nbsp;(-v&nbsp;-v&nbsp;=&nbsp;be&nbsp;even&nbsp;more&nbsp;verbose)<br>
-</code>
-
-<hr>
 <p><a href=ume-example-rcv-2.c><b><code>ume-example-rcv-2.c</code></b></a> - 
 ume-example-rcv-2.c:&nbsp;-&nbsp;Persistent&nbsp;example&nbsp;receiver&nbsp;program.<br>
 See&nbsp;Persistence&nbsp;Guide&nbsp;document.<br>
@@ -1668,6 +1630,23 @@ See&nbsp;Persistence&nbsp;Guide&nbsp;document.<br>
 <p><a href=ume-example-src.c><b><code>ume-example-src.c</code></b></a> - 
 ume-example-src.c:&nbsp;-&nbsp;Persistent&nbsp;example&nbsp;receiver&nbsp;program.<br>
 See&nbsp;Persistence&nbsp;Guide&nbsp;document.<br>
+</code>
+
+<hr>
+<p><a href=umedcmd.c><b><code>umedcmd.c</code></b></a> - 
+See <a href="../UME/storedaemonstatistics.html#umedcmdmanpage">umedcmd documentation</a> for usage information.
+
+<hr>
+<p><a href=umedmon.c><b><code>umedmon.c</code></b></a> - 
+Purpose:&nbsp;application&nbsp;that&nbsp;receives&nbsp;umestore&nbsp;daemon&nbsp;messages&nbsp;on&nbsp;the&nbsp;specified&nbsp;publishing&nbsp;topic.<br>
+<code>Usage:&nbsp;umedmon&nbsp;[-Ehv]&nbsp;[-c&nbsp;filename]&nbsp;publishing_topic<br>
+Available&nbsp;options:<br>
+&nbsp;&nbsp;-c,&nbsp;--config=FILE&nbsp;&nbsp;&nbsp;&nbsp;Use&nbsp;LBM&nbsp;configuration&nbsp;file&nbsp;FILE.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Multiple&nbsp;config&nbsp;files&nbsp;are&nbsp;allowed.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Example:&nbsp;&nbsp;'-c&nbsp;file1.cfg&nbsp;-c&nbsp;file2.cfg'<br>
+&nbsp;&nbsp;-E,&nbsp;--exit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;exit&nbsp;when&nbsp;source&nbsp;stops&nbsp;sending<br>
+&nbsp;&nbsp;-h,&nbsp;--help&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;display&nbsp;this&nbsp;help&nbsp;and&nbsp;exit<br>
+&nbsp;&nbsp;-v,&nbsp;--verbose&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;be&nbsp;verbose&nbsp;about&nbsp;incoming&nbsp;messages&nbsp;(-v&nbsp;-v&nbsp;=&nbsp;be&nbsp;even&nbsp;more&nbsp;verbose)<br>
 </code>
 
 <hr>
@@ -1743,6 +1722,10 @@ CSV&nbsp;format&nbsp;options:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;defaults&nbsp;to&nbsp;`,'<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Don't&nbsp;use&nbsp;a&nbsp;semicolon!<br>
 </code>
+
+<hr>
+<p><a href=umesnaprepo.c><b><code>umesnaprepo.c</code></b></a> - 
+See <a href="../UME/storedaemonstatistics.html#storesnapshotrepository">umesnaprepo documentation</a> for usage information.
 
 <hr>
 <p><a href=umesrc.c><b><code>umesrc.c</code></b></a> - 

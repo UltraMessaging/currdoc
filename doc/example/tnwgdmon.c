@@ -1,5 +1,5 @@
 /*
-Copyright (c) 2005-2019 Informatica Corporation  Permission is granted to licensees to use
+Copyright (c) 2005-2020 Informatica Corporation  Permission is granted to licensees to use
 or alter this software for any purpose, including commercial applications,
 according to the terms laid out in the Software License Agreement.
 
@@ -242,6 +242,7 @@ void tnwg_dmon_msg_handler(const char *buffer, int size)
 
 	tnwg_dstat_msg_hdr_t *msg_hdr;
 	char *aligned_msg_buffer = malloc(size + 16);
+	memset(aligned_msg_buffer, 0, size + 16);
 	memcpy(aligned_msg_buffer, buffer, size);
 	msg_hdr = (tnwg_dstat_msg_hdr_t *)aligned_msg_buffer;
 
@@ -266,6 +267,7 @@ void tnwg_dmon_msg_handler(const char *buffer, int size)
 	if (format_timeval(&sent_tv, time_buff_sent, sizeof(time_buff_sent)) <= 0) {
 		strcpy(time_buff_sent, "unknown");
 	}
+
 
 	switch (msg_type) {
 	case TNWG_DSTATTYPE_MALLINFO:
@@ -397,23 +399,24 @@ void tnwg_dmon_msg_handler(const char *buffer, int size)
 		{
 			tnwg_dstat_portalstats_msg_t *msg_p;
 			uint32_t portal_type;
+
 			msg_p = (tnwg_dstat_portalstats_msg_t *) aligned_msg_buffer;
 			portal_type = COND_SWAP32(msg_swap, msg_p->rechdr.portal_type);
 			printf("\n============Portal Statistics for Portal %s(Version: %d)============\n%s Sent\n", msg_p->rechdr.portal_name, msg_version, time_buff_sent);
 				if(portal_type == TNWG_DSTAT_Portal_Type_Peer){
 					printf("..............................Portal Entry Stats for Type = Peer..............................\n");
-					printf("                                                          ingress_cost: %"PRIu64"\n", COND_SWAP64(msg_swap,msg_p->record.ptype.peer.ingress_cost));
-					printf("                                                 local_interest_topics: %"PRIu64"\n", COND_SWAP64(msg_swap,msg_p->record.ptype.peer.local_interest_topics));
-					printf("                                          local_interest_pcre_patterns: %"PRIu64"\n", COND_SWAP64(msg_swap,msg_p->record.ptype.peer.local_interest_pcre_patterns));
-					printf("                                         local_interest_regex_patterns: %"PRIu64"\n", COND_SWAP64(msg_swap,msg_p->record.ptype.peer.local_interest_regex_patterns));
-					printf("                                                remote_interest_topics: %"PRIu64"\n", COND_SWAP64(msg_swap,msg_p->record.ptype.peer.remote_interest_topics));
-					printf("                                         remote_interest_pcre_patterns: %"PRIu64"\n", COND_SWAP64(msg_swap,msg_p->record.ptype.peer.remote_interest_pcre_patterns));
-					printf("                                        remote_interest_regex_patterns: %"PRIu64"\n", COND_SWAP64(msg_swap,msg_p->record.ptype.peer.remote_interest_regex_patterns));
-					printf("                                                       proxy_receivers: %"PRIu64"\n", COND_SWAP64(msg_swap,msg_p->record.ptype.peer.proxy_receivers));
-					printf("                                                       receiver_topics: %"PRIu64"\n", COND_SWAP64(msg_swap,msg_p->record.ptype.peer.receiver_topics));
-					printf("                                                receiver_pcre_patterns: %"PRIu64"\n", COND_SWAP64(msg_swap,msg_p->record.ptype.peer.receiver_pcre_patterns));
-					printf("                                               receiver_regex_patterns: %"PRIu64"\n", COND_SWAP64(msg_swap,msg_p->record.ptype.peer.receiver_regex_patterns));
-					printf("                                                         proxy_sources: %"PRIu64"\n", COND_SWAP64(msg_swap,msg_p->record.ptype.peer.proxy_sources));
+					printf("                                                          ingress_cost: %d\n", COND_SWAP32(msg_swap,msg_p->record.ptype.peer.ingress_cost));
+					printf("                                                 local_interest_topics: %d\n", COND_SWAP32(msg_swap,msg_p->record.ptype.peer.local_interest_topics));
+					printf("                                          local_interest_pcre_patterns: %d\n", COND_SWAP32(msg_swap,msg_p->record.ptype.peer.local_interest_pcre_patterns));
+					printf("                                         local_interest_regex_patterns: %d\n", COND_SWAP32(msg_swap,msg_p->record.ptype.peer.local_interest_regex_patterns));
+					printf("                                                remote_interest_topics: %d\n", COND_SWAP32(msg_swap,msg_p->record.ptype.peer.remote_interest_topics));
+					printf("                                         remote_interest_pcre_patterns: %d\n", COND_SWAP32(msg_swap,msg_p->record.ptype.peer.remote_interest_pcre_patterns));
+					printf("                                        remote_interest_regex_patterns: %d\n", COND_SWAP32(msg_swap,msg_p->record.ptype.peer.remote_interest_regex_patterns));
+					printf("                                                       proxy_receivers: %d\n", COND_SWAP32(msg_swap,msg_p->record.ptype.peer.proxy_receivers));
+					printf("                                                       receiver_topics: %d\n", COND_SWAP32(msg_swap,msg_p->record.ptype.peer.receiver_topics));
+					printf("                                                receiver_pcre_patterns: %d\n", COND_SWAP32(msg_swap,msg_p->record.ptype.peer.receiver_pcre_patterns));
+					printf("                                               receiver_regex_patterns: %d\n", COND_SWAP32(msg_swap,msg_p->record.ptype.peer.receiver_regex_patterns));
+					printf("                                                         proxy_sources: %d\n", COND_SWAP32(msg_swap,msg_p->record.ptype.peer.proxy_sources));
 
 					{
 						tnwg_dstat_peer_receive_stats_t * p;
@@ -552,19 +555,19 @@ void tnwg_dmon_msg_handler(const char *buffer, int size)
 					}
 			} else {	/* Else type = Endpoint */	
 					printf("...............Portal Entry Stats for Type = EndPoint...............\n");
-					printf("                      domain_id: %"PRIu64"\n", COND_SWAP64(msg_swap,msg_p->record.ptype.endpt.domain_id));	
-					printf("                   ingress_cost: %"PRIu64"\n", COND_SWAP64(msg_swap,msg_p->record.ptype.endpt.ingress_cost));
-					printf("          local_interest_topics: %"PRIu64"\n", COND_SWAP64(msg_swap,msg_p->record.ptype.endpt.local_interest_topics));
-					printf("   local_interest_pcre_patterns: %"PRIu64"\n", COND_SWAP64(msg_swap,msg_p->record.ptype.endpt.local_interest_pcre_patterns));
-					printf("  local_interest_regex_patterns: %"PRIu64"\n", COND_SWAP64(msg_swap,msg_p->record.ptype.endpt.local_interest_regex_patterns));
-					printf("         remote_interest_topics: %"PRIu64"\n", COND_SWAP64(msg_swap,msg_p->record.ptype.endpt.remote_interest_topics));
-					printf("  remote_interest_pcre_patterns: %"PRIu64"\n", COND_SWAP64(msg_swap,msg_p->record.ptype.endpt.remote_interest_pcre_patterns));
-					printf(" remote_interest_regex_patterns: %"PRIu64"\n", COND_SWAP64(msg_swap,msg_p->record.ptype.endpt.remote_interest_regex_patterns));
-					printf("                proxy_receivers: %"PRIu64"\n", COND_SWAP64(msg_swap,msg_p->record.ptype.endpt.proxy_receivers));
-					printf("                receiver_topics: %"PRIu64"\n", COND_SWAP64(msg_swap,msg_p->record.ptype.endpt.receiver_topics));
-					printf("         receiver_pcre_patterns: %"PRIu64"\n", COND_SWAP64(msg_swap,msg_p->record.ptype.endpt.receiver_pcre_patterns));
-					printf("        receiver_regex_patterns: %"PRIu64"\n", COND_SWAP64(msg_swap,msg_p->record.ptype.endpt.receiver_regex_patterns));
-					printf("                  proxy_sources: %"PRIu64"\n", COND_SWAP64(msg_swap,msg_p->record.ptype.endpt.proxy_sources));
+					printf("                      domain_id: %d\n", COND_SWAP32(msg_swap,msg_p->record.ptype.endpt.domain_id));	
+					printf("                   ingress_cost: %d\n", COND_SWAP32(msg_swap,msg_p->record.ptype.endpt.ingress_cost));
+					printf("          local_interest_topics: %d\n", COND_SWAP32(msg_swap,msg_p->record.ptype.endpt.local_interest_topics));
+					printf("   local_interest_pcre_patterns: %d\n", COND_SWAP32(msg_swap,msg_p->record.ptype.endpt.local_interest_pcre_patterns));
+					printf("  local_interest_regex_patterns: %d\n", COND_SWAP32(msg_swap,msg_p->record.ptype.endpt.local_interest_regex_patterns));
+					printf("         remote_interest_topics: %d\n", COND_SWAP32(msg_swap,msg_p->record.ptype.endpt.remote_interest_topics));
+					printf("  remote_interest_pcre_patterns: %d\n", COND_SWAP32(msg_swap,msg_p->record.ptype.endpt.remote_interest_pcre_patterns));
+					printf(" remote_interest_regex_patterns: %d\n", COND_SWAP32(msg_swap,msg_p->record.ptype.endpt.remote_interest_regex_patterns));
+					printf("                proxy_receivers: %d\n", COND_SWAP32(msg_swap,msg_p->record.ptype.endpt.proxy_receivers));
+					printf("                receiver_topics: %d\n", COND_SWAP32(msg_swap,msg_p->record.ptype.endpt.receiver_topics));
+					printf("         receiver_pcre_patterns: %d\n", COND_SWAP32(msg_swap,msg_p->record.ptype.endpt.receiver_pcre_patterns));
+					printf("        receiver_regex_patterns: %d\n", COND_SWAP32(msg_swap,msg_p->record.ptype.endpt.receiver_regex_patterns));
+					printf("                  proxy_sources: %d\n", COND_SWAP32(msg_swap,msg_p->record.ptype.endpt.proxy_sources));
 					printf("\n...............Receive Statistics for Type = EndPoint...............\n");
 					{
 						tnwg_dstat_endpoint_receive_stats_t * p;

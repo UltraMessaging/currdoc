@@ -7,6 +7,7 @@ var NAVTREE =
         [ "Assignment Flow", "index.html#assignmentflow", null ],
         [ "Definitions", "index.html#definitions", null ],
         [ "Which Method Should I Use?", "index.html#whichmethodshouldiuse", null ],
+        [ "Configuration Error Handling", "index.html#configurationerrorhandling", null ],
         [ "Host Name Resolution", "index.html#hostnameresolution", null ],
         [ "Configuration Files", "index.html#configurationfiles", null ]
       ] ],
@@ -187,6 +188,7 @@ var NAVTREE =
         [ "resolver_send_final_advertisements (source)", "grpudpbasedresolveroperation.html#resolversendfinaladvertisementssource", null ],
         [ "resolver_send_initial_advertisement (source)", "grpudpbasedresolveroperation.html#resolversendinitialadvertisementsource", null ],
         [ "resolver_service (context)", "grpudpbasedresolveroperation.html#resolverservicecontext", null ],
+        [ "resolver_service_interest_mode (context)", "grpudpbasedresolveroperation.html#resolverserviceinterestmodecontext", null ],
         [ "resolver_source_map_tablesz (context)", "grpudpbasedresolveroperation.html#resolversourcemaptableszcontext", null ],
         [ "resolver_string_hash_function (context)", "grpudpbasedresolveroperation.html#resolverstringhashfunctioncontext", null ],
         [ "resolver_string_hash_function_ex (context)", "grpudpbasedresolveroperation.html#resolverstringhashfunctionexcontext", null ],
@@ -774,7 +776,7 @@ var NAVTREEINDEX =
 [
 "accesstocurrentoperatingoptions.html",
 "grpmulticastresolvernetwork.html#resolvermulticastincomingaddresscontext",
-"grpultramessagingpersistence.html#umeregistrationintervalsource"
+"grpultramessagingpersistence.html#umeregistrationintervalreceiver"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

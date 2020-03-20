@@ -113,11 +113,25 @@ Message Type: SRS_STATS&nbsp;&nbsp;<small><a href="#messagetypesrsstats">&lt;-</
 <tr>
 <td><b>clients.active.SIR.count</b> </td><td>Number of sources being maintained from connected contexts. </td></tr>
 <tr>
+<td><b>clients.active.RIR.count</b> </td><td>Number of receivers being maintained from connected contexts. </td></tr>
+<tr>
+<td><b>clients.active.WIR.count</b> </td><td>Number of wildcard receivers being maintained from connected contexts. </td></tr>
+<tr>
 <td><b>clients.inactive.SIR.count</b> </td><td>Number of sources being temporarily maintained from disconnected contexts. These get cleaned up after the state lifetime expires. </td></tr>
 <tr>
-<td><b>clients.expired.SIR.count</b> </td><td><p class="starttd">Number of times the SRS deleted source records due to the state lifetime being expired. This will happen when applications exit without deleting their sources, which is not recommended. If this number increases frequently, consider modifying your applications to clean up before exiting.</p>
-<p class="endtd"></p>
-</td></tr>
+<td><b>clients.inactive.RIR.count</b> </td><td>Number of receivers being temporarily maintained from disconnected contexts. These get cleaned up after the state lifetime expires. </td></tr>
+<tr>
+<td><b>clients.inactive.WIR.count</b> </td><td>Number of wildcard receivers being temporarily maintained from disconnected contexts. These get cleaned up after the state lifetime expires. </td></tr>
+<tr>
+<td><b>clients.expired.SIR.count</b> </td><td>Number of times the SRS deleted source records due to the state lifetime being expired. This will happen when applications exit without deleting their sources, which is not recommended. If this number increases frequently, consider modifying your applications to clean up before exiting. </td></tr>
+<tr>
+<td><b>clients.expired.RIR.count</b> </td><td>Number of times the SRS deleted receiver records due to the state lifetime being expired. This will happen when applications exit without deleting their receivers, which is not recommended. If this number increases frequently, consider modifying your applications to clean up before exiting. </td></tr>
+<tr>
+<td><b>clients.expired.WIR.count</b> </td><td>Number of times the SRS deleted wildcard receiver records due to the state lifetime being expired. This will happen when applications exit without deleting their receivers, which is not recommended. If this number increases frequently, consider modifying your applications to clean up before exiting. </td></tr>
+<tr>
+<td><b>clients.DR.inactive.SIR.count</b> </td><td>If DROs are involved, it is normal for this count to increment. Otherwise, this should not increment, and Informatica support should be informed if it does. (A context disconnected while it has SIRs that were inactive.) </td></tr>
+<tr>
+<td><b>clients.SLR.no.OTID.match.count</b> </td><td>If the system is otherwise behaving normally, increments in this count are most likely harmless. (A receiver sent a source leave record for a source that the SRS does not know about.) </td></tr>
 </table>
 </center><p>All of the above statistics are included in a snapshot. Only the changed statistics are included during a periodic update.</p>
 <p><br />
@@ -144,17 +158,25 @@ Message Type: SRS_ERROR_STATS&nbsp;&nbsp;<small><a href="#messagetypesrserrorsta
 <tr>
 <td><b>clients.duplicate.SIR.count</b> </td><td>While not a fatal condition, Informatica support should be informed if this count increments frequently. (Number of times that the SRS is informed about a source when it didn't need to be informed; i.e. the SRS already knew about it.) </td></tr>
 <tr>
+<td><b>clients.duplicate.RIR.count</b> </td><td>While not a fatal condition, Informatica support should be informed if this count increments frequently. (Number of times that the SRS is informed about a receiver when it didn't need to be informed; i.e. the SRS already knew about it.) </td></tr>
+<tr>
+<td><b>clients.duplicate.WIR.count</b> </td><td>While not a fatal condition, Informatica support should be informed if this count increments frequently. (Number of times that the SRS is informed about a wildcard receiver when it didn't need to be informed; i.e. the SRS already knew about it.) </td></tr>
+<tr>
+<td><b>clients.invalid.SDR.no.topic.match.count</b> </td><td>While not a fatal condition, Informatica support should be informed if this count increments frequently. (A context deleted a source that the SRS does not know about, which should never happen.) </td></tr>
+<tr>
 <td><b>clients.invalid.SDR.no.OTID.match.count</b> </td><td>While not a fatal condition, Informatica support should be informed if this count increments frequently. (A context deleted a source that the SRS does not know about, which should never happen.) </td></tr>
 <tr>
 <td><b>clients.invalid.SDR.no.transport.match.count</b> </td><td>While not a fatal condition, Informatica support should be informed if this count increments frequently. (A context deleted a source that the SRS does not know about, which should never happen.) </td></tr>
+<tr>
+<td><b>clients.invalid.DR.no.topic.match.count</b> </td><td>While not a fatal condition, Informatica support should be informed if this count increments frequently. (A source that the SRS does not know about disconnected, which should never happen.) </td></tr>
 <tr>
 <td><b>clients.invalid.DR.no.OTID.match.count</b> </td><td>While not a fatal condition, Informatica support should be informed if this count increments frequently. (A context deleted a source that the SRS does not know about, which should never happen.) </td></tr>
 <tr>
 <td><b>clients.invalid.DR.no.transport.match.count</b> </td><td>While not a fatal condition, Informatica support should be informed if this count increments frequently. (A context deleted a source that the SRS does not know about, which should never happen.) </td></tr>
 <tr>
-<td><b>clients.invalid.DR.inactive.SIR.count</b> </td><td><p class="starttd">This counter should never be greater than zero. While not a fatal condition, Informatica support should be informed if this count increments frequently. (A context disconnected while it has SIRs that were inactive, which should never happen.)</p>
-<p class="endtd"></p>
-</td></tr>
+<td><b>clients.invalid.SLR.no.topic.match.count</b> </td><td>While not a fatal condition, Informatica support should be informed if this count increments frequently. (A receiver notified source leave for a source that the SRS does not know about, which should never happen.) </td></tr>
+<tr>
+<td><b>clients.invalid.DR.inactive.SIR.count</b> </td><td>This counter should never be greater than zero. While not a fatal condition, Informatica support should be informed if this count increments frequently. (A context disconnected while it has SIRs that were inactive, which should never happen.) </td></tr>
 </table>
 </center><p><br />
  </p>
@@ -172,7 +194,7 @@ Message Type: UM_CLIENT_STATS&nbsp;&nbsp;<small><a href="#messagetypeumclientsta
 <tr>
 <td><b>.&#160;.&#160;srsRegistrationInfo.ip</b></td><td>IP address of the context. </td></tr>
 <tr>
-<td><b>.&#160;.&#160;srsRegistrationInfo.port</b></td><td>TCP "source port" the context used locally for its SRS connection. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpudpbasedresolveroperation.html#resolverservicecontext">resolver_service (context)</a>. </td></tr>
+<td><b>.&#160;.&#160;srsRegistrationInfo.port</b></td><td>TCP "source port" the context used locally for its SRS connection. See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grpudpbasedresolveroperation.html#resolverservicecontext">resolver_service (context)</a>. </td></tr>
 <tr>
 <td><b>.&#160;.&#160;srsRegistrationInfo.sessionId</b></td><td>The unique identifier assigned by the SRS to this connection. </td></tr>
 <tr>
@@ -188,19 +210,35 @@ Message Type: UM_CLIENT_STATS&nbsp;&nbsp;<small><a href="#messagetypeumclientsta
 <tr>
 <td><b>record.queue.depth</b> </td><td>Snapshot of the context's SRS worker thread's work queue. I.e. number of Topic Resolution updates that need to be sent to the context. This number should normally be zero. If it remains above zero for significant time, contact Informatica support. </td></tr>
 <tr>
+<td><b>client.SIR.sent.count</b> </td><td>Number of sources that the SRS has informed the context of. </td></tr>
+<tr>
+<td><b>client.SER.sent.count</b> </td><td>Number of source deletions that the SRS has informed the context of. Either the application explicitly deleted a source, or the context abnormally disconnected and the state lifetime expired. </td></tr>
+<tr>
+<td><b>client.RIR.sent.count</b> </td><td>Number of receivers that the SRS has informed the context of. </td></tr>
+<tr>
+<td><b>client.RER.sent.count</b> </td><td>Number of receiver deletions that the SRS has informed the context of. Either the application explicitly deleted a receiver, or the context abnormally disconnected and the state lifetime expired. </td></tr>
+<tr>
+<td><b>client.WIR.sent.count</b> </td><td>Number of wildcard receivers that the SRS has informed the context of. </td></tr>
+<tr>
+<td><b>client.WER.sent.count</b> </td><td>Number of wildcard receiver deletions that the SRS has informed the context of. Either the application explicitly deleted a receiver, or the context abnormally disconnected and the state lifetime expired. </td></tr>
+<tr>
 <td><b>client.SIR.received.count</b> </td><td>Number of created sources that the context has informed the SRS. This number is not necessarily the current number of sources; i.e. the counter does not decrease as sources are deleted. </td></tr>
 <tr>
 <td><b>client.SDR.received.count</b> </td><td>Number of sources deleted that the context has informed the SRS. </td></tr>
 <tr>
+<td><b>client.RIR.received.count</b> </td><td>Number of created receivers (one per topic even if more than one receivers on a topic) that the context has informed the SRS. This number is not necessarily the current number of receivers; i.e. the counter does not decrease as receivers are deleted. </td></tr>
+<tr>
+<td><b>client.WIR.received.count</b> </td><td>Number of created wildcard receivers (one per pattern even if more than one receivers on a pattern) that the context has informed the SRS. This number is not necessarily the current number of wildcard receivers; i.e. the counter does not decrease as wildcard receivers are deleted. </td></tr>
+<tr>
+<td><b>client.RDR.received.count</b> </td><td>Number of deleted receivers (one per topic even if more than one receivers on a topic) that the context has informed the SRS. This number is not necessarily the current number of receivers; i.e. the counter does not decrease as receivers are deleted. </td></tr>
+<tr>
+<td><b>client.WDR.received.count</b> </td><td>Number of deleted wildcard receivers (one per pattern even if more than one receivers on a pattern) that the context has informed the SRS. This number is not necessarily the current number of wildcard receivers; i.e. the counter does not decrease as wildcard receivers are deleted. </td></tr>
+<tr>
+<td><b>client.SLR.received.count</b> </td><td>Number of source leave records that the receiver context has informed the SRS. </td></tr>
+<tr>
 <td><b>client.active.SIR.count</b> </td><td>Number of sources that currently exist in the context. </td></tr>
 <tr>
 <td><b>client.max.concurrent.SIR.count</b> </td><td>High water mark of simultaneous sources managed since the SRS service started. </td></tr>
-<tr>
-<td><b>client.SIR.sent.count</b> </td><td>Number of sources that the SRS has informed the context of. </td></tr>
-<tr>
-<td><b>client.SER.sent.count</b> </td><td><p class="starttd">Number of source deletions that the SRS has informed the context of. Either the application explicitly deleted a source, or the context abnormally disconnected and the state lifetime expired.</p>
-<p class="endtd"></p>
-</td></tr>
 </table>
 </center><p><br />
  </p>
@@ -218,7 +256,7 @@ Message Type: UM_CLIENT_ERROR_STATS&nbsp;&nbsp;<small><a href="#messagetypeumcli
 <tr>
 <td><b>.&#160;.&#160;srsRegistrationInfo.ip</b></td><td>IP address of the context. </td></tr>
 <tr>
-<td><b>.&#160;.&#160;srsRegistrationInfo.port</b></td><td>TCP "source port" the context used locally for its SRS connection. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpudpbasedresolveroperation.html#resolverservicecontext">resolver_service (context)</a>. </td></tr>
+<td><b>.&#160;.&#160;srsRegistrationInfo.port</b></td><td>TCP "source port" the context used locally for its SRS connection. See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grpudpbasedresolveroperation.html#resolverservicecontext">resolver_service (context)</a>. </td></tr>
 <tr>
 <td><b>.&#160;.&#160;srsRegistrationInfo.sessionId</b></td><td>The unique identifier assigned by the SRS to this connection. </td></tr>
 <tr>
@@ -232,11 +270,13 @@ Message Type: UM_CLIENT_ERROR_STATS&nbsp;&nbsp;<small><a href="#messagetypeumcli
 <tr>
 <th>Statistic</th><th>Description </th></tr>
 <tr>
+<td><b>client.duplicate.RIR.received.count</b> </td><td>Number of created duplicate receivers that the context has informed the SRS. </td></tr>
+<tr>
+<td><b>client.duplicate.WIR.received.count</b> </td><td>Number of created duplicate wildcard receivers that the context has informed the SRS. </td></tr>
+<tr>
 <td><b>client.invalid.SRS.message.received.count</b> </td><td>This counter should never be greater than zero. While not a fatal condition, Informatica support should be informed if this count increments frequently. (Number of messages received from this context that could not be processed.) </td></tr>
 <tr>
-<td><b>client.invalid.SDR.received.count</b> </td><td><p class="starttd">This counter should never be greater than zero. While not a fatal condition, Informatica support should be informed if this count increments frequently. (Number of source delete messages received from this context which could not be processed correctly.)</p>
-<p class="endtd"></p>
-</td></tr>
+<td><b>client.invalid.SDR.received.count</b> </td><td>This counter should never be greater than zero. While not a fatal condition, Informatica support should be informed if this count increments frequently. (Number of source delete messages received from this context which could not be processed correctly.) </td></tr>
 </table>
 </center><p><br />
  </p>
@@ -257,7 +297,7 @@ Message Subtype: UM_CLIENT_CONNECT&nbsp;&nbsp;<small><a href="#messagesubtypeumc
 <tr>
 <td><b>.&#160;.&#160;srsRegistrationInfo.ip</b></td><td>IP address of the context. </td></tr>
 <tr>
-<td><b>.&#160;.&#160;srsRegistrationInfo.port</b></td><td>TCP "source port" the context used locally for its SRS connection. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpudpbasedresolveroperation.html#resolverservicecontext">resolver_service (context)</a>. </td></tr>
+<td><b>.&#160;.&#160;srsRegistrationInfo.port</b></td><td>TCP "source port" the context used locally for its SRS connection. See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grpudpbasedresolveroperation.html#resolverservicecontext">resolver_service (context)</a>. </td></tr>
 <tr>
 <td><b>.&#160;.&#160;srsRegistrationInfo.sessionId</b></td><td>The unique identifier assigned by the SRS to this connection. </td></tr>
 <tr>
@@ -284,7 +324,7 @@ Message Subtype: UM_CLIENT_DISCONNECT&nbsp;&nbsp;<small><a href="#messagesubtype
 <tr>
 <td><b>.&#160;.&#160;srsRegistrationInfo.ip</b></td><td>IP address of the context. </td></tr>
 <tr>
-<td><b>.&#160;.&#160;srsRegistrationInfo.port</b></td><td>TCP "source port" the context used locally for its SRS connection. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpudpbasedresolveroperation.html#resolverservicecontext">resolver_service (context)</a>. </td></tr>
+<td><b>.&#160;.&#160;srsRegistrationInfo.port</b></td><td>TCP "source port" the context used locally for its SRS connection. See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grpudpbasedresolveroperation.html#resolverservicecontext">resolver_service (context)</a>. </td></tr>
 <tr>
 <td><b>.&#160;.&#160;srsRegistrationInfo.sessionId</b></td><td>The unique identifier assigned by the SRS to this connection. </td></tr>
 <tr>
@@ -296,7 +336,7 @@ Message Subtype: UM_CLIENT_DISCONNECT&nbsp;&nbsp;<small><a href="#messagesubtype
 <tr>
 <td><b>.&#160;.&#160;.&#160;.&#160;events[].srsRegistrationInfo.ip</b></td><td>IP address of the context. </td></tr>
 <tr>
-<td><b>.&#160;.&#160;.&#160;.&#160;events[].srsRegistrationInfo.port</b></td><td>TCP "source port" the context used locally for its SRS connection. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpudpbasedresolveroperation.html#resolverservicecontext">resolver_service (context)</a>. </td></tr>
+<td><b>.&#160;.&#160;.&#160;.&#160;events[].srsRegistrationInfo.port</b></td><td>TCP "source port" the context used locally for its SRS connection. See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grpudpbasedresolveroperation.html#resolverservicecontext">resolver_service (context)</a>. </td></tr>
 <tr>
 <td><b>.&#160;.&#160;.&#160;.&#160;event[].srsRegistrationInfo.sessionId</b></td><td>The unique identifier assigned by the SRS to this connection. </td></tr>
 <tr>
@@ -319,7 +359,7 @@ Message Subtypes: SIR and SDR&nbsp;&nbsp;<small><a href="#messagesubtypessirands
 <tr>
 <td><b>.&#160;.&#160;srsRegistrationInfo.ip</b></td><td>IP address of the context. </td></tr>
 <tr>
-<td><b>.&#160;.&#160;srsRegistrationInfo.port</b></td><td>TCP "source port" the context used locally for its SRS connection. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpudpbasedresolveroperation.html#resolverservicecontext">resolver_service (context)</a>. </td></tr>
+<td><b>.&#160;.&#160;srsRegistrationInfo.port</b></td><td>TCP "source port" the context used locally for its SRS connection. See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grpudpbasedresolveroperation.html#resolverservicecontext">resolver_service (context)</a>. </td></tr>
 <tr>
 <td><b>.&#160;.&#160;srsRegistrationInfo.sessionId</b></td><td>The unique identifier assigned by the SRS to this connection. </td></tr>
 <tr>
@@ -377,9 +417,15 @@ Message Type: CONFIG_OPTS&nbsp;&nbsp;<small><a href="#messagetypeconfigopts">&lt
 <tr>
 <td><b>um-srs.srs.state-lifetime</b> </td><td>Value for the SRS configuration element <a class="el" href="srsconfigurationfile.html#srselementstatelifetime">&lt;state-lifetime&gt;</a>. </td></tr>
 <tr>
+<td><b>um-srs.srs.source-state-lifetime</b> </td><td>Value for the SRS configuration element <a class="el" href="srsconfigurationfile.html#srselementsourcestatelifetime">&lt;source-state-lifetime&gt;</a>. </td></tr>
+<tr>
+<td><b>um-srs.srs.interest-state-lifetime</b> </td><td>Value for the SRS configuration element <a class="el" href="srsconfigurationfile.html#srselementintereststatelifetime">&lt;interest-state-lifetime&gt;</a>. </td></tr>
+<tr>
+<td><b>um-srs.srs.source-leave-backoff</b> </td><td>Value for the SRS configuration element <a class="el" href="srsconfigurationfile.html#srselementsourceleavebackoff">&lt;source-leave-backoff&gt;</a>. </td></tr>
+<tr>
 <td><b>um-srs.srs.clientactor.request-stream-max-msg-count</b> </td><td>Value for the SRS configuration element <a class="el" href="srsconfigurationfile.html#srselementrequeststreammaxmsgcount">&lt;request-stream-max-msg-count&gt;</a>. </td></tr>
 <tr>
-<td><b>um-srs.srs.clientactor.source-info-queue-service-interval</b> </td><td>Value for the SRS configuration element <a class="el" href="srsconfigurationfile.html#srselementsourceinfoqueueserviceinterval">&lt;source-info-queue-service-interval&gt;</a>. </td></tr>
+<td><b>um-srs.srs.clientactor.record-queue-service-interval</b> </td><td>Value for the SRS configuration element <a class="el" href="srsconfigurationfile.html#srselementrecordqueueserviceinterval">&lt;record-queue-service-interval&gt;</a>. </td></tr>
 <tr>
 <td><b>um-srs.srs.clientactor.batch-frame-max-record-count</b> </td><td>Value for the SRS configuration element <a class="el" href="srsconfigurationfile.html#srselementbatchframemaxrecordcount">&lt;batch-frame-max-record-count&gt;</a>. </td></tr>
 <tr>
@@ -417,9 +463,7 @@ Message Type: CONFIG_OPTS&nbsp;&nbsp;<small><a href="#messagetypeconfigopts">&lt
 <tr>
 <td><b>um-srs.daemon-monitor.remote-config-changes-request.allow</b> </td><td>Value for '<b>allow</b>' attribute to SRS configuration element <a class="el" href="srsconfigurationfile.html#srselementremoteconfigchangesrequest">&lt;remote-config-changes-request&gt;</a>. </td></tr>
 <tr>
-<td><b>um-srs.daemon-monitor.lbm-attributes.lbmConfigOptionScope.lbmConfigOptionName</b> </td><td><p class="starttd">A UM configuration option, as documented in <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/config.tag:../Config/" href="../Config/index.html#configurationoverview">Configuration Overview</a>, where 'lbmConfigOptionScope' is the option scope ('context', 'source', etc) and 'lbmConfigOptionName' is the option name.</p>
-<p class="endtd"></p>
-</td></tr>
+<td><b>um-srs.daemon-monitor.lbm-attributes.lbmConfigOptionScope.lbmConfigOptionName</b> </td><td>A UM configuration option, as documented in <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/index.html#configurationoverview">Configuration Overview</a>, where 'lbmConfigOptionScope' is the option scope ('context', 'source', etc) and 'lbmConfigOptionName' is the option name. </td></tr>
 </table>
 </center><p><br />
  </p>
@@ -445,16 +489,15 @@ Message Type: INTERNAL_CONFIG_OPTS&nbsp;&nbsp;<small><a href="#messagetypeintern
 <tr>
 <td><b>um-srs.srs.otidmap.shards</b> </td><td>Value for the SRS configuration element <a class="el" href="srsconfigurationfile.html#srselementshards">&lt;shards&gt;</a>. </td></tr>
 <tr>
-<td><b>um-srs.srs.otidmap.async-receiver-distribution</b> </td><td><p class="starttd">Value for the SRS configuration element <a class="el" href="srsconfigurationfile.html#srselementasyncreceiverdistribution">&lt;async-receiver-distribution&gt;</a>.</p>
-<p class="endtd"></p>
-</td></tr>
+<td><b>um-srs.srs.topicmap.shards</b> </td><td>Value for the SRS configuration element <a class="el" href="srsconfigurationfile.html#srselementshards">&lt;shards&gt;</a>. </td></tr>
 </table>
 </center><p><br />
  </p>
 <h1><a class="anchor" id="requesttypereportsrsversion"></a>
 Request Type: REPORT_SRS_VERSION&nbsp;&nbsp;<small><a href="#requesttypereportsrsversion">&lt;-</a></small></h1>
 <p>Request type REPORT_SRS_VERSION is sent by a monitoring application to determine the software version of the SRS.</p>
-<div class="fragment"><div class="line">{</div><div class="line">  <span class="stringliteral">&quot;commandMessageType&quot;</span>: <span class="stringliteral">&quot;REPORT_SRS_VERSION&quot;</span></div><div class="line">}</div></div><!-- fragment --><p>The SRS will send a response of the form: </p><div class="fragment"><div class="line">SRS Version 6.12</div></div><!-- fragment --><p><br />
+<div class="fragment"><div class="line">{</div><div class="line">  <span class="stringliteral">&quot;commandMessageType&quot;</span>: <span class="stringliteral">&quot;REPORT_SRS_VERSION&quot;</span></div><div class="line">}</div></div><!-- fragment --><p>The SRS will send a response of the form: </p><pre class="fragment">SRS Version 6.12
+</pre><p><br />
  </p>
 <h1><a class="anchor" id="requesttypereportmonitorinfo"></a>
 Request Type: REPORT_MONITOR_INFO&nbsp;&nbsp;<small><a href="#requesttypereportmonitorinfo">&lt;-</a></small></h1>
@@ -476,7 +519,8 @@ CONFIG_OPTS </li>
 <li>
 INTERNAL_CONFIG_OPTS </li>
 </ul>
-<p>The SRS will send a response of the form: </p><div class="fragment"><div class="line">snap SRS_STATS - OK!</div></div><!-- fragment --><p> Note that "SRS_STATS" is replaced by the requested category.</p>
+<p>The SRS will send a response of the form: </p><pre class="fragment">snap SRS_STATS - OK!
+</pre><p> Note that "SRS_STATS" is replaced by the requested category.</p>
 <p><br />
  </p>
 <h1><a class="anchor" id="requesttypesetpublishinginterval"></a>
@@ -499,7 +543,8 @@ CONFIG_OPTS </li>
 <li>
 INTERNAL_CONFIG_OPTS </li>
 </ul>
-<p>The SRS will send a response of the form: </p><div class="fragment"><div class="line">SRS_STATS 60000 - OK!</div></div><!-- fragment --><p> Note that "SRS_STATS" is replaced by the requested category. </p>
+<p>The SRS will send a response of the form: </p><pre class="fragment">SRS_STATS 60000 - OK!
+</pre><p> Note that "SRS_STATS" is replaced by the requested category. </p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.8.11-->

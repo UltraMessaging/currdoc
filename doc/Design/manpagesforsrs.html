@@ -54,42 +54,73 @@ $(document).ready(function(){initNavTree('manpagesforsrs.html','');});
 <div class="title">Man Pages for SRS </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>Help for the Stateful Resolution Service (SRS) command line can be obtained by entering "SRS -h". Brief help for the SRS configuration file can be obtained by entering "SRS -x", which prints the XSD contents.</p>
+<div class="textblock"><p>TCP-based resolver services for UM messaging products are provided by SRS.</p>
 <p>For more information on TCP-based TR, see <a class="el" href="topicresolutiondescription.html#tcpbasedtopicresolutiondetails">TCP-Based Topic Resolution Details</a>. For more information on Topic Resolution general, see <a class="el" href="topicresolutiondescription.html">Topic Resolution Description</a>.</p>
 <p>There are two executables for the SRS, each with it's own man page: </p><ul>
 <li>
 <a class="el" href="manpagesforsrs.html#srsmanpage">SRS Man Page</a> - Unix and Windows command-line interface. </li>
 <li>
-<a class="el" href="manpagesforsrs.html#srsdsmanpage">Srsds Man Page</a> - Windows service interface. </li>
+<a class="el" href="manpagesforsrs.html#srsdsmanpage">Srsds Man Page</a> - Windows Service interface. </li>
 </ul>
 <p><br />
  </p>
 <h1><a class="anchor" id="srsmanpage"></a>
 SRS Man Page&nbsp;&nbsp;<small><a href="#srsmanpage">&lt;-</a></small></h1>
-<p>The SRS executable can be run interactively from a command prompt or from a script/batch file. For use as a Windows Service, see <a class="el" href="manpagesforsrs.html#srsdsmanpage">Srsds Man Page</a>.</p>
-<div class="fragment"><div class="line">Usage: SRS [options] [configfile]</div><div class="line">Available options: </div><div class="line">  -d, --dump             dump the user configuration to stdout and exit</div><div class="line">  -D, --Debug=PATH:MASK  <span class="keyword">set</span> debug PATH and MASK</div><div class="line">  -h, --help             display <span class="keyword">this</span> help message and exit</div><div class="line">  -j, --java             print Java properties to the SRS log file (-j -j = print more Java properties)</div><div class="line">  -v, --validate         validate config file and exit</div><div class="line">  -x, --xsd              dump the configuration XSD to stdout and exit</div></div><!-- fragment --><dl class="section user"><dt><b>Description</b> </dt><dd>TCP-based resolver services for UM messaging products are provided by SRS. </dd></dl>
-<dl class="section user"><dt></dt><dd>The <code>configfile</code> parameter is optional; if omitted, the SRS defaults all configurable options. If supplied, the file must be in XML format, and is validated against the XSD file <a class="el" href="srsconfigurationfile.html">shown below</a>. See <a class="el" href="srsconfigurationfile.html">SRS Configuration File</a> for configuration details. </dd></dl>
-<dl class="section user"><dt></dt><dd>The <code>-d</code> option prints to standard out the full SRS configuration. After printing, the SRS exits. </dd></dl>
-<dl class="section user"><dt></dt><dd>The <code>-D</code> option sets enables debugging output. This output is intended primarily for Informatica Support, not end-user consumption. </dd></dl>
-<dl class="section user"><dt></dt><dd>The <code>-h</code> option prints the above usage page. After printing, the SRS exits. </dd></dl>
-<dl class="section user"><dt></dt><dd>The <code>-x</code> option prints the XSD which is used to validate the configuration file. After printing, the SRS exits. </dd></dl>
-<dl class="section user"><dt></dt><dd>The <code>-v</code> option causes the SRS to simply validate the configuration file and print any errors it finds. After printing, the SRS exits. </dd></dl>
-<dl class="section user"><dt></dt><dd>The <code>-j</code> option prints Java properties to the SRS log file. It can be repeated ('-j -j') to increase the output. This output is intended primarily for Informatica Support, not end-user consumption.</dd></dl>
+<p>Unix and Windows command-line interface.</p>
+<pre class="fragment">Usage: SRS [options] [configfile]
+Available options: 
+  -d, --dump             dump the user configuration to stdout and exit
+  -D, --Debug=PATH:MASK  set debug PATH and MASK
+  -h, --help             display this help message and exit
+  -j, --java             print Java properties to the SRS log file (-j -j = print more Java properties)
+  -v, --validate         validate config file and exit
+  -x, --xsd              dump the configuration XSD to stdout and exit</pre><dl class="section user"><dt><b>Description</b> </dt><dd>The <code>SRS</code> command runs the Stateful Resolver Service (SRS). It can be run interactively from a shell or command prompt, or from a script or batch file. (For use as a Windows Service, see <a class="el" href="manpagesforsrs.html#srsdsmanpage">Srsds Man Page</a>.)</dd></dl>
+<dl class="section user"><dt></dt><dd>The <b>"configfile"</b> parameter is optional. If supplied, it specifies the file path for the SRS's XML configuration file. if omitted, the SRS defaults all configurable options. See <a class="el" href="srsconfigurationfile.html">SRS Configuration File</a> for configuration details.</dd></dl>
+<dl class="section user"><dt></dt><dd>The <b>"-D"</b> option sets enables debugging output. This output is intended primarily for Informatica Support, not end-users.</dd></dl>
+<dl class="section user"><dt></dt><dd>The <b>"-j"</b> option prints Java properties to the SRS log file. It can be repeated ('-j -j') to increase the output. This output is intended primarily for Informatica Support, not end-users.</dd></dl>
+<dl class="section user"><dt></dt><dd>The <b>"-d"</b> option dumps (prints) to standard out the full SRS configuration. After printing, the SRS exits. (Note, this is different from other UM daemons in which "-d" dumps the daemon's DTD. But the SRS does not use a DTD, it uses an XSD. See the "-x" option below.)</dd></dl>
+<dl class="section user"><dt></dt><dd>The <b>"-x"</b> option prints the XSD which is used to validate the configuration file. After printing, the SRS exits.</dd></dl>
+<dl class="section user"><dt></dt><dd>The <b>"-v"</b> validates the XML structure of the given configuration file against the SRS's XML XSD. After validating the configuration file's XML structure, SRS exits with status 0 for no errors, or non-zero if errors were found. For example: <div class="fragment"><div class="line">SRS -v /um/srs_cfg.xml</div></div><!-- fragment --></dd></dl>
+<dl class="section user"><dt></dt><dd>Note that valid XML structure does not guarantee that the configuration file is completely correct. It must be tested on a running SRS.</dd></dl>
+<dl class="section user"><dt></dt><dd>The <b>"-h"</b> option prints the man page and exits.</dd></dl>
 <dl class="section user"><dt><b>Exit</b> <b>Status</b> </dt><dd>The exit status from SRS is 0 for success and some non-zero value for failure.</dd></dl>
 <p><br />
  </p>
 <h1><a class="anchor" id="srsdsmanpage"></a>
 Srsds Man Page&nbsp;&nbsp;<small><a href="#srsdsmanpage">&lt;-</a></small></h1>
-<p>The srsds executable is for use as a Windows Service. The service can be installed as a service by the Windows package installer.</p>
-<p>Alternatively, the srsds executable can be run interactively from a command prompt to install the service or to change certain configuration elements. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/operations.tag:../Operations/" href="../Operations/startupshutdownprocedures.html#umdaemonsaswindowsservices">UM Daemons as Windows Services</a> for more details.</p>
+<p>Windows Service interface.</p>
+<p>See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Design/operations.tag:../Operations/" href="../Operations/startupshutdownprocedures.html#umdaemonsaswindowsservices">UM Daemons as Windows Services</a> for general information about UM daemons as Windows Services.</p>
 <dl class="section note"><dt>Note</dt><dd>In the descriptions below, three different log files are referenced: "service log", "process log", and "SRS log". It is important that all three of these be specified, and that they be separate files. In normal use, only the "SRS log" will be written to; the other two are only necessary to record unusual error conditions.</dd></dl>
-<div class="fragment"><div class="line">Usage: srsds [options] srs_cfgfile_name</div><div class="line">Available options:</div><div class="line">  -h, --help                  display <span class="keyword">this</span> help and exit</div><div class="line">  -l, --service-log=FILE      <span class="keyword">set</span> a logfile name <span class="keywordflow">for</span> the service log.</div><div class="line">  -p, --process-log=FILE      <span class="keyword">set</span> a logfile name <span class="keywordflow">for</span> the srs process output.</div><div class="line">  -s, --service=request       Install, <span class="keyword">remove</span> or add a configuration file.</div><div class="line">                              Examples: <span class="stringliteral">&#39;-s install&#39;</span> to install the service with no config file</div><div class="line">                                <span class="stringliteral">&#39;-s install cfgfile.xml&#39;</span> to install the service with a configuration file of cfgfile.xml</div><div class="line">                                <span class="stringliteral">&#39;-s remove&#39;</span> to <span class="keyword">remove</span> the service</div><div class="line">                                <span class="stringliteral">&#39;-s config cfg2.xml&#39;</span> to change or add a configuration file</div><div class="line">  -e, --<span class="keyword">event</span>-log-level       Update/<span class="keyword">set</span> service logging level.  This is the minimum logging</div><div class="line">                              level to send to the Windows <span class="keyword">event</span> log.  Valid values are:</div><div class="line">                                NONE - Send no events</div><div class="line">                                INFO</div><div class="line">                                WARN - <span class="keywordflow">default</span></div><div class="line">                                ERROR</div></div><!-- fragment --><dl class="section user"><dt><b>Description</b> </dt><dd>TCP-based resolver services for UM messaging products are provided by SRS.</dd></dl>
-<dl class="section user"><dt></dt><dd>The <code>srs_cfgfile_name</code> parameter is used interactively to configure the SRS's XML configuration file.</dd></dl>
-<dl class="section user"><dt></dt><dd>The <code>-l</code> option is used interactively to configure a "service" log file to be used by the SRS. Under normal circumstances, this log file will never be written to. It will be written if the SRS is unsuccessful in starting up as a service. (The normal SRS log file is configured differently, using the <a class="el" href="srsconfigurationfile.html#srselementlog">&lt;log&gt;</a> element in the configuration file.)</dd></dl>
-<dl class="section user"><dt></dt><dd>The <code>-p</code> option is used interactively to configure a "process" log file to be used by the SRS. Under normal circumstances, this log file will never be written to. It will be written if the Java JVM writes to standard out or standard error, of if the SRS is not able to write to its configured log file.</dd></dl>
+<pre class="fragment">Usage: srsds [options] srs_cfgfile_name
+Available options:
+  -h, --help                  display this help and exit
+  -l, --service-log=FILE      set a logfile name for the service log.
+  -p, --process-log=FILE      set a logfile name for the srs process output.
+  -s, --service=request       Install, remove or add a configuration file.
+                              Examples: '-s install' to install the service with no config file
+                                '-s install cfgfile.xml' to install the service with a configuration file of cfgfile.xml
+                                '-s remove' to remove the service
+                                '-s config cfg2.xml' to change or add a configuration file
+  -e, --event-log-level       Update/set service logging level.  This is the minimum logging
+                              level to send to the Windows event log.  Valid values are:
+                                NONE - Send no events
+                                INFO
+                                WARN - default
+                                ERROR</pre><dl class="section user"><dt><b>Description</b> </dt><dd>The <code>srsds</code> command has two functions: <ul>
+<li>
+First, it lets the user supply Windows Service operating parameters, which the command saves into the Windows registry. Those operating parameters are subsequently used by the SRS Service. See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Design/operations.tag:../Operations/" href="../Operations/startupshutdownprocedures.html#configurethewindowsservice">Configure the Windows Service</a>. </li>
+<li>
+Second, it provides Windows with the SRS daemon executable to run as a Service. </li>
+</ul>
+</dd></dl>
+<dl class="section user"><dt></dt><dd>The <b>"srs_cfgfile_name"</b> parameter specifies the file path for the SRS's XML configuration file. It is supplied in conjunction with the "-s config" option (see below). See <a class="el" href="srsconfigurationfile.html">SRS Configuration File</a> for configuration details.</dd></dl>
+<dl class="section user"><dt></dt><dd>The <b>"-l"</b> option specifies a "service" log file path, which is saved in the Windows registry and subsequently by the Windows Service. Under normal circumstances, this log file will never be written to. It will be written if the SRS is unsuccessful in starting up as a service. (The normal SRS log file is configured differently, using the <a class="el" href="srsconfigurationfile.html#srselementlog">&lt;log&gt;</a> element in the configuration file.)</dd></dl>
+<dl class="section user"><dt></dt><dd>The <b>"-p"</b> option specifies a "process" log file path, which is saved in the Windows registry and subsequently by the Windows Service. Under normal circumstances, this log file will never be written to. It will be written if the Java JVM writes to standard out or standard error, of if the SRS is not able to write to its configured log file.</dd></dl>
 <dl class="section warning"><dt>Warning</dt><dd>By default, the SRS's configuration file uses <a class="el" href="srsconfigurationfile.html#srselementlog">&lt;log type="console"&gt;</a>. In this case, normal SRS logs are written to standard out and will be captured in the "process" log file. <b>This is not recommended as it leads to unbounded growth of the log file.</b> Users should set <a class="el" href="srsconfigurationfile.html#srselementlog">&lt;log type="file"&gt;</a> and related attributes to control the log file sizes.</dd></dl>
-<dl class="section user"><dt></dt><dd>The <code>-s</code> is used interactively to control the installation of the Windows service. The <code>-e</code> is used interactively to configure the logging threshold for writing to the Windows Event Log. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Design/operations.tag:../Operations/" href="../Operations/startupshutdownprocedures.html#umdaemonsaswindowsservices">UM Daemons as Windows Services</a> for more details.</dd></dl>
-<dl class="section user"><dt></dt><dd>The <code>-h</code> option prints the above usage page. After printing, the SRS exits.</dd></dl>
+<dl class="section user"><dt></dt><dd>For <b>"-s install"</b> see <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Design/operations.tag:../Operations/" href="../Operations/startupshutdownprocedures.html#installthewindowsservice">Install the Windows Service</a>.</dd></dl>
+<dl class="section user"><dt></dt><dd>For <b>"-s remove"</b> see <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Design/operations.tag:../Operations/" href="../Operations/startupshutdownprocedures.html#removethewindowsservice">Remove the Windows Service</a>.</dd></dl>
+<dl class="section user"><dt></dt><dd>For <b>"-s config"</b> and <b>"-e"</b>, see <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Design/operations.tag:../Operations/" href="../Operations/startupshutdownprocedures.html#configurethewindowsservice">Configure the Windows Service</a>.</dd></dl>
+<dl class="section user"><dt></dt><dd>The <b>"-h"</b> option prints the man page and exits.</dd></dl>
 <dl class="section user"><dt><b>Exit</b> <b>Status</b> </dt><dd>The exit status from SRS is 0 for success and some non-zero value for failure. </dd></dl>
 </div></div><!-- contents -->
 </div><!-- doc-content -->

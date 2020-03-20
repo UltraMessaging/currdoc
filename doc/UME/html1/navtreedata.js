@@ -13,6 +13,7 @@ var NAVTREE =
     ] ],
     [ "Persistence Architecture", "index.html#persistencearchitecture", [
       [ "Persistent Store Architecture", "index.html#persistentstorearchitecture", [
+        [ "Store Processes and Instances", "index.html#storeprocessesandinstances", null ],
         [ "Source Repositories", "index.html#sourcerepositories", null ],
         [ "Repository Thresholds and Limits", "index.html#repositorythresholdsandlimits", null ],
         [ "Tolerance Persistent Store Fault Tolerance", "index.html#persistentstorefault", null ],
@@ -28,7 +29,8 @@ var NAVTREE =
         [ "Receiver Registration Process", "index.html#receiverregistrationprocess", null ],
         [ "Persistence Normal Operation", "index.html#persistencenormaloperation", null ],
         [ "Persistence Flight Size", "index.html#persistenceflightsize", null ],
-        [ "Receiver Recovery", "index.html#receiverrecovery", null ]
+        [ "Receiver Recovery", "index.html#receiverrecovery", null ],
+        [ "Registration Limitations", "index.html#registrationlimitations", null ]
       ] ],
       [ "Receiver-paced Persistence Operations", "index.html#receiverpacedpersistenceoperations", [
         [ "RPP Registration", "index.html#rppregistration", null ],
@@ -44,6 +46,10 @@ var NAVTREE =
         [ "Persistence Receiver Events", "index.html#persistencereceiverevents", null ],
         [ "Persistence Context Events", "index.html#persistencecontextevents", null ]
       ] ]
+    ] ],
+    [ "Store Repository Profiling (SRP)", "index.html#storerepositoryprofilingsrp", [
+      [ "Using the SRP API", "index.html#usingthesrpapi", null ],
+      [ "umesnaprepo Man Page", "index.html#umesnaprepomanpage", null ]
     ] ],
     [ "Enabling Persistence", "index.html#enablingpersistence", [
       [ "Starting Configuration", "index.html#startingconfiguration", null ],
@@ -102,7 +108,8 @@ var NAVTREE =
         [ "Persistent Source Recovery", "index.html#persistentsourcerecovery", null ],
         [ "Persistent Receiver Recovery", "index.html#persistentreceiverrecovery", null ]
       ] ],
-      [ "Callable Store", "index.html#callablestore", null ]
+      [ "Callable Store", "index.html#callablestore", null ],
+      [ "Store Thread Affinity", "index.html#storethreadaffinity", null ]
     ] ],
     [ "Persistence Fault Tolerance", "index.html#persistencefaulttolerance", [
       [ "Message Loss Recovery", "index.html#messagelossrecovery", null ],
@@ -165,7 +172,17 @@ var NAVTREE =
         [ "Store Daemon Statistics Retx Counts", "index.html#storedaemonstatisticsstructuresretxcounts", null ]
       ] ],
       [ "Store Daemon Statistics Configuration", "index.html#storedaemonstatisticsconfiguration", null ],
-      [ "Store Daemon Statistics Requests", "index.html#storedaemonstatisticsrequests", null ]
+      [ "Store Daemon Statistics Requests", "index.html#storedaemonstatisticsrequests", [
+        [ "Store Daemon Statistics Request Addressing", "index.html#storedaemonstatisticsrequestaddressing", null ],
+        [ "Store Daemon Statistics Request Types", "index.html#storedaemonstatisticsrequesttypes", null ],
+        [ "Request: Mark Stored Message Invalid", "index.html#requestmarkstoredmessageinvalid", null ],
+        [ "Request: Deregister Receiver", "index.html#requestderegisterreceiver", null ]
+      ] ],
+      [ "umedcmd Man Page", "index.html#umedcmdmanpage", [
+        [ "umedcmd Publish Mode", "index.html#umedcmdpublishmode", null ],
+        [ "umedcmd Mark Mode", "index.html#umedcmdmarkmode", null ],
+        [ "umedcmd Deregister Mode", "index.html#umedcmdderegistermode", null ]
+      ] ]
     ] ],
     [ "Store Web Monitor", "index.html#storewebmonitor", [
       [ "Store Web Monitor Index Page", "index.html#storewebmonitorindexpage", null ],

@@ -54,15 +54,16 @@ $(document).ready(function(){initNavTree('xmlconfigurationreference.html','');})
 <div class="title">XML Configuration Reference </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>For controlling/configuring each UM Router, you use a XML UM Router configuration file, which also contains references to UM configuration files to extract needed information about the TRDs interfaced by endpoint portals. This chapter includes a lookup reference for the XML UM Router configuration file's elements and DTD.</p>
-<p>An XML UM Router configuration file follows standard XML conventions. Element declarations or a pointer to a DTD file are not needed, as these are handled by the UM Router.</p>
+<div class="textblock"><p>For controlling/configuring each DRO, you use a XML DRO configuration file, which also contains references to UM configuration files to extract needed information about the TRDs interfaced by endpoint portals.</p>
+<p>An overview of the file format can be seen in the <a class="el" href="xmlconfigurationreference.html#umrouterconfigurationdtd">DRO Configuration DTD</a>.</p>
+<p>An XML DRO configuration file follows standard XML conventions. Element declarations or a pointer to a DTD file are not needed, as these are handled by the DRO.</p>
 <p><br />
  </p>
 <h1><a class="anchor" id="filestructure"></a>
 File Structure&nbsp;&nbsp;<small><a href="#filestructure">&lt;-</a></small></h1>
-<p>An XML UM Router configuration file generally comprises two primary elements: <code>&lt;daemon&gt;</code> and <code>&lt;portals&gt;</code>. Organized and contained within these are option value assignments. <code>&lt;daemon&gt;</code> sub-containers let you set options global to the UM Router. <code>&lt;portals&gt;</code> sub-containers let you configure each portal in the UM Router individually.</p>
+<p>An XML DRO configuration file generally comprises two primary elements: <code>&lt;daemon&gt;</code> and <code>&lt;portals&gt;</code>. Organized and contained within these are option value assignments. <code>&lt;daemon&gt;</code> sub-containers let you set options global to the DRO. <code>&lt;portals&gt;</code> sub-containers let you configure each portal in the DRO individually.</p>
 <p>In general, the order of the elements is important. Please refer to the examples and ensure proper element ordering.</p>
-<p>XML UM Router configuration files use the high-level structure shown in the following example. This example includes only some container elements, and only some options.</p>
+<p>XML DRO configuration files use the high-level structure shown in the following example. This example includes only some container elements, and only some options.</p>
 <div class="fragment"><div class="line">&lt;?xml version=<span class="stringliteral">&quot;1.0&quot;</span> encoding=<span class="stringliteral">&quot;UTF-8&quot;</span> ?&gt;</div><div class="line">&lt;tnw-gateway version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div><div class="line">  &lt;daemon&gt;</div><div class="line">    &lt;log type=<span class="stringliteral">&quot;console&quot;</span>/&gt;</div><div class="line">    &lt;uid&gt;0&lt;/uid&gt;</div><div class="line">    &lt;gid&gt;0&lt;/gid&gt;</div><div class="line">    &lt;pidfile&gt;/path/file.pid&lt;/pidfile&gt;</div><div class="line">    &lt;lbm-license-file&gt;/path/file.lic&lt;/lbm-license-file&gt;</div><div class="line">    &lt;topicmap/&gt;</div><div class="line">    &lt;patternmap/&gt;</div><div class="line">    &lt;monitor&gt;</div><div class="line">      &lt;transport-module/&gt;</div><div class="line">      &lt;format-module/&gt;</div><div class="line">    &lt;/monitor&gt;</div><div class="line">    &lt;web-monitor&gt;*:21000&lt;/web-monitor&gt;</div><div class="line">    &lt;propagation-delay/&gt;</div><div class="line">    &lt;xml-config&gt;sample-config.xml&lt;/xml-config&gt;</div><div class="line">  &lt;/daemon&gt;</div><div class="line">  &lt;portals&gt;</div><div class="line">    &lt;endpoint&gt;</div><div class="line">      &lt;name&gt;Endpoint_1&lt;/name&gt;</div><div class="line">      &lt;domain-<span class="keywordtype">id</span>&gt;1&lt;/domain-<span class="keywordtype">id</span>&gt;</div><div class="line">      &lt;cost&gt;1&lt;/cost&gt;</div><div class="line">      &lt;lbm-config&gt;endpoint2.cfg&lt;/lbm-config&gt;</div><div class="line">      &lt;lbm-attributes&gt;</div><div class="line">        &lt;option name=<span class="stringliteral">&quot;context_name&quot;</span> scope=<span class="stringliteral">&quot;context&quot;</span> value=<span class="stringliteral">&quot;endpt_1&quot;</span> /&gt;</div><div class="line">      &lt;/lbm-attributes&gt;</div><div class="line">      &lt;acl&gt;</div><div class="line">        &lt;inbound&gt;</div><div class="line">          &lt;ace match=<span class="stringliteral">&quot;accept&quot;</span>&gt;</div><div class="line">            &lt;topic&gt;ABC123&lt;/topic&gt;</div><div class="line">            &lt;pcre-pattern &gt;pattern&lt;/pcre-pattern &gt;</div><div class="line">            &lt;regex-pattern &gt;pattern&lt;/regex-pattern &gt;</div><div class="line">            &lt;transport/&gt;</div><div class="line">            &lt;source-ip/&gt;</div><div class="line">            &lt;multicast-group/&gt;</div><div class="line">            &lt;udp-source-port/&gt;</div><div class="line">            &lt;udp-destination-port/&gt;</div><div class="line">            &lt;tcp-source-port/&gt;</div><div class="line">            &lt;xport-<span class="keywordtype">id</span>/&gt;</div><div class="line">          &lt;/ace&gt;</div><div class="line">        &lt;/inbound&gt;</div><div class="line">        &lt;outbound&gt;</div><div class="line">          &lt;ace match=<span class="stringliteral">&quot;accept&quot;</span>&gt;</div><div class="line">            &lt;topic&gt;ABC123&lt;/topic&gt;</div><div class="line">            &lt;pcre-pattern &gt;pattern&lt;/pcre-pattern &gt;</div><div class="line">            &lt;regex-pattern &gt;pattern&lt;/regex-pattern &gt;</div><div class="line">            &lt;transport/&gt;</div><div class="line">            &lt;source-ip/&gt;</div><div class="line">            &lt;multicast-group/&gt;</div><div class="line">            &lt;udp-source-port/&gt;</div><div class="line">            &lt;udp-destination-port/&gt;</div><div class="line">            &lt;tcp-source-port/&gt;</div><div class="line">            &lt;xport-<span class="keywordtype">id</span>/&gt;</div><div class="line">          &lt;/ace&gt;</div><div class="line">        &lt;/outbound&gt;</div><div class="line">      &lt;/acl&gt;</div><div class="line">    &lt;/endpoint&gt;</div><div class="line">    &lt;peer&gt;</div><div class="line">      &lt;name&gt;Peer_1&lt;/name&gt;</div><div class="line">      &lt;cost&gt;1&lt;/cost&gt;</div><div class="line">      &lt;single-tcp&gt;</div><div class="line">        &lt;interface&gt;</div><div class="line">        &lt;receive-buffer&gt;</div><div class="line">        &lt;send-buffer&gt;</div><div class="line">        &lt;keepalive&gt;</div><div class="line">        &lt;nodelay&gt;</div><div class="line">        &lt;initiator&gt;</div><div class="line">          &lt;address&gt;</div><div class="line">          &lt;port&gt;</div><div class="line">        &lt;/initiator&gt;</div><div class="line">        &lt;acceptor&gt;</div><div class="line">          &lt;listen-port&gt;</div><div class="line">        &lt;/acceptor&gt;</div><div class="line">      &lt;/single-tcp&gt;</div><div class="line">      &lt;max-queue&gt;</div><div class="line">      &lt;max-datagram&gt;</div><div class="line">      &lt;batching&gt;</div><div class="line">        &lt;min-length&gt;</div><div class="line">        &lt;batch-interval&gt;</div><div class="line">      &lt;/batching&gt;</div><div class="line">      &lt;lbm-config&gt;peer1.cfg&lt;/lbm-config&gt;</div><div class="line">      &lt;lbm-attributes&gt;</div><div class="line">        &lt;option name=<span class="stringliteral">&quot;name&quot;</span> scope=<span class="stringliteral">&quot;scope&quot;</span> value=<span class="stringliteral">&quot;value&quot;</span> /&gt;</div><div class="line">      &lt;/lbm-attributes&gt;</div><div class="line">      &lt;acl&gt; (see above)</div><div class="line">      &lt;topic-purge&gt;</div><div class="line">      &lt;topic-interest-generate&gt;</div><div class="line">      &lt;topic-domain-activity&gt;</div><div class="line">      &lt;pattern-purge&gt;</div><div class="line">      &lt;pattern-interest-generate&gt;</div><div class="line">      &lt;pattern-domain-activity&gt;</div><div class="line">      &lt;topic-use-check/&gt;</div><div class="line">      &lt;pattern-use-check&gt;</div><div class="line">      &lt;source-context-name&gt;</div><div class="line">      &lt;receiver-context-name&gt;</div><div class="line">      &lt;sqn-window&gt;</div><div class="line">      &lt;context-query&gt;</div><div class="line">      &lt;gateway-keepalive&gt;</div><div class="line">    &lt;/peer&gt;</div><div class="line">  &lt;/portals&gt;</div><div class="line">&lt;/tnw-gateway&gt;</div></div><!-- fragment --><p><br />
  </p>
 <h1><a class="anchor" id="elementsreference"></a>
@@ -72,7 +73,7 @@ Elements Reference&nbsp;&nbsp;<small><a href="#elementsreference">&lt;-</a></sma
  </p>
 <h2><a class="anchor" id="droelementtnwgateway"></a>
 Router Element "&lt;tnw-gateway&gt;"&nbsp;&nbsp;<small><a href="#droelementtnwgateway">&lt;-</a></small></h2>
-<p>Container for all options residing in the XML UM Router configuration file. This is the top-level element.</p>
+<p>Container for all options residing in the XML DRO configuration file. This is the top-level element.</p>
 <ul>
 <li>
 <b>Children:</b> <a class="el" href="xmlconfigurationreference.html#droelementdaemon">&lt;daemon&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementportals">&lt;portals&gt;</a> </li>
@@ -95,7 +96,7 @@ Router Element "&lt;portals&gt;"&nbsp;&nbsp;<small><a href="#droelementportals">
 <li>
 <b>Children:</b> <a class="el" href="xmlconfigurationreference.html#droelementendpoint">&lt;endpoint&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementpeer">&lt;peer&gt;</a> </li>
 </ul>
-<p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;tnw-gateway version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div><div class="line">  &lt;portals&gt;</div><div class="line">  &lt;daemon&gt;</div><div class="line">    ...</div><div class="line">  &lt;/daemon&gt;</div><div class="line">    &lt;endpoint&gt;</div><div class="line">      ...</div><div class="line">    &lt;/endpoint&gt;</div><div class="line">    ...</div><div class="line">  &lt;/portals&gt;</div><div class="line">&lt;/tnw-gateway&gt;</div></div><!-- fragment --><hr/>
+<p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;tnw-gateway version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div><div class="line">  &lt;daemon&gt;</div><div class="line">    ...</div><div class="line">  &lt;/daemon&gt;</div><div class="line">  &lt;portals&gt;</div><div class="line">    &lt;endpoint&gt;</div><div class="line">      ...</div><div class="line">    &lt;/endpoint&gt;</div><div class="line">    ...</div><div class="line">  &lt;/portals&gt;</div><div class="line">&lt;/tnw-gateway&gt;</div></div><!-- fragment --><hr/>
 <p> <br />
  </p>
 <h2><a class="anchor" id="droelementpeer"></a>
@@ -107,12 +108,12 @@ Router Element "&lt;peer&gt;"&nbsp;&nbsp;<small><a href="#droelementpeer">&lt;-<
 <li>
 <b>Children:</b> <a class="el" href="xmlconfigurationreference.html#droelementname">&lt;name&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementcost">&lt;cost&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementsourcemap">&lt;sourcemap&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementtcp">&lt;tcp&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementsingletcp">&lt;single-tcp&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementsourcedeletiondelay">&lt;source-deletion-delay&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementmaxqueue">&lt;max-queue&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementsmartbatch">&lt;smart-batch&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementmaxdatagram">&lt;max-datagram&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementbatching">&lt;batching&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementlbmconfig">&lt;lbm-config&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementlbmattributes">&lt;lbm-attributes&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementacl">&lt;acl&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementtopicpurge">&lt;topic-purge&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementtopicinterestgenerate">&lt;topic-interest-generate&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementtopicdomainactivity">&lt;topic-domain-activity&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementpatternpurge">&lt;pattern-purge&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementpatterninterestgenerate">&lt;pattern-interest-generate&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementpatterndomainactivity">&lt;pattern-domain-activity&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementtopicusecheck">&lt;topic-use-check&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementpatternusecheck">&lt;pattern-use-check&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementsourcecontextname">&lt;source-context-name&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementreceivercontextname">&lt;receiver-context-name&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementsqnwindow">&lt;sqn-window&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementcontextquery">&lt;context-query&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementgatewaykeepalive">&lt;gateway-keepalive&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementpublishinginterval">&lt;publishing-interval&gt;</a> </li>
 </ul>
-<p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;tnw-gateway version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div><div class="line">  &lt;portals&gt;</div><div class="line">  &lt;daemon&gt;</div><div class="line">    ...</div><div class="line">  &lt;/daemon&gt;</div><div class="line">    &lt;peer&gt;</div><div class="line">    &lt;/peer&gt;</div><div class="line">    ...</div><div class="line">  &lt;/portals&gt;</div><div class="line">&lt;/tnw-gateway&gt;</div></div><!-- fragment --><hr/>
+<p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;tnw-gateway version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div><div class="line">  &lt;daemon&gt;</div><div class="line">    ...</div><div class="line">  &lt;/daemon&gt;</div><div class="line">  &lt;portals&gt;</div><div class="line">    &lt;peer&gt;</div><div class="line">      ...</div><div class="line">    &lt;/peer&gt;</div><div class="line">    ...</div><div class="line">  &lt;/portals&gt;</div><div class="line">&lt;/tnw-gateway&gt;</div></div><!-- fragment --><hr/>
 <p> <br />
  </p>
 <h2><a class="anchor" id="droelementpublishinginterval"></a>
 Router Element "&lt;publishing-interval&gt;"&nbsp;&nbsp;<small><a href="#droelementpublishinginterval">&lt;-</a></small></h2>
-<p>Configures the rate at which Daemon Statistics messages are published. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Gateway/design.tag:../Design/" href="../Design/umobjects.html#daemonstatistics">Daemon Statistics</a> for general information on Daemon Statistics.</p>
+<p>Configures the rate at which Daemon Statistics messages are published. See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Gateway/design.tag:../Design/" href="../Design/umobjects.html#daemonstatistics">Daemon Statistics</a> for general information on Daemon Statistics.</p>
 <ul>
 <li>
 <b>Cardinality:</b> 0 .. 1 </li>
@@ -126,7 +127,7 @@ Router Element "&lt;publishing-interval&gt;"&nbsp;&nbsp;<small><a href="#droelem
  </p>
 <h2><a class="anchor" id="droelementgroup"></a>
 Router Element "&lt;group&gt;"&nbsp;&nbsp;<small><a href="#droelementgroup">&lt;-</a></small></h2>
-<p>Configures the rate at which one particular grouping of Daemon Statistics messages are published. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Gateway/design.tag:../Design/" href="../Design/umobjects.html#daemonstatistics">Daemon Statistics</a> for general information on Daemon Statistics.</p>
+<p>Configures the rate at which one particular grouping of Daemon Statistics messages are published. See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Gateway/design.tag:../Design/" href="../Design/umobjects.html#daemonstatistics">Daemon Statistics</a> for general information on Daemon Statistics.</p>
 <ul>
 <li>
 <b>Parent:</b> <a class="el" href="xmlconfigurationreference.html#droelementpublishinginterval">&lt;publishing-interval&gt;</a> </li>
@@ -136,11 +137,11 @@ Router Element "&lt;group&gt;"&nbsp;&nbsp;<small><a href="#droelementgroup">&lt;
 <th>Attribute </th><th>Description </th><th>Valid Values </th><th>Default Value </th></tr>
 <tr>
 <td><b>name</b> </td><td>Name of statistics group being configured. </td><td><b><code>"default"</code></b> - Sets a default interval for all message types. <br />
-<b><code>"gateway-config"</code></b> - Sets the interval for messages of type <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Gateway/api.tag:../API/" href="../API/tnwgdmonmsgs_8h.html#a9d9ec1a3f772ba37b376ace807eb5fb5">tnwg_dstat_gatewaycfg_msg_t</a>. <br />
-<b><code>"route-manager-topology"</code></b> - Sets the interval for messages of types <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Gateway/api.tag:../API/" href="../API/tnwgdmonmsgs_8h.html#a7a5cbf4cf63c2cad889ccb73e209211a">tnwg_rm_stat_grp_msg_t</a>. <br />
-<b><code>"malloc-info"</code></b> - Sets the interval for messages of type <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Gateway/api.tag:../API/" href="../API/tnwgdmonmsgs_8h.html#a244e8fc593a4f6ba155d19321ada47b4">tnwg_dstat_mallinfo_msg_t</a>. <br />
-<b><code>"portal-config"</code></b> - Sets the interval for messages of type <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Gateway/api.tag:../API/" href="../API/tnwgdmonmsgs_8h.html#ad401470ed9be21b3ebca145fb79459b3">tnwg_pcfg_stat_grp_msg_t</a>. <br />
-<b><code>"portal-stats"</code></b> - Sets the interval for messages of type <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Gateway/api.tag:../API/" href="../API/tnwgdmonmsgs_8h.html#a4c9cd731d8196ad64534fa1c4240ef6c">tnwg_dstat_portalstats_msg_t</a> </td><td>(no default; must be specified) </td></tr>
+<b><code>"gateway-config"</code></b> - Sets the interval for messages of type <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Gateway/api.tag:../API/" href="../API/tnwgdmonmsgs_8h.html#a9d9ec1a3f772ba37b376ace807eb5fb5">tnwg_dstat_gatewaycfg_msg_t</a>. <br />
+<b><code>"route-manager-topology"</code></b> - Sets the interval for messages of types <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Gateway/api.tag:../API/" href="../API/tnwgdmonmsgs_8h.html#a7a5cbf4cf63c2cad889ccb73e209211a">tnwg_rm_stat_grp_msg_t</a>. <br />
+<b><code>"malloc-info"</code></b> - Sets the interval for messages of type <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Gateway/api.tag:../API/" href="../API/tnwgdmonmsgs_8h.html#a244e8fc593a4f6ba155d19321ada47b4">tnwg_dstat_mallinfo_msg_t</a>. <br />
+<b><code>"portal-config"</code></b> - Sets the interval for messages of type <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Gateway/api.tag:../API/" href="../API/tnwgdmonmsgs_8h.html#ad401470ed9be21b3ebca145fb79459b3">tnwg_pcfg_stat_grp_msg_t</a>. <br />
+<b><code>"portal-stats"</code></b> - Sets the interval for messages of type <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Gateway/api.tag:../API/" href="../API/tnwgdmonmsgs_8h.html#a4c9cd731d8196ad64534fa1c4240ef6c">tnwg_dstat_portalstats_msg_t</a> </td><td>(no default; must be specified) </td></tr>
 <tr>
 <td><b>ivl</b> </td><td>Time, in seconds, between publishing the statistics group being configured. </td><td>string </td><td>(no default; must be specified) </td></tr>
 </table>
@@ -149,7 +150,7 @@ Router Element "&lt;group&gt;"&nbsp;&nbsp;<small><a href="#droelementgroup">&lt;
  </p>
 <h2><a class="anchor" id="droelementgatewaykeepalive"></a>
 Router Element "&lt;gateway-keepalive&gt;"&nbsp;&nbsp;<small><a href="#droelementgatewaykeepalive">&lt;-</a></small></h2>
-<p>Contains parameters for the keepalive signals sent from this peer portal. This is a UM Router-level keepalive, not to be confused with the TCP-level <a class="el" href="xmlconfigurationreference.html#droelementkeepalive">&lt;keepalive&gt;</a> element.</p>
+<p>Contains parameters for the keepalive signals sent from this peer portal. This is a DRO-level keepalive, not to be confused with the TCP-level <a class="el" href="xmlconfigurationreference.html#droelementkeepalive">&lt;keepalive&gt;</a> element.</p>
 <ul>
 <li>
 <b>Cardinality:</b> 0 .. 1 </li>
@@ -160,7 +161,7 @@ Router Element "&lt;gateway-keepalive&gt;"&nbsp;&nbsp;<small><a href="#droelemen
 <tr>
 <th>Attribute </th><th>Description </th><th>Valid Values </th><th>Default Value </th></tr>
 <tr>
-<td><b>idle</b> </td><td>Determines if UM Router keepalives should be sent only if no traffic has been sent or received in the last interval. </td><td><b><code>"yes"</code></b> - Send only if no traffic has been exchanged. <br />
+<td><b>idle</b> </td><td>Determines if DRO keepalives should be sent only if no traffic has been sent or received in the last interval. </td><td><b><code>"yes"</code></b> - Send only if no traffic has been exchanged. <br />
 <b><code>"no"</code></b> - Send always, even of traffic has been exchanged. </td><td><b><code>"yes"</code></b> </td></tr>
 <tr>
 <td><b>interval</b> </td><td>Minimum interval, in milliseconds, between keepalive messages sent. Informatica recommends setting this to 2000 or greater. A value of 0 (zero) disables keepalives. </td><td>string </td><td><b><code>"5000"</code></b> </td></tr>
@@ -227,7 +228,7 @@ Router Element "&lt;receiver-context-name&gt;"&nbsp;&nbsp;<small><a href="#droel
 <tr>
 <th>Attribute </th><th>Description </th><th>Valid Values </th><th>Default Value </th></tr>
 <tr>
-<td><b>xml:space</b> </td><td>Specifies how whitespace (tabs, spaces, linefeeds) are handled in the element content. </td><td><b><code>"default"</code></b> - Trim leading and trailing whitespace, and compress multiple whitespace characters into a single space. <br />
+<td><b>xml:space</b> </td><td>Specifies how whitespace (tabs, spaces, linefeeds) are handled in the element content. See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Gateway/design.tag:../Design/" href="../Design/fundamentalconcepts.html#xmlspaceattribute">xml:space Attribute</a>. </td><td><b><code>"default"</code></b> - Trim whitespace. <br />
 <b><code>"preserve"</code></b> - Retain whitespace exactly as entered. </td><td><b>default</b> </td></tr>
 </table>
 <p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;tnw-gateway version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div><div class="line">  ...</div><div class="line">  &lt;portals&gt;</div><div class="line">    &lt;endpoint&gt;</div><div class="line">      &lt;receiver-context-name&gt;RcvrContext01&lt;/source-context-name&gt;</div><div class="line">    &lt;/endpoint&gt;                 </div><div class="line">  &lt;/portals&gt;</div><div class="line">&lt;/tnw-gateway&gt;</div></div><!-- fragment --><hr/>
@@ -246,7 +247,7 @@ Router Element "&lt;source-context-name&gt;"&nbsp;&nbsp;<small><a href="#droelem
 <tr>
 <th>Attribute </th><th>Description </th><th>Valid Values </th><th>Default Value </th></tr>
 <tr>
-<td><b>xml:space</b> </td><td>Specifies how whitespace (tabs, spaces, linefeeds) are handled in the element content. </td><td><b><code>"default"</code></b> - Trim leading and trailing whitespace, and compress multiple whitespace characters into a single space. <br />
+<td><b>xml:space</b> </td><td>Specifies how whitespace (tabs, spaces, linefeeds) are handled in the element content. See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Gateway/design.tag:../Design/" href="../Design/fundamentalconcepts.html#xmlspaceattribute">xml:space Attribute</a>. </td><td><b><code>"default"</code></b> - Trim whitespace. <br />
 <b><code>"preserve"</code></b> - Retain whitespace exactly as entered. </td><td><b>default</b> </td></tr>
 </table>
 <p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;tnw-gateway version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div><div class="line">  ...</div><div class="line">  &lt;portals&gt;</div><div class="line">    &lt;endpoint&gt;</div><div class="line">      &lt;source-context-name&gt;SourceContext01&lt;/source-context-name&gt;</div><div class="line">    &lt;/endpoint&gt;                 </div><div class="line">  &lt;/portals&gt;</div><div class="line">&lt;/tnw-gateway&gt;</div></div><!-- fragment --><hr/>
@@ -254,6 +255,7 @@ Router Element "&lt;source-context-name&gt;"&nbsp;&nbsp;<small><a href="#droelem
  </p>
 <h2><a class="anchor" id="droelementpatternusecheck"></a>
 Router Element "&lt;pattern-use-check&gt;"&nbsp;&nbsp;<small><a href="#droelementpatternusecheck">&lt;-</a></small></h2>
+<p>Checks for interest in patterns at periodic intervals. <b>This element is deprecated and has no function.</b></p>
 <ul>
 <li>
 <b>Cardinality:</b> 0 .. 1 </li>
@@ -266,7 +268,6 @@ Router Element "&lt;pattern-use-check&gt;"&nbsp;&nbsp;<small><a href="#droelemen
 <tr>
 <td><b>periodic-interval</b> </td><td>The interval (in milliseconds) at which source pattern are checked to determine if there is no more interest. <b>This element is deprecated and has no function.</b> </td><td>string </td><td><b><code>"300000"</code></b> </td></tr>
 </table>
-<p>Checks for interest in patterns at periodic intervals. <b>This element is deprecated and has no function.</b></p>
 <hr/>
 <p> <br />
  </p>
@@ -406,7 +407,8 @@ Router Element "&lt;topic-purge&gt;"&nbsp;&nbsp;<small><a href="#droelementtopic
  </p>
 <h2><a class="anchor" id="droelementacl"></a>
 Router Element "&lt;acl&gt;"&nbsp;&nbsp;<small><a href="#droelementacl">&lt;-</a></small></h2>
-<p>Contains elements (inbound and outbound ACEs) that describe how an ACL (Access Control List) filters messages.</p>
+<p>Contains elements (inbound and outbound ACEs) that specify how an ACL (Access Control List) filters messages.</p>
+<p>See <a class="el" href="umrouterimplementation.html#accesscontrollistsacl">Access Control Lists (ACL)</a> for information on how ACLs work.</p>
 <ul>
 <li>
 <b>Cardinality:</b> 0 .. 1 </li>
@@ -421,6 +423,7 @@ Router Element "&lt;acl&gt;"&nbsp;&nbsp;<small><a href="#droelementacl">&lt;-</a
 <h2><a class="anchor" id="droelementoutbound"></a>
 Router Element "&lt;outbound&gt;"&nbsp;&nbsp;<small><a href="#droelementoutbound">&lt;-</a></small></h2>
 <p>Container for ACE elements, to separate outbound ACEs from inbound ACEs.</p>
+<p>See <a class="el" href="umrouterimplementation.html#accesscontrollistsacl">Access Control Lists (ACL)</a> for information on how ACLs work.</p>
 <ul>
 <li>
 <b>Cardinality:</b> 0 .. 1 </li>
@@ -429,12 +432,14 @@ Router Element "&lt;outbound&gt;"&nbsp;&nbsp;<small><a href="#droelementoutbound
 <li>
 <b>Children:</b> <a class="el" href="xmlconfigurationreference.html#droelementace">&lt;ace&gt;</a> </li>
 </ul>
-<p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;tnw-gateway version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div><div class="line">  ...</div><div class="line">  &lt;portals&gt;</div><div class="line">    &lt;endpoint&gt;</div><div class="line">      &lt;acl&gt;</div><div class="line">        &lt;outbound&gt;</div><div class="line">          &lt;ace&gt;</div><div class="line">            &lt;pcre-pattern&gt;A[AB]A&lt;/pcre-pattern&gt;</div><div class="line">          &lt;/ace&gt;</div><div class="line">        &lt;/outbound&gt;</div><div class="line">      &lt;/acl&gt;</div><div class="line">    &lt;/endpoint&gt;</div><div class="line">  &lt;/portals&gt;</div><div class="line">&lt;/tnw-gateway&gt;</div></div><!-- fragment --><hr/>
+<p><b>Example:</b> </p>
+<p>Only forward messages for topics AAA and ABA. </p><div class="fragment"><div class="line">&lt;tnw-gateway version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div><div class="line">  ...</div><div class="line">  &lt;portals&gt;</div><div class="line">    &lt;endpoint&gt;</div><div class="line">      &lt;acl&gt;</div><div class="line">        &lt;outbound&gt;</div><div class="line">          &lt;ace&gt;</div><div class="line">            &lt;pcre-pattern&gt;^A[AB]A$&lt;/pcre-pattern&gt;</div><div class="line">          &lt;/ace&gt;</div><div class="line">        &lt;/outbound&gt;</div><div class="line">      &lt;/acl&gt;</div><div class="line">    &lt;/endpoint&gt;</div><div class="line">  &lt;/portals&gt;</div><div class="line">&lt;/tnw-gateway&gt;</div></div><!-- fragment --><hr/>
 <p> <br />
  </p>
 <h2><a class="anchor" id="droelementace"></a>
 Router Element "&lt;ace&gt;"&nbsp;&nbsp;<small><a href="#droelementace">&lt;-</a></small></h2>
-<p>Within an inbound or outbound ACL, you can have one or more "&lt;ace&gt;" elements. Each ACE (Access Control Entry) lets you match and accept or reject messages based on access control condition elements, which are the elements contained within an "&lt;ace&gt;" element.</p>
+<p>Within an inbound or outbound ACL, you can have one or more "&lt;ace&gt;" elements. Each ACE (Access Control Entry) lets you match and accept or reject messages based on access control conditional elements, which are the elements contained within an "&lt;ace&gt;" element.</p>
+<p>See <a class="el" href="umrouterimplementation.html#accesscontrollistsacl">Access Control Lists (ACL)</a> for information on how ACLs work.</p>
 <ul>
 <li>
 <b>Parent:</b> <a class="el" href="xmlconfigurationreference.html#droelementinbound">&lt;inbound&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementoutbound">&lt;outbound&gt;</a> </li>
@@ -453,7 +458,10 @@ Router Element "&lt;ace&gt;"&nbsp;&nbsp;<small><a href="#droelementace">&lt;-</a
  </p>
 <h2><a class="anchor" id="droelementxportid"></a>
 Router Element "&lt;xport-id&gt;"&nbsp;&nbsp;<small><a href="#droelementxportid">&lt;-</a></small></h2>
-<p>Defines a condition used in an ACE. Specifically, this is a match pattern for the message's xport ID number. This applies only to LBT-IPC transports.</p>
+<p>Defines a condition used in an ACE. Specifically, this matches the message's transport ID number (see <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Gateway/config.tag:../Config/" href="../Config/grptransportlbtipcoperation.html#transportlbtipcidsource">transport_lbtipc_id (source)</a>). This applies only to LBT-IPC transports.</p>
+<dl class="section note"><dt>Note</dt><dd>The message's originating source might be remote (i.e. not be in this DRO portal's TRD). In that case, this condition matches the TRD-local proxy source's characteristic, not the originating source.</dd></dl>
+<p>This conditional element can only be used in inbound ACLs.</p>
+<p>See <a class="el" href="umrouterimplementation.html#accesscontrollistsacl">Access Control Lists (ACL)</a> for information on how ACLs work.</p>
 <ul>
 <li>
 <b>Parent:</b> <a class="el" href="xmlconfigurationreference.html#droelementace">&lt;ace&gt;</a> </li>
@@ -482,7 +490,10 @@ Router Element "&lt;xport-id&gt;"&nbsp;&nbsp;<small><a href="#droelementxportid"
  </p>
 <h2><a class="anchor" id="droelementtcpsourceport"></a>
 Router Element "&lt;tcp-source-port&gt;"&nbsp;&nbsp;<small><a href="#droelementtcpsourceport">&lt;-</a></small></h2>
-<p>Defines a condition used in an ACE. Specifically, this is a match pattern for the message's TCP source port number. This applies only to TCP transports.</p>
+<p>Defines a condition used in an ACE. Specifically, this matches the message's TCP source port number (see <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Gateway/config.tag:../Config/" href="../Config/grptransporttcpnetwork.html#transporttcpportsource">transport_tcp_port (source)</a>). This applies only to TCP transports.</p>
+<dl class="section note"><dt>Note</dt><dd>The message's originating source might be remote (i.e. not be in this DRO portal's TRD). In that case, this condition matches the TRD-local proxy source's characteristic, not the originating source.</dd></dl>
+<p>This conditional element can only be used in inbound ACLs.</p>
+<p>See <a class="el" href="umrouterimplementation.html#accesscontrollistsacl">Access Control Lists (ACL)</a> for information on how ACLs work.</p>
 <ul>
 <li>
 <b>Parent:</b> <a class="el" href="xmlconfigurationreference.html#droelementace">&lt;ace&gt;</a> </li>
@@ -511,7 +522,10 @@ Router Element "&lt;tcp-source-port&gt;"&nbsp;&nbsp;<small><a href="#droelementt
  </p>
 <h2><a class="anchor" id="droelementudpdestinationport"></a>
 Router Element "&lt;udp-destination-port&gt;"&nbsp;&nbsp;<small><a href="#droelementudpdestinationport">&lt;-</a></small></h2>
-<p>Defines a condition used in an ACE. Specifically, this is a match pattern for the message's UDP destination port number. This applies only to LBT-RM transports.</p>
+<p>Defines a condition used in an ACE. Specifically, this matches the message's UDP destination port number (see <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Gateway/config.tag:../Config/" href="../Config/grptransportlbtrmnetwork.html#transportlbtrmdestinationportsource">transport_lbtrm_destination_port (source)</a>). This applies only to LBT-RM transports.</p>
+<dl class="section note"><dt>Note</dt><dd>The message's originating source might be remote (i.e. not be in this DRO portal's TRD). In that case, this condition matches the TRD-local proxy source's characteristic, not the originating source.</dd></dl>
+<p>This conditional element can only be used in inbound ACLs.</p>
+<p>See <a class="el" href="umrouterimplementation.html#accesscontrollistsacl">Access Control Lists (ACL)</a> for information on how ACLs work.</p>
 <ul>
 <li>
 <b>Parent:</b> <a class="el" href="xmlconfigurationreference.html#droelementace">&lt;ace&gt;</a> </li>
@@ -535,12 +549,15 @@ Router Element "&lt;udp-destination-port&gt;"&nbsp;&nbsp;<small><a href="#droele
 <b><code>"ge"</code></b> - Matches if greater than or equal to. <br />
 <b><code>"greaterthanequal"</code></b> - Matches if greater than or equal to. </td><td>(no default; must be specified) </td></tr>
 </table>
-<p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;ace match=<span class="stringliteral">&quot;accept&quot;</span>&gt;</div><div class="line">  &lt; udp-destination-port comparison=<span class="stringliteral">&quot;equal&quot;</span> value=<span class="stringliteral">&quot;1234&quot;</span>/&gt;</div><div class="line">&lt;/ace&gt;</div></div><!-- fragment --><hr/>
+<p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;ace match=<span class="stringliteral">&quot;accept&quot;</span>&gt;</div><div class="line">  &lt;udp-destination-port comparison=<span class="stringliteral">&quot;equal&quot;</span> value=<span class="stringliteral">&quot;1234&quot;</span>/&gt;</div><div class="line">&lt;/ace&gt;</div></div><!-- fragment --><hr/>
 <p> <br />
  </p>
 <h2><a class="anchor" id="droelementudpsourceport"></a>
 Router Element "&lt;udp-source-port&gt;"&nbsp;&nbsp;<small><a href="#droelementudpsourceport">&lt;-</a></small></h2>
-<p>Defines a condition used in an ACE. Specifically, this is a match pattern for the message's UDP source port number. This applies only to LBT-RM and LBT-RU transports.</p>
+<p>Defines a condition used in an ACE. Specifically, matches the message's UDP source port number (see <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Gateway/config.tag:../Config/" href="../Config/grptransportlbtrmnetwork.html#transportlbtrmsourceportlowcontext">transport_lbtrm_source_port_low (context)</a> and <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Gateway/config.tag:../Config/" href="../Config/grptransportlbtrunetwork.html#transportlbtruportsource">transport_lbtru_port (source)</a>). This applies only to LBT-RM and LBT-RU transports.</p>
+<dl class="section note"><dt>Note</dt><dd>The message's originating source might be remote (i.e. not be in this DRO portal's TRD). In that case, this condition matches the TRD-local proxy source's characteristic, not the originating source.</dd></dl>
+<p>This conditional element can only be used in inbound ACLs.</p>
+<p>See <a class="el" href="umrouterimplementation.html#accesscontrollistsacl">Access Control Lists (ACL)</a> for information on how ACLs work.</p>
 <ul>
 <li>
 <b>Parent:</b> <a class="el" href="xmlconfigurationreference.html#droelementace">&lt;ace&gt;</a> </li>
@@ -564,12 +581,15 @@ Router Element "&lt;udp-source-port&gt;"&nbsp;&nbsp;<small><a href="#droelementu
 <b><code>"ge"</code></b> - Matches if greater than or equal to. <br />
 <b><code>"greaterthanequal"</code></b> - Matches if greater than or equal to. </td><td>(no default; must be specified) </td></tr>
 </table>
-<p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;ace match=<span class="stringliteral">&quot;accept&quot;</span>&gt;</div><div class="line">  &lt; udp-source-port comparison=<span class="stringliteral">&quot;equal&quot;</span> value=<span class="stringliteral">&quot;1234&quot;</span>/&gt;</div><div class="line">&lt;/ace&gt;</div></div><!-- fragment --><hr/>
+<p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;ace match=<span class="stringliteral">&quot;accept&quot;</span>&gt;</div><div class="line">  &lt;udp-source-port comparison=<span class="stringliteral">&quot;equal&quot;</span> value=<span class="stringliteral">&quot;1234&quot;</span>/&gt;</div><div class="line">&lt;/ace&gt;</div></div><!-- fragment --><hr/>
 <p> <br />
  </p>
 <h2><a class="anchor" id="droelementmulticastgroup"></a>
 Router Element "&lt;multicast-group&gt;"&nbsp;&nbsp;<small><a href="#droelementmulticastgroup">&lt;-</a></small></h2>
-<p>Defines a condition used in an ACE. Specifically, this is a match pattern for the message's multicast group address. This applies only to LBT-RM transports.</p>
+<p>Defines a condition used in an ACE. Specifically, this matches the message's multicast group address (see <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Gateway/config.tag:../Config/" href="../Config/grptransportlbtrmnetwork.html#transportlbtrmmulticastaddresssource">transport_lbtrm_multicast_address (source)</a>). This applies only to LBT-RM transports.</p>
+<dl class="section note"><dt>Note</dt><dd>The message's originating source might be remote (i.e. not be in this DRO portal's TRD). In that case, this condition matches the TRD-local proxy source's characteristic, not the originating source.</dd></dl>
+<p>This conditional element can only be used in inbound ACLs.</p>
+<p>See <a class="el" href="umrouterimplementation.html#accesscontrollistsacl">Access Control Lists (ACL)</a> for information on how ACLs work.</p>
 <ul>
 <li>
 <b>Parent:</b> <a class="el" href="xmlconfigurationreference.html#droelementace">&lt;ace&gt;</a> </li>
@@ -593,12 +613,15 @@ Router Element "&lt;multicast-group&gt;"&nbsp;&nbsp;<small><a href="#droelementm
 <b><code>"ge"</code></b> - Matches if greater than or equal to. <br />
 <b><code>"greaterthanequal"</code></b> - Matches if greater than or equal to. </td><td>(no default; must be specified) </td></tr>
 </table>
-<p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;ace match=<span class="stringliteral">&quot;accept&quot;</span>&gt;</div><div class="line">  &lt; multicast-group comparison=<span class="stringliteral">&quot;equal&quot;</span> value=<span class="stringliteral">&quot;1234&quot;</span>/&gt;</div><div class="line">&lt;/ace&gt;</div></div><!-- fragment --><hr/>
+<p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;ace match=<span class="stringliteral">&quot;accept&quot;</span>&gt;</div><div class="line">  &lt;multicast-group comparison=<span class="stringliteral">&quot;equal&quot;</span> value=<span class="stringliteral">&quot;1234&quot;</span>/&gt;</div><div class="line">&lt;/ace&gt;</div></div><!-- fragment --><hr/>
 <p> <br />
  </p>
 <h2><a class="anchor" id="droelementsourceip"></a>
 Router Element "&lt;source-ip&gt;"&nbsp;&nbsp;<small><a href="#droelementsourceip">&lt;-</a></small></h2>
-<p>Defines a condition used in an ACE. Specifically, this is a match pattern for the message source IP address. This applies only to TCP, LBT-RM, and LBT-RU transports.</p>
+<p>Defines a condition used in an ACE. Specifically, this matches the message's source IP address. This applies only to TCP, LBT-RM, and LBT-RU transports.</p>
+<dl class="section note"><dt>Note</dt><dd>The message's originating source might be remote (i.e. not be in this DRO portal's TRD). In that case, this condition matches the TRD-local proxy source's characteristic, not the originating source.</dd></dl>
+<p>This conditional element can only be used in inbound ACLs.</p>
+<p>See <a class="el" href="umrouterimplementation.html#accesscontrollistsacl">Access Control Lists (ACL)</a> for information on how ACLs work.</p>
 <ul>
 <li>
 <b>Parent:</b> <a class="el" href="xmlconfigurationreference.html#droelementace">&lt;ace&gt;</a> </li>
@@ -622,12 +645,15 @@ Router Element "&lt;source-ip&gt;"&nbsp;&nbsp;<small><a href="#droelementsourcei
 <b><code>"ge"</code></b> - Matches if greater than or equal to. <br />
 <b><code>"greaterthanequal"</code></b> - Matches if greater than or equal to. </td><td>(no default; must be specified) </td></tr>
 </table>
-<p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;ace match=<span class="stringliteral">&quot;accept&quot;</span>&gt;</div><div class="line">  &lt; source-ip comparison=<span class="stringliteral">&quot;equal&quot;</span> value=<span class="stringliteral">&quot;1234&quot;</span>/&gt;</div><div class="line">&lt;/ace&gt;</div></div><!-- fragment --><hr/>
+<p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;ace match=<span class="stringliteral">&quot;accept&quot;</span>&gt;</div><div class="line">  &lt;source-ip comparison=<span class="stringliteral">&quot;equal&quot;</span> value=<span class="stringliteral">&quot;1234&quot;</span>/&gt;</div><div class="line">&lt;/ace&gt;</div></div><!-- fragment --><hr/>
 <p> <br />
  </p>
 <h2><a class="anchor" id="droelementtransport"></a>
 Router Element "&lt;transport&gt;"&nbsp;&nbsp;<small><a href="#droelementtransport">&lt;-</a></small></h2>
-<p>Defines a condition used in an ACE. Specifically, this is a match pattern for a UM transport type.</p>
+<p>Defines a condition used in an ACE. Specifically, this matches a UM transport type (see <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Gateway/config.tag:../Config/" href="../Config/grpmajoroptions.html#transportsource">transport (source)</a>).</p>
+<dl class="section note"><dt>Note</dt><dd>The message's originating source might be remote (i.e. not be in this DRO portal's TRD). In that case, this condition matches the TRD-local proxy source's characteristic, not the originating source.</dd></dl>
+<p>This conditional element can only be used in inbound ACLs.</p>
+<p>See <a class="el" href="umrouterimplementation.html#accesscontrollistsacl">Access Control Lists (ACL)</a> for information on how ACLs work.</p>
 <ul>
 <li>
 <b>Parent:</b> <a class="el" href="xmlconfigurationreference.html#droelementace">&lt;ace&gt;</a> </li>
@@ -654,7 +680,9 @@ Router Element "&lt;transport&gt;"&nbsp;&nbsp;<small><a href="#droelementtranspo
  </p>
 <h2><a class="anchor" id="droelementregexpattern"></a>
 Router Element "&lt;regex-pattern&gt;"&nbsp;&nbsp;<small><a href="#droelementregexpattern">&lt;-</a></small></h2>
-<p>Defines a condition used in an ACE. Specifically, this is a match pattern for a POSIX regular expression matched in the message. <b>This element is deprecated. Please use <a class="el" href="xmlconfigurationreference.html#droelementpcrepattern">&lt;pcre-pattern&gt;</a> </b>.</p>
+<p>Defines a condition used in an ACE. Specifically, this is a match pattern for one or more topics using a POSIX regular expression.</p>
+<p><b>This element is deprecated. Please use <a class="el" href="xmlconfigurationreference.html#droelementpcrepattern">&lt;pcre-pattern&gt;</a> </b>.</p>
+<p>See <a class="el" href="umrouterimplementation.html#accesscontrollistsacl">Access Control Lists (ACL)</a> for information on how ACLs work.</p>
 <ul>
 <li>
 <b>Parent:</b> <a class="el" href="xmlconfigurationreference.html#droelementace">&lt;ace&gt;</a> </li>
@@ -663,7 +691,7 @@ Router Element "&lt;regex-pattern&gt;"&nbsp;&nbsp;<small><a href="#droelementreg
 <tr>
 <th>Attribute </th><th>Description </th><th>Valid Values </th><th>Default Value </th></tr>
 <tr>
-<td><b>xml:space</b> </td><td>Specifies how whitespace (tabs, spaces, linefeeds) are handled in the element content. </td><td><b><code>"default"</code></b> - Trim leading and trailing whitespace, and compress multiple whitespace characters into a single space. <br />
+<td><b>xml:space</b> </td><td>Specifies how whitespace (tabs, spaces, linefeeds) are handled in the element content. See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Gateway/design.tag:../Design/" href="../Design/fundamentalconcepts.html#xmlspaceattribute">xml:space Attribute</a>. </td><td><b><code>"default"</code></b> - Trim whitespace. <br />
 <b><code>"preserve"</code></b> - Retain whitespace exactly as entered. </td><td><b>default</b> </td></tr>
 </table>
 <hr/>
@@ -671,7 +699,9 @@ Router Element "&lt;regex-pattern&gt;"&nbsp;&nbsp;<small><a href="#droelementreg
  </p>
 <h2><a class="anchor" id="droelementpcrepattern"></a>
 Router Element "&lt;pcre-pattern&gt;"&nbsp;&nbsp;<small><a href="#droelementpcrepattern">&lt;-</a></small></h2>
-<p>Defines a condition used in an ACE. Specifically, this is a match pattern for a Perl Compatible Regular Expression (PCRE) matched in the message.</p>
+<p>Defines a condition used in an ACE. Specifically, this is a match pattern for one or more topics using a Perl Compatible Regular Expression (PCRE).</p>
+<p>This conditional element can be use in both inbound and outbound ACLs.</p>
+<p>See <a class="el" href="umrouterimplementation.html#accesscontrollistsacl">Access Control Lists (ACL)</a> for information on how ACLs work.</p>
 <ul>
 <li>
 <b>Parent:</b> <a class="el" href="xmlconfigurationreference.html#droelementace">&lt;ace&gt;</a> </li>
@@ -680,15 +710,19 @@ Router Element "&lt;pcre-pattern&gt;"&nbsp;&nbsp;<small><a href="#droelementpcre
 <tr>
 <th>Attribute </th><th>Description </th><th>Valid Values </th><th>Default Value </th></tr>
 <tr>
-<td><b>xml:space</b> </td><td>Specifies how whitespace (tabs, spaces, linefeeds) are handled in the element content. </td><td><b><code>"default"</code></b> - Trim leading and trailing whitespace, and compress multiple whitespace characters into a single space. <br />
+<td><b>xml:space</b> </td><td>Specifies how whitespace (tabs, spaces, linefeeds) are handled in the element content. See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Gateway/design.tag:../Design/" href="../Design/fundamentalconcepts.html#xmlspaceattribute">xml:space Attribute</a>. </td><td><b><code>"default"</code></b> - Trim whitespace. <br />
 <b><code>"preserve"</code></b> - Retain whitespace exactly as entered. </td><td><b>default</b> </td></tr>
 </table>
-<p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;ace match=<span class="stringliteral">&quot;accept&quot;</span>&gt;</div><div class="line">  &lt;pcre-pattern&gt;ABC.*&lt;/pcre-pattern&gt;</div><div class="line">&lt;/ace&gt;</div></div><!-- fragment --><hr/>
+<p><b>Example</b> <b>1</b>:</p>
+<p>This example will match patterns "ABC", "ABC789", and "ABC". It will not match "abc" or "123ABC". </p><div class="fragment"><div class="line">&lt;ace match=<span class="stringliteral">&quot;accept&quot;</span>&gt;</div><div class="line">  &lt;pcre-pattern&gt;</div><div class="line">    ^ABC.*</div><div class="line">  &lt;/pcre-pattern&gt;</div><div class="line">&lt;/ace&gt;</div></div><!-- fragment --><p><b>Example</b> <b>2</b>:</p>
+<p>In this example, match any topic that has one or more spaces anywhere in the topic name. Note that the "xml:space" attribute defaults to "default", which trims leading and trailing spaces. Therefore that attribute must set to "preserve", and the pattern must be combined onto a single line (to avoid newlines in the pattern): </p><div class="fragment"><div class="line">&lt;ace match=<span class="stringliteral">&quot;accept&quot;</span>&gt;</div><div class="line">  &lt;pcre-pattern xml:space=<span class="stringliteral">&quot;preserve&quot;</span>&gt; &lt;/pcre-pattern&gt;</div><div class="line">&lt;/ace&gt;</div></div><!-- fragment --><hr/>
 <p> <br />
  </p>
 <h2><a class="anchor" id="droelementtopic"></a>
 Router Element "&lt;topic&gt;"&nbsp;&nbsp;<small><a href="#droelementtopic">&lt;-</a></small></h2>
-<p>Defines a condition used in an ACE. Specifically, this is a match pattern for a topic name.</p>
+<p>Defines a condition used in an ACE. Specifically, this matches a topic name.</p>
+<p>This conditional element can be use in both inbound and outbound ACLs.</p>
+<p>See <a class="el" href="umrouterimplementation.html#accesscontrollistsacl">Access Control Lists (ACL)</a> for information on how ACLs work.</p>
 <ul>
 <li>
 <b>Parent:</b> <a class="el" href="xmlconfigurationreference.html#droelementace">&lt;ace&gt;</a> </li>
@@ -697,15 +731,18 @@ Router Element "&lt;topic&gt;"&nbsp;&nbsp;<small><a href="#droelementtopic">&lt;
 <tr>
 <th>Attribute </th><th>Description </th><th>Valid Values </th><th>Default Value </th></tr>
 <tr>
-<td><b>xml:space</b> </td><td>Specifies how whitespace (tabs, spaces, linefeeds) are handled in the element content. </td><td><b><code>"default"</code></b> - Trim leading and trailing whitespace, and compress multiple whitespace characters into a single space. <br />
+<td><b>xml:space</b> </td><td>Specifies how whitespace (tabs, spaces, linefeeds) are handled in the element content. See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Gateway/design.tag:../Design/" href="../Design/fundamentalconcepts.html#xmlspaceattribute">xml:space Attribute</a>. </td><td><b><code>"default"</code></b> - Trim whitespace. <br />
 <b><code>"preserve"</code></b> - Retain whitespace exactly as entered. </td><td><b>default</b> </td></tr>
 </table>
-<p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;ace match=<span class="stringliteral">&quot;accept&quot;</span>&gt;</div><div class="line">  &lt;topic&gt;ABC&lt;/topic&gt;</div><div class="line">&lt;/ace&gt;</div></div><!-- fragment --><hr/>
+<p><b>Example</b> <b>1</b>:</p>
+<p>Accept messages for topic "ABC": </p><div class="fragment"><div class="line">&lt;ace match=<span class="stringliteral">&quot;accept&quot;</span>&gt;</div><div class="line">  &lt;topic&gt;ABC&lt;/topic&gt;</div><div class="line">&lt;/ace&gt;</div></div><!-- fragment --><p><b>Example</b> <b>2</b>:</p>
+<p>To match a topic name that includes a trailing space, you must use the change the xml:space attribute value: </p><div class="fragment"><div class="line">&lt;ace match=<span class="stringliteral">&quot;accept&quot;</span>&gt;</div><div class="line">  &lt;topic xml:space=<span class="stringliteral">&quot;preserve&quot;</span>&gt;ABC &lt;/topic&gt;</div><div class="line">&lt;/ace&gt;</div></div><!-- fragment --><hr/>
 <p> <br />
  </p>
 <h2><a class="anchor" id="droelementinbound"></a>
 Router Element "&lt;inbound&gt;"&nbsp;&nbsp;<small><a href="#droelementinbound">&lt;-</a></small></h2>
 <p>Container for ACE elements, to separate inbound ACEs from outbound ACEs.</p>
+<p>See <a class="el" href="umrouterimplementation.html#accesscontrollistsacl">Access Control Lists (ACL)</a> for information on how ACLs work.</p>
 <ul>
 <li>
 <b>Cardinality:</b> 0 .. 1 </li>
@@ -734,7 +771,7 @@ Router Element "&lt;lbm-attributes&gt;"&nbsp;&nbsp;<small><a href="#droelementlb
 <h2><a class="anchor" id="droelementoption"></a>
 Router Element "&lt;option&gt;"&nbsp;&nbsp;<small><a href="#droelementoption">&lt;-</a></small></h2>
 <p>Lets you set an individual UM configuration option without referencing a UM configuration file. This value overrides any values set via files referenced by <a class="el" href="xmlconfigurationreference.html#droelementlbmconfig">&lt;lbm-config&gt;</a>.</p>
-<dl class="section note"><dt>Note</dt><dd>Some UM options specify interfaces, which can be done by supplying the device name of the interface. Special care must be taken when supplying device names. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Gateway/config.tag:../Config/" href="../Config/generalconfigurationguidelines.html#interfacedevicenamesandxml">Interface Device Names and XML</a> for details.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Some UM options specify interfaces, which can be done by supplying the device name of the interface. Special care must be taken when supplying device names. See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Gateway/config.tag:../Config/" href="../Config/generalconfigurationguidelines.html#interfacedevicenamesandxml">Interface Device Names and XML</a> for details.</dd></dl>
 <ul>
 <li>
 <b>Parent:</b> <a class="el" href="xmlconfigurationreference.html#droelementlbmattributes">&lt;lbm-attributes&gt;</a> </li>
@@ -758,6 +795,8 @@ Router Element "&lt;option&gt;"&nbsp;&nbsp;<small><a href="#droelementoption">&l
  </p>
 <h2><a class="anchor" id="droelementlbmconfig"></a>
 Router Element "&lt;lbm-config&gt;"&nbsp;&nbsp;<small><a href="#droelementlbmconfig">&lt;-</a></small></h2>
+<p>Specifies the UM configuration file that contains configuration options associated with this portal.</p>
+<p>Note that as of UM version 6.13, if one or more errors are discovered in the UM configuration file, the errors are written to the log file and the DRO continues running. I.e. errors in the UM configuration file are treated as warnings. See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Gateway/config.tag:../Config/" href="../Config/index.html#configurationerrorhandling">Configuration Error Handling</a> for an explanation.</p>
 <ul>
 <li>
 <b>Cardinality:</b> 0 .. 1 </li>
@@ -768,16 +807,15 @@ Router Element "&lt;lbm-config&gt;"&nbsp;&nbsp;<small><a href="#droelementlbmcon
 <tr>
 <th>Attribute </th><th>Description </th><th>Valid Values </th><th>Default Value </th></tr>
 <tr>
-<td><b>xml:space</b> </td><td>Specifies how whitespace (tabs, spaces, linefeeds) are handled in the element content. </td><td><b><code>"default"</code></b> - Trim leading and trailing whitespace, and compress multiple whitespace characters into a single space. <br />
+<td><b>xml:space</b> </td><td>Specifies how whitespace (tabs, spaces, linefeeds) are handled in the element content. See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Gateway/design.tag:../Design/" href="../Design/fundamentalconcepts.html#xmlspaceattribute">xml:space Attribute</a>. </td><td><b><code>"default"</code></b> - Trim whitespace. <br />
 <b><code>"preserve"</code></b> - Retain whitespace exactly as entered. </td><td><b>default</b> </td></tr>
 </table>
-<p>Specifies the UM configuration file that contains configuration options associated with this portal.</p>
 <p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;tnw-gateway version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div><div class="line">  ...</div><div class="line">  &lt;portals&gt;</div><div class="line">    &lt;endpoint&gt;</div><div class="line">      &lt;name&gt;E2&lt;/name&gt;</div><div class="line">      &lt;domain-<span class="keywordtype">id</span>&gt;1&lt;/domain-<span class="keywordtype">id</span>&gt;</div><div class="line">      &lt;lbm-config&gt;/path/endpoint2.cfg&lt;/lbm-config&gt;</div><div class="line">      ...</div><div class="line">    &lt;/endpoint&gt;</div><div class="line">  &lt;/portals&gt;</div><div class="line">&lt;/tnw-gateway&gt;</div></div><!-- fragment --><hr/>
 <p> <br />
  </p>
 <h2><a class="anchor" id="droelementbatching"></a>
 Router Element "&lt;batching&gt;"&nbsp;&nbsp;<small><a href="#droelementbatching">&lt;-</a></small></h2>
-<p>Contains batching size and timing parameters for peer link implicit batching. This applies to data messages only: the UM Router sends control messages immediately (flushing any batched data messages). Note: worst-case latency can be dramatically reduced by combining batching with <a class="el" href="xmlconfigurationreference.html#droelementsmartbatch">&lt;smart-batch&gt;</a>.</p>
+<p>Contains batching size and timing parameters for peer link implicit batching. This applies to data messages only: the DRO sends control messages immediately (flushing any batched data messages). Note: worst-case latency can be dramatically reduced by combining batching with <a class="el" href="xmlconfigurationreference.html#droelementsmartbatch">&lt;smart-batch&gt;</a>.</p>
 <ul>
 <li>
 <b>Cardinality:</b> 0 .. 1 </li>
@@ -791,7 +829,8 @@ Router Element "&lt;batching&gt;"&nbsp;&nbsp;<small><a href="#droelementbatching
  </p>
 <h2><a class="anchor" id="droelementbatchinterval"></a>
 Router Element "&lt;batch-interval&gt;"&nbsp;&nbsp;<small><a href="#droelementbatchinterval">&lt;-</a></small></h2>
-<p>Specifies the maximum interval (in milliseconds) between when the first message of a batch is queued until the batch is sent. A message stays in the batch queue until this value or <a class="el" href="xmlconfigurationreference.html#droelementminlength">&lt;min-length&gt;</a> is met or exceeded (whichever occurs first). If not specified, it defaults to 200 milliseconds. The minimum allowed value is 3 milliseconds.</p>
+<p>Specifies the maximum interval (in milliseconds) between when the first message of a batch is queued until the batch is sent. A message stays in the batch queue until this value or <a class="el" href="xmlconfigurationreference.html#droelementminlength">&lt;min-length&gt;</a> is met or exceeded (whichever occurs first). The minimum allowed value is 3 milliseconds.</p>
+<p>If not specified, it defaults to 200 milliseconds.</p>
 <ul>
 <li>
 <b>Cardinality:</b> 0 .. 1 </li>
@@ -803,7 +842,8 @@ Router Element "&lt;batch-interval&gt;"&nbsp;&nbsp;<small><a href="#droelementba
  </p>
 <h2><a class="anchor" id="droelementminlength"></a>
 Router Element "&lt;min-length&gt;"&nbsp;&nbsp;<small><a href="#droelementminlength">&lt;-</a></small></h2>
-<p>Specifies the minimum length of a set of batched messages. When the total length of the batched messages reaches or exceeds this value, the batch is sent. If not specified, it defaults to 8192 bytes.</p>
+<p>Specifies the minimum length of a set of batched messages. When the total length of the batched messages reaches or exceeds this value, the batch is sent.</p>
+<p>If not specified, it defaults to 8192 bytes.</p>
 <ul>
 <li>
 <b>Cardinality:</b> 0 .. 1 </li>
@@ -816,6 +856,7 @@ Router Element "&lt;min-length&gt;"&nbsp;&nbsp;<small><a href="#droelementminlen
 <h2><a class="anchor" id="droelementmaxdatagram"></a>
 Router Element "&lt;max-datagram&gt;"&nbsp;&nbsp;<small><a href="#droelementmaxdatagram">&lt;-</a></small></h2>
 <p>Specifies the maximum size a peer portal will allow an outgoing datagram to be before fragmenting it.</p>
+<p>If not specified, it defaults to 65535.</p>
 <ul>
 <li>
 <b>Cardinality:</b> 0 .. 1 </li>
@@ -827,7 +868,8 @@ Router Element "&lt;max-datagram&gt;"&nbsp;&nbsp;<small><a href="#droelementmaxd
  </p>
 <h2><a class="anchor" id="droelementsmartbatch"></a>
 Router Element "&lt;smart-batch&gt;"&nbsp;&nbsp;<small><a href="#droelementsmartbatch">&lt;-</a></small></h2>
-<p>Enables the smart batching algorithm used by the UM Router when forwarding messages from one portal to another. Possible values are 0 (disable) and 1 (enable).</p>
+<p>Enables the smart batching algorithm used by the DRO when forwarding messages from one portal to another. Possible values are 0 (disable) and 1 (enable).</p>
+<p>If not specified, it defaults to 0 (disabled).</p>
 <p>In general, batching algorithms are used to increase throughput, but many such algorithms can produce latency outliers. The Smart Batching algorithm is designed to ensure low latencies by flushing the batching buffer when no more messages are waiting to be sent out the portal.</p>
 <p>Smart batching works with both endpoint and peer portals. For endpoint portals, a UM configuration file may be provided to set the implicit_batching_minimum_length (source) option to a large value. For peer portals, the <a class="el" href="xmlconfigurationreference.html#droelementbatching">&lt;batching&gt;</a> element may be used to set the <a class="el" href="xmlconfigurationreference.html#droelementminlength">&lt;min-length&gt;</a> to a large value. In either case, large values are recommended and will not produce significant latency outliers.</p>
 <ul>
@@ -841,7 +883,8 @@ Router Element "&lt;smart-batch&gt;"&nbsp;&nbsp;<small><a href="#droelementsmart
  </p>
 <h2><a class="anchor" id="droelementmaxqueue"></a>
 Router Element "&lt;max-queue&gt;"&nbsp;&nbsp;<small><a href="#droelementmaxqueue">&lt;-</a></small></h2>
-<p>Sets the maximum buffer size for blocking messages. If not specified, this defaults to 1000000 bytes.</p>
+<p>Sets the maximum buffer size for blocking messages.</p>
+<p>If not specified, this defaults to 1000000 bytes.</p>
 <ul>
 <li>
 <b>Cardinality:</b> 0 .. 1 </li>
@@ -853,14 +896,16 @@ Router Element "&lt;max-queue&gt;"&nbsp;&nbsp;<small><a href="#droelementmaxqueu
  </p>
 <h2><a class="anchor" id="droelementsourcedeletiondelay"></a>
 Router Element "&lt;source-deletion-delay&gt;"&nbsp;&nbsp;<small><a href="#droelementsourcedeletiondelay">&lt;-</a></small></h2>
-<p>Sets the time in milliseconds to wait after a route map change occurs before deleting a proxy source. Such a route map change could be due to failure of a UM Router or link within a network.</p>
+<p>Sets the time in milliseconds to wait after a source is detected as deleted before deleting the proxy source. Applies to both endpoint and peer portals.</p>
+<p>Sources can be detected as being deleted by an EOS event at an endpoint portal, or by a route map change. Note that a route map change could be due to failure of a DRO or link within a network.</p>
+<p>If not specified, source-deletion-delay defaults to 1000 milliseconds.</p>
 <ul>
 <li>
 <b>Cardinality:</b> 0 .. 1 </li>
 <li>
 <b>Parent:</b> <a class="el" href="xmlconfigurationreference.html#droelementendpoint">&lt;endpoint&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementpeer">&lt;peer&gt;</a> </li>
 </ul>
-<p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;tnw-gateway version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div><div class="line">  &lt;daemon&gt;</div><div class="line">  ...</div><div class="line">  &lt;/daemon&gt;</div><div class="line">  &lt;portals&gt;</div><div class="line">    &lt;endpoint&gt;</div><div class="line">      &lt;name&gt;E1&lt;/name&gt;</div><div class="line">      &lt;domain-<span class="keywordtype">id</span>&gt;1&lt;/domain-<span class="keywordtype">id</span>&gt;</div><div class="line">      &lt;source-deletion-delay&gt;500&lt;/source-deletion-delay&gt;</div><div class="line">      ...</div><div class="line">    &lt;/endpoint&gt;</div><div class="line">  &lt;/portals&gt;</div><div class="line">&lt;/tnw-gateway&gt;</div></div><!-- fragment --><hr/>
+<p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;tnw-gateway version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div><div class="line">  &lt;daemon&gt;</div><div class="line">  ...</div><div class="line">  &lt;/daemon&gt;</div><div class="line">  &lt;portals&gt;</div><div class="line">    &lt;endpoint&gt;</div><div class="line">      &lt;name&gt;E1&lt;/name&gt;</div><div class="line">      &lt;domain-<span class="keywordtype">id</span>&gt;1&lt;/domain-<span class="keywordtype">id</span>&gt;</div><div class="line">      &lt;source-deletion-delay&gt;2000&lt;/source-deletion-delay&gt;</div><div class="line">      ...</div><div class="line">    &lt;/endpoint&gt;</div><div class="line">  &lt;/portals&gt;</div><div class="line">&lt;/tnw-gateway&gt;</div></div><!-- fragment --><hr/>
 <p> <br />
  </p>
 <h2><a class="anchor" id="droelementsingletcp"></a>
@@ -877,7 +922,7 @@ Router Element "&lt;single-tcp&gt;"&nbsp;&nbsp;<small><a href="#droelementsingle
  </p>
 <h2><a class="anchor" id="droelementacceptor"></a>
 Router Element "&lt;acceptor&gt;"&nbsp;&nbsp;<small><a href="#droelementacceptor">&lt;-</a></small></h2>
-<p>Contains the listen port address of the corresponding acceptor peer portal on another UM Router, to which this peer is connected. This element is used in single-tcp peer configurations.</p>
+<p>Contains the listen port address of the corresponding acceptor peer portal on another DRO, to which this peer is connected. This element is used in single-tcp peer configurations.</p>
 <ul>
 <li>
 <b>Parent:</b> <a class="el" href="xmlconfigurationreference.html#droelementsingletcp">&lt;single-tcp&gt;</a> </li>
@@ -889,7 +934,7 @@ Router Element "&lt;acceptor&gt;"&nbsp;&nbsp;<small><a href="#droelementacceptor
  </p>
 <h2><a class="anchor" id="droelementlistenport"></a>
 Router Element "&lt;listen-port&gt;"&nbsp;&nbsp;<small><a href="#droelementlistenport">&lt;-</a></small></h2>
-<p>Contains port number on which an acceptor peer portal listens for connections from the initiating peer portal. The initiating peer portal configuration must specify this port as its initiator port.</p>
+<p>Contains port number on which an acceptor peer portal listens for connections from the initiating peer portal. There is no default for the port number, the initiating peer portal configuration must specify this port as its initiator port.</p>
 <ul>
 <li>
 <b>Parent:</b> <a class="el" href="xmlconfigurationreference.html#droelementtcp">&lt;tcp&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementacceptor">&lt;acceptor&gt;</a> </li>
@@ -899,7 +944,7 @@ Router Element "&lt;listen-port&gt;"&nbsp;&nbsp;<small><a href="#droelementliste
  </p>
 <h2><a class="anchor" id="droelementinitiator"></a>
 Router Element "&lt;initiator&gt;"&nbsp;&nbsp;<small><a href="#droelementinitiator">&lt;-</a></small></h2>
-<p>Contains the IP address and the port of the corresponding acceptor peer portal on another UM Router, to which this peer is connected. This element is used in single-tcp peer configurations.</p>
+<p>Contains the IP address and the port of the corresponding acceptor peer portal on another DRO, to which this peer is connected. This element is used in single-tcp peer configurations.</p>
 <ul>
 <li>
 <b>Parent:</b> <a class="el" href="xmlconfigurationreference.html#droelementsingletcp">&lt;single-tcp&gt;</a> </li>
@@ -917,7 +962,7 @@ Router Element "&lt;initiator&gt;"&nbsp;&nbsp;<small><a href="#droelementinitiat
  </p>
 <h2><a class="anchor" id="droelementport"></a>
 Router Element "&lt;port&gt;"&nbsp;&nbsp;<small><a href="#droelementport">&lt;-</a></small></h2>
-<p>Contains the IP port of the acceptor peer portal on another UM Router, to which this initiator peer is connected. (As of UM version 6.10, dual TCP (<a class="el" href="xmlconfigurationreference.html#droelementtcp">&lt;tcp&gt;</a>) is no longer supported. Please use <a class="el" href="xmlconfigurationreference.html#droelementsingletcp">&lt;single-tcp&gt;</a> instead.)</p>
+<p>Contains the IP port of the acceptor peer portal on another DRO, to which this initiator peer is connected. (As of UM version 6.10, dual TCP (<a class="el" href="xmlconfigurationreference.html#droelementtcp">&lt;tcp&gt;</a>) is no longer supported. Please use <a class="el" href="xmlconfigurationreference.html#droelementsingletcp">&lt;single-tcp&gt;</a> instead.)</p>
 <ul>
 <li>
 <b>Parent:</b> <a class="el" href="xmlconfigurationreference.html#droelementcompanion">&lt;companion&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementinitiator">&lt;initiator&gt;</a> </li>
@@ -927,7 +972,7 @@ Router Element "&lt;port&gt;"&nbsp;&nbsp;<small><a href="#droelementport">&lt;-<
  </p>
 <h2><a class="anchor" id="droelementaddress"></a>
 Router Element "&lt;address&gt;"&nbsp;&nbsp;<small><a href="#droelementaddress">&lt;-</a></small></h2>
-<p>Contains the IP address of the acceptor peer portal on another UM Router, to which this initiator peer is connected via "single TCP". (As of UM version 6.10, dual TCP (<a class="el" href="xmlconfigurationreference.html#droelementtcp">&lt;tcp&gt;</a>) is no longer supported. Please use <a class="el" href="xmlconfigurationreference.html#droelementsingletcp">&lt;single-tcp&gt;</a> instead.)</p>
+<p>Contains the IP address of the acceptor peer portal on another DRO, to which this initiator peer is connected via "single TCP". (As of UM version 6.10, dual TCP (<a class="el" href="xmlconfigurationreference.html#droelementtcp">&lt;tcp&gt;</a>) is no longer supported. Please use <a class="el" href="xmlconfigurationreference.html#droelementsingletcp">&lt;single-tcp&gt;</a> instead.)</p>
 <ul>
 <li>
 <b>Parent:</b> <a class="el" href="xmlconfigurationreference.html#droelementcompanion">&lt;companion&gt;</a>, <a class="el" href="xmlconfigurationreference.html#droelementinitiator">&lt;initiator&gt;</a> </li>
@@ -1009,6 +1054,7 @@ Router Element "&lt;certificate&gt;"&nbsp;&nbsp;<small><a href="#droelementcerti
 <h2><a class="anchor" id="droelementcompression"></a>
 Router Element "&lt;compression&gt;"&nbsp;&nbsp;<small><a href="#droelementcompression">&lt;-</a></small></h2>
 <p>Enables compression and sets the desired data compression algorithm for the peer link. Currently, only LZ4 lossless data compression is supported.</p>
+<p>If not specified, no compression is used.</p>
 <ul>
 <li>
 <b>Cardinality:</b> 0 .. 1 </li>
@@ -1045,7 +1091,8 @@ Router Element "&lt;keepalive&gt;"&nbsp;&nbsp;<small><a href="#droelementkeepali
  </p>
 <h2><a class="anchor" id="droelementsendbuffer"></a>
 Router Element "&lt;send-buffer&gt;"&nbsp;&nbsp;<small><a href="#droelementsendbuffer">&lt;-</a></small></h2>
-<p>Contains the size of the TCP send buffer. If not specified, the UM Router uses the system default size.</p>
+<p>Contains the size of the TCP send buffer.</p>
+<p>If not specified, the DRO uses the system default size.</p>
 <ul>
 <li>
 <b>Cardinality:</b> 0 .. 1 </li>
@@ -1057,7 +1104,8 @@ Router Element "&lt;send-buffer&gt;"&nbsp;&nbsp;<small><a href="#droelementsendb
  </p>
 <h2><a class="anchor" id="droelementreceivebuffer"></a>
 Router Element "&lt;receive-buffer&gt;"&nbsp;&nbsp;<small><a href="#droelementreceivebuffer">&lt;-</a></small></h2>
-<p>Contains the size of the TCP receive buffer. If not specified, the UM Router uses the system default size.</p>
+<p>Contains the size of the TCP receive buffer.</p>
+<p>If not specified, the DRO uses the system default size.</p>
 <ul>
 <li>
 <b>Cardinality:</b> 0 .. 1 </li>
@@ -1093,7 +1141,7 @@ Router Element "&lt;tcp&gt;"&nbsp;&nbsp;<small><a href="#droelementtcp">&lt;-</a
  </p>
 <h2><a class="anchor" id="droelementcompanion"></a>
 Router Element "&lt;companion&gt;"&nbsp;&nbsp;<small><a href="#droelementcompanion">&lt;-</a></small></h2>
-<p><b>DEPRECATED AND ELIMINATED AS OF UM 6.10. DO NOT USE.</b> Contains the IP address and the port of the companion peer portal on another UM Router, to which this peer is connected via "dual TCP". (As of UM version 6.10, dual TCP (<a class="el" href="xmlconfigurationreference.html#droelementtcp">&lt;tcp&gt;</a>) is no longer supported. Please use <a class="el" href="xmlconfigurationreference.html#droelementsingletcp">&lt;single-tcp&gt;</a> instead.)</p>
+<p><b>DEPRECATED AND ELIMINATED AS OF UM 6.10. DO NOT USE.</b> Contains the IP address and the port of the companion peer portal on another DRO, to which this peer is connected via "dual TCP". (As of UM version 6.10, dual TCP (<a class="el" href="xmlconfigurationreference.html#droelementtcp">&lt;tcp&gt;</a>) is no longer supported. Please use <a class="el" href="xmlconfigurationreference.html#droelementsingletcp">&lt;single-tcp&gt;</a> instead.)</p>
 <ul>
 <li>
 <b>Parent:</b> <a class="el" href="xmlconfigurationreference.html#droelementtcp">&lt;tcp&gt;</a> </li>
@@ -1129,7 +1177,8 @@ Router Element "&lt;sourcemap&gt;"&nbsp;&nbsp;<small><a href="#droelementsourcem
  </p>
 <h2><a class="anchor" id="droelementcost"></a>
 Router Element "&lt;cost&gt;"&nbsp;&nbsp;<small><a href="#droelementcost">&lt;-</a></small></h2>
-<p>Assigns a positive non-zero integer cost to the portal. The default value is 1. See <a class="el" href="umrouterconcepts.html#forwardingcosts">Forwarding Costs</a>.</p>
+<p>Assigns a positive non-zero integer cost to the portal.</p>
+<p>If not specified, it defaults to 1. See <a class="el" href="umrouterconcepts.html#forwardingcosts">Forwarding Costs</a>.</p>
 <ul>
 <li>
 <b>Cardinality:</b> 0 .. 1 </li>
@@ -1141,7 +1190,8 @@ Router Element "&lt;cost&gt;"&nbsp;&nbsp;<small><a href="#droelementcost">&lt;-<
  </p>
 <h2><a class="anchor" id="droelementname"></a>
 Router Element "&lt;name&gt;"&nbsp;&nbsp;<small><a href="#droelementname">&lt;-</a></small></h2>
-<p>Lets you set a name for this UM Router (do not duplicate for any other known UM Routers), or for the name of an endpoint or peer portal. Each portal name must be unique within the UM Router.</p>
+<p>Lets you set a name for this DRO (do not duplicate for any other known DROs), or for the name of an endpoint or peer portal. Each portal name must be unique within the DRO.</p>
+<p>If not specified, no name is assigned.</p>
 <ul>
 <li>
 <b>Cardinality:</b> 0 .. 1 </li>
@@ -1152,10 +1202,10 @@ Router Element "&lt;name&gt;"&nbsp;&nbsp;<small><a href="#droelementname">&lt;-<
 <tr>
 <th>Attribute </th><th>Description </th><th>Valid Values </th><th>Default Value </th></tr>
 <tr>
-<td><b>xml:space</b> </td><td>Specifies how whitespace (tabs, spaces, linefeeds) are handled in the element content. </td><td><b><code>"default"</code></b> - Trim leading and trailing whitespace, and compress multiple whitespace characters into a single space. <br />
+<td><b>xml:space</b> </td><td>Specifies how whitespace (tabs, spaces, linefeeds) are handled in the element content. See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Gateway/design.tag:../Design/" href="../Design/fundamentalconcepts.html#xmlspaceattribute">xml:space Attribute</a>. </td><td><b><code>"default"</code></b> - Trim whitespace. <br />
 <b><code>"preserve"</code></b> - Retain whitespace exactly as entered. </td><td><b>default</b> </td></tr>
 </table>
-<p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;tnw-gateway version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div><div class="line">  &lt;daemon&gt;</div><div class="line">    &lt;name&gt;UM Router1&lt;/name&gt;</div><div class="line">  &lt;/daemon&gt;</div><div class="line">  &lt;portals&gt;</div><div class="line">    &lt;endpoint&gt;</div><div class="line">      &lt;name&gt;endpoint1&lt;/name&gt;</div><div class="line">      ...</div><div class="line">    &lt;/endpoint&gt;</div><div class="line">  &lt;/portals&gt;</div><div class="line">  ...</div><div class="line">&lt;/tnw-gateway&gt;</div></div><!-- fragment --><hr/>
+<p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;tnw-gateway version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div><div class="line">  &lt;daemon&gt;</div><div class="line">    &lt;name&gt;DRO1&lt;/name&gt;</div><div class="line">  &lt;/daemon&gt;</div><div class="line">  &lt;portals&gt;</div><div class="line">    &lt;endpoint&gt;</div><div class="line">      &lt;name&gt;endpoint1&lt;/name&gt;</div><div class="line">      ...</div><div class="line">    &lt;/endpoint&gt;</div><div class="line">  &lt;/portals&gt;</div><div class="line">  ...</div><div class="line">&lt;/tnw-gateway&gt;</div></div><!-- fragment --><hr/>
 <p> <br />
  </p>
 <h2><a class="anchor" id="droelementendpoint"></a>
@@ -1239,7 +1289,7 @@ Router Element "&lt;late-join&gt;"&nbsp;&nbsp;<small><a href="#droelementlatejoi
  </p>
 <h2><a class="anchor" id="droelementtopicresolution"></a>
 Router Element "&lt;topic-resolution&gt;"&nbsp;&nbsp;<small><a href="#droelementtopicresolution">&lt;-</a></small></h2>
-<p>Container for UM Router topic resolution behavior options.</p>
+<p>Container for DRO topic resolution behavior options.</p>
 <ul>
 <li>
 <b>Cardinality:</b> 0 .. 1 </li>
@@ -1415,7 +1465,8 @@ Router Element "&lt;topic-use-query&gt;"&nbsp;&nbsp;<small><a href="#droelementt
  </p>
 <h2><a class="anchor" id="droelementdomainid"></a>
 Router Element "&lt;domain-id&gt;"&nbsp;&nbsp;<small><a href="#droelementdomainid">&lt;-</a></small></h2>
-<p>Identifies the TRD for this endpoint portal. It must be unique within the UM Router (which means that for any TRD, you can assign only one endpoint portal per UM Router). Also, all endpoints interfacing a given TRD must have the same <code>&lt;domain-id&gt;</code> value.</p>
+<p>Identifies the TRD for this endpoint portal. It must be unique within the DRO (which means that for any TRD, you can assign only one endpoint portal per DRO). Also, all endpoints interfacing a given TRD must have the same <code>&lt;domain-id&gt;</code> value.</p>
+<p>There is no default, it must be supplied.</p>
 <ul>
 <li>
 <b>Parent:</b> <a class="el" href="xmlconfigurationreference.html#droelementendpoint">&lt;endpoint&gt;</a> </li>
@@ -1425,7 +1476,7 @@ Router Element "&lt;domain-id&gt;"&nbsp;&nbsp;<small><a href="#droelementdomaini
  </p>
 <h2><a class="anchor" id="droelementdaemon"></a>
 Router Element "&lt;daemon&gt;"&nbsp;&nbsp;<small><a href="#droelementdaemon">&lt;-</a></small></h2>
-<p>Container for options common to the entire UM Router process.</p>
+<p>Container for options common to the entire DRO process.</p>
 <ul>
 <li>
 <b>Cardinality:</b> 0 .. 1 </li>
@@ -1439,7 +1490,7 @@ Router Element "&lt;daemon&gt;"&nbsp;&nbsp;<small><a href="#droelementdaemon">&l
  </p>
 <h2><a class="anchor" id="droelementrouterecalculation"></a>
 Router Element "&lt;route-recalculation&gt;"&nbsp;&nbsp;<small><a href="#droelementrouterecalculation">&lt;-</a></small></h2>
-<p>Lets you set timing parameters for UM Router rerouting route calculation behavior.</p>
+<p>Lets you set timing parameters for DRO rerouting route calculation behavior.</p>
 <ul>
 <li>
 <b>Cardinality:</b> 0 .. 1 </li>
@@ -1450,16 +1501,16 @@ Router Element "&lt;route-recalculation&gt;"&nbsp;&nbsp;<small><a href="#droelem
 <tr>
 <th>Attribute </th><th>Description </th><th>Valid Values </th><th>Default Value </th></tr>
 <tr>
-<td><b>backoff-interval</b> </td><td>How long, in milliseconds, the UM Router waits after the last detected change in topology before initiating a route recalculation. </td><td>string </td><td><b><code>"5000"</code></b> </td></tr>
+<td><b>backoff-interval</b> </td><td>How long, in milliseconds, the DRO waits after the last detected change in topology before initiating a route recalculation. </td><td>string </td><td><b><code>"5000"</code></b> </td></tr>
 <tr>
-<td><b>warning-interval</b> </td><td>How long, in milliseconds, the UM Router waits before warning that a route recalculation is being held up due to a non-converging topology. </td><td>string </td><td><b><code>"10000"</code></b> </td></tr>
+<td><b>warning-interval</b> </td><td>How long, in milliseconds, the DRO waits before warning that a route recalculation is being held up due to a non-converging topology. </td><td>string </td><td><b><code>"10000"</code></b> </td></tr>
 </table>
 <p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;tnw-gateway version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div><div class="line">  &lt;daemon&gt;</div><div class="line">    ...</div><div class="line">    &lt;route-recalculation backoff-interval=<span class="stringliteral">&quot;5000&quot;</span> warning-interval=<span class="stringliteral">&quot;10000&quot;</span>/&gt;</div><div class="line">  &lt;/daemon&gt;</div><div class="line">  ...</div><div class="line">&lt;/tnw-gateway&gt;</div></div><!-- fragment --><hr/>
 <p> <br />
  </p>
 <h2><a class="anchor" id="droelementrouteinfo"></a>
 Router Element "&lt;route-info&gt;"&nbsp;&nbsp;<small><a href="#droelementrouteinfo">&lt;-</a></small></h2>
-<p>Lets you set control parameters for UM Router initial route setup (or reroute) behavior.</p>
+<p>Lets you set control parameters for DRO initial route setup (or reroute) behavior.</p>
 <ul>
 <li>
 <b>Cardinality:</b> 0 .. 1 </li>
@@ -1470,13 +1521,13 @@ Router Element "&lt;route-info&gt;"&nbsp;&nbsp;<small><a href="#droelementroutei
 <tr>
 <th>Attribute </th><th>Description </th><th>Valid Values </th><th>Default Value </th></tr>
 <tr>
-<td><b>propagation-interval</b> </td><td>The time interval between route information messages that the UM Router sends to other UM Router. </td><td>string </td><td><b><code>"1000"</code></b> </td></tr>
+<td><b>propagation-interval</b> </td><td>The time interval between route information messages that the DRO sends to other DRO. </td><td>string </td><td><b><code>"1000"</code></b> </td></tr>
 <tr>
-<td><b>check-interval</b> </td><td>How often the UM Router checks to see if a route information message needs to be sent, a UM Router has timed out, and/or the routes need to be recalculated. </td><td>string </td><td><b><code>"750"</code></b> </td></tr>
+<td><b>check-interval</b> </td><td>How often the DRO checks to see if a route information message needs to be sent, a DRO has timed out, and/or the routes need to be recalculated. </td><td>string </td><td><b><code>"750"</code></b> </td></tr>
 <tr>
-<td><b>timeout</b> </td><td>How long a UM Router waits after receiving no route information messages from another UM Router before determining that that UM Router is out of service or unreachable. </td><td>string </td><td><b><code>"4000"</code></b> </td></tr>
+<td><b>timeout</b> </td><td>How long a DRO waits after receiving no route information messages from another DRO before determining that that DRO is out of service or unreachable. </td><td>string </td><td><b><code>"4000"</code></b> </td></tr>
 <tr>
-<td><b>max-hop-count</b> </td><td>The maximum number of UM Routers a route information message can traverse before being discarded. </td><td>string </td><td><b><code>"100"</code></b> </td></tr>
+<td><b>max-hop-count</b> </td><td>The maximum number of DROs a route information message can traverse before being discarded. </td><td>string </td><td><b><code>"100"</code></b> </td></tr>
 </table>
 <p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;tnw-gateway version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div><div class="line">  &lt;daemon&gt;</div><div class="line">    ...</div><div class="line">    &lt;route-info propagation-interval=<span class="stringliteral">&quot;1000&quot;</span> check-interval=<span class="stringliteral">&quot;750&quot;</span> timeout=<span class="stringliteral">&quot;4000&quot;</span> max-hop-count=<span class="stringliteral">&quot;100&quot;</span>/&gt;</div><div class="line">  &lt;/daemon&gt;</div><div class="line">  ...</div><div class="line">&lt;/tnw-gateway&gt;</div></div><!-- fragment --><hr/>
 <p> <br />
@@ -1494,7 +1545,7 @@ Router Element "&lt;xml-config&gt;"&nbsp;&nbsp;<small><a href="#droelementxmlcon
 <tr>
 <th>Attribute </th><th>Description </th><th>Valid Values </th><th>Default Value </th></tr>
 <tr>
-<td><b>xml:space</b> </td><td>Specifies how whitespace (tabs, spaces, linefeeds) are handled in the element content. </td><td><b><code>"default"</code></b> - Trim leading and trailing whitespace, and compress multiple whitespace characters into a single space. <br />
+<td><b>xml:space</b> </td><td>Specifies how whitespace (tabs, spaces, linefeeds) are handled in the element content. See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Gateway/design.tag:../Design/" href="../Design/fundamentalconcepts.html#xmlspaceattribute">xml:space Attribute</a>. </td><td><b><code>"default"</code></b> - Trim whitespace. <br />
 <b><code>"preserve"</code></b> - Retain whitespace exactly as entered. </td><td><b>default</b> </td></tr>
 </table>
 <p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;tnw-gateway version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div><div class="line">  &lt;daemon&gt;</div><div class="line">    ...</div><div class="line">    &lt;xml-config&gt;configfile.xml&lt;/xml-config&gt;</div><div class="line">  &lt;/daemon&gt;</div><div class="line">  ...</div><div class="line">&lt;/tnw-gateway&gt;</div></div><!-- fragment --><hr/>
@@ -1520,7 +1571,7 @@ Router Element "&lt;propagation-delay&gt;"&nbsp;&nbsp;<small><a href="#droelemen
  </p>
 <h2><a class="anchor" id="droelementdaemonmonitor"></a>
 Router Element "&lt;daemon-monitor&gt;"&nbsp;&nbsp;<small><a href="#droelementdaemonmonitor">&lt;-</a></small></h2>
-<p>Configures the Daemon Statistics feature. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Gateway/design.tag:../Design/" href="../Design/umobjects.html#daemonstatistics">Daemon Statistics</a> for general information on Daemon Statistics.</p>
+<p>Configures the Daemon Statistics feature. See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Gateway/design.tag:../Design/" href="../Design/umobjects.html#daemonstatistics">Daemon Statistics</a> for general information on Daemon Statistics.</p>
 <ul>
 <li>
 <b>Cardinality:</b> 0 .. 1 </li>
@@ -1540,7 +1591,7 @@ Router Element "&lt;daemon-monitor&gt;"&nbsp;&nbsp;<small><a href="#droelementda
  </p>
 <h2><a class="anchor" id="droelementremoteconfigchangesrequest"></a>
 Router Element "&lt;remote-config-changes-request&gt;"&nbsp;&nbsp;<small><a href="#droelementremoteconfigchangesrequest">&lt;-</a></small></h2>
-<p>Configures whether the UM Router will respond to monitoring apps requests to change the rate at which Daemon Statistics messages are published. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Gateway/design.tag:../Design/" href="../Design/umobjects.html#daemonstatistics">Daemon Statistics</a> for general information on Daemon Statistics.</p>
+<p>Configures whether the DRO will respond to monitoring apps requests to change the rate at which Daemon Statistics messages are published. See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Gateway/design.tag:../Design/" href="../Design/umobjects.html#daemonstatistics">Daemon Statistics</a> for general information on Daemon Statistics.</p>
 <ul>
 <li>
 <b>Cardinality:</b> 0 .. 1 </li>
@@ -1559,7 +1610,7 @@ Router Element "&lt;remote-config-changes-request&gt;"&nbsp;&nbsp;<small><a href
  </p>
 <h2><a class="anchor" id="droelementremotesnapshotrequest"></a>
 Router Element "&lt;remote-snapshot-request&gt;"&nbsp;&nbsp;<small><a href="#droelementremotesnapshotrequest">&lt;-</a></small></h2>
-<p>Configures whether the UM Router will respond to monitoring apps requests to send on-demand snapshots of daemon statistics. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Gateway/design.tag:../Design/" href="../Design/umobjects.html#daemonstatistics">Daemon Statistics</a> for general information on Daemon Statistics.</p>
+<p>Configures whether the DRO will respond to monitoring apps requests to send on-demand snapshots of daemon statistics. See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Gateway/design.tag:../Design/" href="../Design/umobjects.html#daemonstatistics">Daemon Statistics</a> for general information on Daemon Statistics.</p>
 <ul>
 <li>
 <b>Cardinality:</b> 0 .. 1 </li>
@@ -1580,7 +1631,7 @@ Router Element "&lt;remote-snapshot-request&gt;"&nbsp;&nbsp;<small><a href="#dro
 Router Element "&lt;web-monitor&gt;"&nbsp;&nbsp;<small><a href="#droelementwebmonitor">&lt;-</a></small></h2>
 <p>Identifies the address for the web monitor, in the form of interface:port. You can use "*" to specify the local host.</p>
 <p>Omit this element to disable the web monitor.</p>
-<p>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Gateway/design.tag:../Design/" href="../Design/fundamentalconcepts.html#webmonsecurity">Webmon Security</a> for important security information.</p>
+<p>See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Gateway/design.tag:../Design/" href="../Design/fundamentalconcepts.html#webmonsecurity">Webmon Security</a> for important security information.</p>
 <ul>
 <li>
 <b>Cardinality:</b> 0 .. 1 </li>
@@ -1591,7 +1642,7 @@ Router Element "&lt;web-monitor&gt;"&nbsp;&nbsp;<small><a href="#droelementwebmo
 <tr>
 <th>Attribute </th><th>Description </th><th>Valid Values </th><th>Default Value </th></tr>
 <tr>
-<td><b>xml:space</b> </td><td>Specifies how whitespace (tabs, spaces, linefeeds) are handled in the element content. </td><td><b><code>"default"</code></b> - Trim leading and trailing whitespace, and compress multiple whitespace characters into a single space. <br />
+<td><b>xml:space</b> </td><td>Specifies how whitespace (tabs, spaces, linefeeds) are handled in the element content. See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Gateway/design.tag:../Design/" href="../Design/fundamentalconcepts.html#xmlspaceattribute">xml:space Attribute</a>. </td><td><b><code>"default"</code></b> - Trim whitespace. <br />
 <b><code>"preserve"</code></b> - Retain whitespace exactly as entered. </td><td><b>default</b> </td></tr>
 </table>
 <p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;tnw-gateway version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div><div class="line">  &lt;daemon&gt;</div><div class="line">    ...</div><div class="line">    &lt;web-monitor&gt;*:21001&lt;/web-monitor&gt;</div><div class="line">  &lt;/daemon&gt;</div><div class="line">  ...</div><div class="line">&lt;/tnw-gateway&gt;</div></div><!-- fragment --><hr/>
@@ -1673,7 +1724,7 @@ Router Element "&lt;patternmap&gt;"&nbsp;&nbsp;<small><a href="#droelementpatter
 <tr>
 <th>Attribute </th><th>Description </th><th>Valid Values </th><th>Default Value </th></tr>
 <tr>
-<td><b>hash-function</b> </td><td>Topic resolution hash function to use. Informatica recommends the default. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Gateway/config.tag:../Config/" href="../Config/grpudpbasedresolveroperation.html#resolverstringhashfunctioncontext">resolver_string_hash_function (context)</a> for more information. </td><td><b><code>"classic"</code></b> - UM's original hash function. May be better for certain specialized topic names. <br />
+<td><b>hash-function</b> </td><td>Topic resolution hash function to use. Informatica recommends the default. See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Gateway/config.tag:../Config/" href="../Config/grpudpbasedresolveroperation.html#resolverstringhashfunctioncontext">resolver_string_hash_function (context)</a> for more information. </td><td><b><code>"classic"</code></b> - UM's original hash function. May be better for certain specialized topic names. <br />
 <b><code>"djb2"</code></b> - The Dan Bernstein algorithm from comp.lang.c. May be better for topic names have a changing prefix with a constant suffix. <br />
 <b><code>"sdbm"</code></b> - Sdbm database library (used in Berkeley DB). May be better for certain specialized topic names. <br />
 <b><code>"murmur2"</code></b> - Good all-around hash function by Austin Appleby. </td><td><b><code>"murmur2"</code></b> </td></tr>
@@ -1696,7 +1747,7 @@ Router Element "&lt;topicmap&gt;"&nbsp;&nbsp;<small><a href="#droelementtopicmap
 <tr>
 <th>Attribute </th><th>Description </th><th>Valid Values </th><th>Default Value </th></tr>
 <tr>
-<td><b>hash-function</b> </td><td>Topic resolution hash function to use. Informatica recommends the default. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Gateway/config.tag:../Config/" href="../Config/grpudpbasedresolveroperation.html#resolverstringhashfunctioncontext">resolver_string_hash_function (context)</a> for more information. </td><td><b><code>"classic"</code></b> - UM's original hash function. May be better for certain specialized topic names. <br />
+<td><b>hash-function</b> </td><td>Topic resolution hash function to use. Informatica recommends the default. See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Gateway/config.tag:../Config/" href="../Config/grpudpbasedresolveroperation.html#resolverstringhashfunctioncontext">resolver_string_hash_function (context)</a> for more information. </td><td><b><code>"classic"</code></b> - UM's original hash function. May be better for certain specialized topic names. <br />
 <b><code>"djb2"</code></b> - The Dan Bernstein algorithm from comp.lang.c. May be better for topic names have a changing prefix with a constant suffix. <br />
 <b><code>"sdbm"</code></b> - Sdbm database library (used in Berkeley DB). May be better for certain specialized topic names. <br />
 <b><code>"murmur2"</code></b> - Good all-around hash function by Austin Appleby. </td><td><b><code>"murmur2"</code></b> </td></tr>
@@ -1719,7 +1770,7 @@ Router Element "&lt;lbm-license-file&gt;"&nbsp;&nbsp;<small><a href="#droelement
 <tr>
 <th>Attribute </th><th>Description </th><th>Valid Values </th><th>Default Value </th></tr>
 <tr>
-<td><b>xml:space</b> </td><td>Specifies how whitespace (tabs, spaces, linefeeds) are handled in the element content. </td><td><b><code>"default"</code></b> - Trim leading and trailing whitespace, and compress multiple whitespace characters into a single space. <br />
+<td><b>xml:space</b> </td><td>Specifies how whitespace (tabs, spaces, linefeeds) are handled in the element content. See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Gateway/design.tag:../Design/" href="../Design/fundamentalconcepts.html#xmlspaceattribute">xml:space Attribute</a>. </td><td><b><code>"default"</code></b> - Trim whitespace. <br />
 <b><code>"preserve"</code></b> - Retain whitespace exactly as entered. </td><td><b>default</b> </td></tr>
 </table>
 <p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;tnw-gateway version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div><div class="line">  &lt;daemon&gt;</div><div class="line">      . . .</div><div class="line">    &lt;lbm-license-file&gt;lic0014.txt&lt;/lbm-license-file&gt;</div><div class="line">      . . .</div><div class="line">  &lt;/daemon&gt;</div><div class="line">      . . .</div><div class="line">      . . .</div><div class="line">&lt;/tnw-gateway&gt;</div></div><!-- fragment --><hr/>
@@ -1738,7 +1789,7 @@ Router Element "&lt;pidfile&gt;"&nbsp;&nbsp;<small><a href="#droelementpidfile">
 <tr>
 <th>Attribute </th><th>Description </th><th>Valid Values </th><th>Default Value </th></tr>
 <tr>
-<td><b>xml:space</b> </td><td>Specifies how whitespace (tabs, spaces, linefeeds) are handled in the element content. </td><td><b><code>"default"</code></b> - Trim leading and trailing whitespace, and compress multiple whitespace characters into a single space. <br />
+<td><b>xml:space</b> </td><td>Specifies how whitespace (tabs, spaces, linefeeds) are handled in the element content. See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Gateway/design.tag:../Design/" href="../Design/fundamentalconcepts.html#xmlspaceattribute">xml:space Attribute</a>. </td><td><b><code>"default"</code></b> - Trim whitespace. <br />
 <b><code>"preserve"</code></b> - Retain whitespace exactly as entered. </td><td><b>default</b> </td></tr>
 </table>
 <p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;tnw-gateway version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div><div class="line">  &lt;daemon&gt;</div><div class="line">    ...</div><div class="line">    &lt;pidfile&gt;\var\run\dro01.pid&lt;/pidfile&gt;</div><div class="line">  &lt;/daemon&gt;</div><div class="line">  ...</div><div class="line">&lt;/tnw-gateway&gt;</div></div><!-- fragment --><hr/>
@@ -1770,7 +1821,7 @@ Router Element "&lt;uid&gt;"&nbsp;&nbsp;<small><a href="#droelementuid">&lt;-</a
  </p>
 <h2><a class="anchor" id="droelementlog"></a>
 Router Element "&lt;log&gt;"&nbsp;&nbsp;<small><a href="#droelementlog">&lt;-</a></small></h2>
-<p>Specifies the destination for UM Router log messages. If you set the type for "file", use this element to contain the full pathname.</p>
+<p>Specifies the destination for DRO log messages. If you set the type for "file", use this element to contain the full pathname.</p>
 <ul>
 <li>
 <b>Cardinality:</b> 0 .. 1 </li>
@@ -1792,13 +1843,13 @@ Router Element "&lt;log&gt;"&nbsp;&nbsp;<small><a href="#droelementlog">&lt;-</a
 <tr>
 <td><b>size</b> </td><td>Number of millions of bytes of file size to roll log file. E.g. a value of 1 rolls after 1000000 bytes. Maximum value is 4000. Value of 0 disables rolling by file size. Only applies for type="file". </td><td>string </td><td><b><code>"0"</code></b> </td></tr>
 <tr>
-<td><b>xml:space</b> </td><td>Specifies how whitespace (tabs, spaces, linefeeds) are handled in the element content. </td><td><b><code>"default"</code></b> - Trim leading and trailing whitespace, and compress multiple whitespace characters into a single space. <br />
+<td><b>xml:space</b> </td><td>Specifies how whitespace (tabs, spaces, linefeeds) are handled in the element content. See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Gateway/design.tag:../Design/" href="../Design/fundamentalconcepts.html#xmlspaceattribute">xml:space Attribute</a>. </td><td><b><code>"default"</code></b> - Trim whitespace. <br />
 <b><code>"preserve"</code></b> - Retain whitespace exactly as entered. </td><td><b>default</b> </td></tr>
 </table>
 <p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;tnw-gateway version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div><div class="line">  &lt;daemon&gt;</div><div class="line">    ...</div><div class="line">    &lt;log type=<span class="stringliteral">&quot;syslog&quot;</span>/&gt;</div><div class="line">  &lt;/daemon&gt;</div><div class="line">  ...</div><div class="line">&lt;/tnw-gateway&gt;</div></div><!-- fragment --><p><br />
  </p>
 <h1><a class="anchor" id="umrouterconfigurationdtd"></a>
-UM Router Configuration DTD&nbsp;&nbsp;<small><a href="#umrouterconfigurationdtd">&lt;-</a></small></h1>
+DRO Configuration DTD&nbsp;&nbsp;<small><a href="#umrouterconfigurationdtd">&lt;-</a></small></h1>
 <p>Here is the XML configuration DTD with the comments removed. To see the DTD with comments included, enter <code>tnwgd --dump-dtd</code>.</p>
 <div class="fragment"><div class="line">&lt;!ELEMENT tnw-gateway (daemon?, portals)&gt;</div><div class="line">&lt;!ATTLIST tnw-gateway</div><div class="line">          version (1.0) <span class="preprocessor">#REQUIRED</span></div><div class="line">&gt;</div><div class="line">&lt;!ELEMENT daemon (name?, log?, uid?, gid?, pidfile?, lbm-license-file?, topicmap?, patternmap?, monitor?, web-monitor?, daemon-monitor?, propagation-delay?, xml-config?, route-info?, route-recalculation?)&gt;</div><div class="line">&lt;!ELEMENT log ( #PCDATA )&gt;</div><div class="line">&lt;!ATTLIST log</div><div class="line">          type (file | syslog | console) <span class="stringliteral">&quot;console&quot;</span></div><div class="line">          frequency (disable | daily | hourly | test) <span class="stringliteral">&quot;disable&quot;</span></div><div class="line">          size CDATA <span class="stringliteral">&quot;0&quot;</span></div><div class="line">          xml:space (<span class="keywordflow">default</span> | preserve) <span class="stringliteral">&quot;default&quot;</span></div><div class="line">&gt;</div><div class="line">&lt;!ELEMENT pidfile ( #PCDATA )&gt;</div><div class="line">&lt;!ATTLIST pidfile xml:space (<span class="keywordflow">default</span> | preserve) <span class="stringliteral">&quot;default&quot;</span>&gt;</div><div class="line">&lt;!ELEMENT uid ( #PCDATA )&gt;</div><div class="line">&lt;!ELEMENT gid ( #PCDATA )&gt;</div><div class="line">&lt;!ELEMENT lbm-license-file ( #PCDATA )&gt;</div><div class="line">&lt;!ATTLIST lbm-license-file xml:space (<span class="keywordflow">default</span> | preserve) <span class="stringliteral">&quot;default&quot;</span>&gt;</div><div class="line">&lt;!ELEMENT topicmap EMPTY&gt;</div><div class="line">&lt;!ATTLIST topicmap</div><div class="line">          hash-<span class="keyword">function</span> ( classic | djb2 | sdbm | murmur2 ) <span class="stringliteral">&quot;murmur2&quot;</span></div><div class="line">          size CDATA <span class="stringliteral">&quot;131111&quot;</span></div><div class="line">&gt;</div><div class="line">&lt;!ELEMENT patternmap EMPTY&gt;</div><div class="line">&lt;!ATTLIST patternmap</div><div class="line">          hash-<span class="keyword">function</span> ( classic | djb2 | sdbm | murmur2 ) <span class="stringliteral">&quot;murmur2&quot;</span></div><div class="line">          size CDATA <span class="stringliteral">&quot;131111&quot;</span></div><div class="line">&gt;</div><div class="line">&lt;!ELEMENT portals (endpoint | peer)+&gt;</div><div class="line">&lt;!ELEMENT endpoint (name, domain-<span class="keywordtype">id</span>, cost?, source-deletion-delay?, max-queue?, smart-batch?, lbm-config?, lbm-attributes?, acl?, topic-resolution?, late-join?, topic-purge?, topic-interest-generate?, topic-domain-activity?, pattern-purge?, pattern-interest-generate?, pattern-domain-activity?, remote-topic?, remote-pattern?, source-context-name?, receiver-context-name?, sqn-window?, context-query?, publishing-interval? )&gt;</div><div class="line">&lt;!ELEMENT peer (name, cost?, sourcemap?, (tcp | single-tcp), source-deletion-delay?, max-queue?, smart-batch?, max-datagram?, batching?, lbm-config?, lbm-attributes?, acl?, topic-purge?, topic-interest-generate?, topic-domain-activity?, pattern-purge?, pattern-interest-generate?, pattern-domain-activity?, topic-use-check?, pattern-use-check?, source-context-name?, receiver-context-name?, sqn-window?, context-query?, gateway-keepalive?, publishing-interval? )&gt;</div><div class="line">&lt;!ELEMENT name ( #PCDATA )&gt;</div><div class="line">&lt;!ATTLIST name xml:space (<span class="keywordflow">default</span> | preserve) <span class="stringliteral">&quot;default&quot;</span>&gt;</div><div class="line">&lt;!ELEMENT domain-id ( #PCDATA )&gt;</div><div class="line">&lt;!ELEMENT cost ( #PCDATA )&gt;</div><div class="line">&lt;!ELEMENT source-deletion-delay ( #PCDATA )&gt;</div><div class="line">&lt;!ELEMENT sourcemap EMPTY&gt;</div><div class="line">&lt;!ATTLIST sourcemap</div><div class="line">          size CDATA <span class="stringliteral">&quot;131072&quot;</span></div><div class="line">&gt;</div><div class="line">&lt;!ELEMENT tcp (interface?, listen-port, receive-buffer?, send-buffer?, keepalive?, nodelay?, compression?, tls?, companion )&gt;</div><div class="line">&lt;!ELEMENT interface ( #PCDATA )&gt;</div><div class="line">&lt;!ELEMENT listen-port ( #PCDATA )&gt;</div><div class="line">&lt;!ELEMENT receive-buffer ( #PCDATA )&gt;</div><div class="line">&lt;!ELEMENT send-buffer ( #PCDATA )&gt;</div><div class="line">&lt;!ELEMENT keepalive EMPTY &gt;</div><div class="line">&lt;!ELEMENT nodelay EMPTY &gt;</div><div class="line">&lt;!ELEMENT companion (address, port)&gt;</div><div class="line">&lt;!ELEMENT compression ( #PCDATA )&gt;</div><div class="line">&lt;!ELEMENT tls (certificate, certificate-key, certificate-key-password?, trusted-certificates?, cipher-suites? )&gt;</div><div class="line">&lt;!ELEMENT certificate ( #PCDATA )&gt;</div><div class="line">&lt;!ELEMENT certificate-key ( #PCDATA )&gt;</div><div class="line">&lt;!ELEMENT certificate-key-password ( #PCDATA )&gt;</div><div class="line">&lt;!ELEMENT trusted-certificates ( #PCDATA )&gt;</div><div class="line">&lt;!ELEMENT cipher-suites ( #PCDATA )&gt;</div><div class="line">&lt;!ATTLIST companion</div><div class="line">          reconnect-interval CDATA <span class="stringliteral">&quot;5000&quot;</span></div><div class="line">&gt;</div><div class="line">&lt;!ELEMENT address ( #PCDATA )&gt;</div><div class="line">&lt;!ELEMENT port ( #PCDATA )&gt;</div><div class="line">&lt;!ELEMENT single-tcp (interface?, receive-buffer?, send-buffer?, keepalive?, nodelay?, compression?, tls?, (initiator | acceptor ) )&gt;</div><div class="line">&lt;!ELEMENT initiator (address, port)&gt;</div><div class="line">&lt;!ATTLIST initiator</div><div class="line">          reconnect-interval CDATA <span class="stringliteral">&quot;5000&quot;</span></div><div class="line">&gt;</div><div class="line">&lt;!ELEMENT acceptor (listen-port)&gt;</div><div class="line">&lt;!ELEMENT max-queue ( #PCDATA )&gt;</div><div class="line">&lt;!ELEMENT smart-batch ( #PCDATA )&gt;</div><div class="line">&lt;!ELEMENT max-datagram ( #PCDATA )&gt;</div><div class="line">&lt;!ELEMENT batching (min-length?, batch-interval?)&gt;</div><div class="line">&lt;!ELEMENT min-length ( #PCDATA )&gt;</div><div class="line">&lt;!ELEMENT batch-interval ( #PCDATA )&gt;</div><div class="line">&lt;!ELEMENT lbm-config ( #PCDATA )&gt;</div><div class="line">&lt;!ATTLIST lbm-config xml:space (<span class="keywordflow">default</span> | preserve) <span class="stringliteral">&quot;default&quot;</span>&gt;</div><div class="line">&lt;!ELEMENT lbm-attributes (option+)&gt;</div><div class="line">&lt;!ELEMENT option EMPTY&gt;</div><div class="line">&lt;!ATTLIST option</div><div class="line">          scope (receiver | context | source | wildcard_receiver | event_queue) <span class="preprocessor">#REQUIRED</span></div><div class="line">          name CDATA #REQUIRED</div><div class="line">          value CDATA #REQUIRED</div><div class="line">&gt;</div><div class="line">&lt;!ELEMENT acl (inbound?, outbound?)&gt;</div><div class="line">&lt;!ELEMENT inbound (ace+)&gt;</div><div class="line">&lt;!ELEMENT outbound (ace+)&gt;</div><div class="line">&lt;!ELEMENT ace (topic | pcre-pattern | regex-pattern | transport | source-ip | multicast-group | udp-source-port | udp-destination-port | tcp-source-port | xport-<span class="keywordtype">id</span>)+ &gt;</div><div class="line">&lt;!ATTLIST ace match (accept | reject) <span class="preprocessor">#REQUIRED &gt;</span></div><div class="line">&lt;!ELEMENT topic ( #PCDATA )&gt;</div><div class="line">&lt;!ATTLIST topic</div><div class="line">          xml:space (<span class="keywordflow">default</span> | preserve) <span class="stringliteral">&quot;default&quot;</span></div><div class="line">&gt;</div><div class="line">&lt;!ELEMENT pcre-pattern ( #PCDATA )&gt;</div><div class="line">&lt;!ATTLIST pcre-pattern</div><div class="line">          xml:space (<span class="keywordflow">default</span> | preserve) <span class="stringliteral">&quot;default&quot;</span></div><div class="line">&gt;</div><div class="line">&lt;!ELEMENT regex-pattern ( #PCDATA )&gt;</div><div class="line">&lt;!ATTLIST regex-pattern</div><div class="line">          xml:space (<span class="keywordflow">default</span> | preserve) <span class="stringliteral">&quot;default&quot;</span></div><div class="line">&gt;</div><div class="line">&lt;!ELEMENT transport EMPTY&gt;</div><div class="line">&lt;!ATTLIST transport</div><div class="line">          value (tcp | lbt-rm | lbtrm | lbt-ru | lbtru | lbt-ipc | lbtipc) <span class="preprocessor">#REQUIRED</span></div><div class="line">          comparison (eq | equal | ne | notequal) <span class="preprocessor">#REQUIRED</span></div><div class="line">&gt;</div><div class="line">&lt;!ELEMENT source-ip EMPTY&gt;</div><div class="line">&lt;!ATTLIST source-ip</div><div class="line">          value CDATA #REQUIRED</div><div class="line">          comparison (eq | equal | ne | notequal | lt | lessthan | le | lessthanequal | gt | greaterthan | ge | greaterthanequal) <span class="preprocessor">#REQUIRED</span></div><div class="line">&gt;</div><div class="line">&lt;!ELEMENT multicast-group EMPTY&gt;</div><div class="line">&lt;!ATTLIST multicast-group</div><div class="line">          value CDATA #REQUIRED</div><div class="line">          comparison (eq | equal | ne | notequal | lt | lessthan | le | lessthanequal | gt | greaterthan | ge | greaterthanequal) <span class="preprocessor">#REQUIRED</span></div><div class="line">&gt;</div><div class="line">&lt;!ELEMENT udp-source-port EMPTY&gt;</div><div class="line">&lt;!ATTLIST udp-source-port</div><div class="line">          value CDATA #REQUIRED</div><div class="line">          comparison (eq | equal | ne | notequal | lt | lessthan | le | lessthanequal | gt | greaterthan | ge | greaterthanequal) <span class="preprocessor">#REQUIRED</span></div><div class="line">&gt;</div><div class="line">&lt;!ELEMENT udp-destination-port EMPTY&gt;</div><div class="line">&lt;!ATTLIST udp-destination-port</div><div class="line">          value CDATA #REQUIRED</div><div class="line">          comparison (eq | equal | ne | notequal | lt | lessthan | le | lessthanequal | gt | greaterthan | ge | greaterthanequal) <span class="preprocessor">#REQUIRED</span></div><div class="line">&gt;</div><div class="line">&lt;!ELEMENT tcp-source-port EMPTY&gt;</div><div class="line">&lt;!ATTLIST tcp-source-port</div><div class="line">          value CDATA #REQUIRED</div><div class="line">          comparison (eq | equal | ne | notequal | lt | lessthan | le | lessthanequal | gt | greaterthan | ge | greaterthanequal) <span class="preprocessor">#REQUIRED</span></div><div class="line">&gt;</div><div class="line">&lt;!ELEMENT xport-<span class="keywordtype">id</span> EMPTY&gt;</div><div class="line">&lt;!ATTLIST xport-<span class="keywordtype">id</span></div><div class="line">          value CDATA #REQUIRED</div><div class="line">          comparison (eq | equal | ne | notequal | lt | lessthan | le | lessthanequal | gt | greaterthan | ge | greaterthanequal) <span class="preprocessor">#REQUIRED</span></div><div class="line">&gt;</div><div class="line">&lt;!ELEMENT topic-resolution (topic-use-query?, pattern-use-query?, remote-topic-interest?, remote-pattern-interest?, domain-route?, initial-request? )&gt;</div><div class="line">&lt;!ELEMENT topic-use-query (rate-limit? ) &gt;</div><div class="line">&lt;!ATTLIST topic-use-query</div><div class="line">          timeout CDATA <span class="stringliteral">&quot;3000&quot;</span></div><div class="line">          max CDATA <span class="stringliteral">&quot;5&quot;</span></div><div class="line">          periodic-interval CDATA <span class="stringliteral">&quot;300000&quot;</span></div><div class="line">&gt;</div><div class="line">&lt;!ELEMENT pattern-use-query (rate-limit? ) &gt;</div><div class="line">&lt;!ATTLIST pattern-use-query</div><div class="line">          timeout CDATA <span class="stringliteral">&quot;3000&quot;</span></div><div class="line">          max CDATA <span class="stringliteral">&quot;5&quot;</span></div><div class="line">          periodic-interval CDATA <span class="stringliteral">&quot;300000&quot;</span></div><div class="line">&gt;</div><div class="line">&lt;!ELEMENT remote-topic-interest (rate-limit? ) &gt;</div><div class="line">&lt;!ATTLIST remote-topic-interest</div><div class="line">          min-interval CDATA <span class="stringliteral">&quot;1000&quot;</span></div><div class="line">          max-interval CDATA <span class="stringliteral">&quot;60000&quot;</span></div><div class="line">&gt;</div><div class="line">&lt;!ELEMENT remote-pattern-interest (rate-limit? ) &gt;</div><div class="line">&lt;!ATTLIST remote-pattern-interest</div><div class="line">          min-interval CDATA <span class="stringliteral">&quot;1000&quot;</span></div><div class="line">          max-interval CDATA <span class="stringliteral">&quot;60000&quot;</span></div><div class="line">&gt;</div><div class="line">&lt;!ELEMENT domain-route (rate-limit? ) &gt;</div><div class="line">&lt;!ATTLIST domain-route</div><div class="line">          min-interval CDATA <span class="stringliteral">&quot;100&quot;</span></div><div class="line">          max-interval CDATA <span class="stringliteral">&quot;1000&quot;</span></div><div class="line">&gt;</div><div class="line">&lt;!ELEMENT rate-limit EMPTY&gt;</div><div class="line">&lt;!ATTLIST rate-limit</div><div class="line">          bps CDATA #IMPLIED</div><div class="line">          objects-per-second CDATA #IMPLIED</div><div class="line">&gt;</div><div class="line">&lt;!ELEMENT initial-request EMPTY&gt;</div><div class="line">&lt;!ATTLIST initial-request</div><div class="line">          periodic-interval CDATA <span class="stringliteral">&quot;1000&quot;</span></div><div class="line">          duration CDATA <span class="stringliteral">&quot;10&quot;</span></div><div class="line">&gt;</div><div class="line">&lt;!ELEMENT late-join EMPTY&gt;</div><div class="line">&lt;!ATTLIST late-join</div><div class="line">          provide ( source | always | never ) <span class="stringliteral">&quot;source&quot;</span></div><div class="line">          forward ( yes | no ) <span class="stringliteral">&quot;yes&quot;</span></div><div class="line">&gt;</div><div class="line">&lt;!ELEMENT topic-purge EMPTY&gt;</div><div class="line">&lt;!ATTLIST topic-purge periodic-interval CDATA #IMPLIED&gt;</div><div class="line">&lt;!ELEMENT topic-interest-generate EMPTY&gt;</div><div class="line">&lt;!ATTLIST topic-interest-generate</div><div class="line">          periodic-interval CDATA #IMPLIED</div><div class="line">          max-topics CDATA #IMPLIED</div><div class="line">          interval CDATA #IMPLIED</div><div class="line">&gt;</div><div class="line">&lt;!ELEMENT topic-domain-activity EMPTY&gt;</div><div class="line">&lt;!ATTLIST topic-domain-activity timeout CDATA #IMPLIED&gt;</div><div class="line">&lt;!ELEMENT pattern-purge EMPTY&gt;</div><div class="line">&lt;!ATTLIST pattern-purge periodic-interval CDATA #IMPLIED&gt;</div><div class="line">&lt;!ELEMENT pattern-interest-generate EMPTY&gt;</div><div class="line">&lt;!ATTLIST pattern-interest-generate</div><div class="line">          periodic-interval CDATA #IMPLIED</div><div class="line">          max-patterns CDATA #IMPLIED</div><div class="line">          interval CDATA #IMPLIED</div><div class="line">&gt;</div><div class="line">&lt;!ELEMENT pattern-domain-activity EMPTY&gt;</div><div class="line">&lt;!ATTLIST pattern-domain-activity timeout CDATA #IMPLIED&gt;</div><div class="line">&lt;!ELEMENT remote-topic EMPTY&gt;</div><div class="line">&lt;!ATTLIST remote-topic</div><div class="line">          check-interval CDATA <span class="stringliteral">&quot;90000&quot;</span></div><div class="line">          max-topics CDATA <span class="stringliteral">&quot;100&quot;</span></div><div class="line">          timeout CDATA <span class="stringliteral">&quot;300000&quot;</span></div><div class="line">&gt;</div><div class="line">&lt;!ELEMENT remote-pattern EMPTY&gt;</div><div class="line">&lt;!ATTLIST remote-pattern</div><div class="line">          check-interval CDATA <span class="stringliteral">&quot;90000&quot;</span></div><div class="line">          max-patterns CDATA <span class="stringliteral">&quot;100&quot;</span></div><div class="line">          timeout CDATA <span class="stringliteral">&quot;300000&quot;</span></div><div class="line">&gt;</div><div class="line">&lt;!ELEMENT topic-use-check EMPTY&gt;</div><div class="line">&lt;!ATTLIST topic-use-check periodic-interval CDATA #IMPLIED&gt;</div><div class="line">&lt;!ELEMENT pattern-use-check EMPTY&gt;</div><div class="line">&lt;!ATTLIST pattern-use-check periodic-interval CDATA #IMPLIED&gt;</div><div class="line">&lt;!ELEMENT monitor (transport-module?, format-module?)&gt;</div><div class="line">&lt;!ATTLIST monitor</div><div class="line">          interval CDATA <span class="stringliteral">&quot;0&quot;</span></div><div class="line">&gt;</div><div class="line">&lt;!ELEMENT transport-module EMPTY&gt;</div><div class="line">&lt;!ATTLIST transport-module</div><div class="line">          module (lbm | lbmsnmp | udp) <span class="stringliteral">&quot;lbm&quot;</span></div><div class="line">          options CDATA #IMPLIED</div><div class="line">&gt;</div><div class="line">&lt;!ELEMENT format-module EMPTY&gt;</div><div class="line">&lt;!ATTLIST format-module</div><div class="line">          module (csv) <span class="stringliteral">&quot;csv&quot;</span></div><div class="line">          options CDATA #IMPLIED</div><div class="line">&gt;</div><div class="line">&lt;!ELEMENT web-monitor ( #PCDATA )&gt;</div><div class="line">&lt;!ATTLIST web-monitor xml:space (<span class="keywordflow">default</span> | preserve) <span class="stringliteral">&quot;default&quot;</span>&gt;</div><div class="line">&lt;!ELEMENT propagation-delay EMPTY&gt;</div><div class="line">&lt;!ATTLIST propagation-delay delta CDATA #IMPLIED&gt;</div><div class="line">&lt;!ELEMENT xml-config ( #PCDATA )&gt;</div><div class="line">&lt;!ATTLIST xml-config xml:space (<span class="keywordflow">default</span> | preserve) <span class="stringliteral">&quot;default&quot;</span>&gt;</div><div class="line">&lt;!ELEMENT source-context-name ( #PCDATA )&gt;</div><div class="line">&lt;!ATTLIST source-context-name xml:space (<span class="keywordflow">default</span> | preserve) <span class="stringliteral">&quot;default&quot;</span>&gt;</div><div class="line">&lt;!ELEMENT receiver-context-name ( #PCDATA )&gt;</div><div class="line">&lt;!ATTLIST receiver-context-name xml:space (<span class="keywordflow">default</span> | preserve) <span class="stringliteral">&quot;default&quot;</span>&gt;</div><div class="line">&lt;!ELEMENT sqn-window EMPTY&gt;</div><div class="line">&lt;!ATTLIST sqn-window</div><div class="line">          size CDATA <span class="stringliteral">&quot;16384&quot;</span></div><div class="line">          increment CDATA <span class="stringliteral">&quot;2048&quot;</span></div><div class="line">&gt;</div><div class="line">&lt;!ELEMENT context-query EMPTY&gt;</div><div class="line">&lt;!ATTLIST context-query</div><div class="line">          periodic-interval CDATA #IMPLIED</div><div class="line">          max-contexts CDATA #IMPLIED</div><div class="line">          interval CDATA #IMPLIED</div><div class="line">          timeout CDATA #IMPLIED</div><div class="line">&gt;</div><div class="line">&lt;!ELEMENT gateway-keepalive EMPTY&gt;</div><div class="line">&lt;!ATTLIST gateway-keepalive</div><div class="line">          idle ( yes | no ) <span class="stringliteral">&quot;yes&quot;</span></div><div class="line">          interval CDATA <span class="stringliteral">&quot;5000&quot;</span></div><div class="line">          timeout CDATA <span class="stringliteral">&quot;15000&quot;</span></div><div class="line">&gt;</div><div class="line">&lt;!ELEMENT route-info EMPTY&gt;</div><div class="line">&lt;!ATTLIST route-info</div><div class="line">          propagation-interval CDATA <span class="stringliteral">&quot;1000&quot;</span></div><div class="line">          check-interval CDATA <span class="stringliteral">&quot;750&quot;</span></div><div class="line">          timeout CDATA <span class="stringliteral">&quot;4000&quot;</span></div><div class="line">          max-hop-count CDATA <span class="stringliteral">&quot;100&quot;</span></div><div class="line">&gt;</div><div class="line">&lt;!ELEMENT route-recalculation EMPTY&gt;</div><div class="line">&lt;!ATTLIST route-recalculation</div><div class="line">          backoff-interval CDATA <span class="stringliteral">&quot;5000&quot;</span></div><div class="line">          warning-interval CDATA <span class="stringliteral">&quot;10000&quot;</span></div><div class="line">&gt;</div><div class="line">&lt;!ELEMENT daemon-monitor (lbm-config?, publishing-interval?, remote-snapshot-request?, remote-config-changes-request?)&gt;</div><div class="line">&lt;!ATTLIST daemon-monitor topic CDATA <span class="stringliteral">&quot;tnwgd.monitor&quot;</span>&gt;</div><div class="line">&lt;!ELEMENT publishing-interval (group+)&gt;</div><div class="line">&lt;!ELEMENT group EMPTY&gt;</div><div class="line">&lt;!ATTLIST group name (<span class="keywordflow">default</span> | gateway-config | route-manager-topology | malloc-info | portal-config | portal-stats ) <span class="preprocessor">#REQUIRED&gt;</span></div><div class="line">&lt;!ATTLIST group ivl CDATA #REQUIRED&gt;</div><div class="line">&lt;!ELEMENT remote-snapshot-request EMPTY&gt;</div><div class="line">&lt;!ATTLIST remote-snapshot-request allow (0 | 1) <span class="stringliteral">&quot;0&quot;</span>&gt;</div><div class="line">&lt;!ELEMENT remote-config-changes-request EMPTY&gt;</div><div class="line">&lt;!ATTLIST remote-config-changes-request allow (0 | 1) <span class="stringliteral">&quot;0&quot;</span>&gt;</div></div><!-- fragment --> </div></div><!-- contents -->
 </div><!-- doc-content -->

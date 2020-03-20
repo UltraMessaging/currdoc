@@ -2,6 +2,57 @@ var NAVTREE =
 [
   [ "Release Notes", "index.html", [
     [ "Introduction", "index.html", null ],
+    [ "UM Version 6.13", "umversion6_13.html", [
+      [ "Enhancements for 6.13", "umversion6_13.html#enhancementsfor6_13", [
+        [ "Streaming Enhancements for 6.13", "umversion6_13.html#streamingenhancementsfor6_13", null ],
+        [ "Persistence Enhancements for 6.13", "umversion6_13.html#persistenceenhancementsfor6_13", null ],
+        [ "Queuing Enhancements for 6.13", "umversion6_13.html#queuingenhancementsfor6_13", null ],
+        [ "Dynamic Router Enhancements for 6.13", "umversion6_13.html#dynamicrouterenhancementsfor6_13", null ]
+      ] ],
+      [ "Fixed Limitations for 6.13", "umversion6_13.html#fixedlimitationsfor6_13", [
+        [ "Streaming Fixed Limitations for 6.13", "umversion6_13.html#streamingfixedlimitationsfor6_13", null ],
+        [ "Persistence Fixed Limitations for 6.13", "umversion6_13.html#persistencefixedlimitationsfor6_13", null ],
+        [ "Queuing Fixed Limitations for 6.13", "umversion6_13.html#queuingfixedlimitationsfor6_13", null ],
+        [ "Dynamic Router Fixed Limitations for 6.13", "umversion6_13.html#dynamicrouterfixedlimitationsfor6_13", null ]
+      ] ]
+    ] ],
+    [ "Known Limitations", "knownlimitations.html", [
+      [ "Streaming Known Limitations", "knownlimitations.html#streamingknownlimitations", null ],
+      [ "Persistence Known Limitations", "knownlimitations.html#persistenceknownlimitations", null ],
+      [ "Queuing Known Limitations", "knownlimitations.html#queuingknownlimitations", null ],
+      [ "Dynamic Router Known Limitations", "knownlimitations.html#dynamicrouterknownlimitations", null ]
+    ] ],
+    [ "Deprecations", "deprecations.html", [
+      [ "Deprecations for 6.13", "deprecations.html#deprecationsfor613", [
+        [ "Platform Deprecations for Daemons", "deprecations.html#platformdeprecationsfordaemons", null ]
+      ] ],
+      [ "Deprecations for 6.11.1", "deprecations.html#deprecationsfor6111", null ],
+      [ "Deprecations for 6.10", "deprecations.html#deprecationsfor610", [
+        [ "Streaming Deprecations for 6.10", "deprecations.html#streamingdeprecationsfor610", null ],
+        [ "Persistence Deprecations for 6.10", "deprecations.html#persistencedeprecationsfor610", null ],
+        [ "Dynamic Router Deprecations for 6.10", "deprecations.html#dynamicrouterdeprecationsfor610", null ]
+      ] ],
+      [ "Deprecations for 6.8", "deprecations.html#deprecationsfor68", [
+        [ "Persistence Deprecations for 6.8", "deprecations.html#persistencedeprecationsfor68", null ],
+        [ "Queuing Deprecations for 6.8", "deprecations.html#queuingdeprecationsfor68", null ],
+        [ "Dynamic Router Deprecations for 6.8", "deprecations.html#dynamicrouterdeprecationsfor68", null ]
+      ] ],
+      [ "Deprecations for 6.7", "deprecations.html#deprecationsfor67", [
+        [ "Streaming Deprecations for 6.7", "deprecations.html#streamingdeprecationsfor67", null ],
+        [ "Persistence Deprecations for 6.7", "deprecations.html#persistencedeprecationsfor67", null ]
+      ] ],
+      [ "Deprecations for 6.0", "deprecations.html#deprecationsfor60", [
+        [ "Streaming Deprecations for 6.0", "deprecations.html#streamingdeprecationsfor60", null ]
+      ] ]
+    ] ],
+    [ "Upgrade Procedure", "upgradeprocedure.html", [
+      [ "Default Values for Configuration Options", "upgradeprocedure.html#defaultvaluesforconfigurationoptions", null ],
+      [ "Order of Upgrades", "upgradeprocedure.html#orderofupgrades", null ],
+      [ "Upgrading Brokered Queuing and JMS", "upgradeprocedure.html#upgradingbrokeredqueueingandjms", null ],
+      [ "Upgrading From Version Pre-6.0", "upgradeprocedure.html#upgradingfromversionpre60", [
+        [ "Log Messages During Upgrade", "upgradeprocedure.html#logmessagesduringupgrade", null ]
+      ] ]
+    ] ],
     [ "UM Version 6.12.1", "umversion6_12_1.html", [
       [ "Enhancements for 6.12.1", "umversion6_12_1.html#enhancementsfor6_12_1", [
         [ "Streaming Enhancements for 6.12.1", "umversion6_12_1.html#streamingenhancementsfor6_12_1", null ],
@@ -14,22 +65,12 @@ var NAVTREE =
         [ "Persistence Fixed Limitations for 6.12.1", "umversion6_12_1.html#persistencefixedlimitationsfor6_12_1", null ],
         [ "Queuing Fixed Limitations for 6.12.1", "umversion6_12_1.html#queuingfixedlimitationsfor6_12_1", null ],
         [ "Dynamic Router Fixed Limitations for 6.12.1", "umversion6_12_1.html#dynamicrouterfixedlimitationsfor6_12_1", null ]
-      ] ]
-    ] ],
-    [ "Known Limitations", "knownlimitations.html", [
-      [ "Streaming Known Limitations", "knownlimitations.html#streamingknownlimitations", null ],
-      [ "Persistence Known Limitations", "knownlimitations.html#persistenceknownlimitations", null ],
-      [ "Queuing Known Limitations", "knownlimitations.html#queuingknownlimitations", null ],
-      [ "Dynamic Router Known Limitations", "knownlimitations.html#dynamicrouterknownlimitations", null ]
-    ] ],
-    [ "Upgrade Procedure", "upgradeprocedure.html", [
-      [ "Default Values for Configuration Options", "upgradeprocedure.html#defaultvaluesforconfigurationoptions", null ],
-      [ "Deprecations", "upgradeprocedure.html#deprecations", [
-        [ "Platform Deprecations for Daemons", "upgradeprocedure.html#platformdeprecationsfordaemons", null ]
       ] ],
-      [ "Upgrading Brokered Queuing and JMS", "upgradeprocedure.html#upgradingbrokeredqueueingandjms", null ],
-      [ "Upgrading From Version Pre-6.0", "upgradeprocedure.html#upgradingfromversionpre60", [
-        [ "Log Messages During Upgrade", "upgradeprocedure.html#logmessagesduringupgrade", null ]
+      [ "Special Upgrade Instructions for 6.13", "umversion6_12_1.html#specialupgradeinsructionsfor6_13", [
+        [ "Upgrade order: Persistence and DRO", "umversion6_12_1.html#persistenceanddro", null ],
+        [ "repository-disk-max-read-async-cbs", "umversion6_12_1.html#repositorydiskmaxreadasynccbs", null ],
+        [ "SRS Daemon Statistics Change", "umversion6_12_1.html#srsdaemonstatisticschange", null ],
+        [ "UM 6.12 Special Instructions", "umversion6_12_1.html#um612specialinstructions", null ]
       ] ]
     ] ],
     [ "UM Version 6.12", "umversion6_12.html", [
@@ -61,8 +102,7 @@ var NAVTREE =
         [ "Persistence Fixed Limitations for 6.11.1", "umversion6_11_1.html#persistencefixedlimitationsfor6_11_1", null ],
         [ "Queuing Fixed Limitations for 6.11.1", "umversion6_11_1.html#queuingfixedlimitationsfor6_11_1", null ],
         [ "Dynamic Router Fixed Limitations for 6.11.1", "umversion6_11_1.html#dynamicrouterfixedlimitationsfor6_11_1", null ]
-      ] ],
-      [ "Deprecations for 6.11.1", "umversion6_11_1.html#deprecationsfor6111", null ]
+      ] ]
     ] ],
     [ "UM Version 6.11", "umversion6_11.html", [
       [ "Enhancements for 6.11", "umversion6_11.html#enhancementsfor6_11", [
@@ -104,11 +144,6 @@ var NAVTREE =
         [ "Persistence Fixed Limitations for 6.10", "umversion6_10.html#persistencefixedlimitationsfor6_10", null ],
         [ "Queuing Fixed Limitations for 6.10", "umversion6_10.html#queuingfixedlimitationsfor6_10", null ],
         [ "Dynamic Router Fixed Limitations for 6.10", "umversion6_10.html#dynamicrouterfixedlimitationsfor6_10", null ]
-      ] ],
-      [ "Deprecations for 6.10", "umversion6_10.html#deprecationsfor610", [
-        [ "Streaming Deprecations for 6.10", "umversion6_10.html#streamingdeprecationsfor610", null ],
-        [ "Persistence Deprecations for 6.10", "umversion6_10.html#persistencedeprecationsfor610", null ],
-        [ "Dynamic Router Deprecations for 6.10", "umversion6_10.html#dynamicrouterdeprecationsfor610", null ]
       ] ]
     ] ],
     [ "UM Version 6.9.2", "umversion6_9_2.html", [
@@ -165,11 +200,6 @@ var NAVTREE =
         [ "Persistence Fixed Limitations for 6.8", "umversion6_8.html#persistencefixedlimitationsfor6_8", null ],
         [ "Queuing Fixed Limitations for 6.8", "umversion6_8.html#queuingfixedlimitationsfor6_8", null ],
         [ "Dynamic Router Fixed Limitations for 6.8", "umversion6_8.html#dynamicrouterfixedlimitationsfor6_8", null ]
-      ] ],
-      [ "Deprecations for 6.8", "umversion6_8.html#deprecationsfor68", [
-        [ "Persistence Deprecations for 6.8", "umversion6_8.html#persistencedeprecationsfor68", null ],
-        [ "Queuing Deprecations for 6.8", "umversion6_8.html#queuingdeprecationsfor68", null ],
-        [ "Dynamic Router Deprecations for 6.8", "umversion6_8.html#dynamicrouterdeprecationsfor68", null ]
       ] ]
     ] ],
     [ "UM Version 6.7.3", "umversion6_7_3.html", [
@@ -217,10 +247,6 @@ var NAVTREE =
         [ "Persistence Fixed Limitations for 6.7", "umversion6_7.html#persistencefixedlimitationsfor6_7", null ],
         [ "Queuing Fixed Limitations for 6.7", "umversion6_7.html#queuingfixedlimitationsfor6_7", null ],
         [ "Dynamic Router Fixed Limitations for 6.7", "umversion6_7.html#dynamicrouterfixedlimitationsfor6_7", null ]
-      ] ],
-      [ "Deprecations for 6.7", "umversion6_7.html#deprecationsfor67", [
-        [ "Streaming Deprecations for 6.7", "umversion6_7.html#streamingdeprecationsfor67", null ],
-        [ "Persistence Deprecations for 6.7", "umversion6_7.html#persistencedeprecationsfor67", null ]
       ] ]
     ] ],
     [ "UM Version 6.5", "umversion6_5.html", [
@@ -265,9 +291,6 @@ var NAVTREE =
         [ "Persistence Fixed Limitations for 6.0", "umversion6_0.html#persistencefixedlimitationsfor6_0", null ],
         [ "Queuing Fixed Limitations for 6.0", "umversion6_0.html#queuingfixedlimitationsfor6_0", null ],
         [ "Dynamic Router Fixed Limitations for 6.0", "umversion6_0.html#dynamicrouterfixedlimitationsfor6_0", null ]
-      ] ],
-      [ "Deprecations for 6.0", "umversion6_0.html#deprecationsfor60", [
-        [ "Streaming Deprecations for 6.0", "umversion6_0.html#streamingdeprecationsfor60", null ]
       ] ]
     ] ],
     [ "Errata", "errata.html", null ]
@@ -276,7 +299,7 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"errata.html"
+"deprecations.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

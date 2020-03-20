@@ -13,6 +13,7 @@ var NAVTREE =
     ] ],
     [ "Persistence Architecture", "persistencearchitecture.html", [
       [ "Persistent Store Architecture", "persistencearchitecture.html#persistentstorearchitecture", [
+        [ "Store Processes and Instances", "persistencearchitecture.html#storeprocessesandinstances", null ],
         [ "Source Repositories", "persistencearchitecture.html#sourcerepositories", null ],
         [ "Repository Thresholds and Limits", "persistencearchitecture.html#repositorythresholdsandlimits", null ],
         [ "Tolerance Persistent Store Fault Tolerance", "persistencearchitecture.html#persistentstorefault", null ],
@@ -28,7 +29,8 @@ var NAVTREE =
         [ "Receiver Registration Process", "operationalview.html#receiverregistrationprocess", null ],
         [ "Persistence Normal Operation", "operationalview.html#persistencenormaloperation", null ],
         [ "Persistence Flight Size", "operationalview.html#persistenceflightsize", null ],
-        [ "Receiver Recovery", "operationalview.html#receiverrecovery", null ]
+        [ "Receiver Recovery", "operationalview.html#receiverrecovery", null ],
+        [ "Registration Limitations", "operationalview.html#registrationlimitations", null ]
       ] ],
       [ "Receiver-paced Persistence Operations", "operationalview.html#receiverpacedpersistenceoperations", [
         [ "RPP Registration", "operationalview.html#rppregistration", null ],
@@ -44,6 +46,10 @@ var NAVTREE =
         [ "Persistence Receiver Events", "operationalview.html#persistencereceiverevents", null ],
         [ "Persistence Context Events", "operationalview.html#persistencecontextevents", null ]
       ] ]
+    ] ],
+    [ "Store Repository Profiling (SRP)", "storerepositoryprofilingsrp.html", [
+      [ "Using the SRP API", "storerepositoryprofilingsrp.html#usingthesrpapi", null ],
+      [ "umesnaprepo Man Page", "storerepositoryprofilingsrp.html#umesnaprepomanpage", null ]
     ] ],
     [ "Enabling Persistence", "enablingpersistence.html", [
       [ "Starting Configuration", "enablingpersistence.html#startingconfiguration", null ],
@@ -102,7 +108,8 @@ var NAVTREE =
         [ "Persistent Source Recovery", "designingpersistenceapplications.html#persistentsourcerecovery", null ],
         [ "Persistent Receiver Recovery", "designingpersistenceapplications.html#persistentreceiverrecovery", null ]
       ] ],
-      [ "Callable Store", "designingpersistenceapplications.html#callablestore", null ]
+      [ "Callable Store", "designingpersistenceapplications.html#callablestore", null ],
+      [ "Store Thread Affinity", "designingpersistenceapplications.html#storethreadaffinity", null ]
     ] ],
     [ "Persistence Fault Tolerance", "persistencefaulttolerance.html", [
       [ "Message Loss Recovery", "persistencefaulttolerance.html#messagelossrecovery", null ],
@@ -165,7 +172,17 @@ var NAVTREE =
         [ "Store Daemon Statistics Retx Counts", "storedaemonstatistics.html#storedaemonstatisticsstructuresretxcounts", null ]
       ] ],
       [ "Store Daemon Statistics Configuration", "storedaemonstatistics.html#storedaemonstatisticsconfiguration", null ],
-      [ "Store Daemon Statistics Requests", "storedaemonstatistics.html#storedaemonstatisticsrequests", null ]
+      [ "Store Daemon Statistics Requests", "storedaemonstatistics.html#storedaemonstatisticsrequests", [
+        [ "Store Daemon Statistics Request Addressing", "storedaemonstatistics.html#storedaemonstatisticsrequestaddressing", null ],
+        [ "Store Daemon Statistics Request Types", "storedaemonstatistics.html#storedaemonstatisticsrequesttypes", null ],
+        [ "Request: Mark Stored Message Invalid", "storedaemonstatistics.html#requestmarkstoredmessageinvalid", null ],
+        [ "Request: Deregister Receiver", "storedaemonstatistics.html#requestderegisterreceiver", null ]
+      ] ],
+      [ "umedcmd Man Page", "storedaemonstatistics.html#umedcmdmanpage", [
+        [ "umedcmd Publish Mode", "storedaemonstatistics.html#umedcmdpublishmode", null ],
+        [ "umedcmd Mark Mode", "storedaemonstatistics.html#umedcmdmarkmode", null ],
+        [ "umedcmd Deregister Mode", "storedaemonstatistics.html#umedcmdderegistermode", null ]
+      ] ]
     ] ],
     [ "Store Web Monitor", "storewebmonitor.html", [
       [ "Store Web Monitor Index Page", "storewebmonitor.html#storewebmonitorindexpage", null ],

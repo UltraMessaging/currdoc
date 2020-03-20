@@ -30,12 +30,12 @@ var NAVTREE =
         [ "Persistent Store Daemon Statistics", "index.html#persistentstoredaemonstatistics", null ],
         [ "Detecting Persistent Store Failures", "index.html#detectingpersistentstorefailures", null ]
       ] ],
-      [ "Monitoring the UM Router Daemon (tnwgd)", "index.html#monitoringtheumrouterdaemontnwgd", [
-        [ "Monitoring UM Router Log File", "index.html#monitoringumrouterlogfile", null ],
-        [ "UM Router Transport Statistics", "index.html#umroutertransportstatistics", null ],
-        [ "UM Router Web Monitoring", "index.html#umrouterwebmonitoring", null ],
-        [ "UM Router Daemon Statistics", "index.html#op-umrouterdaemonstatistics", null ],
-        [ "Detecting UM Router Failures", "index.html#detectingumrouterfailures", null ]
+      [ "Monitoring the DRO Daemon (tnwgd)", "index.html#monitoringtheumrouterdaemontnwgd", [
+        [ "Monitoring DRO Log File", "index.html#monitoringumrouterlogfile", null ],
+        [ "DRO Transport Statistics", "index.html#umroutertransportstatistics", null ],
+        [ "DRO Web Monitoring", "index.html#umrouterwebmonitoring", null ],
+        [ "DRO Daemon Statistics", "index.html#op-umrouterdaemonstatistics", null ],
+        [ "Detecting DRO Failures", "index.html#detectingumrouterfailures", null ]
       ] ],
       [ "Monitoring Messaging System Resources", "index.html#monitoringmessagingsystemresources", [
         [ "Persistent Store System Considerations", "index.html#persistentstoresystemconsiderations", null ],
@@ -53,9 +53,9 @@ var NAVTREE =
         [ "Restarting a Store", "index.html#restartingastore", null ],
         [ "Common Startup and Shutdown Issues", "index.html#commonstartupandshutdownissues", null ]
       ] ],
-      [ "UM Router (tnwgd)", "index.html#umroutertnwgd", [
-        [ "Starting a UM Router", "index.html#startingaumrouter", null ],
-        [ "Restarting a UM Router", "index.html#restartingaumrouter", null ]
+      [ "DRO (tnwgd)", "index.html#umroutertnwgd", [
+        [ "Starting a DRO", "index.html#startingaumrouter", null ],
+        [ "Restarting a DRO", "index.html#restartingaumrouter", null ]
       ] ],
       [ "UM Daemons as Windows Services", "index.html#umdaemonsaswindowsservices", [
         [ "Install the Windows Service", "index.html#installthewindowsservice", null ],
@@ -84,7 +84,7 @@ var NAVTREE =
         [ "Event Queue Statistics", "index.html#eventqueuestatistics", null ],
         [ "Source or Receiver Transport Statistics", "index.html#sourceorreceivertransportstatistics", null ]
       ] ],
-      [ "UM Monitoring API", "index.html#umsmonitoringapi", [
+      [ "\"lbmmon\" API", "index.html#lbmmonapi", [
         [ "Monitoring Process Flow", "index.html#monitoringprocessflow", null ],
         [ "API Framework Flexibility", "index.html#apiframeworkflexibility", null ],
         [ "Initial Monitoring Questions", "index.html#initialmonitoringquestions", null ],
@@ -116,7 +116,7 @@ var NAVTREE =
     [ "Troubleshooting UM Applications", "index.html#troubleshootingumapplications", [
       [ "Application Crashes", "index.html#applicationcrashes", [
         [ "Persistent Store Crashed", "index.html#persistentstorecrashed", null ],
-        [ "UM Router Crashed", "index.html#umroutercrashed", null ],
+        [ "DRO Crashed", "index.html#umroutercrashed", null ],
         [ "Excessive Resource Use", "index.html#excessiveresourceuse", null ],
         [ "Crash on deletion of an object", "index.html#crashondeletionofanobject", null ],
         [ "Datagram size mismatches", "index.html#datagramsizemismatches", null ]

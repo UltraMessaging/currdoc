@@ -131,45 +131,51 @@ UM Core Messages&nbsp;&nbsp;<small><a href="#umcoremessages">&lt;-</a></small></
 <tr>
 <td>Core-10383-4: WARNING: recvmmsg OS error</td><td>An error occurred using the recvmmsg() functionality (enabled by setting the multiple_receive_maximum_datagrams configuration) to retrieve data.</td><td>Please use the operating system's error code and description to further understand the circumstances of the error </td></tr>
 <tr>
-<td>Core-10403-01: SRS Controller (p) is unable to request a stream of data from the server (s:d)</td><td>SRS Controller is unable to request a data stream from the server.</td><td>Make sure the server is running. </td></tr>
+<td>Core-10403-01: SRS Controller Connection (p) is unable to request a stream of data from the Server (s:u)</td><td>SRS Controller is unable to request a data stream from the server.</td><td>Make sure the server is running. </td></tr>
 <tr>
-<td>Core-10403-02: SRS Controller (p) received an invalid message from the SRS Server; dropping (s:d)</td><td>Received an invalid message payload from the Server.</td><td>Check to make sure the correct server is running and the correct port is configured. </td></tr>
+<td>Core-10403-02: SRS Controller Connection (p) received an invalid message from the SRS Server; dropping (s:u)</td><td>Received an invalid message payload from the Server.</td><td>Check to make sure the correct server is running and the correct port is configured. </td></tr>
 <tr>
-<td>Core-10403-03: SRS Controller (p) got a disconnect from the Server (s:d)</td><td>The SRS Controller got a disconnect from the Server.</td><td>Check to make sure the correct server is running and the correct port is configured. </td></tr>
+<td>Core-10403-03: SRS Controller Connection (p) SID (0xx) got a disconnect from the Server (s:u) Local Addr (s:u)</td><td>The SRS Controller got a disconnect from the Server.</td><td>Check to make sure the correct server is running and the correct port is configured. </td></tr>
 <tr>
-<td>Core-10403-04: SRS Controller (p) is unable to connect to the server (s:d)</td><td>The SRS Controller is unable to connect to the Server.</td><td>Check to make sure the server is running and the correct port is configured. </td></tr>
+<td>Core-10403-04: SRS Controller (p) SID (0xx) for ContextID (u) is unable to connect to any configured Server</td><td>The SRS Controller is unable to connect to any configured Server.</td><td>Check to make sure the server is running and the correct port is configured. </td></tr>
 <tr>
-<td>Core-10403-05: SRS Controller (p) is unable to send the initial connection request to the server (s:d)</td><td>The SRS Controller is unable to send the initial connection request to the Server.</td><td>Check to make sure the correct server is running and the correct port is configured. </td></tr>
+<td>Core-10403-05: SRS Controller Connection (p) SID (0xx) is unable to send the initial registration request to the Server (s:u) Local Addr (s:u)</td><td>The SRS Controller is unable to send the initial connection request to the Server.</td><td>Check to make sure the correct server is running and the correct port is configured. </td></tr>
 <tr>
-<td>Core-10403-06: SRS Controller (p) is unable to send data to the server (s:d)</td><td>SRS Controller is unable to send data to the server.</td><td>Make sure the server is running. </td></tr>
+<td>Core-10403-06: SRS Controller Connection (p) is unable to send data to the Server (s:u)</td><td>SRS Controller is unable to send data to the server.</td><td>Make sure the server is running. </td></tr>
 <tr>
-<td>Core-10403-07: SRS Controller (p) is unable to stop the communications thread to the server (s:d)</td><td>SRS Controller got an error trying to stop the communications thread upon shutdown.</td><td>Make sure the server is running. </td></tr>
+<td>Core-10403-07: SRS Controller (p) is unable to stop the communications thread</td><td>SRS Controller got an error trying to stop the communications thread upon shutdown.</td><td>Make sure the server is running. </td></tr>
 <tr>
-<td>Core-10403-08: SRS Controller (p) received the initial connection from the Server (s:d)</td><td>The SRS Controller got a connection from the Server.</td><td>This is informational only and no action is required. </td></tr>
+<td>Core-10403-08: SRS Controller Connection (p) SID (0xx) received the initial connection from the Server (s:u) Local Addr (s:u) for ContextID (u)</td><td>The SRS Controller got a connection from the Server.</td><td>This is informational only and no action is required. </td></tr>
 <tr>
-<td>Core-10403-09: SRS Controller (p) is unable to request more data on the stream from the server (s:d)</td><td>SRS Controller is unable to request more data on the data stream from the server.</td><td>Make sure the server is running. </td></tr>
+<td>Core-10403-09: SRS Controller Connection (p) is unable to request more data on the stream from the Server (s:u)</td><td>SRS Controller is unable to request more data on the data stream from the server.</td><td>Make sure the server is running. </td></tr>
 <tr>
-<td>Core-10403-120: resolver_service entry (s:u) already exist. Skipping but continuing.</td><td>The lbm_context_attr_setopt/str_setopt() detected duplicate resolver_service entries. The duplicate entries will be skipped.</td><td>Check the config file or code (if config set via code) for duplicate resolver_service entries. Also check if <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#aecac05969bba0d6057589ca03dfe60a2">lbm_config()</a> is loaded multiple times with the same resolver_service entries </td></tr>
+<td>Core-10403-120: resolver_service entry (s:u) already exist. Skipping but continuing.</td><td>The lbm_context_attr_setopt/str_setopt() detected duplicate resolver_service entries. The duplicate entries will be skipped.</td><td>Check the config file or code (if config set via code) for duplicate resolver_service entries. Also check if <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#aecac05969bba0d6057589ca03dfe60a2">lbm_config()</a> is loaded multiple times with the same resolver_service entries </td></tr>
+<tr>
+<td>Core-10403-150: Context (p) created with ContextID (u) and ContextName [s]</td><td>A Context was created with the given Context ID and name.</td><td>This is informational only and no action is required. </td></tr>
+<tr>
+<td>Core-10403-151: Reactor Only Context (p) created with ContextID (u) and ContextName [s]</td><td>A Reactor Only Context was created with the given Context ID and name.</td><td>This is informational only and no action is required. </td></tr>
 <tr>
 <td>Core-10403-200: LBM SRS CTLR (p) received a log msg from RSock library (Level d: s)</td><td>SRS Controller got a log message from the RSock library.</td><td>Check the RSock message for more information. </td></tr>
 <tr>
 <td>Core-10403-20: SRS Controller (p) could not format source string on source create; src(s) error(s)</td><td>SRS Controller got an error when formating the source string on a source create</td><td>Refer to the error message included at the end of this message. </td></tr>
 <tr>
-<td>Core-10403-21: SRS Controller (p) could not parse the source string from the server (s:d). Source(s) Error(s)</td><td>SRS Controller got an error trying parse the source string from the server.</td><td>Make sure the server is running and is the correct version. Also make sure no other processes are sending messages on this IP:Port. </td></tr>
+<td>Core-10403-21: SRS Controller Connection (p) could not parse the source string from the Server (s:u). Source(s) Error(s)</td><td>SRS Controller got an error trying parse the source string from the server.</td><td>Make sure the server is running and is the correct version. Also make sure no other processes are sending messages on this IP:Port. </td></tr>
 <tr>
-<td>Core-10403-22: SRS Controller (p) received a suspicious topic (s) from the server (s:d).</td><td>SRS Controller got a suspicious topic from the server.</td><td>Make sure the server is running and is the correct version. Also make sure no other processes are sending messages on this IP:Port. </td></tr>
+<td>Core-10403-22: SRS Controller Connection (p) received a suspicious topic (s) from the Server (s:u).</td><td>SRS Controller got a suspicious topic from the server.</td><td>Make sure the server is running and is the correct version. Also make sure no other processes are sending messages on this IP:Port. </td></tr>
 <tr>
-<td>Core-10403-23: SRS Controller (p) received a suspicious source (s) from the server (s:d).</td><td>SRS Controller got a suspicious source from the server.</td><td>Make sure the server is running and is the correct version. Also make sure no other processes are sending messages on this IP:Port. </td></tr>
+<td>Core-10403-23: SRS Controller Connection (p) received a suspicious source (s) from the Server (s:u).</td><td>SRS Controller got a suspicious source from the server.</td><td>Make sure the server is running and is the correct version. Also make sure no other processes are sending messages on this IP:Port. </td></tr>
 <tr>
-<td>Core-10403-24: SRS Controller (p) could not parse the data from the server (s:d).</td><td>SRS Controller could not parse the data from the server.</td><td>Make sure the server is running and is the correct version. Also make sure no other processes are sending messages on this IP:Port. </td></tr>
+<td>Core-10403-24: SRS Controller Connection (p) could not parse the data from the Server (s:u).</td><td>SRS Controller could not parse the data from the server.</td><td>Make sure the server is running and is the correct version. Also make sure no other processes are sending messages on this IP:Port. </td></tr>
 <tr>
-<td>Core-10403-25: SRS Controller (p) received an invalid Message ID (d) from the server (s:d).</td><td>SRS Controller received an invalid Message ID from the server.</td><td>Make sure the server is running and is the correct version. Also make sure no other processes are sending messages on this IP:Port. </td></tr>
+<td>Core-10403-25: SRS Controller Connection (p) received an invalid Message ID (d) from the Server (s:u).</td><td>SRS Controller received an invalid Message ID from the server.</td><td>Make sure the server is running and is the correct version. Also make sure no other processes are sending messages on this IP:Port. </td></tr>
 <tr>
-<td>Core-10403-31: SRS Controller (p) could not parse the registration response message from the server (s:d).</td><td>SRS Controller could not parse the registration response message from the server.</td><td>Make sure the server is running and is the correct version. Also make sure no other processes are sending messages on this IP:Port. </td></tr>
+<td>Core-10403-31: SRS Controller Connection (p) could not parse the registration response message from the Server (s:u).</td><td>SRS Controller could not parse the registration response message from the server.</td><td>Make sure the server is running and is the correct version. Also make sure no other processes are sending messages on this IP:Port. </td></tr>
 <tr>
 <td>Core-10403-32: Domain ID (d) from SRS (p) is different from existing Domain ID (d)</td><td>The SRS delivered a Domain ID that does not match the existing (known) Domain ID.</td><td>A Domain ID configuration mismatch has been detected and needs to be repaired. </td></tr>
 <tr>
 <td>Core-10403-34: Domain ID discovered via SRS Controller (p); context resides in Domain ID u.</td><td>Log message indicates a Domain ID discovery.</td><td>This is not an error. </td></tr>
+<tr>
+<td>Core-10483-1: WARNING: UMP receiver Low sequence number[0xx] is greater than the High sequence number [0xx] + 1. Setting to high + 1. Receiver will join the live stream and no messages will be recovered.</td><td>The receiver's low sequence number is larger than the high sequence number + 1. This indicates a persisted receiver state which is out of sequence and this can occur on rare occasions; for example, when the umestored persistent files are wiped in a staggered sequence or when the application had explicitly acknowledged a higher sequence than it received.</td><td>To prevent deafness, the low sequence number will be set to the high sequence number + 1. If possible, Applications should audit for missing messages and perform any recovery actions needed </td></tr>
 <tr>
 <td>Core-10489-10: lbm_winevlog_setup(): Unable to Register Event Source: s</td><td>Windows error registering event source</td><td>Contact Informatica Support. </td></tr>
 <tr>
@@ -182,6 +188,58 @@ UM Core Messages&nbsp;&nbsp;<small><a href="#umcoremessages">&lt;-</a></small></
 <td>Core-10489-6: lbm_winevlog_setup() error creating TL queue: s</td><td>Unable to create two-lock queue</td><td>Contact Informatica Support. </td></tr>
 <tr>
 <td>Core-10528-3: The smart source p will fragment messages when the send message length plus configured message headers [d bytes] exceeds the transport's maximum datagram size [d bytes]</td><td>The configured smart_src_max_message_length plus LBM and application specified message headers exceeded the transport's datagram maximum size.</td><td>The smart source will fragment messages when the send message length plus headers exceeds the transport's maximum message length. </td></tr>
+<tr>
+<td>Core-10668-01: The context application_data configuration option is deprecated and may have no effect in the future.</td><td>The application_data configuration option is deprecated.</td><td>Using this configuration option is not recommended. </td></tr>
+<tr>
+<td>Core-10668-02: The source application_data configuration option is deprecated and may have no effect in the future.</td><td>The application_data configuration option is deprecated.</td><td>Using this configuration option is not recommended. </td></tr>
+<tr>
+<td>Core-10668-03: The receiver application_data configuration option is deprecated and may have no effect in the future.</td><td>The application_data configuration option is deprecated.</td><td>Using this configuration option is not recommended. </td></tr>
+<tr>
+<td>Core-10668-04: The wildcard_receiver application_data configuration option is deprecated and may have no effect in the future.</td><td>The application_data configuration option is deprecated.</td><td>Using this configuration option is not recommended. </td></tr>
+<tr>
+<td>Core-10668-05: The event_queue application_data configuration option is deprecated and may have no effect in the future.</td><td>The application_data configuration option is deprecated.</td><td>Using this configuration option is not recommended. </td></tr>
+<tr>
+<td>Core-10668-06: The hfx application_data configuration option is deprecated and may have no effect in the future.</td><td>The application_data configuration option is deprecated.</td><td>Using this configuration option is not recommended. </td></tr>
+<tr>
+<td>Core-10686-1: problem detected in config file: s at line d (s) error is s</td><td>An error was detected while processing a line in the configuration file.</td><td>UM executes a case insensitive comparison for an exact match of configuration options. Check for correct spelling and proper use of underscore characters. </td></tr>
+<tr>
+<td>Core-10686-2: problem detected in config file: s at line d (s) error is s</td><td>An error was detected while processing a line in the configuration file.</td><td>UM executes a case insensitive comparison for an exact match of configuration options. Check for correct spelling and proper use of underscore characters. </td></tr>
+<tr>
+<td>Core-10686-3: problem detected in config file: s at line d (s) error is s</td><td>An error was detected while processing a line in the configuration file.</td><td>UM executes a case insensitive comparison for an exact match of configuration options. Check for correct spelling and proper use of underscore characters. </td></tr>
+<tr>
+<td>Core-10720-1: SRS Controller (p) node(p) is in inconsistent state for topic(s) with domain_id(d).</td><td>SRS Controller receiver info record and receiver delete record are in an inconsistent state</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>Core-10720-2: SRS Controller Connection (p) received a suspicious topic (s) with domain_id(d) from the Server (s:u).</td><td>SRS Controller got a suspicious topic from the server.</td><td>Make sure the server is running and is the correct version. Also make sure no other processes are sending messages on this IP:Port. </td></tr>
+<tr>
+<td>Core-10720-3: SRS Controller Connection (p) received a suspicious topic (s) domain_id(d) from the Server (s:u).</td><td>SRS Controller got a suspicious topic from the server.</td><td>Make sure the server is running and is the correct version. Also make sure no other processes are sending messages on this IP:Port. </td></tr>
+<tr>
+<td>Core-10720-4: SRS Controller (p) node(p) is in inconsistent state for topic(s) with OTID[s].</td><td>SRS Controller Source info and Source delete record are in an inconsistent state</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>Core-10720-5: SRS Controller Connection (p) received a suspicious receiver info message from the Server (s:u).</td><td>SRS Controller Should only receive receiver info message for tnwgd.</td><td>Reach out to informatica customer support </td></tr>
+<tr>
+<td>Core-10720-6: SRS Controller Connection (p) received a suspicious receiver end message from the Server (s:u).</td><td>SRS Controller Should only receive receiver end message for tnwgd.</td><td>Reach out to informatica customer support </td></tr>
+<tr>
+<td>Core-10722-1: SRS Controller (p) node(p) is in inconsistent state for pattern(s) with domain_id(d).</td><td>SRS Controller pattern info record and pattern delete record are in an inconsistent state</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>Core-10722-2: SRS Controller Connection (p) received a suspicious pattern info message from the Server (s:u).</td><td>SRS Controller Should only receive pattern info message for tnwgd.</td><td>Reach out to informatica customer support </td></tr>
+<tr>
+<td>Core-10722-3: SRS Controller Connection (p) received a suspicious pattern (s) with domain_id(d) from the Server (s:u).</td><td>SRS Controller got a suspicious pattern from the server.</td><td>Make sure the server is running and is the correct version. Also make sure no other processes are sending messages on this IP:Port. </td></tr>
+<tr>
+<td>Core-10722-4: SRS Controller Connection (p) received a suspicious pattern end message from the Server (s:u).</td><td>SRS Controller Should only receive pattern end message for tnwgd.</td><td>Reach out to informatica customer support </td></tr>
+<tr>
+<td>Core-10722-5: SRS Controller Connection (p) received a suspicious pattern(s) domain_id(d) from the Server (s:u).</td><td>SRS Controller got a suspicious pattern from the server.</td><td>Make sure the server is running and is the correct version. Also make sure no other processes are sending messages on this IP:Port. </td></tr>
+<tr>
+<td>Core-10779-01: SRS Controller (p) does not support d Resolver Service hosts configured: changing to d</td><td>More than the maximum number of Resolver Service hosts has been configured. Limiting to the maximum allowed.</td><td>Check and repair configuration settings. </td></tr>
+<tr>
+<td>Core-10779-02: SRS Controller Connection (p) SID (0xx) is unable to initiate connection to the Server (s:u) Local Addr (s:u)</td><td>The SRS Controller is unable to initiate the initial connection request to the Server.</td><td>Check to make sure the correct server is running and the correct port is configured. </td></tr>
+<tr>
+<td>Core-10781-1: unable to schedule interest update handling timer: ctx[p] s</td><td>Interest update is handled asyncronously via a scheduled timer. An error occurred while trying to schedule this timer.</td><td>Please contact Informatica support. </td></tr>
+<tr>
+<td>Core-10794-1: epoll_ctl s error: (d) OP (d) FD (d) events (0xx) message (s)</td><td>The fd_management_type is set to epoll and file descriptor registration returned an error.</td><td>Check error returned and contact Informatica support if this warning occurs frequently. </td></tr>
+<tr>
+<td>Core-10824-1: malformed Application Header, dropping application data.</td><td>LBM received a message with applications headers but there was not enough data to support application headers.</td><td>This packet is suspicious. </td></tr>
+<tr>
+<td>Core-10824-2: malformed Application Header, dropping application data. (s:u)</td><td>LBM received a message with applications headers but there was not enough data to support application headers.</td><td>This packet is suspicious. Please check the source of the data. </td></tr>
 <tr>
 <td>Core-3398-1: Socket close timed out before receive buffer drain complete. lu bytes discarded from source (s).</td><td>Socket close timedout, but receive buffer has not been drained fully yet. On this close socket you may see connection resets.</td><td></td></tr>
 <tr>
@@ -289,7 +347,7 @@ UM Core Messages&nbsp;&nbsp;<small><a href="#umcoremessages">&lt;-</a></small></
 <tr>
 <td>Core-5688-1804: HF message receiver function returned -1</td><td>An error occurred processing a message received by a hot failover receiver. The message was discarded.</td><td>If this occurs frequently, contact Informatica support. </td></tr>
 <tr>
-<td>Core-5688-1807: LBM_DEBUG_MAXSIZE is greater than 4,294,967,295. Limiting to max.</td><td>Maximum rollover file size is capped at 4,294,967,295 (LBM_DEBUG_LOG_ROLLOVER_SIZE_MAX)</td><td>Set LBM_DEBUG_MAXSIZE and/or the parameter for <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#ac4410a1188555d16996be6b269bb0ef7">lbm_debugfile_maxsize()</a> to a lesser value to avoid this warning </td></tr>
+<td>Core-5688-1807: LBM_DEBUG_MAXSIZE is greater than 4,294,967,295. Limiting to max.</td><td>Maximum rollover file size is capped at 4,294,967,295 (LBM_DEBUG_LOG_ROLLOVER_SIZE_MAX)</td><td>Set LBM_DEBUG_MAXSIZE and/or the parameter for <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#ac4410a1188555d16996be6b269bb0ef7">lbm_debugfile_maxsize()</a> to a lesser value to avoid this warning </td></tr>
 <tr>
 <td>Core-5688-1811: FATAL: WSA startup error - d</td><td>FATAL: Error in starting Windows Socket. The specific Windows Sockets Error Code is returned in the error message.</td><td></td></tr>
 <tr>
@@ -418,6 +476,8 @@ UM Core Messages&nbsp;&nbsp;<small><a href="#umcoremessages">&lt;-</a></small></
 <td>Core-5688-3107: NOTICE: UME store has out-of-range group index u, setting to 0.</td><td>UMP has received an updated topic advertisement specifying a store with a group index which is greater than the number of advertised store groups. UMP recovers by setting the group index for the store in question to zero.</td><td></td></tr>
 <tr>
 <td>Core-5688-3108: Receiver Session ID specified. Specified RegID will be ignored</td><td>The system has detected that both a receiver Session ID and a receiver Reg ID have been specified either in the configuration file, via the configuration API or the RegID specification callback.</td><td>Specify only one of the Session ID or Reg ID. </td></tr>
+<tr>
+<td>Core-5688-3115: NOTICE: UME receiver recovery low sequence number set beyond high sequence number + 1. Setting to high + 1. No recovery requested.</td><td>The receiver's low sequence number has been set beyond high sequence number + 1</td><td>This warning message indicates that this setting is unsupported and will be adjusted so that the receiver joins the live stream </td></tr>
 <tr>
 <td>Core-5688-3117: WARNING: received PREG RESP with out-of-bounds StoreID</td><td>A registration response message was received from a store but the store ID in the message was invalid. The response is discarded.</td><td></td></tr>
 <tr>
@@ -1066,8 +1126,6 @@ UM Core Messages&nbsp;&nbsp;<small><a href="#umcoremessages">&lt;-</a></small></
 <td>Core-6259-10: LBMR Topic Resolution Remote Domain Route packet malformed (d:d). Dropping. Origin: s:d</td><td>LBMR Data received contain invalid data.</td><td>Check the source (IP:Port) for possible version mismatch or service attack. </td></tr>
 <tr>
 <td>Core-6259-11: Too many domains for routing message u; not sending message.</td><td>With the given number of domains, a domain routing message cannot be generated and traffic will not be routed properly.</td><td>The customer can increase the resolver_datagram_max_size. However, this message indicates a suspiciously large number of domains. </td></tr>
-<tr>
-<td>Core-6259-12: Failed sending Response: cannot find route to Remote Domain u (s:d)</td><td>There is no known route to the given domain. This could happen momentarily as an LBM context learns the domain routes at startup.</td><td>This will be reported once per domain. A "route discovered to domain" should follow soon after. If not, the Gateway configuration should be examined for inconsistencies. </td></tr>
 <tr>
 <td>Core-6259-13: Failed sending Unicast Buffer: cannot find route to Remote Domain u (s:d)</td><td>There is no known route to the given domain. This could happen momentarily as an LBM context learns the domain routes at startup.</td><td>This will be reported once per domain. A "route discovered to domain" should follow soon after. If not, the Gateway configuration should be examined for inconsistencies. </td></tr>
 <tr>
@@ -1729,13 +1787,13 @@ UM Core Messages&nbsp;&nbsp;<small><a href="#umcoremessages">&lt;-</a></small></
 <tr>
 <td>Core-9612-2: received lji request, but Late-Join not configured: from ip:port[s:d] for topic[u]</td><td>UMS received Late Join Request message however late-join is not configured for this source. This is not a serious problem but indicates that there is a mismatch between this process and another.</td><td>Check the system for port re-use on application restart and similar behavior. </td></tr>
 <tr>
-<td>Core-9625-1: WARNING: resovler_unicast_daemon entry (s:u) already exist. Skipping...</td><td>The lbm_context_attr_set/sset() detected duplicate unicast resolver entries. The duplicate entries will be skipped.</td><td>Check the config file or code (if config set via code) for duplicate resolver_unicast_daemon entries. Also check if <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#aecac05969bba0d6057589ca03dfe60a2">lbm_config()</a> is loaded multiple times with the same resolver_unicast_daemon entries </td></tr>
+<td>Core-9625-1: WARNING: resovler_unicast_daemon entry (s:u) already exist. Skipping...</td><td>The lbm_context_attr_set/sset() detected duplicate unicast resolver entries. The duplicate entries will be skipped.</td><td>Check the config file or code (if config set via code) for duplicate resolver_unicast_daemon entries. Also check if <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#aecac05969bba0d6057589ca03dfe60a2">lbm_config()</a> is loaded multiple times with the same resolver_unicast_daemon entries </td></tr>
 <tr>
-<td>Core-9626-1: WARNING: ume_store entry (u:s:u:u:u) already exist. Skipping...</td><td>The <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a96ea052dce2e6376684cbf2003407cbf">lbm_src_topic_attr_setopt()</a> detected duplicate ume_store entries. The duplicate entries will be skipped.</td><td>Check the config file or code (if config set via code) for duplicate ume_store entries. Also check if <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#aecac05969bba0d6057589ca03dfe60a2">lbm_config()</a> is loaded multiple times with the same ume_store entries </td></tr>
+<td>Core-9626-1: WARNING: ume_store entry (u:s:u:u:u) already exist. Skipping...</td><td>The <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a96ea052dce2e6376684cbf2003407cbf">lbm_src_topic_attr_setopt()</a> detected duplicate ume_store entries. The duplicate entries will be skipped.</td><td>Check the config file or code (if config set via code) for duplicate ume_store entries. Also check if <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#aecac05969bba0d6057589ca03dfe60a2">lbm_config()</a> is loaded multiple times with the same ume_store entries </td></tr>
 <tr>
-<td>Core-9626-2: WARNING: ume_store_name entry (s:u:u) already exist. Skipping...</td><td>The <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a96ea052dce2e6376684cbf2003407cbf">lbm_src_topic_attr_setopt()</a> detected duplicate ume_store_name entries. The duplicate entries will be skipped.</td><td>Check the config file or code (if config set via code) for duplicate ume_store_name entries. Also check if <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#aecac05969bba0d6057589ca03dfe60a2">lbm_config()</a> is loaded multiple times with the same ume_store_name entries </td></tr>
+<td>Core-9626-2: WARNING: ume_store_name entry (s:u:u) already exist. Skipping...</td><td>The <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a96ea052dce2e6376684cbf2003407cbf">lbm_src_topic_attr_setopt()</a> detected duplicate ume_store_name entries. The duplicate entries will be skipped.</td><td>Check the config file or code (if config set via code) for duplicate ume_store_name entries. Also check if <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#aecac05969bba0d6057589ca03dfe60a2">lbm_config()</a> is loaded multiple times with the same ume_store_name entries </td></tr>
 <tr>
-<td>Core-9640-1: WARNING: broker entry (s:u) already exist. Skipping...</td><td>The lbm_context_attr_setopt/str_setopt() detected duplicate broker entries. The duplicate entries will be skipped.</td><td>Check the config file or code (if config set via code) for duplicate broker entries. Also check if <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#aecac05969bba0d6057589ca03dfe60a2">lbm_config()</a> is loaded multiple times with the same broker entries </td></tr>
+<td>Core-9640-1: WARNING: broker entry (s:u) already exist. Skipping...</td><td>The lbm_context_attr_setopt/str_setopt() detected duplicate broker entries. The duplicate entries will be skipped.</td><td>Check the config file or code (if config set via code) for duplicate broker entries. Also check if <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#aecac05969bba0d6057589ca03dfe60a2">lbm_config()</a> is loaded multiple times with the same broker entries </td></tr>
 <tr>
 <td>Core-9709-1: epoll_ctl: EPOLL_CTL_DEL returned: errno:d:s</td><td>epoll returned an error during lbm_cancel_fd call</td><td></td></tr>
 <tr>
@@ -2105,7 +2163,7 @@ UM Core API Messages&nbsp;&nbsp;<small><a href="#umcoreapimessages">&lt;-</a></s
 <tr>
 <td>CoreApi-10347-35: optlen too small</td><td>Size of optlen was too small</td><td>Size of optlen must be at least 80 </td></tr>
 <tr>
-<td>CoreApi-10358-01: timeout (msec) must be zero when LBM_PROC_EVENT_EX_FLAG_USER_TIME is enabled</td><td>When setting the LBM_PROC_EVENT_EX_FLAG_USER_TIME flag, the user must set the timeout (msec) to zero to ensure that LBM gets needed time value updates.</td><td>Calls to <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a55b77c3057028116314fe5ff8e6afb25">lbm_context_process_events_ex()</a> need to set the timeout to zero when the LBM_PROC_EVENT_EX_FLAG_USER_TIME is set. </td></tr>
+<td>CoreApi-10358-01: timeout (msec) must be zero when LBM_PROC_EVENT_EX_FLAG_USER_TIME is enabled</td><td>When setting the LBM_PROC_EVENT_EX_FLAG_USER_TIME flag, the user must set the timeout (msec) to zero to ensure that LBM gets needed time value updates.</td><td>Calls to <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a55b77c3057028116314fe5ff8e6afb25">lbm_context_process_events_ex()</a> need to set the timeout to zero when the LBM_PROC_EVENT_EX_FLAG_USER_TIME is set. </td></tr>
 <tr>
 <td>CoreApi-10369-10: optlen incorrect size</td><td>Size of optlen was incorrect for setting integer option</td><td>optlen must be size of int </td></tr>
 <tr>
@@ -2195,6 +2253,8 @@ UM Core API Messages&nbsp;&nbsp;<small><a href="#umcoreapimessages">&lt;-</a></s
 <tr>
 <td>CoreApi-10558-8: optlen too small</td><td>The size of the option buffer was too small to contain the option</td><td>The smart_src_enable_transport_compatibility optlen must be at least 80 </td></tr>
 <tr>
+<td>CoreApi-10679-1: lbm_socket_send bad channel: p</td><td>A DBL call to get peer ip address and port was made with a bad channel specified.</td><td>Contact Informatica support. </td></tr>
+<tr>
 <td>CoreApi-10684-1: optlen incorrect size (file_descriptor_management_behavior)</td><td>Attempted to set option file_descriptor_management_behavior with an incorrect optlen size.</td><td>Optlen must be size of int. </td></tr>
 <tr>
 <td>CoreApi-10684-2: value not supported for file_descriptor_management_behavior</td><td>Option file_descriptor_management_behavior is not set to a valid value.</td><td>Set the file_descriptor_management_behavior to LBM_CTX_ATTR_FD_MANAGEMENT_BEHAVIOR_PEND or LBM_CTX_ATTR_FD_MANAGEMENT_BEHAVIOR_BUSY_WAIT. </td></tr>
@@ -2212,6 +2272,16 @@ UM Core API Messages&nbsp;&nbsp;<small><a href="#umcoreapimessages">&lt;-</a></s
 <td>CoreApi-10713-3: Could not load library s</td><td>UM dynamic loading of the Crypto library failed. SSL cannot be used.</td><td>Ensure that a proper version of the Crypto libary exists. See documentation for supported versions. </td></tr>
 <tr>
 <td>CoreApi-10713-4: An error ocurred during initialization of a TLS configured context: s</td><td>Initialization of SSL failed, but the user configured the LBM context to use TLS.</td><td>Check OpenSSL library version and availability. </td></tr>
+<tr>
+<td>CoreApi-10724-1: optlen incorrect size</td><td>The user passed in a value of optlen that did not match up to the option's expected type's size.</td><td>Check the application code to be sure that the optlen value is set to the size of int. </td></tr>
+<tr>
+<td>CoreApi-10724-2: resolver service interest mode must be 0 or 1</td><td>Resolver service interest mode can only be either filter or flood.</td><td>Set the optval value to 1 for filter mode and 0 for flood mode. </td></tr>
+<tr>
+<td>CoreApi-10724-3: optlen incorrect size</td><td>Checks whether optlen is an appropriate size and returns to caller if optlen size is incorrect.</td><td>Check the application code to be sure that the optlen value is set to the size of lbm_uint8_t. </td></tr>
+<tr>
+<td>CoreApi-10724-5: resolver service interest mode must be flood or filter</td><td>Resolver service interest mode can either be filter or flood.</td><td>Set the optval value to filter or flood. </td></tr>
+<tr>
+<td>CoreApi-10724-6: optlen too small</td><td>The buffer given is too small to write the option value to.</td><td>Check that the size of the buffer being passed in is at least 80 bytes. </td></tr>
 <tr>
 <td>CoreApi-3288-1: optlen incorrect size</td><td>Attempted to set wildcard receiver attribute "hf_receiver" using the wrong size optlen.</td><td>The parameter "optlen" must be the size of an integer. </td></tr>
 <tr>
@@ -2337,7 +2407,7 @@ UM Core API Messages&nbsp;&nbsp;<small><a href="#umcoreapimessages">&lt;-</a></s
 <tr>
 <td>CoreApi-5688-1390: session id not a number</td><td>The provided session ID was invalid.</td><td>Specify a session ID that fits one of the following formats: A hexadecimal value prefixed by 0x, an octal value prefixed by 0, or a decimal value. The value must be smaller than 0xFFFFFFFFFFFFFFFF regardless of representation. </td></tr>
 <tr>
-<td>CoreApi-5688-1885: opmode must be sequential</td><td>This is an invalid use of the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#ad9416b1f0b474b5d4c4f39bb3c4bda77">lbm_context_process_events()</a> or lbmContextProcessEvents(). Calling <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#ad9416b1f0b474b5d4c4f39bb3c4bda77">lbm_context_process_events()</a> or lbmContextProcessEvents() for a context running in embedded mode. This will simply print the log message and return immediately.</td><td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#ad9416b1f0b474b5d4c4f39bb3c4bda77">lbm_context_process_events()</a> or lbmContextProcessEvents() should get called only for sequential mode. See the UM Configuration Guide for high level guidance on configuring Ultra Messaging objects. </td></tr>
+<td>CoreApi-5688-1885: opmode must be sequential</td><td>This is an invalid use of the <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#ad9416b1f0b474b5d4c4f39bb3c4bda77">lbm_context_process_events()</a> or lbmContextProcessEvents(). Calling <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#ad9416b1f0b474b5d4c4f39bb3c4bda77">lbm_context_process_events()</a> or lbmContextProcessEvents() for a context running in embedded mode. This will simply print the log message and return immediately.</td><td><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#ad9416b1f0b474b5d4c4f39bb3c4bda77">lbm_context_process_events()</a> or lbmContextProcessEvents() should get called only for sequential mode. See the UM Configuration Guide for high level guidance on configuring Ultra Messaging objects. </td></tr>
 <tr>
 <td>CoreApi-5688-2014: optval not numeric</td><td>Value passed in for resolver_multicast_ttl was not numeric.</td><td>Review the configuration file and specify a valid numeric value for the option (0 - 255). </td></tr>
 <tr>
@@ -2348,6 +2418,8 @@ UM Core API Messages&nbsp;&nbsp;<small><a href="#umcoreapimessages">&lt;-</a></s
 <td>CoreApi-5688-2874: optval is malformed</td><td>The unicast resolver daemon specification string format is as follows: [Interface[:LocalPort]-&gt;]DaemonIP:RemotePort where Interface and LocalPort refer the local host interface and port, the DaemonIP refers to the resolver daemon's IP address, and the RemotePort refers to the resolver daemon's UDP port.</td><td>Provide a valid resolver daemon specification. </td></tr>
 <tr>
 <td>CoreApi-5688-2875: optval is malformed</td><td>The unicast resolver daemon specification string format is as follows: [Interface[:LocalPort]-&gt;]DaemonIP:RemotePort where Interface and LocalPort refer the local host interface and port, the DaemonIP refers to the resolver daemon's IP address, and the RemotePort refers to the resolver daemon's UDP port.</td><td>Provide a valid resolver daemon specification. </td></tr>
+<tr>
+<td>CoreApi-5688-3015: send would block</td><td>The application attempted a non-blocking send of a message on a transport that is blocked due to exceeding the transport's rate limit. The message was not sent, and was not queued for future sending.</td><td>The application can enable source events and wait for the LBM_SRC_EVENT_WAKEUP event, or it can use blocking sends, or it can simply retry the send after the rate limiter interval expires. Alternatively, consider increasing the rate limit and/or rate interval. See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Operations/design.tag:../Design/" href="../Design/fundamentalconcepts.html#transportratecontrol">Transport Rate Control</a>. </td></tr>
 <tr>
 <td>CoreApi-5688-3040: Can not specify a negative number for inflight messages</td><td>Attempting to set the flight size of messages to a negative number</td><td>Ensure a positive integer for inflight messages is returned from the set flight size callback </td></tr>
 <tr>
@@ -2380,6 +2452,8 @@ UM Core API Messages&nbsp;&nbsp;<small><a href="#umcoreapimessages">&lt;-</a></s
 <td>CoreApi-5688-3287: could not find open unicast source port in range [d-d]</td><td>Could not bind to a unicast port due to ports already being used in the given range.</td><td>Update the UM configuration file to modify or include different ports for the options transport_lbtrm_source_port_low and/or transport_lbtrm_source_port high. </td></tr>
 <tr>
 <td>CoreApi-5688-3320: lbm_socket_recv recv/recvfrom: s</td><td>An error was returned from the OS while trying a recv or recvfrom socket call. Refer to the OS error number and message.</td><td></td></tr>
+<tr>
+<td>CoreApi-5688-3332: lbm_socket_send send/sendto (ip address: s, port d): s</td><td>An error occurred while trying to send to the specified ip and port. The last part of this message contains the OS error code and associated text.</td><td>Check configuration option settings. </td></tr>
 <tr>
 <td>CoreApi-5688-3337: lbm_socket_sendb send/sendto: s</td><td>An error occurred while sending. The message will contain addition specific information, supplied by the operating system.</td><td>This is a platform specific error; please use the operating system's error code and description to further understand the circumstances of the error. </td></tr>
 <tr>
@@ -2426,6 +2500,12 @@ UM Core API Messages&nbsp;&nbsp;<small><a href="#umcoreapimessages">&lt;-</a></s
 <td>CoreApi-5760-1: receiver must be an observer receiver (set umq_queue_participation to 2)</td><td>lbm_rcv_umq_queue_msg_retrieve was called using a normal receiver for the rcv parameter. Only observer receivers (receivers with the "receiver umq_queue_participation" option set to "2") may be used with this API.</td><td></td></tr>
 <tr>
 <td>CoreApi-5760-2: receiver must be an observer receiver (set umq_queue_participation to 2)</td><td>lbm_rcv_umq_queue_msg_list was called using a normal receiver for the rcv parameter. Only observer receivers (receivers with the "receiver umq_queue_participation" option set to "2") may be used with this API.</td><td></td></tr>
+<tr>
+<td>CoreApi-5867-10: msg_sel argument must be non-NULL</td><td>The msg_sel argument that was passed was NULL</td><td>Ensure the msg_sel argument is not NULL so that it can be assigned the newly created message selector </td></tr>
+<tr>
+<td>CoreApi-5867-11: msg_sel argument must be non-NULL</td><td>The msg_sel argument that was passed was NULL</td><td>Ensure the msg_sel argument is not NULL because it is what will be deleted </td></tr>
+<tr>
+<td>CoreApi-5867-12: msg_sel argument must be non-NULL</td><td>The msg_sel argument that was passed was NULL</td><td>Ensure the msg_sel argument is not NULL </td></tr>
 <tr>
 <td>CoreApi-5867-14: error occurred parsing message selector string &lt;s&gt;</td><td>The message selector string is invalid or could not be parsed.</td><td>Check the UM Documenation for valid syntax. </td></tr>
 <tr>
@@ -2576,6 +2656,8 @@ UM Core API Messages&nbsp;&nbsp;<small><a href="#umcoreapimessages">&lt;-</a></s
 <td>CoreApi-6254-20: Can't allocate memory [s:d]</td><td>UMQ ran out of memory while creating a message selector string.</td><td></td></tr>
 <tr>
 <td>CoreApi-6254-21: Can't allocate memory [s:d]</td><td>UMQ ran out of memory while creating a message selector.</td><td></td></tr>
+<tr>
+<td>CoreApi-6259-12: Failed sending Response: cannot find route to Remote Domain u (s:d)</td><td>There is no known route to the given domain. This could happen momentarily as an LBM context learns the domain routes at startup.</td><td>This will be reported once per domain. A "route discovered to domain" should follow soon after. If not, the Gateway configuration should be examined for inconsistencies. </td></tr>
 <tr>
 <td>CoreApi-6259-17: Unicast Immediate Message failed: cannot find route to Remote Domain: u:s:d</td><td>There is no known route to the given domain. This could happen momentarily as an LBM context learns the domain routes at startup.</td><td>If the warning persists, the Gateway configuration should be examined for inconsistencies. </td></tr>
 <tr>
@@ -3397,9 +3479,9 @@ UM Core API Messages&nbsp;&nbsp;<small><a href="#umcoreapimessages">&lt;-</a></s
 <tr>
 <td>CoreApi-9074-1: Queue deregistration is no longer allowed when using a brokered context</td><td>No longer allowed to deregister from a queue.</td><td>Remove function call. </td></tr>
 <tr>
-<td>CoreApi-9082-2: <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a6cd0c297e489e006ef5da83398184daa">lbm_umq_ctx_msg_stable()</a> API is deprecated</td><td>The lbm_umq_ctx_msg_stable is deprecated and no longer supported.</td><td>Remove this API call from the application. </td></tr>
+<td>CoreApi-9082-2: <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a6cd0c297e489e006ef5da83398184daa">lbm_umq_ctx_msg_stable()</a> API is deprecated</td><td>The lbm_umq_ctx_msg_stable is deprecated and no longer supported.</td><td>Remove this API call from the application. </td></tr>
 <tr>
-<td>CoreApi-9082-3: <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#aac6015a6a8e914c6e621e3b28940fe87">lbm_ctx_umq_get_inflight()</a> API is deprecated</td><td>The lbm_ctx_umq_get_inflight is deprecated and no longer supported.</td><td>Remove this API call from the application. </td></tr>
+<td>CoreApi-9082-3: <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#aac6015a6a8e914c6e621e3b28940fe87">lbm_ctx_umq_get_inflight()</a> API is deprecated</td><td>The lbm_ctx_umq_get_inflight is deprecated and no longer supported.</td><td>Remove this API call from the application. </td></tr>
 <tr>
 <td>CoreApi-9087-1: send would block because of flight size</td><td>This send would cause the configured flight size to exceed the configured value for this source.</td><td>Delay sending until the number inflight messages is reduced. </td></tr>
 <tr>
@@ -3755,15 +3837,15 @@ UM Core API Messages&nbsp;&nbsp;<small><a href="#umcoreapimessages">&lt;-</a></s
 <tr>
 <td>CoreApi-9721-2: usr_bufp cannot be NULL</td><td>A call to lbm_src_alloc_msg_buff was passed a NULL usr_bufp.</td><td>Pass a valid pointer that will contain the pointer to be used to fill in the caller's message data. </td></tr>
 <tr>
-<td>CoreApi-9721-3: lbm_hdl cannot be NULL</td><td>A call to lbm_src_alloc_msg_buff was passed a NULL lbm_hdl.</td><td>Pass a valid pointer that will contain the pointer to the returned lbm_hdl. This is what will be passed to a subsequent <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a91f4b9cb04fe1323ec56833211cc5cb7">lbm_src_send()</a> call. </td></tr>
+<td>CoreApi-9721-3: lbm_hdl cannot be NULL</td><td>A call to lbm_src_alloc_msg_buff was passed a NULL lbm_hdl.</td><td>Pass a valid pointer that will contain the pointer to the returned lbm_hdl. This is what will be passed to a subsequent <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a91f4b9cb04fe1323ec56833211cc5cb7">lbm_src_send()</a> call. </td></tr>
 <tr>
 <td>CoreApi-9721-4: transport for src must be LBTRM.</td><td>A call to lbm_src_alloc_msg_buff was passed a non LBTRM src.</td><td>Specify a valid LBTRM src. Only LBTRM sources are supported at this time. </td></tr>
 <tr>
 <td>CoreApi-9721-5: length (d) too long, must be less than d.</td><td>A call to lbm_src_alloc_msg_buff was passed a length that would cause fragmentation of a message.</td><td>Specify a length less than the maximum length shown in the message. </td></tr>
 <tr>
-<td>CoreApi-9721-6: Passed buffer invalid, sqn [d] invalid</td><td>The message buffer supplied to a source send call with the LBM_MSG_BUFF_ALLOC flag set, does not contain valid identifiers.</td><td>Check to make sure that the supplied message buffer was allocated with a call to <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#adf24bf7c4b07549d6a2f89d56e6c913a">lbm_src_alloc_msg_buff()</a> and is the handle to the buffer and not the actual message data pointer. See the documentation for the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#adf24bf7c4b07549d6a2f89d56e6c913a">lbm_src_alloc_msg_buff()</a> call. </td></tr>
+<td>CoreApi-9721-6: Passed buffer invalid, sqn [d] invalid</td><td>The message buffer supplied to a source send call with the LBM_MSG_BUFF_ALLOC flag set, does not contain valid identifiers.</td><td>Check to make sure that the supplied message buffer was allocated with a call to <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#adf24bf7c4b07549d6a2f89d56e6c913a">lbm_src_alloc_msg_buff()</a> and is the handle to the buffer and not the actual message data pointer. See the documentation for the <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#adf24bf7c4b07549d6a2f89d56e6c913a">lbm_src_alloc_msg_buff()</a> call. </td></tr>
 <tr>
-<td>CoreApi-9721-7: Passed buffer invalid, tidx [d] invalid</td><td>The message buffer supplied to a source send call with the LBM_MSG_BUFF_ALLOC flag set, does not contain valid identifiers.</td><td>Check to make sure that the supplied message buffer was allocated with a call to <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#adf24bf7c4b07549d6a2f89d56e6c913a">lbm_src_alloc_msg_buff()</a> and is the handle to the buffer and not the actual message data pointer. See the documentation for the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#adf24bf7c4b07549d6a2f89d56e6c913a">lbm_src_alloc_msg_buff()</a> call. </td></tr>
+<td>CoreApi-9721-7: Passed buffer invalid, tidx [d] invalid</td><td>The message buffer supplied to a source send call with the LBM_MSG_BUFF_ALLOC flag set, does not contain valid identifiers.</td><td>Check to make sure that the supplied message buffer was allocated with a call to <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#adf24bf7c4b07549d6a2f89d56e6c913a">lbm_src_alloc_msg_buff()</a> and is the handle to the buffer and not the actual message data pointer. See the documentation for the <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#adf24bf7c4b07549d6a2f89d56e6c913a">lbm_src_alloc_msg_buff()</a> call. </td></tr>
 <tr>
 <td>CoreApi-9721-8: Source [p] type [u] is not LBTRM. LBTRM is required with the LBM_MSG_BUFF_ALLOC flag.</td><td>The source supplied to a source send call with the LBM_MSG_BUFF_ALLOC flag set was not an LBTRM source.</td><td>At this time, only LBTRM sources are supported when using the LBM_MSG_BUFF_ALLOC flag. Use only LBTRM sources when specifying the LBM_MSG_BUFF_ALLOC flag. </td></tr>
 <tr>
@@ -3871,11 +3953,11 @@ UM Core API Messages&nbsp;&nbsp;<small><a href="#umcoreapimessages">&lt;-</a></s
 <tr>
 <td>CoreApi-9938-6: optlen too small</td><td>Attempted to set option compatibility_pre_um_6_0_context_ad_ivl with an incorrect optlen size.</td><td>Optlen must be greater than LBM_MIN_SGET_OPTLEN. </td></tr>
 <tr>
-<td>CoreApi-9941-115: usr_bufp offset is not valid.</td><td>A smart source call specified a user buffer with an invalid offset.</td><td>Supply the exact pointer supplied by <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a98c5450e9fb93f30bd80fa33a2380dfc">lbm_ssrc_buff_get()</a>. </td></tr>
+<td>CoreApi-9941-115: usr_bufp offset is not valid.</td><td>A smart source call specified a user buffer with an invalid offset.</td><td>Supply the exact pointer supplied by <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a98c5450e9fb93f30bd80fa33a2380dfc">lbm_ssrc_buff_get()</a>. </td></tr>
 <tr>
-<td>CoreApi-9941-116: usr_bufp base address is not valid.</td><td>A smart source call specified a user buffer with an invalid base address.</td><td>Return buffer with the exact pointer supplied by <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a98c5450e9fb93f30bd80fa33a2380dfc">lbm_ssrc_buff_get()</a>. </td></tr>
+<td>CoreApi-9941-116: usr_bufp base address is not valid.</td><td>A smart source call specified a user buffer with an invalid base address.</td><td>Return buffer with the exact pointer supplied by <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a98c5450e9fb93f30bd80fa33a2380dfc">lbm_ssrc_buff_get()</a>. </td></tr>
 <tr>
-<td>CoreApi-9941-117: user buffer is on the free list.</td><td>A smart source call specified a user buffer that is on the free list.</td><td>Don't be stupid! Invoke <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a98c5450e9fb93f30bd80fa33a2380dfc">lbm_ssrc_buff_get()</a> to allocate a user buffer. </td></tr>
+<td>CoreApi-9941-117: user buffer is on the free list.</td><td>A smart source call specified a user buffer that is on the free list.</td><td>Don't be stupid! Invoke <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a98c5450e9fb93f30bd80fa33a2380dfc">lbm_ssrc_buff_get()</a> to allocate a user buffer. </td></tr>
 <tr>
 <td>CoreApi-9941-118: corrupted user buffer pointer structure</td><td>A smart source call specified what appears to be a corrupted user buffer pointer structure.</td><td>Ensure that writes using the user buffer pointer do not exceed the range of addresses bounded by the source scoped smart_src_max_message_length configuration option. </td></tr>
 <tr>
@@ -3935,11 +4017,11 @@ UM Core API Messages&nbsp;&nbsp;<small><a href="#umcoreapimessages">&lt;-</a></s
 <tr>
 <td>CoreApi-9941-2997: usr_bufp must be valid</td><td>The usr_bufp parameter supplied to a smart source send call was NULL.</td><td>usr_bufp must be a pointer to a valid user buffer. </td></tr>
 <tr>
-<td>CoreApi-9941-2: optval must be greater than 0</td><td>smart_src_max_message_length did not contain a positive integer</td><td>smart_src_max_message_length must be a positive integer </td></tr>
+<td>CoreApi-9941-2: optval must be greater than 16</td><td>smart_src_max_message_length did not contain a positive integer</td><td>smart_src_max_message_length must be greater than 16 </td></tr>
 <tr>
-<td>CoreApi-9941-3000: <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a2f50f56536778332e9f5712b06546425">lbm_ssrc_send_ex()</a> thread does not match thread used by other smart source sends on this transport session</td><td>The smart source send call thread does not match the thread used by other smart source sends on this transport session.</td><td>The smart source send call thread must be the same thread used by all smart source sends on this transport session. </td></tr>
+<td>CoreApi-9941-3000: <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a2f50f56536778332e9f5712b06546425">lbm_ssrc_send_ex()</a> thread does not match thread used by other smart source sends on this transport session</td><td>The smart source send call thread does not match the thread used by other smart source sends on this transport session.</td><td>The smart source send call thread must be the same thread used by all smart source sends on this transport session. </td></tr>
 <tr>
-<td>CoreApi-9941-3001: <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a2f50f56536778332e9f5712b06546425">lbm_ssrc_send_ex()</a> thread does not match thread used by other smart source sends on this transport session</td><td>The smart source send call thread does not match the thread used by other smart source sends on this transport session.</td><td>The smart source send call thread must be the same thread used by all smart source sends on this transport session. </td></tr>
+<td>CoreApi-9941-3001: <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a2f50f56536778332e9f5712b06546425">lbm_ssrc_send_ex()</a> thread does not match thread used by other smart source sends on this transport session</td><td>The smart source send call thread does not match the thread used by other smart source sends on this transport session.</td><td>The smart source send call thread must be the same thread used by all smart source sends on this transport session. </td></tr>
 <tr>
 <td>CoreApi-9941-3025: ssrc must be valid</td><td>The Smart Source object is not valid.</td><td>Provide a valid Smart Source object. </td></tr>
 <tr>
@@ -3971,15 +4053,15 @@ UM Core API Messages&nbsp;&nbsp;<small><a href="#umcoreapimessages">&lt;-</a></s
 <tr>
 <td>CoreApi-9941-3: optval too large</td><td>smart_src_max_message_length is larger than the maximum allowed size</td><td>Decrease the size of smart_src_max_message_length </td></tr>
 <tr>
-<td>CoreApi-9941-4001: All d Smart Source [p] user buffers have been allocated.</td><td>A call to lbm_ssrc_buff_get failed due to user buffer exhaustion.</td><td>Return unused user buffers via <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#ab57120414bf92bd2f44de7aea97e3f1b">lbm_ssrc_buff_put()</a> or restart the application with a larger user buffer count. </td></tr>
+<td>CoreApi-9941-4001: All d Smart Source [p] user buffers have been allocated.</td><td>A call to lbm_ssrc_buff_get failed due to user buffer exhaustion.</td><td>Return unused user buffers via <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#ab57120414bf92bd2f44de7aea97e3f1b">lbm_ssrc_buff_put()</a> or restart the application with a larger user buffer count. </td></tr>
 <tr>
 <td>CoreApi-9941-4020: ssrc must be valid</td><td>ssrc parameter was NULL</td><td>ssrc must be a pointer to a valid lbm smart source. </td></tr>
 <tr>
 <td>CoreApi-9941-4021: usr_bufp must be valid</td><td>usr_bufp parameter was NULL</td><td>usr_bufp must be a pointer to a valid user buffer. </td></tr>
 <tr>
-<td>CoreApi-9941-4022: usr_bufp offset is not valid.</td><td>A call to lbm_ssrc_buff_put specified a user buffer with an invalid offset.</td><td>Return buffer with the exact pointer supplied by <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a98c5450e9fb93f30bd80fa33a2380dfc">lbm_ssrc_buff_get()</a>. </td></tr>
+<td>CoreApi-9941-4022: usr_bufp offset is not valid.</td><td>A call to lbm_ssrc_buff_put specified a user buffer with an invalid offset.</td><td>Return buffer with the exact pointer supplied by <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a98c5450e9fb93f30bd80fa33a2380dfc">lbm_ssrc_buff_get()</a>. </td></tr>
 <tr>
-<td>CoreApi-9941-4023: usr_bufp base address is not valid.</td><td>A call to lbm_ssrc_buff_put specified a user buffer with an invalid base address.</td><td>Return buffer with the exact pointer supplied by <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a98c5450e9fb93f30bd80fa33a2380dfc">lbm_ssrc_buff_get()</a>. </td></tr>
+<td>CoreApi-9941-4023: usr_bufp base address is not valid.</td><td>A call to lbm_ssrc_buff_put specified a user buffer with an invalid base address.</td><td>Return buffer with the exact pointer supplied by <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a98c5450e9fb93f30bd80fa33a2380dfc">lbm_ssrc_buff_get()</a>. </td></tr>
 <tr>
 <td>CoreApi-9941-4024: user buffer is already on the free list.</td><td>A call to lbm_ssrc_buff_put specified a user buffer the is already on the free list.</td><td>Don't be stupid! A buffer can only be returned once. </td></tr>
 <tr>
@@ -4015,11 +4097,11 @@ UM Core API Messages&nbsp;&nbsp;<small><a href="#umcoreapimessages">&lt;-</a></s
 <tr>
 <td>CoreApi-9941-5575: Smart source may not use the same transport as a standard source</td><td>An lbm standard source may not reside with a smart source on the same transport.</td><td>Configure the standard source on an LBT-RM transport that only contains standard sources. </td></tr>
 <tr>
-<td>CoreApi-9941-5: optval must be greater than 0</td><td>smart_src_max_message_length did not contain a positive integer</td><td>smart_src_max_message_length must be a positive integer </td></tr>
+<td>CoreApi-9941-5: optval must be greater than 16</td><td>smart_src_max_message_length did not contain a positive integer</td><td>smart_src_max_message_length must be greater than 16 </td></tr>
 <tr>
 <td>CoreApi-9941-6000: Can't allocate config options of u bytes [s:d]</td><td>The system was not able to allocate the amount of memory requested.</td><td>The physical memory on the machine may be over committed; try moving some applications to another machine. </td></tr>
 <tr>
-<td>CoreApi-9941-6001: Failed to call dump [s:d]</td><td>The call to <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a62e4da1cb793e25a249bada7202d2e88">lbm_ssrc_topic_dump()</a> failed.</td><td>Check that ssrc and opts are valid and that the value at size is greater than 0. </td></tr>
+<td>CoreApi-9941-6001: Failed to call dump [s:d]</td><td>The call to <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a62e4da1cb793e25a249bada7202d2e88">lbm_ssrc_topic_dump()</a> failed.</td><td>Check that ssrc and opts are valid and that the value at size is greater than 0. </td></tr>
 <tr>
 <td>CoreApi-9941-6003: Can't allocate JNI source object of u bytes [s:d]</td><td>The system was not able to allocate the amount of memory requested.</td><td>The physical memory on the machine may be over committed; try moving some applications to another machine. </td></tr>
 <tr>
@@ -4105,23 +4187,19 @@ UM Core API Messages&nbsp;&nbsp;<small><a href="#umcoreapimessages">&lt;-</a></s
 UM SRS Log Messages&nbsp;&nbsp;<small><a href="#umsrslogmessages">&lt;-</a></small></h1>
 <center> <table class="doxtable">
 <tr>
-<td>SRS-10385-98: Registration protocolVersion[" + reg.protocolVersion + "] received for client[" + reg.client_addr + ":" + reg.client_port + "] sessionID[" + reg.session_id + "]</td><td>A client registration request was received.</td><td>No resolution needed; Supplied for informational purposes only. </td></tr>
+<td>SRS-10385-98: Registration protocolVersion[" + srsRegistration.getProtocolVersion() +                 "] received for client[" + srsRegistration.getIp() + ":" + srsRegistration.getPort() +                 "] sessionID[" + srsRegistration.getSessionId() + "]</td><td>A client srsRegistration request was received.</td><td>No resolution needed; Supplied for informational purposes only. </td></tr>
 <tr>
-<td>SRS-10385-99: TCP Disconnect received for client[" + registration.client_addr + ":" + registration.client_port + "] sessionID[" + registration.session_id + "]</td><td>TCP Disconnect was received from a client.</td><td>No resolution needed; Supplied for informational purposes only. </td></tr>
+<td>SRS-10385-99: TCP Disconnect received for client[" + srsRegistration.getIp() + ":" +                     srsRegistration.getPort() + "] sessionID[" + srsRegistration.getSessionId() + "]</td><td>TCP Disconnect was received from a client.</td><td>No resolution needed; Supplied for informational purposes only. </td></tr>
 <tr>
-<td>SRS-10386-1000: Unable to establish connection due to unknown protocolVersion[" + registration.protocolVersion + "]</td><td>A client attempted to register with an unsupported SRS protocol version.</td><td>Reconcile versions and try again. </td></tr>
-<tr>
-<td>SRS-10386-1001: Unable to establish connection for sessionID[" + registration.session_id + "] due to unsupported protocolVersion[" + registration.protocolVersion + "]. Only supported protocolVersion[" + SRSMessage.LBM_SRS_PROTOCOL_VERSION + "]</td><td>A client with an unsupported version attempted to establish a connection with the SRS.</td><td>Reconcile versions and try again. </td></tr>
-<tr>
-<td>SRS-10386-1002: Received registration request for clientID[" + clientId + "] with invalid message id[" + srsMessage.id + "]</td><td>A client attempted to register with an invalid request/response message ID.</td><td>Reconcile SRS protocol versions and try again. </td></tr>
+<td>SRS-10386-1002: Received srsRegistration request for clientID[" + clientId + "] with invalid message id[" + srsMessage.id + "]</td><td>A client attempted to register with an invalid request/response message ID.</td><td>Reconcile SRS protocol versions and try again. </td></tr>
 <tr>
 <td>SRS-10386-1003: Received an invalid stream request for clientID[" + clientId + "] </td><td>A client attempted to register with an invalid stream request message ID.</td><td>Reconcile SRS protocol versions and try again. </td></tr>
 <tr>
-<td>SRS-10386-1004: SRSSubscriber will not update monitor info because SRSRegistration is null</td><td>The registration associated with an SRS subscriber could not be found. Consequently, associated monitored information can not be provided.</td><td>No resolution required. If this happens frequently, contact Informatica support. </td></tr>
+<td>SRS-10386-1004: SRSSubscriber will not update monitor info because SRSRegistration is null</td><td>The srsRegistration associated with an SRS subscriber could not be found. Consequently, associated monitored information can not be provided.</td><td>No resolution required. If this happens frequently, contact Informatica support. </td></tr>
 <tr>
 <td>SRS-10386-1005: Received invalid SRS message for clientID[" + clientId + "] with message id: </td><td>The SRS received an invalid SRS message.</td><td>Contact Informatica support. </td></tr>
 <tr>
-<td>SRS-10386-1014: Received SourceDeleteRecord for clientID[" + clientId + "] with invalid OTID[" + otidString + "]</td><td>The SRS received an invalid SDR.</td><td>Contact Informatica support. </td></tr>
+<td>SRS-10386-1014: Received SourceDeleteRecord for clientID[" + clientId +                     "] with invalid OTID[" + otidString + "]</td><td>The SRS received an invalid SDR.</td><td>Contact Informatica support. </td></tr>
 <tr>
 <td>SRS-10386-10: Debugging enabled; file path: [" + debugState.getDebugFilePath() + "] mask: [" + String.format("0x%08X", debugState.getDebugMask()) + "]</td><td>The debugger is enabled.</td><td>This is for informational purposes only and can be ignored. </td></tr>
 <tr>
@@ -4171,7 +4249,7 @@ UM SRS Log Messages&nbsp;&nbsp;<small><a href="#umsrslogmessages">&lt;-</a></sma
 <tr>
 <td>SRS-10563-11: Received a SourceDeleteRecord without having first received a SourceInfoRecord</td><td>An unexpected internal state was encountered, but was handled.</td><td>No resolution required. If this happens frequently, contact Informatica support. </td></tr>
 <tr>
-<td>SRS-10563-12: Received duplicate SourceInformationRecord for topic[" + siRec.getDisplayTopic() + "] source[" + siRec.getDisplaySource() + "] OTID[" + siRec.getDisplayOTID() + "]</td><td>Anrare internal state was encountered, but was handled. This state typically results from DROs briefly having more than one proxy source for a given originating source, usually due to a re-routing operation. This state normally resolves itself after a short time.</td><td>No resolution required. If this happens frequently, contact Informatica support. </td></tr>
+<td>SRS-10563-12: Received duplicate SourceInformationRecord for topic[" + siRec.getComparisonSymbol() +                             "] source[" + siRec.getComparisonSource() + "] OTID[" + siRec.getDisplayOTID() + "]</td><td>Anrare internal state was encountered, but was handled. This state typically results from DROs briefly having more than one proxy source for a given originating source, usually due to a re-routing operation. This state normally resolves itself after a short time.</td><td>No resolution required. If this happens frequently, contact Informatica support. </td></tr>
 <tr>
 <td>SRS-10563-13: topic hasher received unexpected object: </td><td>An unexpected internal state was encountered, but was handled.</td><td>No resolution required. If this happens frequently, contact Informatica support. </td></tr>
 <tr>
@@ -4209,7 +4287,7 @@ UM SRS Log Messages&nbsp;&nbsp;<small><a href="#umsrslogmessages">&lt;-</a></sma
 <tr>
 <td>SRS-10563-44: MonitorInfoMessage: getInPrintFormat: monitorInfoCategoryName " +                                               monitorInfoCategory.getName() + "; connectionEventType: " +                                               connectionEventType + " invalid event state</td><td>An internal error was encountered.</td><td>Contact Informatica support. </td></tr>
 <tr>
-<td>SRS-10563-45: MonitorInfoMessage: getInPrintFormat: monitorInfoCategoryName " +                                               monitorInfoCategory.getName() + "; connectionEventType: " +                                               connectionEventType + " invalid event state</td><td>An internal error was encountered.</td><td>Contact Informatica support. </td></tr>
+<td>SRS-10563-45: MonitorInfoMessage: getInPrintFormat: monitorInfoCategoryName " +                                     monitorInfoCategory.getName() + "; connectionEventType: " +                                     connectionEventType + " invalid event state</td><td>An internal error was encountered.</td><td>Contact Informatica support. </td></tr>
 <tr>
 <td>SRS-10563-46: MonitorInfoMessage: getInPrintFormat: monitorInfoCategoryName " +                                           monitorInfoCategory.getName() + ": " + connectionEventType.getName() + " is not expected</td><td>An internal error was encountered.</td><td>Contact Informatica support. </td></tr>
 <tr>
@@ -4225,15 +4303,17 @@ UM SRS Log Messages&nbsp;&nbsp;<small><a href="#umsrslogmessages">&lt;-</a></sma
 <tr>
 <td>SRS-10563-51: MonitorInfo: getUMClientMonitorInfoMessage: Failed to cast value to MonitorInfoRecord " +                         "for stat " + statName + " in category " + monitorInfoCategory.getName() + ". Reason: </td><td>An internal error was encountered.</td><td>Contact Informatica support. </td></tr>
 <tr>
-<td>SRS-10563-52: MonitorInfo: getConnectionEventsMonitorInfoMessage: Failed to process " +                                     " event " + connectionEventType.getName() + " in category " + monitorInfoCategory.getName() +                                     ". Reason: its SRSRegistrationInfo is null</td><td>An internal error was encountered.</td><td>Contact Informatica support. </td></tr>
+<td>SRS-10563-52: MonitorInfo: getConnectionEventsMonitorInfoMessage: Failed to process " +                                     "event " + connectionEventType.getName() + " in category " + monitorInfoCategory.getName() +                                     ". Reason: its SRSRegistrationInfo is null</td><td>An internal error was encountered.</td><td>Contact Informatica support. </td></tr>
 <tr>
 <td>SRS-10563-53: MonitorInfo: getConnectionEventsMonitorInfoMessage: Failed to cast value " +                             "to Queue&lt;ConnectionEventInfo&gt; for events " + eventsName + " in category " +                             monitorInfoCategory.getName() + ". Reason: </td><td>An internal error was encountered.</td><td>Contact Informatica support. </td></tr>
 <tr>
 <td>SRS-10563-5: Received a {} whose topic doesn't match the existing topic for this OTID. Found [{}]. Expected [{}]</td><td>An internal error was encountered.</td><td>Contact Informatica support. </td></tr>
 <tr>
-<td>SRS-10563-7: Received a Disconnect without having first received a SourceInfoRecord for sessionID[" + dRec.getSessionId() + "] topic[" + dRec.getDisplayTopic() + "] source[" + dRec.getDisplaySource() + "] OTID[" + dRec.getDisplayOTID() + "]</td><td>An unexpected internal state was encountered, but was handled.</td><td>No resolution required. If this happens frequently, contact Informatica support. </td></tr>
+<td>SRS-10563-68: MonitorInfoMessage: getInPrintFormat: monitorInfoCategoryName " +                                         monitorInfoCategory.getName() + ": " + connectionEventType.getName() + " is not expected</td><td>An internal error was encountered.</td><td>Contact Informatica support. </td></tr>
 <tr>
-<td>SRS-10563-8: Received a Disconnect without having first received a SourceInfoRecord for sessionID[" + dRec.getSessionId() + "] topic[" + dRec.getDisplayTopic() + "] source[" + dRec.getDisplaySource() + "] OTID[" + dRec.getDisplayOTID() + "]</td><td>An unexpected internal state was encountered, but was handled.</td><td>No resolution required. If this happens frequently, contact Informatica support. </td></tr>
+<td>SRS-10563-7: Received a Disconnect without having first received a SourceInfoRecord for sessionID[" +                         dRec.getSessionId() + "] topic[" + dRec.getComparisonSymbol() + "] source[" + dRec.getComparisonSource() +                         "] OTID[" + dRec.getDisplayOTID() + "]</td><td>An unexpected internal state was encountered, but was handled.</td><td>No resolution required. If this happens frequently, contact Informatica support. </td></tr>
+<tr>
+<td>SRS-10563-8: Received a Disconnect without having first received a SourceInfoRecord for sessionID[" +                     dRec.getSessionId() + "] topic[" + dRec.getComparisonSymbol() + "] source[" + dRec.getComparisonSource() +                     "] OTID[" + dRec.getDisplayOTID() + "]</td><td>An unexpected internal state was encountered, but was handled.</td><td>No resolution required. If this happens frequently, contact Informatica support. </td></tr>
 <tr>
 <td>SRS-10612-1: Failed to reschedule timer " +                         rescheduleSendMonitorInfoTimer.keyName + ". Reason: </td><td>Failed to reschedule a sending monitor info timer.</td><td>Contact Informatica support. </td></tr>
 <tr>
@@ -4241,7 +4321,129 @@ UM SRS Log Messages&nbsp;&nbsp;<small><a href="#umsrslogmessages">&lt;-</a></sma
 <tr>
 <td>SRS-10612-3: Failed to cancel timer " + keyName + ". Reason: </td><td>Failed to cancel a sending monitor info timer.</td><td>Contact Informatica support. </td></tr>
 <tr>
-<td>SRS-10612-4: SRS monitor info update was to be sent, but the LBM source is null</td><td>Cannot send SRS monitor info with null LBM source. The source was likely instantiated successfully, but then an unrelated error occurred which forced the closing of the source.</td><td><p class="starttd">Contact Informatica support.</p>
+<td>SRS-10612-4: SRS monitor info update was to be sent, but the LBM source is null</td><td>Cannot send SRS monitor info with null LBM source. The source was likely instantiated successfully, but then an unrelated error occurred which forced the closing of the source.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>SRS-10655-1: Received an unexpected [" + leaveRecord.toString() + "]</td><td>An unexpected internal state was encountered, but was handled.</td><td>No resolution required. If this happens frequently, contact Informatica support. </td></tr>
+<tr>
+<td>SRS-10655-2: Received a [" + leaveRecord.toString() + "] for which source info has been updated. " +                                     "Sending updated source info [" + currentSourceInfoRecord.toString() + "]</td><td>A client has requested specific source info as part of a connection recovery, but the source info was updated in the meantime.</td><td>No resolution required. </td></tr>
+<tr>
+<td>SRS-10696-10: Received a " + deleteRecord.toString() + " for which there is no SourceInfoRecord</td><td>An unexpected internal state was encountered, but was handled.</td><td>No resolution required. If this happens frequently, contact Informatica support. </td></tr>
+<tr>
+<td>SRS-10696-11: Received a " + deleteRecord.toString() + " for which there is no SourceInfoRecord</td><td>An unexpected internal state was encountered, but was handled.</td><td>No resolution required. If this happens frequently, contact Informatica support. </td></tr>
+<tr>
+<td>SRS-10696-12: Received a duplicate </td><td>Anrare internal state was encountered, but was handled. This state typically results from DROs briefly having more than one proxy source for a given originating source, usually due to a re-routing operation. This state normally resolves itself after a short time.</td><td>No resolution required. If this happens frequently, contact Informatica support. </td></tr>
+<tr>
+<td>SRS-10696-13: Received an unexpected </td><td>An unexpected internal state was encountered, but was handled.</td><td>No resolution required. If this happens frequently, contact Informatica support. </td></tr>
+<tr>
+<td>SRS-10696-14: Received an unexpected </td><td>An unexpected internal state was encountered, but was handled.</td><td>No resolution required. If this happens frequently, contact Informatica support. </td></tr>
+<tr>
+<td>SRS-10696-20: Attempted to " + deregisterReceiver.toString() + " which is unknown or already deregistered</td><td>An internal error was encountered.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>SRS-10696-5: Received a {} whose topic doesn't match the existing topic for this OTID. Found [{}]. Expected [{}]</td><td>An internal error was encountered.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>SRS-10696-7: Received a " + disconnectRecord.toString() + " for which there is no SourceInfoRecord</td><td>An unexpected internal state was encountered, but was handled.</td><td>No resolution required. If this happens frequently, contact Informatica support. </td></tr>
+<tr>
+<td>SRS-10696-8: Received a " + disconnectRecord.toString() + " for which there is no SourceInfoRecord</td><td>An unexpected internal state was encountered, but was handled.</td><td>No resolution required. If this happens frequently, contact Informatica support. </td></tr>
+<tr>
+<td>SRS-10704-10: Attempted to " + registerReceiver.toString() + " with an invalid registration type</td><td>An internal error was encountered.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>SRS-10704-11: Attempted to " + deregisterReceiver.toString() + " with an invalid registration type</td><td>An internal error was encountered.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>SRS-10704-12: Attempted to " + registerReceiver.toString() + " with null SymbolRecord</td><td>An internal error was encountered.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>SRS-10704-1: Unable to establish connection for sessionID[" + srsRegistration.getSessionId() +                             "] due to unsupported interestMode[" + srsRegistration.getInterestMode() +                             "]. Only supported interestMode[" + SRSMessage.LBM_SRS_INTEREST_MODE_FLOOD +                             " or " + SRSMessage.LBM_SRS_INTEREST_MODE_FILTER + "]</td><td>A client with an unsupported interest mode attempted to establish a connection with the SRS.</td><td>Change to a supported interest mode and try again. </td></tr>
+<tr>
+<td>SRS-10704-2: Unable to establish connection for sessionID[" + srsMessage.registration_request.session_id +                             "] due to unsupported appType[" + srsMessage.registration_request.app_type +                             "]. Only supported appType[" + SRSMessage.LBM_SRS_APP_TYPE_APPLICATION +                             " or " + SRSMessage.LBM_SRS_APP_TYPE_TNWGD + " or " + SRSMessage.LBM_SRS_APP_TYPE_STORE + "]</td><td>A client with an unsupported application type attempted to establish a connection with the SRS.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>SRS-10704-3: Establishing connection for client with sessionID[" + srsRegistration.getSessionId() +                     "] which is on an earlier protocolVersion[" + srsRegistration.getProtocolVersion() +                     "]. SRS is on protocolVersion[" + SRSMessage.LBM_SRS_PROTOCOL_VERSION + "]. Due to protocolVersion " +                     "mismatch, client will be connected in interestMode[" + SRSMessage.LBM_SRS_INTEREST_MODE_FLOOD + "]</td><td>A client with an earlier version is establishing a connection with the SRS.</td><td>If client uses earlier version by design, then no need to do anything. Otherwise, reconcile versions. </td></tr>
+<tr>
+<td>SRS-10704-4: Establishing connection for client with sessionID[" + srsRegistration.getSessionId() +                     "] which is on an earlier protocolVersion[" + srsRegistration.getProtocolVersion() +                     "]. SRS is on protocolVersion[" + SRSMessage.LBM_SRS_PROTOCOL_VERSION + "]</td><td>A client with an earlier version is establishing a connection with the SRS.</td><td>If client uses earlier version by design, then no need to do anything. Otherwise, reconcile versions. </td></tr>
+<tr>
+<td>SRS-10704-5: ClientActor" + clientId + " received a " + receiverDeleteRecord.toString() +                         " for which there is no corresponding ReceiverRegistration</td><td>An internal error was encountered.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>SRS-10715-1: Received a duplicate </td><td>An internal error was encountered.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>SRS-10719-10: Attempted to populate a message with an unknown ID </td><td>An internal error was encountered.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>SRS-10719-1: Attempted to send a record which should not be sent to clients</td><td>An internal error was encountered.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>SRS-10728-1: Failed to remove " + receiverDeleteRecord.toString() + " from RIR_CAR map</td><td>An internal error was encountered.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>SRS-10728-20: ClientActor" + clientId + " received a " + receiverDeleteRecord.toString() +                     " for which there is no corresponding RIR</td><td>An internal error was encountered.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>SRS-10728-2: Received a " + receiverDeleteRecord.toString() + " which could " +                             "not be paired with an RIR</td><td>An internal error was encountered.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>SRS-10728-3: Received a " + receiverDeleteRecord.toString() + " from a client actor " +                         "which has not sent an RIR</td><td>An internal error was encountered.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>SRS-10728-4: Received a " + receiverDeleteRecord.toString() + " for which there is " +                                     "no topic map entry</td><td>An internal error was encountered.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>SRS-10728-5: Received a " + receiverDeleteRecord.toString() + " for which there is no " +                     "corresponding RIR_CAR map entry</td><td>An internal error was encountered.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>SRS-10728-6: Attempted to " + deregisterReceiver.toString() + " for which there is no topic map entry</td><td>An internal error was encountered.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>SRS-10728-7: Attempted to " + deregisterReceiver.toString() + " with null SymbolRecord</td><td>An internal error was encountered.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>SRS-10728-8: Attempted to " + deregisterReceiver.toString() + " before TCP disconnect</td><td>An internal error was encountered.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>SRS-10745-10: Failed to match input[" + input + "] to pattern[" + pattern + "]. Reason: </td><td>An internal error was encountered.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>SRS-10745-1: Received a duplicate </td><td>An internal error was encountered.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>SRS-10745-20: Received duplicate </td><td>The SRS received a duplicate WIR.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>SRS-10745-2: Matched a wildcard receiver info record with null record consumer</td><td>An internal error was encountered.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>SRS-10745-30: Received duplicate </td><td>The SRS received a duplicate RIR.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>SRS-10745-3: Matched a wildcard receiver info record with null record consumer</td><td>An internal error was encountered.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>SRS-10745-4: Attempted to " + registerReceiver.toString() + " with a non-ReceiverInfoRecord</td><td>An internal error was encountered.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>SRS-10745-5: Attempted to " + deregisterReceiver.toString() + " with a non-ReceiverInfoRecord</td><td>An internal error was encountered.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>SRS-10757-1: Failed to remove " + wildcardReceiverDeleteRecord.toString() + " from WIR map</td><td>An internal error was encountered.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>SRS-10757-20: Received a " + wildcardReceiverDeleteRecord.toString() + " for which there is no " +                     "corresponding WIR</td><td>An internal error was encountered.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>SRS-10757-2: Received a " + wildcardReceiverDeleteRecord.toString() + " which could " +                             "not be paired with a WIR</td><td>An internal error was encountered.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>SRS-10757-3: Received a " + wildcardReceiverDeleteRecord.toString() + " from a client actor " +                         "which has not sent an WIR</td><td>An internal error was encountered.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>SRS-10757-4: Matched a wildcard receiver delete record with null record consumer</td><td>An internal error was encountered.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>SRS-10757-5: Received a " + wildcardReceiverDeleteRecord.toString() + " for which there is no " +                     "corresponding WIR map entry</td><td>An internal error was encountered.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>SRS-10770-1: Failed to remove " + receiverInfoRecord.toString() + " from RIR_CAR map</td><td>An internal error was encountered.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>SRS-10770-2: Failed to remove " + receiverInfoRecord.toString() + " from RIR_CAR map</td><td>An internal error was encountered.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>SRS-10770-3: Failed to remove " + wildcardReceiverInfoRecord.toString() + " from WIR_CAR map</td><td>An internal error was encountered.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>SRS-10770-4: Failed to remove " + wildcardReceiverInfoRecord.toString() + " from WIR_CAR map</td><td>An internal error was encountered.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>SRS-10848-11: Failed to schedule a " + CHECK + " timer. Reason: </td><td>Failed to schedule a "check inactive SIRs" timer.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>SRS-10848-12: Failed to schedule a " + CHECK + " timer. Reason: </td><td>Failed to schedule a "check inactive SIRs" timer.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>SRS-10848-1: Failed to schedule a " + CHECK_INACTIVE_SIRS +                         " timer. Reason: </td><td>Failed to schedule a "check inactive SIRs" timer.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>SRS-10848-21: Failed to schedule a " + CHECK + " timer. Reason: </td><td>Failed to schedule a "check record queue" timer.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>SRS-10848-2: Failed to schedule an " + SLR_BACKOFF_TIMER +                         ". Reason: </td><td>Failed to schedule an SLR backoff timer.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>SRS-10848-31: Failed to schedule a "request monitor info" timer. Reason: </td><td>Failed to schedule a "request monitor info" timer.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>SRS-10848-3: Failed to schedule a " + CHECK_INACTIVE_SIRS +                                     " timer. Reason: </td><td>Failed to schedule a "check inactive SIRs" timer.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>SRS-10848-4: Failed to schedule an " + SLR_BACKOFF_TIMER +                             ". Reason: </td><td>Failed to schedule an SLR backoff timer.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>SRS-10848-5: Failed to schedule a " + CHECK_INACTIVE_RIRS +                             " timer. Reason: </td><td>Failed to schedule a "check inactive RIRs" timer.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>SRS-10848-6: Failed to schedule a " + CHECK_INACTIVE_RIRS +                         " timer. Reason: </td><td>Failed to schedule a "check inactive RIRs" timer.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>SRS-10848-7: Failed to schedule a " + CHECK_INACTIVE_WIRS +                             " timer. Reason: </td><td>Failed to schedule a "check inactive WIRs" timer.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>SRS-10848-8: Failed to schedule a " + CHECK_INACTIVE_WIRS +                         " timer. Reason: </td><td>Failed to schedule a "check inactive WIRs" timer.</td><td><p class="starttd">Contact Informatica support.</p>
 <p class="endtd"></p>
 </td></tr>
 </table>
@@ -4321,7 +4523,7 @@ UM Dynamic Routing Log Messages&nbsp;&nbsp;<small><a href="#umdynamicroutinglogm
 <tr>
 <td>Gwd-10185-29: unknown portal type, d</td><td>Bad portal type specified in portal global structure</td><td></td></tr>
 <tr>
-<td>Gwd-10185-2: <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Operations/api.tag:../API/" href="../API/lbmaux_8h.html#ae7d92b1afb5b581a6b71a154448f89a7">lbmaux_context_attr_setopt_from_file()</a> failed, s</td><td>Failure while setting up extra config opts for DRO daemon monitor</td><td>Check attributes in "lbm-config" config file specified in the DRO's xml file </td></tr>
+<td>Gwd-10185-2: <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbmaux_8h.html#ae7d92b1afb5b581a6b71a154448f89a7">lbmaux_context_attr_setopt_from_file()</a> failed, s</td><td>Failure while setting up extra config opts for DRO daemon monitor</td><td>Check attributes in "lbm-config" config file specified in the DRO's xml file </td></tr>
 <tr>
 <td>Gwd-10185-30: error trying to retrieve endpoint portal stats data</td><td>Error trying to copy portal stats</td><td></td></tr>
 <tr>
@@ -4343,7 +4545,7 @@ UM Dynamic Routing Log Messages&nbsp;&nbsp;<small><a href="#umdynamicroutinglogm
 <tr>
 <td>Gwd-10185-39: tnwg_rm_info() returned an error</td><td>Failure accessing route manager info for route manager stat group</td><td></td></tr>
 <tr>
-<td>Gwd-10185-3: <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#ab67f641d5a0ad1a9fe53d415da58d961">lbm_context_attr_setopt()</a> failed, s</td><td>Failure setting up attributes for daemon monitor remote control handler</td><td></td></tr>
+<td>Gwd-10185-3: <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#ab67f641d5a0ad1a9fe53d415da58d961">lbm_context_attr_setopt()</a> failed, s</td><td>Failure setting up attributes for daemon monitor remote control handler</td><td></td></tr>
 <tr>
 <td>Gwd-10185-40: tnwg_rm_stat_grp_collect_portal_info() returned an error</td><td>Failure collecting portal info for route manager stat group</td><td></td></tr>
 <tr>
@@ -4356,10 +4558,6 @@ UM Dynamic Routing Log Messages&nbsp;&nbsp;<small><a href="#umdynamicroutinglogm
 <td>Gwd-10185-44: error returned from tnwg_rm_stat_grp_buffer_cleanup()</td><td>Failure encountered returning malloc'd buffers for route manager stat group</td><td></td></tr>
 <tr>
 <td>Gwd-10185-45: bad record type passed to tnwg_rm_stat_grp_insert_item_into_record() d</td><td>Bad route manager stat group sub group type</td><td></td></tr>
-<tr>
-<td>Gwd-10185-46: bad magic 0x04x</td><td>Route manager stat group record header corruption</td><td></td></tr>
-<tr>
-<td>Gwd-10185-47: error returned from <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a91f4b9cb04fe1323ec56833211cc5cb7">lbm_src_send()</a>, s</td><td>Failure attempting to sending send route manager stat group record through <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a91f4b9cb04fe1323ec56833211cc5cb7">lbm_src_send()</a></td><td></td></tr>
 <tr>
 <td>Gwd-10185-48: error returned from tnwg_rm_stat_grp_read()</td><td>Failure reading route manager stat group record</td><td></td></tr>
 <tr>
@@ -4381,31 +4579,29 @@ UM Dynamic Routing Log Messages&nbsp;&nbsp;<small><a href="#umdynamicroutinglogm
 <tr>
 <td>Gwd-10185-56: bad pointer to portal passed to tnwg_portalcfg_stat_grp_read()</td><td>Null pointer passed to tnwg_portalcfg_stat_grp_read()</td><td></td></tr>
 <tr>
-<td>Gwd-10185-57: <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a43f6029ad772e29b61c2a5c78f961073">lbm_context_attr_dump()</a> failed, s</td><td>Failure attempting to access portal config source context attributes from config tables</td><td></td></tr>
+<td>Gwd-10185-57: <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a43f6029ad772e29b61c2a5c78f961073">lbm_context_attr_dump()</a> failed, s</td><td>Failure attempting to access portal config source context attributes from config tables</td><td></td></tr>
 <tr>
-<td>Gwd-10185-58: <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a43f6029ad772e29b61c2a5c78f961073">lbm_context_attr_dump()</a> failed, s</td><td>Failure attempting to access portal config receiver context attributes from config tables</td><td></td></tr>
+<td>Gwd-10185-58: <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a43f6029ad772e29b61c2a5c78f961073">lbm_context_attr_dump()</a> failed, s</td><td>Failure attempting to access portal config receiver context attributes from config tables</td><td></td></tr>
 <tr>
-<td>Gwd-10185-59: <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a09bc0d170eadffe1eb1c30d421074125">lbm_event_queue_attr_dump()</a> failed, s</td><td>Failure attempting to access portal config event queue attributes from config tables</td><td></td></tr>
+<td>Gwd-10185-59: <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a09bc0d170eadffe1eb1c30d421074125">lbm_event_queue_attr_dump()</a> failed, s</td><td>Failure attempting to access portal config event queue attributes from config tables</td><td></td></tr>
 <tr>
 <td>Gwd-10185-5: unable to create src topic attributes: s</td><td>Error creating source attributes for daemon stats monitor</td><td></td></tr>
 <tr>
 <td>Gwd-10185-60: bad config type in tnwg_portalcfg_stat_grp_read() d</td><td>Invalid config type specified for Peer portal</td><td></td></tr>
 <tr>
-<td>Gwd-10185-61: <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a43f6029ad772e29b61c2a5c78f961073">lbm_context_attr_dump()</a> failed, s</td><td>Failure attempting to access portal config source context for endpoint portal</td><td></td></tr>
+<td>Gwd-10185-61: <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a43f6029ad772e29b61c2a5c78f961073">lbm_context_attr_dump()</a> failed, s</td><td>Failure attempting to access portal config source context for endpoint portal</td><td></td></tr>
 <tr>
-<td>Gwd-10185-62: <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a43f6029ad772e29b61c2a5c78f961073">lbm_context_attr_dump()</a> failed, s</td><td>Failure attempting to access endpoint portal config receiver context attributes from config table</td><td></td></tr>
+<td>Gwd-10185-62: <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a43f6029ad772e29b61c2a5c78f961073">lbm_context_attr_dump()</a> failed, s</td><td>Failure attempting to access endpoint portal config receiver context attributes from config table</td><td></td></tr>
 <tr>
-<td>Gwd-10185-63: <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a1d7722b39132940193205d6287c0a7f7">lbm_src_topic_attr_dump()</a> failed, s</td><td>Failure attempting to access endpoint portal config source attributes from config table</td><td></td></tr>
+<td>Gwd-10185-63: <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a1d7722b39132940193205d6287c0a7f7">lbm_src_topic_attr_dump()</a> failed, s</td><td>Failure attempting to access endpoint portal config source attributes from config table</td><td></td></tr>
 <tr>
-<td>Gwd-10185-64: <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a7a8f94b03c37c4481044d3c6b250bdb3">lbm_rcv_topic_attr_dump()</a> failed, s</td><td>Failure attempting to access endpoint portal config receiver attributes from config table</td><td></td></tr>
+<td>Gwd-10185-64: <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a7a8f94b03c37c4481044d3c6b250bdb3">lbm_rcv_topic_attr_dump()</a> failed, s</td><td>Failure attempting to access endpoint portal config receiver attributes from config table</td><td></td></tr>
 <tr>
-<td>Gwd-10185-65: <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a98dc9a9c6e5bfcf72222754f5179298d">lbm_wildcard_rcv_attr_dump()</a> failed, s</td><td>Failure attempting to access endpoint portal wildcard receiver attributes from config table</td><td></td></tr>
+<td>Gwd-10185-65: <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a98dc9a9c6e5bfcf72222754f5179298d">lbm_wildcard_rcv_attr_dump()</a> failed, s</td><td>Failure attempting to access endpoint portal wildcard receiver attributes from config table</td><td></td></tr>
 <tr>
-<td>Gwd-10185-66: <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a09bc0d170eadffe1eb1c30d421074125">lbm_event_queue_attr_dump()</a> failed, s</td><td>Failure attempting to access endpoint portal event queue attributes from config table</td><td></td></tr>
+<td>Gwd-10185-66: <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a09bc0d170eadffe1eb1c30d421074125">lbm_event_queue_attr_dump()</a> failed, s</td><td>Failure attempting to access endpoint portal event queue attributes from config table</td><td></td></tr>
 <tr>
 <td>Gwd-10185-67: bad portal type d</td><td>Invalid portal type</td><td></td></tr>
-<tr>
-<td>Gwd-10185-68: Failure from <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a91f4b9cb04fe1323ec56833211cc5cb7">lbm_src_send()</a>, s</td><td>Failure trying to publish portal config stats group record</td><td></td></tr>
 <tr>
 <td>Gwd-10185-69: Invalid record type d</td><td>Attempt to publish invalid stats group record type</td><td></td></tr>
 <tr>
@@ -4449,15 +4645,9 @@ UM Dynamic Routing Log Messages&nbsp;&nbsp;<small><a href="#umdynamicroutinglogm
 <tr>
 <td>Gwd-10185-88: unable to schedule timer for portal stats stat group s</td><td>Failure rescheduling callback timer for a portal type (cfg or stat) stat group</td><td></td></tr>
 <tr>
-<td>Gwd-10185-89: Unable to start daemon stats monitor</td><td>unable to start daemon stats monitor for gateway</td><td>Verify all daemon monitor related attributes are correct in xml and config files </td></tr>
+<td>Gwd-10185-89: Errors detected while initializing daemon stats monitor</td><td>Errors detected initilizaing daemon stats monitor for gateway</td><td>Verify all daemon monitor related attributes are correct in xml and config files </td></tr>
 <tr>
 <td>Gwd-10185-8: unable to create per portal info</td><td>Failure returned while creating per portal info in daemon stats monitor</td><td></td></tr>
-<tr>
-<td>Gwd-10185-90: tnwg_dstat_publish: s</td><td>UM was unable to publish dmon message.</td><td>Contact Informatica Support. </td></tr>
-<tr>
-<td>Gwd-10185-91: tnwg_publish_mallinfo: s</td><td>UM was unable to publish dmon message.</td><td>Contact Informatica Support. </td></tr>
-<tr>
-<td>Gwd-10185-92: tnwg_publish_gatewaycfg: s</td><td>UM was unable to publish dmon message.</td><td>Contact Informatica Support. </td></tr>
 <tr>
 <td>Gwd-10185-93: invalid DRO dmon message [s] from s [s]</td><td>UM dmon received an invalid/corrupted immediate message.</td><td>Verify that messages sent on the request port are valid. </td></tr>
 <tr>
@@ -4476,6 +4666,18 @@ UM Dynamic Routing Log Messages&nbsp;&nbsp;<small><a href="#umdynamicroutinglogm
 <td>Gwd-10185-9: unable to create route manager stat group</td><td>Failure returned while creating daemon monitor route manager stats group</td><td></td></tr>
 <tr>
 <td>Gwd-10434-1: Portal [s] removed enqueued messages due to Proxy Source delete</td><td>The named portal removed queued messages upon deleting the Proxy Source.</td><td>This is an informational message only. The Proxy Source was no longer needed and the queued messages were removed. </td></tr>
+<tr>
+<td>Gwd-10588-1: lbmaux_src_topic_setopt_from_file() failed, s</td><td>Failure while setting up source config opts for DRO daemon monitor</td><td>Check attributes in "lbm-config" config file specified in the DRO's xml file </td></tr>
+<tr>
+<td>Gwd-10763-1: Unable to create daemon stats sender thread: s</td><td>Failure to create sender thread for daemon stats</td><td>Contact Informatica Support. </td></tr>
+<tr>
+<td>Gwd-10763-2: tnwg_dstat_send_thread_create() error creating TL queue: s</td><td>Unable to create two-lock queue</td><td>Contact Informatica Support. </td></tr>
+<tr>
+<td>Gwd-10763-3: tnwg_dstat_send_thread_main(): Error while dequeueing</td><td>Error while dequeueing from TL queue</td><td>Contact Informatica Support. </td></tr>
+<tr>
+<td>Gwd-10763-4: tnwg_dstat_send_thread_main: Unable to publish message of type d: s</td><td>UM was unable to publish dmon message.</td><td>Contact Informatica Support. </td></tr>
+<tr>
+<td>Gwd-10763-5: tnwg_dstat_send_thread_create() error creating send thread: s</td><td>Unable to create two-lock queue</td><td>Contact Informatica Support. </td></tr>
 <tr>
 <td>Gwd-5688-4813: could not allocate u bytes [s:d]</td><td>The system was not able to allocate the amount of memory requested.</td><td>If the amount requested was particularly large, the problem may be a misconfiguration; however if the amount requested was relatively small, the physical memory on the machine may be over committed; try moving some applications to another machine. </td></tr>
 <tr>
@@ -4499,9 +4701,9 @@ UM Dynamic Routing Log Messages&nbsp;&nbsp;<small><a href="#umdynamicroutinglogm
 <tr>
 <td>Gwd-6033-353: endpoint portal [s] received one or more UIM control messages with no stream information - these will be dropped</td><td>This gateway has received messages from a client using an earlier version of the library that does not include stream information.</td><td>If this is expected behavior, this message can be ignored; otherwise the client should have its library upgraded. </td></tr>
 <tr>
-<td>Gwd-6033-367: endpoint portal [s] source context <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#ad9416b1f0b474b5d4c4f39bb3c4bda77">lbm_context_process_events()</a> failed [d]: s</td><td>The call to <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#ad9416b1f0b474b5d4c4f39bb3c4bda77">lbm_context_process_events()</a> for the source context has returned an error. The LBM error number and message has been supplied in the output.</td><td>Use the LBM error number and message as a cross reference to determine cause and resolution. </td></tr>
+<td>Gwd-6033-367: endpoint portal [s] source context <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#ad9416b1f0b474b5d4c4f39bb3c4bda77">lbm_context_process_events()</a> failed [d]: s</td><td>The call to <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#ad9416b1f0b474b5d4c4f39bb3c4bda77">lbm_context_process_events()</a> for the source context has returned an error. The LBM error number and message has been supplied in the output.</td><td>Use the LBM error number and message as a cross reference to determine cause and resolution. </td></tr>
 <tr>
-<td>Gwd-6033-368: endpoint portal [s] receive context <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#ad9416b1f0b474b5d4c4f39bb3c4bda77">lbm_context_process_events()</a> failed [d]: s</td><td>The call to <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#ad9416b1f0b474b5d4c4f39bb3c4bda77">lbm_context_process_events()</a> for the receive context has returned an error. The LBM error number and message has been supplied in the output.</td><td>Use the LBM error number and message as a cross reference to determine cause and resolution. </td></tr>
+<td>Gwd-6033-368: endpoint portal [s] receive context <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#ad9416b1f0b474b5d4c4f39bb3c4bda77">lbm_context_process_events()</a> failed [d]: s</td><td>The call to <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#ad9416b1f0b474b5d4c4f39bb3c4bda77">lbm_context_process_events()</a> for the receive context has returned an error. The LBM error number and message has been supplied in the output.</td><td>Use the LBM error number and message as a cross reference to determine cause and resolution. </td></tr>
 <tr>
 <td>Gwd-6033-593: peer portal [s] received one or more UIM control messages with no stream information - these will be dropped</td><td>This gateway has received messages from a client using an earlier version of the library that does not include stream information.</td><td>If this is expected behavior, this message can be ignored; otherwise the client should have its library upgraded. </td></tr>
 <tr>
@@ -4665,7 +4867,7 @@ UM Dynamic Routing Log Messages&nbsp;&nbsp;<small><a href="#umdynamicroutinglogm
 <tr>
 <td>Gwd-6361-67: portal [s] failed to join psm evq thread, s</td><td>UM has failed to join an event queue dispatch thread.</td><td>Contact Informatica Support. </td></tr>
 <tr>
-<td>Gwd-6361-69: portal [s] psm evq <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#ac06b127bae882dd5fb68b7044fdceb5f">lbm_event_dispatch()</a> failed, s</td><td>An error occurred while attempting to process events off an internal event queue.</td><td>Contact Informatica Support. </td></tr>
+<td>Gwd-6361-69: portal [s] psm evq <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#ac06b127bae882dd5fb68b7044fdceb5f">lbm_event_dispatch()</a> failed, s</td><td>An error occurred while attempting to process events off an internal event queue.</td><td>Contact Informatica Support. </td></tr>
 <tr>
 <td>Gwd-6361-6: endpoint portal [s] failed to schedule remote domain topic check timer [d]: s</td><td>An error occurred while attempting to schedule an internal timer.</td><td>Contact Informatica Support </td></tr>
 <tr>
@@ -4673,7 +4875,7 @@ UM Dynamic Routing Log Messages&nbsp;&nbsp;<small><a href="#umdynamicroutinglogm
 <tr>
 <td>Gwd-6361-72: TNWG PRM processing failed [d]: s</td><td>An error occurred while attempting to process an internal interest notification.</td><td>Contact Informatica Support. </td></tr>
 <tr>
-<td>Gwd-6361-73: portal [s] prm evq <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#ac06b127bae882dd5fb68b7044fdceb5f">lbm_event_dispatch()</a> failed, s</td><td>An error occurred while attempting to process events off an internal event queue.</td><td>Contact Informatica Support. </td></tr>
+<td>Gwd-6361-73: portal [s] prm evq <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#ac06b127bae882dd5fb68b7044fdceb5f">lbm_event_dispatch()</a> failed, s</td><td>An error occurred while attempting to process events off an internal event queue.</td><td>Contact Informatica Support. </td></tr>
 <tr>
 <td>Gwd-6361-74: route recalculation took u.%06u seconds</td><td>Running route recalculations took the indicated amount of time to complete.</td><td>Nothing. This is purely informational. </td></tr>
 <tr>
@@ -4681,9 +4883,9 @@ UM Dynamic Routing Log Messages&nbsp;&nbsp;<small><a href="#umdynamicroutinglogm
 <tr>
 <td>Gwd-6361-77: loop count == d</td><td>You're running a build of the gateway with TNWG_RM_LOOP_COUNT defined in tnwgrm.c.</td><td>Contact Informatica Support </td></tr>
 <tr>
-<td>Gwd-6361-78: rm evq <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#ac06b127bae882dd5fb68b7044fdceb5f">lbm_event_dispatch()</a> failed, s</td><td>An error occurred while attempting to process events off an internal event queue.</td><td>Contact Informatica Support </td></tr>
+<td>Gwd-6361-78: rm evq <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#ac06b127bae882dd5fb68b7044fdceb5f">lbm_event_dispatch()</a> failed, s</td><td>An error occurred while attempting to process events off an internal event queue.</td><td>Contact Informatica Support </td></tr>
 <tr>
-<td>Gwd-6361-79: rm ctx <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#ad9416b1f0b474b5d4c4f39bb3c4bda77">lbm_context_process_events()</a> failed, s</td><td>An error occurred while attempting to process events on an internal context.</td><td>Contact Informatica Support </td></tr>
+<td>Gwd-6361-79: rm ctx <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#ad9416b1f0b474b5d4c4f39bb3c4bda77">lbm_context_process_events()</a> failed, s</td><td>An error occurred while attempting to process events on an internal context.</td><td>Contact Informatica Support </td></tr>
 <tr>
 <td>Gwd-6361-7: endpoint portal [s] failed to schedule remote domain pattern check timer [d]: s</td><td>An error occurred while attempting to schedule an internal timer.</td><td>Contact Informatica Support </td></tr>
 <tr>
@@ -5011,7 +5213,11 @@ UM Dynamic Routing Log Messages&nbsp;&nbsp;<small><a href="#umdynamicroutinglogm
 UM Lbmrd Log Messages&nbsp;&nbsp;<small><a href="#umlbmrdlogmessages">&lt;-</a></small></h1>
 <center> <table class="doxtable">
 <tr>
-<td>Lbmrd-10492-1: Using interface [s] </td><td>An interface was specified for the lbmrd and the IP address it will bind to is indicated.</td><td>The message is for your information </td></tr>
+<td>Lbmrd-10492-1: Using interface [s] </td><td>A generic interface was specified for the lbmrd, the IP address it will bind to is indicated.</td><td>The message is for your information </td></tr>
+<tr>
+<td>Lbmrd-10729-1: Invalid interface [s] specified: [s] </td><td>An invalid interface configuration was specified for the lbmrd.</td><td>Specify a valid interface for the Lbmrd (using XML configuration or the -i command line option) </td></tr>
+<tr>
+<td>Lbmrd-10729-2: Error duplicating default interface string</td><td>A string duplication operation to pick a valid interface for the lbmrd failed.</td><td>Memory on the host may be over committed; try moving some applications to another machine. </td></tr>
 <tr>
 <td>Lbmrd-5466-1: LBMR Extended Type 0xx incorrect (s.d len d). [s]. Dropping.</td><td>Received a LBMR message with an unrecognized value in the extended type field.</td><td>Check if the port range of other LBM protocols like RU overlaps with those used by LBMR. </td></tr>
 <tr>
@@ -5029,7 +5235,7 @@ UM Lbmrd Log Messages&nbsp;&nbsp;<small><a href="#umlbmrdlogmessages">&lt;-</a><
 UM Persistent Store Log Messages&nbsp;&nbsp;<small><a href="#umpersistentstorelogmessages">&lt;-</a></small></h1>
 <center> <table class="doxtable">
 <tr>
-<td>Store-10184-08: dmon evq <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#ac06b127bae882dd5fb68b7044fdceb5f">lbm_event_dispatch()</a> failed, s</td><td>An error occurred while attempting to process events off an internal event queue.</td><td>Contact Informatica Support. </td></tr>
+<td>Store-10184-08: dmon evq <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#ac06b127bae882dd5fb68b7044fdceb5f">lbm_event_dispatch()</a> failed, s</td><td>An error occurred while attempting to process events off an internal event queue.</td><td>Contact Informatica Support. </td></tr>
 <tr>
 <td>Store-10184-100: failed to create dmon ctx attr: s</td><td>UM was unable to create context attributes.</td><td>Contact Informatica Support. </td></tr>
 <tr>
@@ -5047,7 +5253,7 @@ UM Persistent Store Log Messages&nbsp;&nbsp;<small><a href="#umpersistentstorelo
 <tr>
 <td>Store-10184-144: could not enqueue repo create</td><td>In a reduced-fd RPP repository, during the re-start( following a shutdown, or crash), UM could not enqueue repo create.</td><td>Contact customer support with the log file. </td></tr>
 <tr>
-<td>Store-10184-60: WARNING: invalid store dmon message [s] from s [s]</td><td>UM dmon received an invalid/corrupted immediate message.</td><td>Verify that messages sent on the request port are valid. </td></tr>
+<td>Store-10184-60: WARNING: store dmon message [s] from s [s]</td><td>UM dmon received an invalid/corrupted immediate message.</td><td>Verify that messages sent on the request port are valid. </td></tr>
 <tr>
 <td>Store-10184-61: Store dmon failed to send error response [s]</td><td>UM could not respond to a dmon immediate message.</td><td>Contact Informatica Support. </td></tr>
 <tr>
@@ -5087,7 +5293,43 @@ UM Persistent Store Log Messages&nbsp;&nbsp;<small><a href="#umpersistentstorelo
 <tr>
 <td>Store-10366-1: Created daemon monitor thread: id[s]</td><td>The store created the daemon monitor thread with the reported thread id.</td><td>This is for informational purposes only and can be ignored. </td></tr>
 <tr>
+<td>Store-10664-100: CPU affinity environment variable [UME_CPU_AFFINITY] list failed to parse; string length exceeded d characters</td><td>The length of the CPU affinity list string used for pinning assignments exceeded the max length of 2048 characters.</td><td>Reduce the length of the CPU string and try again. </td></tr>
+<tr>
+<td>Store-10664-101: invalid process CPU affinity environment variable [UME_CPU_AFFINITY]; valid CPU numbers for this host are between 0 and d.</td><td>The CPU affinity list string must be a comma separated list of one or more positive integers in the reported CPU range.</td><td>Reformat the CPU list and try again. </td></tr>
+<tr>
+<td>Store-10664-1: Initial CPU assignment: d</td><td>The store daemon was initially assigned the reported CPU affinity.</td><td>This is for informational purposes only and can be ignored. </td></tr>
+<tr>
+<td>Store-10664-2: Failed to obtain process thread affinity errno [d]</td><td>The attempt to obtain daemon process CPU affinity failed.</td><td>More than likely the daemon process lacks the appropriate privileges to perform the operation. Enable privileges and try again. </td></tr>
+<tr>
+<td>Store-10664-3: Initial CPU process affinity mask: s</td><td>The store daemon was affinitized according to the reported CPU affinity mask ordered from lowest to highest CPU number.</td><td>This is for informational purposes only and can be ignored. </td></tr>
+<tr>
+<td>Store-10664-4: Failed to set process thread affinity errno [d]</td><td>The attempt to set daemon process CPU affinity failed.</td><td>More than likely the daemon process lacks the appropriate privileges to perform the operation. Enable privileges and try again. </td></tr>
+<tr>
+<td>Store-10664-5: Failed to obtain process thread affinity errno [d]</td><td>The attempt to obtain daemon process CPU affinity failed.</td><td>More than likely the daemon process lacks the appropriate privileges to perform the operation. Enable privileges and try again. </td></tr>
+<tr>
+<td>Store-10664-6: Updated CPU process affinity mask: s</td><td>The store daemon affinity was updated according to the reported CPU affinity mask.</td><td>This is for informational purposes only and can be ignored. </td></tr>
+<tr>
+<td>Store-10664-7: Failed to assign thread id [lu] affinity to CPU [d] error code [d]</td><td>The attempt to assign the reported CPU affinity to the reported thread ID failed.</td><td>More than likely the daemon process lacks the appropriate privileges to perform the operation. Enable privileges and try again. </td></tr>
+<tr>
+<td>Store-10664-8: Affinitized thread id [lu] to CPU [d]</td><td>The reported CPU affinity was successfully assigned to the receiving context thread.</td><td>This is for informational purposes only and can be ignored. </td></tr>
+<tr>
+<td>Store-10682-1: lbm_shutdown_log: WFSO res=d, GLE=d</td><td>An error was encountered while deleting the auxiliary sending thread</td><td>Check store log of other errors </td></tr>
+<tr>
+<td>Store-10682-2: Created auxiliary sending thread: id[s]</td><td>The store created the auxiliary sending thread with the reported thread id.</td><td>This is for informational purposes only and can be ignored. </td></tr>
+<tr>
+<td>Store-10690-01: Store dmon command received [s] from [s]</td><td>Store daemon monitor command received.</td><td>This is an information message only. </td></tr>
+<tr>
+<td>Store-10690-02: Store dmon command response [s]</td><td>Store daemon monitor command response.</td><td>This is an information message only. </td></tr>
+<tr>
+<td>Store-10708-1: lbm_context_attr_setopt - receive_batch_notification_function: s</td><td>Failed to enable receive_batch_notification_function feature.</td><td>Check for resource exhaustion, out of memory errors, etc. </td></tr>
+<tr>
 <td>Store-10761-01: s</td><td>Informational legal statement</td><td>No action is required. </td></tr>
+<tr>
+<td>Store-10805-1: lbmaux_src_topic_attr_setopt_from_file: s error: s</td><td>UM was unable to set context attributes from specified file.</td><td>Verify the path to the configuration file. </td></tr>
+<tr>
+<td>Store-10807-100: store [s] PREG RESP s Session ID u RegID u SQN[u:u]</td><td>A PREG Response is being sent to a source or receiver.</td><td>No further action is required. </td></tr>
+<tr>
+<td>Store-2179-1: store "%s" topic "%s" is dropping requests for retransmissions of messages persisted to disk. Increase the value of repository-disk-max-read-async-cbs to improve the rate of recovery.</td><td>A retransmit request at the store was dropped because the number of outstanding disk reads was greater than repository-disk-max-read-async-cbs.</td><td>Increase the value of repository-disk-max-read-async-cbs. </td></tr>
 <tr>
 <td>Store-5116-2: WARNING: aio_proactor aio_error u</td><td>An AIO system error encountered. This could happen when asynchronous read or write to the disk fails.</td><td>Check the store log file for a detailed error description. </td></tr>
 <tr>
@@ -5269,12 +5511,6 @@ UM Persistent Store Log Messages&nbsp;&nbsp;<small><a href="#umpersistentstorelo
 <tr>
 <td>Store-6034-11: queue "%s" client re-create error: client reg ID x could not be re-created</td><td>A client could not be re-created upon reading a context registration event from the SINC log. Something probably went really wrong - malloc failed, etc.</td><td>Contact Informatica support. </td></tr>
 <tr>
-<td>Store-6034-3: queue "%s" receiver registration error: topic "%s" could not create receiver</td><td>A UMQ receiver could not be created - this probably means malloc failed or something else went terribly wrong.</td><td>Contact Informatica support. </td></tr>
-<tr>
-<td>Store-6034-4: could not create queue SID ctlr</td><td>The UMQ session ID controller could not be created; this probably means malloc failed.</td><td>Contact Informatica support. </td></tr>
-<tr>
-<td>Store-6034-5: queue "%s" log read RCV REG topic RCR_IDX x unknown</td><td>A receiver registration event was read in from the SINC log file that is for a topic that is not currently configured in the queue.</td><td>Did the configured topics change in between runs of the queue? Changing queue configuration in between runs without clearing out old SINC log files is not supported. If configured topics did not change, contact Informatica support. </td></tr>
-<tr>
 <td>Store-6034-6: queue "%s" receiver recreate error: registration ID not found</td><td>A receiver registration event was read in from the SINC log file without a corresponding initial client registration - most likely the SINC log file is corrupt.</td><td>Contact Informatica support. </td></tr>
 <tr>
 <td>Store-6034-7: queue "%s" receiver re-create error: topic "%s" receiver-type ID u not understood</td><td>A receiver registration event was read in from the SINC log file that is for a receiver type ID that is not currently configured in the queue.</td><td>Did the configured receiver type IDs change in between runs of the queue? Changing queue configuration in between runs without clearing out old SINC log files is not supported. If configured receiver type IDs did not change, contact Informatica support. </td></tr>
@@ -5297,9 +5533,9 @@ UM Persistent Store Log Messages&nbsp;&nbsp;<small><a href="#umpersistentstorelo
 <tr>
 <td>Store-6241-3: error occurred while evaluating message selector s</td><td>An error occurred while evaluating the message selector during assignment for this receiver and message</td><td>Look for previous error messages in the log regarding message selector evaluation problems </td></tr>
 <tr>
-<td>Store-6246-100: Store "%s" topic "%s" SRC Session ID u RegID u registering with an invalid ume_flightsz_bytes value.</td><td>registration with invalid ume_flightsz_bytes value</td><td>check config </td></tr>
+<td>Store-6246-100: Store "%s" topic "%s" SRC Session ID u RegID u registering with an invalid ume_flight_size_bytes value.</td><td>registration with invalid ume_flight_size_bytes value</td><td>check config </td></tr>
 <tr>
-<td>Store-6246-1: Store "%s" topic "%s" SRC Session ID u RegID u re-registering with a different ume_flightsz_bytes value.</td><td>reregistration with invalid ume_flightsz_bytes value</td><td>cannot change config values and re-register </td></tr>
+<td>Store-6246-1: Store "%s" topic "%s" SRC Session ID u RegID u re-registering with a different ume_flight_size_bytes value.</td><td>reregistration with invalid ume_flight_size_bytes value</td><td>cannot change config values and re-register </td></tr>
 <tr>
 <td>Store-6246-2000: store "%s" topic "%s" source SesnID 0xx RegID u repository-size-threshold is greater than repository-size-limit</td><td>Repository size threshold is greater than repository size limit</td><td>Check config </td></tr>
 <tr>
@@ -5477,8 +5713,6 @@ UM Persistent Store Log Messages&nbsp;&nbsp;<small><a href="#umpersistentstorelo
 <tr>
 <td>Store-8079-8: Created reduced-fd I/O thread: id[s]</td><td>The store created the reduced-fd I/O thread with the reported thread id.</td><td>This is for informational purposes only and can be ignored. </td></tr>
 <tr>
-<td>Store-8079-9: Created umq send thread: id[s]</td><td>The store created a umq send thread with the reported thread id.</td><td>This is for informational purposes only and can be ignored. </td></tr>
-<tr>
 <td>Store-8106-1: Store "%s" using port u from range context request_tcp_port_low (u) - request_tcp_port_high (u).</td><td>User specified 0 for the store port. This means that it will be started on a port selected from within the context request_tcp_port_low - request_tcp_port_high range.</td><td>Normal operation, no action needed. </td></tr>
 <tr>
 <td>Store-8192-1: store "%s" Original Source Paced Persistence(SPP) receiver attempting to re-register to a non-RPP topic as a RPP receiver</td><td>A receiver that has registered as an non-RPP receiver is currently attempting to re-register as an RPP receiver. This is not allowed.</td><td>The receiver is misconfigured. </td></tr>
@@ -5580,12 +5814,6 @@ UM Persistent Store Log Messages&nbsp;&nbsp;<small><a href="#umpersistentstorelo
 <td>StoreApi-10184-47: could not enqueue rcv create</td><td>UM could not enqueue rcv create.</td><td>Contact Informatica Support. </td></tr>
 <tr>
 <td>StoreApi-10184-48: could not enqueue rcv delete</td><td>UM could not enqueue rcv delete.</td><td>Contact Informatica Support. </td></tr>
-<tr>
-<td>StoreApi-5867-10: error occurred parsing message selector string &lt;s&gt;</td><td>The message selector string is invalid or could not be parsed.</td><td>Please check the UM Documentation for valid syntax. </td></tr>
-<tr>
-<td>StoreApi-5867-11: parsing error occurred while updating the message selector with string &lt;s&gt;</td><td>The message selector string is invalid or could not be parsed.</td><td>Please check the UM Documentation for valid syntax. </td></tr>
-<tr>
-<td>StoreApi-5867-12: parsing error occurred while creating a message selector with string &lt;s&gt;</td><td>The message selector string is invalid or could not be parsed.</td><td>Please check the UM Documentation for valid syntax. </td></tr>
 <tr>
 <td>StoreApi-5867-6: could not insert umq_topic_appset_t skipped rcv list ASL [s:d]</td><td>An internal error occurred during ASL insertion</td><td>Look for previous error messages in the log such as a malloc error </td></tr>
 <tr>

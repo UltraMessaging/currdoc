@@ -14,7 +14,8 @@ var NAVTREEINDEX0 =
 "index.html#compatibilityincludepreum60behaviorcontext":[8,0,1],
 "index.html#compressedtcpref":[25,0],
 "index.html#compressioncontext":[25,0,0],
-"index.html#configurationfiles":[0,0,5],
+"index.html#configurationerrorhandling":[0,0,4],
+"index.html#configurationfiles":[0,0,6],
 "index.html#configurationoverview":[0,0],
 "index.html#configurenewportdefaults":[4,7],
 "index.html#configuringmultihomedhosts":[7,0],
@@ -102,7 +103,7 @@ var NAVTREEINDEX0 =
 "index.html#hfoptionalmessagesreceiver":[39,0,6],
 "index.html#hfreceiverwildcardreceiver":[39,0,7],
 "index.html#highestthroughput":[4,0],
-"index.html#hostnameresolution":[0,0,4],
+"index.html#hostnameresolution":[0,0,5],
 "index.html#hotfailoveroperationref":[39,0],
 "index.html#immediatemessagereceiverfunctioncontext":[28,0,0],
 "index.html#immediatemessagetopicreceiverfunctioncontext":[28,0,1],
@@ -248,6 +249,5 @@ var NAVTREEINDEX0 =
 "index.html#resolutionnumberofsourcesquerythresholdreceiver":[9,1,2],
 "index.html#resolveractivesourceintervalcontext":[41,0,9],
 "index.html#resolveractivethresholdcontext":[41,0,10],
-"index.html#resolveradvertisementmaximuminitialintervalsource":[9,1,3],
-"index.html#resolveradvertisementminimuminitialdurationsource":[9,1,4]
+"index.html#resolveradvertisementmaximuminitialintervalsource":[9,1,3]
 };

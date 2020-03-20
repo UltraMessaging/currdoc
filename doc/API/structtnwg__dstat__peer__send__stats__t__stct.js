@@ -32,7 +32,7 @@ var structtnwg__dstat__peer__send__stats__t__stct =
     [ "gateway_cntl_msgs_dropped_queue_failure", "structtnwg__dstat__peer__send__stats__t__stct.html#a5e507b5aa1e7065b1ba3ec236b999293", null ],
     [ "gateway_cntl_msgs_dropped_would_block", "structtnwg__dstat__peer__send__stats__t__stct.html#a439333069fb32d43f7338665796898eb", null ],
     [ "gateway_cntl_msgs_sent", "structtnwg__dstat__peer__send__stats__t__stct.html#a5b5910cb3ceab382cb3b03a7ea0bd9df", null ],
-    [ "last_ka_time", "structtnwg__dstat__peer__send__stats__t__stct.html#a6e01df87268da05cbee64562169767eb", null ],
+    [ "last_ka_time", "structtnwg__dstat__peer__send__stats__t__stct.html#a3c137167bbc795782afd4f2632e7aafb", null ],
     [ "rtt_max", "structtnwg__dstat__peer__send__stats__t__stct.html#a73b36fe3dc4919232f9eba4f31dd3d3a", null ],
     [ "rtt_mean", "structtnwg__dstat__peer__send__stats__t__stct.html#aa8f77f75a3548f235ce6ada5be468c32", null ],
     [ "rtt_min", "structtnwg__dstat__peer__send__stats__t__stct.html#a4f3c8c60587a8f2045848965c76d9a9e", null ],

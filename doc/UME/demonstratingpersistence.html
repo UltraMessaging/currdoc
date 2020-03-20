@@ -80,7 +80,10 @@ Start the store. <br />
 <code>$ umestored ume-example-config.xml</code> </li>
 </ol>
 <p>You should see no output if the store started successfully. However, you should find a new log file, ume-example-stored.log, in the directory you ran the store in. The first couple lines should look similar to below.</p>
-<div class="fragment"><div class="line">Fri Feb 01 07:34:28 2009 [INFO]: Latency Busters Persistent Store version 2.0</div><div class="line">Fri Feb 01 07:34:28 2009 [INFO]: LBM 3.3 [UME-2.0] Build: Jan 31 2009, 02:10:43</div><div class="line">( DEBUG license LBT-RM LBT-RU ) WC[PCRE 6.7 04-Jul-2006, appcb]</div></div><!-- fragment --><p>You'll also be able to view the store's web monitor. Open a web browser and go to: <code><a href="http://127.0.0.1:15304/">http://127.0.0.1:15304/</a></code></p>
+<pre class="fragment">Fri Feb 01 07:34:28 2009 [INFO]: Latency Busters Persistent Store version 2.0
+Fri Feb 01 07:34:28 2009 [INFO]: LBM 3.3 [UME-2.0] Build: Jan 31 2009, 02:10:43
+( DEBUG license LBT-RM LBT-RU ) WC[PCRE 6.7 04-Jul-2006, appcb]
+</pre><p>You'll also be able to view the store's web monitor. Open a web browser and go to: <code><a href="http://127.0.0.1:15304/">http://127.0.0.1:15304/</a></code></p>
 <p>You should see the store's web monitor page, which is a diagnostic and monitoring tool for the UM store. See <a class="el" href="storewebmonitor.html">Store Web Monitor</a>.</p>
 <p><br />
  </p>
@@ -95,14 +98,25 @@ Start the Receiver. <br />
 Start the Source. <br />
 <code>$ ume-example-src-3.exe</code> </li>
 </ol>
-<p>You should see output for the source similar to the following: </p><div class="fragment"><div class="line">saving RegID info to <span class="stringliteral">&quot;UME-example-src-RegID&quot;</span> - 127.0.0.1:14567:2795623327</div></div><!-- fragment --><p>You should see output for the receiver similar to the following:</p>
-<div class="fragment"><div class="line">UME Store 0: 127.0.0.1:14567 [TCP:169.254.97.160:14371][2795623327] Requesting RegID: 0</div><div class="line">saving RegID info to <span class="stringliteral">&quot;UME-example-rcv-RegID&quot;</span> - 127.0.0.1:14567:2795623327:2795623328</div><div class="line">Received 15 bytes on topic UME Example (sequence number 0) <span class="stringliteral">&#39;UME Message 01&#39;</span></div><div class="line">Received 15 bytes on topic UME Example (sequence number 1) <span class="stringliteral">&#39;UME Message 02&#39;</span></div><div class="line">Received 15 bytes on topic UME Example (sequence number 2) <span class="stringliteral">&#39;UME Message 03&#39;</span></div><div class="line">Received 15 bytes on topic UME Example (sequence number 3) <span class="stringliteral">&#39;UME Message 04&#39;</span></div><div class="line">...</div></div><!-- fragment --><p>The example source sends 20 messages. After the 20th messages, both the source and receiver exit and print:<code> &lt;br&gt;</code>removing saved RegID file...` <br />
+<p>You should see output for the source similar to the following: </p><pre class="fragment">saving RegID info to "UME-example-src-RegID" - 127.0.0.1:14567:2795623327
+</pre><p>You should see output for the receiver similar to the following:</p>
+<pre class="fragment">UME Store 0: 127.0.0.1:14567 [TCP:169.254.97.160:14371][2795623327] Requesting RegID: 0
+saving RegID info to "UME-example-rcv-RegID" - 127.0.0.1:14567:2795623327:2795623328
+Received 15 bytes on topic UME Example (sequence number 0) 'UME Message 01'
+Received 15 bytes on topic UME Example (sequence number 1) 'UME Message 02'
+Received 15 bytes on topic UME Example (sequence number 2) 'UME Message 03'
+Received 15 bytes on topic UME Example (sequence number 3) 'UME Message 04'
+...
+</pre><p>The example source sends 20 messages. After the 20th messages, both the source and receiver exit and print:<code> &lt;br&gt;</code>removing saved RegID file...` <br />
 So what just happened? Let's walk through the output line by line.</p>
 <p><b>Source</b></p>
-<div class="fragment"><div class="line">saving RegID info to <span class="stringliteral">&quot;UME-example-src-RegID&quot;</span> - 127.0.0.1:14567:2795623327</div></div><!-- fragment --><p>The source successfully registered with the store using its pre-configured store address and port of 127.0.0.1:14567. It didn't ask for a specific RegID from the store, so the store automatically assigned one to it. In this case, the store assigned the ID, 2795623327. Your source's ID will likely be different because stores assign random RegIDs.</p>
+<pre class="fragment">saving RegID info to "UME-example-src-RegID" - 127.0.0.1:14567:2795623327
+</pre><p>The source successfully registered with the store using its pre-configured store address and port of 127.0.0.1:14567. It didn't ask for a specific RegID from the store, so the store automatically assigned one to it. In this case, the store assigned the ID, 2795623327. Your source's ID will likely be different because stores assign random RegIDs.</p>
 <p>If you run the test again, you'll notice the source application has written a file named '<code>UME-example-src-RegID</code>' that contains the same information the source printed on startup, namely the IP address and port of the store it registered with, along with its RegID assigned by the store.</p>
 <p><b>Receiver</b></p>
-<div class="fragment"><div class="line">UME Store 0: 127.0.0.1:14567 [TCP:169.254.97.160:14371][2795623327] Requesting RegID: 0</div><div class="line">saving RegID info to <span class="stringliteral">&quot;UME-example-rcv-RegID&quot;</span> - 127.0.0.1:14567:2795623327:2795623328</div></div><!-- fragment --><p>The receiver has been informed of how to connect to the store by the source, and it also successfully registered with the store. The store's IP address and port are shown, followed by the source's unique identifier string (in this case, it's a TCP source on port 14371), and the source's RegID. The receiver then requests RegID 0 from the store, which is a special value that means pick an ID for me (Although not displayed, the source requested ID 0 when it started up as well).</p>
+<pre class="fragment">UME Store 0: 127.0.0.1:14567 [TCP:169.254.97.160:14371][2795623327] Requesting RegID: 0
+saving RegID info to "UME-example-rcv-RegID" - 127.0.0.1:14567:2795623327:2795623328
+</pre><p>The receiver has been informed of how to connect to the store by the source, and it also successfully registered with the store. The store's IP address and port are shown, followed by the source's unique identifier string (in this case, it's a TCP source on port 14371), and the source's RegID. The receiver then requests RegID 0 from the store, which is a special value that means pick an ID for me (Although not displayed, the source requested ID 0 when it started up as well).</p>
 <p>In parallel with the source application, the receiver application writes its RegID with this store to the file, <code>UME-example-rcv-RegID</code>.</p>
 <p>After sending 20 messages under normal, stable conditions, the source and receiver applications exit and remove their RegID files.</p>
 <p><br />
@@ -118,7 +132,13 @@ Single Receiver Fails and Recovers&nbsp;&nbsp;<small><a href="#singlereceiverfai
 </li>
 <li>
 <p class="startli">Start the source. Let it run for a few seconds so the receiver gets a few messages.</p>
-<div class="fragment"><div class="line">$ ume-example-src-3.exe</div><div class="line">UME Store 0: 127.0.0.1:14567 [TCP:169.254.97.160:14371][3735579353] Requesting RegID: 0</div><div class="line">saving RegID info to <span class="stringliteral">&quot;UME-example-rcv-RegID&quot;</span> - 127.0.0.1:14567:3735579353:3735579354</div><div class="line">Received 15 bytes on topic UME Example (sequence number 0) <span class="stringliteral">&#39;UME Message 01&#39;</span></div><div class="line">Received 15 bytes on topic UME Example (sequence number 1) <span class="stringliteral">&#39;UME Message 02&#39;</span></div><div class="line">Received 15 bytes on topic UME Example (sequence number 2) <span class="stringliteral">&#39;UME Message 03&#39;</span></div></div><!-- fragment --><p class="endli"></p>
+<pre class="fragment">$ ume-example-src-3.exe
+UME Store 0: 127.0.0.1:14567 [TCP:169.254.97.160:14371][3735579353] Requesting RegID: 0
+saving RegID info to "UME-example-rcv-RegID" - 127.0.0.1:14567:3735579353:3735579354
+Received 15 bytes on topic UME Example (sequence number 0) 'UME Message 01'
+Received 15 bytes on topic UME Example (sequence number 1) 'UME Message 02'
+Received 15 bytes on topic UME Example (sequence number 2) 'UME Message 03'
+</pre><p class="endli"></p>
 </li>
 <li>
 <p class="startli">Stop the receiver (Ctrl/C) and leave the source running. Wait a few more seconds so that the source sends some messages while the receiver was down.</p>
@@ -126,7 +146,20 @@ Single Receiver Fails and Recovers&nbsp;&nbsp;<small><a href="#singlereceiverfai
 </li>
 <li>
 <p class="startli">Restart the Receiver and let it run to completion.</p>
-<div class="fragment"><div class="line">$ ume-example-rcv-3.exe</div><div class="line">read in saved RegID info from <span class="stringliteral">&quot;UME-example-rcv-RegID&quot;</span> - 127.0.0.1:14567 RegIDs</div><div class="line">source 3735579353, receiver 3735579354</div><div class="line">UME Store 0: 127.0.0.1:14567 [TCP:169.254.97.160:14371][3735579353]</div><div class="line">Requesting RegID: 3735579354</div><div class="line">Received 15 bytes on topic UME Example (sequence number 3) <span class="stringliteral">&#39;UME Message 04&#39;</span></div><div class="line">Received 15 bytes on topic UME Example (sequence number 4) <span class="stringliteral">&#39;UME Message 05&#39;</span></div><div class="line">Received 15 bytes on topic UME Example (sequence number 5) <span class="stringliteral">&#39;UME Message 06&#39;</span></div><div class="line">Received 15 bytes on topic UME Example (sequence number 6) <span class="stringliteral">&#39;UME Message 07&#39;</span></div><div class="line">Received 15 bytes on topic UME Example (sequence number 7) <span class="stringliteral">&#39;UME Message 08&#39;</span></div><div class="line">Received 15 bytes on topic UME Example (sequence number 8) <span class="stringliteral">&#39;UME Message 09&#39;</span></div><div class="line">Received 15 bytes on topic UME Example (sequence number 9) <span class="stringliteral">&#39;UME Message 10&#39;</span></div><div class="line">Received 15 bytes on topic UME Example (sequence number 10) <span class="stringliteral">&#39;UME Message 11&#39;</span></div></div><!-- fragment --><p class="endli"></p>
+<pre class="fragment">$ ume-example-rcv-3.exe
+read in saved RegID info from "UME-example-rcv-RegID" - 127.0.0.1:14567 RegIDs
+source 3735579353, receiver 3735579354
+UME Store 0: 127.0.0.1:14567 [TCP:169.254.97.160:14371][3735579353]
+Requesting RegID: 3735579354
+Received 15 bytes on topic UME Example (sequence number 3) 'UME Message 04'
+Received 15 bytes on topic UME Example (sequence number 4) 'UME Message 05'
+Received 15 bytes on topic UME Example (sequence number 5) 'UME Message 06'
+Received 15 bytes on topic UME Example (sequence number 6) 'UME Message 07'
+Received 15 bytes on topic UME Example (sequence number 7) 'UME Message 08'
+Received 15 bytes on topic UME Example (sequence number 8) 'UME Message 09'
+Received 15 bytes on topic UME Example (sequence number 9) 'UME Message 10'
+Received 15 bytes on topic UME Example (sequence number 10) 'UME Message 11'
+</pre><p class="endli"></p>
 </li>
 </ol>
 <p>Notice that the receiver picked up the message stream right where it had left off - after message 3. The first few messages (which the source had sent while the receiver was down) appear to come in much faster than the source's normal rate of one per second. That's because they are being served to the receiver from the store. The remaining messages continue to come in at the normal one-per-second rate because they're being received from the source's live message stream. This is durable subscription at work.</p>
@@ -157,9 +190,25 @@ Restart the Source and let it run to completion. <br />
 </ol>
 <p><b>Source</b></p>
 <p>You should see output similar to the following on the second run of the source:</p>
-<div class="fragment"><div class="line">read in saved RegID info from <span class="stringliteral">&quot;UME-example-src-RegID&quot;</span> - 127.0.0.1:14567:2118965523</div><div class="line">will start with message number 5</div><div class="line">removing saved RegID file <span class="stringliteral">&quot;UME-example-src-RegID&quot;</span></div></div><!-- fragment --><p><b>Receiver</b></p>
+<pre class="fragment">read in saved RegID info from "UME-example-src-RegID" - 127.0.0.1:14567:2118965523
+will start with message number 5
+removing saved RegID file "UME-example-src-RegID"
+</pre><p><b>Receiver</b></p>
 <p>The receiver's output looks like the following:</p>
-<div class="fragment"><div class="line">UME Store 0: 127.0.0.1:14567 [TCP:169.254.97.160:14371][2118965523] Requesting RegID: 0</div><div class="line">saving RegID info to <span class="stringliteral">&quot;UME-example-rcv-RegID&quot;</span> - 127.0.0.1:14567:2118965523:2118965524</div><div class="line">Received 15 bytes on topic UME Example (sequence number 0) <span class="stringliteral">&#39;UME Message 01&#39;</span></div><div class="line">Received 15 bytes on topic UME Example (sequence number 1) <span class="stringliteral">&#39;UME Message 02&#39;</span></div><div class="line">Received 15 bytes on topic UME Example (sequence number 2) <span class="stringliteral">&#39;UME Message 03&#39;</span></div><div class="line">Received 15 bytes on topic UME Example (sequence number 3) <span class="stringliteral">&#39;UME Message 04&#39;</span></div><div class="line">UME Store 0: 127.0.0.1:14567 [TCP:169.254.97.160:14371][2118965523] Requesting RegID: 2118965524</div><div class="line">saving RegID info to <span class="stringliteral">&quot;UME-example-rcv-RegID&quot;</span> - 127.0.0.1:14567:2118965523:2118965524</div><div class="line">Received 15 bytes on topic UME Example (sequence number 4) <span class="stringliteral">&#39;UME Message 05&#39;</span></div><div class="line">Received 15 bytes on topic UME Example (sequence number 5) <span class="stringliteral">&#39;UME Message 06&#39;</span></div><div class="line">Received 15 bytes on topic UME Example (sequence number 6) <span class="stringliteral">&#39;UME Message 07&#39;</span></div><div class="line">Received 15 bytes on topic UME Example (sequence number 7) <span class="stringliteral">&#39;UME Message 08&#39;</span></div><div class="line">...</div></div><!-- fragment --><p>When the source was restarted, it read in its previously saved RegID and requested the same ID when registering with the store. The store informed the source that it had left off at sequence number 3 (UME Message 04), and the next sequence number it should send is 4 (UME Message 05). Bringing the source back up also caused the receiver to re-register with the store. Receivers can only find out about stores from sources they are listening to. Once the receiver re-registered with the store, it continued receiving messages from the source where it had left off.</p>
+<pre class="fragment">UME Store 0: 127.0.0.1:14567 [TCP:169.254.97.160:14371][2118965523] Requesting RegID: 0
+saving RegID info to "UME-example-rcv-RegID" - 127.0.0.1:14567:2118965523:2118965524
+Received 15 bytes on topic UME Example (sequence number 0) 'UME Message 01'
+Received 15 bytes on topic UME Example (sequence number 1) 'UME Message 02'
+Received 15 bytes on topic UME Example (sequence number 2) 'UME Message 03'
+Received 15 bytes on topic UME Example (sequence number 3) 'UME Message 04'
+UME Store 0: 127.0.0.1:14567 [TCP:169.254.97.160:14371][2118965523] Requesting RegID: 2118965524
+saving RegID info to "UME-example-rcv-RegID" - 127.0.0.1:14567:2118965523:2118965524
+Received 15 bytes on topic UME Example (sequence number 4) 'UME Message 05'
+Received 15 bytes on topic UME Example (sequence number 5) 'UME Message 06'
+Received 15 bytes on topic UME Example (sequence number 6) 'UME Message 07'
+Received 15 bytes on topic UME Example (sequence number 7) 'UME Message 08'
+...
+</pre><p>When the source was restarted, it read in its previously saved RegID and requested the same ID when registering with the store. The store informed the source that it had left off at sequence number 3 (UME Message 04), and the next sequence number it should send is 4 (UME Message 05). Bringing the source back up also caused the receiver to re-register with the store. Receivers can only find out about stores from sources they are listening to. Once the receiver re-registered with the store, it continued receiving messages from the source where it had left off.</p>
 <p><br />
  </p>
 <h1><a class="anchor" id="singlestorefails"></a>
@@ -181,7 +230,11 @@ Let it run for a few seconds so the receiver gets a few messages.</p>
 Stop the Store (Ctrl/C). </li>
 </ol>
 <p>Notice that with this simple example program, the source simply prints the following and exits.</p>
-<div class="fragment"><div class="line">saving RegID info to <span class="stringliteral">&quot;UME-example-src-RegID&quot;</span> - 127.0.0.1:14567:4095035673</div><div class="line">Store unresponsive: store 0 [127.0.0.1:14567] unresponsive</div><div class="line">Store unresponsive: store 0 [127.0.0.1:14567] unresponsive - no registration response.</div><div class="line">line 318: not currently registered with enough UMP stores</div></div><!-- fragment --><p>When a source application tries to send a message without being registered with a store, the send call returns an error. Messages sent while not registered with a store cannot be persisted. See <a class="el" href="designingpersistenceapplications.html#designingpersistentstores">Designing Persistent Stores</a> for information about using multiple stores.</p>
+<pre class="fragment">saving RegID info to "UME-example-src-RegID" - 127.0.0.1:14567:4095035673
+Store unresponsive: store 0 [127.0.0.1:14567] unresponsive
+Store unresponsive: store 0 [127.0.0.1:14567] unresponsive - no registration response.
+line 318: not currently registered with enough UMP stores
+</pre><p>When a source application tries to send a message without being registered with a store, the send call returns an error. Messages sent while not registered with a store cannot be persisted. See <a class="el" href="designingpersistenceapplications.html#designingpersistentstores">Designing Persistent Stores</a> for information about using multiple stores.</p>
 <p>Your source application(s) should assume an unresponsive store is a temporary problem and wait before sending the message again. See <code>umesrc.c</code>, <code>umesrc.java</code>, or <code>umesrc.cs</code> for examples of this behavior. </p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->

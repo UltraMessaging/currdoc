@@ -54,7 +54,7 @@ $(document).ready(function(){initNavTree('startupshutdownprocedures.html','');})
 <div class="title">Startup/Shutdown Procedures </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>In a multicast environment, only the applications and monitoring tools need to be started. If using Persistence, the store daemon (umestored) also needs to be started. Likewise, use of the UM Router requires starting the UM Router daemon (tnwgd).</p>
+<div class="textblock"><p>In a multicast environment, only the applications and monitoring tools need to be started. If using Persistence, the store daemon (umestored) also needs to be started. Likewise, use of the DRO requires starting the DRO daemon (tnwgd).</p>
 <p>In a unicast-only environment, one or more resolver daemons (lbmrd) are typically required. It is recommended that you start the lbmrd before starting the applications.</p>
 <p>Informatica recommends that you shutdown applications using UM sources and receivers cleanly, even though UM is able to cope with the ungraceful shutdown and restart of applications and UM daemons.</p>
 <p>A failed assertion could lead to immediate application shutdown. If opting to restart a UM client or lbmrd, no other components need be restarted. Failed assertions should be logged with Informatica support.</p>
@@ -64,9 +64,9 @@ $(document).ready(function(){initNavTree('startupshutdownprocedures.html','');})
 Topic Resolution&nbsp;&nbsp;<small><a href="#topicresolution">&lt;-</a></small></h1>
 <p>Your UM development or administration team should anticipate the time and bandwidth required to resolve all topics when all applications initially start. This team should also establish any restarting restrictions.</p>
 <p>Operations staff should not have any direct topic resolution tasks aside from monitoring the increased CPU and bandwidth usage.</p>
-<p>Topic resolution is the discovery of a topic's transport session information by a receiver to enable the receipt of topic messages. Although in a multicast environment, topic resolution does not need to be started or shutdown, it does use network resources and can cause deaf receivers and other problems if not operating properly. See <em>Topic Resolution</em> in the <em>UM Concepts Guide</em> for more detailed information.</p>
+<p>Topic resolution is the discovery of a topic's transport session information by a receiver to enable the receipt of topic messages. Although in a multicast environment, topic resolution does not need to be started or shutdown, it does use network resources and can cause deaf receivers and other problems if not operating properly. See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Operations/design.tag:../Design/" href="../Design/fundamentalconcepts.html#topicresolutionoverview">Topic Resolution Overview</a> for more detailed information.</p>
 <p>Applications cannot deliver messages until topic resolution completes. UM monitoring statistics are active before all topics resolve. In a large topic space approximately 10,000 topics) topic resolution messages may be 'staggered' or rate controlled, taking potentially several seconds to complete.</p>
-<p>For example, 10,000 topics at the default value of 1,000 for <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Operations/config.tag:../Config/" href="../Config/grpudpbasedresolveroperation.html#resolverinitialadvertisementspersecondcontext">resolver_initial_advertisements_per_second (context)</a> will take 10 seconds to send out an advertisement for every topic. If all receiving applications have been started first, fully resolving all topics may not take much more than 10 seconds. The rate of topic resolution can also be controlled with the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Operations/config.tag:../Config/" href="../Config/grpudpbasedresolveroperation.html#resolverinitialadvertisementbpscontext">resolver_initial_advertisement_bps (context)</a> configuration option. Topic advertisements contain the topic string and approximately 110 bytes overhead. Topic queries from receivers contain no overhead, only the topic string.</p>
+<p>For example, 10,000 topics at the default value of 1,000 for <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Operations/config.tag:../Config/" href="../Config/grpudpbasedresolveroperation.html#resolverinitialadvertisementspersecondcontext">resolver_initial_advertisements_per_second (context)</a> will take 10 seconds to send out an advertisement for every topic. If all receiving applications have been started first, fully resolving all topics may not take much more than 10 seconds. The rate of topic resolution can also be controlled with the <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Operations/config.tag:../Config/" href="../Config/grpudpbasedresolveroperation.html#resolverinitialadvertisementbpscontext">resolver_initial_advertisement_bps (context)</a> configuration option. Topic advertisements contain the topic string and approximately 110 bytes overhead. Topic queries from receivers contain no overhead, only the topic string.</p>
 <p><br />
  </p>
 <h1><a class="anchor" id="umapplications"></a>
@@ -110,9 +110,9 @@ In an Application Log, disconnect events (LBM_SRC_EVENT_DISCONNECT) for unicast 
  </p>
 <h1><a class="anchor" id="unicasttopicresolverlbmrd"></a>
 Unicast Topic Resolver (lbmrd)&nbsp;&nbsp;<small><a href="#unicasttopicresolverlbmrd">&lt;-</a></small></h1>
-<p>If not using multicast topic resolution, one or more instances of lbmrd must be started prior to stating applications. Unicast resolver daemons require an XML configuration file and multiple resolver daemons can be specified by your UM development team for resiliency. For more information on Unicast Topic Resolution, see <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Operations/design.tag:../Design/" href="../Design/topicresolutiondescription.html#unicastudptr">Unicast UDP TR</a>.</p>
+<p>If not using multicast topic resolution, one or more instances of lbmrd must be started prior to stating applications. Unicast resolver daemons require an XML configuration file and multiple resolver daemons can be specified by your UM development team for resiliency. For more information on Unicast Topic Resolution, see <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Operations/design.tag:../Design/" href="../Design/topicresolutiondescription.html#unicastudptr">Unicast UDP TR</a>.</p>
 <p>Execute the following command on the appropriate machine to start a unicast topic resolver (lbmrd) from command line:</p>
-<div class="fragment"><div class="line">lbmrd --interface=ADDR -L daemon_logfile.out -p PORT lbmrd.cfg</div></div><!-- fragment --><p>For more information on the lbmrd command-line, see <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Operations/design.tag:../Design/" href="../Design/manpagesforlbmrd.html#lbmrdmanpage">Lbmrd Man Page</a>.</p>
+<div class="fragment"><div class="line">lbmrd --interface=ADDR -L daemon_logfile.out -p PORT lbmrd.cfg</div></div><!-- fragment --><p>For more information on the lbmrd command-line, see <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Operations/design.tag:../Design/" href="../Design/manpagesforlbmrd.html#lbmrdmanpage">Lbmrd Man Page</a>.</p>
 <p>To stop the resolver, use the kill command. If a unicast resolver daemon terminates, you need to restart it.</p>
 <p>Observe the lbmrd logfile for errors and warnings</p>
 <p>To make the lbmrd a Windows Service, see <a class="el" href="startupshutdownprocedures.html#umdaemonsaswindowsservices">UM Daemons as Windows Services</a>.</p>
@@ -129,7 +129,7 @@ Persistent Store (umestored)&nbsp;&nbsp;<small><a href="#persistentstoreumestore
 <h2><a class="anchor" id="startingastore"></a>
 Starting a Store&nbsp;&nbsp;<small><a href="#startingastore">&lt;-</a></small></h2>
 <p>Execute the following command on the appropriate machine to start a (umestored) from command line:</p>
-<div class="fragment"><div class="line">umestored config-file.xml</div></div><!-- fragment --><p>For more information on the umestored command-line, see <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Operations/ume.tag:../UME/" href="../UME/manpagesforstore.html#umestoredmanpage">Umestored Man Page</a>.</p>
+<div class="fragment"><div class="line">umestored config-file.xml</div></div><!-- fragment --><p>For more information on the umestored command-line, see <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Operations/ume.tag:../UME/" href="../UME/manpagesforstore.html#umestoredmanpage">Umestored Man Page</a>.</p>
 <ul>
 <li>
 Record umestored PID to monitor process presence for failure detection. </li>
@@ -181,31 +181,31 @@ Missing license details. </li>
 <p><br />
  </p>
 <h1><a class="anchor" id="umroutertnwgd"></a>
-UM Router (tnwgd)&nbsp;&nbsp;<small><a href="#umroutertnwgd">&lt;-</a></small></h1>
-<p>When a UM Router starts it discovers all sources and receivers in the topic resolution domains to which it connects. This results in a measurable increase and overall volume of topic resolution traffic and can take some time to complete depending upon the number of sources, receivers, and topics. The rate limits set on topic resolution also affect the time to resolve all topics.</p>
+DRO (tnwgd)&nbsp;&nbsp;<small><a href="#umroutertnwgd">&lt;-</a></small></h1>
+<p>When a DRO starts it discovers all sources and receivers in the topic resolution domains to which it connects. This results in a measurable increase and overall volume of topic resolution traffic and can take some time to complete depending upon the number of sources, receivers, and topics. The rate limits set on topic resolution also affect the time to resolve all topics.</p>
 <p>See also <a class="el" href="startupshutdownprocedures.html#topicresolution">Topic Resolution</a>.</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="startingaumrouter"></a>
-Starting a UM Router&nbsp;&nbsp;<small><a href="#startingaumrouter">&lt;-</a></small></h2>
-<p>Execute the following command on the appropriate machine to start a UM Router (tnwgd) from command line:</p>
+Starting a DRO&nbsp;&nbsp;<small><a href="#startingaumrouter">&lt;-</a></small></h2>
+<p>Execute the following command on the appropriate machine to start a DRO (tnwgd) from command line:</p>
 <div class="fragment"><div class="line">tnwgd config-file.xml</div></div><!-- fragment --><p>Informatica recommends: </p><ul>
 <li>
 Record tnwgd PID to monitor process presence for failure detection. </li>
 <li>
 Monitor the tnwgd logfile for errors and warnings. </li>
 </ul>
-<p>For more information on the tnwgd command-line, see <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Operations/gateway.tag:../Gateway/" href="../Gateway/manpagesforumrouter.html#tnwgdmanpage">Tnwgd Man Page</a>. To make the UM Router a Windows Service, see <a class="el" href="startupshutdownprocedures.html#umdaemonsaswindowsservices">UM Daemons as Windows Services</a>.</p>
+<p>For more information on the tnwgd command-line, see <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Operations/gateway.tag:../Gateway/" href="../Gateway/manpagesforumrouter.html#tnwgdmanpage">Tnwgd Man Page</a>. To make the DRO a Windows Service, see <a class="el" href="startupshutdownprocedures.html#umdaemonsaswindowsservices">UM Daemons as Windows Services</a>.</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="restartingaumrouter"></a>
-Restarting a UM Router&nbsp;&nbsp;<small><a href="#restartingaumrouter">&lt;-</a></small></h2>
-<p>Perform the following procedure to restart a UM Router.</p>
+Restarting a DRO&nbsp;&nbsp;<small><a href="#restartingaumrouter">&lt;-</a></small></h2>
+<p>Perform the following procedure to restart a DRO.</p>
 <ol>
 <li>
-If the UM Router is still running, kill the PID. </li>
+If the DRO is still running, kill the PID. </li>
 <li>
-Wait 20-30 seconds to let timeouts expire. After a restart new proxy sources and receivers must be created on the UM Router. Applications will not use the new proxies until the transport timeout setting expires for the old connections. Until this happens, applications may appear to be "deaf" since they are still considering themselves as connected to the "old" UM Router proxies. Therefore, do not rapidly restart the UM Router. </li>
+Wait 20-30 seconds to let timeouts expire. After a restart new proxy sources and receivers must be created on the DRO. Applications will not use the new proxies until the transport timeout setting expires for the old connections. Until this happens, applications may appear to be "deaf" since they are still considering themselves as connected to the "old" DRO proxies. Therefore, do not rapidly restart the DRO. </li>
 <li>
 Run the command: tnwgd config-file.xml </li>
 </ol>
@@ -213,23 +213,30 @@ Run the command: tnwgd config-file.xml </li>
  </p>
 <h1><a class="anchor" id="umdaemonsaswindowsservices"></a>
 UM Daemons as Windows Services&nbsp;&nbsp;<small><a href="#umdaemonsaswindowsservices">&lt;-</a></small></h1>
-<p>On the Microsoft Windows platform, the UM daemons can be used either from the command line or as Windows Services. The available UM Services are:</p>
+<p>On the Microsoft Windows platform, the UM daemons can be used either from the command line or as Windows Services. The UM daemons available as Windows Services are:</p>
 <table class="doxtable">
 <tr>
 <th>Executable File </th><th>Description </th><th>Service Display Name </th><th>Man Page </th></tr>
 <tr>
-<td><b>lbmrds.exe</b> </td><td>UDP-based Unicast Topic Resolver </td><td>"LBMR Store Daemon" </td><td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Operations/design.tag:../Design/" href="../Design/manpagesforlbmrd.html#lbmrdsmanpage">man page</a> </td></tr>
+<td><b>lbmrds.exe</b> </td><td>UDP-based Unicast Topic Resolver </td><td>"LBMR Store Daemon" </td><td><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Operations/design.tag:../Design/" href="../Design/manpagesforlbmrd.html#lbmrdsmanpage">man page</a> </td></tr>
 <tr>
-<td><b>srsds.exe</b> </td><td>TCP-based Topic Resolver </td><td>"UM Stateful Topic Resolution Service" </td><td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Operations/design.tag:../Design/" href="../Design/manpagesforsrs.html#srsdsmanpage">man page</a> </td></tr>
+<td><b>srsds.exe</b> </td><td>TCP-based Topic Resolver </td><td>"UM Stateful Topic Resolution Service" </td><td><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Operations/design.tag:../Design/" href="../Design/manpagesforsrs.html#srsdsmanpage">man page</a> </td></tr>
 <tr>
-<td><b>storeds.exe</b> </td><td>Persistent Store </td><td>"UME Store Daemon" </td><td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Operations/ume.tag:../UME/" href="../UME/manpagesforstore.html#umestoredsmanpage">man page</a> </td></tr>
+<td><b>storeds.exe</b> </td><td>Persistent Store </td><td>"UME Store Daemon" </td><td><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Operations/ume.tag:../UME/" href="../UME/manpagesforstore.html#umestoredsmanpage">man page</a> </td></tr>
 <tr>
-<td><b>tnwgds.exe</b> </td><td>UM Router (DRO) </td><td>"Ultra Messaging Gateway" </td><td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Operations/gateway.tag:../Gateway/" href="../Gateway/manpagesforumrouter.html#tnwgdsmanpage">man page</a> </td></tr>
+<td><b>tnwgds.exe</b> </td><td>Dynamic Router (DRO) </td><td>"Ultra Messaging Gateway" </td><td><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Operations/gateway.tag:../Gateway/" href="../Gateway/manpagesforumrouter.html#tnwgdsmanpage">man page</a> </td></tr>
 </table>
 <p>Note that the Ultra Messaging Manager daemon (<code>"ummd"</code>) is not offered as a Windows Service at this time.</p>
-<p>As of UM version 6.12, the above UM daemons work similarly with respect to running as a Windows Service. See the individual man pages for differences.</p>
-<p>Before beginning, make sure that the license key is provided in a way that the service will be able to access it. In particular, if you are using an environment variable to set the license key, it must be a system environment variable, not user.</p>
-<p>There are 4 overall steps to running a UM daemon as a Windows Service: </p><ol>
+<p>As of UM version 6.12 and beyond, the above UM daemons work similarly with respect to running as a Windows Service. See the individual man pages for differences.</p>
+<p>For each service, the executable file (e.g. "storeds.exe") is used for two purposes: </p><ul>
+<li>
+Windows invokes the executable to run the service. </li>
+<li>
+The user manually invokes the executable to <a class="el" href="startupshutdownprocedures.html#configurethewindowsservice">Configure the Windows Service</a>. </li>
+</ul>
+<p>That second purpose, configuring the UM Windows Service, consists of running the executable with one or more command-line options to store desired operational parameters into the Windows registry. This makes those parameters available to the service when Windows starts the service.</p>
+<p>First, make sure that your UM license key is provided in a way that the service can access it. In particular, if you are using an environment variable to set the license key, it must be a system environment variable, not user.</p>
+<p>Once your license key is ready, there are 4 overall steps to running a UM daemon as a Windows Service: </p><ol>
 <li>
 <a class="el" href="startupshutdownprocedures.html#installthewindowsservice">Install the Windows Service</a> </li>
 <li>
@@ -253,9 +260,16 @@ Command line. </li>
 <p><b>Product package installer</b></p>
 <p>When installing the product using the package installer, the dialog box titled "Choose Components" provides one or more check boxes for UM daemons to be installed as services. You may check any number of the boxes and proceed with the installation.</p>
 <p>Note that for any box <em>not</em> checked, the software for that daemon is still copied onto the machine. This allows for installation as a Windows Service at a later time using the Command Line method.</p>
-<p>Also note that it is not necessary to use the package installer at all. The UM files can simply be copied to the machine. In that case, this step is skipped altogether, and the Command Line method must be used to install the daemons as Windows Services. See <a class="el" href="uminstallation.html#copywindowsruntimefiles">Copy Windows Runtime Files</a> for details.</p>
 <p><b>Command line</b></p>
-<p>If a daemon was not installed as a Windows Service from the product's package installer (possibly because the package installer was not used), daemons can be installed at a later time from the command line. In this case, the Service install step is combined with the <a class="el" href="startupshutdownprocedures.html#configurethewindowsservice">Configure the Windows Service</a> step below.</p>
+<p>If a daemon was not installed as a Windows Service from the product's package installer (possibly because the package installer was not used), daemons can be installed at a later time from the command line.</p>
+<ol>
+<li>
+<p class="startli">Open a Windows Command Prompt, enabling Administrator access. (One way to do this is to right-click on the Command Prompt icon and select "More &gt; Run as administrator".)</p>
+<p class="endli"></p>
+</li>
+<li>
+Run the Service executable with the "-s install" command-line option. For example: <div class="fragment"><div class="line">umestoreds -s install</div></div><!-- fragment --> (Note: <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Operations/design.tag:../Design/" href="../Design/manpagesforlbmrd.html#lbmrdsmanpage">lbmrds</a> uses upper-case "-S".) </li>
+</ol>
 <p><br />
  </p>
 <h2><a class="anchor" id="configurethedaemon"></a>
@@ -267,30 +281,59 @@ Configure the Daemon&nbsp;&nbsp;<small><a href="#configurethedaemon">&lt;-</a></
 <tr>
 <th>Executable File </th><th>Description </th><th>Configuration Details </th><th>Man Page </th></tr>
 <tr>
-<td><b>lbmrds.exe</b> </td><td>UDP-based Unicast Topic Resolver </td><td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Operations/design.tag:../Design/" href="../Design/lbmrdconfigurationfile.html">lbmrd Configuration File</a> </td><td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Operations/design.tag:../Design/" href="../Design/manpagesforlbmrd.html#lbmrdsmanpage">man page</a> </td></tr>
+<td><b>lbmrds.exe</b> </td><td>UDP-based Unicast Topic Resolver </td><td><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Operations/design.tag:../Design/" href="../Design/lbmrdconfigurationfile.html">lbmrd Configuration File</a> </td><td><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Operations/design.tag:../Design/" href="../Design/manpagesforlbmrd.html#lbmrdsmanpage">man page</a> </td></tr>
 <tr>
-<td><b>srsds.exe</b> </td><td>TCP-based Topic Resolver </td><td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Operations/design.tag:../Design/" href="../Design/srsconfigurationfile.html">SRS Configuration File</a> </td><td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Operations/design.tag:../Design/" href="../Design/manpagesforsrs.html#srsdsmanpage">man page</a> </td></tr>
+<td><b>srsds.exe</b> </td><td>TCP-based Topic Resolver </td><td><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Operations/design.tag:../Design/" href="../Design/srsconfigurationfile.html">SRS Configuration File</a> </td><td><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Operations/design.tag:../Design/" href="../Design/manpagesforsrs.html#srsdsmanpage">man page</a> </td></tr>
 <tr>
-<td><b>storeds.exe</b> </td><td>Persistent Store </td><td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Operations/ume.tag:../UME/" href="../UME/configurationreferenceforumestored.html">Configuration Reference for Umestored</a> </td><td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Operations/ume.tag:../UME/" href="../UME/manpagesforstore.html#umestoredsmanpage">man page</a> </td></tr>
+<td><b>storeds.exe</b> </td><td>Persistent Store </td><td><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Operations/ume.tag:../UME/" href="../UME/configurationreferenceforumestored.html">Configuration Reference for Umestored</a> </td><td><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Operations/ume.tag:../UME/" href="../UME/manpagesforstore.html#umestoredsmanpage">man page</a> </td></tr>
 <tr>
-<td><b>tnwgds.exe</b> </td><td>UM Router (DRO) </td><td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Operations/gateway.tag:../Gateway/" href="../Gateway/xmlconfigurationreference.html">XML Configuration Reference</a> </td><td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.12.1_RC1/doc/Operations/gateway.tag:../Gateway/" href="../Gateway/manpagesforumrouter.html#tnwgdsmanpage">man page</a> </td></tr>
+<td><b>tnwgds.exe</b> </td><td>Dynamic Router (DRO) </td><td><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Operations/gateway.tag:../Gateway/" href="../Gateway/xmlconfigurationreference.html">XML Configuration Reference</a> </td><td><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Operations/gateway.tag:../Gateway/" href="../Gateway/manpagesforumrouter.html#tnwgdsmanpage">man page</a> </td></tr>
 </table>
 <p><br />
  </p>
 <h2><a class="anchor" id="configurethewindowsservice"></a>
 Configure the Windows Service&nbsp;&nbsp;<small><a href="#configurethewindowsservice">&lt;-</a></small></h2>
+<p>"Configure the Windows Service" is different from <a class="el" href="startupshutdownprocedures.html#configurethedaemon">Configure the Daemon</a>. Configuring a UM Service provides Windows-specific operational parameters to the UM Daemon, which are not configurable via the Daemon Configuration. For example, you need to tell the Service where to find the Daemon Configuration file.</p>
 <p>At this point, you should have the Daemon XML configuration file(s) prepared and available on the host which is to run the desired daemon(s) (See <a class="el" href="startupshutdownprocedures.html#configurethedaemon">Configure the Daemon</a>). And you should have tested the configuration using the daemon interactively to verify is correct operation.</p>
-<p>Each daemon's Windows Service must now be configured so that the Service can find the proper daemon configuration file.</p>
-<p>You also need to decide how the daemon writes log messages to the Windows Event Logging system. Log messages are categorized into different severity levels: "info", "notice", "warning", "err", "alert", "emerg". By default, the daemons will write log messages of category "warning" and above to the Windows Event Log. If desired, this can be adjusted with the <code>"-e"</code> flag, shown below. Be aware that setting the severity level below "warning" can result in very many messages being written to the Windows Event Log. Also be aware that messages of <em>all</em> severity levels are written to the daemon's log file, independent of the <code>"-e"</code> setting.</p>
-<dl class="section attention"><dt>Attention</dt><dd>To enter the commands below, you need a Command Prompt window running as Administrator. (One way to do this is to right-click on the Command Prompt icon and select "More &gt; Run as administrator".)</dd></dl>
-<p>To perform this step, each daemon service executable must be interactively executed from a command prompt with the following command-line flags. The exact command-line flag set depends on whether the daemon was already installed as a Windows Service when the UM package was installed.</p>
-<dl class="section user"><dt><b>Service</b> <b>was</b> <b>previously</b> <b>installed</b> </dt><dd>Use this command if the daemon has already been installed as a Windows Service, perhaps using the product's Package Installer.</dd></dl>
-<dl class="section user"><dt></dt><dd><div class="fragment"><div class="line">daemonexe -s config -e warn c:\daemon_config_file_path</div></div><!-- fragment --></dd></dl>
-<dl class="section user"><dt></dt><dd>Where <code>"daemonexe"</code> is the name of the desired daemon's executable (see <a class="el" href="startupshutdownprocedures.html#umdaemonsaswindowsservices">UM Daemons as Windows Services</a> for executable names).</dd></dl>
-<dl class="section user"><dt><b>Service</b> <b>was</b> <b>NOT</b> <b>previously</b> <b>installed</b> </dt><dd>Use this command if the daemon has not yet been installed as a Windows Service, perhaps because the product's package installer was not used.</dd></dl>
-<dl class="section user"><dt></dt><dd><div class="fragment"><div class="line">daemonexe -s install -e warn c:\daemon_config_file_path</div></div><!-- fragment --></dd></dl>
-<dl class="section user"><dt></dt><dd>Where <code>"daemonexe"</code> is the desired daemon's executable (see <a class="el" href="startupshutdownprocedures.html#umdaemonsaswindowsservices">UM Daemons as Windows Services</a> for executable names).</dd></dl>
-<p>Some daemons have additional Service settings that should be configured prior to use. For example, the SRS has two additional log files that can only be set using command-line flags. See the individual daemon's Windows Service man page for each daemon's details (see <a class="el" href="startupshutdownprocedures.html#umdaemonsaswindowsservices">UM Daemons as Windows Services</a> for man page links).</p>
+<p>Configuring the Service consists of running the Service executable from a Windows Command Prompt with one or more command-line options to store desired operational parameters into the Windows registry. This makes those parameters available to the service when Windows starts the service.</p>
+<dl class="section attention"><dt>Attention</dt><dd>You need the Command Prompt window running as Administrator. (One way to do this is to right-click on the Command Prompt icon and select "More &gt; Run as administrator".)</dd></dl>
+<p>There are several operational parameters that are common across all of the UM Windows Services: </p><ul>
+<li>
+Setting up the Windows Event Logger </li>
+<li>
+Setting up the Environment Variables file </li>
+<li>
+Setting up the Daemon Configuration file </li>
+<li>
+Service installation or removal </li>
+</ul>
+<p>Each Service has additional parameters that are specific to that Service; see each Service's man page: </p><table class="doxtable">
+<tr>
+<th>Executable File </th><th>Description </th><th>Configuration Details </th><th>Man Page </th></tr>
+<tr>
+<td><b>lbmrds.exe</b> </td><td>UDP-based Unicast Topic Resolver </td><td><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Operations/design.tag:../Design/" href="../Design/lbmrdconfigurationfile.html">lbmrd Configuration File</a> </td><td><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Operations/design.tag:../Design/" href="../Design/manpagesforlbmrd.html#lbmrdsmanpage">man page</a> </td></tr>
+<tr>
+<td><b>srsds.exe</b> </td><td>TCP-based Topic Resolver </td><td><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Operations/design.tag:../Design/" href="../Design/srsconfigurationfile.html">SRS Configuration File</a> </td><td><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Operations/design.tag:../Design/" href="../Design/manpagesforsrs.html#srsdsmanpage">man page</a> </td></tr>
+<tr>
+<td><b>storeds.exe</b> </td><td>Persistent Store </td><td><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Operations/ume.tag:../UME/" href="../UME/configurationreferenceforumestored.html">Configuration Reference for Umestored</a> </td><td><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Operations/ume.tag:../UME/" href="../UME/manpagesforstore.html#umestoredsmanpage">man page</a> </td></tr>
+<tr>
+<td><b>tnwgds.exe</b> </td><td>Dynamic Router (DRO) </td><td><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Operations/gateway.tag:../Gateway/" href="../Gateway/xmlconfigurationreference.html">XML Configuration Reference</a> </td><td><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Operations/gateway.tag:../Gateway/" href="../Gateway/manpagesforumrouter.html#tnwgdsmanpage">man page</a> </td></tr>
+</table>
+<p><b>Daemon Configuration File</b></p>
+<p>The UM daemons require a configuration file. You must configure the Windows Service with the path to the daemon's configuration file. This is done with the <code>"-s config"</code> command-line option. For example: </p><div class="fragment"><div class="line">umestoreds -s config c:\UM\store_config.xml</div></div><!-- fragment --><p> This saves the file path into the Windows registry. Subsequently, each time the UME Store Windows Service starts, it will read that file to configure the Store daemon. (Note: <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Operations/design.tag:../Design/" href="../Design/manpagesforlbmrd.html#lbmrdsmanpage">lbmrds</a> uses upper-case "-S".)</p>
+<p><b>Windows Event Logger</b></p>
+<p>The UM daemons write their log messages to their log files. The UM Windows Services have the option of also writing the log messages to the Windows Event Logger.</p>
+<p>UM Log messages are categorized into different severity levels: "info", "notice", "warning", "err", "alert", "emerg". By default, the UM Windows Services will write log messages of category "warning" and above to the Windows Event Log.</p>
+<p>If desired, the category can be configured with the <code>"-e"</code> command-line option. For example: </p><div class="fragment"><div class="line">umestoreds -e notice</div></div><!-- fragment --><p> This saves the "notice" category into the Windows registry. Subsequently, each time the UME Store Windows Service starts, it will log message of "notice" and above to the Windows Event Log.</p>
+<p>Be aware that setting the severity level below "warning" can result in very many messages being written to the Windows Event Log. Also be aware that messages of <em>all</em> severity levels are written to the daemon's log file, independent of the <code>"-e"</code> setting.</p>
+<p><b>Environment Variables File</b></p>
+<p>The UM daemons occasionally can have useful features enabled through the use of environment variables. Most of the UM Windows Services allow the use of an optional disk file containing environment variable assignments. Each time the Service starts, that file is read and the environment variables are set for that daemon process. The SRS Windows service does not currently support this.</p>
+<p>If desired, the Environment Variable file path can be configured with the <code>"-E"</code> command-line option. For example: </p><div class="fragment"><div class="line">umestoreds -E c:\UM\store_env.txt</div></div><!-- fragment --><p> This saves the file path into the Windows registry. Subsequently, each time the UME Store Windows Service starts, it will read that file and set its environment variables.</p>
+<p>The format of that file is shown by this example: </p><pre class="fragment"># Environment Variable File for UME Store
+LBM_DEBUG_MASK="0xC384"
+LBM_DEBUG_FILENAME="c:\temp\store_debug.txt"
+</pre><p> The quote marks are required.</p>
+<p>If you want to stop using an environment variable file, you must remove its entry from the Windows registry with the <code>"-U"</code> command-line option. For example: </p><div class="fragment"><div class="line">umestoreds -U</div></div><!-- fragment --><p> This removes the environment variable file path from the Windows registry. The next time the UME Store Windows Service starts, it will not set its environment. Note that this operation does <em>not</em> remove the environment file.</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="startthewindowsservice"></a>
@@ -300,15 +343,17 @@ Start the Windows Service&nbsp;&nbsp;<small><a href="#startthewindowsservice">&l
  </p>
 <h2><a class="anchor" id="removethewindowsservice"></a>
 Remove the Windows Service&nbsp;&nbsp;<small><a href="#removethewindowsservice">&lt;-</a></small></h2>
-<p>There are several ways to remove the UM daemons as Windows Services: </p><ul>
+<p>There are two ways to remove the UM daemons as Windows Services: </p><ul>
 <li>
-Uninstall the software (if it was installed by the Package Installer). This is done using the normal Windows "Add or Remove Programs" control panel. Performing this step removes the Windows Service, and also removes the installed files. </li>
+Use the Windows uninstaller. </li>
 <li>
-Manually remove the service using the daemon's executable program. Performing this step only removes the Windows Service; the installed files remain. </li>
+Manually remove the service using the daemon's executable program. </li>
 </ul>
-<dl class="section user"><dt><b>Manual</b> <b>Removal</b> </dt><dd>Use this command to remove the daemon as a Windows Service. Note that the software files will remain.</dd></dl>
-<dl class="section user"><dt></dt><dd><div class="fragment"><div class="line">daemonexe -s <span class="keyword">remove</span></div></div><!-- fragment --></dd></dl>
-<dl class="section user"><dt></dt><dd>Where <code>"daemonexe"</code> is the desired daemon's executable (see <a class="el" href="startupshutdownprocedures.html#umdaemonsaswindowsservices">UM Daemons as Windows Services</a> for executable names).</dd></dl>
+<p><b>Windows Uninstaller</b></p>
+<p>If the UM package was installed by the Package Installer, using the normal Windows "Add or Remove Programs" control panel removes the Windows Service, as well as also removing the installed files.</p>
+<p><b>Manual Service Removal</b></p>
+<p>You can remove a UM Windows Service manually using the <code>"-s remove"</code> command-line option. For example: </p><div class="fragment"><div class="line">umestoreds -s <span class="keyword">remove</span></div></div><!-- fragment --><p> This removes the UM Store as a Windows Service. (Note: <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/Operations/design.tag:../Design/" href="../Design/manpagesforlbmrd.html#lbmrdsmanpage">lbmrds</a> uses upper-case "-S".)</p>
+<p>Note that this does not uninstall any of the UM software. It only removes the the daemon as a Windows Service.</p>
 <p><br />
  </p>
 <h1><a class="anchor" id="umanalysistools"></a>
