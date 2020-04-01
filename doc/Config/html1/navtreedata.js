@@ -187,8 +187,6 @@ var NAVTREE =
         [ "resolver_receiver_map_tablesz (context)", "index.html#resolverreceivermaptableszcontext", null ],
         [ "resolver_send_final_advertisements (source)", "index.html#resolversendfinaladvertisementssource", null ],
         [ "resolver_send_initial_advertisement (source)", "index.html#resolversendinitialadvertisementsource", null ],
-        [ "resolver_service (context)", "index.html#resolverservicecontext", null ],
-        [ "resolver_service_interest_mode (context)", "index.html#resolverserviceinterestmodecontext", null ],
         [ "resolver_source_map_tablesz (context)", "index.html#resolversourcemaptableszcontext", null ],
         [ "resolver_string_hash_function (context)", "index.html#resolverstringhashfunctioncontext", null ],
         [ "resolver_string_hash_function_ex (context)", "index.html#resolverstringhashfunctionexcontext", null ],
@@ -224,6 +222,12 @@ var NAVTREE =
         [ "resolver_unicast_port_high (context)", "index.html#resolverunicastporthighcontext", null ],
         [ "resolver_unicast_port_low (context)", "index.html#resolverunicastportlowcontext", null ],
         [ "resolver_unicast_receiver_socket_buffer (context)", "index.html#resolverunicastreceiversocketbuffercontext", null ]
+      ] ]
+    ] ],
+    [ "TCP-Based Resolver Operation Options", "index.html#grptcpbasedresolveroperation", [
+      [ "Reference", "index.html#tcpresolveroperationref", [
+        [ "resolver_service (context)", "index.html#resolverservicecontext", null ],
+        [ "resolver_service_interest_mode (context)", "index.html#resolverserviceinterestmodecontext", null ]
       ] ]
     ] ],
     [ "Transport TCP Network Options", "index.html#grptransporttcpnetwork", [
@@ -775,8 +779,8 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "index.html",
-"index.html#resolveradvertisementminimuminitialdurationsource",
-"index.html#transporttcpreceiversocketbuffercontext"
+"index.html#resolveradvertisementmaximuminitialintervalsource",
+"index.html#transporttcpportlowcontext"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

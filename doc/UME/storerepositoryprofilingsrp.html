@@ -54,9 +54,9 @@ $(document).ready(function(){initNavTree('storerepositoryprofilingsrp.html','');
 <div class="title">Store Repository Profiling (SRP) </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>To aid the users in operating and maintaining their Persistent Store deployment, Informatica provides an API that will read Store cache and state files and return useful information about them, including message content. This is the Store Repository Profiling (SRP). (The API is not in the normal "lbm" library; see <a class="el" href="storerepositoryprofilingsrp.html#usingthesrpapi">Using the SRP API</a>.)</p>
+<div class="textblock"><p>To aid the users in operating and maintaining their Persistent Store deployment, Informatica provides an API that will read Store cache and state files and return useful information about them, including message content. This is the Store Repository Profiling (SRP) API. (The API is not in the normal "lbm" library; see <a class="el" href="storerepositoryprofilingsrp.html#usingthesrpapi">Using the SRP API</a>.)</p>
 <p>Also supplied is the "umesnaprepo" example program, which uses the SRP API to read the information and print to standard out. It can be used as-is (see <a class="el" href="storerepositoryprofilingsrp.html#umesnaprepomanpage">umesnaprepo Man Page</a>), or its <a href="../example/umesnaprepo.c">source code</a> can be used as a guide for users to develop their own management tools.</p>
-<p>This API and example program are supported on the same platforms that support the Persistent Store: 64-bit Linux and 64-bit Windows. The API is C-only (no Java or .NET).</p>
+<p>This API and example program are supported on the same platforms that support the Persistent Store: 64-bit Linux and 64-bit Windows. The API is C-only (no Java or .NET). Also be aware that the API is read-only. The API does not provide a way to modify the cache or state files.</p>
 <p><b>IMPORTANT</b>: due to differences in certain Windows and Linux data sizes, a given set of state and cache files needs to be read on the same platform where it was generated. For example it is <em>NOT</em> valid to copy a Linux store's files to a Windows machine and use the windows-based SRP API or command-line tool to read them.</p>
 <dl class="section note"><dt>Note</dt><dd>The Store Instance <b>should NOT be running</b> while the API or example program is used to read the Store files. There currently is no tool that performs the same function on an actively running Store.</dd></dl>
 <p><br />
@@ -68,15 +68,15 @@ Using the SRP API&nbsp;&nbsp;<small><a href="#usingthesrpapi">&lt;-</a></small><
 <p>The API code is <em>not</em> contained within the normal "lbm" library. On Linux, it is in libumestorelib.a, a static library. On Windows, it is in "umestore.lib", also static. It is not offered as a dynamic library.</p>
 <p>The main API functions are: </p><ul>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/UME/api.tag:../API/" href="../API/umeprofile_8h.html#aec84332e2bbb5e4d27a0703ed2568877">lbm_srp_create()</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/UME/api.tag:../API/" href="../API/umeprofile_8h.html#aec84332e2bbb5e4d27a0703ed2568877">lbm_srp_create()</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/UME/api.tag:../API/" href="../API/umeprofile_8h.html#a7db2559f876d023c4ad52fc0ddff1aaf">lbm_srp_delete()</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/UME/api.tag:../API/" href="../API/umeprofile_8h.html#a7db2559f876d023c4ad52fc0ddff1aaf">lbm_srp_delete()</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/UME/api.tag:../API/" href="../API/umeprofile_8h.html#a77ca8bf5287fe50f7375ca0163f8d1e4">lbm_srp_get_repo_state()</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/UME/api.tag:../API/" href="../API/umeprofile_8h.html#a77ca8bf5287fe50f7375ca0163f8d1e4">lbm_srp_get_repo_state()</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/UME/api.tag:../API/" href="../API/umeprofile_8h.html#a7d42a44d9383c34ffb6de59f1e8fd9d2">lbm_srp_free_repo_state()</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/UME/api.tag:../API/" href="../API/umeprofile_8h.html#a7d42a44d9383c34ffb6de59f1e8fd9d2">lbm_srp_free_repo_state()</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/UME/api.tag:../API/" href="../API/umeprofile_8h.html#aef81e49d9e25088de8fe6cfbf1c259a6">lbm_srp_get_repo_message()</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/UME/api.tag:../API/" href="../API/umeprofile_8h.html#aef81e49d9e25088de8fe6cfbf1c259a6">lbm_srp_get_repo_message()</a> </li>
 </ul>
 <p><br />
  </p>

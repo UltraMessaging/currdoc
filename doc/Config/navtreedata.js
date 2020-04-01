@@ -187,8 +187,6 @@ var NAVTREE =
         [ "resolver_receiver_map_tablesz (context)", "grpudpbasedresolveroperation.html#resolverreceivermaptableszcontext", null ],
         [ "resolver_send_final_advertisements (source)", "grpudpbasedresolveroperation.html#resolversendfinaladvertisementssource", null ],
         [ "resolver_send_initial_advertisement (source)", "grpudpbasedresolveroperation.html#resolversendinitialadvertisementsource", null ],
-        [ "resolver_service (context)", "grpudpbasedresolveroperation.html#resolverservicecontext", null ],
-        [ "resolver_service_interest_mode (context)", "grpudpbasedresolveroperation.html#resolverserviceinterestmodecontext", null ],
         [ "resolver_source_map_tablesz (context)", "grpudpbasedresolveroperation.html#resolversourcemaptableszcontext", null ],
         [ "resolver_string_hash_function (context)", "grpudpbasedresolveroperation.html#resolverstringhashfunctioncontext", null ],
         [ "resolver_string_hash_function_ex (context)", "grpudpbasedresolveroperation.html#resolverstringhashfunctionexcontext", null ],
@@ -224,6 +222,12 @@ var NAVTREE =
         [ "resolver_unicast_port_high (context)", "grpunicastresolvernetwork.html#resolverunicastporthighcontext", null ],
         [ "resolver_unicast_port_low (context)", "grpunicastresolvernetwork.html#resolverunicastportlowcontext", null ],
         [ "resolver_unicast_receiver_socket_buffer (context)", "grpunicastresolvernetwork.html#resolverunicastreceiversocketbuffercontext", null ]
+      ] ]
+    ] ],
+    [ "TCP-Based Resolver Operation Options", "grptcpbasedresolveroperation.html", [
+      [ "Reference", "grptcpbasedresolveroperation.html#tcpresolveroperationref", [
+        [ "resolver_service (context)", "grptcpbasedresolveroperation.html#resolverservicecontext", null ],
+        [ "resolver_service_interest_mode (context)", "grptcpbasedresolveroperation.html#resolverserviceinterestmodecontext", null ]
       ] ]
     ] ],
     [ "Transport TCP Network Options", "grptransporttcpnetwork.html", [
@@ -776,7 +780,7 @@ var NAVTREEINDEX =
 [
 "accesstocurrentoperatingoptions.html",
 "grpmulticastresolvernetwork.html#resolvermulticastincomingaddresscontext",
-"grpultramessagingpersistence.html#umeregistrationintervalreceiver"
+"grpultramessagingpersistence.html#umeregistrationextendedfunctionreceiver"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

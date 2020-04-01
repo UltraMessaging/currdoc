@@ -185,7 +185,10 @@ var NAVTREE =
         [ "DRO Daemon Statistics String Buffers", "index.html#umrouterdaemonstatisticsstructuresstringbuffers", null ]
       ] ],
       [ "DRO Daemon Statistics Configuration", "index.html#umrouterdaemonstatisticsconfiguration", null ],
-      [ "DRO Daemon Statistics Requests", "index.html#umrouterdaemonstatisticsrequests", null ]
+      [ "DRO Daemon Control Requests", "index.html#umrouterdaemoncontrolrequests", [
+        [ "DRO Daemon Control Request Addressing", "index.html#umrouterdaemoncontrolrequestaddressing", null ],
+        [ "DRO Control Request Types", "index.html#umrouterdaemoncontrolrequesttypes", null ]
+      ] ]
     ] ],
     [ "DRO Monitoring", "index.html#umroutermonitoring", [
       [ "DRO Web Monitor", "index.html#umrouterwebmonitor", [

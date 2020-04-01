@@ -7,6 +7,7 @@ var NAVTREEINDEX0 =
 "deprecations.html#deprecationsfor613":[3,0],
 "deprecations.html#deprecationsfor67":[3,4],
 "deprecations.html#deprecationsfor68":[3,3],
+"deprecations.html#deprecationsforpre60":[3,6],
 "deprecations.html#dynamicrouterdeprecationsfor610":[3,2,2],
 "deprecations.html#dynamicrouterdeprecationsfor68":[3,3,2],
 "deprecations.html#persistencedeprecationsfor610":[3,2,1],

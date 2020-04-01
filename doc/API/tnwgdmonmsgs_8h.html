@@ -75,7 +75,7 @@ $(document).ready(function(){initNavTree('tnwgdmonmsgs_8h.html','');});
 </div><!--header-->
 <div class="contents">
 
-<p>Ultra Messaging (UM) message definitions for UM Router (DRO) Daemon Statistics. For general information on Daemon Statistics, see <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/API/ume.tag:../UME/" href="../UME/storedaemonstatistics.html">Store Daemon Statistics</a>.  
+<p>Ultra Messaging (UM) message definitions for UM Router (DRO) Daemon Statistics. For general information on Daemon Statistics, see <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/API/ume.tag:../UME/" href="../UME/storedaemonstatistics.html">Store Daemon Statistics</a>.  
 <a href="#details">More...</a></p>
 
 <p><a href="tnwgdmonmsgs_8h_source.html">Go to the source code of this file.</a></p>
@@ -109,7 +109,7 @@ Data Structures</h2></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Structure containing sending and receiving statistics for an endpoint portal. Used by <a class="el" href="tnwgdmonmsgs_8h.html#aa2b0a970302f3d6e7b1a7e28efaef389">tnwg_portalstats_dstat_record_t</a>. Except where indicated, all fields of type <code>lbm_uintXX_t</code> should be byte-swapped if <code>hdr.magic</code> is equal to <a class="el" href="tnwgdmonmsgs_8h.html#a5b2b012ee57b0466b70e249b41234b0d">LBM_TNWG_DAEMON_ANTIMAGIC</a>.  <a href="structtnwg__portal__endpoint__dstat__record__t__stct.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtnwg__portal__peer__dstat__record__t__stct.html">tnwg_portal_peer_dstat_record_t_stct</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Structure containing sending and receiving statistics for a peer portal. Used by <a class="el" href="tnwgdmonmsgs_8h.html#aa2b0a970302f3d6e7b1a7e28efaef389">tnwg_portalstats_dstat_record_t</a>. Except where indicated, all fields of type <code>lbm_uintXX_t</code> should be byte-swapped if <code>hdr.magic</code> is equal to <a class="el" href="tnwgdmonmsgs_8h.html#a5b2b012ee57b0466b70e249b41234b0d">LBM_TNWG_DAEMON_ANTIMAGIC</a>.  <a href="structtnwg__portal__peer__dstat__record__t__stct.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Structure containing sending and receiving statistics for a peer portal.  <a href="structtnwg__portal__peer__dstat__record__t__stct.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtnwg__portalstats__dstat__record__t__stct.html">tnwg_portalstats_dstat_record_t_stct</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Structure containing sending and receiving statistics for peer or endpoint portal. Used by <a class="el" href="tnwgdmonmsgs_8h.html#a4c9cd731d8196ad64534fa1c4240ef6c">tnwg_dstat_portalstats_msg_t</a>. The full length of this structure is defined by the longest of its union elements. However, when messages are sent, the actual size of the selected union element is used. That size is recorded in <a class="el" href="structtnwg__dstat__record__hdr__t__stct.html#aad8cebe5ffa23060b7e705307f034ff9">tnwg_dstat_record_hdr_t_stct::record_length</a>. Except where indicated, all fields of type <code>lbm_uintXX_t</code> should be byte-swapped if <code>hdr.magic</code> is equal to <a class="el" href="tnwgdmonmsgs_8h.html#a5b2b012ee57b0466b70e249b41234b0d">LBM_TNWG_DAEMON_ANTIMAGIC</a>.  <a href="structtnwg__portalstats__dstat__record__t__stct.html#details">More...</a><br /></td></tr>
@@ -159,7 +159,7 @@ Data Structures</h2></td></tr>
 Macros</h2></td></tr>
 <tr class="memitem:a358ebd7e5961682568ac1678dfd5d13e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a358ebd7e5961682568ac1678dfd5d13e"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tnwgdmonmsgs_8h.html#a358ebd7e5961682568ac1678dfd5d13e">LBM_TNWG_DMON_VERSION</a>&#160;&#160;&#160;0</td></tr>
-<tr class="memdesc:a358ebd7e5961682568ac1678dfd5d13e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Value of <a class="el" href="structtnwg__dstat__msg__hdr__t__stct.html#ac25d8d5fa5b4329fe9d60e817edab688" title="Version of the message definition. See Daemon Statistics Versioning for general information on versio...">tnwg_dstat_msg_hdr_t_stct::version</a> indicating the version of the monitoring daemon. See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/API/design.tag:../Design/" href="../Design/umobjects.html#daemonstatisticsversioning">Daemon Statistics Versioning</a> for general information on versioning of these structures. <br /></td></tr>
+<tr class="memdesc:a358ebd7e5961682568ac1678dfd5d13e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Value of <a class="el" href="structtnwg__dstat__msg__hdr__t__stct.html#ac25d8d5fa5b4329fe9d60e817edab688" title="Version of the message definition. See Daemon Statistics Versioning for general information on versio...">tnwg_dstat_msg_hdr_t_stct::version</a> indicating the version of the monitoring daemon. See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/API/design.tag:../Design/" href="../Design/umfeatures.html#daemonstatisticsversioning">Daemon Statistics Versioning</a> for general information on versioning of these structures. <br /></td></tr>
 <tr class="separator:a358ebd7e5961682568ac1678dfd5d13e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a51a7570a9587ff575c8c1cfafac51ef3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a51a7570a9587ff575c8c1cfafac51ef3"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>TNWG_DSTAT_FILENAME_MAX_STRLEN</b>&#160;&#160;&#160;256</td></tr>
@@ -274,9 +274,8 @@ typedef struct <a class="el" href="structtnwg__dstat__peer__send__stats__t__stct
 typedef struct <a class="el" href="structtnwg__portal__endpoint__dstat__record__t__stct.html">tnwg_portal_endpoint_dstat_record_t_stct</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tnwgdmonmsgs_8h.html#a93460aa3dc2f9b0337226dab0333d3a6">tnwg_portal_endpoint_dstat_record_t</a></td></tr>
 <tr class="memdesc:a93460aa3dc2f9b0337226dab0333d3a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Structure containing sending and receiving statistics for an endpoint portal. Used by <a class="el" href="tnwgdmonmsgs_8h.html#aa2b0a970302f3d6e7b1a7e28efaef389">tnwg_portalstats_dstat_record_t</a>. Except where indicated, all fields of type <code>lbm_uintXX_t</code> should be byte-swapped if <code>hdr.magic</code> is equal to <a class="el" href="tnwgdmonmsgs_8h.html#a5b2b012ee57b0466b70e249b41234b0d">LBM_TNWG_DAEMON_ANTIMAGIC</a>. <br /></td></tr>
 <tr class="separator:a93460aa3dc2f9b0337226dab0333d3a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aeac81f470a988e915602acbb57be5793"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aeac81f470a988e915602acbb57be5793"></a>
-typedef struct <a class="el" href="structtnwg__portal__peer__dstat__record__t__stct.html">tnwg_portal_peer_dstat_record_t_stct</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tnwgdmonmsgs_8h.html#aeac81f470a988e915602acbb57be5793">tnwg_portal_peer_dstat_record_t</a></td></tr>
-<tr class="memdesc:aeac81f470a988e915602acbb57be5793"><td class="mdescLeft">&#160;</td><td class="mdescRight">Structure containing sending and receiving statistics for a peer portal. Used by <a class="el" href="tnwgdmonmsgs_8h.html#aa2b0a970302f3d6e7b1a7e28efaef389">tnwg_portalstats_dstat_record_t</a>. Except where indicated, all fields of type <code>lbm_uintXX_t</code> should be byte-swapped if <code>hdr.magic</code> is equal to <a class="el" href="tnwgdmonmsgs_8h.html#a5b2b012ee57b0466b70e249b41234b0d">LBM_TNWG_DAEMON_ANTIMAGIC</a>. <br /></td></tr>
+<tr class="memitem:aeac81f470a988e915602acbb57be5793"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structtnwg__portal__peer__dstat__record__t__stct.html">tnwg_portal_peer_dstat_record_t_stct</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tnwgdmonmsgs_8h.html#aeac81f470a988e915602acbb57be5793">tnwg_portal_peer_dstat_record_t</a></td></tr>
+<tr class="memdesc:aeac81f470a988e915602acbb57be5793"><td class="mdescLeft">&#160;</td><td class="mdescRight">Structure containing sending and receiving statistics for a peer portal.  <a href="#aeac81f470a988e915602acbb57be5793">More...</a><br /></td></tr>
 <tr class="separator:aeac81f470a988e915602acbb57be5793"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa2b0a970302f3d6e7b1a7e28efaef389"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa2b0a970302f3d6e7b1a7e28efaef389"></a>
 typedef struct <a class="el" href="structtnwg__portalstats__dstat__record__t__stct.html">tnwg_portalstats_dstat_record_t_stct</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tnwgdmonmsgs_8h.html#aa2b0a970302f3d6e7b1a7e28efaef389">tnwg_portalstats_dstat_record_t</a></td></tr>
@@ -334,12 +333,29 @@ typedef struct <a class="el" href="structtnwg__rm__stat__grp__msg__t__stct.html"
 <tr class="separator:a7a5cbf4cf63c2cad889ccb73e209211a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Ultra Messaging (UM) message definitions for UM Router (DRO) Daemon Statistics. For general information on Daemon Statistics, see <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_REL_6_13/29West/lbm/doc/API/ume.tag:../UME/" href="../UME/storedaemonstatistics.html">Store Daemon Statistics</a>. </p>
+<div class="textblock"><p>Ultra Messaging (UM) message definitions for UM Router (DRO) Daemon Statistics. For general information on Daemon Statistics, see <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/API/ume.tag:../UME/" href="../UME/storedaemonstatistics.html">Store Daemon Statistics</a>. </p>
 <p>All of the documentation and software included in this and any other Informatica Corporation Ultra Messaging Releases Copyright (C) Informatica Corporation. All rights reserved.</p>
 <p>Redistribution and use in source and binary forms, with or without modification, are permitted only as covered by the terms of a valid software license agreement with Informatica Corporation.</p>
 <p>Copyright (C) 2004-2020, Informatica Corporation. All Rights Reserved.</p>
 <p>THE SOFTWARE IS PROVIDED "AS IS" AND INFORMATICA DISCLAIMS ALL WARRANTIES EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION, ANY IMPLIED WARRANTIES OF NON-INFRINGEMENT, MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE. INFORMATICA DOES NOT WARRANT THAT USE OF THE SOFTWARE WILL BE UNINTERRUPTED OR ERROR-FREE. INFORMATICA SHALL NOT, UNDER ANY CIRCUMSTANCES, BE LIABLE TO LICENSEE FOR LOST PROFITS, CONSEQUENTIAL, INCIDENTAL, SPECIAL OR INDIRECT DAMAGES ARISING OUT OF OR RELATED TO THIS AGREEMENT OR THE TRANSACTIONS CONTEMPLATED HEREUNDER, EVEN IF INFORMATICA HAS BEEN APPRISED OF THE LIKELIHOOD OF SUCH DAMAGES. </p>
-</div></div><!-- contents -->
+</div><h2 class="groupheader">Typedef Documentation</h2>
+<a class="anchor" id="aeac81f470a988e915602acbb57be5793"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="structtnwg__portal__peer__dstat__record__t__stct.html">tnwg_portal_peer_dstat_record_t_stct</a>  <a class="el" href="tnwgdmonmsgs_8h.html#aeac81f470a988e915602acbb57be5793">tnwg_portal_peer_dstat_record_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Structure containing sending and receiving statistics for a peer portal. </p>
+<p>Used by <a class="el" href="tnwgdmonmsgs_8h.html#aa2b0a970302f3d6e7b1a7e28efaef389">tnwg_portalstats_dstat_record_t</a>. Except where indicated, all fields of type <code>lbm_uintXX_t</code> should be byte-swapped if <code>hdr.magic</code> is equal to <a class="el" href="tnwgdmonmsgs_8h.html#a5b2b012ee57b0466b70e249b41234b0d">LBM_TNWG_DAEMON_ANTIMAGIC</a>.</p>
+<p>Note that fields remote_interest_topics, remote_interest_pcre_patterns, and remote_interest_regex_patterns are not used by peer portals, and are set to zero. </p>
+
+</div>
+</div>
+</div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

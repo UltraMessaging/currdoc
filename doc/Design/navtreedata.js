@@ -33,32 +33,34 @@ var NAVTREE =
         [ "Topic Resolution Rate Control", "fundamentalconcepts.html#topicresolutionratecontrol", null ]
       ] ],
       [ "Operational Statistics", "fundamentalconcepts.html#operationalstatistics", null ],
-      [ "Immediate Messaging", "fundamentalconcepts.html#immediatemessaging", null ],
-      [ "Context Object", "fundamentalconcepts.html#contextobject", null ],
-      [ "Topic Object", "fundamentalconcepts.html#topicobject", null ],
-      [ "Source Object", "fundamentalconcepts.html#sourceobject", [
-        [ "Source String", "fundamentalconcepts.html#sourcestring", null ],
-        [ "Source Strings in a Routed Network", "fundamentalconcepts.html#sourcestringsinaroutednetwork", null ],
-        [ "Source Configuration and Transport Sessions", "fundamentalconcepts.html#sourceconfigurationandtransportsessions", null ],
-        [ "Zero Object Delivery (Source)", "fundamentalconcepts.html#zeroobjectdeliverysource", null ]
+      [ "Immediate Messaging", "fundamentalconcepts.html#immediatemessaging", null ]
+    ] ],
+    [ "UM Objects", "umobjects.html", [
+      [ "Context Object", "umobjects.html#contextobject", null ],
+      [ "Topic Object", "umobjects.html#topicobject", null ],
+      [ "Source Object", "umobjects.html#sourceobject", [
+        [ "Source String", "umobjects.html#sourcestring", null ],
+        [ "Source Strings in a Routed Network", "umobjects.html#sourcestringsinaroutednetwork", null ],
+        [ "Source Configuration and Transport Sessions", "umobjects.html#sourceconfigurationandtransportsessions", null ],
+        [ "Zero Object Delivery (Source)", "umobjects.html#zeroobjectdeliverysource", null ]
       ] ],
-      [ "Receiver Object", "fundamentalconcepts.html#receiverobject", [
-        [ "Receiver Configuration and Transport Sessions", "fundamentalconcepts.html#receiverconfigurationandtransportsessions", null ],
-        [ "UM Wildcard Receivers", "fundamentalconcepts.html#umwildcardreceivers", null ],
-        [ "Transport Services Provider Object", "fundamentalconcepts.html#transportservicesproviderobject", null ],
-        [ "UM Hot Failover Across Contexts Objects", "fundamentalconcepts.html#umhotfailoveracrosscontextsobjects", null ],
-        [ "Zero Object Delivery", "fundamentalconcepts.html#zeroobjectdelivery", null ]
+      [ "Receiver Object", "umobjects.html#receiverobject", [
+        [ "Receiver Configuration and Transport Sessions", "umobjects.html#receiverconfigurationandtransportsessions", null ],
+        [ "UM Wildcard Receivers", "umobjects.html#umwildcardreceivers", null ],
+        [ "Transport Services Provider Object", "umobjects.html#transportservicesproviderobject", null ],
+        [ "UM Hot Failover Across Contexts Objects", "umobjects.html#umhotfailoveracrosscontextsobjects", null ],
+        [ "Zero Object Delivery", "umobjects.html#zeroobjectdelivery", null ]
       ] ],
-      [ "Event Queue Object", "fundamentalconcepts.html#eventqueueobject", null ],
-      [ "Message Object", "fundamentalconcepts.html#messageobject", [
-        [ "Message Object Deletion", "fundamentalconcepts.html#messageobjectdeletion", null ],
-        [ "Message Object Retention", "fundamentalconcepts.html#messageobjectretention", null ]
+      [ "Event Queue Object", "umobjects.html#eventqueueobject", null ],
+      [ "Message Object", "umobjects.html#messageobject", [
+        [ "Message Object Deletion", "umobjects.html#messageobjectdeletion", null ],
+        [ "Message Object Retention", "umobjects.html#messageobjectretention", null ]
       ] ],
-      [ "Security Considerations", "fundamentalconcepts.html#securityconsiderations", [
-        [ "Webmon Security", "fundamentalconcepts.html#webmonsecurity", null ]
+      [ "Security Considerations", "umobjects.html#securityconsiderations", [
+        [ "Webmon Security", "umobjects.html#webmonsecurity", null ]
       ] ],
-      [ "Configuration Introduction", "fundamentalconcepts.html#configurationintroduction", [
-        [ "xml:space Attribute", "fundamentalconcepts.html#xmlspaceattribute", null ]
+      [ "Configuration Introduction", "umobjects.html#configurationintroduction", [
+        [ "xml:space Attribute", "umobjects.html#xmlspaceattribute", null ]
       ] ]
     ] ],
     [ "Transport Types", "transporttypes.html", [
@@ -210,6 +212,7 @@ var NAVTREE =
         [ "Timestamp Configuration Summary", "umfeatures.html#timestampconfigurationsummary", null ]
       ] ],
       [ "Unicast Immediate Messaging", "umfeatures.html#unicastimmediatemessaging", [
+        [ "UIM Reliability", "umfeatures.html#uimreliability", null ],
         [ "UIM Addressing", "umfeatures.html#uimaddressing", null ],
         [ "Receiving a UIM", "umfeatures.html#receivingauim", null ],
         [ "Sending a UIM", "umfeatures.html#sendingauim", null ],
@@ -224,61 +227,60 @@ var NAVTREE =
         [ "MIM Configuration", "umfeatures.html#mimconfiguration", null ],
         [ "MIM Example Applications", "umfeatures.html#mimexampleapplications", null ]
       ] ],
-      [ "HyperTopics", "umfeatures.html#hypertopics", null ]
-    ] ],
-    [ "UM Objects", "umobjects.html", [
-      [ "Application Headers", "umobjects.html#applicationheaders", [
-        [ "Application Headers Usage", "umobjects.html#applicationheadersusage", null ]
+      [ "HyperTopics", "umfeatures.html#hypertopics", null ],
+      [ "Application Headers", "umfeatures.html#applicationheaders", [
+        [ "Application Headers Usage", "umfeatures.html#applicationheadersusage", null ]
       ] ],
-      [ "Message Properties", "umobjects.html#messageproperties", [
-        [ "Message Properties Usage", "umobjects.html#messagepropertiesusage", null ],
-        [ "Message Properties Data Types", "umobjects.html#messagepropertiesdatatypes", null ],
-        [ "Message Properties Performance Considerations", "umobjects.html#messagepropertiesperformanceconsiderations", null ],
-        [ "Smart Sources and Message Properties", "umobjects.html#smartsourcesandmessageproperties", null ],
-        [ "Smart Source Message Properties Usage", "umobjects.html#smartsourcemessagepropertiesusage", null ]
+      [ "Message Properties", "umfeatures.html#messageproperties", [
+        [ "Message Properties Usage", "umfeatures.html#messagepropertiesusage", null ],
+        [ "Message Properties Data Types", "umfeatures.html#messagepropertiesdatatypes", null ],
+        [ "Message Properties Performance Considerations", "umfeatures.html#messagepropertiesperformanceconsiderations", null ],
+        [ "Smart Sources and Message Properties", "umfeatures.html#smartsourcesandmessageproperties", null ],
+        [ "Smart Source Message Properties Usage", "umfeatures.html#smartsourcemessagepropertiesusage", null ]
       ] ],
-      [ "Request/Response Model", "umobjects.html#requestresponsemodel", [
-        [ "Request Message", "umobjects.html#requestmessage", null ],
-        [ "Response Message", "umobjects.html#responsemessage", null ],
-        [ "TCP Management", "umobjects.html#tcpmanagement", null ],
-        [ "Request/Response Configuration", "umobjects.html#requestresponseconfiguration", null ],
-        [ "Request/Response Example Applications", "umobjects.html#requestresponseexampleapplications", null ]
+      [ "Request/Response Model", "umfeatures.html#requestresponsemodel", [
+        [ "Request Message", "umfeatures.html#requestmessage", null ],
+        [ "Response Message", "umfeatures.html#responsemessage", null ],
+        [ "TCP Management", "umfeatures.html#tcpmanagement", null ],
+        [ "Request/Response Configuration", "umfeatures.html#requestresponseconfiguration", null ],
+        [ "Request/Response Example Applications", "umfeatures.html#requestresponseexampleapplications", null ]
       ] ],
-      [ "Self Describing Messaging", "umobjects.html#selfdescribingmessaging", null ],
-      [ "Pre-Defined Messages", "umobjects.html#predefinedmessages", [
-        [ "Typical PDM Usage Patterns", "umobjects.html#typicalpdmusagepatterns", null ],
-        [ "Getting Started with PDM", "umobjects.html#gettingstartedwithpdm", null ],
-        [ "Using the PDM API", "umobjects.html#usingthepdmapi", null ],
-        [ "Migrating from SDM", "umobjects.html#migratingfromsdm", null ]
+      [ "Self Describing Messaging", "umfeatures.html#selfdescribingmessaging", null ],
+      [ "Pre-Defined Messages", "umfeatures.html#predefinedmessages", [
+        [ "Typical PDM Usage Patterns", "umfeatures.html#typicalpdmusagepatterns", null ],
+        [ "Getting Started with PDM", "umfeatures.html#gettingstartedwithpdm", null ],
+        [ "Using the PDM API", "umfeatures.html#usingthepdmapi", null ],
+        [ "Migrating from SDM", "umfeatures.html#migratingfromsdm", null ]
       ] ],
-      [ "Sending to Sources", "umobjects.html#sendingtosources", [
-        [ "Source String from Receive Event", "umobjects.html#sourcestringfromreceiveevent", null ],
-        [ "Source String from Source Notification Function", "umobjects.html#sourcestringfromsourcenotificationfunction", null ],
-        [ "Sending to Source Readiness", "umobjects.html#sendingtosourcereadiness", null ]
+      [ "Sending to Sources", "umfeatures.html#sendingtosources", [
+        [ "Source String from Receive Event", "umfeatures.html#sourcestringfromreceiveevent", null ],
+        [ "Source String from Source Notification Function", "umfeatures.html#sourcestringfromsourcenotificationfunction", null ],
+        [ "Sending to Source Readiness", "umfeatures.html#sendingtosourcereadiness", null ]
       ] ],
-      [ "Spectrum", "umobjects.html#spectrum", [
-        [ "Spectrum Performance Advantages", "umobjects.html#spectrumperformanceadvantages", null ],
-        [ "Spectrum Configuration Options", "umobjects.html#spectrumconfigurationoptions", null ],
-        [ "Smart Sources and Spectrum", "umobjects.html#smartsourcesandspectrum", null ]
+      [ "Spectrum", "umfeatures.html#spectrum", [
+        [ "Spectrum Performance Advantages", "umfeatures.html#spectrumperformanceadvantages", null ],
+        [ "Spectrum Configuration Options", "umfeatures.html#spectrumconfigurationoptions", null ],
+        [ "Smart Sources and Spectrum", "umfeatures.html#smartsourcesandspectrum", null ]
       ] ],
-      [ "Hot Failover (HF)", "umobjects.html#hotfailoverhf", [
-        [ "Implementing Hot Failover Sources", "umobjects.html#implementinghotfailoversources", null ],
-        [ "Implementing Hot Failover Receivers", "umobjects.html#implementinghotfailoverreceivers", null ],
-        [ "Implementing Hot Failover Wildcard Receivers", "umobjects.html#implementinghotfailoverwildcardreceivers", null ],
-        [ "Java and .NET", "umobjects.html#javaandnet", null ],
-        [ "Using Hot Failover with Persistence", "umobjects.html#usinghotfailoverwithpersistence", null ],
-        [ "Hot Failover Intentional Gap Support", "umobjects.html#hotfailoverintentionalgapsupport", null ],
-        [ "Hot Failover Optional Messages", "umobjects.html#hotfailoveroptionalmessages", null ],
-        [ "Using Hot Failover with Ordered Delivery", "umobjects.html#usinghotfailoverwithordereddelivery", null ],
-        [ "Hot Failover Across Multiple Contexts", "umobjects.html#hotfailoveracrossmultiplecontexts", null ]
+      [ "Hot Failover (HF)", "umfeatures.html#hotfailoverhf", [
+        [ "Implementing Hot Failover Sources", "umfeatures.html#implementinghotfailoversources", null ],
+        [ "Implementing Hot Failover Receivers", "umfeatures.html#implementinghotfailoverreceivers", null ],
+        [ "Implementing Hot Failover Wildcard Receivers", "umfeatures.html#implementinghotfailoverwildcardreceivers", null ],
+        [ "Java and .NET", "umfeatures.html#javaandnet", null ],
+        [ "Using Hot Failover with Persistence", "umfeatures.html#usinghotfailoverwithpersistence", null ],
+        [ "Hot Failover Intentional Gap Support", "umfeatures.html#hotfailoverintentionalgapsupport", null ],
+        [ "Hot Failover Optional Messages", "umfeatures.html#hotfailoveroptionalmessages", null ],
+        [ "Using Hot Failover with Ordered Delivery", "umfeatures.html#usinghotfailoverwithordereddelivery", null ],
+        [ "Hot Failover Across Multiple Contexts", "umfeatures.html#hotfailoveracrossmultiplecontexts", null ]
       ] ],
-      [ "Daemon Statistics", "umobjects.html#daemonstatistics", [
-        [ "Daemon Statistics Structures", "umobjects.html#daemonstatisticsstructures", null ],
-        [ "Daemon Statistics Binary Data", "umobjects.html#daemonstatisticsbinarydata", null ],
-        [ "Daemon Statistics Versioning", "umobjects.html#daemonstatisticsversioning", null ],
-        [ "Daemon Statistics Requests", "umobjects.html#daemonstatisticsrequests", null ],
-        [ "Securing Daemon Statistics Requests", "umobjects.html#securingdaemonstatisticsrequests", null ],
-        [ "Daemon Statistics Details", "umobjects.html#daemonstatisticsdetails", null ]
+      [ "Daemon Statistics", "umfeatures.html#daemonstatistics", [
+        [ "Daemon Controller", "umfeatures.html#daemoncontroller", null ],
+        [ "Daemon Statistics Structures", "umfeatures.html#daemonstatisticsstructures", null ],
+        [ "Daemon Statistics Binary Data", "umfeatures.html#daemonstatisticsbinarydata", null ],
+        [ "Daemon Statistics Versioning", "umfeatures.html#daemonstatisticsversioning", null ],
+        [ "Daemon Control Requests", "umfeatures.html#daemoncontrolrequests", null ],
+        [ "Securing Daemon Control Requests", "umfeatures.html#securingdaemoncontrolrequests", null ],
+        [ "Daemon Statistics Details", "umfeatures.html#daemonstatisticsdetails", null ]
       ] ]
     ] ],
     [ "Advanced Optimizations", "advancedoptimizations.html", [
@@ -453,7 +455,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "advancedoptimizations.html",
-"transporttypes.html#sourcesandlbtipc"
+"umfeatures.html#daemonstatisticsbinarydata"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

@@ -33,7 +33,9 @@ var NAVTREE =
         [ "Topic Resolution Rate Control", "index.html#topicresolutionratecontrol", null ]
       ] ],
       [ "Operational Statistics", "index.html#operationalstatistics", null ],
-      [ "Immediate Messaging", "index.html#immediatemessaging", null ],
+      [ "Immediate Messaging", "index.html#immediatemessaging", null ]
+    ] ],
+    [ "UM Objects", "index.html#umobjects", [
       [ "Context Object", "index.html#contextobject", null ],
       [ "Topic Object", "index.html#topicobject", null ],
       [ "Source Object", "index.html#sourceobject", [
@@ -210,6 +212,7 @@ var NAVTREE =
         [ "Timestamp Configuration Summary", "index.html#timestampconfigurationsummary", null ]
       ] ],
       [ "Unicast Immediate Messaging", "index.html#unicastimmediatemessaging", [
+        [ "UIM Reliability", "index.html#uimreliability", null ],
         [ "UIM Addressing", "index.html#uimaddressing", null ],
         [ "Receiving a UIM", "index.html#receivingauim", null ],
         [ "Sending a UIM", "index.html#sendingauim", null ],
@@ -224,9 +227,7 @@ var NAVTREE =
         [ "MIM Configuration", "index.html#mimconfiguration", null ],
         [ "MIM Example Applications", "index.html#mimexampleapplications", null ]
       ] ],
-      [ "HyperTopics", "index.html#hypertopics", null ]
-    ] ],
-    [ "UM Objects", "index.html#umobjects", [
+      [ "HyperTopics", "index.html#hypertopics", null ],
       [ "Application Headers", "index.html#applicationheaders", [
         [ "Application Headers Usage", "index.html#applicationheadersusage", null ]
       ] ],
@@ -273,11 +274,12 @@ var NAVTREE =
         [ "Hot Failover Across Multiple Contexts", "index.html#hotfailoveracrossmultiplecontexts", null ]
       ] ],
       [ "Daemon Statistics", "index.html#daemonstatistics", [
+        [ "Daemon Controller", "index.html#daemoncontroller", null ],
         [ "Daemon Statistics Structures", "index.html#daemonstatisticsstructures", null ],
         [ "Daemon Statistics Binary Data", "index.html#daemonstatisticsbinarydata", null ],
         [ "Daemon Statistics Versioning", "index.html#daemonstatisticsversioning", null ],
-        [ "Daemon Statistics Requests", "index.html#daemonstatisticsrequests", null ],
-        [ "Securing Daemon Statistics Requests", "index.html#securingdaemonstatisticsrequests", null ],
+        [ "Daemon Control Requests", "index.html#daemoncontrolrequests", null ],
+        [ "Securing Daemon Control Requests", "index.html#securingdaemoncontrolrequests", null ],
         [ "Daemon Statistics Details", "index.html#daemonstatisticsdetails", null ]
       ] ]
     ] ],
@@ -453,7 +455,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "index.html",
-"index.html#sourcestringfromsourcenotificationfunction"
+"index.html#sourcestringfromreceiveevent"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

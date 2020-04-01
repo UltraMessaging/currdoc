@@ -43,7 +43,8 @@ var NAVTREE =
       ] ],
       [ "Deprecations for 6.0", "index.html#deprecationsfor60", [
         [ "Streaming Deprecations for 6.0", "index.html#streamingdeprecationsfor60", null ]
-      ] ]
+      ] ],
+      [ "Deprecations for pre-6.0", "index.html#deprecationsforpre60", null ]
     ] ],
     [ "Upgrade Procedure", "index.html#upgradeprocedure", [
       [ "Default Values for Configuration Options", "index.html#defaultvaluesforconfigurationoptions", null ],

@@ -172,9 +172,9 @@ var NAVTREE =
         [ "Store Daemon Statistics Retx Counts", "index.html#storedaemonstatisticsstructuresretxcounts", null ]
       ] ],
       [ "Store Daemon Statistics Configuration", "index.html#storedaemonstatisticsconfiguration", null ],
-      [ "Store Daemon Statistics Requests", "index.html#storedaemonstatisticsrequests", [
-        [ "Store Daemon Statistics Request Addressing", "index.html#storedaemonstatisticsrequestaddressing", null ],
-        [ "Store Daemon Statistics Request Types", "index.html#storedaemonstatisticsrequesttypes", null ],
+      [ "Store Daemon Control Requests", "index.html#storedaemoncontrolrequests", [
+        [ "Store Daemon Control Request Addressing", "index.html#storedaemoncontrolrequestaddressing", null ],
+        [ "Store Daemon Control Request Types", "index.html#storedaemoncontrolrequesttypes", null ],
         [ "Request: Mark Stored Message Invalid", "index.html#requestmarkstoredmessageinvalid", null ],
         [ "Request: Deregister Receiver", "index.html#requestderegisterreceiver", null ]
       ] ],

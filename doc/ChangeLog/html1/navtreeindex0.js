@@ -9,6 +9,7 @@ var NAVTREEINDEX0 =
 "index.html#deprecationsfor613":[3,0],
 "index.html#deprecationsfor67":[3,4],
 "index.html#deprecationsfor68":[3,3],
+"index.html#deprecationsforpre60":[3,6],
 "index.html#dynamicrouterdeprecationsfor610":[3,2,2],
 "index.html#dynamicrouterdeprecationsfor68":[3,3,2],
 "index.html#dynamicrouterenhancementsfor6_0":[21,0,3],
