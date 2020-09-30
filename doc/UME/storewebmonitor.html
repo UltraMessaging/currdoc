@@ -54,9 +54,9 @@ $(document).ready(function(){initNavTree('storewebmonitor.html','');});
 <div class="title">Store Web Monitor </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>The built-in web monitor (configured in the <code>umestored</code> XML configuration file) is a rich source of information about the health of a UM stores. This section contains a page-by-page guide to reading and interpreting the output of a UM web monitor, with just a couple example sources and one receiver using a single store.</p>
-<dl class="section warning"><dt>Warning</dt><dd>The store's web monitor is not designed to be a highly-secure feature. Anybody with access to the network can access the web monitor pages.</dd></dl>
-<p>Users are expected to prevent unauthorized access to the web monitor through normal firewalling methods. Users who are unable to limit access to a level consistent with their overall security needs should disable the store web monitor (using <a class="el" href="configurationreferenceforumestored.html#umeelementwebmonitor">&lt;web-monitor&gt;</a>). See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/UME/design.tag:../Design/" href="../Design/umobjects.html#webmonsecurity">Webmon Security</a> for more information.</p>
+<div class="textblock"><p>The built-in web monitor (configured in the Store configuration file) is a rich source of information about the health of a Store. This section contains a page-by-page guide to reading and interpreting the output of a UM web monitor, with just a couple example sources and one receiver using a single Store.</p>
+<dl class="section warning"><dt>Warning</dt><dd>The Store's web monitor is not designed to be a highly-secure feature. Anybody with access to the network can access the web monitor pages.</dd></dl>
+<p>Users are expected to prevent unauthorized access to the web monitor through normal firewalling methods. Users who are unable to limit access to a level consistent with their overall security needs should disable the Store web monitor (using <a class="el" href="configurationreferenceforumestored.html#umeelementwebmonitor">&lt;web-monitor&gt;</a>). See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/UME/design.tag:../Design/" href="../Design/umobjects.html#webmonsecurity">Webmon Security</a> for more information.</p>
 <dl class="section note"><dt>Note</dt><dd>the UM daemon designs are evolving away from simple web-based monitoring and towards a publish/subscribe model of distributing monitoring events and statistics.</dd></dl>
 <p><br />
  </p>
@@ -76,8 +76,8 @@ Store Web Monitor Stores Page&nbsp;&nbsp;<small><a href="#storewebmonitorstoresp
 <center> <div class="image">
 <img src="webmon_stores.png" alt="webmon_stores.png"/>
 </div>
-  </center><p>This page shows all the stores configured under the <code>umestored</code> process. If you had 5 stores configured, they would be numbered Store 0 through Store 4. Our example has only one store configured, "ume-test-store".</p>
-<p>Each store name is a clickable link, which displays the <a class="el" href="storewebmonitor.html#storewebmonitorstorepage">Store Web Monitor Store Page</a> for that store.</p>
+  </center><p>This page shows all the Stores configured under the <code>umestored</code> process. If you had 5 Stores configured, they would be numbered Store 0 through Store 4. Our example has only one Store configured, "ume-test-store".</p>
+<p>Each Store name is a clickable link, which displays the <a class="el" href="storewebmonitor.html#storewebmonitorstorepage">Store Web Monitor Store Page</a> for that Store.</p>
 <p><br />
  </p>
 <h1><a class="anchor" id="storewebmonitorstorepage"></a>
@@ -86,28 +86,28 @@ Store Web Monitor Store Page&nbsp;&nbsp;<small><a href="#storewebmonitorstorepag
 <center> <div class="image">
 <img src="webmon_store.png" alt="webmon_store.png"/>
 </div>
-  </center><p>This page shows the following information about the store.</p>
+  </center><p>This page shows the following information about the Store.</p>
 <table class="doxtable">
 <tr>
 <th>Item </th><th><p class="starttd">Description</p>
 <p class="endtd"></p>
 </th></tr>
 <tr>
-<td>Interface </td><td><p class="starttd">This store is listening on all interfaces (0.0.0.0) on port 38401.</p>
+<td>Interface </td><td><p class="starttd">This Store is listening on all interfaces (0.0.0.0) on port 38401.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>Cache Dir </td><td><p class="starttd">Pathname for disk store message cache directory. This would be configured as a store attribute in the store's XML configuration file. For example: <br />
-<a class="el" href="configurationreferenceforumestored.html#umecfgdiskcachedirectory">&lt;option type="store" name="disk-cache-directory" value="cache/" /&gt;</a></p>
+<td>Cache Dir </td><td><p class="starttd">Pathname for disk Store message cache directory. This would be configured as a Store option in the Store configuration file. For example: <br />
+<a class="el" href="optionsforastoresumeattributeselement.html#umecfgdiskcachedirectory">&lt;option type="store" name="disk-cache-directory" value="cache/" /&gt;</a></p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>State Dir </td><td><p class="starttd">Pathname for disk store state directory. This would be configured as a store attribute in the store's XML configuration file. For example: <br />
-<a class="el" href="configurationreferenceforumestored.html#umecfgdiskstatedirectory">&lt;option type="store" name="disk-state-directory" value="state/" /&gt;</a></p>
+<td>State Dir </td><td><p class="starttd">Pathname for disk Store state directory. This would be configured as a Store option in the Store configuration file. For example: <br />
+<a class="el" href="optionsforastoresumeattributeselement.html#umecfgdiskstatedirectory">&lt;option type="store" name="disk-state-directory" value="state/" /&gt;</a></p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>Configured Retransmission Request Processing Rate </td><td><p class="starttd">Current value for the store's <a class="el" href="configurationreferenceforumestored.html#umecfgretransmissionrequestprocessingrate">retransmission-request-processing-rate</a> option setting.</p>
+<td>Configured Retransmission Request Processing Rate </td><td><p class="starttd">Current value for the Store's <a class="el" href="optionsforastoresumeattributeselement.html#umecfgretransmissionrequestprocessingrate">retransmission-request-processing-rate</a> option setting.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
@@ -127,11 +127,11 @@ Store Web Monitor Store Page&nbsp;&nbsp;<small><a href="#storewebmonitorstorepag
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>Retransmission Request Total Dropped </td><td><p class="starttd">The number of retransmission requests since the time the store was started.</p>
+<td>Retransmission Request Total Dropped </td><td><p class="starttd">The number of retransmission requests since the time the Store was started.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>Patterns </td><td><p class="starttd">Specifies the wildcard pattern used to select topics for which a store will provide persistence services. This would be configured as a topic attribute in the store's XML configuration file. For example: <a class="el" href="configurationreferenceforumestored.html#umeelementtopic">&lt;topic pattern="test.*" type="PCRE"&gt;</a></p>
+<td>Patterns </td><td><p class="starttd">Specifies the wildcard pattern used to select topics for which a Store will provide persistence services. This would be configured as a topic option in the Store configuration file. For example: <a class="el" href="configurationreferenceforumestored.html#umeelementtopic">&lt;topic pattern="test.*" type="PCRE"&gt;</a></p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
@@ -139,7 +139,7 @@ Store Web Monitor Store Page&nbsp;&nbsp;<small><a href="#storewebmonitorstorepag
 <p class="endtd"><a class="anchor" id="resetratestats"></a></p>
 </td></tr>
 <tr>
-<td>Reset Rate Stats </td><td>Click the Reset Rate Stats link to reset the retransmission rates. After clicking the link, The Web Monitor rests Total Seconds Used for Rate Calculations to zero and displays a page with the store number and the message, '<code>Rate Statistics have been reset</code>'. </td></tr>
+<td>Reset Rate Stats </td><td>Click the Reset Rate Stats link to reset the retransmission rates. After clicking the link, The Web Monitor rests Total Seconds Used for Rate Calculations to zero and displays a page with the Store number and the message, '<code>Rate Statistics have been reset</code>'. </td></tr>
 </table>
 <p><br />
  </p>
@@ -156,7 +156,7 @@ Store Web Monitor Source Page&nbsp;&nbsp;<small><a href="#storewebmonitorsourcep
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>10.29.3.42.14392 </td><td><p class="starttd">The IP address and port of the source's UM configuration option, <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/UME/config.tag:../Config/" href="../Config/grpunicastimmediatemessagingnetwork.html#requesttcpportcontext">request_tcp_port (context)</a>.</p>
+<td>10.29.3.42.14392 </td><td><p class="starttd">The IP address and port of the source's LBM configuration option, <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpunicastimmediatemessagingnetwork.html#requesttcpportcontext">request_tcp_port (context)</a>.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
@@ -181,11 +181,11 @@ Store Web Monitor Source Page&nbsp;&nbsp;<small><a href="#storewebmonitorsourcep
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>Last Activity </td><td><p class="starttd">09:19:39.501350 is the timestamp when the store last heard from the source, including keepalives sent by UM</p>
+<td>Last Activity </td><td><p class="starttd">09:19:39.501350 is the timestamp when the Store last heard from the source, including keepalives sent by UM</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>Repository </td><td><p class="starttd">disk is the type of repository. Possible values are "memory" or "disk".</p>
+<td>Repository </td><td><p class="starttd">disk is the type of repository. Possible values are <b>"memory"</b> or <b>"disk"</b>.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
@@ -193,22 +193,22 @@ Store Web Monitor Source Page&nbsp;&nbsp;<small><a href="#storewebmonitorsourcep
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>Message Map: 3120 </td><td><p class="starttd">The total number of message fragments the store has for this source, both on disk and in memory. These are UM-level fragments, not IP-level fragments. UM messages are fragmented into roughly 8 kilobyte chunks for UDP-based protocols (LBT-RM and LBT-RU) and into roughly 64 kilobyte chunks for LBT-TCP. The majority of application messages tend to be well under the fragment boundaries, so the value after "Message Map" could be used as a rough estimate of the number of messages in the store from this particular source. It's at least a strict upper bound.</p>
+<td>Message Map: 3120 </td><td><p class="starttd">The total number of message fragments the Store has for this source, both on disk and in memory. These are UM-level fragments, not IP-level fragments. UM messages are fragmented into roughly 8 kilobyte chunks for UDP-based protocols (LBT-RM and LBT-RU) and into roughly 64 kilobyte chunks for LBT-TCP. The majority of application messages tend to be well under the fragment boundaries, so the value after "Message Map" could be used as a rough estimate of the number of messages in the Store from this particular source. It's at least a strict upper bound.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
 <td>Window: [0, 9d5, c2f] </td><td><p class="starttd">Window format is: trail_sqn, mem_trail_sqn, lead_sqn <br />
 <br />
 </p><ul>
-<li>trail_sqn, 0, is the trailing sequence number, which is the oldest sequence number in the store for this source. In most cases, this starts at 0 and stays there for a while. The trailing sequence number changes if the store reaches a disk file size limit and then deletes the oldest messages. <br />
+<li>trail_sqn, 0, is the trailing sequence number, which is the oldest sequence number in the Store for this source. In most cases, this starts at 0 and stays there for a while. The trailing sequence number changes if the Store reaches a disk file size limit and then deletes the oldest messages. <br />
 <br />
 </li>
 <li>mem_trail_sqn, 9d5, is the trailing sequence number for messages in memory. It is the oldest sequence number still in memory. Typically, you might have more sequence numbers on disk than you do in memory, or possibly the same number. <br />
 <br />
 </li>
-<li>lead_sqn, c2f, is the leading sequence number, which is the newest sequence number in the store. <br />
+<li>lead_sqn, c2f, is the leading sequence number, which is the newest sequence number in the Store. <br />
 <br />
- Note: For a memory store, the first and second values would always be the same. The oldest sequence number in memory is the oldest in the store, so only two values are displayed. The trailing sequence number and the leading sequence number.</li>
+ Note: For a memory Store, the first and second values would always be the same. The oldest sequence number in memory is the oldest in the Store, so only two values are displayed. The trailing sequence number and the leading sequence number.</li>
 </ul>
 <p class="endtd"></p>
 </td></tr>
@@ -216,20 +216,20 @@ Store Web Monitor Source Page&nbsp;&nbsp;<small><a href="#storewebmonitorsourcep
 <td>Memory: 55986 / 65000 / 50331648 </td><td><p class="starttd">Memory format is: repository memory size / repository size threshold / repository size limit <br />
 <br />
 </p><ul>
-<li>repository memory size, 55986, is the number of bytes of messages in memory, which includes headers and store overhead. <br />
+<li>repository memory size, 55986, is the number of bytes of messages in memory, which includes headers and Store overhead. <br />
 <br />
 </li>
-<li>repository size threshold, 65000, is the <a class="el" href="configurationreferenceforumestored.html#umecfgrepositorysizethreshold">repository-size-threshold</a> topic option found in the store's XML configuration file. <br />
+<li>repository size threshold, 65000, is the <a class="el" href="optionsforastoresumeattributeselement.html#umecfgrepositorysizethreshold">repository-size-threshold</a> topic option found in the Store configuration file. <br />
 <br />
 </li>
-<li>repository size limit, 50331648, is the store's <a class="el" href="configurationreferenceforumestored.html#umecfgrepositorysizelimit">repository-size-limit</a> topic option found in the store's XML configuration file. <br />
+<li>repository size limit, 50331648, is the Store's <a class="el" href="optionsforastoresumeattributeselement.html#umecfgrepositorysizelimit">repository-size-limit</a> topic option found in the Store configuration file. <br />
 <br />
- You would expect the number of bytes in memory to be under the threshold most of the time, but it could spike above it before going back down if the store is really busy momentarily. It should never go above the limit.</li>
+ You would expect the number of bytes in memory to be under the threshold most of the time, but it could spike above it before going back down if the Store is really busy momentarily. It should never go above the limit.</li>
 </ul>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>Age Threshold: 0 </td><td><p class="starttd">Age Threshold, 0, is the store's <a class="el" href="configurationreferenceforumestored.html#umecfgrepositoryagethreshold">repository-age-threshold</a> topic option found in the store's XML configuration file.</p>
+<td>Age Threshold: 0 </td><td><p class="starttd">Age Threshold, 0, is the Store's <a class="el" href="optionsforastoresumeattributeselement.html#umecfgrepositoryagethreshold">repository-age-threshold</a> topic option found in the Store configuration file.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
@@ -239,10 +239,10 @@ Store Web Monitor Source Page&nbsp;&nbsp;<small><a href="#storewebmonitorsourcep
 <li>sync_complete_sqn, c2f, Most recent sequence number that the Operating System has confirmed persisting to disk. <br />
 <br />
 </li>
-<li>sync_sqn, c2f, Most recent sequence number for which the store has initiated persisting to disk, but the Operating System has not confirmed completion of persistence. <br />
+<li>sync_sqn, c2f, Most recent sequence number for which the Store has initiated persisting to disk, but the Operating System has not confirmed completion of persistence. <br />
 <br />
 </li>
-<li>contig_sqn, c2f, Most recent sequence number that along with the trail_sqn, creates a range of sequence numbers with no sequence number gaps. For example, if trail_sqn = 0 and the store has persisted all eleven messages with sequence numbers 0 through 10, contig_sqn would equal 10. contig_sqn would also be 10 if a receiver declared message sequence number 7 unrecoverably lost. contig_sqn would be 6 if message sequence number 7 was not persisted, but not declared lost.</li>
+<li>contig_sqn, c2f, Most recent sequence number that along with the trail_sqn, creates a range of sequence numbers with no sequence number gaps. For example, if trail_sqn = 0 and the Store has persisted all eleven messages with sequence numbers 0 through 10, contig_sqn would equal 10. contig_sqn would also be 10 if a receiver declared message sequence number 7 unrecoverably lost. contig_sqn would be 6 if message sequence number 7 was not persisted, but not declared lost.</li>
 </ul>
 <p class="endtd"></p>
 </td></tr>
@@ -250,10 +250,10 @@ Store Web Monitor Source Page&nbsp;&nbsp;<small><a href="#storewebmonitorsourcep
 <td>In progress: 0 / 0 </td><td><p class="starttd">Pertains to disk repositories only. In progress format is: num_ios_pending / num_read_ios_pending <br />
 <br />
 </p><ul>
-<li>num_ios_pending, 0, Number of disk writes the store has submitted to the Operation System. A disk write refers to the store persisting a message to disk. <br />
+<li>num_ios_pending, 0, Number of disk writes the Store has submitted to the Operation System. A disk write refers to the Store persisting a message to disk. <br />
 <br />
 </li>
-<li>num_read_ios_pending, 0, Number of disk reads that the store has submitted to the Operating System. A disk read, for example, results from an application retransmission request.</li>
+<li>num_read_ios_pending, 0, Number of disk reads that the Store has submitted to the Operating System. A disk read, for example, results from an application retransmission request.</li>
 </ul>
 <p class="endtd"></p>
 </td></tr>
@@ -272,35 +272,35 @@ Store Web Monitor Source Page&nbsp;&nbsp;<small><a href="#storewebmonitorsourcep
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>Active ULBs: 0 high 0 </td><td><p class="starttd">ULB stands for Unrecoverable Loss Burst. A little extra work is required to keep cache files consistent when the store gets an unrecoverable loss burst, because unrecoverable loss bursts are delivered all at once for lots of messages, rather than one at a time like normal unrecoverable loss messages. <br />
+<td>Active ULBs: 0 high 0 </td><td><p class="starttd">ULB stands for Unrecoverable Loss Burst. A little extra work is required to keep cache files consistent when the Store gets an unrecoverable loss burst, because unrecoverable loss bursts are delivered all at once for lots of messages, rather than one at a time like normal unrecoverable loss messages. <br />
 <br />
- Active ULB is the number of unrecoverable loss burst events the store is dealing with at the moment. It'll go to zero after the ULB has been resolved. <br />
+ Active ULB is the number of unrecoverable loss burst events the Store is dealing with at the moment. It'll go to zero after the ULB has been resolved. <br />
 <br />
- The high number (0) is the highest sequence number reported among any unrecoverable loss burst event, and is not reset after the ULB is handled; it increments throughout the process life of the store. <br />
+ The high number (0) is the highest sequence number reported among any unrecoverable loss burst event, and is not reset after the ULB is handled; it increments throughout the process life of the Store. <br />
 <br />
- <b>WARNING</b>: If you see any number other than 0 here, the store is losing large numbers of messages, and they are likely not being persisted.</p>
+ <b>WARNING</b>: If you see any number other than 0 here, the Store is losing large numbers of messages, and they are likely not being persisted.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>Loss: 0 ULBs 0 </td><td><p class="starttd">These values are counters for number of unrecoverable loss messages (Loss) and for number of unrecoverable burst loss messages (ULB). These start at 0 when the store starts up and aren't reset until the store exits. They don't include any loss events that were persisted to disk from a previous run, only new loss events since the store started. There are cases with UME 2.0 where one individual store could legitimately report some unrecoverable loss, or maybe even unrecoverable loss bursts. <br />
+<td>Loss: 0 ULBs 0 </td><td><p class="starttd">These values are counters for number of unrecoverable loss messages (Loss) and for number of unrecoverable burst loss messages (ULB). These start at 0 when the Store starts up and aren't reset until the Store exits. They don't include any loss events that were persisted to disk from a previous run, only new loss events since the Store started. There are cases with UME 2.0 where one individual Store could legitimately report some unrecoverable loss, or maybe even unrecoverable loss bursts. <br />
 <br />
  <b>WARNING</b>: If you see any number other than 0 for either of these counters, you should investigate.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>Drops: 0 / 0 </td><td><p class="starttd">If the store is nearing the <a class="el" href="configurationreferenceforumestored.html#umecfgrepositorysizelimit">repository-size-limit</a> and gets another message, the store will intentionally drop a message. A drop requires a bit of work on the store's part. <br />
+<td>Drops: 0 / 0 </td><td><p class="starttd">If the Store is nearing the <a class="el" href="optionsforastoresumeattributeselement.html#umecfgrepositorysizelimit">repository-size-limit</a> and gets another message, the Store will intentionally drop a message. A drop requires a bit of work on the Store's part. <br />
 <br />
  The first 0 is the number of active drops, which are drops that are currently being worked on. <br />
 <br />
- The second 0 is the total number of drops that have happened for this store since it was started. Some people want a low <a class="el" href="configurationreferenceforumestored.html#umecfgrepositorysizelimit">repository-size-limit</a> and therefore lots of intentional drops can occur. Some don't want to drop any message the whole day - so the interpretation of the values is up to you.</p>
+ The second 0 is the total number of drops that have happened for this Store since it was started. Some people want a low <a class="el" href="optionsforastoresumeattributeselement.html#umecfgrepositorysizelimit">repository-size-limit</a> and therefore lots of intentional drops can occur. Some don't want to drop any message the whole day - so the interpretation of the values is up to you.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>LBM Stats </td><td><p class="starttd">These represent transport-level statistics for the underlying receivers in the store for the source. The example shown is for a TCP source, so not too many stats are available (stats for a TCP source are less important from a monitoring perspective). <br />
+<td>LBM Stats </td><td><p class="starttd">These represent transport-level statistics for the underlying receivers in the Store for the source. The example shown is for a TCP source, so not too many stats are available (stats for a TCP source are less important from a monitoring perspective). <br />
 <br />
- Statistics for an LBT-RM or LBT-RU source, however, show number of NAKs sent, which is important. Ideally, the number of NAKs sent should be 0. A few NAKs from a store throughout the day is not an emergency. It can be, however, an early warning sign of more severe problems, and should be taken seriously. <br />
+ Statistics for an LBT-RM or LBT-RU source, however, show number of NAKs sent, which is important. Ideally, the number of NAKs sent should be 0. A few NAKs from a Store throughout the day is not an emergency. It can be, however, an early warning sign of more severe problems, and should be taken seriously. <br />
 <br />
- If you see a non-zero number of NAKs here, take a look at the overall network load the store's machine is attempting to handle, particularly in very busy periods and spikes; it may be too much.</p>
+ If you see a non-zero number of NAKs here, take a look at the overall network load the Store's machine is attempting to handle, particularly in very busy periods and spikes; it may be too much.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
@@ -321,7 +321,7 @@ Store Web Monitor Receiver Page&nbsp;&nbsp;<small><a href="#storewebmonitorrecei
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>10.29.3.42.14393 </td><td><p class="starttd">The IP address and port of the source's UM configuration option, <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/UME/config.tag:../Config/" href="../Config/grpunicastimmediatemessagingnetwork.html#requesttcpportcontext">request_tcp_port (context)</a>.</p>
+<td>10.29.3.42.14393 </td><td><p class="starttd">The IP address and port of the source's LBM configuration option, <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpunicastimmediatemessagingnetwork.html#requesttcpportcontext">request_tcp_port (context)</a>.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
@@ -342,7 +342,7 @@ Store Web Monitor Receiver Page&nbsp;&nbsp;<small><a href="#storewebmonitorrecei
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>Last Activity </td><td><p class="starttd">09:09:35.981110 is the timestamp of when the store last heard from the receiver, including keepalives sent by UM.</p>
+<td>Last Activity </td><td><p class="starttd">09:09:35.981110 is the timestamp of when the Store last heard from the receiver, including keepalives sent by UM.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>

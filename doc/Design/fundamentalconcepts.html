@@ -54,7 +54,7 @@ $(document).ready(function(){initNavTree('fundamentalconcepts.html','');});
 <div class="title">Fundamental Concepts </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>Ultra Messaging is a software layer, supplied in the form of a dynamic library (shared object), which provides applications with message delivery functionality that adds considerable value to the basic networking services contained in the host operating system. The UMP and UMQ products also include a "store" daemon that implements Persistence. The UMQ product also includes a "broker" daemon that implements Brokered Queuing.</p>
+<div class="textblock"><p>Ultra Messaging is a software layer, supplied in the form of a dynamic library (shared object), which provides applications with message delivery functionality that adds considerable value to the basic networking services contained in the host operating system. The UMP and UMQ products also include a "Store" daemon that implements Persistence. The UMQ product also includes a "broker" daemon that implements Brokered Queuing.</p>
 <p>See <a class="el" href="umglossary.html">UM Glossary</a> for Ultra Messaging terminology, abbreviations, and acronyms.</p>
 <p>Ultra Messaging is supported on a variety of platforms. There are two general categories of supported platforms: </p><ul>
 <li>
@@ -66,9 +66,9 @@ On-demand Platforms: AIX, HP-UX, Stratus (VOS), HP-NonStop (OSS), OpenVMS. These
 <dl class="section note"><dt>Note</dt><dd>There are many different distributions of Linux and many different releases of all operating systems. Informatica does not certify UM on specific distributions or versions of operating systems. We do keep our test lab current and test on recent versions of the Core platforms. And we support users on the OS versions that they use in production. But we do not formally certify.</dd></dl>
 <p>Applications access Ultra Messaging features through the Ultra Messaging Application Programming Interface (API). Ultra Messaging includes the following APIs: the UM C API, the UM Java API, and the UM .NET API. For details on these APIs, see: </p><ul>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Design/api.tag:../API/" href="../API/index.html#umcapi">UM C API</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Design/api.tag:../API/" href="../API/index.html#umcapi">UM C API</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Design/javaapi.tag:../JavaAPI/" href="../JavaAPI/index.html#umjavaapi">UM Java API</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Design/javaapi.tag:../JavaAPI/" href="../JavaAPI/index.html#umjavaapi">UM Java API</a> </li>
 <li>
 <a href="../DotNetAPI/index.html#umnetapi">UM .NET API</a> </li>
 </ul>
@@ -207,7 +207,7 @@ Head Loss&nbsp;&nbsp;<small><a href="#headloss">&lt;-</a></small></h2>
 Leading Loss&nbsp;&nbsp;<small><a href="#leadingloss">&lt;-</a></small></h2>
 <p>The behavior described in this section does not apply to Persisted data streams where delivery of all messages is important.</p>
 <p>For Streaming (non-persisted) data streams, once a receiver successfully joins a source, it should start getting messages. However, there are some circumstances which interfere with the initial message reception.</p>
-<p>For example, if a sender is sending a series of very large messages, those messages are broken into smaller chunks (fragments) and sent serially. If a receiver joins the message stream after the first message of a large message has already gone by, the receiver will no longer be able to successfully reassemble that first message. In UM versions prior to 6.12, this led to delivery of one or more Unrecoverable Loss events to the application receiver callback prior to delivery of the first successfully-received message.</p>
+<p>For example, if a sender is sending a series of very large messages, those messages are <a class="el" href="umglossary.html#glossaryumfragmentation">fragmented</a>, broken into smaller pieces and sent serially. If a receiver joins the message stream after the first message of a large message has already gone by, the receiver will no longer be able to successfully reassemble that first message. In UM versions prior to 6.12, this led to delivery of one or more Unrecoverable Loss events to the application receiver callback prior to delivery of the first successfully-received message.</p>
 <p>Some users attempt to use the <a class="el" href="fundamentalconcepts.html#latejoin">Late Join</a> feature to avoid this problem, but the Late Join feature depends on a circular buffer of message fragments. Requesting Late Join may well recover the initial fragment of the message currently under transmission, but it might also recover the final fragments of the message before that. That leads to an unrecoverable loss event for that previous message.</p>
 <p>As a final example, suppose that a receiver joins a source during a period of severe overload leading to packet loss. The receiver may not be able to get a full message until the overload condition subsides. This can deliver one or more unrecoverable loss events prior to the first successfully delivered message.</p>
 <p>In all of these examples, UM has either gotten no messages or incomplete messages during the startup phase of a new receiver. Starting in UM version 6.12, UM will not deliver unrecoverable loss events to the application in these cases. Once UM is able to successfully deliver its first message to a receiver, UM will enable the delivery of unrecoverable loss events.</p>
@@ -227,12 +227,13 @@ Tail Loss&nbsp;&nbsp;<small><a href="#tailloss">&lt;-</a></small></h2>
  </p>
 <h1><a class="anchor" id="persistence"></a>
 Persistence&nbsp;&nbsp;<small><a href="#persistence">&lt;-</a></small></h1>
-<p>The UMP and UMQ products include a component known as the Persistent Store, which provides stable storage (disk or memory) of message streams. UM delivers a persisted message stream to receiving applications with no additional latency in the vast majority of cases. This offers the functionality of durable subscriptions and confirmed message delivery. Ultra Messaging Streaming applications build and run with the Persistence feature without modification. For more information, see the <a href="../UME/UM_Guide_for_Persistence=en.pdf">UM Guide for Persistence</a>.</p>
+<p>The UMP and UMQ products include a component known as the persistent Store, which provides stable storage (disk or memory) of message streams. UM delivers a persisted message stream to receiving applications with no additional latency in the vast majority of cases. This offers the functionality of durable subscriptions and confirmed message delivery. Ultra Messaging Streaming applications build and run with the Persistence feature without modification. For more information, see the <a href="../UME/index.html">UM Guide for Persistence</a>.</p>
 <p><br />
  </p>
 <h1><a class="anchor" id="queuing"></a>
 Queuing&nbsp;&nbsp;<small><a href="#queuing">&lt;-</a></small></h1>
-<p>The UMQ product, which contains Streaming and Persistence functionality, also includes message queuing capabilities. See <a href="../UMQ/index.html">UM Guide to Queuing</a> for more information.</p>
+<p>The UMQ product, which contains Streaming and Persistence functionality, also includes message queuing capabilities. UMQ supports both Brokered queuing (where the Queue is a separate component which can store messages independent of the source and receiver), and Ultra Load Balancing (ULB), where the Queue is memory-based and resides in the source.</p>
+<p>See <a href="../UMQ/index.html">UM Guide to Queuing</a> for more information.</p>
 <p><br />
  </p>
 <h1><a class="anchor" id="umrouter"></a>
@@ -248,44 +249,44 @@ Late Join&nbsp;&nbsp;<small><a href="#latejoin">&lt;-</a></small></h1>
 <p>Source-side configuration options:</p>
 <ul>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grplatejoin.html#latejoinsource">late_join (source)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grplatejoin.html#latejoinsource">late_join (source)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grpdeprecated.html#retransmitretentionagethresholdsource">retransmit_retention_age_threshold (source)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpdeprecated.html#retransmitretentionagethresholdsource">retransmit_retention_age_threshold (source)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grplatejoin.html#retransmitretentionsizelimitsource">retransmit_retention_size_limit (source)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grplatejoin.html#retransmitretentionsizelimitsource">retransmit_retention_size_limit (source)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grplatejoin.html#retransmitretentionsizethresholdsource">retransmit_retention_size_threshold (source)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grplatejoin.html#retransmitretentionsizethresholdsource">retransmit_retention_size_threshold (source)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grpunicastimmediatemessagingnetwork.html#requesttcpinterfacecontext">request_tcp_interface (context)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpunicastimmediatemessagingnetwork.html#requesttcpinterfacecontext">request_tcp_interface (context)</a> </li>
 </ul>
 <p>Receiver-side configuration options:</p>
 <ul>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grplatejoin.html#uselatejoinreceiver">use_late_join (receiver)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grplatejoin.html#uselatejoinreceiver">use_late_join (receiver)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grplatejoin.html#retransmitrequestintervalreceiver">retransmit_request_interval (receiver)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grplatejoin.html#retransmitrequestintervalreceiver">retransmit_request_interval (receiver)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grplatejoin.html#retransmitrequestmessagetimeoutreceiver">retransmit_request_message_timeout (receiver)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grplatejoin.html#retransmitrequestmessagetimeoutreceiver">retransmit_request_message_timeout (receiver)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grplatejoin.html#retransmitrequestoutstandingmaximumreceiver">retransmit_request_outstanding_maximum (receiver)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grplatejoin.html#retransmitrequestoutstandingmaximumreceiver">retransmit_request_outstanding_maximum (receiver)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grplatejoin.html#latejoininforequestintervalreceiver">late_join_info_request_interval (receiver)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grplatejoin.html#latejoininforequestintervalreceiver">late_join_info_request_interval (receiver)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grplatejoin.html#latejoininforequestmaximumreceiver">late_join_info_request_maximum (receiver)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grplatejoin.html#latejoininforequestmaximumreceiver">late_join_info_request_maximum (receiver)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grplatejoin.html#retransmitinitialsequencenumberrequestreceiver">retransmit_initial_sequence_number_request (receiver)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grplatejoin.html#retransmitinitialsequencenumberrequestreceiver">retransmit_initial_sequence_number_request (receiver)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grplatejoin.html#retransmitmessagecachingproximityreceiver">retransmit_message_caching_proximity (receiver)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grplatejoin.html#retransmitmessagecachingproximityreceiver">retransmit_message_caching_proximity (receiver)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grpunicastimmediatemessagingoperation.html#responsetcpinterfacecontext">response_tcp_interface (context)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpunicastimmediatemessagingoperation.html#responsetcpinterfacecontext">response_tcp_interface (context)</a> </li>
 </ul>
 <dl class="section note"><dt>Note</dt><dd>With <a class="el" href="advancedoptimizations.html#smartsources">Smart Sources</a>, the following configuration options have limited or no support: <ul>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grplatejoin.html#retransmitretentionsizethresholdsource">retransmit_retention_size_threshold (source)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grplatejoin.html#retransmitretentionsizethresholdsource">retransmit_retention_size_threshold (source)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grplatejoin.html#retransmitretentionsizelimitsource">retransmit_retention_size_limit (source)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grplatejoin.html#retransmitretentionsizelimitsource">retransmit_retention_size_limit (source)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grpdeprecated.html#retransmitretentionagethresholdsource">retransmit_retention_age_threshold (source)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpdeprecated.html#retransmitretentionagethresholdsource">retransmit_retention_age_threshold (source)</a> </li>
 </ul>
 </dd>
 <dd>
@@ -309,26 +310,89 @@ UM Transports&nbsp;&nbsp;<small><a href="#umtransports">&lt;-</a></small></h1>
 <h2><a class="anchor" id="transportsessions"></a>
 Transport Sessions&nbsp;&nbsp;<small><a href="#transportsessions">&lt;-</a></small></h2>
 <p>An Ultra Messaging sending application can make use of very many topics - possibly over a million. Ultra Messaging maps those topics onto a much smaller number of <em>Transport Sessions</em>. A Transport Session can be thought of as a specific running instance of a transport type, running within a context. A given Transport Session might carry a single topic, or might carry hundreds of thousands of topics.</p>
-<p>A publishing application can either explicitly map each topic source to specific Transport Sessions, or it can make use of an automatic mapping of sources to a pool of Transport Sessions. If explicitly mapping, the application must configure a new source with identifying information to specify the desired Transport Session. The form of this identifying information depends on the transport type. For example, in the case of the LBT-RM transport type, a Transport Session is identified by a <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grptransportlbtrmnetwork.html#transportlbtrmmulticastaddresssource">multicast group IP address</a> and a <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grptransportlbtrmnetwork.html#transportlbtrmdestinationportsource">destination port number</a>. Alternatively, if the application does not specify a Transport Session for a new topic source, a Transport Session is implicitly selected from a pool of Transport Sessions, configured when the context was created. For example, with the LBT-RM transport type, the pool of implicit Transport Sessions is created with a range of multicast groups, from <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grptransportlbtrmnetwork.html#transportlbtrmmulticastaddresslowcontext">low</a> to <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grptransportlbtrmnetwork.html#transportlbtrmmulticastaddresshighcontext">high</a>, and the <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grptransportlbtrmnetwork.html#transportlbtrmdestinationportsource">destination port number</a>. Note that at context creation, the Transport Sessions in the configured pool are not activated. As topic sources are created and mapped to pool Transport Sessions, those Transport Sessions are activated.</p>
+<p>A publishing application can either explicitly map each topic source to specific Transport Sessions, or it can make use of an automatic mapping of sources to a pool of Transport Sessions. If explicitly mapping, the application must configure a new source with identifying information to specify the desired Transport Session. The form of this identifying information depends on the transport type. For example, in the case of the LBT-RM transport type, a Transport Session is identified by a <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grptransportlbtrmnetwork.html#transportlbtrmmulticastaddresssource">multicast group IP address</a> and a <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grptransportlbtrmnetwork.html#transportlbtrmdestinationportsource">destination port number</a>. Alternatively, if the application does not specify a Transport Session for a new topic source, a Transport Session is implicitly selected from a pool of Transport Sessions, configured when the context was created. For example, with the LBT-RM transport type, the pool of implicit Transport Sessions is created with a range of multicast groups, from <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grptransportlbtrmnetwork.html#transportlbtrmmulticastaddresslowcontext">low</a> to <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grptransportlbtrmnetwork.html#transportlbtrmmulticastaddresshighcontext">high</a>, and the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grptransportlbtrmnetwork.html#transportlbtrmdestinationportsource">destination port number</a>. Note that at context creation, the Transport Sessions in the configured pool are not activated. As topic sources are created and mapped to pool Transport Sessions, those Transport Sessions are activated.</p>
 <dl class="section note"><dt>Note</dt><dd>When two contexts are in use, each context may be used to create a topic source for the same topic name. These sources are considered separate and independent, since they are owned by separate contexts. This is true regardless of whether the contexts are within the same application process or are separate processes. A Transport Session is also owned by a context, and sources are mapped to Transport Sessions within the same context. So, for example, if application process A creates two contexts, ctx1 and ctx2, and creates a source for topic "current_price" in each context, the sources will be mapped to completely independent Transport Sessions. This can even be true if the same Transport Session identification information is supplied to both. For example, if the source for "current_price" is created in ctx1 with LBT-RM on multicast group 224.10.10.10 and destination port 14400, and the source for the same topic is created in ctx2, also on LBT-RM with the same multicast group and destination port, the two Transport Sessions will be separate and independent, although a subscribing application will receive both Transport Sessions on the same network socket.</dd></dl>
 <p>See the configuration section for each transport type for specifics on how explicit Transport Sessions and implicit pools are created: </p><ul>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grptransporttcpnetwork.html#tcptransportsessionmanagement">TCP Transport Session Management</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grptransporttcpnetwork.html#tcptransportsessionmanagement">TCP Transport Session Management</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grptransportlbtrmnetwork.html#lbtrmtransportsessionmanagement">LBT-RM Transport Session Management</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grptransportlbtrmnetwork.html#lbtrmtransportsessionmanagement">LBT-RM Transport Session Management</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grptransportlbtrunetwork.html#lbtrutransportsessionmanagement">LBT-RU Transport Session Management</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grptransportlbtrunetwork.html#lbtrutransportsessionmanagement">LBT-RU Transport Session Management</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grptransportlbtipcoperation.html#lbtipctransportsessionmanagement">LBT-IPC Transport Session Management</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grptransportlbtipcoperation.html#lbtipctransportsessionmanagement">LBT-IPC Transport Session Management</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grptransportlbtsmxoperation.html#lbtsmxtransportsessionmanagement">LBT-SMX Transport Session Management</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grptransportlbtsmxoperation.html#lbtsmxtransportsessionmanagement">LBT-SMX Transport Session Management</a> </li>
 </ul>
-<p>A receiving application might subscribe to a small subset of the topics that a sending application has mapped to a given Transport Session. In most cases, the subscribing process will receive all messages for all topics on that Transport Session, and the UM library will discard messages for topics not subscribed. This user-space filtering does consume system resources (primarily CPU and bandwidth), and can be minimized by carefully mapping topics onto Transport Sessions according to receiving application interest (having receivers). (Certain transport types allow that filtering to happen in the publishing application; see <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grpmajoroptions.html#transportsourcesidefilteringbehaviorsource">transport_source_side_filtering_behavior (source)</a>.)</p>
+<p>A receiving application might subscribe to a small subset of the topics that a sending application has mapped to a given Transport Session. In most cases, the subscribing process will receive all messages for all topics on that Transport Session, and the UM library will discard messages for topics not subscribed. This user-space filtering does consume system resources (primarily CPU and bandwidth), and can be minimized by carefully mapping topics onto Transport Sessions according to receiving application interest (having receivers). (Certain transport types allow that filtering to happen in the publishing application; see <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpmajoroptions.html#transportsourcesidefilteringbehaviorsource">transport_source_side_filtering_behavior (source)</a>.)</p>
 <p>When a subscribing application creates its first receiver for a topic, UM will join any and all Transport Sessions that have that topic mapped. The application might then create additional receivers for other topics on that same Transport Session, but UM will not "join" the Transport Session multiple times. It simply sets UM internal state indicating the topic subscriptions. When the publisher sends its next message of any kind on that Transport Session, the subscribing UM will deliver a BOS event (Beginning Of Stream) to all topic receivers mapped to that Transport Session, and will consider the Transport Session to be <em>active</em>. Once active, any subsequent receivers created for topics mapped to that same Transport Session will deliver an immediate BOS to that topic receiver.</p>
 <p>If the publisher deletes a topic source, the subscribing application may or may not get an immediate EOS event (End Of Stream), depending on different circumstances. For example, in many cases, the deletion of topic sources by a publisher will not trigger an EOS event until <em>all</em> sources mapped to a Transport Session are deleted. When the last topic is deleted, the Transport Session itself is deleted, and an EOS event might then be delivered to <em>all</em> topic receivers that were mapped to that Transport Session. Note that for UDP transports, the deletion of a Transport Session by the publisher is not immediately detected by a subscriber, until an activity timeout expires.</p>
 <p>Be aware that in a deployment that includes the DRO, BOS and EOS may only indicate the link between the receiver and the local DRO portal, not necessarily full end-to-end connectivity. Subscribing application should not use BOS and EOS events as an accurate and timely indication of the creation and deletion of sources by a publisher.</p>
 <dl class="section note"><dt>Note</dt><dd>Non-multicast Ultra Messaging transport types can use source-side filtering to decrease user-space filtering on the receiving side by doing the filtering on the sending side. However, be aware that system resources consumed on the source side affect all receivers, and that the filtering for multiple receivers must be done serially, whereas letting the receivers do the filtering allows that filtering to be done in parallel, only affecting those receivers that need the filtering.</dd></dl>
 <p>With the UMQ product, a ULB source makes use of the same transport types as Streaming, but a Brokered Queuing source must use the <b>broker</b> transport.</p>
+<p><br />
+ </p>
+<h2><a class="anchor" id="transportpacing"></a>
+Transport Pacing&nbsp;&nbsp;<small><a href="#transportpacing">&lt;-</a></small></h2>
+<p>Pacing refers to the controlling of when messages can be sent. <em>Source Pacing</em> is when the publisher of messages controls when messages are sent, and <em>Receiver Pacing</em> is when the subscribers can essentially push back on the publisher if the publisher is sending faster than the subscribers can consume messages.</p>
+<p><b>Source Pacing</b></p>
+<p>In its simplest case, source pacing means that the publishing application controls when to send messages by having messages to send. For example, market data distribution system sends messages when the exchanges it is monitoring sends updates. The subscribers must be able to accept those messages at the rates that the exchanges send them.</p>
+<p>A slow subscriber will fall behind and can lose data if buffers overflow. There is no way for a slow subscriber to "push back" on a fast publisher.</p>
+<p>Some of Ultra Messaging's transport types have features that allow the publisher to establish upper limits on the outgoing message data. For example, LBT-RM has the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grptransportlbtrmoperation.html#transportlbtrmdataratelimitcontext">transport_lbtrm_data_rate_limit (context)</a> configuration option. If the application attempts to send too many messages in too short a time, the send function can block for a short time, or return an error indicating that it attempted to exceed the configured rate limit. This is still called source pacing because the rate limit is optional and is under the control of the publisher.</p>
+<p>The source-paced transports are: </p><ul>
+<li>
+<a class="el" href="transporttypes.html#transporttcp">Transport TCP</a> (can be <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grptransporttcpoperation.html#transporttcpmultiplereceiverbehaviorsource">configured</a> for source or receiver pacing) </li>
+<li>
+<a class="el" href="transporttypes.html#transportlbtru">Transport LBT-RU</a> (source pacing only) </li>
+<li>
+<a class="el" href="transporttypes.html#transportlbtrm">Transport LBT-RM</a> (source pacing only) </li>
+<li>
+<a class="el" href="transporttypes.html#transportlbtipc">Transport LBT-IPC</a> (can be <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grptransportlbtipcoperation.html#transportlbtipcbehaviorsource">configured</a> for source or receiver pacing) </li>
+</ul>
+<p><b>Receiver Pacing</b></p>
+<p>In a receiver-paced transport, a publisher still attempts to send when it has messages to send, but the send function can block or return an error if the publisher is sending faster than the slowest subscribed receiver can consume. There is a configurable amount of buffering that can be used to allow the publisher to exceed the consumption rate for short periods of time, but when those buffers fill, the sender will be prevented from sending until the buffers have enough room.</p>
+<p>The receiver-paced transports are: </p><ul>
+<li>
+<a class="el" href="transporttypes.html#transporttcp">Transport TCP</a> (can be <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grptransporttcpoperation.html#transporttcpmultiplereceiverbehaviorsource">configured</a> for source or receiver pacing) </li>
+<li>
+<a class="el" href="transporttypes.html#transportlbtipc">Transport LBT-IPC</a> (can be <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grptransportlbtipcoperation.html#transportlbtipcbehaviorsource">configured</a> for source or receiver pacing) </li>
+<li>
+<a class="el" href="transporttypes.html#transportlbtsmx">Transport LBT-SMX</a> (receiver-pacing only) </li>
+</ul>
+<p>However, it is generally inadvisable to rely on receiver pacing to ensure reliable system operation. Subscribers should be designed and provisioned to support the maximum possible incoming data rates. The reasons for this recommendation are described below.</p>
+<p><b>Receiver Queuing</b></p>
+<p>This use case is not related to the <a class="el" href="fundamentalconcepts.html#queuing">Queuing</a> paradigm. It is referring to the use of a software queue between the context thread which receives the UM message and the application thread which processes the message.</p>
+<p>A receiver-paced transport does not necessarily mean that a slow application will push back on a fast publisher. Suppose that the actual message reception action by UM's context thread is fast, and the received messages are placed in an unbounded memory queue. Then, one or more application threads take messages from the queue to process them. If those application threads don't process messages quickly enough, instead of pushing back on the publisher, the message queue will grow.</p>
+<p>For example, the UM <a class="el" href="umobjects.html#eventqueueobject">Event Queue Object</a> is an unbounded memory-based queue. You could use <a class="el" href="transporttypes.html#transporttcp">Transport TCP</a> configured for receiver pacing, but if the subscriber uses an event queue for message delivery, then a slow consumer will not slow down the publisher. Instead the subscriber's event queue will grow without bound, eventually leading to an out-of-memory condition.</p>
+<p><b>Pacing and DRO</b></p>
+<p>Transport pacing refers to the connection within a a <a class="el" href="fundamentalconcepts.html#topicresolutiondomain">Topic Resolution Domain</a> (TRD) from source to receiver. If multiple TRDs are connected with a <a class="el" href="fundamentalconcepts.html#umrouter">DRO</a>, there can be multiple hops between the originating publisher and the final subscriber, with the DROs providing proxy sources and receivers to pass messages across the hops. The pacing of a particular transport session only applies to the link between the source (or proxy source) and the receiver (or proxy receiver) of a particular hop.</p>
+<p>This means that UM does not support end-to-end transport pacing.</p>
+<p>For example, if a DRO joins two TRDs, both of which use receiver-paced TCP for transport, a slow receiver might push back on the DRO's proxy source, leading to queuing in the DRO. Since the DRO uses bounded queues, the DRO's queue will fill, leading to dropped messages.</p>
+<p><b>Pacing and Queuing</b></p>
+<p>Brokered <a class="el" href="fundamentalconcepts.html#queuing">Queuing</a> is receiver paced between the source and the broker. For ULB queuing, the transport pacing is determined by the chosen transport type.</p>
+<p>There is also a form of end-to-end application receiver-pacing with queuing. For both brokered ULB, the size of queue is configurable. As receivers consume messages, they are removed from the queue. If the queue fills due to the source exceeding the consumption rate of the receiver, the next send call will either block or return a "WOULDBLOCK" error until sufficient room opens up in the queue. Note that lifetimes can be configured for messages (to prevent unbounded blocking) and the application can be notified if a message exceeds its lifetime.</p>
+<p>See <a href="../UMQ/index.html">UM Guide to Queuing</a> for more information.</p>
+<p><b>Pacing and Persistence</b></p>
+<p>With Persistence, the pacing is layered: </p><ul>
+<li>
+<p class="startli">At the transport level, pacing is determined by the chosen transport type.</p>
+<p class="endli"></p>
+</li>
+<li>
+<p class="startli">At the persistence level, <a class="el" href="fundamentalconcepts.html#transportpacing">Transport Pacing</a> provides receiver pacing between the source and the Store. This helps to ensure that a publisher sending on a source-paced transport like LBT-RM will not overwhelm the Store.</p>
+<p class="endli"></p>
+</li>
+<li>
+<p class="startli">By default, the end-to-end pacing is source-paced. Which is to say that if a subscribed receiver cannot keep up with the publish rate, eventually the receiver can experience unrecoverable loss, although this normally will only happen if the receiver falls further behind than the total size of the Store's repository.</p>
+<p class="endli"></p>
+</li>
+<li>
+Alternatively, the end-to-end pacing can be switched to receiver-paced. This is done using <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Design/ume.tag:../UME/" href="../UME/operationalview.html#receiverpacedpersistenceoperations">RPP: Receiver-Paced Persistence</a>. Note that if a subscribed receiver crashes, it can lead to unbounded blockage of the publisher until the subscriber is successfully restarted. </li>
+</ul>
+<p><b>Suspended Receiver Problem</b></p>
+<p>This is a problem that one of our users encountered. Their system used receiver-paced TCP because they wanted the publishing speed to be limited to the rate that the slowest receiver could consume. This was fine until one day the publisher appeared to stop working.</p>
+<p>With some help from Support, the problem was trace to a receiver at a particular IP address that was joined to the transport but apparently was not reading any data. It took some time to find the receiver by its IP address, and what they found was a Windows machine with a dialog box telling the user that the process had generated an exception and did the user want abort the process or enter the debugger.</p>
+<p>When Windows does this, it suspends the process waiting for user input. In that suspended state, the kernel maintains the network connections, but the process is not able to read any data. So the socket buffers filled up and the publisher's send call blocked.</p>
 <p><br />
  </p>
 <h1><a class="anchor" id="eventdelivery"></a>
@@ -350,7 +414,7 @@ An application-managed file descriptor event. The application can register its o
 <li>
 New source notification. UM can inform the application when sources are discovered by Topic Resolution. </li>
 </ul>
-<p>UM delivers events to the application by callbacks. The application explicitly gives UM a pointer to one of its functions to be the handler for a particular event, and UM calls that function to deliver the event, passing it the parameters that the application requires to process the event. In particular, the last parameter of each callback type is a client data pointer (clientdp). This pointer can be used at the application's discretion for any purpose. It's value is specified by the application when the callback function is identified to UM (typically when UM objects are created), and that same value is passed back to the application when the callback function is called.</p>
+<p>UM delivers events to the application via callbacks. The application explicitly gives UM a pointer to one of its functions to be the handler for a particular event, and UM calls that function to deliver the event, passing it the parameters that the application requires to process the event. In particular, the last parameter of each callback type is a client data pointer (clientdp). This pointer can be used at the application's discretion for any purpose. It's value is specified by the application when the callback function is identified to UM (typically when UM objects are created), and that same value is passed back to the application when the callback function is called.</p>
 <p>There are two methods that UM can use to call the application callbacks: through context thread callback, or <a class="el" href="umobjects.html#eventqueueobject">event queue</a> dispatch.</p>
 <p>In the context thread callback method (sometimes called direct callback), the UM context thread calls the application function directly. This offers the lowest latency, but imposes significant restrictions on the application function. See <a class="el" href="umobjects.html#eventqueueobject">Event Queue Object</a>.</p>
 <p>The <a class="el" href="umobjects.html#eventqueueobject">event queue</a> dispatch of application callback introduces a dynamic buffer into which the UM context thread writes events. The application then uses a thread of its own to dispatch the buffered events. Thus, the application callback functions are called from the application thread, not directly from the context thread.</p>
@@ -358,14 +422,40 @@ New source notification. UM can inform the application when sources are discover
 <p>In addition, an UM event queue allows the application to be warned when the queue exceeds a threshold of event count or event latency. This allows the application to take corrective action if it is running too slow, such as throwing away all events older than a threshold, or all events that are below a given priority.</p>
 <p><br />
  </p>
+<h2><a class="anchor" id="receiverbosandeosevents"></a>
+Receiver BOS and EOS Events&nbsp;&nbsp;<small><a href="#receiverbosandeosevents">&lt;-</a></small></h2>
+<p>There are two receive-side events that some applications use but which are not recommended for most use cases: </p><ul>
+<li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#ab5489080adc7157549a9930b30c68425">LBM_MSG_BOS</a> - Beginning of (transport) Session. </li>
+<li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#a2647b87f92adb5a34ea129fbfeeed5a3">LBM_MSG_EOS</a> - End of (transport) Session. </li>
+</ul>
+<p>The BOS and EOS events are delivered to receivers on a topic basis, but were originally designed to represent the joining and exiting of the underlying <a class="el" href="fundamentalconcepts.html#transportsessions">Transport Session</a>.</p>
+<p>Note that the BOS and EOS receive-side events are very similar to the <a class="el" href="fundamentalconcepts.html#sourceconnectanddisconnectevents">Source Connect and Disconnect Events</a>.</p>
+<p>The BOS event means slightly different things for different transport types. The basic principal is that a UM receiver won't deliver BOS until it has seen some kind of activity on the transport after joining it. For example, a session message for <a class="el" href="transporttypes.html#transportlbtrm">Transport LBT-RM</a>. Or perhaps a <a class="el" href="architecture.html#lossdetectionusingtsnis">TSNI</a> on any of the transport types. Or even an actual user message. Any of these will trigger BOS. But if the newly-joined transport session is completely silent, then BOS is delayed until first activity is detected. Under some configurations, that delay is unbounded.</p>
+<p>EOS is also triggered by different things for different transport types. For example, for the TCP transport, a disconnect will trigger EOS for any receivers that were subscribed to topics carried on that transport session. For LBT-RM, an <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grptransportlbtrmoperation.html#transportlbtrmactivitytimeoutreceiver">activity timeout</a> can trigger EOS.</p>
+<p>However, in recent versions of UM, the meaning of EOS has become more complicated, and no longer necessarily indicates that the transport session has ended. There are circumstances in many versions of UM where a publisher of a source that is in a remote TRD can delete that source, and the receiver will receive a timely EOS, even though the transport session that carried the source stays in effect and joined by the receiver. As of UM version 6.10, the configuration option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpudpbasedresolveroperation.html#resolversendfinaladvertisementssource">resolver_send_final_advertisements (source)</a> can be used to trigger EOS on receivers in the same TRD, even if the transport session remains joined. As of UM version 6.12, <a class="el" href="topicresolutiondescription.html#tcpbasedtopicresolutiondetails">TCP-based Topic Resolution</a> will have the same effect. In in a mixed-version UM environment including <a class="el" href="fundamentalconcepts.html#umrouter">DROs</a>, it can be difficult to predict when an EOS will be generated for a deleted source.</p>
+<p>Be aware that BOS does <em>not</em> necessarily indicate end-to-end connectivity between sources and receivers. In a <a class="el" href="fundamentalconcepts.html#umrouter">DRO</a> network, where the source is in a different <a class="el" href="fundamentalconcepts.html#topicresolutiondomain">Topic Resolution Domain</a> (TRD) from the receiver, BOS only indicates the establishment of the transport session between the DRO's proxy source and the receiver.</p>
+<p>Also, BOS and EOS do not necessarily come in balanced pairs. For example, if a BOS is delivered to a receiver, and then the subscriber application deletes the receiver object, UM does not deliver an EOS to the receiver callback. Also, it is possible to get an EOS event without first getting a BOS. Let's say that a receiver attempts to join an LBT-RM transport session for a source that was just deleted. BOS will not be delivered because there will be no communication of a user or control message. However, after LBT-RM times out the transport session, it will deliver EOS.</p>
+<p>Finally, in some versions of UM, EOS represents the end of the entire transport session, so you can have situations where a publisher deletes a source, but the receiver for that topic does not get an EOS for an unbounded period of time. Let's say that the publisher maps sources for topics X, Y, and Z to the same transport session. Let's further say that a subscriber has a receiver for topic Y. It will join the transport session, get a BOS for receiver Y, and will receive messages that the publisher sends to Y. Now let's say that the publisher deletes the source for topic Y, but keeps the sources for topics X and Z. The subscriber may not be informed of the deletion of the source for Y, and can remain subscribed to the transport session. It won't be until the publisher deletes sources X and Z that it will delete the underlying transport session, which can then deliver EOS to the subscriber. However, if using <a class="el" href="topicresolutiondescription.html#tcpbasedtopicresolutiondetails">TCP-based Topic Resolution</a>, this same scenario can produce an EOS event on the receiver immediately.</p>
+<p>For these reasons and others, Informatica does not recommend using the BOS and EOS events to indicate "connectedness" between a source and a receiver. Instead, Informatica recommends logging the events in your application log file. If something goes wrong, these messages can assist in diagnosing the problem.</p>
+<p>For programmers who are tempted to use BOS and EOS events, Informatica recommends instead using the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpdeliverycontrol.html#sourcenotificationfunctionreceiver">source_notification_function (receiver)</a> configuration option. This provides receiving applications a callbacks when a <a class="el" href="architecture.html#deliverycontroller">Delivery Controller</a> is created and deleted, and is usually what the programmer <em>really</em> wants.</p>
+<p><br />
+ </p>
 <h2><a class="anchor" id="sourceconnectanddisconnectevents"></a>
 Source Connect and Disconnect Events&nbsp;&nbsp;<small><a href="#sourceconnectanddisconnectevents">&lt;-</a></small></h2>
-<p>The source-side events <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#adb8a3d729fdaa96b9729144ee86668ad">LBM_SRC_EVENT_CONNECT</a> and <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#acf50e4167d38a398bf5ae12c163ff2bb">LBM_SRC_EVENT_DISCONNECT</a> are often misunderstood.</p>
-<p>These events let the publisher know when receivers connect to and disconnect from the publisher's non-multicast-based sources. However, while these events are delivered to individual sources, they actually apply to the underlying transport session. For example, suppose a publisher maps 3 sources to a TCP transport session, and a subscriber is interested in only one of them and connects to the transport session. UM will deliver <em>three</em> connect events to the publisher, one for each source mapped to the transport session. UM is not able to tell the publishing application <em>which</em> sources are subscribed to.</p>
-<p>Some users have designed their publishers so that each source is assigned its own transport session. In this way, the publishing applications can know when specific non-multicast sources have at least one receiver.</p>
-<p>However, in a large UM network of multiple TRDs connected by DROs, connect and disconnect events are NOT end-to-end events. They only reflect the connectivity of receivers and proxy receivers on the same TRD as the source.</p>
-<p>For example, let's say a remote TRD has three subscribing applications. The DROs connecting the TRDs will create proxy sources and receivers to transfer the desired messages to their final destinations. Upon creation of the proxy receiver in the originating source's TRD, the TCP source will receive a single connection event, representing the DRO's proxy receiver connecting to the source. UM is not able to tell the publishing application how many subscribing applications are in the remote TRD.</p>
-<p>In fact, if one of the remote subscribers disconnects, the source will not receive a disconnect event. The only time that a source will get a disconnect event is when <em>all</em> remote subscribers served by a given DRO portal disconnect, and the DRO deletes its proxy receiver.</p>
+<p>There are two source-side events that some applications use but which are not recommended for most use cases: </p><ul>
+<li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#adb8a3d729fdaa96b9729144ee86668ad">LBM_SRC_EVENT_CONNECT</a> - Beginning of (transport) Session to receiver. </li>
+<li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#acf50e4167d38a398bf5ae12c163ff2bb">LBM_SRC_EVENT_DISCONNECT</a> - End of (transport) Session to receiver. </li>
+</ul>
+<p>The Connect and Disconnect events are delivered to source on a topic basis, but actually represent the joining and exiting of the underlying <a class="el" href="fundamentalconcepts.html#transportsessions">Transport Session</a> to a specific receiver.</p>
+<dl class="section note"><dt>Note</dt><dd>The Connect and Disconnect events are <em>not</em> available for <a class="el" href="transporttypes.html#transportlbtrm">Transport LBT-RM</a> or <a class="el" href="transporttypes.html#transportlbtsmx">Transport LBT-SMX</a> sources.</dd></dl>
+<p>Note that the Connect and Disconnect source-side events are very similar to the <a class="el" href="fundamentalconcepts.html#receiverbosandeosevents">Receiver BOS and EOS Events</a>. However, while BOS and especially EOS have deviated from their pure "transport session" roots, Connect and Disconnect are still purely implemented with respect to the underlying transport session.</p>
+<p>Be aware that Connect does <em>not</em> necessarily indicate end-to-end connectivity between sources and receivers. In a <a class="el" href="fundamentalconcepts.html#umrouter">DRO</a> network, where the source is in a different <a class="el" href="fundamentalconcepts.html#topicresolutiondomain">Topic Resolution Domain</a> (TRD) from the receiver, Connect only indicates the establishment of the transport session between the DRO's proxy receiver and the source. For example, if a source in TRD1 is sending messages to two receivers in TRD2 via a DRO, the source will only receive a single Connect event when the first of the two receivers subscribe. Note also that the IP and port indicated in the Connect event will be for the DRO portal on TRD1.</p>
+<p>Also, since Disconnect represents the end of the entire transport session, you can have situations where a subscriber deletes a receiver, but the source for that topic does not get a Disconnect for an unbounded period of time. Let's say that the publisher maps sources for topics X, Y, and Z to the same transport session. Let's further say that a subscriber has a receiver for topic Y and Z. It will join the transport session, and the source will get Connect events for <em>all three</em> topics, X, Y, and Z. Now let's say that the subscriber deletes the receiver for topic Y, but keeps the receiver for topic Z. The source will not be informed of the deletion of the receiver for Y, since the transport session continues to be maintained. It won't be until the subscriber deletes both receivers, Y and Z, that it will delete the underlying transport session, which can then deliver Disconnect to the source.</p>
+<p>For these reasons and others, Informatica does not recommend using the Connect and Disconnect events to indicate "connectedness". Instead, Informatica recommends logging the events in your application log file. If something goes wrong, these messages can assist in diagnosing the problem.</p>
 <p><br />
  </p>
 <h1><a class="anchor" id="ratecontrols"></a>
@@ -379,22 +469,22 @@ Rate Controls&nbsp;&nbsp;<small><a href="#ratecontrols">&lt;-</a></small></h1>
 <h2><a class="anchor" id="transportratecontrol"></a>
 Transport Rate Control&nbsp;&nbsp;<small><a href="#transportratecontrol">&lt;-</a></small></h2>
 <p>With data transport, if an application sends a message and the outgoing datagram would exceed the number of bits allowed during the current time interval, that datagram is queued and the transport type is put into a "blocked" state in the current context. Note that success is returned to the application, even though the datagram has not yet been transmitted.</p>
-<p>However, any subsequent sends within the same time interval will not queue, but instead will either block (for blocking sends), or return the error <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#a75f0f83b8684df30d9816210cc20b4b0">LBM_EWOULDBLOCK</a> (for non-blocking sends). When the time interval expires, the context thread will refresh the number of allowable bits, send the queued datagram, and unblock the transport type.</p>
+<p>However, any subsequent sends within the same time interval will not queue, but instead will either block (for blocking sends), or return the error <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#a75f0f83b8684df30d9816210cc20b4b0">LBM_EWOULDBLOCK</a> (for non-blocking sends). When the time interval expires, the context thread will refresh the number of allowable bits, send the queued datagram, and unblock the transport type.</p>
 <p>Note that for very small settings of transport rate limit, the end-of-interval refresh of allowable bits may still not be enough to send a queued full datagram. In that case, the datagram will remain on the queue for additional intervals to pass, until enough bits have accumulated to send the queued datagram. However, it would be very unusual for a transport rate limit to be set that small.</p>
 <p><b>Transport Rate Control Configuration</b></p>
 <p>Configuration parameters of interest are: </p><ul>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grptransportlbtrmoperation.html#transportlbtrmrateintervalcontext">transport_lbtrm_rate_interval (context)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grptransportlbtrmoperation.html#transportlbtrmrateintervalcontext">transport_lbtrm_rate_interval (context)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grptransportlbtrmoperation.html#transportlbtrmdataratelimitcontext">transport_lbtrm_data_rate_limit (context)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grptransportlbtrmoperation.html#transportlbtrmdataratelimitcontext">transport_lbtrm_data_rate_limit (context)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grptransportlbtrmoperation.html#transportlbtrmretransmitratelimitcontext">transport_lbtrm_retransmit_rate_limit (context)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grptransportlbtrmoperation.html#transportlbtrmretransmitratelimitcontext">transport_lbtrm_retransmit_rate_limit (context)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grptransportlbtruoperation.html#transportlbtrurateintervalcontext">transport_lbtru_rate_interval (context)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grptransportlbtruoperation.html#transportlbtrurateintervalcontext">transport_lbtru_rate_interval (context)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grptransportlbtruoperation.html#transportlbtrudataratelimitcontext">transport_lbtru_data_rate_limit (context)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grptransportlbtruoperation.html#transportlbtrudataratelimitcontext">transport_lbtru_data_rate_limit (context)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grptransportlbtruoperation.html#transportlbtruretransmitratelimitcontext">transport_lbtru_retransmit_rate_limit (context)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grptransportlbtruoperation.html#transportlbtruretransmitratelimitcontext">transport_lbtru_retransmit_rate_limit (context)</a> </li>
 </ul>
 <p><b>LBM_EWOULDBLOCK</b></p>
 <p>When non-blocking sends are done (LBM_SRC_NONBLOCK), the send can fail with an error number of LBM_EWOULDBLOCK. This means you have exceeded the rate limit and must wait before sending the message.</p>
@@ -411,14 +501,14 @@ Transport Rate Control&nbsp;&nbsp;<small><a href="#transportratecontrol">&lt;-</
 <h2><a class="anchor" id="topicresolutionratecontrol"></a>
 Topic Resolution Rate Control&nbsp;&nbsp;<small><a href="#topicresolutionratecontrol">&lt;-</a></small></h2>
 <p>With UDP-based Topic Resolution ("TR"), the algorithm acts differently. It is designed to allow at least one datagram per time interval, and is allowed to exceed the rate limit by at most one topic's worth. Thus, the TR rate limiter value should only be considered a "reasonably accurate" approximation.</p>
-<p>This approximation can seem very inaccurate at very small rate limits. As an extreme example, suppose that a user configures the <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grpudpbasedresolveroperation.html#resolversustainadvertisementbpscontext">sustaining advertisement rate limiter</a> to 1 bit per second. Since the TR rate limiter allows at least one Advertisement (TIR) to be sent per interval, and a TIR of a 240-character topic creates a datagram about 400 bytes long (exact size depends on user options), ten of those per second is 32,000 bits, which is over 3 million percent of the desired rate. This sounds extreme, but understand that this works out to only 10 packets per second, a trivial load for modern networks. In practice, the minimum <em>effective</em> rate limit works out to be one datagram per interval.</p>
+<p>This approximation can seem very inaccurate at very small rate limits. As an extreme example, suppose that a user configures the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grpudpbasedresolveroperation.html#resolversustainadvertisementbpscontext">sustaining advertisement rate limiter</a> to 1 bit per second. Since the TR rate limiter allows at least one Advertisement (TIR) to be sent per interval, and a TIR of a 240-character topic creates a datagram about 400 bytes long (exact size depends on user options), ten of those per second is 32,000 bits, which is over 3 million percent of the desired rate. This sounds extreme, but understand that this works out to only 10 packets per second, a trivial load for modern networks. In practice, the minimum <em>effective</em> rate limit works out to be one datagram per interval.</p>
 <p>For details of Topic Resolution, see <a class="el" href="topicresolutiondescription.html">Topic Resolution Description</a>.</p>
 <p><br />
  </p>
 <h1><a class="anchor" id="operationalstatistics"></a>
 Operational Statistics&nbsp;&nbsp;<small><a href="#operationalstatistics">&lt;-</a></small></h1>
 <p>UM maintains a variety of transport-level statistics which gives a real-time snapshot of UM's internal handling. For example, it gives counts for transport messages transferred, bytes transferred, retransmissions requested, unrecoverable loss, etc.</p>
-<p>The UM monitoring API provides framework to allow the convenient gathering and transmission of UM statistics to a central monitoring point. See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Design/operations.tag:../Operations/" href="../Operations/monitoring.html#monitoringtransportstatistics">Monitoring Transport Statistics</a> for more information.</p>
+<p>The UM monitoring API provides framework to allow the convenient gathering and transmission of UM statistics to a central monitoring point. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Design/operations.tag:../Operations/" href="../Operations/monitoring.html#monitoringtransportstatistics">Monitoring Transport Statistics</a> for more information.</p>
 <p><br />
  </p>
 <h1><a class="anchor" id="immediatemessaging"></a>
@@ -430,6 +520,48 @@ Immediate Messaging&nbsp;&nbsp;<small><a href="#immediatemessaging">&lt;-</a></s
 <li>
 <a class="el" href="umfeatures.html#multicastimmediatemessaging">Multicast Immediate Messaging</a> (MIM) - flooding-based multicast; use rarely. </li>
 </ul>
+<p><br />
+<br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+</p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.8.11-->

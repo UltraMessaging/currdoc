@@ -75,12 +75,12 @@ Reference&nbsp;&nbsp;<small><a href="#transportlbtipcoperationref">&lt;-</a></sm
 <h2><a class="anchor" id="transportlbtipcactivitytimeoutreceiver"></a>
 transport_lbtipc_activity_timeout (receiver)&nbsp;&nbsp;<small><a href="#transportlbtipcactivitytimeoutreceiver">&lt;-</a></small></h2>
 <dl class="section user"><dt></dt><dd>The maximum period of inactivity (lack of session messages) from an IPC source before the UM delivers an EOS event for all topics using the transport session. </dd></dl>
-<dl class="section user"><dt></dt><dd>Refer to <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/design.tag:../Design/" href="../Design/umobjects.html#receiverobject">Receiver Object</a> and <a class="el" href="interrelatedconfigurationoptions.html">Interrelated Configuration Options</a> for additional information.</dd></dl>
+<dl class="section user"><dt></dt><dd>Refer to <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/design.tag:../Design/" href="../Design/umobjects.html#receiverobject">Receiver Object</a> and <a class="el" href="interrelatedconfigurationoptions.html">Interrelated Configuration Options</a> for additional information.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>receiver </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
 <tr>
 <td><em>Units:</em> </td><td>milliseconds </td></tr>
 <tr>
@@ -96,13 +96,13 @@ transport_lbtipc_activity_timeout (receiver)&nbsp;&nbsp;<small><a href="#transpo
 <h2><a class="anchor" id="transportlbtipcbehaviorsource"></a>
 transport_lbtipc_behavior (source)&nbsp;&nbsp;<small><a href="#transportlbtipcbehaviorsource">&lt;-</a></small></h2>
 <dl class="section user"><dt></dt><dd>Desired flow control behavior when multiple receivers have joined the same LBT-IPC transport session. </dd></dl>
-<dl class="section user"><dt></dt><dd>See also <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/design.tag:../Design/" href="../Design/transporttypes.html#transportlbtipc">Transport LBT-IPC</a>. This option affects the transport session underlying the source rather than the source itself. The transport session uses the value from the first source created on the session and ignores subsequent sources' configuration. </dd></dl>
-<dl class="section user"><dt></dt><dd>Refer to <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/design.tag:../Design/" href="../Design/umobjects.html#sourceobject">Source Object</a> for additional information.</dd></dl>
+<dl class="section user"><dt></dt><dd>See also <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/design.tag:../Design/" href="../Design/transporttypes.html#transportlbtipc">Transport LBT-IPC</a>. This option affects the transport session underlying the source rather than the source itself. The transport session uses the value from the first source created on the session and ignores subsequent sources' configuration. </dd></dl>
+<dl class="section user"><dt></dt><dd>Refer to <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/design.tag:../Design/" href="../Design/umobjects.html#sourceobject">Source Object</a> for additional information.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>source </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a46699a1cfc611df32e6cce3fb5100aae">lbm_ushort_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a46699a1cfc611df32e6cce3fb5100aae">lbm_ushort_t</a></b> </td></tr>
 <tr>
 <td><em>When to Set:</em> </td><td>Can only be set during object initialization.</td></tr>
 <tr>
@@ -124,15 +124,15 @@ transport_lbtipc_behavior (source)&nbsp;&nbsp;<small><a href="#transportlbtipcbe
 <h2><a class="anchor" id="transportlbtipcdatagrammaxsizecontext"></a>
 transport_lbtipc_datagram_max_size (context)&nbsp;&nbsp;<small><a href="#transportlbtipcdatagrammaxsizecontext">&lt;-</a></small></h2>
 <dl class="section user"><dt></dt><dd>The maximum datagram size that can be generated for a LBT-IPC transport session. While IPC does not use UDP datagrams, this option limits the size of the UM message which is given to the underlying transport type, including all UM headers and overhead. The default value is 65535, the minimum is 500 bytes, and the maximum is 65535. </dd></dl>
-<dl class="section user"><dt></dt><dd>See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/design.tag:../Design/" href="../Design/architecture.html#messagefragmentationandreassembly">Message Fragmentation and Reassembly</a> for more information. </dd></dl>
-<dl class="section user"><dt></dt><dd>Informatica does not recommend setting datagram max size options to the network MTU. See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/design.tag:../Design/" href="../Design/architecture.html#datagrammaxsizeandnetworkmtu">Datagram Max Size and Network MTU</a>. </dd></dl>
+<dl class="section user"><dt></dt><dd>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/design.tag:../Design/" href="../Design/architecture.html#messagefragmentationandreassembly">Message Fragmentation and Reassembly</a> for more information. </dd></dl>
+<dl class="section user"><dt></dt><dd>Informatica does not recommend setting datagram max size options to the network MTU. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/design.tag:../Design/" href="../Design/architecture.html#datagrammaxsizeandnetworkmtu">Datagram Max Size and Network MTU</a>. </dd></dl>
 <dl class="section user"><dt></dt><dd></dd></dl>
-<dl class="section warning"><dt>Warning</dt><dd>When the DRO is in use, it is recommended that all UM applications and components (including the DRO and Persistent Store) share the same maximum datagram size setting. See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/gateway.tag:../Gateway/" href="../Gateway/umrouterconcepts.html#protocolconversion">Protocol Conversion</a>.</dd></dl>
+<dl class="section warning"><dt>Warning</dt><dd>When the DRO is in use, it is recommended that all UM applications and components (including the DRO and Persistent Store) share the same maximum datagram size setting. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/gateway.tag:../Gateway/" href="../Gateway/umrouterconcepts.html#protocolconversion">Protocol Conversion</a>.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>context </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#abdb96b55cc467a75e1f9ec0036dbc14b">lbm_uint_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#abdb96b55cc467a75e1f9ec0036dbc14b">lbm_uint_t</a></b> </td></tr>
 <tr>
 <td><em>Units:</em> </td><td>bytes </td></tr>
 <tr>
@@ -150,12 +150,12 @@ transport_lbtipc_dro_loss_recovery_timeout (receiver)&nbsp;&nbsp;<small><a href=
 <dl class="section user"><dt></dt><dd>For IPC transport sessions originating from a DRO endpoint portal, delay declaring as unrecoverable a lost message. </dd></dl>
 <dl class="section user"><dt></dt><dd>Message streams traversing a DRO can have the message order changed. If the DRO's outgoing transport session uses the IPC protocol, these out-of-order messages will normally trigger immediate unrecoverable loss. This timeout allows an opportunity for the messages to be re-ordered properly. </dd></dl>
 <dl class="section user"><dt></dt><dd>The value 0 disables this delay (i.e. receivers immediately declare unrecoverable loss). </dd></dl>
-<dl class="section user"><dt></dt><dd>See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/gateway.tag:../Gateway/" href="../Gateway/umrouterimplementation.html#umrouterreliableloss">DRO Reliable Loss</a> for more information.</dd></dl>
+<dl class="section user"><dt></dt><dd>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/gateway.tag:../Gateway/" href="../Gateway/umrouterimplementation.html#umrouterreliableloss">DRO Reliable Loss</a> for more information.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>receiver </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
 <tr>
 <td><em>Units:</em> </td><td>milliseconds </td></tr>
 <tr>
@@ -172,12 +172,12 @@ transport_lbtipc_dro_loss_recovery_timeout (receiver)&nbsp;&nbsp;<small><a href=
 transport_lbtipc_id (source)&nbsp;&nbsp;<small><a href="#transportlbtipcidsource">&lt;-</a></small></h2>
 <dl class="section user"><dt></dt><dd>The preferred Transport ID for a specific source's LBT-IPC session. </dd></dl>
 <dl class="section user"><dt></dt><dd>If 0, the UM context attempts to find one in the given Transport ID range of <a class="el" href="grptransportlbtipcoperation.html#transportlbtipcidlowcontext">transport_lbtipc_id_low (context)</a> and <a class="el" href="grptransportlbtipcoperation.html#transportlbtipcidhighcontext">transport_lbtipc_id_high (context)</a>. </dd></dl>
-<dl class="section user"><dt></dt><dd>See <a class="el" href="grptransportlbtrunetwork.html#lbtrutransportsessionmanagement">LBT-RU Transport Session Management</a> and <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/design.tag:../Design/" href="../Design/transporttypes.html#sourcesandlbtipc">Sources and LBT-IPC</a> for more information.</dd></dl>
+<dl class="section user"><dt></dt><dd>See <a class="el" href="grptransportlbtrunetwork.html#lbtrutransportsessionmanagement">LBT-RU Transport Session Management</a> and <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/design.tag:../Design/" href="../Design/transporttypes.html#sourcesandlbtipc">Sources and LBT-IPC</a> for more information.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>source </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a86897f2fdd66aa7021683a4e72a4537b">lbm_uint16_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a86897f2fdd66aa7021683a4e72a4537b">lbm_uint16_t</a></b> </td></tr>
 <tr>
 <td><em>Default value:</em> </td><td>0 (use open ID) </td></tr>
 <tr>
@@ -191,12 +191,12 @@ transport_lbtipc_id (source)&nbsp;&nbsp;<small><a href="#transportlbtipcidsource
 <h2><a class="anchor" id="transportlbtipcidhighcontext"></a>
 transport_lbtipc_id_high (context)&nbsp;&nbsp;<small><a href="#transportlbtipcidhighcontext">&lt;-</a></small></h2>
 <dl class="section user"><dt></dt><dd>Highest transport ID of the range of available LBT-IPC Transport IDs. </dd></dl>
-<dl class="section user"><dt></dt><dd>See <a class="el" href="grptransportlbtrunetwork.html#lbtrutransportsessionmanagement">LBT-RU Transport Session Management</a> and <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/design.tag:../Design/" href="../Design/transporttypes.html#sourcesandlbtipc">Sources and LBT-IPC</a> for more information.</dd></dl>
+<dl class="section user"><dt></dt><dd>See <a class="el" href="grptransportlbtrunetwork.html#lbtrutransportsessionmanagement">LBT-RU Transport Session Management</a> and <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/design.tag:../Design/" href="../Design/transporttypes.html#sourcesandlbtipc">Sources and LBT-IPC</a> for more information.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>context </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a86897f2fdd66aa7021683a4e72a4537b">lbm_uint16_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a86897f2fdd66aa7021683a4e72a4537b">lbm_uint16_t</a></b> </td></tr>
 <tr>
 <td><em>Default value:</em> </td><td>20,005 </td></tr>
 <tr>
@@ -210,12 +210,12 @@ transport_lbtipc_id_high (context)&nbsp;&nbsp;<small><a href="#transportlbtipcid
 <h2><a class="anchor" id="transportlbtipcidlowcontext"></a>
 transport_lbtipc_id_low (context)&nbsp;&nbsp;<small><a href="#transportlbtipcidlowcontext">&lt;-</a></small></h2>
 <dl class="section user"><dt></dt><dd>Lowest transport ID of the range of available LBT-IPC Transport IDs. </dd></dl>
-<dl class="section user"><dt></dt><dd>See <a class="el" href="grptransportlbtrunetwork.html#lbtrutransportsessionmanagement">LBT-RU Transport Session Management</a> and <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/design.tag:../Design/" href="../Design/transporttypes.html#sourcesandlbtipc">Sources and LBT-IPC</a> for more information.</dd></dl>
+<dl class="section user"><dt></dt><dd>See <a class="el" href="grptransportlbtrunetwork.html#lbtrutransportsessionmanagement">LBT-RU Transport Session Management</a> and <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/design.tag:../Design/" href="../Design/transporttypes.html#sourcesandlbtipc">Sources and LBT-IPC</a> for more information.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>context </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a86897f2fdd66aa7021683a4e72a4537b">lbm_uint16_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a86897f2fdd66aa7021683a4e72a4537b">lbm_uint16_t</a></b> </td></tr>
 <tr>
 <td><em>Default value:</em> </td><td>20,001 </td></tr>
 <tr>
@@ -234,7 +234,7 @@ transport_lbtipc_maximum_receivers_per_transport (source)&nbsp;&nbsp;<small><a h
 <tr>
 <td><em>Scope:</em> </td><td>source </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a46699a1cfc611df32e6cce3fb5100aae">lbm_ushort_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a46699a1cfc611df32e6cce3fb5100aae">lbm_ushort_t</a></b> </td></tr>
 <tr>
 <td><em>Default value:</em> </td><td>20 </td></tr>
 <tr>
@@ -253,7 +253,7 @@ transport_lbtipc_pend_behavior_linger_loop_count (context)&nbsp;&nbsp;<small><a 
 <tr>
 <td><em>Scope:</em> </td><td>context </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
 <tr>
 <td><em>Default value:</em> </td><td>1 </td></tr>
 <tr>
@@ -267,7 +267,7 @@ transport_lbtipc_pend_behavior_linger_loop_count (context)&nbsp;&nbsp;<small><a 
 <h2><a class="anchor" id="transportlbtipcreceiveroperationalmodecontext"></a>
 transport_lbtipc_receiver_operational_mode (context)&nbsp;&nbsp;<small><a href="#transportlbtipcreceiveroperationalmodecontext">&lt;-</a></small></h2>
 <dl class="section user"><dt></dt><dd>The mode in which UM operates to process LBT-IPC messages. </dd></dl>
-<dl class="section user"><dt></dt><dd>See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/design.tag:../Design/" href="../Design/architecture.html#embeddedmode">Embedded Mode</a> for additional information.</dd></dl>
+<dl class="section user"><dt></dt><dd>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/design.tag:../Design/" href="../Design/architecture.html#embeddedmode">Embedded Mode</a> for additional information.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>context </td></tr>
@@ -284,7 +284,7 @@ transport_lbtipc_receiver_operational_mode (context)&nbsp;&nbsp;<small><a href="
 <tr>
 <td>"embedded" </td><td>LBM_CTX_ATTR_OP_EMBEDDED </td><td>UM spawns a thread to process received LBT-IPC messages. <b>Default for all.</b> </td></tr>
 <tr>
-<td>"sequential" </td><td>LBM_CTX_ATTR_OP_SEQUENTIAL </td><td>Your application must call <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a8729a284ef9f01f329fbf0edbc147227">lbm_context_process_lbtipc_messages()</a> to process received LBT-IPC messages. If you also set the context's operational_mode option to sequential, your application must donate an additional thread to service the <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#ad9416b1f0b474b5d4c4f39bb3c4bda77">lbm_context_process_events()</a> calls. Note: You can use sequential mode with the C API, but not with the Java API or .NET API. The Java and .NET APIs do not provide an equivalent <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a8729a284ef9f01f329fbf0edbc147227">lbm_context_process_lbtipc_messages()</a> API for LBT- IPC. </td></tr>
+<td>"sequential" </td><td>LBM_CTX_ATTR_OP_SEQUENTIAL </td><td>Your application must call <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a8729a284ef9f01f329fbf0edbc147227">lbm_context_process_lbtipc_messages()</a> to process received LBT-IPC messages. If you also set the context's operational_mode option to sequential, your application must donate an additional thread to service the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#ad9416b1f0b474b5d4c4f39bb3c4bda77">lbm_context_process_events()</a> calls. Note: You can use sequential mode with the C API, but not with the Java API or .NET API. The Java and .NET APIs do not provide an equivalent <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a8729a284ef9f01f329fbf0edbc147227">lbm_context_process_lbtipc_messages()</a> API for LBT- IPC. </td></tr>
 </table>
 </dd></dl>
 <p><br />
@@ -319,7 +319,7 @@ transport_lbtipc_receiver_thread_behavior (context)&nbsp;&nbsp;<small><a href="#
 <h2><a class="anchor" id="transportlbtipcrecyclereceivebufferscontext"></a>
 transport_lbtipc_recycle_receive_buffers (context)&nbsp;&nbsp;<small><a href="#transportlbtipcrecyclereceivebufferscontext">&lt;-</a></small></h2>
 <dl class="section user"><dt></dt><dd>Enables the use of buffer recycling for IPC operations. </dd></dl>
-<dl class="section user"><dt></dt><dd>See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/design.tag:../Design/" href="../Design/advancedoptimizations.html#receivebufferrecycling">Receive Buffer Recycling</a> for more information, including restrictions on the use of this feature.</dd></dl>
+<dl class="section user"><dt></dt><dd>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/design.tag:../Design/" href="../Design/advancedoptimizations.html#receivebufferrecycling">Receive Buffer Recycling</a> for more information, including restrictions on the use of this feature.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>context </td></tr>
@@ -348,12 +348,12 @@ transport_lbtipc_recycle_receive_buffers (context)&nbsp;&nbsp;<small><a href="#t
 <h2><a class="anchor" id="transportlbtipcsmintervalsource"></a>
 transport_lbtipc_sm_interval (source)&nbsp;&nbsp;<small><a href="#transportlbtipcsmintervalsource">&lt;-</a></small></h2>
 <dl class="section user"><dt></dt><dd>Time period between sessions message sent from source to receivers. </dd></dl>
-<dl class="section user"><dt></dt><dd>Refer to <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/design.tag:../Design/" href="../Design/umobjects.html#sourceobject">Source Object</a> and <a class="el" href="interrelatedconfigurationoptions.html">Interrelated Configuration Options</a> for additional information.</dd></dl>
+<dl class="section user"><dt></dt><dd>Refer to <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/design.tag:../Design/" href="../Design/umobjects.html#sourceobject">Source Object</a> and <a class="el" href="interrelatedconfigurationoptions.html">Interrelated Configuration Options</a> for additional information.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>source </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
 <tr>
 <td><em>Units:</em> </td><td>milliseconds </td></tr>
 <tr>
@@ -369,7 +369,7 @@ transport_lbtipc_sm_interval (source)&nbsp;&nbsp;<small><a href="#transportlbtip
 <h2><a class="anchor" id="transportlbtipctransmissionwindowsizesource"></a>
 transport_lbtipc_transmission_window_size (source)&nbsp;&nbsp;<small><a href="#transportlbtipctransmissionwindowsizesource">&lt;-</a></small></h2>
 <dl class="section user"><dt></dt><dd>Size of an LBT-IPC transport's shared memory area. </dd></dl>
-<dl class="section user"><dt></dt><dd>This value may vary across platforms. The actual size of the shared memory area equals the value you specify for this option plus about 64 KB for header information. The minimum value for this option is 65,536. Refer to <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/design.tag:../Design/" href="../Design/umobjects.html#sourceobject">Source Object</a> for additional information.</dd></dl>
+<dl class="section user"><dt></dt><dd>This value may vary across platforms. The actual size of the shared memory area equals the value you specify for this option plus about 64 KB for header information. The minimum value for this option is 65,536. Refer to <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/design.tag:../Design/" href="../Design/umobjects.html#sourceobject">Source Object</a> for additional information.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>source </td></tr>
@@ -385,6 +385,48 @@ transport_lbtipc_transmission_window_size (source)&nbsp;&nbsp;<small><a href="#t
 <td><em>Version:</em> </td><td>This option was implemented in LBM 3.5ea2/UME 2.2ea1 </td></tr>
 </table>
 </dd></dl>
+<p><br />
+<br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+</p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.8.11-->

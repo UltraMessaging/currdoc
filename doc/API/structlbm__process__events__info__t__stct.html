@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">UM C API
-   &#160;<span id="projectnumber">6.13</span>
+   &#160;<span id="projectnumber">6.13.1</span>
    </div>
   </td>
  </tr>
@@ -73,50 +73,27 @@ $(document).ready(function(){initNavTree('structlbm__process__events__info__t__s
 </div><!--header-->
 <div class="contents">
 
-<p>Structure that holds information for the extended Process Events calls A structure used with Sequential Mode that utilize the extended Process Events calls to pass options. See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/API/design.tag:../Design/" href="../Design/advancedoptimizations.html#lbmcontextprocesseventsex">lbm_context_process_events_ex</a> for more information.  
+<p>Structure that holds information for the extended Process Events calls.  
  <a href="structlbm__process__events__info__t__stct.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="lbm_8h_source.html">lbm.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Data Fields</h2></td></tr>
-<tr class="memitem:a116d754d9c09199b75d24606b706ca10"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlbm__process__events__info__t__stct.html#a116d754d9c09199b75d24606b706ca10">flags</a></td></tr>
+<tr class="memitem:a116d754d9c09199b75d24606b706ca10"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a116d754d9c09199b75d24606b706ca10"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlbm__process__events__info__t__stct.html#a116d754d9c09199b75d24606b706ca10">flags</a></td></tr>
+<tr class="memdesc:a116d754d9c09199b75d24606b706ca10"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bitmap indicating which extended features to enable. Zero or more flag bits ORed together: LBM_PROC_EVENT_EX_FLAG_* (i.e. <a class="el" href="lbm_8h.html#ad38d38d8b34bb913ac48940f6bc52a94">LBM_PROC_EVENT_EX_FLAG_USER_TIME</a>, <a class="el" href="lbm_8h.html#a4d3385918ddb747b734f68151ff00d04">LBM_PROC_EVENT_EX_FLAG_NO_MAIN_LOOP_MUTEX</a>) <br /></td></tr>
 <tr class="separator:a116d754d9c09199b75d24606b706ca10"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a211b8ce8a0d9d92052b6f2fc14f4b8fb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="lbm_8h.html#a00b4a00d4c5a4892743027ea6cab128b">lbm_timeval_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlbm__process__events__info__t__stct.html#a211b8ce8a0d9d92052b6f2fc14f4b8fb">time_val</a></td></tr>
+<tr class="memitem:a211b8ce8a0d9d92052b6f2fc14f4b8fb"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a211b8ce8a0d9d92052b6f2fc14f4b8fb"></a>
+<a class="el" href="lbm_8h.html#a00b4a00d4c5a4892743027ea6cab128b">lbm_timeval_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlbm__process__events__info__t__stct.html#a211b8ce8a0d9d92052b6f2fc14f4b8fb">time_val</a></td></tr>
+<tr class="memdesc:a211b8ce8a0d9d92052b6f2fc14f4b8fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Current time of day, in form as returned by gettimeofday(). When <code>flags</code> has <a class="el" href="lbm_8h.html#ad38d38d8b34bb913ac48940f6bc52a94">LBM_PROC_EVENT_EX_FLAG_USER_TIME</a> set, the application must set this field prior to calling <a class="el" href="lbm_8h.html#a55b77c3057028116314fe5ff8e6afb25" title="Extended process internal events in the given UM context object. ">lbm_context_process_events_ex()</a>. <br /></td></tr>
 <tr class="separator:a211b8ce8a0d9d92052b6f2fc14f4b8fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Structure that holds information for the extended Process Events calls A structure used with Sequential Mode that utilize the extended Process Events calls to pass options. See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/API/design.tag:../Design/" href="../Design/advancedoptimizations.html#lbmcontextprocesseventsex">lbm_context_process_events_ex</a> for more information. </p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="lbm_8h.html#a55b77c3057028116314fe5ff8e6afb25">lbm_context_process_events_ex</a></dd></dl>
-<p>See <a class="el" href="structlbm__process__events__info__t__stct.html">lbm_process_events_info_t_stct</a> for field definitions. </p>
-</div><h2 class="groupheader">Field Documentation</h2>
-<a class="anchor" id="a116d754d9c09199b75d24606b706ca10"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int lbm_process_events_info_t_stct::flags</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Bitmap indicating which extended features to enable. Zero or more flag bits ORed together: LBM_PROC_EVENT_EX_FLAG_* (i.e. <a class="el" href="lbm_8h.html#ad38d38d8b34bb913ac48940f6bc52a94">LBM_PROC_EVENT_EX_FLAG_USER_TIME</a>, <a class="el" href="lbm_8h.html#a4d3385918ddb747b734f68151ff00d04">LBM_PROC_EVENT_EX_FLAG_NO_MAIN_LOOP_MUTEX</a>) </p>
-
-</div>
-</div>
-<a class="anchor" id="a211b8ce8a0d9d92052b6f2fc14f4b8fb"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="lbm_8h.html#a00b4a00d4c5a4892743027ea6cab128b">lbm_timeval_t</a> lbm_process_events_info_t_stct::time_val</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Current time of day, in form as returned by gettimeofday(). When <code>flags</code> has <a class="el" href="lbm_8h.html#ad38d38d8b34bb913ac48940f6bc52a94">LBM_PROC_EVENT_EX_FLAG_USER_TIME</a> set, the application must set this field prior to calling <a class="el" href="lbm_8h.html#a55b77c3057028116314fe5ff8e6afb25" title="Extended process internal events in the given UM context object. ">lbm_context_process_events_ex()</a>. </p>
-
-</div>
-</div>
-<hr/>The documentation for this struct was generated from the following file:<ul>
+<div class="textblock"><p>Structure that holds information for the extended Process Events calls. </p>
+<p>A structure used with Sequential Mode that utilize the extended Process Events calls to pass options. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/API/design.tag:../Design/" href="../Design/advancedoptimizations.html#lbmcontextprocesseventsex">lbm_context_process_events_ex</a> for more information. </p><pre class="fragment">  \sa \ref lbm_context_process_events_ex
+</pre><p>See <a class="el" href="structlbm__process__events__info__t__stct.html">lbm_process_events_info_t_stct</a> for field definitions. </p>
+</div><hr/>The documentation for this struct was generated from the following file:<ul>
 <li><a class="el" href="lbm_8h_source.html">lbm.h</a></li>
 </ul>
 </div><!-- contents -->

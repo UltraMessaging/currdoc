@@ -54,16 +54,24 @@ $(document).ready(function(){initNavTree('deprecations.html','');});
 <div class="title">Deprecations </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>To make UM more maintainable, functionality is sometimes removed from UM. Informatica understands that this can be disruptive to users, so we try to restrict such deprecations to features that, to our knowledge, are not needed by our users.</p>
-<p>Informatica recommends careful reading of each version's release notes to learn which features are being deprecated.</p>
+<div class="textblock"><p>To make UM more maintainable, functionality is sometimes removed from UM. Informatica understands that this can be disruptive to users, so we try to restrict such deprecations to features that, to our knowledge, are not needed by our users. Typically the depreciation is announced prior to the functionality being removed to give users time to replace the deprecated functionality with the recommended replacement.</p>
+<p>Informatica recommends careful reading of each version's release notes to learn which features are being deprecated. If you are upgrading across multiple versions of UM, the deprecations for all intervening versions should be examined.</p>
 <p><b>If you discover that a feature is deprecated which is important to your use case, please contact Informatica Support.</b></p>
+<p><br />
+ </p>
+<h1><a class="anchor" id="deprecationsfor6131"></a>
+Deprecations for 6.13.1&nbsp;&nbsp;<small><a href="#deprecationsfor6131">&lt;-</a></small></h1>
+<ul>
+<li>
+<b>"Datagram Acceleration" feature</b>. This is a little-known (barely documented) experimental feature offered to a few customers. The feature turned out not to be part of the direction the customers went. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grpdeprecated.html#datagramaccelerationfunctionscontext">datagram_acceleration_functions (context)</a>. </li>
+</ul>
 <p><br />
  </p>
 <h1><a class="anchor" id="deprecationsfor613"></a>
 Deprecations for 6.13&nbsp;&nbsp;<small><a href="#deprecationsfor613">&lt;-</a></small></h1>
 <ul>
 <li>
-<p class="startli"><b>"Reduced FD" Stores</b>. The Store configuration option <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/ume.tag:../UME/" href="../UME/configurationreferenceforumestored.html#umecfgrepositorytype">repository-type</a> of "reduced-fd" is now deprecated, and will be removed from a future UM version. Users of "reduced-fd" are advised to contact Informatica Support for advice on migrating to repository type "disk".</p>
+<p class="startli"><b>"Reduced FD" Stores</b>. The Store configuration option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/ume.tag:../UME/" href="../UME/optionsforastoresumeattributeselement.html#umecfgrepositorytype">repository-type</a> of "reduced-fd" is now deprecated, and will be removed from a future UM version. Users of "reduced-fd" are advised to contact Informatica Support for advice on migrating to repository type "disk".</p>
 <p class="endli"></p>
 </li>
 <li>
@@ -71,21 +79,21 @@ Deprecations for 6.13&nbsp;&nbsp;<small><a href="#deprecationsfor613">&lt;-</a><
 <p class="endli"></p>
 </li>
 <li>
-<p class="startli"><b>"No Cache" Stores</b>. The Store configuration option <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/ume.tag:../UME/" href="../UME/configurationreferenceforumestored.html#umecfgrepositorytype">repository-type</a> of "no-cache" is now deprecated, and will be removed from a future UM version. Users of "no-cache" are advised to contact Informatica Support for advice on migrating to repository type "disk".</p>
+<p class="startli"><b>"No Cache" Stores</b>. The Store configuration option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/ume.tag:../UME/" href="../UME/optionsforastoresumeattributeselement.html#umecfgrepositorytype">repository-type</a> of "no-cache" is now deprecated, and will be removed from a future UM version. Users of "no-cache" are advised to contact Informatica Support for advice on migrating to repository type "disk".</p>
 <p class="endli"></p>
 </li>
 <li>
-<p class="startli"><b>Arrival Order Delivery, No Reassembly Deprecation</b>. The <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/design.tag:../Design/" href="../Design/architecture.html#arrivalorderfragmentsnotreassembled">Arrival Order, Fragments Not Reassembled</a> feature (ordered_delivery 0) is still operational but may be removed in a future release.</p>
-<p>Users are advised to use <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/design.tag:../Design/" href="../Design/architecture.html#arrivalorderfragmentsreassembled">Arrival Order, Fragments Reassembled</a> (ordered_delivery -1) instead.</p>
+<p class="startli"><b>Arrival Order Delivery, No Reassembly Deprecation</b>. The <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/design.tag:../Design/" href="../Design/architecture.html#arrivalorderfragmentsnotreassembled">Arrival Order, Fragments Not Reassembled</a> feature (ordered_delivery 0) is still operational but may be removed in a future release.</p>
+<p>Users are advised to use <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/design.tag:../Design/" href="../Design/architecture.html#arrivalorderfragmentsreassembled">Arrival Order, Fragments Reassembled</a> (ordered_delivery -1) instead.</p>
 <p class="endli"></p>
 </li>
 <li>
-<p class="startli"><b>Application Headers Deprecation</b>. The <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/design.tag:../Design/" href="../Design/umfeatures.html#applicationheaders">Application Headers</a> feature is still operational but may be removed in a future release.</p>
-<p>Users are advised to use <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/design.tag:../Design/" href="../Design/umfeatures.html#messageproperties">Message Properties</a> instead.</p>
+<p class="startli"><b>Application Headers Deprecation</b>. The <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/design.tag:../Design/" href="../Design/umfeatures.html#applicationheaders">Application Headers</a> feature is still operational but may be removed in a future release.</p>
+<p>Users are advised to use <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/design.tag:../Design/" href="../Design/umfeatures.html#messageproperties">Message Properties</a> instead.</p>
 <p class="endli"></p>
 </li>
 <li>
-<p class="startli"><b>UM configuration attribute "application_data" and the corresponding <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/xmlconfigurationfiles.html#umelementapplicationdata">&lt;application-data&gt;</a> XML configuration element</b>. This feature was never fully implemented, and it is now formally deprecated and may be removed in a future release.</p>
+<p class="startli"><b>UM configuration attribute "application_data" and the corresponding <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/xmlconfigurationfiles.html#umelementapplicationdata">&lt;application-data&gt;</a> XML configuration element</b>. This feature was never fully implemented, and it is now formally deprecated and may be removed in a future release.</p>
 <p class="endli"><br />
  </p>
 </li>
@@ -95,19 +103,19 @@ Platform Deprecations for Daemons&nbsp;&nbsp;<small><a href="#platformdeprecatio
 <p>As of UM version 6.13, there is a reduction in supported platforms for UM daemons.</p>
 <p>The UM daemons are: </p><ul>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/design.tag:../Design/" href="../Design/fundamentalconcepts.html#persistence">Persistent Store</a> (stored) </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/design.tag:../Design/" href="../Design/fundamentalconcepts.html#persistence">Persistent Store</a> (stored) </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/design.tag:../Design/" href="../Design/fundamentalconcepts.html#umrouter">DRO</a> (DRO) (tnwgd) </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/design.tag:../Design/" href="../Design/fundamentalconcepts.html#umrouter">DRO</a> (DRO) (tnwgd) </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/design.tag:../Design/" href="../Design/umglossary.html#glossaryumds">UMDS</a> (umdsd) </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/design.tag:../Design/" href="../Design/topicresolutiondescription.html#unicastudptr">Unicast Resolver Daemon</a> (lbmrd) </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/design.tag:../Design/" href="../Design/topicresolutiondescription.html#unicastudptr">Unicast Resolver Daemon</a> (lbmrd) </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/design.tag:../Design/" href="../Design/topicresolutiondescription.html#tcptr">Stateful Resolution Service</a> (SRS) </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/design.tag:../Design/" href="../Design/topicresolutiondescription.html#tcptr">Stateful Resolution Service</a> (SRS) </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/umm.tag:../UMM/" href="../UMM/index.html#ummanageroverview">UM Manager (UMM)</a> (ummd) </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/umm.tag:../UMM/" href="../UMM/index.html#ummanageroverview">UM Manager (UMM)</a> (ummd) </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/umq.tag:../UMQ/" href="../UMQ/index.html#umqoverview">UMQ Active MQ broker</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/umq.tag:../UMQ/" href="../UMQ/index.html#umqoverview">UMQ Active MQ broker</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/design.tag:../Design/" href="../Design/umglossary.html#glossaryumds">UMDS</a> (umdsd) </li>
 </ul>
 <p>Starting with UM version 6.13, the daemons will only be supported on the following platforms: </p><table class="doxtable">
 <tr>
@@ -123,7 +131,9 @@ Platform Deprecations for Daemons&nbsp;&nbsp;<small><a href="#platformdeprecatio
 <tr>
 <td>UMM Ultra Messaging Manager (ummd) </td><td>YES </td><td>YES </td><td>no </td></tr>
 <tr>
-<td>ActiveMQ broker </td><td>YES </td><td>YES </td><td><p class="starttd">no</p>
+<td>ActiveMQ broker </td><td>YES </td><td>YES </td><td>no </td></tr>
+<tr>
+<td>UMDS Server (umdsd) </td><td>YES </td><td>no </td><td><p class="starttd">no</p>
 <p class="endtd"></p>
 </td></tr>
 </table>
@@ -133,8 +143,7 @@ Platform Deprecations for Daemons&nbsp;&nbsp;<small><a href="#platformdeprecatio
  </p>
 <h1><a class="anchor" id="deprecationsfor6111"></a>
 Deprecations for 6.11.1&nbsp;&nbsp;<small><a href="#deprecationsfor6111">&lt;-</a></small></h1>
-<dl class="section attention"><dt>Attention</dt><dd>The 6.11.1 release notes announced the deprecation of certain platforms for UM daemons, claiming that they would be discontinued in UM version 6.12. However, some users requested more time for the transition. As of UM version 6.12, these deprecated daemon platforms have not yet been removed, and are therefore still fully supported in 6.12. See <a class="el" href="deprecations.html#platformdeprecationsfordaemons">Platform Deprecations for Daemons</a>.</dd></dl>
-<p>Starting with UM version 6.13, the UM daemons will no longer be available on certain platforms.</p>
+<dl class="section attention"><dt>Attention</dt><dd>The original 6.11.1 release notes announced the deprecation of certain platforms for UM daemons, claiming that they would be discontinued in UM version 6.12. However, some users requested more time for the transition. As of UM version 6.12, these deprecated daemon platforms have not yet been removed, and are therefore still fully supported in 6.12. Starting with UM version 6.13, the UM daemons will no longer be available on certain platforms. See <a class="el" href="deprecations.html#platformdeprecationsfordaemons">Platform Deprecations for Daemons</a>.</dd></dl>
 <dl class="section note"><dt>Note</dt><dd>User applications will continue to be fully supported on all platforms. These deprecations only apply to UM daemon executables, such as the Store Daemon and the Dynamic Router daemon.</dd></dl>
 <p>UM daemons will continue to be available on the following platforms: </p><ul>
 <li>
@@ -172,23 +181,23 @@ Deprecations for 6.10&nbsp;&nbsp;<small><a href="#deprecationsfor610">&lt;-</a><
 Streaming Deprecations for 6.10&nbsp;&nbsp;<small><a href="#streamingdeprecationsfor610">&lt;-</a></small></h2>
 <ul>
 <li>
-<p class="startli"><b>Adaptive Batching</b>. <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grpdeprecated.html#implicitbatchingtypesource">Adaptive batching</a> is still operational, but planned to be removed in a future release.</p>
+<p class="startli"><b>Adaptive Batching</b>. <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grpdeprecated.html#implicitbatchingtypesource">Adaptive batching</a> is still operational, but planned to be removed in a future release.</p>
 <p class="endli"></p>
 </li>
 <li>
-<p class="startli"><b>Explicit Batching</b>. <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/design.tag:../Design/" href="../Design/architecture.html#explicitbatching">Explicit Batching</a> is still operational, but planned to be removed in a future release.</p>
+<p class="startli"><b>Explicit Batching</b>. <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/design.tag:../Design/" href="../Design/architecture.html#explicitbatching">Explicit Batching</a> is still operational, but planned to be removed in a future release.</p>
 <p class="endli"></p>
 </li>
 <li>
-<p class="startli"><b>Hypertopics</b>. <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/design.tag:../Design/" href="../Design/umfeatures.html#hypertopics">HyperTopics</a> is still operational, but planned to be removed in a future release.</p>
+<p class="startli"><b>Hypertopics</b>. <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/design.tag:../Design/" href="../Design/umfeatures.html#hypertopics">HyperTopics</a> is still operational, but planned to be removed in a future release.</p>
 <p class="endli"></p>
 </li>
 <li>
-<p class="startli"><b>TCP-LB</b>. The "bounded_latency" selection for <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grptransporttcpoperation.html#transporttcpmultiplereceiverbehaviorsource">transport_tcp_multiple_receiver_behavior (source)</a> is still operational, but planned to be removed in a future release.</p>
+<p class="startli"><b>TCP-LB</b>. The "bounded_latency" selection for <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grptransporttcpoperation.html#transporttcpmultiplereceiverbehaviorsource">transport_tcp_multiple_receiver_behavior (source)</a> is still operational, but planned to be removed in a future release.</p>
 <p class="endli"></p>
 </li>
 <li>
-<b>RDMA transport</b>. The "lbt-rdma" selection for <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grpmajoroptions.html#transportsource">transport (source)</a> no longer functions. The underlying third-party library is no longer available from the vendor. Users should use <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grptransportacceleration.html#mellanoxudacceleration">UD Acceleration for Mellanox® Hardware Interfaces</a>. </li>
+<b>RDMA transport</b>. The "lbt-rdma" selection for <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grpmajoroptions.html#transportsource">transport (source)</a> no longer functions. The underlying third-party library is no longer available from the vendor. Users should use <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grptransportacceleration.html#mellanoxudacceleration">UD Acceleration for Mellanox Hardware Interfaces</a>. </li>
 </ul>
 <p><br />
  </p>
@@ -209,7 +218,7 @@ LBMContext.setUMQMessageStable() method </li>
 <li>
 <p class="startli">Configuration options deprecated: </p><ul>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grpdeprecated.html#retransmitretentionagethresholdsource">retransmit_retention_age_threshold (source)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grpdeprecated.html#retransmitretentionagethresholdsource">retransmit_retention_age_threshold (source)</a> </li>
 </ul>
 <p class="endli"><br />
  </p>
@@ -219,7 +228,7 @@ LBMContext.setUMQMessageStable() method </li>
 Dynamic Router Deprecations for 6.10&nbsp;&nbsp;<small><a href="#dynamicrouterdeprecationsfor610">&lt;-</a></small></h2>
 <ul>
 <li>
-Dual-TCP peer links. UM DRO version 6.10 no longer supports dual-TCP peer links. The XML configuration elements '<code>&lt;tcp&gt;</code>' and '<code>&lt;companion&gt;</code>' will generate errors. Upgrading customers should use <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/gateway.tag:../Gateway/" href="../Gateway/xmlconfigurationreference.html#droelementsingletcp">&lt;single-tcp&gt;</a> instead. </li>
+Dual-TCP peer links. UM DRO version 6.10 no longer supports dual-TCP peer links. The XML configuration elements '<code>&lt;tcp&gt;</code>' and '<code>&lt;companion&gt;</code>' will generate errors. Upgrading customers should use <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/gateway.tag:../Gateway/" href="../Gateway/xmlconfigurationreference.html#droelementsingletcp">&lt;single-tcp&gt;</a> instead. </li>
 </ul>
 <p><br />
  </p>
@@ -273,13 +282,13 @@ umq_retention_intragroup_stability_behavior (source) </li>
 </ul>
 <p>The following C API functions are deprecated and no longer function: </p><ul>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/api.tag:../API/" href="../API/lbm_8h.html#aac6015a6a8e914c6e621e3b28940fe87">lbm_ctx_umq_get_inflight()</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/api.tag:../API/" href="../API/lbm_8h.html#aac6015a6a8e914c6e621e3b28940fe87">lbm_ctx_umq_get_inflight()</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/api.tag:../API/" href="../API/lbm_8h.html#a6cd0c297e489e006ef5da83398184daa">lbm_umq_ctx_msg_stable()</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/api.tag:../API/" href="../API/lbm_8h.html#a6cd0c297e489e006ef5da83398184daa">lbm_umq_ctx_msg_stable()</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/api.tag:../API/" href="../API/lbm_8h.html#a21cb52dc4c0a14484cfc0454a156e2d8">lbm_queue_immediate_message()</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/api.tag:../API/" href="../API/lbm_8h.html#a21cb52dc4c0a14484cfc0454a156e2d8">lbm_queue_immediate_message()</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/api.tag:../API/" href="../API/lbm_8h.html#a150a4b140b9999c5eba12cf89cc3522c">lbm_auth_set_credentials()</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/api.tag:../API/" href="../API/lbm_8h.html#a150a4b140b9999c5eba12cf89cc3522c">lbm_auth_set_credentials()</a> </li>
 </ul>
 <p>The following Java and .NET API functions are deprecated and no longer function: </p><ul>
 <li>
@@ -307,7 +316,7 @@ Deprecations for 6.7&nbsp;&nbsp;<small><a href="#deprecationsfor67">&lt;-</a></s
 Streaming Deprecations for 6.7&nbsp;&nbsp;<small><a href="#streamingdeprecationsfor67">&lt;-</a></small></h2>
 <ul>
 <li>
-The <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/api.tag:../API/" href="../API/lbmmon_8h.html#a0d12fbcc04e5e7d9b79547fb2f0c5031">lbmmon_attr_get_contextid()</a> function is deprecated. Instead, use <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/api.tag:../API/" href="../API/lbmmon_8h.html#aa8669b8acf25d0d81ef78f8c4fced6ea">lbmmon_attr_get_objectid()</a>. </li>
+The <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/api.tag:../API/" href="../API/lbmmon_8h.html#a0d12fbcc04e5e7d9b79547fb2f0c5031">lbmmon_attr_get_contextid()</a> function is deprecated. Instead, use <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/api.tag:../API/" href="../API/lbmmon_8h.html#aa8669b8acf25d0d81ef78f8c4fced6ea">lbmmon_attr_get_objectid()</a>. </li>
 </ul>
 <p><br />
  </p>
@@ -323,6 +332,25 @@ The '<code>repository-disk-max-write-async-cbs</code>' option is deprecated. </l
 </ul>
 <p><br />
  </p>
+<h1><a class="anchor" id="deprecationsfor65"></a>
+Deprecations for 6.5&nbsp;&nbsp;<small><a href="#deprecationsfor65">&lt;-</a></small></h1>
+<p><br />
+ </p>
+<h2><a class="anchor" id="streamingdeprecationsfor65"></a>
+Streaming Deprecations for 6.5&nbsp;&nbsp;<small><a href="#streamingdeprecationsfor65">&lt;-</a></small></h2>
+<ul>
+<li>
+<p class="startli">The Java send methods that accept a callback object (cbArg) are deprecated: </p><ul>
+<li>
+send(byte[] message, int messageLength, int flags, java.lang.Object cbArg) </li>
+<li>
+send(java.nio.ByteBuffer message, int startPosition, int messageLength, int flags,java.lang.Object cbArg) </li>
+</ul>
+<p class="endli">Use the send method that accepts an LBMSourceSendExInfo object instead. </p>
+</li>
+</ul>
+<p><br />
+ </p>
 <h1><a class="anchor" id="deprecationsfor60"></a>
 Deprecations for 6.0&nbsp;&nbsp;<small><a href="#deprecationsfor60">&lt;-</a></small></h1>
 <p><br />
@@ -331,15 +359,15 @@ Deprecations for 6.0&nbsp;&nbsp;<small><a href="#deprecationsfor60">&lt;-</a></s
 Streaming Deprecations for 6.0&nbsp;&nbsp;<small><a href="#streamingdeprecationsfor60">&lt;-</a></small></h2>
 <ul>
 <li>
-<p class="startli">The receiver configuration options <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grpdeprecated.html#retransmitrequestgenerationintervalreceiver">retransmit_request_generation_interval (receiver)</a> and <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grpdeprecated.html#otrrequestdurationreceiver">otr_request_duration (receiver)</a> have been deprecated. Late join and OTR now track a total duration for each message that begins when a receiver sends the first retransmission request for the message. See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grplatejoin.html#retransmitrequestmessagetimeoutreceiver">retransmit_request_message_timeout (receiver)</a>.</p>
+<p class="startli">The receiver configuration options <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grpdeprecated.html#retransmitrequestgenerationintervalreceiver">retransmit_request_generation_interval (receiver)</a> and <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grpdeprecated.html#otrrequestdurationreceiver">otr_request_duration (receiver)</a> have been deprecated. Late join and OTR now track a total duration for each message that begins when a receiver sends the first retransmission request for the message. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grplatejoin.html#retransmitrequestmessagetimeoutreceiver">retransmit_request_message_timeout (receiver)</a>.</p>
 <p class="endli"></p>
 </li>
 <li>
-<p class="startli">Option <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grpdeprecated.html#otrrequestdurationreceiver">otr_request_duration (receiver)</a> is deprecated and replaced with the new option otrrequestmessagetimeoutreceiver.</p>
+<p class="startli">Option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grpdeprecated.html#otrrequestdurationreceiver">otr_request_duration (receiver)</a> is deprecated and replaced with the new option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grpofftransportrecovery.html#otrrequestmessagetimeoutreceiver">otr_request_message_timeout (receiver)</a>.</p>
 <p class="endli"></p>
 </li>
 <li>
-The Late Join option retransmit_request_generation_interval is deprecated and replaced with new option <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grplatejoin.html#retransmitrequestmessagetimeoutreceiver">retransmit_request_message_timeout (receiver)</a>. The new option defines an RX give-up interval on a per-message basis. </li>
+The Late Join option retransmit_request_generation_interval is deprecated and replaced with new option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grplatejoin.html#retransmitrequestmessagetimeoutreceiver">retransmit_request_message_timeout (receiver)</a>. The new option defines an RX give-up interval on a per-message basis. </li>
 </ul>
 <p><br />
  </p>
@@ -348,8 +376,57 @@ Deprecations for pre-6.0&nbsp;&nbsp;<small><a href="#deprecationsforpre60">&lt;-
 <p>Deprecations for UM versions prior to 6.0.</p>
 <ul>
 <li>
-Functions <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/api.tag:../API/" href="../API/lbm_8h.html#a32682ab7b6432a84e5d3e26c30ad6c9c">lbm_context_set_name()</a> and <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/api.tag:../API/" href="../API/lbm_8h.html#a560203dca8edb43c74db155bb958e6ae">lbm_context_get_name()</a> are deprecated and no longer have any functionality. Use configuration option <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grpmajoroptions.html#contextnamecontext">context_name (context)</a> instead. </li>
+<p class="startli">Functions <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/api.tag:../API/" href="../API/lbm_8h.html#a32682ab7b6432a84e5d3e26c30ad6c9c">lbm_context_set_name()</a> and <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/api.tag:../API/" href="../API/lbm_8h.html#a560203dca8edb43c74db155bb958e6ae">lbm_context_get_name()</a> are deprecated and no longer have any functionality. Use configuration option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grpmajoroptions.html#contextnamecontext">context_name (context)</a> instead.</p>
+<p class="endli"></p>
+</li>
+<li>
+<p class="startli">The constants LBM_SRC_EVENT_UME_REGISTRATION_SUCCESS, LBM_MSG_UME_REGISTRATION_SUCCESS, LBM_SRC_EVENT_UME_MESSAGE_STABLE, LBM_SRC_EVENT_UME_DELIVERY_CONFIRMATION, and the structures lbm_src_event_ume_registration_t, lbm_msg_ume_registration_t. are no longer used.</p>
+<p class="endli">Applications must instead use <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/api.tag:../API/" href="../API/lbm_8h.html#a99e39b5b7215553654f91f8b74ad98c8">LBM_SRC_EVENT_UME_REGISTRATION_SUCCESS_EX</a>, <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/api.tag:../API/" href="../API/lbm_8h.html#acae32fc8bfc50769993fcea62e553bd8">LBM_MSG_UME_REGISTRATION_SUCCESS_EX</a>, <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/api.tag:../API/" href="../API/lbm_8h.html#acf1cedd5755e63083db63f3d45e45df6">LBM_SRC_EVENT_UME_MESSAGE_STABLE_EX</a>, <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/api.tag:../API/" href="../API/lbm_8h.html#ae7124621f7cab5925ed8354690d736f9">LBM_SRC_EVENT_UME_DELIVERY_CONFIRMATION_EX</a>, and the structures <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/api.tag:../API/" href="../API/lbm_8h.html#a008e15024174fd5d7645ced0d2e64d2c">lbm_src_event_ume_registration_ex_t</a>, <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/api.tag:../API/" href="../API/lbm_8h.html#a2a896740a179ab09f615c632776db385">lbm_msg_ume_registration_ex_t</a>, <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/api.tag:../API/" href="../API/lbm_8h.html#a7b945939b994bf1e7163d55b2256f3fb">lbm_src_event_ume_ack_ex_info_t</a>. </p>
+</li>
 </ul>
+<p>For other deprecations made in pre-6.0 versions of UM, see the <a href="https://ultramessaging.github.io/UMQ_5.3.6/doc/ChangeLog/changelog.html#INTRODUCTION">Change Log</a> document the UM version 5.3.6 <a href="https://ultramessaging.github.io/UMQ_5.3.6/index.html">Documentation Set</a>.</p>
+<p><br />
+<br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+</p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.8.11-->

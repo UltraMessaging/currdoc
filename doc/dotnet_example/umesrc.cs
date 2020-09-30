@@ -952,11 +952,6 @@ namespace LBMApplication
                     System.Console.Out.WriteLine("Received SRC_EVENT_UME_DEREGISTRATION_COMPLETE_EX\n");
                     break;
 
-                case LBM.SRC_EVENT_UME_REGISTRATION_SUCCESS:
-
-                    System.Console.Out.WriteLine("UME store registration success. RegID "
-                               + sourceEvent.registrationId());
-                    break;
                 case LBM.SRC_EVENT_UME_REGISTRATION_SUCCESS_EX:
                     UMESourceEventRegistrationSuccessInfo reg =
                                                             sourceEvent.registrationSuccessInfo();
@@ -985,19 +980,6 @@ namespace LBMApplication
                         System.Console.Out.Write("QUORUM ");
                     }
                     System.Console.Out.WriteLine();
-                    break;
-                case LBM.SRC_EVENT_UME_MESSAGE_STABLE:
-                    count = (uint)sourceEvent.clientObject();
-
-                    if (_verbose >= 2)
-                        System.Console.Out.WriteLine("UME message stable - sequence number "
-                                       + sourceEvent.sequenceNumber().ToString("x")
-                                       + " (cd "
-                                       + ((int)sourceEvent.clientObject()).ToString("x")
-                                       + ")");
-
-                    umesrc.stablerecv++;
-
                     break;
                 case LBM.SRC_EVENT_UME_MESSAGE_NOT_STABLE:
                     UMESourceEventAckInfo nstaInfo = sourceEvent.ackInfo();
@@ -1058,16 +1040,6 @@ namespace LBMApplication
                     }
 
 
-                    break;
-                case LBM.SRC_EVENT_UME_DELIVERY_CONFIRMATION:
-                    if (_verbose > 0)
-                        System.Console.Out.WriteLine("UME delivery confirmation - sequence number "
-                                       + sourceEvent.sequenceNumber().ToString("x")
-                                       + " Rcv RegID "
-                                       + sourceEvent.registrationId()
-                                       + " (cd "
-                                       + ((int)sourceEvent.clientObject()).ToString("x")
-                                       + ")");
                     break;
                 case LBM.SRC_EVENT_UME_DELIVERY_CONFIRMATION_EX:
                     UMESourceEventAckInfo cdelvinfo = sourceEvent.ackInfo();

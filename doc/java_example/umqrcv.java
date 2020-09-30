@@ -936,12 +936,6 @@ class UMQRcvReceiver implements LBMReceiverCallback,
 			System.out.println("[" + msg.topicName() + "][" + msg.source()
 					+ "] UME registration error: " + msg.dataString());
 			break;
-		case LBM.MSG_UME_REGISTRATION_SUCCESS:
-			System.out.println("[" + msg.topicName() + "][" + msg.source()
-					+ "] UME registration successful. Src RegID "
-					+ msg.sourceRegistrationId() + " RegID "
-					+ msg.receiverRegistrationId());
-			break;
 		case LBM.MSG_UME_REGISTRATION_SUCCESS_EX:
 			UMERegistrationSuccessInfo reg = msg.registrationSuccessInfo();
 			System.out.print("[" + msg.topicName() + "][" + msg.source()

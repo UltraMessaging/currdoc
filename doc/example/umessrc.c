@@ -345,13 +345,6 @@ int handle_ssrc_event(lbm_ssrc_t *ssrc, int event, void *ed, void *cd)
 			printf("Error registering smart source with UME store: %s\n", errstr);
 		}
 		break;
-	case LBM_SRC_EVENT_UME_REGISTRATION_SUCCESS:
-		{
-			lbm_src_event_ume_registration_t *reg = (lbm_src_event_ume_registration_t *)ed;
-
-			printf("UME store registration success. RegID %u\n", reg->registration_id);
-		}
-		break;
 	case LBM_SRC_EVENT_UME_REGISTRATION_SUCCESS_EX:
 		{
 			lbm_src_event_ume_registration_ex_t *reg = (lbm_src_event_ume_registration_ex_t *)ed;
@@ -391,17 +384,6 @@ int handle_ssrc_event(lbm_ssrc_t *ssrc, int event, void *ed, void *cd)
 			if (reg->flags & LBM_SRC_EVENT_UME_REGISTRATION_COMPLETE_EX_FLAG_QUORUM)
 				printf("QUORUM ");
 			printf("\n");
-		}
-		break;
-	case LBM_SRC_EVENT_UME_MESSAGE_STABLE:
-		{
-			lbm_src_event_ume_ack_info_t *ackinfo = (lbm_src_event_ume_ack_info_t *)ed;
-
-			if (opts->verbose)
- 				printf("UME message stable - SQN %u (cd %p)\n", ackinfo->sequence_number, (char*)(ackinfo->msg_clientd) - 1);
-
-			/* Peg the counter for the received stable message */
-			stablerecv++;
 		}
 		break;
 	case LBM_SRC_EVENT_UME_MESSAGE_NOT_STABLE:
@@ -454,15 +436,6 @@ int handle_ssrc_event(lbm_ssrc_t *ssrc, int event, void *ed, void *cd)
 				/* Peg the counter for the received stable message */
 				stablerecv++;
 			}
-		}
-		break;
-	case LBM_SRC_EVENT_UME_DELIVERY_CONFIRMATION:
-		{
-			lbm_src_event_ume_ack_info_t *ackinfo = (lbm_src_event_ume_ack_info_t *)ed;
-
-			if (opts->verbose)
- 				printf("UME delivery confirmation - SQN %u, Rcv RegID %u (cd %p)\n",
-					         ackinfo->sequence_number, ackinfo->rcv_registration_id, (char*)(ackinfo->msg_clientd) - 1);
 		}
 		break;
 	case LBM_SRC_EVENT_UME_DELIVERY_CONFIRMATION_EX:

@@ -68,9 +68,10 @@ CONTEXT FD_MANAGEMENT_TYPE WINCOMPPORT
 Specifying Interfaces&nbsp;&nbsp;<small><a href="#specifyinginterfaces">&lt;-</a></small></h1>
 <p>The <b>*_interface</b> options require a network interface, usually supplied as a string (from a configuration file or in source code via <b>*_attr_str_setopt()</b>), the syntax used for network interface specifications is <a href="https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#CIDR_notation">CIDR notation</a>:</p>
 <p><em><b>a.b.c.d/num</b></em></p>
-<p>where '<em><b>num</b></em>' is the optional number of leading 1 bits in the netmask. If the '<em><b>/num</b></em>' is omitted, it defaults to 32 (netmask 255.255.255.255), which means that it must be an exact match for the interface's IP address. However, if '<em><b>/num</b></em>' is supplied, it tells Ultra Messaging to find an interface within that network. This makes it easier to share a configuration file between many (possibly multi-homed) machines on the same network.</p>
+<p>where '/<em><b>num</b></em>' is the optional "prefix length", the number of leading 1 bits in the netmask. If the prefix length is omitted, it defaults to 32 (netmask 255.255.255.255), which means that it must be an exact match for the interface's IP address. However, if the prefix length '/num' is supplied, it tells Ultra Messaging to select the first interface that starts with that network number. This makes it easier to share a configuration file between many (possibly multi-homed) machines on the same network.</p>
 <p>For example: </p><pre class="fragment">context resolver_unicast_interface 192.168.0.0/24
-</pre><p>specifies a netmask of 255.255.255.0 and would match the interface 192.168.0.3 on one host, and 192.168.0.251 on another host.</p>
+</pre><p>specifies a netmask of 255.255.255.0 and would match the interface 192.168.0.3 on one host, and 192.168.0.251 on another host. But would not match 192.168.1.3.</p>
+<p>The prefix length ("/num") does not need to match the actual network mask used by the host. For example, you have many hosts on different internal IP networks, but if they all start with "10", you can specify the interface as "10.0.0.0/8". UM will scan the list of interfaces and select the first one it finds that starts with 10. This is useful for selecting any network-connected interface, omitting the loopback 127.0.0.1.</p>
 <p>You can also set network interfaces by device name. When setting a configuration option's interface by device name, you must use double quotes, as illustrated below.</p>
 <pre class="fragment">context resolver_unicast_interface "en0"
 </pre><p>Finally, you can also set network interfaces by DNS host name. When setting a configuration option's interface by DNS name, simply replace the dotted IP address with the host name, as illustrated below.</p>
@@ -108,7 +109,7 @@ Ephemeral Ports&nbsp;&nbsp;<small><a href="#ephemeralports">&lt;-</a></small></h
 <h2><a class="anchor" id="networkvshostorder"></a>
 Network VS Host Order&nbsp;&nbsp;<small><a href="#networkvshostorder">&lt;-</a></small></h2>
 <p>When the UM C API is used to set configuration options programmatically, port numbers can be specified as a string or as a binary value. For example, here is an option being set by binary value:</p>
-<div class="fragment"><div class="line"><span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> <span class="keywordtype">int</span> optval = 4901;  <span class="comment">/* host byte order required */</span></div><div class="line"><span class="keywordtype">size_t</span> optlen = <span class="keyword">sizeof</span>(optval);</div><div class="line">rc = <a class="codeRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#ab67f641d5a0ad1a9fe53d415da58d961">lbm_context_attr_setopt</a>(attrib, <span class="stringliteral">&quot;transport_tcp_port_low&quot;</span>, &amp;optval, optlen);</div></div><!-- fragment --><p>See <a class="el" href="attributesobjects.html#settinganoptionfromabinaryvalue">Setting an Option from a Binary Value</a>.</p>
+<div class="fragment"><div class="line"><span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> <span class="keywordtype">int</span> optval = 4901;  <span class="comment">/* host byte order required */</span></div><div class="line"><span class="keywordtype">size_t</span> optlen = <span class="keyword">sizeof</span>(optval);</div><div class="line">rc = <a class="codeRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#ab67f641d5a0ad1a9fe53d415da58d961">lbm_context_attr_setopt</a>(attrib, <span class="stringliteral">&quot;transport_tcp_port_low&quot;</span>, &amp;optval, optlen);</div></div><!-- fragment --><p>See <a class="el" href="attributesobjects.html#settinganoptionfromabinaryvalue">Setting an Option from a Binary Value</a>.</p>
 <p>There are some port options whose binary values must be supplied in network order. For example:</p>
 <div class="fragment"><div class="line"><span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> <span class="keywordtype">int</span> optval = htons(4901);  <span class="comment">/* network byte order required */</span></div><div class="line"><span class="keywordtype">size_t</span> optlen = <span class="keyword">sizeof</span>(optval);</div><div class="line">rc = lbm_source_attr_setopt(attrib, <span class="stringliteral">&quot;transport_tcp_port&quot;</span>, &amp;optval, optlen);</div></div><!-- fragment --><p>It is generally the case where setting a port to a specific value (i.e. not setting up a range) requires network order. Whereas setting the high and low port values of a range are done in host order.</p>
 <p>The reference documentation for each port option specifies the byte order required when binary values are being specified. For example, <a class="el" href="grptransporttcpnetwork.html#transporttcpportsource">transport_tcp_port (source)</a> has a table row that says: </p><table class="doxtable">
@@ -128,7 +129,49 @@ Reference Entry Format&nbsp;&nbsp;<small><a href="#referenceentryformat">&lt;-</
 <dl class="section user"><dt><b>Byte</b> <b>order</b> </dt><dd>For options whose value is an IP address or port, defines the byte ordering (Host or Network) expected by the API for *_setopt() calls, and returned by the API for *_getopt() calls.</dd></dl>
 <dl class="section user"><dt><b>May</b> <b>be</b> <b>set</b> <b>during</b> <b>operation</b> </dt><dd>If an option may be set after the UM object is created, it is so indicated here.</dd></dl>
 <p>Next, for enumerated-valued options with limited specific choices, a table details the permissible String Value (configuration file), Integer Value (programmatic attribute setting), and a Description of each choice that includes default value designations.</p>
-<p>Alternately, for switch-valued options (0 or 1), a table describes the meaning of each of the two possible values. The default value is noted within the description. </p>
+<p>Alternately, for switch-valued options (0 or 1), a table describes the meaning of each of the two possible values. The default value is noted within the description.</p>
+<p><br />
+<br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+</p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.8.11-->

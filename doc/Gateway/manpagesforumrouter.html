@@ -80,24 +80,66 @@ Tnwgd Man Page&nbsp;&nbsp;<small><a href="#tnwgdmanpage">&lt;-</a></small></h1>
 <h1><a class="anchor" id="tnwgdsmanpage"></a>
 Tnwgds Man Page&nbsp;&nbsp;<small><a href="#tnwgdsmanpage">&lt;-</a></small></h1>
 <p>Windows service interface.</p>
-<p>See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Gateway/operations.tag:../Operations/" href="../Operations/startupshutdownprocedures.html#umdaemonsaswindowsservices">UM Daemons as Windows Services</a> for general information about UM daemons as Windows Services.</p>
+<p>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Gateway/operations.tag:../Operations/" href="../Operations/startupshutdownprocedures.html#umdaemonsaswindowsservices">UM Daemons as Windows Services</a> for general information about UM daemons as Windows Services.</p>
 <div class="fragment"><div class="line">Purpose: UM Gateway daemon</div><div class="line">Usage: tnwgds [options] [configfile]</div><div class="line">Available options:</div><div class="line">  -d, --dump-dtd             dump the configuration DTD to stdout</div><div class="line">  -h, --help                 display <span class="keyword">this</span> help and exit</div><div class="line">  -v, --validate             validate config-file then exit</div><div class="line">  -E, --env_var_file         update/<span class="keyword">set</span> the environment Variable File</div><div class="line">  -U, --unset-env-var-file   unset the environment variable file</div><div class="line">  -s, --service=install      install the service passing configfile</div><div class="line">  -s, --service=<span class="keyword">remove</span>       <span class="keyword">delete</span>/<span class="keyword">remove</span> the service</div><div class="line">  -s, --service=config       update configfile info to use configfile passed</div><div class="line">  -e, --<span class="keyword">event</span>-log-level      update/<span class="keyword">set</span> service logging level.  This is the minimum logging</div><div class="line">                             level to send to the Windows <span class="keyword">event</span> log.  Valid values are:</div><div class="line">                                NONE - Send no events</div><div class="line">                                INFO</div><div class="line">                                WARN - <span class="keywordflow">default</span></div><div class="line">                                ERROR</div></div><!-- fragment --><dl class="section user"><dt><b>Description</b> </dt><dd>The <code>tnwgds</code> command has two functions: <ul>
 <li>
-First, it lets the user supply Windows Service operating parameters, which the command saves into the Windows registry. Those operating parameters are subsequently used by the DRO Service. For details on setting Windows Service operating parameters, see <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Gateway/operations.tag:../Operations/" href="../Operations/startupshutdownprocedures.html#configurethewindowsservice">Configure the Windows Service</a>. </li>
+First, it lets the user supply Windows Service operating parameters, which the command saves into the Windows registry. Those operating parameters are subsequently used by the DRO Service. For details on setting Windows Service operating parameters, see <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Gateway/operations.tag:../Operations/" href="../Operations/startupshutdownprocedures.html#configurethewindowsservice">Configure the Windows Service</a>. </li>
 <li>
 Second, it provides Windows with the DRO executable to run as a Service. </li>
 </ul>
 </dd></dl>
 <dl class="section user"><dt></dt><dd>The <b>"configfile"</b> parameter provides the file path for the DRO's XML configuration file. It is supplied in conjunction with the "-v" option or the "-s config" option (see below). See <a class="el" href="xmlconfigurationreference.html">XML Configuration Reference</a> for configuration details.</dd></dl>
 <dl class="section user"><dt></dt><dd>Note that valid XML structure does not guarantee that the configuration file is completely correct. It must be tested on a running DRO.</dd></dl>
-<dl class="section user"><dt></dt><dd>For <b>"-s install"</b> see <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Gateway/operations.tag:../Operations/" href="../Operations/startupshutdownprocedures.html#installthewindowsservice">Install the Windows Service</a>.</dd></dl>
-<dl class="section user"><dt></dt><dd>For <b>"-s remove"</b> see <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Gateway/operations.tag:../Operations/" href="../Operations/startupshutdownprocedures.html#removethewindowsservice">Remove the Windows Service</a>.</dd></dl>
-<dl class="section user"><dt></dt><dd>For <b>"-s config"</b>, <b>"-e"</b>, <b>"-E"</b>, and <b>"-U"</b>, see <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Gateway/operations.tag:../Operations/" href="../Operations/startupshutdownprocedures.html#configurethewindowsservice">Configure the Windows Service</a>.</dd></dl>
+<dl class="section user"><dt></dt><dd>For <b>"-s install"</b> see <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Gateway/operations.tag:../Operations/" href="../Operations/startupshutdownprocedures.html#installthewindowsservice">Install the Windows Service</a>.</dd></dl>
+<dl class="section user"><dt></dt><dd>For <b>"-s remove"</b> see <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Gateway/operations.tag:../Operations/" href="../Operations/startupshutdownprocedures.html#removethewindowsservice">Remove the Windows Service</a>.</dd></dl>
+<dl class="section user"><dt></dt><dd>For <b>"-s config"</b>, <b>"-e"</b>, <b>"-E"</b>, and <b>"-U"</b>, see <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Gateway/operations.tag:../Operations/" href="../Operations/startupshutdownprocedures.html#configurethewindowsservice">Configure the Windows Service</a>.</dd></dl>
 <dl class="section user"><dt></dt><dd>The <b>"-d"</b> option dumps (prints) the DRO's XML DTD to standard output. After dumping the DTD, <code>tnwgds</code> exits.</dd></dl>
 <dl class="section user"><dt></dt><dd>The <b>"-v"</b> option validates the XML structure of the given configuration file against the DRO's XML DTD. After validating the configuration file's XML structure, <code>tnwgd</code> exits with status 0 for no errors, or non-zero if errors were found. For example: <div class="fragment"><div class="line">tnwgds -v c:\um\dro_cfg.xml</div></div><!-- fragment --></dd></dl>
 <dl class="section user"><dt></dt><dd>Note that valid XML structure does not guarantee that the configuration file is completely correct. It must be tested on a running DRO.</dd></dl>
 <dl class="section user"><dt></dt><dd>The <b>"-h"</b> option prints the man page and exits.</dd></dl>
-<dl class="section user"><dt><b>Exit</b> <b>Status</b> </dt><dd>The exit status from <code>tnwgd</code> is 0 for success and some non-zero value for failure. </dd></dl>
+<dl class="section user"><dt><b>Exit</b> <b>Status</b> </dt><dd>The exit status from <code>tnwgd</code> is 0 for success and some non-zero value for failure.</dd></dl>
+<p><br />
+<br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+</p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.8.11-->

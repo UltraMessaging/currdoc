@@ -64,14 +64,15 @@ Reference&nbsp;&nbsp;<small><a href="#ultramessagingpersistenceref">&lt;-</a></s
  </p>
 <h2><a class="anchor" id="umeackbatchingintervalcontext"></a>
 ume_ack_batching_interval (context)&nbsp;&nbsp;<small><a href="#umeackbatchingintervalcontext">&lt;-</a></small></h2>
-<dl class="section user"><dt></dt><dd>The interval between checks by UME of consumed, unacknowledged messages. </dd></dl>
-<dl class="section user"><dt></dt><dd>See also <a class="el" href="grpultramessagingpersistence.html#umeuseackbatchingreceiver">ume_use_ack_batching (receiver)</a>. </dd></dl>
-<dl class="section user"><dt></dt><dd>See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/ume.tag:../UME/" href="../UME/designingpersistenceapplications.html#batchingacknowledgments">Batching Acknowledgments</a> for more information.</dd></dl>
+<dl class="section user"><dt></dt><dd>The interval between checks by a persistent receiver of consumed, unacknowledged messages. </dd></dl>
+<dl class="section user"><dt></dt><dd>This option is used in conjunction with <a class="el" href="grpultramessagingpersistence.html#umeuseackbatchingreceiver">ume_use_ack_batching (receiver)</a>. </dd></dl>
+<dl class="section user"><dt></dt><dd>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/ume.tag:../UME/" href="../UME/designingpersistentreceivers.html#persistencemessageconsumption">Persistence Message Consumption</a> for a full explanation of consumption acknowledgements. </dd></dl>
+<dl class="section user"><dt></dt><dd>For RPP, see <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/ume.tag:../UME/" href="../UME/specialconfigurationtopics.html#rppconfigurationspecifics">RPP Configuration Specifics</a> for interactions between this and other configuration options. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/ume.tag:../UME/" href="../UME/operationalview.html#receiverpacedpersistenceoperations">RPP: Receiver-Paced Persistence</a> for general information on RPP.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>context </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
 <tr>
 <td><em>Units:</em> </td><td>milliseconds </td></tr>
 <tr>
@@ -87,17 +88,17 @@ ume_ack_batching_interval (context)&nbsp;&nbsp;<small><a href="#umeackbatchingin
 <h2><a class="anchor" id="umeactivitytimeoutreceiver"></a>
 ume_activity_timeout (receiver)&nbsp;&nbsp;<small><a href="#umeactivitytimeoutreceiver">&lt;-</a></small></h2>
 <dl class="section user"><dt></dt><dd>Establishes the period of time from a receiver's last activity to the release of the receiver's Reg ID. Stores return an error to any new request for the receiver's Reg ID during this period. </dd></dl>
-<dl class="section user"><dt></dt><dd>Overrides the <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/ume.tag:../UME/" href="../UME/configurationreferenceforumestored.html#umecfgreceiveractivitytimeout">receiver-activity-timeout</a> setting configured for the receiver's topic on the store. The default value of 0 (zero) disables this option. </dd></dl>
-<dl class="section user"><dt></dt><dd>See also <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/ume.tag:../UME/" href="../UME/persistencefaulttolerance.html#persistenceproxysources">Persistence Proxy Sources</a>.</dd></dl>
+<dl class="section user"><dt></dt><dd>Overrides the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/ume.tag:../UME/" href="../UME/optionsforastoresumeattributeselement.html#umecfgreceiveractivitytimeout">receiver-activity-timeout</a> setting configured for the receiver's topic on the Store. The default value of 0 (zero) disables this option. </dd></dl>
+<dl class="section user"><dt></dt><dd>See also <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/ume.tag:../UME/" href="../UME/persistencefaulttolerance.html#persistenceproxysources">Persistence Proxy Sources</a>.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>receiver </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
 <tr>
 <td><em>Units:</em> </td><td>milliseconds </td></tr>
 <tr>
-<td><em>Default value:</em> </td><td>0 (zero) </td></tr>
+<td><em>Default value:</em> </td><td>0 (disables timeout) </td></tr>
 <tr>
 <td><em>When to Set:</em> </td><td>Can only be set during object initialization.</td></tr>
 </table>
@@ -107,18 +108,18 @@ ume_activity_timeout (receiver)&nbsp;&nbsp;<small><a href="#umeactivitytimeoutre
 <h2><a class="anchor" id="umeactivitytimeoutsource"></a>
 ume_activity_timeout (source)&nbsp;&nbsp;<small><a href="#umeactivitytimeoutsource">&lt;-</a></small></h2>
 <dl class="section user"><dt></dt><dd>Establishes the period of time from a source's last activity to the release of the source's Reg ID. Stores return an error to any new source requesting the source's Reg ID during this period. </dd></dl>
-<dl class="section user"><dt></dt><dd>If proxy sources are enabled (<a class="el" href="grpultramessagingpersistence.html#umeproxysourcesource">ume_proxy_source (source)</a>), the store does not release the source's Reg ID and UME elects a proxy source. Overrides the <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/ume.tag:../UME/" href="../UME/configurationreferenceforumestored.html#umecfgsourceactivitytimeout">source-activity-timeout</a> setting configured for the source's topic on the store. The default value of 0 (zero) disables this option. </dd></dl>
-<dl class="section user"><dt></dt><dd>If neither proxy sources nor <a class="el" href="grpultramessagingpersistence.html#umestatelifetimesource">ume_state_lifetime (source)</a> are configured, the store also deletes the source's state and cache. </dd></dl>
-<dl class="section user"><dt></dt><dd>See also <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/ume.tag:../UME/" href="../UME/persistencefaulttolerance.html#persistenceproxysources">Persistence Proxy Sources</a>.</dd></dl>
+<dl class="section user"><dt></dt><dd>If proxy sources are enabled (<a class="el" href="grpultramessagingpersistence.html#umeproxysourcesource">ume_proxy_source (source)</a>), the Store does not release the source's Reg ID and UM elects a proxy source. Overrides the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/ume.tag:../UME/" href="../UME/optionsforastoresumeattributeselement.html#umecfgsourceactivitytimeout">source-activity-timeout</a> setting configured for the source's topic on the Store. The default value of 0 (zero) disables this option. </dd></dl>
+<dl class="section user"><dt></dt><dd>If neither proxy sources nor <a class="el" href="grpultramessagingpersistence.html#umestatelifetimesource">ume_state_lifetime (source)</a> are configured, the Store also deletes the source's state and cache. </dd></dl>
+<dl class="section user"><dt></dt><dd>See also <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/ume.tag:../UME/" href="../UME/persistencefaulttolerance.html#persistenceproxysources">Persistence Proxy Sources</a>.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>source </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
 <tr>
 <td><em>Units:</em> </td><td>milliseconds </td></tr>
 <tr>
-<td><em>Default value:</em> </td><td>0 (zero) </td></tr>
+<td><em>Default value:</em> </td><td>0 (disables timeout) </td></tr>
 <tr>
 <td><em>When to Set:</em> </td><td>Can only be set during object initialization.</td></tr>
 </table>
@@ -127,9 +128,9 @@ ume_activity_timeout (source)&nbsp;&nbsp;<small><a href="#umeactivitytimeoutsour
  </p>
 <h2><a class="anchor" id="umeallowconfirmeddeliveryreceiver"></a>
 ume_allow_confirmed_delivery (receiver)&nbsp;&nbsp;<small><a href="#umeallowconfirmeddeliveryreceiver">&lt;-</a></small></h2>
-<dl class="section user"><dt></dt><dd>Specifies whether or not UME allows the sending of confirmed delivery notifications back to the source. </dd></dl>
+<dl class="section user"><dt></dt><dd>Specifies whether a persistent receiver sends confirmed delivery notifications back to the source. </dd></dl>
 <dl class="section user"><dt></dt><dd>See also <a class="el" href="grpultramessagingpersistence.html#umeconfirmeddeliverynotificationsource">ume_confirmed_delivery_notification (source)</a>. </dd></dl>
-<dl class="section user"><dt></dt><dd>For more information, see <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/ume.tag:../UME/" href="../UME/persistenceconcepts.html#deliveryconfirmationconcept">Delivery Confirmation Concept</a>.</dd></dl>
+<dl class="section user"><dt></dt><dd>For more information, see <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/ume.tag:../UME/" href="../UME/persistenceconcepts.html#deliveryconfirmationconcept">Delivery Confirmation Concept</a>.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>receiver </td></tr>
@@ -146,9 +147,9 @@ ume_allow_confirmed_delivery (receiver)&nbsp;&nbsp;<small><a href="#umeallowconf
 <tr>
 <th>Value </th><th>Description </th></tr>
 <tr>
-<td>1 </td><td>Indicates that UME can send confirmed delivery notifications. <b>Default for all.</b> </td></tr>
+<td>1 </td><td>Indicates that receivers can send confirmed delivery notifications. <b>Default for all.</b> </td></tr>
 <tr>
-<td>0 </td><td><p class="starttd">Indicates that UME can not send confirmed delivery notifications.</p>
+<td>0 </td><td><p class="starttd">Indicates that receivers can not send confirmed delivery notifications.</p>
 <p class="endtd"></p>
 </td></tr>
 </table>
@@ -157,14 +158,14 @@ ume_allow_confirmed_delivery (receiver)&nbsp;&nbsp;<small><a href="#umeallowconf
  </p>
 <h2><a class="anchor" id="umeapplicationoutstandingmaximumreceiver"></a>
 ume_application_outstanding_maximum (receiver)&nbsp;&nbsp;<small><a href="#umeapplicationoutstandingmaximumreceiver">&lt;-</a></small></h2>
-<dl class="section user"><dt></dt><dd>This UMP receiver option enables the UMP Throttled Delivery feature and sets an upper threshold on the number of message fragments from a single source that are delivered or in an event queue, but not yet consumed. </dd></dl>
-<dl class="section user"><dt></dt><dd>When the number of message fragments exceeds this threshold, the receiver stops buffering all incoming message fragments. Thus, messages from the source transport stream might be dropped and recovered via OTR or UMP late-join mechanisms. </dd></dl>
-<dl class="section user"><dt></dt><dd>This feature effectively limits the recovery rate and live stream rate to the receiver message consumption rate. If OTR is disabled for the receiver, this threshold applies only during initial Late Join recovery. Setting this option to 0 (zero) disables the UMP Throttled Delivery feature.</dd></dl>
+<dl class="section user"><dt></dt><dd>This persistent receiver option enables the persistence Throttled Delivery feature and sets an upper threshold on the number of message fragments from a single source that are delivered or in an event queue, but not yet consumed. </dd></dl>
+<dl class="section user"><dt></dt><dd>When the number of message fragments exceeds this threshold, the receiver stops buffering all incoming message fragments. Thus, messages from the source transport stream might be dropped and recovered via OTR or persistence late-join mechanisms. </dd></dl>
+<dl class="section user"><dt></dt><dd>This feature effectively limits the recovery rate and live stream rate to the receiver message consumption rate. If OTR is disabled for the receiver, this threshold applies only during initial Late Join recovery. Setting this option to 0 (zero) disables the persistence persistence Throttled Delivery feature.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>receiver </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
 <tr>
 <td><em>Units:</em> </td><td>message fragments </td></tr>
 <tr>
@@ -180,9 +181,9 @@ ume_application_outstanding_maximum (receiver)&nbsp;&nbsp;<small><a href="#umeap
 <h2><a class="anchor" id="umeconfirmeddeliverynotificationsource"></a>
 ume_confirmed_delivery_notification (source)&nbsp;&nbsp;<small><a href="#umeconfirmeddeliverynotificationsource">&lt;-</a></small></h2>
 <dl class="section user"><dt></dt><dd>Flag indicating the application is interested in receiving notifications of consumption of messages by receivers (confirmed delivery) via the source event mechanism. </dd></dl>
-<dl class="section user"><dt></dt><dd>Generates the source events <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#ab9d560dcaaa6d7982d9590ae897ce0b5">LBM_SRC_EVENT_UME_DELIVERY_CONFIRMATION</a> and/or <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#ae7124621f7cab5925ed8354690d736f9">LBM_SRC_EVENT_UME_DELIVERY_CONFIRMATION_EX</a>. When turned off, receivers do not send delivery confirmation notifications to the source unless the release policy dictates the need for them. For more information, see <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/ume.tag:../UME/" href="../UME/persistenceconcepts.html#deliveryconfirmationconcept">Delivery Confirmation Concept</a>. </dd></dl>
+<dl class="section user"><dt></dt><dd>Generates the source events <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#ab9d560dcaaa6d7982d9590ae897ce0b5">LBM_SRC_EVENT_UME_DELIVERY_CONFIRMATION</a> and/or <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#ae7124621f7cab5925ed8354690d736f9">LBM_SRC_EVENT_UME_DELIVERY_CONFIRMATION_EX</a>. When turned off, receivers do not send delivery confirmation notifications to the source unless the release policy dictates the need for them. For more information, see <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/ume.tag:../UME/" href="../UME/persistenceconcepts.html#deliveryconfirmationconcept">Delivery Confirmation Concept</a>. </dd></dl>
 <dl class="section user"><dt></dt><dd></dd></dl>
-<dl class="section note"><dt>Note</dt><dd><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/design.tag:../Design/" href="../Design/advancedoptimizations.html#smartsources">Smart Sources</a> do not support delivery confirmation.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/design.tag:../Design/" href="../Design/advancedoptimizations.html#smartsources">Smart Sources</a> do not support delivery confirmation.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>source </td></tr>
@@ -232,13 +233,13 @@ ume_consensus_sequence_number_behavior (receiver)&nbsp;&nbsp;<small><a href="#um
 <tr>
 <th>String value </th><th>Integer value </th><th>Description </th></tr>
 <tr>
-<td>"lowest" </td><td>LBM_RCV_TOPIC_ATTR_UME_QC_SQN_BEHAVIOR_LOWEST </td><td><p class="starttd">Consensus is determined as the lowest of the latest sequence numbers seen from any store.</p>
+<td>"lowest" </td><td>LBM_RCV_TOPIC_ATTR_UME_QC_SQN_BEHAVIOR_LOWEST </td><td><p class="starttd">Consensus is determined as the lowest of the latest sequence numbers seen from any Store.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>"majority" </td><td>LBM_RCV_TOPIC_ATTR_UME_QC_SQN_BEHAVIOR_MAJORITY </td><td>Consensus is determined as the latest sequence number agreed upon by the majority of stores within a group. Between groups, the latest of all majority decisions is used. <b>Default for all.</b> </td></tr>
+<td>"majority" </td><td>LBM_RCV_TOPIC_ATTR_UME_QC_SQN_BEHAVIOR_MAJORITY </td><td>Consensus is determined as the latest sequence number agreed upon by the majority of Stores within a group. Between groups, the latest of all majority decisions is used. <b>Default for all.</b> </td></tr>
 <tr>
-<td>"highest" </td><td>LBM_RCV_TOPIC_ATTR_UME_QC_SQN_BEHAVIOR_HIGHEST </td><td><p class="starttd">Consensus is determined as the highest of the latest sequence numbers seen from any store.</p>
+<td>"highest" </td><td>LBM_RCV_TOPIC_ATTR_UME_QC_SQN_BEHAVIOR_HIGHEST </td><td><p class="starttd">Consensus is determined as the highest of the latest sequence numbers seen from any Store.</p>
 <p class="endtd"></p>
 </td></tr>
 </table>
@@ -263,23 +264,29 @@ ume_consensus_sequence_number_behavior (source)&nbsp;&nbsp;<small><a href="#umec
 <tr>
 <th>String value </th><th>Integer value </th><th>Description </th></tr>
 <tr>
-<td>"lowest" </td><td>LBM_SRC_TOPIC_ATTR_UME_QC_SQN_BEHAVIOR_LOWEST </td><td><p class="starttd">Consensus is determined as the lowest of the latest sequence numbers seen from any store.</p>
+<td>"lowest" </td><td>LBM_SRC_TOPIC_ATTR_UME_QC_SQN_BEHAVIOR_LOWEST </td><td><p class="starttd">Consensus is determined as the lowest of the latest sequence numbers seen from any Store.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>"majority" </td><td>LBM_SRC_TOPIC_ATTR_UME_QC_SQN_BEHAVIOR_MAJORITY </td><td><p class="starttd">Consensus is determined as the latest sequence number agreed upon by the majority of stores within a group. Between groups, the latest of all majority decisions is used.</p>
+<td>"majority" </td><td>LBM_SRC_TOPIC_ATTR_UME_QC_SQN_BEHAVIOR_MAJORITY </td><td><p class="starttd">Consensus is determined as the latest sequence number agreed upon by the majority of Stores within a group. Between groups, the latest of all majority decisions is used.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>"highest" </td><td>LBM_SRC_TOPIC_ATTR_UME_QC_SQN_BEHAVIOR_HIGHEST </td><td>Consensus is determined as the highest of the latest sequence numbers seen from any store. <b>Default for all.</b> </td></tr>
+<td>"highest" </td><td>LBM_SRC_TOPIC_ATTR_UME_QC_SQN_BEHAVIOR_HIGHEST </td><td>Consensus is determined as the highest of the latest sequence numbers seen from any Store. <b>Default for all.</b> </td></tr>
 </table>
 </dd></dl>
 <p><br />
  </p>
 <h2><a class="anchor" id="umeexplicitackonlyreceiver"></a>
 ume_explicit_ack_only (receiver)&nbsp;&nbsp;<small><a href="#umeexplicitackonlyreceiver">&lt;-</a></small></h2>
-<dl class="section user"><dt></dt><dd>Flag indicating if the receiver should automatically send acknowledgements to any stores and to the source or if the application desires to explicitly generate acknowledgements itself. </dd></dl>
-<dl class="section user"><dt></dt><dd>See also <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/ume.tag:../UME/" href="../UME/designingpersistenceapplications.html#explicitacknowledgments">Explicit Acknowledgments</a>.</dd></dl>
+<dl class="section user"><dt></dt><dd>Transfers responsibility for sending consumption ACKs to the application. </dd></dl>
+<dl class="section user"><dt></dt><dd>Normally, the client UM library performs implicit batching of consumption acknowledgements to the Store. This option tells UM that the application will call <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#ad920e7ab51a45099390091dd36d26a34">lbm_msg_ume_send_explicit_ack()</a> to explicitly trigger consumption acknowledgements to the Store. This has historically been done by the application to implement ACK batching. </dd></dl>
+<dl class="section user"><dt></dt><dd>However, as of UM 5.0 with the introduction of <a class="el" href="grpultramessagingpersistence.html#umeuseackbatchingreceiver">ume_use_ack_batching (receiver)</a>, UM will now perform ACK batching by default. </dd></dl>
+<dl class="section user"><dt></dt><dd></dd></dl>
+<dl class="section warning"><dt>Warning</dt><dd>If explicit ACKs are used, the application must ensure that messages are ACKed in the order received. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/ume.tag:../UME/" href="../UME/designingpersistentreceivers.html#ackordering">ACK Ordering</a>. </dd></dl>
+<dl class="section user"><dt></dt><dd>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/ume.tag:../UME/" href="../UME/designingpersistentreceivers.html#persistencemessageconsumption">Persistence Message Consumption</a> for a full explanation of consumption acknowledgements. </dd></dl>
+<dl class="section user"><dt></dt><dd></dd></dl>
+<dl class="section note"><dt>Note</dt><dd>This option is incompatible with <a class="el" href="grpultramessagingpersistence.html#umeuseackbatchingreceiver">ume_use_ack_batching (receiver)</a>. If ACK batching is turned on, this option is silently turned off. If both are turned on, the last one configured turns off the other.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>receiver </td></tr>
@@ -294,20 +301,21 @@ ume_explicit_ack_only (receiver)&nbsp;&nbsp;<small><a href="#umeexplicitackonlyr
 <tr>
 <th>Value </th><th>Description </th></tr>
 <tr>
-<td>1 </td><td><p class="starttd">The receiving application will generate acknowledgements explicitly and the UME receiver should not automatically generate them.</p>
+<td>1 </td><td><p class="starttd">The receiving application will generate acknowledgements explicitly and the persistent receiver should not automatically generate them.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>0 </td><td>The UME receiver will automatically generate and send acknowledgements based on message consumption. <b>Default for all.</b> </td></tr>
+<td>0 </td><td>The persistent receiver will automatically generate and send acknowledgements based on message consumption. <b>Default for all.</b> </td></tr>
 </table>
 </dd></dl>
 <p><br />
  </p>
 <h2><a class="anchor" id="umeflightsizesource"></a>
 ume_flight_size (source)&nbsp;&nbsp;<small><a href="#umeflightsizesource">&lt;-</a></small></h2>
-<dl class="section user"><dt></dt><dd>Specifies the number of messages allowed to be in flight (unstabilized at a store and without delivery confirmation) before a new message send either blocks or triggers a notification (source event). </dd></dl>
-<dl class="section user"><dt></dt><dd>See <a class="el" href="grpultramessagingpersistence.html#umeflightsizebehaviorsource">ume_flight_size_behavior (source)</a>. </dd></dl>
-<dl class="section user"><dt></dt><dd>Note that the flight size is also limited by <a class="el" href="grpultramessagingpersistence.html#umeflightsizebytessource">ume_flight_size_bytes (source)</a>. The blocking behavior is enforced if either threshold is met. </dd></dl>
+<dl class="section user"><dt></dt><dd>Specifies the number of persisted message fragments allowed to be in flight (not stabilized at a Store and without delivery confirmation). </dd></dl>
+<dl class="section user"><dt></dt><dd>If an application attempts to exceed flight size, the message send function will either block or trigger a <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a6d75dfecae9635b61c289efa3a8aa017">notification</a> source event, depending on <a class="el" href="grpultramessagingpersistence.html#umeflightsizebehaviorsource">ume_flight_size_behavior (source)</a>. </dd></dl>
+<dl class="section user"><dt></dt><dd>Note that the flight size can also be limited by <a class="el" href="grpultramessagingpersistence.html#umeflightsizebytessource">ume_flight_size_bytes (source)</a>, if supplied. Flight size would be exceeded if either one is exceeded. </dd></dl>
+<dl class="section user"><dt></dt><dd>For RPP, see <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/ume.tag:../UME/" href="../UME/specialconfigurationtopics.html#rppconfigurationspecifics">RPP Configuration Specifics</a> for interactions between this and other configuration options. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/ume.tag:../UME/" href="../UME/operationalview.html#receiverpacedpersistenceoperations">RPP: Receiver-Paced Persistence</a> for general information on RPP. </dd></dl>
 <dl class="section user"><dt></dt><dd>Note: for very small flight sizes, it is recommended to configure the Store's UM config option <a class="el" href="grpunicastimmediatemessagingoperation.html#responsetcpnodelaycontext">response_tcp_nodelay (context)</a> to 1.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
@@ -328,7 +336,7 @@ ume_flight_size (source)&nbsp;&nbsp;<small><a href="#umeflightsizesource">&lt;-<
  </p>
 <h2><a class="anchor" id="umeflightsizebehaviorsource"></a>
 ume_flight_size_behavior (source)&nbsp;&nbsp;<small><a href="#umeflightsizebehaviorsource">&lt;-</a></small></h2>
-<dl class="section user"><dt></dt><dd>The behavior that UME follows when a message send exceeds the source's flight size. </dd></dl>
+<dl class="section user"><dt></dt><dd>The behavior that UM follows when a persistent message send exceeds the source's flight size. </dd></dl>
 <dl class="section user"><dt></dt><dd>See <a class="el" href="grpultramessagingpersistence.html#umeflightsizesource">ume_flight_size (source)</a>.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
@@ -348,7 +356,7 @@ ume_flight_size_behavior (source)&nbsp;&nbsp;<small><a href="#umeflightsizebehav
 <tr>
 <td>"Block" </td><td>LBM_FLIGHT_SIZE_BEHAVIOR_BLOCK </td><td>The send call blocks when a source sends a message that exceeds its flight size. If the source uses a non-blocking send, the send returns an LBM_EWOULD_BLOCK. <b>Default for all.</b> </td></tr>
 <tr>
-<td>"Notify" </td><td>LBM_FLIGHT_SIZE_BEHAVIOR_NOTIFY </td><td><p class="starttd">A message send that exceeds the configured flight size does not block but triggers a flight size notification (source event), indicating that the flight size has been surpassed. UME also sends a source event notification if the number of in-flight messages falls below the configured flight size.</p>
+<td>"Notify" </td><td>LBM_FLIGHT_SIZE_BEHAVIOR_NOTIFY </td><td><p class="starttd">A message send that exceeds the configured flight size does not block but triggers a flight size notification (source event), indicating that the flight size has been surpassed. UM also sends a source event notification if the number of in-flight messages falls below the configured flight size.</p>
 <p class="endtd"></p>
 </td></tr>
 </table>
@@ -357,16 +365,18 @@ ume_flight_size_behavior (source)&nbsp;&nbsp;<small><a href="#umeflightsizebehav
  </p>
 <h2><a class="anchor" id="umeflightsizebytessource"></a>
 ume_flight_size_bytes (source)&nbsp;&nbsp;<small><a href="#umeflightsizebytessource">&lt;-</a></small></h2>
-<dl class="section user"><dt></dt><dd>Specifies the number of bytes of message payload allowed to be in flight (unstabilized at a store and without delivery confirmation) before a new message send either blocks or triggers a notification source event. </dd></dl>
-<dl class="section user"><dt></dt><dd>See <a class="el" href="grpultramessagingpersistence.html#umeflightsizebehaviorsource">ume_flight_size_behavior (source)</a>. </dd></dl>
-<dl class="section user"><dt></dt><dd>Note that the flight size is also limited by <a class="el" href="grpultramessagingpersistence.html#umeflightsizesource">ume_flight_size (source)</a>. The blocking behavior is enforced if either threshold is met. If ume_flight_size_bytes is set to zero, then only ume_flight_size is used. </dd></dl>
-<dl class="section user"><dt></dt><dd>If using Receiver-paced Persistence, this option must be greater than 0 (zero) but less than or equal to the repository's <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/ume.tag:../UME/" href="../UME/configurationreferenceforumestored.html#umecfgsourceflightsizebytesmaximum">source-flight-size-bytes-maximum</a> value, otherwise the source registration will fail. See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/ume.tag:../UME/" href="../UME/operationalview.html#implementingrpp">Implementing RPP</a> for more information on the coordination between RPP source and store configuration options. </dd></dl>
+<dl class="section user"><dt></dt><dd>Specifies the number of bytes of persisted message payload allowed to be in flight (not stabilized at a Store and without delivery confirmation). </dd></dl>
+<dl class="section user"><dt></dt><dd>If an application attempts to exceed flight size, the message send function will either block or trigger a <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a6d75dfecae9635b61c289efa3a8aa017">notification</a> source event, depending on <a class="el" href="grpultramessagingpersistence.html#umeflightsizebehaviorsource">ume_flight_size_behavior (source)</a>. </dd></dl>
+<dl class="section user"><dt></dt><dd>If this option is not supplied (defaults to 0), a persisted source uses <a class="el" href="grpultramessagingpersistence.html#umeflightsizesource">ume_flight_size (source)</a> to determine if a send would exceed flight size. </dd></dl>
+<dl class="section user"><dt></dt><dd>If this option is supplied, a persisted source uses both ume_flight_size_bytes and <a class="el" href="grpultramessagingpersistence.html#umeflightsizesource">ume_flight_size (source)</a>. Flight size would be exceeded if either one is exceeded. </dd></dl>
+<dl class="section user"><dt></dt><dd>If the source uses RPP, then this option must be supplied, and its value is sent to the Store during registration. The Store compares it to the configured value of <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/ume.tag:../UME/" href="../UME/optionsforastoresumeattributeselement.html#umecfgsourceflightsizebytesmaximum">source-flight-size-bytes-maximum</a>. The source's registration will be rejected if ume_flight_size_bytes exceeds the Store's source-flight-size-bytes-maximum. </dd></dl>
+<dl class="section user"><dt></dt><dd>For RPP, see <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/ume.tag:../UME/" href="../UME/specialconfigurationtopics.html#rppconfigurationspecifics">RPP Configuration Specifics</a> for interactions between this and other configuration options. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/ume.tag:../UME/" href="../UME/operationalview.html#receiverpacedpersistenceoperations">RPP: Receiver-Paced Persistence</a> for general information on RPP. </dd></dl>
 <dl class="section user"><dt></dt><dd>Note: for very small flight sizes, it is recommended to configure the Store's UM config option <a class="el" href="grpunicastimmediatemessagingoperation.html#responsetcpnodelaycontext">response_tcp_nodelay (context)</a> to 1.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>source </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a1e4dea682eee7238dec2b64989449abc">lbm_uint64_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a1e4dea682eee7238dec2b64989449abc">lbm_uint64_t</a></b> </td></tr>
 <tr>
 <td><em>Units:</em> </td><td>bytes </td></tr>
 <tr>
@@ -387,7 +397,7 @@ ume_force_reclaim_function (source)&nbsp;&nbsp;<small><a href="#umeforcereclaimf
 <tr>
 <td><em>Scope:</em> </td><td>source </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a7a7b4983b4abbbafee7175490f7af9d2">lbm_ume_src_force_reclaim_func_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a7a7b4983b4abbbafee7175490f7af9d2">lbm_ume_src_force_reclaim_func_t</a></b> </td></tr>
 <tr>
 <td><em>Default value:</em> </td><td>NULL </td></tr>
 <tr>
@@ -400,7 +410,7 @@ ume_force_reclaim_function (source)&nbsp;&nbsp;<small><a href="#umeforcereclaimf
  </p>
 <h2><a class="anchor" id="umelatejoinsource"></a>
 ume_late_join (source)&nbsp;&nbsp;<small><a href="#umelatejoinsource">&lt;-</a></small></h2>
-<dl class="section user"><dt></dt><dd>Flag indicating the source should allow late join operation for receivers and persistent stores. </dd></dl>
+<dl class="section user"><dt></dt><dd>Flag indicating the source should allow late join operation for receivers and persistent Stores. </dd></dl>
 <dl class="section user"><dt></dt><dd>This option is retained for backwards compatibility. The <a class="el" href="grplatejoin.html#latejoinsource">late_join (source)</a> setting should be used instead.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
@@ -416,24 +426,24 @@ ume_late_join (source)&nbsp;&nbsp;<small><a href="#umelatejoinsource">&lt;-</a><
 <tr>
 <th>Value </th><th>Description </th></tr>
 <tr>
-<td>1 </td><td><p class="starttd">The source allows late join receivers and persistent stores.</p>
+<td>1 </td><td><p class="starttd">The source allows late join receivers and persistent Stores.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>0 </td><td>The source does not allow late join receivers or persistent stores. <b>Default for all.</b> </td></tr>
+<td>0 </td><td>The source does not allow late join receivers or persistent Stores. <b>Default for all.</b> </td></tr>
 </table>
 </dd></dl>
 <p><br />
  </p>
 <h2><a class="anchor" id="umemessagestabilitylifetimesource"></a>
 ume_message_stability_lifetime (source)&nbsp;&nbsp;<small><a href="#umemessagestabilitylifetimesource">&lt;-</a></small></h2>
-<dl class="section user"><dt></dt><dd>The total time in milliseconds from the initial send of a message before a UMP source gives up entirely on receiving a stability acknowledgement for the message. </dd></dl>
+<dl class="section user"><dt></dt><dd>The total time in milliseconds from the initial send of a message before a persistent source gives up entirely on receiving a stability acknowledgement for the message. </dd></dl>
 <dl class="section user"><dt></dt><dd>The source then delivers a forced reclaim notice to the application. This option is part of the Proactive Retransmissions feature.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>source </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
 <tr>
 <td><em>Units:</em> </td><td>milliseconds </td></tr>
 <tr>
@@ -448,10 +458,10 @@ ume_message_stability_lifetime (source)&nbsp;&nbsp;<small><a href="#umemessagest
  </p>
 <h2><a class="anchor" id="umemessagestabilitynotificationsource"></a>
 ume_message_stability_notification (source)&nbsp;&nbsp;<small><a href="#umemessagestabilitynotificationsource">&lt;-</a></small></h2>
-<dl class="section user"><dt></dt><dd>Flag indicating the source is interested in receiving notifications of message stability from persistent stores via the source event mechanism. </dd></dl>
-<dl class="section user"><dt></dt><dd>Even when turned off, stores continue to send message stability notifications to the source for retention purposes. However, no notification will be delivered to the application. </dd></dl>
+<dl class="section user"><dt></dt><dd>Flag indicating the source is interested in receiving notifications of message stability from persistent Stores via the source event mechanism. </dd></dl>
+<dl class="section user"><dt></dt><dd>Even when turned off, Stores continue to send message stability notifications to the source for retention purposes. However, no notification will be delivered to the application. </dd></dl>
 <dl class="section user"><dt></dt><dd></dd></dl>
-<dl class="section note"><dt>Note</dt><dd><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/design.tag:../Design/" href="../Design/advancedoptimizations.html#smartsources">Smart Sources</a> only support "0" (none) or "2" (per-message).</dd></dl>
+<dl class="section note"><dt>Note</dt><dd><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/design.tag:../Design/" href="../Design/advancedoptimizations.html#smartsources">Smart Sources</a> only support "0" (none) or "2" (per-message).</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>source </td></tr>
@@ -466,17 +476,17 @@ ume_message_stability_notification (source)&nbsp;&nbsp;<small><a href="#umemessa
 <tr>
 <th>String value </th><th>Integer value </th><th>Description </th></tr>
 <tr>
-<td>"0" </td><td>LBM_SRC_TOPIC_ATTR_UME_STABLE_EVENT_NONE </td><td><p class="starttd">The source does not wish to receive message stability notifications from the store.</p>
+<td>"0" </td><td>LBM_SRC_TOPIC_ATTR_UME_STABLE_EVENT_NONE </td><td><p class="starttd">The source does not wish to receive message stability notifications from the Store.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>"1" </td><td>LBM_SRC_TOPIC_ATTR_UME_STABLE_EVENT_PER_FRAGMENT </td><td>The source wishes to receive all message and message fragment stability notifications from the store. <b>Default for all.</b> </td></tr>
+<td>"1" </td><td>LBM_SRC_TOPIC_ATTR_UME_STABLE_EVENT_PER_FRAGMENT </td><td>The source wishes to receive all message and message fragment stability notifications from the Store. <b>Default for all.</b> </td></tr>
 <tr>
-<td>"2" </td><td>LBM_SRC_TOPIC_ATTR_UME_STABLE_EVENT_PER_MESSAGE </td><td><p class="starttd">The source wishes to receive only a single message stability notifications from the store when the entire message has been stabilized. This notification contains the Sequence Number of the last fragment of the whole message but does NOT contain store information.</p>
+<td>"2" </td><td>LBM_SRC_TOPIC_ATTR_UME_STABLE_EVENT_PER_MESSAGE </td><td><p class="starttd">The source wishes to receive only a single message stability notifications from the Store when the entire message has been stabilized. This notification contains the Sequence Number of the last fragment of the whole message but does NOT contain Store information.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>"3" </td><td>LBM_SRC_TOPIC_ATTR_UME_STABLE_EVENT_FRAG_AND_MSG </td><td><p class="starttd">The source wishes to receive all message and message fragment stability notifications from the store. In addition, the notification contains a WHOLE_MESSAGE_STABLE flag when the last fragment of a message has been stabilized.</p>
+<td>"3" </td><td>LBM_SRC_TOPIC_ATTR_UME_STABLE_EVENT_FRAG_AND_MSG </td><td><p class="starttd">The source wishes to receive all message and message fragment stability notifications from the Store. In addition, the notification contains a WHOLE_MESSAGE_STABLE flag when the last fragment of a message has been stabilized.</p>
 <p class="endtd"></p>
 </td></tr>
 </table>
@@ -485,13 +495,13 @@ ume_message_stability_notification (source)&nbsp;&nbsp;<small><a href="#umemessa
  </p>
 <h2><a class="anchor" id="umemessagestabilitytimeoutsource"></a>
 ume_message_stability_timeout (source)&nbsp;&nbsp;<small><a href="#umemessagestabilitytimeoutsource">&lt;-</a></small></h2>
-<dl class="section user"><dt></dt><dd>The time in milliseconds from initial send of a message until it is resent by the source because the source has not received a stability acknowledgement for the store (or a quorum of stores). </dd></dl>
+<dl class="section user"><dt></dt><dd>The time in milliseconds from initial send of a message until it is resent by the source because the source has not received a stability acknowledgement for the Store (or a quorum of Stores). </dd></dl>
 <dl class="section user"><dt></dt><dd>Setting this option to 0 (zero) disables the Proactive Retransmissions feature.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>source </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
 <tr>
 <td><em>Units:</em> </td><td>milliseconds </td></tr>
 <tr>
@@ -506,14 +516,14 @@ ume_message_stability_timeout (source)&nbsp;&nbsp;<small><a href="#umemessagesta
  </p>
 <h2><a class="anchor" id="umeproactivekeepaliveintervalcontext"></a>
 ume_proactive_keepalive_interval (context)&nbsp;&nbsp;<small><a href="#umeproactivekeepaliveintervalcontext">&lt;-</a></small></h2>
-<dl class="section user"><dt></dt><dd>Maximum period of inactivity after which a persistent receiver proactively sends an acknowledgement to the store. </dd></dl>
-<dl class="section user"><dt></dt><dd>A persistent receiver sends consumption acknowledgements to the store to update that receiver's state in the store. In the absence of new consumption acknowledgments, a receiver will re-send the most-recent acknowledgement periodically to maintain that state. The ume_proactive_keepalive_interval option specifies the maximum interval between successive acknowledgements. This value should be set less than the <a class="el" href="grpultramessagingpersistence.html#umeactivitytimeoutreceiver">ume_activity_timeout (receiver)</a> and the state lifetime, ideally no more than 1/3 of the lesser of those two. Valid settings are greater than or equal to 1500 (1.5 seconds, the effective minimum), or zero to disable proactive keepalives and revert to pre-UM 6.9 keepalive behavior. </dd></dl>
-<dl class="section user"><dt></dt><dd>Note that disabling proactive keepalives is generally not recommended, and cannot be done for a persistent receiver which is assigned to a <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/design.tag:../Design/" href="../Design/umfeatures.html#transportservicesproviderxsp">Transport Services Provider (XSP)</a>.</dd></dl>
+<dl class="section user"><dt></dt><dd>Maximum period of inactivity after which a persistent receiver proactively sends an acknowledgement to the Store. </dd></dl>
+<dl class="section user"><dt></dt><dd>A persistent receiver sends consumption acknowledgements to the Store to update that receiver's state in the Store. In the absence of new consumption acknowledgments, a receiver will re-send the most-recent acknowledgement periodically to maintain that state. The ume_proactive_keepalive_interval option specifies the maximum interval between successive acknowledgements. This value should be set less than the <a class="el" href="grpultramessagingpersistence.html#umeactivitytimeoutreceiver">ume_activity_timeout (receiver)</a> and the state lifetime, ideally no more than 1/3 of the lesser of those two. Valid settings are greater than or equal to 1500 (1.5 seconds, the effective minimum), or zero to disable proactive keepalives and revert to pre-UM 6.9 keepalive behavior. </dd></dl>
+<dl class="section user"><dt></dt><dd>Note that disabling proactive keepalives is generally not recommended, and cannot be done for a persistent receiver which is assigned to a <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/design.tag:../Design/" href="../Design/umfeatures.html#transportservicesproviderxsp">Transport Services Provider (XSP)</a>.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>context </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
 <tr>
 <td><em>Units:</em> </td><td>milliseconds </td></tr>
 <tr>
@@ -528,8 +538,8 @@ ume_proactive_keepalive_interval (context)&nbsp;&nbsp;<small><a href="#umeproact
  </p>
 <h2><a class="anchor" id="umeproxysourcesource"></a>
 ume_proxy_source (source)&nbsp;&nbsp;<small><a href="#umeproxysourcesource">&lt;-</a></small></h2>
-<dl class="section user"><dt></dt><dd>Controls whether any stores with which the source registers should provide a proxy source in the event the actual source terminates. </dd></dl>
-<dl class="section user"><dt></dt><dd>Proxy source support is only available for quorum/consensus store configurations. In addition, proxy source support requires that the source register with an actual registration ID, and not request that the store assign it a registration ID.</dd></dl>
+<dl class="section user"><dt></dt><dd>Controls whether any Stores with which the source registers should provide a proxy source in the event the actual source terminates. </dd></dl>
+<dl class="section user"><dt></dt><dd>Proxy source support is only available for quorum/consensus Store configurations. In addition, proxy source support requires that the source register with an actual registration ID, and not request that the Store assign it a registration ID.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>source </td></tr>
@@ -579,12 +589,13 @@ ume_receiver_liveness_interval (context)&nbsp;&nbsp;<small><a href="#umereceiver
 <h2><a class="anchor" id="umereceiverpacedpersistencereceiver"></a>
 ume_receiver_paced_persistence (receiver)&nbsp;&nbsp;<small><a href="#umereceiverpacedpersistencereceiver">&lt;-</a></small></h2>
 <dl class="section user"><dt></dt><dd>Enables Receiver-paced Persistence (RPP) for the receiver, and specifies the blocking behavior. </dd></dl>
-<dl class="section user"><dt></dt><dd>If the source and store agree that the topic is receiver-paced, a receiver that leaves this option at 0 will have a store registration error. Similarly, if the source and store agree that the topic is source paced, a receiver setting this option to 1 or 2 will have a store registration error. See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/ume.tag:../UME/" href="../UME/operationalview.html#receiverpacedpersistenceoperations">Receiver-paced Persistence Operations</a> for additional information. Also see <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/ume.tag:../UME/" href="../UME/configurationreferenceforumestored.html#umecfgrepositoryallowreceiverpacedpersistence">repository-allow-receiver-paced-persistence</a>.</dd></dl>
+<dl class="section user"><dt></dt><dd>The source controls whether the Store's repository behavior is SPP or RPP (see <a class="el" href="grpultramessagingpersistence.html#umereceiverpacedpersistencesource">ume_receiver_paced_persistence (source)</a>). The receiver's configuration must match how the source set the repository. If the repository and receiver disagree, the receiver's registration is rejected. </dd></dl>
+<dl class="section user"><dt></dt><dd>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/ume.tag:../UME/" href="../UME/operationalview.html#receiverpacedpersistenceoperations">RPP: Receiver-Paced Persistence</a> for general information on RPP.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>receiver </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a09c7963deb485135d5bb29c84cd7d3a9">lbm_uint8_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a09c7963deb485135d5bb29c84cd7d3a9">lbm_uint8_t</a></b> </td></tr>
 <tr>
 <td><em>When to Set:</em> </td><td>Can only be set during object initialization.</td></tr>
 <tr>
@@ -611,13 +622,15 @@ ume_receiver_paced_persistence (receiver)&nbsp;&nbsp;<small><a href="#umereceive
  </p>
 <h2><a class="anchor" id="umereceiverpacedpersistencesource"></a>
 ume_receiver_paced_persistence (source)&nbsp;&nbsp;<small><a href="#umereceiverpacedpersistencesource">&lt;-</a></small></h2>
-<dl class="section user"><dt></dt><dd>Specifies that the source is a Receiver-paced Persistence (RPP) source and may change certain topic repository options to values allowed by the repository. </dd></dl>
-<dl class="section user"><dt></dt><dd>If the repository has set <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/ume.tag:../UME/" href="../UME/configurationreferenceforumestored.html#umecfgrepositoryallowreceiverpacedpersistence">repository-allow-receiver-paced-persistence</a> to 0 (disable), setting this option to 1 creates a store registration error. See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/ume.tag:../UME/" href="../UME/operationalview.html#receiverpacedpersistenceoperations">Receiver-paced Persistence Operations</a> for additional information.</dd></dl>
+<dl class="section user"><dt></dt><dd>Requests that the Store operate its repository with Receiver-paced Persistence (RPP). </dd></dl>
+<dl class="section user"><dt></dt><dd>During registration with the Store, this option controls whether the source requests RPP behavior. If the source requests RPP, and the Store's repository is configured with <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/ume.tag:../UME/" href="../UME/optionsforastoresumeattributeselement.html#umecfgrepositoryallowreceiverpacedpersistence">repository-allow-receiver-paced-persistence</a> set to 1 (enabled), the registration is accepted and the Store operates with receiver pacing. If <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/ume.tag:../UME/" href="../UME/optionsforastoresumeattributeselement.html#umecfgrepositoryallowreceiverpacedpersistence">repository-allow-receiver-paced-persistence</a> is 0 (disabled), the source's registration is rejected. </dd></dl>
+<dl class="section user"><dt></dt><dd>If this option is not set, the Store will default to Source-paced Persistence (SPP), independent of the setting of <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/ume.tag:../UME/" href="../UME/optionsforastoresumeattributeselement.html#umecfgrepositoryallowreceiverpacedpersistence">repository-allow-receiver-paced-persistence</a>. The Store cannot be directly configured to enable RPP; the source must be configured to request it. </dd></dl>
+<dl class="section user"><dt></dt><dd>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/ume.tag:../UME/" href="../UME/operationalview.html#receiverpacedpersistenceoperations">RPP: Receiver-Paced Persistence</a> for general information on RPP.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>source </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a09c7963deb485135d5bb29c84cd7d3a9">lbm_uint8_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a09c7963deb485135d5bb29c84cd7d3a9">lbm_uint8_t</a></b> </td></tr>
 <tr>
 <td><em>When to Set:</em> </td><td>Can only be set during object initialization.</td></tr>
 <tr>
@@ -629,25 +642,25 @@ ume_receiver_paced_persistence (source)&nbsp;&nbsp;<small><a href="#umereceiverp
 <tr>
 <th>Value </th><th>Description </th></tr>
 <tr>
-<td>1 </td><td><p class="starttd">Indicates that source is a RPP source.</p>
+<td>1 </td><td><p class="starttd">Source requests RPP operation.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>0 </td><td>Indicates that source is not a RPP source. <b>Default for all.</b> </td></tr>
+<td>0 </td><td>Source does not request RPP operation. Store will operate with Source-paced Persistence (SPP). <b>Default for all.</b> </td></tr>
 </table>
 </dd></dl>
 <p><br />
  </p>
 <h2><a class="anchor" id="umerecoverysequencenumberinfofunctionreceiver"></a>
 ume_recovery_sequence_number_info_function (receiver)&nbsp;&nbsp;<small><a href="#umerecoverysequencenumberinfofunctionreceiver">&lt;-</a></small></h2>
-<dl class="section user"><dt></dt><dd>Callback function (and associated client data pointer) that is called when a receiver is about to complete registration from the stores in use by the source and the low sequence number is to be determined. </dd></dl>
+<dl class="section user"><dt></dt><dd>Callback function (and associated client data pointer) that is called when a receiver is about to complete registration from the Stores in use by the source and the low sequence number is to be determined. </dd></dl>
 <dl class="section user"><dt></dt><dd>The application has the ability to modify the sequence number to use if it desires. </dd></dl>
 <dl class="section user"><dt></dt><dd>This callback is called by the context thread and can not use an event queue. Therefore the callback function used should not block or it will delay reception of latency-sensitive messages.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>receiver </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#ac318ae4d0d80e5595ce572558102c7b5">lbm_ume_rcv_recovery_info_ex_func_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#ac318ae4d0d80e5595ce572558102c7b5">lbm_ume_rcv_recovery_info_ex_func_t</a></b> </td></tr>
 <tr>
 <td><em>Default value:</em> </td><td>NULL </td></tr>
 <tr>
@@ -660,14 +673,14 @@ ume_recovery_sequence_number_info_function (receiver)&nbsp;&nbsp;<small><a href=
  </p>
 <h2><a class="anchor" id="umeregistrationextendedfunctionreceiver"></a>
 ume_registration_extended_function (receiver)&nbsp;&nbsp;<small><a href="#umeregistrationextendedfunctionreceiver">&lt;-</a></small></h2>
-<dl class="section user"><dt></dt><dd>Callback function (and associated client data pointer) that is called when a receiver is about to attempt to register with a persistent store. </dd></dl>
-<dl class="section user"><dt></dt><dd>The app must return the registration ID to request from the store or 0 if it will allow the store to allocate one. This function passes additional extended information, such as the store being used and a source client data pointer, etc. </dd></dl>
+<dl class="section user"><dt></dt><dd>Callback function (and associated client data pointer) that is called when a receiver is about to attempt to register with a persistent Store. </dd></dl>
+<dl class="section user"><dt></dt><dd>The app must return the registration ID to request from the Store or 0 if it will allow the Store to allocate one. This function passes additional extended information, such as the Store being used and a source client data pointer, etc. </dd></dl>
 <dl class="section user"><dt></dt><dd>This callback is called by the context thread and can not use an event queue. Therefore the callback function used should not block or it will delay reception of latency-sensitive messages.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>receiver </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a1145cdaf45b6f93b335d4fd97cbc68e9">lbm_ume_rcv_regid_ex_func_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a1145cdaf45b6f93b335d4fd97cbc68e9">lbm_ume_rcv_regid_ex_func_t</a></b> </td></tr>
 <tr>
 <td><em>Default value:</em> </td><td>NULL </td></tr>
 <tr>
@@ -680,15 +693,15 @@ ume_registration_extended_function (receiver)&nbsp;&nbsp;<small><a href="#umereg
  </p>
 <h2><a class="anchor" id="umeregistrationfunctionreceiver"></a>
 ume_registration_function (receiver)&nbsp;&nbsp;<small><a href="#umeregistrationfunctionreceiver">&lt;-</a></small></h2>
-<dl class="section user"><dt></dt><dd>Callback function (and associated client data pointer) that is called when a receiver is about to attempt to register with a persistent store. </dd></dl>
-<dl class="section user"><dt></dt><dd>The app must return the registration ID to request from the store or 0 if it will allow the store to allocate one. </dd></dl>
+<dl class="section user"><dt></dt><dd>Callback function (and associated client data pointer) that is called when a receiver is about to attempt to register with a persistent Store. </dd></dl>
+<dl class="section user"><dt></dt><dd>The app must return the registration ID to request from the Store or 0 if it will allow the Store to allocate one. </dd></dl>
 <dl class="section user"><dt></dt><dd>This callback is called by the context thread and can not use an event queue. Therefore the callback function used should not block or it will delay reception of latency-sensitive messages. </dd></dl>
 <dl class="section user"><dt></dt><dd>This option is retained for backwards compatibility. The <a class="el" href="grpultramessagingpersistence.html#umeregistrationextendedfunctionreceiver">ume_registration_extended_function (receiver)</a> setting should be used instead.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>receiver </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a570a021e283e9175826e579580dd79fc">lbm_ume_rcv_regid_func_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a570a021e283e9175826e579580dd79fc">lbm_ume_rcv_regid_func_t</a></b> </td></tr>
 <tr>
 <td><em>Default value:</em> </td><td>NULL </td></tr>
 <tr>
@@ -701,13 +714,13 @@ ume_registration_function (receiver)&nbsp;&nbsp;<small><a href="#umeregistration
  </p>
 <h2><a class="anchor" id="umeregistrationintervalreceiver"></a>
 ume_registration_interval (receiver)&nbsp;&nbsp;<small><a href="#umeregistrationintervalreceiver">&lt;-</a></small></h2>
-<dl class="section user"><dt></dt><dd>The interval between registration attempts by the receiver to a persistent store in use by the source. </dd></dl>
-<dl class="section user"><dt></dt><dd>For networks with large numbers of receivers connecting to a store, this value can be increased to reduce the registration load on the store.</dd></dl>
+<dl class="section user"><dt></dt><dd>The interval between registration attempts by the receiver to a persistent Store in use by the source. </dd></dl>
+<dl class="section user"><dt></dt><dd>For networks with large numbers of receivers connecting to a Store, this value can be increased to reduce the registration load on the Store.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>receiver </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
 <tr>
 <td><em>Units:</em> </td><td>milliseconds </td></tr>
 <tr>
@@ -720,13 +733,13 @@ ume_registration_interval (receiver)&nbsp;&nbsp;<small><a href="#umeregistration
  </p>
 <h2><a class="anchor" id="umeregistrationintervalsource"></a>
 ume_registration_interval (source)&nbsp;&nbsp;<small><a href="#umeregistrationintervalsource">&lt;-</a></small></h2>
-<dl class="section user"><dt></dt><dd>The interval between registration attempts by the source. Before declaring Registration Complete, sources wait at least one full interval, unless all stores have registered. </dd></dl>
-<dl class="section user"><dt></dt><dd>When using the round-robin store behavior, this is the value between registration attempts with the various stores. In other words, attempt to register with primary, wait interval, attempt to register with secondary, wait interval, etc.</dd></dl>
+<dl class="section user"><dt></dt><dd>The interval between registration attempts by the source. Before declaring Registration Complete, sources wait at least one full interval, unless all Stores have registered. </dd></dl>
+<dl class="section user"><dt></dt><dd>When using the round-robin Store behavior, this is the value between registration attempts with the various Stores. In other words, attempt to register with primary, wait interval, attempt to register with secondary, wait interval, etc.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>source </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
 <tr>
 <td><em>Units:</em> </td><td>milliseconds </td></tr>
 <tr>
@@ -739,15 +752,17 @@ ume_registration_interval (source)&nbsp;&nbsp;<small><a href="#umeregistrationin
  </p>
 <h2><a class="anchor" id="umerepositoryackonreceptionsource"></a>
 ume_repository_ack_on_reception (source)&nbsp;&nbsp;<small><a href="#umerepositoryackonreceptionsource">&lt;-</a></small></h2>
-<dl class="section user"><dt></dt><dd>For Receiver-paced Persistence (RPP) sources with a <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/ume.tag:../UME/" href="../UME/configurationreferenceforumestored.html#umecfgrepositorytype">repository-type</a> of <b><code>disk</code></b>, specifies that the stability acknowledgement should be sent upon message reception by the store instead of when the message has been written to disk. </dd></dl>
-<dl class="section user"><dt></dt><dd>Note that this reduces the robustness of the persisted stream and makes it more susceptible to message loss in the event of multiple failures. </dd></dl>
-<dl class="section user"><dt></dt><dd>This source option is ignored if RPP is not enabled. With non-RPP sources, the store's acknowledgement behavior is controlled directly by the store's <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/ume.tag:../UME/" href="../UME/configurationreferenceforumestored.html#umecfgrepositoryallowackonreception">repository-allow-ack-on-reception</a> configuration element. </dd></dl>
-<dl class="section user"><dt></dt><dd>When RPP is enabled, the store checks this option's value against the repository element <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/ume.tag:../UME/" href="../UME/configurationreferenceforumestored.html#umecfgrepositoryallowackonreception">repository-allow-ack-on-reception</a>. If <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/ume.tag:../UME/" href="../UME/configurationreferenceforumestored.html#umecfgrepositoryallowackonreception">repository-allow-ack-on-reception</a> is false, then the store will reject the registration from any source that enables ume_repository_ack_on_reception. See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/ume.tag:../UME/" href="../UME/operationalview.html#implementingrpp">Implementing RPP</a> for more information on the coordination between RPP source and store configuration options.</dd></dl>
+<dl class="section user"><dt></dt><dd>For RPP, requests that the Store operate its repository with "ack on reception" behavior. </dd></dl>
+<dl class="section user"><dt></dt><dd>Normally, the Store sends stability ACKs to the source as messages are written to disk. With "ack on reception" behavior, the Store sends stability ACKs to the source as the messages are received and stored in its memory cache. </dd></dl>
+<dl class="section user"><dt></dt><dd>During registration with the Store, this option controls whether the source requests "ack on reception" behavior. If the source requests "ack on reception", and the Store's repository is configured with <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/ume.tag:../UME/" href="../UME/optionsforastoresumeattributeselement.html#umecfgrepositoryallowackonreception">repository-allow-ack-on-reception</a> set to 1 (enabled), the registration is accepted and the repository operates with "ack on reception" behavior. If <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/ume.tag:../UME/" href="../UME/optionsforastoresumeattributeselement.html#umecfgrepositoryallowackonreception">repository-allow-ack-on-reception</a> is 0 (disabled), the source's registration is rejected. </dd></dl>
+<dl class="section user"><dt></dt><dd>The Store cannot be directly configured to enable "ack on reception"; the source must be configured to request it. </dd></dl>
+<dl class="section user"><dt></dt><dd>This option is ignored for SPP repositories. </dd></dl>
+<dl class="section user"><dt></dt><dd>For RPP, see <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/ume.tag:../UME/" href="../UME/specialconfigurationtopics.html#rppconfigurationspecifics">RPP Configuration Specifics</a> for interactions between this and other configuration options. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/ume.tag:../UME/" href="../UME/operationalview.html#receiverpacedpersistenceoperations">RPP: Receiver-Paced Persistence</a> for general information on RPP.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>source </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a09c7963deb485135d5bb29c84cd7d3a9">lbm_uint8_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a09c7963deb485135d5bb29c84cd7d3a9">lbm_uint8_t</a></b> </td></tr>
 <tr>
 <td><em>When to Set:</em> </td><td>Can only be set during object initialization.</td></tr>
 <tr>
@@ -759,25 +774,28 @@ ume_repository_ack_on_reception (source)&nbsp;&nbsp;<small><a href="#umereposito
 <tr>
 <th>Value </th><th>Description </th></tr>
 <tr>
-<td>1 </td><td><p class="starttd">The repository sends a stability acknowledgement for a message as soon as it has received the message.</p>
+<td>1 </td><td><p class="starttd">Source requests "ack on reception".</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>0 </td><td>The repository sends a stability acknowledgement for a message once it has been written to disk. <b>Default for all.</b> </td></tr>
+<td>0 </td><td>Source does not request "ack on reception". Store defaults to sending stability ACKs when messages are written to disk. <b>Default for all.</b> </td></tr>
 </table>
 </dd></dl>
 <p><br />
  </p>
 <h2><a class="anchor" id="umerepositorydiskfilesizelimitsource"></a>
 ume_repository_disk_file_size_limit (source)&nbsp;&nbsp;<small><a href="#umerepositorydiskfilesizelimitsource">&lt;-</a></small></h2>
-<dl class="section user"><dt></dt><dd>For Receiver-paced Persistence (RPP) sources with a <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/ume.tag:../UME/" href="../UME/configurationreferenceforumestored.html#umecfgrepositorytype">repository-type</a> of <b><code>disk</code></b>, specifies the maximum amount of disk space used to store retained messages. </dd></dl>
-<dl class="section user"><dt></dt><dd>This source option is ignored if RPP is not enabled. For non-RPP sources, the repository's file size limit is controlled directly by the store's <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/ume.tag:../UME/" href="../UME/configurationreferenceforumestored.html#umecfgrepositorydiskfilesizelimit">repository-disk-file-size-limit</a> configuration element. </dd></dl>
-<dl class="section user"><dt></dt><dd>When RPP is enabled, the store range checks this option's value against the repository element <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/ume.tag:../UME/" href="../UME/configurationreferenceforumestored.html#umecfgrepositorydiskfilesizelimit">repository-disk-file-size-limit</a>, and rejects the registration if the source requests more bytes than that store's limit. As long as the source request is less than or equal to <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/ume.tag:../UME/" href="../UME/configurationreferenceforumestored.html#umecfgrepositorydiskfilesizelimit">repository-disk-file-size-limit</a>, the store will use the source's value in its operation. The default value (zero) causes the store to use its <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/ume.tag:../UME/" href="../UME/configurationreferenceforumestored.html#umecfgrepositorydiskfilesizelimit">repository-disk-file-size-limit</a> value. See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/ume.tag:../UME/" href="../UME/operationalview.html#implementingrpp">Implementing RPP</a> for more information on the coordination between RPP source and store configuration options.</dd></dl>
+<dl class="section user"><dt></dt><dd>For Receiver-paced Persistence (RPP) sources, overrides the Store's configured repository disk file size limit. </dd></dl>
+<dl class="section user"><dt></dt><dd>The Store's repository disk file size limit is configured by the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/ume.tag:../UME/" href="../UME/optionsforastoresumeattributeselement.html#umecfgrepositorydiskfilesizelimit">repository-disk-file-size-limit</a> option. For RPP, this source option can be used to override the Store's setting. </dd></dl>
+<dl class="section user"><dt></dt><dd>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/ume.tag:../UME/" href="../UME/optionsforastoresumeattributeselement.html#umecfgrepositorydiskfilesizelimit">repository-disk-file-size-limit</a> for more information on the option. </dd></dl>
+<dl class="section user"><dt></dt><dd>This option is ignored for SPP repositories. </dd></dl>
+<dl class="section user"><dt></dt><dd>When the source overrides the Store's configured value, it must not exceed that value. If the source's ume_repository_disk_file_size_limit exceeds the Store's repository-disk-file-size-limit, the source's registration is rejected. </dd></dl>
+<dl class="section user"><dt></dt><dd>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/ume.tag:../UME/" href="../UME/operationalview.html#implementingrpp">Implementing RPP</a> for more information on the coordination between RPP source and Store configuration options.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>source </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a1e4dea682eee7238dec2b64989449abc">lbm_uint64_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a1e4dea682eee7238dec2b64989449abc">lbm_uint64_t</a></b> </td></tr>
 <tr>
 <td><em>Units:</em> </td><td>bytes </td></tr>
 <tr>
@@ -792,9 +810,12 @@ ume_repository_disk_file_size_limit (source)&nbsp;&nbsp;<small><a href="#umerepo
  </p>
 <h2><a class="anchor" id="umerepositorysizelimitsource"></a>
 ume_repository_size_limit (source)&nbsp;&nbsp;<small><a href="#umerepositorysizelimitsource">&lt;-</a></small></h2>
-<dl class="section user"><dt></dt><dd>For Receiver-paced Persistence (RPP) sources with a <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/ume.tag:../UME/" href="../UME/configurationreferenceforumestored.html#umecfgrepositorytype">repository-type</a> of <b><code>memory</code></b> or <b><code>disk</code></b>, specifies the maximum number of message bytes retained by the store (includes payload only). For the <b><code>disk</code></b> repository type, this value configures the size of the memory cache. </dd></dl>
-<dl class="section user"><dt></dt><dd>This source option is ignored if RPP is not enabled. For non-RPP sources, the repository size limit is controlled directly by the store's <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/ume.tag:../UME/" href="../UME/configurationreferenceforumestored.html#umecfgrepositorysizelimit">repository-size-limit</a> configuration element. </dd></dl>
-<dl class="section user"><dt></dt><dd>When RPP is enabled, the store range checks this option's value against the repository element <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/ume.tag:../UME/" href="../UME/configurationreferenceforumestored.html#umecfgrepositorysizethreshold">repository-size-threshold</a>, and rejects the registration if the source requests more bytes than that store's limit. As long as the source request is less than or equal to <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/ume.tag:../UME/" href="../UME/configurationreferenceforumestored.html#umecfgrepositorysizethreshold">repository-size-threshold</a>, the store will use the source's value in its operation. The default value (zero) causes the store to use its <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/ume.tag:../UME/" href="../UME/configurationreferenceforumestored.html#umecfgrepositorysizethreshold">repository-size-threshold</a> value. See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/ume.tag:../UME/" href="../UME/operationalview.html#implementingrpp">Implementing RPP</a> for more information on the coordination between RPP source and store configuration options.</dd></dl>
+<dl class="section user"><dt></dt><dd>For Receiver-paced Persistence (RPP) sources, overrides the Store's configured repository size limit. </dd></dl>
+<dl class="section user"><dt></dt><dd>The Store's repository size limit is configured by the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/ume.tag:../UME/" href="../UME/optionsforastoresumeattributeselement.html#umecfgrepositorysizelimit">repository-size-limit</a> option. For RPP, this source option can be used to override the Store's setting. </dd></dl>
+<dl class="section user"><dt></dt><dd>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/ume.tag:../UME/" href="../UME/optionsforastoresumeattributeselement.html#umecfgrepositorysizelimit">repository-size-limit</a> for more information on the option. </dd></dl>
+<dl class="section user"><dt></dt><dd>This option is ignored for SPP repositories. </dd></dl>
+<dl class="section user"><dt></dt><dd>For RPP, see <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/ume.tag:../UME/" href="../UME/specialconfigurationtopics.html#rppconfigurationspecifics">RPP Configuration Specifics</a> for interactions between this and other configuration options. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/ume.tag:../UME/" href="../UME/operationalview.html#receiverpacedpersistenceoperations">RPP: Receiver-Paced Persistence</a> for general information on RPP. </dd></dl>
+<dl class="section user"><dt></dt><dd>When the source overrides the Store's configured value, it must not exceed that value. If the source's ume_repository_size_limit exceeds the Store's repository-size-limit, the source's registration is rejected.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>source </td></tr>
@@ -814,9 +835,12 @@ ume_repository_size_limit (source)&nbsp;&nbsp;<small><a href="#umerepositorysize
  </p>
 <h2><a class="anchor" id="umerepositorysizethresholdsource"></a>
 ume_repository_size_threshold (source)&nbsp;&nbsp;<small><a href="#umerepositorysizethresholdsource">&lt;-</a></small></h2>
-<dl class="section user"><dt></dt><dd>For Receiver-paced Persistence (RPP) sources with a <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/ume.tag:../UME/" href="../UME/configurationreferenceforumestored.html#umecfgrepositorytype">repository-type</a> of <b><code>memory</code></b> or <b><code>disk</code></b>, specifies the minimum number of message bytes retained by the store (includes payload only). For the <b><code>disk</code></b> repository type, this value configures the size of the memory cache. </dd></dl>
-<dl class="section user"><dt></dt><dd>This source option is ignored if RPP is not enabled. For non-RPP sources, the repository size threshold is controlled directly by the store's <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/ume.tag:../UME/" href="../UME/configurationreferenceforumestored.html#umecfgrepositorysizethreshold">repository-size-threshold</a> configuration element. </dd></dl>
-<dl class="section user"><dt></dt><dd>When RPP is enabled, the store range checks this option's value against the repository element <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/ume.tag:../UME/" href="../UME/configurationreferenceforumestored.html#umecfgrepositorysizethreshold">repository-size-threshold</a>, and rejects the registration if the source requests more bytes than that store's threshold. As long as the source request is less than or equal to <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/ume.tag:../UME/" href="../UME/configurationreferenceforumestored.html#umecfgrepositorysizethreshold">repository-size-threshold</a>, the store will use the source's value in its operation. The default value (zero) causes the store to use its <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/ume.tag:../UME/" href="../UME/configurationreferenceforumestored.html#umecfgrepositorysizethreshold">repository-size-threshold</a> value. See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/ume.tag:../UME/" href="../UME/operationalview.html#implementingrpp">Implementing RPP</a> for more information on the coordination between RPP source and store configuration options.</dd></dl>
+<dl class="section user"><dt></dt><dd>For Receiver-paced Persistence (RPP) sources, overrides the Store's configured repository size threshold. </dd></dl>
+<dl class="section user"><dt></dt><dd>The Store's repository size threshold is configured by the Store option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/ume.tag:../UME/" href="../UME/optionsforastoresumeattributeselement.html#umecfgrepositorysizethreshold">repository-size-threshold</a> option. For RPP, this source option can be used to override the Store's setting. </dd></dl>
+<dl class="section user"><dt></dt><dd>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/ume.tag:../UME/" href="../UME/optionsforastoresumeattributeselement.html#umecfgrepositorysizethreshold">repository-size-threshold</a> for more information on the option. </dd></dl>
+<dl class="section user"><dt></dt><dd>This option is ignored for SPP repositories. </dd></dl>
+<dl class="section user"><dt></dt><dd>For RPP, see <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/ume.tag:../UME/" href="../UME/specialconfigurationtopics.html#rppconfigurationspecifics">RPP Configuration Specifics</a> for interactions between this and other configuration options. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/ume.tag:../UME/" href="../UME/operationalview.html#receiverpacedpersistenceoperations">RPP: Receiver-Paced Persistence</a> for general information on RPP. </dd></dl>
+<dl class="section user"><dt></dt><dd>When the source overrides the Store's configured value, it must not exceed that value. If the source's ume_repository_size_threshold exceeds the Store's repository-size-threshold, the source's registration is rejected.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>source </td></tr>
@@ -836,7 +860,7 @@ ume_repository_size_threshold (source)&nbsp;&nbsp;<small><a href="#umerepository
  </p>
 <h2><a class="anchor" id="umeretentionintergroupstabilitybehaviorsource"></a>
 ume_retention_intergroup_stability_behavior (source)&nbsp;&nbsp;<small><a href="#umeretentionintergroupstabilitybehaviorsource">&lt;-</a></small></h2>
-<dl class="section user"><dt></dt><dd>The behavior that the source will follow when determining, across store groups, both message stability and registration completion. </dd></dl>
+<dl class="section user"><dt></dt><dd>The behavior that the source will follow when determining, across Store groups, both message stability and registration completion. </dd></dl>
 <dl class="section user"><dt></dt><dd>A source cannot release a message until the message is stable. To be stable, a message must first be stable within the group and then stable between </dd></dl>
 <dl class="section user"><dt></dt><dd></dd></dl>
 <dl class="section note"><dt>Note</dt><dd>Multiple QC groups is deprecated and may be removed from a future version of UM. Users of multiple QC groups are encouraged to migrate their source configurations to use a single group of Stores for QC. groups.</dd></dl>
@@ -856,7 +880,7 @@ ume_retention_intergroup_stability_behavior (source)&nbsp;&nbsp;<small><a href="
 <tr>
 <td>"any", "any-group" </td><td>LBM_SRC_TOPIC_ATTR_UME_STABLE_BEHAVIOR_ANY </td><td>Registration is complete when it is complete in any group. Messages are stable when they are stable in any group. <b>Default for all.</b> </td></tr>
 <tr>
-<td>"all-active" </td><td>LBM_SRC_TOPIC_ATTR_UME_STABLE_BEHAVIOR_ALL_ACTIVE </td><td><p class="starttd">A group is active if it has at least a quorum of registered stores, or as determined by the ume_retention_intragroup_stability_behavior option. Registration is complete when it is complete in all active groups. At least one group must be active. Messages are stable when they are stable in all active groups.</p>
+<td>"all-active" </td><td>LBM_SRC_TOPIC_ATTR_UME_STABLE_BEHAVIOR_ALL_ACTIVE </td><td><p class="starttd">A group is active if it has at least a quorum of registered Stores, or as determined by the ume_retention_intragroup_stability_behavior option. Registration is complete when it is complete in all active groups. At least one group must be active. Messages are stable when they are stable in all active groups.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
@@ -873,7 +897,7 @@ ume_retention_intergroup_stability_behavior (source)&nbsp;&nbsp;<small><a href="
  </p>
 <h2><a class="anchor" id="umeretentionintragroupstabilitybehaviorsource"></a>
 ume_retention_intragroup_stability_behavior (source)&nbsp;&nbsp;<small><a href="#umeretentionintragroupstabilitybehaviorsource">&lt;-</a></small></h2>
-<dl class="section user"><dt></dt><dd>The behavior that the source will follow when determining, within a store group, both message stability and group registration completion. </dd></dl>
+<dl class="section user"><dt></dt><dd>The behavior that the source will follow when determining, within a Store group, both message stability and group registration completion. </dd></dl>
 <dl class="section user"><dt></dt><dd>A source cannot release a message until the message is stable. To be stable, a message must first be stable within the group and then stable between groups. </dd></dl>
 <dl class="section user"><dt></dt><dd></dd></dl>
 <dl class="section note"><dt>Note</dt><dd>Multiple QC groups is deprecated and may be removed from a future version of UM. Users of multiple QC groups are encouraged to migrate their source configurations to use a single group of Stores for QC.</dd></dl>
@@ -891,13 +915,13 @@ ume_retention_intragroup_stability_behavior (source)&nbsp;&nbsp;<small><a href="
 <tr>
 <th>String value </th><th>Integer value </th><th>Description </th></tr>
 <tr>
-<td>"quorum" </td><td>LBM_SRC_TOPIC_ATTR_UME_STABLE_BEHAVIOR_QUORUM </td><td>Registration is complete for the group when a majority of the stores in the group are registered. A message is stable within the group when a majority of the stores have acknowledged the message as stable. <b>Default for all.</b> </td></tr>
+<td>"quorum" </td><td>LBM_SRC_TOPIC_ATTR_UME_STABLE_BEHAVIOR_QUORUM </td><td>Registration is complete for the group when a majority of the Stores in the group are registered. A message is stable within the group when a majority of the Stores have acknowledged the message as stable. <b>Default for all.</b> </td></tr>
 <tr>
-<td>"all-active" </td><td>LBM_SRC_TOPIC_ATTR_UME_STABLE_BEHAVIOR_ALL_ACTIVE </td><td><p class="starttd">Registration is complete for the group when a majority of the stores in the group are registered. Stores registered with a source are active stores. A message is stable within the group when each active store in that group has acknowledged the message as stable.</p>
+<td>"all-active" </td><td>LBM_SRC_TOPIC_ATTR_UME_STABLE_BEHAVIOR_ALL_ACTIVE </td><td><p class="starttd">Registration is complete for the group when a majority of the Stores in the group are registered. Stores registered with a source are active Stores. A message is stable within the group when each active Store in that group has acknowledged the message as stable.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>"all", "all-stores" </td><td>LBM_SRC_TOPIC_ATTR_UME_STABLE_BEHAVIOR_ALL </td><td><p class="starttd">Registration is complete for the group when all stores in the group are registered. A message is stable within the group when all stores in the group are registered and have acknowledged the message as stable.</p>
+<td>"all", "all-stores" </td><td>LBM_SRC_TOPIC_ATTR_UME_STABLE_BEHAVIOR_ALL </td><td><p class="starttd">Registration is complete for the group when all Stores in the group are registered. A message is stable within the group when all Stores in the group are registered and have acknowledged the message as stable.</p>
 <p class="endtd"></p>
 </td></tr>
 </table>
@@ -907,7 +931,7 @@ ume_retention_intragroup_stability_behavior (source)&nbsp;&nbsp;<small><a href="
 <h2><a class="anchor" id="umeretentionsizelimitsource"></a>
 ume_retention_size_limit (source)&nbsp;&nbsp;<small><a href="#umeretentionsizelimitsource">&lt;-</a></small></h2>
 <dl class="section user"><dt></dt><dd>The release policy regarding aggregate size limit before messages are forced to be released. </dd></dl>
-<dl class="section user"><dt></dt><dd>With <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/design.tag:../Design/" href="../Design/advancedoptimizations.html#smartsources">Smart Sources</a>, this option is ignored. Retention buffers are preallocated. This option is retained for backwards compatibility. The <a class="el" href="grplatejoin.html#retransmitretentionsizelimitsource">retransmit_retention_size_limit (source)</a> setting should be used instead.</dd></dl>
+<dl class="section user"><dt></dt><dd>With <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/design.tag:../Design/" href="../Design/advancedoptimizations.html#smartsources">Smart Sources</a>, this option is ignored. Retention buffers are preallocated. This option is retained for backwards compatibility. The <a class="el" href="grplatejoin.html#retransmitretentionsizelimitsource">retransmit_retention_size_limit (source)</a> setting should be used instead.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>source </td></tr>
@@ -926,7 +950,7 @@ ume_retention_size_limit (source)&nbsp;&nbsp;<small><a href="#umeretentionsizeli
 <h2><a class="anchor" id="umeretentionsizethresholdsource"></a>
 ume_retention_size_threshold (source)&nbsp;&nbsp;<small><a href="#umeretentionsizethresholdsource">&lt;-</a></small></h2>
 <dl class="section user"><dt></dt><dd>The release policy regarding aggregate size threshold before messages are released. </dd></dl>
-<dl class="section user"><dt></dt><dd>With <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/design.tag:../Design/" href="../Design/advancedoptimizations.html#smartsources">Smart Sources</a>, this option is ignored. Retention buffers are preallocated. </dd></dl>
+<dl class="section user"><dt></dt><dd>With <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/design.tag:../Design/" href="../Design/advancedoptimizations.html#smartsources">Smart Sources</a>, this option is ignored. Retention buffers are preallocated. </dd></dl>
 <dl class="section user"><dt></dt><dd>This option is retained for backwards compatibility. The <a class="el" href="grplatejoin.html#retransmitretentionsizethresholdsource">retransmit_retention_size_threshold (source)</a> setting should be used instead.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
@@ -946,9 +970,9 @@ ume_retention_size_threshold (source)&nbsp;&nbsp;<small><a href="#umeretentionsi
 <h2><a class="anchor" id="umeretentionuniqueconfirmationssource"></a>
 ume_retention_unique_confirmations (source)&nbsp;&nbsp;<small><a href="#umeretentionuniqueconfirmationssource">&lt;-</a></small></h2>
 <dl class="section user"><dt></dt><dd>The release policy regarding the number of confirmations from different receivers required before the source can release a message. </dd></dl>
-<dl class="section user"><dt></dt><dd>This option enhances, but does not supersede, message stability notification from the store(s). If the number of unique confirmations for a message is less than this amount, the message will not be released. If the number of unique confirmations for a message exceeds or equals this amount, then the message may be released if no other release policy setting overrides the decision. A value of 0 indicates there is no unique number of confirmations required for reclamation. For more information, see <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/ume.tag:../UME/" href="../UME/persistenceconcepts.html#deliveryconfirmationconcept">Delivery Confirmation Concept</a>. </dd></dl>
+<dl class="section user"><dt></dt><dd>This option enhances, but does not supersede, message stability notification from the Store(s). If the number of unique confirmations for a message is less than this amount, the message will not be released. If the number of unique confirmations for a message exceeds or equals this amount, then the message may be released if no other release policy setting overrides the decision. A value of 0 indicates there is no unique number of confirmations required for reclamation. For more information, see <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/ume.tag:../UME/" href="../UME/persistenceconcepts.html#deliveryconfirmationconcept">Delivery Confirmation Concept</a>. </dd></dl>
 <dl class="section user"><dt></dt><dd></dd></dl>
-<dl class="section note"><dt>Note</dt><dd><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/design.tag:../Design/" href="../Design/advancedoptimizations.html#smartsources">Smart Sources</a> do not support delivery confirmation.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/design.tag:../Design/" href="../Design/advancedoptimizations.html#smartsources">Smart Sources</a> do not support delivery confirmation.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>source </td></tr>
@@ -967,14 +991,14 @@ ume_retention_unique_confirmations (source)&nbsp;&nbsp;<small><a href="#umereten
 <h2><a class="anchor" id="umesessionidcontext"></a>
 ume_session_id (context)&nbsp;&nbsp;<small><a href="#umesessionidcontext">&lt;-</a></small></h2>
 <dl class="section user"><dt></dt><dd>Specifies the default Session ID to use for sources and receivers within a context. A value of 0 (zero) indicates no Session ID is to be set. </dd></dl>
-<dl class="section user"><dt></dt><dd>See also <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/ume.tag:../UME/" href="../UME/designingpersistenceapplications.html#managingregidswithsessionids">Managing RegIDs with Session IDs</a>. Valid formats for session IDs are as follows: A hexadecimal string with a maximum value of FFFFFFFFFFFFFFFE, prefixed with '0x'. An octal string with a maximum value of 1777777777777777777776 prefixed with '0'. A decimal string with a maximum value of 18446744073709551614. Prior to LBM 5.2.2, all UME session IDs were interpreted as hexadecimal, and did not accept the '0x' prefix. If upgrading from an earlier version to LBM 5.2.2 or later, prepend '0x' to the original setting to use the originally assigned session ID.</dd></dl>
+<dl class="section user"><dt></dt><dd>See also <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/ume.tag:../UME/" href="../UME/registrationidentifiers.html#managingregidswithsessionids">Managing RegIDs with Session IDs</a>. Valid formats for session IDs are as follows: A hexadecimal string with a maximum value of FFFFFFFFFFFFFFFE, prefixed with '0x'. An octal string with a maximum value of 1777777777777777777776 prefixed with '0'. A decimal string with a maximum value of 18446744073709551614. Prior to LBM 5.2.2, all persistence session IDs were interpreted as hexadecimal, and did not accept the '0x' prefix. If upgrading from an earlier version to LBM 5.2.2 or later, prepend '0x' to the original setting to use the originally assigned session ID.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>context </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a1e4dea682eee7238dec2b64989449abc">lbm_uint64_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a1e4dea682eee7238dec2b64989449abc">lbm_uint64_t</a></b> </td></tr>
 <tr>
-<td><em>Default value:</em> </td><td>0 (zero) </td></tr>
+<td><em>Default value:</em> </td><td>0 (no session ID) </td></tr>
 <tr>
 <td><em>When to Set:</em> </td><td>Can only be set during object initialization.</td></tr>
 <tr>
@@ -986,15 +1010,15 @@ ume_session_id (context)&nbsp;&nbsp;<small><a href="#umesessionidcontext">&lt;-<
 <h2><a class="anchor" id="umesessionidreceiver"></a>
 ume_session_id (receiver)&nbsp;&nbsp;<small><a href="#umesessionidreceiver">&lt;-</a></small></h2>
 <dl class="section user"><dt></dt><dd>Specifies the Session ID to use for a receiver. A value of 0 (zero) indicates the context ume_session_id will be used. </dd></dl>
-<dl class="section user"><dt></dt><dd>See also <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/ume.tag:../UME/" href="../UME/designingpersistenceapplications.html#managingregidswithsessionids">Managing RegIDs with Session IDs</a>. </dd></dl>
-<dl class="section user"><dt></dt><dd>Valid formats for session IDs are as follows: A hexadecimal string with a maximum value of FFFFFFFFFFFFFFFE, prefixed with '0x'. An octal string with a maximum value of 1777777777777777777776 prefixed with '0'. A decimal string with a maximum value of 18446744073709551614. Prior to LBM 5.2.2, all UME session IDs were interpreted as hexadecimal, and did not accept the '0x' prefix. If upgrading from an earlier version to LBM 5.2.2 or later, prepend '0x' to the original setting to use the originally assigned session ID.</dd></dl>
+<dl class="section user"><dt></dt><dd>See also <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/ume.tag:../UME/" href="../UME/registrationidentifiers.html#managingregidswithsessionids">Managing RegIDs with Session IDs</a>. </dd></dl>
+<dl class="section user"><dt></dt><dd>Valid formats for session IDs are as follows: A hexadecimal string with a maximum value of FFFFFFFFFFFFFFFE, prefixed with '0x'. An octal string with a maximum value of 1777777777777777777776 prefixed with '0'. A decimal string with a maximum value of 18446744073709551614. Prior to LBM 5.2.2, all persistence session IDs were interpreted as hexadecimal, and did not accept the '0x' prefix. If upgrading from an earlier version to LBM 5.2.2 or later, prepend '0x' to the original setting to use the originally assigned session ID.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>receiver </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a1e4dea682eee7238dec2b64989449abc">lbm_uint64_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a1e4dea682eee7238dec2b64989449abc">lbm_uint64_t</a></b> </td></tr>
 <tr>
-<td><em>Default value:</em> </td><td>0 (zero) </td></tr>
+<td><em>Default value:</em> </td><td>0 (uses context session ID) </td></tr>
 <tr>
 <td><em>When to Set:</em> </td><td>Can only be set during object initialization.</td></tr>
 <tr>
@@ -1006,15 +1030,15 @@ ume_session_id (receiver)&nbsp;&nbsp;<small><a href="#umesessionidreceiver">&lt;
 <h2><a class="anchor" id="umesessionidsource"></a>
 ume_session_id (source)&nbsp;&nbsp;<small><a href="#umesessionidsource">&lt;-</a></small></h2>
 <dl class="section user"><dt></dt><dd>Specifies the Session ID to use for a source. A value of 0 (zero) indicates the context ume_session_id will be used. </dd></dl>
-<dl class="section user"><dt></dt><dd>See also <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/ume.tag:../UME/" href="../UME/designingpersistenceapplications.html#managingregidswithsessionids">Managing RegIDs with Session IDs</a>. </dd></dl>
-<dl class="section user"><dt></dt><dd>Valid formats for session IDs are as follows: A hexadecimal string with a maximum value of FFFFFFFFFFFFFFFE, prefixed with '0x'. An octal string with a maximum value of 1777777777777777777776 prefixed with '0'. A decimal string with a maximum value of 18446744073709551614. Prior to LBM 5.2.2, all UME session IDs were interpreted as hexadecimal, and did not accept the '0x' prefix. If upgrading from an earlier version to LBM 5.2.2 or later, prepend '0x' to the original setting to use the originally assigned session ID.</dd></dl>
+<dl class="section user"><dt></dt><dd>See also <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/ume.tag:../UME/" href="../UME/registrationidentifiers.html#managingregidswithsessionids">Managing RegIDs with Session IDs</a>. </dd></dl>
+<dl class="section user"><dt></dt><dd>Valid formats for session IDs are as follows: A hexadecimal string with a maximum value of FFFFFFFFFFFFFFFE, prefixed with '0x'. An octal string with a maximum value of 1777777777777777777776 prefixed with '0'. A decimal string with a maximum value of 18446744073709551614. Prior to LBM 5.2.2, all persistence session IDs were interpreted as hexadecimal, and did not accept the '0x' prefix. If upgrading from an earlier version to LBM 5.2.2 or later, prepend '0x' to the original setting to use the originally assigned session ID.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>source </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a1e4dea682eee7238dec2b64989449abc">lbm_uint64_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a1e4dea682eee7238dec2b64989449abc">lbm_uint64_t</a></b> </td></tr>
 <tr>
-<td><em>Default value:</em> </td><td>0 (zero) </td></tr>
+<td><em>Default value:</em> </td><td>0 (uses context session ID) </td></tr>
 <tr>
 <td><em>When to Set:</em> </td><td>Can only be set during object initialization.</td></tr>
 <tr>
@@ -1050,12 +1074,12 @@ ume_sri_flush_sri_request_response (source)&nbsp;&nbsp;<small><a href="#umesrifl
 <dl class="section user"><dt></dt><dd>Flushing this buffer places the SRI record immediately on the transport, which speeds up the process of receivers registering, but also can impose a greater load on the overall network since it can reduce the amount of transport batching. </dd></dl>
 <dl class="section user"><dt></dt><dd>See <a class="el" href="grpultramessagingpersistence.html#umesriimmediatesrirequestresponsesource">ume_sri_immediate_sri_request_response (source)</a> for more information on SRI messages. </dd></dl>
 <dl class="section user"><dt></dt><dd></dd></dl>
-<dl class="section note"><dt>Note</dt><dd><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/design.tag:../Design/" href="../Design/advancedoptimizations.html#smartsources">Smart Sources</a> do not support batching, so this option is ignored by a Smart Source.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/design.tag:../Design/" href="../Design/advancedoptimizations.html#smartsources">Smart Sources</a> do not support batching, so this option is ignored by a Smart Source.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>source </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
 <tr>
 <td><em>When to Set:</em> </td><td>Can only be set during object initialization.</td></tr>
 <tr>
@@ -1079,14 +1103,14 @@ ume_sri_flush_sri_request_response (source)&nbsp;&nbsp;<small><a href="#umesrifl
 <h2><a class="anchor" id="umesriimmediatesrirequestresponsesource"></a>
 ume_sri_immediate_sri_request_response (source)&nbsp;&nbsp;<small><a href="#umesriimmediatesrirequestresponsesource">&lt;-</a></small></h2>
 <dl class="section user"><dt></dt><dd>This option controls how quickly a source responds to a receiver's request for an SRI record. </dd></dl>
-<dl class="section user"><dt></dt><dd>A persistent source need to send information about its Stores so that the receivers can properly register with those stores. The information messages sent by the sources, contained in a Source Registration Information (SRI) record, is sent on the source's data transport session, and therefore have an effect on the transfer of application data messages. This configuration option is provided to assist you in managing the impact of SRI messages on the normal flow of data when a registering receiver requests the SRI record. </dd></dl>
+<dl class="section user"><dt></dt><dd>A persistent source need to send information about its Stores so that the receivers can properly register with those Stores. The information messages sent by the sources, contained in a Source Registration Information (SRI) record, is sent on the source's data transport session, and therefore have an effect on the transfer of application data messages. This configuration option is provided to assist you in managing the impact of SRI messages on the normal flow of data when a registering receiver requests the SRI record. </dd></dl>
 <dl class="section user"><dt></dt><dd></dd></dl>
-<dl class="section note"><dt>Note</dt><dd><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/design.tag:../Design/" href="../Design/advancedoptimizations.html#smartsources">Smart Sources</a> do not support batching, so this option is ignored by a Smart Source.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/design.tag:../Design/" href="../Design/advancedoptimizations.html#smartsources">Smart Sources</a> do not support batching, so this option is ignored by a Smart Source.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>source </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
 <tr>
 <td><em>When to Set:</em> </td><td>Can only be set during object initialization.</td></tr>
 <tr>
@@ -1109,23 +1133,23 @@ ume_sri_immediate_sri_request_response (source)&nbsp;&nbsp;<small><a href="#umes
  </p>
 <h2><a class="anchor" id="umesriintersriintervalsource"></a>
 ume_sri_inter_sri_interval (source)&nbsp;&nbsp;<small><a href="#umesriintersriintervalsource">&lt;-</a></small></h2>
-<dl class="section user"><dt></dt><dd>This option controls how frequently a source sends SRI records in reaction to a change in the source's registration with its stores. </dd></dl>
+<dl class="section user"><dt></dt><dd>This option controls how frequently a source sends SRI records in reaction to a change in the source's registration with its Stores. </dd></dl>
 <dl class="section user"><dt></dt><dd>Source Registration Information (SRI) records are sent by a source to its receivers for either of two reasons: </dd></dl>
 <dl class="section user"><dt></dt><dd><ul>
 <li>a receiver has requested an SRI, usually because it is in the process of initializing and registering, or </li>
 </ul>
 </dd></dl>
 <dl class="section user"><dt></dt><dd><ul>
-<li>the source sees a change in its registration with its stores. For example, if a store becomes unresponsive and the source loses registration with it. Or if a previously failed store returns to service, and the source successfully registers with it. </li>
+<li>the source sees a change in its registration with its Stores. For example, if a Store becomes unresponsive and the source loses registration with it. Or if a previously failed Store returns to service, and the source successfully registers with it. </li>
 </ul>
 </dd></dl>
-<dl class="section user"><dt></dt><dd>This configuration option is concerned with the latter case (change in a source's registration with its stores): the source will send SRI records to receivers to inform them of the change. It sends multiple copies over time to maximize the chances of successful reception. It uses this configuration option to determine the interval between these SRI sends. </dd></dl>
+<dl class="section user"><dt></dt><dd>This configuration option is concerned with the latter case (change in a source's registration with its Stores): the source will send SRI records to receivers to inform them of the change. It sends multiple copies over time to maximize the chances of successful reception. It uses this configuration option to determine the interval between these SRI sends. </dd></dl>
 <dl class="section user"><dt></dt><dd>The default value results in the source sending 2 SRI packets every second. This value cannot be set to 0. See also <a class="el" href="grpultramessagingpersistence.html#umesrimaxnumberofsriperupdatesource">ume_sri_max_number_of_sri_per_update (source)</a>.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>source </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
 <tr>
 <td><em>Units:</em> </td><td>milliseconds </td></tr>
 <tr>
@@ -1140,13 +1164,13 @@ ume_sri_inter_sri_interval (source)&nbsp;&nbsp;<small><a href="#umesriintersriin
  </p>
 <h2><a class="anchor" id="umesrimaxnumberofsriperupdatesource"></a>
 ume_sri_max_number_of_sri_per_update (source)&nbsp;&nbsp;<small><a href="#umesrimaxnumberofsriperupdatesource">&lt;-</a></small></h2>
-<dl class="section user"><dt></dt><dd>The maximum number of SRI packets sent by a source after a change in the source's registration with its stores. </dd></dl>
+<dl class="section user"><dt></dt><dd>The maximum number of SRI packets sent by a source after a change in the source's registration with its Stores. </dd></dl>
 <dl class="section user"><dt></dt><dd>For more information about these SRI messages, see <a class="el" href="grpultramessagingpersistence.html#umesriintersriintervalsource">ume_sri_inter_sri_interval (source)</a>.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>source </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a86897f2fdd66aa7021683a4e72a4537b">lbm_uint16_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a86897f2fdd66aa7021683a4e72a4537b">lbm_uint16_t</a></b> </td></tr>
 <tr>
 <td><em>Default value:</em> </td><td>20 </td></tr>
 <tr>
@@ -1165,7 +1189,7 @@ ume_sri_request_interval (receiver)&nbsp;&nbsp;<small><a href="#umesrirequestint
 <tr>
 <td><em>Scope:</em> </td><td>receiver </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
 <tr>
 <td><em>Units:</em> </td><td>milliseconds </td></tr>
 <tr>
@@ -1186,7 +1210,7 @@ ume_sri_request_maximum (receiver)&nbsp;&nbsp;<small><a href="#umesrirequestmaxi
 <tr>
 <td><em>Scope:</em> </td><td>receiver </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
 <tr>
 <td><em>Default value:</em> </td><td>60 </td></tr>
 <tr>
@@ -1203,12 +1227,12 @@ ume_sri_request_response_latency (source)&nbsp;&nbsp;<small><a href="#umesrirequ
 <dl class="section user"><dt></dt><dd>At the expiration of this interval, the SRI record may also be slightly delayed by normal batch scheduling unless <a class="el" href="grpultramessagingpersistence.html#umesriflushsrirequestresponsesource">ume_sri_flush_sri_request_response (source)</a> is set to 1. </dd></dl>
 <dl class="section user"><dt></dt><dd>See <a class="el" href="grpultramessagingpersistence.html#umesriimmediatesrirequestresponsesource">ume_sri_immediate_sri_request_response (source)</a> for more information about how and why to use this. </dd></dl>
 <dl class="section user"><dt></dt><dd></dd></dl>
-<dl class="section note"><dt>Note</dt><dd><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/design.tag:../Design/" href="../Design/advancedoptimizations.html#smartsources">Smart Sources</a> do not support batching, so this option is ignored by a Smart Source.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/design.tag:../Design/" href="../Design/advancedoptimizations.html#smartsources">Smart Sources</a> do not support batching, so this option is ignored by a Smart Source.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>source </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
 <tr>
 <td><em>Units:</em> </td><td>milliseconds </td></tr>
 <tr>
@@ -1223,18 +1247,18 @@ ume_sri_request_response_latency (source)&nbsp;&nbsp;<small><a href="#umesrirequ
  </p>
 <h2><a class="anchor" id="umestatelifetimereceiver"></a>
 ume_state_lifetime (receiver)&nbsp;&nbsp;<small><a href="#umestatelifetimereceiver">&lt;-</a></small></h2>
-<dl class="section user"><dt></dt><dd>Establishes the period of time from a receiver's last activity to the deletion of the receiver's state and cache by the store. </dd></dl>
-<dl class="section user"><dt></dt><dd>You can also configure a <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/ume.tag:../UME/" href="../UME/configurationreferenceforumestored.html#umecfgreceiverstatelifetime">receiver-state-lifetime</a> for the receiver's topic on the store. The store uses whichever is shorter. The default value of 0 (zero) disables this option. </dd></dl>
-<dl class="section user"><dt></dt><dd>See also <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/ume.tag:../UME/" href="../UME/persistencefaulttolerance.html#persistenceproxysources">Persistence Proxy Sources</a>.</dd></dl>
+<dl class="section user"><dt></dt><dd>Establishes the period of time from a receiver's last activity to the deletion of the receiver's state and cache by the Store. </dd></dl>
+<dl class="section user"><dt></dt><dd>You can also configure a <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/ume.tag:../UME/" href="../UME/optionsforastoresumeattributeselement.html#umecfgreceiverstatelifetime">receiver-state-lifetime</a> for the receiver's topic on the Store. The Store uses whichever is shorter. The default value of 0 (zero) disables this option. </dd></dl>
+<dl class="section user"><dt></dt><dd>See also <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/ume.tag:../UME/" href="../UME/persistencefaulttolerance.html#persistenceproxysources">Persistence Proxy Sources</a>.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>receiver </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
 <tr>
 <td><em>Units:</em> </td><td>milliseconds </td></tr>
 <tr>
-<td><em>Default value:</em> </td><td>0 (zero) </td></tr>
+<td><em>Default value:</em> </td><td>0 (disables lifetime) </td></tr>
 <tr>
 <td><em>When to Set:</em> </td><td>Can only be set during object initialization.</td></tr>
 </table>
@@ -1243,18 +1267,18 @@ ume_state_lifetime (receiver)&nbsp;&nbsp;<small><a href="#umestatelifetimereceiv
  </p>
 <h2><a class="anchor" id="umestatelifetimesource"></a>
 ume_state_lifetime (source)&nbsp;&nbsp;<small><a href="#umestatelifetimesource">&lt;-</a></small></h2>
-<dl class="section user"><dt></dt><dd>Establishes the period of time from a source's last activity to the deletion of the source's state and cache by the store, regardless of whether a proxy source has been created or not. </dd></dl>
-<dl class="section user"><dt></dt><dd>You can also configure a <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/ume.tag:../UME/" href="../UME/configurationreferenceforumestored.html#umecfgsourcestatelifetime">source-state-lifetime</a> for the source's topic on the store. The store uses whichever is shorter. The default value of 0 (zero) disables this option. </dd></dl>
-<dl class="section user"><dt></dt><dd>See also <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/ume.tag:../UME/" href="../UME/persistencefaulttolerance.html#persistenceproxysources">Persistence Proxy Sources</a>.</dd></dl>
+<dl class="section user"><dt></dt><dd>Establishes the period of time from a source's last activity to the deletion of the source's state and cache by the Store, regardless of whether a proxy source has been created or not. </dd></dl>
+<dl class="section user"><dt></dt><dd>You can also configure a <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/ume.tag:../UME/" href="../UME/optionsforastoresumeattributeselement.html#umecfgsourcestatelifetime">source-state-lifetime</a> for the source's topic on the Store. The Store uses whichever is shorter. The default value of 0 (zero) disables this option. </dd></dl>
+<dl class="section user"><dt></dt><dd>See also <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/ume.tag:../UME/" href="../UME/persistencefaulttolerance.html#persistenceproxysources">Persistence Proxy Sources</a>.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>source </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
 <tr>
 <td><em>Units:</em> </td><td>milliseconds </td></tr>
 <tr>
-<td><em>Default value:</em> </td><td>0 (zero) </td></tr>
+<td><em>Default value:</em> </td><td>0 (disables lifetime) </td></tr>
 <tr>
 <td><em>When to Set:</em> </td><td>Can only be set during object initialization.</td></tr>
 </table>
@@ -1263,19 +1287,19 @@ ume_state_lifetime (source)&nbsp;&nbsp;<small><a href="#umestatelifetimesource">
  </p>
 <h2><a class="anchor" id="umestoresource"></a>
 ume_store (source)&nbsp;&nbsp;<small><a href="#umestoresource">&lt;-</a></small></h2>
-<dl class="section user"><dt></dt><dd>Enable persistence for this source and add a store specification to the list of stores specified for the source. Unlike most other UME settings, every time this setting is called, it adds another store specification to the list and does NOT overwrite previous specifications. </dd></dl>
-<dl class="section user"><dt></dt><dd>Each entry contains the IP address, TCP port, registration ID, and group index for the store. For the configuration file as well as API string setting functions, the string value for this option is formatted as "DomainID:IP:port:RegID:GroupIDX" where DomainID is the store's UM domain ID, IP is the store's IP address, port is the TCP port for the store, RegID is the registration ID that the source desires to use, and GroupIDX is the group index that the store belongs to. The DomainID, RegID, and GroupIDX pieces may be left off the string if desired. If so, UMP assumes the value of 0 for them. </dd></dl>
+<dl class="section user"><dt></dt><dd>Enable persistence for this source and add a Store specification to the current list of Stores specified for the source. Unlike most other UM settings, every time this setting is called, it adds another Store specification to the list and does NOT overwrite previous specifications. </dd></dl>
+<dl class="section user"><dt></dt><dd>Each entry contains the IP address, TCP port, registration ID, and group index for the Store. For the configuration file as well as API string setting functions, the string value for this option is formatted as "DomainID:IP:port:RegID:GroupIDX" where DomainID is the Store's UM domain ID, IP is the Store's IP address, port is the TCP port for the Store, RegID is the registration ID that the source desires to use, and GroupIDX is the group index that the Store belongs to. The DomainID, RegID, and GroupIDX pieces may be left off the string if desired. If so, UM assumes the value of 0 for them. </dd></dl>
 <dl class="section user"><dt></dt><dd></dd></dl>
 <dl class="section note"><dt>Note</dt><dd>Multiple QC groups is deprecated and may be removed from a future version of UM. Users of multiple QC groups are encouraged to migrate their source configurations to use a single group of Stores for QC. </dd></dl>
-<dl class="section user"><dt></dt><dd>With most configuration options, a previously-specified value can be overridden by simply specifying the option again with a new value. However, because each occurrence of <b><code>ume_store</code></b> adds a new store specification, use the IP address 0.0.0.0 and TCP port 0 to remove all previously specified stores. This allows subsequent store specifications to, in effect, override the earlier stores. </dd></dl>
-<dl class="section user"><dt></dt><dd>One or more stores means the source will use persistence. If no stores are specified, then persistence will not be provided for the source. </dd></dl>
-<dl class="section user"><dt></dt><dd>When the binary form of option setting is used, UM does NOT expect an array of structures. Instead, only one Store specification can be supplied for each call to <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a96ea052dce2e6376684cbf2003407cbf">lbm_src_topic_attr_setopt()</a>. However, when the binary form of option retrieval <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a434a1c5f20dc79c81a2df6d8fa47859f">lbm_src_topic_attr_getopt()</a> is used, the list of Stores is returned as an array, and the <b><code>optlen</code></b> parameter should be set as: <pre class="fragment">optlen = (max_num_stores * sizeof(lbm_ume_store_entry_t));
+<dl class="section user"><dt></dt><dd>With most configuration options, a previously-specified value can be overridden by simply specifying the option again with a new value. However, because each occurrence of <b><code>ume_store</code></b> adds a new Store specification, use the IP address 0.0.0.0 and TCP port 0 to remove all previously specified Stores. This allows subsequent Store specifications to, in effect, override the earlier Stores. </dd></dl>
+<dl class="section user"><dt></dt><dd>One or more Stores means the source will use persistence. If no Stores are specified, then persistence will not be provided for the source. </dd></dl>
+<dl class="section user"><dt></dt><dd>When the binary form of option setting is used, UM does NOT expect an array of structures. Instead, only one Store specification can be supplied for each call to <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a96ea052dce2e6376684cbf2003407cbf">lbm_src_topic_attr_setopt()</a>. However, when the binary form of option retrieval <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a434a1c5f20dc79c81a2df6d8fa47859f">lbm_src_topic_attr_getopt()</a> is used, the list of Stores is returned as an array, and the <b><code>optlen</code></b> parameter should be set as: <pre class="fragment">optlen = (max_num_stores * sizeof(lbm_ume_store_entry_t));
 </pre></dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>source </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#aa86a12d5efc42a997eb6b61334241bc0">lbm_ume_store_entry_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#aa86a12d5efc42a997eb6b61334241bc0">lbm_ume_store_entry_t</a></b> </td></tr>
 <tr>
 <td><em>When to Set:</em> </td><td>Can only be set during object initialization.</td></tr>
 </table>
@@ -1284,13 +1308,13 @@ ume_store (source)&nbsp;&nbsp;<small><a href="#umestoresource">&lt;-</a></small>
  </p>
 <h2><a class="anchor" id="umestoreactivitytimeoutsource"></a>
 ume_store_activity_timeout (source)&nbsp;&nbsp;<small><a href="#umestoreactivitytimeoutsource">&lt;-</a></small></h2>
-<dl class="section user"><dt></dt><dd>The timeout value used to indicate when a store is unresponsive. </dd></dl>
-<dl class="section user"><dt></dt><dd>The store must not be active within this interval to be considered unresponsive. This value must be much larger than the check interval.</dd></dl>
+<dl class="section user"><dt></dt><dd>The timeout value used to indicate when a Store is unresponsive. </dd></dl>
+<dl class="section user"><dt></dt><dd>The Store must not be active within this interval to be considered unresponsive. This value must be much larger than the check interval.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>source </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
 <tr>
 <td><em>Units:</em> </td><td>milliseconds </td></tr>
 <tr>
@@ -1303,7 +1327,7 @@ ume_store_activity_timeout (source)&nbsp;&nbsp;<small><a href="#umestoreactivity
  </p>
 <h2><a class="anchor" id="umestorebehaviorsource"></a>
 ume_store_behavior (source)&nbsp;&nbsp;<small><a href="#umestorebehaviorsource">&lt;-</a></small></h2>
-<dl class="section user"><dt></dt><dd>The behavior that the source follows for handling store failures. </dd></dl>
+<dl class="section user"><dt></dt><dd>The behavior that the source follows for handling Store failures. </dd></dl>
 <dl class="section user"><dt></dt><dd>Only quorum-consensus is allowed. The option is retained for backwards compatibility purposes.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
@@ -1319,20 +1343,20 @@ ume_store_behavior (source)&nbsp;&nbsp;<small><a href="#umestorebehaviorsource">
 <tr>
 <th>String value </th><th>Integer value </th><th>Description </th></tr>
 <tr>
-<td>"qc", "quorum-consensus" </td><td>LBM_SRC_TOPIC_ATTR_UME_STORE_BEHAVIOR_QC </td><td>The source uses multiple stores at the same time based on store and store group configuration. <b>Default for all.</b> </td></tr>
+<td>"qc", "quorum-consensus" </td><td>LBM_SRC_TOPIC_ATTR_UME_STORE_BEHAVIOR_QC </td><td>The source uses multiple Stores at the same time based on Store and Store group configuration. <b>Default for all.</b> </td></tr>
 </table>
 </dd></dl>
 <p><br />
  </p>
 <h2><a class="anchor" id="umestorecheckintervalsource"></a>
 ume_store_check_interval (source)&nbsp;&nbsp;<small><a href="#umestorecheckintervalsource">&lt;-</a></small></h2>
-<dl class="section user"><dt></dt><dd>The interval between activity checks of the current store. </dd></dl>
+<dl class="section user"><dt></dt><dd>The interval between activity checks of the current Store. </dd></dl>
 <dl class="section user"><dt></dt><dd>This interval also governs how often a source checks outstanding unstabilized messages to see if they have reached the configured <a class="el" href="grpultramessagingpersistence.html#umemessagestabilitytimeoutsource">ume_message_stability_timeout (source)</a> value yet.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>source </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
 <tr>
 <td><em>Units:</em> </td><td>milliseconds </td></tr>
 <tr>
@@ -1345,18 +1369,18 @@ ume_store_check_interval (source)&nbsp;&nbsp;<small><a href="#umestorecheckinter
  </p>
 <h2><a class="anchor" id="umestoregroupsource"></a>
 ume_store_group (source)&nbsp;&nbsp;<small><a href="#umestoregroupsource">&lt;-</a></small></h2>
-<dl class="section user"><dt></dt><dd>Add a store group specification to the list of store groups specified for the source. </dd></dl>
-<dl class="section user"><dt></dt><dd>Unlike other UME settings, every time this setting is called, it adds another store group specification to the list and does NOT overwrite previous specifications. Each entry contains the group index and group size for the group. For the configuration file as well as string versions of setting this option, the string value is formatted as "GroupIDX:GroupSZ" where GroupIDX is the index of the group and GroupSZ is the size of the group. Because each entry adds a new store specification and does not overwrite previous values, an entry or string with the group index of 0 and group size of 0 will cause all previous store group specifications to be removed. </dd></dl>
+<dl class="section user"><dt></dt><dd>Add a Store group specification to the list of Store groups specified for the source. </dd></dl>
+<dl class="section user"><dt></dt><dd>Unlike other UM settings, every time this setting is called, it adds another Store group specification to the list and does NOT overwrite previous specifications. Each entry contains the group index and group size for the group. For the configuration file as well as string versions of setting this option, the string value is formatted as "GroupIDX:GroupSZ" where GroupIDX is the index of the group and GroupSZ is the size of the group. Because each entry adds a new Store specification and does not overwrite previous values, an entry or string with the group index of 0 and group size of 0 will cause all previous Store group specifications to be removed. </dd></dl>
 <dl class="section user"><dt></dt><dd></dd></dl>
 <dl class="section note"><dt>Note</dt><dd>Multiple QC groups is deprecated and may be removed from a future version of UM. Users of multiple QC groups are encouraged to migrate their source configurations to use a single group of Stores for QC. </dd></dl>
 <dl class="section user"><dt></dt><dd>Note: When setting this option multiple times, you must set this option in group-index order, from lowest to highest. In other words, do not set this option for a group index lower in value than any previously set group index value. </dd></dl>
-<dl class="section user"><dt></dt><dd>When the binary form of option setting is used, UM does NOT expect an array of structures. Instead, only one group specification can be supplied for each call to <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a96ea052dce2e6376684cbf2003407cbf">lbm_src_topic_attr_setopt()</a>. However, when the binary form of option retrieval <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a434a1c5f20dc79c81a2df6d8fa47859f">lbm_src_topic_attr_getopt()</a> is used, the list of groups is returned as an array, and the <b><code>optlen</code></b> parameter should be set as: <pre class="fragment">optlen = (max_num_store_groups * sizeof(lbm_ume_store_group_entry_t));
+<dl class="section user"><dt></dt><dd>When the binary form of option setting is used, UM does NOT expect an array of structures. Instead, only one group specification can be supplied for each call to <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a96ea052dce2e6376684cbf2003407cbf">lbm_src_topic_attr_setopt()</a>. However, when the binary form of option retrieval <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a434a1c5f20dc79c81a2df6d8fa47859f">lbm_src_topic_attr_getopt()</a> is used, the list of groups is returned as an array, and the <b><code>optlen</code></b> parameter should be set as: <pre class="fragment">optlen = (max_num_store_groups * sizeof(lbm_ume_store_group_entry_t));
 </pre></dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>source </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a6322c18b4e126e9ad594401cbba9cf13">lbm_ume_store_group_entry_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a6322c18b4e126e9ad594401cbba9cf13">lbm_ume_store_group_entry_t</a></b> </td></tr>
 <tr>
 <td><em>When to Set:</em> </td><td>Can only be set during object initialization.</td></tr>
 </table>
@@ -1365,17 +1389,17 @@ ume_store_group (source)&nbsp;&nbsp;<small><a href="#umestoregroupsource">&lt;-<
  </p>
 <h2><a class="anchor" id="umestorenamesource"></a>
 ume_store_name (source)&nbsp;&nbsp;<small><a href="#umestorenamesource">&lt;-</a></small></h2>
-<dl class="section user"><dt></dt><dd>Add a named store specification to the list of stores specified for the source. </dd></dl>
-<dl class="section user"><dt></dt><dd>Unlike other UME settings, every time this setting is called, it adds another store specification to the list and does NOT overwrite previous specifications. Each entry contains the store name, registration ID, and group index for the store. For the configuration file as well as string versions of setting this option, the string value is formatted as "name:RegID:GroupIDX" where <b><code>name</code></b> is the name of the store configured with the store attribute, <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/ume.tag:../UME/" href="../UME/configurationreferenceforumestored.html#umecfgcontextname">context-name</a> in the <b><code>umestored</code></b> XML configuration file, RegID is the registration ID that the source desires to use, and GroupIDX is the group index that the store belongs to. The RegID and GroupIDX pieces may be left off the string if desired. If so, then the value of 0 is assumed for them. Store names are restricted to 128 characters in length, and may contain only alphanumeric characters, hyphens, and underscores. </dd></dl>
+<dl class="section user"><dt></dt><dd>Add a named Store specification to the list of Stores specified for the source. </dd></dl>
+<dl class="section user"><dt></dt><dd>Unlike other UM settings, every time this setting is called, it adds another Store specification to the list and does NOT overwrite previous specifications. Each entry contains the Store context name, registration ID, and group index for the Store. For the configuration file as well as string versions of setting this option, the string value is formatted as <b>"name:RegID:GroupIDX"</b> where <b>"name"</b> is the context name of the Store, (configured with the Store option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/ume.tag:../UME/" href="../UME/optionsforastoresumeattributeselement.html#umecfgcontextname">context-name</a>), <b>"RegID"</b> is the registration ID that the source desires to use, and <b>"GroupIDX"</b> is the group index that the Store belongs to. The RegID and GroupIDX pieces may be left off the string if desired. If so, then the value of 0 is assumed for them. Store context names are restricted to 128 characters in length, and may contain only alphanumeric characters, hyphens, and underscores. </dd></dl>
 <dl class="section user"><dt></dt><dd></dd></dl>
 <dl class="section note"><dt>Note</dt><dd>Multiple QC groups is deprecated and may be removed from a future version of UM. Users of multiple QC groups are encouraged to migrate their source configurations to use a single group of Stores for QC. </dd></dl>
-<dl class="section user"><dt></dt><dd>When the binary form of option setting is used, UM does NOT expect an array of structures. Instead, only one named store specification can be supplied for each call to <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a96ea052dce2e6376684cbf2003407cbf">lbm_src_topic_attr_setopt()</a>. However, when the binary form of option retrieval <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a434a1c5f20dc79c81a2df6d8fa47859f">lbm_src_topic_attr_getopt()</a> is used, the list of named stores is returned as an array, and the <b><code>optlen</code></b> parameter should be set as: <pre class="fragment">optlen = (max_num_stores * sizeof(lbm_ume_store_name_entry_t));
+<dl class="section user"><dt></dt><dd>When the binary form of option setting is used, UM does NOT expect an array of structures. Instead, only one named Store specification can be supplied for each call to <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a96ea052dce2e6376684cbf2003407cbf">lbm_src_topic_attr_setopt()</a>. However, when the binary form of option retrieval <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a434a1c5f20dc79c81a2df6d8fa47859f">lbm_src_topic_attr_getopt()</a> is used, the list of named Stores is returned as an array, and the <b><code>optlen</code></b> parameter should be set as: <pre class="fragment">optlen = (max_num_stores * sizeof(lbm_ume_store_name_entry_t));
 </pre></dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>source </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#ab6e8607b85d13bf38275a8632d7c801a">lbm_ume_store_name_entry_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#ab6e8607b85d13bf38275a8632d7c801a">lbm_ume_store_name_entry_t</a></b> </td></tr>
 <tr>
 <td><em>When to Set:</em> </td><td>Can only be set during object initialization.</td></tr>
 </table>
@@ -1384,9 +1408,13 @@ ume_store_name (source)&nbsp;&nbsp;<small><a href="#umestorenamesource">&lt;-</a
  </p>
 <h2><a class="anchor" id="umeuseackbatchingreceiver"></a>
 ume_use_ack_batching (receiver)&nbsp;&nbsp;<small><a href="#umeuseackbatchingreceiver">&lt;-</a></small></h2>
-<dl class="section user"><dt></dt><dd>Specifies whether or not UME allows the batching of consumption acknowledgments sent to the store(s). </dd></dl>
-<dl class="section user"><dt></dt><dd>If enabled, UME checks for contiguous sequence numbered messages at the See also <a class="el" href="grpultramessagingpersistence.html#umeackbatchingintervalcontext">ume_ack_batching_interval (context)</a>. </dd></dl>
-<dl class="section user"><dt></dt><dd>See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/ume.tag:../UME/" href="../UME/designingpersistenceapplications.html#batchingacknowledgments">Batching Acknowledgments</a> for more information.</dd></dl>
+<dl class="section user"><dt></dt><dd>Enables automatic implicit batching of consumption acknowledgements by a persistent receiver. </dd></dl>
+<dl class="section user"><dt></dt><dd>Automatic batching of consumption acknowledgements improves average latency and throughput of a persistent receiver. The batching timer is set with <a class="el" href="grpultramessagingpersistence.html#umeackbatchingintervalcontext">ume_ack_batching_interval (context)</a>. </dd></dl>
+<dl class="section user"><dt></dt><dd></dd></dl>
+<dl class="section warning"><dt>Warning</dt><dd>If this option is disabled, the application must ensure that messages are ACKed in the order received. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/ume.tag:../UME/" href="../UME/designingpersistentreceivers.html#ackordering">ACK Ordering</a>. </dd></dl>
+<dl class="section user"><dt></dt><dd>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/ume.tag:../UME/" href="../UME/designingpersistentreceivers.html#persistencemessageconsumption">Persistence Message Consumption</a> for a full explanation of consumption acknowledgements. </dd></dl>
+<dl class="section user"><dt></dt><dd></dd></dl>
+<dl class="section note"><dt>Note</dt><dd>This option is incompatible with <a class="el" href="grpultramessagingpersistence.html#umeexplicitackonlyreceiver">ume_explicit_ack_only (receiver)</a>. If explicit ACK is turned on, this option is silently turned off. If both are turned on, the last one configured turns off the other.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>receiver </td></tr>
@@ -1403,9 +1431,9 @@ ume_use_ack_batching (receiver)&nbsp;&nbsp;<small><a href="#umeuseackbatchingrec
 <tr>
 <th>Value </th><th>Description </th></tr>
 <tr>
-<td>1 </td><td>Indicates that UME can acknowledge the consumption of a batch of messages. <b>Default for all.</b> </td></tr>
+<td>1 </td><td>UM automatically sends acknowledges of batches of consumed messages to the persistent Store. <b>Default for all.</b> </td></tr>
 <tr>
-<td>0 </td><td><p class="starttd">Indicates that UME acknowledges the consumption of individual messages by the receiver.</p>
+<td>0 </td><td><p class="starttd">The application directly controls the sending of acknowledgements to the persistent Store.</p>
 <p class="endtd"></p>
 </td></tr>
 </table>
@@ -1441,7 +1469,7 @@ ume_use_late_join (receiver)&nbsp;&nbsp;<small><a href="#umeuselatejoinreceiver"
  </p>
 <h2><a class="anchor" id="umeusestorereceiver"></a>
 ume_use_store (receiver)&nbsp;&nbsp;<small><a href="#umeusestorereceiver">&lt;-</a></small></h2>
-<dl class="section user"><dt></dt><dd>Flag indicating if the receiver should participate in using a persistent store or not. </dd></dl>
+<dl class="section user"><dt></dt><dd>Flag indicating if the receiver should participate in using a persistent Store or not. </dd></dl>
 <dl class="section user"><dt></dt><dd>If "0" is supplied, the receiver will join as a streaming receiver.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
@@ -1457,9 +1485,9 @@ ume_use_store (receiver)&nbsp;&nbsp;<small><a href="#umeusestorereceiver">&lt;-<
 <tr>
 <th>Value </th><th>Description </th></tr>
 <tr>
-<td>1 </td><td>The receiver will participate in using a persistent store if requested to by the source. <b>Default for all.</b> </td></tr>
+<td>1 </td><td>The receiver will participate in using a persistent Store if requested to by the source. <b>Default for all.</b> </td></tr>
 <tr>
-<td>0 </td><td><p class="starttd">The receiver will not participate in using a persistent store even if requested to by the source.</p>
+<td>0 </td><td><p class="starttd">The receiver will not participate in using a persistent Store even if requested to by the source.</p>
 <p class="endtd"></p>
 </td></tr>
 </table>
@@ -1469,12 +1497,12 @@ ume_use_store (receiver)&nbsp;&nbsp;<small><a href="#umeusestorereceiver">&lt;-<
 <h2><a class="anchor" id="umeuserreceiverregistrationidcontext"></a>
 ume_user_receiver_registration_id (context)&nbsp;&nbsp;<small><a href="#umeuserreceiverregistrationidcontext">&lt;-</a></small></h2>
 <dl class="section user"><dt></dt><dd>32-bit value that is used as a user set identifier to be included as the receiver registration ID in acknowledgements send by any receivers in the context to sources as confirmed delivery notifications. </dd></dl>
-<dl class="section user"><dt></dt><dd>The value is not interpreted by UME in any way and has no relation to registration IDs used by the receiver. A value of 0 indicates no user set value is in use and should not be sent with acknowledgements</dd></dl>
+<dl class="section user"><dt></dt><dd>The value is not interpreted by UM in any way and has no relation to registration IDs used by the receiver. A value of 0 indicates no user set value is in use and should not be sent with acknowledgements</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>context </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#abdb96b55cc467a75e1f9ec0036dbc14b">lbm_uint_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#abdb96b55cc467a75e1f9ec0036dbc14b">lbm_uint_t</a></b> </td></tr>
 <tr>
 <td><em>Units:</em> </td><td>identifier </td></tr>
 <tr>
@@ -1487,14 +1515,17 @@ ume_user_receiver_registration_id (context)&nbsp;&nbsp;<small><a href="#umeuserr
  </p>
 <h2><a class="anchor" id="umewritedelaysource"></a>
 ume_write_delay (source)&nbsp;&nbsp;<small><a href="#umewritedelaysource">&lt;-</a></small></h2>
-<dl class="section user"><dt></dt><dd>For Receiver-paced Persistence (RPP) sources with a <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/ume.tag:../UME/" href="../UME/configurationreferenceforumestored.html#umecfgrepositorytype">repository-type</a> of <b><code>disk</code></b>, specifies the delay in milliseconds the store should delay before persisting a message to disk. </dd></dl>
-<dl class="section user"><dt></dt><dd>This source option is ignored if RPP is not enabled. For non-RPP sources, the store's write delay is controlled directly by the store's <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/ume.tag:../UME/" href="../UME/configurationreferenceforumestored.html#umecfgrepositorydiskwritedelay">repository-disk-write-delay</a> configuration element. </dd></dl>
-<dl class="section user"><dt></dt><dd>When RPP is enabled, the store range checks this option's value against the repository element <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/ume.tag:../UME/" href="../UME/configurationreferenceforumestored.html#umecfgrepositorydiskwritedelay">repository-disk-write-delay</a>, and rejects the registration if the source requests a longer delay than that store's limit. As long as the source request is less than or equal to <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/ume.tag:../UME/" href="../UME/configurationreferenceforumestored.html#umecfgrepositorydiskwritedelay">repository-disk-write-delay</a>, the store will use the source's value in its operation. The default value (zero) causes the store to use its <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/ume.tag:../UME/" href="../UME/configurationreferenceforumestored.html#umecfgrepositorydiskwritedelay">repository-disk-write-delay</a> value. See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/ume.tag:../UME/" href="../UME/operationalview.html#implementingrpp">Implementing RPP</a> for more information on the coordination between RPP source and store configuration options.</dd></dl>
+<dl class="section user"><dt></dt><dd>For Receiver-paced Persistence (RPP) sources, overrides the Store's configured write delay setting. </dd></dl>
+<dl class="section user"><dt></dt><dd>The Store's write delay setting is configured by the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/ume.tag:../UME/" href="../UME/optionsforastoresumeattributeselement.html#umecfgrepositorydiskwritedelay">repository-disk-write-delay</a> option. For RPP, this source option can be used to override the Store's setting. </dd></dl>
+<dl class="section user"><dt></dt><dd>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/ume.tag:../UME/" href="../UME/optionsforastoresumeattributeselement.html#umecfgrepositorydiskwritedelay">repository-disk-write-delay</a> for more information on the option. </dd></dl>
+<dl class="section user"><dt></dt><dd>This option is ignored for SPP repositories. </dd></dl>
+<dl class="section user"><dt></dt><dd>For RPP, see <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/ume.tag:../UME/" href="../UME/specialconfigurationtopics.html#rppconfigurationspecifics">RPP Configuration Specifics</a> for interactions between this and other configuration options. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/ume.tag:../UME/" href="../UME/operationalview.html#receiverpacedpersistenceoperations">RPP: Receiver-Paced Persistence</a> for general information on RPP. </dd></dl>
+<dl class="section user"><dt></dt><dd>When the source overrides the Store's configured value, it must not exceed that value. If the source's ume_write_delay exceeds the Store's repository-disk-write-delay, the source's registration is rejected.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>source </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a5dfd61ade99cd24213125c293b15ef4a">lbm_uint32_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a5dfd61ade99cd24213125c293b15ef4a">lbm_uint32_t</a></b> </td></tr>
 <tr>
 <td><em>Units:</em> </td><td>milliseconds </td></tr>
 <tr>
@@ -1505,6 +1536,48 @@ ume_write_delay (source)&nbsp;&nbsp;<small><a href="#umewritedelaysource">&lt;-<
 <td><em>Version:</em> </td><td>This option was implemented in UME 5.3 </td></tr>
 </table>
 </dd></dl>
+<p><br />
+<br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+</p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.8.11-->

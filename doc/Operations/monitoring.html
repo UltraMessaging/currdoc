@@ -99,7 +99,7 @@ LBT-RM and LBT-RU Source Statistics&nbsp;&nbsp;<small><a href="#lbtrmandlbtrusou
 <li>
 <b>rxs_sent</b> indicates that some lost messages are being recovered, but the reason for the loss should be investigated and corrected. </li>
 <li>
-<b>naks_shed</b> indicates the number of retransmission requests (NAKs) the source transport has not fulfilled, sending a NCF instead. This statistics can help pinpoint transport bottlenecks, such as the configuration options <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Operations/config.tag:../Config/" href="../Config/grptransportlbtrmoperation.html#transportlbtrmretransmitratelimitcontext">transport_lbtrm_retransmit_rate_limit (context)</a> and <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Operations/config.tag:../Config/" href="../Config/grptransportlbtruoperation.html#transportlbtruretransmitratelimitcontext">transport_lbtru_retransmit_rate_limit (context)</a>. </li>
+<b>naks_shed</b> indicates the number of retransmission requests (NAKs) the source transport has not fulfilled, sending a NCF instead. This statistics can help pinpoint transport bottlenecks, such as the configuration options <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Operations/config.tag:../Config/" href="../Config/grptransportlbtrmoperation.html#transportlbtrmretransmitratelimitcontext">transport_lbtrm_retransmit_rate_limit (context)</a> and <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Operations/config.tag:../Config/" href="../Config/grptransportlbtruoperation.html#transportlbtruretransmitratelimitcontext">transport_lbtru_retransmit_rate_limit (context)</a>. </li>
 </ul>
 <p>For additional information, see <a class="el" href="ummonitoringstatistics.html#monitoringsendingstatistics">Monitoring Sending Statistics</a>.</p>
 <p><br />
@@ -137,8 +137,8 @@ Monitoring Application Log Messages&nbsp;&nbsp;<small><a href="#monitoringapplic
  </p>
 <h1><a class="anchor" id="monitoringthepersistentstoredaemonumestored"></a>
 Monitoring the Persistent Store Daemon (umestored)&nbsp;&nbsp;<small><a href="#monitoringthepersistentstoredaemonumestored">&lt;-</a></small></h1>
-<p>With the UMP/UMQ products, the Persistent Store provides persistence services to UM sources and receivers. Multiple stores are typically configured in Quorum/Consensus. Monitor every store process.</p>
-<p>Monitor the following for all stores. </p><ul>
+<p>With the UMP/UMQ products, the Persistent Store provides persistence services to UM sources and receivers. Multiple Stores are typically configured in Quorum/Consensus. Monitor every Store process.</p>
+<p>Monitor the following for all Stores. </p><ul>
 <li>
 Store log files </li>
 <li>
@@ -152,9 +152,9 @@ Persistent Store daemon web monitor </li>
  </p>
 <h2><a class="anchor" id="monitoringstorelogfile"></a>
 Monitoring Store Log File&nbsp;&nbsp;<small><a href="#monitoringstorelogfile">&lt;-</a></small></h2>
-<p>The store generates log messages that are used to monitor its health and operation. There is some flexibility on where those log messages are written; see <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Operations/ume.tag:../UME/" href="../UME/designingpersistenceapplications.html#storelogfile">Store Log File</a>. Each store daemon should have its own log file.</p>
-<p>To prevent unbounded disk file growth, the Persistent Store log file can be configured to automatically roll. See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Operations/ume.tag:../UME/" href="../UME/designingpersistenceapplications.html#storerollinglogs">Store Rolling Logs</a> for more information.</p>
-<p>The following lists critical things to monitor in a store log file:</p>
+<p>The Store generates log messages that are used to monitor its health and operation. There is some flexibility on where those log messages are written; see <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Operations/ume.tag:../UME/" href="../UME/designingpersistentstores.html#storelogfile">Store Log File</a>. Each Store daemon should have its own log file.</p>
+<p>To prevent unbounded disk file growth, the Persistent Store log file can be configured to automatically roll. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Operations/ume.tag:../UME/" href="../UME/designingpersistentstores.html#storerollinglogs">Store Rolling Logs</a> for more information.</p>
+<p>The following lists critical things to monitor in a Store log file:</p>
 <ul>
 <li>
 aio_warnings - may indicate a problem with the disk (disk full, cannot write, etc.) </li>
@@ -173,24 +173,24 @@ Monitoring a Store's Internal Transport Statistics&nbsp;&nbsp;<small><a href="#m
 <li>
 Enable Automatic Monitoring in the UM configuration file cited in the umestored XML configuration file's "&lt;daemon&gt;" element. </li>
 <li>
-For each store configured in the umestored XML configuration file, add a "&lt;context-name&gt;" element. Automatic Monitoring then maintains complete transport statistics for each store at the interval set in the UM configuration file. </li>
+For each Store configured in the umestored XML configuration file, add a "&lt;context-name&gt;" element. Automatic Monitoring then maintains complete transport statistics for each Store at the interval set in the UM configuration file. </li>
 </ol>
 <p><br />
  </p>
 <h2><a class="anchor" id="persistentstorewebmonitoring"></a>
 Persistent Store Web Monitoring&nbsp;&nbsp;<small><a href="#persistentstorewebmonitoring">&lt;-</a></small></h2>
-<p>For information about umestored statistics see <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Operations/ume.tag:../UME/" href="../UME/storewebmonitor.html">Store Web Monitor</a>.</p>
-<p>The web address of th Store Web Monitor is configured in the store XML configuration file. See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Operations/ume.tag:../UME/" href="../UME/configurationreferenceforumestored.html#umeelementdaemon">&lt;daemon&gt;</a>.</p>
+<p>For information about umestored statistics see <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Operations/ume.tag:../UME/" href="../UME/storewebmonitor.html">Store Web Monitor</a>.</p>
+<p>The web address of th Store Web Monitor is configured in the Store XML configuration file. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Operations/ume.tag:../UME/" href="../UME/configurationreferenceforumestored.html#umeelementdaemon">&lt;daemon&gt;</a>.</p>
 <p>You can monitor the following information on the umestored Web Monitor:</p>
 <ul>
 <li>
-List of stores the daemon is running. </li>
+List of Stores the daemon is running. </li>
 <li>
-List of topics and wildcard topic patterns for each store, along with registration IDs for the sources sending on the topics. </li>
+List of topics and wildcard topic patterns for each Store, along with registration IDs for the sources sending on the topics. </li>
 <li>
 Source and receiver information for each topic. </li>
 <li>
-Ultra Messaging statistics or transport-level statistics for underlying receivers in the store. These are similar to the transport statistics mentioned earlier, however they indicate how the store is communicating with its sources for a given topic. For example, a non-zero number of naks_sent indicates that the store is experiencing some loss. </li>
+Ultra Messaging statistics or transport-level statistics for underlying receivers in the Store. These are similar to the transport statistics mentioned earlier, however they indicate how the Store is communicating with its sources for a given topic. For example, a non-zero number of naks_sent indicates that the Store is experiencing some loss. </li>
 </ul>
 <p>TIP: You can build a script that executes the Linux wget command at a 5 second interval to get a web monitor screen shot and save it to a directory or file.</p>
 <p><br />
@@ -199,30 +199,30 @@ Ultra Messaging statistics or transport-level statistics for underlying receiver
 Persistent Store Daemon Statistics&nbsp;&nbsp;<small><a href="#persistentstoredaemonstatistics">&lt;-</a></small></h2>
 <p>The Persistent Store daemon has a simple web server which provides operational information. However, while the web-based presentation is convenient for manual, on-demand monitoring, it is not suitable for automated collection and recording of operational information for historical analysis.</p>
 <p>Starting with UM version 6.11, a feature called "Daemon Statistics" has been added to the Store daemon. This feature supports the background publishing of their operational information via UM messages. System designers can now subscribe to this information for their own automated monitoring systems.</p>
-<p>See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Operations/ume.tag:../UME/" href="../UME/storedaemonstatistics.html">Store Daemon Statistics</a> for general information on Daemon Statistics, followed by specific information regarding the Store.</p>
+<p>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Operations/ume.tag:../UME/" href="../UME/storedaemonstatistics.html">Store Daemon Statistics</a> for general information on Daemon Statistics, followed by specific information regarding the Store.</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="detectingpersistentstorefailures"></a>
 Detecting Persistent Store Failures&nbsp;&nbsp;<small><a href="#detectingpersistentstorefailures">&lt;-</a></small></h2>
-<p>You can detect the loss of a store with the following.</p>
+<p>You can detect the loss of a Store with the following.</p>
 <ul>
 <li>
 Loss of the Persistent Store's Process ID (PID) </li>
 <li>
-Application log messages stating the loss of connection to the store </li>
+Application log messages stating the loss of connection to the Store </li>
 </ul>
-<p>Stores can also be "too busy" and therefore cannot service source and receiving applications. Sources declare a store inactive with the <b>LBM_SRC_EVENT_UME_STORE_UNRESPONSIVE</b> event when the store's activity timeout expires. This can be caused by the following.</p>
+<p>Stores can also be "too busy" and therefore cannot service source and receiving applications. Sources declare a Store inactive with the <b>LBM_SRC_EVENT_UME_STORE_UNRESPONSIVE</b> event when the Store's activity timeout expires. This can be caused by the following.</p>
 <ul>
 <li>
 Disk is too busy (or when the system starts swapping) </li>
 <li>
-The store is processing an overly-large load of recovery traffic. You may want to recommend that UM administrators consider a larger quorum / consensus group size. </li>
+The Store is processing an overly-large load of recovery traffic. You may want to recommend that UM administrators consider a larger quorum / consensus group size. </li>
 </ul>
 <p><br />
  </p>
 <h1><a class="anchor" id="monitoringtheumrouterdaemontnwgd"></a>
 Monitoring the DRO Daemon (tnwgd)&nbsp;&nbsp;<small><a href="#monitoringtheumrouterdaemontnwgd">&lt;-</a></small></h1>
-<p>The Ultra Messaging <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Operations/design.tag:../Design/" href="../Design/fundamentalconcepts.html#umrouter">DRO</a> links disjoint topic resolution domains by forwarding multicast and/or unicast topic resolution traffic ensuring that receivers on the "other" side of the DRO receive the topics to which they subscribe.</p>
+<p>The Ultra Messaging <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Operations/design.tag:../Design/" href="../Design/fundamentalconcepts.html#umrouter">DRO</a> links disjoint topic resolution domains by forwarding multicast and/or unicast topic resolution traffic ensuring that receivers on the "other" side of the DRO receive the topics to which they subscribe.</p>
 <p>Understand DRO (tnwgd) output traffic and WAN impacts - especially the use of rate limiters.</p>
 <ul>
 <li>
@@ -248,8 +248,8 @@ DRO daemon web monitor </li>
  </p>
 <h2><a class="anchor" id="monitoringumrouterlogfile"></a>
 Monitoring DRO Log File&nbsp;&nbsp;<small><a href="#monitoringumrouterlogfile">&lt;-</a></small></h2>
-<p>The DRO generates log messages that are used to monitor its health and operation. There is some flexibility on where those log messages are written; see <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Operations/gateway.tag:../Gateway/" href="../Gateway/umroutermonitoring.html#umrouterlogmessages">DRO Log Messages</a>. Each DRO should have its own log file.</p>
-<p>To prevent unbounded disk file growth, the DRO log file can be configured to automatically roll. See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Operations/gateway.tag:../Gateway/" href="../Gateway/umroutermonitoring.html#umrouterrollinglogs">DRO Rolling Logs</a> for more information.</p>
+<p>The DRO generates log messages that are used to monitor its health and operation. There is some flexibility on where those log messages are written; see <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Operations/gateway.tag:../Gateway/" href="../Gateway/umroutermonitoring.html#umrouterlogmessages">DRO Log Messages</a>. Each DRO should have its own log file.</p>
+<p>To prevent unbounded disk file growth, the DRO log file can be configured to automatically roll. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Operations/gateway.tag:../Gateway/" href="../Gateway/umroutermonitoring.html#umrouterrollinglogs">DRO Rolling Logs</a> for more information.</p>
 <p>The following are important DRO (tnwgd) log messages.</p>
 <p><b>Connection Failure Messages to Monitor:</b></p>
 <ul>
@@ -328,7 +328,7 @@ Current/maximum data bytes enqueued - Indicates how much data is currently queue
 DRO Daemon Statistics&nbsp;&nbsp;<small><a href="#op-umrouterdaemonstatistics">&lt;-</a></small></h2>
 <p>The DRO daemon has a simple web server which provides operational information. However, while the web-based presentation is convenient for manual, on-demand monitoring, it is not suitable for automated collection and recording of operational information for historical analysis.</p>
 <p>Starting with UM version 6.11, a feature called "Daemon Statistics" has been added to the DRO. This feature supports the background publishing of their operational information via UM messages. System designers can now subscribe to this information for their own automated monitoring systems.</p>
-<p>See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Operations/ume.tag:../UME/" href="../UME/storedaemonstatistics.html">Store Daemon Statistics</a> for general information on Daemon Statistics, followed by specific information regarding the DRO.</p>
+<p>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Operations/ume.tag:../UME/" href="../UME/storedaemonstatistics.html">Store Daemon Statistics</a> for general information on Daemon Statistics, followed by specific information regarding the DRO.</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="detectingumrouterfailures"></a>
@@ -374,8 +374,8 @@ Persistent Store System Considerations&nbsp;&nbsp;<small><a href="#persistentsto
 <p>Consider the following system issues regarding Persistent Store monitoring.</p>
 <ul>
 <li>
-<p class="startli">Make sure that the environment in which a Persistent Store daemon (umestored) is started has enough available file descriptors for the number of sources in your environment. UM uses a minimum of 2 file descriptors per UM source in addition to normal UM file descriptors for transports and other objects. You can use ulimit in Linux and Process Explorer on Microsoft® Windows® to monitor file handles.</p>
-<p class="endli">Note: The reduced-fd repository type uses 5 File Descriptors for the entire store, regardless of the number of topics, in addition to normal UM file descriptors for transports and other objects. Use of this repository type may impact performance. </p>
+<p class="startli">Make sure that the environment in which a Persistent Store daemon (umestored) is started has enough available file descriptors for the number of sources in your environment. UM uses a minimum of 2 file descriptors per UM source in addition to normal UM file descriptors for transports and other objects. You can use ulimit in Linux and Process Explorer on Microsoft Windows to monitor file handles.</p>
+<p class="endli">Note: The reduced-fd repository type uses 5 File Descriptors for the entire Store, regardless of the number of topics, in addition to normal UM file descriptors for transports and other objects. Use of this repository type may impact performance. </p>
 </li>
 <li>
 Monitor system resources (CPU usage, memory, disk space, wait%, memory swapping). </li>
@@ -453,6 +453,48 @@ Build thresholds based on an established business as usual (BAU) baseline. </li>
 <li>
 These diagnostics and UM metrics could indicate a general problem with the applications, network or underlying hardware. </li>
 </ul>
+<p><br />
+<br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+</p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.8.11-->

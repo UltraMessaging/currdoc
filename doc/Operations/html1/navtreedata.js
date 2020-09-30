@@ -73,18 +73,20 @@ var NAVTREE =
         [ "UM Debug Flags", "index.html#umdebugflags", null ]
       ] ]
     ] ],
-    [ "Monitoring UM with the lbmmon API", "index.html#monitoringumwiththelbmmonapi", [
+    [ "Monitoring UM Applications", "index.html#monitoringumwiththelbmmonapi", [
       [ "Monitoring Introduction", "index.html#monitoringintroduction", [
-        [ "Why Monitor?", "index.html#whymonitor", null ],
         [ "What to Monitor", "index.html#whattomonitor", null ]
       ] ],
-      [ "Monitoring Methods", "index.html#monitoringmethods", null ],
+      [ "Monitoring Methods", "index.html#monitoringmethods", [
+        [ "Monitoring Field Sizes", "index.html#monitoringfieldsizes", null ],
+        [ "Application Monitoring Context", "index.html#monitoringcontext", null ]
+      ] ],
       [ "UM API Functions and Data Structures", "index.html#umsapifunctionsanddatastructures", [
         [ "Context Statistics", "index.html#contextstatistics", null ],
         [ "Event Queue Statistics", "index.html#eventqueuestatistics", null ],
         [ "Source or Receiver Transport Statistics", "index.html#sourceorreceivertransportstatistics", null ]
       ] ],
-      [ "\"lbmmon\" API", "index.html#lbmmonapi", [
+      [ "\"lbmmon\" Client API", "index.html#lbmmonapi", [
         [ "Monitoring Process Flow", "index.html#monitoringprocessflow", null ],
         [ "API Framework Flexibility", "index.html#apiframeworkflexibility", null ],
         [ "Initial Monitoring Questions", "index.html#initialmonitoringquestions", null ],

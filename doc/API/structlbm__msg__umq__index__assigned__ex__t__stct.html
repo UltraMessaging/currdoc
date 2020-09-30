@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">UM C API
-   &#160;<span id="projectnumber">6.13</span>
+   &#160;<span id="projectnumber">6.13.1</span>
    </div>
   </td>
  </tr>
@@ -73,16 +73,20 @@ $(document).ready(function(){initNavTree('structlbm__msg__umq__index__assigned__
 </div><!--header-->
 <div class="contents">
 
-<p>Structure that holds beginning-of-index information for receivers.  
+<p>Structure that holds beginning-of-index information for queuing receivers.  
  <a href="structlbm__msg__umq__index__assigned__ex__t__stct.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="lbm_8h_source.html">lbm.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Data Fields</h2></td></tr>
-<tr class="memitem:a15ffd2cf4ed915a6f0f65c81680dd109"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlbm__msg__umq__index__assigned__ex__t__stct.html#a15ffd2cf4ed915a6f0f65c81680dd109">flags</a></td></tr>
+<tr class="memitem:a15ffd2cf4ed915a6f0f65c81680dd109"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a15ffd2cf4ed915a6f0f65c81680dd109"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlbm__msg__umq__index__assigned__ex__t__stct.html#a15ffd2cf4ed915a6f0f65c81680dd109">flags</a></td></tr>
+<tr class="memdesc:a15ffd2cf4ed915a6f0f65c81680dd109"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bitmap indicating why the index was assigned to the receiver, etc. Zero or more flag bits ORed together: LBM_MSG_UMQ_INDEX_ASSIGNED_EX_FLAG_* (i.e. <a class="el" href="lbm_8h.html#a0211c9dc0a470d7d5d88202d32d7272a">LBM_MSG_UMQ_INDEX_ASSIGNED_EX_FLAG_ULB</a>, <a class="el" href="lbm_8h.html#a951a325a326d6ebd1e494c138238d138">LBM_MSG_UMQ_INDEX_ASSIGNED_EX_FLAG_REQUESTED</a>) <br /></td></tr>
 <tr class="separator:a15ffd2cf4ed915a6f0f65c81680dd109"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abd963b6cc576031be3967c6e2eb97a1f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="lbm_8h.html#abdb96b55cc467a75e1f9ec0036dbc14b">lbm_uint_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlbm__msg__umq__index__assigned__ex__t__stct.html#abd963b6cc576031be3967c6e2eb97a1f">queue_id</a></td></tr>
+<tr class="memitem:abd963b6cc576031be3967c6e2eb97a1f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abd963b6cc576031be3967c6e2eb97a1f"></a>
+<a class="el" href="lbm_8h.html#abdb96b55cc467a75e1f9ec0036dbc14b">lbm_uint_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlbm__msg__umq__index__assigned__ex__t__stct.html#abd963b6cc576031be3967c6e2eb97a1f">queue_id</a></td></tr>
+<tr class="memdesc:abd963b6cc576031be3967c6e2eb97a1f"><td class="mdescLeft">&#160;</td><td class="mdescRight">The Queue ID of the queue beginning assignment of this index. <br /></td></tr>
 <tr class="separator:abd963b6cc576031be3967c6e2eb97a1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2de1a6aee6f456e51b5c9ab5caa43c2c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2de1a6aee6f456e51b5c9ab5caa43c2c"></a>
 char&#160;</td><td class="memItemRight" valign="bottom"><b>queue</b> [LBM_UMQ_MAX_QUEUE_STRLEN]</td></tr>
@@ -92,37 +96,10 @@ char&#160;</td><td class="memItemRight" valign="bottom"><b>queue</b> [LBM_UMQ_MA
 <tr class="separator:a47340e558e9e4e990afb0211ee71ee52"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Structure that holds beginning-of-index information for receivers. </p>
-<p>A structure used with UMQ or ULB receivers to indicate the stop of index assignment from all queue instances involved.</p>
+<div class="textblock"><p>Structure that holds beginning-of-index information for queuing receivers. </p>
+<p>This structure is delivered to receiver callback <a class="el" href="lbm_8h.html#ac8dd91be561ad6262ccf3f7f94771cfd">lbm_rcv_cb_proc</a> with <a class="el" href="structlbm__msg__t__stct.html#ab25327dc4b4ebf527106f6e708dbc05f" title="Type of receiver event. ">lbm_msg_t::type</a> set to <a class="el" href="lbm_8h.html#a84058f898fab99ffe5652d64e105c1aa">LBM_MSG_UMQ_INDEX_ASSIGNED_EX</a>. Cast the <a class="el" href="structlbm__msg__t__stct.html#a9c7d600dd9794c09b82732e2c233392b" title="Data contents of the message if of a message type that carries data. Note that UM does not guarantee ...">lbm_msg_t::data</a> pointer to (lbm_msg_umq_index_assigned_ex_t *).</p>
 <p>See <a class="el" href="structlbm__msg__umq__index__assigned__ex__t__stct.html">lbm_msg_umq_index_assigned_ex_t_stct</a> for field definitions. </p>
-</div><h2 class="groupheader">Field Documentation</h2>
-<a class="anchor" id="a15ffd2cf4ed915a6f0f65c81680dd109"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int lbm_msg_umq_index_assigned_ex_t_stct::flags</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Bitmap indicating why the index was assigned to the receiver, etc. Zero or more flag bits ORed together: LBM_MSG_UMQ_INDEX_ASSIGNED_EX_FLAG_* (i.e. <a class="el" href="lbm_8h.html#a0211c9dc0a470d7d5d88202d32d7272a">LBM_MSG_UMQ_INDEX_ASSIGNED_EX_FLAG_ULB</a>, <a class="el" href="lbm_8h.html#a951a325a326d6ebd1e494c138238d138">LBM_MSG_UMQ_INDEX_ASSIGNED_EX_FLAG_REQUESTED</a>) </p>
-
-</div>
-</div>
-<a class="anchor" id="abd963b6cc576031be3967c6e2eb97a1f"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="lbm_8h.html#abdb96b55cc467a75e1f9ec0036dbc14b">lbm_uint_t</a> lbm_msg_umq_index_assigned_ex_t_stct::queue_id</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>The Queue ID of the queue beginning assignment of this index </p>
-
-</div>
-</div>
-<hr/>The documentation for this struct was generated from the following file:<ul>
+</div><hr/>The documentation for this struct was generated from the following file:<ul>
 <li><a class="el" href="lbm_8h_source.html">lbm.h</a></li>
 </ul>
 </div><!-- contents -->

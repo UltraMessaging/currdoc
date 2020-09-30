@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">UM Java API
-   &#160;<span id="projectnumber">6.13</span>
+   &#160;<span id="projectnumber">6.13.1</span>
    </div>
   </td>
  </tr>
@@ -194,9 +194,10 @@ byte[]&#160;</td><td class="memItemRight" valign="bottom"><b>serializedResponse<
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Encapsulates all <a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBM.html">LBM</a> messages. </p>
-<p>Call <a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBMMessage.html#a963d0f07751ed176a97f3eff84740fb9">dispose()</a> to utilize Zero Object Delivery (ZOD), or <a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBMMessage.html#a2cda69ee0b33fe294d46761401e451ca">promote()</a> to retain message object after callback. You must call either one or the other. </p>
-<p>When using ZOD, access message data via <a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBMMessage.html#a66588284dc0a60fdd0267f397f36c3c6">dataBuffer()</a> and <a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBMMessage.html#a8480fa58f107456108732af3940efd59">dataLength()</a>. </p>
-<p>For object-based delivery (non-ZOD), access message data with <a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBMMessage.html#a1b8ece5390b7345ef052752281712426">data()</a>, which creates a byte array object that contains the message data. </p>
+<p>Messages are delivered via the receiver callback. It is possible to retain a message for further processing after the receiver callback returns by calling <a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBMMessage.html#a2cda69ee0b33fe294d46761401e451ca">promote()</a> and saving the message. The application must call <a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBMMessage.html#a963d0f07751ed176a97f3eff84740fb9">dispose()</a> for each and every message when processing is completed. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/JavaAPI/design.tag:../Design/" href="../Design/applicationdesignprinciples.html#javamessagereception">Java Message Reception</a>. </p>
+<p>Access message data via <a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBMMessage.html#a66588284dc0a60fdd0267f397f36c3c6">dataBuffer()</a> and <a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBMMessage.html#a8480fa58f107456108732af3940efd59">dataLength()</a> to preserve "Zero
+Object Delivery" (ZOD). See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/JavaAPI/design.tag:../Design/" href="../Design/umobjects.html#zeroobjectdelivery">Zero Object Delivery</a>. </p>
+<p>For older, object-based delivery (non-ZOD), you may access message data via <a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBMMessage.html#a1b8ece5390b7345ef052752281712426">data()</a>, which creates a byte array object that contains the message data. This method has lower performance. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a class="anchor" id="a7e2990b058d4aa67bd11fa1e4a6a89c7"></a>
 <div class="memitem">
@@ -356,8 +357,9 @@ byte[]&#160;</td><td class="memItemRight" valign="bottom"><b>serializedResponse<
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Dispose of memory associated with this message, and send UME implicit ACK for UME receivers. The <a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBMMessage.html">LBMMessage</a> object must be disposed (or promoted) prior to closing the receiver or context object. </p>
-<p><b>Note</b>: dispose MUST be called on messages that contain application header chains. To check if a message contains an application header chain, use <a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBMMessage.html#a2c6e087fe5f9283e626525724016575b">LBMMessage#hasApplicationHeaderChain()</a>. <b>Note</b>: UME receivers MUST call <a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBMMessage.html#a963d0f07751ed176a97f3eff84740fb9">dispose()</a> on each <a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBMMessage.html">LBMMessage</a> object when and only when the application is completely finished with the <a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBMMessage.html">LBMMessage</a>. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBMContext.html#ac65cc7421c5e241b478ab51fdd17b71b">LBMContext::close</a> </dd>
+<p>Dispose of memory associated with this message. Every received message must be disposed after processing is complete. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/JavaAPI/design.tag:../Design/" href="../Design/applicationdesignprinciples.html#javamessagereception">Java Message Reception</a>.</p>
+<p>If this message is delivered from a persistent receiver, deleting the message might signal consumption of the message, depending on the use case. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/JavaAPI/ume.tag:../UME/" href="../UME/designingpersistentreceivers.html#persistencemessageconsumption">Persistence Message Consumption</a> for a full explanation of consumption acknowledgements. </p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBMContext.html#ac65cc7421c5e241b478ab51fdd17b71b">LBMContext::close</a> </dd>
 <dd>
 LBMReceiver::close </dd>
 <dd>
@@ -686,8 +688,13 @@ LBMWildcardReceiver::close </dd></dl>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Promotes the current <a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBMMessage.html">LBMMessage</a> to a full-fledged <a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBMMessage.html">LBMMessage</a> object that can be referenced and used past the end of the receiver callback. Note that this creates a new object, so delivery is no longer "zero object". Calling <a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBMMessage.html#a2cda69ee0b33fe294d46761401e451ca">promote()</a> multiple times beyond the first call has no effect. The <a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBMMessage.html">LBMMessage</a> object must be promoted (or disposed) prior to closing the receiver or context object. </p>
-<p>CAUTION: <a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBMMessage.html#a2cda69ee0b33fe294d46761401e451ca">promote()</a> is NOT thread safe; do not call it on the same message from multiple threads at the same time. Note that there should never be any reason to do so. </p>
+<p>Inform UM that the application is going to retain ownership of a UM message object after the receiver callback returns.</p>
+<p>This function should be called from inside a receiver callback function to prevent UM from automatically deleting the message when the callback function returns. This allows the message to be passed to a different part of the application, perhaps a different thread, for processing after the receiver callback returns.</p>
+<p>Once promoted, the application has the responsibility to dispose of the message when it is finished with it by calling <a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBMMessage.html#a963d0f07751ed176a97f3eff84740fb9">dispose()</a>. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/JavaAPI/design.tag:../Design/" href="../Design/applicationdesignprinciples.html#javamessagereception">Java Message Reception</a>.</p>
+<p>Note that this creates a new object, so delivery is no longer "zero object".</p>
+<dl class="section note"><dt>Note</dt><dd>the message must be promoted <em>before</em> being made available to the other parts of the application. For example, it would not be legal for a separate thread to start processing the message before the receiver callback called promote.</dd></dl>
+<dl class="section warning"><dt>Warning</dt><dd><a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBMMessage.html#a2cda69ee0b33fe294d46761401e451ca">promote()</a> is NOT thread safe; do not call it on the same message from multiple threads at the same time.</dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The promoted message. This will be a new message object, not the message object passed into the receiver callback. </dd></dl>
 
 <p>Referenced by <a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1UMQQueueMessageStatus.html#a795bbc95c653d28873197825f61e8174">com.latencybusters.lbm.UMQQueueMessageStatus.flags()</a>.</p>
 
@@ -981,7 +988,11 @@ LBMWildcardReceiver::close </dd></dl>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Send an explicit ACK for this message (UME only). </p><dl class="exception"><dt>Exceptions</dt><dd>
+<p>Send a consumption acknowledgement to the persistent Store.</p>
+<p>This function is used in the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/JavaAPI/ume.tag:../UME/" href="../UME/designingpersistentreceivers.html#explicitacknowledgments">Explicit Acknowledgments</a> use case to signal consumption of the supplied message, and all unacknowledged messages sent before it. <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/JavaAPI/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeexplicitackonlyreceiver">ume_explicit_ack_only (receiver)</a> must be set to <b>1</b>.</p>
+<dl class="section warning"><dt>Warning</dt><dd>If explicit ACKs are used, the application must ensure that messages are ACKed in the order received. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/JavaAPI/ume.tag:../UME/" href="../UME/designingpersistentreceivers.html#ackordering">ACK Ordering</a>.</dd></dl>
+<p>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/JavaAPI/ume.tag:../UME/" href="../UME/designingpersistentreceivers.html#persistencemessageconsumption">Persistence Message Consumption</a> for a full explanation of consumption acknowledgements.</p>
+<dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
     <tr><td class="paramname"><a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBMException.html">LBMException</a></td><td>if any error occurs or the message object is not valid, or if <a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBMMessage.html#a963d0f07751ed176a97f3eff84740fb9">dispose()</a> has already been called on this <a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBMMessage.html">LBMMessage</a>. </td></tr>
   </table>

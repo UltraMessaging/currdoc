@@ -54,8 +54,9 @@ $(document).ready(function(){initNavTree('umversion6_9.html','');});
 <div class="title">UM Version 6.9 </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>The most-significant update to UM version 6.9 is the introduction of certificate-based security (authentication and encryption).</p>
+<div class="textblock"><p>The most significant update to UM version 6.9 is the introduction of certificate-based security (authentication and encryption).</p>
 <dl class="section warning"><dt>Warning</dt><dd>Due to a serious bug in UM 6.9 and 6.9.1, users of LBT-RM and LBT-RU transports are strongly advised to upgrade to 6.9.2 as soon as possible. The bug causes a crash (fatal assert) after approximately 4 billion datagrams are sent on a transport session.</dd></dl>
+<dl class="section attention"><dt>Attention</dt><dd>There are some special upgrade instructions for UM versions 6.8 and beyond that will affect a small percentage of users upgrading from pre-6.8 versions of UM. See <a class="el" href="umversion6_8.html#specialupgradeinstructionsfor6_8">Special Upgrade Instructions for 6.8</a>. For general upgrade instructions, see <a class="el" href="upgradeprocedure.html">Upgrade Procedure</a>. You are also advised to inspect the full list of <a class="el" href="deprecations.html">Deprecations</a>.</dd></dl>
 <p><br />
  </p>
 <h1><a class="anchor" id="enhancementsfor6_9"></a>
@@ -67,11 +68,11 @@ Streaming Enhancements for 6.9&nbsp;&nbsp;<small><a href="#streamingenhancements
 <p>The following new features and enhancements apply to UMS, UMP, and UMQ products.</p>
 <ul>
 <li>
-<p class="startli">TCP-based communication can now enable compression and/or encryption. Other protocols (udp, multicast, etc.) are not supported for compression or encryption at this time. See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/design.tag:../Design/" href="../Design/umfeatures.html#encryptedtcp">Encrypted TCP</a>.</p>
+<p class="startli">TCP-based communication can now enable compression and/or encryption. Other protocols (udp, multicast, etc.) are not supported for compression or encryption at this time. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/design.tag:../Design/" href="../Design/umfeatures.html#encryptedtcp">Encrypted TCP</a>.</p>
 <p class="endli"></p>
 </li>
 <li>
-<p class="startli">The LBT-RM transport type now supports a "zero-copy" API for sending messages. See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/design.tag:../Design/" href="../Design/advancedoptimizations.html#zerocopysendapi">Zero-Copy Send API</a>.</p>
+<p class="startli">The LBT-RM transport type now supports a "zero-copy" API for sending messages. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/design.tag:../Design/" href="../Design/advancedoptimizations.html#zerocopysendapi">Zero-Copy Send API</a>.</p>
 <p class="endli"></p>
 </li>
 <li>
@@ -83,7 +84,7 @@ Streaming Enhancements for 6.9&nbsp;&nbsp;<small><a href="#streamingenhancements
 <p class="endli"></p>
 </li>
 <li>
-Added two new APIs to Java: <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/javaapi.tag:../JavaAPI/" href="../JavaAPI/classcom_1_1latencybusters_1_1lbm_1_1LBMMessage.html#ae7955dc17a5f612bc085af6575d582cf">com::latencybusters::lbm::LBMMessage::getSerializedResponse</a> and <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/javaapi.tag:../JavaAPI/" href="../JavaAPI/classcom_1_1latencybusters_1_1lbm_1_1LBMContext.html#a00bce0d7e5534722e07ab137fcd7b016">com::latencybusters::lbm::LBMContext::respond</a>, as well as a new class: <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/javaapi.tag:../JavaAPI/" href="../JavaAPI/classcom_1_1latencybusters_1_1lbm_1_1LBMSerializedResponse.html">com::latencybusters::lbm::LBMSerializedResponse</a>. These provide a way to receive a UM request, serialize the response object, and then send the response, possibly via a different context. </li>
+Added two new APIs to Java: <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/javaapi.tag:../JavaAPI/" href="../JavaAPI/classcom_1_1latencybusters_1_1lbm_1_1LBMMessage.html#ae7955dc17a5f612bc085af6575d582cf">com::latencybusters::lbm::LBMMessage::getSerializedResponse</a> and <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/javaapi.tag:../JavaAPI/" href="../JavaAPI/classcom_1_1latencybusters_1_1lbm_1_1LBMContext.html#a00bce0d7e5534722e07ab137fcd7b016">com::latencybusters::lbm::LBMContext::respond</a>, as well as a new class: <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/javaapi.tag:../JavaAPI/" href="../JavaAPI/classcom_1_1latencybusters_1_1lbm_1_1LBMSerializedResponse.html">com::latencybusters::lbm::LBMSerializedResponse</a>. These provide a way to receive a UM request, serialize the response object, and then send the response, possibly via a different context. </li>
 </ul>
 <p><br />
  </p>
@@ -92,7 +93,7 @@ Persistence Enhancements for 6.9&nbsp;&nbsp;<small><a href="#persistenceenhancem
 <p>The following new features and enhancements apply to UMP and UMQ products.</p>
 <ul>
 <li>
-<p class="startli">An API has been added to start and stop a store from inside an application process. See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/ume.tag:../UME/" href="../UME/designingpersistenceapplications.html#callablestore">Callable Store</a>.</p>
+<p class="startli">An API has been added to start and stop a store from inside an application process. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/ume.tag:../UME/" href="../UME/callablestore.html">Callable Store</a>.</p>
 <p class="endli"></p>
 </li>
 <li>
@@ -100,7 +101,7 @@ Persistence Enhancements for 6.9&nbsp;&nbsp;<small><a href="#persistenceenhancem
 <p class="endli"></p>
 </li>
 <li>
-The Receiver-paced Persistence feature now supports blocking and non-blocking receivers. See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/ume.tag:../UME/" href="../UME/operationalview.html#receiverpacedpersistenceoperations">Receiver-paced Persistence Operations</a>. </li>
+The Receiver-paced Persistence feature now supports blocking and non-blocking receivers. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/ume.tag:../UME/" href="../UME/operationalview.html#receiverpacedpersistenceoperations">RPP: Receiver-Paced Persistence</a>. </li>
 </ul>
 <p><br />
  </p>
@@ -123,11 +124,11 @@ Peer links may now be compressed and/or encrypted. </li>
 <p><br />
  </p>
 <h1><a class="anchor" id="fixedlimitationsfor6_9"></a>
-Fixed Limitations for 6.9&nbsp;&nbsp;<small><a href="#fixedlimitationsfor6_9">&lt;-</a></small></h1>
+Fixed Problems and Limitations for 6.9&nbsp;&nbsp;<small><a href="#fixedlimitationsfor6_9">&lt;-</a></small></h1>
 <p><br />
  </p>
 <h2><a class="anchor" id="streamingfixedlimitationsfor6_9"></a>
-Streaming Fixed Limitations for 6.9&nbsp;&nbsp;<small><a href="#streamingfixedlimitationsfor6_9">&lt;-</a></small></h2>
+Streaming Fixed Problems and Limitations for 6.9&nbsp;&nbsp;<small><a href="#streamingfixedlimitationsfor6_9">&lt;-</a></small></h2>
 <p>The following bug fixes apply to UMS, UMP, and UMQ products.</p>
 <table class="doxtable">
 <tr>
@@ -135,7 +136,7 @@ Streaming Fixed Limitations for 6.9&nbsp;&nbsp;<small><a href="#streamingfixedli
 <p class="endtd"></p>
 </th></tr>
 <tr>
-<td>9759 </td><td><p class="starttd">The <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/operations.tag:../Operations/" href="../Operations/umlogmessages.html">UM Log Messages</a> chapter of the "Operations Guide" did not correctly order messages numerically. For example, "Core-1234-10" would come before "Core-1234-9".</p>
+<td>9759 </td><td><p class="starttd">The <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/operations.tag:../Operations/" href="../Operations/umlogmessages.html">UM Log Messages</a> chapter of the "Operations Guide" did not correctly order messages numerically. For example, "Core-1234-10" would come before "Core-1234-9".</p>
 <p>The order has been corrected.</p>
 <p class="endtd"></p>
 </td></tr>
@@ -145,17 +146,17 @@ Streaming Fixed Limitations for 6.9&nbsp;&nbsp;<small><a href="#streamingfixedli
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>9582 </td><td><p class="starttd">When the C API <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/api.tag:../API/" href="../API/lbm_8h.html#a50d8ea5a6ebb5f1f0c6c5d9155c09657">lbm_register_fd()</a> is used to register a socket, and an event queue is used to deliver socket events, there is a race condition that can cause delivery of a spurious read event. An application that responds by doing a blocking read can experience an unbounded block. A non-blocking read can return no data.</p>
+<td>9582 </td><td><p class="starttd">When the C API <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/api.tag:../API/" href="../API/lbm_8h.html#a50d8ea5a6ebb5f1f0c6c5d9155c09657">lbm_register_fd()</a> is used to register a socket, and an event queue is used to deliver socket events, there is a race condition that can cause delivery of a spurious read event. An application that responds by doing a blocking read can experience an unbounded block. A non-blocking read can return no data.</p>
 <p>UM now effectively prevents this spurious read event.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>9625 </td><td><p class="starttd">When the <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grpunicastresolvernetwork.html#resolverunicastdaemoncontext">resolver_unicast_daemon (context)</a> option is read multiple times with the same '<code>IP:PORT</code>' combination, the context adds multiple references to that lbmrd, leading to wasted resources, potentially exhausting ports in the unicast resolver UDP port range.</p>
+<td>9625 </td><td><p class="starttd">When the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grpunicastresolvernetwork.html#resolverunicastdaemoncontext">resolver_unicast_daemon (context)</a> option is read multiple times with the same '<code>IP:PORT</code>' combination, the context adds multiple references to that lbmrd, leading to wasted resources, potentially exhausting ports in the unicast resolver UDP port range.</p>
 <p>UM now detects duplicate IP:PORT and maintains a single reference to that lbmrd.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>9672 </td><td><p class="starttd">The <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grpmajoroptions.html#multiplereceivemaximumdatagramscontext">multiple_receive_maximum_datagrams (context)</a> configuration option enables the use of recvmmsg() to improve the efficiency of reading UDP data. However, multiple datagrams were not actually read. No improper behavior results, but the potential efficiency improvement is not delivered.</p>
+<td>9672 </td><td><p class="starttd">The <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grpmajoroptions.html#multiplereceivemaximumdatagramscontext">multiple_receive_maximum_datagrams (context)</a> configuration option enables the use of recvmmsg() to improve the efficiency of reading UDP data. However, multiple datagrams were not actually read. No improper behavior results, but the potential efficiency improvement is not delivered.</p>
 <p>UM now properly enables reception of multiple datagrams.</p>
 <p class="endtd"></p>
 </td></tr>
@@ -170,7 +171,7 @@ Streaming Fixed Limitations for 6.9&nbsp;&nbsp;<small><a href="#streamingfixedli
 <p><br />
  </p>
 <h2><a class="anchor" id="persistencefixedlimitationsfor6_9"></a>
-Persistence Fixed Limitations for 6.9&nbsp;&nbsp;<small><a href="#persistencefixedlimitationsfor6_9">&lt;-</a></small></h2>
+Persistence Fixed Problems and Limitations for 6.9&nbsp;&nbsp;<small><a href="#persistencefixedlimitationsfor6_9">&lt;-</a></small></h2>
 <p>The following bug fixes apply to UMP and UMQ products.</p>
 <table class="doxtable">
 <tr>
@@ -187,14 +188,14 @@ Persistence Fixed Limitations for 6.9&nbsp;&nbsp;<small><a href="#persistencefix
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>9626 </td><td><p class="starttd">When the <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umestoresource">ume_store (source)</a> and/or <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umestorenamesource">ume_store_name (source)</a> configuration option is read multiple times referring to the same store, the context adds multiple references to that store, leading to wasted resources.</p>
+<td>9626 </td><td><p class="starttd">When the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umestoresource">ume_store (source)</a> and/or <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umestorenamesource">ume_store_name (source)</a> configuration option is read multiple times referring to the same store, the context adds multiple references to that store, leading to wasted resources.</p>
 <p class="endtd">UM now detects duplicate stores and maintains a single reference to that store. </p>
 </td></tr>
 </table>
 <p><br />
  </p>
 <h2><a class="anchor" id="queuingfixedlimitationsfor6_9"></a>
-Queuing Fixed Limitations for 6.9&nbsp;&nbsp;<small><a href="#queuingfixedlimitationsfor6_9">&lt;-</a></small></h2>
+Queuing Fixed Problems and Limitations for 6.9&nbsp;&nbsp;<small><a href="#queuingfixedlimitationsfor6_9">&lt;-</a></small></h2>
 <p>The following bug fixes apply to the UMQ product.</p>
 <table class="doxtable">
 <tr>
@@ -202,12 +203,12 @@ Queuing Fixed Limitations for 6.9&nbsp;&nbsp;<small><a href="#queuingfixedlimita
 <p class="endtd"></p>
 </th></tr>
 <tr>
-<td>9494 </td><td><p class="starttd">UMM did not include the option <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grpultramessagingqueuing.html#umqqueueactivitytimeoutcontext">umq_queue_activity_timeout (context)</a>.</p>
+<td>9494 </td><td><p class="starttd">UMM did not include the option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grpultramessagingqueuing.html#umqqueueactivitytimeoutcontext">umq_queue_activity_timeout (context)</a>.</p>
 <p>It has been added.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>9555 </td><td><p class="starttd">When the C API <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/api.tag:../API/" href="../API/lbm_8h.html#a1afc75f0fb3601d072b3463e7acf16a6">lbm_rcv_topic_attr_setopt()</a> is used to set a value for <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grpultramessagingqueuing.html#umqulbsourceactivitytimeoutreceiver">umq_ulb_source_activity_timeout (receiver)</a>, the value was not set correctly. Note that using text-based configuration files worked correctly for that option.</p>
+<td>9555 </td><td><p class="starttd">When the C API <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/api.tag:../API/" href="../API/lbm_8h.html#a1afc75f0fb3601d072b3463e7acf16a6">lbm_rcv_topic_attr_setopt()</a> is used to set a value for <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grpultramessagingqueuing.html#umqulbsourceactivitytimeoutreceiver">umq_ulb_source_activity_timeout (receiver)</a>, the value was not set correctly. Note that using text-based configuration files worked correctly for that option.</p>
 <p>The C API function is now corrected.</p>
 <p class="endtd"></p>
 </td></tr>
@@ -219,7 +220,7 @@ Queuing Fixed Limitations for 6.9&nbsp;&nbsp;<small><a href="#queuingfixedlimita
 <p><br />
  </p>
 <h2><a class="anchor" id="dynamicrouterfixedlimitationsfor6_9"></a>
-Dynamic Router Fixed Limitations for 6.9&nbsp;&nbsp;<small><a href="#dynamicrouterfixedlimitationsfor6_9">&lt;-</a></small></h2>
+Dynamic Router Fixed Problems and Limitations for 6.9&nbsp;&nbsp;<small><a href="#dynamicrouterfixedlimitationsfor6_9">&lt;-</a></small></h2>
 <p>The following bug fixes apply to the Dynamic Routing Option (DRO).</p>
 <table class="doxtable">
 <tr>
@@ -234,6 +235,48 @@ Dynamic Router Fixed Limitations for 6.9&nbsp;&nbsp;<small><a href="#dynamicrout
 <tr>
 <td>9694, 9688 </td><td>A race condition can cause a portal to become deadlocked and not pass traffic. The portal locking has been corrected. </td></tr>
 </table>
+<p><br />
+<br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+</p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.8.11-->

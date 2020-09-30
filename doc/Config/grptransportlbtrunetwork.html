@@ -77,12 +77,13 @@ Reference&nbsp;&nbsp;<small><a href="#transportlbtrunetworkref">&lt;-</a></small
 transport_lbtru_interface (receiver)&nbsp;&nbsp;<small><a href="#transportlbtruinterfacereceiver">&lt;-</a></small></h2>
 <dl class="section user"><dt></dt><dd>Specifies the network interface over which UM LBT-RU receivers read application data messages. </dd></dl>
 <dl class="section user"><dt></dt><dd>Can specify full IP address of interface, or just network part (see <a class="el" href="generalconfigurationguidelines.html#specifyinginterfaces">Specifying Interfaces</a> for details). </dd></dl>
-<dl class="section user"><dt></dt><dd>Default is set to <a class="el" href="grpmajoroptions.html#defaultinterfacecontext">default_interface (context)</a>, if specified. Otherwise, it is set to INADDR_ANY, meaning that it will accept incoming connection requests from any interface.</dd></dl>
+<dl class="section user"><dt></dt><dd>Default is set to <a class="el" href="grpmajoroptions.html#defaultinterfacecontext">default_interface (context)</a>, if specified. Otherwise, it is set to INADDR_ANY, meaning that it will accept incoming connection requests from any interface. </dd></dl>
+<dl class="section user"><dt></dt><dd>Note: if specifying an interface name in an XML-format file, see <a class="el" href="generalconfigurationguidelines.html#interfacedevicenamesandxml">Interface Device Names and XML</a>.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>receiver </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a0b66a5b33839617b2a822e4a20a8d535">lbm_ipv4_address_mask_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a0b66a5b33839617b2a822e4a20a8d535">lbm_ipv4_address_mask_t</a></b> </td></tr>
 <tr>
 <td><em>Default value:</em> </td><td>0.0.0.0 (INADDR_ANY) </td></tr>
 <tr>
@@ -94,13 +95,15 @@ transport_lbtru_interface (receiver)&nbsp;&nbsp;<small><a href="#transportlbtrui
 <h2><a class="anchor" id="transportlbtruinterfacesource"></a>
 transport_lbtru_interface (source)&nbsp;&nbsp;<small><a href="#transportlbtruinterfacesource">&lt;-</a></small></h2>
 <dl class="section user"><dt></dt><dd>Specifies the network interface over which UM LBT-RU sources receive connection requests from topic receivers. </dd></dl>
-<dl class="section user"><dt></dt><dd>Can specify full IP address of interface, or just network part (see <a class="el" href="generalconfigurationguidelines.html#specifyinginterfaces">Specifying Interfaces</a> for details). Be aware that this option is applied to the transport session when the first topic is created on that session. Thus, setting a different interface for a subsequent topic that maps onto the same transport session will have no effect. </dd></dl>
-<dl class="section user"><dt></dt><dd>Default is set to <a class="el" href="grpmajoroptions.html#defaultinterfacecontext">default_interface (context)</a>, if specified. Otherwise, it is set to INADDR_ANY, meaning that it will accept incoming connection requests from any interface.</dd></dl>
+<dl class="section user"><dt></dt><dd>Can specify full IP address of interface, or just network part (see <a class="el" href="generalconfigurationguidelines.html#specifyinginterfaces">Specifying Interfaces</a> for details). </dd></dl>
+<dl class="section user"><dt></dt><dd>Be aware that this option is applied to the transport session when the first topic is created on that session. Thus, setting a different interface for a subsequent topic that maps onto the same transport session will have no effect. </dd></dl>
+<dl class="section user"><dt></dt><dd>Default is set to <a class="el" href="grpmajoroptions.html#defaultinterfacecontext">default_interface (context)</a>, if specified. Otherwise, it is set to INADDR_ANY, meaning that it will accept incoming connection requests from any interface. </dd></dl>
+<dl class="section user"><dt></dt><dd>Note: if specifying an interface name in an XML-format file, see <a class="el" href="generalconfigurationguidelines.html#interfacedevicenamesandxml">Interface Device Names and XML</a>.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>source </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a0b66a5b33839617b2a822e4a20a8d535">lbm_ipv4_address_mask_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a0b66a5b33839617b2a822e4a20a8d535">lbm_ipv4_address_mask_t</a></b> </td></tr>
 <tr>
 <td><em>Default value:</em> </td><td>0.0.0.0 (INADDR_ANY) </td></tr>
 <tr>
@@ -117,7 +120,7 @@ transport_lbtru_maximum_ports (context)&nbsp;&nbsp;<small><a href="#transportlbt
 <tr>
 <td><em>Scope:</em> </td><td>context </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a86897f2fdd66aa7021683a4e72a4537b">lbm_uint16_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a86897f2fdd66aa7021683a4e72a4537b">lbm_uint16_t</a></b> </td></tr>
 <tr>
 <td><em>Units:</em> </td><td>number of ports </td></tr>
 <tr>
@@ -139,7 +142,7 @@ transport_lbtru_port (source)&nbsp;&nbsp;<small><a href="#transportlbtruportsour
 <tr>
 <td><em>Scope:</em> </td><td>source </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a86897f2fdd66aa7021683a4e72a4537b">lbm_uint16_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a86897f2fdd66aa7021683a4e72a4537b">lbm_uint16_t</a></b> </td></tr>
 <tr>
 <td><em>Default value:</em> </td><td>0 (use open port) </td></tr>
 <tr>
@@ -162,7 +165,7 @@ transport_lbtru_port_high (context)&nbsp;&nbsp;<small><a href="#transportlbtrupo
 <tr>
 <td><em>Scope:</em> </td><td>context </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a86897f2fdd66aa7021683a4e72a4537b">lbm_uint16_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a86897f2fdd66aa7021683a4e72a4537b">lbm_uint16_t</a></b> </td></tr>
 <tr>
 <td><em>Default value:</em> </td><td>14389 </td></tr>
 <tr>
@@ -184,7 +187,7 @@ transport_lbtru_port_high (receiver)&nbsp;&nbsp;<small><a href="#transportlbtrup
 <tr>
 <td><em>Scope:</em> </td><td>receiver </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a86897f2fdd66aa7021683a4e72a4537b">lbm_uint16_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a86897f2fdd66aa7021683a4e72a4537b">lbm_uint16_t</a></b> </td></tr>
 <tr>
 <td><em>Default value:</em> </td><td>14379 </td></tr>
 <tr>
@@ -207,7 +210,7 @@ transport_lbtru_port_low (context)&nbsp;&nbsp;<small><a href="#transportlbtrupor
 <tr>
 <td><em>Scope:</em> </td><td>context </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a86897f2fdd66aa7021683a4e72a4537b">lbm_uint16_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a86897f2fdd66aa7021683a4e72a4537b">lbm_uint16_t</a></b> </td></tr>
 <tr>
 <td><em>Default value:</em> </td><td>14380 </td></tr>
 <tr>
@@ -229,7 +232,7 @@ transport_lbtru_port_low (receiver)&nbsp;&nbsp;<small><a href="#transportlbtrupo
 <tr>
 <td><em>Scope:</em> </td><td>receiver </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a86897f2fdd66aa7021683a4e72a4537b">lbm_uint16_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a86897f2fdd66aa7021683a4e72a4537b">lbm_uint16_t</a></b> </td></tr>
 <tr>
 <td><em>Default value:</em> </td><td>14360 </td></tr>
 <tr>
@@ -238,6 +241,48 @@ transport_lbtru_port_low (receiver)&nbsp;&nbsp;<small><a href="#transportlbtrupo
 <td><em>When to Set:</em> </td><td>Can only be set during object initialization.</td></tr>
 </table>
 </dd></dl>
+<p><br />
+<br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+</p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.8.11-->

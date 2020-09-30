@@ -40,10 +40,12 @@ var NAVTREEINDEX0 =
 "index.html#monitoring":[2],
 "index.html#monitoringapplicationlogmessages":[2,2],
 "index.html#monitoringastoresinternaltransportstatistics":[2,3,1],
+"index.html#monitoringcontext":[4,1,1],
 "index.html#monitoringcontextstatistics":[5,2],
 "index.html#monitoringeventqueues":[2,1],
 "index.html#monitoringeventqueuestatistics":[5,3],
 "index.html#monitoringexamples":[4,7],
+"index.html#monitoringfieldsizes":[4,1,0],
 "index.html#monitoringformatmodules":[4,5],
 "index.html#monitoringintroduction":[4,0],
 "index.html#monitoringmessagingsystemresources":[2,5],
@@ -114,8 +116,7 @@ var NAVTREEINDEX0 =
 "index.html#unicasttopicresolverlbmrd":[3,3],
 "index.html#unixpackageinstaller":[1,0,0],
 "index.html#unrecoverableloss":[6,3],
-"index.html#whattomonitor":[4,0,1],
-"index.html#whymonitor":[4,0,0],
+"index.html#whattomonitor":[4,0,0],
 "index.html#windowspackageinstaller":[1,0,1],
 "pages.html":[]
 };

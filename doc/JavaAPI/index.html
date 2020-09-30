@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">UM Java API
-   &#160;<span id="projectnumber">6.13</span>
+   &#160;<span id="projectnumber">6.13.1</span>
    </div>
   </td>
  </tr>
@@ -64,7 +64,7 @@ $(document).ready(function(){initNavTree('index.html','');});
 <div class="contents">
 <div class="textblock"><p> 
 <img src="infa_logo.png" width="400" height="138" alt="Informatica"/><br/><br/>
-<big><b>Ultra Messaging</b></big> <small>(Version 6.13)</small><br/>
+<big><b>Ultra Messaging</b></big> <small>(Version 6.13.1)</small><br/>
 <br/><br/><br/>
 <center class="mytitle">Ultra Messaging Java API</center>
 <br/><br/><br/>
@@ -86,6 +86,12 @@ INFORMATICA LLC PROVIDES THE INFORMATION IN THIS DOCUMENT "AS IS" WITHOUT WARRAN
 UM Java API</h1>
 <p>To use the UM Java API, you must access the UM Jar file. It is not included in the the normal UM package file, it is a separate file named: <code>UMS_</code><em>(um_vers)</em><code>.jar</code>. For example: </p><div class="fragment"><div class="line">UMS_6.12.1.jar</div></div><!-- fragment --><dl class="section note"><dt>Note</dt><dd>Although the jar file contains the product name "UMS", this file is intended to be used across all UM products, UMS, UMP, and UMQ. Users of UMP and UMQ should use the UMS jar file.</dd></dl>
 <p>This jar file uses the <a class="el" href="index.html#javanativeinterfacejni">Java Native Interface (JNI)</a> to access the UM native libraries. Note that the native libraries are platform dependent and are contained in the platform-specific packages.</p>
+<p><br />
+ </p>
+<h2><a class="anchor" id="applicationcallbacksinjava"></a>
+Application Callbacks in Java</h2>
+<p>There are a variety of UM features that include the UM library calling back into the application. The most common example of this is the Receiver callback (sometimes named "onReceive").</p>
+<p>It is important that the application callback not allow any unhandled exceptions to be thrown back into UM. For example, you might enclose your entire callback code in an enclosing try/catch. The application callback should always return normally into UM.</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="usingumjavaonwindows"></a>

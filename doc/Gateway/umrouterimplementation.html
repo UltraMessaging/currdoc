@@ -171,7 +171,7 @@ Timers and Intervals&nbsp;&nbsp;<small><a href="#timersandintervals">&lt;-</a></
  </p>
 <h2><a class="anchor" id="multicastimmediatemessagingconsiderations"></a>
 Multicast Immediate Messaging Considerations&nbsp;&nbsp;<small><a href="#multicastimmediatemessagingconsiderations">&lt;-</a></small></h2>
-<p>Multicast Immediate Messages (MIMs) may pass through the DRO. You cannot filter MIMs with Access Control Lists (ACL)-MIMs are forwarded to all TRDs. Informatica does not recommend using MIM for messaging traffic across the DRO. MIM is intended for short-lived topics and applications that cannot tolerate a delay between source creation and the sending of the first message. See also <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Gateway/design.tag:../Design/" href="../Design/umfeatures.html#multicastimmediatemessaging">Multicast Immediate Messaging</a>.</p>
+<p>Multicast Immediate Messages (MIMs) may pass through the DRO. You cannot filter MIMs with Access Control Lists (ACL)-MIMs are forwarded to all TRDs. Informatica does not recommend using MIM for messaging traffic across the DRO. MIM is intended for short-lived topics and applications that cannot tolerate a delay between source creation and the sending of the first message. See also <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Gateway/design.tag:../Design/" href="../Design/umfeatures.html#multicastimmediatemessaging">Multicast Immediate Messaging</a>.</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="persistenceovertheumrouter"></a>
@@ -197,9 +197,9 @@ Topic Resolution Reliability&nbsp;&nbsp;<small><a href="#topicresolutionreliabil
 <p>Topic resolution can sometimes remain in a quiescent phase due to link interruption, preventing needed re-subscription topic resolution activity. Two ways you can address this are:</p>
 <ul>
 <li>
-For isolated incidents, call <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Gateway/api.tag:../API/" href="../API/lbm_8h.html#ae6dd7c56acf916ef66658cc1ebc7a525">lbm_context_topic_resolution_request()</a> (see example lbmtrreq.c). This restarts the sustaining phase. </li>
+For isolated incidents, call <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Gateway/api.tag:../API/" href="../API/lbm_8h.html#ae6dd7c56acf916ef66658cc1ebc7a525">lbm_context_topic_resolution_request()</a> (see example lbmtrreq.c). This restarts the sustaining phase. </li>
 <li>
-For more chronic problems, such as a DRO link (especially an endpoint link) over a WAN of questionable reliability, consider configuring Topic resolution to stay in the sustaining phase (options <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Gateway/config.tag:../Config/" href="../Config/grpudpbasedresolveroperation.html#resolveradvertisementminimumsustaindurationsource">resolver_advertisement_minimum_sustain_duration (source)</a> and <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Gateway/config.tag:../Config/" href="../Config/grpudpbasedresolveroperation.html#resolverqueryminimumsustaindurationreceiver">resolver_query_minimum_sustain_duration (receiver)</a>). </li>
+For more chronic problems, such as a DRO link (especially an endpoint link) over a WAN of questionable reliability, consider configuring Topic resolution to stay in the sustaining phase (options <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Gateway/config.tag:../Config/" href="../Config/grpudpbasedresolveroperation.html#resolveradvertisementminimumsustaindurationsource">resolver_advertisement_minimum_sustain_duration (source)</a> and <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Gateway/config.tag:../Config/" href="../Config/grpudpbasedresolveroperation.html#resolverqueryminimumsustaindurationreceiver">resolver_query_minimum_sustain_duration (receiver)</a>). </li>
 </ul>
 <p><br />
  </p>
@@ -212,7 +212,7 @@ BOS and EOS Behavior Over the DRO&nbsp;&nbsp;<small><a href="#bosandeosbehavioro
 DRO Reliable Loss&nbsp;&nbsp;<small><a href="#umrouterreliableloss">&lt;-</a></small></h2>
 <p>The DRO can create a situation where a "reliable" transport (TCP or LBT-IPC) can experience out-of-order message delivery.</p>
 <p>The DRO can perform a "protocol conversion" function. I.e. an originating source can use a UDP-based protocol (LBT-RM or LBT-RU), but the proxy source for a remote receiver can use a "reliable" protocol (TCP or LBT-IPC). With a UDP-based protocol, messages can arrive to the DRO network out of order, usually due to packet loss and recovery. However, when those out-of-order messages are forwarded across a "reliable" protocol (TCP or LBT-IPC), the receiver does not expect the sequence number gap, and immediately declares the out-of-order messages as unrecoverable loss. This, in spite of the fact that the missing message arrives shortly thereafter.</p>
-<p>Starting in UM version 6.12, there are two new configuration options: <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Gateway/config.tag:../Config/" href="../Config/grptransporttcpoperation.html#transporttcpdrolossrecoverytimeoutreceiver">transport_tcp_dro_loss_recovery_timeout (receiver)</a> and <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/Gateway/config.tag:../Config/" href="../Config/grptransportlbtipcoperation.html#transportlbtipcdrolossrecoverytimeoutreceiver">transport_lbtipc_dro_loss_recovery_timeout (receiver)</a>, which modify the receiver's behavior. Instead of declaring a gap immediately unrecoverable, a delay is introduced which is similar to what a UDP-based receiver uses to wait for lost and retransmitted datagrams. If the missing message arrives within the delay time, the messages are delivered to application without loss.</p>
+<p>Starting in UM version 6.12, there are two new configuration options: <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Gateway/config.tag:../Config/" href="../Config/grptransporttcpoperation.html#transporttcpdrolossrecoverytimeoutreceiver">transport_tcp_dro_loss_recovery_timeout (receiver)</a> and <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Gateway/config.tag:../Config/" href="../Config/grptransportlbtipcoperation.html#transportlbtipcdrolossrecoverytimeoutreceiver">transport_lbtipc_dro_loss_recovery_timeout (receiver)</a>, which modify the receiver's behavior. Instead of declaring a gap immediately unrecoverable, a delay is introduced which is similar to what a UDP-based receiver uses to wait for lost and retransmitted datagrams. If the missing message arrives within the delay time, the messages are delivered to application without loss.</p>
 <p>Be aware that this functionality is only used with "reliable" protocols published by a DRO's proxy source. If this delay feature is enabled, it will <em>not</em> apply to a "reliable" protocol that is received directly from the originating source.</p>
 <p>Note however that you can get genuine gaps in the "reliable" data stream <em>without</em> recovery. For example, an overloaded DRO can drop messages. Or a DRO's proxy receiver can experience unrecoverable loss. In that case, the delay will have to expire before the missing messages are declared unrecoverable and subsequent data is delivered.</p>
 <dl class="section attention"><dt>Attention</dt><dd>The delay times default to 0, which retains the pre-6.12 behavior of immediately declaring sequence number gaps unrecoverable. If you want this new behavior, you must configure the appropriate option.</dd></dl>
@@ -385,7 +385,49 @@ The configuration file is error free. </li>
 <p>Typically, you run the DRO with one configuration file argument, for example:</p>
 <div class="fragment"><div class="line">tnwgd gw1-config.xml</div></div><!-- fragment --><p> (FYI: "tnwgd" stands for "Twenty Nine West Gateway Daemon", a historical name for the DRO.)</p>
 <p>The DRO logs version information on startup. The following is an example of this information:</p>
-<div class="fragment"><div class="line">Version 6.0 Build: Sep 26 2012, 00:31:33 (UMS 6.0 [UMP-6.0] [UMQ-6.0] [64-bit] Build: Sep 26 2012, 00:27:17 ( DEBUG license LBT-RM LBT-RU LBT-IPC LBT-RDMA ) WC[PCRE 7.4 2007-09-21, regex, appcb] HRT[gettimeofday()])</div></div><!-- fragment --> </div></div><!-- contents -->
+<div class="fragment"><div class="line">Version 6.0 Build: Sep 26 2012, 00:31:33 (UMS 6.0 [UMP-6.0] [UMQ-6.0] [64-bit] Build: Sep 26 2012, 00:27:17 ( DEBUG license LBT-RM LBT-RU LBT-IPC LBT-RDMA ) WC[PCRE 7.4 2007-09-21, regex, appcb] HRT[gettimeofday()])</div></div><!-- fragment --><p><br />
+<br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.8.11-->
 </body>

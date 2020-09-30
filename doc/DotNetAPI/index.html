@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">UM .NET API
-   &#160;<span id="projectnumber">6.13</span>
+   &#160;<span id="projectnumber">6.13.1</span>
    </div>
   </td>
  </tr>
@@ -65,7 +65,7 @@ $(document).ready(function(){initNavTree('index.html','');});
 <div class="contents">
 <div class="textblock"><p> 
 <img src="infa_logo.png" width="400" height="138" alt="Informatica"/><br/><br/>
-<big><b>Ultra Messaging</b></big> <small>(Version 6.13)</small><br/>
+<big><b>Ultra Messaging</b></big> <small>(Version 6.13.1)</small><br/>
 <br/><br/><br/>
 <center class="mytitle">Ultra Messaging .NET API</center>
 <br/><br/><br/>
@@ -86,6 +86,12 @@ INFORMATICA LLC PROVIDES THE INFORMATION IN THIS DOCUMENT "AS IS" WITHOUT WARRAN
 <h1><a class="anchor" id="umnetapi"></a>
 UM .NET API</h1>
 <p>To use the UM .NET API, you must access the UM C sharp library. This library accesses the UM native libraries. Note that the UM C sharp and native libraries are platform dependent and are contained in the platform-specific package.</p>
+<p><br />
+ </p>
+<h2><a class="anchor" id="applicationcallbacksinnet"></a>
+Application Callbacks in .NET</h2>
+<p>There are a variety of UM features that include the UM library calling back into the application. The most common example of this is the Receiver callback (sometimes named "onReceive").</p>
+<p>It is important that the application callback not allow any unhandled exceptions to be thrown back into UM. For example, you might enclose your entire callback code in an enclosing try/catch. The application callback should always return normally into UM.</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="usingumnetonwindows"></a>

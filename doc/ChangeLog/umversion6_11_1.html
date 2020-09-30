@@ -54,8 +54,10 @@ $(document).ready(function(){initNavTree('umversion6_11_1.html','');});
 <div class="title">UM Version 6.11.1 </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>The most-significant update to UM version 6.11.1 is a set of performance improvements to the Persistent Store daemon. Some performance improvements were also applied to the data receive path for applications.</p>
-<dl class="section attention"><dt>Attention</dt><dd>See <a class="el" href="deprecations.html#deprecationsfor6111">Deprecations for 6.11.1</a> for important information regarding future platform support for UM daemons.</dd></dl>
+<div class="textblock"><p>The most significant update to UM version 6.11.1 is a set of performance improvements to the Persistent Store daemon. Some performance improvements were also applied to the data receive path for applications.</p>
+<dl class="section attention"><dt>Attention</dt><dd>See <a class="el" href="deprecations.html#deprecationsfor6111">Deprecations for 6.11.1</a> for important information regarding future platform support for UM daemons.</dd>
+<dd>
+There are some special upgrade instructions for UM versions 6.10 and beyond that will affect a small percentage of users upgrading from pre-6.10 versions of UM. See <a class="el" href="umversion6_10.html#specialupgradeinstructionsfor6_10">Special Upgrade Instructions for 6.10</a>. For general upgrade instructions, see <a class="el" href="upgradeprocedure.html">Upgrade Procedure</a>. You are also advised to inspect the full list of <a class="el" href="deprecations.html">Deprecations</a>.</dd></dl>
 <p><br />
  </p>
 <h1><a class="anchor" id="enhancementsfor6_11_1"></a>
@@ -76,7 +78,7 @@ Persistence Enhancements for 6.11.1&nbsp;&nbsp;<small><a href="#persistenceenhan
 <p>The following new features and enhancements apply to UMP and UMQ products.</p>
 <ul>
 <li>
-The Persistent Store benefits from the performance enhancements made on the data receive path. (See also <a class="el" href="umversion6_11_1.html#persistencefixedlimitationsfor6_11_1">Persistence Fixed Limitations for 6.11.1</a>.) </li>
+The Persistent Store benefits from the performance enhancements made on the data receive path. (See also <a class="el" href="umversion6_11_1.html#persistencefixedlimitationsfor6_11_1">Persistence Fixed Problems and Limitations for 6.11.1</a>.) </li>
 </ul>
 <p><br />
  </p>
@@ -99,11 +101,11 @@ None. </li>
 <p><br />
  </p>
 <h1><a class="anchor" id="fixedlimitationsfor6_11_1"></a>
-Fixed Limitations for 6.11.1&nbsp;&nbsp;<small><a href="#fixedlimitationsfor6_11_1">&lt;-</a></small></h1>
+Fixed Problems and Limitations for 6.11.1&nbsp;&nbsp;<small><a href="#fixedlimitationsfor6_11_1">&lt;-</a></small></h1>
 <p><br />
  </p>
 <h2><a class="anchor" id="streamingfixedlimitationsfor6_11_1"></a>
-Streaming Fixed Limitations for 6.11.1&nbsp;&nbsp;<small><a href="#streamingfixedlimitationsfor6_11_1">&lt;-</a></small></h2>
+Streaming Fixed Problems and Limitations for 6.11.1&nbsp;&nbsp;<small><a href="#streamingfixedlimitationsfor6_11_1">&lt;-</a></small></h2>
 <p>The following bug fixes apply to UMS, UMP, and UMQ products.</p>
 <table class="doxtable">
 <tr>
@@ -116,7 +118,7 @@ Streaming Fixed Limitations for 6.11.1&nbsp;&nbsp;<small><a href="#streamingfixe
 <p><br />
  </p>
 <h2><a class="anchor" id="persistencefixedlimitationsfor6_11_1"></a>
-Persistence Fixed Limitations for 6.11.1&nbsp;&nbsp;<small><a href="#persistencefixedlimitationsfor6_11_1">&lt;-</a></small></h2>
+Persistence Fixed Problems and Limitations for 6.11.1&nbsp;&nbsp;<small><a href="#persistencefixedlimitationsfor6_11_1">&lt;-</a></small></h2>
 <p>The following bug fixes apply to UMP and UMQ products.</p>
 <table class="doxtable">
 <tr>
@@ -124,7 +126,7 @@ Persistence Fixed Limitations for 6.11.1&nbsp;&nbsp;<small><a href="#persistence
 <p class="endtd"></p>
 </th></tr>
 <tr>
-<td>10332, 10409 </td><td><p class="starttd"><b>FIXED:</b> <em>When the Persistent Store is configured to publish <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/ume.tag:../UME/" href="../UME/storedaemonstatistics.html">Daemon Statistics</a>, there is a small chance that it will fail to initialize properly. It might log the error:</em> <br />
+<td>10332, 10409 </td><td><p class="starttd"><b>FIXED:</b> <em>When the Persistent Store is configured to publish <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/ume.tag:../UME/" href="../UME/storedaemonstatistics.html">Daemon Statistics</a>, there is a small chance that it will fail to initialize properly. It might log the error:</em> <br />
 <code>[CRITICAL]: Store-10184-80: umestore_dmon_publish: CoreApi-5688-2996: src must be valid</code> <br />
 <em>and could exit with a segmentation fault.</em></p>
 <p class="endtd"></p>
@@ -134,7 +136,7 @@ Persistence Fixed Limitations for 6.11.1&nbsp;&nbsp;<small><a href="#persistence
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>10404, 10411</td><td><p class="starttd"><b>FIXED:</b> <em>When using <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/ume.tag:../UME/" href="../UME/operationalview.html#receiverpacedpersistenceoperations">RPP</a> with <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/ume.tag:../UME/" href="../UME/configurationreferenceforumestored.html#umecfgrepositorytype">repository-type</a> "disk", it is possible for a <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umereceiverpacedpersistencereceiver">blocking receiver</a> to get unrecoverable loss. This loss can be accompanied by the following warning in the Persistent Store log file:</em> <br />
+<td>10404, 10411</td><td><p class="starttd"><b>FIXED:</b> <em>When using <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/ume.tag:../UME/" href="../UME/operationalview.html#receiverpacedpersistenceoperations">RPP</a> with <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/ume.tag:../UME/" href="../UME/optionsforastoresumeattributeselement.html#umecfgrepositorytype">repository-type</a> "disk", it is possible for a <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umereceiverpacedpersistencereceiver">blocking receiver</a> to get unrecoverable loss. This loss can be accompanied by the following warning in the Persistent Store log file:</em> <br />
 <code>[WARNING]: WARNING: failed assertion [ntohl(ohdr-&gt;sqn)==rec-&gt;sqn]</code></p>
 <p class="endtd"></p>
 </td></tr>
@@ -144,7 +146,7 @@ Persistence Fixed Limitations for 6.11.1&nbsp;&nbsp;<small><a href="#persistence
 <p><br />
  </p>
 <h2><a class="anchor" id="queuingfixedlimitationsfor6_11_1"></a>
-Queuing Fixed Limitations for 6.11.1&nbsp;&nbsp;<small><a href="#queuingfixedlimitationsfor6_11_1">&lt;-</a></small></h2>
+Queuing Fixed Problems and Limitations for 6.11.1&nbsp;&nbsp;<small><a href="#queuingfixedlimitationsfor6_11_1">&lt;-</a></small></h2>
 <p>The following bug fixes apply to the UMQ product.</p>
 <ul>
 <li>
@@ -153,12 +155,54 @@ None. </li>
 <p><br />
  </p>
 <h2><a class="anchor" id="dynamicrouterfixedlimitationsfor6_11_1"></a>
-Dynamic Router Fixed Limitations for 6.11.1&nbsp;&nbsp;<small><a href="#dynamicrouterfixedlimitationsfor6_11_1">&lt;-</a></small></h2>
+Dynamic Router Fixed Problems and Limitations for 6.11.1&nbsp;&nbsp;<small><a href="#dynamicrouterfixedlimitationsfor6_11_1">&lt;-</a></small></h2>
 <p>The following bug fixes apply to the Dynamic Routing Option (DRO).</p>
 <ul>
 <li>
 None. </li>
 </ul>
+<p><br />
+<br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+</p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.8.11-->

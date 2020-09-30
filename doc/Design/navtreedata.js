@@ -23,9 +23,11 @@ var NAVTREE =
       [ "Late Join", "fundamentalconcepts.html#latejoin", null ],
       [ "Request/Response", "fundamentalconcepts.html#requestresponse", null ],
       [ "UM Transports", "fundamentalconcepts.html#umtransports", [
-        [ "Transport Sessions", "fundamentalconcepts.html#transportsessions", null ]
+        [ "Transport Sessions", "fundamentalconcepts.html#transportsessions", null ],
+        [ "Transport Pacing", "fundamentalconcepts.html#transportpacing", null ]
       ] ],
       [ "Event Delivery", "fundamentalconcepts.html#eventdelivery", [
+        [ "Receiver BOS and EOS Events", "fundamentalconcepts.html#receiverbosandeosevents", null ],
         [ "Source Connect and Disconnect Events", "fundamentalconcepts.html#sourceconnectanddisconnectevents", null ]
       ] ],
       [ "Rate Controls", "fundamentalconcepts.html#ratecontrols", [
@@ -51,11 +53,15 @@ var NAVTREE =
         [ "UM Hot Failover Across Contexts Objects", "umobjects.html#umhotfailoveracrosscontextsobjects", null ],
         [ "Zero Object Delivery", "umobjects.html#zeroobjectdelivery", null ]
       ] ],
-      [ "Event Queue Object", "umobjects.html#eventqueueobject", null ],
+      [ "Event Queue Object", "umobjects.html#eventqueueobject", [
+        [ "Using an Event Queue", "umobjects.html#usinganeventqueue", null ],
+        [ "Event Queue Timeout", "umobjects.html#eventqueuetimeout", null ]
+      ] ],
       [ "Message Object", "umobjects.html#messageobject", [
         [ "Message Object Deletion", "umobjects.html#messageobjectdeletion", null ],
         [ "Message Object Retention", "umobjects.html#messageobjectretention", null ]
       ] ],
+      [ "Attributes Object", "umobjects.html#attributesobject", null ],
       [ "Security Considerations", "umobjects.html#securityconsiderations", [
         [ "Webmon Security", "umobjects.html#webmonsecurity", null ]
       ] ],
@@ -71,7 +77,6 @@ var NAVTREE =
         [ "Comparing LBT-RM and PGM", "transporttypes.html#comparinglbtrmndpgm", null ]
       ] ],
       [ "Transport LBT-IPC", "transporttypes.html#transportlbtipc", [
-        [ "LBT-IPC Shared Memory Area", "transporttypes.html#lbtipcsharedmemoryarea", null ],
         [ "Sources and LBT-IPC", "transporttypes.html#sourcesandlbtipc", null ],
         [ "Receivers and LBT-IPC", "transporttypes.html#receiversandlbtipc", null ],
         [ "Similarities with Other UM Transports", "transporttypes.html#similaritieswithotherumtransports", null ],
@@ -84,14 +89,14 @@ var NAVTREE =
       ] ],
       [ "Transport LBT-SMX", "transporttypes.html#transportlbtsmx", [
         [ "Sources and LBT-SMX", "transporttypes.html#sourcesandlbtsmx", null ],
-        [ "Sending over LBT-SMX with Native APIs", "transporttypes.html#sendingoverlbtsmxwithnativeapis", null ],
-        [ "Sending over LBT-SMX with Existing APIs", "transporttypes.html#sendingoverlbtsmxwithexistingapis", null ],
+        [ "Sending with SMX-specific APIs", "transporttypes.html#sendingoverlbtsmxwithnativeapis", null ],
+        [ "Sending over LBT-SMX with General APIs", "transporttypes.html#sendingoverlbtsmxwithexistingapis", null ],
         [ "Receivers and LBT-SMX", "transporttypes.html#receiversandlbtsmx", null ],
         [ "Similarities Between LBT-SMX and Other UM Transports", "transporttypes.html#similaritiesbetweenlbtsmxandotherumtransports", null ],
         [ "Differences Between LBT-SMX and Other UM Transports", "transporttypes.html#differencesbetweenlbtsmxandotherumtransports", null ],
         [ "LBT-SMX Configuration Example", "transporttypes.html#lbtsmxconfigurationexample", null ],
-        [ "Java Code Examples for LBT-SMX", "transporttypes.html#javacodeexamplesforlbtsmx", null ],
-        [ ".NET Code Examples for LBT-SMX", "transporttypes.html#netcodeexamplesforlbtsmx", null ],
+        [ "Java Coding for LBT-SMX", "transporttypes.html#javacodeexamplesforlbtsmx", null ],
+        [ ".NET Coding for LBT-SMX", "transporttypes.html#netcodeexamplesforlbtsmx", null ],
         [ "LBT-SMX Resource Manager", "transporttypes.html#lbtsmxresourcemanager", null ]
       ] ],
       [ "Transport Broker", "transporttypes.html#transportbroker", null ]
@@ -164,6 +169,13 @@ var NAVTREE =
         [ "Example: Loss Recovery", "architecture.html#examplelossrecovery", null ],
         [ "Example: Unrecoverable Loss", "architecture.html#exampleunrecoverableloss", null ],
         [ "Example: Transport Deletion", "architecture.html#exampletransportdeletion", null ]
+      ] ]
+    ] ],
+    [ "Application Design Principles", "applicationdesignprinciples.html", [
+      [ "Message Reception", "applicationdesignprinciples.html#messagereception", [
+        [ "C Message Reception", "applicationdesignprinciples.html#cmessagereception", null ],
+        [ "Java Message Reception", "applicationdesignprinciples.html#javamessagereception", null ],
+        [ ".NET Message Reception", "applicationdesignprinciples.html#netmessagereception", null ]
       ] ]
     ] ],
     [ "UM Features", "umfeatures.html", [
@@ -317,7 +329,10 @@ var NAVTREE =
         [ "Zero-Copy Send Compatibility", "advancedoptimizations.html#zerocopysendcompatibility", null ],
         [ "Zero-Copy Restrictions", "advancedoptimizations.html#zerocopyrestrictions", null ]
       ] ],
-      [ "Comparison of Zero Copy and Smart Sources", "advancedoptimizations.html#comparisonofzerocopyandsmartsources", null ]
+      [ "Comparison of Zero Copy and Smart Sources", "advancedoptimizations.html#comparisonofzerocopyandsmartsources", null ],
+      [ "XSP Latency Reduction", "advancedoptimizations.html#xsplatencyreduction", null ],
+      [ "Core Pinning", "advancedoptimizations.html#corepinning", null ],
+      [ "Memory Latency Reduction", "advancedoptimizations.html#memorylatencyreduction", null ]
     ] ],
     [ "Man Pages for SRS", "manpagesforsrs.html", [
       [ "SRS Man Page", "manpagesforsrs.html#srsmanpage", null ],
@@ -455,7 +470,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "advancedoptimizations.html",
-"umfeatures.html#daemonstatisticsbinarydata"
+"umfeatures.html#compressionandencryption"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

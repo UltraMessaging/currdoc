@@ -3,6 +3,7 @@ var NAVTREE =
   [ "UM Java API", "index.html", [
     [ "Introduction", "index.html", [
       [ "UM Java API", "index.html#umjavaapi", [
+        [ "Application Callbacks in Java", "index.html#applicationcallbacksinjava", null ],
         [ "Using UM Java on Windows", "index.html#usingumjavaonwindows", null ],
         [ "Using UM Java on Unix", "index.html#usingumjavaonunix", null ]
       ] ],

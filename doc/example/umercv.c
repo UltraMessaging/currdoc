@@ -607,14 +607,6 @@ int rcv_handle_msg(lbm_rcv_t *rcv, lbm_msg_t *msg, void *clientd)
 			exit(0);
 		}
 		break;
-	case LBM_MSG_UME_REGISTRATION_SUCCESS:
-		{
-			lbm_msg_ume_registration_t *reg = (lbm_msg_ume_registration_t *)(msg->data);
-
-			printf("[%s][%s] UME registration successful. SrcRegID %u RcvRegID %u\n",
-					msg->topic_name, msg->source, reg->src_registration_id, reg->rcv_registration_id);
-		}
-		break;
 	case LBM_MSG_UME_REGISTRATION_SUCCESS_EX:
 		{
 			lbm_msg_ume_registration_ex_t *reg = (lbm_msg_ume_registration_ex_t *)(msg->data);

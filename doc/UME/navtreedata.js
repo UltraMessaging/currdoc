@@ -5,6 +5,7 @@ var NAVTREE =
     [ "Persistence Overview", "persistenceoverview.html", null ],
     [ "Persistence Concepts", "persistenceconcepts.html", [
       [ "Persistent Store Concept", "persistenceconcepts.html#persistentstoreconcept", null ],
+      [ "Persistence Configuration Concept", "persistenceconcepts.html#persistenceconfigurationconcept", null ],
       [ "Registration Identifier Concept", "persistenceconcepts.html#registrationidentifierconcept", null ],
       [ "Delivery Confirmation Concept", "persistenceconcepts.html#deliveryconfirmationconcept", null ],
       [ "Release Policy", "persistenceconcepts.html#releasepolicy", null ],
@@ -16,7 +17,7 @@ var NAVTREE =
         [ "Store Processes and Instances", "persistencearchitecture.html#storeprocessesandinstances", null ],
         [ "Source Repositories", "persistencearchitecture.html#sourcerepositories", null ],
         [ "Repository Thresholds and Limits", "persistencearchitecture.html#repositorythresholdsandlimits", null ],
-        [ "Tolerance Persistent Store Fault Tolerance", "persistencearchitecture.html#persistentstorefault", null ],
+        [ "Persistent Store Fault Tolerance", "persistencearchitecture.html#persistentstorefault", null ],
         [ "Identifying Persistent Stores", "persistencearchitecture.html#identifyingpersistentstores", null ]
       ] ]
     ] ],
@@ -32,7 +33,7 @@ var NAVTREE =
         [ "Receiver Recovery", "operationalview.html#receiverrecovery", null ],
         [ "Registration Limitations", "operationalview.html#registrationlimitations", null ]
       ] ],
-      [ "Receiver-paced Persistence Operations", "operationalview.html#receiverpacedpersistenceoperations", [
+      [ "RPP: Receiver-Paced Persistence", "operationalview.html#receiverpacedpersistenceoperations", [
         [ "RPP Registration", "operationalview.html#rppregistration", null ],
         [ "RPP Normal Operation", "operationalview.html#rppnormaloperation", null ],
         [ "RPP Message Recovery", "operationalview.html#rppmessagerecovery", null ],
@@ -43,8 +44,7 @@ var NAVTREE =
       ] ],
       [ "Persistence Events", "operationalview.html#persistenceevents", [
         [ "Persistence Source Events", "operationalview.html#persistencesourceevents", null ],
-        [ "Persistence Receiver Events", "operationalview.html#persistencereceiverevents", null ],
-        [ "Persistence Context Events", "operationalview.html#persistencecontextevents", null ]
+        [ "Persistence Receiver Events", "operationalview.html#persistencereceiverevents", null ]
       ] ]
     ] ],
     [ "Store Repository Profiling (SRP)", "storerepositoryprofilingsrp.html", [
@@ -67,50 +67,49 @@ var NAVTREE =
       [ "Single Source Fails and Recovers", "demonstratingpersistence.html#singlesourcefailsandrecovers", null ],
       [ "Single Store Fails", "demonstratingpersistence.html#singlestorefails", null ]
     ] ],
-    [ "Designing Persistence Applications", "designingpersistenceapplications.html", [
-      [ "Registration Identifiers", "designingpersistenceapplications.html#registrationidentifiers", [
-        [ "Use Static RegIDs", "designingpersistenceapplications.html#usestaticregids", null ],
-        [ "Save Assigned RegIDs", "designingpersistenceapplications.html#saveassignedregids", null ],
-        [ "Managing RegIDs with Session IDs", "designingpersistenceapplications.html#managingregidswithsessionids", null ]
-      ] ],
-      [ "Designing Persistent Sources", "designingpersistenceapplications.html#designingpersistentsources", [
-        [ "New or Re-Registration", "designingpersistenceapplications.html#neworreregistration", null ],
-        [ "Sources Must Be Able to Resume Sending", "designingpersistenceapplications.html#sourcesmustbeabletoresumesending", null ],
-        [ "Source Message Retention and Release", "designingpersistenceapplications.html#sourcemessageretentionandrelease", null ],
-        [ "Forced Reclaims", "designingpersistenceapplications.html#forcedreclaims", null ],
-        [ "Source Release Policy Options", "designingpersistenceapplications.html#sourcereleasepolicyoptions", null ],
-        [ "Confirmed Delivery", "designingpersistenceapplications.html#confirmeddelivery", null ],
-        [ "Source Event Handler", "designingpersistenceapplications.html#sourceeventhandler", null ],
-        [ "Source Event Handler - Stability, Confirmation and Release", "designingpersistenceapplications.html#sourceeventhandlerstabilityconfirmationandrelease", null ],
-        [ "Mapping Your Message Numbers to Sequence Numbers", "designingpersistenceapplications.html#mappingyourmessagenumberstosequencenumbers", null ],
-        [ "Receiver Liveness Detection", "designingpersistenceapplications.html#receiverlivenessdetection", null ]
-      ] ],
-      [ "Designing Persistent Receivers", "designingpersistenceapplications.html#designingpersistentreceivers", [
-        [ "Receiver RegID Management", "designingpersistenceapplications.html#receiverregidmanagement", null ],
-        [ "Recovery Management", "designingpersistenceapplications.html#recoverymanagement", null ],
-        [ "Duplicate Message Delivery", "designingpersistenceapplications.html#duplicatmessagedelivery", null ],
-        [ "Setting Callback Function to Set Recovery Sequence Number", "designingpersistenceapplications.html#settingcallbackfunctiontosetrecoverysequencenumber", null ],
-        [ "Persistence Message Consumption", "designingpersistenceapplications.html#persistencemessageconsumption", null ],
-        [ "Immediate Message Consumption", "designingpersistenceapplications.html#immediatemessageconsumption", null ],
-        [ "Delayed Message Processing", "designingpersistenceapplications.html#delayedmessageprocessing", null ],
-        [ "Batching Acknowledgments", "designingpersistenceapplications.html#batchingacknowledgments", null ],
-        [ "ACK Ordering", "designingpersistenceapplications.html#ackordering", null ],
-        [ "Explicit Acknowledgments", "designingpersistenceapplications.html#explicitacknowledgments", null ],
-        [ "Object-free Explicit Acknowledgments", "designingpersistenceapplications.html#objectfreeexplicitacknowledgments", null ]
-      ] ],
-      [ "Designing Persistent Stores", "designingpersistenceapplications.html#designingpersistentstores", [
-        [ "Store Log File", "designingpersistenceapplications.html#storelogfile", null ],
-        [ "Store Rolling Logs", "designingpersistenceapplications.html#storerollinglogs", null ],
-        [ "Quorum/Consensus Store Usage", "designingpersistenceapplications.html#quorumconsensusstoreusage", null ],
-        [ "Sources Using Quorum/Consensus Store Configuration", "designingpersistenceapplications.html#sourcesusingquorumconsensusstoreconfiguration", null ]
-      ] ],
-      [ "Persistent Fault Recovery", "designingpersistenceapplications.html#persistentfaultrecovery", [
-        [ "Persistent Source Recovery", "designingpersistenceapplications.html#persistentsourcerecovery", null ],
-        [ "Persistent Receiver Recovery", "designingpersistenceapplications.html#persistentreceiverrecovery", null ]
-      ] ],
-      [ "Callable Store", "designingpersistenceapplications.html#callablestore", null ],
-      [ "Store Thread Affinity", "designingpersistenceapplications.html#storethreadaffinity", null ]
+    [ "Registration Identifiers", "registrationidentifiers.html", [
+      [ "Use Static RegIDs", "registrationidentifiers.html#usestaticregids", null ],
+      [ "Save Assigned RegIDs", "registrationidentifiers.html#saveassignedregids", null ],
+      [ "Managing RegIDs with Session IDs", "registrationidentifiers.html#managingregidswithsessionids", null ]
     ] ],
+    [ "Designing Persistent Sources", "designingpersistentsources.html", [
+      [ "New or Re-Registration", "designingpersistentsources.html#neworreregistration", null ],
+      [ "Sources Must Be Able to Resume Sending", "designingpersistentsources.html#sourcesmustbeabletoresumesending", null ],
+      [ "Source Message Retention and Release", "designingpersistentsources.html#sourcemessageretentionandrelease", null ],
+      [ "Forced Reclaims", "designingpersistentsources.html#forcedreclaims", null ],
+      [ "Source Release Policy Options", "designingpersistentsources.html#sourcereleasepolicyoptions", null ],
+      [ "Confirmed Delivery", "designingpersistentsources.html#confirmeddelivery", null ],
+      [ "Source Event Handler", "designingpersistentsources.html#sourceeventhandler", null ],
+      [ "Source Event Handler - Stability, Confirmation and Release", "designingpersistentsources.html#sourceeventhandlerstabilityconfirmationandrelease", null ],
+      [ "Mapping Your Message Numbers to Sequence Numbers", "designingpersistentsources.html#mappingyourmessagenumberstosequencenumbers", null ],
+      [ "Receiver Liveness Detection", "designingpersistentsources.html#receiverlivenessdetection", null ]
+    ] ],
+    [ "Designing Persistent Receivers", "designingpersistentreceivers.html", [
+      [ "Receiver RegID Management", "designingpersistentreceivers.html#receiverregidmanagement", null ],
+      [ "Recovery Management", "designingpersistentreceivers.html#recoverymanagement", null ],
+      [ "Duplicate Message Delivery", "designingpersistentreceivers.html#duplicatmessagedelivery", null ],
+      [ "Setting Callback Function to Set Recovery Sequence Number", "designingpersistentreceivers.html#settingcallbackfunctiontosetrecoverysequencenumber", null ],
+      [ "Persistence Message Consumption", "designingpersistentreceivers.html#persistencemessageconsumption", [
+        [ "Delete on Return, Batch ACKs", "designingpersistentreceivers.html#deleteonreturnbatchacks", null ],
+        [ "Retain on Return, Batch ACKs", "designingpersistentreceivers.html#retainonreturnbatchacks", null ],
+        [ "Explicit Acknowledgments", "designingpersistentreceivers.html#explicitacknowledgments", null ],
+        [ "ACK Immediately on Delete", "designingpersistentreceivers.html#ackimmediatelyondelete", null ]
+      ] ],
+      [ "ACK Ordering", "designingpersistentreceivers.html#ackordering", null ],
+      [ "Object-free Explicit Acknowledgments", "designingpersistentreceivers.html#objectfreeexplicitacknowledgments", null ]
+    ] ],
+    [ "Designing Persistent Stores", "designingpersistentstores.html", [
+      [ "Store Log File", "designingpersistentstores.html#storelogfile", null ],
+      [ "Store Rolling Logs", "designingpersistentstores.html#storerollinglogs", null ],
+      [ "Quorum/Consensus Store Usage", "designingpersistentstores.html#quorumconsensusstoreusage", null ],
+      [ "Sources Using Quorum/Consensus Store Configuration", "designingpersistentstores.html#sourcesusingquorumconsensusstoreconfiguration", null ]
+    ] ],
+    [ "Persistent Fault Recovery", "persistentfaultrecovery.html", [
+      [ "Persistent Source Recovery", "persistentfaultrecovery.html#persistentsourcerecovery", null ],
+      [ "Persistent Receiver Recovery", "persistentfaultrecovery.html#persistentreceiverrecovery", null ]
+    ] ],
+    [ "Callable Store", "callablestore.html", null ],
+    [ "Store Thread Affinity", "storethreadaffinity.html", null ],
     [ "Persistence Fault Tolerance", "persistencefaulttolerance.html", [
       [ "Message Loss Recovery", "persistencefaulttolerance.html#messagelossrecovery", null ],
       [ "Configuring for Persistence and Recovery", "persistencefaulttolerance.html#configuringforpersistenceandrecovery", [
@@ -154,16 +153,49 @@ var NAVTREE =
         [ "UMP Element \"<uid>\"", "configurationreferenceforumestored.html#umeelementuid", null ],
         [ "UMP Element \"<log>\"", "configurationreferenceforumestored.html#umeelementlog", null ]
       ] ],
-      [ "Options for a Store's ume-attributes Element", "configurationreferenceforumestored.html#optionsforastoresumeattributeselement", [
-        [ "Options for UM", "configurationreferenceforumestored.html#optionsforum", null ],
-        [ "Store Options", "configurationreferenceforumestored.html#storeoptions", null ]
-      ] ],
-      [ "Options for a Topic's ume-attributes Element", "configurationreferenceforumestored.html#optionsforatopicsume-attributeselement", null ],
-      [ "Option Types for ume-attributes Elements", "configurationreferenceforumestored.html#optiontypesforumeattributeselements", null ],
       [ "umestored Configuration DTD", "configurationreferenceforumestored.html#umestoredconfigurationdtd", null ],
-      [ "Store Configuration Example", "configurationreferenceforumestored.html#storeconfigurationexample", [
-        [ "xml-config Tag", "configurationreferenceforumestored.html#xmlconfigtag", null ]
+      [ "Store Configuration Example", "configurationreferenceforumestored.html#storeconfigurationexample", null ]
+    ] ],
+    [ "\"<option>\" Element Details", "optionsforastoresumeattributeselement.html", [
+      [ "Setting LBM Configuration Options", "optionsforastoresumeattributeselement.html#optionsforum", null ],
+      [ "Store Options in \"<store>\" Element", "optionsforastoresumeattributeselement.html#optionsforatopicsume-attributeselement", [
+        [ "Store Option \"disk-cache-directory\"", "optionsforastoresumeattributeselement.html#umecfgdiskcachedirectory", null ],
+        [ "Store Option \"disk-state-directory\"", "optionsforastoresumeattributeselement.html#umecfgdiskstatedirectory", null ],
+        [ "Store Option \"allow-proxy-source\"", "optionsforastoresumeattributeselement.html#umecfgallowproxysource", null ],
+        [ "Store Option \"context-name\"", "optionsforastoresumeattributeselement.html#umecfgcontextname", null ],
+        [ "Store Option \"retransmission-request-processing-rate\"", "optionsforastoresumeattributeselement.html#umecfgretransmissionrequestprocessingrate", null ]
+      ] ],
+      [ "Store Options in \"<topic>\" Element", "optionsforastoresumeattributeselement.html#storeoptionsintopicelement", [
+        [ "Topic Option \"retransmission-request-forwarding\"", "optionsforastoresumeattributeselement.html#umecfgretransmissionrequestforwarding", null ],
+        [ "Topic Option \"repository-type\"", "optionsforastoresumeattributeselement.html#umecfgrepositorytype", null ],
+        [ "Topic Option \"repository-size-threshold\"", "optionsforastoresumeattributeselement.html#umecfgrepositorysizethreshold", null ],
+        [ "Topic Option \"repository-size-limit\"", "optionsforastoresumeattributeselement.html#umecfgrepositorysizelimit", null ],
+        [ "Topic Option \"repository-age-threshold\"", "optionsforastoresumeattributeselement.html#umecfgrepositoryagethreshold", null ],
+        [ "Topic Option \"repository-disk-max-async-cbs\"", "optionsforastoresumeattributeselement.html#umecfgrepositorydiskmaxasynccbs", null ],
+        [ "Topic Option \"repository-disk-max-write-async-cbs\"", "optionsforastoresumeattributeselement.html#umecfgrepositorydiskmaxwriteasynccbs", null ],
+        [ "Topic Option \"repository-disk-max-read-async-cbs\"", "optionsforastoresumeattributeselement.html#umecfgrepositorydiskmaxreadasynccbs", null ],
+        [ "Topic Option \"repository-disk-file-size-limit\"", "optionsforastoresumeattributeselement.html#umecfgrepositorydiskfilesizelimit", null ],
+        [ "Topic Option \"repository-disk-file-preallocate\"", "optionsforastoresumeattributeselement.html#umecfgrepositorydiskfilepreallocate", null ],
+        [ "Topic Option \"repository-disk-async-buffer-length\"", "optionsforastoresumeattributeselement.html#umecfgrepositorydiskasyncbufferlength", null ],
+        [ "Topic Option \"repository-disk-message-checksum\"", "optionsforastoresumeattributeselement.html#umecfgrepositorydiskmessagechecksum", null ],
+        [ "Topic Option \"source-activity-timeout\"", "optionsforastoresumeattributeselement.html#umecfgsourceactivitytimeout", null ],
+        [ "Topic Option \"source-state-lifetime\"", "optionsforastoresumeattributeselement.html#umecfgsourcestatelifetime", null ],
+        [ "Topic Option \"receiver-activity-timeout\"", "optionsforastoresumeattributeselement.html#umecfgreceiveractivitytimeout", null ],
+        [ "Topic Option \"receiver-state-lifetime\"", "optionsforastoresumeattributeselement.html#umecfgreceiverstatelifetime", null ],
+        [ "Topic Option \"source-check-interval\"", "optionsforastoresumeattributeselement.html#umecfgsourcecheckinterval", null ],
+        [ "Topic Option \"keepalive-interval\"", "optionsforastoresumeattributeselement.html#umecfgkeepaliveinterval", null ],
+        [ "Topic Option \"receiver-new-registration-rollback\"", "optionsforastoresumeattributeselement.html#umecfgreceivernewregistrationrollback", null ],
+        [ "Topic Option \"proxy-election-interval\"", "optionsforastoresumeattributeselement.html#umecfgproxyelectioninterval", null ],
+        [ "Topic Option \"stability-ack-interval\"", "optionsforastoresumeattributeselement.html#umecfgstabilityackinterval", null ],
+        [ "Topic Option \"stability-ack-minimum-number\"", "optionsforastoresumeattributeselement.html#umecfgstabilityackminimumnumber", null ],
+        [ "Topic Option \"repository-allow-receiver-paced-persistence\"", "optionsforastoresumeattributeselement.html#umecfgrepositoryallowreceiverpacedpersistence", null ],
+        [ "Topic Option \"repository-allow-ack-on-reception\"", "optionsforastoresumeattributeselement.html#umecfgrepositoryallowackonreception", null ],
+        [ "Topic Option \"repository-disk-write-delay\"", "optionsforastoresumeattributeselement.html#umecfgrepositorydiskwritedelay", null ],
+        [ "Topic Option \"source-flight-size-bytes-maximum\"", "optionsforastoresumeattributeselement.html#umecfgsourceflightsizebytesmaximum", null ]
       ] ]
+    ] ],
+    [ "Special Configuration Topics", "specialconfigurationtopics.html", [
+      [ "RPP Configuration Specifics", "specialconfigurationtopics.html#rppconfigurationspecifics", null ]
     ] ],
     [ "Store Daemon Statistics", "storedaemonstatistics.html", [
       [ "Store Daemon Statistics Structures", "storedaemonstatistics.html#storedaemonstatisticsstructures", [
@@ -196,7 +228,7 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"configurationreferenceforumestored.html"
+"callablestore.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

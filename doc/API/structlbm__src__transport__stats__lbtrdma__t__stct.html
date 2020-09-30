@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">UM C API
-   &#160;<span id="projectnumber">6.13</span>
+   &#160;<span id="projectnumber">6.13.1</span>
    </div>
   </td>
  </tr>
@@ -73,65 +73,30 @@ $(document).ready(function(){initNavTree('structlbm__src__transport__stats__lbtr
 </div><!--header-->
 <div class="contents">
 
-<p>Deprecated structure that holds datagram statistics for source LBT-RDMA transports.  
+<p>DEPRECATED, do not use. lbt-rdma is no longer supported.  
  <a href="structlbm__src__transport__stats__lbtrdma__t__stct.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="lbm_8h_source.html">lbm.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Data Fields</h2></td></tr>
-<tr class="memitem:ade6e902d7414f2c28c65bbbbc6954289"><td class="memItemLeft" align="right" valign="top"><a class="el" href="lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlbm__src__transport__stats__lbtrdma__t__stct.html#ade6e902d7414f2c28c65bbbbc6954289">num_clients</a></td></tr>
+<tr class="memitem:ade6e902d7414f2c28c65bbbbc6954289"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ade6e902d7414f2c28c65bbbbc6954289"></a>
+<a class="el" href="lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlbm__src__transport__stats__lbtrdma__t__stct.html#ade6e902d7414f2c28c65bbbbc6954289">num_clients</a></td></tr>
+<tr class="memdesc:ade6e902d7414f2c28c65bbbbc6954289"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of receiver transports that are currently connected to this source transport. <br /></td></tr>
 <tr class="separator:ade6e902d7414f2c28c65bbbbc6954289"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a93801d893f682792c4d6743bfc4b9359"><td class="memItemLeft" align="right" valign="top"><a class="el" href="lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlbm__src__transport__stats__lbtrdma__t__stct.html#a93801d893f682792c4d6743bfc4b9359">msgs_sent</a></td></tr>
+<tr class="memitem:a93801d893f682792c4d6743bfc4b9359"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a93801d893f682792c4d6743bfc4b9359"></a>
+<a class="el" href="lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlbm__src__transport__stats__lbtrdma__t__stct.html#a93801d893f682792c4d6743bfc4b9359">msgs_sent</a></td></tr>
+<tr class="memdesc:a93801d893f682792c4d6743bfc4b9359"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of LBT-RDMA datagrams sent. Depending on batching settings, a single LBT-RDMA datagram may contain one or more messages, or a fragment of a larger message. With LBT-RDMA, larger messages are split into fragment sizes limited by configuration option transport_lbtrdma_datagram_max_size (default 4KB). <br /></td></tr>
 <tr class="separator:a93801d893f682792c4d6743bfc4b9359"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a151a79638d74099e9bcf76eb637f12a8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlbm__src__transport__stats__lbtrdma__t__stct.html#a151a79638d74099e9bcf76eb637f12a8">bytes_sent</a></td></tr>
+<tr class="memitem:a151a79638d74099e9bcf76eb637f12a8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a151a79638d74099e9bcf76eb637f12a8"></a>
+<a class="el" href="lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlbm__src__transport__stats__lbtrdma__t__stct.html#a151a79638d74099e9bcf76eb637f12a8">bytes_sent</a></td></tr>
+<tr class="memdesc:a151a79638d74099e9bcf76eb637f12a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of LBT-RDMA datagram bytes sent, i.e., the total of lengths of all LBT-RDMA packets including UM header information. <br /></td></tr>
 <tr class="separator:a151a79638d74099e9bcf76eb637f12a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Deprecated structure that holds datagram statistics for source LBT-RDMA transports. </p>
-<p>Note that when stats are sampled, the fields in the structure are not necessarily from the same instant in time. The structure might be updated concurrently with it being sampled, and while each structure field is atomically read, the field values can be skewed slightly across time.</p>
-<p>See <a class="el" href="structlbm__src__transport__stats__lbtrdma__t__stct.html">lbm_src_transport_stats_lbtrdma_t_stct</a> for field definitions. </p>
-</div><h2 class="groupheader">Field Documentation</h2>
-<a class="anchor" id="a151a79638d74099e9bcf76eb637f12a8"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a> lbm_src_transport_stats_lbtrdma_t_stct::bytes_sent</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Number of LBT-RDMA datagram bytes sent, i.e., the total of lengths of all LBT-RDMA packets including UM header information. </p>
-
-</div>
-</div>
-<a class="anchor" id="a93801d893f682792c4d6743bfc4b9359"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a> lbm_src_transport_stats_lbtrdma_t_stct::msgs_sent</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Number of LBT-RDMA datagrams sent. Depending on batching settings, a single LBT-RDMA datagram may contain one or more messages, or a fragment of a larger message. With LBT-RDMA, larger messages are split into fragment sizes limited by configuration option transport_lbtrdma_datagram_max_size (default 4KB). </p>
-
-</div>
-</div>
-<a class="anchor" id="ade6e902d7414f2c28c65bbbbc6954289"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a> lbm_src_transport_stats_lbtrdma_t_stct::num_clients</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Number of receiver transports that are currently connected to this source transport. </p>
-
-</div>
-</div>
-<hr/>The documentation for this struct was generated from the following file:<ul>
+<div class="textblock"><p>DEPRECATED, do not use. lbt-rdma is no longer supported. </p>
+<dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000011">Deprecated:</a></b></dt><dd>do not use. LBT-RDMA is no longer supported. </dd></dl>
+</div><hr/>The documentation for this struct was generated from the following file:<ul>
 <li><a class="el" href="lbm_8h_source.html">lbm.h</a></li>
 </ul>
 </div><!-- contents -->

@@ -54,8 +54,9 @@ $(document).ready(function(){initNavTree('umversion6_8.html','');});
 <div class="title">UM Version 6.8 </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>The most-significant update to UM version 6.8 is the replacement of the UM brokered queuing and JMS functionality (umestored) with an enhanced Apache ActiveMQ-based JMS/AMQP broker. The existing UMQ queuing API has been adapted to make use of ActiveMQ via the open standard AMQP protocol.</p>
+<div class="textblock"><p>The most significant update to UM version 6.8 is the replacement of the UM brokered queuing and JMS functionality (umestored) with an enhanced Apache ActiveMQ-based JMS/AMQP broker. The existing UMQ queuing API has been adapted to make use of ActiveMQ via the open standard AMQP protocol.</p>
 <p>Note that when upgrading a brokered queuing application from a pre-6.8 version, the application source code may need to be changed and re-built.</p>
+<dl class="section attention"><dt>Attention</dt><dd>there are some special upgrade instructions for UM versions 6.8 and beyond that will affect a small percentage of users upgrading from pre-6.8 versions of UM. See <a class="el" href="umversion6_8.html#specialupgradeinstructionsfor6_8">Special Upgrade Instructions for 6.8</a>. For general upgrade instructions, see <a class="el" href="upgradeprocedure.html">Upgrade Procedure</a>. You are also advised to inspect the full list of <a class="el" href="deprecations.html">Deprecations</a>.</dd></dl>
 <p><br />
  </p>
 <h1><a class="anchor" id="enhancementsfor6_8"></a>
@@ -70,7 +71,7 @@ Streaming Enhancements for 6.8&nbsp;&nbsp;<small><a href="#streamingenhancements
 <p class="startli">The Multiple Datagram Reception feature can greatly increase receiver performance during message bursts by reading multiple UDP datagrams with one <code>recvmmsg()</code> system call.</p>
 <p>For applications prone to bursts of many messages arriving at a receiver in a very short time, performance can degrade while the receiver reads each message individually. To accelerate message reception during these bursts, enable Multiple Datagram Reception.</p>
 <p>This feature applies to all UDP-based sockets, such as topic resolution, MIM, and for transports LBT-RM and LBT-RU. You can use this feature with Linux kernel 2.6.33 or later, and glibc 2.12 or later.</p>
-<p>To enable Multiple Datagram Reception, set the configuration option <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grpmajoroptions.html#multiplereceivemaximumdatagramscontext">multiple_receive_maximum_datagrams (context)</a> to the maximum number of datagrams per socket to receive in one pass.</p>
+<p>To enable Multiple Datagram Reception, set the configuration option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grpmajoroptions.html#multiplereceivemaximumdatagramscontext">multiple_receive_maximum_datagrams (context)</a> to the maximum number of datagrams per socket to receive in one pass.</p>
 <dl class="section note"><dt>Note</dt><dd>Due to an implementation defect, this feature does not function correctly in UM version 6.8. Users of version 6.8 are advised to upgrade to UM version 6.9.2 or beyond to take advantage of the performance advantages of this feature. </dd></dl>
 </li>
 </ul>
@@ -80,23 +81,23 @@ Streaming Enhancements for 6.8&nbsp;&nbsp;<small><a href="#streamingenhancements
 <p class="endtd"></p>
 </th></tr>
 <tr>
-<td><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grpmulticastimmediatemessagingnetwork.html#mimincomingaddresscontext">mim_incoming_address (context)</a> </td><td>224.10.10.21 </td><td>0.0.0.0 </td><td><p class="starttd">Disable MIM reception by default to avoid the possibility of default-configured applications sending data that is heard by all contexts.</p>
+<td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grpmulticastimmediatemessagingnetwork.html#mimincomingaddresscontext">mim_incoming_address (context)</a> </td><td>224.10.10.21 </td><td>0.0.0.0 </td><td><p class="starttd">Disable MIM reception by default to avoid the possibility of default-configured applications sending data that is heard by all contexts.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grplatejoin.html#retransmitrequestoutstandingmaximumreceiver">retransmit_request_outstanding_maximum (receiver)</a> </td><td>200 messages </td><td>10 messages </td><td><p class="starttd">Use a more efficient setting for streaming or persistent late join.</p>
+<td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grplatejoin.html#retransmitrequestoutstandingmaximumreceiver">retransmit_request_outstanding_maximum (receiver)</a> </td><td>200 messages </td><td>10 messages </td><td><p class="starttd">Use a more efficient setting for streaming or persistent late join.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grpunicastimmediatemessagingoperation.html#responsetcpdeletiontimeoutcontext">response_tcp_deletion_timeout (context)</a> </td><td>2000 ms </td><td>20,000 ms </td><td><p class="starttd">Use a longer timeout to avoid wasted CPU time caused by unnecessary TCP socket tear down and recreation, along with associated log messages.</p>
+<td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grpunicastimmediatemessagingoperation.html#responsetcpdeletiontimeoutcontext">response_tcp_deletion_timeout (context)</a> </td><td>2000 ms </td><td>20,000 ms </td><td><p class="starttd">Use a longer timeout to avoid wasted CPU time caused by unnecessary TCP socket tear down and recreation, along with associated log messages.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grpudpbasedresolveroperation.html#resolverdomainidactivepropagationtimeoutcontext">resolver_domain_id_active_propagation_timeout (context)</a> </td><td>-1 </td><td>0 </td><td><p class="starttd">This new value where contexts learn of domain IDs from active DROs only is now the default.</p>
+<td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grpudpbasedresolveroperation.html#resolverdomainidactivepropagationtimeoutcontext">resolver_domain_id_active_propagation_timeout (context)</a> </td><td>-1 </td><td>0 </td><td><p class="starttd">This new value where contexts learn of domain IDs from active DROs only is now the default.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grpmajoroptions.html#fdmanagementtypecontext">fd_management_type (context)</a> </td><td>wsaeventselect (Windows) </td><td>wincompport (Windows) </td><td></td></tr>
+<td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grpmajoroptions.html#fdmanagementtypecontext">fd_management_type (context)</a> </td><td>wsaeventselect (Windows) </td><td>wincompport (Windows) </td><td></td></tr>
 </table>
 <p><br />
  </p>
@@ -107,9 +108,9 @@ Persistence Enhancements for 6.8&nbsp;&nbsp;<small><a href="#persistenceenhancem
 <li>
 <p class="startli">UM 6.8 introduces the following new API call: </p><ul>
 <li>
-C: <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/api.tag:../API/" href="../API/lbm_8h.html#a39a43c291338833d445e71a1d9ab3439">lbm_ume_ack_mark_not_outstanding()</a> </li>
+C: <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/api.tag:../API/" href="../API/lbm_8h.html#a39a43c291338833d445e71a1d9ab3439">lbm_ume_ack_mark_not_outstanding()</a> </li>
 <li>
-Java and .NET: <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/javaapi.tag:../JavaAPI/" href="../JavaAPI/classcom_1_1latencybusters_1_1lbm_1_1UMEMessageAck.html#a48ecb4264bbdc97da4ad5de2f0e175b4">com::latencybusters::lbm::UMEMessageAck::markNotOutstanding()</a> </li>
+Java and .NET: <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/javaapi.tag:../JavaAPI/" href="../JavaAPI/classcom_1_1latencybusters_1_1lbm_1_1UMEMessageAck.html#a48ecb4264bbdc97da4ad5de2f0e175b4">com::latencybusters::lbm::UMEMessageAck::markNotOutstanding()</a> </li>
 </ul>
 <p>This call updates the internal acking state up to the sequence number provided for throttled recovery, without acking anything.</p>
 <p class="endli"></p>
@@ -119,7 +120,7 @@ Java and .NET: <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/lab
 <p class="endli"></p>
 </li>
 <li>
-You can now configure a Persistent Store to port=0, which selects the actual port number from within the range of the <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grpunicastimmediatemessagingnetwork.html#requesttcpportlowcontext">request_tcp_port_low (context)</a> and <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grpunicastimmediatemessagingnetwork.html#requesttcpporthighcontext">request_tcp_port_high (context)</a> configuration options. </li>
+You can now configure a Persistent Store to port=0, which selects the actual port number from within the range of the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grpunicastimmediatemessagingnetwork.html#requesttcpportlowcontext">request_tcp_port_low (context)</a> and <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grpunicastimmediatemessagingnetwork.html#requesttcpporthighcontext">request_tcp_port_high (context)</a> configuration options. </li>
 </ul>
 <p>The following configuration options default values are changed: </p><table class="doxtable">
 <tr>
@@ -127,35 +128,35 @@ You can now configure a Persistent Store to port=0, which selects the actual por
 <p class="endtd"></p>
 </th></tr>
 <tr>
-<td><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grpofftransportrecovery.html#useotrreceiver">use_otr (receiver)</a> </td><td>0 </td><td>2 (enables only persistent receivers) </td><td><p class="starttd"></p>
+<td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grpofftransportrecovery.html#useotrreceiver">use_otr (receiver)</a> </td><td>0 </td><td>2 (enables only persistent receivers) </td><td><p class="starttd"></p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeregistrationintervalsource">ume_registration_interval (source)</a> </td><td>500 ms </td><td>3000 ms </td><td><p class="starttd">Reduce overly-aggressive registration activity, which causes excess CPU use. Sources still register very quickly if all stores are available, and only wait for the '<code>ume_registration_interval</code>' to expire if less than the full list of stores responds to the registration request of the source.</p>
+<td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeregistrationintervalsource">ume_registration_interval (source)</a> </td><td>500 ms </td><td>3000 ms </td><td><p class="starttd">Reduce overly-aggressive registration activity, which causes excess CPU use. Sources still register very quickly if all stores are available, and only wait for the '<code>ume_registration_interval</code>' to expire if less than the full list of stores responds to the registration request of the source.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeregistrationintervalreceiver">ume_registration_interval (receiver)</a> </td><td>500 ms </td><td>3000 ms </td><td><p class="starttd">Reduce overly-aggressive registration activity, which causes excess CPU use. Receivers still register very quickly if all stores are available, and only wait for the '<code>ume_registration_interval</code>' to expire if less than the full list of stores responds to the registration request of the receiver.</p>
+<td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeregistrationintervalreceiver">ume_registration_interval (receiver)</a> </td><td>500 ms </td><td>3000 ms </td><td><p class="starttd">Reduce overly-aggressive registration activity, which causes excess CPU use. Receivers still register very quickly if all stores are available, and only wait for the '<code>ume_registration_interval</code>' to expire if less than the full list of stores responds to the registration request of the receiver.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeconsensussequencenumberbehaviorsource">ume_consensus_sequence_number_behavior (source)</a> </td><td><code>majority</code> </td><td><code>highest</code> </td><td><p class="starttd">For applications that do not reconcile and republish in-flight messages upon store re- registration in the same order they were originally sent, this revised default reduces the chances that a source republishes a previously sent sequence number with a different payload.</p>
+<td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeconsensussequencenumberbehaviorsource">ume_consensus_sequence_number_behavior (source)</a> </td><td><code>majority</code> </td><td><code>highest</code> </td><td><p class="starttd">For applications that do not reconcile and republish in-flight messages upon store re- registration in the same order they were originally sent, this revised default reduces the chances that a source republishes a previously sent sequence number with a different payload.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umesriintersriintervalsource">ume_sri_inter_sri_interval (source)</a> </td><td>100 ms </td><td>500 ms </td><td><p class="starttd">This option, combined with option umesrimaxnumberofsriperupdatesource, determines how long a persistent source advertises stores to receivers after receiving an SRI request. These increased values reduce the likelihood of poor network performance and infrastructure components causing improper UMP registration behavior.</p>
+<td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umesriintersriintervalsource">ume_sri_inter_sri_interval (source)</a> </td><td>100 ms </td><td>500 ms </td><td><p class="starttd">This option, combined with option umesrimaxnumberofsriperupdatesource, determines how long a persistent source advertises stores to receivers after receiving an SRI request. These increased values reduce the likelihood of poor network performance and infrastructure components causing improper UMP registration behavior.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umesrimaxnumberofsriperupdatesource">ume_sri_max_number_of_sri_per_update (source)</a> </td><td>10 </td><td>20 </td><td><p class="starttd"></p>
+<td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umesrimaxnumberofsriperupdatesource">ume_sri_max_number_of_sri_per_update (source)</a> </td><td>10 </td><td>20 </td><td><p class="starttd"></p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umestoreactivitytimeoutsource">ume_store_activity_timeout (source)</a> </td><td>3000 ms </td><td>10,000 ms </td><td><p class="starttd">This increased value allows for reduced heartbeat traffic, and decreases false declarations of inactive stores. You must set this option and the Persistent Store '<code>keepalive-interval</code>' option together. For information about how these values affect a phased upgrade from earlier versions, see this document's Installation section.</p>
+<td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umestoreactivitytimeoutsource">ume_store_activity_timeout (source)</a> </td><td>3000 ms </td><td>10,000 ms </td><td><p class="starttd">This increased value allows for reduced heartbeat traffic, and decreases false declarations of inactive stores. You must set this option and the Persistent Store '<code>keepalive-interval</code>' option together. For information about how these values affect a phased upgrade from earlier versions, see this document's Installation section.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umestorebehaviorsource">ume_store_behavior (source)</a> </td><td><code>rr</code> </td><td><code>qc</code> </td><td>Round-Robin behavior is discontinued. </td></tr>
+<td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umestorebehaviorsource">ume_store_behavior (source)</a> </td><td><code>rr</code> </td><td><code>qc</code> </td><td>Round-Robin behavior is discontinued. </td></tr>
 </table>
 <p>The following Persistent Store configuration options default values are changed: </p><table class="doxtable">
 <tr>
@@ -163,19 +164,19 @@ You can now configure a Persistent Store to port=0, which selects the actual por
 <p class="endtd"></p>
 </th></tr>
 <tr>
-<td><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/ume.tag:../UME/" href="../UME/configurationreferenceforumestored.html#umecfgreceivernewregistrationrollback">receiver-new-registration-rollback</a> </td><td>0 </td><td>2147483647 </td><td><p class="starttd">The previous default value of 0 resulted in new receivers not requesting any initial state. The new value causes receivers to request all of the data cached in the Persistent Stores that they might be interested in before they become active. You may still need to change these values either with configuration or programmatically.</p>
+<td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/ume.tag:../UME/" href="../UME/optionsforastoresumeattributeselement.html#umecfgreceivernewregistrationrollback">receiver-new-registration-rollback</a> </td><td>0 </td><td>2147483647 </td><td><p class="starttd">The previous default value of 0 resulted in new receivers not requesting any initial state. The new value causes receivers to request all of the data cached in the Persistent Stores that they might be interested in before they become active. You may still need to change these values either with configuration or programmatically.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/ume.tag:../UME/" href="../UME/configurationreferenceforumestored.html#umecfgkeepaliveinterval">keepalive-interval</a> </td><td>500 ms </td><td>3000 ms </td><td><p class="starttd">This increased value reduces heartbeat traffic, and decreases false declarations of inactive stores. You must set this option and the <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umestoreactivitytimeoutsource">ume_store_activity_timeout (source)</a> option together. For information about how these values affect a phased upgrade from earlier versions, see <a class="el" href="upgradeprocedure.html#upgradingfromversionpre60">Upgrading From Version Pre-6.0</a>.</p>
+<td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/ume.tag:../UME/" href="../UME/optionsforastoresumeattributeselement.html#umecfgkeepaliveinterval">keepalive-interval</a> </td><td>500 ms </td><td>3000 ms </td><td><p class="starttd">This increased value reduces heartbeat traffic, and decreases false declarations of inactive stores. You must set this option and the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umestoreactivitytimeoutsource">ume_store_activity_timeout (source)</a> option together. For information about how these values affect a phased upgrade from earlier versions, see <a class="el" href="umversion6_7.html#upgradingfromversionpre60">Upgrading From Version Pre-6.0</a>.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/ume.tag:../UME/" href="../UME/configurationreferenceforumestored.html#umecfgproxyelectioninterval">proxy-election-interval</a> </td><td>5,000 ms </td><td>60,000 ms </td><td><p class="starttd">This increased value gives a UMP store more time to create the potentially large number of proxy sources that may result from a large-scale failure event. This reduces the chances of an overload situation in UMP store processes.</p>
+<td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/ume.tag:../UME/" href="../UME/optionsforastoresumeattributeselement.html#umecfgproxyelectioninterval">proxy-election-interval</a> </td><td>5,000 ms </td><td>60,000 ms </td><td><p class="starttd">This increased value gives a UMP store more time to create the potentially large number of proxy sources that may result from a large-scale failure event. This reduces the chances of an overload situation in UMP store processes.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/ume.tag:../UME/" href="../UME/configurationreferenceforumestored.html#umecfgsourcecheckinterval">source-check-interval</a> </td><td>100 ms </td><td>750 </td><td>This increased value reduces CPU use in the UMP store. The previous default was too aggressive and did not significantly improve performance. </td></tr>
+<td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/ume.tag:../UME/" href="../UME/optionsforastoresumeattributeselement.html#umecfgsourcecheckinterval">source-check-interval</a> </td><td>100 ms </td><td>750 </td><td>This increased value reduces CPU use in the UMP store. The previous default was too aggressive and did not significantly improve performance. </td></tr>
 </table>
 <p><br />
  </p>
@@ -201,34 +202,34 @@ Inter-operation between UMQ and JMS client APIs </li>
 <p class="endli"></p>
 </li>
 <li>
-<p class="startli">New configuration option: <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grpmajoroptions.html#brokercontext">broker (context)</a>.</p>
+<p class="startli">New configuration option: <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grpmajoroptions.html#brokercontext">broker (context)</a>.</p>
 <p class="endli"></p>
 </li>
 <li>
 <p class="startli">New Broker transport statistics added: </p><ul>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/api.tag:../API/" href="../API/structlbm__rcv__transport__stats__broker__t__stct.html#ae93b7d7565dc68783ee6d13b9b0c2619">lbm_rcv_transport_stats_broker_t::msgs_rcved</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/api.tag:../API/" href="../API/structlbm__rcv__transport__stats__broker__t__stct.html#ae93b7d7565dc68783ee6d13b9b0c2619">lbm_rcv_transport_stats_broker_t::msgs_rcved</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/api.tag:../API/" href="../API/structlbm__rcv__transport__stats__broker__t__stct.html#a8b24b2cf283cc51b0e4c663fd9005d46">lbm_rcv_transport_stats_broker_t::bytes_rcved</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/api.tag:../API/" href="../API/structlbm__rcv__transport__stats__broker__t__stct.html#a8b24b2cf283cc51b0e4c663fd9005d46">lbm_rcv_transport_stats_broker_t::bytes_rcved</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/api.tag:../API/" href="../API/structlbm__src__transport__stats__broker__t__stct.html#a0d87e31562d0161580fc77041bb13618">lbm_src_transport_stats_broker_t::msgs_sent</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/api.tag:../API/" href="../API/structlbm__src__transport__stats__broker__t__stct.html#a0d87e31562d0161580fc77041bb13618">lbm_src_transport_stats_broker_t::msgs_sent</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/api.tag:../API/" href="../API/structlbm__src__transport__stats__broker__t__stct.html#a0cdd755fc7a6e719c998af3378aa1a53">lbm_src_transport_stats_broker_t::bytes_sent</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/api.tag:../API/" href="../API/structlbm__src__transport__stats__broker__t__stct.html#a0cdd755fc7a6e719c998af3378aa1a53">lbm_src_transport_stats_broker_t::bytes_sent</a> </li>
 </ul>
 <p class="endli"></p>
 </li>
 <li>
-<p class="startli">You cannot set option <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grpultramessagingqueuing.html#umqqueueparticipationreceiver">umq_queue_participation (receiver)</a> to a value of 2.</p>
+<p class="startli">You cannot set option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grpultramessagingqueuing.html#umqqueueparticipationreceiver">umq_queue_participation (receiver)</a> to a value of 2.</p>
 <p class="endli"></p>
 </li>
 <li>
-<p class="startli">You cannot use the <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/api.tag:../API/" href="../API/lbm_8h.html#aeeb72be91872f87626d26156c3201dfe">lbm_rcv_umq_deregister()</a> function with brokered contexts.</p>
+<p class="startli">You cannot use the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/api.tag:../API/" href="../API/lbm_8h.html#aeeb72be91872f87626d26156c3201dfe">lbm_rcv_umq_deregister()</a> function with brokered contexts.</p>
 <p class="endli"></p>
 </li>
 <li>
 Sources in a brokered context cannot send Application Headers. Use Message Properties as an alternative. </li>
 </ul>
-<p>For more information on upgrading queuing applications, see <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/umq.tag:../UMQ/" href="../UMQ/gettingstarted.html#queuingupgradeconsiderations">Queuing Upgrade Considerations</a>.</p>
+<p>For more information on upgrading queuing applications, see <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/umq.tag:../UMQ/" href="../UMQ/gettingstarted.html#queuingupgradeconsiderations">Queuing Upgrade Considerations</a>.</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="dynamicrouterenhancementsfor6_8"></a>
@@ -241,11 +242,11 @@ None </li>
 <p><br />
  </p>
 <h1><a class="anchor" id="fixedlimitationsfor6_8"></a>
-Fixed Limitations for 6.8&nbsp;&nbsp;<small><a href="#fixedlimitationsfor6_8">&lt;-</a></small></h1>
+Fixed Problems and Limitations for 6.8&nbsp;&nbsp;<small><a href="#fixedlimitationsfor6_8">&lt;-</a></small></h1>
 <p><br />
  </p>
 <h2><a class="anchor" id="streamingfixedlimitationsfor6_8"></a>
-Streaming Fixed Limitations for 6.8&nbsp;&nbsp;<small><a href="#streamingfixedlimitationsfor6_8">&lt;-</a></small></h2>
+Streaming Fixed Problems and Limitations for 6.8&nbsp;&nbsp;<small><a href="#streamingfixedlimitationsfor6_8">&lt;-</a></small></h2>
 <p>The following bug fixes apply to UMS, UMP, and UMQ products.</p>
 <table class="doxtable">
 <tr>
@@ -253,17 +254,17 @@ Streaming Fixed Limitations for 6.8&nbsp;&nbsp;<small><a href="#streamingfixedli
 <p class="endtd"></p>
 </th></tr>
 <tr>
-<td>2219 </td><td><p class="starttd">A Windows application crashes if you set configuration option <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grpmajoroptions.html#fdmanagementtypecontext">fd_management_type (context)</a> to '<code>select</code>'. The valid option for Windows is '<code>wsaeventselect</code>'. As a solution, now if you set a Windows application configuration option <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grpmajoroptions.html#fdmanagementtypecontext">fd_management_type (context)</a> to '<code>select</code>', Ultra Messaging returns an error.</p>
+<td>2219 </td><td><p class="starttd">A Windows application crashes if you set configuration option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grpmajoroptions.html#fdmanagementtypecontext">fd_management_type (context)</a> to '<code>select</code>'. The valid option for Windows is '<code>wsaeventselect</code>'. As a solution, now if you set a Windows application configuration option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grpmajoroptions.html#fdmanagementtypecontext">fd_management_type (context)</a> to '<code>select</code>', Ultra Messaging returns an error.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>6290 </td><td><p class="starttd">In Java, if you reuse the same <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/javaapi.tag:../JavaAPI/" href="../JavaAPI/classcom_1_1latencybusters_1_1lbm_1_1LBMMessageProperties.html">com::latencybusters::lbm::LBMMessageProperties</a> object for every message sent, to adjust those properties dynamically between sends, you are forced to call <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/javaapi.tag:../JavaAPI/" href="../JavaAPI/classcom_1_1latencybusters_1_1lbm_1_1LBMSourceSendExInfo.html#a68a534a3792a38bb6874a45617a9c0f3">com::latencybusters::lbm::LBMSourceSendExInfo::setMessageProperties</a>.</p>
-<p>As a solution, the <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/javaapi.tag:../JavaAPI/" href="../JavaAPI/classcom_1_1latencybusters_1_1lbm_1_1LBMSourceSendExInfo.html">com::latencybusters::lbm::LBMSourceSendExInfo</a> object now maintains a reference to an <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/javaapi.tag:../JavaAPI/" href="../JavaAPI/classcom_1_1latencybusters_1_1lbm_1_1LBMMessageProperties.html">com::latencybusters::lbm::LBMMessageProperties</a> object, if it is set, such that the current value of the <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/javaapi.tag:../JavaAPI/" href="../JavaAPI/classcom_1_1latencybusters_1_1lbm_1_1LBMMessageProperties.html">com::latencybusters::lbm::LBMMessageProperties</a> is used at the time of the send, rather than the value of the properties at the time which <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/javaapi.tag:../JavaAPI/" href="../JavaAPI/classcom_1_1latencybusters_1_1lbm_1_1LBMSourceSendExInfo.html#a68a534a3792a38bb6874a45617a9c0f3">com::latencybusters::lbm::LBMSourceSendExInfo::setMessageProperties()</a> was called.</p>
-<p>Also, for Java and .NET, the <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/javaapi.tag:../JavaAPI/" href="../JavaAPI/classcom_1_1latencybusters_1_1lbm_1_1LBMSourceSendExInfo.html#a2de0eb285c25cc2252977eeeda0a31e1">com::latencybusters::lbm::LBMSourceSendExInfo::setApplicationHeaderChain()</a>, .setChannelInfo(), .setIndexInfo(), .setMessageProperties(), and .setTotalLifetimeInfo() APIs now update the flags of the <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/javaapi.tag:../JavaAPI/" href="../JavaAPI/classcom_1_1latencybusters_1_1lbm_1_1LBMSourceSendExInfo.html">com::latencybusters::lbm::LBMSourceSendExInfo</a> as appropriate.</p>
+<td>6290 </td><td><p class="starttd">In Java, if you reuse the same <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/javaapi.tag:../JavaAPI/" href="../JavaAPI/classcom_1_1latencybusters_1_1lbm_1_1LBMMessageProperties.html">com::latencybusters::lbm::LBMMessageProperties</a> object for every message sent, to adjust those properties dynamically between sends, you are forced to call <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/javaapi.tag:../JavaAPI/" href="../JavaAPI/classcom_1_1latencybusters_1_1lbm_1_1LBMSourceSendExInfo.html#a68a534a3792a38bb6874a45617a9c0f3">com::latencybusters::lbm::LBMSourceSendExInfo::setMessageProperties</a>.</p>
+<p>As a solution, the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/javaapi.tag:../JavaAPI/" href="../JavaAPI/classcom_1_1latencybusters_1_1lbm_1_1LBMSourceSendExInfo.html">com::latencybusters::lbm::LBMSourceSendExInfo</a> object now maintains a reference to an <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/javaapi.tag:../JavaAPI/" href="../JavaAPI/classcom_1_1latencybusters_1_1lbm_1_1LBMMessageProperties.html">com::latencybusters::lbm::LBMMessageProperties</a> object, if it is set, such that the current value of the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/javaapi.tag:../JavaAPI/" href="../JavaAPI/classcom_1_1latencybusters_1_1lbm_1_1LBMMessageProperties.html">com::latencybusters::lbm::LBMMessageProperties</a> is used at the time of the send, rather than the value of the properties at the time which <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/javaapi.tag:../JavaAPI/" href="../JavaAPI/classcom_1_1latencybusters_1_1lbm_1_1LBMSourceSendExInfo.html#a68a534a3792a38bb6874a45617a9c0f3">com::latencybusters::lbm::LBMSourceSendExInfo::setMessageProperties()</a> was called.</p>
+<p>Also, for Java and .NET, the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/javaapi.tag:../JavaAPI/" href="../JavaAPI/classcom_1_1latencybusters_1_1lbm_1_1LBMSourceSendExInfo.html#a2de0eb285c25cc2252977eeeda0a31e1">com::latencybusters::lbm::LBMSourceSendExInfo::setApplicationHeaderChain()</a>, .setChannelInfo(), .setIndexInfo(), .setMessageProperties(), and .setTotalLifetimeInfo() APIs now update the flags of the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/javaapi.tag:../JavaAPI/" href="../JavaAPI/classcom_1_1latencybusters_1_1lbm_1_1LBMSourceSendExInfo.html">com::latencybusters::lbm::LBMSourceSendExInfo</a> as appropriate.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>8825 </td><td><p class="starttd">An Ultra Messaging Java application might crash when using the <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/javaapi.tag:../JavaAPI/" href="../JavaAPI/classcom_1_1latencybusters_1_1lbm_1_1UMERegistrationIdExCallbackInfo.html">com::latencybusters::lbm::UMERegistrationIdExCallbackInfo</a> or UMERecoverySequenceNumberCallbackInfo callback methods.</p>
+<td>8825 </td><td><p class="starttd">An Ultra Messaging Java application might crash when using the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/javaapi.tag:../JavaAPI/" href="../JavaAPI/classcom_1_1latencybusters_1_1lbm_1_1UMERegistrationIdExCallbackInfo.html">com::latencybusters::lbm::UMERegistrationIdExCallbackInfo</a> or UMERecoverySequenceNumberCallbackInfo callback methods.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
@@ -284,7 +285,7 @@ Streaming Fixed Limitations for 6.8&nbsp;&nbsp;<small><a href="#streamingfixedli
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>9028 </td><td><p class="starttd">If the function <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/api.tag:../API/" href="../API/lbm_8h.html#ad74f47a1e021b2422b80c0bf8d03f7a9">lbm_deserialize_response()</a> has a NULL pointer for the second variable, the function returns an LBM_EINVAL. As a solution, the <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/api.tag:../API/" href="../API/lbm_8h.html#ad74f47a1e021b2422b80c0bf8d03f7a9">lbm_deserialize_response()</a> function now fatally asserts if NULL is passed for the '<code>lbm_context_t*</code>' and/or '<code>lbm_serialized_response_t*</code>' arguments.</p>
+<td>9028 </td><td><p class="starttd">If the function <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/api.tag:../API/" href="../API/lbm_8h.html#ad74f47a1e021b2422b80c0bf8d03f7a9">lbm_deserialize_response()</a> has a NULL pointer for the second variable, the function returns an LBM_EINVAL. As a solution, the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/api.tag:../API/" href="../API/lbm_8h.html#ad74f47a1e021b2422b80c0bf8d03f7a9">lbm_deserialize_response()</a> function now fatally asserts if NULL is passed for the '<code>lbm_context_t*</code>' and/or '<code>lbm_serialized_response_t*</code>' arguments.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
@@ -301,7 +302,7 @@ Streaming Fixed Limitations for 6.8&nbsp;&nbsp;<small><a href="#streamingfixedli
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>9035 </td><td><p class="starttd">An HFX receiver with option <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grpmajoroptions.html#receivercallbackservicetimeenabledcontext">receiver_callback_service_time_enabled (context)</a> option set to 1 might crash or operate without getting any data.</p>
+<td>9035 </td><td><p class="starttd">An HFX receiver with option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grpmajoroptions.html#receivercallbackservicetimeenabledcontext">receiver_callback_service_time_enabled (context)</a> option set to 1 might crash or operate without getting any data.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
@@ -321,7 +322,7 @@ Streaming Fixed Limitations for 6.8&nbsp;&nbsp;<small><a href="#streamingfixedli
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>9077 </td><td><p class="starttd">When you set option <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grpmulticastresolvernetwork.html#resolvermulticastincomingaddresscontext">resolver_multicast_incoming_address (context)</a> to 0.0.0.0, the Ultra Messaging application exits during topic resolution.</p>
+<td>9077 </td><td><p class="starttd">When you set option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grpmulticastresolvernetwork.html#resolvermulticastincomingaddresscontext">resolver_multicast_incoming_address (context)</a> to 0.0.0.0, the Ultra Messaging application exits during topic resolution.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
@@ -342,7 +343,7 @@ Streaming Fixed Limitations for 6.8&nbsp;&nbsp;<small><a href="#streamingfixedli
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>9155 </td><td><p class="starttd">The <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/api.tag:../API/" href="../API/lbm_8h.html#ac06b127bae882dd5fb68b7044fdceb5f">lbm_event_dispatch()</a> function might invoke a user callback before the associated event queue has been shut down. As a solution, the <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/api.tag:../API/" href="../API/lbm_8h.html#ac06b127bae882dd5fb68b7044fdceb5f">lbm_event_dispatch()</a> function now checks the event queue shutdown status before calling a user callback, but still always processes UNBLOCK events.</p>
+<td>9155 </td><td><p class="starttd">The <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/api.tag:../API/" href="../API/lbm_8h.html#ac06b127bae882dd5fb68b7044fdceb5f">lbm_event_dispatch()</a> function might invoke a user callback before the associated event queue has been shut down. As a solution, the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/api.tag:../API/" href="../API/lbm_8h.html#ac06b127bae882dd5fb68b7044fdceb5f">lbm_event_dispatch()</a> function now checks the event queue shutdown status before calling a user callback, but still always processes UNBLOCK events.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
@@ -359,15 +360,15 @@ Streaming Fixed Limitations for 6.8&nbsp;&nbsp;<small><a href="#streamingfixedli
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>9176 </td><td><p class="starttd">In certain configurations, contexts do not learn Domain IDs as expected. To avoid this, all contexts in the same Topic Resolution Domain (TRD) must use the same value for the option <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grpudpbasedresolveroperation.html#resolverdomainidactivepropagationtimeoutcontext">resolver_domain_id_active_propagation_timeout (context)</a>.</p>
+<td>9176 </td><td><p class="starttd">In certain configurations, contexts do not learn Domain IDs as expected. To avoid this, all contexts in the same Topic Resolution Domain (TRD) must use the same value for the option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grpudpbasedresolveroperation.html#resolverdomainidactivepropagationtimeoutcontext">resolver_domain_id_active_propagation_timeout (context)</a>.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>9191 </td><td><p class="starttd">In Java, when you send message properties set in an <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/javaapi.tag:../JavaAPI/" href="../JavaAPI/classcom_1_1latencybusters_1_1lbm_1_1LBMSourceSendExInfo.html">com::latencybusters::lbm::LBMSourceSendExInfo</a> object, garbage collection might corrupt the message. As a solution, <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/javaapi.tag:../JavaAPI/" href="../JavaAPI/classcom_1_1latencybusters_1_1lbm_1_1LBMSourceSendExInfo.html">com::latencybusters::lbm::LBMSourceSendExInfo</a> objects now maintain a reference to <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/javaapi.tag:../JavaAPI/" href="../JavaAPI/classcom_1_1latencybusters_1_1lbm_1_1LBMMessageProperties.html">com::latencybusters::lbm::LBMMessageProperties</a> objects, if set.</p>
+<td>9191 </td><td><p class="starttd">In Java, when you send message properties set in an <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/javaapi.tag:../JavaAPI/" href="../JavaAPI/classcom_1_1latencybusters_1_1lbm_1_1LBMSourceSendExInfo.html">com::latencybusters::lbm::LBMSourceSendExInfo</a> object, garbage collection might corrupt the message. As a solution, <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/javaapi.tag:../JavaAPI/" href="../JavaAPI/classcom_1_1latencybusters_1_1lbm_1_1LBMSourceSendExInfo.html">com::latencybusters::lbm::LBMSourceSendExInfo</a> objects now maintain a reference to <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/javaapi.tag:../JavaAPI/" href="../JavaAPI/classcom_1_1latencybusters_1_1lbm_1_1LBMMessageProperties.html">com::latencybusters::lbm::LBMMessageProperties</a> objects, if set.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>9205 </td><td><p class="starttd">In Java, Ultra Messaging ignores the <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/javaapi.tag:../JavaAPI/" href="../JavaAPI/classcom_1_1latencybusters_1_1lbm_1_1LBMApplicationHeaderChain.html">com::latencybusters::lbm::LBMApplicationHeaderChain</a> object that is passed into the <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/javaapi.tag:../JavaAPI/" href="../JavaAPI/classcom_1_1latencybusters_1_1lbm_1_1LBMSourceSendExInfo.html">com::latencybusters::lbm::LBMSourceSendExInfo</a> constructor.</p>
+<td>9205 </td><td><p class="starttd">In Java, Ultra Messaging ignores the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/javaapi.tag:../JavaAPI/" href="../JavaAPI/classcom_1_1latencybusters_1_1lbm_1_1LBMApplicationHeaderChain.html">com::latencybusters::lbm::LBMApplicationHeaderChain</a> object that is passed into the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/javaapi.tag:../JavaAPI/" href="../JavaAPI/classcom_1_1latencybusters_1_1lbm_1_1LBMSourceSendExInfo.html">com::latencybusters::lbm::LBMSourceSendExInfo</a> constructor.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
@@ -389,7 +390,7 @@ Streaming Fixed Limitations for 6.8&nbsp;&nbsp;<small><a href="#streamingfixedli
 <p><br />
  </p>
 <h2><a class="anchor" id="persistencefixedlimitationsfor6_8"></a>
-Persistence Fixed Limitations for 6.8&nbsp;&nbsp;<small><a href="#persistencefixedlimitationsfor6_8">&lt;-</a></small></h2>
+Persistence Fixed Problems and Limitations for 6.8&nbsp;&nbsp;<small><a href="#persistencefixedlimitationsfor6_8">&lt;-</a></small></h2>
 <p>The following bug fixes apply to UMP and UMQ products.</p>
 <table class="doxtable">
 <tr>
@@ -397,7 +398,7 @@ Persistence Fixed Limitations for 6.8&nbsp;&nbsp;<small><a href="#persistencefix
 <p class="endtd"></p>
 </th></tr>
 <tr>
-<td>4727 </td><td><p class="starttd">If you restart all UMP stores simultaneously, UMP stores cannot recreate proxy sources. As a solution, the UMP Store now maintains information about proxy sources as part of the per-source state, and can elect proxy sources upon restart of the store daemon if necessary. Once restarted, a store waits for the configured <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/ume.tag:../UME/" href="../UME/configurationreferenceforumestored.html#umecfgsourceactivitytimeout">source-activity-timeout</a> before it attempts to create a proxy source.</p>
+<td>4727 </td><td><p class="starttd">If you restart all UMP stores simultaneously, UMP stores cannot recreate proxy sources. As a solution, the UMP Store now maintains information about proxy sources as part of the per-source state, and can elect proxy sources upon restart of the store daemon if necessary. Once restarted, a store waits for the configured <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/ume.tag:../UME/" href="../UME/optionsforastoresumeattributeselement.html#umecfgsourceactivitytimeout">source-activity-timeout</a> before it attempts to create a proxy source.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
@@ -405,9 +406,9 @@ Persistence Fixed Limitations for 6.8&nbsp;&nbsp;<small><a href="#persistencefix
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>9023 </td><td><p class="starttd">A receiver might disable the option to use Late Join without disabling UMP store participation, which is an invalid configuration. As a solution, if a receiver subscribes to a persistent source with <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeusestorereceiver">ume_use_store (receiver)</a> enabled but <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grplatejoin.html#uselatejoinreceiver">use_late_join (receiver)</a> disabled, the <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grplatejoin.html#uselatejoinreceiver">use_late_join (receiver)</a> option is automatically enabled for that source only. and you see the following log message: <br />
+<td>9023 </td><td><p class="starttd">A receiver might disable the option to use Late Join without disabling UMP store participation, which is an invalid configuration. As a solution, if a receiver subscribes to a persistent source with <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeusestorereceiver">ume_use_store (receiver)</a> enabled but <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grplatejoin.html#uselatejoinreceiver">use_late_join (receiver)</a> disabled, the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grplatejoin.html#uselatejoinreceiver">use_late_join (receiver)</a> option is automatically enabled for that source only. and you see the following log message: <br />
 <code>LOG Level 7: Core-6959-1: INFO: Receiver on topic "xyz" has its use_late_join option disabled but has a persistent source on transport TCP:10.29.3.42:14371:7d6a8a86[4208529623].</code></p>
-<p>To opt out of Late Join when subscribing to persistent sources, you must also disable the <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeusestorereceiver">ume_use_store (receiver)</a> option. This will not cause a receiver with <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grplatejoin.html#uselatejoinreceiver">use_late_join (receiver)</a> disabled to participate in Late Join from a non-persistent source.</p>
+<p>To opt out of Late Join when subscribing to persistent sources, you must also disable the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeusestorereceiver">ume_use_store (receiver)</a> option. This will not cause a receiver with <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grplatejoin.html#uselatejoinreceiver">use_late_join (receiver)</a> disabled to participate in Late Join from a non-persistent source.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
@@ -439,14 +440,14 @@ Persistence Fixed Limitations for 6.8&nbsp;&nbsp;<small><a href="#persistencefix
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>9443 </td><td><p class="starttd">A receiver might get late join messages even if <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grplatejoin.html#uselatejoinreceiver">use_late_join (receiver)</a> is disabled. This was caused by the original solution to bug 9027, which forcibly enabled <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grplatejoin.html#uselatejoinreceiver">use_late_join (receiver)</a> for a receiver that joined a persistent stream from at least one source. This caused the receiver to also Late Join from non-persistent sources on the same topic discovered after the persistent source.</p>
-<p class="endtd">As a solution, Late Join participation is now forcibly enabled only with respect to persistent sources; a receiver does not Late Join from non-persistent sources on the same topic if the <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grplatejoin.html#uselatejoinreceiver">use_late_join (receiver)</a> option is disabled. See description for bug 9027 for more details. </p>
+<td>9443 </td><td><p class="starttd">A receiver might get late join messages even if <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grplatejoin.html#uselatejoinreceiver">use_late_join (receiver)</a> is disabled. This was caused by the original solution to bug 9027, which forcibly enabled <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grplatejoin.html#uselatejoinreceiver">use_late_join (receiver)</a> for a receiver that joined a persistent stream from at least one source. This caused the receiver to also Late Join from non-persistent sources on the same topic discovered after the persistent source.</p>
+<p class="endtd">As a solution, Late Join participation is now forcibly enabled only with respect to persistent sources; a receiver does not Late Join from non-persistent sources on the same topic if the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grplatejoin.html#uselatejoinreceiver">use_late_join (receiver)</a> option is disabled. See description for bug 9027 for more details. </p>
 </td></tr>
 </table>
 <p><br />
  </p>
 <h2><a class="anchor" id="queuingfixedlimitationsfor6_8"></a>
-Queuing Fixed Limitations for 6.8&nbsp;&nbsp;<small><a href="#queuingfixedlimitationsfor6_8">&lt;-</a></small></h2>
+Queuing Fixed Problems and Limitations for 6.8&nbsp;&nbsp;<small><a href="#queuingfixedlimitationsfor6_8">&lt;-</a></small></h2>
 <p>The following bug fixes apply to the UMQ product.</p>
 <table class="doxtable">
 <tr>
@@ -462,7 +463,7 @@ Queuing Fixed Limitations for 6.8&nbsp;&nbsp;<small><a href="#queuingfixedlimita
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>9148 </td><td><p class="starttd">When a Java source uses ULB and sends messages with <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/javaapi.tag:../JavaAPI/" href="../JavaAPI/classcom_1_1latencybusters_1_1lbm_1_1LBMSourceSendExInfo.html">com::latencybusters::lbm::LBMSourceSendExInfo</a> without a per-send client object, a memory leak occurs. As a solution, the call to the lbm_src_send_count_expected_terminals() function occurs only when there is a per-send client present.</p>
+<td>9148 </td><td><p class="starttd">When a Java source uses ULB and sends messages with <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/javaapi.tag:../JavaAPI/" href="../JavaAPI/classcom_1_1latencybusters_1_1lbm_1_1LBMSourceSendExInfo.html">com::latencybusters::lbm::LBMSourceSendExInfo</a> without a per-send client object, a memory leak occurs. As a solution, the call to the lbm_src_send_count_expected_terminals() function occurs only when there is a per-send client present.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
@@ -475,7 +476,7 @@ Queuing Fixed Limitations for 6.8&nbsp;&nbsp;<small><a href="#queuingfixedlimita
 <p><br />
  </p>
 <h2><a class="anchor" id="dynamicrouterfixedlimitationsfor6_8"></a>
-Dynamic Router Fixed Limitations for 6.8&nbsp;&nbsp;<small><a href="#dynamicrouterfixedlimitationsfor6_8">&lt;-</a></small></h2>
+Dynamic Router Fixed Problems and Limitations for 6.8&nbsp;&nbsp;<small><a href="#dynamicrouterfixedlimitationsfor6_8">&lt;-</a></small></h2>
 <p>The following bug fixes apply to the Dynamic Routing Option (DRO).</p>
 <table class="doxtable">
 <tr>
@@ -498,16 +499,74 @@ As a solution the other peer now issues the following correct log message: <br /
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>9144, 9153 </td><td><p class="starttd">On UNIX platforms, DRO daemons using single-tcp peer links might incorrectly declare peer links as inactive, and attempt to tear down and re-establish the peer connection. As a solution, for UNIX platforms the DRO now forces the peer portal option <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grpmajoroptions.html#fdmanagementtypecontext">fd_management_type (context)</a> to '<code>select</code>' regardless of the user's configuration settings.</p>
+<td>9144, 9153 </td><td><p class="starttd">On UNIX platforms, DRO daemons using single-tcp peer links might incorrectly declare peer links as inactive, and attempt to tear down and re-establish the peer connection. As a solution, for UNIX platforms the DRO now forces the peer portal option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grpmajoroptions.html#fdmanagementtypecontext">fd_management_type (context)</a> to '<code>select</code>' regardless of the user's configuration settings.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>9178 </td><td><p class="starttd">In certain configurations using varying values of configuration option <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grpudpbasedresolveroperation.html#resolverdomainidactivepropagationtimeoutcontext">resolver_domain_id_active_propagation_timeout (context)</a>, Ultra Messaging might assign incorrect domain ID values.</p>
+<td>9178 </td><td><p class="starttd">In certain configurations using varying values of configuration option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grpudpbasedresolveroperation.html#resolverdomainidactivepropagationtimeoutcontext">resolver_domain_id_active_propagation_timeout (context)</a>, Ultra Messaging might assign incorrect domain ID values.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
 <td>9299 </td><td>When using DRO peer portals, a peer disconnect might result in a deadlock, which causes the DRO to stop functioning and requires a restart. </td></tr>
 </table>
+<p><br />
+ </p>
+<h1><a class="anchor" id="specialupgradeinstructionsfor6_8"></a>
+Special Upgrade Instructions for 6.8&nbsp;&nbsp;<small><a href="#specialupgradeinstructionsfor6_8">&lt;-</a></small></h1>
+<p><br />
+ </p>
+<h2><a class="anchor" id="upgradingbrokeredqueueingandjms"></a>
+Upgrading Brokered Queuing and JMS&nbsp;&nbsp;<small><a href="#upgradingbrokeredqueueingandjms">&lt;-</a></small></h2>
+<p>In UM version 6.8, the brokered queuing functionality and JMS API was re-implemented with an enhanced ActiveMQ-based JMS/AMQP broker. In many cases, the UM queuing API can still be used with few if any changes.</p>
+<dl class="section note"><dt>Note</dt><dd>Important: If you are upgrading non-ULB queuing applications from versions prior to 6.8, note that this upgrade has a major impact on your applications and deployment. The umestored daemon no longer implements queuing functionality; instead, the UMQ client API now uses the AMQP protocol to communicate with an ActiveMQ broker for queuing functionality. You must rebuild applications, redeploy daemons, and perform a flash cut over. Also, review your applications for functionalities that are deprecated in UMQ 6.8 or later. UMQ clients using version 6.8 or later will not interoperate with a pre-6.8 umestored-based queue broker. UMQ clients using versions earlier than 6.8 will not interoperate with an ActiveMQ broker. For more information, see the Guide for Queuing.</dd></dl>
+<p>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/umq.tag:../UMQ/" href="../UMQ/gettingstarted.html#queuingupgradeconsiderations">Queuing Upgrade Considerations</a> for more information about upgrading brokered queuing applications.</p>
+<p><br />
+ </p>
+<h2><a class="anchor" id="um67specialinstructions"></a>
+UM 6.7 Special Instructions&nbsp;&nbsp;<small><a href="#um67specialinstructions">&lt;-</a></small></h2>
+<p>If you are upgrading from a UM version prior to 6.7, you must also examine the <a class="el" href="umversion6_7.html#specialupgradeinstructionsfor6_7">Special Upgrade Instructions for 6.7</a>.</p>
+<p><br />
+<br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+</p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.8.11-->

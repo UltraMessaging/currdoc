@@ -1076,9 +1076,6 @@ namespace LBMApplication
                 case LBM.MSG_UME_REGISTRATION_ERROR:
                     System.Console.Error.WriteLine("[" + msg.topicName() + "][" + msg.source() + "] UME registration error: " + msg.dataString());
                     break;
-                case LBM.MSG_UME_REGISTRATION_SUCCESS:
-                    System.Console.Error.WriteLine("[" + msg.topicName() + "][" + msg.source() + "] UME registration successful. Src RegID " + msg.sourceRegistrationId() + " RegID " + msg.receiverRegistrationId());
-                    break;
                 case LBM.MSG_UME_REGISTRATION_SUCCESS_EX:
                     UMERegistrationSuccessInfo reg = msg.registrationSuccessInfo();
                     System.Console.Out.Write("[" + msg.topicName() + "][" + msg.source()

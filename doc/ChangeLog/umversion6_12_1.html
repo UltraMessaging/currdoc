@@ -54,8 +54,8 @@ $(document).ready(function(){initNavTree('umversion6_12_1.html','');});
 <div class="title">UM Version 6.12.1 </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>The most-significant updates to UM version 6.12.1 are the introduction of .NET on Linux, and a "busy wait" option for context threads.</p>
-<dl class="section attention"><dt>Attention</dt><dd>There are some special upgrade instructions for UM versions 6.12 and beyond that will affect a small percentage of users upgrading from pre-6.12 versions of UM. See <a class="el" href="umversion6_12.html#specialupgradeinsructionsfor6_12">Special Upgrade Instructions for 6.12</a>.</dd></dl>
+<div class="textblock"><p>The most significant updates to UM version 6.12.1 are the introduction of .NET on Linux, and a "busy wait" option for context threads.</p>
+<dl class="section attention"><dt>Attention</dt><dd>There are some special upgrade instructions for UM versions 6.12 and beyond that will affect a small percentage of users upgrading from pre-6.12 versions of UM. See <a class="el" href="umversion6_12.html#specialupgradeinstructionsfor6_12">Special Upgrade Instructions for 6.12</a>. For general upgrade instructions, see <a class="el" href="upgradeprocedure.html">Upgrade Procedure</a>. You are also advised to inspect the full list of <a class="el" href="deprecations.html">Deprecations</a>.</dd></dl>
 <p><br />
  </p>
 <h1><a class="anchor" id="enhancementsfor6_12_1"></a>
@@ -71,11 +71,11 @@ Streaming Enhancements for 6.12.1&nbsp;&nbsp;<small><a href="#streamingenhanceme
 <p class="endli"></p>
 </li>
 <li>
-<p class="startli">The <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/design.tag:../Design/" href="../Design/advancedoptimizations.html#networksocketbusywaiting">Network Socket Busy Waiting</a> feature can be used to prevent a context or XSP thread from sleeping while waiting for network events, such as received packets. This can reduce latency and especially latency outliers (jitter).</p>
+<p class="startli">The <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/design.tag:../Design/" href="../Design/advancedoptimizations.html#networksocketbusywaiting">Network Socket Busy Waiting</a> feature can be used to prevent a context or XSP thread from sleeping while waiting for network events, such as received packets. This can reduce latency and especially latency outliers (jitter).</p>
 <p class="endli"></p>
 </li>
 <li>
-The dependency between UM and the OpenSSL libraries is now optional. If the libraries are not used, then they do not need to be present on the system. See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/design.tag:../Design/" href="../Design/umfeatures.html#openssldependency">OpenSSL Dependency</a> for more information. </li>
+The dependency between UM and the OpenSSL libraries is now optional. If the libraries are not used, then they do not need to be present on the system. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/design.tag:../Design/" href="../Design/umfeatures.html#openssldependency">OpenSSL Dependency</a> for more information. </li>
 </ul>
 <p><br />
  </p>
@@ -107,11 +107,11 @@ None. </li>
 <p><br />
  </p>
 <h1><a class="anchor" id="fixedlimitationsfor6_12_1"></a>
-Fixed Limitations for 6.12.1&nbsp;&nbsp;<small><a href="#fixedlimitationsfor6_12_1">&lt;-</a></small></h1>
+Fixed Problems and Limitations for 6.12.1&nbsp;&nbsp;<small><a href="#fixedlimitationsfor6_12_1">&lt;-</a></small></h1>
 <p><br />
  </p>
 <h2><a class="anchor" id="streamingfixedlimitationsfor6_12_1"></a>
-Streaming Fixed Limitations for 6.12.1&nbsp;&nbsp;<small><a href="#streamingfixedlimitationsfor6_12_1">&lt;-</a></small></h2>
+Streaming Fixed Problems and Limitations for 6.12.1&nbsp;&nbsp;<small><a href="#streamingfixedlimitationsfor6_12_1">&lt;-</a></small></h2>
 <p>The following bug fixes apply to UMS, UMP, and UMQ products.</p>
 <p><a class="anchor" id="bug10702"></a></p><table class="doxtable">
 <tr>
@@ -120,7 +120,7 @@ Streaming Fixed Limitations for 6.12.1&nbsp;&nbsp;<small><a href="#streamingfixe
 </th></tr>
 <tr>
 <td>10702, 10713, 10741</td><td><p class="starttd"><b>FIXED:</b> <em>UM has a load-time dependency on a specific version of OpenSSL. If the expected version is not present, the application can be unable to load and run, or it can write warning messages to the log file (Core-9565-109 and Core-9728-14), even if encryption services are not configured for use.</em></p>
-<p>For more information, see <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/design.tag:../Design/" href="../Design/umfeatures.html#openssldependency">OpenSSL Dependency</a>.</p>
+<p>For more information, see <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/design.tag:../Design/" href="../Design/umfeatures.html#openssldependency">OpenSSL Dependency</a>.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
@@ -137,7 +137,7 @@ Streaming Fixed Limitations for 6.12.1&nbsp;&nbsp;<small><a href="#streamingfixe
 <p><br />
  </p>
 <h2><a class="anchor" id="persistencefixedlimitationsfor6_12_1"></a>
-Persistence Fixed Limitations for 6.12.1&nbsp;&nbsp;<small><a href="#persistencefixedlimitationsfor6_12_1">&lt;-</a></small></h2>
+Persistence Fixed Problems and Limitations for 6.12.1&nbsp;&nbsp;<small><a href="#persistencefixedlimitationsfor6_12_1">&lt;-</a></small></h2>
 <p>The following bug fixes apply to UMP and UMQ products.</p>
 <p><a class="anchor" id="bug9940"></a></p><table class="doxtable">
 <tr>
@@ -162,7 +162,7 @@ is deprecated. Has no effect."</em></p>
 <p><br />
  </p>
 <h2><a class="anchor" id="queuingfixedlimitationsfor6_12_1"></a>
-Queuing Fixed Limitations for 6.12.1&nbsp;&nbsp;<small><a href="#queuingfixedlimitationsfor6_12_1">&lt;-</a></small></h2>
+Queuing Fixed Problems and Limitations for 6.12.1&nbsp;&nbsp;<small><a href="#queuingfixedlimitationsfor6_12_1">&lt;-</a></small></h2>
 <p>The following bug fixes apply to the UMQ product.</p>
 <ul>
 <li>
@@ -171,37 +171,54 @@ None. </li>
 <p><br />
  </p>
 <h2><a class="anchor" id="dynamicrouterfixedlimitationsfor6_12_1"></a>
-Dynamic Router Fixed Limitations for 6.12.1&nbsp;&nbsp;<small><a href="#dynamicrouterfixedlimitationsfor6_12_1">&lt;-</a></small></h2>
+Dynamic Router Fixed Problems and Limitations for 6.12.1&nbsp;&nbsp;<small><a href="#dynamicrouterfixedlimitationsfor6_12_1">&lt;-</a></small></h2>
 <p>The following bug fixes apply to the Dynamic Routing Option (DRO).</p>
 <ul>
 <li>
 None. </li>
 </ul>
 <p><br />
- </p>
-<h1><a class="anchor" id="specialupgradeinsructionsfor6_13"></a>
-Special Upgrade Instructions for 6.13&nbsp;&nbsp;<small><a href="#specialupgradeinsructionsfor6_13">&lt;-</a></small></h1>
-<p><br />
- </p>
-<h2><a class="anchor" id="persistenceanddro"></a>
-Upgrade order: Persistence and DRO&nbsp;&nbsp;<small><a href="#persistenceanddro">&lt;-</a></small></h2>
-<p>Due to Known Limitation <a class="el" href="knownlimitations.html#bug10833">10833</a>, Informatica recommends upgrading DROs before Persistent Stores. See <a class="el" href="upgradeprocedure.html#orderofupgrades">Order of Upgrades</a>.</p>
-<p><br />
- </p>
-<h2><a class="anchor" id="repositorydiskmaxreadasynccbs"></a>
-repository-disk-max-read-async-cbs&nbsp;&nbsp;<small><a href="#repositorydiskmaxreadasynccbs">&lt;-</a></small></h2>
-<p>As a result of improving the overall performance of the Store, there is a condition where receiver message recovery performance can be significantly degraded if <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/ume.tag:../UME/" href="../UME/configurationreferenceforumestored.html#umecfgrepositorydiskmaxreadasynccbs">repository-disk-max-read-async-cbs</a> is configured for a small number. In the past, this option <em>needed</em> to be small, due to <a class="el" href="umversion6_13.html#bug10877">Limitation 10877</a>. However, as of UM version 6.13, this restriction has been lifted, and the default value changed to a more appropriate value.</p>
-<p>If your Store configuration includes <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/ume.tag:../UME/" href="../UME/configurationreferenceforumestored.html#umecfgrepositorydiskmaxreadasynccbs">repository-disk-max-read-async-cbs</a>, Informatica recommends removing the setting and allowing it to operate with its default value.</p>
-<p><br />
- </p>
-<h2><a class="anchor" id="srsdaemonstatisticschange"></a>
-SRS Daemon Statistics Change&nbsp;&nbsp;<small><a href="#srsdaemonstatisticschange">&lt;-</a></small></h2>
-<p>This is for users who have written monitoring applications that consume SRS Daemon Statistics. The counters "clients.DR.inactive.SIR.count" and "clients.DR.inactive.SIR.count" have been reclassified as non-errors, and moved to message type SRS_STATS. See <a class="el" href="umversion6_13.html#bug10822">Fixed Limitation 10822</a>.</p>
-<p><br />
- </p>
-<h2><a class="anchor" id="um612specialinstructions"></a>
-UM 6.12 Special Instructions&nbsp;&nbsp;<small><a href="#um612specialinstructions">&lt;-</a></small></h2>
-<p>If you are upgrading from a UM version prior to 6.12, you may also need to follow the <a class="el" href="umversion6_12.html#specialupgradeinsructionsfor6_12">Special Upgrade Instructions for 6.12</a>. </p>
+<br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+</p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.8.11-->

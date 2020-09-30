@@ -3,6 +3,7 @@ var NAVTREE =
   [ "UM .NET API", "index.html", [
     [ "Introduction", "index.html", [
       [ "UM .NET API", "index.html#umnetapi", [
+        [ "Application Callbacks in .NET", "index.html#applicationcallbacksinnet", null ],
         [ "Using UM .NET on Windows", "index.html#usingumnetonwindows", null ],
         [ "Using UM .NET on Linux", "index.html#usingumnetonlinux", null ]
       ] ]

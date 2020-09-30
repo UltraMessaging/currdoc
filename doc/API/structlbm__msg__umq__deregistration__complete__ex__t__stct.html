@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">UM C API
-   &#160;<span id="projectnumber">6.13</span>
+   &#160;<span id="projectnumber">6.13.1</span>
    </div>
   </td>
  </tr>
@@ -73,53 +73,30 @@ $(document).ready(function(){initNavTree('structlbm__msg__umq__deregistration__c
 </div><!--header-->
 <div class="contents">
 
-<p>Structure that holds information for receivers after they de-register from a queue.  
+<p>Structure that holds information for queuing receivers after they de-register from a queue.  
  <a href="structlbm__msg__umq__deregistration__complete__ex__t__stct.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="lbm_8h_source.html">lbm.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Data Fields</h2></td></tr>
-<tr class="memitem:affcbf302d2b3265148363d6304a17440"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlbm__msg__umq__deregistration__complete__ex__t__stct.html#affcbf302d2b3265148363d6304a17440">flags</a></td></tr>
+<tr class="memitem:affcbf302d2b3265148363d6304a17440"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="affcbf302d2b3265148363d6304a17440"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlbm__msg__umq__deregistration__complete__ex__t__stct.html#affcbf302d2b3265148363d6304a17440">flags</a></td></tr>
+<tr class="memdesc:affcbf302d2b3265148363d6304a17440"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bitmap indicating extra information about the deregistration. Zero or more flag bits ORed together: LBM_MSG_UMQ_DEREGISTRATION_COMPLETE_EX_FLAG_* (i.e. <a class="el" href="lbm_8h.html#a26ce01530072149fa87ea320a87b2d6b">LBM_MSG_UMQ_DEREGISTRATION_COMPLETE_EX_FLAG_ULB</a>) <br /></td></tr>
 <tr class="separator:affcbf302d2b3265148363d6304a17440"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a596b0bfdfa26f7f686393eb98e53c4e7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="lbm_8h.html#abdb96b55cc467a75e1f9ec0036dbc14b">lbm_uint_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlbm__msg__umq__deregistration__complete__ex__t__stct.html#a596b0bfdfa26f7f686393eb98e53c4e7">queue_id</a></td></tr>
+<tr class="memitem:a596b0bfdfa26f7f686393eb98e53c4e7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a596b0bfdfa26f7f686393eb98e53c4e7"></a>
+<a class="el" href="lbm_8h.html#abdb96b55cc467a75e1f9ec0036dbc14b">lbm_uint_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlbm__msg__umq__deregistration__complete__ex__t__stct.html#a596b0bfdfa26f7f686393eb98e53c4e7">queue_id</a></td></tr>
+<tr class="memdesc:a596b0bfdfa26f7f686393eb98e53c4e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">The Queue ID of the queue de-registering from. <br /></td></tr>
 <tr class="separator:a596b0bfdfa26f7f686393eb98e53c4e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1386b0beec73bd02613ea19fd2ba975a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1386b0beec73bd02613ea19fd2ba975a"></a>
 char&#160;</td><td class="memItemRight" valign="bottom"><b>queue</b> [LBM_UMQ_MAX_QUEUE_STRLEN]</td></tr>
 <tr class="separator:a1386b0beec73bd02613ea19fd2ba975a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Structure that holds information for receivers after they de-register from a queue. </p>
-<p>A struct used with UMQ receivers to indicate successful de-registration from a queue.</p>
+<div class="textblock"><p>Structure that holds information for queuing receivers after they de-register from a queue. </p>
+<p>This structure is delivered to receiver callback <a class="el" href="lbm_8h.html#ac8dd91be561ad6262ccf3f7f94771cfd">lbm_rcv_cb_proc</a> with <a class="el" href="structlbm__msg__t__stct.html#ab25327dc4b4ebf527106f6e708dbc05f" title="Type of receiver event. ">lbm_msg_t::type</a> set to <a class="el" href="lbm_8h.html#a7e05596c569bc4043d30833347f92bba">LBM_MSG_UMQ_DEREGISTRATION_COMPLETE_EX</a>. Cast the <a class="el" href="structlbm__msg__t__stct.html#a9c7d600dd9794c09b82732e2c233392b" title="Data contents of the message if of a message type that carries data. Note that UM does not guarantee ...">lbm_msg_t::data</a> pointer to (lbm_msg_umq_deregistration_complete_ex_t *).</p>
 <p>See <a class="el" href="structlbm__msg__umq__deregistration__complete__ex__t__stct.html">lbm_msg_umq_deregistration_complete_ex_t_stct</a> for field definitions. </p>
-</div><h2 class="groupheader">Field Documentation</h2>
-<a class="anchor" id="affcbf302d2b3265148363d6304a17440"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int lbm_msg_umq_deregistration_complete_ex_t_stct::flags</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Bitmap indicating extra information about the deregistration. Zero or more flag bits ORed together: LBM_MSG_UMQ_DEREGISTRATION_COMPLETE_EX_FLAG_* (i.e. <a class="el" href="lbm_8h.html#a26ce01530072149fa87ea320a87b2d6b">LBM_MSG_UMQ_DEREGISTRATION_COMPLETE_EX_FLAG_ULB</a>) </p>
-
-</div>
-</div>
-<a class="anchor" id="a596b0bfdfa26f7f686393eb98e53c4e7"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="lbm_8h.html#abdb96b55cc467a75e1f9ec0036dbc14b">lbm_uint_t</a> lbm_msg_umq_deregistration_complete_ex_t_stct::queue_id</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>The Queue ID of the queue de-registering from </p>
-
-</div>
-</div>
-<hr/>The documentation for this struct was generated from the following file:<ul>
+</div><hr/>The documentation for this struct was generated from the following file:<ul>
 <li><a class="el" href="lbm_8h_source.html">lbm.h</a></li>
 </ul>
 </div><!-- contents -->

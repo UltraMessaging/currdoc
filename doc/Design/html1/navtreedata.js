@@ -23,9 +23,11 @@ var NAVTREE =
       [ "Late Join", "index.html#latejoin", null ],
       [ "Request/Response", "index.html#requestresponse", null ],
       [ "UM Transports", "index.html#umtransports", [
-        [ "Transport Sessions", "index.html#transportsessions", null ]
+        [ "Transport Sessions", "index.html#transportsessions", null ],
+        [ "Transport Pacing", "index.html#transportpacing", null ]
       ] ],
       [ "Event Delivery", "index.html#eventdelivery", [
+        [ "Receiver BOS and EOS Events", "index.html#receiverbosandeosevents", null ],
         [ "Source Connect and Disconnect Events", "index.html#sourceconnectanddisconnectevents", null ]
       ] ],
       [ "Rate Controls", "index.html#ratecontrols", [
@@ -51,11 +53,15 @@ var NAVTREE =
         [ "UM Hot Failover Across Contexts Objects", "index.html#umhotfailoveracrosscontextsobjects", null ],
         [ "Zero Object Delivery", "index.html#zeroobjectdelivery", null ]
       ] ],
-      [ "Event Queue Object", "index.html#eventqueueobject", null ],
+      [ "Event Queue Object", "index.html#eventqueueobject", [
+        [ "Using an Event Queue", "index.html#usinganeventqueue", null ],
+        [ "Event Queue Timeout", "index.html#eventqueuetimeout", null ]
+      ] ],
       [ "Message Object", "index.html#messageobject", [
         [ "Message Object Deletion", "index.html#messageobjectdeletion", null ],
         [ "Message Object Retention", "index.html#messageobjectretention", null ]
       ] ],
+      [ "Attributes Object", "index.html#attributesobject", null ],
       [ "Security Considerations", "index.html#securityconsiderations", [
         [ "Webmon Security", "index.html#webmonsecurity", null ]
       ] ],
@@ -71,7 +77,6 @@ var NAVTREE =
         [ "Comparing LBT-RM and PGM", "index.html#comparinglbtrmndpgm", null ]
       ] ],
       [ "Transport LBT-IPC", "index.html#transportlbtipc", [
-        [ "LBT-IPC Shared Memory Area", "index.html#lbtipcsharedmemoryarea", null ],
         [ "Sources and LBT-IPC", "index.html#sourcesandlbtipc", null ],
         [ "Receivers and LBT-IPC", "index.html#receiversandlbtipc", null ],
         [ "Similarities with Other UM Transports", "index.html#similaritieswithotherumtransports", null ],
@@ -84,14 +89,14 @@ var NAVTREE =
       ] ],
       [ "Transport LBT-SMX", "index.html#transportlbtsmx", [
         [ "Sources and LBT-SMX", "index.html#sourcesandlbtsmx", null ],
-        [ "Sending over LBT-SMX with Native APIs", "index.html#sendingoverlbtsmxwithnativeapis", null ],
-        [ "Sending over LBT-SMX with Existing APIs", "index.html#sendingoverlbtsmxwithexistingapis", null ],
+        [ "Sending with SMX-specific APIs", "index.html#sendingoverlbtsmxwithnativeapis", null ],
+        [ "Sending over LBT-SMX with General APIs", "index.html#sendingoverlbtsmxwithexistingapis", null ],
         [ "Receivers and LBT-SMX", "index.html#receiversandlbtsmx", null ],
         [ "Similarities Between LBT-SMX and Other UM Transports", "index.html#similaritiesbetweenlbtsmxandotherumtransports", null ],
         [ "Differences Between LBT-SMX and Other UM Transports", "index.html#differencesbetweenlbtsmxandotherumtransports", null ],
         [ "LBT-SMX Configuration Example", "index.html#lbtsmxconfigurationexample", null ],
-        [ "Java Code Examples for LBT-SMX", "index.html#javacodeexamplesforlbtsmx", null ],
-        [ ".NET Code Examples for LBT-SMX", "index.html#netcodeexamplesforlbtsmx", null ],
+        [ "Java Coding for LBT-SMX", "index.html#javacodeexamplesforlbtsmx", null ],
+        [ ".NET Coding for LBT-SMX", "index.html#netcodeexamplesforlbtsmx", null ],
         [ "LBT-SMX Resource Manager", "index.html#lbtsmxresourcemanager", null ]
       ] ],
       [ "Transport Broker", "index.html#transportbroker", null ]
@@ -164,6 +169,13 @@ var NAVTREE =
         [ "Example: Loss Recovery", "index.html#examplelossrecovery", null ],
         [ "Example: Unrecoverable Loss", "index.html#exampleunrecoverableloss", null ],
         [ "Example: Transport Deletion", "index.html#exampletransportdeletion", null ]
+      ] ]
+    ] ],
+    [ "Application Design Principles", "index.html#applicationdesignprinciples", [
+      [ "Message Reception", "index.html#messagereception", [
+        [ "C Message Reception", "index.html#cmessagereception", null ],
+        [ "Java Message Reception", "index.html#javamessagereception", null ],
+        [ ".NET Message Reception", "index.html#netmessagereception", null ]
       ] ]
     ] ],
     [ "UM Features", "index.html#umfeatures", [
@@ -317,7 +329,10 @@ var NAVTREE =
         [ "Zero-Copy Send Compatibility", "index.html#zerocopysendcompatibility", null ],
         [ "Zero-Copy Restrictions", "index.html#zerocopyrestrictions", null ]
       ] ],
-      [ "Comparison of Zero Copy and Smart Sources", "index.html#comparisonofzerocopyandsmartsources", null ]
+      [ "Comparison of Zero Copy and Smart Sources", "index.html#comparisonofzerocopyandsmartsources", null ],
+      [ "XSP Latency Reduction", "index.html#xsplatencyreduction", null ],
+      [ "Core Pinning", "index.html#corepinning", null ],
+      [ "Memory Latency Reduction", "index.html#memorylatencyreduction", null ]
     ] ],
     [ "Man Pages for SRS", "index.html#manpagesforsrs", [
       [ "SRS Man Page", "index.html#srsmanpage", null ],
@@ -455,7 +470,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "index.html",
-"index.html#sourcestringfromreceiveevent"
+"index.html#smxtransportbusywaiting"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

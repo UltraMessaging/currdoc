@@ -54,7 +54,8 @@ $(document).ready(function(){initNavTree('umversion6_7_1.html','');});
 <div class="title">UM Version 6.7.1 </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>The most-significant update to UM version 6.7 is the inclusion of the HP NonStop platform for the UMP product. Note that daemons are not supported on NonStop, only client applications.</p>
+<div class="textblock"><p>The most significant update to UM version 6.7 is the inclusion of the HP NonStop platform for the UMP product. Note that daemons are not supported on NonStop, only client applications.</p>
+<dl class="section attention"><dt>Attention</dt><dd>There are some special upgrade instructions for UM versions 6.7 and beyond that will affect a small percentage of users upgrading from pre-6.7 versions of UM. See <a class="el" href="umversion6_7.html#specialupgradeinstructionsfor6_7">Special Upgrade Instructions for 6.7</a>. For general upgrade instructions, see <a class="el" href="upgradeprocedure.html">Upgrade Procedure</a>. You are also advised to inspect the full list of <a class="el" href="deprecations.html">Deprecations</a>.</dd></dl>
 <p><br />
  </p>
 <h1><a class="anchor" id="enhancementsfor6_7_1"></a>
@@ -66,7 +67,7 @@ Streaming Enhancements for 6.7.1&nbsp;&nbsp;<small><a href="#streamingenhancemen
 <p>The following new features and enhancements apply to UMS, UMP, and UMQ products.</p>
 <ul>
 <li>
-<p class="startli">You can now set how a context learns the ID of its own Topic Resolution Domain (TRD) with option <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grpudpbasedresolveroperation.html#resolverdomainidactivepropagationtimeoutcontext">resolver_domain_id_active_propagation_timeout (context)</a>. This provides more flexibility in situations where you might need to change the Topic Resolution Domain (TRD) ID values for contexts.</p>
+<p class="startli">You can now set how a context learns the ID of its own Topic Resolution Domain (TRD) with option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grpudpbasedresolveroperation.html#resolverdomainidactivepropagationtimeoutcontext">resolver_domain_id_active_propagation_timeout (context)</a>. This provides more flexibility in situations where you might need to change the Topic Resolution Domain (TRD) ID values for contexts.</p>
 <p class="endli"></p>
 </li>
 <li>
@@ -103,11 +104,11 @@ None. </li>
 <p><br />
  </p>
 <h1><a class="anchor" id="fixedlimitationsfor6_7_1"></a>
-Fixed Limitations for 6.7.1&nbsp;&nbsp;<small><a href="#fixedlimitationsfor6_7_1">&lt;-</a></small></h1>
+Fixed Problems and Limitations for 6.7.1&nbsp;&nbsp;<small><a href="#fixedlimitationsfor6_7_1">&lt;-</a></small></h1>
 <p><br />
  </p>
 <h2><a class="anchor" id="streamingfixedlimitationsfor6_7_1"></a>
-Streaming Fixed Limitations for 6.7.1&nbsp;&nbsp;<small><a href="#streamingfixedlimitationsfor6_7_1">&lt;-</a></small></h2>
+Streaming Fixed Problems and Limitations for 6.7.1&nbsp;&nbsp;<small><a href="#streamingfixedlimitationsfor6_7_1">&lt;-</a></small></h2>
 <p>The following bug fixes apply to UMS, UMP, and UMQ products.</p>
 <table class="doxtable">
 <tr>
@@ -120,7 +121,7 @@ Streaming Fixed Limitations for 6.7.1&nbsp;&nbsp;<small><a href="#streamingfixed
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>6186 </td><td><p class="starttd">If the function <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/api.tag:../API/" href="../API/lbm_8h.html#ad74f47a1e021b2422b80c0bf8d03f7a9">lbm_deserialize_response()</a> has a NULL pointer for the second variable, the function returns an LBM_EINVAL. As a solution, the <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/api.tag:../API/" href="../API/lbm_8h.html#ad74f47a1e021b2422b80c0bf8d03f7a9">lbm_deserialize_response()</a> function now fatally asserts if NULL is passed for the '<code>lbm_context_t*</code>' and/or '<code>lbm_serialized_response_t*</code>' arguments.</p>
+<td>6186 </td><td><p class="starttd">If the function <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/api.tag:../API/" href="../API/lbm_8h.html#ad74f47a1e021b2422b80c0bf8d03f7a9">lbm_deserialize_response()</a> has a NULL pointer for the second variable, the function returns an LBM_EINVAL. As a solution, the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/api.tag:../API/" href="../API/lbm_8h.html#ad74f47a1e021b2422b80c0bf8d03f7a9">lbm_deserialize_response()</a> function now fatally asserts if NULL is passed for the '<code>lbm_context_t*</code>' and/or '<code>lbm_serialized_response_t*</code>' arguments.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
@@ -132,7 +133,7 @@ Streaming Fixed Limitations for 6.7.1&nbsp;&nbsp;<small><a href="#streamingfixed
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>8428 </td><td><p class="starttd">The <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/api.tag:../API/" href="../API/lbm_8h.html#ac06b127bae882dd5fb68b7044fdceb5f">lbm_event_dispatch()</a> function might invoke a user callback before the associated event queue has been shut down. As a solution, the <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/api.tag:../API/" href="../API/lbm_8h.html#ac06b127bae882dd5fb68b7044fdceb5f">lbm_event_dispatch()</a> function now checks the event queue shutdown status before calling a user callback, but still always processes UNBLOCK events.</p>
+<td>8428 </td><td><p class="starttd">The <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/api.tag:../API/" href="../API/lbm_8h.html#ac06b127bae882dd5fb68b7044fdceb5f">lbm_event_dispatch()</a> function might invoke a user callback before the associated event queue has been shut down. As a solution, the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/api.tag:../API/" href="../API/lbm_8h.html#ac06b127bae882dd5fb68b7044fdceb5f">lbm_event_dispatch()</a> function now checks the event queue shutdown status before calling a user callback, but still always processes UNBLOCK events.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
@@ -141,7 +142,7 @@ Streaming Fixed Limitations for 6.7.1&nbsp;&nbsp;<small><a href="#streamingfixed
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>8750 </td><td><p class="starttd">An HFX receiver with option <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grpmajoroptions.html#receivercallbackservicetimeenabledcontext">receiver_callback_service_time_enabled (context)</a> option set to 1 might crash or operate without getting any data.</p>
+<td>8750 </td><td><p class="starttd">An HFX receiver with option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grpmajoroptions.html#receivercallbackservicetimeenabledcontext">receiver_callback_service_time_enabled (context)</a> option set to 1 might crash or operate without getting any data.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
@@ -170,7 +171,7 @@ Streaming Fixed Limitations for 6.7.1&nbsp;&nbsp;<small><a href="#streamingfixed
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>8919 </td><td><p class="starttd">For the LBT-RM transport, the <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/api.tag:../API/" href="../API/structlbm__rcv__transport__stats__lbtrm__t__stct.html#afd4f04163e43692b04b5f03e98ab992a">lbm_rcv_transport_stats_lbtrm_t::nak_stm_min</a> and <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/api.tag:../API/" href="../API/structlbm__rcv__transport__stats__lbtrm__t__stct.html#a8ea05ee4effe7f8e41e45051741ee1c6">lbm_rcv_transport_stats_lbtrm_t::nak_tx_min</a> statistics might contain incorrect values, such as MAX_INT+1 or 0x100000000, due to being incorrectly initialized. As a solution, these statistics are now correctly initialized to 0.</p>
+<td>8919 </td><td><p class="starttd">For the LBT-RM transport, the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/api.tag:../API/" href="../API/structlbm__rcv__transport__stats__lbtrm__t__stct.html#afd4f04163e43692b04b5f03e98ab992a">lbm_rcv_transport_stats_lbtrm_t::nak_stm_min</a> and <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/api.tag:../API/" href="../API/structlbm__rcv__transport__stats__lbtrm__t__stct.html#a8ea05ee4effe7f8e41e45051741ee1c6">lbm_rcv_transport_stats_lbtrm_t::nak_tx_min</a> statistics might contain incorrect values, such as MAX_INT+1 or 0x100000000, due to being incorrectly initialized. As a solution, these statistics are now correctly initialized to 0.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
@@ -182,12 +183,12 @@ Streaming Fixed Limitations for 6.7.1&nbsp;&nbsp;<small><a href="#streamingfixed
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>9077 </td><td>When you set option <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grpmulticastresolvernetwork.html#resolvermulticastincomingaddresscontext">resolver_multicast_incoming_address (context)</a> to 0.0.0.0, the Ultra Messaging application exits during topic resolution. </td></tr>
+<td>9077 </td><td>When you set option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grpmulticastresolvernetwork.html#resolvermulticastincomingaddresscontext">resolver_multicast_incoming_address (context)</a> to 0.0.0.0, the Ultra Messaging application exits during topic resolution. </td></tr>
 </table>
 <p><br />
  </p>
 <h2><a class="anchor" id="persistencefixedlimitationsfor6_7_1"></a>
-Persistence Fixed Limitations for 6.7.1&nbsp;&nbsp;<small><a href="#persistencefixedlimitationsfor6_7_1">&lt;-</a></small></h2>
+Persistence Fixed Problems and Limitations for 6.7.1&nbsp;&nbsp;<small><a href="#persistencefixedlimitationsfor6_7_1">&lt;-</a></small></h2>
 <p>The following bug fixes apply to UMP and UMQ products.</p>
 <table class="doxtable">
 <tr>
@@ -195,7 +196,7 @@ Persistence Fixed Limitations for 6.7.1&nbsp;&nbsp;<small><a href="#persistencef
 <p class="endtd"></p>
 </th></tr>
 <tr>
-<td>8933 </td><td><p class="starttd">An Ultra Messaging Java application might crash when using the <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/javaapi.tag:../JavaAPI/" href="../JavaAPI/classcom_1_1latencybusters_1_1lbm_1_1UMERegistrationIdExCallbackInfo.html">com::latencybusters::lbm::UMERegistrationIdExCallbackInfo</a> or <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/javaapi.tag:../JavaAPI/" href="../JavaAPI/classcom_1_1latencybusters_1_1lbm_1_1UMERecoverySequenceNumberCallbackInfo.html">com::latencybusters::lbm::UMERecoverySequenceNumberCallbackInfo</a> callback methods.</p>
+<td>8933 </td><td><p class="starttd">An Ultra Messaging Java application might crash when using the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/javaapi.tag:../JavaAPI/" href="../JavaAPI/classcom_1_1latencybusters_1_1lbm_1_1UMERegistrationIdExCallbackInfo.html">com::latencybusters::lbm::UMERegistrationIdExCallbackInfo</a> or <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/javaapi.tag:../JavaAPI/" href="../JavaAPI/classcom_1_1latencybusters_1_1lbm_1_1UMERecoverySequenceNumberCallbackInfo.html">com::latencybusters::lbm::UMERecoverySequenceNumberCallbackInfo</a> callback methods.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
@@ -203,11 +204,11 @@ Persistence Fixed Limitations for 6.7.1&nbsp;&nbsp;<small><a href="#persistencef
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>6959 </td><td><p class="starttd">When a UMP receiver subscribes to a UMP source with option <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeusestorereceiver">ume_use_store (receiver)</a> enabled, the application can not disable the option <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grplatejoin.html#uselatejoinreceiver">use_late_join (receiver)</a>.</p>
+<td>6959 </td><td><p class="starttd">When a UMP receiver subscribes to a UMP source with option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeusestorereceiver">ume_use_store (receiver)</a> enabled, the application can not disable the option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grplatejoin.html#uselatejoinreceiver">use_late_join (receiver)</a>.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>8140 </td><td><p class="starttd">When option <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grpmajoroptions.html#sourceincludestopicindexcontext">source_includes_topic_index (context)</a> is enabled, the source string delivered to the UME recovery sequence number callback does not include the topic index.</p>
+<td>8140 </td><td><p class="starttd">When option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grpmajoroptions.html#sourceincludestopicindexcontext">source_includes_topic_index (context)</a> is enabled, the source string delivered to the UME recovery sequence number callback does not include the topic index.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
@@ -224,7 +225,7 @@ Persistence Fixed Limitations for 6.7.1&nbsp;&nbsp;<small><a href="#persistencef
 <p><br />
  </p>
 <h2><a class="anchor" id="queuingfixedlimitationsfor6_7_1"></a>
-Queuing Fixed Limitations for 6.7.1&nbsp;&nbsp;<small><a href="#queuingfixedlimitationsfor6_7_1">&lt;-</a></small></h2>
+Queuing Fixed Problems and Limitations for 6.7.1&nbsp;&nbsp;<small><a href="#queuingfixedlimitationsfor6_7_1">&lt;-</a></small></h2>
 <dl class="section note"><dt>Note</dt><dd>The brokered queuing and UM JMS functionalities were replaced in version 6.8, so most of these notes do not apply to more-recent versions of UM. However, ULB functionality is retained.</dd></dl>
 <p>The following bug fixes apply to the UMQ product.</p>
 <table class="doxtable">
@@ -233,7 +234,7 @@ Queuing Fixed Limitations for 6.7.1&nbsp;&nbsp;<small><a href="#queuingfixedlimi
 <p class="endtd"></p>
 </th></tr>
 <tr>
-<td>8950 </td><td><p class="starttd">When a Java source uses ULB and sends messages with <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/javaapi.tag:../JavaAPI/" href="../JavaAPI/classcom_1_1latencybusters_1_1lbm_1_1LBMSourceSendExInfo.html">com::latencybusters::lbm::LBMSourceSendExInfo</a> without a per-send client object, a memory leak occurs. As a solution, the call to the lbm_src_send_count_expected_terminals() function occurs only when there is a per-send client present.</p>
+<td>8950 </td><td><p class="starttd">When a Java source uses ULB and sends messages with <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/javaapi.tag:../JavaAPI/" href="../JavaAPI/classcom_1_1latencybusters_1_1lbm_1_1LBMSourceSendExInfo.html">com::latencybusters::lbm::LBMSourceSendExInfo</a> without a per-send client object, a memory leak occurs. As a solution, the call to the lbm_src_send_count_expected_terminals() function occurs only when there is a per-send client present.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
@@ -241,12 +242,12 @@ Queuing Fixed Limitations for 6.7.1&nbsp;&nbsp;<small><a href="#queuingfixedlimi
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>8967 </td><td>When the queue daemon receives messages via UMQ pro-active retransmission, some of these messages might not have the <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/api.tag:../API/" href="../API/lbm_8h.html#aa56ddca7bfbc1b4f057ea5f0f1162582">LBM_MSG_FLAG_UMQ_RESUBMITTED</a> flag. </td></tr>
+<td>8967 </td><td>When the queue daemon receives messages via UMQ pro-active retransmission, some of these messages might not have the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/api.tag:../API/" href="../API/lbm_8h.html#aa56ddca7bfbc1b4f057ea5f0f1162582">LBM_MSG_FLAG_UMQ_RESUBMITTED</a> flag. </td></tr>
 </table>
 <p><br />
  </p>
 <h2><a class="anchor" id="dynamicrouterfixedlimitationsfor6_7_1"></a>
-Dynamic Router Fixed Limitations for 6.7.1&nbsp;&nbsp;<small><a href="#dynamicrouterfixedlimitationsfor6_7_1">&lt;-</a></small></h2>
+Dynamic Router Fixed Problems and Limitations for 6.7.1&nbsp;&nbsp;<small><a href="#dynamicrouterfixedlimitationsfor6_7_1">&lt;-</a></small></h2>
 <p>The following bug fixes apply to the Dynamic Routing Option (DRO).</p>
 <table class="doxtable">
 <tr>
@@ -254,7 +255,7 @@ Dynamic Router Fixed Limitations for 6.7.1&nbsp;&nbsp;<small><a href="#dynamicro
 <p class="endtd"></p>
 </th></tr>
 <tr>
-<td>8859, 8871, 9002 </td><td><p class="starttd">On UNIX platforms, DRO daemons using single-tcp peer links might incorrectly declare peer links as inactive, and attempt to tear down and re-establish the peer connection. As a solution, for UNIX platforms the DRO now forces the peer portal option <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grpmajoroptions.html#fdmanagementtypecontext">fd_management_type (context)</a> to '<code>select</code>' regardless of the user's configuration settings.</p>
+<td>8859, 8871, 9002 </td><td><p class="starttd">On UNIX platforms, DRO daemons using single-tcp peer links might incorrectly declare peer links as inactive, and attempt to tear down and re-establish the peer connection. As a solution, for UNIX platforms the DRO now forces the peer portal option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grpmajoroptions.html#fdmanagementtypecontext">fd_management_type (context)</a> to '<code>select</code>' regardless of the user's configuration settings.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
@@ -267,6 +268,48 @@ As a solution the other peer now issues the following correct log message: <br /
 <tr>
 <td>8979 </td><td>Incorrect DRO endpoint Domain IDs propagate continuously, without a mechanism for resetting other than restarting all contexts in the TRD. </td></tr>
 </table>
+<p><br />
+<br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+</p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.8.11-->

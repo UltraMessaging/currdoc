@@ -1051,10 +1051,6 @@ class UMESSrcCB implements LBMSourceEventCallback, LBMMessageReclamationCallback
 				System.out.println("Error registering smart source with UME store: "
 					+ sourceEvent.dataString());
 				break;
-			case LBM.SRC_EVENT_UME_REGISTRATION_SUCCESS:
-				System.out.println("UME store registration success. RegID "
-					+ sourceEvent.registrationId());
-				break;
 			case LBM.SRC_EVENT_UME_DEREGISTRATION_SUCCESS_EX:
 				System.out.print("UME_DEREGISTRATION_SUCCESS_EX ");
 				System.out.println();
@@ -1088,17 +1084,6 @@ class UMESSrcCB implements LBMSourceEventCallback, LBMMessageReclamationCallback
 					System.out.print("QUORUM ");
 				}
 				System.out.println();
-				break;
-			case LBM.SRC_EVENT_UME_MESSAGE_STABLE:
-				if (_verbose >= 2)
-					System.out.println("UME message stable - sequence number "
-						+ Long.toHexString(sourceEvent.sequenceNumber())
-						+ " (cd "
-						+ Long.toHexString(((Long)sourceEvent.clientObject()).longValue())
-						+ ")");
-
-				/* Peg the counter for the received stable message */
-				umessrc.stablerecv++;
 				break;
 			case LBM.SRC_EVENT_UME_MESSAGE_NOT_STABLE:
 				UMESourceEventAckInfo nstaInfo = sourceEvent.ackInfo();
@@ -1139,16 +1124,6 @@ class UMESSrcCB implements LBMSourceEventCallback, LBMMessageReclamationCallback
 
 				/* Peg the counter for the received stable message */
 				umessrc.stablerecv++;
-				break;
-			case LBM.SRC_EVENT_UME_DELIVERY_CONFIRMATION:
-				if (_verbose > 0)
-					System.out.println("UME delivery confirmation - sequence number "
-						+ Long.toHexString(sourceEvent.sequenceNumber())
-						+ " Rcv RegID "
-						+ sourceEvent.registrationId()
-						+ " (cd "
-						+ Long.toHexString(((Long)sourceEvent.clientObject()).longValue())
-						+ ")");
 				break;
 			case LBM.SRC_EVENT_UME_DELIVERY_CONFIRMATION_EX:
 				UMESourceEventAckInfo cdelvinfo = sourceEvent.ackInfo();

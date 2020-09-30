@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">UM C API
-   &#160;<span id="projectnumber">6.13</span>
+   &#160;<span id="projectnumber">6.13.1</span>
    </div>
   </td>
  </tr>
@@ -202,7 +202,7 @@ Functions</h2></td></tr>
 
 <p>Application callback for messages delivered to HyperTopic receivers. </p>
 <p>Set by <a class="el" href="lbmht_8h.html#a438ebbf852ee7159eb9e23508328968d" title="Add a topic pattern to the set of topics being received by a HyperTopic receiver. ...">lbm_hypertopic_rcv_add()</a>. If this application callback is set on an HyperTopic receiver that has been initialized without an event queue, it is called from the context thread and is therefore, limited in the API calls that it can make.</p>
-<p>After the callback returns, the message object <em>msg</em> is deleted and the application must not refer to it. This behavior can be overridden by calling <a class="el" href="lbm_8h.html#a2b7788ff58f9e78bc89ea890dad0cccf" title="Instruct UM that the API is going to retain ownership of a UM message object. ">lbm_msg_retain()</a> from the receive callback before it returns. It then becomes the application's responsibility to delete the message object by calling <a class="el" href="lbm_8h.html#aa5fc1eb324a55b8c800c31460b0f0116" title="Delete a UM message object. ">lbm_msg_delete()</a> after the application no longer needs to refer to the message structure or its contents.</p>
+<p>After the callback returns, the message object <em>msg</em> is deleted and the application must not refer to it. This behavior can be overridden by calling <a class="el" href="lbm_8h.html#a2b7788ff58f9e78bc89ea890dad0cccf" title="Inform UM that the application is going to retain ownership of a UM message object after the receiver...">lbm_msg_retain()</a> from the receive callback before it returns. It then becomes the application's responsibility to delete the message object by calling <a class="el" href="lbm_8h.html#aa5fc1eb324a55b8c800c31460b0f0116" title="Delete a UM message object. ">lbm_msg_delete()</a> after the application no longer needs to refer to the message structure or its contents.</p>
 <dl class="section note"><dt>Note</dt><dd>For received application messages, be aware that LBM does not guarantee any alignment of that data.</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">

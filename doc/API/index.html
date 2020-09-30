@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">UM C API
-   &#160;<span id="projectnumber">6.13</span>
+   &#160;<span id="projectnumber">6.13.1</span>
    </div>
   </td>
  </tr>
@@ -66,7 +66,7 @@ $(document).ready(function(){initNavTree('index.html','');});
 <div class="contents">
 <div class="textblock"><p> 
 <img src="infa_logo.png" width="400" height="138" alt="Informatica"/><br/><br/>
-<big><b>Ultra Messaging</b></big> <small>(Version 6.13)</small><br/>
+<big><b>Ultra Messaging</b></big> <small>(Version 6.13.1)</small><br/>
 <br/><br/><br/>
 <center class="mytitle">Ultra Messaging C API</center>
 <br/><br/><br/>
@@ -87,6 +87,8 @@ INFORMATICA LLC PROVIDES THE INFORMATION IN THIS DOCUMENT "AS IS" WITHOUT WARRAN
 <h1><a class="anchor" id="umcapi"></a>
 UM C API</h1>
 <p>To use the UM C API, you must access the UM headers (<code>".h"</code> files), and native libraries (dynamic or static). Note that these files are platform dependent and are contained in the platform-specific packages.</p>
+<p>For details on how data structures are used in UM, see <a class="el" href="cstructureusagepatterns.html">C Structure Usage Patterns</a>.</p>
+<p>Note that unlike C++, standard C does not support function overloading in which the same function name can have different numbers of parameters. It is fairly common for a C API function to have parameters that the user does not desire to use. For example, the timer scheduling function prototype is: </p><div class="fragment"><div class="line"><span class="keywordtype">int</span> <a class="code" href="lbm_8h.html#a6ddbee95ee1eb4e6b98b177f84157f8a">lbm_schedule_timer</a>(<a class="code" href="lbm_8h.html#a9f6ec97839a8f264eb4059de01174f3c">lbm_context_t</a> *ctx,</div><div class="line">                      <a class="code" href="lbm_8h.html#ae9bced3d5c7ad9c771c69bf58e74cb0b">lbm_timer_cb_proc</a> proc, <span class="keywordtype">void</span> *clientd,</div><div class="line">                      <a class="code" href="lbm_8h.html#a6897baf281a5b4729e05c873aacac420">lbm_event_queue_t</a> *evq, <a class="code" href="lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a> delay);</div></div><!-- fragment --><p> The "evq" parameter is for an <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/API/design.tag:../Design/" href="../Design/umobjects.html#eventqueueobject">Event Queue Object</a>, which is considered optional. Meaning that the user can design his application to either use or not use an event queue, depending on the application requirements. If the user chooses not to use an event queue, the timer schedule call should pass NULL as the evq: </p><div class="fragment"><div class="line">err = <a class="code" href="lbm_8h.html#a6ddbee95ee1eb4e6b98b177f84157f8a">lbm_schedule_timer</a>(ctx, my_timer_funct, NULL, NULL, 10);</div></div><!-- fragment --><p> (In this example, the "clientd" parameter is also not used.)</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="usingumconwindows"></a>
@@ -96,7 +98,49 @@ Using UM C on Windows</h2>
  </p>
 <h2><a class="anchor" id="usingumconunix"></a>
 Using UM C on Unix</h2>
-<p>To run C applications on Unix, the OS needs to be able to find the native UM library, <code>"liblbm.so"</code>. A typical way to accomplish this is to set the environment variable <code>"LD_LIBRARY_PATH"</code> to point at the UM library directory. For example: </p><div class="fragment"><div class="line">LD_LIBRARY_PATH=/um_home/UMS_6.12.1/Linux-glibc-2.17-x86_64/lib</div><div class="line">export LD_LIBRARY_PATH</div></div><!-- fragment --><p> (Replace <code>"/um_home/UMS_6.12.1/Linux-glibc-2.17-x86_64"</code> with the path where your version of UM is installed.) In there you will find the UM native libraries. </p>
+<p>To run C applications on Unix, the OS needs to be able to find the native UM library, <code>"liblbm.so"</code>. A typical way to accomplish this is to set the environment variable <code>"LD_LIBRARY_PATH"</code> to point at the UM library directory. For example: </p><div class="fragment"><div class="line">LD_LIBRARY_PATH=/um_home/UMS_6.12.1/Linux-glibc-2.17-x86_64/lib</div><div class="line">export LD_LIBRARY_PATH</div></div><!-- fragment --><p> (Replace <code>"/um_home/UMS_6.12.1/Linux-glibc-2.17-x86_64"</code> with the path where your version of UM is installed.) In there you will find the UM native libraries.</p>
+<p><br />
+<br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+</p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

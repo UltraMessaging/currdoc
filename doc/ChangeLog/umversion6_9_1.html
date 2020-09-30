@@ -54,9 +54,10 @@ $(document).ready(function(){initNavTree('umversion6_9_1.html','');});
 <div class="title">UM Version 6.9.1 </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>The most-significant update to UM version 6.9.1 is expansion of the supported platforms: <br />
+<div class="textblock"><p>The most significant update to UM version 6.9.1 is expansion of the supported platforms: <br />
 Linux-X86 (32 and 64 bit), Windows (32 and 64 bit), Solaris-X86 (32 and 64 bit), Solaris-Sparc (32 and 64 bits), Linux-Itanium (64-bit), Linux-Power8 (64-bit, little endian), HP NonStop-X64 (64-bit).</p>
 <dl class="section warning"><dt>Warning</dt><dd>Due to a serious bug in UM 6.9 and 6.9.1, users of LBT-RM and LBT-RU transports are strongly advised to upgrade to 6.9.2 as soon as possible. The bug causes a crash (fatal assert) after approximately 4 billion datagrams are sent on a transport session.</dd></dl>
+<dl class="section attention"><dt>Attention</dt><dd>There are some special upgrade instructions for UM versions 6.8 and beyond that will affect a small percentage of users upgrading from pre-6.8 versions of UM. See <a class="el" href="umversion6_8.html#specialupgradeinstructionsfor6_8">Special Upgrade Instructions for 6.8</a>. For general upgrade instructions, see <a class="el" href="upgradeprocedure.html">Upgrade Procedure</a>. You are also advised to inspect the full list of <a class="el" href="deprecations.html">Deprecations</a>.</dd></dl>
 <p><br />
  </p>
 <h1><a class="anchor" id="enhancementsfor6_9_1"></a>
@@ -104,11 +105,11 @@ None. </li>
 <p><br />
  </p>
 <h1><a class="anchor" id="fixedlimitationsfor6_9_1"></a>
-Fixed Limitations for 6.9.1&nbsp;&nbsp;<small><a href="#fixedlimitationsfor6_9_1">&lt;-</a></small></h1>
+Fixed Problems and Limitations for 6.9.1&nbsp;&nbsp;<small><a href="#fixedlimitationsfor6_9_1">&lt;-</a></small></h1>
 <p><br />
  </p>
 <h2><a class="anchor" id="streamingfixedlimitationsfor6_9_1"></a>
-Streaming Fixed Limitations for 6.9.1&nbsp;&nbsp;<small><a href="#streamingfixedlimitationsfor6_9_1">&lt;-</a></small></h2>
+Streaming Fixed Problems and Limitations for 6.9.1&nbsp;&nbsp;<small><a href="#streamingfixedlimitationsfor6_9_1">&lt;-</a></small></h2>
 <p>The following bug fixes apply to UMS, UMP, and UMQ products.</p>
 <table class="doxtable">
 <tr>
@@ -138,7 +139,7 @@ Streaming Fixed Limitations for 6.9.1&nbsp;&nbsp;<small><a href="#streamingfixed
 <p><br />
  </p>
 <h2><a class="anchor" id="persistencefixedlimitationsfor6_9_1"></a>
-Persistence Fixed Limitations for 6.9.1&nbsp;&nbsp;<small><a href="#persistencefixedlimitationsfor6_9_1">&lt;-</a></small></h2>
+Persistence Fixed Problems and Limitations for 6.9.1&nbsp;&nbsp;<small><a href="#persistencefixedlimitationsfor6_9_1">&lt;-</a></small></h2>
 <p>The following bug fixes apply to UMP and UMQ products.</p>
 <table class="doxtable">
 <tr>
@@ -146,8 +147,8 @@ Persistence Fixed Limitations for 6.9.1&nbsp;&nbsp;<small><a href="#persistencef
 <p class="endtd"></p>
 </th></tr>
 <tr>
-<td>9707 </td><td><p class="starttd">Fixed a problem with Receiver Paced Persistence where setting the source configuration option <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umewritedelaysource">ume_write_delay (source)</a> to zero did not override the store's <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/ume.tag:../UME/" href="../UME/configurationreferenceforumestored.html#umecfgrepositorydiskwritedelay">repository-disk-write-delay</a> value.</p>
-<p>The source can now override the store with <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umewritedelaysource">ume_write_delay (source)</a> set to zero.</p>
+<td>9707 </td><td><p class="starttd">Fixed a problem with Receiver Paced Persistence where setting the source configuration option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umewritedelaysource">ume_write_delay (source)</a> to zero did not override the store's <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/ume.tag:../UME/" href="../UME/optionsforastoresumeattributeselement.html#umecfgrepositorydiskwritedelay">repository-disk-write-delay</a> value.</p>
+<p>The source can now override the store with <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umewritedelaysource">ume_write_delay (source)</a> set to zero.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
@@ -155,7 +156,7 @@ Persistence Fixed Limitations for 6.9.1&nbsp;&nbsp;<small><a href="#persistencef
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>9481 </td><td><p class="starttd">Fixed a problem where the UMM user interface did not initialize options to the correct default values for the options <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grpdeprecated.html#umeretransmitrequestoutstandingmaximumreceiver">ume_retransmit_request_outstanding_maximum (receiver)</a>, <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeregistrationintervalsource">ume_registration_interval (source)</a>, <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umesriintersriintervalsource">ume_sri_inter_sri_interval (source)</a>, and <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umesrimaxnumberofsriperupdatesource">ume_sri_max_number_of_sri_per_update (source)</a>.</p>
+<td>9481 </td><td><p class="starttd">Fixed a problem where the UMM user interface did not initialize options to the correct default values for the options <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grpdeprecated.html#umeretransmitrequestoutstandingmaximumreceiver">ume_retransmit_request_outstanding_maximum (receiver)</a>, <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeregistrationintervalsource">ume_registration_interval (source)</a>, <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umesriintersriintervalsource">ume_sri_inter_sri_interval (source)</a>, and <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umesrimaxnumberofsriperupdatesource">ume_sri_max_number_of_sri_per_update (source)</a>.</p>
 <p>Those options are now initialized to the correct default values.</p>
 <p class="endtd"></p>
 </td></tr>
@@ -170,17 +171,17 @@ Persistence Fixed Limitations for 6.9.1&nbsp;&nbsp;<small><a href="#persistencef
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>9743 </td><td>Enhanced the keepalive protocol between the store and a persistent receiver to significantly reduce the keepalive traffic, especially for the case where a persistent receiver exits. This involved the introduction of a new configuration option, <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeproactivekeepaliveintervalcontext">ume_proactive_keepalive_interval (context)</a>. </td></tr>
+<td>9743 </td><td>Enhanced the keepalive protocol between the store and a persistent receiver to significantly reduce the keepalive traffic, especially for the case where a persistent receiver exits. This involved the introduction of a new configuration option, <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeproactivekeepaliveintervalcontext">ume_proactive_keepalive_interval (context)</a>. </td></tr>
 </table>
 <p><br />
  </p>
 <h2><a class="anchor" id="queuingfixedlimitationsfor6_9_1"></a>
-Queuing Fixed Limitations for 6.9.1&nbsp;&nbsp;<small><a href="#queuingfixedlimitationsfor6_9_1">&lt;-</a></small></h2>
+Queuing Fixed Problems and Limitations for 6.9.1&nbsp;&nbsp;<small><a href="#queuingfixedlimitationsfor6_9_1">&lt;-</a></small></h2>
 <p>The following bug fixes apply to the UMQ product.</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="dynamicrouterfixedlimitationsfor6_9_1"></a>
-Dynamic Router Fixed Limitations for 6.9.1&nbsp;&nbsp;<small><a href="#dynamicrouterfixedlimitationsfor6_9_1">&lt;-</a></small></h2>
+Dynamic Router Fixed Problems and Limitations for 6.9.1&nbsp;&nbsp;<small><a href="#dynamicrouterfixedlimitationsfor6_9_1">&lt;-</a></small></h2>
 <p>The following bug fixes apply to the Dynamic Routing Option (DRO).</p>
 <table class="doxtable">
 <tr>
@@ -197,6 +198,48 @@ Dynamic Router Fixed Limitations for 6.9.1&nbsp;&nbsp;<small><a href="#dynamicro
 <p class="endtd">This has been fixed. </p>
 </td></tr>
 </table>
+<p><br />
+<br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+</p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.8.11-->

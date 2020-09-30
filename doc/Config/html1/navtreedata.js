@@ -129,7 +129,6 @@ var NAVTREE =
         [ "compatibility_include_pre_um_6_0_behavior (context)", "index.html#compatibilityincludepreum60behaviorcontext", null ],
         [ "context_event_function (context)", "index.html#contexteventfunctioncontext", null ],
         [ "context_name (context)", "index.html#contextnamecontext", null ],
-        [ "datagram_acceleration_functions (context)", "index.html#datagramaccelerationfunctionscontext", null ],
         [ "default_interface (context)", "index.html#defaultinterfacecontext", null ],
         [ "fd_management_type (context)", "index.html#fdmanagementtypecontext", null ],
         [ "file_descriptor_management_behavior (context)", "index.html#filedescriptormanagementbehaviorcontext", null ],
@@ -385,19 +384,19 @@ var NAVTREE =
       ] ]
     ] ],
     [ "Transport Acceleration Options", "index.html#grptransportacceleration", [
-      [ "Myricom® Datagram Bypass Layer (DBL™)", "index.html#myricomdatagrambypasslayerdbl", null ],
+      [ "Myricom Datagram Bypass Layer (DBL)", "index.html#myricomdatagrambypasslayerdbl", null ],
       [ "Reference", "index.html#transportaccelerationmyricomref", [
         [ "dbl_lbtrm_acceleration (context)", "index.html#dbllbtrmaccelerationcontext", null ],
         [ "dbl_lbtru_acceleration (context)", "index.html#dbllbtruaccelerationcontext", null ],
         [ "dbl_mim_acceleration (context)", "index.html#dblmimaccelerationcontext", null ],
         [ "dbl_resolver_acceleration (context)", "index.html#dblresolveraccelerationcontext", null ]
       ] ],
-      [ "Solarflare® Onload", "index.html#solarflareonload", null ],
+      [ "Solarflare Onload", "index.html#solarflareonload", null ],
       [ "Reference", "index.html#transportaccelerationsolarflareref", [
         [ "onload_acceleration_stack_name (receiver)", "index.html#onloadaccelerationstacknamereceiver", null ],
         [ "onload_acceleration_stack_name (source)", "index.html#onloadaccelerationstacknamesource", null ]
       ] ],
-      [ "UD Acceleration for Mellanox® Hardware Interfaces", "index.html#mellanoxudacceleration", null ],
+      [ "UD Acceleration for Mellanox Hardware Interfaces", "index.html#mellanoxudacceleration", null ],
       [ "Reference", "index.html#transportaccelerationmellanoxref", [
         [ "resolver_ud_acceleration (context)", "index.html#resolverudaccelerationcontext", null ],
         [ "ud_acceleration (context)", "index.html#udaccelerationcontext", null ]
@@ -700,6 +699,7 @@ var NAVTREE =
     ] ],
     [ "Deprecated Options", "index.html#grpdeprecated", [
       [ "Reference", "index.html#deprecatedref", [
+        [ "datagram_acceleration_functions (context)", "index.html#datagramaccelerationfunctionscontext", null ],
         [ "delivery_control_loss_tablesz (receiver)", "index.html#deliverycontrollosstableszreceiver", null ],
         [ "delivery_control_order_tablesz (receiver)", "index.html#deliverycontrolordertableszreceiver", null ],
         [ "implicit_batching_type (source)", "index.html#implicitbatchingtypesource", null ],
@@ -764,14 +764,6 @@ var NAVTREE =
         [ "umq_retention_intragroup_stability_behavior (source)", "index.html#umqretentionintragroupstabilitybehaviorsource", null ],
         [ "use_transport_thread (receiver)", "index.html#usetransportthreadreceiver", null ]
       ] ]
-    ] ],
-    [ "Option Categories", "index.html#optioncategories", [
-      [ "UM UDP Port Values", "index.html#umudpportvalues", null ],
-      [ "UM TCP Port Values", "index.html#umtcpportvalues", null ],
-      [ "UM Multicast Group Values", "index.html#ummulticastgroupvalues", null ],
-      [ "UM Timer Interval Values", "index.html#umtimerintervalvalues", null ],
-      [ "Options That May Be Set During Operation", "index.html#optionsthatmaybesetduringoperation", null ],
-      [ "Options that Cannot Be Set Via Configuration Files", "index.html#optionsthatcannotbesetviaconfigurationfiles", null ]
     ] ]
   ] ]
 ];
@@ -779,8 +771,8 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "index.html",
-"index.html#resolveradvertisementmaximuminitialintervalsource",
-"index.html#transporttcpportlowcontext"
+"index.html#resolveradvertisementminimumsustaindurationsource",
+"index.html#transporttcpreuseaddrsource"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

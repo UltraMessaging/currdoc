@@ -54,8 +54,9 @@ $(document).ready(function(){initNavTree('umversion6_7.html','');});
 <div class="title">UM Version 6.7 </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>The most-significant update to UM version 6.7 is interoperability with pre-6.0 versions of UM. Applications and persistent stores at version 6.7 are able to exchange messages and control information with 5.x applications, especially 5.3.6.</p>
+<div class="textblock"><p>The most significant update to UM version 6.7 is interoperability with pre-6.0 versions of UM. Applications and persistent stores at version 6.7 are able to exchange messages and control information with 5.x applications, especially 5.3.6.</p>
 <p>However, note that 6.7 applications are not able to interoperate with daemon components of 5.x, including the persistent store and the 5.x gateway. Also, 5.x applications are not able to interoperate with version 6.7 DRO.</p>
+<dl class="section attention"><dt>Attention</dt><dd>There are some special upgrade instructions for UM versions 6.7 and beyond that will affect a small percentage of users upgrading from pre-6.7 versions of UM. See <a class="el" href="umversion6_7.html#specialupgradeinstructionsfor6_7">Special Upgrade Instructions for 6.7</a>. For general upgrade instructions, see <a class="el" href="upgradeprocedure.html">Upgrade Procedure</a>. You are also advised to inspect the full list of <a class="el" href="deprecations.html">Deprecations</a>.</dd></dl>
 <p><br />
  </p>
 <h1><a class="anchor" id="enhancementsfor6_7"></a>
@@ -68,7 +69,7 @@ Streaming Enhancements for 6.7&nbsp;&nbsp;<small><a href="#streamingenhancements
 <ul>
 <li>
 <p class="startli"><b>Receive-Side Batching</b> - reduces latency and increases throughput in UM applications by bundling multiple messages to deliver. This bypasses the need to perform a boundary crossing for each delivered message.</p>
-<p>You enable Receiver-Side Batching with configuration option <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grpdeliverycontrol.html#deliverycontrolmessagebatchingcontext">delivery_control_message_batching (context)</a>. With C and .NET applications, you must be using an event queue for this feature (this is not a requirement for Java applications).</p>
+<p>You enable Receiver-Side Batching with configuration option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grpdeliverycontrol.html#deliverycontrolmessagebatchingcontext">delivery_control_message_batching (context)</a>. With C and .NET applications, you must be using an event queue for this feature (this is not a requirement for Java applications).</p>
 <p class="endli"></p>
 </li>
 <li>
@@ -88,7 +89,7 @@ Streaming Enhancements for 6.7&nbsp;&nbsp;<small><a href="#streamingenhancements
 <p class="endli"></p>
 </li>
 <li>
-<p class="startli">You can now set a source activity timeout for LBT-TCP sessions, with new configuration option <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grptransporttcpoperation.html#transporttcpactivitytimeoutsource">transport_tcp_activity_timeout (source)</a>.</p>
+<p class="startli">You can now set a source activity timeout for LBT-TCP sessions, with new configuration option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grptransporttcpoperation.html#transporttcpactivitytimeoutsource">transport_tcp_activity_timeout (source)</a>.</p>
 <p class="endli"></p>
 </li>
 <li>
@@ -101,20 +102,20 @@ Persistence Enhancements for 6.7&nbsp;&nbsp;<small><a href="#persistenceenhancem
 <p>The following new features and enhancements apply to UMP and UMQ products.</p>
 <ul>
 <li>
-<p class="startli"><b>Throttled Delivery</b> - you can limit the number of message fragments that a persistent receiver delivers to a receiver application beyond the current highest consumed message fragment. This limits the amount of memory a receiver uses when that receiver consumes messages at rate much slower than the recovery rate from a UMP store or slower than the UMP source stream. To use UMP Throttled Delivery, set the new option <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeapplicationoutstandingmaximumreceiver">ume_application_outstanding_maximum (receiver)</a>.</p>
+<p class="startli"><b>Throttled Delivery</b> - you can limit the number of message fragments that a persistent receiver delivers to a receiver application beyond the current highest consumed message fragment. This limits the amount of memory a receiver uses when that receiver consumes messages at rate much slower than the recovery rate from a UMP store or slower than the UMP source stream. To use UMP Throttled Delivery, set the new option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeapplicationoutstandingmaximumreceiver">ume_application_outstanding_maximum (receiver)</a>.</p>
 <p class="endli"></p>
 </li>
 <li>
 <p class="startli"><b>Enhanced Quorum/Consensus Store Registration and Message Stability</b></p><ul>
 <li>Quorum/Consensus functionality is enhanced in the following ways: <ul>
 <li>
-When setting option <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeretentionintragroupstabilitybehaviorsource">ume_retention_intragroup_stability_behavior (source)</a> to '<code>all-active</code>', the source requires, minimally, a quorum of stores to successfully stabilize a message within the group. </li>
+When setting option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeretentionintragroupstabilitybehaviorsource">ume_retention_intragroup_stability_behavior (source)</a> to '<code>all-active</code>', the source requires, minimally, a quorum of stores to successfully stabilize a message within the group. </li>
 <li>
-The <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeretentionintragroupstabilitybehaviorsource">ume_retention_intragroup_stability_behavior (source)</a> and <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeretentionintergroupstabilitybehaviorsource">ume_retention_intergroup_stability_behavior (source)</a> options now apply to registration behavior, as well as message stability behavior. With versions earlier than 6.7, intragroup registration was quorum-based only, and intergroup registration completion always occurred after the first store group was registered. </li>
+The <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeretentionintragroupstabilitybehaviorsource">ume_retention_intragroup_stability_behavior (source)</a> and <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeretentionintergroupstabilitybehaviorsource">ume_retention_intergroup_stability_behavior (source)</a> options now apply to registration behavior, as well as message stability behavior. With versions earlier than 6.7, intragroup registration was quorum-based only, and intergroup registration completion always occurred after the first store group was registered. </li>
 <li>
-During the first cycle of the <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeregistrationintervalsource">ume_registration_interval (source)</a> period, a source does not declare Registration Complete unless all stores in all groups respond. With versions earlier than 6.7, a source declares Registration Complete as soon as all stores in one group respond. </li>
+During the first cycle of the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeregistrationintervalsource">ume_registration_interval (source)</a> period, a source does not declare Registration Complete unless all stores in all groups respond. With versions earlier than 6.7, a source declares Registration Complete as soon as all stores in one group respond. </li>
 <li>
-During subsequent cycles of the <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeregistrationintervalsource">ume_registration_interval (source)</a> period, a source declares Registration Complete as soon as the configured settings for the <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeretentionintragroupstabilitybehaviorsource">ume_retention_intragroup_stability_behavior (source)</a> and <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeretentionintergroupstabilitybehaviorsource">ume_retention_intergroup_stability_behavior (source)</a> options are satisfied. With versions earlier than 6.7, a source declares Registration Complete as soon as a quorum of stores in one group respond. </li>
+During subsequent cycles of the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeregistrationintervalsource">ume_registration_interval (source)</a> period, a source declares Registration Complete as soon as the configured settings for the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeretentionintragroupstabilitybehaviorsource">ume_retention_intragroup_stability_behavior (source)</a> and <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeretentionintergroupstabilitybehaviorsource">ume_retention_intergroup_stability_behavior (source)</a> options are satisfied. With versions earlier than 6.7, a source declares Registration Complete as soon as a quorum of stores in one group respond. </li>
 </ul>
 </li>
 </ul>
@@ -143,11 +144,11 @@ For DRO XML configuration files you can use the '<code>XInclude</code>' mechanis
 <p><br />
  </p>
 <h1><a class="anchor" id="fixedlimitationsfor6_7"></a>
-Fixed Limitations for 6.7&nbsp;&nbsp;<small><a href="#fixedlimitationsfor6_7">&lt;-</a></small></h1>
+Fixed Problems and Limitations for 6.7&nbsp;&nbsp;<small><a href="#fixedlimitationsfor6_7">&lt;-</a></small></h1>
 <p><br />
  </p>
 <h2><a class="anchor" id="streamingfixedlimitationsfor6_7"></a>
-Streaming Fixed Limitations for 6.7&nbsp;&nbsp;<small><a href="#streamingfixedlimitationsfor6_7">&lt;-</a></small></h2>
+Streaming Fixed Problems and Limitations for 6.7&nbsp;&nbsp;<small><a href="#streamingfixedlimitationsfor6_7">&lt;-</a></small></h2>
 <p>The following bug fixes apply to UMS, UMP, and UMQ products.</p>
 <table class="doxtable">
 <tr>
@@ -172,7 +173,7 @@ Messaging Support". This is now changed to display, "Informatica Ultra Messaging
 <tr>
 <td>7261 </td><td><p class="starttd">If automatic monitoring is misconfigured, instead of silently failing the creation and proceeding with a context or event queue setup, Ultra Messaging now logs the following messages: <br />
 `Could not create automon controller: <br />
-CoreApi-5688-3059: automatic monitoring initialization failed [4099] [Transport module source init function returned -1, <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/api.tag:../API/" href="../API/lbmaux_8h.html#ae7d92b1afb5b581a6b71a154448f89a7">lbmaux_context_attr_setopt_from_file()</a> failed CoreApi-5688-4374: invalid configuration line in mcast.cfg, line 1: xxxxxxx</p>
+CoreApi-5688-3059: automatic monitoring initialization failed [4099] [Transport module source init function returned -1, <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/api.tag:../API/" href="../API/lbmaux_8h.html#ae7d92b1afb5b581a6b71a154448f89a7">lbmaux_context_attr_setopt_from_file()</a> failed CoreApi-5688-4374: invalid configuration line in mcast.cfg, line 1: xxxxxxx</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
@@ -184,7 +185,7 @@ CoreApi-5688-3059: automatic monitoring initialization failed [4099] [Transport 
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>7944 </td><td><p class="starttd">Using the function <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/api.tag:../API/" href="../API/lbm_8h.html#a6dc1f21c3be74fbed3f96800cfd6a0b0">lbm_context_attr_dup()</a> might cause a <code>src-&gt;res_ucast_daemons!=NULL</code> assert when the original attributes do not contain a setting for the UM configuration option <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grpunicastresolvernetwork.html#resolverunicastdaemoncontext">resolver_unicast_daemon (context)</a> and when that option is then set after the original is created.</p>
+<td>7944 </td><td><p class="starttd">Using the function <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/api.tag:../API/" href="../API/lbm_8h.html#a6dc1f21c3be74fbed3f96800cfd6a0b0">lbm_context_attr_dup()</a> might cause a <code>src-&gt;res_ucast_daemons!=NULL</code> assert when the original attributes do not contain a setting for the UM configuration option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grpunicastresolvernetwork.html#resolverunicastdaemoncontext">resolver_unicast_daemon (context)</a> and when that option is then set after the original is created.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
@@ -196,7 +197,7 @@ CoreApi-5688-3059: automatic monitoring initialization failed [4099] [Transport 
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>8108 </td><td><p class="starttd">Ultra Messaging accepts configuration option <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grpunicastresolvernetwork.html#resolverunicastdaemoncontext">resolver_unicast_daemon (context)</a> when it specifies more than one address. As a solution, incorrectly setting this option now issues message <code>CoreApi-7875-1</code> indicating that multiple values are not allowed for this option.</p>
+<td>8108 </td><td><p class="starttd">Ultra Messaging accepts configuration option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grpunicastresolvernetwork.html#resolverunicastdaemoncontext">resolver_unicast_daemon (context)</a> when it specifies more than one address. As a solution, incorrectly setting this option now issues message <code>CoreApi-7875-1</code> indicating that multiple values are not allowed for this option.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
@@ -218,11 +219,11 @@ while the resolver is active.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>8198 </td><td><p class="starttd">Mellanox Ultra Messaging applications with option <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grptransportacceleration.html#udaccelerationcontext">ud_acceleration (context)</a> set to 1 were forcing the VMA_SELECT_POLL environment variable to 0, resulting in poor latency performance. Applications can now set VMA_SELECT_POLL to the desired value, or can allow the Mellanox default value.</p>
+<td>8198 </td><td><p class="starttd">Mellanox Ultra Messaging applications with option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grptransportacceleration.html#udaccelerationcontext">ud_acceleration (context)</a> set to 1 were forcing the VMA_SELECT_POLL environment variable to 0, resulting in poor latency performance. Applications can now set VMA_SELECT_POLL to the desired value, or can allow the Mellanox default value.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>8277 </td><td><p class="starttd">LBT-SMX transport statistics include unsupported request/response statistics. As a solution the field lbm_reqs_rcved is renamed to '<code>reserved1</code>' in the <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/api.tag:../API/" href="../API/lbm_8h.html#ac5fb787ca6c0597f6ff313073fff658f">lbm_rcv_transport_stats_lbtsmx_t</a> structure.</p>
+<td>8277 </td><td><p class="starttd">LBT-SMX transport statistics include unsupported request/response statistics. As a solution the field lbm_reqs_rcved is renamed to '<code>reserved1</code>' in the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/api.tag:../API/" href="../API/lbm_8h.html#ac5fb787ca6c0597f6ff313073fff658f">lbm_rcv_transport_stats_lbtsmx_t</a> structure.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
@@ -256,25 +257,25 @@ while the resolver is active.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>8633 </td><td><p class="starttd">The function <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/api.tag:../API/" href="../API/lbm_8h.html#ad9416b1f0b474b5d4c4f39bb3c4bda77">lbm_context_process_events()</a> returns -1 for non-critical errors without further description. As a solution, Ultra Messaging no longer returns -1 from <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/api.tag:../API/" href="../API/lbm_8h.html#ad9416b1f0b474b5d4c4f39bb3c4bda77">lbm_context_process_events()</a> for non-critical errors.</p>
+<td>8633 </td><td><p class="starttd">The function <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/api.tag:../API/" href="../API/lbm_8h.html#ad9416b1f0b474b5d4c4f39bb3c4bda77">lbm_context_process_events()</a> returns -1 for non-critical errors without further description. As a solution, Ultra Messaging no longer returns -1 from <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/api.tag:../API/" href="../API/lbm_8h.html#ad9416b1f0b474b5d4c4f39bb3c4bda77">lbm_context_process_events()</a> for non-critical errors.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>8662 </td><td><p class="starttd">In the Java API, the array of stores returned by <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/javaapi.tag:../JavaAPI/" href="../JavaAPI/classcom_1_1latencybusters_1_1lbm_1_1LBMSourceAttributes.html#a7102748cf41bd69c8923fd1d026e2e35">com::latencybusters::lbm::LBMSourceAttributes::getStores()</a> contains an incorrect number of entries when using named stores. In addition to the solution for this, the <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/javaapi.tag:../JavaAPI/" href="../JavaAPI/classcom_1_1latencybusters_1_1lbm_1_1UMEStoreEntry.html">com::latencybusters::lbm::UMEStoreEntry</a> class now contains a new field to provide store name information.</p>
+<td>8662 </td><td><p class="starttd">In the Java API, the array of stores returned by <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/javaapi.tag:../JavaAPI/" href="../JavaAPI/classcom_1_1latencybusters_1_1lbm_1_1LBMSourceAttributes.html#a7102748cf41bd69c8923fd1d026e2e35">com::latencybusters::lbm::LBMSourceAttributes::getStores()</a> contains an incorrect number of entries when using named stores. In addition to the solution for this, the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/javaapi.tag:../JavaAPI/" href="../JavaAPI/classcom_1_1latencybusters_1_1lbm_1_1UMEStoreEntry.html">com::latencybusters::lbm::UMEStoreEntry</a> class now contains a new field to provide store name information.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>8682 </td><td><p class="starttd">The <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/api.tag:../API/" href="../API/lbm_8h.html#a7595677bf01cb9397d1fd174bd095e9f">lbm_serialize_response()</a> function does not include the Domain ID in the serialized message. When a serialized response message traverses a DRO to a different topic resolution domain, the message cannot reach the requester, and the <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/api.tag:../API/" href="../API/lbm_8h.html#ad74f47a1e021b2422b80c0bf8d03f7a9">lbm_deserialize_response()</a> function logs the following warning: <br />
+<td>8682 </td><td><p class="starttd">The <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/api.tag:../API/" href="../API/lbm_8h.html#a7595677bf01cb9397d1fd174bd095e9f">lbm_serialize_response()</a> function does not include the Domain ID in the serialized message. When a serialized response message traverses a DRO to a different topic resolution domain, the message cannot reach the requester, and the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/api.tag:../API/" href="../API/lbm_8h.html#ad74f47a1e021b2422b80c0bf8d03f7a9">lbm_deserialize_response()</a> function logs the following warning: <br />
 <code>Core-6259-25: Deserialize Response: Context in domain 1 received response with no domain...</code> <br />
 As a solution, serialized response messages now include the topic resolution domain ID.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>8726 </td><td><p class="starttd">If you set <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeretentionuniqueconfirmationssource">ume_retention_unique_confirmations (source)</a> to 0 and <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeconfirmeddeliverynotificationsource">ume_confirmed_delivery_notification (source)</a> to 3, the first delivery confirmation sets the UNIQUE_ACKS flag. As a solution, this flag now sets only if you set option <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeretentionuniqueconfirmationssource">ume_retention_unique_confirmations (source)</a> to a value greater than 0 and the number of confirmations received are enough to exceed the threshold.</p>
+<td>8726 </td><td><p class="starttd">If you set <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeretentionuniqueconfirmationssource">ume_retention_unique_confirmations (source)</a> to 0 and <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeconfirmeddeliverynotificationsource">ume_confirmed_delivery_notification (source)</a> to 3, the first delivery confirmation sets the UNIQUE_ACKS flag. As a solution, this flag now sets only if you set option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeretentionuniqueconfirmationssource">ume_retention_unique_confirmations (source)</a> to a value greater than 0 and the number of confirmations received are enough to exceed the threshold.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>8732 </td><td><p class="starttd">With option <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grphotfailoveroperation.html#hfduplicatedeliveryreceiver">hf_duplicate_delivery (receiver)</a> and ordered delivery enabled, hot failover receivers might deliver duplicate messages before the original messages. With this solution, messages flagged as duplicate are always be delivered after messages not flagged as duplicate.</p>
+<td>8732 </td><td><p class="starttd">With option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grphotfailoveroperation.html#hfduplicatedeliveryreceiver">hf_duplicate_delivery (receiver)</a> and ordered delivery enabled, hot failover receivers might deliver duplicate messages before the original messages. With this solution, messages flagged as duplicate are always be delivered after messages not flagged as duplicate.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
@@ -288,18 +289,18 @@ if the application receives malformed data on an Ultra Messaging tcp socket or u
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>8797 </td><td><p class="starttd">Java method <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/javaapi.tag:../JavaAPI/" href="../JavaAPI/classcom_1_1latencybusters_1_1lbm_1_1LBM.html#a737ad342a260a86e86d394149e06dcaf">com::latencybusters::lbm::LBM::setDebugMask()</a> sets incorrect mask values on 32-bit platforms.</p>
+<td>8797 </td><td><p class="starttd">Java method <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/javaapi.tag:../JavaAPI/" href="../JavaAPI/classcom_1_1latencybusters_1_1lbm_1_1LBM.html#a737ad342a260a86e86d394149e06dcaf">com::latencybusters::lbm::LBM::setDebugMask()</a> sets incorrect mask values on 32-bit platforms.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>8868 </td><td><p class="starttd">In the Java and .NET APIs, some objects accessible from an LBMMessage object are sometimes newly created for each LBMMessage delivered, in violation of the Zero Object Delivery (ZOD) functionality. The affected objects include <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/javaapi.tag:../JavaAPI/" href="../JavaAPI/classcom_1_1latencybusters_1_1lbm_1_1LBMMessageChannelInfo.html">com::latencybusters::lbm::LBMMessageChannelInfo</a> for messages received on a spectrum channel, <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/javaapi.tag:../JavaAPI/" href="../JavaAPI/classcom_1_1latencybusters_1_1lbm_1_1UMQIndexInfo.html">com::latencybusters::lbm::UMQIndexInfo</a> for queueing messages with an index, and <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/javaapi.tag:../JavaAPI/" href="../JavaAPI/classcom_1_1latencybusters_1_1lbm_1_1UMQMessageId.html">com::latencybusters::lbm::UMQMessageId</a> for all queueing or ULB messages received. As a solution, <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/javaapi.tag:../JavaAPI/" href="../JavaAPI/classcom_1_1latencybusters_1_1lbm_1_1LBMMessage.html">com::latencybusters::lbm::LBMMessage</a> objects now re-use these object types for each new message delivery, rather than creating new objects.</p>
+<td>8868 </td><td><p class="starttd">In the Java and .NET APIs, some objects accessible from an LBMMessage object are sometimes newly created for each LBMMessage delivered, in violation of the Zero Object Delivery (ZOD) functionality. The affected objects include <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/javaapi.tag:../JavaAPI/" href="../JavaAPI/classcom_1_1latencybusters_1_1lbm_1_1LBMMessageChannelInfo.html">com::latencybusters::lbm::LBMMessageChannelInfo</a> for messages received on a spectrum channel, <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/javaapi.tag:../JavaAPI/" href="../JavaAPI/classcom_1_1latencybusters_1_1lbm_1_1UMQIndexInfo.html">com::latencybusters::lbm::UMQIndexInfo</a> for queueing messages with an index, and <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/javaapi.tag:../JavaAPI/" href="../JavaAPI/classcom_1_1latencybusters_1_1lbm_1_1UMQMessageId.html">com::latencybusters::lbm::UMQMessageId</a> for all queueing or ULB messages received. As a solution, <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/javaapi.tag:../JavaAPI/" href="../JavaAPI/classcom_1_1latencybusters_1_1lbm_1_1LBMMessage.html">com::latencybusters::lbm::LBMMessage</a> objects now re-use these object types for each new message delivery, rather than creating new objects.</p>
 <dl class="section note"><dt>Note</dt><dd>You might have applications that no longer work correctly because of this change. To use the '<code>LBMMessageChannelInfo</code>', '<code>UMQIndexInfo</code>', or '<code>UMQMessageId</code>' objects outside of the onReceive callback, you must first make a copy of the object using its constructor, or call promote() on the LBMMessage object. </dd></dl>
 </td></tr>
 </table>
 <p><br />
  </p>
 <h2><a class="anchor" id="persistencefixedlimitationsfor6_7"></a>
-Persistence Fixed Limitations for 6.7&nbsp;&nbsp;<small><a href="#persistencefixedlimitationsfor6_7">&lt;-</a></small></h2>
+Persistence Fixed Problems and Limitations for 6.7&nbsp;&nbsp;<small><a href="#persistencefixedlimitationsfor6_7">&lt;-</a></small></h2>
 <p>The following bug fixes apply to UMP and UMQ products.</p>
 <table class="doxtable">
 <tr>
@@ -322,7 +323,7 @@ As a solution, the umestored daemon now reports the following error message: <br
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>5498 </td><td><p class="starttd">The umestored daemon warns that option <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grpdeprecated.html#resolveractivethresholdcontext">resolver_active_threshold (context)</a> is deprecated. This warning is now removed. Setting this option continues to have no effect.</p>
+<td>5498 </td><td><p class="starttd">The umestored daemon warns that option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grpdeprecated.html#resolveractivethresholdcontext">resolver_active_threshold (context)</a> is deprecated. This warning is now removed. Setting this option continues to have no effect.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
@@ -348,7 +349,7 @@ This can happen when the source re-registers with a reduced-fd repository.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>8677 </td><td><p class="starttd">With the Java API, on a Persistence deregistration event, the Ultra Messaging library delivers a <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/javaapi.tag:../JavaAPI/" href="../JavaAPI/classcom_1_1latencybusters_1_1lbm_1_1UMEDeregistrationCompleteInfo.html">com::latencybusters::lbm::UMEDeregistrationCompleteInfo</a> with invalid contents. As a solution, since there is no information associated with this event, the <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/javaapi.tag:../JavaAPI/" href="../JavaAPI/classcom_1_1latencybusters_1_1lbm_1_1LBMMessage.html#aa15e6cf7017f0937790d67b168e98dfd">com::latencybusters::lbm::LBMMessage::deregistrationCompleteInfo()</a> method now always returns null.</p>
+<td>8677 </td><td><p class="starttd">With the Java API, on a Persistence deregistration event, the Ultra Messaging library delivers a <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/javaapi.tag:../JavaAPI/" href="../JavaAPI/classcom_1_1latencybusters_1_1lbm_1_1UMEDeregistrationCompleteInfo.html">com::latencybusters::lbm::UMEDeregistrationCompleteInfo</a> with invalid contents. As a solution, since there is no information associated with this event, the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/javaapi.tag:../JavaAPI/" href="../JavaAPI/classcom_1_1latencybusters_1_1lbm_1_1LBMMessage.html#aa15e6cf7017f0937790d67b168e98dfd">com::latencybusters::lbm::LBMMessage::deregistrationCompleteInfo()</a> method now always returns null.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
@@ -356,11 +357,11 @@ This can happen when the source re-registers with a reduced-fd repository.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>8710 </td><td><p class="starttd">With option <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeconfirmeddeliverynotificationsource">ume_confirmed_delivery_notification (source)</a> set to 3, after <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeretentionuniqueconfirmationssource">ume_retention_unique_confirmations (source)</a> is reached, the whole message confirmed flag is not set for delivery confirmations for all receivers.</p>
+<td>8710 </td><td><p class="starttd">With option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeconfirmeddeliverynotificationsource">ume_confirmed_delivery_notification (source)</a> set to 3, after <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeretentionuniqueconfirmationssource">ume_retention_unique_confirmations (source)</a> is reached, the whole message confirmed flag is not set for delivery confirmations for all receivers.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>8711 </td><td><p class="starttd">In the .NET (C#) API, there are no methods to access objects <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/javaapi.tag:../JavaAPI/" href="../JavaAPI/classcom_1_1latencybusters_1_1lbm_1_1UMESourceEventDeregistrationSuccessInfo.html">com::latencybusters::lbm::UMESourceEventDeregistrationSuccessInfo</a> and <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/javaapi.tag:../JavaAPI/" href="../JavaAPI/classcom_1_1latencybusters_1_1lbm_1_1UMESourceEventDeregistrationCompleteInfo.html">com::latencybusters::lbm::UMESourceEventDeregistrationCompleteInfo</a>. As a solution, the C# library now includes accessor methods.</p>
+<td>8711 </td><td><p class="starttd">In the .NET (C#) API, there are no methods to access objects <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/javaapi.tag:../JavaAPI/" href="../JavaAPI/classcom_1_1latencybusters_1_1lbm_1_1UMESourceEventDeregistrationSuccessInfo.html">com::latencybusters::lbm::UMESourceEventDeregistrationSuccessInfo</a> and <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/javaapi.tag:../JavaAPI/" href="../JavaAPI/classcom_1_1latencybusters_1_1lbm_1_1UMESourceEventDeregistrationCompleteInfo.html">com::latencybusters::lbm::UMESourceEventDeregistrationCompleteInfo</a>. As a solution, the C# library now includes accessor methods.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
@@ -382,7 +383,7 @@ This can happen when the source re-registers with a reduced-fd repository.</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="queuingfixedlimitationsfor6_7"></a>
-Queuing Fixed Limitations for 6.7&nbsp;&nbsp;<small><a href="#queuingfixedlimitationsfor6_7">&lt;-</a></small></h2>
+Queuing Fixed Problems and Limitations for 6.7&nbsp;&nbsp;<small><a href="#queuingfixedlimitationsfor6_7">&lt;-</a></small></h2>
 <dl class="section note"><dt>Note</dt><dd>The brokered queuing and UM JMS functionalities were replaced in version 6.8, so most of these notes do not apply to more-recent versions of UM. However, ULB functionalty is retained.</dd></dl>
 <p>The following bug fixes apply to the UMQ product.</p>
 <table class="doxtable">
@@ -391,11 +392,11 @@ Queuing Fixed Limitations for 6.7&nbsp;&nbsp;<small><a href="#queuingfixedlimita
 <p class="endtd"></p>
 </th></tr>
 <tr>
-<td>8315 </td><td><p class="starttd">In the .NET API, Ultra Messaging reuses <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/javaapi.tag:../JavaAPI/" href="../JavaAPI/classcom_1_1latencybusters_1_1lbm_1_1LBMMessageChannelInfo.html">com::latencybusters::lbm::LBMMessageChannelInfo</a>, <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/javaapi.tag:../JavaAPI/" href="../JavaAPI/classcom_1_1latencybusters_1_1lbm_1_1UMQMessageId.html">com::latencybusters::lbm::UMQMessageId</a>, and <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/javaapi.tag:../JavaAPI/" href="../JavaAPI/classcom_1_1latencybusters_1_1lbm_1_1UMQIndexInfo.html">com::latencybusters::lbm::UMQIndexInfo</a> objects between different <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/javaapi.tag:../JavaAPI/" href="../JavaAPI/classcom_1_1latencybusters_1_1lbm_1_1LBMMessage.html">com::latencybusters::lbm::LBMMessage</a> objects for delivery, reducing garbage collection overhead.</p>
+<td>8315 </td><td><p class="starttd">In the .NET API, Ultra Messaging reuses <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/javaapi.tag:../JavaAPI/" href="../JavaAPI/classcom_1_1latencybusters_1_1lbm_1_1LBMMessageChannelInfo.html">com::latencybusters::lbm::LBMMessageChannelInfo</a>, <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/javaapi.tag:../JavaAPI/" href="../JavaAPI/classcom_1_1latencybusters_1_1lbm_1_1UMQMessageId.html">com::latencybusters::lbm::UMQMessageId</a>, and <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/javaapi.tag:../JavaAPI/" href="../JavaAPI/classcom_1_1latencybusters_1_1lbm_1_1UMQIndexInfo.html">com::latencybusters::lbm::UMQIndexInfo</a> objects between different <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/javaapi.tag:../JavaAPI/" href="../JavaAPI/classcom_1_1latencybusters_1_1lbm_1_1LBMMessage.html">com::latencybusters::lbm::LBMMessage</a> objects for delivery, reducing garbage collection overhead.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>8325 </td><td><p class="starttd">ULB reassigns messages even if option <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grpultramessagingqueuing.html#umqulbapplicationsetmessagemaxreassignmentssource">umq_ulb_application_set_message_max_reassignments (source)</a> is set to 1.</p>
+<td>8325 </td><td><p class="starttd">ULB reassigns messages even if option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grpultramessagingqueuing.html#umqulbapplicationsetmessagemaxreassignmentssource">umq_ulb_application_set_message_max_reassignments (source)</a> is set to 1.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
@@ -409,7 +410,7 @@ Queuing Fixed Limitations for 6.7&nbsp;&nbsp;<small><a href="#queuingfixedlimita
 <p><br />
  </p>
 <h2><a class="anchor" id="dynamicrouterfixedlimitationsfor6_7"></a>
-Dynamic Router Fixed Limitations for 6.7&nbsp;&nbsp;<small><a href="#dynamicrouterfixedlimitationsfor6_7">&lt;-</a></small></h2>
+Dynamic Router Fixed Problems and Limitations for 6.7&nbsp;&nbsp;<small><a href="#dynamicrouterfixedlimitationsfor6_7">&lt;-</a></small></h2>
 <p>The following bug fixes apply to the Dynamic Routing Option (DRO).</p>
 <table class="doxtable">
 <tr>
@@ -454,6 +455,145 @@ topic fragments/bytes dropped due to blocking&lt;/i&gt;", but Ultra Messaging do
 and: <br />
 <code>FATAL: failed assertion [void_o_entry!=NULL] at line 4205 in ../../../../src/gateway/ tnwgpeer.c</code> </td></tr>
 </table>
+<p><br />
+ </p>
+<h1><a class="anchor" id="specialupgradeinstructionsfor6_7"></a>
+Special Upgrade Instructions for 6.7&nbsp;&nbsp;<small><a href="#specialupgradeinstructionsfor6_7">&lt;-</a></small></h1>
+<p>UM version 6.7 is the first version that supports a smooth upgrade path for UM versions prior to 6.0.</p>
+<p><br />
+ </p>
+<h2><a class="anchor" id="disposingreceivedmessagesinjava"></a>
+Disposing Received Messages in Java&nbsp;&nbsp;<small><a href="#disposingreceivedmessagesinjava">&lt;-</a></small></h2>
+<p>In earlier versions of UM, it was possible for Java subscribers to simply release all references to a received message and allow Java to garbage collect the message objects.</p>
+<p>In UM version 6.7 and beyond, it is necessary for Java subscribers to dispose of all received message objects by calling the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/javaapi.tag:../JavaAPI/" href="../JavaAPI/classcom_1_1latencybusters_1_1lbm_1_1LBMMessage.html#a963d0f07751ed176a97f3eff84740fb9">com::latencybusters::lbm::LBMMessage::dispose()</a> method after the application is finished using the message object.</p>
+<p>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/design.tag:../Design/" href="../Design/applicationdesignprinciples.html#javamessagereception">Java Message Reception</a> for more information.</p>
+<p>Note that with .NET, there are some simple use cases where it will work to release all references to a received message and let the .NET framework garbage collect the message objects. However, this capability may change in the future. Informatica recommends following the same rules for .NET as for Java.</p>
+<p><br />
+ </p>
+<h2><a class="anchor" id="upgradingfromversionpre60"></a>
+Upgrading From Version Pre-6.0&nbsp;&nbsp;<small><a href="#upgradingfromversionpre60">&lt;-</a></small></h2>
+<p>With the introduction of the DRO, several changes needed to be made to the "wire format" of UM command and control messages. This resulted in 6.0-based applications not being interoperable with pre-6.0 applications. For many customers, this did not pose a significant problem since they were able to upgrade all of their systems in a single step. I.e. there was no need for pre-6.0 applications to exchange messages with 6.0 applications.</p>
+<p>However, for many customers, this kind of "flash" upgrade is simply not practical. Therefore, starting with UM version 6.7, an upgrade path was developed which allows different applications to be upgraded at different times, while still allowing those mixed-version applications to exchange messages.</p>
+<dl class="section note"><dt>Note</dt><dd>When you upgrade from a previous version, you must set option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umestoreactivitytimeoutsource">ume_store_activity_timeout (source)</a> to 10,000 and UMP store option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/ume.tag:../UME/" href="../UME/optionsforastoresumeattributeselement.html#umecfgkeepaliveinterval">keepalive-interval</a> to 3,000. This avoids unexpected behavior during a phased upgrade.</dd></dl>
+<p>To upgrade Ultra Messaging from version 5.3.x to version 6.7 and beyond, perform the following procedure:</p>
+<ol>
+<li>
+<p class="startli">If the current installation is earlier than 5.3, upgrade all applications and components except UMDS servers to version 5.3.6 or later. (UMDS customers should contact Informatica Support for upgrade advice.)</p>
+<p class="endli"></p>
+</li>
+<li>
+<p class="startli">Pre-6.0 versions of UM are not ABI compatible with 6.0 and beyond. C language application programs must be re-compiled.</p>
+<p class="endli"></p>
+</li>
+<li>
+<p class="startli">If using UMP stores, ensure that all source settings for option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umestorebehaviorsource">ume_store_behavior (source)</a> are set to '<code>qc</code>' or '<code>quorum-consensus</code>', and not '<code>rr</code>' or '<code>round-robin</code>'.</p>
+<p class="endli"></p>
+</li>
+<li>
+<p class="startli">Upgrade all lbmrd resolver daemons to this release. No configuration changes are required.</p>
+<p class="endli"></p>
+</li>
+<li>
+If using UMP stores, upgrade all umestored daemons in groupings that observe the following requirements: <ul>
+<li>
+A single source cannot specify a mixture of 5.3.x and this release's umestored daemons. </li>
+<li>
+Separate sources on the same context can specify daemons of different versions. </li>
+<li>
+Do not start upgraded daemons with 5.3.x state and cache files. </li>
+</ul>
+<dl class="section note"><dt>Note</dt><dd>When upgrading from 5.3.x, if you neglect to set <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grpmajoroptions.html#compatibilityincludepreum60behaviorcontext">compatibility_include_pre_um_6_0_behavior (context)</a> to 1, receivers incorrectly receive messages without persistence.</dd></dl>
+</li>
+<li>
+<p class="startli">Upgrade source and receiver applications. You can upgrade these one by one, in any order. As you upgrade each application, set the following configuration options: </p><ul>
+<li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grpmajoroptions.html#compatibilityincludepreum60behaviorcontext">compatibility_include_pre_um_6_0_behavior (context)</a> to 1 </li>
+<li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grptransporttcpoperation.html#transporttcpusesessionidsource">transport_tcp_use_session_id (source)</a> to 0 </li>
+</ul>
+<p>These settings must remain during the period when the network contains both applications based on 5.3.x and this release.</p>
+<p class="endli"></p>
+</li>
+<li>
+<p class="startli">If you use Late Join or OTR, review the settings for Late Join or OTR per-message timeout options. Note that option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grpdeprecated.html#otrrequestdurationreceiver">otr_request_duration (receiver)</a> was deprecated in 6.0, and the following options are added: </p><ul>
+<li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grplatejoin.html#latejoininforequestintervalreceiver">late_join_info_request_interval (receiver)</a> </li>
+<li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grplatejoin.html#latejoininforequestmaximumreceiver">late_join_info_request_maximum (receiver)</a> </li>
+<li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grplatejoin.html#retransmitrequestmessagetimeoutreceiver">retransmit_request_message_timeout (receiver)</a> </li>
+<li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grpofftransportrecovery.html#otrmessagecachingthresholdreceiver">otr_message_caching_threshold (receiver)</a> </li>
+<li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grpofftransportrecovery.html#otrrequestmessagetimeoutreceiver">otr_request_message_timeout (receiver)</a> </li>
+</ul>
+<p class="endli"></p>
+</li>
+<li>
+After all components are upgraded to this release, set the following configuration options: <ul>
+<li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grpmajoroptions.html#compatibilityincludepreum60behaviorcontext">compatibility_include_pre_um_6_0_behavior (context)</a> to 0 </li>
+<li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grptransporttcpoperation.html#transporttcpusesessionidsource">transport_tcp_use_session_id (source)</a> to 1 </li>
+</ul>
+</li>
+</ol>
+<p><br />
+ </p>
+<h2><a class="anchor" id="logmessagesduringupgrade"></a>
+Log Messages During Upgrade&nbsp;&nbsp;<small><a href="#logmessagesduringupgrade">&lt;-</a></small></h2>
+<p>For 5.3.x applications on the same TRD as this release, you might see the following log messages:</p>
+<dl class="section user"><dt>LBMC unknown next header 64</dt><dd>Informational. You can ignore this message. You can reduce the frequency of this message by increasing the value for context option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grpunicastimmediatemessagingoperation.html#responsetcpdeletiontimeoutcontext">response_tcp_deletion_timeout (context)</a>.</dd></dl>
+<dl class="section user"><dt>LBMR Topic Info Record malformed. Dropping remainder</dt><dd>Issued for every TIR that contains a TCP Session ID. You must set option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/config.tag:../Config/" href="../Config/grptransporttcpoperation.html#transporttcpusesessionidsource">transport_tcp_use_session_id (source)</a> to 0 during the interim migration period.</dd></dl>
+<dl class="section user"><dt>LOG Level 5: Core-5688-3387: LBMR Extended Type 0x7 incorrect (10.29.3.49:40633 len 102). [...D.....&lt;.............1I...........(&gt;..............store-name............ (&gt;.........................$]. Dropping.</dt><dd>Informational. This occurs if UMP store umestored daemons are present and configured with a discoverable name. For each name advertisement, all contexts drop the packet and log this warning.</dd></dl>
+<dl class="section user"><dt>[WARNING]: Core-5688-516: LBMC cntl unknown next header: 55.</dt><dd>Informational. Issued once per transport session when receiving an SRI from a UMP source.</dd></dl>
+<p><br />
+ </p>
+<h2><a class="anchor" id="um65specialinstructions"></a>
+UM 6.5 Special Instructions&nbsp;&nbsp;<small><a href="#um65specialinstructions">&lt;-</a></small></h2>
+<p>If you are upgrading from a UM version prior to 6.5, you must also examine the <a class="el" href="umversion6_5.html#specialupgradeinstructionsfor6_5">Special Upgrade Instructions for 6.5</a>.</p>
+<p><br />
+<br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+</p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.8.11-->

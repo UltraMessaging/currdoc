@@ -55,23 +55,67 @@ $(document).ready(function(){initNavTree('persistenceoverview.html','');});
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p>Ultra Messaging provides two different qualities of service (QOS) levels, related to likelihood of successful message delivery: streaming and persistence.</p>
+<p><b>Streaming</b></p>
 <p>Streaming is the basic QOS level for UM. With Streaming, a published message will be delivered to a receiver reliably if the following requirements are met:</p>
 <ul>
 <li>
 the publisher and subscriber are both running, </li>
 <li>
-the message was published <em>after</em> the subscriber has had enough time to discover and join the publisher's data stream (note that UM's <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/UME/design.tag:../Design/" href="../Design/fundamentalconcepts.html#latejoin">Late Join</a> feature which somewhat relaxes this requirement), and </li>
+the message was published <em>after</em> the subscriber has had enough time to discover and join the publisher's data stream (note that UM's <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/UME/design.tag:../Design/" href="../Design/fundamentalconcepts.html#latejoin">Late Join</a> feature which somewhat relaxes this requirement), and </li>
 <li>
 the data link between the publisher and subscriber has a low-enough error rate that any lost data has time to be recovered by the Transport protocol within the time allotted for that recovery. </li>
 </ul>
 <p>With Streaming, if a subscriber exits mid-stream (either intentionally or by failure), when that subscriber restarts, it typically cannot recover the messages that were sent during its absence.</p>
+<p><b>Persistence</b></p>
 <p>The higher QOS available for UM is Persistence, by which messages can be delivered even in cases where one or more of the above requirements cannot be met. For example, if a publisher sends a message and then exits, and after that a subscriber starts, Persistence is required for that message to be delivered.</p>
 <p>UM's Persistence functionality is implemented by components called "Stores" obtaining copies of published messages and keeping them for a period of time so that receivers can recover messages if necessary.</p>
 <p>A "Store Process" contains one or more independent "Store Instances", where an "Instance" is an independent, addressable, and configurable component. See <a class="el" href="persistencearchitecture.html#storeprocessesandinstances">Store Processes and Instances</a> for more detail.</p>
 <p>Store Instances are used by persistent subscribers to recover messages that cannot be recovered from the source by the transport protocol. For example, messages published prior to the subscriber joining the transport can be recovered from a Store Instance. After a period of overload or network outage that leads to loss of live messages, the subscriber uses a Store Instance to recover messages that could not be recovered by the transport protocol.</p>
 <p>With Persistence, if a subscriber exits mid-stream (either intentionally or by failure), when that subscriber restarts, it will automatically recover the messages sent during its absence.</p>
-<p>A system using UM Persistence comprises any number of sources, receivers, and Persistent Stores. Ultra Messaging's unique design provides Parallel Persistence, which refers to the ability of a Store Instances to run independently of sources and receivers and in parallel with messaging. The Store does not interfere with message delivery to receiving applications.</p>
-<dl class="section note"><dt>Note</dt><dd>The UMS product offers streaming QOS. The UMP and UMQ products offer both streaming and persistence QOS. </dd></dl>
+<p>A system using UM Persistence comprises any number of sources, receivers, and Persistent Stores. Ultra Messaging's unique design provides Parallel Persistence, which refers to the ability of Store Instances to run independently of sources and receivers and in parallel with messaging. The Store does not interfere with message delivery to receiving applications.</p>
+<dl class="section note"><dt>Note</dt><dd>The UMS product offers streaming QOS. The UMP and UMQ products offer both streaming and persistence QOS.</dd></dl>
+<p><br />
+<br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+</p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.8.11-->

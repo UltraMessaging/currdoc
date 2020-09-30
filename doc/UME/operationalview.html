@@ -55,7 +55,7 @@ $(document).ready(function(){initNavTree('operationalview.html','');});
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p>Sources, receivers, and Store Instances interact in very controlled ways. This section illustrates the flow of network traffic between the components during three modes of operation and also provides a reference of persistence events.</p>
-<dl class="section note"><dt>Note</dt><dd>If your application is running with the UM configuration option <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/UME/config.tag:../Config/" href="../Config/grpunicastimmediatemessagingnetwork.html#requesttcpbindrequestportcontext">request_tcp_bind_request_port (context)</a> set to zero, UIM port binding (also known as "request port binding") is turned off, which also disables persistence.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>If your application is running with the LBM configuration option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpunicastimmediatemessagingnetwork.html#requesttcpbindrequestportcontext">request_tcp_bind_request_port (context)</a> set to zero, UIM port binding (also known as "request port binding") is turned off, which also disables persistence.</dd></dl>
 <p><br />
  </p>
 <h1><a class="anchor" id="generalpersistenceoperation"></a>
@@ -64,15 +64,15 @@ General Persistence Operation&nbsp;&nbsp;<small><a href="#generalpersistenceoper
  </p>
 <h2><a class="anchor" id="sourceregistration"></a>
 Source Registration&nbsp;&nbsp;<small><a href="#sourceregistration">&lt;-</a></small></h2>
-<p>UM sources heavily influence the persistence registration process. Sources send out registration information to enable receivers to register with Store Instances and also monitor store liveness. If stores become unresponsive, or if communication among sources, stores and receivers becomes impaired, the source directs re-registration.</p>
+<p>UM sources heavily influence the persistence registration process. Sources send out registration information to enable receivers to register with Store Instances and also monitor Store liveness. If Stores become unresponsive, or if communication among sources, Stores and receivers becomes impaired, the source directs re-registration.</p>
 <p>The following outlines the major events in the source registration process with the Store Instance:</p>
 <ol>
 <li>
 Source advertises topic over topic resolution transport </li>
 <li>
-(optional) Source queries for and resolves store name </li>
+(optional) Source queries for and resolves Store context names </li>
 <li>
-Source registers with store by unicast </li>
+Source registers with Store by unicast </li>
 <li>
 Source sends SRI over configured transport </li>
 </ol>
@@ -80,18 +80,18 @@ Source sends SRI over configured transport </li>
 <div class="image">
 <img src="source_registration.png" alt="source_registration.png"/>
 </div>
- <p>Sources can find the correct Store Instance(s) to register with from the values configured for it in <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umestoresource">ume_store (source)</a> or <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umestorenamesource">ume_store_name (source)</a>. The configuration option <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umestoresource">ume_store (source)</a> contains the IP address, TCP port, registration ID, and group index for the store(s) to be used by the source. The configuration option <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umestorenamesource">ume_store_name (source)</a> contains the names of the stores to be used by the source. <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umestorenamesource">ume_store_name (source)</a> requires that the store name is configured with the <a class="el" href="configurationreferenceforumestored.html#umecfgcontextname">context-name</a> option in the store's XML configuration file. See <a class="el" href="persistencearchitecture.html#identifyingpersistentstores">Identifying Persistent Stores</a> and the <a class="el" href="configurationreferenceforumestored.html#umeelementstore">UMP Element "&lt;store&gt;"</a>.</p>
-<p>Sources unicast registrations to the Store Instance. The store unicasts responses back to the source. Registrations are on a per topic per source basis. Stores use RegIDs to identify sources and receivers. After registration sources may send data.</p>
-<p>After the source successfully registers with all the stores for which it is configured, the source issues a Registration Complete event and sends a Source Registration Information (SRI) record over the configured UM transport session.</p>
-<p>For multiple stores, the source determines when to issue a Registration Complete event based on the settings for the <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeretentionintragroupstabilitybehaviorsource">ume_retention_intragroup_stability_behavior (source)</a> and <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeretentionintergroupstabilitybehaviorsource">ume_retention_intergroup_stability_behavior (source)</a> options.</p>
-<p>The source sends the SRI at the rate set by <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umesriintersriintervalsource">ume_sri_inter_sri_interval (source)</a> until it reaches the maximum number of SRIs set by <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umesrimaxnumberofsriperupdatesource">ume_sri_max_number_of_sri_per_update (source)</a>.</p>
-<dl class="section note"><dt>Note</dt><dd>Persistence users are advised to follow the recommendations in <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/UME/config.tag:../Config/" href="../Config/interrelatedconfigurationoptions.html#preventingstoreregistrationhangs">Preventing Store Registration Hangs</a>.</dd></dl>
+ <p>Sources can find the correct Store Instance(s) to register with from the values configured for it in the LBM configuration options <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umestoresource">ume_store (source)</a> or <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umestorenamesource">ume_store_name (source)</a>. The LBM configuration option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umestoresource">ume_store (source)</a> contains the IP address, TCP port, registration ID, and group index for the Store(s) to be used by the source. The LBM configuration option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umestorenamesource">ume_store_name (source)</a> contains the names of the Stores to be used by the source. <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umestorenamesource">ume_store_name (source)</a> requires that the Store context name is configured with the <a class="el" href="optionsforastoresumeattributeselement.html#umecfgcontextname">context-name</a> option in the Store configuration file. See <a class="el" href="persistencearchitecture.html#identifyingpersistentstores">Identifying Persistent Stores</a> and the <a class="el" href="configurationreferenceforumestored.html#umeelementstore">UMP Element "&lt;store&gt;"</a>.</p>
+<p>Sources unicast registrations to the Store Instance. The Store unicasts responses back to the source. Registrations are on a per topic per source basis. Stores use RegIDs to identify sources and receivers. After registration sources may send data.</p>
+<p>After the source successfully registers with all the Stores for which it is configured, the source issues a Registration Complete event and sends a Source Registration Information (SRI) record over the configured UM transport session.</p>
+<p>For multiple Stores, the source determines when to issue a Registration Complete event based on the settings for the LBM configuration options <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeretentionintragroupstabilitybehaviorsource">ume_retention_intragroup_stability_behavior (source)</a> and <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeretentionintergroupstabilitybehaviorsource">ume_retention_intergroup_stability_behavior (source)</a>.</p>
+<p>The source sends the SRI at the rate set by the LBM configuration option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umesriintersriintervalsource">ume_sri_inter_sri_interval (source)</a> until it reaches the maximum number of SRIs set by <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umesrimaxnumberofsriperupdatesource">ume_sri_max_number_of_sri_per_update (source)</a>.</p>
+<dl class="section note"><dt>Note</dt><dd>Persistence users are advised to follow the recommendations in <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/UME/config.tag:../Config/" href="../Config/interrelatedconfigurationoptions.html#preventingstoreregistrationhangs">Preventing Store Registration Hangs</a>.</dd></dl>
 <p><br />
  </p>
 <h2><a class="anchor" id="sourceregistrationinformationsri"></a>
 Source Registration Information (SRI)&nbsp;&nbsp;<small><a href="#sourceregistrationinformationsri">&lt;-</a></small></h2>
-<p>An SRI is a control message sent over the UM transport by a source that contains store information that a receiver needs to register with the Store Instance(s).</p>
-<p>An SRI contains the following store information. </p><ul>
+<p>An SRI is a control message sent over the UM transport by a source that contains Store information that a receiver needs to register with the Store Instance(s).</p>
+<p>An SRI contains the following Store information. </p><ul>
 <li>
 Domain ID </li>
 <li>
@@ -99,15 +99,15 @@ IP address </li>
 <li>
 TCP port </li>
 <li>
-store index for all the stores with which the source registered </li>
+Store index for all the Stores with which the source registered </li>
 <li>
-group index for all the stores with which the source registered </li>
+group index for all the Stores with which the source registered </li>
 <li>
 the source's Registration ID </li>
 <li>
-SRI overall version number and a separate version number for each store </li>
+SRI overall version number and a separate version number for each Store </li>
 </ul>
-<p>The SRI contains one overall version number and a separate version number for each Store Instance. If stores become unresponsive and the source must re-register when the store returns, the source increases the SRI version number and the version numbers for the stores it re-registered with. The highest SRI version number indicates the most current registration information. If a receiver gets an SRI with a higher version number than the version number it has, the receiver examines the individual store version numbers and re-registers with the those stores that have higher individual version numbers.</p>
+<p>The SRI contains one overall version number and a separate version number for each Store Instance. If Stores become unresponsive and the source must re-register when the Store returns, the source increases the SRI version number and the version numbers for the Stores it re-registered with. The highest SRI version number indicates the most current registration information. If a receiver gets an SRI with a higher version number than the version number it has, the receiver examines the individual Store version numbers and re-registers with the those Stores that have higher individual version numbers.</p>
 <p><br />
  </p>
 <h1><a class="anchor" id="receiverregistration"></a>
@@ -122,7 +122,7 @@ If source is not sending SRIs, receiver sends SRI request by unicast. </li>
 <li>
 Receiver receives SRI over its transport. </li>
 <li>
-Receiver registers with store(s) by unicast. </li>
+Receiver registers with Store(s) by unicast. </li>
 </ol>
 <p>The following diagram illustrates network flow during the registration process.</p>
 <div class="image">
@@ -133,24 +133,24 @@ Receiver registers with store(s) by unicast. </li>
 <h2><a class="anchor" id="receiverregistrationprocess"></a>
 Receiver Registration Process&nbsp;&nbsp;<small><a href="#receiverregistrationprocess">&lt;-</a></small></h2>
 <p>Any receivers who have resolved their topic and joined the transport session when the source sends out SRIs can register with the Store Instance. Any receivers joining the transport session when the source is not sending SRIs can request an SRI from the source if they find that the persistence flag is set in the source's TIR during topic resolution. The source responds with a SRI record.</p>
-<p>Receivers unicast registrations to the Store Instance. The store unicasts responses back to the receivers. Stores use RegIDs to identify sources and receivers. After registration, receivers may handle recovery and send acknowledgements.</p>
+<p>Receivers unicast registrations to the Store Instance. The Store unicasts responses back to the receivers. Stores use RegIDs to identify sources and receivers. After registration, receivers may handle recovery and send acknowledgements.</p>
 <p>Note: If a persistent receiver's initial registration fails, it does not become an Ultra Messaging receiver.</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="persistencenormaloperation"></a>
 Persistence Normal Operation&nbsp;&nbsp;<small><a href="#persistencenormaloperation">&lt;-</a></small></h2>
-<p>The following diagram illustrates the normal operation of data reception and acknowledgement and also shows how UM attains Parallel Persistence. The source sends message data to receivers and stores in parallel.</p>
+<p>The following diagram illustrates the normal operation of data reception and acknowledgement and also shows how UM attains Parallel Persistence. The source sends message data to receivers and Stores in parallel.</p>
 <div class="image">
 <img src="ump_normal_operation.png" alt="ump_normal_operation.png"/>
 </div>
  <p>During normal persistence operation:</p>
 <ol>
 <li>
-Sources transmit data to receivers and stores at the same time over UM multicast or unicast transport protocols. </li>
+Sources transmit data to receivers and Stores at the same time over UM multicast or unicast transport protocols. </li>
 <li>
 As the Store Instance receives and persists messages, it unicasts acknowledgements (message stability control messages) to the source letting it know of successful reception and storage. </li>
 <li>
-As receivers process and consume messages they unicast acknowledgments to the store letting the store know of successful consumption of data. </li>
+As receivers process and consume messages they unicast acknowledgments to the Store letting the Store know of successful consumption of data. </li>
 <li>
 If the source desires delivery confirmation, the receiver unicasts acknowledgements directly to the source letting the source know of message consumption as well. </li>
 </ol>
@@ -159,7 +159,7 @@ If the source desires delivery confirmation, the receiver unicasts acknowledgeme
  </p>
 <h2><a class="anchor" id="persistenceflightsize"></a>
 Persistence Flight Size&nbsp;&nbsp;<small><a href="#persistenceflightsize">&lt;-</a></small></h2>
-<p>UM supports a flight size mechanism that tracks messages in flight from a persistent source and responds when a send would exceed the configured flight size (<a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeflightsizesource">ume_flight_size (source)</a> and/or <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeflightsizebytessource">ume_flight_size_bytes (source)</a>). You can configure <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeflightsizebehaviorsource">ume_flight_size_behavior (source)</a> to either:</p>
+<p>UM supports a flight size mechanism that tracks messages in flight from a persistent source and responds when a send would exceed the configured flight size (LBM configuration options <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeflightsizesource">ume_flight_size (source)</a> and/or <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeflightsizebytessource">ume_flight_size_bytes (source)</a>). You can configure <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeflightsizebehaviorsource">ume_flight_size_behavior (source)</a> to either:</p>
 <ul>
 <li>
 block any sends that would exceed the flight size or, </li>
@@ -171,41 +171,41 @@ allow the sends while notifying your application. </li>
 <li>
 The source receives the configured number of stability acknowledgements from the Store Instance(s). </li>
 <li>
-The source has received the configured number of delivery confirmation notifications. (See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeretentionuniqueconfirmationssource">ume_retention_unique_confirmations (source)</a>.) </li>
+The source has received the configured number of delivery confirmation notifications. (See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeretentionuniqueconfirmationssource">ume_retention_unique_confirmations (source)</a>.) </li>
 </ul>
-<p>If configuring both <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeflightsizesource">ume_flight_size (source)</a> and <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeflightsizebehaviorsource">ume_flight_size_behavior (source)</a>, UM uses the smaller of the two flight sizes on a per send basis.</p>
+<p>If configuring both <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeflightsizesource">ume_flight_size (source)</a> and <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeflightsizebehaviorsource">ume_flight_size_behavior (source)</a>, UM uses the smaller of the two flight sizes on a per send basis.</p>
 <table class="doxtable">
 <tr>
-<th><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeflightsizesource">ume_flight_size (source)</a> </th><th><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeflightsizebytessource">ume_flight_size_bytes (source)</a> </th><th>Result </th></tr>
+<th><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeflightsizesource">ume_flight_size (source)</a> </th><th><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeflightsizebytessource">ume_flight_size_bytes (source)</a> </th><th>Result </th></tr>
 <tr>
-<td>Exceeded </td><td>Exceeded </td><td><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeflightsizebehaviorsource">ume_flight_size_behavior (source)</a> executes </td></tr>
+<td>Exceeded </td><td>Exceeded </td><td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeflightsizebehaviorsource">ume_flight_size_behavior (source)</a> executes </td></tr>
 <tr>
-<td>Exceeded </td><td>Not Exceeded </td><td><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeflightsizebehaviorsource">ume_flight_size_behavior (source)</a> executes </td></tr>
+<td>Exceeded </td><td>Not Exceeded </td><td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeflightsizebehaviorsource">ume_flight_size_behavior (source)</a> executes </td></tr>
 <tr>
-<td>Not Exceeded </td><td>Exceeded </td><td><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeflightsizebehaviorsource">ume_flight_size_behavior (source)</a> executes </td></tr>
+<td>Not Exceeded </td><td>Exceeded </td><td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeflightsizebehaviorsource">ume_flight_size_behavior (source)</a> executes </td></tr>
 <tr>
 <td>Not Exceeded </td><td>Not Exceeded </td><td>No flight size sending restriction </td></tr>
 </table>
-<p>When using stores in a Quorum/Consensus configuration, intragroup and intergroup stability settings affect whether UM considers a messages in flight. Consider a case with three Store Instances in a single QC group, and two receivers. Given the default configuration, until a source receives a stability notification from two of the three stores, UM considers a given message in-flight. In addition, if you set <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeretentionuniqueconfirmationssource">ume_retention_unique_confirmations (source)</a> to 2, that same message would be considered in flight until the source receives two stability notifications AND two delivery confirmation notifications. See also <a class="el" href="designingpersistenceapplications.html#sourcesusingquorumconsensusstoreconfiguration">Sources Using Quorum/Consensus Store Configuration</a>.</p>
+<p>When using Stores in a Quorum/Consensus configuration, intragroup and intergroup stability settings affect whether UM considers a messages in flight. Consider a case with three Store Instances in a single QC group, and two receivers. Given the default configuration, until a source receives a stability notification from two of the three Stores, UM considers a given message in-flight. In addition, if you set <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeretentionuniqueconfirmationssource">ume_retention_unique_confirmations (source)</a> to 2, that same message would be considered in flight until the source receives two stability notifications AND two delivery confirmation notifications. See also <a class="el" href="designingpersistentstores.html#sourcesusingquorumconsensusstoreconfiguration">Sources Using Quorum/Consensus Store Configuration</a>.</p>
 <p><b>Blocking Message Sends That Exceed the Flight Size</b></p>
 <p>By default, when a source sends a message that exceeds it's flight size, the call to send blocks. For example, suppose the flight size is set to 1. The first send completes but before the source receives a stability notification or delivery confirmation, it initiates a second call to send. If the source uses a blocking send, the send call blocks until the first message stabilizes. If the source uses a non-blocking send, the send returns an LBM_EWOULD_BLOCK.</p>
 <p><b>Notification of Message Sends That Exceed the Flight Size</b></p>
-<p>Alternatively, <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeflightsizebehaviorsource">ume_flight_size_behavior (source)</a> can be set to notify your application when a message send surpasses the flight size. A send that exceeds the configured flight size succeeds and also triggers a flight size notification, indicating that the flight size has been surpassed. Once the number of in-flight messages falls below the configured flight size, another flight size notification source event is triggered, this time, informing the application that the number of in-flight messages is below the source's flight size.</p>
+<p>Alternatively, <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeflightsizebehaviorsource">ume_flight_size_behavior (source)</a> can be set to notify your application when a message send surpasses the flight size. A send that exceeds the configured flight size succeeds and also triggers a flight size notification, indicating that the flight size has been surpassed. Once the number of in-flight messages falls below the configured flight size, another flight size notification source event is triggered, this time, informing the application that the number of in-flight messages is below the source's flight size.</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="receiverrecovery"></a>
 Receiver Recovery&nbsp;&nbsp;<small><a href="#receiverrecovery">&lt;-</a></small></h2>
 <p>Normal loss retransmission over the UM transport operates identically in persistence as it does in streaming, according to the transport protocol. Stores do not participate in this transport-level loss retransmissions.</p>
-<p>Persistent stores become involved in message recovery in circumstances where the transport protocol is not able to recover. For example, if an application exits (either intentionally or by failure) and then restarts some time later, the transport is not able to recover messages that were sent during the application's down time. When the receiver restarts and re-registers, the receiver discovers the lowest message sequence number it did not receive, and subsequently requests retransmissions of all messages not received, starting from this low sequence number.</p>
-<p>For more on this process see, <a class="el" href="designingpersistenceapplications.html#persistentreceiverrecovery">Persistent Receiver Recovery</a>.</p>
-<p>Another circumstance in which the store becomes involved in message recovery is if the transport protocol tries but is unable to recover lost messages. In this case, Off Transport Recovery (OTR) is used. Note that OTR is available in streaming, and is serviced by the source's retention buffer. But for persistent sources, the store services OTR. See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/UME/design.tag:../Design/" href="../Design/umfeatures.html#offtransportrecoveryotr">Off-Transport Recovery (OTR)</a> for more information.</p>
-<p>For more reliable persistence operation, Informatica recommends enabling OTR, especially when using <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/UME/design.tag:../Design/" href="../Design/fundamentalconcepts.html#umrouter">DROs</a>.</p>
+<p>Persistent Stores become involved in message recovery in circumstances where the transport protocol is not able to recover. For example, if an application exits (either intentionally or by failure) and then restarts some time later, the transport is not able to recover messages that were sent during the application's down time. When the receiver restarts and re-registers, the receiver discovers the lowest message sequence number it did not receive, and subsequently requests retransmissions of all messages not received, starting from this low sequence number.</p>
+<p>For more on this process see, <a class="el" href="persistentfaultrecovery.html#persistentreceiverrecovery">Persistent Receiver Recovery</a>.</p>
+<p>Another circumstance in which the Store becomes involved in message recovery is if the transport protocol tries but is unable to recover lost messages. In this case, Off Transport Recovery (OTR) is used. Note that OTR is available in streaming, and is serviced by the source's retention buffer. But for persistent sources, the Store services OTR. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/UME/design.tag:../Design/" href="../Design/umfeatures.html#offtransportrecoveryotr">Off-Transport Recovery (OTR)</a> for more information.</p>
+<p>For more reliable persistence operation, Informatica recommends enabling OTR, especially when using <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/UME/design.tag:../Design/" href="../Design/fundamentalconcepts.html#umrouter">DROs</a>.</p>
 <p>The following diagram illustrates receiver recovery:</p>
 <div class="image">
 <img src="receiver_recovery.png" alt="receiver_recovery.png"/>
 </div>
- <p>Receivers unicast retransmission requests. If the store has the message, it unicasts the retransmission to the receiver. If it does not have the message and is configured to forward the request to the source, it unicasts the retransmission request to the source. If the source has the message, it unicasts the retransmission directly to the receiver. See also <a class="el" href="persistencefaulttolerance.html#messagelossrecovery">Message Loss Recovery</a>.</p>
-<p>UM store sends retransmissions from a thread separate from the main context thread so as not to impede live message data processing. The '<code>&lt;store&gt;</code>' configuration option, <a class="el" href="configurationreferenceforumestored.html#umecfgretransmissionrequestprocessingrate">retransmission-request-processing-rate</a>, sets the store's capacity to process retransmission requests. The retransmission thread processes requests off a retransmission queue which is set at 4 times the size of <a class="el" href="configurationreferenceforumestored.html#umecfgretransmissionrequestprocessingrate">retransmission-request-processing-rate</a>. The following UM Web Monitor statistics indicate retransmission activity (see <a class="el" href="storewebmonitor.html">Store Web Monitor</a>):</p>
+ <p>Receivers unicast retransmission requests. If the Store has the message, it unicasts the retransmission to the receiver. If it does not have the message and is configured to forward the request to the source, it unicasts the retransmission request to the source. If the source has the message, it unicasts the retransmission directly to the receiver. See also <a class="el" href="persistencefaulttolerance.html#messagelossrecovery">Message Loss Recovery</a>.</p>
+<p>Store sends retransmissions from a thread separate from the main context thread so as not to impede live message data processing. The '<code>&lt;store&gt;</code>' configuration option, <a class="el" href="optionsforastoresumeattributeselement.html#umecfgretransmissionrequestprocessingrate">retransmission-request-processing-rate</a>, sets the Store's capacity to process retransmission requests. The retransmission thread processes requests off a retransmission queue which is set at 4 times the size of <a class="el" href="optionsforastoresumeattributeselement.html#umecfgretransmissionrequestprocessingrate">retransmission-request-processing-rate</a>. The following UM Web Monitor statistics indicate retransmission activity (see <a class="el" href="storewebmonitor.html">Store Web Monitor</a>):</p>
 <ul>
 <li>
 Retransmission requests received rate </li>
@@ -214,7 +214,7 @@ Retransmission requests served rate </li>
 <li>
 Retransmission requests dropped rate </li>
 <li>
-Total retransmission requests dropped since store startup </li>
+Total retransmission requests dropped since Store startup </li>
 </ul>
 <p><br />
  </p>
@@ -229,39 +229,39 @@ It is permissible for an application bind to a different IP address and/or Port.
 <li>
 It is permissible for the application to use a different transport type (TCP, LBT-RM, LBT-RM, IPC, etc). This is important because a migration to a different host might impose different networking restrictions (e.g. no multicast). </li>
 <li>
-The values for /ref umestoresource can change (IP/Port/TRD). This is important because a store might fail and need to be migrated to a different host. </li>
+The values for <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umestoresource">ume_store (source)</a> can change (IP/Port/TRD). This is important because a Store might fail and need to be migrated to a different host. </li>
 </ul>
 <p><br />
  </p>
 <h1><a class="anchor" id="receiverpacedpersistenceoperations"></a>
-Receiver-paced Persistence Operations&nbsp;&nbsp;<small><a href="#receiverpacedpersistenceoperations">&lt;-</a></small></h1>
-<p>The Receiver-paced Persistence mode of operation is primarily intended to prevent message loss to critical receivers, even if loss prevention requires blocking sources from sending. To achieve this, message retention in the store is different from Source-paced persistence:</p>
+RPP: Receiver-Paced Persistence&nbsp;&nbsp;<small><a href="#receiverpacedpersistenceoperations">&lt;-</a></small></h1>
+<p>The Receiver-paced Persistence (RPP) mode of operation is primarily intended to prevent message loss to critical receivers, even if loss prevention requires blocking sources from sending. To achieve this, message retention in the Store is different from Source-paced persistence:</p>
 <ul>
 <li>
-<p class="startli">In Source-paced Persistence (SPP), messages are retained in the store until the space is needed for new messages. I.e. the message repository is a circular buffer which will overwrite when it "wraps". If a slow or stopped receiver falls behind the source by more than the size of the store's repository, that receiver will experience unrecoverable loss.</p>
+<p class="startli">In Source-paced Persistence (SPP), messages are retained in the Store until the space is needed for new messages. I.e. the message repository is a circular buffer which will overwrite when it "wraps". If a slow or stopped receiver falls behind the source by more than the size of the Store's repository, that receiver will experience unrecoverable loss.</p>
 <p class="endli"></p>
 </li>
 <li>
-In Receiver-paced Persistence (RPP), messages are retained only for as long as registered receivers need them to be retained in order to ensure recoverability of unacknowledged messages. When all necessary receivers have acknowledged a message, that message is removed from the store's repository. If critical receivers are unable to acknowledge messages and the repository has reached its configured capacity, the source is blocked from sending additional messages. Blocking the source prevents sending of messages that would otherwise overwrite unacknowledged messages. </li>
+In Receiver-paced Persistence (RPP), messages are retained only for as long as registered receivers need them to be retained in order to ensure recoverability of unacknowledged messages. When all necessary receivers have acknowledged a message, that message is removed from the Store's repository. If critical receivers are unable to acknowledge messages and the repository has reached its configured capacity, the source is blocked from sending additional messages. Blocking the source prevents sending of messages that would otherwise overwrite unacknowledged messages. </li>
 </ul>
 <p>Source pacing is typically chosen for applications where outgoing messages are generated by external events or processes that cannot be slowed down or stopped (e.g. market data). Receiver pacing is typically chosen for applications which are able to slow down or even halt the generation of messages (e.g. a user interface which can inhibit user entry).</p>
-<p>RPP is enabled with UM configuration options. No special API calls are needed.</p>
+<p>RPP is enabled with LBM configuration options. No special API calls are needed.</p>
 <p>RPP differentiates between two types of receivers:</p>
 <ul>
 <li>
 Blocking: A blocking receiver will block the source if additional messages would overwrite retained messages not yet acknowledged by that receiver. </li>
 <li>
-Non-blocking: A non-blocking receiver will not block the source; the source will be allowed to overwrite retained messages not yet acknowledged by the non-blocking receiver. Thus a non-blocking receiver will experience unrecoverable message loss if it falls behind the source by more than the configured size of the store's repository. (Note that this is the same behavior of source-paced persistence.) </li>
+Non-blocking: A non-blocking receiver will not block the source; the source will be allowed to overwrite retained messages not yet acknowledged by the non-blocking receiver. Thus a non-blocking receiver will experience unrecoverable message loss if it falls behind the source by more than the configured size of the Store's repository. (Note that this is the same behavior of source-paced persistence.) </li>
 </ul>
-<p>Each receiver indicates its desired blocking behavior with the <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umereceiverpacedpersistencereceiver">ume_receiver_paced_persistence (receiver)</a> configuration option. Both blocking and non-blocking receivers may register with the same store and subscribe to the same source.</p>
+<p>Each receiver indicates its desired blocking behavior with the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umereceiverpacedpersistencereceiver">ume_receiver_paced_persistence (receiver)</a> configuration option. Both blocking and non-blocking receivers may register with the same Store and subscribe to the same source.</p>
 <p>Here are important points when using RPP:</p>
 <ul>
 <li>
-<p class="startli">The repository must be configured to allow RPP, and sources and receivers must be configured to request RPP behavior during registration. Assuming the store is configured to allow RPP, the source determines the pacing behavior (receiver v.s. source) when it registers. If a receiver requests a different behavior, its registration will fail.</p>
+<p class="startli">The repository must be configured to allow RPP, and sources and receivers must be configured to request RPP behavior during registration. Assuming the Store is configured to allow RPP, the source determines the pacing behavior (receiver v.s. source) when it registers. If a receiver requests a different behavior, its registration will fail.</p>
 <p class="endli"></p>
 </li>
 <li>
-<p class="startli">The store tracks the number of registered blocking and non-blocking receivers for each message sent by the source. A message is normally retained in the store repository until that number of receivers have acknowledged consumption. Once all receivers acknowledge consumption of a message, that message is removed from the repository.</p>
+<p class="startli">The Store tracks the number of registered blocking and non-blocking receivers for each message sent by the source. A message is normally retained in the Store repository until that number of receivers have acknowledged consumption. Once all receivers acknowledge consumption of a message, that message is removed from the repository.</p>
 <p class="endli"></p>
 </li>
 <li>
@@ -273,48 +273,50 @@ Non-blocking: A non-blocking receiver will not block the source; the source will
 <p class="endli"></p>
 </li>
 <li>
-<p class="startli">With RPP, sources are required to configure their flight size in bytes, in addition to message count. (With SPP, only message count flight size is required.) The value set for the source's <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeflightsizebytessource">ume_flight_size_bytes (source)</a> configuration option is checked against a maximum allowed value specified in the store's XML configuration file.</p>
+<p class="startli">With RPP, sources are required to configure their flight size in bytes, in addition to message count. (With SPP, only message count flight size is required.) The value set for the source's <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeflightsizebytessource">ume_flight_size_bytes (source)</a> configuration option is checked against a maximum allowed value specified in the Store's XML configuration file.</p>
 <p class="endli"></p>
 </li>
 <li>
-With RPP, if the store's repository is full with unacknowledged messages by blocking receivers, the store will block the source by withholding stability acknowledgements, resulting in flight size blockage. See <a class="el" href="operationalview.html#persistenceflightsize">Persistence Flight Size</a>. (With SPP, once the repository is full, it will simply start overwriting the oldest messages with new messages from the source.) </li>
+With RPP, if the Store's repository is full with unacknowledged messages by blocking receivers, the Store will block the source by withholding stability acknowledgements, resulting in flight size blockage. See <a class="el" href="operationalview.html#persistenceflightsize">Persistence Flight Size</a>. (With SPP, once the repository is full, it will simply start overwriting the oldest messages with new messages from the source.) </li>
 </ul>
 <p>In addition, a disk write delay interval for the repository, improves performance by preventing unnecessary disk activity.</p>
-<p>RPP introduces the capability of a source application to set the following operational options on the store:</p>
+<p>RPP introduces the capability of a source application to override set the settings for the following operational options on the Store:</p>
 <ul>
 <li>
-<a class="el" href="configurationreferenceforumestored.html#umecfgrepositorysizethreshold">repository-size-threshold</a> </li>
+<a class="el" href="optionsforastoresumeattributeselement.html#umecfgrepositorysizethreshold">repository-size-threshold</a> </li>
 <li>
-<a class="el" href="configurationreferenceforumestored.html#umecfgrepositorysizelimit">repository-size-limit</a> </li>
+<a class="el" href="optionsforastoresumeattributeselement.html#umecfgrepositorysizelimit">repository-size-limit</a> </li>
 <li>
-<a class="el" href="configurationreferenceforumestored.html#umecfgrepositorydiskfilesizelimit">repository-disk-file-size-limit</a> </li>
+<a class="el" href="optionsforastoresumeattributeselement.html#umecfgrepositorydiskfilesizelimit">repository-disk-file-size-limit</a> </li>
 <li>
-<a class="el" href="configurationreferenceforumestored.html#umecfgrepositorydiskwritedelay">repository-disk-write-delay</a> </li>
+<a class="el" href="optionsforastoresumeattributeselement.html#umecfgrepositorydiskwritedelay">repository-disk-write-delay</a> </li>
+<li>
+<a class="el" href="optionsforastoresumeattributeselement.html#umecfgrepositoryallowackonreception">repository-allow-ack-on-reception</a> (The source doesn't actually override this option. This option enables the source to set the Store's ACK behavior.) </li>
 </ul>
-<p>With SPP, those parameters are set only by the store's XML configuration file alone. With RPP, the source's configuration can optionally request a different value for those operating parameters, with the store's configured value being used as a maximum allowed threshold.</p>
+<p>With SPP, those parameters are set only by the Store configuration file alone. With RPP, the source's configuration can optionally request a different value for those operating parameters, with the Store's configured value being used as a maximum allowed threshold.</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="rppregistration"></a>
 RPP Registration&nbsp;&nbsp;<small><a href="#rppregistration">&lt;-</a></small></h2>
-<p>A source configures its desired pacing behavior (source paced v.s. receiver paced) with <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umereceiverpacedpersistencesource">ume_receiver_paced_persistence (source)</a> and <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umereceiverpacedpersistencereceiver">ume_receiver_paced_persistence (receiver)</a>. If set to 1, it becomes an RPP source. Assuming the store is configured to allow RPP, when an RPP source registers with the store, the store's repository for that source becomes an RPP repository. The receiver configures its desired pacing behavior with <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umereceiverpacedpersistencereceiver">ume_receiver_paced_persistence (receiver)</a>, where 0 is source-paced and 1 or 2 are receiver-paced. The receiver's pacing must match that of the source and store, otherwise the receiver's registration will fail. In addition, the choice of 1 or 2 determines the receiver's desired blocking behavior (1=blocking, 2=non-blocking).</p>
-<p>Note that although the configured pacing behavior must match between source and receiver, that does not mean that the numerical setting of the <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umereceiverpacedpersistencesource">ume_receiver_paced_persistence (source)</a> and <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umereceiverpacedpersistencereceiver">ume_receiver_paced_persistence (receiver)</a> options must be equal. If the source is 0 (source paced), then the receiver must also be 0. However, if the source is 1 (receiver paced), then the receiver must be either 1 or 2, depending on the receiver's desired blocking behavior.</p>
-<p>As with Source-paced Persistence, RPP sources send Source Registration Information (SRI) packets to RPP receivers over the configured UM transport. RPP Receivers must wait for this information before they can initiate registration requests to the store. See <a class="el" href="operationalview.html#sourceregistration">Source Registration</a> and <a class="el" href="operationalview.html#receiverregistration">Receiver Registration</a> for more information.</p>
+<p>A source configures its desired pacing behavior (source paced v.s. receiver paced) with <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umereceiverpacedpersistencesource">ume_receiver_paced_persistence (source)</a> and <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umereceiverpacedpersistencereceiver">ume_receiver_paced_persistence (receiver)</a>. If set to 1, it becomes an RPP source. Assuming the Store is configured to allow RPP, when an RPP source registers with the Store, the Store's repository for that source becomes an RPP repository. The receiver configures its desired pacing behavior with <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umereceiverpacedpersistencereceiver">ume_receiver_paced_persistence (receiver)</a>, where 0 is source-paced and 1 or 2 are receiver-paced. The receiver's pacing must match that of the source and Store, otherwise the receiver's registration will fail. In addition, the choice of 1 or 2 determines the receiver's desired blocking behavior (1=blocking, 2=non-blocking).</p>
+<p>Note that although the configured pacing behavior must match between source and receiver, that does not mean that the numerical setting of the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umereceiverpacedpersistencesource">ume_receiver_paced_persistence (source)</a> and <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umereceiverpacedpersistencereceiver">ume_receiver_paced_persistence (receiver)</a> options must be equal. If the source is 0 (source paced), then the receiver must also be 0. However, if the source is 1 (receiver paced), then the receiver must be either 1 or 2, depending on the receiver's desired blocking behavior.</p>
+<p>As with Source-paced Persistence, RPP sources send Source Registration Information (SRI) packets to RPP receivers over the configured UM transport. RPP Receivers must wait for this information before they can initiate registration requests to the Store. See <a class="el" href="operationalview.html#sourceregistration">Source Registration</a> and <a class="el" href="operationalview.html#receiverregistration">Receiver Registration</a> for more information.</p>
 <p>A source registration request includes the following:</p>
 <ul>
 <li>
 Designation of an RPP topic </li>
 <li>
-Reconfigured repository configuration option values. Possible options are the 3 repository size options: <a class="el" href="configurationreferenceforumestored.html#umecfgrepositoryallowackonreception">repository-allow-ack-on-reception</a>, <a class="el" href="configurationreferenceforumestored.html#umecfgrepositorydiskwritedelay">repository-disk-write-delay</a>, and <a class="el" href="configurationreferenceforumestored.html#umecfgsourceflightsizebytesmaximum">source-flight-size-bytes-maximum</a>. </li>
+Reconfigured repository configuration option values. Possible options are the 3 repository size options: <a class="el" href="optionsforastoresumeattributeselement.html#umecfgrepositoryallowackonreception">repository-allow-ack-on-reception</a>, <a class="el" href="optionsforastoresumeattributeselement.html#umecfgrepositorydiskwritedelay">repository-disk-write-delay</a>, and <a class="el" href="optionsforastoresumeattributeselement.html#umecfgsourceflightsizebytesmaximum">source-flight-size-bytes-maximum</a>. </li>
 <li>
-Re-registration must request the same configuration options as were initially requested, or the store will reject the request. </li>
+Re-registration must request the same configuration options as were initially requested, or the Store will reject the request. </li>
 </ul>
 <p>A receiver registration request includes its designation as a RPP receiver.</p>
 <p>The repository's registration response to both a source and a receiver acknowledges RPP mode.</p>
 <p><b>Late Registering Receiver</b></p>
-<p>A late joining receiver that registers after the first RPP topic message has been sent cannot recover any messages sent prior to its initial registration. It is the user's responsibility to synchronize a receiver's initial registration with the start of message transmission. This restriction does not apply to an RPP receiver that initially registered at an earlier time and is now re-registering, as after a failure and restart. In that case, messages that were sent after the receiver's initial registration will be retained by the store for recovery by the receiver.</p>
+<p>A late joining receiver that registers after the first RPP topic message has been sent cannot recover any messages sent prior to its initial registration. It is the user's responsibility to synchronize a receiver's initial registration with the start of message transmission. This restriction does not apply to an RPP receiver that initially registered at an earlier time and is now re-registering, as after a failure and restart. In that case, messages that were sent after the receiver's initial registration will be retained by the Store for recovery by the receiver.</p>
 <p><b>Early Exiting Receiver</b></p>
-<p>Each registered receiver has associated with it an activity timeout and a state lifetime. During normal operation, the store monitors the operation of a registered receiver. If the store hears nothing from a receiver for the duration of the activity timeout, the store assumes that the receiver has halted operation. Messages will be retained by the store according to the receiver's configured blocking behavior. This gives the receiver time to restart and re-register. If an inactive receiver re-registers before the state lifetime expires, the receiver will be able to recover all messages that it missed.</p>
-<p>However, if a receiver remains halted for the duration of the state lifetime, the store will delete the receiver state information. If the repository is retaining messages for this receiver, those messages will be implicitly acknowledged on behalf of the expired receiver, making them eligible for deletion if no other receivers' acknowledgements are pending. If the source is blocked waiting for this receiver, the store will unblock the source. Finally, if the halted receiver re-register after its state lifetime has expired, the store will treat it as an initial registration, and the messages it missed will not be available.</p>
+<p>Each registered receiver has associated with it an activity timeout and a state lifetime. During normal operation, the Store monitors the operation of a registered receiver. If the Store hears nothing from a receiver for the duration of the activity timeout, the Store assumes that the receiver has halted operation. Messages will be retained by the Store according to the receiver's configured blocking behavior. This gives the receiver time to restart and re-register. If an inactive receiver re-registers before the state lifetime expires, the receiver will be able to recover all messages that it missed.</p>
+<p>However, if a receiver remains halted for the duration of the state lifetime, the Store will delete the receiver state information. If the repository is retaining messages for this receiver, those messages will be implicitly acknowledged on behalf of the expired receiver, making them eligible for deletion if no other receivers' acknowledgements are pending. If the source is blocked waiting for this receiver, the Store will unblock the source. Finally, if the halted receiver re-register after its state lifetime has expired, the Store will treat it as an initial registration, and the messages it missed will not be available.</p>
 <p><b>UM Version RPP Compatibility Matrix</b></p>
 <p>The following table indicates the result of registration requests across UM versions:</p>
 <table class="doxtable">
@@ -348,9 +350,9 @@ Re-registration must request the same configuration options as were initially re
 <p>Where:</p>
 <ul>
 <li>
-Granted - Source Error indicates that the store granted the registration but the source detected that RPP behavior was not acknowledged by the store. </li>
+Granted - Source Error indicates that the Store granted the registration but the source detected that RPP behavior was not acknowledged by the Store. </li>
 <li>
-Granted - Receiver Error indicates that the store granted the registration but the receiver detected that RPP behavior was not acknowledged by the store. </li>
+Granted - Receiver Error indicates that the Store granted the registration but the receiver detected that RPP behavior was not acknowledged by the Store. </li>
 <li>
 * Refers only to the re-registration of a source with an existing source repository because the source determines the repository's behavior for new registrations. </li>
 </ul>
@@ -361,49 +363,50 @@ RPP Normal Operation&nbsp;&nbsp;<small><a href="#rppnormaloperation">&lt;-</a></
 <p>At a high level, the normal sequence of operations for RPP is the same as it is for SPP:</p>
 <ol>
 <li>
-<p class="startli">Sources transmit messages to receivers and stores at the same time over UM transports. Sources also track stability acknowledgements from the store. A source is allowed to send messages ahead of stability acknowledgements up to the configured flight size. If the flight size of unstabilized messages is reached, the source is blocked from sending more messages pending stability acknowledgements from the store.</p>
+<p class="startli">Sources transmit messages to receivers and Stores at the same time over UM transports. Sources also track stability acknowledgements from the Store. A source is allowed to send messages ahead of stability acknowledgements up to the configured flight size. If the flight size of unstabilized messages is reached, the source is blocked from sending more messages pending stability acknowledgements from the Store.</p>
 <p class="endli"></p>
 </li>
 <li>
-<p class="startli">Receivers acknowledge consumption of received messages back to stores, and optionally to the sources.</p>
+<p class="startli">Receivers acknowledge consumption of received messages back to Stores, and optionally to the sources.</p>
 <p class="endli"></p>
 </li>
 <li>
 Stores retain messages as appropriate, send stability acknowledgements to the sources for messages, and tracks receiver consumption acknowledgements. </li>
 </ol>
-<p>One important way that RPP differs from SPP is in the sending of stability acknowledgements. With SPP, the store normally waits to send a stability acknowledgement until a message is "stable" on the configured storage medium, either disk or memory. With RPP, the sending of stability acknowledgements is affected by receiver consumption acknowledgements in two ways:</p>
+<p>One important way that RPP differs from SPP is in the sending of stability acknowledgements. With SPP, the Store normally waits to send a stability acknowledgement until a message is "stable" on the configured storage medium, either disk or memory. With RPP, the sending of stability acknowledgements is affected by receiver consumption acknowledgements in two ways:</p>
 <ul>
 <li>
 <p class="startli">If a message is acknowledged by all registered receivers before the message is written to disk, then there is no need to retain the message at all. The message is deleted and a stability acknowledgement is sent to the source.</p>
 <p class="endli"></p>
 </li>
 <li>
-If the repository reaches its capacity limit and there are blocking receivers which have not acknowledged the messages, the store stops sending stability acknowledgements. It is the lack of stability acknowledgements, combined with the configured flight size, which causes the source to block. (To be precise, the store stops sending stability when there is exactly one flight size worth of room available in the repository.) </li>
+If the repository reaches its capacity limit and there are blocking receivers which have not acknowledged the messages, the Store stops sending stability acknowledgements. It is the lack of stability acknowledgements, combined with the configured flight size, which causes the source to block. (To be precise, the Store stops sending stability when there is exactly one flight size worth of room available in the repository.) </li>
 </ul>
 <p>The following also affect stability acknowledgements:</p>
 <ul>
 <li>
-<p class="startli">Acknowledge on Reception - If the source is configured for <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umerepositoryackonreceptionsource">ume_repository_ack_on_reception (source)</a> and the store is configured for <a class="el" href="configurationreferenceforumestored.html#umecfgrepositoryallowackonreception">repository-allow-ack-on-reception</a>, the store sends a stability acknowledgement to the source immediately upon reception of a message, even before any receiver acknowledgements are received, and before the message is written to disk. This setting can increase system throughput for some use cases, but also increases the risk of message loss in the event of a store failure.</p>
+<p class="startli">Acknowledge on Reception - If the source is configured for <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umerepositoryackonreceptionsource">ume_repository_ack_on_reception (source)</a> and the Store is configured for <a class="el" href="optionsforastoresumeattributeselement.html#umecfgrepositoryallowackonreception">repository-allow-ack-on-reception</a>, the Store sends a stability acknowledgement to the source immediately upon reception of a message, even before any receiver acknowledgements are received, and before the message is written to disk. This setting can increase system throughput for some use cases, but also increases the risk of message loss in the event of a Store failure.</p>
 <div class="image">
 <img src="ack_on_reception.png" alt="ack_on_reception.png"/>
 </div>
  <p class="endli"></p>
 </li>
 <li>
-Write Delay - The repository option <a class="el" href="configurationreferenceforumestored.html#umecfgrepositorydiskwritedelay">repository-disk-write-delay</a> allows the repository to hold messages in memory cache longer before persisting them to disk. This delay increases the probability that all RPP receivers acknowledge message consumption, eliminating the need to persist the message to disk. </li>
+Write Delay - The repository option <a class="el" href="optionsforastoresumeattributeselement.html#umecfgrepositorydiskwritedelay">repository-disk-write-delay</a> allows the repository to hold messages in memory cache longer before persisting them to disk. This delay increases the probability that all RPP receivers acknowledge message consumption, eliminating the need to persist the message to disk. </li>
 </ul>
-<p>For memory store repositories, the options <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umerepositoryackonreceptionsource">ume_repository_ack_on_reception (source)</a> and <a class="el" href="configurationreferenceforumestored.html#umecfgrepositorydiskwritedelay">repository-disk-write-delay</a> have no effect.</p>
+<p>For memory Store repositories, the options <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umerepositoryackonreceptionsource">ume_repository_ack_on_reception (source)</a> and <a class="el" href="optionsforastoresumeattributeselement.html#umecfgrepositorydiskwritedelay">repository-disk-write-delay</a> have no effect.</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="rppmessagerecovery"></a>
 RPP Message Recovery&nbsp;&nbsp;<small><a href="#rppmessagerecovery">&lt;-</a></small></h2>
-<p>The normal way that RPP receivers recover messages is when they re-register within the state lifetime after a failure. However, just as with SPP, there is the possibility that the transport session of the source is unable to successfully deliver all messages to the receiver. In the event of unrecoverable loss at the transport session, the Off Transport Recovery (OTR) method is also active for RPP receivers. OTR does not require the receiver to restart to recover messages from the store. See the <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/UME/design.tag:../Design/" href="../Design/umfeatures.html#offtransportrecoveryotr">Off-Transport Recovery (OTR)</a> for more information.</p>
+<p>The normal way that RPP receivers recover messages is when they re-register within the state lifetime after a failure. However, just as with SPP, there is the possibility that the transport session of the source is unable to successfully deliver all messages to the receiver. In the event of unrecoverable loss at the transport session, the Off Transport Recovery (OTR) method is also active for RPP receivers. OTR does not require the receiver to restart to recover messages from the Store. See the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/UME/design.tag:../Design/" href="../Design/umfeatures.html#offtransportrecoveryotr">Off-Transport Recovery (OTR)</a> for more information.</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="rppderegistration"></a>
 RPP Deregistration&nbsp;&nbsp;<small><a href="#rppderegistration">&lt;-</a></small></h2>
-<p>You can deregister either sources or receivers using deregistration APIs, (<a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/UME/api.tag:../API/" href="../API/lbm_8h.html#a3a89366ab4e36dfa362e20397778d04a">lbm_src_ume_deregister()</a>, <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/UME/api.tag:../API/" href="../API/lbm_8h.html#a861f4a170ec4caf4533669ee53fbf36f">lbm_rcv_ume_deregister()</a>, and <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/UME/api.tag:../API/" href="../API/lbm_8h.html#adc9f1b15ab516bed8556e7a20666770c">lbm_wrcv_ume_deregister()</a>). UM deletes the state of deregistered objects. If you deregister an RPP receiver, UM automatically decrements the number of receiver acknowledgements required to maintain RPP behavior. The store issues Deregistration Successful events for every source or receiver that deregisters. Note that after deregistering a source or receiver, the object will still exist, but is no longer participating in persistence. An attempt to send to a deregistered source will return an error. A deregistered receiver will continue to deliver messages on the topic, but since it is no longer participating in persistence, it will be unable to acknowledge those messages. If the application wants to re-join persistence, it must delete the source or receiver and re-create it, allowing it to re-register. See <a class="el" href="operationalview.html#persistenceevents">Persistence Events</a>.</p>
-<p>Users should be cautious using the deregistration APIs, especially for sources. Source deregistration will immediately delete from the store any messages from that source which might be retained due to lack of receiver acknowledgement. This deletion will render the receivers unable to recover those messages.</p>
+<p>You can deregister either sources or receivers using deregistration APIs, (<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/UME/api.tag:../API/" href="../API/lbm_8h.html#a3a89366ab4e36dfa362e20397778d04a">lbm_src_ume_deregister()</a>, <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/UME/api.tag:../API/" href="../API/lbm_8h.html#a861f4a170ec4caf4533669ee53fbf36f">lbm_rcv_ume_deregister()</a>, and <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/UME/api.tag:../API/" href="../API/lbm_8h.html#adc9f1b15ab516bed8556e7a20666770c">lbm_wrcv_ume_deregister()</a>). UM deletes the state of deregistered objects.</p>
+<p>If you deregister an RPP receiver, UM automatically decrements the number of receiver acknowledgements required to maintain RPP behavior. The Store issues Deregistration Successful events for every source or receiver that deregisters. Note that after deregistering a source or receiver, the object will still exist, but is no longer participating in persistence. An attempt to send to a deregistered source will return an error. A deregistered receiver will continue to deliver messages on the topic, but since it is no longer participating in persistence, it will be unable to acknowledge those messages. If the application wants to re-join persistence, it must delete the source or receiver and re-create it, allowing it to re-register. See <a class="el" href="operationalview.html#persistenceevents">Persistence Events</a>.</p>
+<p>Users should be cautious using the deregistration APIs, especially for sources. Source deregistration will immediately delete from the Store any messages from that source which might be retained due to lack of receiver acknowledgement. This deletion will render the receivers unable to recover those messages.</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="implementingrpp"></a>
@@ -411,34 +414,34 @@ Implementing RPP&nbsp;&nbsp;<small><a href="#implementingrpp">&lt;-</a></small><
 <p>Follow the procedure below to configure Receiver-paced Persistence:</p>
 <ol>
 <li>
-<p class="startli">Set <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umereceiverpacedpersistencesource">ume_receiver_paced_persistence (source)</a> and <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umereceiverpacedpersistencereceiver">ume_receiver_paced_persistence (receiver)</a> in the UM configurations. If only certain sources or receivers in a context are RPP, use lbm_*setopt() in the source or receiver application or use UM XML configuration files.</p>
+<p class="startli">Set <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umereceiverpacedpersistencesource">ume_receiver_paced_persistence (source)</a> and <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umereceiverpacedpersistencereceiver">ume_receiver_paced_persistence (receiver)</a> in the LBM configurations. If only certain sources or receivers in a context are RPP, use lbm_*setopt() in the source or receiver application or use UM XML configuration files.</p>
 <p class="endli"></p>
 </li>
 <li>
-<p class="startli">Set <a class="el" href="configurationreferenceforumestored.html#umecfgrepositoryallowreceiverpacedpersistence">repository-allow-receiver-paced-persistence</a> = 1 for the repository in the <code>umestored</code> XML configuration file.</p>
+<p class="startli">Set <a class="el" href="optionsforastoresumeattributeselement.html#umecfgrepositoryallowreceiverpacedpersistence">repository-allow-receiver-paced-persistence</a> = 1 for the repository in the Store configuration file.</p>
 <p class="endli"></p>
 </li>
 <li>
-<p class="startli">Coordinate <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeflightsizebytessource">ume_flight_size_bytes (source)</a> between the repository and the source. Set the maximum allowable flight size with the repository option, <a class="el" href="configurationreferenceforumestored.html#umecfgsourceflightsizebytesmaximum">source-flight-size-bytes-maximum</a>. Sources can reconfigure its flight size bytes to a value less than or equal to the maximum.</p>
+<p class="startli">Coordinate <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeflightsizebytessource">ume_flight_size_bytes (source)</a> between the repository and the source. Set the maximum allowable flight size with the repository option, <a class="el" href="optionsforastoresumeattributeselement.html#umecfgsourceflightsizebytesmaximum">source-flight-size-bytes-maximum</a>. Sources can reconfigure its flight size bytes to a value less than or equal to the maximum.</p>
 <p class="endli"></p>
 </li>
 <li>
-<p class="startli">Optional: coordinate the <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umerepositoryackonreceptionsource">ume_repository_ack_on_reception (source)</a> between the repository and the source. If the repository has <a class="el" href="configurationreferenceforumestored.html#umecfgrepositoryallowackonreception">repository-allow-ack-on-reception</a> enabled (1), the source can choose to keep it enabled or turn it off. If the repository has <a class="el" href="configurationreferenceforumestored.html#umecfgrepositoryallowackonreception">repository-allow-ack-on-reception</a> disabled (0), the source cannot turn it on.</p>
+<p class="startli">Optional: coordinate the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umerepositoryackonreceptionsource">ume_repository_ack_on_reception (source)</a> between the repository and the source. If the repository has <a class="el" href="optionsforastoresumeattributeselement.html#umecfgrepositoryallowackonreception">repository-allow-ack-on-reception</a> enabled (1), the source can choose to keep it enabled or turn it off. If the repository has <a class="el" href="optionsforastoresumeattributeselement.html#umecfgrepositoryallowackonreception">repository-allow-ack-on-reception</a> disabled (0), the source cannot turn it on.</p>
 <p class="endli"></p>
 </li>
 <li>
-<p class="startli">Optional: if the repository is a disk repository (<a class="el" href="configurationreferenceforumestored.html#umecfgrepositorytype">repository-type</a> = "disk"), set the maximum write delay with the repository option, <a class="el" href="configurationreferenceforumestored.html#umecfgrepositorydiskwritedelay">repository-disk-write-delay</a>. Sources can set <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umewritedelaysource">ume_write_delay (source)</a> to a value less than or equal to <a class="el" href="configurationreferenceforumestored.html#umecfgrepositorydiskwritedelay">repository-disk-write-delay</a>.</p>
+<p class="startli">Optional: if the repository is a disk repository (<a class="el" href="optionsforastoresumeattributeselement.html#umecfgrepositorytype">repository-type</a> <b>"disk"</b>), set the maximum write delay with the repository option, <a class="el" href="optionsforastoresumeattributeselement.html#umecfgrepositorydiskwritedelay">repository-disk-write-delay</a>. Sources can set <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umewritedelaysource">ume_write_delay (source)</a> to a value less than or equal to <a class="el" href="optionsforastoresumeattributeselement.html#umecfgrepositorydiskwritedelay">repository-disk-write-delay</a>.</p>
 <p class="endli"></p>
 </li>
 <li>
-<p class="startli">Optional: coordinate repository size options between the source and repository. If you wish to use the repository's values, you do not need to configure source configuration values. The repository sets a maximum for these three options. The source can reconfigure the repository's options with values less than or equal to the maximum configured for the repository using the following UM configuration options:</p>
+<p class="startli">Optional: coordinate repository size options between the source and repository. If you wish to use the repository's values, you do not need to configure source configuration values. The repository sets a maximum for these three options. The source can reconfigure the repository's options with values less than or equal to the maximum configured for the repository using the following LBM configuration options:</p>
 <ul>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umerepositorysizethresholdsource">ume_repository_size_threshold (source)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umerepositorysizethresholdsource">ume_repository_size_threshold (source)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umerepositorysizelimitsource">ume_repository_size_limit (source)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umerepositorysizelimitsource">ume_repository_size_limit (source)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umerepositorydiskfilesizelimitsource">ume_repository_disk_file_size_limit (source)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umerepositorydiskfilesizelimitsource">ume_repository_disk_file_size_limit (source)</a> </li>
 </ul>
 </li>
 </ol>
@@ -446,22 +449,22 @@ Implementing RPP&nbsp;&nbsp;<small><a href="#implementingrpp">&lt;-</a></small><
  </p>
 <h2><a class="anchor" id="examplerppconfigurationfiles"></a>
 Example RPP Configuration Files&nbsp;&nbsp;<small><a href="#examplerppconfigurationfiles">&lt;-</a></small></h2>
-<p>The sample configuration files shown below show how a store configuration file establishes certain RPP option values and the source can reconfigure them via a UM configuration file. Although only two files appear below, this configuration represents two, single-store quorum/consensus groups and one UM context. A second <code>umestored</code> configuration file would be required for the store store1rpp containing options and values identical to store0rpp.</p>
-<p><b>UM Configuration File for RPP</b></p>
-<p>The following example UM configuration file will work for applications which have sources and/or receivers that must be persisted using RPP. This configuration file is written assuming that the store is configured as shown in the next section.</p>
+<p>The sample configuration files shown below show how a Store configuration file establishes certain RPP option values and the source can reconfigure them via an LBM configuration file. Although only two files appear below, this configuration represents two, single-Store quorum/consensus groups and one UM context. A second Store configuration file would be required for the Store "store1rpp" containing options and values identical to "store0rpp".</p>
+<p><b>LBM Configuration File for RPP</b></p>
+<p>The following example LBM configuration file will work for applications which have sources and/or receivers that must be persisted using RPP. This configuration file is written assuming that the Store is configured as shown in the next section.</p>
 <ul>
 <li>
-<p class="startli">The source configures <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeflightsizebytessource">ume_flight_size_bytes (source)</a> to 1,000,000 bytes. For this to work, the repository must set <a class="el" href="configurationreferenceforumestored.html#umecfgsourceflightsizebytesmaximum">source-flight-size-bytes-maximum</a> to a value greater than or equal to 1,000,000.</p>
+<p class="startli">The source configures <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeflightsizebytessource">ume_flight_size_bytes (source)</a> to 1,000,000 bytes. For this to work, the repository must set <a class="el" href="optionsforastoresumeattributeselement.html#umecfgsourceflightsizebytesmaximum">source-flight-size-bytes-maximum</a> to a value greater than or equal to 1,000,000.</p>
 <p class="endli"></p>
 </li>
 <li>
-<p class="startli">The source uses <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umewritedelaysource">ume_write_delay (source)</a> to override the repository's <a class="el" href="configurationreferenceforumestored.html#umecfgrepositorydiskwritedelay">repository-disk-write-delay</a> setting to 1000 ms (1 second). Note that for this to work, the repository must set <a class="el" href="configurationreferenceforumestored.html#umecfgrepositorydiskwritedelay">repository-disk-write-delay</a> to a value greater than or equal to 1000 ms.</p>
+<p class="startli">The source uses <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umewritedelaysource">ume_write_delay (source)</a> to override the repository's <a class="el" href="optionsforastoresumeattributeselement.html#umecfgrepositorydiskwritedelay">repository-disk-write-delay</a> setting to 1000 ms (1 second). Note that for this to work, the repository must set <a class="el" href="optionsforastoresumeattributeselement.html#umecfgrepositorydiskwritedelay">repository-disk-write-delay</a> to a value greater than or equal to 1000 ms.</p>
 <p class="endli"></p>
 </li>
 <li>
-To remove clutter from the example, the transport type is allowed to default to TCP. Many persistence users prefer LBT-RM to more quickly and efficiently distribute messages to stores and receivers. </li>
+To remove clutter from the example, the transport type is allowed to default to TCP. Many persistence users prefer LBT-RM to more quickly and efficiently distribute messages to Stores and receivers. </li>
 </ul>
-<pre class="fragment">##Sample UM Configuration File
+<pre class="fragment">##Sample LBM Configuration File
 # Default to TCP transport
 # Multicast Resolver Network Options
 context resolver_multicast_address 225.8.17.29
@@ -480,16 +483,16 @@ receiver ume_receiver_paced_persistence 1
 #   If this app creates sources, have them request RPP mode.
 source ume_receiver_paced_persistence 1
 source ume_flight_size_bytes 1000000
-#   The following parameters override store configurations.
+#   The following parameters override Store configurations.
 source ume_repository_size_threshold 104857600
 source ume_repository_size_limit 209715200
 source ume_repository_disk_file_size_limit 1073741824
 source ume_repository_ack_on_reception 1
 source ume_write_delay 1000
-</pre><p><b>umestored Configuration File</b></p>
-<p>In the following example store configuration file, RPP options appear in the section for the topic pattern, ABC*. This configuration file is written assuming client applications (sources and receivers) use UM configuration files similar to that shown in the preceding section.</p>
-<p>There are actually three stores configured in Q/C. The other two's configurations should differ appropriately. For example, change each instance of "store0" to "store1" and "store2" respectively.</p>
-<div class="fragment"><div class="line">&lt;?xml version=<span class="stringliteral">&quot;1.0&quot;</span>?&gt;</div><div class="line">&lt;ume-store version=<span class="stringliteral">&quot;1.3&quot;</span>&gt;</div><div class="line">  &lt;daemon&gt;</div><div class="line">    &lt;log&gt;/configs/stores/umestore0/umestored.log&lt;/log&gt;</div><div class="line">    &lt;pidfile&gt;/configs/stores/umestore0/umestored.pid&lt;/pidfile&gt;</div><div class="line">    &lt;lbm-config&gt;/configs/lbm_store0.cfg&lt;/lbm-config&gt;</div><div class="line">    &lt;web-monitor&gt;*:15404&lt;/web-monitor&gt;</div><div class="line">  &lt;/daemon&gt;</div><div class="line">  &lt;stores&gt;</div><div class="line">    &lt;store name=<span class="stringliteral">&quot;rpp-ump-test-store0&quot;</span> port=<span class="stringliteral">&quot;14667&quot;</span>&gt;</div><div class="line">      &lt;ume-attributes&gt;</div><div class="line">        &lt;option type=<span class="stringliteral">&quot;store&quot;</span> name=<span class="stringliteral">&quot;disk-cache-directory&quot;</span> value=<span class="stringliteral">&quot;/stores/store1/cache&quot;</span>/&gt;</div><div class="line">        &lt;option type=<span class="stringliteral">&quot;store&quot;</span> name=<span class="stringliteral">&quot;disk-state-directory&quot;</span> value=<span class="stringliteral">&quot;/stores/store1/state&quot;</span>/&gt;</div><div class="line">        &lt;option type=<span class="stringliteral">&quot;store&quot;</span> name=<span class="stringliteral">&quot;context-name&quot;</span> value=<span class="stringliteral">&quot;store0rpp&quot;</span>/&gt;</div><div class="line">      &lt;/ume-attributes&gt;</div><div class="line">      &lt;topics&gt;</div><div class="line">        &lt;topic pattern=<span class="stringliteral">&quot;ABC.*&quot;</span> type=<span class="stringliteral">&quot;PCRE&quot;</span>&gt;</div><div class="line">          &lt;ume-attributes&gt;</div><div class="line">             &lt;option type=<span class="stringliteral">&quot;store&quot;</span> name=<span class="stringliteral">&quot;repository-allow-receiver-paced-persistence&quot;</span> value=<span class="stringliteral">&quot;1&quot;</span>/&gt;</div><div class="line">             &lt;option type=<span class="stringliteral">&quot;store&quot;</span> name=<span class="stringliteral">&quot;repository-type&quot;</span> value=<span class="stringliteral">&quot;disk&quot;</span>/&gt;</div><div class="line">             &lt;option type=<span class="stringliteral">&quot;store&quot;</span> name=<span class="stringliteral">&quot;repository-size-threshold&quot;</span> value=<span class="stringliteral">&quot;104857600&quot;</span>/&gt;</div><div class="line">             &lt;option type=<span class="stringliteral">&quot;store&quot;</span> name=<span class="stringliteral">&quot;repository-size-limit&quot;</span> value=<span class="stringliteral">&quot;209715200&quot;</span>/&gt;</div><div class="line">             &lt;option type=<span class="stringliteral">&quot;store&quot;</span> name=<span class="stringliteral">&quot;repository-disk-file-size-limit&quot;</span> value=<span class="stringliteral">&quot;1073741824&quot;</span>/&gt;</div><div class="line">             &lt;option type=<span class="stringliteral">&quot;store&quot;</span> name=<span class="stringliteral">&quot;source-flight-size-bytes-maximum&quot;</span> value=<span class="stringliteral">&quot;4194304&quot;</span>/&gt;</div><div class="line">             &lt;option type=<span class="stringliteral">&quot;store&quot;</span> name=<span class="stringliteral">&quot;repository-allow-ack-on-reception&quot;</span> value=<span class="stringliteral">&quot;1&quot;</span>/&gt;</div><div class="line">             &lt;option type=<span class="stringliteral">&quot;store&quot;</span> name=<span class="stringliteral">&quot;repository-disk-write-delay&quot;</span> value=<span class="stringliteral">&quot;1000&quot;</span>/&gt;</div><div class="line">          &lt;/ume-attributes&gt;</div><div class="line">        &lt;/topic&gt;</div><div class="line">      &lt;/topics&gt;</div><div class="line">    &lt;/store&gt;</div><div class="line">  &lt;/stores&gt;</div><div class="line">&lt;/ume-store&gt;</div></div><!-- fragment --><p><br />
+</pre><p><b>Store Configuration File</b></p>
+<p>In the following example Store configuration file, RPP options appear in the section for the topic pattern, ABC*. This configuration file is written assuming client applications (sources and receivers) use LBM configuration files similar to that shown in the preceding section.</p>
+<p>There are actually three Stores configured in Q/C. The other two's configurations should differ appropriately. For example, change each instance of "store0" to "store1" and "store2" respectively.</p>
+<div class="fragment"><div class="line">&lt;?xml version=<span class="stringliteral">&quot;1.0&quot;</span>?&gt;</div><div class="line">&lt;ume-store version=<span class="stringliteral">&quot;1.3&quot;</span>&gt;</div><div class="line">  &lt;daemon&gt;</div><div class="line">    &lt;log&gt;/configs/stores/umestore0/umestored.log&lt;/log&gt;</div><div class="line">    &lt;pidfile&gt;/configs/stores/umestore0/umestored.pid&lt;/pidfile&gt;</div><div class="line">    &lt;lbm-config&gt;/configs/lbm_store0.cfg&lt;/lbm-config&gt;</div><div class="line">    &lt;web-monitor&gt;*:15404&lt;/web-monitor&gt;</div><div class="line">  &lt;/daemon&gt;</div><div class="line">  &lt;stores&gt;</div><div class="line">    &lt;store name=<span class="stringliteral">&quot;rpp-ump-test-store0&quot;</span> port=<span class="stringliteral">&quot;14667&quot;</span>&gt;</div><div class="line">      &lt;ume-attributes&gt;</div><div class="line">        &lt;option type=<span class="stringliteral">&quot;store&quot;</span> name=<span class="stringliteral">&quot;disk-cache-directory&quot;</span> value=<span class="stringliteral">&quot;/stores/store1/cache&quot;</span>/&gt;</div><div class="line">        &lt;option type=<span class="stringliteral">&quot;store&quot;</span> name=<span class="stringliteral">&quot;disk-state-directory&quot;</span> value=<span class="stringliteral">&quot;/stores/store1/state&quot;</span>/&gt;</div><div class="line">        &lt;option type=<span class="stringliteral">&quot;store&quot;</span> name=<span class="stringliteral">&quot;context-name&quot;</span> value=<span class="stringliteral">&quot;store0rpp&quot;</span>/&gt;</div><div class="line">      &lt;/ume-attributes&gt;</div><div class="line">      &lt;topics&gt;</div><div class="line">        &lt;topic pattern=<span class="stringliteral">&quot;ABC.*&quot;</span> type=<span class="stringliteral">&quot;PCRE&quot;</span>&gt;</div><div class="line">          &lt;ume-attributes&gt;</div><div class="line">             &lt;option type=<span class="stringliteral">&quot;store&quot;</span> name=<span class="stringliteral">&quot;repository-allow-receiver-paced-persistence&quot;</span> value=<span class="stringliteral">&quot;1&quot;</span>/&gt;</div><div class="line">             &lt;option type=<span class="stringliteral">&quot;store&quot;</span> name=<span class="stringliteral">&quot;repository-type&quot;</span> value=<span class="stringliteral">&quot;disk&quot;</span>/&gt;</div><div class="line">             &lt;option type=<span class="stringliteral">&quot;store&quot;</span> name=<span class="stringliteral">&quot;repository-size-threshold&quot;</span> value=<span class="stringliteral">&quot;2048&quot;</span>/&gt;</div><div class="line">             &lt;option type=<span class="stringliteral">&quot;store&quot;</span> name=<span class="stringliteral">&quot;repository-size-limit&quot;</span> value=<span class="stringliteral">&quot;209715200&quot;</span>/&gt;</div><div class="line">             &lt;option type=<span class="stringliteral">&quot;store&quot;</span> name=<span class="stringliteral">&quot;repository-disk-file-size-limit&quot;</span> value=<span class="stringliteral">&quot;1073741824&quot;</span>/&gt;</div><div class="line">             &lt;option type=<span class="stringliteral">&quot;store&quot;</span> name=<span class="stringliteral">&quot;source-flight-size-bytes-maximum&quot;</span> value=<span class="stringliteral">&quot;4194304&quot;</span>/&gt;</div><div class="line">             &lt;option type=<span class="stringliteral">&quot;store&quot;</span> name=<span class="stringliteral">&quot;repository-allow-ack-on-reception&quot;</span> value=<span class="stringliteral">&quot;1&quot;</span>/&gt;</div><div class="line">             &lt;option type=<span class="stringliteral">&quot;store&quot;</span> name=<span class="stringliteral">&quot;repository-disk-write-delay&quot;</span> value=<span class="stringliteral">&quot;1000&quot;</span>/&gt;</div><div class="line">          &lt;/ume-attributes&gt;</div><div class="line">        &lt;/topic&gt;</div><div class="line">      &lt;/topics&gt;</div><div class="line">    &lt;/store&gt;</div><div class="line">  &lt;/stores&gt;</div><div class="line">&lt;/ume-store&gt;</div></div><!-- fragment --><p><br />
  </p>
 <h2><a class="anchor" id="rppcrossfeaturefunctionality"></a>
 RPP Cross Feature Functionality&nbsp;&nbsp;<small><a href="#rppcrossfeaturefunctionality">&lt;-</a></small></h2>
@@ -574,59 +577,51 @@ Persistence Source Events&nbsp;&nbsp;<small><a href="#persistencesourceevents">&
 <tr>
 <th>Event Name </th><th>Type </th><th>Description </th></tr>
 <tr>
-<td>Store Registration Success </td><td>Source Event </td><td><p class="starttd">Delivered once a source has successfully registered with a single store. Event contains flags to show if the source is "old" (i.e. a re-registration) as well as the sequence number that the source should use as its initial sequence number when sending, and the store information</p>
+<td>Store Registration Success </td><td>Source Event </td><td><p class="starttd">Delivered once a source has successfully registered with a single Store. Event contains flags to show if the source is "old" (i.e. a re-registration) as well as the sequence number that the source should use as its initial sequence number when sending, and the Store information. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/UME/api.tag:../API/" href="../API/lbm_8h.html#a99e39b5b7215553654f91f8b74ad98c8">LBM_SRC_EVENT_UME_REGISTRATION_SUCCESS_EX</a>.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>Store Registration Complete </td><td>Source Event </td><td><p class="starttd">Delivered once a source has completed registration with the required store(s). This indicates the source may send as it desires. Event contains the consensus sequence number.</p>
+<td>Store Registration Complete </td><td>Source Event </td><td><p class="starttd">Delivered once a source has completed registration with the required Store(s). This indicates the source may send as it desires. Event contains the consensus sequence number. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/UME/api.tag:../API/" href="../API/lbm_8h.html#a1e46557c499f8e8f97bb7996a1662f26">LBM_SRC_EVENT_UME_REGISTRATION_COMPLETE_EX</a>.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>Store Registration Error </td><td>Source Event </td><td><p class="starttd">Delivered once a source has received an error from the store indicating the requested registration was not granted. Event contains an error message to indicate what happened.</p>
+<td>Store Registration Error </td><td>Source Event </td><td><p class="starttd">Delivered once a source has received an error from the Store indicating the requested registration was not granted. Event contains an error message to indicate what happened. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/UME/api.tag:../API/" href="../API/lbm_8h.html#ab030d061f44d60babc7d9efba6769cc2">LBM_SRC_EVENT_UME_REGISTRATION_ERROR</a>.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>Store Message Stable </td><td>Source Event </td><td><p class="starttd">Delivered once a message is stable at a single store. Event contains the message sequence number and indicates if the message meets Intergroup and/or Intragroup stability requirements. Also includes the store information.</p>
+<td>Store Message Stable </td><td>Source Event </td><td><p class="starttd">Delivered once a message is stable at a single Store. Event contains the message sequence number and indicates if the message meets Intergroup and/or Intragroup stability requirements. Also includes the Store information. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/UME/api.tag:../API/" href="../API/lbm_8h.html#acf1cedd5755e63083db63f3d45e45df6">LBM_SRC_EVENT_UME_MESSAGE_STABLE_EX</a>.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>Store Message Not Stable </td><td>Source Event </td><td><p class="starttd">Delivered once a message's <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umemessagestabilitylifetimesource">ume_message_stability_lifetime (source)</a> has expired. The source no longer retransmits the message to the store.</p>
+<td>Store Message Not Stable </td><td>Source Event </td><td><p class="starttd">Delivered once a message's <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umemessagestabilitylifetimesource">ume_message_stability_lifetime (source)</a> has expired. The source no longer retransmits the message to the Store. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/UME/api.tag:../API/" href="../API/lbm_8h.html#a0d66ad81998e457acd6f37c2c312469f">LBM_SRC_EVENT_UME_MESSAGE_NOT_STABLE</a>.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>Delivery Confirmation </td><td>Source Event </td><td><p class="starttd">Delivered once a message has been confirmed as delivered and processed by a receiving application. Event contains the message sequence number as well as indications whether the message has met the unique confirmations requirement. Also contains the receiver's Registration ID or Session ID.</p>
+<td>Delivery Confirmation </td><td>Source Event </td><td><p class="starttd">Delivered once a message has been confirmed as delivered and processed by a receiving application. Event contains the message sequence number as well as indications whether the message has met the unique confirmations requirement. Also contains the receiver's Registration ID or Session ID. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/UME/api.tag:../API/" href="../API/lbm_8h.html#ae7124621f7cab5925ed8354690d736f9">LBM_SRC_EVENT_UME_DELIVERY_CONFIRMATION_EX</a>.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>Store Unresponsive </td><td>Source Event </td><td><p class="starttd">Delivered once a store is seen to be unresponsive due to failure or network disconnect. Event contains a message with more details suitable for logging. If a majority of a source's configured stores are unresponsive, the application will not be allowed to send messages.</p>
+<td>Store Unresponsive </td><td>Source Event </td><td><p class="starttd">Delivered once a Store is seen to be unresponsive due to failure or network disconnect. Event contains a message with more details suitable for logging. If a majority of a source's configured Stores are unresponsive, the application will not be allowed to send messages. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/UME/api.tag:../API/" href="../API/lbm_8h.html#a9505bdf346c03c9751b7d1c3755d4843">LBM_SRC_EVENT_UME_STORE_UNRESPONSIVE</a>.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>Store Message Reclaimed </td><td>Source Event </td><td><p class="starttd">Delivered once a message has passed through retention and is about to be released from memory or disk. Event contains the message sequence number. (Reclaim refers to storage space reclamation.)</p>
+<td>Store Message Reclaimed </td><td>Source Event </td><td><p class="starttd">Delivered once a message has passed through retention and is about to be released from memory or disk. Event contains the message sequence number. (Reclaim refers to storage space reclamation.) See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/UME/api.tag:../API/" href="../API/lbm_8h.html#a91689d8826be0160f64358ccfcff2877">LBM_SRC_EVENT_UME_MESSAGE_RECLAIMED_EX</a>.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>Store Forced Reclaim </td><td>Callback </td><td><p class="starttd">Indicates a message is being forcibly released because the memory size limit (<a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/UME/config.tag:../Config/" href="../Config/grplatejoin.html#retransmitretentionsizelimitsource">retransmit_retention_size_limit (source)</a>) has been exceeded or the message's <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_13/29West/lbm/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umemessagestabilitylifetimesource">ume_message_stability_lifetime (source)</a> has expired. Event contains the message sequence number.</p>
+<td>Store Forced Reclaim </td><td>Callback </td><td><p class="starttd">Indicates a message is being forcibly released because the memory size limit (<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grplatejoin.html#retransmitretentionsizelimitsource">retransmit_retention_size_limit (source)</a>) has been exceeded or the message's <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umemessagestabilitylifetimesource">ume_message_stability_lifetime (source)</a> has expired. Event contains the message sequence number. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeforcereclaimfunctionsource">ume_force_reclaim_function (source)</a>.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>Flight Size Notification </td><td>Callback </td><td><p class="starttd">Indicates that the number of in-flight messages for a source has exceeded or fallen below the configured flight size limit for a source. The event indicates if the flight size has been exceeded (OVER) by a new message send or that a message recently stabilized has reduced the number of in flight messages to less than the flight size limit (UNDER).</p>
+<td>Flight Size Notification </td><td>Source Event </td><td><p class="starttd">Indicates that the number of in-flight messages for a source has exceeded or fallen below the configured flight size limit for a source. The event indicates if the flight size has been exceeded (OVER) by a new message send or that a message recently stabilized has reduced the number of in flight messages to less than the flight size limit (UNDER). See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/UME/api.tag:../API/" href="../API/lbm_8h.html#a6d75dfecae9635b61c289efa3a8aa017">LBM_SRC_EVENT_FLIGHT_SIZE_NOTIFICATION</a>.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>RPP Source Registration Success </td><td>Source Event </td><td><p class="starttd">Delivered once a source has successfully registered with a single store as a RPP source. The event contains either the RegID or Session ID, the sequence number of the last message stored for the source and store information.</p>
+<td>Source Deregistration Success </td><td>Source Event </td><td><p class="starttd">Delivered once a source successfully deregisters from an individual Store. The event contains either the RegID or Session ID, the sequence number of the last message stored for the source and Store information. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/UME/api.tag:../API/" href="../API/lbm_8h.html#a161b30d489f39fde9ead22bea7e13c83">LBM_SRC_EVENT_UME_DEREGISTRATION_SUCCESS_EX</a>.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>RPP Source Registration Failure </td><td>Source Event </td><td><p class="starttd">Delivered once a source has received an error from the store indicating the requested registration was not granted. Event contains an error message to indicate what happened.</p>
-<p class="endtd"></p>
-</td></tr>
-<tr>
-<td>RPP Source Deregistration Success </td><td>Source Event </td><td><p class="starttd">Delivered once a source successfully deregisters from an individual store. The event contains either the RegID or Session ID, the sequence number of the last message stored for the source and store information.</p>
-<p class="endtd"></p>
-</td></tr>
-<tr>
-<td>RPP Source Deregistration Complete </td><td>Source Event </td><td>Delivered once UM receives a successful deregistration event from all stores. </td></tr>
+<td>Source Deregistration Complete </td><td>Source Event </td><td>Delivered once UM receives a successful deregistration event from all Stores. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/UME/api.tag:../API/" href="../API/lbm_8h.html#acd799cdd68375462a2b6dec522e0250b">LBM_SRC_EVENT_UME_DEREGISTRATION_COMPLETE_EX</a>. </td></tr>
 </table>
 <p><br />
  </p>
@@ -639,59 +634,82 @@ Persistence Receiver Events&nbsp;&nbsp;<small><a href="#persistencereceiverevent
 <p class="endtd"></p>
 </th></tr>
 <tr>
-<td>Store Registration Success </td><td>Message </td><td><p class="starttd">Delivered once a receiver has successfully registered with a single store. Message contains flags to show if the receiver is "old" (i.e. Not a new registration) as well as the sequence number that the receiver should use as its low sequence number, and the store information. In addition, the event contains the source's Registration ID or Session ID and the receiver's Registration ID or Session ID.</p>
+<td>Store Registration Success </td><td>Message </td><td><p class="starttd">Delivered once a receiver has successfully registered with a single Store. Message contains flags to show if the receiver is "old" (i.e. Not a new registration) as well as the sequence number that the receiver should use as its low sequence number, and the Store information. In addition, the event contains the source's Registration ID or Session ID and the receiver's Registration ID or Session ID. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/UME/api.tag:../API/" href="../API/lbm_8h.html#acae32fc8bfc50769993fcea62e553bd8">LBM_MSG_UME_REGISTRATION_SUCCESS_EX</a>.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>Store Registration Complete </td><td>Message </td><td><p class="starttd">Delivered once a receiver has completed registration with the store(s) required. This indicates the receiver may now receive data. Message contains the consensus sequence number.</p>
+<td>Store Registration Complete </td><td>Message </td><td><p class="starttd">Delivered once a receiver has completed registration with the Store(s) required. This indicates the receiver may now receive data. Message contains the consensus sequence number. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/UME/api.tag:../API/" href="../API/lbm_8h.html#ab0571ebaf7704333a5503d1c0668a989">LBM_MSG_UME_REGISTRATION_COMPLETE_EX</a>.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>RPP Receiver Registration Success </td><td>Message </td><td><p class="starttd">Delivered once a receiver has successfully registered with a single store as a RPP receiver. Message contains either the RegID or Session ID, the sequence number of the last message stored for the source and store information.</p>
+<td>Store Registration Failure </td><td>Message </td><td><p class="starttd">Delivered once a receiver has received an error from the Store indicating the requested registration was not granted. Event contains an error message to indicate what happened. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/UME/api.tag:../API/" href="../API/lbm_8h.html#aeb0203ec0c560a60c3b97017afc61ada">LBM_MSG_UME_REGISTRATION_ERROR</a>.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>RPP Receiver Registration Failure </td><td>Message </td><td><p class="starttd">Delivered once a receiver has received an error from the store indicating the requested registration was not granted. Event contains an error message to indicate what happened.</p>
+<td>Receiver Deregistration Success </td><td>Message </td><td><p class="starttd">Delivered once a receiver successfully deregisters from an individual Store. The message contains either the RegID or Session ID for the receiver and the source, the sequence number of the last message stored for the source and Store information. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/UME/api.tag:../API/" href="../API/lbm_8h.html#ac6a7a25ddf1e95d30d686b967fd7e5c9">LBM_MSG_UME_DEREGISTRATION_SUCCESS_EX</a>.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>RPP Receiver Deregistration Success </td><td>Message </td><td><p class="starttd">Delivered once a receiver successfully deregisters from an individual store. The message contains either the RegID or Session ID for the receiver and the source, the sequence number of the last message stored for the source and store information.</p>
+<td>Receiver Deregistration Complete </td><td>Message </td><td><p class="starttd">Delivered once UM receives a successful deregistration event from all Stores. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/UME/api.tag:../API/" href="../API/lbm_8h.html#a86121aa40ecebeaa5c17e711dcd76b96">LBM_MSG_UME_DEREGISTRATION_COMPLETE_EX</a>.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>RPP Receiver Deregistration Complete </td><td>Message </td><td><p class="starttd">Delivered once UM receives a successful deregistration event from all stores.</p>
+<td>Store Registration Change </td><td>Message </td><td><p class="starttd">Delivered once a change in Store information is received from the source. The extent of the change is included in a message suitable for logging. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/UME/api.tag:../API/" href="../API/lbm_8h.html#ac12f55e0cdd14bd4d389bb3ef3afded3">LBM_MSG_UME_REGISTRATION_CHANGE</a>.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>Store Registration Error </td><td>Message </td><td><p class="starttd">Delivered once a receiver has received an error from the store indicating the requested registration was not granted. Message contains an error message to indicate what happened.</p>
+<td>Store Retransmission </td><td>Message </td><td><p class="starttd">Retransmissions from recovery come in as normal messages with a flag indicating their status as a retransmission. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/UME/api.tag:../API/" href="../API/lbm_8h.html#abae94fa27ea855156f5aac9962d5435c">LBM_MSG_FLAG_UME_RETRANSMIT</a> and <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/UME/api.tag:../API/" href="../API/lbm_8h.html#a2b086d6bd8088880fe53f8b82d3d6eec">LBM_MSG_FLAG_OTR</a>.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>Store Registration Change </td><td>Message </td><td><p class="starttd">Delivered once a change in store information is received from the source. The extent of the change is included in a message suitable for logging.</p>
+<td>Store Registration Function </td><td>Callback </td><td><p class="starttd">Called once a receiver receives Store information from a source and UM desires to know the RegID to use for the receiver. Callback passes the source RegID, the Store information, and the source transport name. The return value is the RegID that UM should request to use from the Store. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeregistrationextendedfunctionreceiver">ume_registration_extended_function (receiver)</a>.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>Store Retransmission </td><td>Message </td><td><p class="starttd">Retransmissions from recovery come in as normal messages with a flag indicating their status as a retransmission.</p>
-<p class="endtd"></p>
-</td></tr>
-<tr>
-<td>Store Registration Function </td><td>Callback </td><td><p class="starttd">Called once a receiver receives store information from a source and UM desires to know the RegID to use for the receiver. Callback passes the source RegID, the store information, and the source transport name. The return value is the RegID that UM should request to use from the store.</p>
-<p class="endtd"></p>
-</td></tr>
-<tr>
-<td>Store Recovery Sequence Number Function </td><td>Callback </td><td>Called once registration is about to complete and the low sequence number must be determined. Callback passes the highest sequence number seen from the source and the consensus sequence number from the stores. </td></tr>
+<td>Store Recovery Sequence Number Function </td><td>Callback </td><td>Called once registration is about to complete and the low sequence number must be determined. Callback passes the highest sequence number seen from the source and the consensus sequence number from the Stores. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umerecoverysequencenumberinfofunctionreceiver">ume_recovery_sequence_number_info_function (receiver)</a>. </td></tr>
 </table>
 <p><br />
- </p>
-<h2><a class="anchor" id="persistencecontextevents"></a>
-Persistence Context Events&nbsp;&nbsp;<small><a href="#persistencecontextevents">&lt;-</a></small></h2>
-<p>The following events are available for the context of source and receiver applications.</p>
-<table class="doxtable">
-<tr>
-<td>Event Name </td><td>Type </td><td>Description </td></tr>
-<tr>
-<td>Flight Size Notification </td><td>Context Event </td><td>Indicates that the number of in-flight Multicast Immediate Messages has exceeded or fallen below the configured flight size limit. The event indicates if the flight size has been exceeded (OVER) by a new message send or that a message recently stabilized has reduced the number of in flight messages to less than the flight size limit (UNDER). </td></tr>
-</table>
+<br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+</p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.8.11-->
