@@ -7,6 +7,7 @@ var umeprofile_8h =
     [ "LBM_SRP_LBMC_HDR_SZ", "umeprofile_8h.html#aa79b3d79fa2de9ef50fc5239494418cf", null ],
     [ "LBM_SRP_MAX_PATH_STRLEN", "umeprofile_8h.html#a45b2f2f6bd7aada69ad890792e0825ab", null ],
     [ "LBM_SRP_TOPICNAME_MAX_LEN", "umeprofile_8h.html#a976985ff7576fa632066f966ebcf3bcb", null ],
+    [ "UMEStoreExpDLL", "umeprofile_8h.html#a6ceef51ca8aa36a735ae7676e7ae318e", null ],
     [ "lbm_srp_repo_msg_t", "umeprofile_8h.html#aa2358aa322c336bc8019d2c73564d725", null ],
     [ "lbm_srp_repo_rcvr_t", "umeprofile_8h.html#add3651d4040c47e18b28037497acb6fb", null ],
     [ "lbm_srp_repo_t", "umeprofile_8h.html#a7a7d2904d9d432fe8a45d83766479932", null ],
@@ -44,9 +45,9 @@ var umeprofile_8h =
       [ "LBM_SRP_CACHE_MSG_READ_LENGTH_MISMATCH", "umeprofile_8h.html#a819274c26b1852e5c6e6e5d0886d592caeb08d55d014bf52570780f394ffd7c0d", null ],
       [ "LBM_SRP_CACHE_DERIVED_LOW_SQN_MISMATCH", "umeprofile_8h.html#a819274c26b1852e5c6e6e5d0886d592cab1ec671818713916048599644f18cc44", null ]
     ] ],
-    [ "lbm_srp_create", "umeprofile_8h.html#aec84332e2bbb5e4d27a0703ed2568877", null ],
-    [ "lbm_srp_delete", "umeprofile_8h.html#a7db2559f876d023c4ad52fc0ddff1aaf", null ],
-    [ "lbm_srp_free_repo_state", "umeprofile_8h.html#a7d42a44d9383c34ffb6de59f1e8fd9d2", null ],
-    [ "lbm_srp_get_repo_message", "umeprofile_8h.html#aef81e49d9e25088de8fe6cfbf1c259a6", null ],
-    [ "lbm_srp_get_repo_state", "umeprofile_8h.html#a77ca8bf5287fe50f7375ca0163f8d1e4", null ]
+    [ "lbm_srp_create", "umeprofile_8h.html#a7cbe29f232a6c3123286a97ac2b5a3f7", null ],
+    [ "lbm_srp_delete", "umeprofile_8h.html#a99a7efb5c423f5a3c9cf10891c89c88b", null ],
+    [ "lbm_srp_free_repo_state", "umeprofile_8h.html#aefbd012de930c9c47172ee305e2ae8af", null ],
+    [ "lbm_srp_get_repo_message", "umeprofile_8h.html#a0324123a655d0aeaefb4ee81092dc7dd", null ],
+    [ "lbm_srp_get_repo_state", "umeprofile_8h.html#a8142a85b874de9fc5f01d98dfea0eac8", null ]
 ];

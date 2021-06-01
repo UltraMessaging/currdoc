@@ -1,0 +1,237 @@
+/*
+  All of the documentation and software included in this and any
+  other Informatica Corporation Ultra Messaging Releases
+  Copyright (C) Informatica Corporation. All rights reserved.
+
+  Redistribution and use in source and binary forms, with or without
+  modification, are permitted only as covered by the terms of a
+  valid software license agreement with Informatica Corporation.
+
+  Copyright (C) 2004-2021, Informatica Corporation. All Rights Reserved.
+
+  THE SOFTWARE IS PROVIDED "AS IS" AND INFORMATICA DISCLAIMS ALL WARRANTIES
+  EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION, ANY IMPLIED WARRANTIES OF
+  NON-INFRINGEMENT, MERCHANTABILITY OR FITNESS FOR A PARTICULAR
+  PURPOSE.  INFORMATICA DOES NOT WARRANT THAT USE OF THE SOFTWARE WILL BE
+  UNINTERRUPTED OR ERROR-FREE.  INFORMATICA SHALL NOT, UNDER ANY CIRCUMSTANCES, BE
+  LIABLE TO LICENSEE FOR LOST PROFITS, CONSEQUENTIAL, INCIDENTAL, SPECIAL OR
+  INDIRECT DAMAGES ARISING OUT OF OR RELATED TO THIS AGREEMENT OR THE
+  TRANSACTIONS CONTEMPLATED HEREUNDER, EVEN IF INFORMATICA HAS BEEN APPRISED OF
+  THE LIKELIHOOD OF SUCH DAMAGES.
+*/
+
+syntax = "proto3";
+package lbmmon;
+
+/* option java_package = "com.informatica.um.monitoring.proto3"; */
+option java_package = "com.latencybusters.lbm";
+option java_outer_classname = "UMPMonProtos";
+
+import "um_mon_attributes.proto";
+
+message UMPMonMsg {
+
+	message Configs {
+
+		enum TopicType {
+			TOPIC_TYPE_DIRECT = 0; /* sync'd to UMESTORE_DMON_TOPIC_TYPE_DIRECT */
+			TOPIC_TYPE_PCRE = 1;   /* sync'd to UMESTORE_DMON_TOPIC_TYPE_PCRE */
+			TOPIC_TYPE_REGEXP = 2; /* sync'd to UMESTORE_DMON_TOPIC_TYPE_REGEXP */
+		}
+
+		message PatternConfig {
+			TopicType topic_type = 1;
+			string pattern = 2;
+		}
+
+		message TopicConfig {
+ 
+			message RepoConfig {
+
+				message RcvConfig {
+					uint32 rcv_regid = 1;
+					uint32 src_regid = 2;
+					uint32 dmon_topic_idx = 3;
+					uint64 rcv_session_id = 4;
+					uint32 transport_idx = 5;
+					uint32 topic_idx = 6;
+					uint32 domain_id = 7;
+					uint32 ip_addr = 8;
+					uint32 port = 9;
+				}
+  
+				enum RepositoryType {
+					REPO_TYPE_NOCACHE = 0;    /* sync'd to UMESTORE_DMON_REPO_TYPE_NOCACHE */
+					REPO_TYPE_MEMORY = 1;     /* sync'd to UMESTORE_DMON_REPO_TYPE_MEMORY */
+					REPO_TYPE_DISK = 2;       /* sync'd to UMESTORE_DMON_REPO_TYPE_DISK */
+					REPO_TYPE_REDUCED_FD = 3; /* sync'd to UMESTORE_DMON_REPO_TYPE_REDUCED_FD */
+				}
+
+				enum AllowAckOnReception {
+					DO_NOT_ALLOW_ACK_ON_RECEPTION = 0;
+					ALLOW_ACK_ON_RECEPTION = 1;
+				}
+
+				uint32 src_regid = 1;
+				uint32 dmon_topic_idx = 2;
+				string otid = 3;
+				uint32 src_domain_id = 4;
+				uint64 src_session_id = 5;
+				uint64 src_flightsz_bytes = 6;
+				uint32 repo_sz_threshold = 7;
+				uint32 repo_sz_limit = 8;
+				uint64 repo_disk_sz_limit = 9;
+				uint32 repo_disk_write_delay = 10;
+				RepositoryType repository_type = 11;
+				AllowAckOnReception allow_ack_on_reception = 12;
+				uint32 age_threshold = 13;
+				uint32 disk_max_write_aiocbs = 14;
+				uint32 disk_max_read_aiocbs = 15;
+				uint32 disk_aio_buffer_len = 16;
+				string source_string = 17;
+				repeated RcvConfig rcv_configs = 18;
+			}
+
+			uint32 dmon_topic_idx = 1;
+			string topic_name = 2;
+			repeated RepoConfig repo_configs = 3;
+		}
+
+		string lbm_version = 1;
+		string smartheap_version = 2;
+		string store_name = 3;
+		uint32 store_idx = 4;
+		uint32 ip_addr = 5;
+		uint32 port = 6;
+		string disk_cache_dir_name = 7;
+		string disk_state_dir_name = 8;
+		uint32 max_retransmission_processing_rate = 9;
+		uint32 src_count = 10;
+		uint32 context_id = 11;
+		repeated PatternConfig pattern_configs = 12;
+		repeated TopicConfig topic_configs = 13;
+
+	}
+
+	message Stats {
+
+		message SmartHeapStat {
+			uint64 poolsize = 1;
+			uint64 poolcount = 2;
+			uint64 smallBlockSize = 3;
+			uint64 pageSize = 4;
+		}
+
+		message SrcRepoStat {
+
+			message SrcDiskStat {
+				uint64 max_offset = 1;
+				uint64 num_ios_pending = 2;
+				uint64 num_read_ios_pending = 3;
+				uint64 start_offset = 4;
+				uint64 offset = 5;
+			}
+
+			message RcvStat {
+				uint32 rcv_regid = 1;
+				uint32 high_ack_sqn = 2;
+				uint32 flags = 3;
+				uint64 rcv_session_id = 4;
+				uint64 last_activity_timestamp_sec = 5;
+			}
+
+			uint32 src_regid = 1;
+			string topic_name = 2;
+			uint64 src_session_id = 3;
+			uint64 message_map_sz = 4;
+			uint64 memory_sz = 5;
+			uint64 rpp_memory_sz = 6;
+			uint32 lead_sqn = 7;
+			uint32 sync_sqn = 8;
+			uint32 sync_complete_sqn = 9;
+			uint32 trail_sqn = 10;
+			uint32 mem_trail_sqn = 11;
+			uint32 contig_sqn = 12;
+			uint32 high_ulb_sqn = 13;
+			uint32 map_intentional_drops = 14;
+			uint64 uls = 15;
+			uint64 ulbs = 16;
+			uint64 sz_limit_drops = 17;
+			uint32 flags = 18;
+			uint32 rcvr_count = 19;
+			uint64 last_activity_timestamp_sec = 20;
+			SrcDiskStat src_disk_stat = 21;
+			repeated RcvStat rcv_stats = 22;
+
+		}
+
+		uint32 store_idx = 1;
+		uint32 ume_retx_req_rcv_count = 2;
+		uint32 ume_retx_req_serviced_count = 3;
+		uint32 ume_retx_req_drop_count = 4;
+		uint32 ume_retx_req_total_dropped = 5;
+		uint32 ume_retx_stat_interval = 6;
+		uint32 src_count = 7;
+		SmartHeapStat smart_heap_stat = 8;
+		repeated SrcRepoStat src_repo_stats = 9;
+
+	}
+
+	message Events {
+
+		enum EventType {
+			NON_EVENT = 0;
+			STORE_CREATED_EVENT = 1;          /* reported when a store is created */
+			STORE_DELETED_EVENT = 2;          /* reported when a store is deleted */
+			SOURCE_REGISTERED_EVENT = 3;      /* reported when a new source registers */
+			SOURCE_REREGISTERED_EVENT = 4;    /* reported when a source reregisters */
+			SOURCE_DEREGISTERED_EVENT = 5;    /* reported when an existing source deregisters */
+			SOURCE_RECREATED_EVENT = 6;       /* reported when a source is recreated from a state file */
+			SOURCE_DELETED_EVENT = 7;         /* reported when a state file for an existing source is deleted */
+			PROXY_SOURCE_CREATED_EVENT = 8;   /* reported when a proxy source is created */
+			PROXY_SOURCE_DELETED_EVENT = 9;   /* reported when a proxy source is deleted */
+			TOPIC_CREATE_EVENT = 10;          /* reported when a new topic is discovered */
+			RPP_WRITING_EVENT = 11;           /* reported when a receiver paced persistence source starts persisting messages to disk */
+			RPP_REPO_EMPTY_EVENT = 12;        /* reported when a receiver paced persistence source stops persisting messages to disk */
+			RECEIVER_REGISTERED_EVENT = 13;   /* reported when a new receiver registers */
+			RECEIVER_REREGISTERED_EVENT = 14; /* reported when an existing receiver reregisters */
+			RECEIVER_DEREGISTERED_EVENT = 15; /* reported when an existing receiver deregisters */
+			RECEIVER_RECREATED_EVENT = 16;    /* reported when a receiver is recreated from a state file */
+			RECEIVER_DELETED_EVENT = 17;      /* reported when a receiver is deleted from a state file */
+		}
+
+		enum DeletionReasonCode {
+			NOT_APPLICABLE = 0;
+			DELETED = 1;
+			STATE_LIFETIME_EXPIRED = 2;
+			PROXY_SRC_REREGISTERED = 3;
+			PROXY_SRC_STATE_LIFETIME_EXPIRED = 4;
+			SRC_DELETED = 5;
+			SRC_RECREATED = 6;
+		}
+
+		message Event {
+			uint64 timestamp_sec = 1;
+			uint64 timestamp_usec = 2;
+			EventType event_type = 3;
+			uint32 store_idx = 4;
+			uint32 low_sqn = 5;
+			uint32 high_sqn = 6;
+			uint32 lead_sqn = 7;
+			uint32 src_regid = 8;
+			uint32 rcv_regid = 9;
+			uint32 dmon_topic_idx = 10;
+			DeletionReasonCode deletion_reason_code = 11;
+			string topic_name = 12;
+		}
+
+		repeated Event events = 1;
+
+	}
+
+	UMMonAttributes attributes = 1;
+	Configs configs = 2;
+	Stats stats = 3;
+	Events events = 4;
+
+}

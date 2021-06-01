@@ -1,5 +1,5 @@
 /*
-  Copyright (c) 2005-2020 Informatica Corporation  Permission is granted to licensees to use
+  Copyright (C) 2005-2021, Informatica Corporation  Permission is granted to licensees to use
   or alter this software for any purpose, including commercial applications,
   according to the terms laid out in the Software License Agreement.
 
@@ -302,7 +302,7 @@ int handle_src_event(lbm_src_t *src, int event, void *ed, void *cd)
 		}
 		break;
 	default:
-		printf("Unknown source event %d\n", event);
+		printf( "Unhandled source event [%d]. Refer to https://ultramessaging.github.io/currdoc/doc/example/index.html#unhandledcevents for a detailed description.\n", event);
 		break;
 	}
 	return 0;
@@ -443,6 +443,10 @@ void process_cmdline(int argc, char **argv,struct Options *opts)
 					{
 						opts->format = (lbmmon_format_func_t *) lbmmon_format_csv_module();
 					}
+					else if (strcasecmp(optarg, "pb") == 0)
+					{
+						opts->format = (lbmmon_format_func_t *)lbmmon_format_pb_module();
+					}
 					else
 					{
 						++errflag;
@@ -509,7 +513,7 @@ int handle_immediate_msg(lbm_context_t *ctx, lbm_msg_t *msg, void *clientd)
 		break;
 
 		default:
-			printf("Unknown immediate message lbm_msg_t type %x [%s]\n", msg->type, msg->source);
+			printf( "Unhandled receiver event [%d] for immediate_msg from source [%s]. Refer to https://ultramessaging.github.io/currdoc/doc/example/index.html#unhandledcevents for a detailed description.\n", msg->type, msg->source);
 		break;
 	}
 

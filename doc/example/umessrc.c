@@ -1,5 +1,5 @@
 /*
-  Copyright (c) 2005-2020 Informatica Corporation  Permission is granted to licensees to use
+  Copyright (C) 2005-2021, Informatica Corporation  Permission is granted to licensees to use
   or alter this software for any purpose, including commercial applications,
   according to the terms laid out in the Software License Agreement.
 
@@ -96,7 +96,9 @@ const char usage[] =
 "Available options:\n"
 "  -a, --available-data-space  print the length of available data space\n"
 "  -b, --user-supplied-buffer  send messages using a user-supplied buffer\n"
-"  -c, --config=FILE           use LBM configuration file FILE\n"
+"  -c, --config=FILE           Use LBM configuration file FILE.\n"
+"                              Multiple config files are allowed.\n"
+"                              Example:  '-c file1.cfg -c file2.cfg'\n"
 "  -d, --delay=NUM             delay sending for NUM seconds after smart source creation\n"
 "  -D, --deregister			   deregister the smart source after sending messages\n"
 "  -h, --help                  display this help and exit\n"
@@ -166,7 +168,6 @@ struct Options {
 	char transport_options_string[1024];/* Transport options given to lbmmon_sctl_create() */
 	char format_options_string[1024];	/* Format options given to lbmmon_sctl_create()	*/
 	char application_id_string[1024];	/* Application ID given to lbmmon_context_monitor() */
-	char conffname[256];				/* Configuration filename */
 	int delay,linger;					/* Interval to linger before and after sending messages */
 	int latejoin;						/* Flag to enable UME late join functionality */
 	size_t msglen;						/* Length of messages to be sent */
@@ -514,7 +515,7 @@ int handle_ssrc_event(lbm_ssrc_t *ssrc, int event, void *ed, void *cd)
 		}
 		break;
 	default:
-		printf("Unknown smart source event %d\n", event);
+		printf( "Unhandled source event [%d]. Refer to https://ultramessaging.github.io/currdoc/doc/example/index.html#unhandledcevents for a detailed description.\n", event);
 		break;
 	}
 	fflush(stdout);
@@ -726,7 +727,6 @@ void process_cmdline(int argc, char **argv,struct Options *opts)
 	opts->msgs = DEFAULT_MAX_MESSAGES;
 	opts->msgs_per_sec = DEFAULT_MSGS_PER_SEC;
 	opts->channel_number = -1;
-	opts->conffname[0] = '\0';
 	opts->storeip[0] = '\0';
 	opts->storeport[0] = '\0';
 	opts->transport_options_string[0] = '\0';
@@ -751,7 +751,11 @@ void process_cmdline(int argc, char **argv,struct Options *opts)
 				opts->user_supplied_buffer = 1;
 				break;
 			case 'c':
-				strncpy(opts->conffname, optarg, sizeof(opts->conffname));
+				/* Initialize configuration parameters from a file. */
+				if (lbm_config(optarg) == LBM_FAILURE) {
+					fprintf(stderr, "lbm_config: %s\n", lbm_errmsg());
+					exit(1);
+				}
 				break;
 			case 'd':
 				opts->delay = atoi(optarg);
@@ -870,6 +874,10 @@ void process_cmdline(int argc, char **argv,struct Options *opts)
 					if (strcasecmp(optarg, "csv") == 0)
 					{
 						opts->format = (lbmmon_format_func_t *) lbmmon_format_csv_module();
+					}
+					else if (strcasecmp(optarg, "pb") == 0)
+					{
+						opts->format = (lbmmon_format_func_t *)lbmmon_format_pb_module();
 					}
 					else
 					{
@@ -1006,14 +1014,6 @@ int main(int argc, char **argv)
 	if (lbm_log(lbm_log_msg, NULL) == LBM_FAILURE) {
 		fprintf(stderr, "lbm_log: %s\n", lbm_errmsg());
 		exit(1);
-	}
-
-	/* Load LBM/UME configuration from file (if provided) */
-	if (opts->conffname[0] != '\0') {
-		if (lbm_config(opts->conffname) == LBM_FAILURE) {
-			fprintf(stderr, "lbm_config: %s\n", lbm_errmsg());
-			exit(1);
-		}
 	}
 
 	if (opts->msgs_per_sec != 0 && opts->pause_ivl != 0) {

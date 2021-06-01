@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">UM C API
-   &#160;<span id="projectnumber">6.13.1</span>
+   &#160;<span id="projectnumber">6.14</span>
    </div>
   </td>
  </tr>
@@ -73,7 +73,7 @@ $(document).ready(function(){initNavTree('structlbm__msg__ume__deregistration__e
 </div><!--header-->
 <div class="contents">
 
-<p>Structure that holds store deregistration information for the UM receiver after a successful deregistration.  
+<p>Structure that holds Store deregistration information for the UM receiver after a successful deregistration.  
  <a href="structlbm__msg__ume__deregistration__ex__t__stct.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="lbm_8h_source.html">lbm.h</a>&gt;</code></p>
@@ -94,20 +94,20 @@ int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struc
 <tr class="separator:a18e985fa2fd4a7e8e0dcb726926a2182"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0aa9e13f879639d2eabb627591bfe293"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0aa9e13f879639d2eabb627591bfe293"></a>
 <a class="el" href="lbm_8h.html#abdb96b55cc467a75e1f9ec0036dbc14b">lbm_uint_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlbm__msg__ume__deregistration__ex__t__stct.html#a0aa9e13f879639d2eabb627591bfe293">sequence_number</a></td></tr>
-<tr class="memdesc:a0aa9e13f879639d2eabb627591bfe293"><td class="mdescLeft">&#160;</td><td class="mdescRight">The sequence number for the receiver to end at as reported by the store. <br /></td></tr>
+<tr class="memdesc:a0aa9e13f879639d2eabb627591bfe293"><td class="mdescLeft">&#160;</td><td class="mdescRight">The sequence number for the receiver to end at as reported by the Store. <br /></td></tr>
 <tr class="separator:a0aa9e13f879639d2eabb627591bfe293"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa33531a4f352ab8e634e51d41e704691"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa33531a4f352ab8e634e51d41e704691"></a>
 <a class="el" href="lbm_8h.html#a46699a1cfc611df32e6cce3fb5100aae">lbm_ushort_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlbm__msg__ume__deregistration__ex__t__stct.html#aa33531a4f352ab8e634e51d41e704691">store_index</a></td></tr>
-<tr class="memdesc:aa33531a4f352ab8e634e51d41e704691"><td class="mdescLeft">&#160;</td><td class="mdescRight">The store index of the store involved. <br /></td></tr>
+<tr class="memdesc:aa33531a4f352ab8e634e51d41e704691"><td class="mdescLeft">&#160;</td><td class="mdescRight">the Store index of the Store involved <br /></td></tr>
 <tr class="separator:aa33531a4f352ab8e634e51d41e704691"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6827032e1b855702472a2f464d09773d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6827032e1b855702472a2f464d09773d"></a>
 char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlbm__msg__ume__deregistration__ex__t__stct.html#a6827032e1b855702472a2f464d09773d">store</a> [LBM_UME_MAX_STORE_STRLEN]</td></tr>
-<tr class="memdesc:a6827032e1b855702472a2f464d09773d"><td class="mdescLeft">&#160;</td><td class="mdescRight">The store that was registered with. <br /></td></tr>
+<tr class="memdesc:a6827032e1b855702472a2f464d09773d"><td class="mdescLeft">&#160;</td><td class="mdescRight">the Store that was registered with <br /></td></tr>
 <tr class="separator:a6827032e1b855702472a2f464d09773d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Structure that holds store deregistration information for the UM receiver after a successful deregistration. </p>
-<p>This structure is delivered to receiver callback <a class="el" href="lbm_8h.html#ac8dd91be561ad6262ccf3f7f94771cfd">lbm_rcv_cb_proc</a> with <a class="el" href="structlbm__msg__t__stct.html#ab25327dc4b4ebf527106f6e708dbc05f" title="Type of receiver event. ">lbm_msg_t::type</a> set to <a class="el" href="lbm_8h.html#ac6a7a25ddf1e95d30d686b967fd7e5c9">LBM_MSG_UME_DEREGISTRATION_SUCCESS_EX</a>. Cast the <a class="el" href="structlbm__msg__t__stct.html#a9c7d600dd9794c09b82732e2c233392b" title="Data contents of the message if of a message type that carries data. Note that UM does not guarantee ...">lbm_msg_t::data</a> pointer to (lbm_msg_ume_deregistration_ex_t *).</p>
+<div class="textblock"><p>Structure that holds Store deregistration information for the UM receiver after a successful deregistration. </p>
+<p>This structure is delivered to receiver callback <a class="el" href="lbm_8h.html#ac8dd91be561ad6262ccf3f7f94771cfd">lbm_rcv_cb_proc</a> with <a class="el" href="structlbm__msg__t__stct.html#ab25327dc4b4ebf527106f6e708dbc05f" title="Type of receiver event. See C Receiver Events. ">lbm_msg_t::type</a> set to <a class="el" href="lbm_8h.html#ac6a7a25ddf1e95d30d686b967fd7e5c9">LBM_MSG_UME_DEREGISTRATION_SUCCESS_EX</a>. Cast the <a class="el" href="structlbm__msg__t__stct.html#a9c7d600dd9794c09b82732e2c233392b" title="Data contents of the message if of a message type that carries data. Note that UM does not guarantee ...">lbm_msg_t::data</a> pointer to (lbm_msg_ume_deregistration_ex_t *).</p>
 <p>See <a class="el" href="structlbm__msg__ume__deregistration__ex__t__stct.html">lbm_msg_ume_deregistration_ex_t_stct</a> for field definitions. </p>
 </div><hr/>The documentation for this struct was generated from the following file:<ul>
 <li><a class="el" href="lbm_8h_source.html">lbm.h</a></li>

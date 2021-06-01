@@ -1,5 +1,5 @@
 /*
-Copyright (c) 2005-2020 Informatica Corporation  Permission is granted to licensees to use
+Copyright (C) 2005-2021, Informatica Corporation  Permission is granted to licensees to use
 or alter this software for any purpose, including commercial applications,
 according to the terms laid out in the Software License Agreement.
 
@@ -516,6 +516,9 @@ void tnwg_dmon_msg_handler(const char *buffer, int size)
 						printf("                                   Current data bytes enqueued internally: %"PRIu64"\n", COND_SWAP64(msg_swap,p->data_bytes_enqueued));
 						printf("                                   Maximum data bytes enqueued internally: %"PRIu64"\n", COND_SWAP64(msg_swap,p->data_bytes_enqueued_max));
 						printf("                          Configured maximum data bytes allowed in queued: %"PRIu64"\n", COND_SWAP64(msg_swap,p->data_bytes_enqueued_limit));
+                        printf("                              Current UIM Message bytes queued internally: %"PRIu64"\n", COND_SWAP64(msg_swap,p->unicast_msg_bytes_enqueued));
+                        printf("                                         Maximum UIM Message bytes queued: %"PRIu64"\n", COND_SWAP64(msg_swap,p->unicast_msg_bytes_enqueued_max));
+                        printf("                                            UIM Message bytes Queue Limit: %"PRIu64"\n", COND_SWAP64(msg_swap,p->unicast_msg_bytes_enqueued_limit));
 						printf("                                                        Total RTT samples: %"PRIu64"\n", COND_SWAP64(msg_swap,p->rtt_samples));
 						{
 							uint64_t rtt_samples;
@@ -731,7 +734,7 @@ int rcv_handle_msg(lbm_rcv_t *rcv, lbm_msg_t *msg, void *clientd)
 		printf("[%s], no sources found for topic\n", msg->topic_name);
 		break;
 	default:
-		printf("Unknown lbm_msg_t type %x [%s][%s]\n", msg->type, msg->topic_name, msg->source);
+		printf( "Unhandled receiver event [%d] from source [%s] with topic [%s]. Refer to https://ultramessaging.github.io/currdoc/doc/example/index.html#unhandledcevents for a detailed description.\n", msg->type, msg->source, msg->topic_name);
 		break;
 	}
 	/* LBM automatically deletes the lbm_msg_t object unless we retain it. */

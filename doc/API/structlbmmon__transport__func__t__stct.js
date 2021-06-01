@@ -1,5 +1,9 @@
 var structlbmmon__transport__func__t__stct =
 [
+    [ "mAllowDebug", "structlbmmon__transport__func__t__stct.html#a681810fc649efcf6ab87d39574f9c5e9", null ],
+    [ "mControlMessageReceive", "structlbmmon__transport__func__t__stct.html#a64bbb887a6594e08a9ff0fe8517d608e", null ],
+    [ "mControlMessageResponse", "structlbmmon__transport__func__t__stct.html#a626cb102f2d9536aadebfbcaa4cce1ae", null ],
+    [ "mControlMessageTarget", "structlbmmon__transport__func__t__stct.html#afa4a8503fad268dcbce9c1deacfef52d", null ],
     [ "mErrorMessage", "structlbmmon__transport__func__t__stct.html#a70597f9f3b2158f8939586dd03da0c7f", null ],
     [ "mFinishReceiver", "structlbmmon__transport__func__t__stct.html#ad74c1be17e9b013a52b0ff1c460242b9", null ],
     [ "mFinishSource", "structlbmmon__transport__func__t__stct.html#ae802cfc1b7196b944e327aeafc5a3ce6", null ],

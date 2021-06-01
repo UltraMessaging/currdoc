@@ -54,404 +54,277 @@ $(document).ready(function(){initNavTree('monitoring.html','');});
 <div class="title">Monitoring </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>It is important to monitor Ultra Messaging to ensure smooth operation. By tracking the changes in UM statistics over time, you may be able to predict and avoid future overloads. When contacting support to report anomalous behavior, recording UM statistics can greatly assist the support engineers' root cause analysis.</p>
-<p><br />
+<div class="textblock"><p><b>Organizations that use Ultra Messaging should monitor the operation of UM and the resources that UM uses.</b></p>
+<p><a class="anchor" id="whymonitor"></a><br />
  </p>
-<h1><a class="anchor" id="monitoringtransportstatistics"></a>
-Monitoring Transport Statistics&nbsp;&nbsp;<small><a href="#monitoringtransportstatistics">&lt;-</a></small></h1>
-<p>Monitoring the activity on your UM transport sessions is the most important component of your UM monitoring effort. UM provides the following four methods to monitor your UM activities.</p>
-<ul>
+<h1><a class="anchor" id="monitoringintroduction"></a>
+Monitoring Introduction&nbsp;&nbsp;<small><a href="#monitoringintroduction">&lt;-</a></small></h1>
+<p>Monitoring lets you: </p><ul>
 <li>
-Use UM API function calls within your applications to retrieve statistics and deliver them to your monitoring application. </li>
+Evaluate the health of the messaging system. </li>
 <li>
-Use the UM Monitoring API to more easily retrieve and send statistics to your monitoring application. </li>
+Identify inefficiencies that can cause latency and limit capacity. </li>
 <li>
-Use Automatic Monitoring to easily employ the UM Monitoring API to monitor UM activity at an UM context level. </li>
+Track utilization trends and prevent future overload. </li>
 <li>
-Use the Ultra Messaging SNMP Agent and MIB (purchased separately to monitor statistics through a Network Management System). See The Ultra Messaging SNMP Agent for detailed information. </li>
+Provide forensic data to help diagnose system trouble. </li>
 </ul>
-<p>Automatic Monitoring is the easiest method to implement using configuration options or environment variables. Since many topics can use multiple transport sessions, UM Monitoring doesn't provide transport information for individual topics. From an Operations point of view, however, the health and behavior of your transport sessions is more correlated to system performance. Although UM Monitoring also provides statistics on event queues, these statistics are more specific to a single application and not a system wide health indication.</p>
-<p>The interval for collecting statistics should be as short as practical. A too-long interval can hide microbursts of traffic. However, a too-short interval can lead to massive amounts of statistical data which needs to be stored and processed.</p>
-<p>Note that certain statistics are initialized to the maximum unsigned value for the fields, i.e. all bits set (-1 if printed signed). This special value indicates that the field has not yet been calculated. This is used for the "min" statistic in a "minimum / maximum" statistics pair. For example, nak_tx_min is initialized to the maximum unsigned long, while nak_tx_max is initialized to zero.</p>
-<p>This section lists some of the more important transport statistics to monitor listed by transport type.</p>
+<p>UM deployments are typically large-scale, loosely-coupled systems, used by many diverse end-user groups who may have little knowledge of each others usage patterns or future plans. Especially when there are resources shared by these groups, it is important to monitor UM's operation and performance characteristics. This can help you avoid problems, and when problems do arise, having monitoring data can be critical to diagnosing the root causes.</p>
 <p><br />
  </p>
-<h2><a class="anchor" id="lbtrmandlbtrureceiverstatistics"></a>
-LBT-RM and LBT-RU Receiver Statistics&nbsp;&nbsp;<small><a href="#lbtrmandlbtrureceiverstatistics">&lt;-</a></small></h2>
-<p>Essentially, aside from msg_rcved and bytes_rcved, if any receiver statistics increment, a problem may exist. The following lists the most important statistics.</p>
-<ul>
+<h2><a class="anchor" id="networkandhostmonitoring"></a>
+Network and Host Monitoring&nbsp;&nbsp;<small><a href="#networkandhostmonitoring">&lt;-</a></small></h2>
+<p>An effective monitoring strategy should include monitoring of the host and network resources that UM depends on. Informatica requests that you monitor and record data from the following sources: </p><ul>
 <li>
-<b>naks_sent</b> means a transport has a gap in sequence numbers, which can be recoverable or unrecoverable loss. </li>
+Network equipment (switches, routers, firewalls). Includes packet drops at ports and trunks. Often also includes always-running packet capture (for example, <a href="https://www.pico.net/corvil-analytics">Corvil</a>). </li>
 <li>
-<b>unrecovered_txw</b> and unrecovered_tmo loss statistics. Indicates retransmissions not delivered to a receiver. (The receiving application will have received a LBM_MSG_UNRECOVERABLE_LOSS or LBM_MSG_UNRECOVERABLE_LOSS_BURST log message via its receive callback, which should be found in the streaming or API log file. </li>
-<li>
-<b>lbm_msgs_no_topic_rcved</b> indicates that receivers may be doing too much topic filtering (wasting CPU resource) because they are processing messages in which they have no interest. If this statistic is greater than 25% of msgs_rcvd, a problem may exist or topics may need to be distributed to different transport sessions. </li>
-<li>
-<b>dgrams_dropped_*</b> - Indicates the reception of invalid datagrams, e.g. a non-UM datagram or datagram from an incompatible version. </li>
+Hosts. Includes CPU load, memory usage, hardware errors, and packet drops (kernel and user sockets). Where possible, monitor resource usage per-process. </li>
 </ul>
-<p>For additional information, see <a class="el" href="ummonitoringstatistics.html#monitoringreceivingstatistics">Monitoring Receiving Statistics</a>.</p>
+<p>There are many vendors of monitoring technology that do a good job of recording and visualizing network and host statistics and logged events. Your operations staff should have fast and easy access to this monitoring data. Ideally, your monitoring tools will raise alerts when problems are detected.</p>
+<p>Detailed discussion of host and network monitoring is beyond the scope of the Ultra Messaging documentation.</p>
 <p><br />
  </p>
-<h2><a class="anchor" id="lbtrmandlbtrusourcestatistics"></a>
-LBT-RM and LBT-RU Source Statistics&nbsp;&nbsp;<small><a href="#lbtrmandlbtrusourcestatistics">&lt;-</a></small></h2>
-<p>The following lists the most important statistics.</p>
-<ul>
+<h2><a class="anchor" id="ummonitoring"></a>
+UM Monitoring&nbsp;&nbsp;<small><a href="#ummonitoring">&lt;-</a></small></h2>
+<p>Broadly speaking, there are three kinds of UM monitoring data that should be monitored and recorded: </p><ul>
 <li>
-<b>rxs_sent</b> indicates that some lost messages are being recovered, but the reason for the loss should be investigated and corrected. </li>
+UM events. This can be from either user applications or UM daemons (Store, DRO, etc). Events are typically logged and saved to local log files. </li>
 <li>
-<b>naks_shed</b> indicates the number of retransmission requests (NAKs) the source transport has not fulfilled, sending a NCF instead. This statistics can help pinpoint transport bottlenecks, such as the configuration options <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Operations/config.tag:../Config/" href="../Config/grptransportlbtrmoperation.html#transportlbtrmretransmitratelimitcontext">transport_lbtrm_retransmit_rate_limit (context)</a> and <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Operations/config.tag:../Config/" href="../Config/grptransportlbtruoperation.html#transportlbtruretransmitratelimitcontext">transport_lbtru_retransmit_rate_limit (context)</a>. </li>
-</ul>
-<p>For additional information, see <a class="el" href="ummonitoringstatistics.html#monitoringsendingstatistics">Monitoring Sending Statistics</a>.</p>
-<p><br />
- </p>
-<h2><a class="anchor" id="tcpstatistics"></a>
-TCP Statistics&nbsp;&nbsp;<small><a href="#tcpstatistics">&lt;-</a></small></h2>
-<p>Receiver statistic <b>lbm_msgs_no_topic_rcvd</b> indicates that receivers may be doing too much topic filtering (wasting CPU resource) because they are processing messages in which they have no interest. If this statistic is greater than 25% of msgs_rcvd, a problem may exist or topics may need to be distributed to different transport sessions.</p>
-<p><br />
- </p>
-<h2><a class="anchor" id="lbtipcstatistics"></a>
-LBT-IPC Statistics&nbsp;&nbsp;<small><a href="#lbtipcstatistics">&lt;-</a></small></h2>
-<p>Receiver statistic <b>lbm_msgs_no_topic_rcvd</b> indicates that receivers may be doing too much topic filtering (wasting CPU resource) because they are processing messages in which they have no interest. If this statistic is greater than 25% of msgs_rcvd, a problem may exist or topics may need to be distributed to different transport sessions.</p>
-<p><br />
- </p>
-<h1><a class="anchor" id="monitoringeventqueues"></a>
-Monitoring Event Queues&nbsp;&nbsp;<small><a href="#monitoringeventqueues">&lt;-</a></small></h1>
-<p>The following lists the most important statistics.</p>
-<ul>
+UM Library Statistical data. This can be from user applications or from UM daemons, and mostly contains information about data UM transports. </li>
 <li>
-data_msgs &amp; events - Total data messages and events enqueued - check these not growing beyond pre-defined bounds </li>
-<li>
-age_mean &amp; age_max - If an application uses a receive-side event queue for message delivery rather than direct callbacks, this indicates average and longest time messages wait on that queue before the application starts processing them. </li>
-<li>
-data_msgs_svc_mean &amp; data_msgs_svc_max - indicates average and longest time the application spends processing each event-queued message. </li>
-</ul>
-<p>For more information, see <a class="el" href="ummonitoringstatistics.html#monitoringeventqueuestatistics">Monitoring Event Queue Statistics</a>.</p>
-<p><br />
- </p>
-<h1><a class="anchor" id="monitoringapplicationlogmessages"></a>
-Monitoring Application Log Messages&nbsp;&nbsp;<small><a href="#monitoringapplicationlogmessages">&lt;-</a></small></h1>
-<p>UM returns log messages to your application when conditions warrant. Your applications can decide what messages to collect and log. Most UM development teams are concerned with the efficiency and performance of their applications and therefore will log any messages returned to their applications from UM. It may be helpful to meet with your UM development team to learn exactly what they log and how best to monitor the log files. Ideally your UM development team includes a timestamp when they log a message, which can be important for comparison of disparate data, such as CPU information to transport statistics.</p>
-<p>See <a class="el" href="umlogmessages.html">UM Log Messages</a> for individual messages and descriptions.</p>
-<p>UM daemons (lbmrd, umestored, tnwgd) automatically log messages to the log files specified in their XML configuration files.</p>
-<p><br />
- </p>
-<h1><a class="anchor" id="monitoringthepersistentstoredaemonumestored"></a>
-Monitoring the Persistent Store Daemon (umestored)&nbsp;&nbsp;<small><a href="#monitoringthepersistentstoredaemonumestored">&lt;-</a></small></h1>
-<p>With the UMP/UMQ products, the Persistent Store provides persistence services to UM sources and receivers. Multiple Stores are typically configured in Quorum/Consensus. Monitor every Store process.</p>
-<p>Monitor the following for all Stores. </p><ul>
-<li>
-Store log files </li>
-<li>
-Application events and log files </li>
-<li>
-Store's internal transport statistics </li>
-<li>
-Persistent Store daemon web monitor </li>
+UM Daemon Statistical data. This is daemon-specific data (Store, DRO, etc). </li>
 </ul>
 <p><br />
  </p>
-<h2><a class="anchor" id="monitoringstorelogfile"></a>
-Monitoring Store Log File&nbsp;&nbsp;<small><a href="#monitoringstorelogfile">&lt;-</a></small></h2>
-<p>The Store generates log messages that are used to monitor its health and operation. There is some flexibility on where those log messages are written; see <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Operations/ume.tag:../UME/" href="../UME/designingpersistentstores.html#storelogfile">Store Log File</a>. Each Store daemon should have its own log file.</p>
-<p>To prevent unbounded disk file growth, the Persistent Store log file can be configured to automatically roll. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Operations/ume.tag:../UME/" href="../UME/designingpersistentstores.html#storerollinglogs">Store Rolling Logs</a> for more information.</p>
-<p>The following lists critical things to monitor in a Store log file:</p>
-<ul>
+<h1><a class="anchor" id="monitoringumapplications"></a>
+Monitoring UM Applications&nbsp;&nbsp;<small><a href="#monitoringumapplications">&lt;-</a></small></h1>
+<p>These are application programs that you, the UM user, have developed. As you write your code, Informatica requests that all applications do the following: </p><ol>
 <li>
-aio_warnings - may indicate a problem with the disk (disk full, cannot write, etc.) </li>
+Record all failed API calls with informational string, typically to a log file. </li>
 <li>
-Proxy source creation - indicates that a source 'went away'. This may be fine, but could also indicate an error condition. Discuss with your UM development team when this event is safe and when it indicates a problem. </li>
+Record all non-message events delivered to the application, typically to a log file, </li>
 <li>
-Rapid log file growth - Log files growing rapidly or growing much more rapidly than normal, may indicate a problem. Look at what types of messages are being written to the log at higher-than-normal rates to see where the issue might be. </li>
-</ul>
-<p>In application log files, look for LBM_SRC_EVENT_UME_REGISTRATION_ERROR messages. These can indicate many different problems that will prevent message persistence. See <a class="el" href="umlogmessages.html">UM Log Messages</a> for details.</p>
+Record all asynchronous UM log messages (strings), typically to a log file. </li>
+<li>
+Record UM library statistics, typically using UM automatic monitoring. </li>
+</ol>
+<p>Items 1-3 typically involve writing to log file on the local host. See <a class="el" href="monitoring.html#applicationlogfile">Application Log File</a>.</p>
+<p>Item 4 typically involves configuring the UM library to publish its statistics to a <a class="el" href="monitoring.html#centralizedcollector">Centralized Collector</a>. The statistics are sampled and published using UM's <a class="el" href="monitoring.html#automaticmonitoring">Automatic Monitoring</a> feature. (There are alternatives; see <a class="el" href="legacymonitoring.html">Legacy Monitoring</a>.)</p>
 <p><br />
  </p>
-<h2><a class="anchor" id="monitoringastoresinternaltransportstatistics"></a>
-Monitoring a Store's Internal Transport Statistics&nbsp;&nbsp;<small><a href="#monitoringastoresinternaltransportstatistics">&lt;-</a></small></h2>
-<p>Since umestored is a proprietary UM application developed with the UM API library, you can configure the daemon with automatic monitoring and then access transport statistics for the daemon's internal sources and receivers. To accomplish this, follow the procedure below.</p>
+<h2><a class="anchor" id="applicationlogfile"></a>
+Application Log File&nbsp;&nbsp;<small><a href="#applicationlogfile">&lt;-</a></small></h2>
+<p>During the design and development of user applications, Informatica requests that users implement the following logging items:</p>
 <ol>
 <li>
-Enable Automatic Monitoring in the UM configuration file cited in the umestored XML configuration file's "&lt;daemon&gt;" element. </li>
-<li>
-For each Store configured in the umestored XML configuration file, add a "&lt;context-name&gt;" element. Automatic Monitoring then maintains complete transport statistics for each Store at the interval set in the UM configuration file. </li>
-</ol>
-<p><br />
- </p>
-<h2><a class="anchor" id="persistentstorewebmonitoring"></a>
-Persistent Store Web Monitoring&nbsp;&nbsp;<small><a href="#persistentstorewebmonitoring">&lt;-</a></small></h2>
-<p>For information about umestored statistics see <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Operations/ume.tag:../UME/" href="../UME/storewebmonitor.html">Store Web Monitor</a>.</p>
-<p>The web address of th Store Web Monitor is configured in the Store XML configuration file. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Operations/ume.tag:../UME/" href="../UME/configurationreferenceforumestored.html#umeelementdaemon">&lt;daemon&gt;</a>.</p>
-<p>You can monitor the following information on the umestored Web Monitor:</p>
+<p class="startli">The UM library delivers events to the application. Informatica requests that applications log all informational and exceptional events. Logs are classified as to their severity, which is useful for automatic log file scanners to detect potential problems and raise alerts.</p>
 <ul>
 <li>
-List of Stores the daemon is running. </li>
-<li>
-List of topics and wildcard topic patterns for each Store, along with registration IDs for the sources sending on the topics. </li>
-<li>
-Source and receiver information for each topic. </li>
-<li>
-Ultra Messaging statistics or transport-level statistics for underlying receivers in the Store. These are similar to the transport statistics mentioned earlier, however they indicate how the Store is communicating with its sources for a given topic. For example, a non-zero number of naks_sent indicates that the Store is experiencing some loss. </li>
+<b>Informatica requests that logs be written with a time stamp with at least second resolution, the log severity level, and the descriptive text of the event being logged.</b> </li>
 </ul>
-<p>TIP: You can build a script that executes the Linux wget command at a 5 second interval to get a web monitor screen shot and save it to a directory or file.</p>
-<p><br />
- </p>
-<h2><a class="anchor" id="persistentstoredaemonstatistics"></a>
-Persistent Store Daemon Statistics&nbsp;&nbsp;<small><a href="#persistentstoredaemonstatistics">&lt;-</a></small></h2>
-<p>The Persistent Store daemon has a simple web server which provides operational information. However, while the web-based presentation is convenient for manual, on-demand monitoring, it is not suitable for automated collection and recording of operational information for historical analysis.</p>
-<p>Starting with UM version 6.11, a feature called "Daemon Statistics" has been added to the Store daemon. This feature supports the background publishing of their operational information via UM messages. System designers can now subscribe to this information for their own automated monitoring systems.</p>
-<p>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Operations/ume.tag:../UME/" href="../UME/storedaemonstatistics.html">Store Daemon Statistics</a> for general information on Daemon Statistics, followed by specific information regarding the Store.</p>
-<p><br />
- </p>
-<h2><a class="anchor" id="detectingpersistentstorefailures"></a>
-Detecting Persistent Store Failures&nbsp;&nbsp;<small><a href="#detectingpersistentstorefailures">&lt;-</a></small></h2>
-<p>You can detect the loss of a Store with the following.</p>
-<ul>
-<li>
-Loss of the Persistent Store's Process ID (PID) </li>
-<li>
-Application log messages stating the loss of connection to the Store </li>
-</ul>
-<p>Stores can also be "too busy" and therefore cannot service source and receiving applications. Sources declare a Store inactive with the <b>LBM_SRC_EVENT_UME_STORE_UNRESPONSIVE</b> event when the Store's activity timeout expires. This can be caused by the following.</p>
-<ul>
-<li>
-Disk is too busy (or when the system starts swapping) </li>
-<li>
-The Store is processing an overly-large load of recovery traffic. You may want to recommend that UM administrators consider a larger quorum / consensus group size. </li>
-</ul>
-<p><br />
- </p>
-<h1><a class="anchor" id="monitoringtheumrouterdaemontnwgd"></a>
-Monitoring the DRO Daemon (tnwgd)&nbsp;&nbsp;<small><a href="#monitoringtheumrouterdaemontnwgd">&lt;-</a></small></h1>
-<p>The Ultra Messaging <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Operations/design.tag:../Design/" href="../Design/fundamentalconcepts.html#umrouter">DRO</a> links disjoint topic resolution domains by forwarding multicast and/or unicast topic resolution traffic ensuring that receivers on the "other" side of the DRO receive the topics to which they subscribe.</p>
-<p>Understand DRO (tnwgd) output traffic and WAN impacts - especially the use of rate limiters.</p>
-<ul>
-<li>
-WAN overrun is the number one source of DRO problems </li>
-<li>
-Test WAN link throughput to determine the real limits of the DRO and environment </li>
-<li>
-Make sure WAN bandwidth can cope with UM and any other traffic </li>
-</ul>
-<p>Review and understand loss conditions unique to using a DRO. Collaborate with your UM development team to ensure the correct tuning and configurations are applied for your messaging system. Also monitor latency over the DRO with the UM sample application lbmpong routinely and monitor output.</p>
-<p>Monitor the following for DROs.</p>
-<ul>
-<li>
-DRO log files </li>
-<li>
-Application events and log files </li>
-<li>
-DRO internal transport statistics </li>
-<li>
-DRO daemon web monitor </li>
-</ul>
-<p><br />
- </p>
-<h2><a class="anchor" id="monitoringumrouterlogfile"></a>
-Monitoring DRO Log File&nbsp;&nbsp;<small><a href="#monitoringumrouterlogfile">&lt;-</a></small></h2>
-<p>The DRO generates log messages that are used to monitor its health and operation. There is some flexibility on where those log messages are written; see <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Operations/gateway.tag:../Gateway/" href="../Gateway/umroutermonitoring.html#umrouterlogmessages">DRO Log Messages</a>. Each DRO should have its own log file.</p>
-<p>To prevent unbounded disk file growth, the DRO log file can be configured to automatically roll. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Operations/gateway.tag:../Gateway/" href="../Gateway/umroutermonitoring.html#umrouterrollinglogs">DRO Rolling Logs</a> for more information.</p>
-<p>The following are important DRO (tnwgd) log messages.</p>
-<p><b>Connection Failure Messages to Monitor:</b></p>
-<ul>
-<li>
-<p class="startli">peer portal [name] failed to connect to peer at [IP:port] via [interface]</p>
+<p>Be aware that different threads might need to write logs asynchronously to each other. Your logger code must be thread-safe.</p>
 <p class="endli"></p>
 </li>
 <li>
-peer portal [name] failed to accept connection (accept) [err]: reason </li>
-</ul>
-<p><b>Lost Connection Messages to Monitor:</b></p>
+<p class="startli">Some of UM events represent the delivery of user data messages. These events do not need to be logged. Other events are informational and are delivered during normal operation, like Beginning of Session (BOS). These should be logged because they can be essential to diagnose problems.</p>
 <ul>
 <li>
-peer portal [name] lost connection to peer at [IP:port] via [interface] </li>
-<li>
-peer portal [name] connection destroyed due to socket failure </li>
-<li>
-peer portal [name] detected dropped inbound connection (read) [err]: reason </li>
-<li>
-peer portal [name] detected dropped inbound connection (zero-len read) </li>
+<b>Informatica requests that all informational (non-message) events be logged.</b> </li>
 </ul>
-<p><b>Peer Messages to Monitor:</b> Dual TCP: </p><ul>
-<li>
-peer portal [name] received connection from [IP:port] </li>
-<li>
-peer portal [name] connected to [IP:port] </li>
-</ul>
-<p>Single TCP: </p><ul>
-<li>
-Acceptor: peer portal [name] received connection from [IP:port] </li>
-<li>
-Initiator: peer portal [name] connected to [IP:port] </li>
-<li>
-DRO Transport Statistics </li>
-</ul>
-<p><br />
- </p>
-<h2><a class="anchor" id="umroutertransportstatistics"></a>
-DRO Transport Statistics&nbsp;&nbsp;<small><a href="#umroutertransportstatistics">&lt;-</a></small></h2>
-<p>Using the "&lt;monitor&gt;" element in a DRO's XML configuration file, you can monitor the transport activity between the DRO and its Topic Resolution Domain. The configuration also provides Context and Event Queue statistics. The statistics output identifies individual portals by name.</p>
-<p><br />
- </p>
-<h2><a class="anchor" id="umrouterwebmonitoring"></a>
-DRO Web Monitoring&nbsp;&nbsp;<small><a href="#umrouterwebmonitoring">&lt;-</a></small></h2>
-<p>The DRO web monitor provides access to a DRO's portal and general statistics and information. The DRO XML configuration file contains the location of the gateway web monitor. The default port is 15305.</p>
-<p>A DRO Web Monitor provides a web page for each endpoint and peer portal configured for the DRO. Peer portals connect DROs and communicate only with other peer portals. Endpoint portals communicate with topic resolution domains. Each statistic display a value for units (messages or fragments) and bytes.</p>
-<p>Important statistics you can monitor on the tnwgd Web Monitor include the following.</p>
-<p><b>Endpoint Send Statistics</b></p>
-<p>Increases in the Endpoint Send Statistics values indicate errors and problems. A separate statistic appears for each of the three types of topic message: transport topic, immediate topic, immediate topicless.</p>
-<ul>
-<li>
-Fragments/bytes dropped due to blocking - Indicates inability to send due to a transport's rate controller. Message rates on other portals probably exceed the rate controller limit on the monitored portal. The DRO's XML configuration file may need to be adjusted. </li>
-<li>
-Fragments/bytes dropped due to error - Indicates a possible network socket or memory failure. </li>
-<li>
-Fragments/Bytes Dropped Due To Fragment Size Error - Indicates a configuration error which should be corrected. Maximum datagram size for all transports must be the same throughout the network. Nonzero indicates fragments were received which were larger than the egress portal's maximum datagram size. </li>
-<li>
-Current/maximum data bytes enqueued - Indicates how much data is currently queued and indicates the maximum amount of data queued because the incoming rate exceeded what the TCP connection could handle. Results in a latency penalty. Size of the queue is limited, so if the limit is exceeded, messages are dropped due to blocking. </li>
-</ul>
-<p><b>Peer Send Statistics</b></p>
-<p>Increases in the Peer Send Statistics values indicate errors and problems.</p>
-<ul>
-<li>
-Fragments/bytes (or messages/bytes) dropped (blocking) - The result of attempting to send too much data via the peer link. </li>
-<li>
-Fragments/bytes (or messages/bytes) dropped (not operational) - Peer connection not yet fully established. The DRO peer could be down or starting up. </li>
-<li>
-Current/maximum data bytes enqueued - Indicates how much data is currently queued and indicates the maximum amount of data queued because the incoming rate exceeded what the TCP connection could handle. Results in a latency penalty. Size of the queue is limited, so if the limit is exceeded, messages are dropped due to blocking. </li>
-<li>
-<p class="startli">Messages or bytes Received / Fragments or bytes Forwarded - Increasing counters indicate communicating peers. Stagnant counters indicate a lack of traffic flow. A sender could be down, receivers on the remote side could have no interest for the topics, the peer connection could have failed.</p>
-<p class="endli"><br />
- </p>
-</li>
-</ul>
-<h2><a class="anchor" id="op-umrouterdaemonstatistics"></a>
-DRO Daemon Statistics&nbsp;&nbsp;<small><a href="#op-umrouterdaemonstatistics">&lt;-</a></small></h2>
-<p>The DRO daemon has a simple web server which provides operational information. However, while the web-based presentation is convenient for manual, on-demand monitoring, it is not suitable for automated collection and recording of operational information for historical analysis.</p>
-<p>Starting with UM version 6.11, a feature called "Daemon Statistics" has been added to the DRO. This feature supports the background publishing of their operational information via UM messages. System designers can now subscribe to this information for their own automated monitoring systems.</p>
-<p>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Operations/ume.tag:../UME/" href="../UME/storedaemonstatistics.html">Store Daemon Statistics</a> for general information on Daemon Statistics, followed by specific information regarding the DRO.</p>
-<p><br />
- </p>
-<h2><a class="anchor" id="detectingumrouterfailures"></a>
-Detecting DRO Failures&nbsp;&nbsp;<small><a href="#detectingumrouterfailures">&lt;-</a></small></h2>
-<p>You can detect the loss of a DRO by the following.</p>
-<ul>
-<li>
-Loss of the DRO's Process ID (PID) </li>
-<li>
-Loss of the DRO's Web Monitor (you can poll the DRO's Web Monitor to be sure it is accessible.) </li>
-<li>
-Monitoring the performance of applications sending messages through the DRO. <ul>
-<li>
-Are applications receiving the appropriate volume of data? </li>
-<li>
-Do you see a high number of retransmissions? </li>
-<li>
-Are applications generating the expected number of actions? Understanding the expected flow and actions is critical and requires collaboration with your UM development team. </li>
-</ul>
+<p class="endli"></p>
 </li>
 <li>
-Monitoring network performance and behavior in and out of the DRO. Understanding your network topology and the expected network traffic through the DRO is critical and requires collaboration with your UM development team. </li>
-</ul>
-<p><br />
- </p>
-<h1><a class="anchor" id="monitoringmessagingsystemresources"></a>
-Monitoring Messaging System Resources&nbsp;&nbsp;<small><a href="#monitoringmessagingsystemresources">&lt;-</a></small></h1>
-<p>In addition to monitoring UM activity, you must also consider the health and activity of your system resources.</p>
+<p class="startli">Many UM event callbacks can deliver a variety of different event types. For example, a receiver callback can be delivered user data messages, Beginning of Session (BOS) events, etc. The application code typically recognizes those events that it is written to recognize, and ignores the others.</p>
 <ul>
 <li>
-CPU usage </li>
-<li>
-Memory Usage </li>
-<li>
-UDP loss (netstat -s) </li>
-<li>
-Latency </li>
+<b>Informatica requests that unrecognized events be logged with their event types.</b> </li>
 </ul>
-<p><br />
- </p>
-<h2><a class="anchor" id="persistentstoresystemconsiderations"></a>
-Persistent Store System Considerations&nbsp;&nbsp;<small><a href="#persistentstoresystemconsiderations">&lt;-</a></small></h2>
-<p>Consider the following system issues regarding Persistent Store monitoring.</p>
-<ul>
-<li>
-<p class="startli">Make sure that the environment in which a Persistent Store daemon (umestored) is started has enough available file descriptors for the number of sources in your environment. UM uses a minimum of 2 file descriptors per UM source in addition to normal UM file descriptors for transports and other objects. You can use ulimit in Linux and Process Explorer on Microsoft Windows to monitor file handles.</p>
-<p class="endli">Note: The reduced-fd repository type uses 5 File Descriptors for the entire Store, regardless of the number of topics, in addition to normal UM file descriptors for transports and other objects. Use of this repository type may impact performance. </p>
+<p class="endli"></p>
 </li>
 <li>
-Monitor system resources (CPU usage, memory, disk space, wait%, memory swapping). </li>
+<p class="startli">The UM library can sometimes detect internal conditions that are not associated with deliverable events or API calls. These are delivered to the application with the "logger callback" (<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#aae14099b91f2919f424e81f20ca10951">lbm_log()</a> for C, <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/Operations/javaapi.tag:../JavaAPI/" href="../JavaAPI/classcom_1_1latencybusters_1_1lbm_1_1LBM.html#ac0bd24d34cdd5039586c8f576c015dec">LBM.setLogger()</a> for Java and .NET).</p>
+<ul>
 <li>
-If the system is about to start swapping, your resources are insufficient for the required system performance. Reconfiguration and/or additional resources will be required. </li>
+<b>Informatica requests that all logger callbacks be logged.</b> </li>
+</ul>
+<p class="endli"></p>
+</li>
+<li>
+<p class="startli">The application calls UM API functions. Each function can return a failed status. In C, the failure is almost always indicated by a return value of -1. In Java and .NET, the failure is almost always indicated by throwing an exception. In either case, UM provides a text string that describes the failure. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a22a4650d3a5b649c84a0c05adedcc055">lbm_errmsg()</a> for C, the exception's <a href="https://docs.oracle.com/javase/7/docs/api/java/lang/Throwable.html#toString()">toString()</a> method for Java, or the exception's <a href="https://docs.microsoft.com/en-us/dotnet/api/system.exception.message?view=net-5.0">Message property</a> for .NET).</p>
+<ul>
+<li>
+<b>Informatica requests that all failed API calls be logged with their descriptive text.</b> </li>
+</ul>
+<p class="endli"></p>
+</li>
+<li>
+<p class="startli">Log files are typically "rolled" (saved and re-created) on a periodic basis (usually daily), and are kept for some period of time before being deleted.</p>
+<ul>
+<li>
+<b>Informatica requests that full logs be retained for at least 1 week.</b> </li>
+</ul>
+<p class="endli"></p>
+</li>
+<li>
+<p class="startli">Recording and saving all this information is necessary to diagnose many user-visible problems. However, errors can be written to the log which are not associated with a user-visible problem. Users should have tools and procedures that alert operators of abnormal logs. This can prevent small problems from becoming big problems.</p>
+<ul>
+<li>
+<b>Informatica requests the use of a log file analysis tool that scans the live log files and reports unusual or exceptional logs and raises alerts that will be noticed by the operations staff.</b> </li>
+</ul>
+<p>(There are many third party real-time log file analysis tools available. A discussion of possible tools is beyond the scope of UM documentation.) </p>
+</li>
+</ol>
+<p><br />
+ </p>
+<h1><a class="anchor" id="monitoringumdaemons"></a>
+Monitoring UM Daemons&nbsp;&nbsp;<small><a href="#monitoringumdaemons">&lt;-</a></small></h1>
+<p>Monitoring the UM daemons is similar to monitoring user applications. Log files and UM library statistics should be monitored.</p>
+<p>Monitoring a daemon's UM library statistics typically involves publishing those statistics to a <a class="el" href="monitoring.html#centralizedcollector">Centralized Collector</a>. The statistics are sampled and published using UM's <a class="el" href="monitoring.html#automaticmonitoring">Automatic Monitoring</a> feature.</p>
+<p>For log files, Informatica requests the use of a log file analysis tool that scans the live log files and reports unusual or exceptional logs and raises alerts that will be noticed by the operations staff.</p>
+<p>(There are many third party real-time log file analysis tools available. A discussion of possible tools is beyond the scope of UM documentation.)</p>
+<p><br />
+ </p>
+<h1><a class="anchor" id="automaticmonitoring"></a>
+Automatic Monitoring&nbsp;&nbsp;<small><a href="#automaticmonitoring">&lt;-</a></small></h1>
+<p>UM applications and UM daemons (Store and DRO) make use of the UM library, which maintains a rich set of statistics. The library statistics consists of data about the health and operation of UM contexts, transport sessions, and event queues.</p>
+<p>The recommended method for monitoring UM library statistics is the automatic monitoring feature. This should be enabled via configuration on user applications and also Store and DRO daemons. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/Operations/config.tag:../Config/" href="../Config/grpautomaticmonitoring.html">Automatic Monitoring Options</a>.</p>
+<p>Note that monitoring has a single instance per process. The configuration options are context-scoped, but do not allow different settings per context. The first context created will define the settings related to automatic monitoring.</p>
+<p>Enabling the automatic monitoring feature will create a context that is configured for reduced system resource usage (sockets and memory). This monitoring context periodically wakes up and samples the library statistics in the current process and publishes them.</p>
+<p>Informatica recommends setting up a separate <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/Operations/design.tag:../Design/" href="../Design/fundamentalconcepts.html#topicresolutiondomain">Topic Resolution Domain</a> for monitoring data. If possible, that TRD should be hosted on a separate network from the main production network (perhaps an administrative "command and control" network). This minimizes the impact of monitoring on application throughput and latency.</p>
+<p>To ease the deployment of monitoring data on an alternate network, Informatica recommends not using multicast. Topic resolution should use <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/Operations/design.tag:../Design/" href="../Design/topicresolutiondescription.html#unicastudptr">Unicast UDP TR</a> or <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/Operations/design.tag:../Design/" href="../Design/topicresolutiondescription.html#tcptr">TCP TR</a> (or both).</p>
+<p><br />
+ </p>
+<h2><a class="anchor" id="automaticmonitoringrecommendations"></a>
+Automatic Monitoring Recommendations&nbsp;&nbsp;<small><a href="#automaticmonitoringrecommendations">&lt;-</a></small></h2>
+<p>The recommended settings to enable automatic monitoring are: </p><pre class="fragment">context     monitor_format pb
+                 (only with UM versions 6.14 and beyond)
+event_queue monitor_format pb
+                 (only if event queues are being used with UM versions 6.14 and beyond)
+context     monitor_transport lbm
+event_queue monitor_transport lbm
+                 (only if event queues are being used)
+context     monitor_interval 600
+event_queue monitor_interval 600
+                 (only if event queues are being used)
+receiver    monitor_interval 600
+                 (warning, may not be appropriate for applications that create large
+                  numbers of receivers; only recommended for UM version 6.14
+                  and beyond and "context monitor_format pb" is used.)
+wildcard_receiver monitor_interval 600
+                 (warning, may not be appropriate for applications that create large
+                  numbers of wildcard receivers; only recommended for UM version 6.14
+                  and beyond and "context monitor_format pb" is used.)
+context     monitor_transport_opts context|default_interface="en0";
+    context|resolver_unicast_daemon="en0"-&gt;10.1.2.3:12000;source|transport=tcp
+                 (must be entered as a single long line; "en0" is a Unix-style interface
+                  name; 10.1.2.3:12000 is the IP and port for the LBMRD daemon)
+event_queue monitor_transport_opts context|default_interface="en0";
+    context|resolver_unicast_daemon="en0"-&gt;10.1.2.3:12000;source|transport=tcp
+                 (only if event queues are being used)
+</pre><p>The 10 minute (600-second) monitoring interval was chosen somewhat arbitrarily; shorter times produce extra data without much extra benefit. However, UM networks with many thousands of applications may need a longer interval - maybe 30 minutes.</p>
+<p>Also, the use of "en0" to define the interface can be done in different ways. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/Operations/config.tag:../Config/" href="../Config/generalconfigurationguidelines.html#specifyinginterfaces">Specifying Interfaces</a>.</p>
+<p>Note that applications running pre-6.14 versions of UM can be configured for automatic monitoring, but not for "monitor_format pb". UM supports a mixture of different versions, with the centralized collector accepting both old and new formats.</p>
+<p><br />
+ </p>
+<h1><a class="anchor" id="centralizedcollector"></a>
+Centralized Collector&nbsp;&nbsp;<small><a href="#centralizedcollector">&lt;-</a></small></h1>
+<p>Once you have applications and daemons publishing statistics, you need an independent program (the monitoring collector) that subscribes to the statistics and records them for subsequent analysis and display.</p>
+<p>UM supports two approaches to centralized monitoring: </p><ul>
+<li>
+<a class="el" href="monitoring.html#monitoringcollectorservicemcs">Monitoring Collector Service (MCS)</a>. Informatica's monitoring program that collects library and daemon statistics for storage in a database. </li>
+<li>
+<a class="el" href="monitoring.html#userdevelopedcollector">User-Developed Collector</a>. Your own centralized monitoring program that collects library and daemon statistics for storage and analysis. </li>
 </ul>
 <p><br />
  </p>
-<h2><a class="anchor" id="sourcesoflatency"></a>
-Sources of Latency&nbsp;&nbsp;<small><a href="#sourcesoflatency">&lt;-</a></small></h2>
-<p>The following are common sources of latency.</p>
-<ul>
+<h2><a class="anchor" id="monitoringcollectorservicemcs"></a>
+Monitoring Collector Service (MCS)&nbsp;&nbsp;<small><a href="#monitoringcollectorservicemcs">&lt;-</a></small></h2>
+<p>The MCS is an independent monitoring data collector program. It subscribes to UM library and daemon statistics and writes the data to a database.</p>
+<p>The MCS needs to be configured. It has an XML configuration file; see <a class="el" href="mcsconfigurationfile.html">MCS Configuration File</a>. In this configuration file, the <a class="el" href="mcsconfigurationfile.html#mcselementconfigfile">MCS Element "&lt;config-file&gt;"</a> references an LBM configuration file.</p>
+<p>See <a class="el" href="manpagesformcs.html">Man Pages for MCS</a> for information on running the MCS.</p>
+<p>As of UM 6.14, the MCS supports writing to <a href="https://www.sqlite.org/">SQLite</a> (the default) or <a href="https://hadoop.apache.org/">HDFS (Apache Hadoop)</a>, selectable by configuration. Note that UM does not ship with a copy of either database software package. The user must install a copy of the desired database on the host where MCS will run.</p>
+<p><a class="anchor" id="mcssqlite"></a><b>SQLite</b></p>
+<p>To use SQLite, you must install it yourself on the host where MCS is intended to run. You should have some familiarity with administering the system. Training you on SQLite's use is beyond the scope of UM documentation.</p>
+<p>MCS is written to convert incoming proto buff messages into JSON, and write the JSON to SQLite using SQLite's jdbc driver. This allows flexible querying of the data.</p>
+<p>You will find the MCS executable the UM package's "bin" directory, along with the other daemon binaries. Also in that directory, you will find the file "ummon_db.sql" which can be used to create the database.</p>
+<p>Here is the contents of "ummon_db.sql" as of UM version 6.14: </p><pre class="fragment">PRAGMA foreign_keys=OFF;
+BEGIN TRANSACTION;
+CREATE TABLE umsmonmsg(message json);
+CREATE TABLE umpmonmsg(message json);
+CREATE TABLE dromonmsg(message json);
+COMMIT;</pre><p>To use SQLite, set <a class="el" href="mcsconfigurationfile.html#mcselementconnector">MCS Element "&lt;connector&gt;"</a> to "sqlite". Also set <a class="el" href="mcsconfigurationfile.html#mcselementpropertiesfile">MCS Element "&lt;properties-file&gt;"</a> to a file which contains properties that the MCS's "sqlite" connector expects: </p><ul>
 <li>
-Loss and recovery </li>
-<li>
-Slow receivers </li>
-<li>
-Wildcard receivers with overly broad interest patterns </li>
-<li>
-High resource utilization </li>
-<li>
-'Busy' applications - messages backed up in event queues. Your UM Development Team can tell you if your UM applications use event queues. </li>
+sqlite_database_path - file path to the SQLite database file. If on Windows, you may use forward slashes or escaped (double) back slashes to separate directories. </li>
 </ul>
+<p>Example sqlite properties file: </p><pre class="fragment">sqlite_database_path=/mcs/ummon.db
+</pre><p><a class="anchor" id="mcshdfs"></a><b>HDFS</b></p>
+<p>To use HDFS, you must install it yourself on the host where MCS is intended to run. You should have some familiarity with administering the system. Training you on HDFS's use is beyond the scope of UM documentation.</p>
+<p>MCS is written to write the protocol buffers directly to HDFS. This allows flexible querying of the data.</p>
+<p>You will find the MCS executable the UM package's "bin" directory, along with the other daemon binaries.</p>
+<p>To use HDFS, set <a class="el" href="mcsconfigurationfile.html#mcselementconnector">MCS Element "&lt;connector&gt;"</a> to "hdfs". Also set <a class="el" href="mcsconfigurationfile.html#mcselementpropertiesfile">MCS Element "&lt;properties-file&gt;"</a> to a file which contains properties that the MCS's "hdfs" connector expects: </p><ul>
+<li>
+hdfs_core_site_file_path - path name of XML resource file containing read-only configuration defaults for hadoop. </li>
+<li>
+hdfs_hdfs_site_file_path - path name of XML resource file containing site-specific configuration for a given hadoop installation. </li>
+</ul>
+<p>See hadoop documentation for details on the resource files.</p>
+<p>Example hdfs properties file: </p><pre class="fragment">hdfs_core_site_file_path=/mcs/hdfs_core.xml
+hdfs_hdfs_site_file_path=/mcs/hdfs_site.xml
+</pre><p><br />
+ </p>
+<h2><a class="anchor" id="userdevelopedcollector"></a>
+User-Developed Collector&nbsp;&nbsp;<small><a href="#userdevelopedcollector">&lt;-</a></small></h2>
+<p>Some UM users take the either the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/Operations/example.tag:../example/" href="../example/index.html#examplelbmmon_c">Example lbmmon.c</a> or the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/Operations/java_example.tag:../java_example/" href="../java_example/index.html#examplelbmmon_java">Example lbmmon.java</a> source file and modify it to create a monitoring application that record received statistics. If you have done this using a pre-6.14 version of UM, you may want to enhance your program to take advantage of capabilities introduced in 6.14.</p>
+<p>Prior to UM version 6.14, different types of published data required different methods for receiving and accessing them. UM library statistics were received using the "lbmmon" library, Store and DRO daemon stats were received as C-style binary data structures, and SRS stats were received as JSON.</p>
+<p>Starting with 6.14, library, Store, and DRO stats have been unified with <a href="https://developers.google.com/protocol-buffers">Google Protocol Buffers</a>.</p>
+<p>Also, the lbmmon library is enhanced with a "passthrough" mode that gives the monitoring application direct access to the protocol buffer messages. (The SRS daemon statistics are not yet available as protocol buffers.)</p>
+<p>The older methods are still functional, but they may not be further enhanced in the future. Informatica recommends migrating to the passthrough mode and the google protocol buffers. To take full advantage of its new capabilities, lbmmon should be run with command-line options: </p><pre class="fragment">  --format=pb --format-opts="passthrough=convert"
+</pre><p> This allows lbmmon to receive both proto buff formatted data as well as CSV formatted data. CSV data is converted to proto buff before delivery to the monitoring application.</p>
+<p>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/Operations/example.tag:../example/" href="../example/index.html#examplelbmmon_c">Example lbmmon.c</a> and/or <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/Operations/java_example.tag:../java_example/" href="../java_example/index.html#examplelbmmon_java">Example lbmmon.java</a> for details on using both the new and older lbmmon APIs.</p>
+<p>You may notice that <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/Operations/java_example.tag:../java_example/" href="../java_example/index.html#examplelbmmon_java">Example lbmmon.java</a> no longer contains print lines of the individual fields of the monitoring data objects. These accesses were moved into the lbmmon Jar file as displayString() methods for each statistics data object to simplify the example source code. For convenience, those methods' source code has been collected into an example file, <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/Operations/java_example.tag:../java_example/" href="../java_example/index.html#exampledisplayString_java">Example displayString.java</a>.</p>
 <p><br />
  </p>
-<h2><a class="anchor" id="runtimediagnostics"></a>
-Runtime Diagnostics&nbsp;&nbsp;<small><a href="#runtimediagnostics">&lt;-</a></small></h2>
-<p>Use the following to validate a healthy system.</p>
-<ul>
+<h1><a class="anchor" id="monitoringformats"></a>
+Monitoring Formats&nbsp;&nbsp;<small><a href="#monitoringformats">&lt;-</a></small></h1>
+<p>The UM library and UM daemons publish their statistics using several different message formats, depending on the type of data being sent. Starting with UM version 6.14, most of those formats are deprecated in favor of a unified message format based on <a href="https://developers.google.com/protocol-buffers">Google Protocol Buffers</a>.</p>
+<p>The data formats are: </p><ul>
 <li>
-UM monitoring metrics are active as a sign of liveness </li>
+CSV - comma-separated values. Option for UM library statistics. </li>
 <li>
-Pre-defined thresholds are not breached in the monitoring systems </li>
+Binary C-style data structures. Option for UM daemons Store and DRO daemon statistics. </li>
 <li>
-Application logs are clear of errors/warnings </li>
+JSON. Option for SRS daemon statistics. </li>
 <li>
-Required processes are running i.e. lbmrd </li>
-<li>
-General system resources are within pre-defined bounds i.e. CPU, memory, network stats (specific to the applications) </li>
-<li>
-Operating system e.g. UDP buffers for loss detection </li>
+Protocol Buffers. Option for UM library statistics, and Store and DRO daemon statistics. </li>
 </ul>
-<p>Use the following to validate the system is operating within acceptable limits.</p>
-<ul>
+<p>For applications and UM daemons, Informatica recommends protocol buffers. See <a class="el" href="monitoringumwiththelbmmonapi.html#monitoringformatmodules">Monitoring Format Modules</a>.</p>
+<p>You can view and use the proto buff definition files at <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/Operations/example.tag:../example/" href="../example/index.html#exampleprotocolfiles">Example Protocol Files</a>. Note that most integer fields are defined as "uint64", a 64-bit unsigned value. However, within the UM library, almost all of the integer statistics are maintained as C "unsigned long int" values. Note that different compilers interpret "unsigned long int" in different ways. </p><table class="doxtable">
+<tr>
+<th>Platform </th><th>Unsigned Long Size </th></tr>
+<tr>
+<td>Linux 64-bit </td><td>64 bits </td></tr>
+<tr>
+<td>Linux 32-bit </td><td>32 bits </td></tr>
+<tr>
+<td>Windows 64-bit </td><td>32 bits </td></tr>
+<tr>
+<td>Windows 32-bit </td><td>32 bits </td></tr>
+</table>
+<p>This can make a difference for statistics that increase in value quickly, like <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/Operations/api.tag:../API/" href="../API/structlbm__src__transport__stats__lbtrm__t__stct.html#ac9e8875bb28fa479cc3425a69b821fae">lbm_src_transport_stats_lbtrm_t_stct::bytes_sent</a>. On platforms where a "long int" is 32 bits, a high-rate transport session running for a few hours can reach that field's maximum value (4,294,967,295) and then "wrap" back to zero.</p>
+<p>Also note that a few statistics represent the "minimum value seen", and are initialized to the maximum possible value. For example, <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/Operations/api.tag:../API/" href="../API/structlbm__rcv__transport__stats__lbtrm__t__stct.html#a8ea05ee4effe7f8e41e45051741ee1c6">lbm_rcv_transport_stats_lbtrm_t_stct::nak_tx_min</a> is initialized to the maximum value for "unsigned long int". Thus, GCC on a 32-bit build or the Microsoft compiler will initialize it to 4,294,967,295 (2**32 - 1). GCC on a 64-bit build will initialize it to 18,446,744,073,709,551,615 (2**64 - 1).</p>
+<p>To see the underlying data types and descriptions for UM library statistics, look at the C language definitions of the statistics structures. See: </p><ul>
 <li>
-Monitor memory usage and growth over time. <ul>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/Operations/api.tag:../API/" href="../API/structlbm__rcv__transport__stats__t__stct.html">lbm_rcv_transport_stats_t_stct</a> </li>
 <li>
-Applications with increasing memory could indicate a future problem </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/Operations/api.tag:../API/" href="../API/structlbm__src__transport__stats__t__stct.html">lbm_src_transport_stats_t_stct</a> </li>
 <li>
-Could indicate apps are misconfigured for required scalability </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/Operations/api.tag:../API/" href="../API/structlbm__context__stats__t__stct.html">lbm_context_stats_t_stct</a> </li>
 <li>
-Event queue growth (also UM metrics) </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/Operations/api.tag:../API/" href="../API/structlbm__event__queue__stats__t__stct.html">lbm_event_queue_stats_t_stct</a> </li>
 <li>
-Theoretical memory limits for 32-bit/64-bit processes, dependent on OS and language choice. </li>
-</ul>
-</li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/Operations/api.tag:../API/" href="../API/structlbm__rcv__topic__stats__t__stct.html">lbm_rcv_topic_stats_t_stct</a> </li>
 <li>
-Spikes in CPU usage across multiple systems indicate a system wide event and could be an indication of a "crybaby" receiver causing source retransmissions or a rogue wildcard receiver. </li>
-<li>
-Monitor network activity across the environment. <ul>
-<li>
-Switch failures / unplugged cable </li>
-<li>
-Network Interface Card (NIC) failures </li>
-<li>
-Symptoms of NIC bonding failure </li>
-<li>
-Significant changes in overall network traffic could indicate a problem such as loss (discussed later) </li>
-</ul>
-</li>
-<li>
-Look for correlated activity. Do CPU spikes and network spikes lead or lag each other? </li>
-<li>
-Build thresholds based on an established business as usual (BAU) baseline. </li>
-<li>
-These diagnostics and UM metrics could indicate a general problem with the applications, network or underlying hardware. </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/Operations/api.tag:../API/" href="../API/structlbm__wildcard__rcv__stats__t__stct.html">lbm_wildcard_rcv_stats_t_stct</a> </li>
 </ul>
 <p><br />
 <br />

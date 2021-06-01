@@ -27,6 +27,8 @@ var classcom_1_1latencybusters_1_1lbm_1_1LBMContextAttributes =
     [ "setSourceCostCallback", "classcom_1_1latencybusters_1_1lbm_1_1LBMContextAttributes.html#a2673f56b860ff8e01ec7ed582c479c1b", null ],
     [ "setSourceCostCallback", "classcom_1_1latencybusters_1_1lbm_1_1LBMContextAttributes.html#a7a186181bd8ff9c8a866e91eade31c59", null ],
     [ "setSourceNotification", "classcom_1_1latencybusters_1_1lbm_1_1LBMContextAttributes.html#afe19acdf5d5d2aa13534ba8709c0b1ee", null ],
+    [ "setTransportMappingCallback", "classcom_1_1latencybusters_1_1lbm_1_1LBMContextAttributes.html#a6ef5e95e000f15f6d47471dd805e969c", null ],
+    [ "setTransportMappingCallback", "classcom_1_1latencybusters_1_1lbm_1_1LBMContextAttributes.html#a68bf657dd5c4d275988131890a3b7162", null ],
     [ "setUMEReceiverLivenessNotificationCallbacks", "classcom_1_1latencybusters_1_1lbm_1_1LBMContextAttributes.html#ac6b26ee96e680de9640fcff80cbf4f93", null ],
     [ "setValue", "classcom_1_1latencybusters_1_1lbm_1_1LBMContextAttributes.html#a321675538053c947a1e9669b65db708e", null ]
 ];

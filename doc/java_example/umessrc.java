@@ -12,7 +12,7 @@ import java.util.concurrent.Semaphore;
 import org.openmdx.uses.gnu.getopt.*;
 
 /*
-  Copyright (c) 2005-2020 Informatica Corporation  Permission is granted to licensees to use
+  Copyright (C) 2005-2021, Informatica Corporation  Permission is granted to licensees to use
   or alter this software for any purpose, including commercial applications,
   according to the terms laid out in the Software License Agreement.
 
@@ -58,7 +58,9 @@ class umessrc
 "Available options:\n"+ 
 "  -a available-data-space = print the length of available data space\n"+
 "  -b user-supplied-buffer =  send messages using a user-supplied buffer\n"+
-"  -c filename = read config parameters from filename\n"+ 
+"  -c filename = Use LBM configuration file filename.\n"+
+"                Multiple config files are allowed.\n"+
+"                Example:  '-c file1.cfg -c file2.cfg'\n"+
 "  -C filename = read context config parameters from filename\n"+ 
 "  -D = Send deregistration after sending 1000 messages\n"+ 
 "  -e = use LBM embedded mode\n"+ 
@@ -87,7 +89,7 @@ class umessrc
 "                              TRANS may be `lbm', `udp', or `lbmsnmp', default is `lbm'\n"+ 
 "  --monitor-transport-opts OPTS = use OPTS as transport module options\n"+ 
 "  --monitor-format FMT = use monitor format module FMT\n"+ 
-"                         FMT may be `csv'\n"+ 
+"                         FMT may be `csv' or `pb', default is `csv'\n"+ 
 "  --monitor-format-opts OPTS = use OPTS as format module options\n"+ 
 "  --monitor-appid ID = use ID as application ID string\n"
 ;
@@ -212,6 +214,8 @@ class umessrc
 					case OPTION_MONITOR_FORMAT:
 						if (gopt.getOptarg().compareToIgnoreCase("csv") == 0)
 							mon_format = LBMMonitor.FORMAT_CSV;
+						else if (gopt.getOptarg().compareToIgnoreCase("pb") == 0)
+							mon_format = LBMMonitor.FORMAT_PB;
 						else
 							error = true;
 						break;
@@ -219,7 +223,15 @@ class umessrc
 						mon_format_options += gopt.getOptarg();
 						break;
 					case 'c':
-						conffname = gopt.getOptarg();
+						try
+						{
+							LBM.setConfiguration(gopt.getOptarg());
+						}
+						catch (LBMException ex)
+						{
+							System.err.println("Error setting LBM configuration: " + ex.toString());
+							System.exit(1);
+						}
 						break;
 					case 'C':
 						cconffname = gopt.getOptarg();
@@ -333,18 +345,6 @@ class umessrc
 			System.exit(1);
 		}
 
-		if (conffname != null)
-		{
-			try
-			{
-				LBM.setConfiguration(conffname);
-			}
-			catch (LBMException ex)
-			{
-				System.err.println("Error setting LBM configuration: " + ex.toString());
-				System.exit(1);
-			}
-		}
 		LBMContextAttributes cattr = null;
 		try
 		{
@@ -1217,8 +1217,7 @@ class UMESSrcCB implements LBMSourceEventCallback, LBMMessageReclamationCallback
 				}
 				break;
 			default:
-				System.out.println("Unknown smart source event "
-					+ sourceEvent.type());
+				System.out.println("Unhandled source event [" + sourceEvent.type() + "]. Refer to https://ultramessaging.github.io/currdoc/doc/java_example/index.html#unhandledjavaevents for a detailed description.");
 				break;
 		}
         sourceEvent.dispose();

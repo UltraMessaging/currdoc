@@ -67,15 +67,15 @@ Streaming Enhancements for 6.12.1&nbsp;&nbsp;<small><a href="#streamingenhanceme
 <p>The following new features and enhancements apply to UMS, UMP, and UMQ products.</p>
 <ul>
 <li>
-<p class="startli">UM now supports the Microsoft .NET framework on 64-bit Linux. See <a href="../DotNetAPI/index.html#usingumnetonlinux">Using UM .NET on Linux</a>.</p>
+<p class="startli"><b>.NET on Linux</b>. UM now supports the Microsoft .NET framework on 64-bit Linux. See <a href="../DotNetAPI/index.html#usingumnetonlinux">Using UM .NET on Linux</a>.</p>
 <p class="endli"></p>
 </li>
 <li>
-<p class="startli">The <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/design.tag:../Design/" href="../Design/advancedoptimizations.html#networksocketbusywaiting">Network Socket Busy Waiting</a> feature can be used to prevent a context or XSP thread from sleeping while waiting for network events, such as received packets. This can reduce latency and especially latency outliers (jitter).</p>
+<p class="startli"><b>Busy Looping</b>. The <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/ChangeLog/design.tag:../Design/" href="../Design/advancedoptimizations.html#networksocketbusywaiting">Network Socket Busy Waiting</a> feature can be used to prevent a context or XSP thread from sleeping while waiting for network events, such as received packets. This can reduce latency and especially latency outliers (jitter).</p>
 <p class="endli"></p>
 </li>
 <li>
-The dependency between UM and the OpenSSL libraries is now optional. If the libraries are not used, then they do not need to be present on the system. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/design.tag:../Design/" href="../Design/umfeatures.html#openssldependency">OpenSSL Dependency</a> for more information. </li>
+<b>OpenSSL optional</b>. The dependency between UM and the OpenSSL libraries is now optional. If the libraries are not used, then they do not need to be present on the system. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/ChangeLog/design.tag:../Design/" href="../Design/umfeatures.html#openssldependency">OpenSSL Dependency</a> for more information. </li>
 </ul>
 <p><br />
  </p>
@@ -120,7 +120,7 @@ Streaming Fixed Problems and Limitations for 6.12.1&nbsp;&nbsp;<small><a href="#
 </th></tr>
 <tr>
 <td>10702, 10713, 10741</td><td><p class="starttd"><b>FIXED:</b> <em>UM has a load-time dependency on a specific version of OpenSSL. If the expected version is not present, the application can be unable to load and run, or it can write warning messages to the log file (Core-9565-109 and Core-9728-14), even if encryption services are not configured for use.</em></p>
-<p>For more information, see <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/ChangeLog/design.tag:../Design/" href="../Design/umfeatures.html#openssldependency">OpenSSL Dependency</a>.</p>
+<p>For more information, see <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/ChangeLog/design.tag:../Design/" href="../Design/umfeatures.html#openssldependency">OpenSSL Dependency</a>.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
@@ -147,10 +147,6 @@ Persistence Fixed Problems and Limitations for 6.12.1&nbsp;&nbsp;<small><a href=
 <tr>
 <td>9940, 10131, 10651, 10734 </td><td><p class="starttd"><b>FIXED:</b> <em>If a persistent publisher sends a message containing one or more Message Properties, and the Proactive Retransmission feature is used to record the message on the Store, a receiver which recovers the message from the Store will crash with a fatal assert:</em> <br />
 <code>FATAL: failed assertion [prop_offset &gt;= 0]</code></p>
-<p class="endtd"></p>
-</td></tr>
-<tr>
-<td>10676, 10735 </td><td><p class="starttd"><b>FIXED:</b> <em>Loss of packets into Store Daemon blocks stability ACKs. This increases the likelihood of a source blocking on flight size.</em></p>
 <p class="endtd"></p>
 </td></tr>
 <tr>

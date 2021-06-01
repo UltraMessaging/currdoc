@@ -1,11 +1,15 @@
 var structlbmmon__format__func__t__stct =
 [
+    [ "mApplyOptions", "structlbmmon__format__func__t__stct.html#a6f125ee6139fea4f54393d8f9d7447fc", null ],
     [ "mCtxDeserialize", "structlbmmon__format__func__t__stct.html#a72d1bc32cc3c9f07dc4315051cf45f82", null ],
     [ "mCtxSerialize", "structlbmmon__format__func__t__stct.html#a9ff52a05bbcd18bd54548acbd85f7949", null ],
     [ "mErrorMessage", "structlbmmon__format__func__t__stct.html#ab0a2b7dd43a5e4f9b3eefa1c785e8a17", null ],
     [ "mEvqDeserialize", "structlbmmon__format__func__t__stct.html#a7f4ee614ad33b63a593f718bbd06a736", null ],
     [ "mEvqSerialize", "structlbmmon__format__func__t__stct.html#ac930dc135647929370ec0b475d433921", null ],
     [ "mFinish", "structlbmmon__format__func__t__stct.html#a46d1a5109cb019d2b4525669443b87a5", null ],
+    [ "mGatewayDeserialize", "structlbmmon__format__func__t__stct.html#a214a559aed4f19bd0642ce5dd0113fd8", null ],
+    [ "mGatewayFreeUnpacked", "structlbmmon__format__func__t__stct.html#aa6c9dc430da86224426ab73944ecb440", null ],
+    [ "mGatewaySerialize", "structlbmmon__format__func__t__stct.html#ae9cdabef2fcbcca0ff7b04a4b9a2095a", null ],
     [ "mInit", "structlbmmon__format__func__t__stct.html#acc2e5fa80e15f79fe49dbfb95294cb5d", null ],
     [ "mRcvDeserialize", "structlbmmon__format__func__t__stct.html#a4fabdd06aaebb50abfdc9c5c03df3680", null ],
     [ "mRcvSerialize", "structlbmmon__format__func__t__stct.html#a69f0920ea6d96b433ed73f6eec042b8f", null ],
@@ -13,6 +17,10 @@ var structlbmmon__format__func__t__stct =
     [ "mRcvTopicSerialize", "structlbmmon__format__func__t__stct.html#a42a4d6a19f7d4dcbe0a0461c5816918d", null ],
     [ "mSrcDeserialize", "structlbmmon__format__func__t__stct.html#a6f27a8ba1f54d212035d961b7f3a4919", null ],
     [ "mSrcSerialize", "structlbmmon__format__func__t__stct.html#a112c88fcfe1ebc6b0e0c0106bf5ea0f2", null ],
+    [ "mStoreDeserialize", "structlbmmon__format__func__t__stct.html#a290371079c6cd22b3f0b68fc9f884556", null ],
+    [ "mStoreFilterOptions", "structlbmmon__format__func__t__stct.html#a6d2737acf7e2d6ecc6fb3308f437b5a8", null ],
+    [ "mStoreFreeUnpacked", "structlbmmon__format__func__t__stct.html#a937f06c547b76093ff6ead3a36e5e123", null ],
+    [ "mStoreSerialize", "structlbmmon__format__func__t__stct.html#a99a7d890a9f9be0af248b99d76d0857e", null ],
     [ "mWildcardRcvDeserialize", "structlbmmon__format__func__t__stct.html#ac5931dda108e8f226dffcd63ce2d1927", null ],
     [ "mWildcardRcvSerialize", "structlbmmon__format__func__t__stct.html#a9eb4b6137a0fdf70e9988e1339e0f82d", null ]
 ];

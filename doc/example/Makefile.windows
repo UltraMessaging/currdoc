@@ -11,11 +11,11 @@
 #  correct location(s).
 
 !IF "$(PLATFORM)" == "x64"
-LBM_INCLUDE_DIR=../../Win2k-x86_64/include
+LBM_INCLUDE_DIR=../../Win2k-x86_64/include -I../../Win2k-x86_64/include/lbm
 LBM_LIB_DIR=../../Win2k-x86_64/lib
 UMESNAPREPO=umesnaprepo.exe
 !ELSE
-LBM_INCLUDE_DIR=../../Win2k-i386/include
+LBM_INCLUDE_DIR=../../Win2k-i386/include -I../../Win2k-i386/include/lbm
 LBM_LIB_DIR=../../Win2k-i386/lib
 UMESNAPREPO=
 !ENDIF
@@ -54,6 +54,7 @@ CVARS = $(cvars) -DWIN32_LEAN_AND_MEAN -DWIN32_EXTRA_LEAN \
 LBMLIB=$(LBM_LIB_DIR)/lbm.lib
 SDMLIB=$(LBM_LIB_DIR)/lbmsdm.lib
 UTLLIB=$(LBM_LIB_DIR)/lbmutl.lib
+UMESTORELIB=$(LBM_LIB_DIR)/umestore.lib
 
 !ELSEIF "$(LBM_BUILD_TYPE)"=="dynamic-debug"
 CVARS = $(cvars) -DWIN32_LEAN_AND_MEAN -DWIN32_EXTRA_LEAN \
@@ -62,11 +63,11 @@ CVARS = $(cvars) -DWIN32_LEAN_AND_MEAN -DWIN32_EXTRA_LEAN \
 LBMLIB=$(LBM_LIB_DIR)/lbm_debug.lib
 SDMLIB=$(LBM_LIB_DIR)/lbmsdm_debug.lib
 UTLLIB=$(LBM_LIB_DIR)/lbmutl_debug.lib
+UMESTORELIB=$(LBM_LIB_DIR)/umestore.lib
 
 !ELSE
 !ERROR LBM_BUILD_TYPE not defined properly.
 !ENDIF
-
 
 # General definitions.  Do not modify.
 
@@ -223,7 +224,7 @@ UMEDMON.exe:	$(UMEDMON_OBJS)
 
 UMESNAP_OBJS = umesnaprepo.obj getopt.obj
 UMESNAPREPO.exe:	$(UMESNAP_OBJS)
-	$(LINK) /OUT:umesnaprepo.exe $(conflags) $(conlibsmt) $(LDFLAGS) /SUBSYSTEM:console $(UMESNAP_OBJS) $(LBMLIB)
+	$(LINK) /OUT:umesnaprepo.exe $(conflags) $(conlibsmt) $(LDFLAGS) /SUBSYSTEM:console $(UMESNAP_OBJS) $(UMESTORELIB) $(LBMLIB)
 
 UMEDCMD_OBJS = umedcmd.obj getopt.obj
 UMEDCMD.exe:	$(UMEDCMD_OBJS)

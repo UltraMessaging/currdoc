@@ -54,7 +54,7 @@ $(document).ready(function(){initNavTree('srsdaemonstatistics.html','');});
 <div class="title">SRS Daemon Statistics </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>This section contains details on the SRS's Daemon Statistics feature. <b>You should already be familiar with the general information contained in <a class="el" href="umfeatures.html#daemonstatistics">Daemon Statistics</a>.</b></p>
+<div class="textblock"><p>This section contains details on the SRS's Daemon Statistics feature. <b>You should already be familiar with the general information contained in <a class="el" href="umfeatures.html#daemonstatistics">daemonstatistics</a>.</b></p>
 <p>The SRS Daemon Statistics are published in the form of JSON messages. These are ASCII text messages which represent internal SRS data structures containing statistical and configuration information.</p>
 <p>The following sub-sections describe the content of the messages. Note that while the sample messages shown are "beautified" (whitespace inserted for readability), a receiver of these messages should make no assumption about the presence or absence of whitespace. Also, as it true generally with JSON, the order of the fields is not fixed and can vary.</p>
 <p>The message types are: </p><ul>
@@ -87,51 +87,131 @@ Message Type: SRS_STATS&nbsp;&nbsp;<small><a href="#messagetypesrsstats">&lt;-</
 <p><b>EXAMPLE:</b> </p><div class="fragment"><div class="line">{ </div><div class="line">  <span class="stringliteral">&quot;monitorInfoCategory&quot;</span>: <span class="stringliteral">&quot;SRS_STATS&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;stats&quot;</span>: [</div><div class="line">    { </div><div class="line">      <span class="stringliteral">&quot;name&quot;</span>: <span class="stringliteral">&quot;clients.inactive.SIR.count&quot;</span>,</div><div class="line">      <span class="stringliteral">&quot;value&quot;</span>: 0</div><div class="line">    },</div><div class="line">    { </div><div class="line">      <span class="stringliteral">&quot;name&quot;</span>: <span class="stringliteral">&quot;clients.next.client.ID&quot;</span>,</div><div class="line">      <span class="stringliteral">&quot;value&quot;</span>: 17</div><div class="line">    }</div><div class="line">  ]</div><div class="line">}</div></div><!-- fragment --><p> This example has two statistics. Be aware that a given message can have any number of statistic entries.</p>
 <p>Overall structure of message: </p><center> <table class="doxtable">
 <tr>
-<th>Field</th><th>Description </th></tr>
+<th>Field</th><th><p class="starttd">Description</p>
+<p class="endtd"></p>
+</th></tr>
 <tr>
-<td><b>monitorInfoCategory</b></td><td>Message type. Set to the string "SRS_STATS". </td></tr>
+<td><b>monitorInfoCategory</b></td><td><p class="starttd">Message type. Set to the string "SRS_STATS".</p>
+<p class="endtd"></p>
+</td></tr>
 <tr>
-<td><b>stats</b></td><td>Array of sub-structures, one per statistic. The number and order of the contained statistics is not fixed. </td></tr>
+<td><b>stats</b></td><td><p class="starttd">Array of sub-structures, one per statistic. The number and order of the contained statistics is not fixed.</p>
+<p class="endtd"></p>
+</td></tr>
 <tr>
-<td><b>.&#160;.&#160;stats[].name</b></td><td>Name of statistic (see below). </td></tr>
+<td><b>.&#160;.&#160;stats[].name</b></td><td><p class="starttd">Name of statistic (see below).</p>
+<p class="endtd"></p>
+</td></tr>
 <tr>
 <td><b>.&#160;.&#160;stats[].value</b></td><td>Value of statistic. </td></tr>
 </table>
 </center><p>Meaning of each statistic: </p><center> <table class="doxtable">
 <tr>
-<th>Statistic</th><th>Description </th></tr>
+<th>Statistic</th><th><p class="starttd">Description</p>
+<p class="endtd"></p>
+</th></tr>
 <tr>
-<td><b>clients.next.client.ID</b> </td><td>Unique session ID that will be assigned to the next context to connect. </td></tr>
+<td><b>clients.next.client.ID</b> </td><td><p class="starttd">Unique session ID that will be assigned to the next context to connect.</p>
+<p class="endtd"></p>
+</td></tr>
 <tr>
-<td><b>active.clients.count</b> </td><td>Number of currently connected contexts. </td></tr>
+<td><b>active.clients.count</b> </td><td><p class="starttd">Number of currently connected contexts.</p>
+<p class="endtd"></p>
+</td></tr>
 <tr>
-<td><b>clients.connects.count</b> </td><td>Number of contexts that have connected since this SRS started. </td></tr>
+<td><b>clients.connects.count</b> </td><td><p class="starttd">Number of contexts that have connected since this SRS started.</p>
+<p class="endtd"></p>
+</td></tr>
 <tr>
-<td><b>clients.disconnects.count</b> </td><td>Number of contexts that have disconnected since this SRS started. </td></tr>
+<td><b>clients.disconnects.count</b> </td><td><p class="starttd">Number of contexts that have disconnected since this SRS started.</p>
+<p class="endtd"></p>
+</td></tr>
 <tr>
-<td><b>clients.max.concurrent.connections.count</b> </td><td>High water mark of simultaneous connections since the SRS service was started. </td></tr>
+<td><b>clients.max.concurrent.connections.count</b> </td><td><p class="starttd">High water mark of simultaneous connections since the SRS service was started.</p>
+<p class="endtd"></p>
+</td></tr>
 <tr>
-<td><b>clients.active.SIR.count</b> </td><td>Number of sources being maintained from connected contexts. </td></tr>
+<td><b>clients.active.SIR.count</b> </td><td><p class="starttd">Number of sources being maintained from connected contexts.</p>
+<p class="endtd"></p>
+</td></tr>
 <tr>
-<td><b>clients.active.RIR.count</b> </td><td>Number of receivers being maintained from connected contexts. </td></tr>
+<td><b>clients.active.RIR.count</b> </td><td><p class="starttd">Number of receivers being maintained from connected contexts.</p>
+<p class="endtd"></p>
+</td></tr>
 <tr>
-<td><b>clients.active.WIR.count</b> </td><td>Number of wildcard receivers being maintained from connected contexts. </td></tr>
+<td><b>clients.active.WIR.count</b> </td><td><p class="starttd">Number of wildcard receivers being maintained from connected contexts.</p>
+<p class="endtd"></p>
+</td></tr>
 <tr>
-<td><b>clients.inactive.SIR.count</b> </td><td>Number of sources being temporarily maintained from disconnected contexts. These get cleaned up after the state lifetime expires. </td></tr>
+<td><b>clients.active.DIR.count</b> </td><td><p class="starttd">Number of Domain Information Records (DIRs) being maintained from connected DRO endpoints.</p>
+<p class="endtd"></p>
+</td></tr>
 <tr>
-<td><b>clients.inactive.RIR.count</b> </td><td>Number of receivers being temporarily maintained from disconnected contexts. These get cleaned up after the state lifetime expires. </td></tr>
+<td><b>clients.inactive.SIR.count</b> </td><td><p class="starttd">Number of sources being temporarily maintained from disconnected contexts. These get cleaned up after the state lifetime expires.</p>
+<p class="endtd"></p>
+</td></tr>
 <tr>
-<td><b>clients.inactive.WIR.count</b> </td><td>Number of wildcard receivers being temporarily maintained from disconnected contexts. These get cleaned up after the state lifetime expires. </td></tr>
+<td><b>clients.inactive.RIR.count</b> </td><td><p class="starttd">Number of receivers being temporarily maintained from disconnected contexts. These get cleaned up after the state lifetime expires.</p>
+<p class="endtd"></p>
+</td></tr>
 <tr>
-<td><b>clients.expired.SIR.count</b> </td><td>Number of times the SRS deleted source records due to the state lifetime being expired. This will happen when applications exit without deleting their sources, which is not recommended. If this number increases frequently, consider modifying your applications to clean up before exiting. </td></tr>
+<td><b>clients.inactive.WIR.count</b> </td><td><p class="starttd">Number of wildcard receivers being temporarily maintained from disconnected contexts. These get cleaned up after the state lifetime expires.</p>
+<p class="endtd"></p>
+</td></tr>
 <tr>
-<td><b>clients.expired.RIR.count</b> </td><td>Number of times the SRS deleted receiver records due to the state lifetime being expired. This will happen when applications exit without deleting their receivers, which is not recommended. If this number increases frequently, consider modifying your applications to clean up before exiting. </td></tr>
+<td><b>clients.inactive.DIR.count</b> </td><td><p class="starttd">Number of Domain Information Records (DIRs) being temporarily maintained from disconnected DRO endpoints. These get cleaned up after the state lifetime expires.</p>
+<p class="endtd"></p>
+</td></tr>
 <tr>
-<td><b>clients.expired.WIR.count</b> </td><td>Number of times the SRS deleted wildcard receiver records due to the state lifetime being expired. This will happen when applications exit without deleting their receivers, which is not recommended. If this number increases frequently, consider modifying your applications to clean up before exiting. </td></tr>
+<td><b>clients.expired.SIR.count</b> </td><td><p class="starttd">Number of times the SRS deleted source records due to the state lifetime being expired. This will happen when applications exit without deleting their sources, which is not recommended. If this number increases frequently, consider modifying your applications to clean up before exiting.</p>
+<p class="endtd"></p>
+</td></tr>
 <tr>
-<td><b>clients.DR.inactive.SIR.count</b> </td><td>If DROs are involved, it is normal for this count to increment. Otherwise, this should not increment, and Informatica support should be informed if it does. (A context disconnected while it has SIRs that were inactive.) </td></tr>
+<td><b>clients.expired.RIR.count</b> </td><td><p class="starttd">Number of times the SRS deleted receiver records due to the state lifetime being expired. This will happen when applications exit without deleting their receivers, which is not recommended. If this number increases frequently, consider modifying your applications to clean up before exiting.</p>
+<p class="endtd"></p>
+</td></tr>
 <tr>
-<td><b>clients.SLR.no.OTID.match.count</b> </td><td>If the system is otherwise behaving normally, increments in this count are most likely harmless. (A receiver sent a source leave record for a source that the SRS does not know about.) </td></tr>
+<td><b>clients.expired.WIR.count</b> </td><td><p class="starttd">Number of times the SRS deleted wildcard receiver records due to the state lifetime being expired. This will happen when applications exit without deleting their receivers, which is not recommended. If this number increases frequently, consider modifying your applications to clean up before exiting.</p>
+<p class="endtd"></p>
+</td></tr>
+<tr>
+<td><b>clients.expired.DIR.count</b> </td><td><p class="starttd">Number of times the SRS deleted Domain Information Records (DIRs) due to the state lifetime being expired. This will happen when DROs exit abnormally. Informatica support should be informed if this count increments frequently.</p>
+<p class="endtd"></p>
+</td></tr>
+<tr>
+<td><b>clients.expired.CNIR.count</b> </td><td><p class="starttd">Number of times the SRS deleted Context Name Information Records (CNIRs) due to the state lifetime being expired. This will happen when Stores exit abnormally. Informatica support should be informed if this count increments frequently.</p>
+<p class="endtd"></p>
+</td></tr>
+<tr>
+<td><b>clients.DR.inactive.SIR.count</b> </td><td><p class="starttd">If DROs are involved, it is normal for this count to increment. Otherwise, this should not increment, and Informatica support should be informed if it does. (A context disconnected while it has SIRs that were inactive.)</p>
+<p class="endtd"></p>
+</td></tr>
+<tr>
+<td><b>clients.SLR.no.OTID.match.count</b> </td><td><p class="starttd">If the system is otherwise behaving normally, increments in this count are most likely harmless. (A receiver sent a source leave record for a source that the SRS does not know about.)</p>
+<p class="endtd"></p>
+</td></tr>
+<tr>
+<td><b>clients.active.RTIR.count</b> </td><td><p class="starttd">Number of Route Information Records (RTIR) being maintained from all connected DRO endpoint contexts. Should be equal to the number of active DRO endpoints in this TRD.</p>
+<p class="endtd"></p>
+</td></tr>
+<tr>
+<td><b>clients.inactive.RTIR.count</b> </td><td><p class="starttd">Number of Route Information Records (RTIR) being temporarily maintained from disconnected DRO endpoint contexts.</p>
+<p class="endtd"></p>
+</td></tr>
+<tr>
+<td><b>clients.expired.RTIR.count</b> </td><td><p class="starttd">Number of inactive Route Information Records (RTIR) deleted due to expiration of their state lifetimes. This value is cumulative since the SRS was started.</p>
+<p class="endtd"></p>
+</td></tr>
+<tr>
+<td><b>clients.active.CNIR.count</b> </td><td><p class="starttd">Number of Context Name Information Records (CNIRs) being maintained from connected contexts. This is for Stores identified by their context names; see <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/Design/ume.tag:../UME/" href="../UME/persistencearchitecture.html#identifyingpersistentstores">Identifying Persistent Stores</a>.</p>
+<p class="endtd"></p>
+</td></tr>
+<tr>
+<td><b>clients.inactive.CNIR.count</b> </td><td><p class="starttd">Number of Context Name Information Records (CNIRs) being temporarily maintained from disconnected contexts. Currently, this is only for Stores identified by their context names; see <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/Design/ume.tag:../UME/" href="../UME/persistencearchitecture.html#identifyingpersistentstores">Identifying Persistent Stores</a>.</p>
+<p class="endtd"></p>
+</td></tr>
+<tr>
+<td><b>clients.duplicate.CNIR.count</b> </td><td>Number of duplicate Context Name Information Records (CNIRs) received from all Store endpoints. While not a fatal condition, Informatica support should be informed if this is non-zero. </td></tr>
 </table>
 </center><p>All of the above statistics are included in a snapshot. Only the changed statistics are included during a periodic update.</p>
 <p><br />
@@ -142,41 +222,93 @@ Message Type: SRS_ERROR_STATS&nbsp;&nbsp;<small><a href="#messagetypesrserrorsta
 <p><b>EXAMPLE:</b> </p><div class="fragment"><div class="line">{ </div><div class="line">  <span class="stringliteral">&quot;monitorInfoCategory&quot;</span>: <span class="stringliteral">&quot;SRS_ERROR_STATS&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;stats&quot;</span>: [</div><div class="line">    { </div><div class="line">      <span class="stringliteral">&quot;name&quot;</span>: <span class="stringliteral">&quot;clients.duplicate.SIR.count&quot;</span>,</div><div class="line">      <span class="stringliteral">&quot;value&quot;</span>: 0</div><div class="line">    },</div><div class="line">    {</div><div class="line">      <span class="stringliteral">&quot;name&quot;</span>: <span class="stringliteral">&quot;clients.invalid.SDR.no.OTID.match.count&quot;</span>,</div><div class="line">      <span class="stringliteral">&quot;value&quot;</span>: 17</div><div class="line">    }</div><div class="line">  ]</div><div class="line">}</div></div><!-- fragment --><p> This example has two statistics. Be aware that a given message can have any number of statistic entries.</p>
 <p>Overall structure of message: </p><center> <table class="doxtable">
 <tr>
-<th>Field</th><th>Description </th></tr>
+<th>Field</th><th><p class="starttd">Description</p>
+<p class="endtd"></p>
+</th></tr>
 <tr>
-<td><b>monitorInfoCategory</b></td><td>Message type. Set to the string "SRS_ERROR_STATS". </td></tr>
+<td><b>monitorInfoCategory</b></td><td><p class="starttd">Message type. Set to the string "SRS_ERROR_STATS".</p>
+<p class="endtd"></p>
+</td></tr>
 <tr>
-<td><b>stats</b></td><td>Array of sub-structures, one per statistic. The number and order of the contained statistics is not fixed. </td></tr>
+<td><b>stats</b></td><td><p class="starttd">Array of sub-structures, one per statistic. The number and order of the contained statistics is not fixed.</p>
+<p class="endtd"></p>
+</td></tr>
 <tr>
-<td><b>.&#160;.&#160;stats[].name</b></td><td>Name of statistic (see below). </td></tr>
+<td><b>.&#160;.&#160;stats[].name</b></td><td><p class="starttd">Name of statistic (see below).</p>
+<p class="endtd"></p>
+</td></tr>
 <tr>
 <td><b>.&#160;.&#160;stats[].value</b></td><td>Value of statistic. </td></tr>
 </table>
 </center><p>Meaning of each statistic: </p><center> <table class="doxtable">
 <tr>
-<th>Statistic</th><th>Description </th></tr>
+<th>Statistic</th><th><p class="starttd">Description</p>
+<p class="endtd"></p>
+</th></tr>
 <tr>
-<td><b>clients.duplicate.SIR.count</b> </td><td>While not a fatal condition, Informatica support should be informed if this count increments frequently. (Number of times that the SRS is informed about a source when it didn't need to be informed; i.e. the SRS already knew about it.) </td></tr>
+<td><b>clients.duplicate.SIR.count</b> </td><td><p class="starttd">While not a fatal condition, Informatica support should be informed if this count increments frequently. (Number of times that the SRS is informed about a source when it didn't need to be informed; i.e. the SRS already knew about it.)</p>
+<p class="endtd"></p>
+</td></tr>
 <tr>
-<td><b>clients.duplicate.RIR.count</b> </td><td>While not a fatal condition, Informatica support should be informed if this count increments frequently. (Number of times that the SRS is informed about a receiver when it didn't need to be informed; i.e. the SRS already knew about it.) </td></tr>
+<td><b>clients.duplicate.RIR.count</b> </td><td><p class="starttd">While not a fatal condition, Informatica support should be informed if this count increments frequently. (Number of times that the SRS is informed about a receiver when it didn't need to be informed; i.e. the SRS already knew about it.)</p>
+<p class="endtd"></p>
+</td></tr>
 <tr>
-<td><b>clients.duplicate.WIR.count</b> </td><td>While not a fatal condition, Informatica support should be informed if this count increments frequently. (Number of times that the SRS is informed about a wildcard receiver when it didn't need to be informed; i.e. the SRS already knew about it.) </td></tr>
+<td><b>clients.duplicate.WIR.count</b> </td><td><p class="starttd">While not a fatal condition, Informatica support should be informed if this count increments frequently. (Number of times that the SRS is informed about a wildcard receiver when it didn't need to be informed; i.e. the SRS already knew about it.)</p>
+<p class="endtd"></p>
+</td></tr>
 <tr>
-<td><b>clients.invalid.SDR.no.topic.match.count</b> </td><td>While not a fatal condition, Informatica support should be informed if this count increments frequently. (A context deleted a source that the SRS does not know about, which should never happen.) </td></tr>
+<td><b>clients.invalid.SDR.no.topic.match.count</b> </td><td><p class="starttd">While not a fatal condition, Informatica support should be informed if this count increments frequently. (A context deleted a source that the SRS does not know about, which should never happen.)</p>
+<p class="endtd"></p>
+</td></tr>
 <tr>
-<td><b>clients.invalid.SDR.no.OTID.match.count</b> </td><td>While not a fatal condition, Informatica support should be informed if this count increments frequently. (A context deleted a source that the SRS does not know about, which should never happen.) </td></tr>
+<td><b>clients.invalid.SDR.no.OTID.match.count</b> </td><td><p class="starttd">While not a fatal condition, Informatica support should be informed if this count increments frequently. (A context deleted a source that the SRS does not know about, which should never happen.)</p>
+<p class="endtd"></p>
+</td></tr>
 <tr>
-<td><b>clients.invalid.SDR.no.transport.match.count</b> </td><td>While not a fatal condition, Informatica support should be informed if this count increments frequently. (A context deleted a source that the SRS does not know about, which should never happen.) </td></tr>
+<td><b>clients.invalid.SDR.no.transport.match.count</b> </td><td><p class="starttd">While not a fatal condition, Informatica support should be informed if this count increments frequently. (A context deleted a source that the SRS does not know about, which should never happen.)</p>
+<p class="endtd"></p>
+</td></tr>
 <tr>
-<td><b>clients.invalid.DR.no.topic.match.count</b> </td><td>While not a fatal condition, Informatica support should be informed if this count increments frequently. (A source that the SRS does not know about disconnected, which should never happen.) </td></tr>
+<td><b>clients.invalid.DR.no.topic.match.count</b> </td><td><p class="starttd">While not a fatal condition, Informatica support should be informed if this count increments frequently. (A source that the SRS does not know about disconnected, which should never happen.)</p>
+<p class="endtd"></p>
+</td></tr>
 <tr>
-<td><b>clients.invalid.DR.no.OTID.match.count</b> </td><td>While not a fatal condition, Informatica support should be informed if this count increments frequently. (A context deleted a source that the SRS does not know about, which should never happen.) </td></tr>
+<td><b>clients.invalid.DR.no.OTID.match.count</b> </td><td><p class="starttd">While not a fatal condition, Informatica support should be informed if this count increments frequently. (A context deleted a source that the SRS does not know about, which should never happen.)</p>
+<p class="endtd"></p>
+</td></tr>
 <tr>
-<td><b>clients.invalid.DR.no.transport.match.count</b> </td><td>While not a fatal condition, Informatica support should be informed if this count increments frequently. (A context deleted a source that the SRS does not know about, which should never happen.) </td></tr>
+<td><b>clients.invalid.DR.no.transport.match.count</b> </td><td><p class="starttd">While not a fatal condition, Informatica support should be informed if this count increments frequently. (A context deleted a source that the SRS does not know about, which should never happen.)</p>
+<p class="endtd"></p>
+</td></tr>
 <tr>
-<td><b>clients.invalid.SLR.no.topic.match.count</b> </td><td>While not a fatal condition, Informatica support should be informed if this count increments frequently. (A receiver notified source leave for a source that the SRS does not know about, which should never happen.) </td></tr>
+<td><b>clients.invalid.SLR.no.topic.match.count</b> </td><td><p class="starttd">While not a fatal condition, Informatica support should be informed if this count increments frequently. (A receiver notified source leave for a source that the SRS does not know about, which should never happen.)</p>
+<p class="endtd"></p>
+</td></tr>
 <tr>
-<td><b>clients.invalid.DR.inactive.SIR.count</b> </td><td>This counter should never be greater than zero. While not a fatal condition, Informatica support should be informed if this count increments frequently. (A context disconnected while it has SIRs that were inactive, which should never happen.) </td></tr>
+<td><b>clients.invalid.CNER.no.CNIR.match.count</b> </td><td><p class="starttd">While not a fatal condition, Informatica support should be informed if this count increments frequently. (A context sent a context name end record for which the SRS has no matching context name info record, which should never happen.)</p>
+<p class="endtd"></p>
+</td></tr>
+<tr>
+<td><b>clients.invalid.DR.inactive.SIR.count</b> </td><td><p class="starttd">This counter should never be greater than zero. While not a fatal condition, Informatica support should be informed if this count increments frequently. (A context disconnected while it has SIRs that were inactive, which should never happen.)</p>
+<p class="endtd"></p>
+</td></tr>
+<tr>
+<td><b>clients.duplicate.DIR.count</b> </td><td><p class="starttd">Number of duplicate Domain Information Records (DIRs) the SRS generated. This should never happen. While not a fatal condition, Informatica support should be informed if this is non-zero.</p>
+<p class="endtd"></p>
+</td></tr>
+<tr>
+<td><b>clients.mismatched.DIR.count</b> </td><td><p class="starttd">A non-zero count indicates that at least two DRO endpoints have reported different domain IDs, which is illegal. All DRO endpoints servicing the same TRD must be configured for the same domain ID value.</p>
+<p>If all DRO endpoints being services by this SRS are configured for the same <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/Design/gateway.tag:../Gateway/" href="../Gateway/xmlconfigurationreference.html#droelementdomainid">&lt;domain-id&gt;</a> value, contact Informatica Support.</p>
+<p class="endtd"></p>
+</td></tr>
+<tr>
+<td><b>clients.duplicate.RTIR.count</b> </td><td><p class="starttd">Number of duplicate Route Information Records (RTIRs) received from all DRO endpoints. While not a fatal condition, Informatica support should be informed if this is non-zero.</p>
+<p>See also statistic "client.duplicate.RTIR.received.count" in <a class="el" href="srsdaemonstatistics.html#messagetypeumclienterrorstats">Message Type: UM_CLIENT_ERROR_STATS</a>.</p>
+<p class="endtd"></p>
+</td></tr>
+<tr>
+<td><b>clients.invalid.CNIR.name.mismatch.count</b> </td><td>Number of Context Name Information Records (CNIRs) received from a context that are different from the initial CNIR. This should never happen. While not a fatal condition, Informatica support should be informed if this is non-zero. </td></tr>
 </table>
 </center><p><br />
  </p>
@@ -186,59 +318,143 @@ Message Type: UM_CLIENT_STATS&nbsp;&nbsp;<small><a href="#messagetypeumclientsta
 <p><b>EXAMPLE:</b> </p><div class="fragment"><div class="line">{</div><div class="line">  <span class="stringliteral">&quot;monitorInfoCategory&quot;</span>: <span class="stringliteral">&quot;UM_CLIENT_STATS&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;srsRegistrationInfo&quot;</span>: {</div><div class="line">    <span class="stringliteral">&quot;ip&quot;</span>: <span class="stringliteral">&quot;10.29.3.43&quot;</span>,</div><div class="line">    <span class="stringliteral">&quot;port&quot;</span>: <span class="stringliteral">&quot;60681&quot;</span>,</div><div class="line">    <span class="stringliteral">&quot;sessionId&quot;</span>: <span class="stringliteral">&quot;0x9739b88f&quot;</span></div><div class="line">  },</div><div class="line">  <span class="stringliteral">&quot;stats&quot;</span>: [</div><div class="line">    {</div><div class="line">      <span class="stringliteral">&quot;name&quot;</span>: <span class="stringliteral">&quot;client.SIR.received.count&quot;</span>,</div><div class="line">      <span class="stringliteral">&quot;value&quot;</span>: 1</div><div class="line">    },</div><div class="line">    {</div><div class="line">      <span class="stringliteral">&quot;name&quot;</span>: <span class="stringliteral">&quot;client.SDR.received.count&quot;</span>,</div><div class="line">      <span class="stringliteral">&quot;value&quot;</span>: 0</div><div class="line">    }</div><div class="line">  ]</div><div class="line">}</div></div><!-- fragment --><p> This example has two statistics. Be aware that a given message can have any number of statistic entries.</p>
 <p>Overall structure of message: </p><center> <table class="doxtable">
 <tr>
-<th>Field</th><th>Description </th></tr>
+<th>Field</th><th><p class="starttd">Description</p>
+<p class="endtd"></p>
+</th></tr>
 <tr>
-<td><b>monitorInfoCategory</b></td><td>Message type. Set to the string "UM_CLIENT_STATS". </td></tr>
+<td><b>monitorInfoCategory</b></td><td><p class="starttd">Message type. Set to the string "UM_CLIENT_STATS".</p>
+<p class="endtd"></p>
+</td></tr>
 <tr>
-<td><b>srsRegistrationInfo</b></td><td>Structure containing identifying information about the connected context. </td></tr>
+<td><b>srsRegistrationInfo</b></td><td><p class="starttd">Structure containing identifying information about the connected context.</p>
+<p class="endtd"></p>
+</td></tr>
 <tr>
-<td><b>.&#160;.&#160;srsRegistrationInfo.ip</b></td><td>IP address of the context. </td></tr>
+<td><b>.&#160;.&#160;srsRegistrationInfo.ip</b></td><td><p class="starttd">IP address of the context.</p>
+<p class="endtd"></p>
+</td></tr>
 <tr>
-<td><b>.&#160;.&#160;srsRegistrationInfo.port</b></td><td>TCP "source port" the context used locally for its SRS connection. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grptcpbasedresolveroperation.html#resolverservicecontext">resolver_service (context)</a>. </td></tr>
+<td><b>.&#160;.&#160;srsRegistrationInfo.port</b></td><td><p class="starttd">TCP "source port" the context used locally for its SRS connection. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/Design/config.tag:../Config/" href="../Config/grptcpbasedresolveroperation.html#resolverservicecontext">resolver_service (context)</a>.</p>
+<p class="endtd"></p>
+</td></tr>
 <tr>
-<td><b>.&#160;.&#160;srsRegistrationInfo.sessionId</b></td><td>The unique identifier assigned by the SRS to this connection. </td></tr>
+<td><b>.&#160;.&#160;srsRegistrationInfo.sessionId</b></td><td><p class="starttd">The unique identifier assigned by the SRS to this connection.</p>
+<p class="endtd"></p>
+</td></tr>
 <tr>
-<td><b>stats</b></td><td>Array of sub-structures, one per statistic. The number and order of the contained statistics is not fixed. </td></tr>
+<td><b>stats</b></td><td><p class="starttd">Array of sub-structures, one per statistic. The number and order of the contained statistics is not fixed.</p>
+<p class="endtd"></p>
+</td></tr>
 <tr>
-<td><b>.&#160;.&#160;stats[].name</b></td><td>Name of statistic (see below). </td></tr>
+<td><b>.&#160;.&#160;stats[].name</b></td><td><p class="starttd">Name of statistic (see below).</p>
+<p class="endtd"></p>
+</td></tr>
 <tr>
 <td><b>.&#160;.&#160;stats[].value</b></td><td>Value of statistic. </td></tr>
 </table>
 </center><p>Meaning of each statistic: </p><center> <table class="doxtable">
 <tr>
-<th>Statistic</th><th>Description </th></tr>
+<th>Statistic</th><th><p class="starttd">Description</p>
+<p class="endtd"></p>
+</th></tr>
 <tr>
-<td><b>record.queue.depth</b> </td><td>Snapshot of the context's SRS worker thread's work queue. I.e. number of Topic Resolution updates that need to be sent to the context. This number should normally be zero. If it remains above zero for significant time, contact Informatica support. </td></tr>
+<td><b>record.queue.depth</b> </td><td><p class="starttd">Snapshot of the context's SRS worker thread's work queue. I.e. number of Topic Resolution updates that need to be sent to the context. This number should normally be zero. If it remains above zero for significant time, contact Informatica support.</p>
+<p class="endtd"></p>
+</td></tr>
 <tr>
-<td><b>client.SIR.sent.count</b> </td><td>Number of sources that the SRS has informed the context of. </td></tr>
+<td><b>client.SIR.sent.count</b> </td><td><p class="starttd">Number of sources that the SRS has informed the context of.</p>
+<p class="endtd"></p>
+</td></tr>
 <tr>
-<td><b>client.SER.sent.count</b> </td><td>Number of source deletions that the SRS has informed the context of. Either the application explicitly deleted a source, or the context abnormally disconnected and the state lifetime expired. </td></tr>
+<td><b>client.SER.sent.count</b> </td><td><p class="starttd">Number of source deletions that the SRS has informed the context of. Either the application explicitly deleted a source, or the context abnormally disconnected and the state lifetime expired.</p>
+<p class="endtd"></p>
+</td></tr>
 <tr>
-<td><b>client.RIR.sent.count</b> </td><td>Number of receivers that the SRS has informed the context of. </td></tr>
+<td><b>client.RIR.sent.count</b> </td><td><p class="starttd">Number of receivers that the SRS has informed the context of.</p>
+<p class="endtd"></p>
+</td></tr>
 <tr>
-<td><b>client.RER.sent.count</b> </td><td>Number of receiver deletions that the SRS has informed the context of. Either the application explicitly deleted a receiver, or the context abnormally disconnected and the state lifetime expired. </td></tr>
+<td><b>client.RER.sent.count</b> </td><td><p class="starttd">Number of receiver deletions that the SRS has informed the context of. Either the application explicitly deleted a receiver, or the context abnormally disconnected and the state lifetime expired.</p>
+<p class="endtd"></p>
+</td></tr>
 <tr>
-<td><b>client.WIR.sent.count</b> </td><td>Number of wildcard receivers that the SRS has informed the context of. </td></tr>
+<td><b>client.WIR.sent.count</b> </td><td><p class="starttd">Number of wildcard receivers that the SRS has informed the context of.</p>
+<p class="endtd"></p>
+</td></tr>
 <tr>
-<td><b>client.WER.sent.count</b> </td><td>Number of wildcard receiver deletions that the SRS has informed the context of. Either the application explicitly deleted a receiver, or the context abnormally disconnected and the state lifetime expired. </td></tr>
+<td><b>client.WER.sent.count</b> </td><td><p class="starttd">Number of wildcard receiver deletions that the SRS has informed the context of. Either the application explicitly deleted a receiver, or the context abnormally disconnected and the state lifetime expired.</p>
+<p class="endtd"></p>
+</td></tr>
 <tr>
-<td><b>client.SIR.received.count</b> </td><td>Number of created sources that the context has informed the SRS. This number is not necessarily the current number of sources; i.e. the counter does not decrease as sources are deleted. </td></tr>
+<td><b>client.SIR.received.count</b> </td><td><p class="starttd">Number of created sources that the context has informed the SRS. This number is not necessarily the current number of sources; i.e. the counter does not decrease as sources are deleted.</p>
+<p class="endtd"></p>
+</td></tr>
 <tr>
-<td><b>client.SDR.received.count</b> </td><td>Number of sources deleted that the context has informed the SRS. </td></tr>
+<td><b>client.SDR.received.count</b> </td><td><p class="starttd">Number of sources deleted that the context has informed the SRS.</p>
+<p class="endtd"></p>
+</td></tr>
 <tr>
-<td><b>client.RIR.received.count</b> </td><td>Number of created receivers (one per topic even if more than one receivers on a topic) that the context has informed the SRS. This number is not necessarily the current number of receivers; i.e. the counter does not decrease as receivers are deleted. </td></tr>
+<td><b>client.RIR.received.count</b> </td><td><p class="starttd">Number of created receivers (one per topic even if more than one receivers on a topic) that the context has informed the SRS. This number is not necessarily the current number of receivers; i.e. the counter does not decrease as receivers are deleted.</p>
+<p class="endtd"></p>
+</td></tr>
 <tr>
-<td><b>client.WIR.received.count</b> </td><td>Number of created wildcard receivers (one per pattern even if more than one receivers on a pattern) that the context has informed the SRS. This number is not necessarily the current number of wildcard receivers; i.e. the counter does not decrease as wildcard receivers are deleted. </td></tr>
+<td><b>client.WIR.received.count</b> </td><td><p class="starttd">Number of created wildcard receivers (one per pattern even if more than one receivers on a pattern) that the context has informed the SRS. This number is not necessarily the current number of wildcard receivers; i.e. the counter does not decrease as wildcard receivers are deleted.</p>
+<p class="endtd"></p>
+</td></tr>
 <tr>
-<td><b>client.RDR.received.count</b> </td><td>Number of deleted receivers (one per topic even if more than one receivers on a topic) that the context has informed the SRS. This number is not necessarily the current number of receivers; i.e. the counter does not decrease as receivers are deleted. </td></tr>
+<td><b>client.RDR.received.count</b> </td><td><p class="starttd">Number of deleted receivers (one per topic even if more than one receivers on a topic) that the context has informed the SRS. This number is not necessarily the current number of receivers; i.e. the counter does not decrease as receivers are deleted.</p>
+<p class="endtd"></p>
+</td></tr>
 <tr>
-<td><b>client.WDR.received.count</b> </td><td>Number of deleted wildcard receivers (one per pattern even if more than one receivers on a pattern) that the context has informed the SRS. This number is not necessarily the current number of wildcard receivers; i.e. the counter does not decrease as wildcard receivers are deleted. </td></tr>
+<td><b>client.WDR.received.count</b> </td><td><p class="starttd">Number of deleted wildcard receivers (one per pattern even if more than one receivers on a pattern) that the context has informed the SRS. This number is not necessarily the current number of wildcard receivers; i.e. the counter does not decrease as wildcard receivers are deleted.</p>
+<p class="endtd"></p>
+</td></tr>
 <tr>
-<td><b>client.SLR.received.count</b> </td><td>Number of source leave records that the receiver context has informed the SRS. </td></tr>
+<td><b>client.SLR.received.count</b> </td><td><p class="starttd">Number of source leave records that the receiver context has informed the SRS.</p>
+<p class="endtd"></p>
+</td></tr>
 <tr>
-<td><b>client.active.SIR.count</b> </td><td>Number of sources that currently exist in the context. </td></tr>
+<td><b>client.active.SIR.count</b> </td><td><p class="starttd">Number of sources that currently exist in the context.</p>
+<p class="endtd"></p>
+</td></tr>
 <tr>
-<td><b>client.max.concurrent.SIR.count</b> </td><td>High water mark of simultaneous sources managed since the SRS service started. </td></tr>
+<td><b>client.max.concurrent.SIR.count</b> </td><td><p class="starttd">High water mark of simultaneous sources managed since the SRS service started.</p>
+<p class="endtd"></p>
+</td></tr>
+<tr>
+<td><b>client.DIR.sent.count</b> </td><td><p class="starttd">Number of Domain Information Records (DIRs) that the SRS has sent to the context.</p>
+<p class="endtd"></p>
+</td></tr>
+<tr>
+<td><b>client.RTIR.sent.count</b> </td><td><p class="starttd">Number of Route Information Records (RTIRs) the SRS has sent to the context.</p>
+<p class="endtd"></p>
+</td></tr>
+<tr>
+<td><b>client.RTIR.received.count</b> </td><td><p class="starttd">Number of Route Information Records (RTIRs) the context has sent to the SRS.</p>
+<p class="endtd"></p>
+</td></tr>
+<tr>
+<td><b>client.RTER.sent.count</b> </td><td><p class="starttd">Number of Route End Records (RTERs) the SRS has sent to the context. This is incremented if a DRO disconnects from an SRS and that DRO's Route Information Record state lifetime expires.</p>
+<p class="endtd"></p>
+</td></tr>
+<tr>
+<td><b>client.CNIR.sent.count</b> </td><td><p class="starttd">Number of Context Name Information Records (CNIRs) sent to the context.</p>
+<p class="endtd"></p>
+</td></tr>
+<tr>
+<td><b>client.CNIR.received.count</b> </td><td><p class="starttd">Number of Context Name Information Records (CNIRs) received from the context. This should normally be 1 or 2.</p>
+<p class="endtd"></p>
+</td></tr>
+<tr>
+<td><b>client.CNQR.received.count</b> </td><td><p class="starttd">Number of Context Name Query records (CNQRs) received from the context. This should normally be 1.</p>
+<p class="endtd"></p>
+</td></tr>
+<tr>
+<td><b>client.CNER.sent.count</b> </td><td><p class="starttd">Number of Context Name End Records (CNERs) sent to the context.</p>
+<p class="endtd"></p>
+</td></tr>
+<tr>
+<td><b>client.CNER.received.count</b> </td><td>Number of Context Name End Records (CNERs) received from the Store. This should normally be 1. </td></tr>
 </table>
 </center><p><br />
  </p>
@@ -256,7 +472,7 @@ Message Type: UM_CLIENT_ERROR_STATS&nbsp;&nbsp;<small><a href="#messagetypeumcli
 <tr>
 <td><b>.&#160;.&#160;srsRegistrationInfo.ip</b></td><td>IP address of the context. </td></tr>
 <tr>
-<td><b>.&#160;.&#160;srsRegistrationInfo.port</b></td><td>TCP "source port" the context used locally for its SRS connection. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grptcpbasedresolveroperation.html#resolverservicecontext">resolver_service (context)</a>. </td></tr>
+<td><b>.&#160;.&#160;srsRegistrationInfo.port</b></td><td>TCP "source port" the context used locally for its SRS connection. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/Design/config.tag:../Config/" href="../Config/grptcpbasedresolveroperation.html#resolverservicecontext">resolver_service (context)</a>. </td></tr>
 <tr>
 <td><b>.&#160;.&#160;srsRegistrationInfo.sessionId</b></td><td>The unique identifier assigned by the SRS to this connection. </td></tr>
 <tr>
@@ -268,15 +484,38 @@ Message Type: UM_CLIENT_ERROR_STATS&nbsp;&nbsp;<small><a href="#messagetypeumcli
 </table>
 </center><p>Meaning of each statistic: </p><center> <table class="doxtable">
 <tr>
-<th>Statistic</th><th>Description </th></tr>
+<th>Statistic</th><th><p class="starttd">Description</p>
+<p class="endtd"></p>
+</th></tr>
 <tr>
 <td><b>client.duplicate.RIR.received.count</b> </td><td>Number of created duplicate receivers that the context has informed the SRS. </td></tr>
 <tr>
-<td><b>client.duplicate.WIR.received.count</b> </td><td>Number of created duplicate wildcard receivers that the context has informed the SRS. </td></tr>
+<td><b>client.duplicate.WIR.received.count</b> </td><td><p class="starttd">Number of created duplicate wildcard receivers that the context has informed the SRS.</p>
+<p class="endtd"></p>
+</td></tr>
 <tr>
-<td><b>client.invalid.SRS.message.received.count</b> </td><td>This counter should never be greater than zero. While not a fatal condition, Informatica support should be informed if this count increments frequently. (Number of messages received from this context that could not be processed.) </td></tr>
+<td><b>client.invalid.SRS.message.received.count</b> </td><td><p class="starttd">This counter should never be greater than zero. While not a fatal condition, Informatica support should be informed if this count increments frequently. (Number of messages received from this context that could not be processed.)</p>
+<p class="endtd"></p>
+</td></tr>
 <tr>
-<td><b>client.invalid.SDR.received.count</b> </td><td>This counter should never be greater than zero. While not a fatal condition, Informatica support should be informed if this count increments frequently. (Number of source delete messages received from this context which could not be processed correctly.) </td></tr>
+<td><b>client.invalid.SDR.received.count</b> </td><td><p class="starttd">This counter should never be greater than zero. While not a fatal condition, Informatica support should be informed if this count increments frequently. (Number of source delete messages received from this context which could not be processed correctly.)</p>
+<p class="endtd"></p>
+</td></tr>
+<tr>
+<td><b>client.duplicate.RTIR.received.count</b> </td><td><p class="starttd">Number of duplicate Route Information Records (RTIRs) received from this DRO endpoint. This should never happen. While not a fatal condition, Informatica support should be informed if this is non-zero.</p>
+<p>See also statistic "clients.duplicate.RTIR.count" in <a class="el" href="srsdaemonstatistics.html#messagetypesrserrorstats">Message Type: SRS_ERROR_STATS</a>.</p>
+<p class="endtd"></p>
+</td></tr>
+<tr>
+<td><b>client.unexpected.SRS.message.sent.count</b> </td><td><p class="starttd">Number of unexpected messages sent to the context. This should never happen. While not a fatal condition, Informatica support should be informed if this is non-zero.</p>
+<p class="endtd"></p>
+</td></tr>
+<tr>
+<td><b>client.duplicate.CNIR.received.count</b> </td><td><p class="starttd">Number of duplicate Context Name Information Records (CNIRs) received from this context. This should never happen. While not a fatal condition, Informatica support should be informed if this is non-zero.</p>
+<p class="endtd"></p>
+</td></tr>
+<tr>
+<td><b>client.duplicate.CNQR.received.count</b> </td><td>Number of duplicate Context Name Query Records (CNQRs) received from this context. This should never happen. While not a fatal condition, Informatica support should be informed if this is non-zero. </td></tr>
 </table>
 </center><p><br />
  </p>
@@ -289,23 +528,41 @@ Message Subtype: UM_CLIENT_CONNECT&nbsp;&nbsp;<small><a href="#messagesubtypeumc
 <p>Message type CONNECTION_EVENTS, sub-type UM_CLIENT_CONNECT, logs a single connect of a context to the SRS.</p>
 <div class="fragment"><div class="line">{</div><div class="line">  <span class="stringliteral">&quot;monitorInfoCategory&quot;</span>: <span class="stringliteral">&quot;CONNECTION_EVENTS&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;srsRegistrationInfo&quot;</span>: {</div><div class="line">    <span class="stringliteral">&quot;ip&quot;</span>: <span class="stringliteral">&quot;10.29.3.42&quot;</span>,</div><div class="line">    <span class="stringliteral">&quot;port&quot;</span>: <span class="stringliteral">&quot;41873&quot;</span>,</div><div class="line">    <span class="stringliteral">&quot;sessionId&quot;</span>: <span class="stringliteral">&quot;0xaecbff98&quot;</span></div><div class="line">  },</div><div class="line">  <span class="stringliteral">&quot;connectionEventType&quot;</span>: <span class="stringliteral">&quot;UM_CLIENT_CONNECT&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;events&quot;</span>: [</div><div class="line">    {</div><div class="line">      <span class="stringliteral">&quot;connectionEventType&quot;</span>: <span class="stringliteral">&quot;UM_CLIENT_CONNECT&quot;</span>,</div><div class="line">      <span class="stringliteral">&quot;connectionEventTime&quot;</span>: <span class="stringliteral">&quot;Thu Jan 24 00:28:26 CET 2019&quot;</span>,</div><div class="line">    }</div><div class="line">  ]</div><div class="line">}</div></div><!-- fragment --><p>Overall structure of message: </p><center> <table class="doxtable">
 <tr>
-<th>Field</th><th>Description </th></tr>
+<th>Field</th><th><p class="starttd">Description</p>
+<p class="endtd"></p>
+</th></tr>
 <tr>
-<td><b>monitorInfoCategory</b></td><td>Message type. Set to the string "CONNECTION_EVENTS". </td></tr>
+<td><b>monitorInfoCategory</b></td><td><p class="starttd">Message type. Set to the string "CONNECTION_EVENTS".</p>
+<p class="endtd"></p>
+</td></tr>
 <tr>
-<td><b>srsRegistrationInfo</b></td><td>Structure containing identifying information about the connected context. </td></tr>
+<td><b>srsRegistrationInfo</b></td><td><p class="starttd">Structure containing identifying information about the connected context.</p>
+<p class="endtd"></p>
+</td></tr>
 <tr>
-<td><b>.&#160;.&#160;srsRegistrationInfo.ip</b></td><td>IP address of the context. </td></tr>
+<td><b>.&#160;.&#160;srsRegistrationInfo.ip</b></td><td><p class="starttd">IP address of the context.</p>
+<p class="endtd"></p>
+</td></tr>
 <tr>
-<td><b>.&#160;.&#160;srsRegistrationInfo.port</b></td><td>TCP "source port" the context used locally for its SRS connection. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grptcpbasedresolveroperation.html#resolverservicecontext">resolver_service (context)</a>. </td></tr>
+<td><b>.&#160;.&#160;srsRegistrationInfo.port</b></td><td><p class="starttd">TCP "source port" the context used locally for its SRS connection. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/Design/config.tag:../Config/" href="../Config/grptcpbasedresolveroperation.html#resolverservicecontext">resolver_service (context)</a>.</p>
+<p class="endtd"></p>
+</td></tr>
 <tr>
-<td><b>.&#160;.&#160;srsRegistrationInfo.sessionId</b></td><td>The unique identifier assigned by the SRS to this connection. </td></tr>
+<td><b>.&#160;.&#160;srsRegistrationInfo.sessionId</b></td><td><p class="starttd">The unique identifier assigned by the SRS to this connection.</p>
+<p class="endtd"></p>
+</td></tr>
 <tr>
-<td><b>connectionEventType</b></td><td>type of event contained in the <code>events</code> sub-structure. Set to "UM_CLIENT_CONNECT". </td></tr>
+<td><b>connectionEventType</b></td><td><p class="starttd">type of event contained in the <code>events</code> sub-structure. Set to "UM_CLIENT_CONNECT".</p>
+<p class="endtd"></p>
+</td></tr>
 <tr>
-<td><b>events</b></td><td>Technically <code>events</code> is constructed as an array of sub-structures, however each CONNECTION_EVENTS message contains exactly one event log. </td></tr>
+<td><b>events</b></td><td><p class="starttd">Technically <code>events</code> is constructed as an array of sub-structures, however each CONNECTION_EVENTS message contains exactly one event log.</p>
+<p class="endtd"></p>
+</td></tr>
 <tr>
-<td><b>.&#160;.&#160;events[].connectionEventType</b></td><td>type of event contained in the <code>events</code> sub-structure. Set to "UM_CLIENT_CONNECT". </td></tr>
+<td><b>.&#160;.&#160;events[].connectionEventType</b></td><td><p class="starttd">type of event contained in the <code>events</code> sub-structure. Set to "UM_CLIENT_CONNECT".</p>
+<p class="endtd"></p>
+</td></tr>
 <tr>
 <td><b>.&#160;.&#160;events[].connectionEventTime</b></td><td>ASCII time/date stamp of event. </td></tr>
 </table>
@@ -316,31 +573,55 @@ Message Subtype: UM_CLIENT_DISCONNECT&nbsp;&nbsp;<small><a href="#messagesubtype
 <p>Message type CONNECTION_EVENTS, sub-type UM_CLIENT_DISCONNECT, logs a single disconnect of a context to the SRS.</p>
 <div class="fragment"><div class="line">{</div><div class="line">  <span class="stringliteral">&quot;monitorInfoCategory&quot;</span>: <span class="stringliteral">&quot;CONNECTION_EVENTS&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;srsRegistrationInfo&quot;</span>: {</div><div class="line">    <span class="stringliteral">&quot;ip&quot;</span>: <span class="stringliteral">&quot;10.29.3.42&quot;</span>,</div><div class="line">    <span class="stringliteral">&quot;port&quot;</span>: <span class="stringliteral">&quot;35350&quot;</span>,</div><div class="line">    <span class="stringliteral">&quot;sessionId&quot;</span>: <span class="stringliteral">&quot;0x0388cf20&quot;</span></div><div class="line">  },</div><div class="line">  <span class="stringliteral">&quot;connectionEventType&quot;</span>: <span class="stringliteral">&quot;UM_CLIENT_DISCONNECT&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;events&quot;</span>: [</div><div class="line">    {</div><div class="line">      <span class="stringliteral">&quot;srsRegistrationInfo&quot;</span>: {</div><div class="line">        <span class="stringliteral">&quot;ip&quot;</span>: <span class="stringliteral">&quot;10.29.3.42&quot;</span>,</div><div class="line">        <span class="stringliteral">&quot;port&quot;</span>: <span class="stringliteral">&quot;35350&quot;</span>,</div><div class="line">        <span class="stringliteral">&quot;sessionId&quot;</span>: <span class="stringliteral">&quot;0x0388cf20&quot;</span></div><div class="line">      },</div><div class="line">      <span class="stringliteral">&quot;connectionEventType&quot;</span>: <span class="stringliteral">&quot;UM_CLIENT_DISCONNECT&quot;</span>,</div><div class="line">      <span class="stringliteral">&quot;connectionEventTime&quot;</span>: <span class="stringliteral">&quot;Wed Jan 30 23:50:30 CET 2019&quot;</span>,</div><div class="line">    }</div><div class="line">  ]</div><div class="line">}</div></div><!-- fragment --><p>Overall structure of message: </p><center> <table class="doxtable">
 <tr>
-<th>Field</th><th>Description </th></tr>
+<th>Field</th><th><p class="starttd">Description</p>
+<p class="endtd"></p>
+</th></tr>
 <tr>
-<td><b>monitorInfoCategory</b></td><td>Message type. Set to the string "CONNECTION_EVENTS". </td></tr>
+<td><b>monitorInfoCategory</b></td><td><p class="starttd">Message type. Set to the string "CONNECTION_EVENTS".</p>
+<p class="endtd"></p>
+</td></tr>
 <tr>
 <td><b>srsRegistrationInfo</b></td><td>Structure containing identifying information about the connected context. &#160;&#160;</td></tr>
 <tr>
-<td><b>.&#160;.&#160;srsRegistrationInfo.ip</b></td><td>IP address of the context. </td></tr>
+<td><b>.&#160;.&#160;srsRegistrationInfo.ip</b></td><td><p class="starttd">IP address of the context.</p>
+<p class="endtd"></p>
+</td></tr>
 <tr>
-<td><b>.&#160;.&#160;srsRegistrationInfo.port</b></td><td>TCP "source port" the context used locally for its SRS connection. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grptcpbasedresolveroperation.html#resolverservicecontext">resolver_service (context)</a>. </td></tr>
+<td><b>.&#160;.&#160;srsRegistrationInfo.port</b></td><td><p class="starttd">TCP "source port" the context used locally for its SRS connection. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/Design/config.tag:../Config/" href="../Config/grptcpbasedresolveroperation.html#resolverservicecontext">resolver_service (context)</a>.</p>
+<p class="endtd"></p>
+</td></tr>
 <tr>
-<td><b>.&#160;.&#160;srsRegistrationInfo.sessionId</b></td><td>The unique identifier assigned by the SRS to this connection. </td></tr>
+<td><b>.&#160;.&#160;srsRegistrationInfo.sessionId</b></td><td><p class="starttd">The unique identifier assigned by the SRS to this connection.</p>
+<p class="endtd"></p>
+</td></tr>
 <tr>
-<td><b>connectionEventType</b></td><td>type of event contained in the <code>events</code> sub-structure. Set to "UM_CLIENT_DISCONNECT". </td></tr>
+<td><b>connectionEventType</b></td><td><p class="starttd">type of event contained in the <code>events</code> sub-structure. Set to "UM_CLIENT_DISCONNECT".</p>
+<p class="endtd"></p>
+</td></tr>
 <tr>
-<td><b>events</b></td><td>Technically <code>events</code> is constructed as an array of sub-structures, however each CONNECTION_EVENTS message contains exactly one event log. </td></tr>
+<td><b>events</b></td><td><p class="starttd">Technically <code>events</code> is constructed as an array of sub-structures, however each CONNECTION_EVENTS message contains exactly one event log.</p>
+<p class="endtd"></p>
+</td></tr>
 <tr>
-<td><b>.&#160;.&#160;events[].srsRegistrationInfo</b></td><td>Structure containing identifying information about the connected context. </td></tr>
+<td><b>.&#160;.&#160;events[].srsRegistrationInfo</b></td><td><p class="starttd">Structure containing identifying information about the connected context.</p>
+<p class="endtd"></p>
+</td></tr>
 <tr>
-<td><b>.&#160;.&#160;.&#160;.&#160;events[].srsRegistrationInfo.ip</b></td><td>IP address of the context. </td></tr>
+<td><b>.&#160;.&#160;.&#160;.&#160;events[].srsRegistrationInfo.ip</b></td><td><p class="starttd">IP address of the context.</p>
+<p class="endtd"></p>
+</td></tr>
 <tr>
-<td><b>.&#160;.&#160;.&#160;.&#160;events[].srsRegistrationInfo.port</b></td><td>TCP "source port" the context used locally for its SRS connection. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grptcpbasedresolveroperation.html#resolverservicecontext">resolver_service (context)</a>. </td></tr>
+<td><b>.&#160;.&#160;.&#160;.&#160;events[].srsRegistrationInfo.port</b></td><td><p class="starttd">TCP "source port" the context used locally for its SRS connection. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/Design/config.tag:../Config/" href="../Config/grptcpbasedresolveroperation.html#resolverservicecontext">resolver_service (context)</a>.</p>
+<p class="endtd"></p>
+</td></tr>
 <tr>
-<td><b>.&#160;.&#160;.&#160;.&#160;event[].srsRegistrationInfo.sessionId</b></td><td>The unique identifier assigned by the SRS to this connection. </td></tr>
+<td><b>.&#160;.&#160;.&#160;.&#160;event[].srsRegistrationInfo.sessionId</b></td><td><p class="starttd">The unique identifier assigned by the SRS to this connection.</p>
+<p class="endtd"></p>
+</td></tr>
 <tr>
-<td><b>.&#160;.&#160;events[].connectionEventType</b></td><td>type of event contained in the <code>events</code> sub-structure. Set to "UM_CLIENT_DISCONNECT". </td></tr>
+<td><b>.&#160;.&#160;events[].connectionEventType</b></td><td><p class="starttd">type of event contained in the <code>events</code> sub-structure. Set to "UM_CLIENT_DISCONNECT".</p>
+<p class="endtd"></p>
+</td></tr>
 <tr>
 <td><b>.&#160;.&#160;events[].connectionEventTime</b></td><td>ASCII time/date stamp of event. </td></tr>
 </table>
@@ -351,23 +632,39 @@ Message Subtypes: SIR and SDR&nbsp;&nbsp;<small><a href="#messagesubtypessirands
 <p>Message type CONNECTION_EVENTS, sub-types SIR and SDR, log a single context source creation or deletion message to the SRS.</p>
 <div class="fragment"><div class="line">{</div><div class="line">  <span class="stringliteral">&quot;monitorInfoCategory&quot;</span>: <span class="stringliteral">&quot;CONNECTION_EVENTS&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;srsRegistrationInfo&quot;</span>: {</div><div class="line">    <span class="stringliteral">&quot;ip&quot;</span>: <span class="stringliteral">&quot;10.29.3.43&quot;</span>,</div><div class="line">    <span class="stringliteral">&quot;port&quot;</span>: <span class="stringliteral">&quot;60809&quot;</span>,</div><div class="line">    <span class="stringliteral">&quot;sessionId&quot;</span>: <span class="stringliteral">&quot;0x1c668bad&quot;</span></div><div class="line">  },</div><div class="line">  <span class="stringliteral">&quot;connectionEventType&quot;</span>: <span class="stringliteral">&quot;SIR&quot;</span> or <span class="stringliteral">&quot;SDR&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;events&quot;</span>: [</div><div class="line">    {</div><div class="line">      <span class="stringliteral">&quot;topic&quot;</span>: <span class="stringliteral">&quot;srs_topic&quot;</span>,</div><div class="line">      <span class="stringliteral">&quot;source&quot;</span>: <span class="stringliteral">&quot;LBTRM:10.29.3.43:24000:47b87920:225.11.28.85:14400&quot;</span>,</div><div class="line">      <span class="stringliteral">&quot;connectionEventType&quot;</span>: <span class="stringliteral">&quot;SIR&quot;</span> or <span class="stringliteral">&quot;SDR&quot;</span>,</div><div class="line">      <span class="stringliteral">&quot;connectionEventTime&quot;</span>: <span class="stringliteral">&quot;Fri Feb 1 02:16:06 CET 2019&quot;</span>,</div><div class="line">    }</div><div class="line">  ]</div><div class="line">}</div></div><!-- fragment --><p>Overall structure of message: </p><center> <table class="doxtable">
 <tr>
-<th>Field</th><th>Description </th></tr>
+<th>Field</th><th><p class="starttd">Description</p>
+<p class="endtd"></p>
+</th></tr>
 <tr>
-<td><b>monitorInfoCategory</b></td><td>Message type. Set to the string "CONNECTION_EVENTS". </td></tr>
+<td><b>monitorInfoCategory</b></td><td><p class="starttd">Message type. Set to the string "CONNECTION_EVENTS".</p>
+<p class="endtd"></p>
+</td></tr>
 <tr>
 <td><b>srsRegistrationInfo</b></td><td>Structure containing identifying information about the connected context. &#160;&#160;</td></tr>
 <tr>
-<td><b>.&#160;.&#160;srsRegistrationInfo.ip</b></td><td>IP address of the context. </td></tr>
+<td><b>.&#160;.&#160;srsRegistrationInfo.ip</b></td><td><p class="starttd">IP address of the context.</p>
+<p class="endtd"></p>
+</td></tr>
 <tr>
-<td><b>.&#160;.&#160;srsRegistrationInfo.port</b></td><td>TCP "source port" the context used locally for its SRS connection. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Design/config.tag:../Config/" href="../Config/grptcpbasedresolveroperation.html#resolverservicecontext">resolver_service (context)</a>. </td></tr>
+<td><b>.&#160;.&#160;srsRegistrationInfo.port</b></td><td><p class="starttd">TCP "source port" the context used locally for its SRS connection. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/Design/config.tag:../Config/" href="../Config/grptcpbasedresolveroperation.html#resolverservicecontext">resolver_service (context)</a>.</p>
+<p class="endtd"></p>
+</td></tr>
 <tr>
-<td><b>.&#160;.&#160;srsRegistrationInfo.sessionId</b></td><td>The unique identifier assigned by the SRS to this connection. </td></tr>
+<td><b>.&#160;.&#160;srsRegistrationInfo.sessionId</b></td><td><p class="starttd">The unique identifier assigned by the SRS to this connection.</p>
+<p class="endtd"></p>
+</td></tr>
 <tr>
-<td><b>connectionEventType</b></td><td>type of event contained in the <code>events</code> sub-structure. Set to "SIR" or "SDR". </td></tr>
+<td><b>connectionEventType</b></td><td><p class="starttd">type of event contained in the <code>events</code> sub-structure. Set to "SIR" or "SDR".</p>
+<p class="endtd"></p>
+</td></tr>
 <tr>
-<td><b>events</b></td><td>Technically <code>events</code> is constructed as an array of sub-structures, however each CONNECTION_EVENTS message contains exactly one event log. </td></tr>
+<td><b>events</b></td><td><p class="starttd">Technically <code>events</code> is constructed as an array of sub-structures, however each CONNECTION_EVENTS message contains exactly one event log.</p>
+<p class="endtd"></p>
+</td></tr>
 <tr>
-<td><b>.&#160;.&#160;events[].connectionEventType</b></td><td>type of event contained in the <code>events</code> sub-structure. Set to "SIR" or "SDR". </td></tr>
+<td><b>.&#160;.&#160;events[].connectionEventType</b></td><td><p class="starttd">type of event contained in the <code>events</code> sub-structure. Set to "SIR" or "SDR".</p>
+<p class="endtd"></p>
+</td></tr>
 <tr>
 <td><b>.&#160;.&#160;events[].connectionEventTime</b></td><td>ASCII time/date stamp of event. </td></tr>
 </table>
@@ -379,91 +676,179 @@ Message Type: CONFIG_OPTS&nbsp;&nbsp;<small><a href="#messagetypeconfigopts">&lt
 <p><b>EXAMPLE:</b> </p><div class="fragment"><div class="line">{</div><div class="line">  <span class="stringliteral">&quot;monitorInfoCategory&quot;</span>: <span class="stringliteral">&quot;CONFIG_OPTS&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;configOptions&quot;</span>: [</div><div class="line">    {</div><div class="line">      <span class="stringliteral">&quot;name&quot;</span>: <span class="stringliteral">&quot;um-srs.daemon-monitor.lbm-attributes.context.context_name&quot;</span>,</div><div class="line">      <span class="stringliteral">&quot;value&quot;</span>: <span class="stringliteral">&quot;statsLbmContext&quot;</span>,</div><div class="line">    },</div><div class="line">    {</div><div class="line">      <span class="stringliteral">&quot;name&quot;</span>: <span class="stringliteral">&quot;um-srs.daemon-monitor.lbm-attributes.context.default_interface&quot;</span>,</div><div class="line">      <span class="stringliteral">&quot;value&quot;</span>: <span class="stringliteral">&quot;192.168.0.0/24&quot;</span>,</div><div class="line">    }</div><div class="line">  ]</div><div class="line">}</div></div><!-- fragment --><p> This example has two options. Be aware that a given message can have any number of option entries.</p>
 <p>Overall structure of message: </p><center> <table class="doxtable">
 <tr>
-<th>Field</th><th>Description </th></tr>
+<th>Field</th><th><p class="starttd">Description</p>
+<p class="endtd"></p>
+</th></tr>
 <tr>
-<td><b>monitorInfoCategory</b></td><td>Message type. Set to the string "CONFIG_OPTS". </td></tr>
+<td><b>monitorInfoCategory</b></td><td><p class="starttd">Message type. Set to the string "CONFIG_OPTS".</p>
+<p class="endtd"></p>
+</td></tr>
 <tr>
-<td><b>configOptions</b></td><td>Array of sub-structures, one per configuration option. The number and order of the contained options is not fixed. </td></tr>
+<td><b>configOptions</b></td><td><p class="starttd">Array of sub-structures, one per configuration option. The number and order of the contained options is not fixed.</p>
+<p class="endtd"></p>
+</td></tr>
 <tr>
-<td><b>.&#160;.&#160;configOptions[].name</b></td><td>Name of option (see below). </td></tr>
+<td><b>.&#160;.&#160;configOptions[].name</b></td><td><p class="starttd">Name of option (see below).</p>
+<p class="endtd"></p>
+</td></tr>
 <tr>
 <td><b>.&#160;.&#160;configOptions[].value</b></td><td>Value of option. </td></tr>
 </table>
 </center><p>Meaning of each option: </p><center> <table class="doxtable">
 <tr>
-<th>Option Name</th><th>Description </th></tr>
+<th>Option Name</th><th><p class="starttd">Description</p>
+<p class="endtd"></p>
+</th></tr>
 <tr>
-<td><b>um-srs.version</b> </td><td>Value for '<b>version</b>' attribute to SRS configuration element <a class="el" href="srsconfigurationfile.html#srselementumsrs">&lt;um-srs&gt;</a>. </td></tr>
+<td><b>um-srs.version</b> </td><td><p class="starttd">Value for '<b>version</b>' attribute to SRS configuration element <a class="el" href="srsconfigurationfile.html#srselementumsrs">&lt;um-srs&gt;</a>.</p>
+<p class="endtd"></p>
+</td></tr>
 <tr>
-<td><b>um-srs.daemon.log</b> </td><td>Value for the SRS configuration element <a class="el" href="srsconfigurationfile.html#srselementlog">&lt;log&gt;</a>. </td></tr>
+<td><b>um-srs.daemon.log</b> </td><td><p class="starttd">Value for the SRS configuration element <a class="el" href="srsconfigurationfile.html#srselementlog">&lt;log&gt;</a>.</p>
+<p class="endtd"></p>
+</td></tr>
 <tr>
-<td><b>um-srs.daemon.log.type</b> </td><td>Value for '<b>type</b>' attribute to SRS configuration element <a class="el" href="srsconfigurationfile.html#srselementlog">&lt;log&gt;</a>. </td></tr>
+<td><b>um-srs.daemon.log.type</b> </td><td><p class="starttd">Value for '<b>type</b>' attribute to SRS configuration element <a class="el" href="srsconfigurationfile.html#srselementlog">&lt;log&gt;</a>.</p>
+<p class="endtd"></p>
+</td></tr>
 <tr>
-<td><b>um-srs.daemon.log.frequency</b> </td><td>Value for '<b>frequency</b>' attribute to SRS configuration element <a class="el" href="srsconfigurationfile.html#srselementlog">&lt;log&gt;</a>. </td></tr>
+<td><b>um-srs.daemon.log.frequency</b> </td><td><p class="starttd">Value for '<b>frequency</b>' attribute to SRS configuration element <a class="el" href="srsconfigurationfile.html#srselementlog">&lt;log&gt;</a>.</p>
+<p class="endtd"></p>
+</td></tr>
 <tr>
-<td><b>um-srs.daemon.log.size</b> </td><td>Value for '<b>size</b>' attribute to SRS configuration element <a class="el" href="srsconfigurationfile.html#srselementlog">&lt;log&gt;</a>. </td></tr>
+<td><b>um-srs.daemon.log.size</b> </td><td><p class="starttd">Value for '<b>size</b>' attribute to SRS configuration element <a class="el" href="srsconfigurationfile.html#srselementlog">&lt;log&gt;</a>.</p>
+<p class="endtd"></p>
+</td></tr>
 <tr>
-<td><b>um-srs.daemon.log.max-history</b> </td><td>Value for '<b>max-history</b>' attribute to SRS configuration element <a class="el" href="srsconfigurationfile.html#srselementlog">&lt;log&gt;</a>. </td></tr>
+<td><b>um-srs.daemon.log.max-history</b> </td><td><p class="starttd">Value for '<b>max-history</b>' attribute to SRS configuration element <a class="el" href="srsconfigurationfile.html#srselementlog">&lt;log&gt;</a>.</p>
+<p class="endtd"></p>
+</td></tr>
 <tr>
-<td><b>um-srs.daemon.log.total-size-cap</b> </td><td>Value for '<b>total-size-cap</b>' attribute to SRS configuration element <a class="el" href="srsconfigurationfile.html#srselementlog">&lt;log&gt;</a>. </td></tr>
+<td><b>um-srs.daemon.log.total-size-cap</b> </td><td><p class="starttd">Value for '<b>total-size-cap</b>' attribute to SRS configuration element <a class="el" href="srsconfigurationfile.html#srselementlog">&lt;log&gt;</a>.</p>
+<p class="endtd"></p>
+</td></tr>
 <tr>
-<td><b>um-srs.daemon.log.compression</b> </td><td>Value for '<b>compression</b>' attribute to SRS configuration element <a class="el" href="srsconfigurationfile.html#srselementlog">&lt;log&gt;</a>. </td></tr>
+<td><b>um-srs.daemon.log.compression</b> </td><td><p class="starttd">Value for '<b>compression</b>' attribute to SRS configuration element <a class="el" href="srsconfigurationfile.html#srselementlog">&lt;log&gt;</a>.</p>
+<p class="endtd"></p>
+</td></tr>
 <tr>
-<td><b>um-srs.daemon.pid-file</b> </td><td>Value for the SRS configuration element <a class="el" href="srsconfigurationfile.html#srselementrequeststreammaxmsgcount">&lt;request-stream-max-msg-count&gt;</a>. </td></tr>
+<td><b>um-srs.daemon.pid-file</b> </td><td><p class="starttd">Value for the SRS configuration element <a class="el" href="srsconfigurationfile.html#srselementrequeststreammaxmsgcount">&lt;request-stream-max-msg-count&gt;</a>.</p>
+<p class="endtd"></p>
+</td></tr>
 <tr>
-<td><b>um-srs.srs.interface</b> </td><td>Value for the SRS configuration element <a class="el" href="srsconfigurationfile.html#srselementinterface">&lt;interface&gt;</a> inside <a class="el" href="srsconfigurationfile.html#srselementsrs">&lt;srs&gt;</a>. </td></tr>
+<td><b>um-srs.srs.interface</b> </td><td><p class="starttd">Value for the SRS configuration element <a class="el" href="srsconfigurationfile.html#srselementinterface">&lt;interface&gt;</a> inside <a class="el" href="srsconfigurationfile.html#srselementsrs">&lt;srs&gt;</a>.</p>
+<p class="endtd"></p>
+</td></tr>
 <tr>
-<td><b>um-srs.srs.port</b> </td><td>Value for the SRS configuration element <a class="el" href="srsconfigurationfile.html#srselementport">&lt;port&gt;</a> inside <a class="el" href="srsconfigurationfile.html#srselementsrs">&lt;srs&gt;</a>. </td></tr>
+<td><b>um-srs.srs.port</b> </td><td><p class="starttd">Value for the SRS configuration element <a class="el" href="srsconfigurationfile.html#srselementport">&lt;port&gt;</a> inside <a class="el" href="srsconfigurationfile.html#srselementsrs">&lt;srs&gt;</a>.</p>
+<p class="endtd"></p>
+</td></tr>
 <tr>
-<td><b>um-srs.srs.state-lifetime</b> </td><td>Value for the SRS configuration element <a class="el" href="srsconfigurationfile.html#srselementstatelifetime">&lt;state-lifetime&gt;</a>. </td></tr>
+<td><b>um-srs.srs.state-lifetime</b> </td><td><p class="starttd">Value for the SRS configuration element <a class="el" href="srsconfigurationfile.html#srselementstatelifetime">&lt;state-lifetime&gt;</a>.</p>
+<p class="endtd"></p>
+</td></tr>
 <tr>
-<td><b>um-srs.srs.source-state-lifetime</b> </td><td>Value for the SRS configuration element <a class="el" href="srsconfigurationfile.html#srselementsourcestatelifetime">&lt;source-state-lifetime&gt;</a>. </td></tr>
+<td><b>um-srs.srs.source-state-lifetime</b> </td><td><p class="starttd">Value for the SRS configuration element <a class="el" href="srsconfigurationfile.html#srselementsourcestatelifetime">&lt;source-state-lifetime&gt;</a>.</p>
+<p class="endtd"></p>
+</td></tr>
 <tr>
-<td><b>um-srs.srs.interest-state-lifetime</b> </td><td>Value for the SRS configuration element <a class="el" href="srsconfigurationfile.html#srselementintereststatelifetime">&lt;interest-state-lifetime&gt;</a>. </td></tr>
+<td><b>um-srs.srs.interest-state-lifetime</b> </td><td><p class="starttd">Value for the SRS configuration element <a class="el" href="srsconfigurationfile.html#srselementintereststatelifetime">&lt;interest-state-lifetime&gt;</a>.</p>
+<p class="endtd"></p>
+</td></tr>
 <tr>
-<td><b>um-srs.srs.source-leave-backoff</b> </td><td>Value for the SRS configuration element <a class="el" href="srsconfigurationfile.html#srselementsourceleavebackoff">&lt;source-leave-backoff&gt;</a>. </td></tr>
+<td><b>um-srs.srs.route-state-lifetime</b> </td><td><p class="starttd">Value for the SRS configuration element <a class="el" href="srsconfigurationfile.html#srselementcontextnamestatelifetime">&lt;context-name-state-lifetime&gt;</a>.</p>
+<p class="endtd"></p>
+</td></tr>
 <tr>
-<td><b>um-srs.srs.clientactor.request-stream-max-msg-count</b> </td><td>Value for the SRS configuration element <a class="el" href="srsconfigurationfile.html#srselementrequeststreammaxmsgcount">&lt;request-stream-max-msg-count&gt;</a>. </td></tr>
+<td><b>um-srs.srs.context-name-state-lifetime</b> </td><td><p class="starttd">Value for the SRS configuration element <a class="el" href="srsconfigurationfile.html#srselementcontextnamestatelifetime">&lt;context-name-state-lifetime&gt;</a>.</p>
+<p class="endtd"></p>
+</td></tr>
 <tr>
-<td><b>um-srs.srs.clientactor.record-queue-service-interval</b> </td><td>Value for the SRS configuration element <a class="el" href="srsconfigurationfile.html#srselementrecordqueueserviceinterval">&lt;record-queue-service-interval&gt;</a>. </td></tr>
+<td><b>um-srs.srs.source-leave-backoff</b> </td><td><p class="starttd">Value for the SRS configuration element <a class="el" href="srsconfigurationfile.html#srselementsourceleavebackoff">&lt;source-leave-backoff&gt;</a>.</p>
+<p class="endtd"></p>
+</td></tr>
 <tr>
-<td><b>um-srs.srs.clientactor.batch-frame-max-record-count</b> </td><td>Value for the SRS configuration element <a class="el" href="srsconfigurationfile.html#srselementbatchframemaxrecordcount">&lt;batch-frame-max-record-count&gt;</a>. </td></tr>
+<td><b>um-srs.srs.clientactor.request-stream-max-msg-count</b> </td><td><p class="starttd">Value for the SRS configuration element <a class="el" href="srsconfigurationfile.html#srselementrequeststreammaxmsgcount">&lt;request-stream-max-msg-count&gt;</a>.</p>
+<p class="endtd"></p>
+</td></tr>
 <tr>
-<td><b>um-srs.srs.clientactor.batch-frame-max-datagram-size</b> </td><td>Value for the SRS configuration element <a class="el" href="srsconfigurationfile.html#srselementbatchframemaxdatagramsize">&lt;batch-frame-max-datagram-size&gt;</a>. </td></tr>
+<td><b>um-srs.srs.clientactor.record-queue-service-interval</b> </td><td><p class="starttd">Value for the SRS configuration element <a class="el" href="srsconfigurationfile.html#srselementrecordqueueserviceinterval">&lt;record-queue-service-interval&gt;</a>.</p>
+<p class="endtd"></p>
+</td></tr>
 <tr>
-<td><b>um-srs.debug-monitor.interface</b> </td><td>Value for the SRS configuration element <a class="el" href="srsconfigurationfile.html#srselementinterface">&lt;interface&gt;</a> inside <a class="el" href="srsconfigurationfile.html#srselementdebugmonitor">&lt;debug-monitor&gt;</a>. </td></tr>
+<td><b>um-srs.srs.clientactor.batch-frame-max-record-count</b> </td><td><p class="starttd">Value for the SRS configuration element <a class="el" href="srsconfigurationfile.html#srselementbatchframemaxrecordcount">&lt;batch-frame-max-record-count&gt;</a>.</p>
+<p class="endtd"></p>
+</td></tr>
 <tr>
-<td><b>um-srs.debug-monitor.port</b> </td><td>Value for the SRS configuration element <a class="el" href="srsconfigurationfile.html#srselementport">&lt;port&gt;</a> inside <a class="el" href="srsconfigurationfile.html#srselementdebugmonitor">&lt;debug-monitor&gt;</a>. </td></tr>
+<td><b>um-srs.srs.clientactor.batch-frame-max-datagram-size</b> </td><td><p class="starttd">Value for the SRS configuration element <a class="el" href="srsconfigurationfile.html#srselementbatchframemaxdatagramsize">&lt;batch-frame-max-datagram-size&gt;</a>.</p>
+<p class="endtd"></p>
+</td></tr>
 <tr>
-<td><b>um-srs.debug-monitor.enabled</b> </td><td>Value for the SRS configuration element <a class="el" href="srsconfigurationfile.html#srselementenabled">&lt;enabled&gt;</a>. </td></tr>
+<td><b>um-srs.debug-monitor.interface</b> </td><td><p class="starttd">Value for the SRS configuration element <a class="el" href="srsconfigurationfile.html#srselementinterface">&lt;interface&gt;</a> inside <a class="el" href="srsconfigurationfile.html#srselementdebugmonitor">&lt;debug-monitor&gt;</a>.</p>
+<p class="endtd"></p>
+</td></tr>
 <tr>
-<td><b>um-srs.debug-monitor.ping-interval</b> </td><td>Value for the SRS configuration element <a class="el" href="srsconfigurationfile.html#srselementpinginterval">&lt;ping-interval&gt;</a>. </td></tr>
+<td><b>um-srs.debug-monitor.port</b> </td><td><p class="starttd">Value for the SRS configuration element <a class="el" href="srsconfigurationfile.html#srselementport">&lt;port&gt;</a> inside <a class="el" href="srsconfigurationfile.html#srselementdebugmonitor">&lt;debug-monitor&gt;</a>.</p>
+<p class="endtd"></p>
+</td></tr>
 <tr>
-<td><b>um-srs.daemon-monitor.topic</b> </td><td>Value for '<b>topic</b>' attribute to SRS configuration element <a class="el" href="srsconfigurationfile.html#srselementdaemonmonitor">&lt;daemon-monitor&gt;</a>. </td></tr>
+<td><b>um-srs.debug-monitor.enabled</b> </td><td><p class="starttd">Value for the SRS configuration element <a class="el" href="srsconfigurationfile.html#srselementenabled">&lt;enabled&gt;</a>.</p>
+<p class="endtd"></p>
+</td></tr>
 <tr>
-<td><b>um-srs.daemon-monitor.publishing-interval.default</b> </td><td>Value for the SRS configuration element <a class="el" href="srsconfigurationfile.html#srselementdefault">&lt;default&gt;</a>. </td></tr>
+<td><b>um-srs.debug-monitor.ping-interval</b> </td><td><p class="starttd">Value for the SRS configuration element <a class="el" href="srsconfigurationfile.html#srselementpinginterval">&lt;ping-interval&gt;</a>.</p>
+<p class="endtd"></p>
+</td></tr>
 <tr>
-<td><b>um-srs.daemon-monitor.publishing-interval.srs-stats</b> </td><td>Value for the SRS configuration element <a class="el" href="srsconfigurationfile.html#srselementsrsstats">&lt;srs-stats&gt;</a>. </td></tr>
+<td><b>um-srs.daemon-monitor.topic</b> </td><td><p class="starttd">Value for '<b>topic</b>' attribute to SRS configuration element <a class="el" href="srsconfigurationfile.html#srselementdaemonmonitor">&lt;daemon-monitor&gt;</a>.</p>
+<p class="endtd"></p>
+</td></tr>
 <tr>
-<td><b>um-srs.daemon-monitor.publishing-interval.um-client-stats</b> </td><td>Value for the SRS configuration element <a class="el" href="srsconfigurationfile.html#srselementumclientstats">&lt;um-client-stats&gt;</a>. </td></tr>
+<td><b>um-srs.daemon-monitor.publishing-interval.default</b> </td><td><p class="starttd">Value for the SRS configuration element <a class="el" href="srsconfigurationfile.html#srselementdefault">&lt;default&gt;</a>.</p>
+<p class="endtd"></p>
+</td></tr>
 <tr>
-<td><b>um-srs.daemon-monitor.publishing-interval.connection-events</b> </td><td>Value for the SRS configuration element <a class="el" href="srsconfigurationfile.html#srselementconnectionevents">&lt;connection-events&gt;</a>. </td></tr>
+<td><b>um-srs.daemon-monitor.publishing-interval.srs-stats</b> </td><td><p class="starttd">Value for the SRS configuration element <a class="el" href="srsconfigurationfile.html#srselementsrsstats">&lt;srs-stats&gt;</a>.</p>
+<p class="endtd"></p>
+</td></tr>
 <tr>
-<td><b>um-srs.daemon-monitor.publishing-interval.srs-error-stats</b> </td><td>Value for the SRS configuration element <a class="el" href="srsconfigurationfile.html#srselementsrserrorstats">&lt;srs-error-stats&gt;</a>. </td></tr>
+<td><b>um-srs.daemon-monitor.publishing-interval.um-client-stats</b> </td><td><p class="starttd">Value for the SRS configuration element <a class="el" href="srsconfigurationfile.html#srselementumclientstats">&lt;um-client-stats&gt;</a>.</p>
+<p class="endtd"></p>
+</td></tr>
 <tr>
-<td><b>um-srs.daemon-monitor.publishing-interval.um-client-error-stats</b> </td><td>Value for the SRS configuration element <a class="el" href="srsconfigurationfile.html#srselementumclienterrorstats">&lt;um-client-error-stats&gt;</a>. </td></tr>
+<td><b>um-srs.daemon-monitor.publishing-interval.connection-events</b> </td><td><p class="starttd">Value for the SRS configuration element <a class="el" href="srsconfigurationfile.html#srselementconnectionevents">&lt;connection-events&gt;</a>.</p>
+<p class="endtd"></p>
+</td></tr>
 <tr>
-<td><b>um-srs.daemon-monitor.publishing-interval.config-opts</b> </td><td>Value for the SRS configuration element <a class="el" href="srsconfigurationfile.html#srselementconfigopts">&lt;config-opts&gt;</a>. </td></tr>
+<td><b>um-srs.daemon-monitor.publishing-interval.srs-error-stats</b> </td><td><p class="starttd">Value for the SRS configuration element <a class="el" href="srsconfigurationfile.html#srselementsrserrorstats">&lt;srs-error-stats&gt;</a>.</p>
+<p class="endtd"></p>
+</td></tr>
 <tr>
-<td><b>um-srs.daemon-monitor.publishing-interval.internal-config-opts</b> </td><td>Value for the SRS configuration element <a class="el" href="srsconfigurationfile.html#srselementinternalconfigopts">&lt;internal-config-opts&gt;</a>. </td></tr>
+<td><b>um-srs.daemon-monitor.publishing-interval.um-client-error-stats</b> </td><td><p class="starttd">Value for the SRS configuration element <a class="el" href="srsconfigurationfile.html#srselementumclienterrorstats">&lt;um-client-error-stats&gt;</a>.</p>
+<p class="endtd"></p>
+</td></tr>
 <tr>
-<td><b>um-srs.daemon-monitor.publish-connection-events.allow</b> </td><td>Value for '<b>allow</b>' attribute to SRS configuration element <a class="el" href="srsconfigurationfile.html#srselementpublishconnectionevents">&lt;publish-connection-events&gt;</a>. </td></tr>
+<td><b>um-srs.daemon-monitor.publishing-interval.config-opts</b> </td><td><p class="starttd">Value for the SRS configuration element <a class="el" href="srsconfigurationfile.html#srselementconfigopts">&lt;config-opts&gt;</a>.</p>
+<p class="endtd"></p>
+</td></tr>
 <tr>
-<td><b>um-srs.daemon-monitor.remote-snapshot-request.allow</b> </td><td>Value for '<b>allow</b>' attribute to SRS configuration element <a class="el" href="srsconfigurationfile.html#srselementremotesnapshotrequest">&lt;remote-snapshot-request&gt;</a>. </td></tr>
+<td><b>um-srs.daemon-monitor.publishing-interval.internal-config-opts</b> </td><td><p class="starttd">Value for the SRS configuration element <a class="el" href="srsconfigurationfile.html#srselementinternalconfigopts">&lt;internal-config-opts&gt;</a>.</p>
+<p class="endtd"></p>
+</td></tr>
 <tr>
-<td><b>um-srs.daemon-monitor.remote-config-changes-request.allow</b> </td><td>Value for '<b>allow</b>' attribute to SRS configuration element <a class="el" href="srsconfigurationfile.html#srselementremoteconfigchangesrequest">&lt;remote-config-changes-request&gt;</a>. </td></tr>
+<td><b>um-srs.daemon-monitor.publish-connection-events.allow</b> </td><td><p class="starttd">Value for '<b>allow</b>' attribute to SRS configuration element <a class="el" href="srsconfigurationfile.html#srselementpublishconnectionevents">&lt;publish-connection-events&gt;</a>.</p>
+<p class="endtd"></p>
+</td></tr>
 <tr>
-<td><b>um-srs.daemon-monitor.lbm-attributes.lbmConfigOptionScope.lbmConfigOptionName</b> </td><td>A UM configuration option, as documented in <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Design/config.tag:../Config/" href="../Config/index.html#configurationoverview">Configuration Overview</a>, where 'lbmConfigOptionScope' is the option scope ('context', 'source', etc) and 'lbmConfigOptionName' is the option name. </td></tr>
+<td><b>um-srs.daemon-monitor.remote-snapshot-request.allow</b> </td><td><p class="starttd">Value for '<b>allow</b>' attribute to SRS configuration element <a class="el" href="srsconfigurationfile.html#srselementremotesnapshotrequest">&lt;remote-snapshot-request&gt;</a>.</p>
+<p class="endtd"></p>
+</td></tr>
+<tr>
+<td><b>um-srs.daemon-monitor.remote-config-changes-request.allow</b> </td><td><p class="starttd">Value for '<b>allow</b>' attribute to SRS configuration element <a class="el" href="srsconfigurationfile.html#srselementremoteconfigchangesrequest">&lt;remote-config-changes-request&gt;</a>.</p>
+<p class="endtd"></p>
+</td></tr>
+<tr>
+<td><b>um-srs.daemon-monitor.lbm-attributes.lbmConfigOptionScope.lbmConfigOptionName</b> </td><td>A UM configuration option, as documented in <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/Design/config.tag:../Config/" href="../Config/index.html#configurationoverview">Configuration Overview</a>, where 'lbmConfigOptionScope' is the option scope ('context', 'source', etc) and 'lbmConfigOptionName' is the option name. </td></tr>
 </table>
 </center><p><br />
  </p>
@@ -473,23 +858,43 @@ Message Type: INTERNAL_CONFIG_OPTS&nbsp;&nbsp;<small><a href="#messagetypeintern
 <p><b>EXAMPLE:</b> </p><div class="fragment"><div class="line">{</div><div class="line">  <span class="stringliteral">&quot;monitorInfoCategory&quot;</span>: <span class="stringliteral">&quot;INTERNAL_CONFIG_OPTS&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;configOptions&quot;</span>: [</div><div class="line">    {</div><div class="line">      <span class="stringliteral">&quot;name&quot;</span>: <span class="stringliteral">&quot;um-srs.srs.otidmap.async-receiver-distribution&quot;</span>,</div><div class="line">      <span class="stringliteral">&quot;value&quot;</span>: <span class="stringliteral">&quot;false&quot;</span>,</div><div class="line">    },</div><div class="line">    { </div><div class="line">      <span class="stringliteral">&quot;name&quot;</span>: <span class="stringliteral">&quot;um-srs.srs.otidmap.shards&quot;</span>,</div><div class="line">      <span class="stringliteral">&quot;value&quot;</span>: <span class="stringliteral">&quot;4&quot;</span>,</div><div class="line">    } </div><div class="line">  ]   </div><div class="line">}</div></div><!-- fragment --><p> This example has two options. Be aware that a given message can have any number of option entries.</p>
 <p>Overall structure of message: </p><center> <table class="doxtable">
 <tr>
-<th>Field</th><th>Description </th></tr>
+<th>Field</th><th><p class="starttd">Description</p>
+<p class="endtd"></p>
+</th></tr>
 <tr>
-<td><b>monitorInfoCategory</b></td><td>Message type. Set to the string "INTERNAL_CONFIG_OPTS". </td></tr>
+<td><b>monitorInfoCategory</b></td><td><p class="starttd">Message type. Set to the string "INTERNAL_CONFIG_OPTS".</p>
+<p class="endtd"></p>
+</td></tr>
 <tr>
-<td><b>configOptions</b></td><td>Array of sub-structures, one per configuration option. The number and order of the contained options is not fixed. </td></tr>
+<td><b>configOptions</b></td><td><p class="starttd">Array of sub-structures, one per configuration option. The number and order of the contained options is not fixed.</p>
+<p class="endtd"></p>
+</td></tr>
 <tr>
-<td><b>.&#160;.&#160;configOptions[].name</b></td><td>Name of option (see below). </td></tr>
+<td><b>.&#160;.&#160;configOptions[].name</b></td><td><p class="starttd">Name of option (see below).</p>
+<p class="endtd"></p>
+</td></tr>
 <tr>
 <td><b>.&#160;.&#160;configOptions[].value</b></td><td>Value of option. </td></tr>
 </table>
 </center><p>Meaning of each option: </p><center> <table class="doxtable">
 <tr>
-<th>Option Name</th><th>Description </th></tr>
+<th>Option Name</th><th><p class="starttd">Description</p>
+<p class="endtd"></p>
+</th></tr>
 <tr>
-<td><b>um-srs.srs.otidmap.shards</b> </td><td>Value for the SRS configuration element <a class="el" href="srsconfigurationfile.html#srselementshards">&lt;shards&gt;</a> within element <a class="el" href="srsconfigurationfile.html#srselementotidmap">&lt;otidmap&gt;</a>. </td></tr>
+<td><b>um-srs.srs.otidmap.shards</b> </td><td><p class="starttd">Value for the SRS configuration element <a class="el" href="srsconfigurationfile.html#srselementshards">&lt;shards&gt;</a> within element <a class="el" href="srsconfigurationfile.html#srselementotidmap">&lt;otidmap&gt;</a>.</p>
+<p class="endtd"></p>
+</td></tr>
 <tr>
-<td><b>um-srs.srs.topicmap.shards</b> </td><td>Value for the SRS configuration element <a class="el" href="srsconfigurationfile.html#srselementshards">&lt;shards&gt;</a> within element <a class="el" href="srsconfigurationfile.html#srselementtopicmap">&lt;topicmap&gt;</a>. </td></tr>
+<td><b>um-srs.srs.topicmap.shards</b> </td><td><p class="starttd">Value for the SRS configuration element <a class="el" href="srsconfigurationfile.html#srselementshards">&lt;shards&gt;</a> within element <a class="el" href="srsconfigurationfile.html#srselementtopicmap">&lt;topicmap&gt;</a>.</p>
+<p class="endtd"></p>
+</td></tr>
+<tr>
+<td><b>um-srs.srs.routemap.shards</b> </td><td><p class="starttd">Value for the SRS configuration element <a class="el" href="srsconfigurationfile.html#srselementshards">&lt;shards&gt;</a> within element <a class="el" href="srsconfigurationfile.html#srselementroutemap">&lt;routemap&gt;</a>.</p>
+<p class="endtd"></p>
+</td></tr>
+<tr>
+<td><b>um-srs.srs.namemap.shards</b> </td><td>Value for the SRS configuration element <a class="el" href="srsconfigurationfile.html#srselementshards">&lt;shards&gt;</a> within element <a class="el" href="srsconfigurationfile.html#srselementnamemap">&lt;namemap&gt;</a>. </td></tr>
 </table>
 </center><p><br />
  </p>

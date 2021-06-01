@@ -16,6 +16,11 @@ var NAVTREE =
       ] ],
       [ "UM Calling Application Callback", "cstructureusagepatterns.html#umcallingapplicationcallback", null ]
     ] ],
+    [ "C Source Events", "csourceevents.html", null ],
+    [ "C Receiver Events", "creceiverevents.html", null ],
+    [ "C SDM Details", "csdmdetails.html", null ],
+    [ "C HyperTopics Details", "chypertopicsdetails.html", null ],
+    [ "C PDM Details", "cpdmdetails.html", null ],
     [ "LBMMON Example source code", "lbmmon_examples.html", "lbmmon_examples" ],
     [ "Deprecated List", "deprecated.html", null ],
     [ "Modules", "modules.html", "modules" ],
@@ -43,20 +48,25 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"group__get__elem__idx.html",
-"group__set__array__iter.html#ga3917de920ca8f3a118109a253a746b42",
-"group__set__name.html#ga37f383af72f07473fbc253fc37ec0d03",
-"lbm_8h.html#a33de981e32d17806f4488a572e53d8c2",
-"lbm_8h.html#a703353b0cf30dbe1977c3770b6e404f5",
-"lbm_8h.html#aabc1d9bd5b2978ae7d2f6e93ecc4b487",
-"lbm_8h.html#ae28c5fac3f27e3d4ee50c0cbd02d1180",
-"lbmmon_8h.html#aec702c07918485584dbf3f1c837a0945",
-"lbmsdm_8h.html#abed82baf7f470b522273a3e37c24c600a806c4ee6911475aa8bb5bc4edbab169a",
-"structlbm__msg__t__stct.html#ae1619e3a9382792e15704ce8a1b730c1",
-"structlbm__src__event__umq__registration__complete__ex__t__stct.html",
-"structlbm__ume__store__entry__t__stct.html",
-"structtnwg__dstat__peer__receive__stats__t__stct.html#a02d8f6903686d2c43b41b84c23279577",
-"structumestore__repo__dmon__config__msg__t__stct.html#adb3c421023777daf30f5edb344be3900"
+"group__add__elem__idx.html#ga0ce7f21bc6ed129ddfb95fc4f301ae0b",
+"group__get__scalar__iter.html#ga4883ab00b77f0020c648b306a37d7931",
+"group__set__elem__name.html#ga6598e5875cecbf1812c99355ef2a1c2f",
+"lbm_8h.html#a1a656fc626c82c157958ca130e40f736",
+"lbm_8h.html#a58ad1eb9891440c64aed45631e54be2c",
+"lbm_8h.html#a91ead038a6d3649212601019937cce37",
+"lbm_8h.html#ac870bd598b7cbd921550073036c03762",
+"lbmht_8h.html#a6a46e3a753421181ddab6ceaafa9c8f6",
+"lbmpdm_8h.html#a5d7694d31bdb9f3e5627d750de886c0f",
+"struct__Lbmmon____DROMonMsg____Stats____Local.html#abc631bc0ad2c3391aea91e499885ede0",
+"struct__Lbmmon____UMMonAttributes.html#ad4d6d39a191c911d5e5072b595dcdd48",
+"struct__Lbmmon____UMSMonMsg____Stats____EventQueue.html#aaaf454b1d049b164ae683bed1f17b5f4",
+"structlbm__datagram__acceleration__recv__info__t__stct.html#ab4f368781d7afd892e859869723314ff",
+"structlbm__rcv__transport__stats__lbtru__t__stct.html#a140320be28f195412b1bd15caa772ba1",
+"structlbm__srp__repo__rcvr__t__stct.html",
+"structlbmmon__packet__attributes__t__stct.html#a250ca029b47c55d9483b59fd3d9335e7",
+"structtnwg__dstat__peer__send__stats__t__stct.html#acfd987ac1641f82006c367fe4ec2a74d",
+"tnwgdmonmsgs_8h.html#aa26fe74646eef784437cf4a47ae4f690",
+"ump__mon_8pb-c_8h.html#a8dde022378b365d3e24bf7541d8e4de9"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">UM C API
-   &#160;<span id="projectnumber">6.13.1</span>
+   &#160;<span id="projectnumber">6.14</span>
    </div>
   </td>
  </tr>
@@ -336,6 +336,15 @@ $(document).ready(function(){initNavTree('globals_func.html','');});
 </li>
 <li>lbm_debug_noflush()
 : <a class="el" href="lbm_8h.html#a343aabeac69a5bcf05f130d373ce2159">lbm.h</a>
+</li>
+<li>lbm_debug_ring_buffer()
+: <a class="el" href="lbm_8h.html#a0f8725864e14e4bca6dca8bb538e0f2d">lbm.h</a>
+</li>
+<li>lbm_debug_ring_buffer_walltime()
+: <a class="el" href="lbm_8h.html#a55658d691ecc68a530b28b35ceec8ef3">lbm.h</a>
+</li>
+<li>lbm_debugfile_max_rollover()
+: <a class="el" href="lbm_8h.html#a3baaa89bb6627fe24bfd4ceb4957c54b">lbm.h</a>
 </li>
 <li>lbm_debugfile_maxsize()
 : <a class="el" href="lbm_8h.html#ac4410a1188555d16996be6b269bb0ef7">lbm.h</a>
@@ -932,19 +941,19 @@ $(document).ready(function(){initNavTree('globals_func.html','');});
 : <a class="el" href="lbm_8h.html#a3a89366ab4e36dfa362e20397778d04a">lbm.h</a>
 </li>
 <li>lbm_srp_create()
-: <a class="el" href="umeprofile_8h.html#aec84332e2bbb5e4d27a0703ed2568877">umeprofile.h</a>
+: <a class="el" href="umeprofile_8h.html#a7cbe29f232a6c3123286a97ac2b5a3f7">umeprofile.h</a>
 </li>
 <li>lbm_srp_delete()
-: <a class="el" href="umeprofile_8h.html#a7db2559f876d023c4ad52fc0ddff1aaf">umeprofile.h</a>
+: <a class="el" href="umeprofile_8h.html#a99a7efb5c423f5a3c9cf10891c89c88b">umeprofile.h</a>
 </li>
 <li>lbm_srp_free_repo_state()
-: <a class="el" href="umeprofile_8h.html#a7d42a44d9383c34ffb6de59f1e8fd9d2">umeprofile.h</a>
+: <a class="el" href="umeprofile_8h.html#aefbd012de930c9c47172ee305e2ae8af">umeprofile.h</a>
 </li>
 <li>lbm_srp_get_repo_message()
-: <a class="el" href="umeprofile_8h.html#aef81e49d9e25088de8fe6cfbf1c259a6">umeprofile.h</a>
+: <a class="el" href="umeprofile_8h.html#a0324123a655d0aeaefb4ee81092dc7dd">umeprofile.h</a>
 </li>
 <li>lbm_srp_get_repo_state()
-: <a class="el" href="umeprofile_8h.html#a77ca8bf5287fe50f7375ca0163f8d1e4">umeprofile.h</a>
+: <a class="el" href="umeprofile_8h.html#a8142a85b874de9fc5f01d98dfea0eac8">umeprofile.h</a>
 </li>
 <li>lbm_ssrc_buff_get()
 : <a class="el" href="lbm_8h.html#a98c5450e9fb93f30bd80fa33a2380dfc">lbm.h</a>
@@ -975,6 +984,9 @@ $(document).ready(function(){initNavTree('globals_func.html','');});
 </li>
 <li>lbm_ssrc_send_ex()
 : <a class="el" href="lbm_8h.html#a2f50f56536778332e9f5712b06546425">lbm.h</a>
+</li>
+<li>lbm_ssrc_send_request_ex()
+: <a class="el" href="lbm_8h.html#af20577a5adf4b621a74eb7cb89ad2c16">lbm.h</a>
 </li>
 <li>lbm_ssrc_topic_dump()
 : <a class="el" href="lbm_8h.html#a62e4da1cb793e25a249bada7202d2e88">lbm.h</a>
@@ -1159,6 +1171,9 @@ $(document).ready(function(){initNavTree('globals_func.html','');});
 <li>lbmaux_event_queue_attr_setopt_from_file()
 : <a class="el" href="lbmaux_8h.html#a114e18bf161dee3836a6b6bc93110b59">lbmaux.h</a>
 </li>
+<li>lbmaux_lbmmon_format_options_from_file()
+: <a class="el" href="lbmaux_8h.html#a4fa5ddd965a91173bc310fdb2b0d4034">lbmaux.h</a>
+</li>
 <li>lbmaux_rcv_topic_attr_setopt_from_file()
 : <a class="el" href="lbmaux_8h.html#a5c6d7294c9f3dfd3e1ef78d00fa927a3">lbmaux.h</a>
 </li>
@@ -1195,11 +1210,38 @@ $(document).ready(function(){initNavTree('globals_func.html','');});
 <li>lbmmon_attr_get_timestamp()
 : <a class="el" href="lbmmon_8h.html#aeece67d10751090afb55d1cd15fcba0a">lbmmon.h</a>
 </li>
+<li>lbmmon_attributes_deserialize()
+: <a class="el" href="lbmmon_8h.html#adfbf472a82434234f20e374ea9f0d71f">lbmmon.h</a>
+</li>
 <li>lbmmon_context_monitor()
 : <a class="el" href="lbmmon_8h.html#afe461c7e4c25b9af6e17e86ec6c68ca9">lbmmon.h</a>
 </li>
 <li>lbmmon_context_unmonitor()
 : <a class="el" href="lbmmon_8h.html#a9c9df74b579a8d671cc35ae0a45dc712">lbmmon.h</a>
+</li>
+<li>lbmmon_control_dump_default_filter_options()
+: <a class="el" href="lbmmon_8h.html#a586b51834a0b92fee0f469fd6eef28a9">lbmmon.h</a>
+</li>
+<li>lbmmon_control_errmsg()
+: <a class="el" href="lbmmon_8h.html#af9cd011da427110d5929a037e85e6fd0">lbmmon.h</a>
+</li>
+<li>lbmmon_control_index_for_command()
+: <a class="el" href="lbmmon_8h.html#a2df8934a206774da4b6e9c50b8a9b2c6">lbmmon.h</a>
+</li>
+<li>lbmmon_control_index_for_node_type()
+: <a class="el" href="lbmmon_8h.html#a3786800584d07fedc422935668de1955">lbmmon.h</a>
+</li>
+<li>lbmmon_control_load_data_from_filename()
+: <a class="el" href="lbmmon_8h.html#a694cd9e29e7179a2dbc8a66c30c112a5">lbmmon.h</a>
+</li>
+<li>lbmmon_control_serialize()
+: <a class="el" href="lbmmon_8h.html#a0b9d93bc3bb7d711b7e33029e4019a2c">lbmmon.h</a>
+</li>
+<li>lbmmon_control_valid_commands()
+: <a class="el" href="lbmmon_8h.html#a0811fc36a318a5210f27f07f41437746">lbmmon.h</a>
+</li>
+<li>lbmmon_control_valid_node_types()
+: <a class="el" href="lbmmon_8h.html#a9aa3e81dd1dfe856edb1fe7a4d9c2896">lbmmon.h</a>
 </li>
 <li>lbmmon_errmsg()
 : <a class="el" href="lbmmon_8h.html#aa48237baee1c9804ab4f4cd0c197796b">lbmmon.h</a>
@@ -1214,7 +1256,7 @@ $(document).ready(function(){initNavTree('globals_func.html','');});
 : <a class="el" href="lbmmon_8h.html#acedae05a753139a1f207f1e1834d7228">lbmmon.h</a>
 </li>
 <li>lbmmon_next_key_value_pair()
-: <a class="el" href="lbmmon_8h.html#ad10ac6fdaa7ba17b8efceca176c36070">lbmmon.h</a>
+: <a class="el" href="lbmmon_8h.html#a92cdb7dc9ffbf2d68742d3762b974073">lbmmon.h</a>
 </li>
 <li>lbmmon_rctl_attr_create()
 : <a class="el" href="lbmmon_8h.html#afe42964b515bf9f78dfcc8f0d1b0f815">lbmmon.h</a>

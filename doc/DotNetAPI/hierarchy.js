@@ -159,6 +159,8 @@ var hierarchy =
       [ "com.latencybusters.lbm.LBMTimer", "classcom_1_1latencybusters_1_1lbm_1_1LBMTimer.html", null ],
       [ "com.latencybusters.lbm.LBMWildcardReceiver", "classcom_1_1latencybusters_1_1lbm_1_1LBMWildcardReceiver.html", null ],
       [ "com.latencybusters.lbm.LBMWildcardReceiverAttributes", "classcom_1_1latencybusters_1_1lbm_1_1LBMWildcardReceiverAttributes.html", null ],
+      [ "com.latencybusters.lbm.LBMXSP", "classcom_1_1latencybusters_1_1lbm_1_1LBMXSP.html", null ],
+      [ "com.latencybusters.lbm.LBMXSPAttributes", "classcom_1_1latencybusters_1_1lbm_1_1LBMXSPAttributes.html", null ],
       [ "com.latencybusters.lbm.UMEMessageAck", "classcom_1_1latencybusters_1_1lbm_1_1UMEMessageAck.html", null ]
     ] ],
     [ "IEnumerable", null, [
@@ -204,6 +206,7 @@ var hierarchy =
     [ "com.latencybusters.lbm.LBMMessageChannelInfo", "classcom_1_1latencybusters_1_1lbm_1_1LBMMessageChannelInfo.html", null ],
     [ "com.latencybusters.lbm.LBMMessageProperty", "classcom_1_1latencybusters_1_1lbm_1_1LBMMessageProperty.html", null ],
     [ "com.latencybusters.lbm.LBMMonitor", "classcom_1_1latencybusters_1_1lbm_1_1LBMMonitor.html", null ],
+    [ "com.latencybusters.lbm.LBMNewTransportInfo", "classcom_1_1latencybusters_1_1lbm_1_1LBMNewTransportInfo.html", null ],
     [ "com.latencybusters.lbm.LBMObjectDisposer< T >", "interfacecom_1_1latencybusters_1_1lbm_1_1LBMObjectDisposer.html", null ],
     [ "com.latencybusters.lbm.LBMObjectDisposer< LBMContextSourceEvent >", "interfacecom_1_1latencybusters_1_1lbm_1_1LBMObjectDisposer.html", [
       [ "com.latencybusters.lbm.LBMContextSourceEventObjectDisposer", "classcom_1_1latencybusters_1_1lbm_1_1LBMContextSourceEventObjectDisposer.html", null ]

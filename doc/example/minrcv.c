@@ -1,7 +1,7 @@
 /*
 "minrcv.c: minimal application that receives messages from a given topic.
  *
- * Copyright (c) 2005-2020 Informatica Corporation. All Rights Reserved.
+ * Copyright (C) 2005-2021, Informatica Corporation. All Rights Reserved.
  * Permission is granted to licensees to use
  * or alter this software for any purpose, including commercial applications,
  * according to the terms laid out in the Software License Agreement.
@@ -66,7 +66,7 @@ int app_rcv_callback(lbm_rcv_t *rcv, lbm_msg_t *msg, void *clientd)  /* See Note
     break;
 
   default:    /* unexpected receiver event */
-    printf("Received lbm_msg_t type %x [%s][%s]\n", msg->type, msg->topic_name, msg->source);
+    printf( "Unhandled receiver event [%d] from source [%s] with topic [%s]. Refer to https://ultramessaging.github.io/currdoc/doc/example/index.html#unhandledcevents for a detailed description.\n", msg->type, msg->source, msg->topic_name);
     break;
   }  /* switch msg->type */
 

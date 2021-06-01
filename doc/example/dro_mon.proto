@@ -1,0 +1,609 @@
+/*
+  All of the documentation and software included in this and any
+  other Informatica Corporation Ultra Messaging Releases
+  Copyright (C) Informatica Corporation. All rights reserved.
+
+  Redistribution and use in source and binary forms, with or without
+  modification, are permitted only as covered by the terms of a
+  valid software license agreement with Informatica Corporation.
+
+  Copyright (C) 2004-2021, Informatica Corporation. All Rights Reserved.
+
+  THE SOFTWARE IS PROVIDED "AS IS" AND INFORMATICA DISCLAIMS ALL WARRANTIES
+  EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION, ANY IMPLIED WARRANTIES OF
+  NON-INFRINGEMENT, MERCHANTABILITY OR FITNESS FOR A PARTICULAR
+  PURPOSE.  INFORMATICA DOES NOT WARRANT THAT USE OF THE SOFTWARE WILL BE
+  UNINTERRUPTED OR ERROR-FREE.  INFORMATICA SHALL NOT, UNDER ANY CIRCUMSTANCES, BE
+  LIABLE TO LICENSEE FOR LOST PROFITS, CONSEQUENTIAL, INCIDENTAL, SPECIAL OR
+  INDIRECT DAMAGES ARISING OUT OF OR RELATED TO THIS AGREEMENT OR THE
+  TRANSACTIONS CONTEMPLATED HEREUNDER, EVEN IF INFORMATICA HAS BEEN APPRISED OF
+  THE LIKELIHOOD OF SUCH DAMAGES.
+
+*/
+
+syntax = "proto3";
+package lbmmon;
+
+option java_package = "com.latencybusters.lbm";
+option java_outer_classname = "DROMonProtos";
+
+import "um_mon_attributes.proto";
+
+/*! DRO monitoring message. */
+message DROMonMsg {
+	/*! Configuration information for this DRO. */
+	message Configs {
+		/*! Structure containing DRO configuration information. */
+		message Gateway {
+			/*! String data containing DRO configuration. */
+			string config_data = 1;
+		} /* Gateway */
+		/*! Structure containing DRO portal configuration information. */
+		message Portal {
+			/*! Portal name. */
+			string portal_name = 1;
+			/*! Portal number. */
+			uint32 portal_index = 2;
+			/*! Portal type:
+				\ref TNWG_DSTAT_Portal_Type_Peer
+				\ref TNWG_DSTAT_Portal_Type_Endpoint. */
+			uint32 portal_type = 3;
+		} /* Portal */
+		/*! Configuration for the DRO process. */
+		Gateway gateway = 1;
+		/*! Configuration for each DRO portal. */
+		repeated Portal portals = 2;
+	}  /* Configs */
+
+	/*! Operational statistics and other information for this DRO. */
+	message Stats {
+		/*! Structure containing statistics for this DRO's view
+			of the current topology. */
+		message Local {
+			/*! Structure containing memory statistics. */
+			message MallocInfo {
+				/*! Non-mmapped space allocated (bytes). */
+				uint32 arena = 1;
+				/*! Number of free chunks. */
+				uint32 ordblks = 2;
+				/*! Number of mmapped regions. */
+				uint32 hblks = 3;
+				/*! Space allocated in mmapped regions (bytes). */
+				uint32 hblkhd = 4;
+				/*! Total allocated space (bytes). */
+				uint32 uordblks = 5;
+				/*! Total free space (bytes). */
+				uint32 fordblks = 6;
+			} /* MallocInfo */
+
+			/*! Name of this DRO. */
+			string gateway_name = 1;
+			/*! DRO id. */
+			uint64 gateway_id = 2;
+			/*! Self version. */
+			uint32 version = 3;
+			/*! Topology signature. */
+			uint32 topology_signature = 4;
+			/*! Recalc duration sec. */
+			uint64 recalc_duration_sec = 5;
+			/*! Recalc duration usec. */
+			uint64 recalc_duration_usec = 6;
+			/*! Graph version. */
+			uint32 graph_version = 7;
+			/*! DRO count. */
+			uint32 gateway_count = 8;
+			/*! Trd count. */
+			uint32 trd_count = 9;
+			/*! memory statistics for this DRO. */
+			MallocInfo malloc_info = 10;
+		} /* Local */
+
+		/*! Structure containing statistics related to this portal. */
+		message Portal {
+			/*! Structure containing statistics related to this endpoint portal. */
+			message Endpoint {
+				/*! Structure containing receive statistics related to this endpoint portal. */
+				message Receive {
+					/*! Transport topic message fragments received. */
+					uint64 transport_topic_fragments_rcvd = 1;
+					/*! Transport topic message fragment bytes received. */
+					uint64 transport_topic_fragment_bytes_rcvd = 2;
+					/*! Transport topic message request fragments received. */
+					uint64 transport_topic_req_fragments_rcvd = 3;
+					/*! Transport topic message request fragment bytes received. */
+					uint64 transport_topic_req_fragment_bytes_rcvd = 4;
+
+					/*! Transport topic control message received. */
+					uint64 transport_topic_control_rcvd = 5;
+					/*! Transport topic control message bytes received. */
+					uint64 transport_topic_control_bytes_rcvd= 6;
+
+					/*! Immediate topic message fragments received. */
+					uint64 immediate_topic_fragments_rcvd = 7;
+					/*! Immediate topic message fragment bytes received. */
+					uint64 immediate_topic_fragment_bytes_rcvd = 8;
+					/*! Immediate topic message request fragments received. */
+					uint64 immediate_topic_req_fragments_rcvd = 9;
+					/*! Immediate topic message request fragment bytes received. */
+					uint64 immediate_topic_req_fragment_bytes_rcvd = 10;
+
+					/*! Immediate topicless message fragments received. */
+					uint64 immediate_topicless_fragments_rcvd = 11;
+					/*! Immediate topicless message fragment bytes received. */
+					uint64 immediate_topicless_fragment_bytes_rcvd = 12;
+					/*! Immediate topicless message request fragments received. */
+					uint64 immediate_topicless_req_fragments_rcvd = 13;
+					/*! Immediate topicless message request fragment bytes received. */
+					uint64 immediate_topicless_req_fragment_bytes_rcvd = 14;
+
+					/*! Unicast data messages received. */
+					uint64 unicast_data_msgs_rcvd = 15;
+					/*! Unicast data message bytes received. */
+					uint64 unicast_data_msg_bytes_rcvd = 16;
+					/*! Unicast data messages received with no stream identification. */
+					uint64 unicast_data_msgs_rcvd_no_stream = 17;
+					/*! Unicast data message bytes received with no stream identification. */
+					uint64 unicast_data_msg_bytes_rcvd_no_stream = 18;
+					/*! Unicast data messages dropped as duplicates. */
+					uint64 unicast_data_msgs_dropped_dup = 19;
+					/*! Unicast data message bytes dropped as duplicates. */
+					uint64 unicast_data_msg_bytes_dropped_dup = 20;
+					/*! Unicast data messages dropped no route. */
+					uint64 unicast_data_msgs_dropped_no_route = 21;
+					/*! Unicast data message bytes dropped no route. */
+					uint64 unicast_data_msg_bytes_dropped_no_route = 22;
+
+					/*! Unicast control messages received. */
+					uint64 unicast_cntl_msgs_rcvd = 23;
+					/*! Unicast control message bytes received. */
+					uint64 unicast_cntl_msg_bytes_rcvd = 24;
+					/*! Unicast control messages received with no stream identification. */
+					uint64 unicast_cntl_msgs_rcvd_no_stream = 25;
+					/*! Unicast control message bytes received with no stream identification. */
+					uint64 unicast_cntl_msg_bytes_rcvd_no_stream = 26;
+					/*! Unicast control messages dropped as duplicates. */
+					uint64 unicast_cntl_msgs_dropped_dup = 27;
+					/*! Unicast control message bytes dropped as duplicates. */
+					uint64 unicast_cntl_msg_bytes_dropped_dup = 28;
+					/*! Unicast control messages dropped no route. */
+					uint64 unicast_cntl_msgs_dropped_no_route = 29;
+					/*! Unicast control message bytes dropped no route. */
+					uint64 unicast_cntl_msg_bytes_dropped_no_route = 30;
+				} /* Receive */
+
+				/*! Structure containing send statistics related to this endpoint portal. */
+				message Send {
+					/*! Transport topic fragments forwarded to this portal. */
+					uint64 transport_topic_fragments_forwarded = 1;
+					/*! Transport topic fragment bytes forwarded to this portal. */
+					uint64 transport_topic_fragment_bytes_forwarded = 2;
+					/*! Transport topic fragments sent. */
+					uint64 transport_topic_fragments_sent = 3;
+					/*! Transport topic fragment bytes sent. */
+					uint64 transport_topic_fragment_bytes_sent = 4;
+					/*! Transport topic request fragments sent. */
+					uint64 transport_topic_req_fragments_sent = 5;
+					/*! Transport topic request fragment bytes sent. */
+					uint64 transport_topic_req_fragment_bytes_sent = 6;
+					/*! Duplicate transport topic fragments dropped. */
+					uint64 transport_topic_fragments_dropped_dup = 7;
+					/*! Duplicate transport topic fragment bytes dropped. */
+					uint64 transport_topic_fragment_bytes_dropped_dup = 8;
+					/*! Transport topic fragments dropped due to \ref LBM_EWOULDBLOCK. */
+					uint64 transport_topic_fragments_dropped_would_block = 9;
+					/*! Transport topic fragment bytes dropped due to \ref LBM_EWOULDBLOCK. */
+					uint64 transport_topic_fragment_bytes_dropped_would_block = 10;
+					/*! Transport topic fragments dropped due to error. */
+					uint64 transport_topic_fragments_dropped_error = 11;
+					/*! Transport topic fragment bytes dropped due to error. */
+					uint64 transport_topic_fragment_bytes_dropped_error = 12;
+					/*! Transport topic fragments dropped due to fragment size error. */
+					uint64 transport_topic_fragments_dropped_size_error = 13;
+					/*! Transport topic fragment dropped due to fragment size error. */
+					uint64 transport_topic_fragment_bytes_dropped_size_error = 14;
+
+					/*! Immediate topic fragments forwarded. */
+					uint64 immediate_topic_fragments_forwarded = 15;
+					/*! Immediate topic fragment bytes forwarded. */
+					uint64 immediate_topic_fragment_bytes_forwarded = 16;
+					/*! Immediate topic fragments sent. */
+					uint64 immediate_topic_fragments_sent = 17;
+					/*! Immediate topic fragment bytes sent. */
+					uint64 immediate_topic_fragment_bytes_sent = 18;
+					/*! Immediate topic request fragments sent. */
+					uint64 immediate_topic_req_fragments_sent = 19;
+					/*! Immediate topic request fragment bytes sent. */
+					uint64 immediate_topic_req_fragment_bytes_sent = 20;
+					/*! Immediate topic fragments dropped due to \ref LBM_EWOULDBLOCK. */
+					uint64 immediate_topic_fragments_dropped_would_block = 21;
+					/*! Immediate topic fragment bytes dropped due to \ref LBM_EWOULDBLOCK. */
+					uint64 immediate_topic_fragment_bytes_dropped_would_block = 22;
+					/*! Immediate topic fragments dropped due to error. */
+					uint64 immediate_topic_fragments_dropped_error = 23;
+					/*! Immediate topic fragment bytes dropped due to error. */
+					uint64 immediate_topic_fragment_bytes_dropped_error = 24;
+					/*! Immediate topic fragments dropped due to fragment size error. */
+					uint64 immediate_topic_fragments_dropped_size_error = 25;
+					/*! Immediate topic fragment bytes dropped due to fragment size error. */
+					uint64 immediate_topic_fragment_bytes_dropped_size_error = 26;
+
+					/*! Immediate topicless fragments forwarded. */
+					uint64 immediate_topicless_fragments_forwarded = 27;
+					/*! Immediate topicless fragment bytes forwarded. */
+					uint64 immediate_topicless_fragment_bytes_forwarded = 28;
+					/*! Immediate topicless fragments sent. */
+					uint64 immediate_topicless_fragments_sent = 29;
+					/*! Immediate topicless fragment bytes sent. */
+					uint64 immediate_topicless_fragment_bytes_sent = 30;
+					/*! Immediate topicless request fragments sent. */
+					uint64 immediate_topicless_req_fragments_sent = 31;
+					/*! Immediate topicless request fragment bytes sent. */
+					uint64 immediate_topicless_req_fragment_bytes_sent = 32;
+					/*! Immediate topicless fragments dropped due to \ref LBM_EWOULDBLOCK. */
+					uint64 immediate_topicless_fragments_dropped_would_block = 33;
+					/*! Immediate topicless fragment bytes dropped due to \ref LBM_EWOULDBLOCK. */
+					uint64 immediate_topicless_fragment_bytes_dropped_would_block = 34;
+					/*! Immediate topicless fragments dropped due to error. */
+					uint64 immediate_topicless_fragments_dropped_error = 35;
+					/*! Immediate topicless fragment bytes dropped due to error. */
+					uint64 immediate_topicless_fragment_bytes_dropped_error = 36;
+					/*! Immediate topicless fragments dropped due to fragment size error. */
+					uint64 immediate_topicless_fragments_dropped_size_error = 37;
+					/*! Immediate topicless fragment bytes dropped due to fragment size error. */
+					uint64 immediate_topicless_fragment_bytes_dropped_size_error = 38;
+
+					/*! Unicast messages forwarded. */
+					uint64 unicast_msgs_forwarded = 39;
+					/*! Unicast message bytes forwarded. */
+					uint64 unicast_msg_bytes_forwarded = 40;
+					/*! Unicast messages sent. */
+					uint64 unicast_msgs_sent = 41;
+					/*! Unicast message bytes sent. */
+					uint64 unicast_msg_bytes_sent = 42;
+					/*! Unicast messages dropped due to error. */
+					uint64 unicast_msgs_dropped_error = 43;
+					/*! Unicast message bytes dropped due to error. */
+					uint64 unicast_msg_bytes_dropped_error = 44;
+
+					/*! Current data bytes enqueued internally. */
+					uint64 data_bytes_enqueued = 45;
+					/*! Maximum data bytes enqueued internally. */
+					uint64 data_bytes_enqueued_max = 46;
+					/*! Configured maximum data bytes allowed in queued. */
+					uint64 data_bytes_enqueued_limit = 47;
+				} /* Send */
+
+				/*! Topic Resolution Domain (TRD) for the portal. */
+				uint32 domain_id = 1;
+				/*! Local interest topics. */
+				uint32 local_interest_topics = 2;
+				/*! Local interest PCRE patterns. */
+				uint32 local_interest_pcre_patterns = 3;
+				/*! Local interest regex patterns. */
+				uint32 local_interest_regex_patterns = 4;
+				/*! Remote interest topics. */
+				uint32 remote_interest_topics = 5;
+				/*! Remote interest PCRE patterns. */
+				uint32 remote_interest_pcre_patterns = 6;
+				/*! Remote interest regex patterns. */
+				uint32 remote_interest_regex_patterns = 7;
+				/*! Receive statistics for this endpoint. */
+				Receive receive = 8;
+				/*! Send statistics for this endpoint. */
+				Send send = 9;
+			} /* Endpoint */
+
+			/*! Structure containing statistics related to this peer portal. */
+			message Peer {
+				/*! Structure containing receive statistics related to this peer portal. */
+				message Receive {
+					/*! Data messages received. */
+					uint64 data_msgs_rcvd = 1;
+					/*! Date message bytes received. */
+					uint64 data_msg_bytes_rcvd = 2;
+
+					/*! Transport topic fragment data messages received. */
+					uint64 transport_topic_fragment_data_msgs_rcvd = 3;
+					/*! Transport topic fragment data message bytes received. */
+					uint64 transport_topic_fragment_data_msg_bytes_rcvd = 4;
+					/*! Transport topic fragment data messages received with an unknown source. */
+					uint64 transport_topic_fragment_data_msgs_rcvd_unknown_source = 5;
+					/*! Transport topic fragment data message bytes received with an unknown source. */
+					uint64 transport_topic_fragment_data_msg_bytes_rcvd_unknown_source = 6;
+					/*! Transport topic request fragment data messages received. */
+					uint64 transport_topic_req_fragment_data_msgs_rcvd = 7;
+					/*! Transport topic request fragment data message bytes received. */
+					uint64 transport_topic_req_fragment_data_msg_bytes_rcvd = 8;
+					/*! Transport topic request fragment data messages received with an unknown source. */
+					uint64 transport_topic_req_fragment_data_msgs_rcvd_unknown_source = 9;
+					/*! Transport topic request fragment data message bytes received with an unknown source. */
+					uint64 transport_topic_req_fragment_data_msg_bytes_rcvd_unknown_source = 10;
+
+					/*! Transport topic control messages received. */
+					uint64 transport_topic_control_msgs_rcvd = 11;
+					/*! Transport topic control messages received. */
+					uint64 transport_topic_control_msg_bytes_rcvd = 12;
+					/*! Transport topic control messages received with an unknown source. */
+					uint64 transport_topic_control_msgs_rcvd_unknown_source = 13;
+					/*! Transport topic control messages received with an unknown source. */
+					uint64 transport_topic_control_msg_bytes_rcvd_unknown_source = 14;
+
+					/*! Immediate topic fragment data messages received. */
+					uint64 immediate_topic_fragment_data_msgs_rcvd = 15;
+					/*! Immediate topic fragment data message bytes received. */
+					uint64 immediate_topic_fragment_data_msg_bytes_rcvd = 16;
+					/*! Immediate topic request fragment data messages received. */
+					uint64 immediate_topic_req_fragment_data_msgs_rcvd = 17;
+					/*! Immediate topic request fragment data message bytes received. */
+					uint64 immediate_topic_req_fragment_data_msg_bytes_rcvd = 18;
+
+					/*! Immediate topicless fragment data messages received. */
+					uint64 immediate_topicless_fragment_data_msgs_rcvd = 19;
+					/*! Immediate topicless fragment data message bytes received. */
+					uint64 immediate_topicless_fragment_data_msg_bytes_rcvd = 20;
+					/*! Immediate topicless request fragment data messages received. */
+					uint64 immediate_topicless_req_fragment_data_msgs_rcvd = 21;
+					/*! Immediate topicless request fragment data message bytes received. */
+					uint64 immediate_topicless_req_fragment_data_msg_bytes_rcvd = 22;
+
+					/*! Unicast data messages received. */
+					uint64 unicast_data_msgs_rcvd = 23;
+					/*! Unicast data message bytes received. */
+					uint64 unicast_data_msg_bytes_rcvd = 24;
+					/*! Unicast data messages received with no forwarding information. */
+					uint64 unicast_data_msgs_rcvd_no_fwd = 25;
+					/*! Unicast data message bytes received with no forwarding information. */
+					uint64 unicast_data_msg_bytes_rcvd_no_fwd = 26;
+					/*! Unicast data messages received with unknown forwarding information. */
+					uint64 unicast_data_msgs_rcvd_unknown_fwd = 27;
+					/*! Unicast data message bytes received with unknown forwarding information. */
+					uint64 unicast_data_msg_bytes_rcvd_unknown_fwd = 28;
+					/*! Unicast data messages received with no stream information. */
+					uint64 unicast_data_msgs_rcvd_no_stream = 29;
+					/*! Unicast data message bytes received with no stream information. */
+					uint64 unicast_data_msg_bytes_rcvd_no_stream = 30;
+					/*! Unicast data messages dropped no route */
+					uint64 unicast_data_msgs_dropped_no_route = 31;
+					/*! Unicast data message bytes dropped no route */
+					uint64 unicast_data_msg_bytes_dropped_no_route = 32;
+
+					/*! Control messages received. */
+					uint64 cntl_msgs_rcvd = 33;
+					/*! Date message bytes received. */
+					uint64 cntl_msg_bytes_rcvd = 34;
+
+					/*! Unicast control messages received. */
+					uint64 unicast_cntl_msgs_rcvd = 35;
+					/*! Control message bytes received. */
+					uint64 unicast_cntl_msg_bytes_rcvd = 36;
+					/*! Retransmission requests received. */
+					uint64 unicast_cntl_rxreq_msgs_rcvd = 37;
+					/*! Retransmission request bytes received. */
+					uint64 unicast_cntl_rxreq_msg_bytes_rcvd = 38;
+					/*! Unicast control messages received but unhandled. */
+					uint64 unicast_cntl_msgs_rcvd_unhandled = 39;
+					/*! Unicast control message bytes received but unhandled. */
+					uint64 unicast_cntl_msg_bytes_rcvd_unhandled = 40;
+					/*! Unicast control messages received with no stream information. */
+					uint64 unicast_cntl_msgs_rcvd_no_stream = 41;
+					/*! Unicast control message bytes received with no stream information. */
+					uint64 unicast_cntl_msg_bytes_rcvd_no_stream = 42;
+					/*! Unicast control messages dropped no route */
+					uint64 unicast_cntl_msgs_dropped_no_route = 43;
+					/*! Unicast control message bytes dropped no route */
+					uint64 unicast_cntl_msg_bytes_dropped_no_route = 44;
+
+					/*! DRO control messages received. */
+					uint64 gateway_cntl_msgs_rcvd = 45;
+					/*! DRO control message bytes received. */
+					uint64 gateway_cntl_msg_bytes_rcvd = 46;
+				} /* Receive */
+
+				message Send {
+					/*! Data fragments forwarded to this portal. */
+					uint64 data_fragments_forwarded = 1;
+					/*! Data fragment bytes forwarded to this portal. */
+					uint64 data_fragment_bytes_forwarded = 2;
+					/*! Data fragments sent. */
+					uint64 data_fragments_sent = 3;
+					/*! Data fragment bytes sent. */
+					uint64 data_fragment_bytes_sent = 4;
+					/*! Duplicate data fragments dropped. */
+					uint64 data_fragments_dropped_dup = 5;
+					/*! Duplicate data fragment bytes dropped. */
+					uint64 data_fragment_bytes_dropped_dup = 6;
+					/*! Data fragments dropped due to EWOULDBLOCK. */
+					uint64 data_fragments_dropped_would_block = 7;
+					/*! Data fragment bytes dropped due to EWOULDBLOCK. */
+					uint64 data_fragment_bytes_dropped_would_block = 8;
+					/*! Data fragments dropped due to portal not being operational. */
+					uint64 data_fragments_dropped_not_operational = 9;
+					/*! Data fragment bytes dropped due to portal not being operational. */
+					uint64 data_fragment_bytes_dropped_not_operational = 10;
+					/*! Data fragments dropped due to queueing failure. */
+					uint64 data_fragments_dropped_queue_failure = 11;
+					/*! Data fragment bytes dropped due to queueing failure. */
+					uint64 data_fragment_bytes_dropped_queue_failure = 12;
+
+					/*! Unicast messages forwarded to this portal. */
+					uint64 unicast_msgs_forwarded = 13;
+					/*! Unicast message bytes forwarded to this portal. */
+					uint64 unicast_msg_bytes_forwarded = 14;
+					/*! Unicast messages sent. */
+					uint64 unicast_msgs_sent = 15;
+					/*! Unicast message bytes sent. */
+					uint64 unicast_msg_bytes_sent = 16;
+					/*! Unicast messages dropped due to EWOULDBLOCK. */
+					uint64 unicast_msgs_dropped_would_block = 17;
+					/*! Unicast message bytes dropped due to EWOULDBLOCK. */
+					uint64 unicast_msg_bytes_dropped_would_block = 18;
+					/*! Unicast messages dropped due to portal not being operational. */
+					uint64 unicast_msgs_dropped_not_operational = 19;
+					/*! Unicast message bytes dropped due to portal not being operational. */
+					uint64 unicast_msg_bytes_dropped_not_operational = 20;
+					/*! Unicast messages dropped due to queueing failure. */
+					uint64 unicast_msgs_dropped_queue_failure = 21;
+					/*! Unicast message bytes dropped due to queueing failure. */
+					uint64 unicast_msg_bytes_dropped_queue_failure = 22;
+
+					/*! DRO control messages. */
+					uint64 gateway_cntl_msgs = 23;
+					/*! DRO control message bytes. */
+					uint64 gateway_cntl_msg_bytes = 24;
+					/*! DRO control messages sent. */
+					uint64 gateway_cntl_msgs_sent = 25;
+					/*! DRO control message bytes sent. */
+					uint64 gateway_cntl_msg_bytes_sent = 26;
+					/*! DRO control messages dropped due to EWOULDBLOCK. */
+					uint64 gateway_cntl_msgs_dropped_would_block = 27;
+					/*! DRO control message bytes dropped due to EWOULDBLOCK. */
+					uint64 gateway_cntl_msg_bytes_dropped_would_block = 28;
+					/*! DRO control messages dropped due to portal not being operational. */
+					uint64 gateway_cntl_msgs_dropped_not_operational = 29;
+					/*! DRO control message bytes dropped due to portal not being operational. */
+					uint64 gateway_cntl_msg_bytes_dropped_not_operational = 30;
+					/*! DRO control messages dropped due to queueing failure. */
+					uint64 gateway_cntl_msgs_dropped_queue_failure = 31;
+					/*! DRO control message bytes dropped due to queueing failure. */
+					uint64 gateway_cntl_msg_bytes_dropped_queue_failure = 32;
+
+					/*! Number of message batches. */
+					uint64 batches = 33;
+					/*! Minimum number of messages per batch. */
+					uint64 batch_msgs_min = 34;
+					/*! Mean number of messages per batch. */
+					uint64 batch_msgs_mean = 35;
+					/*! Maximum number of messages per batch. */
+					uint64 batch_msgs_max = 36;
+					/*! Minimum number of bytes per batch. */
+					uint64 batch_bytes_min = 37;
+					/*! Mean number of bytes per batch. */
+					uint64 batch_bytes_mean = 38;
+					/*! Maximum number of bytes per batch. */
+					uint64 batch_bytes_max = 39;
+					/*! Current data bytes enqueued internally. */
+					uint64 data_bytes_enqueued = 40;
+					/*! Maximum data bytes enqueued internally. */
+					uint64 data_bytes_enqueued_max = 41;
+					/*! Configured maximum data bytes allowed in queued. */
+					uint64 data_bytes_enqueued_limit = 42;
+
+					/*! Total RTT samples. */
+					uint64 rtt_samples = 43;
+					/*! Minimum RTT to companion. */
+					uint64 rtt_min = 44;
+					/*! Mean RTT to companion. */
+					uint64 rtt_mean= 45;
+					/*! Maximum RTT to companion. */
+					uint64 rtt_max = 46;
+					/*! Last keepalive responded to. */
+					uint64 last_ka_time = 47;
+					/*! Current UIM Message bytes queued internally. */
+					uint64 unicast_msg_bytes_enqueued = 48;
+					/*! Maximum UIM Message bytes queued. */
+					uint64 unicast_msg_bytes_enqueued_max = 49;
+					/*! UIM Message bytes Queue Limit. */
+					uint64 unicast_msg_bytes_enqueued_limit = 50;
+				} /* Send */
+
+				/*! ID of adjacent DRO. */
+				uint64 adjacent_gateway_id = 1;
+				/*! Interest topics. */
+				uint32 interest_topics = 2;
+				/*! Interest PCRE patterns. */
+				uint32 interest_pcre_patterns = 3;
+				/*! Interest REGEX patterns. */
+				uint32 interest_regex_patterns = 4;
+				/*! Receive statistics. */
+				Receive receive = 10;
+				/*! Send statistics. */
+				Send send = 11;
+			} /* Peer */
+
+			/*! Portal name. */
+			string portal_name = 1;
+			/*! Portal index. */
+			uint32 portal_index = 2;
+			/*! Cost. */
+			uint32 cost = 3;
+			/*! Number of proxy receivers. */
+			uint32 proxy_receivers = 4;
+			/*! Number of receiver topics. */
+			uint32 receiver_topics = 5;
+			/*! Number of receiver pcre patterns. */
+			uint32 receiver_pcre_patterns = 6;
+			/*! Number of receiver regex patterns. */
+			uint32 receiver_regex_patterns = 7;
+			/*! Number of proxy sources. */
+			uint32 proxy_sources = 8;
+			/*! Recalc duration sec. */
+			uint64 recalc_duration_sec = 9;
+			/*! Recalc duration usec. */
+			uint64 recalc_duration_usec = 10;
+			/*! Proxy rec recalc duration sec. */
+			uint64 proxy_rec_recalc_duration_sec = 11;
+			/*! Proxy rec recalc duration usec. */
+			uint64 proxy_rec_recalc_duration_usec = 12;
+			oneof PortalType {
+				/*! For endpoint portals, operational statistics for the portal. */
+				Endpoint endpoint = 13;
+				/*! For peer  portals, operational statistics for the portal. */
+				Peer peer = 14;
+			}
+		} /* Portal */
+
+		/*! Each DRO tracks a small amount of information about every
+			other DRO in the network.  This structure represents this DRO's view
+			of a remote DRO. */
+		message OtherGateway {
+			/*! Structure containing this DRO's view of a remote
+				DRO's portal information. */
+			message OtherPortal {
+				oneof PortalType {
+					/*! For endpoint portals, the topic resolution ID. */
+					uint64 adjacent_domain_id = 1;
+					/*! For peer portals, the DRO identifier of the remote DRO. */
+					uint64 adjacent_gateway_id = 2;
+				}
+				/*! Cost of this remote DRO's portal. */
+				uint32 cost = 3;
+			} /* OtherPortal */
+
+			/*! Name of DRO. */
+			string gateway_name = 1;
+			/*! DRO identifier. */
+			uint64 gateway_id = 2;
+			/*! This version number essentially represents the number of
+				times the DRO has experienced a change in the number times a peer
+				link has changed state.  When the version number changes, other DROs
+				assume that the topology has changed and re-run the routing logic. */
+			uint32 version = 3;
+			/*! Topology signature. */
+			uint32 topology_signature = 4;
+			/*! Approximate timestamp of last activity.  Represents local wall
+				clock time from the sending host's perspective.  Value is "POSIX Time"
+				(seconds since 1-Jan-1970), but in sending host's timezone. */
+			uint64 last_activity_sec = 5;
+			/*! Count of microseconds to be added to "last_activity_sec" to
+				increase the precision of the timestamp.  However, the accuracy of
+				the timestamp is not guaranteed to be at the microsecond level. */
+			uint64 last_activity_usec = 6;
+			repeated OtherPortal other_portals = 7;
+		} /* OtherGateway */
+
+		/*! Structure containing statistics for this DRO's view
+			of the current topology. */
+		Local local = 1;
+		/*! Structure containing DRO portal configuration information. */
+		repeated Portal portals = 2;
+		/*! This structure represents this DRO's view of a remote DRO. */
+		repeated OtherGateway other_gateways = 3;
+	} /* Stats */
+
+	/*! Information about the sender of this DRO monitoring  message. */
+	UMMonAttributes attributes = 1;
+	/*! Configuration information for this DRO. */
+	Configs configs = 2;
+	/*! Operational statistics and other information for this DRO. */
+	Stats stats = 3;
+} /* DROMonMsg */

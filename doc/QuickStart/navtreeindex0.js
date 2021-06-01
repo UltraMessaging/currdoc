@@ -15,7 +15,9 @@ var NAVTREEINDEX0 =
 "ultramessagingprogrammingquickstart.html":[2],
 "ultramessagingprogrammingquickstart.html#buildingnotesconunix":[2,1],
 "ultramessagingprogrammingquickstart.html#buildingnotesconwindows":[2,0],
-"ultramessagingprogrammingquickstart.html#minimalultramessagingreceiverimplementation":[2,3],
-"ultramessagingprogrammingquickstart.html#minimalultramessagingsourceimplementation":[2,2],
+"ultramessagingprogrammingquickstart.html#buildingnotesdotnet":[2,3],
+"ultramessagingprogrammingquickstart.html#buildingnotesjava":[2,2],
+"ultramessagingprogrammingquickstart.html#minimalultramessagingreceiverimplementation":[2,5],
+"ultramessagingprogrammingquickstart.html#minimalultramessagingsourceimplementation":[2,4],
 "unicastonlyoperation.html":[3]
 };

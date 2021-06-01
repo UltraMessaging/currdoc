@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">UM C API
-   &#160;<span id="projectnumber">6.13.1</span>
+   &#160;<span id="projectnumber">6.14</span>
    </div>
   </td>
  </tr>
@@ -73,9 +73,9 @@ $(document).ready(function(){initNavTree('structumestore__store__dmon__config__m
 </div><!--header-->
 <div class="contents">
 
-<p>Message containing unchanging daemon information set at store daemon startup. <br />
+<p>Message containing unchanging daemon information set at Store daemon startup. <br />
 ( <a class="el" href="structumestore__dmon__msg__hdr__t__stct.html#a0542d765553a7a86bc6ef7c74c4e5385">umestore_dmon_msg_hdr_t_stct::type</a> == <a class="el" href="umedmonmsgs_8h.html#aed8460b69470931e1d8ee4347110a309">LBM_UMESTORE_DMON_MPG_STORE_CONFIG</a>. )<br />
- One or more of these will be published for a given daemon, one for each <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/API/ume.tag:../UME/" href="../UME/configurationreferenceforumestored.html#umeelementstore">&lt;store&gt;</a> element configured. Except where indicated, all fields of type <code>lbm_uintXX_t</code> should be byte-swapped if <code>hdr.magic</code> is equal to <a class="el" href="umedmonmsgs_8h.html#a24d18e9ceeaed40dd3e282418dbdc42c">LBM_UMESTORE_DMON_ANTIMAGIC</a>.  
+ One or more of these will be published for a given daemon, one for each <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/API/ume.tag:../UME/" href="../UME/configurationreferenceforumestored.html#umeelementstore">&lt;store&gt;</a> element configured. Except where indicated, all fields of type <code>lbm_uintXX_t</code> should be byte-swapped if <code>hdr.magic</code> is equal to <a class="el" href="umedmonmsgs_8h.html#a24d18e9ceeaed40dd3e282418dbdc42c">LBM_UMESTORE_DMON_ANTIMAGIC</a>.  
  <a href="structumestore__store__dmon__config__msg__t__stct.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="umedmonmsgs_8h_source.html">umedmonmsgs.h</a>&gt;</code></p>
@@ -88,31 +88,31 @@ Data Fields</h2></td></tr>
 <tr class="separator:a09ea09a255f796fb0600cbdcb973cb48"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af0145c44bd69bcaf83b9a4088151960c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af0145c44bd69bcaf83b9a4088151960c"></a>
 <a class="el" href="lbm_8h.html#a5dfd61ade99cd24213125c293b15ef4a">lbm_uint32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structumestore__store__dmon__config__msg__t__stct.html#af0145c44bd69bcaf83b9a4088151960c">store_iface</a></td></tr>
-<tr class="memdesc:af0145c44bd69bcaf83b9a4088151960c"><td class="mdescLeft">&#160;</td><td class="mdescRight">The network address of the store, as configured with the <code>interface</code> attribute of the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/API/ume.tag:../UME/" href="../UME/configurationreferenceforumestored.html#umeelementstore">&lt;store&gt;</a> element. Format: as returned by standard function <code>inet_addr()</code> - a 32-bit unsigned integer in network byte order. Can be converted back to ASCII dotted notation using inet_ntoa(). <b>NOTE</b>: This field should NOT be byte-swapped. <br /></td></tr>
+<tr class="memdesc:af0145c44bd69bcaf83b9a4088151960c"><td class="mdescLeft">&#160;</td><td class="mdescRight">The network address of the Store, as configured with the <code>interface</code> attribute of the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/API/ume.tag:../UME/" href="../UME/configurationreferenceforumestored.html#umeelementstore">&lt;store&gt;</a> element. Format: as returned by standard function <code>inet_addr()</code> - a 32-bit unsigned integer in network byte order. Can be converted back to ASCII dotted notation using inet_ntoa(). <b>NOTE</b>: This field should NOT be byte-swapped. <br /></td></tr>
 <tr class="separator:af0145c44bd69bcaf83b9a4088151960c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3e557fc4706b31ee352f4d26b23da81e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3e557fc4706b31ee352f4d26b23da81e"></a>
 <a class="el" href="lbm_8h.html#a5dfd61ade99cd24213125c293b15ef4a">lbm_uint32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structumestore__store__dmon__config__msg__t__stct.html#a3e557fc4706b31ee352f4d26b23da81e">store_max_retransmission_processing_rate</a></td></tr>
-<tr class="memdesc:a3e557fc4706b31ee352f4d26b23da81e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Value configured for the store's option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/API/ume.tag:../UME/" href="../UME/optionsforastoresumeattributeselement.html#umecfgretransmissionrequestprocessingrate">retransmission-request-processing-rate</a>. <br /></td></tr>
+<tr class="memdesc:a3e557fc4706b31ee352f4d26b23da81e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Value configured for the Store's option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/API/ume.tag:../UME/" href="../UME/optionsforastoresumeattributeselement.html#umecfgretransmissionrequestprocessingrate">retransmission-request-processing-rate</a>. <br /></td></tr>
 <tr class="separator:a3e557fc4706b31ee352f4d26b23da81e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aabca1978e28be160ed4ee6d705b2f5a6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aabca1978e28be160ed4ee6d705b2f5a6"></a>
 <a class="el" href="lbm_8h.html#a86897f2fdd66aa7021683a4e72a4537b">lbm_uint16_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structumestore__store__dmon__config__msg__t__stct.html#aabca1978e28be160ed4ee6d705b2f5a6">store_idx</a></td></tr>
-<tr class="memdesc:aabca1978e28be160ed4ee6d705b2f5a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Current store number, starting with 0, counting each <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/API/ume.tag:../UME/" href="../UME/configurationreferenceforumestored.html#umeelementstore">&lt;store&gt;</a> element in the order configured. <br /></td></tr>
+<tr class="memdesc:aabca1978e28be160ed4ee6d705b2f5a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Current Store number, starting with 0, counting each <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/API/ume.tag:../UME/" href="../UME/configurationreferenceforumestored.html#umeelementstore">&lt;store&gt;</a> element in the order configured. <br /></td></tr>
 <tr class="separator:aabca1978e28be160ed4ee6d705b2f5a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1a377060e2abbddecb32297d361796e5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1a377060e2abbddecb32297d361796e5"></a>
 <a class="el" href="lbm_8h.html#a86897f2fdd66aa7021683a4e72a4537b">lbm_uint16_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structumestore__store__dmon__config__msg__t__stct.html#a1a377060e2abbddecb32297d361796e5">store_port</a></td></tr>
-<tr class="memdesc:a1a377060e2abbddecb32297d361796e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Value configured for the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/API/ume.tag:../UME/" href="../UME/configurationreferenceforumestored.html#umeelementstore">&lt;store&gt;</a> element's <code>port</code> attribute. <br /></td></tr>
+<tr class="memdesc:a1a377060e2abbddecb32297d361796e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Value configured for the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/API/ume.tag:../UME/" href="../UME/configurationreferenceforumestored.html#umeelementstore">&lt;store&gt;</a> element's <code>port</code> attribute. <br /></td></tr>
 <tr class="separator:a1a377060e2abbddecb32297d361796e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af8ac96ecf72010fbbe73845c53d1c09e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af8ac96ecf72010fbbe73845c53d1c09e"></a>
 <a class="el" href="lbm_8h.html#a86897f2fdd66aa7021683a4e72a4537b">lbm_uint16_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structumestore__store__dmon__config__msg__t__stct.html#af8ac96ecf72010fbbe73845c53d1c09e">store_name_offset</a></td></tr>
-<tr class="memdesc:af8ac96ecf72010fbbe73845c53d1c09e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Byte offset from start of structure to start of store name string (null-terminated). <br /></td></tr>
+<tr class="memdesc:af8ac96ecf72010fbbe73845c53d1c09e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Byte offset from start of structure to start of Store name string (null-terminated). This is the name specified in the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/API/ume.tag:../UME/" href="../UME/configurationreferenceforumestored.html#umeelementstore">UMP Element "&lt;store&gt;"</a> attribute "name"). <br /></td></tr>
 <tr class="separator:af8ac96ecf72010fbbe73845c53d1c09e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad2cad5ec9c3da460377e16b5b0f44b1f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad2cad5ec9c3da460377e16b5b0f44b1f"></a>
 <a class="el" href="lbm_8h.html#a86897f2fdd66aa7021683a4e72a4537b">lbm_uint16_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structumestore__store__dmon__config__msg__t__stct.html#ad2cad5ec9c3da460377e16b5b0f44b1f">disk_cache_dir_offset</a></td></tr>
-<tr class="memdesc:ad2cad5ec9c3da460377e16b5b0f44b1f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Byte offset from start of structure to start of store's cache directory name string (null-terminated). <br /></td></tr>
+<tr class="memdesc:ad2cad5ec9c3da460377e16b5b0f44b1f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Byte offset from start of structure to start of Store's cache directory name string (null-terminated). <br /></td></tr>
 <tr class="separator:ad2cad5ec9c3da460377e16b5b0f44b1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aec2ef13c448be0ee1e1aefc74827d77a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aec2ef13c448be0ee1e1aefc74827d77a"></a>
 <a class="el" href="lbm_8h.html#a86897f2fdd66aa7021683a4e72a4537b">lbm_uint16_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structumestore__store__dmon__config__msg__t__stct.html#aec2ef13c448be0ee1e1aefc74827d77a">disk_state_dir_offset</a></td></tr>
-<tr class="memdesc:aec2ef13c448be0ee1e1aefc74827d77a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Byte offset from start of structure to start of store's state directory name string (null-terminated). <br /></td></tr>
+<tr class="memdesc:aec2ef13c448be0ee1e1aefc74827d77a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Byte offset from start of structure to start of Store's state directory name string (null-terminated). <br /></td></tr>
 <tr class="separator:aec2ef13c448be0ee1e1aefc74827d77a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af8da29d0f2f09bd972f2fbfa61c9f3e2"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af8da29d0f2f09bd972f2fbfa61c9f3e2"></a>
 char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structumestore__store__dmon__config__msg__t__stct.html#af8da29d0f2f09bd972f2fbfa61c9f3e2">string_buffer</a> [LBM_UMESTORE_DMON_STORE_NAME_STRLEN+(2 *LBM_UMESTORE_DMON_FILENAME_MAX_STRLEN)]</td></tr>
@@ -120,9 +120,9 @@ char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="stru
 <tr class="separator:af8da29d0f2f09bd972f2fbfa61c9f3e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Message containing unchanging daemon information set at store daemon startup. <br />
+<div class="textblock"><p>Message containing unchanging daemon information set at Store daemon startup. <br />
 ( <a class="el" href="structumestore__dmon__msg__hdr__t__stct.html#a0542d765553a7a86bc6ef7c74c4e5385">umestore_dmon_msg_hdr_t_stct::type</a> == <a class="el" href="umedmonmsgs_8h.html#aed8460b69470931e1d8ee4347110a309">LBM_UMESTORE_DMON_MPG_STORE_CONFIG</a>. )<br />
- One or more of these will be published for a given daemon, one for each <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/API/ume.tag:../UME/" href="../UME/configurationreferenceforumestored.html#umeelementstore">&lt;store&gt;</a> element configured. Except where indicated, all fields of type <code>lbm_uintXX_t</code> should be byte-swapped if <code>hdr.magic</code> is equal to <a class="el" href="umedmonmsgs_8h.html#a24d18e9ceeaed40dd3e282418dbdc42c">LBM_UMESTORE_DMON_ANTIMAGIC</a>. </p>
+ One or more of these will be published for a given daemon, one for each <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/API/ume.tag:../UME/" href="../UME/configurationreferenceforumestored.html#umeelementstore">&lt;store&gt;</a> element configured. Except where indicated, all fields of type <code>lbm_uintXX_t</code> should be byte-swapped if <code>hdr.magic</code> is equal to <a class="el" href="umedmonmsgs_8h.html#a24d18e9ceeaed40dd3e282418dbdc42c">LBM_UMESTORE_DMON_ANTIMAGIC</a>. </p>
 </div><hr/>The documentation for this struct was generated from the following file:<ul>
 <li><a class="el" href="umedmonmsgs_8h_source.html">umedmonmsgs.h</a></li>
 </ul>

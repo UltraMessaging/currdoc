@@ -185,6 +185,17 @@ UMP Element "&lt;option&gt;"&nbsp;&nbsp;<small><a href="#umeelementoption">&lt;-
 <p>Set a configuration option of a particular type.</p>
 <p>This element is used to set most of the operational parameters of the Store and its repositories.</p>
 <p>There are many different options that can be set. See <a class="el" href="optionsforastoresumeattributeselement.html">"&lt;option&gt;" Element Details</a> for the full list.</p>
+<p>An option element has a type attribute. The valid types depend on whether the option's ancestor element is "&lt;store&gt;" or "&lt;topic&gt;": </p><table class="doxtable">
+<tr>
+<th>Ancestor </th><th>Valid <code>type</code> Attributes </th></tr>
+<tr>
+<td><a class="el" href="configurationreferenceforumestored.html#umeelementstore">&lt;store&gt;</a> </td><td>type="store"<br />
+type="lbm-context" </td></tr>
+<tr>
+<td><a class="el" href="configurationreferenceforumestored.html#umeelementtopic">&lt;topic&gt;</a> </td><td>type="store"<br />
+type="lbm-receiver"<br />
+type="lbm-source" </td></tr>
+</table>
 <ul>
 <li>
 <b>Parent:</b> <a class="el" href="configurationreferenceforumestored.html#umeelementumeattributes">&lt;ume-attributes&gt;</a> </li>
@@ -208,7 +219,8 @@ UMP Element "&lt;option&gt;"&nbsp;&nbsp;<small><a href="#umeelementoption">&lt;-
  </p>
 <h2><a class="anchor" id="umeelementpublishinginterval"></a>
 UMP Element "&lt;publishing-interval&gt;"&nbsp;&nbsp;<small><a href="#umeelementpublishinginterval">&lt;-</a></small></h2>
-<p>Set how often the Store publishes its Daemon Stats. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/UME/design.tag:../Design/" href="../Design/umfeatures.html#daemonstatistics">Daemon Statistics</a> for general information on Daemon Statistics.</p>
+<p>DEPRECATED: Set how often the Store publishes its Daemon Stats. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/UME/design.tag:../Design/" href="../Design/umfeatures.html#daemonstatistics">daemonstatistics</a> for general information on Daemon Statistics.</p>
+<p>Informatica requests users to migrate to using the UM configuration file to enable automatic monitoring with Protocol Buffer monitoring format for Store and DRO by setting <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/UME/config.tag:../Config/" href="../Config/grpautomaticmonitoring.html#monitorformatcontext">monitor_format (context)</a> to "pb". See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/UME/operations.tag:../Operations/" href="../Operations/monitoring.html#automaticmonitoring">Automatic Monitoring</a>.</p>
 <ul>
 <li>
 <b>Parent:</b> <a class="el" href="configurationreferenceforumestored.html#umeelementstore">&lt;store&gt;</a>, <a class="el" href="configurationreferenceforumestored.html#umeelementdaemonmonitor">&lt;daemon-monitor&gt;</a> </li>
@@ -221,7 +233,7 @@ UMP Element "&lt;publishing-interval&gt;"&nbsp;&nbsp;<small><a href="#umeelement
  </p>
 <h2><a class="anchor" id="umeelementgroup"></a>
 UMP Element "&lt;group&gt;"&nbsp;&nbsp;<small><a href="#umeelementgroup">&lt;-</a></small></h2>
-<p>Configures the rate at which one particular grouping of Daemon Statistics messages are published. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/UME/design.tag:../Design/" href="../Design/umfeatures.html#daemonstatistics">Daemon Statistics</a> for general information on Daemon Statistics.</p>
+<p>Configures the rate at which one particular grouping of Daemon Statistics messages are published. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/UME/design.tag:../Design/" href="../Design/umfeatures.html#daemonstatistics">daemonstatistics</a> for general information on Daemon Statistics.</p>
 <ul>
 <li>
 <b>Parent:</b> <a class="el" href="configurationreferenceforumestored.html#umeelementpublishinginterval">&lt;publishing-interval&gt;</a> </li>
@@ -231,10 +243,10 @@ UMP Element "&lt;group&gt;"&nbsp;&nbsp;<small><a href="#umeelementgroup">&lt;-</
 <th>Attribute </th><th>Description </th><th>Valid Values </th><th>Default Value </th></tr>
 <tr>
 <td><b>name</b> </td><td>Name of statistics group being configured. </td><td><b><code>"default"</code></b> - Sets a default interval for all message types. <br />
-<b><code>"store"</code></b> - Sets the interval for messages of type <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/UME/api.tag:../API/" href="../API/umedmonmsgs_8h.html#aeeb55ed0b759e6316cdedc3c990dfe26">umestore_store_dmon_stat_msg_t</a>. <br />
-<b><code>"source"</code></b> - Sets the interval for messages of type <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/UME/api.tag:../API/" href="../API/umedmonmsgs_8h.html#a88ce572fd35203194ada676661d2f54b">umestore_repo_dmon_stat_msg_t</a>. <br />
-<b><code>"receiver"</code></b> - Sets the interval for messages of type <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/UME/api.tag:../API/" href="../API/umedmonmsgs_8h.html#a3829efae398d994795fb395097626709">umestore_rcv_dmon_stat_msg_t</a>. <br />
-<b><code>"disk"</code></b> - Sets the interval for messages of type <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/UME/api.tag:../API/" href="../API/umedmonmsgs_8h.html#a3ed32f1017abda98dbac7f228d7c506b">umestore_disk_dmon_stat_msg_t</a>. <br />
+<b><code>"store"</code></b> - Sets the interval for messages of type <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/UME/api.tag:../API/" href="../API/umedmonmsgs_8h.html#aeeb55ed0b759e6316cdedc3c990dfe26">umestore_store_dmon_stat_msg_t</a>. <br />
+<b><code>"source"</code></b> - Sets the interval for messages of type <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/UME/api.tag:../API/" href="../API/umedmonmsgs_8h.html#a88ce572fd35203194ada676661d2f54b">umestore_repo_dmon_stat_msg_t</a>. <br />
+<b><code>"receiver"</code></b> - Sets the interval for messages of type <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/UME/api.tag:../API/" href="../API/umedmonmsgs_8h.html#a3829efae398d994795fb395097626709">umestore_rcv_dmon_stat_msg_t</a>. <br />
+<b><code>"disk"</code></b> - Sets the interval for messages of type <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/UME/api.tag:../API/" href="../API/umedmonmsgs_8h.html#a3ed32f1017abda98dbac7f228d7c506b">umestore_disk_dmon_stat_msg_t</a>. <br />
 <b><code>"config"</code></b> - Sets the interval for messages of types umestore_*_dmon_config_msg_t. <br />
 <b><code>"memory"</code></b> - Sets the interval for messages of type umestore_smart_heap_dmon_stat_msg_t. </td><td>(no default; must be specified) </td></tr>
 <tr>
@@ -258,7 +270,8 @@ UMP Element "&lt;daemon&gt;"&nbsp;&nbsp;<small><a href="#umeelementdaemon">&lt;-
  </p>
 <h2><a class="anchor" id="umeelementdaemonmonitor"></a>
 UMP Element "&lt;daemon-monitor&gt;"&nbsp;&nbsp;<small><a href="#umeelementdaemonmonitor">&lt;-</a></small></h2>
-<p>The daemon-monitor element configures the Store Process for <a class="el" href="storedaemonstatistics.html">Store Daemon Statistics</a>.</p>
+<p>DEPRECATED: The daemon-monitor element configures the Store Process for <a class="el" href="storedaemonstatistics.html">Store Daemon Statistics</a>.</p>
+<p>Informatica requests users to migrate to using the UM configuration file to enable automatic monitoring with Protocol Buffer monitoring format for Store and DRO by setting <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/UME/config.tag:../Config/" href="../Config/grpautomaticmonitoring.html#monitorformatcontext">monitor_format (context)</a> to "pb". See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/UME/operations.tag:../Operations/" href="../Operations/monitoring.html#automaticmonitoring">Automatic Monitoring</a>.</p>
 <ul>
 <li>
 <b>Parent:</b> <a class="el" href="configurationreferenceforumestored.html#umeelementdaemon">&lt;daemon&gt;</a> </li>
@@ -277,8 +290,8 @@ UMP Element "&lt;daemon-monitor&gt;"&nbsp;&nbsp;<small><a href="#umeelementdaemo
  </p>
 <h2><a class="anchor" id="umeelementremoteconfigchangesrequest"></a>
 UMP Element "&lt;remote-config-changes-request&gt;"&nbsp;&nbsp;<small><a href="#umeelementremoteconfigchangesrequest">&lt;-</a></small></h2>
-<p>Controls if the daemon will respond to requests from monitoring applications. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/UME/design.tag:../Design/" href="../Design/umfeatures.html#daemoncontrolrequests">Daemon Control Requests</a> for general information, <a class="el" href="storedaemonstatistics.html#storedaemoncontrolrequests">Store Daemon Control Requests</a> for Store-specific requests.</p>
-<dl class="section warning"><dt>Warning</dt><dd>If misused, the Daemon Control Requests feature allows a user to interfere with the messaging infrastructure in potentially disruptive ways. By default, this feature is disabled. However, especially if you have enabled the <a class="el" href="configurationreferenceforumestored.html#umeelementremoteconfigchangesrequest">UMP Element "&lt;remote-config-changes-request&gt;"</a>, Informatica recommends <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/UME/design.tag:../Design/" href="../Design/umfeatures.html#securingdaemoncontrolrequests">Securing Daemon Control Requests</a>.</dd></dl>
+<p>Controls if the daemon will respond to requests from monitoring applications. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/UME/design.tag:../Design/" href="../Design/umfeatures.html#daemoncontrolrequests">Daemon Control Requests</a> for general information, <a class="el" href="storedaemonstatistics.html#storedaemoncontrolrequests">Store Daemon Control Requests</a> for Store-specific requests.</p>
+<dl class="section warning"><dt>Warning</dt><dd>If misused, the Daemon Control Requests feature allows a user to interfere with the messaging infrastructure in potentially disruptive ways. By default, this feature is disabled. However, especially if you have enabled the <a class="el" href="configurationreferenceforumestored.html#umeelementremoteconfigchangesrequest">UMP Element "&lt;remote-config-changes-request&gt;"</a>, Informatica recommends <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/UME/design.tag:../Design/" href="../Design/umfeatures.html#securingdaemoncontrolrequests">Securing Daemon Control Requests</a>.</dd></dl>
 <ul>
 <li>
 <b>Parent:</b> <a class="el" href="configurationreferenceforumestored.html#umeelementdaemonmonitor">&lt;daemon-monitor&gt;</a> </li>
@@ -296,7 +309,7 @@ UMP Element "&lt;remote-config-changes-request&gt;"&nbsp;&nbsp;<small><a href="#
  </p>
 <h2><a class="anchor" id="umeelementremotesnapshotrequest"></a>
 UMP Element "&lt;remote-snapshot-request&gt;"&nbsp;&nbsp;<small><a href="#umeelementremotesnapshotrequest">&lt;-</a></small></h2>
-<p>Controls if the daemon will respond to requests from monitoring applications. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/UME/design.tag:../Design/" href="../Design/umfeatures.html#daemoncontrolrequests">Daemon Control Requests</a>.</p>
+<p>Controls if the daemon will respond to requests from monitoring applications. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/UME/design.tag:../Design/" href="../Design/umfeatures.html#daemoncontrolrequests">Daemon Control Requests</a>.</p>
 <ul>
 <li>
 <b>Parent:</b> <a class="el" href="configurationreferenceforumestored.html#umeelementdaemonmonitor">&lt;daemon-monitor&gt;</a> </li>
@@ -316,7 +329,7 @@ UMP Element "&lt;remote-snapshot-request&gt;"&nbsp;&nbsp;<small><a href="#umeele
 UMP Element "&lt;lbm-config&gt;"&nbsp;&nbsp;<small><a href="#umeelementlbmconfig">&lt;-</a></small></h2>
 <p>Pathname for LBM configuration file to be used when the Store creates UM objects (context, receivers, sources).</p>
 <p>When used as a child element of <a class="el" href="configurationreferenceforumestored.html#umeelementdaemonmonitor">&lt;daemon-monitor&gt;</a>, configures the UM objects used for publishing <a class="el" href="storedaemonstatistics.html">Store Daemon Statistics</a>.</p>
-<p>Note that as of UM version 6.13, if one or more errors are discovered in the LBM configuration file, the errors are written to the log file and the Store continues running. I.e. errors in the LBM configuration file are treated as warnings. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/UME/config.tag:../Config/" href="../Config/index.html#configurationerrorhandling">Configuration Error Handling</a> for an explanation.</p>
+<p>Note that as of UM version 6.13, if one or more errors are discovered in the LBM configuration file, the errors are written to the log file and the Store continues running. I.e. errors in the LBM configuration file are treated as warnings. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/UME/config.tag:../Config/" href="../Config/index.html#configurationerrorhandling">Configuration Error Handling</a> for an explanation.</p>
 <ul>
 <li>
 <b>Parent:</b> <a class="el" href="configurationreferenceforumestored.html#umeelementdaemon">&lt;daemon&gt;</a>, <a class="el" href="configurationreferenceforumestored.html#umeelementdaemonmonitor">&lt;daemon-monitor&gt;</a> </li>
@@ -325,7 +338,7 @@ UMP Element "&lt;lbm-config&gt;"&nbsp;&nbsp;<small><a href="#umeelementlbmconfig
 <tr>
 <th>Attribute </th><th>Description </th><th>Valid Values </th><th>Default Value </th></tr>
 <tr>
-<td><b>xml:space</b> </td><td>Specifies how whitespace (tabs, spaces, linefeeds) are handled in the element content. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/UME/design.tag:../Design/" href="../Design/umobjects.html#xmlspaceattribute">xml:space Attribute</a>. </td><td><b><code>"default"</code></b> - Trim whitespace. <br />
+<td><b>xml:space</b> </td><td>Specifies how whitespace (tabs, spaces, linefeeds) are handled in the element content. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/UME/design.tag:../Design/" href="../Design/umobjects.html#xmlspaceattribute">xml:space Attribute</a>. </td><td><b><code>"default"</code></b> - Trim whitespace. <br />
 <b><code>"preserve"</code></b> - Retain whitespace exactly as entered. </td><td><b>default</b> </td></tr>
 </table>
 <p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;?xml version=<span class="stringliteral">&quot;1.0&quot;</span>?&gt;</div><div class="line">&lt;ume-store version=<span class="stringliteral">&quot;1.3&quot;</span>&gt;</div><div class="line">  &lt;daemon&gt;</div><div class="line">    &lt;lbm-config&gt;/etc/ump/store0.cfg&lt;/lbm-config&gt;</div><div class="line">    ...</div><div class="line">    &lt;daemon-monitor topic=<span class="stringliteral">&quot;bozo&quot;</span>&gt;</div><div class="line">      &lt;lbm-config&gt;/etc/ump/store0_dmon.cfg&lt;/lbm-config&gt;</div><div class="line">      ...</div><div class="line">    &lt;/daemon-monitor&gt;</div><div class="line">  &lt;/daemon&gt;</div><div class="line">  ...</div><div class="line">&lt;/ume-store&gt;</div></div><!-- fragment --><hr/>
@@ -343,7 +356,7 @@ UMP Element "&lt;web-monitor&gt;"&nbsp;&nbsp;<small><a href="#umeelementwebmonit
 <tr>
 <th>Attribute </th><th>Description </th><th>Valid Values </th><th>Default Value </th></tr>
 <tr>
-<td><b>xml:space</b> </td><td>Specifies how whitespace (tabs, spaces, linefeeds) are handled in the element content. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/UME/design.tag:../Design/" href="../Design/umobjects.html#xmlspaceattribute">xml:space Attribute</a>. </td><td><b><code>"default"</code></b> - Trim whitespace. <br />
+<td><b>xml:space</b> </td><td>Specifies how whitespace (tabs, spaces, linefeeds) are handled in the element content. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/UME/design.tag:../Design/" href="../Design/umobjects.html#xmlspaceattribute">xml:space Attribute</a>. </td><td><b><code>"default"</code></b> - Trim whitespace. <br />
 <b><code>"preserve"</code></b> - Retain whitespace exactly as entered. </td><td><b>default</b> </td></tr>
 </table>
 <p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;?xml version=<span class="stringliteral">&quot;1.0&quot;</span>?&gt;</div><div class="line">&lt;ume-store version=<span class="stringliteral">&quot;1.3&quot;</span>&gt;</div><div class="line">  &lt;daemon&gt;</div><div class="line">    &lt;web-monitor&gt;*:8080&lt;/web-monitor&gt;</div><div class="line">    ...</div><div class="line">  &lt;/daemon&gt;</div><div class="line">  ...</div><div class="line">&lt;/ume-store&gt;</div></div><!-- fragment --><hr/>
@@ -360,7 +373,7 @@ UMP Element "&lt;lbm-license-file&gt;"&nbsp;&nbsp;<small><a href="#umeelementlbm
 <tr>
 <th>Attribute </th><th>Description </th><th>Valid Values </th><th>Default Value </th></tr>
 <tr>
-<td><b>xml:space</b> </td><td>Specifies how whitespace (tabs, spaces, linefeeds) are handled in the element content. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/UME/design.tag:../Design/" href="../Design/umobjects.html#xmlspaceattribute">xml:space Attribute</a>. </td><td><b><code>"default"</code></b> - Trim whitespace. <br />
+<td><b>xml:space</b> </td><td>Specifies how whitespace (tabs, spaces, linefeeds) are handled in the element content. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/UME/design.tag:../Design/" href="../Design/umobjects.html#xmlspaceattribute">xml:space Attribute</a>. </td><td><b><code>"default"</code></b> - Trim whitespace. <br />
 <b><code>"preserve"</code></b> - Retain whitespace exactly as entered. </td><td><b>default</b> </td></tr>
 </table>
 <hr/>
@@ -369,7 +382,7 @@ UMP Element "&lt;lbm-license-file&gt;"&nbsp;&nbsp;<small><a href="#umeelementlbm
 <h2><a class="anchor" id="umeelementxmlconfig"></a>
 UMP Element "&lt;xml-config&gt;"&nbsp;&nbsp;<small><a href="#umeelementxmlconfig">&lt;-</a></small></h2>
 <p><a class="anchor" id="xmlconfigtag"></a>Pathname for LBM configuration file (in XML format) to be used when the Store creates UM objects (context, receivers, sources). I.e. options that control the UM library.</p>
-<p>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/UME/config.tag:../Config/" href="../Config/xmlconfigurationfiles.html">XML Configuration Files</a> for general information on XML-based LBM configuration files.</p>
+<p>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/UME/config.tag:../Config/" href="../Config/xmlconfigurationfiles.html">XML Configuration Files</a> for general information on XML-based LBM configuration files.</p>
 <p>See also <a class="el" href="configurationreferenceforumestored.html#umeelementlbmconfig">&lt;lbm-config&gt;</a>.</p>
 <ul>
 <li>
@@ -379,11 +392,11 @@ UMP Element "&lt;xml-config&gt;"&nbsp;&nbsp;<small><a href="#umeelementxmlconfig
 <tr>
 <th>Attribute </th><th>Description </th><th>Valid Values </th><th>Default Value </th></tr>
 <tr>
-<td><b>xml:space</b> </td><td>Specifies how whitespace (tabs, spaces, linefeeds) are handled in the element content. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/UME/design.tag:../Design/" href="../Design/umobjects.html#xmlspaceattribute">xml:space Attribute</a>. </td><td><b><code>"default"</code></b> - Trim whitespace. <br />
+<td><b>xml:space</b> </td><td>Specifies how whitespace (tabs, spaces, linefeeds) are handled in the element content. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/UME/design.tag:../Design/" href="../Design/umobjects.html#xmlspaceattribute">xml:space Attribute</a>. </td><td><b><code>"default"</code></b> - Trim whitespace. <br />
 <b><code>"preserve"</code></b> - Retain whitespace exactly as entered. </td><td><b>default</b> </td></tr>
 <tr>
-<td><b>application-name</b> </td><td><p class="starttd">Allows the user to select an "application name" for the Store Process, which can then used by the LBM XML configuration file to target a configuration to that Store using <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/UME/config.tag:../Config/" href="../Config/xmlconfigurationfiles.html#umelementapplication">UM Element "&lt;application&gt;"</a>.</p>
-<p class="endtd">See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/UME/config.tag:../Config/" href="../Config/xmlconfigurationfiles.html#xmlapplicationnames">XML Application Names</a> for more information on application names. </p>
+<td><b>application-name</b> </td><td><p class="starttd">Allows the user to select an "application name" for the Store Process, which can then used by the LBM XML configuration file to target a configuration to that Store using <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/UME/config.tag:../Config/" href="../Config/xmlconfigurationfiles.html#umelementapplication">UM Element "&lt;application&gt;"</a>.</p>
+<p class="endtd">See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/UME/config.tag:../Config/" href="../Config/xmlconfigurationfiles.html#xmlapplicationnames">XML Application Names</a> for more information on application names. </p>
 </td><td>string </td><td><b><code>"umestored"</code></b> </td></tr>
 </table>
 <p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;?xml version=<span class="stringliteral">&quot;1.0&quot;</span>?&gt;</div><div class="line">&lt;ume-store version=<span class="stringliteral">&quot;1.3&quot;</span>&gt;</div><div class="line">  &lt;daemon&gt;</div><div class="line">    &lt;xml-config&gt;/etc/ump/store01_um.xml&lt;/xml-config&gt;</div><div class="line">    ...</div><div class="line">  &lt;/daemon&gt;</div><div class="line">  ...</div><div class="line">&lt;/ume-store&gt;</div></div><!-- fragment --><hr/>
@@ -400,7 +413,7 @@ UMP Element "&lt;gid&gt;"&nbsp;&nbsp;<small><a href="#umeelementgid">&lt;-</a></
 <tr>
 <th>Attribute </th><th>Description </th><th>Valid Values </th><th>Default Value </th></tr>
 <tr>
-<td><b>xml:space</b> </td><td>Specifies how whitespace (tabs, spaces, linefeeds) are handled in the element content. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/UME/design.tag:../Design/" href="../Design/umobjects.html#xmlspaceattribute">xml:space Attribute</a>. </td><td><b><code>"default"</code></b> - Trim whitespace. <br />
+<td><b>xml:space</b> </td><td>Specifies how whitespace (tabs, spaces, linefeeds) are handled in the element content. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/UME/design.tag:../Design/" href="../Design/umobjects.html#xmlspaceattribute">xml:space Attribute</a>. </td><td><b><code>"default"</code></b> - Trim whitespace. <br />
 <b><code>"preserve"</code></b> - Retain whitespace exactly as entered. </td><td><b>default</b> </td></tr>
 </table>
 <p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;?xml version=<span class="stringliteral">&quot;1.0&quot;</span>?&gt;</div><div class="line">&lt;ume-store version=<span class="stringliteral">&quot;1.3&quot;</span>&gt;</div><div class="line">  &lt;daemon&gt;</div><div class="line">    &lt;gid&gt;1234&lt;/gid&gt;</div><div class="line">    ...</div><div class="line">  &lt;/daemon&gt;</div><div class="line">  ...</div><div class="line">&lt;/ume-store&gt;</div></div><!-- fragment --><hr/>
@@ -417,7 +430,7 @@ UMP Element "&lt;pidfile&gt;"&nbsp;&nbsp;<small><a href="#umeelementpidfile">&lt
 <tr>
 <th>Attribute </th><th>Description </th><th>Valid Values </th><th>Default Value </th></tr>
 <tr>
-<td><b>xml:space</b> </td><td>Specifies how whitespace (tabs, spaces, linefeeds) are handled in the element content. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/UME/design.tag:../Design/" href="../Design/umobjects.html#xmlspaceattribute">xml:space Attribute</a>. </td><td><b><code>"default"</code></b> - Trim whitespace. <br />
+<td><b>xml:space</b> </td><td>Specifies how whitespace (tabs, spaces, linefeeds) are handled in the element content. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/UME/design.tag:../Design/" href="../Design/umobjects.html#xmlspaceattribute">xml:space Attribute</a>. </td><td><b><code>"default"</code></b> - Trim whitespace. <br />
 <b><code>"preserve"</code></b> - Retain whitespace exactly as entered. </td><td><b>default</b> </td></tr>
 </table>
 <p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;?xml version=<span class="stringliteral">&quot;1.0&quot;</span>?&gt;</div><div class="line">&lt;ume-store version=<span class="stringliteral">&quot;1.3&quot;</span>&gt;</div><div class="line">  &lt;daemon&gt;</div><div class="line">    &lt;pidfile&gt;/var/run/store01.pid&lt;/pidfile&gt;</div><div class="line">    ...</div><div class="line">  &lt;/daemon&gt;</div><div class="line">  ...</div><div class="line">&lt;/ume-store&gt;</div></div><!-- fragment --><hr/>
@@ -434,7 +447,7 @@ UMP Element "&lt;uid&gt;"&nbsp;&nbsp;<small><a href="#umeelementuid">&lt;-</a></
 <tr>
 <th>Attribute </th><th>Description </th><th>Valid Values </th><th>Default Value </th></tr>
 <tr>
-<td><b>xml:space</b> </td><td>Specifies how whitespace (tabs, spaces, linefeeds) are handled in the element content. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/UME/design.tag:../Design/" href="../Design/umobjects.html#xmlspaceattribute">xml:space Attribute</a>. </td><td><b><code>"default"</code></b> - Trim whitespace. <br />
+<td><b>xml:space</b> </td><td>Specifies how whitespace (tabs, spaces, linefeeds) are handled in the element content. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/UME/design.tag:../Design/" href="../Design/umobjects.html#xmlspaceattribute">xml:space Attribute</a>. </td><td><b><code>"default"</code></b> - Trim whitespace. <br />
 <b><code>"preserve"</code></b> - Retain whitespace exactly as entered. </td><td><b>default</b> </td></tr>
 </table>
 <p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;?xml version=<span class="stringliteral">&quot;1.0&quot;</span>?&gt;</div><div class="line">&lt;ume-store version=<span class="stringliteral">&quot;1.3&quot;</span>&gt;</div><div class="line">  &lt;daemon&gt;</div><div class="line">    &lt;uid&gt;1234&lt;/uid&gt;</div><div class="line">    ...</div><div class="line">  &lt;/daemon&gt;</div><div class="line">  ...</div><div class="line">&lt;/ume-store&gt;</div></div><!-- fragment --><hr/>
@@ -462,7 +475,7 @@ UMP Element "&lt;log&gt;"&nbsp;&nbsp;<small><a href="#umeelementlog">&lt;-</a></
 <tr>
 <td><b>size</b> </td><td>Size (in MB, i.e. 2**20, or 1,048,576) of current log file at which it is rolled. Specify 0 to disable rolling by log file size. </td><td>string </td><td><b><code>"10"</code></b> </td></tr>
 <tr>
-<td><b>xml:space</b> </td><td>Specifies how whitespace (tabs, spaces, linefeeds) are handled in the element content. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/UME/design.tag:../Design/" href="../Design/umobjects.html#xmlspaceattribute">xml:space Attribute</a>. </td><td><b><code>"default"</code></b> - Trim whitespace. <br />
+<td><b>xml:space</b> </td><td>Specifies how whitespace (tabs, spaces, linefeeds) are handled in the element content. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/UME/design.tag:../Design/" href="../Design/umobjects.html#xmlspaceattribute">xml:space Attribute</a>. </td><td><b><code>"default"</code></b> - Trim whitespace. <br />
 <b><code>"preserve"</code></b> - Retain whitespace exactly as entered. </td><td><b>default</b> </td></tr>
 </table>
 <p><b>Example:</b> </p><div class="fragment"><div class="line">&lt;?xml version=<span class="stringliteral">&quot;1.0&quot;</span>?&gt;</div><div class="line">&lt;ume-store version=<span class="stringliteral">&quot;1.3&quot;</span>&gt;</div><div class="line">  &lt;daemon&gt;</div><div class="line">    &lt;log type=<span class="stringliteral">&quot;file&quot;</span> size=<span class="stringliteral">&quot;23&quot;</span> frequency=<span class="stringliteral">&quot;daily&quot;</span>&gt;/var/log/store01.log&lt;/log&gt;</div><div class="line">    ...</div><div class="line">  &lt;/daemon&gt;</div><div class="line">  ...</div><div class="line">&lt;/ume-store&gt;</div></div><!-- fragment --><p><br />

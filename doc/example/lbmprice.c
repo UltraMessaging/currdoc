@@ -1,5 +1,5 @@
 /*
-  Copyright (c) 2005-2020 Informatica Corporation  Permission is granted to licensees to use
+  Copyright (C) 2005-2021, Informatica Corporation  Permission is granted to licensees to use
   or alter this software for any purpose, including commercial applications,
   according to the terms laid out in the Software License Agreement.
 
@@ -939,7 +939,7 @@ req_rcv_action(lbm_rcv_t *rcv, lbm_msg_t *msg, void *clientd)
 			break;
 
 		default:	/* unexpected receiver event */
-			printf("line %d: unexpected event type %d\n", __LINE__, msg->type);
+			printf( "Unhandled receiver event [%d] for req_rcv_action from source [%s]. Refer to https://ultramessaging.github.io/currdoc/doc/example/index.html#unhandledcevents for a detailed description.\n", msg->type, msg->source);
 			exit(1);
 	}  /* switch msg->type */
 
@@ -1656,7 +1656,8 @@ data_rcv_event_action(lbm_rcv_t *rcv, lbm_msg_t *msg, void *clientd)
 			break;
 
 		default:	/* unexpected receiver event */
-			printf("line %d: unexpected event type %d\n", __LINE__, msg->type);
+
+			printf( "Unhandled receiver event [%d] for data_rcv_event_action from source [%s]. Refer to https://ultramessaging.github.io/currdoc/doc/example/index.html#unhandledcevents for a detailed description.\n", msg->type, msg->source);
 	}  /* switch msg->type */
 
 	return (0);
@@ -2268,7 +2269,7 @@ data_relay_event_action(lbm_rcv_t *rcv, lbm_msg_t *msg, void *clientd)
 			break;
 
 		default:	/* unexpected receiver event */
-			printf("line %d: unexpected event type %d\n", __LINE__, msg->type);
+			printf( "Unhandled receiver event [%d] for data_relay_event_action from source [%s]. Refer to https://ultramessaging.github.io/currdoc/doc/example/index.html#unhandledcevents for a detailed description.\n", msg->type, msg->source);
 			exit(1);
 	}  /* switch msg->type */
 

@@ -1,5 +1,5 @@
 /*
-  Copyright (c) 2005-2020 Informatica Corporation  Permission is granted to licensees to use
+  Copyright (C) 2005-2021, Informatica Corporation  Permission is granted to licensees to use
   or alter this software for any purpose, including commercial applications,
   according to the terms laid out in the Software License Agreement.
 
@@ -113,7 +113,7 @@ int handle_src_event(lbm_src_t *src, int event, void *ed, void *cd)
 	case LBM_SRC_EVENT_DISCONNECT:
 		break;
 	default:
-		printf("Unknown source event %d\n", event);
+		printf( "Unhandled source event [%d]. Refer to https://ultramessaging.github.io/currdoc/doc/example/index.html#unhandledcevents for a detailed description.\n", event);
 		break;
 	}
 	return 0;

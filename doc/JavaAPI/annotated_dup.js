@@ -162,6 +162,7 @@ var annotated_dup =
           [ "LBMSourceStatistics", "classcom_1_1latencybusters_1_1lbm_1_1LBMSourceStatistics.html", "classcom_1_1latencybusters_1_1lbm_1_1LBMSourceStatistics" ],
           [ "LBMSSource", "classcom_1_1latencybusters_1_1lbm_1_1LBMSSource.html", "classcom_1_1latencybusters_1_1lbm_1_1LBMSSource" ],
           [ "LBMSSourceSendExInfo", "classcom_1_1latencybusters_1_1lbm_1_1LBMSSourceSendExInfo.html", "classcom_1_1latencybusters_1_1lbm_1_1LBMSSourceSendExInfo" ],
+          [ "LBMStatistics", "classcom_1_1latencybusters_1_1lbm_1_1LBMStatistics.html", "classcom_1_1latencybusters_1_1lbm_1_1LBMStatistics" ],
           [ "LBMTimer", "classcom_1_1latencybusters_1_1lbm_1_1LBMTimer.html", "classcom_1_1latencybusters_1_1lbm_1_1LBMTimer" ],
           [ "LBMTimerCallback", "interfacecom_1_1latencybusters_1_1lbm_1_1LBMTimerCallback.html", "interfacecom_1_1latencybusters_1_1lbm_1_1LBMTimerCallback" ],
           [ "LBMTimespec", "classcom_1_1latencybusters_1_1lbm_1_1LBMTimespec.html", "classcom_1_1latencybusters_1_1lbm_1_1LBMTimespec" ],

@@ -1,10 +1,21 @@
 import com.latencybusters.lbm.*;
+import com.latencybusters.lbm.*;
+import com.latencybusters.lbm.UMSMonProtos.*;
+import com.latencybusters.lbm.UMSMonProtos.UMSMonMsg.*;
+import com.latencybusters.lbm.UMSMonProtos.UMSMonMsg.Stats.*;
+import com.latencybusters.lbm.UMSMonProtos.UMSMonMsg.Events.*;
+import com.latencybusters.lbm.UMMonAttributesProtos.*;
+import com.latencybusters.lbm.UMPMonProtos.*;
+import com.latencybusters.lbm.DROMonProtos.*;
+import com.google.protobuf.TextFormat;
+import java.nio.ByteBuffer;
+import java.util.Date;
 
 // See https://communities.informatica.com/infakb/faq/5/Pages/80008.aspx
 import org.openmdx.uses.gnu.getopt.*;
 
 /*
-  Copyright (c) 2005-2020 Informatica Corporation  Permission is granted to licensees to use
+  Copyright (C) 2005-2021, Informatica Corporation  Permission is granted to licensees to use
   or alter this software for any purpose, including commercial applications,
   according to the terms laid out in the Software License Agreement.
 
@@ -33,13 +44,13 @@ class lbmmon
 "                             TRANS may be `lbm', `udp', or `lbmsnmp', default is `lbm'\n"+ 
 "      --transport-opts OPTS  use OPTS as transport module options\n"+ 
 "  -f, --format FMT           use format module FMT\n"+ 
-"                             FMT may be `csv'\n"+ 
+"                             FMT may be `csv' or `pb', default is `csv'\n"+ 
 "      --format-opts OPTS     use OPTS as format module options\n"+ 
 "\n"+ 
 "Transport and format options are passed as name=value pairs, separated by a semicolon.\n"+ 
 "\n"+ 
-"LBM transport options:\n"+ 
-"  config=FILE            use LBM configuration file FILE\n"+ 
+"LBM transport options:\n"+
+"  config=FILE            use LBM configuration file FILE\n"+
 "  topic=TOPIC            receive statistics on topic TOPIC\n"+ 
 "                         default is /29west/statistics\n"+ 
 "  wctopic=PATTERN        receive statistics on wildcard topic PATTERN\n"+ 
@@ -57,11 +68,16 @@ class lbmmon
 "\n"+ 
 "CSV format options:\n"+ 
 "  separator=CHAR         separate CSV fields with character CHAR\n"+ 
-"                         defaults to `,'\n"
+"                         defaults to `,'\n"+
+"  passthrough=VAL        VAL may be `off', `on' or `convert'\n"+
+"                         defaults to `off'\n"+
+"PB format options:\n"+
+"  passthrough=VAL        VAL may be `off', `on' or `convert'\n"+
+"                         defaults to `off'\n"
 ;
 
-	
-	public static void main(String[] args)
+
+    public static void main(String[] args)
 	{
 		LBM lbm = null;
 		try
@@ -107,6 +123,8 @@ class lbmmon
 				case OPTION_MONITOR_FORMAT:
 					if (gopt.getOptarg().compareToIgnoreCase("csv") == 0)
 						format = LBMMonitor.FORMAT_CSV;
+					else if (gopt.getOptarg().compareToIgnoreCase("pb") == 0)
+						format = LBMMonitor.FORMAT_PB;
 					else
 						error = true;
 					break;
@@ -198,601 +216,238 @@ class LBMMonCallbacks extends LBMMonitorStatisticsCallbackObject
 		_objRec = objRec;
 	}
 
-	public void onReceive(LBMSourceStatistics stats)
-	{
-		System.err.print("\nSource statistics received");
-		try
-		{
-			System.err.print(" from " + stats.getApplicationSourceId());
-			System.err.print(" at " + stats.getSender().toString());
-			System.err.println(", sent " + stats.getTimestamp().toString());
-			System.err.println("Source: " + stats.source());
-			System.err.println("Transport: " + stats.typeName());
-			switch (stats.type())
-			{
-				case LBM.TRANSPORT_STAT_TCP:
-					System.err.println("\tClients       : " +
-									   stats.numberOfClients());
-					System.err.println("\tBytes buffered: " +
-									   stats.bytesBuffered());
-					break;
-				case LBM.TRANSPORT_STAT_LBTRM:
-					System.err.println("\tLBT-RM datagrams sent                                 : " +
-									   stats.messagesSent());                                  
-					System.err.println("\tLBT-RM datagram bytes sent                            : " +
-									   stats.bytesSent());                                     
-					System.err.println("\tLBT-RM datagrams in transmission window               : " +
-									   stats.transmissionWindowMessages());                    
-					System.err.println("\tLBT-RM datagram bytes in transmission window          : " +
-									   stats.transmissionWindowBytes());                       
-					System.err.println("\tLBT-RM NAK packets received                           : " +
-									   stats.nakPacketsReceived());                            
-					System.err.println("\tLBT-RM NAKs received                                  : " +
-									   stats.naksReceived());                                  
-					System.err.println("\tLBT-RM NAKs ignored                                   : " +
-									   stats.naksIgnored());                                   
-					System.err.println("\tLBT-RM NAKs shed                                      : " +
-									   stats.naksShed());                                      
-					System.err.println("\tLBT-RM NAKs ignored (retransmit delay)                : " +
-									   stats.naksIgnoredRetransmitDelay());
-					System.err.println("\tLBT-RM retransmission datagrams sent                  : " +
-									   stats.retransmissionsSent());
-					System.err.println("\tLBT-RM retransmission datagrams bytes sent            : " +
-									   stats.retransmissionBytesSent());
-					System.err.println("\tLBT-RM datagrams queued by rate control               : " +
-									   stats.messagesQueued());
-					System.err.println("\tLBT-RM retransmission datagrams queued by rate control: " +
-									   stats.retransmissionsQueued());
-					break;
-				case LBM.TRANSPORT_STAT_LBTRU:
-					System.err.println("\tLBT-RU datagrams sent                    : " +
-									   stats.messagesSent());                      
-					System.err.println("\tLBT-RU datagram bytes sent               : " +
-									   stats.bytesSent());                         
-					System.err.println("\tLBT-RU NAK packets received              : " +
-									   stats.nakPacketsReceived());                
-					System.err.println("\tLBT-RU NAKs received                     : " +
-									   stats.naksReceived());                      
-					System.err.println("\tLBT-RU NAKs ignored                      : " +
-									   stats.naksIgnored());                       
-					System.err.println("\tLBT-RU NAKs shed                         : " +
-									   stats.naksShed());
-					System.err.println("\tLBT-RU NAKs ignored (retransmit delay)   : " +
-									   stats.naksIgnoredRetransmitDelay());
-					System.err.println("\tLBT-RU retransmission datagrams sent     : " +
-									   stats.retransmissionsSent());
-					System.err.println("\tLBT-RU retransmission datagram bytes sent: " +
-							   		   stats.retransmissionBytesSent());
-					System.err.println("\tClients                                  : " +
-									   stats.numberOfClients());
-					break;
-				case LBM.TRANSPORT_STAT_LBTIPC:
-					System.err.println("\tClients                    :" + stats.numberOfClients());
-					System.err.println("\tLBT-IPC datagrams sent     :" + stats.messagesSent());
-					System.err.println("\tLBT-IPC datagram bytes sent:" + stats.bytesSent());
-					break;
-				case LBM.TRANSPORT_STAT_LBTSMX:
-					System.err.println("\tClients                    :" + stats.numberOfClients());
-					System.err.println("\tLBT-SMX datagrams sent     :" + stats.messagesSent());
-					System.err.println("\tLBT-SMX datagram bytes sent:" + stats.bytesSent());
-					break;
-				case LBM.TRANSPORT_STAT_LBTRDMA:
-					System.err.println("\tClients                    :" + stats.numberOfClients());
-					System.err.println("\tLBT-RDMA datagrams sent     :" + stats.messagesSent());
-					System.err.println("\tLBT-RDMA datagram bytes sent:" + stats.bytesSent());
-					break;
-				case LBM.TRANSPORT_STAT_BROKER:
-					System.err.println("\tBROKER messages sent       : " + stats.messagesSent());
-					System.err.println("\tBROKER message bytes sent  : " + stats.bytesSent());
-					break;
-				default:
-					System.err.println("Error: unknown transport type received." + stats.type());
-					break;
-			}
+	public void onReceive(LBMSourceStatistics statsMsg) {
+		try {
+			System.err.println(statsMsg.displayString("Source statistics received"));
+		} catch (Exception ex) {
+			System.err.println("Error printing source statistics: " + ex.toString());
 		}
-		catch (Exception ex)
-		{
-			System.err.println("Error getting source statistics: " + ex.toString());
-		}
-		_objRec.doneWithSourceStatistics(stats);
+		_objRec.doneWithSourceStatistics(statsMsg);
 	}
 
-	public void onReceive(LBMReceiverStatistics stats)
+	public void onReceive(LBMReceiverStatistics statsMsg)
 	{
-		System.err.print("\nReceiver statistics received");
-		try
-		{
-			System.err.print(" from " + stats.getApplicationSourceId());
-			System.err.print(" at " + stats.getSender().toString());
-			System.err.println(", sent " + stats.getTimestamp().toString());
-			System.err.println("Source: " + stats.source());
-			System.err.println("Transport: " + stats.typeName());
-			switch (stats.type())
-			{
-				case LBM.TRANSPORT_STAT_TCP:
-					System.err.println("\tLBT-TCP bytes received                                    : " +
-									   stats.bytesReceived());
-					System.err.println("\tLBM messages received                                     : " +
-									   stats.lbmMessagesReceived());
-					System.err.println("\tLBM messages received with uninteresting topic            : " +
-									   stats.noTopicMessagesReceived());
-					System.err.println("\tLBM requests received                                     : " +
-									   stats.lbmRequestsReceived());
-					break;
-				case LBM.TRANSPORT_STAT_LBTRM:
-					System.err.println("\tLBT-RM datagrams received                                 : " +
-									   stats.messagesReceived());                                  
-					System.err.println("\tLBT-RM datagram bytes received                            : " +
-									   stats.bytesReceived());                                     
-					System.err.println("\tLBT-RM NAK packets sent                                   : " +
-									   stats.nakPacketsSent());                                    
-					System.err.println("\tLBT-RM NAKs sent                                          : " +
-									   stats.naksSent());                                          
-					System.err.println("\tLost LBT-RM datagrams detected                            : " +
-									   stats.lost());                                              
-					System.err.println("\tNCFs received (ignored)                                   : " +
-									   stats.ncfsIgnored());                                       
-					System.err.println("\tNCFs received (shed)                                      : " +
-									   stats.ncfsShed());                                          
-					System.err.println("\tNCFs received (retransmit delay)                          : " +
-									   stats.ncfsRetransmissionDelay());                           
-					System.err.println("\tNCFs received (unknown)                                   : " +
-									   stats.ncfsUnknown());                                       
-					System.err.println("\tLoss recovery minimum time                                : " +
-									   stats.minimumRecoveryTime() + "ms");                        
-					System.err.println("\tLoss recovery mean time                                   : " +
-									   stats.meanRecoveryTime() + "ms");                           
-					System.err.println("\tLoss recovery maximum time                                : " +
-									   stats.maximumRecoveryTime() + "ms");                        
-					System.err.println("\tMinimum transmissions per individual NAK                  : " +
-									   stats.minimumNakTransmissions());                           
-					System.err.println("\tMean transmissions per individual NAK                     : " +
-									   stats.meanNakTransmissions());                              
-					System.err.println("\tMaximum transmissions per individual NAK                  : " +
-									   stats.maximumNakTransmissions());                           
-					System.err.println("\tDuplicate LBT-RM datagrams received                       : " +
-									   stats.duplicateMessages());
-					System.err.println("\tLBT-RM datagrams unrecoverable (window advance)           : " +
-									   stats.unrecoveredMessagesWindowAdvance());
-					System.err.println("\tLBT-RM datagrams unrecoverable (NAK generation expiration): " +
-									   stats.unrecoveredMessagesNakGenerationTimeout());
-					System.err.println("\tLBT-RM LBM messages received                              : " +
-									   stats.lbmMessagesReceived());                               
-					System.err.println("\tLBT-RM LBM messages received with uninteresting topic     : " +
-									   stats.noTopicMessagesReceived());                           
-					System.err.println("\tLBT-RM LBM requests received                              : " +
-									   stats.lbmRequestsReceived());                               
-					System.err.println("\tLBT-RM datagrams dropped (size)                           : " +
-									   stats.datagramsDroppedIncorrectSize());                     
-					System.err.println("\tLBT-RM datagrams dropped (type)                           : " +
-									   stats.datagramsDroppedType());                              
-					System.err.println("\tLBT-RM datagrams dropped (version)                        : " +
-									   stats.datagramsDroppedVersion());                           
-					System.err.println("\tLBT-RM datagrams dropped (header)                         : " +
-									   stats.datagramsDroppedHeader());                            
-					System.err.println("\tLBT-RM datagrams dropped (other)                          : " +
-									   stats.datagramsDroppedOther());
-					System.err.println("\tLBT-RM datagrams received out of order                    : " +
-									   stats.outOfOrder());
-					break;
-				case LBM.TRANSPORT_STAT_LBTRU:
-					System.err.println("\tLBT-RU datagrams received                                 : " +
-									   stats.messagesReceived());
-					System.err.println("\tLBT-RU datagram bytes received                            : " +
-									   stats.bytesReceived());
-					System.err.println("\tLBT-RU NAK packets sent                                   : " +
-									   stats.nakPacketsSent());                                    
-					System.err.println("\tLBT-RU NAKs sent                                          : " +
-									   stats.naksSent());                                          
-					System.err.println("\tLost LBT-RU datagrams detected                            : " +
-									   stats.lost());                                              
-					System.err.println("\tNCFs received (ignored)                                   : " +
-									   stats.ncfsIgnored());                                       
-					System.err.println("\tNCFs received (shed)                                      : " +
-									   stats.ncfsShed());                                          
-					System.err.println("\tNCFs received (retransmit delay)                          : " +
-									   stats.ncfsRetransmissionDelay());                           
-					System.err.println("\tNCFs received (unknown)                                   : " +
-									   stats.ncfsUnknown());                                       
-					System.err.println("\tLoss recovery minimum time                                : " +
-									   stats.minimumRecoveryTime() + "ms");                        
-					System.err.println("\tLoss recovery mean time                                   : " +
-									   stats.meanRecoveryTime() + "ms");                           
-					System.err.println("\tLoss recovery maximum time                                : " +
-									   stats.maximumRecoveryTime() + "ms");                        
-					System.err.println("\tMinimum transmissions per individual NAK                  : " +
-									   stats.minimumNakTransmissions());                           
-					System.err.println("\tMean transmissions per individual NAK                     : " +
-									   stats.meanNakTransmissions());                              
-					System.err.println("\tMaximum transmissions per individual NAK                  : " +
-									   stats.maximumNakTransmissions());                           
-					System.err.println("\tDuplicate LBT-RU datagrams received                       : " +
-									   stats.duplicateMessages());                                 
-					System.err.println("\tLBT-RU datagrams unrecoverable (window advance)           : " +
-									   stats.unrecoveredMessagesWindowAdvance());
-					System.err.println("\tLBT-RU datagrams unrecoverable (NAK generation expiration): " +
-									   stats.unrecoveredMessagesNakGenerationTimeout());
-					System.err.println("\tLBT-RU LBM messages received                              : " +
-									   stats.lbmMessagesReceived());                               
-					System.err.println("\tLBT-RU LBM messages received with uninteresting topic     : " +
-									   stats.noTopicMessagesReceived());                           
-					System.err.println("\tLBT-RU LBM requests received                              : " +
-									   stats.lbmRequestsReceived());                               
-					System.err.println("\tLBT-RU datagrams dropped (size)                           : " +
-									   stats.datagramsDroppedIncorrectSize());                     
-					System.err.println("\tLBT-RU datagrams dropped (type)                           : " +
-									   stats.datagramsDroppedType());                              
-					System.err.println("\tLBT-RU datagrams dropped (version)                        : " +
-									   stats.datagramsDroppedVersion());                           
-					System.err.println("\tLBT-RU datagrams dropped (header)                         : " +
-									   stats.datagramsDroppedHeader());                            
-					System.err.println("\tLBT-RU datagrams dropped (SID)                            : " +
-									   stats.datagramsDroppedSID());                               
-					System.err.println("\tLBT-RU datagrams dropped (other)                          : " +
-									   stats.datagramsDroppedOther());
-					break;
-				case LBM.TRANSPORT_STAT_LBTIPC:
-					System.err.println("\tLBT-IPC datagrams received                                :" + stats.messagesReceived());
-					System.err.println("\tLBT-IPC datagram bytes received                           :" + stats.bytesReceived());
-					System.err.println("\tLBT-IPC LBM messages received                             :" + stats.lbmMessagesReceived());
-					System.err.println("\tLBT-IPC LBM messages received with uninteresting topic    :" + stats.noTopicMessagesReceived());
-					System.err.println("\tLBT-IPC LBM requests received                             :" + stats.lbmRequestsReceived());
-					break;
-				case LBM.TRANSPORT_STAT_LBTSMX:
-					System.err.println("\tLBT-SMX datagrams received                                :" + stats.messagesReceived());
-					System.err.println("\tLBT-SMX datagram bytes received                           :" + stats.bytesReceived());
-					System.err.println("\tLBT-SMX LBM messages received                             :" + stats.lbmMessagesReceived());
-					System.err.println("\tLBT-SMX LBM messages received with uninteresting topic    :" + stats.noTopicMessagesReceived());
-					System.err.println("\tLBT-SMX LBM requests received                             :" + stats.lbmRequestsReceived());
-					break;
-				case LBM.TRANSPORT_STAT_LBTRDMA:
-					System.err.println("\tLBT-RDMA datagrams received                                :" + stats.messagesReceived());
-					System.err.println("\tLBT-RDMA datagram bytes received                           :" + stats.bytesReceived());
-					System.err.println("\tLBT-RDMA LBM messages received                             :" + stats.lbmMessagesReceived());
-					System.err.println("\tLBT-RDMA LBM messages received with uninteresting topic    :" + stats.noTopicMessagesReceived());
-					System.err.println("\tLBT-RDMA LBM requests received                             :" + stats.lbmRequestsReceived());
-					break;
-				case LBM.TRANSPORT_STAT_BROKER:
-					System.err.println("\tBROKER messages received                                   : " + stats.messagesReceived());
-					System.err.println("\tBROKER message bytes received                              : " + stats.bytesReceived());
-					break;
-				default:
-					System.err.println("Error: unknown transport type received." + stats.type());
-					break;
-			}
-		}
-		catch (Exception ex)
-		{
-			System.err.println("Error getting receiver statistics: " + ex.toString());
-		}
-		_objRec.doneWithReceiverStatistics(stats);
-	}
-	public void onReceive(LBMContextStatistics stats)
-	{
-		System.err.print("\nContext statistics received");
-		try
-		{
-			System.err.print(" from " + stats.getApplicationSourceId());
-			System.err.print(" at " + stats.getSender().toString());
-			System.err.println(", sent " + stats.getTimestamp().toString());
-			System.err.println("\tTopic resolution datagrams sent                    : " +
-								stats.topicResolutionDatagramsSent());
-			System.err.println("\tTopic resolution datagrams received                : " +
-								stats.topicResolutionDatagramsReceived());
-			System.err.println("\tTopic resolution datagram bytes sent               : " +
-								stats.topicResolutionBytesSent());
-			System.err.println("\tTopic resolution datagram bytes received           : " +
-								stats.topicResolutionBytesReceived());
-			System.err.println("\tTopic resolution datagrams dropped version         : " +
-								stats.topicResolutionDatagramsDroppedVersion());
-			System.err.println("\tTopic resolution datagrams dropped type            : " +
-								stats.topicResolutionDatagramsDroppedType());
-			System.err.println("\tTopic resolution datagrams dropped malformed       : " +
-								stats.topicResolutionDatagramsDroppedMalformed());
-			System.err.println("\tTopic resolution datagrams send failed             : " +
-								stats.topicResolutionDatagramsSendFailed());
-			System.err.println("\tTopic resolution source topics                     : " +
-								stats.topicResolutionSourceTopics());
-			System.err.println("\tTopic resolution receiver topics                   : " +
-								stats.topicResolutionReceiverTopics());
-			System.err.println("\tTopic resolution unresolved receiver topics        : " +
-								stats.topicResolutionUnresolvedReceiverTopics());
-			System.err.println("\tLBT-RM unknown datagrams received                  : " +
-								stats.lbtrmUnknownMessagesReceived());
-			System.err.println("\tLBT-RU unknown datagrams received                  : " +
-								stats.lbtruUnknownMessagesReceived());
-			System.err.println("\tLBM send calls which blocked                       : " +
-								stats.sendBlocked());
-			System.err.println("\tLBM send calls which returned EWOULDBLOCK          : " +
-								stats.sendWouldBlock());
-			System.err.println("\tLBM response calls which blocked                   : " +
-								stats.responseBlocked());
-			System.err.println("\tLBM response calls which returned EWOULDBLOCK      : " +
-								stats.responseWouldBlock());
-			System.err.println("\tNumber of duplicate UIM messages dropped           : " +
-								stats.unicastImmediateMessageDuplicatesReceived());
-			System.err.println("\tNumber of UIM messages received without stream info: " +
-								stats.unicastImmediateMessageNoStreamReceived());
-		}
-		catch (Exception ex){
-			System.err.println("Error getting receiver statistics: " + ex.toString());
-		}
-		_objRec.doneWithContextStatistics(stats);
-	}
-	
-	public void onReceive(LBMEventQueueStatistics stats)
-	{
-		System.err.print("\nEvent Queue statistics received");
 		try {
-			System.err.print(" from " + stats.getApplicationSourceId());
-			System.err.print(" at " + stats.getSender().toString());
-			System.err.println(", sent " + stats.getTimestamp().toString());
-			System.err.println("\tData messages enqueued                                        : " +
-								stats.dataMessages());
-			System.err.println("\tTotal data messages enqueued                                  : " +
-								stats.dataMessagesTotal());
-			System.err.println("\tData messages min service time (microseconds)                 : " +
-								stats.dataMessagesMinimumServiceTime());
-			System.err.println("\tData messages mean service time (microseconds)                : " +
-								stats.dataMessagesMeanServiceTime());
-			System.err.println("\tData messages max service time (microseconds)                 : " +
-								stats.dataMessagesMaximumServiceTime());
-			System.err.println("\tResponse messages enqueued                                    : " +
-								stats.responseMessages());
-			System.err.println("\tTotal response messages enqueued                              : " +
-								stats.responseMessagesTotal());
-			System.err.println("\tResponse messages min service time (microseconds)             : " +
-								stats.responseMessagesMinimumServiceTime());
-			System.err.println("\tResponse messages mean service time (microseconds)            : " +
-								stats.responseMessagesMeanServiceTime());
-			System.err.println("\tResponse messages max service time (microseconds)             : " +
-								stats.responseMessagesMaximumServiceTime());
-			System.err.println("\tTopicless immediate messages enqueued                         : " +
-								stats.topiclessImmediateMessages());
-			System.err.println("\tTotal topicless immediate messages enqueued                   : " +
-								stats.topiclessImmediateMessagesTotal());
-			System.err.println("\tTopicless immediate messages min service time (microseconds)  : " +
-								stats.topiclessImmediateMessagesMinimumServiceTime());
-			System.err.println("\tTopicless immediate messages mean service time (microseconds) : " +
-								stats.topiclessImmediateMessagesMeanServiceTime());
-			System.err.println("\tTopicless immediate messages max service time (microseconds)  : " +
-								stats.topiclessImmediateMessagesMaximumServiceTime());
-			System.err.println("\tWildcard receiver messages enqueued                           : " +
-								stats.wildcardReceiverMessages());
-			System.err.println("\tTotal wildcard receiver messages enqueued                     : " +
-								stats.wildcardReceiverMessagesTotal());
-			System.err.println("\tWildcard receiver messages min service time (microseconds)    : " +
-								stats.wildcardReceiverMessagesMinimumServiceTime());
-			System.err.println("\tWildcard receiver messages mean service time (microseconds)   : " +
-								stats.wildcardReceiverMessagesMeanServiceTime());
-			System.err.println("\tWildcard receiver messages max service time (microseconds)    : " +
-								stats.wildcardReceiverMessagesMaximumServiceTime());
-			System.err.println("\tI/O events enqueued                                           : " +
-								stats.ioEvents());
-			System.err.println("\tTotal I/O events enqueued                                     : " +
-								stats.ioEventsTotal());
-			System.err.println("\tI/O events min service time (microseconds)                    : " +
-								stats.ioEventsMinimumServiceTime());
-			System.err.println("\tI/O events mean service time (microseconds)                   : " +
-								stats.ioEventsMeanServiceTime());
-			System.err.println("\tI/O events max service time (microseconds)                    : " +
-								stats.ioEventsMaximumServiceTime());
-			System.err.println("\tTimer events enqueued                                         : " +
-								stats.timerEvents());
-			System.err.println("\tTotal timer events enqueued                                   : " +
-								stats.timerEventsTotal());
-			System.err.println("\tTimer events min service time (microseconds)                  : " +
-								stats.timerEventsMinimumServiceTime());
-			System.err.println("\tTimer events mean service time (microseconds)                 : " +
-								stats.timerEventsMeanServiceTime());
-			System.err.println("\tTimer events max service time (microseconds)                  : " +
-								stats.timerEventsMaximumServiceTime());
-			System.err.println("\tSource events enqueued                                        : " +
-								stats.sourceEvents());
-			System.err.println("\tTotal source events enqueued                                  : " +
-								stats.sourceEventsTotal());
-			System.err.println("\tSource events min service time (microseconds)                 : " +
-								stats.sourceEventsMinimumServiceTime());
-			System.err.println("\tSource events mean service time (microseconds)                : " +
-								stats.sourceEventsMeanServiceTime());
-			System.err.println("\tSource events max service time (microseconds)                 : " +
-								stats.sourceEventsMaximumServiceTime());
-			System.err.println("\tUnblock events enqueued                                       : " +
-								stats.unblockEvents());
-			System.err.println("\tTotal unblock events enqueued                                 : " +
-								stats.unblockEventsTotal());
-			System.err.println("\tCancel events enqueued                                        : " +
-								stats.cancelEvents());
-			System.err.println("\tTotal cancel events enqueued                                  : " +
-								stats.cancelEventsTotal());
-			System.err.println("\tCancel events min service time (microseconds)                 : " +
-								stats.cancelEventsMinimumServiceTime());
-			System.err.println("\tCancel events mean service time (microseconds)                : " +
-								stats.cancelEventsMeanServiceTime());
-			System.err.println("\tCancel events max service time (microseconds)                 : " +
-								stats.cancelEventsMaximumServiceTime());
-			System.err.println("\tCallback events enqueued                                      : " +
-								stats.callbackEvents());
-			System.err.println("\tTotal callback events enqueued                                : " +
-								stats.callbackEventsTotal());
-			System.err.println("\tCallback events min service time (microseconds)               : " +
-								stats.callbackEventsMinimumServiceTime());
-			System.err.println("\tCallback events mean service time (microseconds)              : " +
-								stats.callbackEventsMeanServiceTime());
-			System.err.println("\tCallback events max service time (microseconds)               : " +
-								stats.callbackEventsMaximumServiceTime());			
-			System.err.println("\tContext source events enqueued                                : " +
-								stats.contextSourceEvents());
-			System.err.println("\tTotal context source events enqueued                          : " +
-								stats.contextSourceEventsTotal());
-			System.err.println("\tContext source events min service time (microseconds)         : " +
-								stats.contextSourceEventsMinimumServiceTime());
-			System.err.println("\tContext source events mean service time (microseconds)        : " +
-								stats.contextSourceEventsMeanServiceTime());
-			System.err.println("\tContext source events max service time (microseconds)         : " +
-								stats.contextSourceEventsMaximumServiceTime());
-			System.err.println("\tEvents currently enqueued                                     : " +
-								stats.events());
-			System.err.println("\tTotal events enqueued                                         : " +
-								stats.eventsTotal());
-			System.err.println("\tMinimum age of events enqueued (microseconds)                 : " +
-								stats.minimumAge());
-			System.err.println("\tMean age of events enqueued (microseconds)                    : " +
-								stats.meanAge());
-			System.err.println("\tMax age of events enqueued (microseconds)                     : " +
-								stats.maximumAge());
+			System.err.println(statsMsg.displayString("Receiver statistics received"));
+		} catch (Exception ex) {
+			System.err.println("Error printing receiver statistics: " + ex.toString());
 		}
-		catch (Exception ex){
-			System.err.println("Error getting event queue statistics: " + ex.toString());
-		}
-		_objRec.doneWithEventQueueStatistics(stats);
+		_objRec.doneWithReceiverStatistics(statsMsg);
 	}
-	public void onReceive(LBMImmediateMessageSourceStatistics stats)
+	public void onReceive(LBMContextStatistics statsMsg)
 	{
-		System.err.print("\nImmediate message source statistics received");
-		try
-		{
-			System.err.print(" from " + stats.getApplicationSourceId());
-			System.err.print(" at " + stats.getSender().toString());
-			System.err.println(", sent " + stats.getTimestamp().toString());
-			System.err.println("Source: " + stats.source());
-			System.err.println("Transport: " + stats.typeName());
-			switch (stats.type())
-			{
-				case LBM.TRANSPORT_STAT_TCP:
-					System.err.println("\tClients       : " +
-									   stats.numberOfClients());
-					System.err.println("\tBytes buffered: " +
-									   stats.bytesBuffered());
-					break;
-				case LBM.TRANSPORT_STAT_LBTRM:
-					System.err.println("\tLBT-RM datagrams sent                                 : " +
-									   stats.messagesSent());
-					System.err.println("\tLBT-RM datagrams bytes sent                           : " +
-									   stats.bytesSent());
-					System.err.println("\tLBT-RM datagrams in transmission window               : " +
-									   stats.transmissionWindowMessages());
-					System.err.println("\tLBT-RM datagram bytes in transmission window          : " +
-									   stats.transmissionWindowBytes());
-					System.err.println("\tLBT-RM NAK packets received                           : " +
-									   stats.nakPacketsReceived());                            
-					System.err.println("\tLBT-RM NAKs received                                  : " +
-									   stats.naksReceived());                                  
-					System.err.println("\tLBT-RM NAKs ignored                                   : " +
-									   stats.naksIgnored());                                   
-					System.err.println("\tLBT-RM NAKs shed                                      : " +
-									   stats.naksShed());                                      
-					System.err.println("\tLBT-RM NAKs ignored (retransmit delay)                : " +
-									   stats.naksIgnoredRetransmitDelay());
-					System.err.println("\tLBT-RM retransmission datagrams sent                  : " +
-									   stats.retransmissionsSent());
-					System.err.println("\tLBT-RM retransmission datagram bytes sent             : " +
-							   		   stats.retransmissionBytesSent());
-					System.err.println("\tLBT-RM datagrams queued by rate control               : " +
-									   stats.messagesQueued());
-					System.err.println("\tLBT-RM retransmission datagrams queued by rate control: " +
-									   stats.retransmissionsQueued());
-					break;
-				default:
-					System.err.println("Error: unknown transport type received." + stats.type());
-					break;
-			}
+		try {
+			System.err.println(statsMsg.displayString("Context statistics received"));
+		} catch (Exception ex) {
+			System.err.println("Error printing context statistics: " + ex.toString());
 		}
-		catch (Exception ex)
-		{
-			System.err.println("Error getting immediate message source statistics: " + ex.toString());
-		}
-		_objRec.doneWithImmediateMessageSourceStatistics(stats);
+		_objRec.doneWithContextStatistics(statsMsg);
 	}
-	
-	public void onReceive(LBMImmediateMessageReceiverStatistics stats)
-	{
-		System.err.print("\nImmediate message receiver statistics received");
-		try
-		{
-			System.err.print(" from " + stats.getApplicationSourceId());
-			System.err.print(" at " + stats.getSender().toString());
-			System.err.println(", sent " + stats.getTimestamp().toString());
-			System.err.println("Source: " + stats.source());
-			System.err.println("Transport: " + stats.typeName());
-			switch (stats.type())
-			{
-				case LBM.TRANSPORT_STAT_TCP:
-					System.err.println("\tLBT-TCP bytes received                                    : " +
-									   stats.bytesReceived());
-					System.err.println("\tLBM messages received                                     : " +
-									   stats.lbmMessagesReceived());
-					System.err.println("\tLBM messages received with uninteresting topic            : " +
-									   stats.noTopicMessagesReceived());
-					System.err.println("\tLBM requests received                                     : " +
-									   stats.lbmRequestsReceived());
-					break;
-				case LBM.TRANSPORT_STAT_LBTRM:
-					System.err.println("\tLBT-RM datagrams received                                 : " +
-									   stats.messagesReceived());
-					System.err.println("\tLBT-RM datagram bytes received                            : " +
-									   stats.bytesReceived());
-					System.err.println("\tLBT-RM NAK packets sent                                   : " +
-									   stats.nakPacketsSent());
-					System.err.println("\tLBT-RM NAKs sent                                          : " +
-									   stats.naksSent());
-					System.err.println("\tLost LBT-RM datagrams detected                            : " +
-									   stats.lost());
-					System.err.println("\tNCFs received (ignored)                                   : " +
-									   stats.ncfsIgnored());                                       
-					System.err.println("\tNCFs received (shed)                                      : " +
-									   stats.ncfsShed());                                          
-					System.err.println("\tNCFs received (retransmit delay)                          : " +
-									   stats.ncfsRetransmissionDelay());                           
-					System.err.println("\tNCFs received (unknown)                                   : " +
-									   stats.ncfsUnknown());                                       
-					System.err.println("\tLoss recovery minimum time                                : " +
-									   stats.minimumRecoveryTime() + "ms");                        
-					System.err.println("\tLoss recovery mean time                                   : " +
-									   stats.meanRecoveryTime() + "ms");                           
-					System.err.println("\tLoss recovery maximum time                                : " +
-									   stats.maximumRecoveryTime() + "ms");                        
-					System.err.println("\tMinimum transmissions per individual NAK                  : " +
-									   stats.minimumNakTransmissions());                           
-					System.err.println("\tMean transmissions per individual NAK                     : " +
-									   stats.meanNakTransmissions());                              
-					System.err.println("\tMaximum transmissions per individual NAK                  : " +
-									   stats.maximumNakTransmissions());
-					System.err.println("\tDuplicate LBT-RM datagrams received                       : " +
-									   stats.duplicateMessages());
-					System.err.println("\tLBT-RM datagrams unrecoverable (window advance)           : " +
-									   stats.unrecoveredMessagesWindowAdvance());
-					System.err.println("\tLBT-RM datagrams unrecoverable (NAK generation expiration): " +
-									   stats.unrecoveredMessagesNakGenerationTimeout());
-					System.err.println("\tLBT-RM LBM messages received                              : " +
-									   stats.lbmMessagesReceived());                               
-					System.err.println("\tLBT-RM LBM messages received with uninteresting topic     : " +
-									   stats.noTopicMessagesReceived());                           
-					System.err.println("\tLBT-RM LBM requests received                              : " +
-									   stats.lbmRequestsReceived());                               
-					System.err.println("\tLBT-RM datagrams dropped (size)                           : " +
-									   stats.datagramsDroppedIncorrectSize());                     
-					System.err.println("\tLBT-RM datagrams dropped (type)                           : " +
-							   			stats.datagramsDroppedType());                             
-					System.err.println("\tLBT-RM datagrams dropped (version)                        : " +
-							   			stats.datagramsDroppedVersion());                          
-					System.err.println("\tLBT-RM datagrams dropped (header)                         : " +
-							   			stats.datagramsDroppedHeader());                           
-					System.err.println("\tLBT-RM datagrams dropped (other)                          : " +
-							   			stats.datagramsDroppedOther());
-					System.err.println("\tLBT-RM datagrams received out of order                    : " +
-							   			stats.outOfOrder());
-					break;
-				default:
-					System.err.println("Error: unknown transport type received." + stats.type());
-					break;
-			}
+
+	public void onReceive(LBMEventQueueStatistics statsMsg) {
+		try {
+			System.err.println(statsMsg.displayString("Event Queue statistics received"));
+		} catch (Exception ex) {
+			System.err.println("Error printing event queue statistics: " + ex.toString());
 		}
-		catch (Exception ex)
-		{
-			System.err.println("Error getting immediate message receiver statistics: " + ex.toString());
-		}
-		_objRec.doneWithImmediateMessageReceiverStatistics(stats);
+		_objRec.doneWithEventQueueStatistics(statsMsg);
 	}
+
+	public void onReceive(LBMImmediateMessageSourceStatistics statsMsg) {
+		try {
+			System.err.println(statsMsg.displayString("IM source statistics received"));
+		} catch (Exception ex) {
+			System.err.println("Error printing IM source statistics: " + ex.toString());
+		}
+		_objRec.doneWithImmediateMessageSourceStatistics(statsMsg);
+	}
+
+	public void onReceive(LBMImmediateMessageReceiverStatistics statsMsg) {
+		try {
+			System.err.println(statsMsg.displayString("IM receiver statistics received"));
+		} catch (Exception ex) {
+			System.err.println("Error printing IM receiver statistics: " + ex.toString());
+		}
+		_objRec.doneWithImmediateMessageReceiverStatistics(statsMsg);
+	}
+
+	/* Receiving statsMsg messages as binary messages in ByteBuffers */
+	public void onReceive(short type, short format, ByteBuffer attributeBuffer, ByteBuffer statsMsg) {
+		try {
+			if (format == LBMMonitor.FORMAT_CSV) {
+				switch (type) {
+					case LBMMonitor.LBMMON_PACKET_TYPE_SOURCE:
+						if (_lbmmonrcv.getSourceType(attributeBuffer) == LBMMonitor.LBMMON_ATTR_SOURCE_NORMAL) {
+							LBMSourceStatistics srcStats = new LBMSourceStatistics(_lbmmonrcv, attributeBuffer, statsMsg);
+							System.err.println(srcStats.displayString("Source statistics received"));
+						} else {
+							LBMImmediateMessageSourceStatistics imsrcStats = new LBMImmediateMessageSourceStatistics(_lbmmonrcv, attributeBuffer, statsMsg);
+							System.err.println(imsrcStats.displayString("IM source statistics received"));
+						}
+						break;
+					case LBMMonitor.LBMMON_PACKET_TYPE_RECEIVER:
+						if (_lbmmonrcv.getSourceType(attributeBuffer) == LBMMonitor.LBMMON_ATTR_SOURCE_NORMAL) {
+							LBMReceiverStatistics rcvStats = new LBMReceiverStatistics(_lbmmonrcv, attributeBuffer, statsMsg);
+							System.err.println(rcvStats.displayString("Receiver statistics received"));
+						} else {
+							LBMImmediateMessageReceiverStatistics rcvStats = new LBMImmediateMessageReceiverStatistics(_lbmmonrcv, attributeBuffer, statsMsg);
+							System.err.println(rcvStats.displayString("IM receiver statistics received"));
+						}
+						break;
+					case LBMMonitor.LBMMON_PACKET_TYPE_EVENT_QUEUE:
+						LBMEventQueueStatistics eqStats = new LBMEventQueueStatistics(_lbmmonrcv, attributeBuffer, statsMsg);
+						System.err.println(eqStats.displayString("Event Queue statistics received"));
+						break;
+					case LBMMonitor.LBMMON_PACKET_TYPE_CONTEXT:
+						LBMContextStatistics ctxStats = new LBMContextStatistics(_lbmmonrcv, attributeBuffer, statsMsg);
+						System.err.println(ctxStats.displayString("Context statistics received"));
+						break;
+					case LBMMonitor.LBMMON_PACKET_TYPE_RECEIVER_TOPIC:
+						System.err.println("Receiver Topic statistics received");
+						break;
+					case LBMMonitor.LBMMON_PACKET_TYPE_WILDCARD_RECEIVER:
+						System.err.println("Wildcard Receiver statistics received");
+						break;
+					default:
+						System.err.println("Error: unknown statistics packet type received." + type);
+						break;
+				}
+			} else if (format == LBMMonitor.FORMAT_PB) {
+                StringBuilder sb = new StringBuilder();
+                UMSMonMsg umsMonMsg;
+				UMMonAttributes attrMsg;
+				Stats stats;
+				Events events;
+                LBMStatistics attributes;
+
+				switch (type) {
+					case LBMMonitor.LBMMON_PACKET_TYPE_SOURCE:
+                        umsMonMsg = UMSMonMsg.parseFrom(statsMsg);
+                        attrMsg = umsMonMsg.getAttributes();
+                        stats = umsMonMsg.getStats();
+                        for (SourceTransport srcMsg : stats.getSourceTransportsList()) {
+                            if (srcMsg.getSourceFlag() == SourceTransport.SourceType.SOURCE_NORMAL) {
+                                LBMSourceStatistics srcStats = new LBMSourceStatistics(attrMsg, srcMsg);
+                                System.err.println(srcStats.displayString("Source statistics received"));
+                            } else {
+                                LBMImmediateMessageSourceStatistics imsrcStats = new LBMImmediateMessageSourceStatistics(attrMsg, srcMsg);
+                                System.err.println(imsrcStats.displayString("IM source statistics received"));
+                            }
+                        }
+						break;
+					case LBMMonitor.LBMMON_PACKET_TYPE_RECEIVER:
+                        umsMonMsg = UMSMonMsg.parseFrom(statsMsg);
+                        attrMsg = umsMonMsg.getAttributes();
+						stats = umsMonMsg.getStats();
+                        for (ReceiverTransport rcvMsg : stats.getReceiverTransportsList()) {
+                            if (rcvMsg.getSourceFlag() == ReceiverTransport.SourceType.SOURCE_NORMAL) {
+                                LBMReceiverStatistics rcvStats = new LBMReceiverStatistics(attrMsg, rcvMsg);
+                                System.err.println(rcvStats.displayString("Receiver statistics received"));
+                            } else {
+                                LBMImmediateMessageReceiverStatistics imrcvStats = new LBMImmediateMessageReceiverStatistics(attrMsg, rcvMsg);
+                                System.err.println(imrcvStats.displayString("IM receiver statistics received"));
+                            }
+                        }
+						break;
+					case LBMMonitor.LBMMON_PACKET_TYPE_EVENT_QUEUE:
+                        umsMonMsg = UMSMonMsg.parseFrom(statsMsg);
+                        attrMsg = umsMonMsg.getAttributes();
+						stats = umsMonMsg.getStats();
+                        for (EventQueue eqMsg : stats.getEventQueuesList()) {
+                            LBMEventQueueStatistics eqStats = new LBMEventQueueStatistics(attrMsg, eqMsg);
+                            System.err.println(eqStats.displayString("Event Queue statistics received"));
+                        }
+						break;
+					case LBMMonitor.LBMMON_PACKET_TYPE_CONTEXT:
+                        umsMonMsg = UMSMonMsg.parseFrom(statsMsg);
+                        attrMsg = umsMonMsg.getAttributes();
+						stats = umsMonMsg.getStats();
+						Context ctxMsg = stats.getContext();
+						LBMContextStatistics ctxStats = new LBMContextStatistics(attrMsg, ctxMsg);
+						System.err.println(ctxStats.displayString("Context statistics received"));
+						break;
+					case LBMMonitor.LBMMON_PACKET_TYPE_RECEIVER_TOPIC:
+					    umsMonMsg = UMSMonMsg.parseFrom(statsMsg);
+                        attrMsg = umsMonMsg.getAttributes();
+                        attributes = new LBMStatistics(attrMsg);
+                        sb.append(attributes.displayString("Receiver Topic events received"));
+						events = umsMonMsg.getEvents();
+                        for (ReceiverTopic rcvTopicMsg : events.getReceiverTopicsList()) {
+							sb.append("\n\tTopic: " + rcvTopicMsg.getTopic());
+                            for (ReceiverTopic.Source source : rcvTopicMsg.getSourcesList()) {
+                            	Date timestamp = new Date(source.getTimestampSec()*1000);
+                            	sb.append("\n\t\tSource           : " + source.getSourceString());
+                                sb.append("\n\t\tOTID             : " + source.getOtid());
+								sb.append("\n\t\tTopic index      : " + source.getTopicIdx());
+								sb.append("\n\t\tSource state     : " + source.getSourceState() + " on " + timestamp + "\n");
+                            }
+                            System.err.println(sb.toString());
+                        }
+						break;
+					case LBMMonitor.LBMMON_PACKET_TYPE_WILDCARD_RECEIVER:
+                        umsMonMsg = UMSMonMsg.parseFrom(statsMsg);
+                        attrMsg = umsMonMsg.getAttributes();
+                        attributes = new LBMStatistics(attrMsg);
+                        sb.append(attributes.displayString("Wildcard Receiver events received"));
+                        events = umsMonMsg.getEvents();
+                        for (WildcardReceiver wildcardRcvMsg : events.getWildcardReceiversList()) {
+                            TextFormat.printer().print(wildcardRcvMsg, sb);
+                            System.err.println(sb.toString());
+                        }
+						break;
+					case LBMMonitor.LBMMON_PACKET_TYPE_UMESTORE:
+						UMPMonMsg umpMessage = UMPMonMsg.parseFrom(statsMsg);
+						attrMsg = umpMessage.getAttributes();
+						attributes = new LBMStatistics(attrMsg);
+						sb.append(attributes.displayString("UME store statistics received"));
+						sb.append("\n");
+						if (umpMessage.hasConfigs()) {
+							TextFormat.printer().print(umpMessage.getConfigs(), sb);
+						}
+						if (umpMessage.hasStats()) {
+							TextFormat.printer().print(umpMessage.getStats(), sb);
+						}
+						if (umpMessage.hasEvents()) {
+							TextFormat.printer().print(umpMessage.getEvents(), sb);
+						}
+						System.err.println(sb.toString());
+						break;
+                    case LBMMonitor.LBMMON_PACKET_TYPE_GATEWAY:
+						DROMonMsg droMessage = DROMonMsg.parseFrom(statsMsg);
+						attrMsg = droMessage.getAttributes();
+						attributes = new LBMStatistics(attrMsg);
+						sb.append(attributes.displayString("Gateway statistics received"));
+						sb.append("\n");
+						if (droMessage.hasConfigs()) {
+							TextFormat.printer().print(droMessage.getConfigs(), sb);
+						}
+						if (droMessage.hasStats()) {
+							TextFormat.printer().print(droMessage.getStats(), sb);
+						}
+                        System.err.println(sb.toString());
+                        break;
+					default:
+						System.err.println("Error: unknown statistics packet type received." + type);
+						break;
+				}
+			} else {
+				System.err.println("Error: Received invalid format for passthrough packet");
+			}
+		} catch (Exception ex) {
+			System.err.println("Error processing passthrough statistics packet: " + ex.toString());
+		}
+	}
+
+    private final static char[] hexArray = "0123456789abcdef".toCharArray();
+
+    private static String bytesToHex(byte[] bytes) {
+        char[] hexChars = new char[bytes.length * 2];
+        for (int j = 0; j < bytes.length; j++) {
+            int v = bytes[j] & 0xFF;
+            hexChars[j * 2] = hexArray[v >>> 4];
+            hexChars[j * 2 + 1] = hexArray[v & 0x0F];
+        }
+        return new String(hexChars);
+    }
 }
 

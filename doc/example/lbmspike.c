@@ -1,5 +1,5 @@
 /*
-  Copyright (c) 2005-2020 Informatica Corporation  Permission is granted to licensees to use
+  Copyright (C) 2005-2021, Informatica Corporation  Permission is granted to licensees to use
   or alter this software for any purpose, including commercial applications,
   according to the terms laid out in the Software License Agreement.
 
@@ -417,7 +417,7 @@ int handle_srcc_event(lbm_src_t *src, int event, void *ed, void *cd)
 	case LBM_SRC_EVENT_WAKEUP:
 		break;
 	default:
-		printf("Unknown source event %d\n", event);
+		printf( "Unhandled source event [%d]. Refer to https://ultramessaging.github.io/currdoc/doc/example/index.html#unhandledcevents for a detailed description.\n", event);
 		break;
 	}
 	return 0;
@@ -539,7 +539,7 @@ int handle_rcvd_msg(lbm_rcv_t *rcv, lbm_msg_t *msg, void *clientd)
 	case LBM_MSG_NO_SOURCE_NOTIFICATION:
 		break;
 	default:
-		printf("Unknown lbm_msg_t type %x [%s][%s]\n", msg->type, msg->topic_name, msg->source);
+		printf( "Unhandled receiver event [%d] for handle_rcvd_msg from source [%s] with topic [%s] . Refer to https://ultramessaging.github.io/currdoc/doc/example/index.html#unhandledcevents for a detailed description.\n", msg->type, msg->source, msg->topic_name);
 		break;
 	}
 	if (endtv.tv_sec==0 && received+lost+blost==msgs) {
@@ -667,7 +667,7 @@ int handle_rcvc_msg(lbm_rcv_t *rcv, lbm_msg_t *msg, void *clientd)
 	case LBM_MSG_NO_SOURCE_NOTIFICATION:
 		break;
 	default:
-		printf("Unknown lbm_msg_t type %x [%s][%s]\n", msg->type, msg->topic_name, msg->source);
+		printf( "Unhandled receiver event [%d] for handle_rcvc_msg from source [%s]. Refer to https://ultramessaging.github.io/currdoc/doc/example/index.html#unhandledcevents for a detailed description.\n", msg->type, msg->source);
 		break;
 	}
 	return 0;
@@ -697,7 +697,7 @@ int handle_rcvr_msg(lbm_rcv_t *rcv, lbm_msg_t *msg, void *clientd)
 		printf("handle_rcvr_msg: no source\n");
 		break;
 	default:
-		printf("Unknown lbm_msg_t type %x [%s][%s]\n", msg->type, msg->topic_name, msg->source);
+		printf( "Unhandled receiver event [%d] for handle_rcvr_msg from source [%s]. Refer to https://ultramessaging.github.io/currdoc/doc/example/index.html#unhandledcevents for a detailed description.\n", msg->type, msg->source);
 		break;
 	}
 	return 0;

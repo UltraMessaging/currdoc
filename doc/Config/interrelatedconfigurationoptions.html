@@ -91,7 +91,7 @@ receiver transport_lbtrm_nak_generation_interval 10000  # 10 seconds
  </p>
 <h1><a class="anchor" id="preventingtaillosswithtsniandnakintervaloptions"></a>
 Preventing Tail Loss With TSNI and NAK Interval Options&nbsp;&nbsp;<small><a href="#preventingtaillosswithtsniandnakintervaloptions">&lt;-</a></small></h1>
-<p>Tail loss refers to the situation where a receiver (subscriber) does not receive the last few (tail) messages sent by a source (publisher). When unrecoverable loss occurs on a transport, due to the possibility of multiple topic-level messages being contained in a single transport-level sequence number (due to implicit batching), a receiver does not know which particular messages were unrecoverable until the arrival of later messages (revealing earlier gaps in topic-level sequence number) or until the arrival of Topic Sequence Number Information (TSNI) records sent periodically by a publisher. Specific topic-level knowledge of sequence gaps is a prerequisite for the receiver to deliver event callbacks to the application indicating that unrecoverable loss has occurred, because those event callbacks are per-receiver (topic-level). A TSNI active threshold that is too small relative to the TSNI and/or NAK generation interval may prevent the reporting of tail loss to the application, especially with ordered delivery.</p>
+<p><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/Config/design.tag:../Design/" href="../Design/fundamentalconcepts.html#tailloss">Tail Loss</a> refers to the situation where a receiver (subscriber) does not receive the last few (tail) messages sent by a source (publisher). When unrecoverable loss occurs on a transport, due to the possibility of multiple topic-level messages being contained in a single transport-level sequence number (due to implicit batching), a receiver does not know which particular messages were unrecoverable until the arrival of later messages (revealing earlier gaps in topic-level sequence number) or until the arrival of Topic Sequence Number Information (TSNI) records sent periodically by a publisher. Specific topic-level knowledge of sequence gaps is a prerequisite for the receiver to deliver event callbacks to the application indicating that unrecoverable loss has occurred, because those event callbacks are per-receiver (topic-level). A TSNI active threshold that is too small relative to the TSNI and/or NAK generation interval may prevent the reporting of tail loss to the application, especially with ordered delivery.</p>
 <dl class="section user"><dt><b>Interrelated</b> <b>Options</b>:</dt><dd><ul>
 <li>
 <a class="el" href="grpmajoroptions.html#transporttopicsequencenumberinfoactivethresholdsource">transport_topic_sequence_number_info_active_threshold (source)</a> </li>
@@ -103,16 +103,93 @@ Preventing Tail Loss With TSNI and NAK Interval Options&nbsp;&nbsp;<small><a hre
 <a class="el" href="grptransportlbtrureliability.html#transportlbtrunakgenerationintervalreceiver">transport_lbtru_nak_generation_interval (receiver)</a> </li>
 </ul>
 </dd></dl>
-<dl class="section user"><dt><b>Recommendation</b>:</dt><dd>Set the TSNI active threshold to at least 4x the topic sequence number info interval (TSNI) plus the NAK generation interval.</dd></dl>
+<dl class="section user"><dt><b>Recommendation</b>:</dt><dd>Set the source's <a class="el" href="grpmajoroptions.html#transporttopicsequencenumberinfoactivethresholdsource">transport_topic_sequence_number_info_active_threshold (source)</a> to at least 4x the <a class="el" href="grpmajoroptions.html#transporttopicsequencenumberinfointervalsource">transport_topic_sequence_number_info_interval (source)</a> plus the receiver's <a class="el" href="grptransportlbtrureliability.html#transportlbtrunakgenerationintervalreceiver">transport_lbtru_nak_generation_interval (receiver)</a>, all divided by 1000 to get seconds..</dd></dl>
 <dl class="section user"><dt><b>Example</b>:</dt><dd><pre class="fragment">#
 # NOTE: transport_topic_sequence_number_info_active_threshold is in seconds.
 #
-source   transport_topic_sequence_number_info_interval 2000
+source   transport_topic_sequence_number_info_interval 5000
 receiver transport_lbtrm_nak_generation_interval       10000
-source   transport_topic_sequence_number_info_active_threshold 60
+# (5000*4 + 10000)/1000 = 30
+source   transport_topic_sequence_number_info_active_threshold 30
 </pre></dd></dl>
-<dl class="section user"><dt><b>See</b> <b>also</b>:</dt><dd><a class="el" href="grptransportlbtrmreliability.html">Transport LBT-RM Reliability Options</a> <br />
+<dl class="section user"><dt><b>See</b> <b>also</b>:</dt><dd><a class="el" href="interrelatedconfigurationoptions.html#preventingundetectedloss">Preventing Undetected Unrecoverable Loss</a> <br />
+<a class="el" href="grptransportlbtrmreliability.html">Transport LBT-RM Reliability Options</a> <br />
 <a class="el" href="grptransportlbtrureliability.html">Transport LBT-RU Reliability Options</a></dd></dl>
+<p><br />
+ </p>
+<h1><a class="anchor" id="preventingundetectedloss"></a>
+Preventing Undetected Unrecoverable Loss&nbsp;&nbsp;<small><a href="#preventingundetectedloss">&lt;-</a></small></h1>
+<p>The UM UDP-based protocols are generally able to successfully recover packet loss. However, there can be cases where UM is not able to recover the lost packets, leading to <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/Config/design.tag:../Design/" href="../Design/fundamentalconcepts.html#unrecoverableloss1">Unrecoverable Loss</a>.</p>
+<p>With the default settings, there is a type of unrecoverable loss which can remain unreported to the application for an unbounded period of time.</p>
+<p>For example: </p><ol>
+<li>
+A sudden burst of data from a source overloads a receiver, resulting in the last few packets being lost. </li>
+<li>
+The source sends one more data message and then exits. </li>
+<li>
+The receiver's <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/Config/design.tag:../Design/" href="../Design/architecture.html#deliverycontroller">Delivery Controller</a> gets the last message and sees the sequence number gap. So it buffers the last message and waits for the transport layer to recover the missing messages. But since the source no longer exists, there is no recovery. </li>
+<li>
+The NAK generation interval lapses. Thus, the gapped messages are considered unrecoverable. However, due to UM's design, a receive event is needed to deliver the unrecoverable loss event and the buffered message. But since the source is deleted, no more receive events will happen. The delivery controller is an a "stale loss" state. </li>
+<li>
+Finally, the transport session times out and the delivery controller is deleted, delivering EOS to the application, but not the unrecoverable loss event or the buffered message. </li>
+</ol>
+<p>In this scenario, not only is the unrecoverable loss not delivered, but the buffered message which was successfully received is also never delivered. Note that this kind of <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/Config/design.tag:../Design/" href="../Design/fundamentalconcepts.html#tailloss">Tail Loss</a> is rare, but can happen.</p>
+<p>This result can be avoided by enabling the "loss check interval" feature on the delivery controller. For example: </p><pre class="fragment">receiver delivery_control_loss_check_interval 2500
+</pre><p> This starts a timer that wakes up every 2.5 seconds and scans UM's internal list of all topic receivers, looking for delivery controllers in the "stale loss" state. For each one it finds, it generates the unrecoverable loss event to the application's receiver callback, and also delivers the subsequently buffered message.</p>
+<p>However, for applications that have large numbers of receivers, the cost of scanning every receiver can become significant, introducing regular latency outliers. For latency-sensitive applications, an alternate method to avoid the unreported loss is to make sure <a class="el" href="grpmajoroptions.html#transporttopicsequencenumberinfointervalsource">transport_topic_sequence_number_info_interval (source)</a> is non-zero, and have the publisher delays two of those intervals plus the NAK generation interval (default: 2*5+60=70 seconds) before deleting a source that isn't needed any more. The TSNI messages will serve as receiver events to force delivery. See <a class="el" href="interrelatedconfigurationoptions.html#preventingtaillosswithtsniandnakintervaloptions">Preventing Tail Loss With TSNI and NAK Interval Options</a>.</p>
+<p>Be aware that the <a class="el" href="grpdeliverycontrol.html#deliverycontrollosscheckintervalreceiver">delivery_control_loss_check_interval (receiver)</a> can interact with other interval configurations.</p>
+<dl class="section user"><dt><b>Interrelated</b> <b>Options</b>:</dt><dd><ul>
+<li>
+<a class="el" href="grpdeliverycontrol.html#deliverycontrollosscheckintervalreceiver">delivery_control_loss_check_interval (receiver)</a> </li>
+<li>
+<a class="el" href="grptransportlbtrmoperation.html#transportlbtrmactivitytimeoutreceiver">transport_lbtrm_activity_timeout (receiver)</a> </li>
+<li>
+<a class="el" href="grptransportlbtrmreliability.html#transportlbtrmnakgenerationintervalreceiver">transport_lbtrm_nak_generation_interval (receiver)</a> </li>
+<li>
+<a class="el" href="grptransportlbtruoperation.html#transportlbtruactivitytimeoutreceiver">transport_lbtru_activity_timeout (receiver)</a> </li>
+</ul>
+</dd></dl>
+<dl class="section user"><dt><b>Recommendation</b>, if using loss check interval:</dt><dd>For LBT-RM, set the transport activity timeout to value greater than the sum of the delivery control loss check interval and the NAK generation interval. Also, set the NAK generation interval to at least 4x the delivery control loss check interval. <br />
+For LBT-RU, set the transport activity timeout to value greater than the delivery control loss check interval <br />
+For UMP, always enable and set accordingly the delivery control loss check interval when configuring a store</dd></dl>
+<dl class="section user"><dt><b>Example</b>:</dt><dd><pre class="fragment">#
+# To avoid undetected or unreported loss, set NAK generation to 4x the delivery
+# control check interval, and ensure that these two combined are less than the
+# transport activity timeout
+#
+receiver delivery_control_loss_check_interval 2500
+receiver transport_lbtrm_activity_timeout 60000
+receiver transport_lbtrm_nak_generation_interval 10000
+</pre></dd></dl>
+<dl class="section user"><dt><b>See</b> <b>also</b>:</dt><dd><a class="el" href="grpdeliverycontrol.html">Delivery Control Options</a></dd></dl>
+<p><br />
+ </p>
+<h1><a class="anchor" id="preventingundetectedlatejoinloss"></a>
+Preventing Undetected Late Join Loss&nbsp;&nbsp;<small><a href="#preventingundetectedlatejoinloss">&lt;-</a></small></h1>
+<p>If during a Late Join operation, a transport times out while a receiver is requesting retransmission of missing messages, this can cause lost messages to go undetected and likely become unrecoverable.</p>
+<dl class="section user"><dt><b>Interrelated</b> <b>Options</b>:</dt><dd><ul>
+<li>
+<a class="el" href="grpdeprecated.html#retransmitrequestgenerationintervalreceiver">retransmit_request_generation_interval (receiver)</a> </li>
+<li>
+<a class="el" href="grptransporttcpoperation.html#transporttcpactivitytimeoutreceiver">transport_tcp_activity_timeout (receiver)</a> </li>
+<li>
+<a class="el" href="grptransportlbtrmoperation.html#transportlbtrmactivitytimeoutreceiver">transport_lbtrm_activity_timeout (receiver)</a> </li>
+<li>
+<a class="el" href="grptransportlbtruoperation.html#transportlbtruactivitytimeoutreceiver">transport_lbtru_activity_timeout (receiver)</a> </li>
+<li>
+<a class="el" href="grptransportlbtipcoperation.html#transportlbtipcactivitytimeoutreceiver">transport_lbtipc_activity_timeout (receiver)</a> </li>
+</ul>
+</dd></dl>
+<dl class="section user"><dt><b>Recommendations</b>:</dt><dd>Set the Late Join retransmit request interval to a value less than its transport's activity timeout value</dd></dl>
+<dl class="section user"><dt><b>Example</b>:</dt><dd><pre class="fragment">#
+# To avoid a transport inactivity timeout while requesting Late Join
+# retransmissions, set the Late Join retransmit request interval to a value
+# less than its transport's activity timeout.
+#
+receiver retransmit_request_generation_interval 10000
+receiver transport_lbtrm_activity_timeout 60000
+</pre></dd></dl>
+<dl class="section user"><dt><b>See</b> <b>also</b>:</dt><dd><a class="el" href="grplatejoin.html">Late Join Options</a></dd></dl>
 <p><br />
  </p>
 <h1><a class="anchor" id="preventingipcreceiverdeafnesswithkeepaliveoptions"></a>
@@ -257,63 +334,6 @@ context resolver_unicast_activity_timeout 1000
 context resolver_unicast_check_interval 200
 </pre></dd></dl>
 <dl class="section user"><dt><b>See</b> <b>also</b>:</dt><dd><a class="el" href="grpudpbasedresolveroperation.html">UDP-Based Resolver Operation Options</a></dd></dl>
-<p><br />
- </p>
-<h1><a class="anchor" id="preventingundetectedlatejoinloss"></a>
-Preventing Undetected Late Join Loss&nbsp;&nbsp;<small><a href="#preventingundetectedlatejoinloss">&lt;-</a></small></h1>
-<p>If during a Late Join operation, a transport times out while a receiver is requesting retransmission of missing messages, this can cause lost messages to go undetected and likely become unrecoverable.</p>
-<dl class="section user"><dt><b>Interrelated</b> <b>Options</b>:</dt><dd><ul>
-<li>
-<a class="el" href="grpdeprecated.html#retransmitrequestgenerationintervalreceiver">retransmit_request_generation_interval (receiver)</a> </li>
-<li>
-<a class="el" href="grptransporttcpoperation.html#transporttcpactivitytimeoutreceiver">transport_tcp_activity_timeout (receiver)</a> </li>
-<li>
-<a class="el" href="grptransportlbtrmoperation.html#transportlbtrmactivitytimeoutreceiver">transport_lbtrm_activity_timeout (receiver)</a> </li>
-<li>
-<a class="el" href="grptransportlbtruoperation.html#transportlbtruactivitytimeoutreceiver">transport_lbtru_activity_timeout (receiver)</a> </li>
-<li>
-<a class="el" href="grptransportlbtipcoperation.html#transportlbtipcactivitytimeoutreceiver">transport_lbtipc_activity_timeout (receiver)</a> </li>
-</ul>
-</dd></dl>
-<dl class="section user"><dt><b>Recommendations</b>:</dt><dd>Set the Late Join retransmit request interval to a value less than its transport's activity timeout value</dd></dl>
-<dl class="section user"><dt><b>Example</b>:</dt><dd><pre class="fragment">#
-# To avoid a transport inactivity timeout while requesting Late Join
-# retransmissions, set the Late Join retransmit request interval to a value
-# less than its transport's activity timeout.
-#
-receiver retransmit_request_generation_interval 10000
-receiver transport_lbtrm_activity_timeout 60000
-</pre></dd></dl>
-<dl class="section user"><dt><b>See</b> <b>also</b>:</dt><dd><a class="el" href="grplatejoin.html">Late Join Options</a></dd></dl>
-<p><br />
- </p>
-<h1><a class="anchor" id="preventingundetectedloss"></a>
-Preventing Undetected Loss&nbsp;&nbsp;<small><a href="#preventingundetectedloss">&lt;-</a></small></h1>
-<p>It is possible that an unrecoverable loss due to unsatisfied NAKs or a transport activity timeout may go unreported if the delivery controller loss check is disabled or has too long an interval. For UMP stores, the loss check interval must be enabled. Two options (three, if using LBT-RM) are interrelated and must be set according to the guidelines below.</p>
-<dl class="section user"><dt><b>Interrelated</b> <b>Options</b>:</dt><dd><ul>
-<li>
-<a class="el" href="grpdeliverycontrol.html#deliverycontrollosscheckintervalreceiver">delivery_control_loss_check_interval (receiver)</a> </li>
-<li>
-<a class="el" href="grptransportlbtrmoperation.html#transportlbtrmactivitytimeoutreceiver">transport_lbtrm_activity_timeout (receiver)</a> </li>
-<li>
-<a class="el" href="grptransportlbtrmreliability.html#transportlbtrmnakgenerationintervalreceiver">transport_lbtrm_nak_generation_interval (receiver)</a> </li>
-<li>
-<a class="el" href="grptransportlbtruoperation.html#transportlbtruactivitytimeoutreceiver">transport_lbtru_activity_timeout (receiver)</a> </li>
-</ul>
-</dd></dl>
-<dl class="section user"><dt><b>Recommendations</b>:</dt><dd>For LBT-RM, set the transport activity timeout to value greater than the sum of the delivery control loss check interval and the NAK generation interval. Also, set the NAK generation interval to at least 4x the delivery control loss check interval. <br />
-For LBT-RU, set the transport activity timeout to value greater than the delivery control loss check interval <br />
-For UMP, always enable and set accordingly the delivery control loss check interval when configuring a store</dd></dl>
-<dl class="section user"><dt><b>Example</b>:</dt><dd><pre class="fragment">#
-# To avoid undetected or unreported loss, set NAK generation to 4x the delivery
-# control check interval, and ensure that these two combined are less than the
-# transport activity timeout
-#
-receiver delivery_control_loss_check_interval 2500
-receiver transport_lbtrm_activity_timeout 60000
-receiver transport_lbtrm_nak_generation_interval 10000
-</pre></dd></dl>
-<dl class="section user"><dt><b>See</b> <b>also</b>:</dt><dd><a class="el" href="grpdeliverycontrol.html">Delivery Control Options</a></dd></dl>
 <p><br />
  </p>
 <h1><a class="anchor" id="preventingstoreregistrationhangs"></a>

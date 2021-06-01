@@ -1,6 +1,6 @@
 
 /*
-  Copyright (c) 2005-2020 Informatica Corporation  Permission is granted to licensees to use
+  Copyright (C) 2005-2021, Informatica Corporation  Permission is granted to licensees to use
   or alter this software for any purpose, including commercial applications,
   according to the terms laid out in the Software License Agreement.
 
@@ -41,7 +41,9 @@ namespace LBMApplication
         private static string usage =
 "Usage: umercv [options] topic\n"+ 
 "Available options:\n"+ 
-"  -c filename = read config file filename\n"+ 
+"  -c filename = Use LBM configuration file filename.\n"+
+"                Multiple config files are allowed.\n"+
+"                Example:  '-c file1.cfg -c file2.cfg'\n"+
 "  -d qdelay = monitor event queue delay above qdelay usecs\n"+ 
 "  -D = Deregister after 1000 messages\n"+ 
 "  -e num_messages = send an Explicit ACK every num_messages messages\n"+ 
@@ -82,7 +84,6 @@ namespace LBMApplication
 
             LBMObjectRecycler objRec = new LBMObjectRecycler();
 
-            string conffname = null;
             string qdelay = null;
             string qsize = null;
             string num_srcs = null;
@@ -204,7 +205,15 @@ namespace LBMApplication
                                 error = true;
                                 break;
                             }
-                            conffname = args[i];
+                            try
+                            {
+                                  LBM.setConfiguration(args[i]);
+                            }
+                            catch (LBMException Ex)
+                            {
+                                System.Console.Error.WriteLine("umercv error: " + Ex.Message);
+                                error = true;
+                            }
                             break;
 
                         case "-d":
@@ -332,10 +341,6 @@ namespace LBMApplication
             {
                 /* An error occurred processing the command line - print help and exit */
                 print_help_exit(1);
-            }
-            if (conffname != null)
-            {
-                LBM.setConfiguration(conffname);
             }
             LBMContextAttributes cattr = new LBMContextAttributes();
             cattr.setObjectRecycler(objRec, null);
@@ -1034,7 +1039,7 @@ namespace LBMApplication
                     System.Console.Error.WriteLine("[" + msg.topicName() + "][" + msg.source() + "] UME registration change: " + msg.dataString());
                     break;
                 default:
-                    System.Console.Error.WriteLine("Unknown lbm_msg_t type " + msg.type() + " [" + msg.topicName() + "][" + msg.source() + "]");
+                    System.Console.Out.WriteLine("Unhandled receiver event [" + msg.type() + "] from source [" + msg.source() + "] with topic [" + msg.topicName() + "]. Refer to https://ultramessaging.github.io/currdoc/doc/dotnet_example/index.html#unhandledcsevents for a detailed description.");
                     break;
             }
             msg.dispose();		// Send ACK now

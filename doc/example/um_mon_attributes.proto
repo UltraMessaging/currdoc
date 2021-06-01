@@ -1,0 +1,38 @@
+/*
+  All of the documentation and software included in this and any
+  other Informatica Corporation Ultra Messaging Releases
+  Copyright (C) Informatica Corporation. All rights reserved.
+
+  Redistribution and use in source and binary forms, with or without
+  modification, are permitted only as covered by the terms of a
+  valid software license agreement with Informatica Corporation.
+
+  Copyright (C) 2004-2021, Informatica Corporation. All Rights Reserved.
+
+  THE SOFTWARE IS PROVIDED "AS IS" AND INFORMATICA DISCLAIMS ALL WARRANTIES
+  EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION, ANY IMPLIED WARRANTIES OF
+  NON-INFRINGEMENT, MERCHANTABILITY OR FITNESS FOR A PARTICULAR
+  PURPOSE.  INFORMATICA DOES NOT WARRANT THAT USE OF THE SOFTWARE WILL BE
+  UNINTERRUPTED OR ERROR-FREE.  INFORMATICA SHALL NOT, UNDER ANY CIRCUMSTANCES, BE
+  LIABLE TO LICENSEE FOR LOST PROFITS, CONSEQUENTIAL, INCIDENTAL, SPECIAL OR
+  INDIRECT DAMAGES ARISING OUT OF OR RELATED TO THIS AGREEMENT OR THE
+  TRANSACTIONS CONTEMPLATED HEREUNDER, EVEN IF INFORMATICA HAS BEEN APPRISED OF
+  THE LIKELIHOOD OF SUCH DAMAGES.
+
+*/
+
+syntax = "proto3";
+package lbmmon;
+
+option java_package = "com.latencybusters.lbm";
+option java_outer_classname = "UMMonAttributesProtos";
+
+message UMMonAttributes {
+  string sender_ipv4_address = 1;
+  uint64 timestamp = 2;
+  string application_id = 3;
+  uint64 object_id = 4;
+  uint64 process_id = 5;
+  bytes context_instance = 6;
+  uint32 domain_id = 7;
+}

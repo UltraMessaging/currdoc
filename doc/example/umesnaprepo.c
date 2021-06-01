@@ -1,5 +1,5 @@
 /*
-  Copyright (c) 2005-2020 Informatica Corporation  Permission is granted to licensees to use
+  Copyright (C) 2005-2021, Informatica Corporation  Permission is granted to licensees to use
   or alter this software for any purpose, including commercial applications,
   according to the terms laid out in the Software License Agreement.
 
@@ -46,7 +46,7 @@ const char profile_repo_usage[] =
 "  -h, --help               display this help and exit\n"
 "  -n, --no-checksum        disable cache checksum checking\n"
 "  -p, --parse              enable LBM header parsing\n"
-"  -s, --state-dir=NUM      state file search PATH [required]\n"
+"  -s, --state-dir=PATH     state file search PATH [required]\n"
 "  -t, --truncate=NUM       limit cache message displays to NUM bytes\n"
 "  -T, --terse              summarize cache and skip cache message displays\n"
 ;

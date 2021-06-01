@@ -1,5 +1,5 @@
 /*
-  Copyright (c) 2005-2020 Informatica Corporation  Permission is granted to licensees to use
+  Copyright (C) 2005-2021, Informatica Corporation  Permission is granted to licensees to use
   or alter this software for any purpose, including commercial applications,
   according to the terms laid out in the Software License Agreement.
 
@@ -79,7 +79,9 @@ const char usage[] =
 "Usage: umercv [options] topic\n"
 "Available options:\n"
 "  -A, --ascii                 display messages as ASCII text (-A -A for newlines after each msg)\n"
-"  -c, --config=FILE           use FILE as LBM configuration file\n"
+"  -c, --config=FILE           Use LBM configuration file FILE.\n"
+"                              Multiple config files are allowed.\n"
+"                              Example:  '-c file1.cfg -c file2.cfg'\n"
 "  -D, --deregister=NUM        Deregister the receiver after receiving NUM messages\n"
 "  -E, --exit                  exit after source ends\n"
 "  -e, --explicit-ack=N        send an Explicit ACK every N messages\n"
@@ -98,7 +100,9 @@ const char usage[] =
 "  -v, --verbose               be verbose about incoming messages\n"
 "                              (-v -v = be even more verbose)\n"
 "  -V, --verify                verify message contents\n"
-"  -x, --no-exit-on-reg-error  don't exit on registration error (default is to exit)\n"
+"  -x, --no-exit-on-reg-error  don't exit on registration error (default is to exit)";
+
+const char monitor_usage[] =
 MONOPTS_RECEIVER
 MONMODULEOPTS_SENDER;
 
@@ -156,7 +160,6 @@ struct Options {
 	int verbose;        /* Flag to control program verbosity */
 	int verify;         /* Flag to control message verification (verifymsg.h) */
 	int exit_on_reg_error; /* Flag to control whether app exits on registration error */
-	char conffname[256]; /* Configuration filename */
 
 	char transport_options_string[1024];    /* Transport options given to lbmmon_sctl_create() */
 	char format_options_string[1024];       /* Format options given to lbmmon_sctl_create()  */
@@ -476,7 +479,7 @@ int rcv_handle_immediate_msg(lbm_context_t *ctx, lbm_msg_t *msg, void *clientd)
 		}
 		break;
 	default:
-		printf("Unknown immediate message lbm_msg_t type 0x%x [%s]\n", msg->type, msg->source);
+		printf( "Unhandled receiver event [%d] for immediate_msg from source [%s]. Refer to https://ultramessaging.github.io/currdoc/doc/example/index.html#unhandledcevents for a detailed description.\n", msg->type, msg->source);
 		break;
 	}
 	/* LBM automatically deletes the lbm_msg_t object unless we retain it. */
@@ -667,7 +670,7 @@ int rcv_handle_msg(lbm_rcv_t *rcv, lbm_msg_t *msg, void *clientd)
 		printf("[%s][%s] UME registration change: %s\n", msg->topic_name, msg->source, msg->data);
 		break;
 	default:
-		printf("Unknown lbm_msg_t type 0x%x [%s][%s]\n", msg->type, msg->topic_name, msg->source);
+		printf( "Unhandled receiver event [%d] from source [%s] with topic [%s]. Refer to https://ultramessaging.github.io/currdoc/doc/example/index.html#unhandledcevents for a detailed description.\n", msg->type, msg->source, msg->topic_name);
 		break;
 	}
 	curr_sequence_number = msg->sequence_number;
@@ -753,7 +756,6 @@ void process_cmdline(int argc, char **argv, struct Options *opts)
 	memset(opts, 0, sizeof(*opts));
 	opts->regid_offset = 1000;
 	opts->max_sources = DEFAULT_NUM_SRCS;
-	opts->conffname[0] = '\0';
 	opts->transport_options_string[0] = '\0';
 	opts->format_options_string[0] = '\0';
 	opts->application_id_string[0] = '\0';
@@ -771,7 +773,11 @@ void process_cmdline(int argc, char **argv, struct Options *opts)
 				opts->ascii++;
 				break;
 			case 'c':
-				strncpy(opts->conffname, optarg, sizeof(opts->conffname));
+				/* Initialize configuration parameters from a file. */
+				if (lbm_config(optarg) == LBM_FAILURE) {
+					fprintf(stderr, "lbm_config: %s\n", lbm_errmsg());
+					exit(1);
+				}
 				break;
 			case 'D':
 				opts->deregister = atoi(optarg);
@@ -783,8 +789,8 @@ void process_cmdline(int argc, char **argv, struct Options *opts)
 				opts->exack = atoi(optarg);
 				break;
 			case 'h':
-				fprintf(stderr, "%s\n%s\n%s\n%s",
-					argv[0], lbm_version(), purpose, usage);
+				fprintf(stderr, "%s\n%s\n%s\n%s\n%s",
+					argv[0], lbm_version(), purpose, usage, monitor_usage);
 				exit(0);
 			case 'i':
 				opts->regid_offset = atoi(optarg);
@@ -878,6 +884,10 @@ void process_cmdline(int argc, char **argv, struct Options *opts)
 					{
 						opts->format = (lbmmon_format_func_t *) lbmmon_format_csv_module();
 					}
+					else if (strcasecmp(optarg, "pb") == 0)
+					{
+						opts->format = (lbmmon_format_func_t *)lbmmon_format_pb_module();
+					}
 					else
 					{
 						++errflag;
@@ -917,8 +927,8 @@ void process_cmdline(int argc, char **argv, struct Options *opts)
 	if ((errflag != 0) || (optind == argc))
 	{
 		/* An error occurred processing the command line - dump the LBM version, usage and exit */
-		fprintf(stderr, "%s\n%s\n%s",
-			argv[0], lbm_version(), usage);
+		fprintf(stderr, "%s\n%s\n%s\n%s",
+			argv[0], lbm_version(), usage, monitor_usage);
 		exit(1);
 	}
 
@@ -984,14 +994,6 @@ int main(int argc, char **argv)
 	{
 		fprintf(stderr, "can't allocate statistics array\n");
 		exit(1);
-	}
-
-	/* Load LBM/UME configuration from file (if provided) */
-	if (opts->conffname[0] != '\0') {
-		if (lbm_config(opts->conffname) == LBM_FAILURE) {
-			fprintf(stderr, "lbm_config: %s\n", lbm_errmsg());
-			exit(1);
-		}
 	}
 
 	/* Initialize logging callback */

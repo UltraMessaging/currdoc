@@ -3,6 +3,20 @@ var NAVTREE =
   [ "Release Notes", "index.html", [
     [ "Introduction", "index.html#firstsect", null ],
     [ "Important Corrections", "index.html#importantcorrections", null ],
+    [ "UM Version 6.14", "index.html#umversion6_14", [
+      [ "Enhancements for 6.14", "index.html#enhancementsfor6_14", [
+        [ "Streaming Enhancements for 6.14", "index.html#streamingenhancementsfor6_14", null ],
+        [ "Persistence Enhancements for 6.14", "index.html#persistenceenhancementsfor6_14", null ],
+        [ "Queuing Enhancements for 6.14", "index.html#queuingenhancementsfor6_14", null ],
+        [ "Dynamic Router Enhancements for 6.14", "index.html#dynamicrouterenhancementsfor6_14", null ]
+      ] ],
+      [ "Fixed Problems and Limitations for 6.14", "index.html#fixedlimitationsfor6_14", [
+        [ "Streaming Fixed Problems and Limitations for 6.14", "index.html#streamingfixedlimitationsfor6_14", null ],
+        [ "Persistence Fixed Problems and Limitations for 6.14", "index.html#persistencefixedlimitationsfor6_14", null ],
+        [ "Queuing Fixed Problems and Limitations for 6.14", "index.html#queuingfixedlimitationsfor6_14", null ],
+        [ "Dynamic Router Fixed Problems and Limitations for 6.14", "index.html#dynamicrouterfixedlimitationsfor6_14", null ]
+      ] ]
+    ] ],
     [ "UM Version 6.13.1", "index.html#umversion6_13_1", [
       [ "Enhancements for 6.13.1", "index.html#enhancementsfor6_13_1", [
         [ "Streaming Enhancements for 6.13.1", "index.html#streamingenhancementsfor6_13_1", null ],
@@ -243,6 +257,7 @@ var NAVTREE =
       ] ],
       [ "Special Upgrade Instructions for 6.7", "index.html#specialupgradeinstructionsfor6_7", [
         [ "Disposing Received Messages in Java", "index.html#disposingreceivedmessagesinjava", null ],
+        [ "Remove lbm_reqs_rcved from SMX", "index.html#removelbmreqsrcvedfromsmx", null ],
         [ "Upgrading From Version Pre-6.0", "index.html#upgradingfromversionpre60", null ],
         [ "Log Messages During Upgrade", "index.html#logmessagesduringupgrade", null ],
         [ "UM 6.5 Special Instructions", "index.html#um65specialinstructions", null ]
@@ -296,6 +311,7 @@ var NAVTREE =
       ] ]
     ] ],
     [ "Deprecations", "index.html#deprecations", [
+      [ "Deprecations for 6.14", "index.html#deprecationsfor614", null ],
       [ "Deprecations for 6.13.1", "index.html#deprecationsfor6131", null ],
       [ "Deprecations for 6.13", "index.html#deprecationsfor613", [
         [ "Platform Deprecations for Daemons", "index.html#platformdeprecationsfordaemons", null ]
@@ -341,7 +357,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "index.html",
-"index.html#umversion6_13_1"
+"index.html#um65specialinstructions"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

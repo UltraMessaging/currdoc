@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">UM C API
-   &#160;<span id="projectnumber">6.13.1</span>
+   &#160;<span id="projectnumber">6.14</span>
    </div>
   </td>
  </tr>
@@ -73,7 +73,7 @@ $(document).ready(function(){initNavTree('lbmaux_8h.html','');});
 </div><!--header-->
 <div class="contents">
 
-<p>Ultra Messaging (UM) Auxiliary Functions API.  
+<p>Ultra Messaging (UM) Auxiliary Functions API. The "lbmaux.h" header file defines a few helper APIs that can make Ultra Messaging easier to use. It is optional, and most applications do not use it. The binary code is contained in the "lbm" library (dynamic on Unix: "liblbm.so", static on Unix: "liblbm.a", dynamic only on Windows: "lbm.dll"). See <a class="el" href="index.html#umcapi">UM C API</a> for general information on the C API. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/API/design.tag:../Design/" href="../Design/fundamentalconcepts.html">Fundamental Concepts</a> for an introduction to Ultra Messaging.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;stdlib.h&gt;</code><br />
 <code>#include &lt;lbm/lbm.h&gt;</code><br />
@@ -100,17 +100,12 @@ Functions</h2></td></tr>
 <tr class="memitem:a114e18bf161dee3836a6b6bc93110b59"><td class="memItemLeft" align="right" valign="top">LBMExpDLL int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lbmaux_8h.html#a114e18bf161dee3836a6b6bc93110b59">lbmaux_event_queue_attr_setopt_from_file</a> (<a class="el" href="lbm_8h.html#a619319568f28aa3c59e4690da5f749be">lbm_event_queue_attr_t</a> *Attributes, const char *ConfigFile)</td></tr>
 <tr class="memdesc:a114e18bf161dee3836a6b6bc93110b59"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set attributes values in an <a class="el" href="lbm_8h.html#a619319568f28aa3c59e4690da5f749be" title="Opaque structure that holds configuration options for event queue objects. ">lbm_event_queue_attr_t</a> object from a configuration file.  <a href="#a114e18bf161dee3836a6b6bc93110b59">More...</a><br /></td></tr>
 <tr class="separator:a114e18bf161dee3836a6b6bc93110b59"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4fa5ddd965a91173bc310fdb2b0d4034"><td class="memItemLeft" align="right" valign="top">LBMExpDLL int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lbmaux_8h.html#a4fa5ddd965a91173bc310fdb2b0d4034">lbmaux_lbmmon_format_options_from_file</a> (char **FormatOptionsBuffer, const char *FormatOptionsFile, char *ErrorString)</td></tr>
+<tr class="memdesc:a4fa5ddd965a91173bc310fdb2b0d4034"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read LBMMON format options from a file into a buffer for processing.  <a href="#a4fa5ddd965a91173bc310fdb2b0d4034">More...</a><br /></td></tr>
+<tr class="separator:a4fa5ddd965a91173bc310fdb2b0d4034"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Ultra Messaging (UM) Auxiliary Functions API. </p>
-<dl class="section author"><dt>Author</dt><dd>David K. Ameiss - Informatica Corporation </dd></dl>
-<dl class="section version"><dt>Version</dt><dd></dd></dl>
-<dl class="section rcs"><dt>Id</dt><dd>//UMprod/REL_6_13_1/29West/lbm/src/auxx/lbm/lbmaux.h#1 </dd></dl>
-<p>The Ultra Messaging (UM) Auxiliary Functions API Description. Included are types, constants, and functions related to the API. Contents are subject to change.</p>
-<p>All of the documentation and software included in this and any other Informatica Corporation Ultra Messaging Releases Copyright (C) Informatica Corporation. All rights reserved.</p>
-<p>Redistribution and use in source and binary forms, with or without modification, are permitted only as covered by the terms of a valid software license agreement with Informatica Corporation.</p>
-<p>Copyright (C) 2006-2020, Informatica Corporation. All Rights Reserved.</p>
-<p>THE SOFTWARE IS PROVIDED "AS IS" AND INFORMATICA DISCLAIMS ALL WARRANTIES EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION, ANY IMPLIED WARRANTIES OF NON-INFRINGEMENT, MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE. INFORMATICA DOES NOT WARRANT THAT USE OF THE SOFTWARE WILL BE UNINTERRUPTED OR ERROR-FREE. INFORMATICA SHALL NOT, UNDER ANY CIRCUMSTANCES, BE LIABLE TO LICENSEE FOR LOST PROFITS, CONSEQUENTIAL, INCIDENTAL, SPECIAL OR INDIRECT DAMAGES ARISING OUT OF OR RELATED TO THIS AGREEMENT OR THE TRANSACTIONS CONTEMPLATED HEREUNDER, EVEN IF INFORMATICA HAS BEEN APPRISED OF THE LIKELIHOOD OF SUCH DAMAGES. </p>
+<div class="textblock"><p>Ultra Messaging (UM) Auxiliary Functions API. The "lbmaux.h" header file defines a few helper APIs that can make Ultra Messaging easier to use. It is optional, and most applications do not use it. The binary code is contained in the "lbm" library (dynamic on Unix: "liblbm.so", static on Unix: "liblbm.a", dynamic only on Windows: "lbm.dll"). See <a class="el" href="index.html#umcapi">UM C API</a> for general information on the C API. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/API/design.tag:../Design/" href="../Design/fundamentalconcepts.html">Fundamental Concepts</a> for an introduction to Ultra Messaging. </p>
 </div><h2 class="groupheader">Function Documentation</h2>
 <a class="anchor" id="ae7d92b1afb5b581a6b71a154448f89a7"></a>
 <div class="memitem">
@@ -219,6 +214,50 @@ Functions</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">Attributes</td><td>A pointer to an initialized <a class="el" href="lbm_8h.html#a619319568f28aa3c59e4690da5f749be" title="Opaque structure that holds configuration options for event queue objects. ">lbm_event_queue_attr_t</a> object. </td></tr>
     <tr><td class="paramname">ConfigFile</td><td>String containing the filename that contains the options to parse and set. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>0 for Success and -1 for Failure. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a4fa5ddd965a91173bc310fdb2b0d4034"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">LBMExpDLL int lbmaux_lbmmon_format_options_from_file </td>
+          <td>(</td>
+          <td class="paramtype">char **&#160;</td>
+          <td class="paramname"><em>FormatOptionsBuffer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>FormatOptionsFile</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>ErrorString</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Read LBMMON format options from a file into a buffer for processing. </p>
+<p>This function reads a format options file, skipping comments and blank lines, into a newly created buffer.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">FormatOptionsBuffer</td><td>A pointer to a String. Will be malloc'd and filled in by this function. </td></tr>
+    <tr><td class="paramname">FormatOptionsFile</td><td>String containing the filename that contains the format options. . </td></tr>
+    <tr><td class="paramname">ErrorString</td><td>String for returning details of errors encountered. </td></tr>
   </table>
   </dd>
 </dl>

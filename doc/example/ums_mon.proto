@@ -1,0 +1,322 @@
+/*
+	All of the documentation and software included in this and any
+	other Informatica Corporation Ultra Messaging Releases
+	Copyright (C) Informatica Corporation. All rights reserved.
+
+	Redistribution and use in source and binary forms, with or without
+	modification, are permitted only as covered by the terms of a
+	valid software license agreement with Informatica Corporation.
+
+	Copyright (C) 2004-2021, Informatica Corporation. All Rights Reserved.
+
+	THE SOFTWARE IS PROVIDED "AS IS" AND INFORMATICA DISCLAIMS ALL WARRANTIES
+	EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION, ANY IMPLIED WARRANTIES OF
+	NON-INFRINGEMENT, MERCHANTABILITY OR FITNESS FOR A PARTICULAR
+	PURPOSE.INFORMATICA DOES NOT WARRANT THAT USE OF THE SOFTWARE WILL BE
+	UNINTERRUPTED OR ERROR-FREE.INFORMATICA SHALL NOT, UNDER ANY CIRCUMSTANCES, BE
+	LIABLE TO LICENSEE FOR LOST PROFITS, CONSEQUENTIAL, INCIDENTAL, SPECIAL OR
+	INDIRECT DAMAGES ARISING OUT OF OR RELATED TO THIS AGREEMENT OR THE
+	TRANSACTIONS CONTEMPLATED HEREUNDER, EVEN IF INFORMATICA HAS BEEN APPRISED OF
+	THE LIKELIHOOD OF SUCH DAMAGES.
+
+*/
+
+syntax = "proto3";
+package lbmmon;
+
+option java_package = "com.latencybusters.lbm";
+option java_outer_classname = "UMSMonProtos";
+
+import "um_mon_attributes.proto";
+
+message UMSMonMsg {
+
+    message Stats {
+		message Context {
+			uint64 tr_dgrams_sent = 1;
+			uint64 tr_bytes_sent = 2;
+			uint64 tr_dgrams_rcved = 3;
+			uint64 tr_bytes_rcved = 4;
+			uint64 tr_src_topics = 5;
+			uint64 tr_rcv_topics = 6;
+			uint64 tr_rcv_unresolved_topics = 7;
+			uint64 send_blocked = 8;
+			uint64 send_would_block = 9;
+			uint64 resp_blocked = 10;
+			uint64 resp_would_block = 11;
+			uint64 uim_dup_msgs_rcved = 12;
+			uint64 uim_msgs_no_stream_rcved = 13;
+			uint64 fragments_lost = 14;
+			uint64 fragments_unrecoverably_lost = 15;
+			uint64 lbtrm_unknown_msgs_rcved = 16;
+			uint64 lbtru_unknown_msgs_rcved = 17;
+			uint64 tr_dgrams_dropped_ver = 18;
+			uint64 tr_dgrams_dropped_type = 19;
+			uint64 tr_dgrams_dropped_malformed = 20;
+			uint64 tr_dgrams_send_failed = 21;
+			uint64 rcv_cb_svc_time_min = 22;
+			uint64 rcv_cb_svc_time_max = 23;
+			uint64 rcv_cb_svc_time_mean = 24;
+		}
+
+		message ReceiverTransport {
+			enum SourceType {
+				SOURCE_NORMAL = 0;
+				SOURCE_IM = 1;
+			}
+
+			message TCP {
+				uint64 bytes_rcved = 1;
+				uint64 lbm_msgs_rcved = 2;
+				uint64 lbm_msgs_no_topic_rcved = 3;
+				uint64 lbm_reqs_rcved = 4;
+			}
+
+			message LBTRM {
+				uint64 msgs_rcved = 1;
+				uint64 bytes_rcved = 2;
+				uint64 nak_pckts_sent = 3;
+				uint64 naks_sent = 4;
+				uint64 lost = 5;
+				uint64 ncfs_ignored = 6;
+				uint64 ncfs_shed = 7;
+				uint64 ncfs_rx_delay = 8;
+				uint64 ncfs_unknown = 9;
+				uint64 nak_stm_min = 10;
+				uint64 nak_stm_mean = 11;
+				uint64 nak_stm_max = 12;
+				uint64 nak_tx_min = 13;
+				uint64 nak_tx_mean = 14;
+				uint64 nak_tx_max = 15;
+				uint64 duplicate_data = 16;
+				uint64 unrecovered_txw = 17;
+				uint64 unrecovered_tmo = 18;
+				uint64 lbm_msgs_rcved = 19;
+				uint64 lbm_msgs_no_topic_rcved = 20;
+				uint64 lbm_reqs_rcved = 21;
+				uint64 dgrams_dropped_size = 22;
+				uint64 dgrams_dropped_type = 23;
+				uint64 dgrams_dropped_version = 24;
+				uint64 dgrams_dropped_hdr = 25;
+				uint64 dgrams_dropped_other = 26;
+				uint64 out_of_order = 27;
+			}
+
+			message LBTRU {
+				uint64 msgs_rcved = 1;
+				uint64 bytes_rcved = 2;
+				uint64 nak_pckts_sent = 3;
+				uint64 naks_sent = 4;
+				uint64 lost = 5;
+				uint64 ncfs_ignored = 6;
+				uint64 ncfs_shed = 7;
+				uint64 ncfs_rx_delay = 8;
+				uint64 ncfs_unknown = 9;
+				uint64 nak_stm_min = 10;
+				uint64 nak_stm_mean = 11;
+				uint64 nak_stm_max = 12;
+				uint64 nak_tx_min = 13;
+				uint64 nak_tx_mean = 14;
+				uint64 nak_tx_max = 15;
+				uint64 duplicate_data = 16;
+				uint64 unrecovered_txw = 17;
+				uint64 unrecovered_tmo = 18;
+				uint64 lbm_msgs_rcved = 19;
+				uint64 lbm_msgs_no_topic_rcved = 20;
+				uint64 lbm_reqs_rcved = 21;
+				uint64 dgrams_dropped_size = 22;
+				uint64 dgrams_dropped_type = 23;
+				uint64 dgrams_dropped_version = 24;
+				uint64 dgrams_dropped_hdr = 25;
+				uint64 dgrams_dropped_other = 26;
+				uint64 dgrams_dropped_sid = 27;
+			}
+
+			message LBTIPC {
+				uint64 msgs_rcved = 1;
+				uint64 bytes_rcved = 2;
+				uint64 lbm_msgs_rcved = 3;
+				uint64 lbm_msgs_no_topic_rcved = 4;
+				uint64 lbm_reqs_rcved = 5;
+			}
+
+			message LBTSMX {
+				uint64 msgs_rcved = 1;
+				uint64 bytes_rcved = 2;
+				uint64 lbm_msgs_rcved = 3;
+				uint64 lbm_msgs_no_topic_rcved = 4;
+			}
+
+			string source_string = 1;
+			SourceType source_flag = 2;
+			oneof TransportType {
+				TCP tcp = 3;
+				LBTRM lbtrm = 4;
+				LBTRU lbtru = 5;
+				LBTIPC lbtipc = 6;
+				LBTSMX lbtsmx = 7;
+			}
+		}
+
+		message SourceTransport {
+			enum SourceType {
+				SOURCE_NORMAL = 0;
+				SOURCE_IM = 1;
+			}
+
+			message TCP {
+				uint64 num_clients = 1;
+				uint64 bytes_buffered = 2;
+			}
+
+			message LBTRM {
+				uint64 msgs_sent = 1;
+				uint64 bytes_sent = 2;
+				uint64 txw_msgs = 3;
+				uint64 txw_bytes = 4;
+				uint64 nak_pckts_rcved = 5;
+				uint64 naks_rcved = 6;
+				uint64 naks_ignored = 7;
+				uint64 naks_shed = 8;
+				uint64 naks_rx_delay_ignored = 9;
+				uint64 rxs_sent = 10;
+				uint64 rx_bytes_sent = 11;
+				uint64 rctlr_data_msgs = 12;
+				uint64 rctlr_rx_msgs = 13;
+			}
+
+			message LBTRU {
+				uint64 msgs_sent = 1;
+				uint64 bytes_sent = 2;
+				uint64 nak_pckts_rcved = 3;
+				uint64 naks_rcved = 4;
+				uint64 naks_ignored = 5;
+				uint64 naks_shed = 6;
+				uint64 naks_rx_delay_ignored = 7;
+				uint64 rxs_sent = 8;
+				uint64 rx_bytes_sent = 9;
+				uint64 num_clients = 10;
+			}
+
+			message LBTIPC {
+				uint64 msgs_sent = 1;
+				uint64 bytes_sent = 2;
+				uint64 num_clients = 3;
+			}
+
+			message LBTSMX {
+				uint64 msgs_sent = 1;
+				uint64 bytes_sent = 2;
+				uint64 num_clients = 3;
+			}
+
+			string source_string = 1;
+			SourceType source_flag = 2;
+			oneof TransportType {
+				TCP tcp = 3;
+				LBTRM lbtrm = 4;
+				LBTRU lbtru = 5;
+				LBTIPC lbtipc = 6;
+				LBTSMX lbtsmx = 7;
+			}
+		} 
+
+		message EventQueue {
+			uint64 data_msgs = 1;
+			uint64 data_msgs_tot = 2;
+			uint64 data_msgs_svc_min = 3;
+			uint64 data_msgs_svc_mean= 4;
+			uint64 data_msgs_svc_max = 5;
+			uint64 resp_msgs = 6;
+			uint64 resp_msgs_tot = 7;
+			uint64 resp_msgs_svc_min = 8;
+			uint64 resp_msgs_svc_mean = 9;
+			uint64 resp_msgs_svc_max = 10;
+			uint64 topicless_im_msgs = 11;
+			uint64 topicless_im_msgs_tot = 12;
+			uint64 topicless_im_msgs_svc_min = 13;
+			uint64 topicless_im_msgs_svc_mean = 14;
+			uint64 topicless_im_msgs_svc_max = 15;
+			uint64 wrcv_msgs = 16;
+			uint64 wrcv_msgs_tot= 17;
+			uint64 wrcv_msgs_svc_min = 18;
+			uint64 wrcv_msgs_svc_mean = 19;
+			uint64 wrcv_msgs_svc_max = 20;
+			uint64 io_events = 21;
+			uint64 io_events_tot = 22;
+			uint64 io_events_svc_min = 23;
+			uint64 io_events_svc_mean = 24;
+			uint64 io_events_svc_max = 25;
+			uint64 timer_events = 26;
+			uint64 timer_events_tot = 27;
+			uint64 timer_events_svc_min = 28;
+			uint64 timer_events_svc_mean = 29;
+			uint64 timer_events_svc_max = 30;
+			uint64 source_events = 31;
+			uint64 source_events_tot = 32;
+			uint64 source_events_svc_min = 33;
+			uint64 source_events_svc_mean = 34;
+			uint64 source_events_svc_max = 35;
+			uint64 unblock_events = 36;
+			uint64 unblock_events_tot = 37;
+			uint64 cancel_events = 38;
+			uint64 cancel_events_tot = 39;
+			uint64 cancel_events_svc_min = 40;
+			uint64 cancel_events_svc_mean = 41;
+			uint64 cancel_events_svc_max = 42;
+			uint64 context_source_events = 43;
+			uint64 context_source_events_tot = 44;
+			uint64 context_source_events_svc_min = 45;
+			uint64 context_source_events_svc_mean = 46;
+			uint64 context_source_events_svc_max = 47;
+			uint64 events = 48;
+			uint64 events_tot = 49;
+			uint64 age_min = 50;
+			uint64 age_mean = 51;
+			uint64 age_max = 52;
+			uint64 callback_events = 53;
+			uint64 callback_events_tot = 54;
+			uint64 callback_events_svc_min = 55;
+			uint64 callback_events_svc_mean = 56;
+			uint64 callback_events_svc_max = 57;
+		}
+
+		Context context = 1;
+		repeated ReceiverTransport receiver_transports = 2;
+		repeated SourceTransport source_transports = 3;
+		repeated EventQueue event_queues = 4;
+	}
+
+    message Events {
+		message ReceiverTopic {
+			message Source {
+				enum SourceState {
+					NO_SOURCE = 0;
+					SOURCE_CREATED = 1;
+					SOURCE_DELETED = 2;
+				}
+
+				string source_string = 1;
+				string otid = 2;
+				uint64 topic_idx = 3;
+				SourceState source_state = 4;
+				uint64 timestamp_sec = 5;
+				uint64 timestamp_usec = 6;
+			}
+
+			string topic = 1;
+			repeated Source sources = 2;
+		}
+		message WildcardReceiver {
+			string pattern = 1;
+			int32 type = 2;
+		}
+		repeated ReceiverTopic receiver_topics = 1;
+		repeated WildcardReceiver wildcard_receivers = 2;
+	}
+
+	UMMonAttributes attributes = 1;
+	Stats stats = 2;
+	Events events = 3;
+
+}

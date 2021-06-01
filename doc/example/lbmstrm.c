@@ -1,5 +1,5 @@
 /*
-  Copyright (c) 2005-2020 Informatica Corporation  Permission is granted to licensees to use
+  Copyright (C) 2005-2021, Informatica Corporation  Permission is granted to licensees to use
   or alter this software for any purpose, including commercial applications,
   according to the terms laid out in the Software License Agreement.
 
@@ -139,7 +139,9 @@ const char usage[] =
 "  -S, --sources=NUM         use NUM sources [100]\n"
 "  -t, --tight               tight loop (cpu-bound) for even message spacing\n"
 "  -T, --threads=NUM         use NUM threads [1]\n"
-"  -x, --bits=NUM            use NUM bits for hot failover sequence number size (32 or 64)"
+"  -x, --bits=NUM            use NUM bits for hot failover sequence number size (32 or 64)";
+
+const char monitor_usage[] =
 MONOPTS_SENDER
 MONMODULEOPTS_SENDER;
 
@@ -259,7 +261,7 @@ int handle_src_event(lbm_src_t *src, int event, void *ed, void *cd)
 		/* Provided to enable quiet usage of lbmstrm with UME */
 		break;
 	default:
-		printf("Unknown source event %d\n", event);
+		printf( "Unhandled source event [%d]. Refer to https://ultramessaging.github.io/currdoc/doc/example/index.html#unhandledcevents for a detailed description.\n", event);
 		break;
 	}
 	return 0;
@@ -498,8 +500,8 @@ void process_cmdline(int argc, char **argv,struct Options *opts)
 				}
 				break;
 			case 'h':
-				fprintf(stderr, "%s\n%s\n%s\n%s",
-					argv[0], lbm_version(), purpose, usage);
+				fprintf(stderr, "%s\n%s\n%s\n%s\n%s",
+					argv[0], lbm_version(), purpose, usage, monitor_usage);
 				exit(0);
 			case 'r':
 				strncpy(opts->topicroot, optarg, sizeof(opts->topicroot));
@@ -586,6 +588,10 @@ void process_cmdline(int argc, char **argv,struct Options *opts)
 					{
 						opts->format = (lbmmon_format_func_t *) lbmmon_format_csv_module();
 					}
+					else if (strcasecmp(optarg, "pb") == 0)
+					{
+						opts->format = (lbmmon_format_func_t *)lbmmon_format_pb_module();
+					}
 					else
 					{
 						++errflag;
@@ -623,8 +629,8 @@ void process_cmdline(int argc, char **argv,struct Options *opts)
 	}
 	if (errflag != 0)
 	{
-		fprintf(stderr, "%s\n%s\n%s",
-			argv[0], lbm_version(), usage);
+		fprintf(stderr, "%s\n%s\n%s\n%s",
+			argv[0], lbm_version(), usage, monitor_usage);
 		exit(1);
 	}
 }

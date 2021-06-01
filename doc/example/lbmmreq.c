@@ -1,5 +1,5 @@
 /*
-  Copyright (c) 2005-2020 Informatica Corporation  Permission is granted to licensees to use
+  Copyright (C) 2005-2021, Informatica Corporation  Permission is granted to licensees to use
   or alter this software for any purpose, including commercial applications,
   according to the terms laid out in the Software License Agreement.
 
@@ -41,6 +41,7 @@
 	#include <signal.h>
 #endif
 #include <lbm/lbm.h>
+#include "lbm-example-util.h"
 
 #define MAX_NUM_REQUESTS 100000
 #define DEFAULT_NUM_REQUESTS 100000
@@ -143,7 +144,7 @@ int handle_src_event(lbm_src_t *src, int event, void *ed, void *cd)
 		}
 		break;
 	default:
-		printf("Unknown source event %d\n", event);
+		printf( "Unhandled source event [%d]. Refer to https://ultramessaging.github.io/currdoc/doc/example/index.html#unhandledcevents for a detailed description.\n", event);
 		break;
 	}
 	return 0;
@@ -167,7 +168,7 @@ int handle_response(lbm_request_t *req, lbm_msg_t *msg, void *clientd)
 			printf("Received %u responses\n", response_count);
 		break;
 	default:
-		printf("Unknown lbm_msg_t type %x [%s]\n", msg->type, msg->source);
+		printf( "Unhandled receiver event [%d] from source [%s]. Refer to https://ultramessaging.github.io/currdoc/doc/example/index.html#unhandledcevents for a detailed description.\n", msg->type, msg->source);
 		break;
 	}
 	/* LBM automatically deletes the lbm_msg_t object unless we retain it. */

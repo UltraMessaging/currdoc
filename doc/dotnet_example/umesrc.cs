@@ -1,6 +1,6 @@
 
 /*
-  Copyright (c) 2005-2020 Informatica Corporation  Permission is granted to licensees to use
+  Copyright (C) 2005-2021, Informatica Corporation  Permission is granted to licensees to use
   or alter this software for any purpose, including commercial applications,
   according to the terms laid out in the Software License Agreement.
 
@@ -48,7 +48,9 @@ namespace LBMApplication
         private static string usage =
 "Usage: umesrc [options] topic\n"+ 
 "Available options:\n"+ 
-"  -c filename = read config parameters from filename\n"+ 
+"  -c filename = Use LBM configuration file filename.\n"+
+"                Multiple config files are allowed.\n"+
+"                Example:  '-c file1.cfg -c file2.cfg'\n"+
 "  -D Send Deregistration after 1000 messages\n"+ 
 "  -f NUM = allow NUM unstabilized messages in flight (determines message rate)"+ 
 "  --flight-size = See -f above"+ 
@@ -87,7 +89,6 @@ namespace LBMApplication
         /* Command line options */
         public static string application_id = null;
         public static bool block = true;
-        public static string conffname = null;
         public static bool done = false;
         public static bool latejoin = false;
         public static int linger = 5;
@@ -128,10 +129,6 @@ namespace LBMApplication
             process_cmdline(args);
 
             byte[] message = new byte[msglen];
-            if (conffname != null)
-            {
-                LBM.setConfiguration(conffname);
-            }
             LBMContextAttributes cattr = new LBMContextAttributes();
             cattr.setFromXml(cattr.getValue("context_name"));
             cattr.setObjectRecycler(objRec, null);
@@ -473,7 +470,15 @@ namespace LBMApplication
                                 error = true;
                                 break;
                             }
-                            conffname = args[i];
+                            try
+                            {
+                                LBM.setConfiguration(args[i]);
+                            }
+                            catch (LBMException Ex)
+                            {
+                                System.Console.Error.WriteLine("umesrc error: " + Ex.Message);
+                                error = true;
+                            }
                             break;
                         case "-D":
                             dereg = 1;
@@ -1141,8 +1146,7 @@ namespace LBMApplication
                     break;
 
                 default:
-                    System.Console.Out.WriteLine("Unknown source event "
-                               + sourceEvent.type());
+                    System.Console.Out.WriteLine("Unhandled source event [" + sourceEvent.type() + "]. Refer to https://ultramessaging.github.io/currdoc/doc/dotnet_example/index.html#unhandledcsevents for a detailed description.");
                     break;
             }
             System.Console.Out.Flush();

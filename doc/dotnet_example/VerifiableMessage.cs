@@ -2,7 +2,7 @@
 /*
 "Utility functions to produce randomized messages whose contents
 "can be checked.
-  Copyright (c) 2005-2020 Informatica Corporation  Permission is granted to licensees to use
+  Copyright (C) 2005-2021, Informatica Corporation  Permission is granted to licensees to use
   or alter this software for any purpose, including commercial applications,
   according to the terms laid out in the Software License Agreement.
 
@@ -19,6 +19,7 @@
   TRANSACTIONS CONTEMPLATED HEREUNDER, EVEN IF INFORMATICA HAS BEEN APPRISED OF 
   THE LIKELIHOOD OF SUCH DAMAGES.
 */
+#pragma warning disable 1591
 using System;
 
 namespace LBMApplication
@@ -104,3 +105,4 @@ namespace LBMApplication
         }
     }
 }
+#pragma warning restore 1591

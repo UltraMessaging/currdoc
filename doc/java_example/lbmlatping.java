@@ -18,7 +18,7 @@ import com.latencybusters.lbm.LBMTopic;
 import org.openmdx.uses.gnu.getopt.*;
 
 /*
-  Copyright (c) 2005-2020 Informatica Corporation  Permission is granted to licensees to use
+  Copyright (C) 2005-2021, Informatica Corporation  Permission is granted to licensees to use
   or alter this software for any purpose, including commercial applications,
   according to the terms laid out in the Software License Agreement.
 

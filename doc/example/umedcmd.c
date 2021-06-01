@@ -1,5 +1,5 @@
 /*
-Copyright (c) 2005-2020 Informatica Corporation  Permission is granted to licensees to use
+Copyright (C) 2005-2021, Informatica Corporation  Permission is granted to licensees to use
 or alter this software for any purpose, including commercial applications,
 according to the terms laid out in the Software License Agreement.
 
@@ -124,87 +124,83 @@ int check_sqn_string(char *sqn_string, list_t *sqn_list);
 int check_regid_string(char *sqn_string, list_t *rcvr_regid_list);
 
 char purpose[] = "Purpose: "
-"multi-mode application sends unicast immediate messages to umestore daemon to publish statistics, mark message unusable, or deregister receivers."
+"multi-mode application sends unicast immediate messages to umestore\n"
+"         daemon to publish statistics, mark message unusable or deregister\n"
+"         receivers."
 ;
 char general_usage[] =
-"*****************************************************************************************************************\n"
-"Usage: umedcmd -c config_file -T target_string [-m mode] [options]\n"
+"*******************************************************************************\n"
+"Usage: umedcmd -h -m mode\n"
 "Available options:\n"
-"  -c, --config=FILE       Use LBM configuration file FILE.\n"
-"                             Multiple config files are allowed.\n"
-"                             Example: '-c file1.cfg -c file2.cfg'\n"
-"  -h, --help              display this help and exit\n"
-"  -i, --store_interface   store interface IPv4 address\n"
-"  -p, --store_port        store port\n"
-"  -L, --linger=NUM        linger for NUM seconds before closing context\n"
-"  -m, --mode=TYPE         set the command mode to TYPE publish (default), mark or deregister\n"
-"  -r, --rcvr_regid=LIST   LIST of one ore more receiver registration IDs associated with store repository, e.g.,:\n"
-"                             '-r 127025171'              deregister a single receiver\n"
-"                             '-r 127025171, 127025162'   deregister two receivers\n"
-"  -s, --src_regid=ID      source registration ID associated with the store repository\n"
-"  -S, --sqn_string=LIST   LIST of one or more message sequence number(s) or ranges to drop, e.g.,:\n"
-"                             '-s 23'        drop a single message\n"
-"                             '-s 312-315'   drops a range of messages\n"
-"                             '-s 2,5,9-11'  drops two single and a range of messages\n"
-"  -T, --target=TARGET     TARGET string for unicast immediate messages [required]\n"
-""
-"Note: enter 'umedcmd -h -m mode' to obtain mode-specific usage message.\n"
-"*****************************************************************************************************************\n"
+"  -h, --help         display mode-specific usage help message and exit\n"
+"  -m, --mode=TYPE    set command mode to TYPE 'publish', 'mark' or 'deregister'\n"
+"                     [required]\n"
+"*******************************************************************************\n"
 ;
 
 char publish_usage[] =
-"*************************************************************************************\n"
-"Usage: umedcmd -c config_file -T target_string [-L linger] [-m mode] [command_string]\n"
+"*******************************************************************************\n"
+"Usage: umedcmd -m publish -c config_file -T target_string [-L linger]\n"
+"       [command_string]\n"
 "Available options:\n"
 "  -c, --config=FILE       Use LBM configuration file FILE.\n"
 "                             Multiple config files are allowed.\n"
 "                             Example: '-c file1.cfg -c file2.cfg'\n"
 "  -h, --help              display this help and exit\n"
 "  -L, --linger=NUM        linger for NUM seconds before closing context\n"
-"  -m, --mode=TYPE         set the command mode to TYPE publish (default)\n"
-"  -T, --target=TARGET     TARGET string for unicast immediate messages [required]\n"
-"*************************************************************************************\n"
+"  -m, --mode=TYPE         set the command mode to TYPE 'publish' [required]\n"
+"  -T, --target=TARGET     TARGET string for unicast immediate messages\n"
+"                          [required]\n"
+"*******************************************************************************\n"
 ;
 
 char mark_usage[] =
-"********************************************************************************************************************************\n"
-"Usage: umedcmd -c config_file -i store_interface -m mark -p store_port -s src_regid -T target_string [-L linger] [-S sqn_string]\n"
+"*******************************************************************************\n"
+"Usage: umedcmd -m mark -c config_file -i store_interface -p store_port\n"
+"       -s src_regid -T target_string [-L linger] [-S sqn_string]\n"
 "Available options:\n"
-"  -c, --config=FILE       Use LBM configuration file FILE.\n"
-"                             Multiple config files are allowed.\n"
-"                             Example: '-c file1.cfg -c file2.cfg'\n"
-"  -h, --help              display this help and exit\n"
-"  -i, --store_interface   store interface IPv4 address\n"
-"  -p, --store_port        store port\n"
-"  -L, --linger=NUM        linger for NUM seconds before closing context\n"
-"  -m, --mode=TYPE         set the command mode to TYPE 'mark'\n"
-"  -s, --src_regid=ID      source registration ID associated with the store repository\n"
-"  -S, --sqn_string=LIST   LIST of one or more message sequence number(s) or ranges to drop, e.g.,:\n"
-"                             '-S 54'        drop a single message\n"
-"                             '-S 312-315'   drops a range of messages\n"
-"                             '-S 2,5,9-11'  drops two single and a range of messages\n"
-"  -T, --target=TARGET     TARGET string for unicast immediate messages [required]\n"
-"*********************************************************************************************************************************\n"
+"  -c, --config=FILE     Use LBM configuration file FILE.\n"
+"                           Multiple config files are allowed.\n"
+"                           Example: '-c file1.cfg -c file2.cfg'\n"
+"  -h, --help            display this help and exit\n"
+"  -i, --store_interface store interface IPv4 address [required]\n"
+"  -p, --store_port      store port [required]\n"
+"  -L, --linger=NUM      linger for NUM seconds before closing context\n"
+"  -m, --mode=TYPE       set the command mode to TYPE 'mark' [required]\n"
+"  -s, --src_regid=ID    source registration ID associated with the store\n"
+"                        repository [required]\n"
+"  -S, --sqn_string=LIST LIST of one or more message sequence number(s) or\n"
+"                        ranges to drop], e.g.:\n"
+"                          '-S 54'       drop a single message\n"
+"                          '-S 312-315'  drops a range of messages\n"
+"                          '-S 2,5,7-9' drops two single and a range of messages\n"
+"  -T, --target=TARGET   TARGET string for unicast immediate messages\n"
+"                        [required]\n"
+"*******************************************************************************\n"
 ;
 
 char deregister_usage[] =
-"**************************************************************************************************************************************\n"
-"Usage: umedcmd -c config_file -i store_interface -m deregister -p store_port -s src_regid -T target_string [-r rcvr_regid] [-L linger]\n"
+"*******************************************************************************\n"
+"Usage: umedcmd  -m deregister-c config_file -i store_interface -p store_port\n"
+"       -s src_regid -T target_string [-r rcvr_regid] [-L linger]\n"
 "Available options:\n"
 "  -c, --config=FILE       Use LBM configuration file FILE.\n"
 "                             Multiple config files are allowed.\n"
 "                             Example: '-c file1.cfg -c file2.cfg'\n"
 "  -h, --help              display this help and exit\n"
-"  -i, --store_interface   store interface IPv4 address\n"
-"  -p, --store_port        store port\n"
+"  -i, --store_interface   store interface IPv4 address [required]\n"
+"  -p, --store_port        store port [required]\n"
 "  -L, --linger=NUM        linger for NUM seconds before closing context\n"
-"  -m, --mode=TYPE         set the command mode to TYPE 'deregister'\n"
-"  -r, --rcvr_regid=LIST   LIST of one ore more receiver registration IDs associated with store repository, e.g.,:\n"
-"                             '-r 127025171'             deregister a single receiver\n"
-"                             '-r 127025171, 127025162'  deregister two receivers\n"
-"  -s, --src_regid=ID      source registration ID associated with the store repository\n"
-"  -T, --target=TARGET     TARGET string for unicast immediate messages [required]\n"
-"**************************************************************************************************************************************\n"
+"  -m, --mode=TYPE         set the command mode to TYPE 'deregister' [required]\n"
+"  -r, --rcvr_regid=LIST   LIST of one or more receiver registration IDs\n"
+"                          with store repository, e.g.:\n"
+"                           '-r 127025171'            deregister single receiver\n"
+"                           '-r 127025171, 127025162' deregister two receivers\n"
+"  -s, --src_regid=ID      source registration ID associated with the\n"
+"                          store repository [required]\n"
+"  -T, --target=TARGET     TARGET string for unicast immediate messages\n"
+"                          [required]\n"
+"*******************************************************************************\n"
 ;
 
 const char * OptionString = "c:hi:p:L:m:r:s:S:T:";
@@ -397,6 +393,11 @@ void process_cmdline(int argc, char **argv, daemon_command_options_t *opts, list
 			exit(1);
 		}
 	}
+	else {
+		fprintf(stderr, "Command line error: -m mode is required\n");
+		print_help_exit(argv, 0, opts);
+		exit(1);
+	}
 	if (errflag != 0) {
 		print_help_exit(argv, 0, opts);
 	}
@@ -472,7 +473,7 @@ int handle_response(lbm_request_t *req, lbm_msg_t *msg, void *clientd) {
 		printf("Response received [%s] from [%s][%u], %lu bytes\n", text, msg->source, msg->sequence_number, (unsigned long)msg->len);
 		break;
 	default:
-		printf("Unknown (unsupported) lbm_msg_t type 0x%x [%s]\n", msg->type, msg->source);
+		printf( "Unhandled receiver event [%d] from source [%s]. Refer to https://ultramessaging.github.io/currdoc/doc/example/index.html#unhandledcevents for a detailed description.\n", msg->type, msg->source);
 		break;
 	}
 	lbm_cancel_timer(req_info->ctx, req_info->timer_id, NULL);

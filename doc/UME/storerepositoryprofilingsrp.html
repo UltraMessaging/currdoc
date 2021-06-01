@@ -55,7 +55,7 @@ $(document).ready(function(){initNavTree('storerepositoryprofilingsrp.html','');
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p>To aid the users in operating and maintaining their Persistent Store deployment, Informatica provides an API that will read Store cache and state files and return useful information about them, including message content. This is the Store Repository Profiling (SRP) API. (The API is not in the normal "lbm" library; see <a class="el" href="storerepositoryprofilingsrp.html#usingthesrpapi">Using the SRP API</a>.)</p>
-<p>Also supplied is the "umesnaprepo" example program, which uses the SRP API to read the information and print to standard out. It can be used as-is (see <a class="el" href="storerepositoryprofilingsrp.html#umesnaprepomanpage">umesnaprepo Man Page</a>), or its <a href="../example/umesnaprepo.c">source code</a> can be used as a guide for users to develop their own management tools.</p>
+<p>Also supplied is the "umesnaprepo" example program, which uses the SRP API to read the information and print to standard out. It can be used as-is (see <a class="el" href="storerepositoryprofilingsrp.html#umesnaprepomanpage">umesnaprepo Man Page</a>), or its source code (<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/UME/example.tag:../example/" href="../example/index.html#exampleumesnaprepo_c">Example umesnaprepo.c</a>) can be used as a guide for users to develop their own management tools.</p>
 <p>This API and example program are supported on the same platforms that support the Persistent Store: 64-bit Linux and 64-bit Windows. The API is C-only (no Java or .NET). Also be aware that the API is read-only. The API does not provide a way to modify the cache or state files.</p>
 <p><b>IMPORTANT</b>: due to differences in certain Windows and Linux data sizes, a given set of state and cache files needs to be read on the same platform where it was generated. For example it is <em>NOT</em> valid to copy a Linux Store's files to a Windows machine and use the windows-based SRP API or command-line tool to read them.</p>
 <dl class="section note"><dt>Note</dt><dd>The Store Instance <b>should NOT be running</b> while the API or example program is used to read the Store files. There currently is no tool that performs the same function on an actively running Store.</dd></dl>
@@ -63,26 +63,26 @@ $(document).ready(function(){initNavTree('storerepositoryprofilingsrp.html','');
  </p>
 <h1><a class="anchor" id="usingthesrpapi"></a>
 Using the SRP API&nbsp;&nbsp;<small><a href="#usingthesrpapi">&lt;-</a></small></h1>
-<p>Use the <a href="../example/umesnaprepo.c">umesnaprepo.c</a> source code as your guide.</p>
+<p>Use the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/UME/example.tag:../example/" href="../example/index.html#exampleumesnaprepo_c">Example umesnaprepo.c</a> source code as your guide.</p>
 <p>The <a href="../API/umeprofile_8h.html.html">umeprofile.h</a> header file contains the needed definitions.</p>
 <p>The API code is <em>not</em> contained within the normal "lbm" library. On Linux, it is in "libumestorelib.a", a static library. On Windows, it is in "umestore.dll", a dynamic library.</p>
 <p>The main API functions are: </p><ul>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/UME/api.tag:../API/" href="../API/umeprofile_8h.html#aec84332e2bbb5e4d27a0703ed2568877">lbm_srp_create()</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/UME/api.tag:../API/" href="../API/umeprofile_8h.html#a7cbe29f232a6c3123286a97ac2b5a3f7">lbm_srp_create()</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/UME/api.tag:../API/" href="../API/umeprofile_8h.html#a7db2559f876d023c4ad52fc0ddff1aaf">lbm_srp_delete()</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/UME/api.tag:../API/" href="../API/umeprofile_8h.html#a99a7efb5c423f5a3c9cf10891c89c88b">lbm_srp_delete()</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/UME/api.tag:../API/" href="../API/umeprofile_8h.html#a77ca8bf5287fe50f7375ca0163f8d1e4">lbm_srp_get_repo_state()</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/UME/api.tag:../API/" href="../API/umeprofile_8h.html#a8142a85b874de9fc5f01d98dfea0eac8">lbm_srp_get_repo_state()</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/UME/api.tag:../API/" href="../API/umeprofile_8h.html#a7d42a44d9383c34ffb6de59f1e8fd9d2">lbm_srp_free_repo_state()</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/UME/api.tag:../API/" href="../API/umeprofile_8h.html#aefbd012de930c9c47172ee305e2ae8af">lbm_srp_free_repo_state()</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/UME/api.tag:../API/" href="../API/umeprofile_8h.html#aef81e49d9e25088de8fe6cfbf1c259a6">lbm_srp_get_repo_message()</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/UME/api.tag:../API/" href="../API/umeprofile_8h.html#a0324123a655d0aeaefb4ee81092dc7dd">lbm_srp_get_repo_message()</a> </li>
 </ul>
 <p><br />
  </p>
 <h1><a class="anchor" id="umesnaprepomanpage"></a>
 umesnaprepo Man Page&nbsp;&nbsp;<small><a href="#umesnaprepomanpage">&lt;-</a></small></h1>
-<p>The "umesnaprepo" command is an example program that uses the <a class="el" href="storerepositoryprofilingsrp.html">Store Repository Profiling (SRP)</a> API to read Store state and cache files and print useful information, including message content. It can be used as-is, or its <a href="../example/umesnaprepo.c">source code</a> can be used as a guide for users to develop their own management tools.</p>
+<p>The "umesnaprepo" command is an example program that uses the <a class="el" href="storerepositoryprofilingsrp.html">Store Repository Profiling (SRP)</a> API to read Store state and cache files and print useful information, including message content. It can be used as-is, or its source code (<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/UME/example.tag:../example/" href="../example/index.html#exampleumesnaprepo_c">Example umesnaprepo.c</a>) can be used as a guide for users to develop their own management tools.</p>
 <dl class="section note"><dt>Note</dt><dd>The Store Instance <b>should NOT be running</b> while the API or example program is used to read the Store files. There currently is no tool that performs the same function on an actively running Store.</dd></dl>
 <pre class="fragment">Usage: umesnaprepo -s state_dir [options]
 Available options:
@@ -90,7 +90,7 @@ Available options:
   -h, --help               display this help and exit
   -n, --no-checksum        disable cache checksum checking
   -p, --parse              enable LBM header parsing
-  -s, --state-dir=NUM      state file search PATH [required]
+  -s, --state-dir=PATH     state file search PATH [required]
   -t, --truncate=NUM       limit cache message displays to NUM bytes
   -T, --terse              summarize cache and skip cache message displays
 </pre><p>For example: </p><pre class="fragment">umesnaprepo -s /UM/store5/state -c /UM/store5/cache

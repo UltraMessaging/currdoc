@@ -1,6 +1,6 @@
 
 /*
-  Copyright (c) 2005-2020 Informatica Corporation  Permission is granted to licensees to use
+  Copyright (C) 2005-2021, Informatica Corporation  Permission is granted to licensees to use
   or alter this software for any purpose, including commercial applications,
   according to the terms laid out in the Software License Agreement.
 
@@ -43,7 +43,9 @@ namespace LBMApplication
 "Usage: umqrcv [options] topic\n"+ 
 "Available options:\n"+ 
 "  -B broker = use broker specified by address\n"+ 
-"  -c filename = read config file filename\n"+ 
+"  -c filename = Use LBM configuration file filename.\n"+
+"                Multiple config files are allowed.\n"+
+"                Example:  '-c file1.cfg -c file2.cfg'\n"+
 "  -d qdelay = monitor event queue delay above qdelay usecs\n"+ 
 "  -D = deregister upon exit\n"+ 
 "  -E = exit after source ends\n"+ 
@@ -215,7 +217,15 @@ namespace LBMApplication
                                 error = true;
                                 break;
                             }
-                            LBM.setConfiguration(args[i]);
+                            try
+                            {
+                            	LBM.setConfiguration(args[i]);
+                            }
+                            catch (LBMException Ex)
+                            {
+                                System.Console.Error.WriteLine("umqrcv error: " + Ex.Message);
+                                error = true;
+                            }
                             break;
                         case "-d":
                             if (++i >= n)
@@ -1203,7 +1213,7 @@ namespace LBMApplication
                     }
                     break;
                 default:
-                    System.Console.Error.WriteLine("Unknown lbm_msg_t type " + msg.type() + " [" + msg.topicName() + "][" + msg.source() + "]");
+                    System.Console.Out.WriteLine("Unhandled receiver event [" + msg.type() + "] from source [" + msg.source() + "] with topic [" + msg.topicName() + "]. Refer to https://ultramessaging.github.io/currdoc/doc/dotnet_example/index.html#unhandledcsevents for a detailed description.");
                     break;
             }
             msg.dispose();		// Send ACK now

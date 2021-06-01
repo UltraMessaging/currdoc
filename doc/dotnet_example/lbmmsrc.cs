@@ -1,6 +1,6 @@
 
 /*
-  Copyright (c) 2005-2020 Informatica Corporation  Permission is granted to licensees to use
+  Copyright (C) 2005-2021, Informatica Corporation  Permission is granted to licensees to use
   or alter this software for any purpose, including commercial applications,
   according to the terms laid out in the Software License Agreement.
 
@@ -607,6 +607,7 @@ namespace LBMApplication
 					System.Console.Out.WriteLine("Receiver disconnect " + clientname);
 					break;
 				default:
+					System.Console.Out.WriteLine("Unhandled source event [" + sourceEvent.type() + "]. Refer to https://ultramessaging.github.io/currdoc/doc/dotnet_example/index.html#unhandledcsevents for a detailed description.");
 					break;
 			}
 			System.Console.Out.Flush();

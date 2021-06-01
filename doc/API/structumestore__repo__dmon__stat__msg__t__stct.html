@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">UM C API
-   &#160;<span id="projectnumber">6.13.1</span>
+   &#160;<span id="projectnumber">6.14</span>
    </div>
   </td>
  </tr>
@@ -73,7 +73,7 @@ $(document).ready(function(){initNavTree('structumestore__repo__dmon__stat__msg_
 </div><!--header-->
 <div class="contents">
 
-<p>Message containing store repository statistics. <br />
+<p>Message containing Store repository statistics. <br />
 ( <a class="el" href="structumestore__dmon__msg__hdr__t__stct.html#a0542d765553a7a86bc6ef7c74c4e5385">umestore_dmon_msg_hdr_t_stct::type</a> == <a class="el" href="umedmonmsgs_8h.html#aa4269805d37ad1586f340a0f4486e0e9">LBM_UMESTORE_DMON_MPG_REPO_STATS</a> )<br />
  Except where indicated, all fields of type <code>lbm_uintXX_t</code> should be byte-swapped if <code>hdr.magic</code> is equal to <a class="el" href="umedmonmsgs_8h.html#a24d18e9ceeaed40dd3e282418dbdc42c">LBM_UMESTORE_DMON_ANTIMAGIC</a>.  
  <a href="structumestore__repo__dmon__stat__msg__t__stct.html#details">More...</a></p>
@@ -96,23 +96,23 @@ Data Fields</h2></td></tr>
 <tr class="separator:a58222ab4e7c4ddd049c1c83c5474de2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a98c14fc876c2051a7d90f2f8e34f5645"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a98c14fc876c2051a7d90f2f8e34f5645"></a>
 <a class="el" href="lbm_8h.html#a5dfd61ade99cd24213125c293b15ef4a">lbm_uint32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structumestore__repo__dmon__stat__msg__t__stct.html#a98c14fc876c2051a7d90f2f8e34f5645">message_map_sz</a></td></tr>
-<tr class="memdesc:a98c14fc876c2051a7d90f2f8e34f5645"><td class="mdescLeft">&#160;</td><td class="mdescRight">Total number of UM message fragments the store has for this source, both on disk and in memory. <br /></td></tr>
+<tr class="memdesc:a98c14fc876c2051a7d90f2f8e34f5645"><td class="mdescLeft">&#160;</td><td class="mdescRight">Total number of UM message fragments the Store has for this source, both on disk and in memory. <br /></td></tr>
 <tr class="separator:a98c14fc876c2051a7d90f2f8e34f5645"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a904e79ab71cc22c7631826bbdc138ec4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a904e79ab71cc22c7631826bbdc138ec4"></a>
 <a class="el" href="lbm_8h.html#a5dfd61ade99cd24213125c293b15ef4a">lbm_uint32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structumestore__repo__dmon__stat__msg__t__stct.html#a904e79ab71cc22c7631826bbdc138ec4">memory_sz</a></td></tr>
-<tr class="memdesc:a904e79ab71cc22c7631826bbdc138ec4"><td class="mdescLeft">&#160;</td><td class="mdescRight">The number of bytes of messages in memory for a non-RPP repository (<code>flags &amp; UMESTORE_DMON_REPO_FLAG_RPP == 0</code>). Includes headers and store overhead. <br /></td></tr>
+<tr class="memdesc:a904e79ab71cc22c7631826bbdc138ec4"><td class="mdescLeft">&#160;</td><td class="mdescRight">The number of bytes of messages in memory for a non-RPP repository (<code>flags &amp; UMESTORE_DMON_REPO_FLAG_RPP == 0</code>). Includes headers and Store overhead. <br /></td></tr>
 <tr class="separator:a904e79ab71cc22c7631826bbdc138ec4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a430bb6b2a1e3ed1eac06b63b3be25162"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a430bb6b2a1e3ed1eac06b63b3be25162"></a>
 <a class="el" href="lbm_8h.html#a5dfd61ade99cd24213125c293b15ef4a">lbm_uint32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structumestore__repo__dmon__stat__msg__t__stct.html#a430bb6b2a1e3ed1eac06b63b3be25162">rpp_memory_sz</a></td></tr>
-<tr class="memdesc:a430bb6b2a1e3ed1eac06b63b3be25162"><td class="mdescLeft">&#160;</td><td class="mdescRight">The number of bytes of messages in memory for a RPP repository (<code>flags &amp; UMESTORE_DMON_REPO_FLAG_RPP != 0</code>). Includes headers and store overhead. <br /></td></tr>
+<tr class="memdesc:a430bb6b2a1e3ed1eac06b63b3be25162"><td class="mdescLeft">&#160;</td><td class="mdescRight">The number of bytes of messages in memory for a RPP repository (<code>flags &amp; UMESTORE_DMON_REPO_FLAG_RPP != 0</code>). Includes headers and Store overhead. <br /></td></tr>
 <tr class="separator:a430bb6b2a1e3ed1eac06b63b3be25162"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4a1ce5ee193563ad0c6833aabee99699"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4a1ce5ee193563ad0c6833aabee99699"></a>
 <a class="el" href="lbm_8h.html#a5dfd61ade99cd24213125c293b15ef4a">lbm_uint32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structumestore__repo__dmon__stat__msg__t__stct.html#a4a1ce5ee193563ad0c6833aabee99699">lead_sqn</a></td></tr>
-<tr class="memdesc:a4a1ce5ee193563ad0c6833aabee99699"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lead sequence number: newest sequence number in the store. <br /></td></tr>
+<tr class="memdesc:a4a1ce5ee193563ad0c6833aabee99699"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lead sequence number: newest sequence number in the Store. <br /></td></tr>
 <tr class="separator:a4a1ce5ee193563ad0c6833aabee99699"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6f41b8ab17c22536e91a4f7d25432898"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6f41b8ab17c22536e91a4f7d25432898"></a>
 <a class="el" href="lbm_8h.html#a5dfd61ade99cd24213125c293b15ef4a">lbm_uint32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structumestore__repo__dmon__stat__msg__t__stct.html#a6f41b8ab17c22536e91a4f7d25432898">sync_sqn</a></td></tr>
-<tr class="memdesc:a6f41b8ab17c22536e91a4f7d25432898"><td class="mdescLeft">&#160;</td><td class="mdescRight">Most recent sequence number for which the store has initiated persisting to disk, but the Operating System has not confirmed completion of persistence. <br /></td></tr>
+<tr class="memdesc:a6f41b8ab17c22536e91a4f7d25432898"><td class="mdescLeft">&#160;</td><td class="mdescRight">Most recent sequence number for which the Store has initiated persisting to disk, but the Operating System has not confirmed completion of persistence. <br /></td></tr>
 <tr class="separator:a6f41b8ab17c22536e91a4f7d25432898"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a61039c0b1c6f3c1500d67f8c9f51f871"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a61039c0b1c6f3c1500d67f8c9f51f871"></a>
 <a class="el" href="lbm_8h.html#a5dfd61ade99cd24213125c293b15ef4a">lbm_uint32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structumestore__repo__dmon__stat__msg__t__stct.html#a61039c0b1c6f3c1500d67f8c9f51f871">sync_complete_sqn</a></td></tr>
@@ -120,7 +120,7 @@ Data Fields</h2></td></tr>
 <tr class="separator:a61039c0b1c6f3c1500d67f8c9f51f871"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7a92413ca43e483129599535b94b9ab0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7a92413ca43e483129599535b94b9ab0"></a>
 <a class="el" href="lbm_8h.html#a5dfd61ade99cd24213125c293b15ef4a">lbm_uint32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structumestore__repo__dmon__stat__msg__t__stct.html#a7a92413ca43e483129599535b94b9ab0">trail_sqn</a></td></tr>
-<tr class="memdesc:a7a92413ca43e483129599535b94b9ab0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Trail sequence number: oldest sequence number in the store. <br /></td></tr>
+<tr class="memdesc:a7a92413ca43e483129599535b94b9ab0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Trail sequence number: oldest sequence number in the Store. <br /></td></tr>
 <tr class="separator:a7a92413ca43e483129599535b94b9ab0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8f2687f35381e7f9cfd86f1b5bd64f36"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8f2687f35381e7f9cfd86f1b5bd64f36"></a>
 <a class="el" href="lbm_8h.html#a5dfd61ade99cd24213125c293b15ef4a">lbm_uint32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structumestore__repo__dmon__stat__msg__t__stct.html#a8f2687f35381e7f9cfd86f1b5bd64f36">mem_trail_sqn</a></td></tr>
@@ -132,11 +132,11 @@ Data Fields</h2></td></tr>
 <tr class="separator:a45ab45b439d004340d431d0558cd3267"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9ff1b50be2358487b3b465e5934b2a8d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9ff1b50be2358487b3b465e5934b2a8d"></a>
 <a class="el" href="lbm_8h.html#a5dfd61ade99cd24213125c293b15ef4a">lbm_uint32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structumestore__repo__dmon__stat__msg__t__stct.html#a9ff1b50be2358487b3b465e5934b2a8d">high_ulb_sqn</a></td></tr>
-<tr class="memdesc:a9ff1b50be2358487b3b465e5934b2a8d"><td class="mdescLeft">&#160;</td><td class="mdescRight">The highest sequence number reported among any Unrecoverable Loss Burst (ULB) event. It is not reset after the ULB is handled; it is maintained throughout the life of the store. <br /></td></tr>
+<tr class="memdesc:a9ff1b50be2358487b3b465e5934b2a8d"><td class="mdescLeft">&#160;</td><td class="mdescRight">The highest sequence number reported among any Unrecoverable Loss Burst (ULB) event. It is not reset after the ULB is handled; it is maintained throughout the life of the Store. <br /></td></tr>
 <tr class="separator:a9ff1b50be2358487b3b465e5934b2a8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af3f2b9551e0b89b93e0732ffba4fa611"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af3f2b9551e0b89b93e0732ffba4fa611"></a>
 <a class="el" href="lbm_8h.html#a5dfd61ade99cd24213125c293b15ef4a">lbm_uint32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structumestore__repo__dmon__stat__msg__t__stct.html#af3f2b9551e0b89b93e0732ffba4fa611">map_intentional_drops</a></td></tr>
-<tr class="memdesc:af3f2b9551e0b89b93e0732ffba4fa611"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of messages in the process of being dropped due to reaching the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/API/ume.tag:../UME/" href="../UME/optionsforastoresumeattributeselement.html#umecfgrepositorysizelimit">repository-size-limit</a>. <br /></td></tr>
+<tr class="memdesc:af3f2b9551e0b89b93e0732ffba4fa611"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of messages in the process of being dropped due to reaching the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/API/ume.tag:../UME/" href="../UME/optionsforastoresumeattributeselement.html#umecfgrepositorysizelimit">repository-size-limit</a>. <br /></td></tr>
 <tr class="separator:af3f2b9551e0b89b93e0732ffba4fa611"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6ac7e584215636d31f3d9b221f7a8e2a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6ac7e584215636d31f3d9b221f7a8e2a"></a>
 <a class="el" href="lbm_8h.html#a5dfd61ade99cd24213125c293b15ef4a">lbm_uint32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structumestore__repo__dmon__stat__msg__t__stct.html#a6ac7e584215636d31f3d9b221f7a8e2a">uls</a></td></tr>
@@ -148,19 +148,19 @@ Data Fields</h2></td></tr>
 <tr class="separator:a1e682d4d8f6c5e39587029035cbeea46"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abd4e478759cf6229ebc666aaf276a5f4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abd4e478759cf6229ebc666aaf276a5f4"></a>
 <a class="el" href="lbm_8h.html#a5dfd61ade99cd24213125c293b15ef4a">lbm_uint32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structumestore__repo__dmon__stat__msg__t__stct.html#abd4e478759cf6229ebc666aaf276a5f4">sz_limit_drops</a></td></tr>
-<tr class="memdesc:abd4e478759cf6229ebc666aaf276a5f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Total number of messages dropped due to reaching the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/API/ume.tag:../UME/" href="../UME/optionsforastoresumeattributeselement.html#umecfgrepositorysizelimit">repository-size-limit</a>. <br /></td></tr>
+<tr class="memdesc:abd4e478759cf6229ebc666aaf276a5f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Total number of messages dropped due to reaching the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/API/ume.tag:../UME/" href="../UME/optionsforastoresumeattributeselement.html#umecfgrepositorysizelimit">repository-size-limit</a>. <br /></td></tr>
 <tr class="separator:abd4e478759cf6229ebc666aaf276a5f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab15e416d5c88404867e351c1fc8ea1e1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab15e416d5c88404867e351c1fc8ea1e1"></a>
 <a class="el" href="lbm_8h.html#a86897f2fdd66aa7021683a4e72a4537b">lbm_uint16_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structumestore__repo__dmon__stat__msg__t__stct.html#ab15e416d5c88404867e351c1fc8ea1e1">store_idx</a></td></tr>
-<tr class="memdesc:ab15e416d5c88404867e351c1fc8ea1e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Current store number, starting with 0, counting each <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/API/ume.tag:../UME/" href="../UME/configurationreferenceforumestored.html#umeelementstore">&lt;store&gt;</a> element in the order configured. <br /></td></tr>
+<tr class="memdesc:ab15e416d5c88404867e351c1fc8ea1e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Current Store number, starting with 0, counting each <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/API/ume.tag:../UME/" href="../UME/configurationreferenceforumestored.html#umeelementstore">&lt;store&gt;</a> element in the order configured. <br /></td></tr>
 <tr class="separator:ab15e416d5c88404867e351c1fc8ea1e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8d53151f872f9ee55fed3f7252f9508a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8d53151f872f9ee55fed3f7252f9508a"></a>
 <a class="el" href="lbm_8h.html#a09c7963deb485135d5bb29c84cd7d3a9">lbm_uint8_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structumestore__repo__dmon__stat__msg__t__stct.html#a8d53151f872f9ee55fed3f7252f9508a">flags</a></td></tr>
-<tr class="memdesc:a8d53151f872f9ee55fed3f7252f9508a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bit map of flags indicating various characteristics and current states of the store. Possible bits: <a class="el" href="umedmonmsgs_8h.html#a5762435be2c31204c24783b930b597dc">UMESTORE_DMON_REPO_FLAG_INTENTIONAL_DROPS</a>, <a class="el" href="umedmonmsgs_8h.html#a890eaf9bf5bbb97f2b666e632cc07c03">UMESTORE_DMON_REPO_FLAG_ISN_SET</a>, <a class="el" href="umedmonmsgs_8h.html#a50fc5300dd783b239ab9630f8823ba7e">UMESTORE_DMON_REPO_FLAG_DISK_CKSUM</a>, <a class="el" href="umedmonmsgs_8h.html#a225a1a4961fe39c157db32102be3b8f7">UMESTORE_DMON_REPO_FLAG_SHUTTING_DOWN</a>, <a class="el" href="umedmonmsgs_8h.html#ae02d9ee830b160caf1d1dc886289f8d5">UMESTORE_DMON_REPO_FLAG_RPP</a>, <a class="el" href="umedmonmsgs_8h.html#ad5f198679941849fbc0055bcbd145906">UMESTORE_DMON_REPO_FLAG_DELAY_WRITE</a>. <br /></td></tr>
+<tr class="memdesc:a8d53151f872f9ee55fed3f7252f9508a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bit map of flags indicating various characteristics and current states of the Store. Possible bits: <a class="el" href="umedmonmsgs_8h.html#a5762435be2c31204c24783b930b597dc">UMESTORE_DMON_REPO_FLAG_INTENTIONAL_DROPS</a>, <a class="el" href="umedmonmsgs_8h.html#a890eaf9bf5bbb97f2b666e632cc07c03">UMESTORE_DMON_REPO_FLAG_ISN_SET</a>, <a class="el" href="umedmonmsgs_8h.html#a50fc5300dd783b239ab9630f8823ba7e">UMESTORE_DMON_REPO_FLAG_DISK_CKSUM</a>, <a class="el" href="umedmonmsgs_8h.html#a225a1a4961fe39c157db32102be3b8f7">UMESTORE_DMON_REPO_FLAG_SHUTTING_DOWN</a>, <a class="el" href="umedmonmsgs_8h.html#ae02d9ee830b160caf1d1dc886289f8d5">UMESTORE_DMON_REPO_FLAG_RPP</a>, <a class="el" href="umedmonmsgs_8h.html#ad5f198679941849fbc0055bcbd145906">UMESTORE_DMON_REPO_FLAG_DELAY_WRITE</a>. <br /></td></tr>
 <tr class="separator:a8d53151f872f9ee55fed3f7252f9508a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Message containing store repository statistics. <br />
+<div class="textblock"><p>Message containing Store repository statistics. <br />
 ( <a class="el" href="structumestore__dmon__msg__hdr__t__stct.html#a0542d765553a7a86bc6ef7c74c4e5385">umestore_dmon_msg_hdr_t_stct::type</a> == <a class="el" href="umedmonmsgs_8h.html#aa4269805d37ad1586f340a0f4486e0e9">LBM_UMESTORE_DMON_MPG_REPO_STATS</a> )<br />
  Except where indicated, all fields of type <code>lbm_uintXX_t</code> should be byte-swapped if <code>hdr.magic</code> is equal to <a class="el" href="umedmonmsgs_8h.html#a24d18e9ceeaed40dd3e282418dbdc42c">LBM_UMESTORE_DMON_ANTIMAGIC</a>. </p>
 </div><hr/>The documentation for this struct was generated from the following file:<ul>

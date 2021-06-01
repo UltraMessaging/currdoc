@@ -1,5 +1,5 @@
 /*
-  Copyright (c) 2005-2020 Informatica Corporation  Permission is granted to licensees to use
+  Copyright (C) 2005-2021, Informatica Corporation  Permission is granted to licensees to use
   or alter this software for any purpose, including commercial applications,
   according to the terms laid out in the Software License Agreement.
 
@@ -477,7 +477,7 @@ int rcv_handle_msg(lbm_rcv_t *rcv, lbm_msg_t *msg, void *clientd)
 		}
 		break;
 	default:
-		printf("Unknown lbm_msg_t type %x [%s][%s]\n", msg->type, msg->topic_name, msg->source);
+		printf( "Unhandled receiver event [%d] from source [%s]. Refer to https://ultramessaging.github.io/currdoc/doc/example/index.html#unhandledcevents for a detailed description.\n", msg->type, msg->source);
 		break;
 	}
 	/* LBM automatically deletes the lbm_msg_t object unless we retain it. */
@@ -689,6 +689,10 @@ int main(int argc, char **argv)
 					if (strcasecmp(optarg, "csv") == 0)
 					{
 						format = lbmmon_format_csv_module();
+					}
+					else if (strcasecmp(optarg, "pb") == 0)
+					{
+						format = lbmmon_format_pb_module();
 					}
 					else
 					{

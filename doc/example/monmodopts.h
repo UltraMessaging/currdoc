@@ -7,7 +7,7 @@
   modification, are permitted only as covered by the terms of a
   valid software license agreement with Informatica Corporation.
 
-  Copyright (C) 2004-2020, Informatica Corporation. All Rights Reserved.
+  Copyright (C) 2004-2021, Informatica Corporation. All Rights Reserved.
 
   THE SOFTWARE IS PROVIDED "AS IS" AND INFORMATICA DISCLAIMS ALL WARRANTIES
   EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION, ANY IMPLIED WARRANTIES OF
@@ -72,6 +72,10 @@
 "\n" \
 "CSV format options:\n"
 
+#define MONMODULEOPTS_PB_PRELUDE \
+"\n" \
+"PB format options:\n"
+
 /* All module options. */
 #define MONMODULEOPTS_ALL \
 MONMODULEOPTS_PRELUDE \
@@ -83,6 +87,8 @@ MONMODULEOPTS_LBM_PRELUDE \
 "                         See https://communities.informatica.com/infakb/faq/5/Pages/80075.aspx\n" \
 "                         for guidelines on using wildcard topics. Also make sure the statistics\n" \
 "                         topic namespace is disjoint from the data topic namespace.\n" \
+"  allow_debug=VAL        VAL may be `off' or `on'\n" \
+"                         defaults to `off'\n" \
 MONMODULEOPTS_LBMSNMP_PRELUDE \
 "  config=FILE            use LBM configuration file FILE\n" \
 "  topic=TOPIC            send/receive statistics on topic TOPIC\n" \
@@ -104,8 +110,13 @@ MONMODULEOPTS_UDP_PRELUDE \
 MONMODULEOPTS_CSV_PRELUDE \
 "  separator=CHAR         separate CSV fields with character CHAR\n" \
 "                         defaults to `,'\n" \
-"                         Don\'t use a semicolon!\n"
-
+"                         Don\'t use a semicolon!\n" \
+"  passthrough=VAL        VAL may be `off', `on' or `convert'\n" \
+"                         defaults to `off'\n" \
+MONMODULEOPTS_PB_PRELUDE \
+"  filters=FILE           use FILE that contains filter options\n" \
+"  passthrough=VAL        VAL may be `off', `on' or `convert'\n" \
+"                         defaults to `off'\n"
 /* Sender-specific module options. */
 #define MONMODULEOPTS_SENDER \
 MONMODULEOPTS_PRELUDE \
@@ -113,6 +124,8 @@ MONMODULEOPTS_LBM_PRELUDE \
 "  config=FILE            use LBM configuration file FILE\n" \
 "  topic=TOPIC            send statistics on topic TOPIC\n" \
 "                         default is /29west/statistics\n" \
+"  allow_debug=VAL        VAL may be `off' or `on'\n" \
+"                         defaults to `off'\n" \
 MONMODULEOPTS_LBMSNMP_PRELUDE \
 "  config=FILE            use LBM configuration file FILE\n" \
 "  topic=TOPIC            send statistics on topic TOPIC\n" \
@@ -128,8 +141,9 @@ MONMODULEOPTS_UDP_PRELUDE \
 MONMODULEOPTS_CSV_PRELUDE \
 "  separator=CHAR         separate CSV fields with character CHAR\n" \
 "                         defaults to `,'\n" \
-"                         Don\'t use a semicolon!\n"
-
+"                         Don\'t use a semicolon!\n" \
+MONMODULEOPTS_PB_PRELUDE \
+"  filters=FILE           use FILE that contains filter options\n" 
 /* Receiver-specific module options. */
 #define MONMODULEOPTS_RECEIVER \
 MONMODULEOPTS_PRELUDE \
@@ -158,7 +172,12 @@ MONMODULEOPTS_UDP_PRELUDE \
 MONMODULEOPTS_CSV_PRELUDE \
 "  separator=CHAR         separate CSV fields with character CHAR\n" \
 "                         defaults to `,'\n" \
-"                         Don\'t use a semicolon!\n"
+"                         Don\'t use a semicolon!\n" \
+"  passthrough=VAL        VAL may be `off', `on' or 'convert'\n" \
+"                         defaults to `off'\n" \
+MONMODULEOPTS_PB_PRELUDE \
+"  passthrough=VAL        VAL may be `off', `on' or 'convert'\n" \
+"                         defaults to `off'\n"
 
 #define MONOPTS_PRELUDE \
 "\n" \
@@ -170,7 +189,7 @@ MONMODULEOPTS_CSV_PRELUDE \
 "                                 TRANS may be `lbm', `lbmsnmp', or `udp', default is `lbm'\n" \
 "  --monitor-transport-opts=OPTS  use OPTS as transport module options\n" \
 "  --monitor-format=FMT           use monitor format module FMT\n" \
-"                                 FMT may be `csv'\n" \
+"                                 FMT may be `csv' or `pb'\n" \
 "  --monitor-format-opts=OPTS     use OPTS as format module options\n" \
 "  --monitor-appid=ID             use ID as application ID string\n" \
 

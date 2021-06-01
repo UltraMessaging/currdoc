@@ -1,7 +1,13 @@
 /*
   lbmmoncache.c: example LBM monitoring application.
 
-  Copyright (c) 2005-2020 Informatica Corporation  Permission is granted to licensees to use
+>>>> ORIGINAL //UMprod/DEV_MAIN_GCS/29West/lbm/src/example/lbmmoncache.c#2
+  Copyright (C) 2005-2021, Informatica Corporation  Permission is granted to licensees to use
+==== THEIRS //UMprod/DEV_MAIN_GCS/29West/lbm/src/example/lbmmoncache.c#3
+  Copyright (C) 2005-2021, Informatica Corporation  Permission is granted to licensees to use
+==== YOURS //ssawalsk_DEV_MAIN_NEW_LINUX/29West/lbm/src/example/lbmmoncache.c
+  Copyright (C) 2005-2021, Informatica Corporation  Permission is granted to licensees to use
+<<<<
   or alter this software for any purpose, including commercial applications,
   according to the terms laid out in the Software License Agreement.
 
@@ -610,6 +616,10 @@ main(int argc, char **argv)
 					if (strcasecmp(optarg, "csv") == 0)
 					{
 						format = lbmmon_format_csv_module();
+					}
+					else if (strcasecmp(optarg, "pb") == 0)
+					{
+						format = lbmmon_format_pb_module();
 					}
 					else
 					{

@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">UM .NET API
-   &#160;<span id="projectnumber">6.13.1</span>
+   &#160;<span id="projectnumber">6.14</span>
    </div>
   </td>
  </tr>
@@ -2021,7 +2021,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
   </dd>
 </dl>
 
-<p>References <a class="el" href="namespacecom_1_1latencybusters_1_1lbm.html#a1385c94dc58730ea7e347573f7c7eb2a">com.latencybusters.lbm.LBMSourceNotification()</a>, <a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBMObjectRecyclerBase.html#a2f4114c91e0a89a8d1a0aa4f3bdfef93">com.latencybusters.lbm.LBMObjectRecyclerBase.retrieveContextSourceEvent()</a>, <a class="el" href="namespacecom_1_1latencybusters_1_1lbm.html#a1710ec4de9ebbcc428c9a60ae9ca5c20">com.latencybusters.lbm.UMEReceiverLivenessCreationCallback()</a>, and <a class="el" href="namespacecom_1_1latencybusters_1_1lbm.html#aec4d65a6f39faae582a9ed9d29d3399d">com.latencybusters.lbm.UMEReceiverLivenessDeletionCallback()</a>.</p>
+<p>References <a class="el" href="namespacecom_1_1latencybusters_1_1lbm.html#a1385c94dc58730ea7e347573f7c7eb2a">com.latencybusters.lbm.LBMSourceNotification()</a>, <a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBM.html#a11b81ee0e65845055d0bcbae9ef1538c">com.latencybusters.lbm.LBM.MSG_MAX_SOURCE_LEN</a>, <a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBMObjectRecyclerBase.html#a2f4114c91e0a89a8d1a0aa4f3bdfef93">com.latencybusters.lbm.LBMObjectRecyclerBase.retrieveContextSourceEvent()</a>, <a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBMNewTransportInfo.html#af98e8dfd81915cc7494213be9b5fe8f3">com.latencybusters.lbm.LBMNewTransportInfo.setFlags()</a>, <a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBMNewTransportInfo.html#a30195fd02359e6bf507e972ef7ab8561">com.latencybusters.lbm.LBMNewTransportInfo.setSourceString()</a>, <a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBMNewTransportInfo.html#a3b78c29bee77014c3e41aed255eebf9e">com.latencybusters.lbm.LBMNewTransportInfo.setTransportSourceInfo()</a>, <a class="el" href="namespacecom_1_1latencybusters_1_1lbm.html#a1710ec4de9ebbcc428c9a60ae9ca5c20">com.latencybusters.lbm.UMEReceiverLivenessCreationCallback()</a>, and <a class="el" href="namespacecom_1_1latencybusters_1_1lbm.html#aec4d65a6f39faae582a9ed9d29d3399d">com.latencybusters.lbm.UMEReceiverLivenessDeletionCallback()</a>.</p>
 
 </div>
 </div>
@@ -2350,11 +2350,11 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <p>Send a unicast immediate message to the target and topic. </p>
 <p>The target is a string of one of the following forms: </p><ul>
 <li>
-"TCP:<em>domain</em>:<em>ip</em>:<em>port</em>" - where <em>domain</em> is the ID of the destination topic resolution domain, <em>ip</em> is the IP address of the destination host, and <em>port</em> is the request port for the context of the destination application. </li>
+"TCP:<em>domain</em>:<em>ip</em>:<em>port</em>" - where <em>domain</em> is the ID of the destination topic resolution domain, <em>ip</em> is the IP address of the destination host, and <em>port</em> is the request port for the context of the destination application.  </li>
 <li>
-"TCP:<em>ip</em>:<em>port</em>" - where <em>ip</em> is the IP address of the destination host and <em>port</em> is the request port for the context of the destination application. This usage assumes the destination is in the same topic resolution domain as the sender. </li>
+"TCP:<em>ip</em>:<em>port</em>" - where <em>ip</em> is the IP address of the destination host and <em>port</em> is the request port for the context of the destination application. This usage assumes the destination is in the same topic resolution domain as the sender.  </li>
 <li>
-"SOURCE:<em>source-string</em>" - where <em>source-string</em> is the string associated with a source's transport session. This allows a subscriber to send a unicast immediate message directly to a publishing application. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/DotNetAPI/design.tag:../Design/" href="../Design/umfeatures.html#sendingtosources">Sending to Sources</a> for details. </li>
+"SOURCE:<em>source-string</em>" - where <em>source-string</em> is the string associated with a source's transport session. This allows a subscriber to send a unicast immediate message directly to a publishing application. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/DotNetAPI/design.tag:../Design/" href="../Design/umfeatures.html#sendingtosources">Sending to Sources</a> for details.  </li>
 </ul>
 <dl class="section note"><dt>Note</dt><dd>If called from a context thread callback, use the LBM_SRC_NONBLOCK flag and handle any LBM_EWOULDBLOCK errors internally. </dd></dl>
 <dl class="section warning"><dt>Warning</dt><dd>Do not call this function from a context thread callback for persistence stability or persistence confirmation events. It can result in deadlock. Note that immediate messages are processed somewhat less efficiently than source-based messages.</dd></dl>
@@ -2424,11 +2424,11 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <p>Send a unicast immediate request message to the target and topic. </p>
 <p>The target is a string of one of the following forms: </p><ul>
 <li>
-"TCP:<em>domain</em>:<em>ip</em>:<em>port</em>" - where <em>domain</em> is the ID of the destination topic resolution domain, <em>ip</em> is the IP address of the destination host, and <em>port</em> is the request port for the context of the destination application. </li>
+"TCP:<em>domain</em>:<em>ip</em>:<em>port</em>" - where <em>domain</em> is the ID of the destination topic resolution domain, <em>ip</em> is the IP address of the destination host, and <em>port</em> is the request port for the context of the destination application.  </li>
 <li>
-"TCP:<em>ip</em>:<em>port</em>" - where <em>ip</em> is the IP address of the destination host and <em>port</em> is the request port for the context of the destination application. This usage assumes the destination is in the same topic resolution domain as the sender. </li>
+"TCP:<em>ip</em>:<em>port</em>" - where <em>ip</em> is the IP address of the destination host and <em>port</em> is the request port for the context of the destination application. This usage assumes the destination is in the same topic resolution domain as the sender.  </li>
 <li>
-"SOURCE:<em>source-string</em>" - where <em>source-string</em> is the string associated with a source's transport session. This allows a subscriber to send a unicast immediate message directly to a publishing application. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/DotNetAPI/design.tag:../Design/" href="../Design/umfeatures.html#sendingtosources">Sending to Sources</a> for details. </li>
+"SOURCE:<em>source-string</em>" - where <em>source-string</em> is the string associated with a source's transport session. This allows a subscriber to send a unicast immediate message directly to a publishing application. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/DotNetAPI/design.tag:../Design/" href="../Design/umfeatures.html#sendingtosources">Sending to Sources</a> for details.  </li>
 </ul>
 <dl class="section note"><dt>Note</dt><dd>If called from a context thread callback, use the LBM_SRC_NONBLOCK flag and handle any LBM_EWOULDBLOCK errors internally. </dd></dl>
 <dl class="section warning"><dt>Warning</dt><dd>Do not call this function from a context thread callback for persistence stability or persistence confirmation events. It can result in deadlock. Note that immediate messages are processed somewhat less efficiently than source-based messages.</dd></dl>
@@ -2492,11 +2492,11 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <p>Send a unicast immediate request message to the target and topic. </p>
 <p>The target is a string of one of the following forms: </p><ul>
 <li>
-"TCP:<em>domain</em>:<em>ip</em>:<em>port</em>" - where <em>domain</em> is the ID of the destination topic resolution domain, <em>ip</em> is the IP address of the destination host, and <em>port</em> is the request port for the context of the destination application. </li>
+"TCP:<em>domain</em>:<em>ip</em>:<em>port</em>" - where <em>domain</em> is the ID of the destination topic resolution domain, <em>ip</em> is the IP address of the destination host, and <em>port</em> is the request port for the context of the destination application.  </li>
 <li>
-"TCP:<em>ip</em>:<em>port</em>" - where <em>ip</em> is the IP address of the destination host and <em>port</em> is the request port for the context of the destination application. This usage assumes the destination is in the same topic resolution domain as the sender. </li>
+"TCP:<em>ip</em>:<em>port</em>" - where <em>ip</em> is the IP address of the destination host and <em>port</em> is the request port for the context of the destination application. This usage assumes the destination is in the same topic resolution domain as the sender.  </li>
 <li>
-"SOURCE:<em>source-string</em>" - where <em>source-string</em> is the string associated with a source's transport session. This allows a subscriber to send a unicast immediate message directly to a publishing application. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/DotNetAPI/design.tag:../Design/" href="../Design/umfeatures.html#sendingtosources">Sending to Sources</a> for details. </li>
+"SOURCE:<em>source-string</em>" - where <em>source-string</em> is the string associated with a source's transport session. This allows a subscriber to send a unicast immediate message directly to a publishing application. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/DotNetAPI/design.tag:../Design/" href="../Design/umfeatures.html#sendingtosources">Sending to Sources</a> for details.  </li>
 </ul>
 <dl class="section note"><dt>Note</dt><dd>If called from a context thread callback, use the LBM_SRC_NONBLOCK flag and handle any LBM_EWOULDBLOCK errors internally. </dd></dl>
 <dl class="section warning"><dt>Warning</dt><dd>Do not call this function from a context thread callback for persistence stability or persistence confirmation events. It can result in deadlock.</dd></dl>
@@ -2793,11 +2793,11 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <p>Send a unicast immediate message to the target and topic. </p>
 <p>The target is a string of one of the following forms: </p><ul>
 <li>
-"TCP:<em>domain</em>:<em>ip</em>:<em>port</em>" - where <em>domain</em> is the ID of the destination topic resolution domain, <em>ip</em> is the IP address of the destination host, and <em>port</em> is the request port for the context of the destination application. </li>
+"TCP:<em>domain</em>:<em>ip</em>:<em>port</em>" - where <em>domain</em> is the ID of the destination topic resolution domain, <em>ip</em> is the IP address of the destination host, and <em>port</em> is the request port for the context of the destination application.  </li>
 <li>
-"TCP:<em>ip</em>:<em>port</em>" - where <em>ip</em> is the IP address of the destination host and <em>port</em> is the request port for the context of the destination application. This usage assumes the destination is in the same topic resolution domain as the sender. </li>
+"TCP:<em>ip</em>:<em>port</em>" - where <em>ip</em> is the IP address of the destination host and <em>port</em> is the request port for the context of the destination application. This usage assumes the destination is in the same topic resolution domain as the sender.  </li>
 <li>
-"SOURCE:<em>source-string</em>" - where <em>source-string</em> is the string associated with a source's transport session. This allows a subscriber to send a unicast immediate message directly to a publishing application. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/DotNetAPI/design.tag:../Design/" href="../Design/umfeatures.html#sendingtosources">Sending to Sources</a> for details. </li>
+"SOURCE:<em>source-string</em>" - where <em>source-string</em> is the string associated with a source's transport session. This allows a subscriber to send a unicast immediate message directly to a publishing application. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/DotNetAPI/design.tag:../Design/" href="../Design/umfeatures.html#sendingtosources">Sending to Sources</a> for details.  </li>
 </ul>
 <dl class="section note"><dt>Note</dt><dd>If called from a context thread callback, use the LBM_SRC_NONBLOCK flag and handle any LBM_EWOULDBLOCK errors internally. </dd></dl>
 <dl class="section warning"><dt>Warning</dt><dd>Do not call this function from a context thread callback for persistence stability or persistence confirmation events. It can result in deadlock. Note that immediate messages are processed somewhat less efficiently than source-based messages.</dd></dl>
@@ -2920,11 +2920,11 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <p>Send a topicless unicast immediate message to the target. </p>
 <p>The target is a string of one of the following forms: </p><ul>
 <li>
-"TCP:<em>domain</em>:<em>ip</em>:<em>port</em>" - where <em>domain</em> is the ID of the destination topic resolution domain, <em>ip</em> is the IP address of the destination host, and <em>port</em> is the request port for the context of the destination application. </li>
+"TCP:<em>domain</em>:<em>ip</em>:<em>port</em>" - where <em>domain</em> is the ID of the destination topic resolution domain, <em>ip</em> is the IP address of the destination host, and <em>port</em> is the request port for the context of the destination application.  </li>
 <li>
-"TCP:<em>ip</em>:<em>port</em>" - where <em>ip</em> is the IP address of the destination host and <em>port</em> is the request port for the context of the destination application. This usage assumes the destination is in the same topic resolution domain as the sender. </li>
+"TCP:<em>ip</em>:<em>port</em>" - where <em>ip</em> is the IP address of the destination host and <em>port</em> is the request port for the context of the destination application. This usage assumes the destination is in the same topic resolution domain as the sender.  </li>
 <li>
-"SOURCE:<em>source-string</em>" - where <em>source-string</em> is the string associated with a source's transport session. This allows a subscriber to send a unicast immediate message directly to a publishing application. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/DotNetAPI/design.tag:../Design/" href="../Design/umfeatures.html#sendingtosources">Sending to Sources</a> for details. </li>
+"SOURCE:<em>source-string</em>" - where <em>source-string</em> is the string associated with a source's transport session. This allows a subscriber to send a unicast immediate message directly to a publishing application. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/DotNetAPI/design.tag:../Design/" href="../Design/umfeatures.html#sendingtosources">Sending to Sources</a> for details.  </li>
 </ul>
 <dl class="section note"><dt>Note</dt><dd>If called from a context thread callback, use the LBM_SRC_NONBLOCK flag and handle any LBM_EWOULDBLOCK errors internally. </dd></dl>
 <dl class="section warning"><dt>Warning</dt><dd>Do not call this function from a context thread callback for persistence stability or persistence confirmation events. It can result in deadlock. Note that immediate messages are processed somewhat less efficiently than source-based messages.</dd></dl>
@@ -2985,11 +2985,11 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <p>Send a topicless unicast immediate message to the target. </p>
 <p>The target is a string of one of the following forms: </p><ul>
 <li>
-"TCP:<em>domain</em>:<em>ip</em>:<em>port</em>" - where <em>domain</em> is the ID of the destination topic resolution domain, <em>ip</em> is the IP address of the destination host, and <em>port</em> is the request port for the context of the destination application. </li>
+"TCP:<em>domain</em>:<em>ip</em>:<em>port</em>" - where <em>domain</em> is the ID of the destination topic resolution domain, <em>ip</em> is the IP address of the destination host, and <em>port</em> is the request port for the context of the destination application.  </li>
 <li>
-"TCP:<em>ip</em>:<em>port</em>" - where <em>ip</em> is the IP address of the destination host and <em>port</em> is the request port for the context of the destination application. This usage assumes the destination is in the same topic resolution domain as the sender. </li>
+"TCP:<em>ip</em>:<em>port</em>" - where <em>ip</em> is the IP address of the destination host and <em>port</em> is the request port for the context of the destination application. This usage assumes the destination is in the same topic resolution domain as the sender.  </li>
 <li>
-"SOURCE:<em>source-string</em>" - where <em>source-string</em> is the string associated with a source's transport session. This allows a subscriber to send a unicast immediate message directly to a publishing application. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/DotNetAPI/design.tag:../Design/" href="../Design/umfeatures.html#sendingtosources">Sending to Sources</a> for details. </li>
+"SOURCE:<em>source-string</em>" - where <em>source-string</em> is the string associated with a source's transport session. This allows a subscriber to send a unicast immediate message directly to a publishing application. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/DotNetAPI/design.tag:../Design/" href="../Design/umfeatures.html#sendingtosources">Sending to Sources</a> for details.  </li>
 </ul>
 <dl class="section note"><dt>Note</dt><dd>If called from a context thread callback, use the LBM_SRC_NONBLOCK flag and handle any LBM_EWOULDBLOCK errors internally. </dd></dl>
 <dl class="section warning"><dt>Warning</dt><dd>Do not call this function from a context thread callback for persistence stability or persistence confirmation events. It can result in deadlock. Note that immediate messages are processed somewhat less efficiently than source-based messages.</dd></dl>

@@ -3,6 +3,11 @@ var NAVTREE =
   [ "Concepts Guide", "index.html", [
     [ "Introduction", "index.html", null ],
     [ "Fundamental Concepts", "fundamentalconcepts.html", [
+      [ "Messaging Paradigms", "fundamentalconcepts.html#messagingparadigms", [
+        [ "Streaming", "fundamentalconcepts.html#streaming", null ],
+        [ "Persistence", "fundamentalconcepts.html#persistence", null ]
+      ] ],
+      [ "Queuing", "fundamentalconcepts.html#queuing", null ],
       [ "Messages", "fundamentalconcepts.html#messages", [
         [ "Message Integrity", "fundamentalconcepts.html#messageintegrity", null ],
         [ "Message Metadata", "fundamentalconcepts.html#messagemetadata", null ]
@@ -13,12 +18,11 @@ var NAVTREE =
         [ "Topic Resolution Domain", "fundamentalconcepts.html#topicresolutiondomain", null ]
       ] ],
       [ "Messaging Reliability", "fundamentalconcepts.html#messagingreliability", [
+        [ "Unrecoverable Loss", "fundamentalconcepts.html#unrecoverableloss1", null ],
         [ "Head Loss", "fundamentalconcepts.html#headloss", null ],
         [ "Leading Loss", "fundamentalconcepts.html#leadingloss", null ],
         [ "Tail Loss", "fundamentalconcepts.html#tailloss", null ]
       ] ],
-      [ "Persistence", "fundamentalconcepts.html#persistence", null ],
-      [ "Queuing", "fundamentalconcepts.html#queuing", null ],
       [ "DRO", "fundamentalconcepts.html#umrouter", null ],
       [ "Late Join", "fundamentalconcepts.html#latejoin", null ],
       [ "Request/Response", "fundamentalconcepts.html#requestresponse", null ],
@@ -70,7 +74,9 @@ var NAVTREE =
       ] ]
     ] ],
     [ "Transport Types", "transporttypes.html", [
-      [ "Transport TCP", "transporttypes.html#transporttcp", null ],
+      [ "Transport TCP", "transporttypes.html#transporttcp", [
+        [ "TCP Flow Control Restrictions", "transporttypes.html#tcpflowcontrolrestrictions", null ]
+      ] ],
       [ "Transport LBT-RU", "transporttypes.html#transportlbtru", null ],
       [ "Transport LBT-RM", "transporttypes.html#transportlbtrm", [
         [ "NAK Suppression", "transporttypes.html#naksuppression", null ],
@@ -153,7 +159,8 @@ var NAVTREE =
       ] ],
       [ "Message Fragmentation and Reassembly", "architecture.html#messagefragmentationandreassembly", [
         [ "Datagram Max Size and Network MTU", "architecture.html#datagrammaxsizeandnetworkmtu", null ],
-        [ "Datagrams and Kernel Bypass Network Drivers", "architecture.html#datagramsandkernelbypassnetworkdrivers", null ]
+        [ "Datagrams and Kernel Bypass Network Drivers", "architecture.html#datagramsandkernelbypassnetworkdrivers", null ],
+        [ "Dynamic Fragmentation Reduction", "architecture.html#dynamicfragmentationreduction", null ]
       ] ],
       [ "Ordered Delivery", "architecture.html#ordereddelivery", [
         [ "Sequence Number Order, Fragments Reassembled (Default Mode)", "architecture.html#sequencenumberorderfragmentsreassembleddefaultmode", null ],
@@ -272,6 +279,7 @@ var NAVTREE =
       [ "Spectrum", "umfeatures.html#spectrum", [
         [ "Spectrum Performance Advantages", "umfeatures.html#spectrumperformanceadvantages", null ],
         [ "Spectrum Configuration Options", "umfeatures.html#spectrumconfigurationoptions", null ],
+        [ "Spectrum Receiver Callback", "umfeatures.html#spectrumreceivercallback", null ],
         [ "Smart Sources and Spectrum", "umfeatures.html#smartsourcesandspectrum", null ]
       ] ],
       [ "Hot Failover (HF)", "umfeatures.html#hotfailoverhf", [
@@ -283,9 +291,9 @@ var NAVTREE =
         [ "Hot Failover Intentional Gap Support", "umfeatures.html#hotfailoverintentionalgapsupport", null ],
         [ "Hot Failover Optional Messages", "umfeatures.html#hotfailoveroptionalmessages", null ],
         [ "Using Hot Failover with Ordered Delivery", "umfeatures.html#usinghotfailoverwithordereddelivery", null ],
-        [ "Hot Failover Across Multiple Contexts", "umfeatures.html#hotfailoveracrossmultiplecontexts", null ]
+        [ "Hot Failover Across Multiple Contexts (HFX)", "umfeatures.html#hotfailoveracrossmultiplecontexts", null ]
       ] ],
-      [ "Daemon Statistics", "umfeatures.html#daemonstatistics", [
+      [ "Binary Daemon Statistics", "umfeatures.html#binarydaemonstatistics", [
         [ "Daemon Controller", "umfeatures.html#daemoncontroller", null ],
         [ "Daemon Statistics Structures", "umfeatures.html#daemonstatisticsstructures", null ],
         [ "Daemon Statistics Binary Data", "umfeatures.html#daemonstatisticsbinarydata", null ],
@@ -367,10 +375,14 @@ var NAVTREE =
         [ "SRS Element \"<batch-frame-max-record-count>\"", "srsconfigurationfile.html#srselementbatchframemaxrecordcount", null ],
         [ "SRS Element \"<record-queue-service-interval>\"", "srsconfigurationfile.html#srselementrecordqueueserviceinterval", null ],
         [ "SRS Element \"<request-stream-max-msg-count>\"", "srsconfigurationfile.html#srselementrequeststreammaxmsgcount", null ],
-        [ "SRS Element \"<topicmap>\"", "srsconfigurationfile.html#srselementtopicmap", null ],
+        [ "SRS Element \"<namemap>\"", "srsconfigurationfile.html#srselementnamemap", null ],
         [ "SRS Element \"<shards>\"", "srsconfigurationfile.html#srselementshards", null ],
+        [ "SRS Element \"<routemap>\"", "srsconfigurationfile.html#srselementroutemap", null ],
+        [ "SRS Element \"<topicmap>\"", "srsconfigurationfile.html#srselementtopicmap", null ],
         [ "SRS Element \"<otidmap>\"", "srsconfigurationfile.html#srselementotidmap", null ],
         [ "SRS Element \"<source-leave-backoff>\"", "srsconfigurationfile.html#srselementsourceleavebackoff", null ],
+        [ "SRS Element \"<context-name-state-lifetime>\"", "srsconfigurationfile.html#srselementcontextnamestatelifetime", null ],
+        [ "SRS Element \"<route-state-lifetime>\"", "srsconfigurationfile.html#srselementroutestatelifetime", null ],
         [ "SRS Element \"<interest-state-lifetime>\"", "srsconfigurationfile.html#srselementintereststatelifetime", null ],
         [ "SRS Element \"<source-state-lifetime>\"", "srsconfigurationfile.html#srselementsourcestatelifetime", null ],
         [ "SRS Element \"<state-lifetime>\"", "srsconfigurationfile.html#srselementstatelifetime", null ],
@@ -455,6 +467,7 @@ var NAVTREE =
       [ "Glossary N", "umglossary.html#glossaryn", null ],
       [ "Glossary O", "umglossary.html#glossaryo", null ],
       [ "Glossary P", "umglossary.html#glossaryp", null ],
+      [ "Glossary Q", "umglossary.html#glossaryq", null ],
       [ "Glossary R", "umglossary.html#glossaryr", null ],
       [ "Glossary S", "umglossary.html#glossarys", null ],
       [ "Glossary T", "umglossary.html#glossaryt", null ],
@@ -470,7 +483,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "advancedoptimizations.html",
-"umfeatures.html#compressionandencryption"
+"transporttypes.html#transportlbtipc"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

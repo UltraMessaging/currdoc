@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">UM Java API
-   &#160;<span id="projectnumber">6.13.1</span>
+   &#160;<span id="projectnumber">6.14</span>
    </div>
   </td>
  </tr>
@@ -81,6 +81,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:abc74a31166f81ce459c83398d0e8f2f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a31d5699a67ce184fdf4d71043d56e21a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBMMonitorReceiver.html#a31d5699a67ce184fdf4d71043d56e21a">LBMMonitorReceiver</a> (int formatter, String formatOpts, int transport, String transportOpts, <a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBMObjectRecyclerBase.html">LBMObjectRecyclerBase</a> recycler, Object objRecCbArg)  throws LBMException 	</td></tr>
 <tr class="separator:a31d5699a67ce184fdf4d71043d56e21a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a73b6de167817ed4e72cdd8128d736a93"><td class="memItemLeft" align="right" valign="top">long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBMMonitorReceiver.html#a73b6de167817ed4e72cdd8128d736a93">getSourceType</a> (ByteBuffer attributes)  throws LBMException 	</td></tr>
+<tr class="separator:a73b6de167817ed4e72cdd8128d736a93"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a323bd24a3cf6a0e4749af11605e513d5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBMMonitorReceiver.html#a323bd24a3cf6a0e4749af11605e513d5">close</a> ()  throws LBMException 	</td></tr>
 <tr class="separator:a323bd24a3cf6a0e4749af11605e513d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa3eaa590a00e945c4520d503b02bfdf4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBMMonitorReceiver.html#aa3eaa590a00e945c4520d503b02bfdf4">addStatisticsCallback</a> (<a class="el" href="interfacecom_1_1latencybusters_1_1lbm_1_1LBMMonitorStatisticsCallback.html">LBMMonitorStatisticsCallback</a> cb)</td></tr>
@@ -91,6 +93,9 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ab7ae1aee61ad65cad0a12d80da1e4d76"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad32a5bde308b55b4d7f947878b08f2ef"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBMMonitorReceiver.html#ad32a5bde308b55b4d7f947878b08f2ef">removeStatisticsCallback</a> (<a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBMMonitorStatisticsCallbackObject.html">LBMMonitorStatisticsCallbackObject</a> cb)</td></tr>
 <tr class="separator:ad32a5bde308b55b4d7f947878b08f2ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7e7c5864f4222b90207b412a9d7bd025"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7e7c5864f4222b90207b412a9d7bd025"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>initStatAttributes</b> (ByteBuffer attrBuffer, <a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBMStatistics.html">LBMStatistics</a> stats)  throws LBMException 	</td></tr>
+<tr class="separator:a7e7c5864f4222b90207b412a9d7bd025"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
@@ -317,6 +322,35 @@ Protected Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a73b6de167817ed4e72cdd8128d736a93"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">long com.latencybusters.lbm.LBMMonitorReceiver.getSourceType </td>
+          <td>(</td>
+          <td class="paramtype">ByteBuffer&#160;</td>
+          <td class="paramname"><em>attributes</em></td><td>)</td>
+          <td> throws <a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBMException.html">LBMException</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Get the type of source associated with this statistics packet. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">attributes</td><td>A block of data which contains the attributes for the statistics packet. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Value indicating whether the source is normal or IM </dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname"><a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBMException.html">LBMException</a></td><td>if any error occurs. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a class="anchor" id="a867c63cb36708dbb38f1661d4b789c9c"></a>
 <div class="memitem">
 <div class="memproto">
@@ -360,7 +394,7 @@ Protected Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>References <a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBMMonitorStatisticsCallbackObject.html#a053f5a07b39c0a3cb7757cd14081936b">com.latencybusters.lbm.LBMMonitorStatisticsCallbackObject.onReceive()</a>, <a class="el" href="interfacecom_1_1latencybusters_1_1lbm_1_1LBMMonitorStatisticsCallback.html#af98aaa48d457999902cbbdccdc83c132">com.latencybusters.lbm.LBMMonitorStatisticsCallback.onReceive()</a>, <a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBMObjectRecyclerBase.html#ac3a5d4c1104b930218d4c68a6689aeb8">com.latencybusters.lbm.LBMObjectRecyclerBase.retrieveContextStatistics()</a>, <a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBMObjectRecyclerBase.html#a9c3123fcb2cac64ce10b9db625547443">com.latencybusters.lbm.LBMObjectRecyclerBase.retrieveEventQueueStatistics()</a>, <a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBMObjectRecyclerBase.html#af57059f99e3d3fb17b14d23edcbf7a79">com.latencybusters.lbm.LBMObjectRecyclerBase.retrieveImmediateMessageReceiverStatistics()</a>, <a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBMObjectRecyclerBase.html#aec9ea69c3603355f6b965146e3ff582a">com.latencybusters.lbm.LBMObjectRecyclerBase.retrieveImmediateMessageSourceStatistics()</a>, <a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBMObjectRecyclerBase.html#ac23378baa620694ba24b2ce569cd9dfb">com.latencybusters.lbm.LBMObjectRecyclerBase.retrieveReceiverStatistics()</a>, and <a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBMObjectRecyclerBase.html#a097dd5ccc2b2ec82e9ee923ee49313a6">com.latencybusters.lbm.LBMObjectRecyclerBase.retrieveSourceStatistics()</a>.</p>
+<p>References <a class="el" href="interfacecom_1_1latencybusters_1_1lbm_1_1LBMMonitorStatisticsCallback.html#af98aaa48d457999902cbbdccdc83c132">com.latencybusters.lbm.LBMMonitorStatisticsCallback.onReceive()</a>, <a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBMMonitorStatisticsCallbackObject.html#a053f5a07b39c0a3cb7757cd14081936b">com.latencybusters.lbm.LBMMonitorStatisticsCallbackObject.onReceive()</a>, <a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBMObjectRecyclerBase.html#ac3a5d4c1104b930218d4c68a6689aeb8">com.latencybusters.lbm.LBMObjectRecyclerBase.retrieveContextStatistics()</a>, <a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBMObjectRecyclerBase.html#a9c3123fcb2cac64ce10b9db625547443">com.latencybusters.lbm.LBMObjectRecyclerBase.retrieveEventQueueStatistics()</a>, <a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBMObjectRecyclerBase.html#af57059f99e3d3fb17b14d23edcbf7a79">com.latencybusters.lbm.LBMObjectRecyclerBase.retrieveImmediateMessageReceiverStatistics()</a>, <a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBMObjectRecyclerBase.html#aec9ea69c3603355f6b965146e3ff582a">com.latencybusters.lbm.LBMObjectRecyclerBase.retrieveImmediateMessageSourceStatistics()</a>, <a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBMObjectRecyclerBase.html#ac23378baa620694ba24b2ce569cd9dfb">com.latencybusters.lbm.LBMObjectRecyclerBase.retrieveReceiverStatistics()</a>, and <a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBMObjectRecyclerBase.html#a097dd5ccc2b2ec82e9ee923ee49313a6">com.latencybusters.lbm.LBMObjectRecyclerBase.retrieveSourceStatistics()</a>.</p>
 
 </div>
 </div>

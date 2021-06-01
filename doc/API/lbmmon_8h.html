@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">UM C API
-   &#160;<span id="projectnumber">6.13.1</span>
+   &#160;<span id="projectnumber">6.14</span>
    </div>
   </td>
  </tr>
@@ -76,11 +76,17 @@ $(document).ready(function(){initNavTree('lbmmon_8h.html','');});
 </div><!--header-->
 <div class="contents">
 
-<p>Ultra Messaging (UM) Monitoring API.  
+<p>Ultra Messaging (UM) Monitoring API. The "lbmmon.h" header file defines APIs for UM application monitoring, both the send side (application being monitored) and the receive side (application doing the monitoring). The binary code is contained in the "lbm" library (dynamic on Unix: "liblbm.so", static on Unix: "liblbm.a", dynamic only on Windows: "lbm.dll"). See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/API/operations.tag:../Operations/" href="../Operations/monitoringumwiththelbmmonapi.html">Monitoring UM with the lbmmon API</a> for general information on UM monitoring. See <a class="el" href="index.html#umcapi">UM C API</a> for general information on the C API. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/API/design.tag:../Design/" href="../Design/fundamentalconcepts.html">Fundamental Concepts</a> for an introduction to Ultra Messaging.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;stdlib.h&gt;</code><br />
 <code>#include &lt;lbm/lbm.h&gt;</code><br />
+<code>#include &lt;<a class="el" href="um__mon__attributes_8pb-c_8h_source.html">gen/um_mon_attributes.pb-c.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="ump__mon_8pb-c_8h_source.html">gen/ump_mon.pb-c.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="um__mon__control_8pb-c_8h_source.html">gen/um_mon_control.pb-c.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="ums__mon_8pb-c_8h_source.html">gen/ums_mon.pb-c.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="dro__mon_8pb-c_8h_source.html">gen/dro_mon.pb-c.h</a>&gt;</code><br />
 <code>#include &lt;lbm/lbmmonfmtcsv.h&gt;</code><br />
+<code>#include &lt;lbm/lbmmonfmtpb.h&gt;</code><br />
 <code>#include &lt;lbm/lbmmontrlbm.h&gt;</code><br />
 <code>#include &lt;lbm/lbmmontrudp.h&gt;</code><br />
 <code>#include &lt;lbm/lbmmontrlbmsnmp.h&gt;</code><br />
@@ -91,6 +97,8 @@ $(document).ready(function(){initNavTree('lbmmon_8h.html','');});
 Data Structures</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlbmmon__packet__hdr__t__stct.html">lbmmon_packet_hdr_t_stct</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Statistics packet header layout.  <a href="structlbmmon__packet__hdr__t__stct.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlbmmon__packet__attributes__t__stct.html">lbmmon_packet_attributes_t_stct</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlbmmon__attr__block__t__stct.html">lbmmon_attr_block_t_stct</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Statistics attribute block layout. Associated with each statistics message is a set of optional attributes. Any attributes present will immediately follow the packet header.  <a href="structlbmmon__attr__block__t__stct.html#details">More...</a><br /></td></tr>
@@ -119,12 +127,27 @@ Data Structures</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlbmmon__wildcard__rcv__statistics__func__t__stct.html">lbmmon_wildcard_rcv_statistics_func_t_stct</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A structure that holds the callback information for wildcard receiver statistics.  <a href="structlbmmon__wildcard__rcv__statistics__func__t__stct.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlbmmon__umestore__statistics__func__t__stct.html">lbmmon_umestore_statistics_func_t_stct</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A structure that holds the callback information for store statistics.  <a href="structlbmmon__umestore__statistics__func__t__stct.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlbmmon__gateway__statistics__func__t__stct.html">lbmmon_gateway_statistics_func_t_stct</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A structure that holds the callback information for gateway statistics.  <a href="structlbmmon__gateway__statistics__func__t__stct.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlbmmon__passthrough__statistics__func__t__stct.html">lbmmon_passthrough_statistics_func_t_stct</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A structure that holds the callback information for the passthrough format option.  <a href="structlbmmon__passthrough__statistics__func__t__stct.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlbmmon__transport__func__t__stct.html">lbmmon_transport_func_t_stct</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Transport module function pointer container.  <a href="structlbmmon__transport__func__t__stct.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
+<tr class="memitem:a9b59d952d2a1e25789434774e0c45477"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9b59d952d2a1e25789434774e0c45477"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>LBM_GNU_PRAGMA</b>(w)</td></tr>
+<tr class="separator:a9b59d952d2a1e25789434774e0c45477"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5c201f1739dffc075a005f0e85eff4fd"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5c201f1739dffc075a005f0e85eff4fd"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>LBM_GNU_PRAGMA_RESET</b>()</td></tr>
+<tr class="separator:a5c201f1739dffc075a005f0e85eff4fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a25ace5930540adf608f3d107286a87fd"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lbmmon_8h.html#a25ace5930540adf608f3d107286a87fd">LBMMON_ERROR_BASE</a>&#160;&#160;&#160;4096</td></tr>
 <tr class="separator:a25ace5930540adf608f3d107286a87fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adf63ea4e57a9d2e40756ac1329c1c8c2"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lbmmon_8h.html#adf63ea4e57a9d2e40756ac1329c1c8c2">LBMMON_EINVAL</a>&#160;&#160;&#160;(<a class="el" href="lbmmon_8h.html#a25ace5930540adf608f3d107286a87fd">LBMMON_ERROR_BASE</a> + 1)</td></tr>
@@ -155,6 +178,20 @@ Macros</h2></td></tr>
 <tr class="separator:a452aa423323cf938dda576b7fc7d26fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae300adc34e451928e2b7b5a008430b20"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lbmmon_8h.html#ae300adc34e451928e2b7b5a008430b20">LBMMON_PACKET_TYPE_WILDCARD_RECEIVER</a>&#160;&#160;&#160;5</td></tr>
 <tr class="separator:ae300adc34e451928e2b7b5a008430b20"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0bb97aa6a2811c6cd5cfdce731f08a63"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lbmmon_8h.html#a0bb97aa6a2811c6cd5cfdce731f08a63">LBMMON_PACKET_TYPE_UMESTORE</a>&#160;&#160;&#160;6</td></tr>
+<tr class="separator:a0bb97aa6a2811c6cd5cfdce731f08a63"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8570acede343d7038d08aee66c157421"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lbmmon_8h.html#a8570acede343d7038d08aee66c157421">LBMMON_PACKET_TYPE_GATEWAY</a>&#160;&#160;&#160;7</td></tr>
+<tr class="separator:a8570acede343d7038d08aee66c157421"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6ac93894cca69b246fc6e35190d53084"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lbmmon_8h.html#a6ac93894cca69b246fc6e35190d53084">LBMMON_PACKET_TYPE_UMDS</a>&#160;&#160;&#160;8</td></tr>
+<tr class="separator:a6ac93894cca69b246fc6e35190d53084"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a94856f62e62748ab452035c8101c8bc5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lbmmon_8h.html#a94856f62e62748ab452035c8101c8bc5">LBMMON_PACKET_TYPE_CONTROL_MESSAGE</a>&#160;&#160;&#160;9</td></tr>
+<tr class="separator:a94856f62e62748ab452035c8101c8bc5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a10abeb0eb7791257e99cf8087a404a7d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lbmmon_8h.html#a10abeb0eb7791257e99cf8087a404a7d">LBMMON_ATTR_BLOCK_MAGIC</a>&#160;&#160;&#160;0xABCD</td></tr>
+<tr class="separator:a10abeb0eb7791257e99cf8087a404a7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa8410f3617618a9065e1a6b9d1624cb0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lbmmon_8h.html#aa8410f3617618a9065e1a6b9d1624cb0">LBMMON_ATTR_BLOCK_FORMAT_TABLE</a>&#160;&#160;&#160;0</td></tr>
+<tr class="separator:aa8410f3617618a9065e1a6b9d1624cb0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adf61370a5405e977bf92bd053c483f38"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lbmmon_8h.html#adf61370a5405e977bf92bd053c483f38">LBMMON_ATTR_BLOCK_FORMAT_PB</a>&#160;&#160;&#160;1</td></tr>
+<tr class="separator:adf61370a5405e977bf92bd053c483f38"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a35ddf212b003790f3e900b3aa198bec3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lbmmon_8h.html#a35ddf212b003790f3e900b3aa198bec3">LBMMON_ATTR_SENDER_IPV4</a>&#160;&#160;&#160;0</td></tr>
 <tr class="separator:a35ddf212b003790f3e900b3aa198bec3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aff9bd315f8503ad066c5eca2f2a24f0b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lbmmon_8h.html#aff9bd315f8503ad066c5eca2f2a24f0b">LBMMON_ATTR_TIMESTAMP</a>&#160;&#160;&#160;1</td></tr>
@@ -179,6 +216,61 @@ Macros</h2></td></tr>
 <tr class="separator:a1f8af0e7a7c4707cbd0dbe78831317b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9c423fb2c8d4cef4ca3e8d8b38932ac5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lbmmon_8h.html#a9c423fb2c8d4cef4ca3e8d8b38932ac5">LBMMON_ATTR_SOURCE_IM</a>&#160;&#160;&#160;1</td></tr>
 <tr class="separator:a9c423fb2c8d4cef4ca3e8d8b38932ac5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a16c6b0e4507303b51f433fa5f16d2bc2"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lbmmon_8h.html#a16c6b0e4507303b51f433fa5f16d2bc2">LBMMON_FORMAT_CSV_MODULE_ID</a>&#160;&#160;&#160;1</td></tr>
+<tr class="separator:a16c6b0e4507303b51f433fa5f16d2bc2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a337193651e5882ba963aea467f8de94e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lbmmon_8h.html#a337193651e5882ba963aea467f8de94e">LBMMON_FORMAT_PB_MODULE_ID</a>&#160;&#160;&#160;2</td></tr>
+<tr class="separator:a337193651e5882ba963aea467f8de94e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8d6f28bdee7a99b2d757d3be7def6e01"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lbmmon_8h.html#a8d6f28bdee7a99b2d757d3be7def6e01">LBMMON_FORMAT_ATTRIBUTES_PB</a>&#160;&#160;&#160;1</td></tr>
+<tr class="separator:a8d6f28bdee7a99b2d757d3be7def6e01"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af14d3d08b88203fd89fd1e12dc75c2d3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lbmmon_8h.html#af14d3d08b88203fd89fd1e12dc75c2d3">LBMMON_FORMAT_ATTRIBUTES_TABLE</a>&#160;&#160;&#160;2</td></tr>
+<tr class="separator:af14d3d08b88203fd89fd1e12dc75c2d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a29d48cf10a212219095a66a896ce5329"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a29d48cf10a212219095a66a896ce5329"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>MAKE_MODULE_VERSION</b>(format,  version)&#160;&#160;&#160;((unsigned short) ((((unsigned char) format) &lt;&lt; 8) | ((unsigned char) version)))</td></tr>
+<tr class="separator:a29d48cf10a212219095a66a896ce5329"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a287312187727602974c1d34fcedfce9d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lbmmon_8h.html#a287312187727602974c1d34fcedfce9d">MODULE_ID</a>(id)&#160;&#160;&#160;((unsigned char) ((id &amp; 0xff00) &gt;&gt; 8))</td></tr>
+<tr class="separator:a287312187727602974c1d34fcedfce9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7da6fa92e916deee12c607af24629f84"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lbmmon_8h.html#a7da6fa92e916deee12c607af24629f84">MODULE_VERSION</a>(id)&#160;&#160;&#160;((unsigned char) (id &amp; 0xff))</td></tr>
+<tr class="separator:a7da6fa92e916deee12c607af24629f84"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac073dee1b827482f3983dd93eaed8027"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lbmmon_8h.html#ac073dee1b827482f3983dd93eaed8027">LBMMON_FORMAT_PASSTHROUGH_OFF</a>&#160;&#160;&#160;0</td></tr>
+<tr class="separator:ac073dee1b827482f3983dd93eaed8027"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a265a0bad79606bd0882b0eeeae2ad0c0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lbmmon_8h.html#a265a0bad79606bd0882b0eeeae2ad0c0">LBMMON_FORMAT_PASSTHROUGH_ON</a>&#160;&#160;&#160;1</td></tr>
+<tr class="separator:a265a0bad79606bd0882b0eeeae2ad0c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab3b7f95e87b8eeebb9010721d8ae0090"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lbmmon_8h.html#ab3b7f95e87b8eeebb9010721d8ae0090">LBMMON_FORMAT_PASSTHROUGH_CONVERT</a>&#160;&#160;&#160;2</td></tr>
+<tr class="separator:ab3b7f95e87b8eeebb9010721d8ae0090"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a91178cae7174c2583258aac6325a4fef"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lbmmon_8h.html#a91178cae7174c2583258aac6325a4fef">LBMMON_FORMAT_FILTER_OFF</a>&#160;&#160;&#160;0</td></tr>
+<tr class="separator:a91178cae7174c2583258aac6325a4fef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7e0c40fbe54470fae114f1ac18bfd21f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lbmmon_8h.html#a7e0c40fbe54470fae114f1ac18bfd21f">LBMMON_FORMAT_FILTER_ON</a>&#160;&#160;&#160;1</td></tr>
+<tr class="separator:a7e0c40fbe54470fae114f1ac18bfd21f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af5ca4b2bdb98ef4da291adc02ac98242"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lbmmon_8h.html#af5ca4b2bdb98ef4da291adc02ac98242">LBMMON_FORMAT_FILTER_EQ</a>&#160;&#160;&#160;2</td></tr>
+<tr class="separator:af5ca4b2bdb98ef4da291adc02ac98242"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae26224534ba968f50cc5b42261009390"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lbmmon_8h.html#ae26224534ba968f50cc5b42261009390">LBMMON_FORMAT_FILTER_NE</a>&#160;&#160;&#160;3</td></tr>
+<tr class="separator:ae26224534ba968f50cc5b42261009390"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af0846f5b246636408d734ba797a47acb"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lbmmon_8h.html#af0846f5b246636408d734ba797a47acb">LBMMON_FORMAT_FILTER_LT</a>&#160;&#160;&#160;4</td></tr>
+<tr class="separator:af0846f5b246636408d734ba797a47acb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8e3d87ef6c33dbb1fd47f41d551c25d0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lbmmon_8h.html#a8e3d87ef6c33dbb1fd47f41d551c25d0">LBMMON_FORMAT_FILTER_GT</a>&#160;&#160;&#160;5</td></tr>
+<tr class="separator:a8e3d87ef6c33dbb1fd47f41d551c25d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab8ef7f1c01d1da675cdd9438f5922491"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lbmmon_8h.html#ab8ef7f1c01d1da675cdd9438f5922491">LBMMON_FORMAT_SELECT_EQ</a>&#160;&#160;&#160;6</td></tr>
+<tr class="separator:ab8ef7f1c01d1da675cdd9438f5922491"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac24427f54238df445ddd6f023e2b963b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lbmmon_8h.html#ac24427f54238df445ddd6f023e2b963b">LBMMON_FORMAT_SELECT_NE</a>&#160;&#160;&#160;7</td></tr>
+<tr class="separator:ac24427f54238df445ddd6f023e2b963b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a150296ad35446cf5369c6691963caf6a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lbmmon_8h.html#a150296ad35446cf5369c6691963caf6a">LBMMON_FORMAT_SELECT_LT</a>&#160;&#160;&#160;8</td></tr>
+<tr class="separator:a150296ad35446cf5369c6691963caf6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acd374512abf6c5d301a566e502d20a5c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lbmmon_8h.html#acd374512abf6c5d301a566e502d20a5c">LBMMON_FORMAT_SELECT_GT</a>&#160;&#160;&#160;9</td></tr>
+<tr class="separator:acd374512abf6c5d301a566e502d20a5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac513d54528d2763f897863995cb2e7d9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lbmmon_8h.html#ac513d54528d2763f897863995cb2e7d9">LBMMON_FORMAT_SELECT_MATCH</a>&#160;&#160;&#160;10</td></tr>
+<tr class="separator:ac513d54528d2763f897863995cb2e7d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adc258c84435fc84094d6d3c640c9a048"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lbmmon_8h.html#adc258c84435fc84094d6d3c640c9a048">LBMMON_FORMAT_SELECT_MATCH_REGX</a>&#160;&#160;&#160;11</td></tr>
+<tr class="separator:adc258c84435fc84094d6d3c640c9a048"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a57b11ffc78d3df723e3d6f70d400d6fe"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lbmmon_8h.html#a57b11ffc78d3df723e3d6f70d400d6fe">LBMMON_FORMAT_DESERIALIZE_OK</a>&#160;&#160;&#160;0</td></tr>
+<tr class="separator:a57b11ffc78d3df723e3d6f70d400d6fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4f28d6f6bf8e4830d9e537dbb2318e3f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lbmmon_8h.html#a4f28d6f6bf8e4830d9e537dbb2318e3f">LBMMON_FORMAT_DESERIALIZE_PASSTHROUGH</a>&#160;&#160;&#160;1</td></tr>
+<tr class="separator:a4f28d6f6bf8e4830d9e537dbb2318e3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff6712235448731e953b85b08f9ee183"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lbmmon_8h.html#aff6712235448731e953b85b08f9ee183">LBMMON_FORMAT_DESERIALIZE_CONVERT_PASSTHROUGH</a>&#160;&#160;&#160;2</td></tr>
+<tr class="separator:aff6712235448731e953b85b08f9ee183"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5bd70f9862b6a7b177c7c1442c94bde7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lbmmon_8h.html#a5bd70f9862b6a7b177c7c1442c94bde7">LBMMON_FORMAT_DESERIALIZE_FAILURE</a>&#160;&#160;&#160;-1</td></tr>
+<tr class="separator:a5bd70f9862b6a7b177c7c1442c94bde7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adb899ed41484d347f6f4eb07de61f444"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lbmmon_8h.html#adb899ed41484d347f6f4eb07de61f444">LBMMON_FORMAT_DESERIALIZE_TOO_SMALL</a>&#160;&#160;&#160;-2</td></tr>
+<tr class="separator:adb899ed41484d347f6f4eb07de61f444"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abdad215dcd32094123adafeb944ba7e7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lbmmon_8h.html#abdad215dcd32094123adafeb944ba7e7">LBMMON_RCTL_RECEIVER_CALLBACK</a>&#160;&#160;&#160;0</td></tr>
 <tr class="separator:abdad215dcd32094123adafeb944ba7e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a33a61b3545da477948fe8724bd8421a9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lbmmon_8h.html#a33a61b3545da477948fe8724bd8421a9">LBMMON_RCTL_SOURCE_CALLBACK</a>&#160;&#160;&#160;1</td></tr>
@@ -191,12 +283,21 @@ Macros</h2></td></tr>
 <tr class="separator:a82958dc09f6740e060d5192a84a1deee"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad6c7a4ea2989f19d81f4665ecad28855"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lbmmon_8h.html#ad6c7a4ea2989f19d81f4665ecad28855">LBMMON_RCTL_WILDCARD_RECEIVER_CALLBACK</a>&#160;&#160;&#160;5</td></tr>
 <tr class="separator:ad6c7a4ea2989f19d81f4665ecad28855"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3a43a544161fbfeead526da7ad960b98"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lbmmon_8h.html#a3a43a544161fbfeead526da7ad960b98">LBMMON_RCTL_UMESTORE_CALLBACK</a>&#160;&#160;&#160;6</td></tr>
+<tr class="separator:a3a43a544161fbfeead526da7ad960b98"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a84caef2b9722b9a65879452709a3b1b2"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lbmmon_8h.html#a84caef2b9722b9a65879452709a3b1b2">LBMMON_RCTL_GATEWAY_CALLBACK</a>&#160;&#160;&#160;7</td></tr>
+<tr class="separator:a84caef2b9722b9a65879452709a3b1b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4a1e8fe4cdefa8f72f81a8b424e57d4b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lbmmon_8h.html#a4a1e8fe4cdefa8f72f81a8b424e57d4b">LBMMON_RCTL_PASSTHROUGH_CALLBACK</a>&#160;&#160;&#160;8</td></tr>
+<tr class="separator:a4a1e8fe4cdefa8f72f81a8b424e57d4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
 <tr class="memitem:a8c4d0c84d52e772d7f25911732f41362"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structlbmmon__packet__hdr__t__stct.html">lbmmon_packet_hdr_t_stct</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lbmmon_8h.html#a8c4d0c84d52e772d7f25911732f41362">lbmmon_packet_hdr_t</a></td></tr>
 <tr class="memdesc:a8c4d0c84d52e772d7f25911732f41362"><td class="mdescLeft">&#160;</td><td class="mdescRight">Statistics packet header layout.  <a href="#a8c4d0c84d52e772d7f25911732f41362">More...</a><br /></td></tr>
 <tr class="separator:a8c4d0c84d52e772d7f25911732f41362"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a98e78d90eb0374bb19d8ad2b4b57fe36"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a98e78d90eb0374bb19d8ad2b4b57fe36"></a>
+typedef struct <a class="el" href="structlbmmon__packet__attributes__t__stct.html">lbmmon_packet_attributes_t_stct</a>&#160;</td><td class="memItemRight" valign="bottom"><b>lbmmon_packet_attributes_t</b></td></tr>
+<tr class="separator:a98e78d90eb0374bb19d8ad2b4b57fe36"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8cb7ab02f35a2e8ee6030af0aa1125bc"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8cb7ab02f35a2e8ee6030af0aa1125bc"></a>
 typedef struct <a class="el" href="structlbmmon__attr__block__t__stct.html">lbmmon_attr_block_t_stct</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lbmmon_8h.html#a8cb7ab02f35a2e8ee6030af0aa1125bc">lbmmon_attr_block_t</a></td></tr>
 <tr class="memdesc:a8cb7ab02f35a2e8ee6030af0aa1125bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Statistics attribute block layout. Associated with each statistics message is a set of optional attributes. Any attributes present will immediately follow the packet header. <br /></td></tr>
@@ -208,42 +309,66 @@ typedef struct <a class="el" href="structlbmmon__attr__entry__t__stct.html">lbmm
 <tr class="memitem:a892e193659739d09c1f9e9d2749fc522"><td class="memItemLeft" align="right" valign="top">typedef int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lbmmon_8h.html#a892e193659739d09c1f9e9d2749fc522">lbmmon_format_init_t</a>) (void **FormatClientData, const void *FormatOptions)</td></tr>
 <tr class="memdesc:a892e193659739d09c1f9e9d2749fc522"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to initialize a format module.  <a href="#a892e193659739d09c1f9e9d2749fc522">More...</a><br /></td></tr>
 <tr class="separator:a892e193659739d09c1f9e9d2749fc522"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0194e2ffffb61d863b2afe5b7964e0ed"><td class="memItemLeft" align="right" valign="top">typedef int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lbmmon_8h.html#a0194e2ffffb61d863b2afe5b7964e0ed">lbmmon_rcv_format_serialize_t</a>) (char *Destination, size_t *Size, unsigned short *ModuleID, const <a class="el" href="lbm_8h.html#a9bdc2628dece44f0675b0bdebfb3d52c">lbm_rcv_transport_stats_t</a> *Statistics, void *FormatClientData)</td></tr>
-<tr class="memdesc:a0194e2ffffb61d863b2afe5b7964e0ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to serialize an lbm_rcv_transport_stats_t structure.  <a href="#a0194e2ffffb61d863b2afe5b7964e0ed">More...</a><br /></td></tr>
-<tr class="separator:a0194e2ffffb61d863b2afe5b7964e0ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1d3503a54e1e27d15d4708142d76e96d"><td class="memItemLeft" align="right" valign="top">typedef int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lbmmon_8h.html#a1d3503a54e1e27d15d4708142d76e96d">lbmmon_src_format_serialize_t</a>) (char *Destination, size_t *Size, unsigned short *ModuleID, const <a class="el" href="lbm_8h.html#a0a0c54fd8e9a7008f1db0126373fca92">lbm_src_transport_stats_t</a> *Statistics, void *FormatClientData)</td></tr>
-<tr class="memdesc:a1d3503a54e1e27d15d4708142d76e96d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to serialize an lbm_src_transport_stats_t structure.  <a href="#a1d3503a54e1e27d15d4708142d76e96d">More...</a><br /></td></tr>
-<tr class="separator:a1d3503a54e1e27d15d4708142d76e96d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3f9cd89a2292bd857ce393dcdf13d782"><td class="memItemLeft" align="right" valign="top">typedef int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lbmmon_8h.html#a3f9cd89a2292bd857ce393dcdf13d782">lbmmon_evq_format_serialize_t</a>) (char *Destination, size_t *Size, unsigned short *ModuleID, const <a class="el" href="lbm_8h.html#aa533d6a23589618291f552e988a426f6">lbm_event_queue_stats_t</a> *Statistics, void *FormatClientData)</td></tr>
-<tr class="memdesc:a3f9cd89a2292bd857ce393dcdf13d782"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to serialize an lbm_event_queue_stats_t structure.  <a href="#a3f9cd89a2292bd857ce393dcdf13d782">More...</a><br /></td></tr>
-<tr class="separator:a3f9cd89a2292bd857ce393dcdf13d782"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1e654b3d6c93709000d26f6498643049"><td class="memItemLeft" align="right" valign="top">typedef int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lbmmon_8h.html#a1e654b3d6c93709000d26f6498643049">lbmmon_ctx_format_serialize_t</a>) (char *Destination, size_t *Size, unsigned short *ModuleID, const <a class="el" href="lbm_8h.html#ab86e72a3f715d7c8ddc49c6431455839">lbm_context_stats_t</a> *Statistics, void *FormatClientData)</td></tr>
-<tr class="memdesc:a1e654b3d6c93709000d26f6498643049"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to serialize an lbm_context_stats_t structure.  <a href="#a1e654b3d6c93709000d26f6498643049">More...</a><br /></td></tr>
-<tr class="separator:a1e654b3d6c93709000d26f6498643049"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a699dbdc53d6fcb140f8f45d213f158c9"><td class="memItemLeft" align="right" valign="top">typedef int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lbmmon_8h.html#a699dbdc53d6fcb140f8f45d213f158c9">lbmmon_rcv_format_deserialize_t</a>) (<a class="el" href="lbm_8h.html#a9bdc2628dece44f0675b0bdebfb3d52c">lbm_rcv_transport_stats_t</a> *Statistics, const char *Source, size_t Length, unsigned short ModuleID, void *FormatClientData)</td></tr>
-<tr class="memdesc:a699dbdc53d6fcb140f8f45d213f158c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to deserialize a buffer into an lbm_rcv_transport_stats_t structure.  <a href="#a699dbdc53d6fcb140f8f45d213f158c9">More...</a><br /></td></tr>
-<tr class="separator:a699dbdc53d6fcb140f8f45d213f158c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab75ba5cb87f31ae859f016fd35e95065"><td class="memItemLeft" align="right" valign="top">typedef int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lbmmon_8h.html#ab75ba5cb87f31ae859f016fd35e95065">lbmmon_src_format_deserialize_t</a>) (<a class="el" href="lbm_8h.html#a0a0c54fd8e9a7008f1db0126373fca92">lbm_src_transport_stats_t</a> *Statistics, const char *Source, size_t Length, unsigned short ModuleID, void *FormatClientData)</td></tr>
-<tr class="memdesc:ab75ba5cb87f31ae859f016fd35e95065"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to deserialize a buffer into an lbm_src_transport_stats_t structure.  <a href="#ab75ba5cb87f31ae859f016fd35e95065">More...</a><br /></td></tr>
-<tr class="separator:ab75ba5cb87f31ae859f016fd35e95065"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a57db47f9ee78fc1977d73cce5ad5b397"><td class="memItemLeft" align="right" valign="top">typedef int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lbmmon_8h.html#a57db47f9ee78fc1977d73cce5ad5b397">lbmmon_evq_format_deserialize_t</a>) (<a class="el" href="lbm_8h.html#aa533d6a23589618291f552e988a426f6">lbm_event_queue_stats_t</a> *Statistics, const char *Source, size_t Length, unsigned short ModuleID, void *FormatClientData)</td></tr>
-<tr class="memdesc:a57db47f9ee78fc1977d73cce5ad5b397"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to deserialize a buffer into an lbm_event_queue_stats_t structure.  <a href="#a57db47f9ee78fc1977d73cce5ad5b397">More...</a><br /></td></tr>
-<tr class="separator:a57db47f9ee78fc1977d73cce5ad5b397"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a94ac06228b336103342ac13fbb1f759c"><td class="memItemLeft" align="right" valign="top">typedef int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lbmmon_8h.html#a94ac06228b336103342ac13fbb1f759c">lbmmon_ctx_format_deserialize_t</a>) (<a class="el" href="lbm_8h.html#ab86e72a3f715d7c8ddc49c6431455839">lbm_context_stats_t</a> *Statistics, const char *Source, size_t Length, unsigned short ModuleID, void *FormatClientData)</td></tr>
-<tr class="memdesc:a94ac06228b336103342ac13fbb1f759c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to deserialize a buffer into an lbm_context_stats_t structure.  <a href="#a94ac06228b336103342ac13fbb1f759c">More...</a><br /></td></tr>
-<tr class="separator:a94ac06228b336103342ac13fbb1f759c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a59ec90403f5012d550eb938b45e6cb97"><td class="memItemLeft" align="right" valign="top">typedef int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lbmmon_8h.html#a59ec90403f5012d550eb938b45e6cb97">lbmmon_rcv_topic_format_serialize_t</a>) (char *Destination, size_t *Size, unsigned short *ModuleID, const char *Topic, <a class="el" href="lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a> SourceCount, const <a class="el" href="lbm_8h.html#a5c096e7dbde94629387c31b6378e2a55">lbm_rcv_topic_stats_t</a> *Sources, void *FormatClientData)</td></tr>
-<tr class="memdesc:a59ec90403f5012d550eb938b45e6cb97"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to serialize receiver topic statistics.  <a href="#a59ec90403f5012d550eb938b45e6cb97">More...</a><br /></td></tr>
-<tr class="separator:a59ec90403f5012d550eb938b45e6cb97"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9e46eb12d98bc447021b5432004653da"><td class="memItemLeft" align="right" valign="top">typedef int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lbmmon_8h.html#a9e46eb12d98bc447021b5432004653da">lbmmon_rcv_topic_format_deserialize_t</a>) (size_t *Count, <a class="el" href="lbm_8h.html#a5c096e7dbde94629387c31b6378e2a55">lbm_rcv_topic_stats_t</a> *Statistics, const char *Source, size_t Length, unsigned short ModuleID, void *FormatClientData)</td></tr>
-<tr class="memdesc:a9e46eb12d98bc447021b5432004653da"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to deserialize a buffer into an <a class="el" href="lbm_8h.html#a5c096e7dbde94629387c31b6378e2a55" title="Structure that holds statistics for a receiver topic. ">lbm_rcv_topic_stats_t</a> structure.  <a href="#a9e46eb12d98bc447021b5432004653da">More...</a><br /></td></tr>
-<tr class="separator:a9e46eb12d98bc447021b5432004653da"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a032f6ca4c4bc570d5a6b43ac0b9cdcbe"><td class="memItemLeft" align="right" valign="top">typedef int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lbmmon_8h.html#a032f6ca4c4bc570d5a6b43ac0b9cdcbe">lbmmon_wildcard_rcv_format_serialize_t</a>) (char *Destination, size_t *Size, unsigned short *ModuleID, const <a class="el" href="lbm_8h.html#a5d1768dd4fdbcf6b6d415e0839622460">lbm_wildcard_rcv_stats_t</a> *Statistics, void *FormatClientData)</td></tr>
-<tr class="memdesc:a032f6ca4c4bc570d5a6b43ac0b9cdcbe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to serialize wildcard receiver statistics.  <a href="#a032f6ca4c4bc570d5a6b43ac0b9cdcbe">More...</a><br /></td></tr>
-<tr class="separator:a032f6ca4c4bc570d5a6b43ac0b9cdcbe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac0c4f7ee1700a54011cb0000ef279c8f"><td class="memItemLeft" align="right" valign="top">typedef int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lbmmon_8h.html#ac0c4f7ee1700a54011cb0000ef279c8f">lbmmon_wildcard_rcv_format_deserialize_t</a>) (<a class="el" href="lbm_8h.html#a5d1768dd4fdbcf6b6d415e0839622460">lbm_wildcard_rcv_stats_t</a> *Statistics, const char *Source, size_t Length, unsigned short ModuleID, void *FormatClientData)</td></tr>
-<tr class="memdesc:ac0c4f7ee1700a54011cb0000ef279c8f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to deserialize a buffer into an <a class="el" href="lbm_8h.html#a5d1768dd4fdbcf6b6d415e0839622460" title="Structure that holds statistics for a wildcard receiver. ">lbm_wildcard_rcv_stats_t</a> structure.  <a href="#ac0c4f7ee1700a54011cb0000ef279c8f">More...</a><br /></td></tr>
-<tr class="separator:ac0c4f7ee1700a54011cb0000ef279c8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae3f40677238efc3093585802835f5731"><td class="memItemLeft" align="right" valign="top">typedef int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lbmmon_8h.html#ae3f40677238efc3093585802835f5731">lbmmon_format_apply_options_t</a>) (void *FormatClientData, const void *FormatOptions)</td></tr>
+<tr class="memdesc:ae3f40677238efc3093585802835f5731"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to apply options to a format module at startup or dynamically to a running system.  <a href="#ae3f40677238efc3093585802835f5731">More...</a><br /></td></tr>
+<tr class="separator:ae3f40677238efc3093585802835f5731"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a26488c92fa1b89ea5f8d437f84272085"><td class="memItemLeft" align="right" valign="top">typedef int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lbmmon_8h.html#a26488c92fa1b89ea5f8d437f84272085">lbmmon_rcv_format_serialize_t</a>) (char *Destination, size_t *Size, unsigned short *ModuleID, const <a class="el" href="structlbmmon__packet__attributes__t__stct.html">lbmmon_packet_attributes_t</a> *Attributes, const <a class="el" href="lbm_8h.html#a9bdc2628dece44f0675b0bdebfb3d52c">lbm_rcv_transport_stats_t</a> *Statistics, void *FormatClientData)</td></tr>
+<tr class="memdesc:a26488c92fa1b89ea5f8d437f84272085"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to serialize an lbm_rcv_transport_stats_t structure.  <a href="#a26488c92fa1b89ea5f8d437f84272085">More...</a><br /></td></tr>
+<tr class="separator:a26488c92fa1b89ea5f8d437f84272085"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5b2f6e7028c8ed07c22e7942908ade44"><td class="memItemLeft" align="right" valign="top">typedef int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lbmmon_8h.html#a5b2f6e7028c8ed07c22e7942908ade44">lbmmon_src_format_serialize_t</a>) (char *Destination, size_t *Size, unsigned short *ModuleID, const <a class="el" href="structlbmmon__packet__attributes__t__stct.html">lbmmon_packet_attributes_t</a> *Attributes, const <a class="el" href="lbm_8h.html#a0a0c54fd8e9a7008f1db0126373fca92">lbm_src_transport_stats_t</a> *Statistics, void *FormatClientData)</td></tr>
+<tr class="memdesc:a5b2f6e7028c8ed07c22e7942908ade44"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to serialize an lbm_src_transport_stats_t structure.  <a href="#a5b2f6e7028c8ed07c22e7942908ade44">More...</a><br /></td></tr>
+<tr class="separator:a5b2f6e7028c8ed07c22e7942908ade44"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aafaaa6280ca6907e15265a3f6a6e542b"><td class="memItemLeft" align="right" valign="top">typedef int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lbmmon_8h.html#aafaaa6280ca6907e15265a3f6a6e542b">lbmmon_evq_format_serialize_t</a>) (char *Destination, size_t *Size, unsigned short *ModuleID, const <a class="el" href="structlbmmon__packet__attributes__t__stct.html">lbmmon_packet_attributes_t</a> *Attributes, const <a class="el" href="lbm_8h.html#aa533d6a23589618291f552e988a426f6">lbm_event_queue_stats_t</a> *Statistics, void *FormatClientData)</td></tr>
+<tr class="memdesc:aafaaa6280ca6907e15265a3f6a6e542b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to serialize an lbm_event_queue_stats_t structure.  <a href="#aafaaa6280ca6907e15265a3f6a6e542b">More...</a><br /></td></tr>
+<tr class="separator:aafaaa6280ca6907e15265a3f6a6e542b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afed3e5bd7937021e01d1f70a77a3f5e4"><td class="memItemLeft" align="right" valign="top">typedef int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lbmmon_8h.html#afed3e5bd7937021e01d1f70a77a3f5e4">lbmmon_ctx_format_serialize_t</a>) (char *Destination, size_t *Size, unsigned short *ModuleID, const <a class="el" href="structlbmmon__packet__attributes__t__stct.html">lbmmon_packet_attributes_t</a> *Attributes, const <a class="el" href="lbm_8h.html#ab86e72a3f715d7c8ddc49c6431455839">lbm_context_stats_t</a> *Statistics, void *FormatClientData)</td></tr>
+<tr class="memdesc:afed3e5bd7937021e01d1f70a77a3f5e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to serialize an lbm_context_stats_t structure.  <a href="#afed3e5bd7937021e01d1f70a77a3f5e4">More...</a><br /></td></tr>
+<tr class="separator:afed3e5bd7937021e01d1f70a77a3f5e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab4f264e24dbfea328c6dd49a8af6f184"><td class="memItemLeft" align="right" valign="top">typedef int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lbmmon_8h.html#ab4f264e24dbfea328c6dd49a8af6f184">lbmmon_rcv_format_deserialize_t</a>) (<a class="el" href="structlbmmon__packet__attributes__t__stct.html">lbmmon_packet_attributes_t</a> *Attributes, <a class="el" href="lbm_8h.html#a9bdc2628dece44f0675b0bdebfb3d52c">lbm_rcv_transport_stats_t</a> *Statistics, const char *Source, size_t Length, unsigned short ModuleID, void *FormatClientData)</td></tr>
+<tr class="memdesc:ab4f264e24dbfea328c6dd49a8af6f184"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to deserialize a buffer into an lbm_rcv_transport_stats_t structure.  <a href="#ab4f264e24dbfea328c6dd49a8af6f184">More...</a><br /></td></tr>
+<tr class="separator:ab4f264e24dbfea328c6dd49a8af6f184"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac672d6b9e052d000d3bddbc6fb04135c"><td class="memItemLeft" align="right" valign="top">typedef int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lbmmon_8h.html#ac672d6b9e052d000d3bddbc6fb04135c">lbmmon_src_format_deserialize_t</a>) (<a class="el" href="structlbmmon__packet__attributes__t__stct.html">lbmmon_packet_attributes_t</a> *Attributes, <a class="el" href="lbm_8h.html#a0a0c54fd8e9a7008f1db0126373fca92">lbm_src_transport_stats_t</a> *Statistics, const char *Source, size_t Length, unsigned short ModuleID, void *FormatClientData)</td></tr>
+<tr class="memdesc:ac672d6b9e052d000d3bddbc6fb04135c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to deserialize a buffer into an lbm_src_transport_stats_t structure.  <a href="#ac672d6b9e052d000d3bddbc6fb04135c">More...</a><br /></td></tr>
+<tr class="separator:ac672d6b9e052d000d3bddbc6fb04135c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abc14151e245299bb43e289da6fd86834"><td class="memItemLeft" align="right" valign="top">typedef int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lbmmon_8h.html#abc14151e245299bb43e289da6fd86834">lbmmon_evq_format_deserialize_t</a>) (<a class="el" href="structlbmmon__packet__attributes__t__stct.html">lbmmon_packet_attributes_t</a> *Attributes, <a class="el" href="lbm_8h.html#aa533d6a23589618291f552e988a426f6">lbm_event_queue_stats_t</a> *Statistics, const char *Source, size_t Length, unsigned short ModuleID, void *FormatClientData)</td></tr>
+<tr class="memdesc:abc14151e245299bb43e289da6fd86834"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to deserialize a buffer into an lbm_event_queue_stats_t structure.  <a href="#abc14151e245299bb43e289da6fd86834">More...</a><br /></td></tr>
+<tr class="separator:abc14151e245299bb43e289da6fd86834"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1e9abb865fbf0af4f5e1946f9feee107"><td class="memItemLeft" align="right" valign="top">typedef int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lbmmon_8h.html#a1e9abb865fbf0af4f5e1946f9feee107">lbmmon_ctx_format_deserialize_t</a>) (<a class="el" href="structlbmmon__packet__attributes__t__stct.html">lbmmon_packet_attributes_t</a> *Attributes, <a class="el" href="lbm_8h.html#ab86e72a3f715d7c8ddc49c6431455839">lbm_context_stats_t</a> *Statistics, const char *Source, size_t Length, unsigned short ModuleID, void *FormatClientData)</td></tr>
+<tr class="memdesc:a1e9abb865fbf0af4f5e1946f9feee107"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to deserialize a buffer into an lbm_context_stats_t structure.  <a href="#a1e9abb865fbf0af4f5e1946f9feee107">More...</a><br /></td></tr>
+<tr class="separator:a1e9abb865fbf0af4f5e1946f9feee107"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a85535d03bb1a42aed4bf1b16d1d56665"><td class="memItemLeft" align="right" valign="top">typedef int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lbmmon_8h.html#a85535d03bb1a42aed4bf1b16d1d56665">lbmmon_rcv_topic_format_serialize_t</a>) (char *Destination, size_t *Size, unsigned short *ModuleID, const <a class="el" href="structlbmmon__packet__attributes__t__stct.html">lbmmon_packet_attributes_t</a> *Attributes, const char *Topic, <a class="el" href="lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a> SourceCount, const <a class="el" href="lbm_8h.html#a5c096e7dbde94629387c31b6378e2a55">lbm_rcv_topic_stats_t</a> *Sources, void *FormatClientData)</td></tr>
+<tr class="memdesc:a85535d03bb1a42aed4bf1b16d1d56665"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to serialize receiver topic statistics.  <a href="#a85535d03bb1a42aed4bf1b16d1d56665">More...</a><br /></td></tr>
+<tr class="separator:a85535d03bb1a42aed4bf1b16d1d56665"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af47b9b12c883d6a7f5689fd63c435c78"><td class="memItemLeft" align="right" valign="top">typedef int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lbmmon_8h.html#af47b9b12c883d6a7f5689fd63c435c78">lbmmon_rcv_topic_format_deserialize_t</a>) (<a class="el" href="structlbmmon__packet__attributes__t__stct.html">lbmmon_packet_attributes_t</a> *Attributes, size_t *Count, <a class="el" href="lbm_8h.html#a5c096e7dbde94629387c31b6378e2a55">lbm_rcv_topic_stats_t</a> *Statistics, const char *Source, size_t Length, unsigned short ModuleID, void *FormatClientData)</td></tr>
+<tr class="memdesc:af47b9b12c883d6a7f5689fd63c435c78"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to deserialize a buffer into an <a class="el" href="lbm_8h.html#a5c096e7dbde94629387c31b6378e2a55" title="Structure that holds statistics for a receiver topic. ">lbm_rcv_topic_stats_t</a> structure.  <a href="#af47b9b12c883d6a7f5689fd63c435c78">More...</a><br /></td></tr>
+<tr class="separator:af47b9b12c883d6a7f5689fd63c435c78"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af21d9cb03baa2f10f6f244c2409e90a7"><td class="memItemLeft" align="right" valign="top">typedef int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lbmmon_8h.html#af21d9cb03baa2f10f6f244c2409e90a7">lbmmon_wildcard_rcv_format_serialize_t</a>) (char *Destination, size_t *Size, unsigned short *ModuleID, const <a class="el" href="structlbmmon__packet__attributes__t__stct.html">lbmmon_packet_attributes_t</a> *Attributes, const <a class="el" href="lbm_8h.html#a5d1768dd4fdbcf6b6d415e0839622460">lbm_wildcard_rcv_stats_t</a> *Statistics, void *FormatClientData)</td></tr>
+<tr class="memdesc:af21d9cb03baa2f10f6f244c2409e90a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to serialize wildcard receiver statistics.  <a href="#af21d9cb03baa2f10f6f244c2409e90a7">More...</a><br /></td></tr>
+<tr class="separator:af21d9cb03baa2f10f6f244c2409e90a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1f4451c5bac9e473fd440466d01b1e35"><td class="memItemLeft" align="right" valign="top">typedef int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lbmmon_8h.html#a1f4451c5bac9e473fd440466d01b1e35">lbmmon_wildcard_rcv_format_deserialize_t</a>) (<a class="el" href="structlbmmon__packet__attributes__t__stct.html">lbmmon_packet_attributes_t</a> *Attributes, <a class="el" href="lbm_8h.html#a5d1768dd4fdbcf6b6d415e0839622460">lbm_wildcard_rcv_stats_t</a> *Statistics, const char *Source, size_t Length, unsigned short ModuleID, void *FormatClientData)</td></tr>
+<tr class="memdesc:a1f4451c5bac9e473fd440466d01b1e35"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to deserialize a buffer into an <a class="el" href="lbm_8h.html#a5d1768dd4fdbcf6b6d415e0839622460" title="Structure that holds statistics for a wildcard receiver. ">lbm_wildcard_rcv_stats_t</a> structure.  <a href="#a1f4451c5bac9e473fd440466d01b1e35">More...</a><br /></td></tr>
+<tr class="separator:a1f4451c5bac9e473fd440466d01b1e35"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa457a0197e5f0602a4c6154a501fc114"><td class="memItemLeft" align="right" valign="top">typedef int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lbmmon_8h.html#aa457a0197e5f0602a4c6154a501fc114">lbmmon_umestore_format_serialize_t</a>) (char *Destination, size_t *Size, unsigned short *ModuleID, const <a class="el" href="structlbmmon__packet__attributes__t__stct.html">lbmmon_packet_attributes_t</a> *Attributes, Lbmmon__UMPMonMsg *StoreMsg, void *FormatClientData)</td></tr>
+<tr class="memdesc:aa457a0197e5f0602a4c6154a501fc114"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to serialize store statistics.  <a href="#aa457a0197e5f0602a4c6154a501fc114">More...</a><br /></td></tr>
+<tr class="separator:aa457a0197e5f0602a4c6154a501fc114"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac21e7f1ae89a368b57f1cdd3ade89e6c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac21e7f1ae89a368b57f1cdd3ade89e6c"></a>
+typedef int(*&#160;</td><td class="memItemRight" valign="bottom"><b>lbmmon_umestore_format_deserialize_t</b>) (<a class="el" href="structlbmmon__packet__attributes__t__stct.html">lbmmon_packet_attributes_t</a> *Attributes, Lbmmon__UMPMonMsg **StoreMsg, const char *Source, size_t Length, unsigned short ModuleID, void *FormatClientData)</td></tr>
+<tr class="separator:ac21e7f1ae89a368b57f1cdd3ade89e6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9efafb316135c3c30e8b21433c7995a2"><td class="memItemLeft" align="right" valign="top">typedef char *(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lbmmon_8h.html#a9efafb316135c3c30e8b21433c7995a2">lbmmon_umestore_filter_options_t</a>) (const char *FormatOptions)</td></tr>
+<tr class="memdesc:a9efafb316135c3c30e8b21433c7995a2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to return the store filter options from a format module.  <a href="#a9efafb316135c3c30e8b21433c7995a2">More...</a><br /></td></tr>
+<tr class="separator:a9efafb316135c3c30e8b21433c7995a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3f9eba3e35f3fe2073ad553299a94e3b"><td class="memItemLeft" align="right" valign="top">typedef int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lbmmon_8h.html#a3f9eba3e35f3fe2073ad553299a94e3b">lbmmon_umestore_free_unpacked_t</a>) (Lbmmon__UMPMonMsg *StoreMsg)</td></tr>
+<tr class="memdesc:a3f9eba3e35f3fe2073ad553299a94e3b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to free an unpacked Lbmmon__UMPMonMsg structure.  <a href="#a3f9eba3e35f3fe2073ad553299a94e3b">More...</a><br /></td></tr>
+<tr class="separator:a3f9eba3e35f3fe2073ad553299a94e3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab134c735957f9902857534ffe043ac0a"><td class="memItemLeft" align="right" valign="top">typedef int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lbmmon_8h.html#ab134c735957f9902857534ffe043ac0a">lbmmon_gateway_format_serialize_t</a>) (char *Destination, size_t *Size, unsigned short *ModuleID, const <a class="el" href="structlbmmon__packet__attributes__t__stct.html">lbmmon_packet_attributes_t</a> *Attributes, Lbmmon__DROMonMsg *GatewayMsg, void *FormatClientData)</td></tr>
+<tr class="memdesc:ab134c735957f9902857534ffe043ac0a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to serialize gateway statistics.  <a href="#ab134c735957f9902857534ffe043ac0a">More...</a><br /></td></tr>
+<tr class="separator:ab134c735957f9902857534ffe043ac0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4b2882ef8390034e10caebfb301b5fdf"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4b2882ef8390034e10caebfb301b5fdf"></a>
+typedef int(*&#160;</td><td class="memItemRight" valign="bottom"><b>lbmmon_gateway_format_deserialize_t</b>) (<a class="el" href="structlbmmon__packet__attributes__t__stct.html">lbmmon_packet_attributes_t</a> *Attributes, Lbmmon__DROMonMsg **GatewayMsg, const char *Source, size_t Length, unsigned short ModuleID, void *FormatClientData)</td></tr>
+<tr class="separator:a4b2882ef8390034e10caebfb301b5fdf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0c3b58c693f44356038a66dada2f228c"><td class="memItemLeft" align="right" valign="top">typedef int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lbmmon_8h.html#a0c3b58c693f44356038a66dada2f228c">lbmmon_gateway_free_unpacked_t</a>) (Lbmmon__DROMonMsg *GatewayMsg)</td></tr>
+<tr class="memdesc:a0c3b58c693f44356038a66dada2f228c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to free an unpacked Lbmmon__DROMonMsg structure.  <a href="#a0c3b58c693f44356038a66dada2f228c">More...</a><br /></td></tr>
+<tr class="separator:a0c3b58c693f44356038a66dada2f228c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9b83d5497974b1cd21fc31cb1d184451"><td class="memItemLeft" align="right" valign="top">typedef int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lbmmon_8h.html#a9b83d5497974b1cd21fc31cb1d184451">lbmmon_format_finish_t</a>) (void *FormatClientData)</td></tr>
 <tr class="memdesc:a9b83d5497974b1cd21fc31cb1d184451"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to finish format module processing.  <a href="#a9b83d5497974b1cd21fc31cb1d184451">More...</a><br /></td></tr>
 <tr class="separator:a9b83d5497974b1cd21fc31cb1d184451"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -290,6 +415,24 @@ typedef struct <a class="el" href="structlbmmon__format__func__t__stct.html">lbm
 <tr class="memitem:a511e1f1083666fa1bf4fc156cd44527b"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structlbmmon__wildcard__rcv__statistics__func__t__stct.html">lbmmon_wildcard_rcv_statistics_func_t_stct</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lbmmon_8h.html#a511e1f1083666fa1bf4fc156cd44527b">lbmmon_wildcard_rcv_statistics_func_t</a></td></tr>
 <tr class="memdesc:a511e1f1083666fa1bf4fc156cd44527b"><td class="mdescLeft">&#160;</td><td class="mdescRight">A structure that holds the callback information for wildcard receiver statistics.  <a href="#a511e1f1083666fa1bf4fc156cd44527b">More...</a><br /></td></tr>
 <tr class="separator:a511e1f1083666fa1bf4fc156cd44527b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9e175156a89927f67966a0b67d051bd6"><td class="memItemLeft" align="right" valign="top">typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lbmmon_8h.html#a9e175156a89927f67966a0b67d051bd6">lbmmon_umestore_statistics_cb</a>) (const void *AttributeBlock, const Lbmmon__UMPMonMsg *StoreMsg, void *ClientData)</td></tr>
+<tr class="memdesc:a9e175156a89927f67966a0b67d051bd6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Client callback function to process a received store statistics packet.  <a href="#a9e175156a89927f67966a0b67d051bd6">More...</a><br /></td></tr>
+<tr class="separator:a9e175156a89927f67966a0b67d051bd6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9ea2962a0fe6830f8bdf31f0277d1ae7"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structlbmmon__umestore__statistics__func__t__stct.html">lbmmon_umestore_statistics_func_t_stct</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lbmmon_8h.html#a9ea2962a0fe6830f8bdf31f0277d1ae7">lbmmon_umestore_statistics_func_t</a></td></tr>
+<tr class="memdesc:a9ea2962a0fe6830f8bdf31f0277d1ae7"><td class="mdescLeft">&#160;</td><td class="mdescRight">A structure that holds the callback information for store statistics.  <a href="#a9ea2962a0fe6830f8bdf31f0277d1ae7">More...</a><br /></td></tr>
+<tr class="separator:a9ea2962a0fe6830f8bdf31f0277d1ae7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4f8e486716dd5a9af08cb2ffb87b2ec8"><td class="memItemLeft" align="right" valign="top">typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lbmmon_8h.html#a4f8e486716dd5a9af08cb2ffb87b2ec8">lbmmon_gateway_statistics_cb</a>) (const void *AttributeBlock, const Lbmmon__DROMonMsg *GatewayMsg, void *ClientData)</td></tr>
+<tr class="memdesc:a4f8e486716dd5a9af08cb2ffb87b2ec8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Client callback function to process a received gateway statistics packet.  <a href="#a4f8e486716dd5a9af08cb2ffb87b2ec8">More...</a><br /></td></tr>
+<tr class="separator:a4f8e486716dd5a9af08cb2ffb87b2ec8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a71ca5bee883390ab3bc60dfd7aaca8e0"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structlbmmon__gateway__statistics__func__t__stct.html">lbmmon_gateway_statistics_func_t_stct</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lbmmon_8h.html#a71ca5bee883390ab3bc60dfd7aaca8e0">lbmmon_gateway_statistics_func_t</a></td></tr>
+<tr class="memdesc:a71ca5bee883390ab3bc60dfd7aaca8e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">A structure that holds the callback information for gateway statistics.  <a href="#a71ca5bee883390ab3bc60dfd7aaca8e0">More...</a><br /></td></tr>
+<tr class="separator:a71ca5bee883390ab3bc60dfd7aaca8e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a07973bb0e7997c41ad365f9378c6abd7"><td class="memItemLeft" align="right" valign="top">typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lbmmon_8h.html#a07973bb0e7997c41ad365f9378c6abd7">lbmmon_passthrough_statistics_cb</a>) (const <a class="el" href="lbmmon_8h.html#a8c4d0c84d52e772d7f25911732f41362">lbmmon_packet_hdr_t</a> *PacketHeader, <a class="el" href="structlbmmon__packet__attributes__t__stct.html">lbmmon_packet_attributes_t</a> *Attributes, void *AttributeBlock, void *Statistics, size_t Length, void *ClientData)</td></tr>
+<tr class="memdesc:a07973bb0e7997c41ad365f9378c6abd7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Client callback function to process a statistics packet when using the passthrough format option.  <a href="#a07973bb0e7997c41ad365f9378c6abd7">More...</a><br /></td></tr>
+<tr class="separator:a07973bb0e7997c41ad365f9378c6abd7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a30b4d4b1488ebf8d7d26154301cf9a05"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structlbmmon__passthrough__statistics__func__t__stct.html">lbmmon_passthrough_statistics_func_t_stct</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lbmmon_8h.html#a30b4d4b1488ebf8d7d26154301cf9a05">lbmmon_passthrough_statistics_func_t</a></td></tr>
+<tr class="memdesc:a30b4d4b1488ebf8d7d26154301cf9a05"><td class="mdescLeft">&#160;</td><td class="mdescRight">A structure that holds the callback information for the passthrough format option.  <a href="#a30b4d4b1488ebf8d7d26154301cf9a05">More...</a><br /></td></tr>
+<tr class="separator:a30b4d4b1488ebf8d7d26154301cf9a05"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abebc7aedcb4e8688188510aa24576ee7"><td class="memItemLeft" align="right" valign="top">typedef int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lbmmon_8h.html#abebc7aedcb4e8688188510aa24576ee7">lbmmon_transport_initsrc_t</a>) (void **TransportClientData, const void *TransportOptions)</td></tr>
 <tr class="memdesc:abebc7aedcb4e8688188510aa24576ee7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to initialize a transport module to serve as a source of statistics.  <a href="#abebc7aedcb4e8688188510aa24576ee7">More...</a><br /></td></tr>
 <tr class="separator:abebc7aedcb4e8688188510aa24576ee7"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -311,6 +454,18 @@ typedef struct <a class="el" href="structlbmmon__format__func__t__stct.html">lbm
 <tr class="memitem:a3d2899bf5652b24ecceaf86809ebe5b2"><td class="memItemLeft" align="right" valign="top">typedef const char *(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lbmmon_8h.html#a3d2899bf5652b24ecceaf86809ebe5b2">lbmmon_transport_errmsg_t</a>) (void)</td></tr>
 <tr class="memdesc:a3d2899bf5652b24ecceaf86809ebe5b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to return the last error message from a transport module.  <a href="#a3d2899bf5652b24ecceaf86809ebe5b2">More...</a><br /></td></tr>
 <tr class="separator:a3d2899bf5652b24ecceaf86809ebe5b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a69f3ef26c79ad43d35b8b4759e11b9d6"><td class="memItemLeft" align="right" valign="top">typedef const char *(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lbmmon_8h.html#a69f3ef26c79ad43d35b8b4759e11b9d6">lbmmon_transport_ctrlmsgtarget_t</a>) (void)</td></tr>
+<tr class="memdesc:a69f3ef26c79ad43d35b8b4759e11b9d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to return the target address for control message requests.  <a href="#a69f3ef26c79ad43d35b8b4759e11b9d6">More...</a><br /></td></tr>
+<tr class="separator:a69f3ef26c79ad43d35b8b4759e11b9d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8c565335a25b51c625c7aa01e0a41562"><td class="memItemLeft" align="right" valign="top">typedef int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lbmmon_8h.html#a8c565335a25b51c625c7aa01e0a41562">lbmmon_transport_ctrlmsg_receive_t</a>) (char *Data, size_t *Length, void *TransportClientData)</td></tr>
+<tr class="memdesc:a8c565335a25b51c625c7aa01e0a41562"><td class="mdescLeft">&#160;</td><td class="mdescRight">Receive control message requests.  <a href="#a8c565335a25b51c625c7aa01e0a41562">More...</a><br /></td></tr>
+<tr class="separator:a8c565335a25b51c625c7aa01e0a41562"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad55a6080ae8b949dce5b1223162d3587"><td class="memItemLeft" align="right" valign="top">typedef int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lbmmon_8h.html#ad55a6080ae8b949dce5b1223162d3587">lbmmon_transport_ctrlmsg_response_t</a>) (const char *Data, size_t Length, void *TransportClientData)</td></tr>
+<tr class="memdesc:ad55a6080ae8b949dce5b1223162d3587"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to send response to control message requests.  <a href="#ad55a6080ae8b949dce5b1223162d3587">More...</a><br /></td></tr>
+<tr class="separator:ad55a6080ae8b949dce5b1223162d3587"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a77ac57d9f956f2b6a384985e1e9da227"><td class="memItemLeft" align="right" valign="top">typedef const int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lbmmon_8h.html#a77ac57d9f956f2b6a384985e1e9da227">lbmmon_transport_allow_debug_t</a>) (void *TransportClientData)</td></tr>
+<tr class="memdesc:a77ac57d9f956f2b6a384985e1e9da227"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to return the allow debug indicator from a transport module.  <a href="#a77ac57d9f956f2b6a384985e1e9da227">More...</a><br /></td></tr>
+<tr class="separator:a77ac57d9f956f2b6a384985e1e9da227"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad974f47e2c238886dad834dcdf318df1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad974f47e2c238886dad834dcdf318df1"></a>
 typedef struct <a class="el" href="structlbmmon__transport__func__t__stct.html">lbmmon_transport_func_t_stct</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lbmmon_8h.html#ad974f47e2c238886dad834dcdf318df1">lbmmon_transport_func_t</a></td></tr>
 <tr class="memdesc:ad974f47e2c238886dad834dcdf318df1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Transport module function pointer container. <br /></td></tr>
@@ -330,6 +485,9 @@ typedef struct lbmmon_rctl_t_stct&#160;</td><td class="memItemRight" valign="bot
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:adfbf472a82434234f20e374ea9f0d71f"><td class="memItemLeft" align="right" valign="top">LBMExpDLL int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lbmmon_8h.html#adfbf472a82434234f20e374ea9f0d71f">lbmmon_attributes_deserialize</a> (<a class="el" href="structlbmmon__packet__attributes__t__stct.html">lbmmon_packet_attributes_t</a> *Attributes, char *Source, size_t Length)</td></tr>
+<tr class="memdesc:adfbf472a82434234f20e374ea9f0d71f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deserialize the Attributes Block into the lbmmon_packet_attributes_t structure.  <a href="#adfbf472a82434234f20e374ea9f0d71f">More...</a><br /></td></tr>
+<tr class="separator:adfbf472a82434234f20e374ea9f0d71f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a393a4f0563c7dbda75582053c3a56209"><td class="memItemLeft" align="right" valign="top">LBMExpDLL int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lbmmon_8h.html#a393a4f0563c7dbda75582053c3a56209">lbmmon_sctl_create</a> (<a class="el" href="lbmmon_8h.html#a4fbc26b3a219f366dbdbeeb40638a437">lbmmon_sctl_t</a> **Control, const <a class="el" href="lbmmon_8h.html#a23327b4b1d142bfdff357c5441aad618">lbmmon_format_func_t</a> *Format, const void *FormatOptions, const <a class="el" href="lbmmon_8h.html#ad974f47e2c238886dad834dcdf318df1">lbmmon_transport_func_t</a> *Transport, const void *TransportOptions)</td></tr>
 <tr class="memdesc:a393a4f0563c7dbda75582053c3a56209"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create an LBM Monitoring Source Controller.  <a href="#a393a4f0563c7dbda75582053c3a56209">More...</a><br /></td></tr>
 <tr class="separator:a393a4f0563c7dbda75582053c3a56209"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -423,21 +581,36 @@ Functions</h2></td></tr>
 <tr class="memitem:aa48237baee1c9804ab4f4cd0c197796b"><td class="memItemLeft" align="right" valign="top">LBMExpDLL const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lbmmon_8h.html#aa48237baee1c9804ab4f4cd0c197796b">lbmmon_errmsg</a> (void)</td></tr>
 <tr class="memdesc:aa48237baee1c9804ab4f4cd0c197796b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve the error message for the last error encountered.  <a href="#aa48237baee1c9804ab4f4cd0c197796b">More...</a><br /></td></tr>
 <tr class="separator:aa48237baee1c9804ab4f4cd0c197796b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad10ac6fdaa7ba17b8efceca176c36070"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lbmmon_8h.html#ad10ac6fdaa7ba17b8efceca176c36070">lbmmon_next_key_value_pair</a> (const char *String, char *Key, size_t KeySize, char *Value, size_t ValueSize)</td></tr>
-<tr class="memdesc:ad10ac6fdaa7ba17b8efceca176c36070"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve the next key/value pair from a semicolon-separated list.  <a href="#ad10ac6fdaa7ba17b8efceca176c36070">More...</a><br /></td></tr>
-<tr class="separator:ad10ac6fdaa7ba17b8efceca176c36070"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a92cdb7dc9ffbf2d68742d3762b974073"><td class="memItemLeft" align="right" valign="top">LBMExpDLL const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lbmmon_8h.html#a92cdb7dc9ffbf2d68742d3762b974073">lbmmon_next_key_value_pair</a> (const char *String, char *Key, size_t KeySize, char *Value, size_t ValueSize)</td></tr>
+<tr class="memdesc:a92cdb7dc9ffbf2d68742d3762b974073"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve the next key/value pair from a semicolon-separated list.  <a href="#a92cdb7dc9ffbf2d68742d3762b974073">More...</a><br /></td></tr>
+<tr class="separator:a92cdb7dc9ffbf2d68742d3762b974073"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0b9d93bc3bb7d711b7e33029e4019a2c"><td class="memItemLeft" align="right" valign="top">LBMExpDLL int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lbmmon_8h.html#a0b9d93bc3bb7d711b7e33029e4019a2c">lbmmon_control_serialize</a> (char *Destination, size_t *Size, int Command, char *Data, int NodeType, char *ApplicationSourceID)</td></tr>
+<tr class="memdesc:a0b9d93bc3bb7d711b7e33029e4019a2c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to serialize a control message.  <a href="#a0b9d93bc3bb7d711b7e33029e4019a2c">More...</a><br /></td></tr>
+<tr class="separator:a0b9d93bc3bb7d711b7e33029e4019a2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0811fc36a318a5210f27f07f41437746"><td class="memItemLeft" align="right" valign="top">LBMExpDLL const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lbmmon_8h.html#a0811fc36a318a5210f27f07f41437746">lbmmon_control_valid_commands</a> (void)</td></tr>
+<tr class="memdesc:a0811fc36a318a5210f27f07f41437746"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve the list of valid LBMMON control commands.  <a href="#a0811fc36a318a5210f27f07f41437746">More...</a><br /></td></tr>
+<tr class="separator:a0811fc36a318a5210f27f07f41437746"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9aa3e81dd1dfe856edb1fe7a4d9c2896"><td class="memItemLeft" align="right" valign="top">LBMExpDLL const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lbmmon_8h.html#a9aa3e81dd1dfe856edb1fe7a4d9c2896">lbmmon_control_valid_node_types</a> (void)</td></tr>
+<tr class="memdesc:a9aa3e81dd1dfe856edb1fe7a4d9c2896"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve the list of valid LBMMON control node types.  <a href="#a9aa3e81dd1dfe856edb1fe7a4d9c2896">More...</a><br /></td></tr>
+<tr class="separator:a9aa3e81dd1dfe856edb1fe7a4d9c2896"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2df8934a206774da4b6e9c50b8a9b2c6"><td class="memItemLeft" align="right" valign="top">LBMExpDLL int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lbmmon_8h.html#a2df8934a206774da4b6e9c50b8a9b2c6">lbmmon_control_index_for_command</a> (char *Command)</td></tr>
+<tr class="memdesc:a2df8934a206774da4b6e9c50b8a9b2c6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve the index associated with the given LBMMON control command.  <a href="#a2df8934a206774da4b6e9c50b8a9b2c6">More...</a><br /></td></tr>
+<tr class="separator:a2df8934a206774da4b6e9c50b8a9b2c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3786800584d07fedc422935668de1955"><td class="memItemLeft" align="right" valign="top">LBMExpDLL int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lbmmon_8h.html#a3786800584d07fedc422935668de1955">lbmmon_control_index_for_node_type</a> (char *NodeType)</td></tr>
+<tr class="memdesc:a3786800584d07fedc422935668de1955"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve the index associated with the given LBMMON control node type.  <a href="#a3786800584d07fedc422935668de1955">More...</a><br /></td></tr>
+<tr class="separator:a3786800584d07fedc422935668de1955"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a694cd9e29e7179a2dbc8a66c30c112a5"><td class="memItemLeft" align="right" valign="top">LBMExpDLL int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lbmmon_8h.html#a694cd9e29e7179a2dbc8a66c30c112a5">lbmmon_control_load_data_from_filename</a> (char *Filename, char **Data)</td></tr>
+<tr class="memdesc:a694cd9e29e7179a2dbc8a66c30c112a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Load data from filename into a buffer.  <a href="#a694cd9e29e7179a2dbc8a66c30c112a5">More...</a><br /></td></tr>
+<tr class="separator:a694cd9e29e7179a2dbc8a66c30c112a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a586b51834a0b92fee0f469fd6eef28a9"><td class="memItemLeft" align="right" valign="top">LBMExpDLL int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lbmmon_8h.html#a586b51834a0b92fee0f469fd6eef28a9">lbmmon_control_dump_default_filter_options</a> (void)</td></tr>
+<tr class="memdesc:a586b51834a0b92fee0f469fd6eef28a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dump the default filter options to stdout.  <a href="#a586b51834a0b92fee0f469fd6eef28a9">More...</a><br /></td></tr>
+<tr class="separator:a586b51834a0b92fee0f469fd6eef28a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af9cd011da427110d5929a037e85e6fd0"><td class="memItemLeft" align="right" valign="top">LBMExpDLL const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lbmmon_8h.html#af9cd011da427110d5929a037e85e6fd0">lbmmon_control_errmsg</a> (void)</td></tr>
+<tr class="memdesc:af9cd011da427110d5929a037e85e6fd0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to return the last error message from lbmmon_control.  <a href="#af9cd011da427110d5929a037e85e6fd0">More...</a><br /></td></tr>
+<tr class="separator:af9cd011da427110d5929a037e85e6fd0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Ultra Messaging (UM) Monitoring API. </p>
-<dl class="section author"><dt>Author</dt><dd>David K. Ameiss - Informatica Corporation </dd></dl>
-<dl class="section version"><dt>Version</dt><dd></dd></dl>
-<dl class="section rcs"><dt>Id</dt><dd>//UMprod/REL_6_13_1/29West/lbm/src/mon/lbm/lbmmon.h#1 </dd></dl>
-<p>The Ultra Messaging (UM) Monitoring API Description. Included are types, constants, and functions related to the API. Contents are subject to change.</p>
-<p>All of the documentation and software included in this and any other Informatica Corporation Ultra Messaging Releases Copyright (C) Informatica Corporation. All rights reserved.</p>
-<p>Redistribution and use in source and binary forms, with or without modification, are permitted only as covered by the terms of a valid software license agreement with Informatica Corporation.</p>
-<p>Copyright (C) 2006-2020, Informatica Corporation. All Rights Reserved.</p>
-<p>THE SOFTWARE IS PROVIDED "AS IS" AND INFORMATICA DISCLAIMS ALL WARRANTIES EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION, ANY IMPLIED WARRANTIES OF NON-INFRINGEMENT, MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE. INFORMATICA DOES NOT WARRANT THAT USE OF THE SOFTWARE WILL BE UNINTERRUPTED OR ERROR-FREE. INFORMATICA SHALL NOT, UNDER ANY CIRCUMSTANCES, BE LIABLE TO LICENSEE FOR LOST PROFITS, CONSEQUENTIAL, INCIDENTAL, SPECIAL OR INDIRECT DAMAGES ARISING OUT OF OR RELATED TO THIS AGREEMENT OR THE TRANSACTIONS CONTEMPLATED HEREUNDER, EVEN IF INFORMATICA HAS BEEN APPRISED OF THE LIKELIHOOD OF SUCH DAMAGES.</p>
-<p>The LBM Monitoring API provides a framework to allow the convenient gathering of LBM statistics. </p>
+<div class="textblock"><p>Ultra Messaging (UM) Monitoring API. The "lbmmon.h" header file defines APIs for UM application monitoring, both the send side (application being monitored) and the receive side (application doing the monitoring). The binary code is contained in the "lbm" library (dynamic on Unix: "liblbm.so", static on Unix: "liblbm.a", dynamic only on Windows: "lbm.dll"). See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/API/operations.tag:../Operations/" href="../Operations/monitoringumwiththelbmmonapi.html">Monitoring UM with the lbmmon API</a> for general information on UM monitoring. See <a class="el" href="index.html#umcapi">UM C API</a> for general information on the C API. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/API/design.tag:../Design/" href="../Design/fundamentalconcepts.html">Fundamental Concepts</a> for an introduction to Ultra Messaging. </p>
 </div><h2 class="groupheader">Macro Definition Documentation</h2>
 <a class="anchor" id="a7e199ec349fa476cac44840e97e9d126"></a>
 <div class="memitem">
@@ -452,6 +625,45 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="adf61370a5405e977bf92bd053c483f38"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define LBMMON_ATTR_BLOCK_FORMAT_PB&#160;&#160;&#160;1</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Attribute block in Protocol Buffer format </p>
+
+</div>
+</div>
+<a class="anchor" id="aa8410f3617618a9065e1a6b9d1624cb0"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define LBMMON_ATTR_BLOCK_FORMAT_TABLE&#160;&#160;&#160;0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Attribute block in table format </p>
+
+</div>
+</div>
+<a class="anchor" id="a10abeb0eb7791257e99cf8087a404a7d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define LBMMON_ATTR_BLOCK_MAGIC&#160;&#160;&#160;0xABCD</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Used to differentiate between attribute block in lbmmon_packet_attributes_t format (<a class="el" href="structlbmmon__packet__attributes__t__stct.html#adf5cde6726a0fefc48494c536f3f161a">lbmmon_packet_attributes_t_stct.mPacketAttributesMagic</a> == LBMMON_ATTR_BLOCK_MAGIC vs. an array of lbmmon_attr_block_t structures. </p>
+
+</div>
+</div>
 <a class="anchor" id="ae05479fdd36d5b21ad0068ef1ced83f4"></a>
 <div class="memitem">
 <div class="memproto">
@@ -461,7 +673,7 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Attribute block entry contains the context ID. </p><dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000035">Deprecated:</a></b></dt><dd>Use <a class="el" href="lbmmon_8h.html#a415bf9dc16ddefe1f9f5d38b83cc48e6">LBMMON_ATTR_OBJECTID</a> instead. </dd></dl>
+<p>Attribute block entry contains the context ID. </p><dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000039">Deprecated:</a></b></dt><dd>Use <a class="el" href="lbmmon_8h.html#a415bf9dc16ddefe1f9f5d38b83cc48e6">LBMMON_ATTR_OBJECTID</a> instead. </dd></dl>
 
 </div>
 </div>
@@ -500,7 +712,7 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Attribute block entry contains the format module ID. </p>
+<p>Attribute block entry contains the format module ID. See LBMMON_FORMAT_* for possible values. Used to determine the format of the statistics packet. Values 1 and 2 are currently defined. Values 3 through 9 are reserved for UM use. Values 10 and over can be used for custom formats. </p>
 
 </div>
 </div>
@@ -699,6 +911,318 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a8d6f28bdee7a99b2d757d3be7def6e01"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define LBMMON_FORMAT_ATTRIBUTES_PB&#160;&#160;&#160;1</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Format of the attributes block for a PB packet is PB (Default) </p>
+
+</div>
+</div>
+<a class="anchor" id="af14d3d08b88203fd89fd1e12dc75c2d3"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define LBMMON_FORMAT_ATTRIBUTES_TABLE&#160;&#160;&#160;2</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Format of the attributes block for a PB packet is table </p>
+
+</div>
+</div>
+<a class="anchor" id="a16c6b0e4507303b51f433fa5f16d2bc2"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define LBMMON_FORMAT_CSV_MODULE_ID&#160;&#160;&#160;1</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Module ID used for lbmmon_format_csv_module() </p>
+
+</div>
+</div>
+<a class="anchor" id="aff6712235448731e953b85b08f9ee183"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define LBMMON_FORMAT_DESERIALIZE_CONVERT_PASSTHROUGH&#160;&#160;&#160;2</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Format deserialize function return indicates convert to PB then passthrough to callback </p>
+
+</div>
+</div>
+<a class="anchor" id="a5bd70f9862b6a7b177c7c1442c94bde7"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define LBMMON_FORMAT_DESERIALIZE_FAILURE&#160;&#160;&#160;-1</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Format deserialize function return FAILURE. </p>
+
+</div>
+</div>
+<a class="anchor" id="a57b11ffc78d3df723e3d6f70d400d6fe"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define LBMMON_FORMAT_DESERIALIZE_OK&#160;&#160;&#160;0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Format deserialize function return OK. Use normal callbacks </p>
+
+</div>
+</div>
+<a class="anchor" id="a4f28d6f6bf8e4830d9e537dbb2318e3f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define LBMMON_FORMAT_DESERIALIZE_PASSTHROUGH&#160;&#160;&#160;1</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Format deserialize function return indicates passthrough raw packet to callback </p>
+
+</div>
+</div>
+<a class="anchor" id="adb899ed41484d347f6f4eb07de61f444"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define LBMMON_FORMAT_DESERIALIZE_TOO_SMALL&#160;&#160;&#160;-2</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Format deserialize function return indicates not enough memory was allocated for this packet </p>
+
+</div>
+</div>
+<a class="anchor" id="af5ca4b2bdb98ef4da291adc02ac98242"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define LBMMON_FORMAT_FILTER_EQ&#160;&#160;&#160;2</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Format option to filter out when field == value </p>
+
+</div>
+</div>
+<a class="anchor" id="a8e3d87ef6c33dbb1fd47f41d551c25d0"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define LBMMON_FORMAT_FILTER_GT&#160;&#160;&#160;5</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Format option to filter out when field &gt; value </p>
+
+</div>
+</div>
+<a class="anchor" id="af0846f5b246636408d734ba797a47acb"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define LBMMON_FORMAT_FILTER_LT&#160;&#160;&#160;4</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Format option to filter out when field &lt; value </p>
+
+</div>
+</div>
+<a class="anchor" id="ae26224534ba968f50cc5b42261009390"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define LBMMON_FORMAT_FILTER_NE&#160;&#160;&#160;3</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Format option to filter out when field != value </p>
+
+</div>
+</div>
+<a class="anchor" id="a91178cae7174c2583258aac6325a4fef"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define LBMMON_FORMAT_FILTER_OFF&#160;&#160;&#160;0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Format option filter is off (default); this field will be sent </p>
+
+</div>
+</div>
+<a class="anchor" id="a7e0c40fbe54470fae114f1ac18bfd21f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define LBMMON_FORMAT_FILTER_ON&#160;&#160;&#160;1</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Format option filter is on; field will not be sent </p>
+
+</div>
+</div>
+<a class="anchor" id="ab3b7f95e87b8eeebb9010721d8ae0090"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define LBMMON_FORMAT_PASSTHROUGH_CONVERT&#160;&#160;&#160;2</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Format option to convert the received packet to PB format then passthrough </p>
+
+</div>
+</div>
+<a class="anchor" id="ac073dee1b827482f3983dd93eaed8027"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define LBMMON_FORMAT_PASSTHROUGH_OFF&#160;&#160;&#160;0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Format option to passthrough the received packet without deserializing is off (Default) </p>
+
+</div>
+</div>
+<a class="anchor" id="a265a0bad79606bd0882b0eeeae2ad0c0"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define LBMMON_FORMAT_PASSTHROUGH_ON&#160;&#160;&#160;1</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Format option to passthrough the received packet without deserializing is on </p>
+
+</div>
+</div>
+<a class="anchor" id="a337193651e5882ba963aea467f8de94e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define LBMMON_FORMAT_PB_MODULE_ID&#160;&#160;&#160;2</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Module ID used for lbmmon_format_pb_module() </p>
+
+</div>
+</div>
+<a class="anchor" id="ab8ef7f1c01d1da675cdd9438f5922491"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define LBMMON_FORMAT_SELECT_EQ&#160;&#160;&#160;6</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Format option to send when field == value </p>
+
+</div>
+</div>
+<a class="anchor" id="acd374512abf6c5d301a566e502d20a5c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define LBMMON_FORMAT_SELECT_GT&#160;&#160;&#160;9</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Format option to send when field &gt; value </p>
+
+</div>
+</div>
+<a class="anchor" id="a150296ad35446cf5369c6691963caf6a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define LBMMON_FORMAT_SELECT_LT&#160;&#160;&#160;8</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Format option to send when field &lt; value </p>
+
+</div>
+</div>
+<a class="anchor" id="ac513d54528d2763f897863995cb2e7d9"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define LBMMON_FORMAT_SELECT_MATCH&#160;&#160;&#160;10</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Format option to send when string matches value </p>
+
+</div>
+</div>
+<a class="anchor" id="adc258c84435fc84094d6d3c640c9a048"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define LBMMON_FORMAT_SELECT_MATCH_REGX&#160;&#160;&#160;11</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Format option to send when regualr expression string matches value </p>
+
+</div>
+</div>
+<a class="anchor" id="ac24427f54238df445ddd6f023e2b963b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define LBMMON_FORMAT_SELECT_NE&#160;&#160;&#160;7</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Format option to send when field != value </p>
+
+</div>
+</div>
 <a class="anchor" id="a76a5e309d49bdd7192296a2ffae49501"></a>
 <div class="memitem">
 <div class="memproto">
@@ -725,6 +1249,19 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a94856f62e62748ab452035c8101c8bc5"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define LBMMON_PACKET_TYPE_CONTROL_MESSAGE&#160;&#160;&#160;9</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Packet contains LBMMON Control Message. </p>
+
+</div>
+</div>
 <a class="anchor" id="a3fd444c89d860928869f64b43fcf4af8"></a>
 <div class="memitem">
 <div class="memproto">
@@ -735,6 +1272,19 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Packet contains event queue statistics </p>
+
+</div>
+</div>
+<a class="anchor" id="a8570acede343d7038d08aee66c157421"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define LBMMON_PACKET_TYPE_GATEWAY&#160;&#160;&#160;7</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Packet contains gateway statistics. </p>
 
 </div>
 </div>
@@ -777,6 +1327,32 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a6ac93894cca69b246fc6e35190d53084"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define LBMMON_PACKET_TYPE_UMDS&#160;&#160;&#160;8</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Packet contains gateway statistics. </p>
+
+</div>
+</div>
+<a class="anchor" id="a0bb97aa6a2811c6cd5cfdce731f08a63"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define LBMMON_PACKET_TYPE_UMESTORE&#160;&#160;&#160;6</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Packet contains store statistics. </p>
+
+</div>
+</div>
 <a class="anchor" id="ae300adc34e451928e2b7b5a008430b20"></a>
 <div class="memitem">
 <div class="memproto">
@@ -813,6 +1389,32 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Receive controller attribute option: Event queue statistics callback. </p>
+
+</div>
+</div>
+<a class="anchor" id="a84caef2b9722b9a65879452709a3b1b2"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define LBMMON_RCTL_GATEWAY_CALLBACK&#160;&#160;&#160;7</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Receive controller attribute option: Gateway statistics callback. </p>
+
+</div>
+</div>
+<a class="anchor" id="a4a1e8fe4cdefa8f72f81a8b424e57d4b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define LBMMON_RCTL_PASSTHROUGH_CALLBACK&#160;&#160;&#160;8</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Receive controller attribute option: Passthrough callback. </p>
 
 </div>
 </div>
@@ -855,6 +1457,19 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a3a43a544161fbfeead526da7ad960b98"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define LBMMON_RCTL_UMESTORE_CALLBACK&#160;&#160;&#160;6</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Receive controller attribute option: Store statistics callback. </p>
+
+</div>
+</div>
 <a class="anchor" id="ad6c7a4ea2989f19d81f4665ecad28855"></a>
 <div class="memitem">
 <div class="memproto">
@@ -868,22 +1483,57 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<h2 class="groupheader">Typedef Documentation</h2>
-<a class="anchor" id="a94ac06228b336103342ac13fbb1f759c"></a>
+<a class="anchor" id="a287312187727602974c1d34fcedfce9d"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef int(* lbmmon_ctx_format_deserialize_t) (<a class="el" href="lbm_8h.html#ab86e72a3f715d7c8ddc49c6431455839">lbm_context_stats_t</a> *Statistics, const char *Source, size_t Length, unsigned short ModuleID, void *FormatClientData)</td>
+          <td class="memname">#define MODULE_ID</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">id</td><td>)</td>
+          <td>&#160;&#160;&#160;((unsigned char) ((id &amp; 0xff00) &gt;&gt; 8))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Extracts the Module ID from the ModuleID value </p>
+
+</div>
+</div>
+<a class="anchor" id="a7da6fa92e916deee12c607af24629f84"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MODULE_VERSION</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">id</td><td>)</td>
+          <td>&#160;&#160;&#160;((unsigned char) (id &amp; 0xff))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Extracts the Module Version from the ModuleID value </p>
+
+</div>
+</div>
+<h2 class="groupheader">Typedef Documentation</h2>
+<a class="anchor" id="a1e9abb865fbf0af4f5e1946f9feee107"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef int(* lbmmon_ctx_format_deserialize_t) (<a class="el" href="structlbmmon__packet__attributes__t__stct.html">lbmmon_packet_attributes_t</a> *Attributes, <a class="el" href="lbm_8h.html#ab86e72a3f715d7c8ddc49c6431455839">lbm_context_stats_t</a> *Statistics, const char *Source, size_t Length, unsigned short ModuleID, void *FormatClientData)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>Function to deserialize a buffer into an lbm_context_stats_t structure. </p>
-<p>Transform a block of data serialized by the <a class="el" href="lbmmon_8h.html#a1e654b3d6c93709000d26f6498643049" title="Function to serialize an lbm_context_stats_t structure. ">lbmmon_ctx_format_serialize_t</a> function into a lbm_context_stats_t structure.</p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="lbmmon_8h.html#a1e654b3d6c93709000d26f6498643049" title="Function to serialize an lbm_context_stats_t structure. ">lbmmon_ctx_format_serialize_t</a> </dd></dl>
+<p>Transform a block of data serialized by the <a class="el" href="lbmmon_8h.html#afed3e5bd7937021e01d1f70a77a3f5e4" title="Function to serialize an lbm_context_stats_t structure. ">lbmmon_ctx_format_serialize_t</a> function into a lbm_context_stats_t structure.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="lbmmon_8h.html#afed3e5bd7937021e01d1f70a77a3f5e4" title="Function to serialize an lbm_context_stats_t structure. ">lbmmon_ctx_format_serialize_t</a> </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
+    <tr><td class="paramname">Attributes</td><td>A pointer to a lbmmon_packet_attributes_t structure for storing the deserialized packet attributes. </td></tr>
     <tr><td class="paramname">Statistics</td><td>A pointer to an lbm_context_stats_t structure into which the data is deserialized. </td></tr>
     <tr><td class="paramname">Source</td><td>A pointer to a buffer containing the serialized data. </td></tr>
     <tr><td class="paramname">Length</td><td>The length of the serialized data. </td></tr>
@@ -892,28 +1542,29 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Zero if successful, -1 otherwise. If -1 is returned, the deserialized data will not be delivered to the application. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Zero if successful, 1 if passthrough, -1 otherwise. If 1 is returned, the packet was not deserialized and <em>Statistics</em> will not be populated. If -1 is returned, the deserialized data will not be delivered to the application. </dd></dl>
 
 </div>
 </div>
-<a class="anchor" id="a1e654b3d6c93709000d26f6498643049"></a>
+<a class="anchor" id="afed3e5bd7937021e01d1f70a77a3f5e4"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef int(* lbmmon_ctx_format_serialize_t) (char *Destination, size_t *Size, unsigned short *ModuleID, const <a class="el" href="lbm_8h.html#ab86e72a3f715d7c8ddc49c6431455839">lbm_context_stats_t</a> *Statistics, void *FormatClientData)</td>
+          <td class="memname">typedef int(* lbmmon_ctx_format_serialize_t) (char *Destination, size_t *Size, unsigned short *ModuleID, const <a class="el" href="structlbmmon__packet__attributes__t__stct.html">lbmmon_packet_attributes_t</a> *Attributes, const <a class="el" href="lbm_8h.html#ab86e72a3f715d7c8ddc49c6431455839">lbm_context_stats_t</a> *Statistics, void *FormatClientData)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>Function to serialize an lbm_context_stats_t structure. </p>
-<p>This function should transform the lbm_context_stats_t structure into a form which can be deserialized by the corresponding <a class="el" href="lbmmon_8h.html#a94ac06228b336103342ac13fbb1f759c" title="Function to deserialize a buffer into an lbm_context_stats_t structure. ">lbmmon_ctx_format_deserialize_t</a> function.</p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="lbmmon_8h.html#a94ac06228b336103342ac13fbb1f759c" title="Function to deserialize a buffer into an lbm_context_stats_t structure. ">lbmmon_ctx_format_deserialize_t</a> </dd></dl>
+<p>This function should transform the lbm_context_stats_t structure into a form which can be deserialized by the corresponding <a class="el" href="lbmmon_8h.html#a1e9abb865fbf0af4f5e1946f9feee107" title="Function to deserialize a buffer into an lbm_context_stats_t structure. ">lbmmon_ctx_format_deserialize_t</a> function.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="lbmmon_8h.html#a1e9abb865fbf0af4f5e1946f9feee107" title="Function to deserialize a buffer into an lbm_context_stats_t structure. ">lbmmon_ctx_format_deserialize_t</a> </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">Destination</td><td>A pointer to a buffer to receive the serialized format of the lbm_context_stats_t statistics. </td></tr>
     <tr><td class="paramname">Size</td><td>A pointer to a <code>size_t</code>. On entry, it will contain the maximum allowed size of the serialized statistics. On exit, it must contain the actual size of the serialized statistics. </td></tr>
     <tr><td class="paramname">ModuleID</td><td>A pointer to an <code>unsigned</code> <code>short</code>, into which the module may write a module identification value. This value is included in the transmitted packet, and may be used by the receiver to verify and differentiate between different version of the module (and thus the format of the data it expects). </td></tr>
+    <tr><td class="paramname">Attributes</td><td>A pointer to a lbmmon_packet_attributes_t structure from which to take packet attributes. </td></tr>
     <tr><td class="paramname">Statistics</td><td>A pointer to the lbm_context_stats_t structure to be serialized. </td></tr>
     <tr><td class="paramname">FormatClientData</td><td>A pointer to format-specific client data as returned by the <a class="el" href="lbmmon_8h.html#a892e193659739d09c1f9e9d2749fc522" title="Function to initialize a format module. ">lbmmon_format_init_t</a> function. </td></tr>
   </table>
@@ -960,21 +1611,22 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a57db47f9ee78fc1977d73cce5ad5b397"></a>
+<a class="anchor" id="abc14151e245299bb43e289da6fd86834"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef int(* lbmmon_evq_format_deserialize_t) (<a class="el" href="lbm_8h.html#aa533d6a23589618291f552e988a426f6">lbm_event_queue_stats_t</a> *Statistics, const char *Source, size_t Length, unsigned short ModuleID, void *FormatClientData)</td>
+          <td class="memname">typedef int(* lbmmon_evq_format_deserialize_t) (<a class="el" href="structlbmmon__packet__attributes__t__stct.html">lbmmon_packet_attributes_t</a> *Attributes, <a class="el" href="lbm_8h.html#aa533d6a23589618291f552e988a426f6">lbm_event_queue_stats_t</a> *Statistics, const char *Source, size_t Length, unsigned short ModuleID, void *FormatClientData)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>Function to deserialize a buffer into an lbm_event_queue_stats_t structure. </p>
-<p>Transform a block of data serialized by the <a class="el" href="lbmmon_8h.html#a3f9cd89a2292bd857ce393dcdf13d782" title="Function to serialize an lbm_event_queue_stats_t structure. ">lbmmon_evq_format_serialize_t</a> function into a lbm_event_queue_stats_t structure.</p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="lbmmon_8h.html#a3f9cd89a2292bd857ce393dcdf13d782" title="Function to serialize an lbm_event_queue_stats_t structure. ">lbmmon_evq_format_serialize_t</a> </dd></dl>
+<p>Transform a block of data serialized by the <a class="el" href="lbmmon_8h.html#aafaaa6280ca6907e15265a3f6a6e542b" title="Function to serialize an lbm_event_queue_stats_t structure. ">lbmmon_evq_format_serialize_t</a> function into a lbm_event_queue_stats_t structure.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="lbmmon_8h.html#aafaaa6280ca6907e15265a3f6a6e542b" title="Function to serialize an lbm_event_queue_stats_t structure. ">lbmmon_evq_format_serialize_t</a> </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
+    <tr><td class="paramname">Attributes</td><td>A pointer to a lbmmon_packet_attributes_t structure for storing the deserialized packet attributes. </td></tr>
     <tr><td class="paramname">Statistics</td><td>A pointer to an lbm_event_queue_stats_t structure into which the data is deserialized. </td></tr>
     <tr><td class="paramname">Source</td><td>A pointer to a buffer containing the serialized data. </td></tr>
     <tr><td class="paramname">Length</td><td>The length of the serialized data. </td></tr>
@@ -983,28 +1635,29 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Zero if successful, -1 otherwise. If -1 is returned, the deserialized data will not be delivered to the application. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Zero if successful, 1 if passthrough, -1 otherwise. If 1 is returned, the packet was not deserialized and <em>Statistics</em> will not be populated. If -1 is returned, the deserialized data will not be delivered to the application. </dd></dl>
 
 </div>
 </div>
-<a class="anchor" id="a3f9cd89a2292bd857ce393dcdf13d782"></a>
+<a class="anchor" id="aafaaa6280ca6907e15265a3f6a6e542b"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef int(* lbmmon_evq_format_serialize_t) (char *Destination, size_t *Size, unsigned short *ModuleID, const <a class="el" href="lbm_8h.html#aa533d6a23589618291f552e988a426f6">lbm_event_queue_stats_t</a> *Statistics, void *FormatClientData)</td>
+          <td class="memname">typedef int(* lbmmon_evq_format_serialize_t) (char *Destination, size_t *Size, unsigned short *ModuleID, const <a class="el" href="structlbmmon__packet__attributes__t__stct.html">lbmmon_packet_attributes_t</a> *Attributes, const <a class="el" href="lbm_8h.html#aa533d6a23589618291f552e988a426f6">lbm_event_queue_stats_t</a> *Statistics, void *FormatClientData)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>Function to serialize an lbm_event_queue_stats_t structure. </p>
-<p>This function should transform the lbm_event_queue_stats_t structure into a form which can be deserialized by the corresponding <a class="el" href="lbmmon_8h.html#a57db47f9ee78fc1977d73cce5ad5b397" title="Function to deserialize a buffer into an lbm_event_queue_stats_t structure. ">lbmmon_evq_format_deserialize_t</a> function.</p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="lbmmon_8h.html#a57db47f9ee78fc1977d73cce5ad5b397" title="Function to deserialize a buffer into an lbm_event_queue_stats_t structure. ">lbmmon_evq_format_deserialize_t</a> </dd></dl>
+<p>This function should transform the lbm_event_queue_stats_t structure into a form which can be deserialized by the corresponding <a class="el" href="lbmmon_8h.html#abc14151e245299bb43e289da6fd86834" title="Function to deserialize a buffer into an lbm_event_queue_stats_t structure. ">lbmmon_evq_format_deserialize_t</a> function.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="lbmmon_8h.html#abc14151e245299bb43e289da6fd86834" title="Function to deserialize a buffer into an lbm_event_queue_stats_t structure. ">lbmmon_evq_format_deserialize_t</a> </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">Destination</td><td>A pointer to a buffer to receive the serialized format of the lbm_event_queue_stats_t statistics. </td></tr>
     <tr><td class="paramname">Size</td><td>A pointer to a <code>size_t</code>. On entry, it will contain the maximum allowed size of the serialized statistics. On exit, it must contain the actual size of the serialized statistics. </td></tr>
     <tr><td class="paramname">ModuleID</td><td>A pointer to an <code>unsigned</code> <code>short</code>, into which the module may write a module identification value. This value is included in the transmitted packet, and may be used by the receiver to verify and differentiate between different version of the module (and thus the format of the data it expects). </td></tr>
+    <tr><td class="paramname">Attributes</td><td>A pointer to a lbmmon_packet_attributes_t structure from which to take packet attributes. </td></tr>
     <tr><td class="paramname">Statistics</td><td>A pointer to the lbm_event_queue_stats_t structure to be serialized. </td></tr>
     <tr><td class="paramname">FormatClientData</td><td>A pointer to format-specific client data as returned by the <a class="el" href="lbmmon_8h.html#a892e193659739d09c1f9e9d2749fc522" title="Function to initialize a format module. ">lbmmon_format_init_t</a> function. </td></tr>
   </table>
@@ -1048,6 +1701,28 @@ Functions</h2></td></tr>
 
 <p>A structure that holds the callback information for event queue statistics. </p>
 <p>A structure used with receive controller options to get/set specific callback information. </p>
+
+</div>
+</div>
+<a class="anchor" id="ae3f40677238efc3093585802835f5731"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef int(* lbmmon_format_apply_options_t) (void *FormatClientData, const void *FormatOptions)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Function to apply options to a format module at startup or dynamically to a running system. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">FormatClientData</td><td>A pointer to format-specific client data as returned by the <a class="el" href="lbmmon_8h.html#a892e193659739d09c1f9e9d2749fc522" title="Function to initialize a format module. ">lbmmon_format_init_t</a> function. </td></tr>
+    <tr><td class="paramname">FormatOptions</td><td>A pointer to data containing options in the same format as specified by config options. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Zero if successful, -1 otherwise. </dd></dl>
 
 </div>
 </div>
@@ -1113,6 +1788,92 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="ab134c735957f9902857534ffe043ac0a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef int(* lbmmon_gateway_format_serialize_t) (char *Destination, size_t *Size, unsigned short *ModuleID, const <a class="el" href="structlbmmon__packet__attributes__t__stct.html">lbmmon_packet_attributes_t</a> *Attributes, Lbmmon__DROMonMsg *GatewayMsg, void *FormatClientData)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Function to serialize gateway statistics. </p>
+<p>This function should transform the Lbmmon__DROMonMsg structure into a form which can be deserialized by the corresponding lbmmon_gateway_format_deserialize function.</p>
+<dl class="section see"><dt>See also</dt><dd>lbmmon_gateway_format_deserialize_t </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Destination</td><td>A pointer to a buffer to receive the serialized format of the Lbmmon__DROMonMsg structure. </td></tr>
+    <tr><td class="paramname">Size</td><td>A pointer to a <code>size_t</code>. On entry, it will contain the maximum allowed size of the serialized statistics. On exit, it must contain the actual size of the serialized statistics. </td></tr>
+    <tr><td class="paramname">ModuleID</td><td>A pointer to an <code>unsigned</code> <code>short</code>, into which the module may write a module identification value. This value is included in the transmitted packet, and may be used by the receiver to verify and differentiate between different version of the module (and thus the format of the data it expects). </td></tr>
+    <tr><td class="paramname">Attributes</td><td>A pointer to a lbmmon_packet_attributes_t structure from which to take packet attributes. </td></tr>
+    <tr><td class="paramname">GatewayMsg</td><td>A pointer to an Lbmmon__DROMonMsg structure to be serialized. </td></tr>
+    <tr><td class="paramname">FormatClientData</td><td>A pointer to format-specific client data as returned by the <a class="el" href="lbmmon_8h.html#a892e193659739d09c1f9e9d2749fc522" title="Function to initialize a format module. ">lbmmon_format_init_t</a> function. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Zero if successful, -1 otherwise. If -1 is returned, the serialized data will not be sent. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a0c3b58c693f44356038a66dada2f228c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef int(* lbmmon_gateway_free_unpacked_t) (Lbmmon__DROMonMsg *GatewayMsg)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Function to free an unpacked Lbmmon__DROMonMsg structure. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">GatewayMsg</td><td>A pointer to a pointer to an Lbmmon__DROMonMsg structure into which the data was deserialized. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Zero if successful, -1 otherwise. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a4f8e486716dd5a9af08cb2ffb87b2ec8"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef void(* lbmmon_gateway_statistics_cb) (const void *AttributeBlock, const Lbmmon__DROMonMsg *GatewayMsg, void *ClientData)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Client callback function to process a received gateway statistics packet. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">AttributeBlock</td><td>Pointer to the statistics packet attribute block. </td></tr>
+    <tr><td class="paramname">GatewayMsg</td><td>Pointer to the gateway statistics. </td></tr>
+    <tr><td class="paramname">ClientData</td><td>Pointer to client-specific data as passed to <a class="el" href="lbmmon_8h.html#a3c327a6086714f1cbdb0b95905457043" title="Create an LBM Monitoring Receive Controller. ">lbmmon_rctl_create()</a>. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a71ca5bee883390ab3bc60dfd7aaca8e0"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="structlbmmon__gateway__statistics__func__t__stct.html">lbmmon_gateway_statistics_func_t_stct</a>  <a class="el" href="lbmmon_8h.html#a71ca5bee883390ab3bc60dfd7aaca8e0">lbmmon_gateway_statistics_func_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A structure that holds the callback information for gateway statistics. </p>
+<p>A structure used with receive controller options to get/set specific callback information. </p>
+
+</div>
+</div>
 <a class="anchor" id="a8c4d0c84d52e772d7f25911732f41362"></a>
 <div class="memitem">
 <div class="memproto">
@@ -1124,29 +1885,70 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Statistics packet header layout. </p>
-<p>A statistics packet consists of four fixed-length and fixed-position fields, as documented below. It is followed by two variable-length fields. The option block is located at packet + sizeof(lbmmon_packet_hdr_t), and is mOptionBlockLength (when properly interpreted) bytes in length (which may be zero). The statistics data block is located immediately following the option block. </p>
+<p>A statistics packet consists of five fixed-length and fixed-position fields, as documented below. It is followed by two variable-length blocks. The attribute block is located at packet + sizeof(lbmmon_packet_hdr_t), and is mAttributeBlockLength (when properly interpreted) bytes in length (which may be zero). The statistics data block is located immediately following the attribute block. </p>
 
 </div>
 </div>
-<a class="anchor" id="a699dbdc53d6fcb140f8f45d213f158c9"></a>
+<a class="anchor" id="a07973bb0e7997c41ad365f9378c6abd7"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef int(* lbmmon_rcv_format_deserialize_t) (<a class="el" href="lbm_8h.html#a9bdc2628dece44f0675b0bdebfb3d52c">lbm_rcv_transport_stats_t</a> *Statistics, const char *Source, size_t Length, unsigned short ModuleID, void *FormatClientData)</td>
+          <td class="memname">typedef void(* lbmmon_passthrough_statistics_cb) (const <a class="el" href="lbmmon_8h.html#a8c4d0c84d52e772d7f25911732f41362">lbmmon_packet_hdr_t</a> *PacketHeader, <a class="el" href="structlbmmon__packet__attributes__t__stct.html">lbmmon_packet_attributes_t</a> *Attributes, void *AttributeBlock, void *Statistics, size_t Length, void *ClientData)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Client callback function to process a statistics packet when using the passthrough format option. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">PacketHeader</td><td>Pointer to the packet header. </td></tr>
+    <tr><td class="paramname">Attributes</td><td>Pointer to structure containing values from attributes block. </td></tr>
+    <tr><td class="paramname">AttributeBlock</td><td>Pointer to the raw packet attributes block. </td></tr>
+    <tr><td class="paramname">Statistics</td><td>Pointer to the raw statistics packet. </td></tr>
+    <tr><td class="paramname">Length</td><td>The length of the raw statistics packet. </td></tr>
+    <tr><td class="paramname">ClientData</td><td>Pointer to client-specific data as passed to <a class="el" href="lbmmon_8h.html#a3c327a6086714f1cbdb0b95905457043" title="Create an LBM Monitoring Receive Controller. ">lbmmon_rctl_create()</a>. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a30b4d4b1488ebf8d7d26154301cf9a05"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="structlbmmon__passthrough__statistics__func__t__stct.html">lbmmon_passthrough_statistics_func_t_stct</a>  <a class="el" href="lbmmon_8h.html#a30b4d4b1488ebf8d7d26154301cf9a05">lbmmon_passthrough_statistics_func_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A structure that holds the callback information for the passthrough format option. </p>
+<p>A structure used with receive controller options to get/set specific callback information. </p>
+
+</div>
+</div>
+<a class="anchor" id="ab4f264e24dbfea328c6dd49a8af6f184"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef int(* lbmmon_rcv_format_deserialize_t) (<a class="el" href="structlbmmon__packet__attributes__t__stct.html">lbmmon_packet_attributes_t</a> *Attributes, <a class="el" href="lbm_8h.html#a9bdc2628dece44f0675b0bdebfb3d52c">lbm_rcv_transport_stats_t</a> *Statistics, const char *Source, size_t Length, unsigned short ModuleID, void *FormatClientData)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>Function to deserialize a buffer into an lbm_rcv_transport_stats_t structure. </p>
-<p>Transform a block of data serialized by the <a class="el" href="lbmmon_8h.html#a0194e2ffffb61d863b2afe5b7964e0ed" title="Function to serialize an lbm_rcv_transport_stats_t structure. ">lbmmon_rcv_format_serialize_t</a> function into a lbm_rcv_transport_stats_t structure.</p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="lbmmon_8h.html#a0194e2ffffb61d863b2afe5b7964e0ed" title="Function to serialize an lbm_rcv_transport_stats_t structure. ">lbmmon_rcv_format_serialize_t</a> </dd>
+<p>Transform a block of data serialized by the <a class="el" href="lbmmon_8h.html#a26488c92fa1b89ea5f8d437f84272085" title="Function to serialize an lbm_rcv_transport_stats_t structure. ">lbmmon_rcv_format_serialize_t</a> function into a lbm_rcv_transport_stats_t structure.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="lbmmon_8h.html#a26488c92fa1b89ea5f8d437f84272085" title="Function to serialize an lbm_rcv_transport_stats_t structure. ">lbmmon_rcv_format_serialize_t</a> </dd>
 <dd>
-<a class="el" href="lbmmon_8h.html#a1d3503a54e1e27d15d4708142d76e96d" title="Function to serialize an lbm_src_transport_stats_t structure. ">lbmmon_src_format_serialize_t</a> </dd>
+<a class="el" href="lbmmon_8h.html#a5b2f6e7028c8ed07c22e7942908ade44" title="Function to serialize an lbm_src_transport_stats_t structure. ">lbmmon_src_format_serialize_t</a> </dd>
 <dd>
-<a class="el" href="lbmmon_8h.html#ab75ba5cb87f31ae859f016fd35e95065" title="Function to deserialize a buffer into an lbm_src_transport_stats_t structure. ">lbmmon_src_format_deserialize_t</a> </dd></dl>
+<a class="el" href="lbmmon_8h.html#ac672d6b9e052d000d3bddbc6fb04135c" title="Function to deserialize a buffer into an lbm_src_transport_stats_t structure. ">lbmmon_src_format_deserialize_t</a> </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
+    <tr><td class="paramname">Attributes</td><td>A pointer to a lbmmon_packet_attributes_t structure for storing the deserialized packet attributes. </td></tr>
     <tr><td class="paramname">Statistics</td><td>A pointer to an lbm_rcv_transport_stats_t structure into which the data is deserialized. </td></tr>
     <tr><td class="paramname">Source</td><td>A pointer to a buffer containing the serialized data. </td></tr>
     <tr><td class="paramname">Length</td><td>The length of the serialized data. </td></tr>
@@ -1155,32 +1957,33 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Zero if successful, -1 otherwise. If -1 is returned, the deserialized data will not be delivered to the application. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Zero if successful, 1 if passthrough, -1 otherwise. If 1 is returned, the packet was not deserialized and <em>Statistics</em> will not be populated. If -1 is returned, the deserialized data will not be delivered to the application. </dd></dl>
 
 </div>
 </div>
-<a class="anchor" id="a0194e2ffffb61d863b2afe5b7964e0ed"></a>
+<a class="anchor" id="a26488c92fa1b89ea5f8d437f84272085"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef int(* lbmmon_rcv_format_serialize_t) (char *Destination, size_t *Size, unsigned short *ModuleID, const <a class="el" href="lbm_8h.html#a9bdc2628dece44f0675b0bdebfb3d52c">lbm_rcv_transport_stats_t</a> *Statistics, void *FormatClientData)</td>
+          <td class="memname">typedef int(* lbmmon_rcv_format_serialize_t) (char *Destination, size_t *Size, unsigned short *ModuleID, const <a class="el" href="structlbmmon__packet__attributes__t__stct.html">lbmmon_packet_attributes_t</a> *Attributes, const <a class="el" href="lbm_8h.html#a9bdc2628dece44f0675b0bdebfb3d52c">lbm_rcv_transport_stats_t</a> *Statistics, void *FormatClientData)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>Function to serialize an lbm_rcv_transport_stats_t structure. </p>
-<p>This function should transform the lbm_rcv_transport_stat_t structure into a form which can be deserialized by the corresponding <a class="el" href="lbmmon_8h.html#a699dbdc53d6fcb140f8f45d213f158c9" title="Function to deserialize a buffer into an lbm_rcv_transport_stats_t structure. ">lbmmon_rcv_format_deserialize_t</a> function.</p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="lbmmon_8h.html#a1d3503a54e1e27d15d4708142d76e96d" title="Function to serialize an lbm_src_transport_stats_t structure. ">lbmmon_src_format_serialize_t</a> </dd>
+<p>This function should transform the lbm_rcv_transport_stat_t structure into a form which can be deserialized by the corresponding <a class="el" href="lbmmon_8h.html#ab4f264e24dbfea328c6dd49a8af6f184" title="Function to deserialize a buffer into an lbm_rcv_transport_stats_t structure. ">lbmmon_rcv_format_deserialize_t</a> function.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="lbmmon_8h.html#a5b2f6e7028c8ed07c22e7942908ade44" title="Function to serialize an lbm_src_transport_stats_t structure. ">lbmmon_src_format_serialize_t</a> </dd>
 <dd>
-<a class="el" href="lbmmon_8h.html#a699dbdc53d6fcb140f8f45d213f158c9" title="Function to deserialize a buffer into an lbm_rcv_transport_stats_t structure. ">lbmmon_rcv_format_deserialize_t</a> </dd>
+<a class="el" href="lbmmon_8h.html#ab4f264e24dbfea328c6dd49a8af6f184" title="Function to deserialize a buffer into an lbm_rcv_transport_stats_t structure. ">lbmmon_rcv_format_deserialize_t</a> </dd>
 <dd>
-<a class="el" href="lbmmon_8h.html#ab75ba5cb87f31ae859f016fd35e95065" title="Function to deserialize a buffer into an lbm_src_transport_stats_t structure. ">lbmmon_src_format_deserialize_t</a> </dd></dl>
+<a class="el" href="lbmmon_8h.html#ac672d6b9e052d000d3bddbc6fb04135c" title="Function to deserialize a buffer into an lbm_src_transport_stats_t structure. ">lbmmon_src_format_deserialize_t</a> </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">Destination</td><td>A pointer to a buffer to receive the serialized format of the lbm_rcv_transport_stats_t statistics. </td></tr>
     <tr><td class="paramname">Size</td><td>A pointer to a <code>size_t</code>. On entry, it will contain the maximum allowed size of the serialized statistics. On exit, it must contain the actual size of the serialized statistics. </td></tr>
     <tr><td class="paramname">ModuleID</td><td>A pointer to an <code>unsigned</code> <code>short</code>, into which the module may write a module identification value. This value is included in the transmitted packet, and may be used by the receiver to verify and differentiate between different version of the module (and thus the format of the data it expects). </td></tr>
+    <tr><td class="paramname">Attributes</td><td>A pointer to a lbmmon_packet_attributes_t structure from which to take packet attributes. </td></tr>
     <tr><td class="paramname">Statistics</td><td>A pointer to the lbm_rcv_transport_stats_t structure to be serialized. </td></tr>
     <tr><td class="paramname">FormatClientData</td><td>A pointer to format-specific client data as returned by the <a class="el" href="lbmmon_8h.html#a892e193659739d09c1f9e9d2749fc522" title="Function to initialize a format module. ">lbmmon_format_init_t</a> function. </td></tr>
   </table>
@@ -1227,22 +2030,23 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a9e46eb12d98bc447021b5432004653da"></a>
+<a class="anchor" id="af47b9b12c883d6a7f5689fd63c435c78"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef int(* lbmmon_rcv_topic_format_deserialize_t) (size_t *Count, <a class="el" href="lbm_8h.html#a5c096e7dbde94629387c31b6378e2a55">lbm_rcv_topic_stats_t</a> *Statistics, const char *Source, size_t Length, unsigned short ModuleID, void *FormatClientData)</td>
+          <td class="memname">typedef int(* lbmmon_rcv_topic_format_deserialize_t) (<a class="el" href="structlbmmon__packet__attributes__t__stct.html">lbmmon_packet_attributes_t</a> *Attributes, size_t *Count, <a class="el" href="lbm_8h.html#a5c096e7dbde94629387c31b6378e2a55">lbm_rcv_topic_stats_t</a> *Statistics, const char *Source, size_t Length, unsigned short ModuleID, void *FormatClientData)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>Function to deserialize a buffer into an <a class="el" href="lbm_8h.html#a5c096e7dbde94629387c31b6378e2a55" title="Structure that holds statistics for a receiver topic. ">lbm_rcv_topic_stats_t</a> structure. </p>
-<p>Transform a block of data serialized by the <a class="el" href="lbmmon_8h.html#a59ec90403f5012d550eb938b45e6cb97" title="Function to serialize receiver topic statistics. ">lbmmon_rcv_topic_format_serialize_t</a> function into a <a class="el" href="lbm_8h.html#a5c096e7dbde94629387c31b6378e2a55" title="Structure that holds statistics for a receiver topic. ">lbm_rcv_topic_stats_t</a> structure.</p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="lbmmon_8h.html#a9e46eb12d98bc447021b5432004653da" title="Function to deserialize a buffer into an lbm_rcv_topic_stats_t structure. ">lbmmon_rcv_topic_format_deserialize_t</a> </dd></dl>
+<p>Transform a block of data serialized by the <a class="el" href="lbmmon_8h.html#a85535d03bb1a42aed4bf1b16d1d56665" title="Function to serialize receiver topic statistics. ">lbmmon_rcv_topic_format_serialize_t</a> function into a <a class="el" href="lbm_8h.html#a5c096e7dbde94629387c31b6378e2a55" title="Structure that holds statistics for a receiver topic. ">lbm_rcv_topic_stats_t</a> structure.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="lbmmon_8h.html#a85535d03bb1a42aed4bf1b16d1d56665" title="Function to serialize receiver topic statistics. ">lbmmon_rcv_topic_format_serialize_t</a> </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">Count</td><td>A pointer to an integer containing the number of elements in the <em>Statistics</em> array. On exit, it will contain the actual number of elements parsed. </td></tr>
+    <tr><td class="paramname">Attributes</td><td>A pointer to a lbmmon_packet_attributes_t structure for storing the deserialized packet attributes. </td></tr>
+    <tr><td class="paramname">Count</td><td>A pointer to an integer containing the number of elements in the Statistics array. On exit, it will contain the actual number of elements parsed. </td></tr>
     <tr><td class="paramname">Statistics</td><td>An array of <a class="el" href="lbm_8h.html#a5c096e7dbde94629387c31b6378e2a55" title="Structure that holds statistics for a receiver topic. ">lbm_rcv_topic_stats_t</a> elements into which is written the actual deserialized data. </td></tr>
     <tr><td class="paramname">Source</td><td>A pointer to a buffer containing the serialized data. </td></tr>
     <tr><td class="paramname">Length</td><td>The length of the serialized data. </td></tr>
@@ -1251,28 +2055,29 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Zero if successful, -2 if <em>Count</em> is not large enough for all elements, -1 otherwise. If -2 is returned, <em>Count</em> will contain the number of elements required. If -1 is returned, the deserialized data will not be delivered to the application. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Zero if successful, 1 if passthrough, -2 if <em>Count</em> is not large enough for all elements, -1 otherwise. If 1 is returned, the packet was not deserialized and <em>Count</em> and <em>Statistics</em> will not be populated. If -2 is returned, <em>Count</em> will contain the number of elements required. If -1 is returned, the deserialized data will not be delivered to the application. </dd></dl>
 
 </div>
 </div>
-<a class="anchor" id="a59ec90403f5012d550eb938b45e6cb97"></a>
+<a class="anchor" id="a85535d03bb1a42aed4bf1b16d1d56665"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef int(* lbmmon_rcv_topic_format_serialize_t) (char *Destination, size_t *Size, unsigned short *ModuleID, const char *Topic, <a class="el" href="lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a> SourceCount, const <a class="el" href="lbm_8h.html#a5c096e7dbde94629387c31b6378e2a55">lbm_rcv_topic_stats_t</a> *Sources, void *FormatClientData)</td>
+          <td class="memname">typedef int(* lbmmon_rcv_topic_format_serialize_t) (char *Destination, size_t *Size, unsigned short *ModuleID, const <a class="el" href="structlbmmon__packet__attributes__t__stct.html">lbmmon_packet_attributes_t</a> *Attributes, const char *Topic, <a class="el" href="lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a> SourceCount, const <a class="el" href="lbm_8h.html#a5c096e7dbde94629387c31b6378e2a55">lbm_rcv_topic_stats_t</a> *Sources, void *FormatClientData)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>Function to serialize receiver topic statistics. </p>
-<p>This function should transform the topic, source count, and array of sources into a form which can be deserialized by the corresponding <a class="el" href="lbmmon_8h.html#a9e46eb12d98bc447021b5432004653da" title="Function to deserialize a buffer into an lbm_rcv_topic_stats_t structure. ">lbmmon_rcv_topic_format_deserialize_t</a> function.</p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="lbmmon_8h.html#a9e46eb12d98bc447021b5432004653da" title="Function to deserialize a buffer into an lbm_rcv_topic_stats_t structure. ">lbmmon_rcv_topic_format_deserialize_t</a> </dd></dl>
+<p>This function should transform the topic, source count, and array of sources into a form which can be deserialized by the corresponding <a class="el" href="lbmmon_8h.html#af47b9b12c883d6a7f5689fd63c435c78" title="Function to deserialize a buffer into an lbm_rcv_topic_stats_t structure. ">lbmmon_rcv_topic_format_deserialize_t</a> function.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="lbmmon_8h.html#af47b9b12c883d6a7f5689fd63c435c78" title="Function to deserialize a buffer into an lbm_rcv_topic_stats_t structure. ">lbmmon_rcv_topic_format_deserialize_t</a> </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">Destination</td><td>A pointer to a buffer to receive the serialized format of the lbm_context_stats_t statistics. </td></tr>
     <tr><td class="paramname">Size</td><td>A pointer to a <code>size_t</code>. On entry, it will contain the maximum allowed size of the serialized statistics. On exit, it must contain the actual size of the serialized statistics. </td></tr>
     <tr><td class="paramname">ModuleID</td><td>A pointer to an <code>unsigned</code> <code>short</code>, into which the module may write a module identification value. This value is included in the transmitted packet, and may be used by the receiver to verify and differentiate between different version of the module (and thus the format of the data it expects). </td></tr>
+    <tr><td class="paramname">Attributes</td><td>A pointer to a lbmmon_packet_attributes_t structure from which to take packet attributes. </td></tr>
     <tr><td class="paramname">Topic</td><td>A NUL-terminated string containing the topic. </td></tr>
     <tr><td class="paramname">SourceCount</td><td>The number of sources in the <em>Sources</em> array. </td></tr>
     <tr><td class="paramname">Sources</td><td>An array of <a class="el" href="lbm_8h.html#a5c096e7dbde94629387c31b6378e2a55" title="Structure that holds statistics for a receiver topic. ">lbm_rcv_topic_stats_t</a> structures containing the sources to which the receiver is joined. </td></tr>
@@ -1321,24 +2126,25 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ab75ba5cb87f31ae859f016fd35e95065"></a>
+<a class="anchor" id="ac672d6b9e052d000d3bddbc6fb04135c"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef int(* lbmmon_src_format_deserialize_t) (<a class="el" href="lbm_8h.html#a0a0c54fd8e9a7008f1db0126373fca92">lbm_src_transport_stats_t</a> *Statistics, const char *Source, size_t Length, unsigned short ModuleID, void *FormatClientData)</td>
+          <td class="memname">typedef int(* lbmmon_src_format_deserialize_t) (<a class="el" href="structlbmmon__packet__attributes__t__stct.html">lbmmon_packet_attributes_t</a> *Attributes, <a class="el" href="lbm_8h.html#a0a0c54fd8e9a7008f1db0126373fca92">lbm_src_transport_stats_t</a> *Statistics, const char *Source, size_t Length, unsigned short ModuleID, void *FormatClientData)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>Function to deserialize a buffer into an lbm_src_transport_stats_t structure. </p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="lbmmon_8h.html#a0194e2ffffb61d863b2afe5b7964e0ed" title="Function to serialize an lbm_rcv_transport_stats_t structure. ">lbmmon_rcv_format_serialize_t</a> </dd>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="lbmmon_8h.html#a26488c92fa1b89ea5f8d437f84272085" title="Function to serialize an lbm_rcv_transport_stats_t structure. ">lbmmon_rcv_format_serialize_t</a> </dd>
 <dd>
-<a class="el" href="lbmmon_8h.html#a1d3503a54e1e27d15d4708142d76e96d" title="Function to serialize an lbm_src_transport_stats_t structure. ">lbmmon_src_format_serialize_t</a> </dd>
+<a class="el" href="lbmmon_8h.html#a5b2f6e7028c8ed07c22e7942908ade44" title="Function to serialize an lbm_src_transport_stats_t structure. ">lbmmon_src_format_serialize_t</a> </dd>
 <dd>
-<a class="el" href="lbmmon_8h.html#a699dbdc53d6fcb140f8f45d213f158c9" title="Function to deserialize a buffer into an lbm_rcv_transport_stats_t structure. ">lbmmon_rcv_format_deserialize_t</a> </dd></dl>
+<a class="el" href="lbmmon_8h.html#ab4f264e24dbfea328c6dd49a8af6f184" title="Function to deserialize a buffer into an lbm_rcv_transport_stats_t structure. ">lbmmon_rcv_format_deserialize_t</a> </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
+    <tr><td class="paramname">Attributes</td><td>A pointer to a lbmmon_packet_attributes_t structure for storing the deserialized packet attributes. </td></tr>
     <tr><td class="paramname">Statistics</td><td>A pointer to an lbm_src_transport_stats_t structure into which the data is deserialized. </td></tr>
     <tr><td class="paramname">Source</td><td>A pointer to a buffer containing the serialized data. </td></tr>
     <tr><td class="paramname">Length</td><td>The length of the serialized data. </td></tr>
@@ -1347,31 +2153,32 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Zero if successful, -1 otherwise. If -1 is returned, the deserialized data will not be delivered to the application. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Zero if successful, 1 if passthrough, -1 otherwise. If 1 is returned, the packet was not deserialized and <em>Statistics</em> will not be populated. If -1 is returned, the deserialized data will not be delivered to the application. </dd></dl>
 
 </div>
 </div>
-<a class="anchor" id="a1d3503a54e1e27d15d4708142d76e96d"></a>
+<a class="anchor" id="a5b2f6e7028c8ed07c22e7942908ade44"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef int(* lbmmon_src_format_serialize_t) (char *Destination, size_t *Size, unsigned short *ModuleID, const <a class="el" href="lbm_8h.html#a0a0c54fd8e9a7008f1db0126373fca92">lbm_src_transport_stats_t</a> *Statistics, void *FormatClientData)</td>
+          <td class="memname">typedef int(* lbmmon_src_format_serialize_t) (char *Destination, size_t *Size, unsigned short *ModuleID, const <a class="el" href="structlbmmon__packet__attributes__t__stct.html">lbmmon_packet_attributes_t</a> *Attributes, const <a class="el" href="lbm_8h.html#a0a0c54fd8e9a7008f1db0126373fca92">lbm_src_transport_stats_t</a> *Statistics, void *FormatClientData)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>Function to serialize an lbm_src_transport_stats_t structure. </p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="lbmmon_8h.html#a0194e2ffffb61d863b2afe5b7964e0ed" title="Function to serialize an lbm_rcv_transport_stats_t structure. ">lbmmon_rcv_format_serialize_t</a> </dd>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="lbmmon_8h.html#a26488c92fa1b89ea5f8d437f84272085" title="Function to serialize an lbm_rcv_transport_stats_t structure. ">lbmmon_rcv_format_serialize_t</a> </dd>
 <dd>
-<a class="el" href="lbmmon_8h.html#a699dbdc53d6fcb140f8f45d213f158c9" title="Function to deserialize a buffer into an lbm_rcv_transport_stats_t structure. ">lbmmon_rcv_format_deserialize_t</a> </dd>
+<a class="el" href="lbmmon_8h.html#ab4f264e24dbfea328c6dd49a8af6f184" title="Function to deserialize a buffer into an lbm_rcv_transport_stats_t structure. ">lbmmon_rcv_format_deserialize_t</a> </dd>
 <dd>
-<a class="el" href="lbmmon_8h.html#ab75ba5cb87f31ae859f016fd35e95065" title="Function to deserialize a buffer into an lbm_src_transport_stats_t structure. ">lbmmon_src_format_deserialize_t</a> </dd></dl>
+<a class="el" href="lbmmon_8h.html#ac672d6b9e052d000d3bddbc6fb04135c" title="Function to deserialize a buffer into an lbm_src_transport_stats_t structure. ">lbmmon_src_format_deserialize_t</a> </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">Destination</td><td>A pointer to a buffer to receive the serialized format of the lbm_src_transport_stats_t statistics. </td></tr>
     <tr><td class="paramname">Size</td><td>A pointer to a size_t. On entry, it contains the maximum allowed size of the serialized statistics. On exit, it must contain the actual size of the serialized statistics. </td></tr>
     <tr><td class="paramname">ModuleID</td><td>A pointer to an <code>unsigned</code> <code>short</code>, into which the module may write a module identification value. This value is included in the transmitted packet, and may be used by the receiver to verify and differentiate between different version of the module (and thus the format of the data it expects). </td></tr>
+    <tr><td class="paramname">Attributes</td><td>A pointer to a lbmmon_packet_attributes_t structure from which to take packet attributes. </td></tr>
     <tr><td class="paramname">Statistics</td><td>A pointer to an lbm_src_transport_stats_t structure to be serialized. </td></tr>
     <tr><td class="paramname">FormatClientData</td><td>A pointer to format-specific client data as returned by the <a class="el" href="lbmmon_8h.html#a892e193659739d09c1f9e9d2749fc522" title="Function to initialize a format module. ">lbmmon_format_init_t</a> function. </td></tr>
   </table>
@@ -1415,6 +2222,82 @@ Functions</h2></td></tr>
 
 <p>A structure that holds the callback information for source statistics. </p>
 <p>A structure used with receive controller options to get/set specific callback information. </p>
+
+</div>
+</div>
+<a class="anchor" id="a77ac57d9f956f2b6a384985e1e9da227"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef const int(* lbmmon_transport_allow_debug_t) (void *TransportClientData)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Function to return the allow debug indicator from a transport module. </p>
+<dl class="section return"><dt>Returns</dt><dd>Zero if debug is disabled, 1 if debug is enabled. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a8c565335a25b51c625c7aa01e0a41562"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef int(* lbmmon_transport_ctrlmsg_receive_t) (char *Data, size_t *Length, void *TransportClientData)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Receive control message requests. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Data</td><td>Pointer to a buffer into which the received (serialized) data is to be placed. </td></tr>
+    <tr><td class="paramname">Length</td><td>Pointer to a size_t variable. On entry, it contains the maximum number of bytes to read. On exit, it must contain the actual number of bytes read. </td></tr>
+    <tr><td class="paramname">TransportClientData</td><td>A pointer to transport-specific client data as returned by the <a class="el" href="lbmmon_8h.html#a122d824581e3021a0ca2ec40e313eee9" title="Function to initialize a transport module to serve as a receiver of statistics. ">lbmmon_transport_initrcv_t</a> function. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Zero if successful, &gt;0 if timeout exceeded, -1 otherwise. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ad55a6080ae8b949dce5b1223162d3587"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef int(* lbmmon_transport_ctrlmsg_response_t) (const char *Data, size_t Length, void *TransportClientData)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Function to send response to control message requests. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Data</td><td>Pointer to the serialized statistics data. </td></tr>
+    <tr><td class="paramname">Length</td><td>Length of the serialized statistics data. </td></tr>
+    <tr><td class="paramname">TransportClientData</td><td>A pointer to transport-specific client data. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Zero if successful, -1 otherwise. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a69f3ef26c79ad43d35b8b4759e11b9d6"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef const char*(* lbmmon_transport_ctrlmsgtarget_t) (void)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Function to return the target address for control message requests. </p>
+<dl class="section return"><dt>Returns</dt><dd>A string containing the IP address and port of the request port if opened or NULL if none. </dd></dl>
 
 </div>
 </div>
@@ -1566,21 +2449,129 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ac0c4f7ee1700a54011cb0000ef279c8f"></a>
+<a class="anchor" id="a9efafb316135c3c30e8b21433c7995a2"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef int(* lbmmon_wildcard_rcv_format_deserialize_t) (<a class="el" href="lbm_8h.html#a5d1768dd4fdbcf6b6d415e0839622460">lbm_wildcard_rcv_stats_t</a> *Statistics, const char *Source, size_t Length, unsigned short ModuleID, void *FormatClientData)</td>
+          <td class="memname">typedef char*(* lbmmon_umestore_filter_options_t) (const char *FormatOptions)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Function to return the store filter options from a format module. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">FormatOptions</td><td>The FormatOptions associated with the store's context. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A string containing the store filter options. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="aa457a0197e5f0602a4c6154a501fc114"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef int(* lbmmon_umestore_format_serialize_t) (char *Destination, size_t *Size, unsigned short *ModuleID, const <a class="el" href="structlbmmon__packet__attributes__t__stct.html">lbmmon_packet_attributes_t</a> *Attributes, Lbmmon__UMPMonMsg *StoreMsg, void *FormatClientData)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Function to serialize store statistics. </p>
+<p>This function should transform the Lbmmon__UMPMonMsg structure into a form which can be deserialized by the corresponding lbmmon_umestore_format_deserialize function.</p>
+<dl class="section see"><dt>See also</dt><dd>lbmmon_umestore_format_deserialize_t </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Destination</td><td>A pointer to a buffer to receive the serialized format of the Lbmmon__UMPMonMsg structure. </td></tr>
+    <tr><td class="paramname">Size</td><td>A pointer to a <code>size_t</code>. On entry, it will contain the maximum allowed size of the serialized statistics. On exit, it must contain the actual size of the serialized statistics. </td></tr>
+    <tr><td class="paramname">ModuleID</td><td>A pointer to an <code>unsigned</code> <code>short</code>, into which the module may write a module identification value. This value is included in the transmitted packet, and may be used by the receiver to verify and differentiate between different version of the module (and thus the format of the data it expects). </td></tr>
+    <tr><td class="paramname">Attributes</td><td>A pointer to a lbmmon_packet_attributes_t structure from which to take packet attributes. </td></tr>
+    <tr><td class="paramname">StoreMsg</td><td>A pointer to an Lbmmon__UMPMonMsg structure to be serialized. </td></tr>
+    <tr><td class="paramname">FormatClientData</td><td>A pointer to format-specific client data as returned by the <a class="el" href="lbmmon_8h.html#a892e193659739d09c1f9e9d2749fc522" title="Function to initialize a format module. ">lbmmon_format_init_t</a> function. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Zero if successful, -1 otherwise. If -1 is returned, the serialized data will not be sent. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a3f9eba3e35f3fe2073ad553299a94e3b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef int(* lbmmon_umestore_free_unpacked_t) (Lbmmon__UMPMonMsg *StoreMsg)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Function to free an unpacked Lbmmon__UMPMonMsg structure. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">StoreMsg</td><td>A pointer to a pointer to an Lbmmon__UMPMonMsg structure into which the data was deserialized. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Zero if successful, -1 otherwise. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a9e175156a89927f67966a0b67d051bd6"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef void(* lbmmon_umestore_statistics_cb) (const void *AttributeBlock, const Lbmmon__UMPMonMsg *StoreMsg, void *ClientData)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Client callback function to process a received store statistics packet. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">AttributeBlock</td><td>Pointer to the statistics packet attribute block. </td></tr>
+    <tr><td class="paramname">StoreMsg</td><td>Pointer to the store statistics. </td></tr>
+    <tr><td class="paramname">ClientData</td><td>Pointer to client-specific data as passed to <a class="el" href="lbmmon_8h.html#a3c327a6086714f1cbdb0b95905457043" title="Create an LBM Monitoring Receive Controller. ">lbmmon_rctl_create()</a>. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a9ea2962a0fe6830f8bdf31f0277d1ae7"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="structlbmmon__umestore__statistics__func__t__stct.html">lbmmon_umestore_statistics_func_t_stct</a>  <a class="el" href="lbmmon_8h.html#a9ea2962a0fe6830f8bdf31f0277d1ae7">lbmmon_umestore_statistics_func_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A structure that holds the callback information for store statistics. </p>
+<p>A structure used with receive controller options to get/set specific callback information. </p>
+
+</div>
+</div>
+<a class="anchor" id="a1f4451c5bac9e473fd440466d01b1e35"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef int(* lbmmon_wildcard_rcv_format_deserialize_t) (<a class="el" href="structlbmmon__packet__attributes__t__stct.html">lbmmon_packet_attributes_t</a> *Attributes, <a class="el" href="lbm_8h.html#a5d1768dd4fdbcf6b6d415e0839622460">lbm_wildcard_rcv_stats_t</a> *Statistics, const char *Source, size_t Length, unsigned short ModuleID, void *FormatClientData)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>Function to deserialize a buffer into an <a class="el" href="lbm_8h.html#a5d1768dd4fdbcf6b6d415e0839622460" title="Structure that holds statistics for a wildcard receiver. ">lbm_wildcard_rcv_stats_t</a> structure. </p>
-<p>Transform a block of data serialized by the <a class="el" href="lbmmon_8h.html#a032f6ca4c4bc570d5a6b43ac0b9cdcbe" title="Function to serialize wildcard receiver statistics. ">lbmmon_wildcard_rcv_format_serialize_t</a> function into a <a class="el" href="lbm_8h.html#a5d1768dd4fdbcf6b6d415e0839622460" title="Structure that holds statistics for a wildcard receiver. ">lbm_wildcard_rcv_stats_t</a> structure.</p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="lbmmon_8h.html#ac0c4f7ee1700a54011cb0000ef279c8f" title="Function to deserialize a buffer into an lbm_wildcard_rcv_stats_t structure. ">lbmmon_wildcard_rcv_format_deserialize_t</a> </dd></dl>
+<p>Transform a block of data serialized by the <a class="el" href="lbmmon_8h.html#af21d9cb03baa2f10f6f244c2409e90a7" title="Function to serialize wildcard receiver statistics. ">lbmmon_wildcard_rcv_format_serialize_t</a> function into a <a class="el" href="lbm_8h.html#a5d1768dd4fdbcf6b6d415e0839622460" title="Structure that holds statistics for a wildcard receiver. ">lbm_wildcard_rcv_stats_t</a> structure.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="lbmmon_8h.html#af21d9cb03baa2f10f6f244c2409e90a7" title="Function to serialize wildcard receiver statistics. ">lbmmon_wildcard_rcv_format_serialize_t</a> </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
+    <tr><td class="paramname">Attributes</td><td>A pointer to a lbmmon_packet_attributes_t structure for storing the deserialized packet attributes. </td></tr>
     <tr><td class="paramname">Statistics</td><td>A pointer to an lbm_wildcard_rcv_stats_t structure into which the data is deserialized. </td></tr>
     <tr><td class="paramname">Source</td><td>A pointer to a buffer containing the serialized data. </td></tr>
     <tr><td class="paramname">Length</td><td>The length of the serialized data. </td></tr>
@@ -1589,28 +2580,29 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Zero if successful, -1 otherwise. If -1 is returned, the deserialized data will not be delivered to the application. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Zero if successful, 1 if passthrough, -1 otherwise. If 1 is returned, the packet was not deserialized and <em>Statistics</em> will not be populated. If -1 is returned, the deserialized data will not be delivered to the application. </dd></dl>
 
 </div>
 </div>
-<a class="anchor" id="a032f6ca4c4bc570d5a6b43ac0b9cdcbe"></a>
+<a class="anchor" id="af21d9cb03baa2f10f6f244c2409e90a7"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef int(* lbmmon_wildcard_rcv_format_serialize_t) (char *Destination, size_t *Size, unsigned short *ModuleID, const <a class="el" href="lbm_8h.html#a5d1768dd4fdbcf6b6d415e0839622460">lbm_wildcard_rcv_stats_t</a> *Statistics, void *FormatClientData)</td>
+          <td class="memname">typedef int(* lbmmon_wildcard_rcv_format_serialize_t) (char *Destination, size_t *Size, unsigned short *ModuleID, const <a class="el" href="structlbmmon__packet__attributes__t__stct.html">lbmmon_packet_attributes_t</a> *Attributes, const <a class="el" href="lbm_8h.html#a5d1768dd4fdbcf6b6d415e0839622460">lbm_wildcard_rcv_stats_t</a> *Statistics, void *FormatClientData)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>Function to serialize wildcard receiver statistics. </p>
 <p>This function should transform the lbm_wildcard_receiver_stats_t structure into a form which can be deserialized by the corresponding lbmmon_wildcard_rcv_format_deserialize function.</p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="lbmmon_8h.html#ac0c4f7ee1700a54011cb0000ef279c8f" title="Function to deserialize a buffer into an lbm_wildcard_rcv_stats_t structure. ">lbmmon_wildcard_rcv_format_deserialize_t</a> </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="lbmmon_8h.html#a1f4451c5bac9e473fd440466d01b1e35" title="Function to deserialize a buffer into an lbm_wildcard_rcv_stats_t structure. ">lbmmon_wildcard_rcv_format_deserialize_t</a> </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">Destination</td><td>A pointer to a buffer to receive the serialized format of the lbm_wildcard_rcv_stats_t statistics. </td></tr>
     <tr><td class="paramname">Size</td><td>A pointer to a <code>size_t</code>. On entry, it will contain the maximum allowed size of the serialized statistics. On exit, it must contain the actual size of the serialized statistics. </td></tr>
     <tr><td class="paramname">ModuleID</td><td>A pointer to an <code>unsigned</code> <code>short</code>, into which the module may write a module identification value. This value is included in the transmitted packet, and may be used by the receiver to verify and differentiate between different version of the module (and thus the format of the data it expects). </td></tr>
+    <tr><td class="paramname">Attributes</td><td>A pointer to a lbmmon_packet_attributes_t structure from which to take packet attributes. </td></tr>
     <tr><td class="paramname">Statistics</td><td>A pointer to an lbm_wildcard_rcv_stats_t structure to be serialized. </td></tr>
     <tr><td class="paramname">FormatClientData</td><td>A pointer to format-specific client data as returned by the <a class="el" href="lbmmon_8h.html#a892e193659739d09c1f9e9d2749fc522" title="Function to initialize a format module. ">lbmmon_format_init_t</a> function. </td></tr>
   </table>
@@ -1734,7 +2726,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>0 if successful, -1 if the attribute does not exist. </dd></dl>
-<dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000036">Deprecated:</a></b></dt><dd>Use <a class="el" href="lbmmon_8h.html#aa8669b8acf25d0d81ef78f8c4fced6ea" title="Retrieve the object ID attribute from the statistics attribute block. ">lbmmon_attr_get_objectid</a> instead. </dd></dl>
+<dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000040">Deprecated:</a></b></dt><dd>Use <a class="el" href="lbmmon_8h.html#aa8669b8acf25d0d81ef78f8c4fced6ea" title="Retrieve the object ID attribute from the statistics attribute block. ">lbmmon_attr_get_objectid</a> instead. </dd></dl>
 
 </div>
 </div>
@@ -1997,6 +2989,48 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="adfbf472a82434234f20e374ea9f0d71f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">LBMExpDLL int lbmmon_attributes_deserialize </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structlbmmon__packet__attributes__t__stct.html">lbmmon_packet_attributes_t</a> *&#160;</td>
+          <td class="paramname"><em>Attributes</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>Source</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>Length</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Deserialize the Attributes Block into the lbmmon_packet_attributes_t structure. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Attributes</td><td>A pointer to a lbmmon_packet_attributes_t structure for storing the deserialized packet attributes. </td></tr>
+    <tr><td class="paramname">Source</td><td>A pointer to a buffer containing the Attributes Block from the incoming message from an LBM receiver (not from LBMMON RCTL). </td></tr>
+    <tr><td class="paramname">Length</td><td>The length of the Attributes Block. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a class="anchor" id="afe461c7e4c25b9af6e17e86ec6c68ca9"></a>
 <div class="memitem">
 <div class="memproto">
@@ -2083,6 +3117,232 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Zero if successful, -1 otherwise. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a586b51834a0b92fee0f469fd6eef28a9"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">LBMExpDLL int lbmmon_control_dump_default_filter_options </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Dump the default filter options to stdout. </p>
+<dl class="section return"><dt>Returns</dt><dd>Zero if successful, -1 otherwise. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="af9cd011da427110d5929a037e85e6fd0"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">LBMExpDLL const char* lbmmon_control_errmsg </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Function to return the last error message from lbmmon_control. </p>
+<dl class="section return"><dt>Returns</dt><dd>A string containing a description of the last error encountered by the module. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a2df8934a206774da4b6e9c50b8a9b2c6"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">LBMExpDLL int lbmmon_control_index_for_command </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>Command</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Retrieve the index associated with the given LBMMON control command. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Command</td><td>The command to convert to an index. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The command index or -1 if command was invalid. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a3786800584d07fedc422935668de1955"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">LBMExpDLL int lbmmon_control_index_for_node_type </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>NodeType</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Retrieve the index associated with the given LBMMON control node type. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">NodeType</td><td>The node type to convert to an index. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The node type index or -1 if node type was invalid. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a694cd9e29e7179a2dbc8a66c30c112a5"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">LBMExpDLL int lbmmon_control_load_data_from_filename </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>Filename</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char **&#160;</td>
+          <td class="paramname"><em>Data</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Load data from filename into a buffer. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Filename</td><td>String with filename to be read. </td></tr>
+    <tr><td class="paramname">Data</td><td>A pointer to a buffer (if successful) with the contents of the file. Will be malloc'd by this function and must be free'd by caller. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Zero if successful, -1 otherwise. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a0b9d93bc3bb7d711b7e33029e4019a2c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">LBMExpDLL int lbmmon_control_serialize </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>Destination</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t *&#160;</td>
+          <td class="paramname"><em>Size</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>Command</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>Data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>NodeType</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>ApplicationSourceID</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Function to serialize a control message. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Destination</td><td>A pointer to a buffer to receive the serialized format of the control message. </td></tr>
+    <tr><td class="paramname">Size</td><td>A pointer to a <code>size_t</code>. On entry, it will contain the maximum allowed size of the serialized packet. On exit, it must contain the actual size of the serialized packet. </td></tr>
+    <tr><td class="paramname">Command</td><td>The result from lbmmon_index_for_command. </td></tr>
+    <tr><td class="paramname">Data</td><td>A pointer to any data required for a command. </td></tr>
+    <tr><td class="paramname">NodeType</td><td>The result from lbmmon_control_index_for_command. </td></tr>
+    <tr><td class="paramname">ApplicationSourceID</td><td>Null-terminated string containing an application-specified source identifier. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Zero if successful, -1 otherwise. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a0811fc36a318a5210f27f07f41437746"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">LBMExpDLL const char* lbmmon_control_valid_commands </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Retrieve the list of valid LBMMON control commands. </p>
+<dl class="section return"><dt>Returns</dt><dd>String containing the list of commands. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a9aa3e81dd1dfe856edb1fe7a4d9c2896"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">LBMExpDLL const char* lbmmon_control_valid_node_types </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Retrieve the list of valid LBMMON control node types. </p>
+<dl class="section return"><dt>Returns</dt><dd>String containing the list of node types. </dd></dl>
 
 </div>
 </div>
@@ -2213,12 +3473,12 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ad10ac6fdaa7ba17b8efceca176c36070"></a>
+<a class="anchor" id="a92cdb7dc9ffbf2d68742d3762b974073"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">const char* lbmmon_next_key_value_pair </td>
+          <td class="memname">LBMExpDLL const char* lbmmon_next_key_value_pair </td>
           <td>(</td>
           <td class="paramtype">const char *&#160;</td>
           <td class="paramname"><em>String</em>, </td>
@@ -2266,7 +3526,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd><code>NULL</code> if no key/value pair is found. Otherwise a pointer to the remainder of the string, to be passed to subsequent calls to <a class="el" href="lbmmon_8h.html#ad10ac6fdaa7ba17b8efceca176c36070" title="Retrieve the next key/value pair from a semicolon-separated list. ">lbmmon_next_key_value_pair()</a>. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><code>NULL</code> if no key/value pair is found. Otherwise a pointer to the remainder of the string, to be passed to subsequent calls to <a class="el" href="lbmmon_8h.html#a92cdb7dc9ffbf2d68742d3762b974073" title="Retrieve the next key/value pair from a semicolon-separated list. ">lbmmon_next_key_value_pair()</a>. </dd></dl>
 
 </div>
 </div>

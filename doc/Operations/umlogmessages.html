@@ -135,8 +135,6 @@ UM Core Messages&nbsp;&nbsp;<small><a href="#umcoremessages">&lt;-</a></small></
 <tr>
 <td>Core-10403-02: SRS Controller Connection (p) received an invalid message from the SRS Server; dropping (s:u)</td><td>Received an invalid message payload from the Server.</td><td>Check to make sure the correct server is running and the correct port is configured. </td></tr>
 <tr>
-<td>Core-10403-03: SRS Controller Connection (p) SID (0xx) got a disconnect from the Server (s:u) Local Addr (s:u)</td><td>The SRS Controller got a disconnect from the Server.</td><td>Check to make sure the correct server is running and the correct port is configured. </td></tr>
-<tr>
 <td>Core-10403-04: SRS Controller (p) SID (0xx) for ContextID (u) is unable to connect to any configured Server</td><td>The SRS Controller is unable to connect to any configured Server.</td><td>Check to make sure the server is running and the correct port is configured. </td></tr>
 <tr>
 <td>Core-10403-05: SRS Controller Connection (p) SID (0xx) is unable to send the initial registration request to the Server (s:u) Local Addr (s:u)</td><td>The SRS Controller is unable to send the initial connection request to the Server.</td><td>Check to make sure the correct server is running and the correct port is configured. </td></tr>
@@ -149,7 +147,7 @@ UM Core Messages&nbsp;&nbsp;<small><a href="#umcoremessages">&lt;-</a></small></
 <tr>
 <td>Core-10403-09: SRS Controller Connection (p) is unable to request more data on the stream from the Server (s:u)</td><td>SRS Controller is unable to request more data on the data stream from the server.</td><td>Make sure the server is running. </td></tr>
 <tr>
-<td>Core-10403-120: resolver_service entry (s:u) already exist. Skipping but continuing.</td><td>The lbm_context_attr_setopt/str_setopt() detected duplicate resolver_service entries. The duplicate entries will be skipped.</td><td>Check the config file or code (if config set via code) for duplicate resolver_service entries. Also check if <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#aecac05969bba0d6057589ca03dfe60a2">lbm_config()</a> is loaded multiple times with the same resolver_service entries </td></tr>
+<td>Core-10403-120: resolver_service entry (s:u) already exist. Skipping but continuing.</td><td>The lbm_context_attr_setopt/str_setopt() detected duplicate resolver_service entries. The duplicate entries will be skipped.</td><td>Check the config file or code (if config set via code) for duplicate resolver_service entries. Also check if <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#aecac05969bba0d6057589ca03dfe60a2">lbm_config()</a> is loaded multiple times with the same resolver_service entries </td></tr>
 <tr>
 <td>Core-10403-150: Context (p) created with ContextID (u) and ContextName [s]</td><td>A Context was created with the given Context ID and name.</td><td>This is informational only and no action is required. </td></tr>
 <tr>
@@ -188,6 +186,10 @@ UM Core Messages&nbsp;&nbsp;<small><a href="#umcoremessages">&lt;-</a></small></
 <td>Core-10489-6: lbm_winevlog_setup() error creating TL queue: s</td><td>Unable to create two-lock queue</td><td>Contact Informatica Support. </td></tr>
 <tr>
 <td>Core-10528-3: The smart source p will fragment messages when the send message length plus configured message headers [d bytes] exceeds the transport's maximum datagram size [d bytes]</td><td>The configured smart_src_max_message_length plus LBM and application specified message headers exceeded the transport's datagram maximum size.</td><td>The smart source will fragment messages when the send message length plus headers exceeds the transport's maximum message length. </td></tr>
+<tr>
+<td>Core-10654-02: SRS Controller Connection (p) SID (0xx) got a disconnect from the Server (s:u) Local Addr (s:u)</td><td>The SRS Controller got a disconnect from the Server.</td><td>Check to make sure the correct server is running and the correct port is configured. </td></tr>
+<tr>
+<td>Core-10654-1: unicast resolver s:u went inactive after having previously been active</td><td>The process received no communications from the LBMRD at the specified ip:port within the resolver_unicast_activity_timeout and is marked as inactive after previously being active.</td><td>If the LBMRD is running properly, increasing the resolver_unicast_activity_timeout to account for possible network congestion or an overloaded LBMRD can resolve this issue. </td></tr>
 <tr>
 <td>Core-10668-01: The context application_data configuration option is deprecated and may have no effect in the future.</td><td>The application_data configuration option is deprecated.</td><td>Using this configuration option is not recommended. </td></tr>
 <tr>
@@ -240,6 +242,58 @@ UM Core Messages&nbsp;&nbsp;<small><a href="#umcoremessages">&lt;-</a></small></
 <td>Core-10824-1: malformed Application Header, dropping application data.</td><td>LBM received a message with applications headers but there was not enough data to support application headers.</td><td>This packet is suspicious. </td></tr>
 <tr>
 <td>Core-10824-2: malformed Application Header, dropping application data. (s:u)</td><td>LBM received a message with applications headers but there was not enough data to support application headers.</td><td>This packet is suspicious. Please check the source of the data. </td></tr>
+<tr>
+<td>Core-10960-01: SRS Remote Domain Route packet malformed (contains Domain ID 0). Dropping. Origin: s:u Route: s:u</td><td>SRS Data received contains invalid Domain ID.</td><td>Check the source (IP:Port) for possible version mismatch or service attack. </td></tr>
+<tr>
+<td>Core-10960-02: SRS Remote Domain Route End packet malformed (contains Domain ID 0). Dropping. Origin: s:u Route: s:u</td><td>SRS Data received contains invalid Domain ID.</td><td>Check the source (IP:Port) for possible version mismatch or service attack. </td></tr>
+<tr>
+<td>Core-10960-100: unable to schedule interest update handling timer: ctx[p] s</td><td>Route info is handled asyncronously via a scheduled timer. An error occurred while trying to schedule this timer.</td><td>Please contact Informatica support. </td></tr>
+<tr>
+<td>Core-10960-200: Duplicate context name 's' detected. Origin: DomainID u addr s:d</td><td>A named context has detected another context advertising the same name via the SRS.</td><td>Advertised context names (E.g. store names) must be unique across topic resolution domains. Check the configuration to ensure only one store or named context with a given name is operational at any given time. The UM DomainID, IP address, and port of the advertised duplicate context name are given. </td></tr>
+<tr>
+<td>Core-10960-201: Error processing SRS Context Name flags x. Ignoring. Origin: s:d</td><td>An SRS Context Name packet was ignored because it could not be parsed, or the application failed to allocate memory.</td><td>Investigate the listed IP and port for an application generating spurious traffic. </td></tr>
+<tr>
+<td>Core-10995-113: [LBMMON] Format module Store deserialize function returned d, s</td><td>A store statistics message was unable to be parsed.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>Core-10995-115: [LBMMON] Failed to retrieve umestore stats, error d, s</td><td>LBMMON failed to retrieve stats from a store for reporting.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>Core-10995-116: [LBMMON] Error d returned from transport module send function, s</td><td>Failed to send a store statistics packet.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>Core-10995-117: s</td><td>Failed to send a store statistics packet due to size limitation.</td><td>Specify store filter and/or select options to reduce the size/scope of the statistics message and try again. </td></tr>
+<tr>
+<td>Core-10995-123: [LBMMON] Format module Gateway deserialize function returned d, s</td><td>A gateway statistics message was unable to be parsed.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>Core-10995-125: [LBMMON] Failed to retrieve gateway stats, error d, s</td><td>LBMMON failed to retrieve stats from a gateway for reporting.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>Core-10995-126: [LBMMON] Error d returned from transport module send function, s</td><td>Failed to send a gateway statistics packet.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>Core-10995-127: [LBMMON] Error d returned from format module gateway serialize function, s</td><td>Failed to format a gateway statistics packet.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>Core-10995-128: [LBMMON] Failed to free memory used for gateway stats, error d, s</td><td>LBMMON failed to free memory used for gateway stats.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>Core-10995-140: [LBMMON] Topic[s] Source[s], Beginning of Transport Session</td><td>LBMMON has received a Beginning of Transport Session message.</td><td>This message for informational purposes only and can be ignored. </td></tr>
+<tr>
+<td>Core-10995-141: [LBMMON] Topic[s] Source[s], End of Transport Session</td><td>LBMMON has received a Beginning of Transport Session message.</td><td>This message for informational purposes only and can be ignored. </td></tr>
+<tr>
+<td>Core-10995-142: [LBMMON] Topic[s] Source[s] Unrecoverable Loss at SQN[u]</td><td>A message was declared unrecoverably lost by LBMMON's receiver's underlying delivery controller.</td><td>Identify the source of the loss or Contact Informatica Support. </td></tr>
+<tr>
+<td>Core-10995-143: [LBMMON] Topic[s] Source[s] Unrecoverable Loss Burst at SQN[u]</td><td>A burst of messages were declared unrecoverably lost by LBMMON's receiver's underlying delivery controller.</td><td>Identify the source of the loss or Contact Informatica Support. </td></tr>
+<tr>
+<td>Core-10995-27: [LBMMON] Error d returned from format module source serialize function, s</td><td>Failed to convert a CSV source transport statistics packet to PB format.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>Core-10995-28: [LBMMON] Error d returned from format module receiver serialize function, s</td><td>Failed to convert a CSV receiver transport statistics packet to PB format.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>Core-10995-29: [LBMMON] Error d returned from format module event queue serialize function, s</td><td>Failed to convert a CSV event queue statistics message to PB format.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>Core-10995-30: [LBMMON] Error d returned from format module context serialize function, s</td><td>Failed to convert a CSV context statistics message to PB format.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>Core-10995-31: [LBMMON] Error d returned from format module receiver topic serialize function, s</td><td>Failed to convert a CSV receiver topic statistics message to PB format.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>Core-10995-321: [LBMMON] Immediate messaging target: s</td><td>A request port was opened with the IP address and port specified.</td><td>This is informational only and no action is required. </td></tr>
+<tr>
+<td>Core-10995-32: [LBMMON] Error d returned from format module wildcard receiver serialize function, s</td><td>Failed to convert a CSV wildcard receiver statistics message to PB format.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>Core-10995-432: [LBMMON] Invalid control message: s</td><td>An invalid LBMMON control message was received.</td><td>Contact Informatica support. </td></tr>
 <tr>
 <td>Core-3398-1: Socket close timed out before receive buffer drain complete. lu bytes discarded from source (s).</td><td>Socket close timedout, but receive buffer has not been drained fully yet. On this close socket you may see connection resets.</td><td></td></tr>
 <tr>
@@ -347,7 +401,7 @@ UM Core Messages&nbsp;&nbsp;<small><a href="#umcoremessages">&lt;-</a></small></
 <tr>
 <td>Core-5688-1804: HF message receiver function returned -1</td><td>An error occurred processing a message received by a hot failover receiver. The message was discarded.</td><td>If this occurs frequently, contact Informatica support. </td></tr>
 <tr>
-<td>Core-5688-1807: LBM_DEBUG_MAXSIZE is greater than 4,294,967,295. Limiting to max.</td><td>Maximum rollover file size is capped at 4,294,967,295 (LBM_DEBUG_LOG_ROLLOVER_SIZE_MAX)</td><td>Set LBM_DEBUG_MAXSIZE and/or the parameter for <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#ac4410a1188555d16996be6b269bb0ef7">lbm_debugfile_maxsize()</a> to a lesser value to avoid this warning </td></tr>
+<td>Core-5688-1807: LBM_DEBUG_MAXSIZE is greater than 4,294,967,295. Limiting to max.</td><td>Maximum rollover file size is capped at 4,294,967,295 (LBM_DEBUG_LOG_ROLLOVER_SIZE_MAX)</td><td>Set LBM_DEBUG_MAXSIZE and/or the parameter for <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#ac4410a1188555d16996be6b269bb0ef7">lbm_debugfile_maxsize()</a> to a lesser value to avoid this warning </td></tr>
 <tr>
 <td>Core-5688-1811: FATAL: WSA startup error - d</td><td>FATAL: Error in starting Windows Socket. The specific Windows Sockets Error Code is returned in the error message.</td><td></td></tr>
 <tr>
@@ -655,27 +709,27 @@ UM Core Messages&nbsp;&nbsp;<small><a href="#umcoremessages">&lt;-</a></small></
 <tr>
 <td>Core-5688-3415: message receiver function returned -1</td><td>An error occurred processing a message received by a receiver. The receiver's delivery controller was unable to pass the message to the application. The message was discarded.</td><td>Contact Informatica support if this message occurs frequently. </td></tr>
 <tr>
-<td>Core-5688-3426: WARNING: Joining session [s] which exists and uses a different transport_lbtrm_nak_backoff_interval [d] than requested [d].</td><td>After a receiver has created a transport session, a subsequent receiver joining the same transport session cannot configure a different transport_lbtrm_nak_backoff_interval setting.</td><td></td></tr>
+<td>Core-5688-3426: WARNING: Topic [s] joining session [s] which exists and uses a different transport_lbtrm_nak_backoff_interval [d] than requested [d].</td><td>After a receiver has created a transport session, a subsequent receiver joining the same transport session cannot configure a different transport_lbtrm_nak_backoff_interval setting.</td><td></td></tr>
 <tr>
-<td>Core-5688-3427: WARNING: Joining session [s] which exists and uses a different transport_lbtrm_nak_suppress_interval [d] than requested [d].</td><td>After a receiver has created a transport session, a subsequent receiver joining the same transport session cannot configure a different transport_lbtrm_nak_suppress_interval setting.</td><td></td></tr>
+<td>Core-5688-3427: WARNING: Topic [s] joining session [s] which exists and uses a different transport_lbtrm_nak_suppress_interval [d] than requested [d].</td><td>After a receiver has created a transport session, a subsequent receiver joining the same transport session cannot configure a different transport_lbtrm_nak_suppress_interval setting.</td><td></td></tr>
 <tr>
-<td>Core-5688-3428: WARNING: Joining session [s] which exists and uses a different transport_lbtrm_nak_generation_interval [d] than requested [d].</td><td>After a receiver has created a transport session, a subsequent receiver joining the same transport session cannot configure a different transport_lbtrm_nak_generation_interval setting.</td><td></td></tr>
+<td>Core-5688-3428: WARNING: Topic [s] joining session [s] which exists and uses a different transport_lbtrm_nak_generation_interval [d] than requested [d].</td><td>After a receiver has created a transport session, a subsequent receiver joining the same transport session cannot configure a different transport_lbtrm_nak_generation_interval setting.</td><td></td></tr>
 <tr>
-<td>Core-5688-3429: WARNING: Joining session [s] which exists and uses a different transport_lbtrm_preactivity_timeout [d] than requested [d].</td><td>After a receiver has created a transport session, a subsequent receiver joining the same transport session cannot configure a different transport_lbtrm_preactivity_timeout setting.</td><td></td></tr>
+<td>Core-5688-3429: WARNING: Topic [s] joining session [s] which exists and uses a different transport_lbtrm_preactivity_timeout [d] than requested [d].</td><td>After a receiver has created a transport session, a subsequent receiver joining the same transport session cannot configure a different transport_lbtrm_preactivity_timeout setting.</td><td></td></tr>
 <tr>
-<td>Core-5688-3430: WARNING: Joining session [s] which exists and uses a different transport_lbtrm_activity_timeout [d] than requested [d].</td><td>After a receiver has created a transport session, a subsequent receiver joining the same transport session cannot configure a different transport_lbtrm_activity_timeout setting.</td><td></td></tr>
+<td>Core-5688-3430: WARNING: Topic [s] joining session [s] which exists and uses a different transport_lbtrm_activity_timeout [d] than requested [d].</td><td>After a receiver has created a transport session, a subsequent receiver joining the same transport session cannot configure a different transport_lbtrm_activity_timeout setting.</td><td></td></tr>
 <tr>
-<td>Core-5688-3431: WARNING: Joining session [s] which exists and uses a different transport_lbtrm_send_naks [d] than requested [d].</td><td>After a receiver has created a transport session, a subsequent receiver joining the same transport session cannot configure a different transport_lbtrm_send_naks setting.</td><td></td></tr>
+<td>Core-5688-3431: WARNING: Topic [s] joining session [s] which exists and uses a different transport_lbtrm_send_naks [d] than requested [d].</td><td>After a receiver has created a transport session, a subsequent receiver joining the same transport session cannot configure a different transport_lbtrm_send_naks setting.</td><td></td></tr>
 <tr>
-<td>Core-5688-3432: WARNING: Joining session [s] which exists and uses a different transport_lbtru_nak_backoff_interval [d] than requested [d].</td><td>After a receiver has created a transport session, a subsequent receiver joining the same transport session cannot configure a different transport_lbtru_nak_backoff_interval setting.</td><td></td></tr>
+<td>Core-5688-3432: WARNING: Topic [s] joining session [s] which exists and uses a different transport_lbtru_nak_backoff_interval [d] than requested [d].</td><td>After a receiver has created a transport session, a subsequent receiver joining the same transport session cannot configure a different transport_lbtru_nak_backoff_interval setting.</td><td></td></tr>
 <tr>
-<td>Core-5688-3433: WARNING: Joining session [s] which exists and uses a different transport_lbtru_nak_suppress_interval [d] than requested [d].</td><td>After a receiver has created a transport session, a subsequent receiver joining the same transport session cannot configure a different transport_lbtru_nak_suppress_interval setting.</td><td></td></tr>
+<td>Core-5688-3433: WARNING: Topic [s] joining session [s] which exists and uses a different transport_lbtru_nak_suppress_interval [d] than requested [d].</td><td>After a receiver has created a transport session, a subsequent receiver joining the same transport session cannot configure a different transport_lbtru_nak_suppress_interval setting.</td><td></td></tr>
 <tr>
-<td>Core-5688-3434: WARNING: Joining session [s] which exists and uses a different transport_lbtru_nak_generation_interval [d] than requested [d].</td><td>After a receiver has created a transport session, a subsequent receiver joining the same transport session cannot configure a different transport_lbtru_nak_generation_interval setting.</td><td></td></tr>
+<td>Core-5688-3434: WARNING: Topic [s] joining session [s] which exists and uses a different transport_lbtru_nak_generation_interval [d] than requested [d].</td><td>After a receiver has created a transport session, a subsequent receiver joining the same transport session cannot configure a different transport_lbtru_nak_generation_interval setting.</td><td></td></tr>
 <tr>
-<td>Core-5688-3435: WARNING: Joining session [s] which exists and uses a different transport_lbtru_activity_timeout [d] than requested [d].</td><td>After a receiver has created a transport session, a subsequent receiver joining the same transport session cannot configure a different transport_lbtru_activity_timeout setting.</td><td></td></tr>
+<td>Core-5688-3435: WARNING: Topic [s] joining session [s] which exists and uses a different transport_lbtru_activity_timeout [d] than requested [d].</td><td>After a receiver has created a transport session, a subsequent receiver joining the same transport session cannot configure a different transport_lbtru_activity_timeout setting.</td><td></td></tr>
 <tr>
-<td>Core-5688-3439: WARNING: Joining session [s] which exists and uses a different transport_lbtipc_activity_timeout [d] than requested [d].</td><td>After a receiver has created a transport session, a subsequent receiver joining the same transport session cannot configure a different transport_lbtipc_activity_timeout setting.</td><td></td></tr>
+<td>Core-5688-3439: WARNING: Topic [s] joining session [s] which exists and uses a different transport_lbtipc_activity_timeout [d] than requested [d].</td><td>After a receiver has created a transport session, a subsequent receiver joining the same transport session cannot configure a different transport_lbtipc_activity_timeout setting.</td><td></td></tr>
 <tr>
 <td>Core-5688-3541: PCRE exec [s][s][d] error d</td><td>An error occurred while trying to match the pattern listed in the first bracketed expression. The topic string attempting to be matched is supplied as the second bracketed expression, and its length is supplied as the third bracketed expression. The error that occurred was internal to PCRE, and the error code is listed in the PCRE documentation for return values of pcre_exec.</td><td></td></tr>
 <tr>
@@ -1069,7 +1123,7 @@ UM Core Messages&nbsp;&nbsp;<small><a href="#umcoremessages">&lt;-</a></small></
 <tr>
 <td>Core-6020-7: inflight bytes would be negative, resetting to 0</td><td>Amount of bytes being decremented would cause inflight bytes to be negative</td><td>Current flight size could be incorrect due to unknown reasons, use the set flight size API to reset values </td></tr>
 <tr>
-<td>Core-6033-12: [LBMMON] Invalid statistics packet received</td><td>An invalid statistics packet was receiver.</td><td>Contact Informatica support. </td></tr>
+<td>Core-6033-12: [LBMMON] Invalid statistics packet received</td><td>An invalid statistics packet was received.</td><td>Contact Informatica support. </td></tr>
 <tr>
 <td>Core-6033-13: [LBMMON] Format module source deserialize function returned d, s</td><td>A source statistics message was unable to be parsed.</td><td>Contact Informatica support. </td></tr>
 <tr>
@@ -1517,11 +1571,11 @@ UM Core Messages&nbsp;&nbsp;<small><a href="#umcoremessages">&lt;-</a></small></
 <tr>
 <td>Core-7839-34: [LBMMON] Error d returned from transport module send function, s</td><td>Failed to send a receiver topic statistics packet.</td><td>Contact Informatica support. </td></tr>
 <tr>
-<td>Core-7839-35: [LBMMON] Error d returned from format module receiver serialize function, s</td><td>Failed to format a receiver topic statistics packet.</td><td>Contact Informatica support. </td></tr>
+<td>Core-7839-35: [LBMMON] Error d returned from format module receiver topic serialize function, s</td><td>Failed to format a receiver topic statistics packet.</td><td>Contact Informatica support. </td></tr>
 <tr>
 <td>Core-7839-36: [LBMMON] Error d returned from transport module send function, s</td><td>Failed to send a wildcard receiver statistics packet.</td><td>Contact Informatica support. </td></tr>
 <tr>
-<td>Core-7839-37: [LBMMON] Error d returned from format module receiver serialize function, s</td><td>Failed to format a wildcard receiver statistics packet.</td><td>Contact Informatica support. </td></tr>
+<td>Core-7839-37: [LBMMON] Error d returned from format module wildcard receiver serialize function, s</td><td>Failed to format a wildcard receiver statistics packet.</td><td>Contact Informatica support. </td></tr>
 <tr>
 <td>Core-7839-8: Callback service time stats for hot failover receiver topic "%s" are disabled because s</td><td>Callback service time stats are enabled for this context, however this hot failover receiver will not be included in those stats because an event queue is in use or MTT is enabled.</td><td>If callback timing stats are not desired for this hot failover receiver, this message can be ignored. If stats are desired and an event queue is in use, the event queue service time statistics can be used to monitor the receiver callback time. Callback service time stats are not currently supported with MTT hot failover receivers. </td></tr>
 <tr>
@@ -1533,7 +1587,7 @@ UM Core Messages&nbsp;&nbsp;<small><a href="#umcoremessages">&lt;-</a></small></
 <tr>
 <td>Core-7911-3: Attempting to set Onload Stackname, but Onload is not available</td><td>A source or receiver has set onload_acceleration_stack_name but the Onload library was not dynamically loaded by Ultra Messaging.</td><td>If you don't want onload acceleration, ensure that onload_acceleration_stack_name is NULL. If you do, ensure that the envrionment variable LBM_SUPPRESS_ONLOAD is unset and that the Onload library is in your library path. </td></tr>
 <tr>
-<td>Core-8034-1: [LBMMON] Dropping monitoring message that is larger than the maximum allowed size of d (size=d)</td><td>The monitoring message received is larger than the maximum allowed size given.</td><td>This is a hard coded maximum. </td></tr>
+<td>Core-8034-1: [LBMMON] Dropping monitoring message that is larger than the maximum allowed size of lu (size=lu)</td><td>The monitoring message received is larger than the maximum allowed size given.</td><td>This is a hard coded maximum. </td></tr>
 <tr>
 <td>Core-8034-2: [LBMMON] Dropping monitoring message that is larger than the maximum allowed size of d (size=d)</td><td>The monitoring message received is larger than the maximum allowed size given.</td><td>This is a hard coded maximum. </td></tr>
 <tr>
@@ -1787,13 +1841,13 @@ UM Core Messages&nbsp;&nbsp;<small><a href="#umcoremessages">&lt;-</a></small></
 <tr>
 <td>Core-9612-2: received lji request, but Late-Join not configured: from ip:port[s:d] for topic[u]</td><td>UMS received Late Join Request message however late-join is not configured for this source. This is not a serious problem but indicates that there is a mismatch between this process and another.</td><td>Check the system for port re-use on application restart and similar behavior. </td></tr>
 <tr>
-<td>Core-9625-1: WARNING: resovler_unicast_daemon entry (s:u) already exist. Skipping...</td><td>The lbm_context_attr_set/sset() detected duplicate unicast resolver entries. The duplicate entries will be skipped.</td><td>Check the config file or code (if config set via code) for duplicate resolver_unicast_daemon entries. Also check if <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#aecac05969bba0d6057589ca03dfe60a2">lbm_config()</a> is loaded multiple times with the same resolver_unicast_daemon entries </td></tr>
+<td>Core-9625-1: WARNING: resovler_unicast_daemon entry (s:u) already exist. Skipping...</td><td>The lbm_context_attr_set/sset() detected duplicate unicast resolver entries. The duplicate entries will be skipped.</td><td>Check the config file or code (if config set via code) for duplicate resolver_unicast_daemon entries. Also check if <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#aecac05969bba0d6057589ca03dfe60a2">lbm_config()</a> is loaded multiple times with the same resolver_unicast_daemon entries </td></tr>
 <tr>
-<td>Core-9626-1: WARNING: ume_store entry (u:s:u:u:u) already exist. Skipping...</td><td>The <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a96ea052dce2e6376684cbf2003407cbf">lbm_src_topic_attr_setopt()</a> detected duplicate ume_store entries. The duplicate entries will be skipped.</td><td>Check the config file or code (if config set via code) for duplicate ume_store entries. Also check if <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#aecac05969bba0d6057589ca03dfe60a2">lbm_config()</a> is loaded multiple times with the same ume_store entries </td></tr>
+<td>Core-9626-1: WARNING: ume_store entry (u:s:u:u:u) already exist. Skipping...</td><td>The <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a96ea052dce2e6376684cbf2003407cbf">lbm_src_topic_attr_setopt()</a> detected duplicate ume_store entries. The duplicate entries will be skipped.</td><td>Check the config file or code (if config set via code) for duplicate ume_store entries. Also check if <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#aecac05969bba0d6057589ca03dfe60a2">lbm_config()</a> is loaded multiple times with the same ume_store entries </td></tr>
 <tr>
-<td>Core-9626-2: WARNING: ume_store_name entry (s:u:u) already exist. Skipping...</td><td>The <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a96ea052dce2e6376684cbf2003407cbf">lbm_src_topic_attr_setopt()</a> detected duplicate ume_store_name entries. The duplicate entries will be skipped.</td><td>Check the config file or code (if config set via code) for duplicate ume_store_name entries. Also check if <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#aecac05969bba0d6057589ca03dfe60a2">lbm_config()</a> is loaded multiple times with the same ume_store_name entries </td></tr>
+<td>Core-9626-2: WARNING: ume_store_name entry (s:u:u) already exist. Skipping...</td><td>The <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a96ea052dce2e6376684cbf2003407cbf">lbm_src_topic_attr_setopt()</a> detected duplicate ume_store_name entries. The duplicate entries will be skipped.</td><td>Check the config file or code (if config set via code) for duplicate ume_store_name entries. Also check if <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#aecac05969bba0d6057589ca03dfe60a2">lbm_config()</a> is loaded multiple times with the same ume_store_name entries </td></tr>
 <tr>
-<td>Core-9640-1: WARNING: broker entry (s:u) already exist. Skipping...</td><td>The lbm_context_attr_setopt/str_setopt() detected duplicate broker entries. The duplicate entries will be skipped.</td><td>Check the config file or code (if config set via code) for duplicate broker entries. Also check if <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#aecac05969bba0d6057589ca03dfe60a2">lbm_config()</a> is loaded multiple times with the same broker entries </td></tr>
+<td>Core-9640-1: WARNING: broker entry (s:u) already exist. Skipping...</td><td>The lbm_context_attr_setopt/str_setopt() detected duplicate broker entries. The duplicate entries will be skipped.</td><td>Check the config file or code (if config set via code) for duplicate broker entries. Also check if <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#aecac05969bba0d6057589ca03dfe60a2">lbm_config()</a> is loaded multiple times with the same broker entries </td></tr>
 <tr>
 <td>Core-9709-1: epoll_ctl: EPOLL_CTL_DEL returned: errno:d:s</td><td>epoll returned an error during lbm_cancel_fd call</td><td></td></tr>
 <tr>
@@ -1825,9 +1879,9 @@ UM Core Messages&nbsp;&nbsp;<small><a href="#umcoremessages">&lt;-</a></small></
 <tr>
 <td>Core-9743-08: WARNING: proactive keepalive is not supported by the store. See the Operations Guide for configuration advice.</td><td>The store registration response indicates that the store does not support receiver proactive keepalive. This is determined by the registration handshake between the topic receiver and the UME store daemon.</td><td>This warning will occur for every registration and does not indicate a misconfiguration between the store and topic receiver. Since the receiver does support proactive keepalive, the benefits of that feature can be realized by setting the store keepalive-interval option to be greater than the context ume_proactive_keepalive_interval in this receiver. This prevents the store's ume_activity_timer for this receiver from expiring and initiating keepalive messages to the receiver. This message can appear until both the store and all topic receivers are upgraded to a 6.9.1 or later release. </td></tr>
 <tr>
-<td>Core-9779-101: WARNING: Joining session [s] which exists and uses a different transport_lbtrm_nak_init_backoff_interval [d] than requested [d].</td><td>After a receiver has created a transport session, a subsequent receiver joining the same transport session cannot configure a different transport_lbtrm_nak_init_backoff_interval setting.</td><td></td></tr>
+<td>Core-9779-101: WARNING: Topic [s] joining session [s] which exists and uses a different transport_lbtrm_nak_init_backoff_interval [d] than requested [d].</td><td>After a receiver has created a transport session, a subsequent receiver joining the same transport session cannot configure a different transport_lbtrm_nak_init_backoff_interval setting.</td><td></td></tr>
 <tr>
-<td>Core-9779-102: WARNING: Joining session [s] which exists and uses a different transport_lbtru_nak_init_backoff_interval [d] than requested [d].</td><td>After a receiver has created a transport session, a subsequent receiver joining the same transport session cannot configure a different transport_lbtru_nak_init_backoff_interval setting.</td><td></td></tr>
+<td>Core-9779-102: WARNING: Topic [s] joining session [s] which exists and uses a different transport_lbtru_nak_init_backoff_interval [d] than requested [d].</td><td>After a receiver has created a transport session, a subsequent receiver joining the same transport session cannot configure a different transport_lbtru_nak_init_backoff_interval setting.</td><td></td></tr>
 <tr>
 <td>Core-9829-1: all sources must be deleted before deleting the context</td><td>You cannot delete a context while it still has active sources.</td><td>Delete all sources first then delete the context. </td></tr>
 <tr>
@@ -2163,7 +2217,7 @@ UM Core API Messages&nbsp;&nbsp;<small><a href="#umcoreapimessages">&lt;-</a></s
 <tr>
 <td>CoreApi-10347-35: optlen too small</td><td>Size of optlen was too small</td><td>Size of optlen must be at least 80 </td></tr>
 <tr>
-<td>CoreApi-10358-01: timeout (msec) must be zero when LBM_PROC_EVENT_EX_FLAG_USER_TIME is enabled</td><td>When setting the LBM_PROC_EVENT_EX_FLAG_USER_TIME flag, the user must set the timeout (msec) to zero to ensure that LBM gets needed time value updates.</td><td>Calls to <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a55b77c3057028116314fe5ff8e6afb25">lbm_context_process_events_ex()</a> need to set the timeout to zero when the LBM_PROC_EVENT_EX_FLAG_USER_TIME is set. </td></tr>
+<td>CoreApi-10358-01: timeout (msec) must be zero when LBM_PROC_EVENT_EX_FLAG_USER_TIME is enabled</td><td>When setting the LBM_PROC_EVENT_EX_FLAG_USER_TIME flag, the user must set the timeout (msec) to zero to ensure that LBM gets needed time value updates.</td><td>Calls to <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a55b77c3057028116314fe5ff8e6afb25">lbm_context_process_events_ex()</a> need to set the timeout to zero when the LBM_PROC_EVENT_EX_FLAG_USER_TIME is set. </td></tr>
 <tr>
 <td>CoreApi-10369-10: optlen incorrect size</td><td>Size of optlen was incorrect for setting integer option</td><td>optlen must be size of int </td></tr>
 <tr>
@@ -2253,6 +2307,18 @@ UM Core API Messages&nbsp;&nbsp;<small><a href="#umcoreapimessages">&lt;-</a></s
 <tr>
 <td>CoreApi-10558-8: optlen too small</td><td>The size of the option buffer was too small to contain the option</td><td>The smart_src_enable_transport_compatibility optlen must be at least 80 </td></tr>
 <tr>
+<td>CoreApi-10571-1: reqp must be valid</td><td>Invalid Request object</td><td>reqp must not be NULL </td></tr>
+<tr>
+<td>CoreApi-10571-2: proc must be valid</td><td>Invalid pointer to function to call when responses come in for this request</td><td>proc must not be NULL </td></tr>
+<tr>
+<td>CoreApi-10571-3: event queues are not supported</td><td>Smart sources do not support event queues at this time.</td><td>evq parameter must be NULL. </td></tr>
+<tr>
+<td>CoreApi-10571-4: Spectrum channel not supported</td><td>The Spectrum channel is not supported with smart source send request.</td><td>Do not set exinfo flags to LBM_SSRC_SEND_EX_FLAG_CHANNEL. </td></tr>
+<tr>
+<td>CoreApi-10571-5: Messages properties not supported</td><td>The Messages properties is not supported with smart source send request.</td><td>Do not set exinfo flags to LBM_SSRC_SEND_EX_FLAG_PROPERTIES. </td></tr>
+<tr>
+<td>CoreApi-10571-6: The message len (d) exceeds max length (d) bytes.</td><td>Message fragmentation is not supported with smart source send request.</td><td>Either reduce the message length or tune max datagram size and smart_src_max_message_length. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/Operations/design.tag:../Design/" href="../Design/advancedoptimizations.html#smartsourcemessagebuffers">Smart Source Message Buffers</a> for more information on the smart source fragmentation </td></tr>
+<tr>
 <td>CoreApi-10679-1: lbm_socket_send bad channel: p</td><td>A DBL call to get peer ip address and port was made with a bad channel specified.</td><td>Contact Informatica support. </td></tr>
 <tr>
 <td>CoreApi-10684-1: optlen incorrect size (file_descriptor_management_behavior)</td><td>Attempted to set option file_descriptor_management_behavior with an incorrect optlen size.</td><td>Optlen must be size of int. </td></tr>
@@ -2282,6 +2348,70 @@ UM Core API Messages&nbsp;&nbsp;<small><a href="#umcoreapimessages">&lt;-</a></s
 <td>CoreApi-10724-5: resolver service interest mode must be flood or filter</td><td>Resolver service interest mode can either be filter or flood.</td><td>Set the optval value to filter or flood. </td></tr>
 <tr>
 <td>CoreApi-10724-6: optlen too small</td><td>The buffer given is too small to write the option value to.</td><td>Check that the size of the buffer being passed in is at least 80 bytes. </td></tr>
+<tr>
+<td>CoreApi-10888-01: monitor_format option is not supported</td><td>Invalid monitor_format is configured.</td><td>User needs to select a valid option for monitor_format </td></tr>
+<tr>
+<td>CoreApi-10888-20: optlen must be size of int for monitor_format</td><td>Size of optlen was incorrect for setting integer option</td><td>optlen must be size of int </td></tr>
+<tr>
+<td>CoreApi-10888-21: optval must be 1 or 2 for monitor_format</td><td>Invalid value for optval</td><td>optval must be 1 or 2 </td></tr>
+<tr>
+<td>CoreApi-10888-22: optval must be csv or pb for monitor_format</td><td>Invalid value for optval</td><td>optval must be csv or pb </td></tr>
+<tr>
+<td>CoreApi-10888-23: optlen must be size of int for monitor_format</td><td>Size of optlen was incorrect</td><td>optlen size must be size of int </td></tr>
+<tr>
+<td>CoreApi-10888-24: optlen must be at least 80 for monitor_format</td><td>Size of optlen was too small</td><td>Size of optlen must be at least 80 </td></tr>
+<tr>
+<td>CoreApi-10888-30: context monitor format opts value cannot start with a '"'</td><td>The context monitor format options string is malformed.</td><td>Remove the quote marks from the context monitor format options string, if any. </td></tr>
+<tr>
+<td>CoreApi-10888-31: context monitor format opts value cannot start with a '"'</td><td>The context monitor format options string is malformed.</td><td>Remove the quote marks from the context monitor format options string, if any. </td></tr>
+<tr>
+<td>CoreApi-10888-32: optlen incorrect size</td><td>The provided buffer is too small to hold the option value.</td><td>Provide a larger buffer. </td></tr>
+<tr>
+<td>CoreApi-10888-33: optlen incorrect size</td><td>The provided buffer is too small to hold the option value.</td><td>Provide a larger buffer. </td></tr>
+<tr>
+<td>CoreApi-10888-364: optlen must be size of int for monitor_format</td><td>Size of optlen was incorrect for setting integer option</td><td>optlen must be size of int </td></tr>
+<tr>
+<td>CoreApi-10888-365: optval must be 1 or 2 for monitor_format</td><td>Invalid value for optval</td><td>optval must be 1 or 2 </td></tr>
+<tr>
+<td>CoreApi-10888-366: optval must be csv or pb for monitor_format</td><td>Invalid value for optval</td><td>optval must be csv or pb </td></tr>
+<tr>
+<td>CoreApi-10888-367: optlen must be size of int for monitor_format</td><td>Size of optlen was incorrect</td><td>optlen size must be size of int </td></tr>
+<tr>
+<td>CoreApi-10888-368: optlen must be at least 80 for monitor_format</td><td>Size of optlen was too small</td><td>Size of optlen must be at least 80 </td></tr>
+<tr>
+<td>CoreApi-10888-369: monitor_format option is not supported</td><td>Invalid monitor_format option is configured.</td><td>User needs to select a valid option for monitor_format </td></tr>
+<tr>
+<td>CoreApi-10888-370: event queue monitor format opts value cannot start with a '"'</td><td>The event queue monitor format options string is malformed.</td><td>Remove the quote marks from the event queue monitor format options string, if any. </td></tr>
+<tr>
+<td>CoreApi-10888-371: event queue monitor format opts value cannot start with a '"'</td><td>The event queue monitor format options string is malformed.</td><td>Remove the quote marks from the event queue monitor format options string, if any. </td></tr>
+<tr>
+<td>CoreApi-10888-372: optlen incorrect size</td><td>The provided buffer is too small to hold the option value.</td><td>Provide a larger buffer. </td></tr>
+<tr>
+<td>CoreApi-10888-373: optlen incorrect size</td><td>The provided buffer is too small to hold the option value.</td><td>Provide a larger buffer. </td></tr>
+<tr>
+<td>CoreApi-10996-1: resolver_disable_udp_topic_resolution optlen incorrect size</td><td>The option resolver_disable_udp_topic_resolution size is incorrect.</td><td>The expected size is sizeof(int) </td></tr>
+<tr>
+<td>CoreApi-10996-2: resolver_disable_udp_topic_resolution optval must be 0 or 1</td><td>The option resolver_disable_udp_topic_resolution must be 0 or 1.</td><td>Set the value to 0 or 1. </td></tr>
+<tr>
+<td>CoreApi-10996-3: resolver_disable_udp_topic_resolution optval not numeric</td><td>The option resolver_disable_udp_topic_resolution is not set to a numeric value.</td><td>Set the option to a numeric value. </td></tr>
+<tr>
+<td>CoreApi-10996-4: resolver_disable_udp_topic_resolution optval must be 0 or 1</td><td>The option resolver_disable_udp_topic_resolution must be 0 or 1.</td><td>Set the value to 0 or 1. </td></tr>
+<tr>
+<td>CoreApi-10996-5: resolver_disable_udp_topic_resolution optlen incorrect size</td><td>The option resolver_disable_udp_topic_resolution size is incorrect.</td><td>The expected size is sizeof(int) </td></tr>
+<tr>
+<td>CoreApi-10996-6: resolver_disable_udp_topic_resolution optlen too small</td><td>The option resolver_disable_udp_topic_resolution string length is too small.</td><td>The expected string length is at least 80 </td></tr>
+<tr>
+<td>CoreApi-11050-1: optlen incorrect size</td><td>Setting of the dynamic_fragmentation_reduction configuration option is using the wrong size. Size is "int".</td><td>User needs to use the correct size when setting the configuration option. </td></tr>
+<tr>
+<td>CoreApi-11050-2: optval must be 0 or 1</td><td>The dynamic_fragmentation_reduction configuration option must be a 0 or 1.</td><td>The user should set the option to 0 or 1. </td></tr>
+<tr>
+<td>CoreApi-11050-3: optval not numeric</td><td>Setting of the dynamic_fragmentation_reduction configuration option is using a string value that is not a number.</td><td>The user needs to pass a number in the string. </td></tr>
+<tr>
+<td>CoreApi-11050-4: optval must be 0 or 1</td><td>The dynamic_fragmentation_reduction configuration option must be a 0 or 1.</td><td>The user should set the option to 0 or 1. </td></tr>
+<tr>
+<td>CoreApi-11050-5: optlen incorrect size</td><td>Getting the dynamic_fragmentation_reduction configuration option is using the wrong size. Size is "int".</td><td>User needs to use the correct size when getting the configuration option. </td></tr>
+<tr>
+<td>CoreApi-11050-6: optlen too small</td><td>Getting the dynamic_fragmentation_reduction configuration option is using a string that is too small. Minimum string size is 80 bytes.</td><td>User needs to use the correct string size when getting the configuration option. </td></tr>
 <tr>
 <td>CoreApi-3288-1: optlen incorrect size</td><td>Attempted to set wildcard receiver attribute "hf_receiver" using the wrong size optlen.</td><td>The parameter "optlen" must be the size of an integer. </td></tr>
 <tr>
@@ -2407,7 +2537,7 @@ UM Core API Messages&nbsp;&nbsp;<small><a href="#umcoreapimessages">&lt;-</a></s
 <tr>
 <td>CoreApi-5688-1390: session id not a number</td><td>The provided session ID was invalid.</td><td>Specify a session ID that fits one of the following formats: A hexadecimal value prefixed by 0x, an octal value prefixed by 0, or a decimal value. The value must be smaller than 0xFFFFFFFFFFFFFFFF regardless of representation. </td></tr>
 <tr>
-<td>CoreApi-5688-1885: opmode must be sequential</td><td>This is an invalid use of the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#ad9416b1f0b474b5d4c4f39bb3c4bda77">lbm_context_process_events()</a> or lbmContextProcessEvents(). Calling <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#ad9416b1f0b474b5d4c4f39bb3c4bda77">lbm_context_process_events()</a> or lbmContextProcessEvents() for a context running in embedded mode. This will simply print the log message and return immediately.</td><td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#ad9416b1f0b474b5d4c4f39bb3c4bda77">lbm_context_process_events()</a> or lbmContextProcessEvents() should get called only for sequential mode. See the UM Configuration Guide for high level guidance on configuring Ultra Messaging objects. </td></tr>
+<td>CoreApi-5688-1885: opmode must be sequential</td><td>This is an invalid use of the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#ad9416b1f0b474b5d4c4f39bb3c4bda77">lbm_context_process_events()</a> or lbmContextProcessEvents(). Calling <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#ad9416b1f0b474b5d4c4f39bb3c4bda77">lbm_context_process_events()</a> or lbmContextProcessEvents() for a context running in embedded mode. This will simply print the log message and return immediately.</td><td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#ad9416b1f0b474b5d4c4f39bb3c4bda77">lbm_context_process_events()</a> or lbmContextProcessEvents() should get called only for sequential mode. See the UM Configuration Guide for high level guidance on configuring Ultra Messaging objects. </td></tr>
 <tr>
 <td>CoreApi-5688-2014: optval not numeric</td><td>Value passed in for resolver_multicast_ttl was not numeric.</td><td>Review the configuration file and specify a valid numeric value for the option (0 - 255). </td></tr>
 <tr>
@@ -2419,7 +2549,9 @@ UM Core API Messages&nbsp;&nbsp;<small><a href="#umcoreapimessages">&lt;-</a></s
 <tr>
 <td>CoreApi-5688-2875: optval is malformed</td><td>The unicast resolver daemon specification string format is as follows: [Interface[:LocalPort]-&gt;]DaemonIP:RemotePort where Interface and LocalPort refer the local host interface and port, the DaemonIP refers to the resolver daemon's IP address, and the RemotePort refers to the resolver daemon's UDP port.</td><td>Provide a valid resolver daemon specification. </td></tr>
 <tr>
-<td>CoreApi-5688-3015: send would block</td><td>The application attempted a non-blocking send of a message on a transport that is blocked due to exceeding the transport's rate limit. The message was not sent, and was not queued for future sending.</td><td>The application can enable source events and wait for the LBM_SRC_EVENT_WAKEUP event, or it can use blocking sends, or it can simply retry the send after the rate limiter interval expires. Alternatively, consider increasing the rate limit and/or rate interval. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Operations/design.tag:../Design/" href="../Design/fundamentalconcepts.html#transportratecontrol">Transport Rate Control</a>. </td></tr>
+<td>CoreApi-5688-3015: send would block</td><td>The application attempted a non-blocking send of a message on a transport that is blocked due to exceeding the transport's rate limit. The message was not sent, and was not queued for future sending.</td><td>The application can enable source events and wait for the LBM_SRC_EVENT_WAKEUP event, or it can use blocking sends, or it can simply retry the send after the rate limiter interval expires. Alternatively, consider increasing the rate limit and/or rate interval. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/Operations/design.tag:../Design/" href="../Design/fundamentalconcepts.html#transportratecontrol">Transport Rate Control</a>. </td></tr>
+<tr>
+<td>CoreApi-5688-3021: The LBM_MSG_END_BATCH was set before the LBM_MSG_START_BATCH flag. (Note:Explicit batching is deprecated as of UM 6.10).</td><td>The LBM_MSG_END_BATCH flag was set before the LBM_MSG_START_BATCH flag</td><td>Explicit batching is deprecated as of UM 6.10 </td></tr>
 <tr>
 <td>CoreApi-5688-3040: Can not specify a negative number for inflight messages</td><td>Attempting to set the flight size of messages to a negative number</td><td>Ensure a positive integer for inflight messages is returned from the set flight size callback </td></tr>
 <tr>
@@ -2451,6 +2583,8 @@ UM Core API Messages&nbsp;&nbsp;<small><a href="#umcoreapimessages">&lt;-</a></s
 <tr>
 <td>CoreApi-5688-3287: could not find open unicast source port in range [d-d]</td><td>Could not bind to a unicast port due to ports already being used in the given range.</td><td>Update the UM configuration file to modify or include different ports for the options transport_lbtrm_source_port_low and/or transport_lbtrm_source_port high. </td></tr>
 <tr>
+<td>CoreApi-5688-3303: unicast bidir bind (port=d): s</td><td>An error was returned from the OS while trying to bind the socket to the given port.</td><td>Refer to the OS error number and message given after the UMS message "could not bind, port xxxxx, on unicast bidir socket </td></tr>
+<tr>
 <td>CoreApi-5688-3320: lbm_socket_recv recv/recvfrom: s</td><td>An error was returned from the OS while trying a recv or recvfrom socket call. Refer to the OS error number and message.</td><td></td></tr>
 <tr>
 <td>CoreApi-5688-3332: lbm_socket_send send/sendto (ip address: s, port d): s</td><td>An error occurred while trying to send to the specified ip and port. The last part of this message contains the OS error code and associated text.</td><td>Check configuration option settings. </td></tr>
@@ -2463,7 +2597,11 @@ UM Core API Messages&nbsp;&nbsp;<small><a href="#umcoreapimessages">&lt;-</a></s
 <tr>
 <td>CoreApi-5688-3772: FD event already defined</td><td>Trying to register a handle with event flag(s) (LBM_FD_EVENT_*) already registered for that same handle.</td><td>If using lbm_register_fd/lbm_cancel_fd APIs in UM application, review usage logic. Otherwise, contact Informatica support. </td></tr>
 <tr>
+<td>CoreApi-5688-387: monitor_transport option is not supported</td><td>Invalid monitor_transport option is configured.</td><td>User needs to select a valid option for monitor_transport </td></tr>
+<tr>
 <td>CoreApi-5688-4087: XML configuration has already been loaded.</td><td>An XML configuration has already been loaded via UMM and can not be overridden by loading a different XML configuration.</td><td>Modify the application to not attempt to load a second XML configuration. </td></tr>
+<tr>
+<td>CoreApi-5688-4089: error parsing application name 's'. View previous error messages to determine the source of the problem</td><td>A problem was detected while parsing the XML file. The particular error was reported at the time the problem was detected</td><td>View previous log messages to determine which config value was determined to be erroneous </td></tr>
 <tr>
 <td>CoreApi-5688-4092: XML configuration has already been loaded.</td><td>An XML configuration has already been loaded via UMM and can not be overridden by loading a different XML configuration.</td><td>Modify the application to not attempt to load a second XML configuration. </td></tr>
 <tr>
@@ -3479,9 +3617,9 @@ UM Core API Messages&nbsp;&nbsp;<small><a href="#umcoreapimessages">&lt;-</a></s
 <tr>
 <td>CoreApi-9074-1: Queue deregistration is no longer allowed when using a brokered context</td><td>No longer allowed to deregister from a queue.</td><td>Remove function call. </td></tr>
 <tr>
-<td>CoreApi-9082-2: <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a6cd0c297e489e006ef5da83398184daa">lbm_umq_ctx_msg_stable()</a> API is deprecated</td><td>The lbm_umq_ctx_msg_stable is deprecated and no longer supported.</td><td>Remove this API call from the application. </td></tr>
+<td>CoreApi-9082-2: <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a6cd0c297e489e006ef5da83398184daa">lbm_umq_ctx_msg_stable()</a> API is deprecated</td><td>The lbm_umq_ctx_msg_stable is deprecated and no longer supported.</td><td>Remove this API call from the application. </td></tr>
 <tr>
-<td>CoreApi-9082-3: <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#aac6015a6a8e914c6e621e3b28940fe87">lbm_ctx_umq_get_inflight()</a> API is deprecated</td><td>The lbm_ctx_umq_get_inflight is deprecated and no longer supported.</td><td>Remove this API call from the application. </td></tr>
+<td>CoreApi-9082-3: <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#aac6015a6a8e914c6e621e3b28940fe87">lbm_ctx_umq_get_inflight()</a> API is deprecated</td><td>The lbm_ctx_umq_get_inflight is deprecated and no longer supported.</td><td>Remove this API call from the application. </td></tr>
 <tr>
 <td>CoreApi-9087-1: send would block because of flight size</td><td>This send would cause the configured flight size to exceed the configured value for this source.</td><td>Delay sending until the number inflight messages is reduced. </td></tr>
 <tr>
@@ -3837,15 +3975,15 @@ UM Core API Messages&nbsp;&nbsp;<small><a href="#umcoreapimessages">&lt;-</a></s
 <tr>
 <td>CoreApi-9721-2: usr_bufp cannot be NULL</td><td>A call to lbm_src_alloc_msg_buff was passed a NULL usr_bufp.</td><td>Pass a valid pointer that will contain the pointer to be used to fill in the caller's message data. </td></tr>
 <tr>
-<td>CoreApi-9721-3: lbm_hdl cannot be NULL</td><td>A call to lbm_src_alloc_msg_buff was passed a NULL lbm_hdl.</td><td>Pass a valid pointer that will contain the pointer to the returned lbm_hdl. This is what will be passed to a subsequent <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a91f4b9cb04fe1323ec56833211cc5cb7">lbm_src_send()</a> call. </td></tr>
+<td>CoreApi-9721-3: lbm_hdl cannot be NULL</td><td>A call to lbm_src_alloc_msg_buff was passed a NULL lbm_hdl.</td><td>Pass a valid pointer that will contain the pointer to the returned lbm_hdl. This is what will be passed to a subsequent <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a91f4b9cb04fe1323ec56833211cc5cb7">lbm_src_send()</a> call. </td></tr>
 <tr>
 <td>CoreApi-9721-4: transport for src must be LBTRM.</td><td>A call to lbm_src_alloc_msg_buff was passed a non LBTRM src.</td><td>Specify a valid LBTRM src. Only LBTRM sources are supported at this time. </td></tr>
 <tr>
 <td>CoreApi-9721-5: length (d) too long, must be less than d.</td><td>A call to lbm_src_alloc_msg_buff was passed a length that would cause fragmentation of a message.</td><td>Specify a length less than the maximum length shown in the message. </td></tr>
 <tr>
-<td>CoreApi-9721-6: Passed buffer invalid, sqn [d] invalid</td><td>The message buffer supplied to a source send call with the LBM_MSG_BUFF_ALLOC flag set, does not contain valid identifiers.</td><td>Check to make sure that the supplied message buffer was allocated with a call to <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#adf24bf7c4b07549d6a2f89d56e6c913a">lbm_src_alloc_msg_buff()</a> and is the handle to the buffer and not the actual message data pointer. See the documentation for the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#adf24bf7c4b07549d6a2f89d56e6c913a">lbm_src_alloc_msg_buff()</a> call. </td></tr>
+<td>CoreApi-9721-6: Passed buffer invalid, sqn [d] invalid</td><td>The message buffer supplied to a source send call with the LBM_MSG_BUFF_ALLOC flag set, does not contain valid identifiers.</td><td>Check to make sure that the supplied message buffer was allocated with a call to <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#adf24bf7c4b07549d6a2f89d56e6c913a">lbm_src_alloc_msg_buff()</a> and is the handle to the buffer and not the actual message data pointer. See the documentation for the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#adf24bf7c4b07549d6a2f89d56e6c913a">lbm_src_alloc_msg_buff()</a> call. </td></tr>
 <tr>
-<td>CoreApi-9721-7: Passed buffer invalid, tidx [d] invalid</td><td>The message buffer supplied to a source send call with the LBM_MSG_BUFF_ALLOC flag set, does not contain valid identifiers.</td><td>Check to make sure that the supplied message buffer was allocated with a call to <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#adf24bf7c4b07549d6a2f89d56e6c913a">lbm_src_alloc_msg_buff()</a> and is the handle to the buffer and not the actual message data pointer. See the documentation for the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#adf24bf7c4b07549d6a2f89d56e6c913a">lbm_src_alloc_msg_buff()</a> call. </td></tr>
+<td>CoreApi-9721-7: Passed buffer invalid, tidx [d] invalid</td><td>The message buffer supplied to a source send call with the LBM_MSG_BUFF_ALLOC flag set, does not contain valid identifiers.</td><td>Check to make sure that the supplied message buffer was allocated with a call to <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#adf24bf7c4b07549d6a2f89d56e6c913a">lbm_src_alloc_msg_buff()</a> and is the handle to the buffer and not the actual message data pointer. See the documentation for the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#adf24bf7c4b07549d6a2f89d56e6c913a">lbm_src_alloc_msg_buff()</a> call. </td></tr>
 <tr>
 <td>CoreApi-9721-8: Source [p] type [u] is not LBTRM. LBTRM is required with the LBM_MSG_BUFF_ALLOC flag.</td><td>The source supplied to a source send call with the LBM_MSG_BUFF_ALLOC flag set was not an LBTRM source.</td><td>At this time, only LBTRM sources are supported when using the LBM_MSG_BUFF_ALLOC flag. Use only LBTRM sources when specifying the LBM_MSG_BUFF_ALLOC flag. </td></tr>
 <tr>
@@ -3878,6 +4016,8 @@ UM Core API Messages&nbsp;&nbsp;<small><a href="#umcoreapimessages">&lt;-</a></s
 <td>CoreApi-9743-06: optlen incorrect size</td><td>The size of the optlen given does not match the size of this option type.</td><td>Provide an optlen of the appropriate size for this option type. </td></tr>
 <tr>
 <td>CoreApi-9743-07: optlen too small</td><td>The provided buffer is too small to hold the option value.</td><td>Provide a larger buffer. </td></tr>
+<tr>
+<td>CoreApi-9778-100: value must be "off", "on" or "convert" for monitor format option "passthrough".</td><td>Invalid value for passthrough</td><td>value must be "off" or "on" </td></tr>
 <tr>
 <td>CoreApi-9779-1: optlen incorrect size</td><td>Checks whether optlen is an appropriate size and returns to caller if opten is an incorrect size.</td><td>Set the optlen value to the size of lbm_ulong_t </td></tr>
 <tr>
@@ -3953,11 +4093,11 @@ UM Core API Messages&nbsp;&nbsp;<small><a href="#umcoreapimessages">&lt;-</a></s
 <tr>
 <td>CoreApi-9938-6: optlen too small</td><td>Attempted to set option compatibility_pre_um_6_0_context_ad_ivl with an incorrect optlen size.</td><td>Optlen must be greater than LBM_MIN_SGET_OPTLEN. </td></tr>
 <tr>
-<td>CoreApi-9941-115: usr_bufp offset is not valid.</td><td>A smart source call specified a user buffer with an invalid offset.</td><td>Supply the exact pointer supplied by <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a98c5450e9fb93f30bd80fa33a2380dfc">lbm_ssrc_buff_get()</a>. </td></tr>
+<td>CoreApi-9941-115: usr_bufp offset is not valid.</td><td>A smart source call specified a user buffer with an invalid offset.</td><td>Supply the exact pointer supplied by <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a98c5450e9fb93f30bd80fa33a2380dfc">lbm_ssrc_buff_get()</a>. </td></tr>
 <tr>
-<td>CoreApi-9941-116: usr_bufp base address is not valid.</td><td>A smart source call specified a user buffer with an invalid base address.</td><td>Return buffer with the exact pointer supplied by <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a98c5450e9fb93f30bd80fa33a2380dfc">lbm_ssrc_buff_get()</a>. </td></tr>
+<td>CoreApi-9941-116: usr_bufp base address is not valid.</td><td>A smart source call specified a user buffer with an invalid base address.</td><td>Return buffer with the exact pointer supplied by <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a98c5450e9fb93f30bd80fa33a2380dfc">lbm_ssrc_buff_get()</a>. </td></tr>
 <tr>
-<td>CoreApi-9941-117: user buffer is on the free list.</td><td>A smart source call specified a user buffer that is on the free list.</td><td>Don't be stupid! Invoke <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a98c5450e9fb93f30bd80fa33a2380dfc">lbm_ssrc_buff_get()</a> to allocate a user buffer. </td></tr>
+<td>CoreApi-9941-117: user buffer is on the free list.</td><td>A smart source call specified a user buffer that is on the free list.</td><td>Don't be stupid! Invoke <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a98c5450e9fb93f30bd80fa33a2380dfc">lbm_ssrc_buff_get()</a> to allocate a user buffer. </td></tr>
 <tr>
 <td>CoreApi-9941-118: corrupted user buffer pointer structure</td><td>A smart source call specified what appears to be a corrupted user buffer pointer structure.</td><td>Ensure that writes using the user buffer pointer do not exceed the range of addresses bounded by the source scoped smart_src_max_message_length configuration option. </td></tr>
 <tr>
@@ -4019,9 +4159,9 @@ UM Core API Messages&nbsp;&nbsp;<small><a href="#umcoreapimessages">&lt;-</a></s
 <tr>
 <td>CoreApi-9941-2: optval must be greater than 16</td><td>smart_src_max_message_length did not contain a positive integer</td><td>smart_src_max_message_length must be greater than 16 </td></tr>
 <tr>
-<td>CoreApi-9941-3000: <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a2f50f56536778332e9f5712b06546425">lbm_ssrc_send_ex()</a> thread does not match thread used by other smart source sends on this transport session</td><td>The smart source send call thread does not match the thread used by other smart source sends on this transport session.</td><td>The smart source send call thread must be the same thread used by all smart source sends on this transport session. </td></tr>
+<td>CoreApi-9941-3000: <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a2f50f56536778332e9f5712b06546425">lbm_ssrc_send_ex()</a> thread does not match thread used by other smart source sends on this transport session</td><td>The smart source send call thread does not match the thread used by other smart source sends on this transport session.</td><td>The smart source send call thread must be the same thread used by all smart source sends on this transport session. </td></tr>
 <tr>
-<td>CoreApi-9941-3001: <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a2f50f56536778332e9f5712b06546425">lbm_ssrc_send_ex()</a> thread does not match thread used by other smart source sends on this transport session</td><td>The smart source send call thread does not match the thread used by other smart source sends on this transport session.</td><td>The smart source send call thread must be the same thread used by all smart source sends on this transport session. </td></tr>
+<td>CoreApi-9941-3001: <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a2f50f56536778332e9f5712b06546425">lbm_ssrc_send_ex()</a> thread does not match thread used by other smart source sends on this transport session</td><td>The smart source send call thread does not match the thread used by other smart source sends on this transport session.</td><td>The smart source send call thread must be the same thread used by all smart source sends on this transport session. </td></tr>
 <tr>
 <td>CoreApi-9941-3025: ssrc must be valid</td><td>The Smart Source object is not valid.</td><td>Provide a valid Smart Source object. </td></tr>
 <tr>
@@ -4053,15 +4193,15 @@ UM Core API Messages&nbsp;&nbsp;<small><a href="#umcoreapimessages">&lt;-</a></s
 <tr>
 <td>CoreApi-9941-3: optval too large</td><td>smart_src_max_message_length is larger than the maximum allowed size</td><td>Decrease the size of smart_src_max_message_length </td></tr>
 <tr>
-<td>CoreApi-9941-4001: All d Smart Source [p] user buffers have been allocated.</td><td>A call to lbm_ssrc_buff_get failed due to user buffer exhaustion.</td><td>Return unused user buffers via <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#ab57120414bf92bd2f44de7aea97e3f1b">lbm_ssrc_buff_put()</a> or restart the application with a larger user buffer count. </td></tr>
+<td>CoreApi-9941-4001: All d Smart Source [p] user buffers have been allocated.</td><td>A call to lbm_ssrc_buff_get failed due to user buffer exhaustion.</td><td>Return unused user buffers via <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#ab57120414bf92bd2f44de7aea97e3f1b">lbm_ssrc_buff_put()</a> or restart the application with a larger user buffer count. </td></tr>
 <tr>
 <td>CoreApi-9941-4020: ssrc must be valid</td><td>ssrc parameter was NULL</td><td>ssrc must be a pointer to a valid lbm smart source. </td></tr>
 <tr>
 <td>CoreApi-9941-4021: usr_bufp must be valid</td><td>usr_bufp parameter was NULL</td><td>usr_bufp must be a pointer to a valid user buffer. </td></tr>
 <tr>
-<td>CoreApi-9941-4022: usr_bufp offset is not valid.</td><td>A call to lbm_ssrc_buff_put specified a user buffer with an invalid offset.</td><td>Return buffer with the exact pointer supplied by <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a98c5450e9fb93f30bd80fa33a2380dfc">lbm_ssrc_buff_get()</a>. </td></tr>
+<td>CoreApi-9941-4022: usr_bufp offset is not valid.</td><td>A call to lbm_ssrc_buff_put specified a user buffer with an invalid offset.</td><td>Return buffer with the exact pointer supplied by <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a98c5450e9fb93f30bd80fa33a2380dfc">lbm_ssrc_buff_get()</a>. </td></tr>
 <tr>
-<td>CoreApi-9941-4023: usr_bufp base address is not valid.</td><td>A call to lbm_ssrc_buff_put specified a user buffer with an invalid base address.</td><td>Return buffer with the exact pointer supplied by <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a98c5450e9fb93f30bd80fa33a2380dfc">lbm_ssrc_buff_get()</a>. </td></tr>
+<td>CoreApi-9941-4023: usr_bufp base address is not valid.</td><td>A call to lbm_ssrc_buff_put specified a user buffer with an invalid base address.</td><td>Return buffer with the exact pointer supplied by <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a98c5450e9fb93f30bd80fa33a2380dfc">lbm_ssrc_buff_get()</a>. </td></tr>
 <tr>
 <td>CoreApi-9941-4024: user buffer is already on the free list.</td><td>A call to lbm_ssrc_buff_put specified a user buffer the is already on the free list.</td><td>Don't be stupid! A buffer can only be returned once. </td></tr>
 <tr>
@@ -4101,7 +4241,7 @@ UM Core API Messages&nbsp;&nbsp;<small><a href="#umcoreapimessages">&lt;-</a></s
 <tr>
 <td>CoreApi-9941-6000: Can't allocate config options of u bytes [s:d]</td><td>The system was not able to allocate the amount of memory requested.</td><td>The physical memory on the machine may be over committed; try moving some applications to another machine. </td></tr>
 <tr>
-<td>CoreApi-9941-6001: Failed to call dump [s:d]</td><td>The call to <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a62e4da1cb793e25a249bada7202d2e88">lbm_ssrc_topic_dump()</a> failed.</td><td>Check that ssrc and opts are valid and that the value at size is greater than 0. </td></tr>
+<td>CoreApi-9941-6001: Failed to call dump [s:d]</td><td>The call to <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a62e4da1cb793e25a249bada7202d2e88">lbm_ssrc_topic_dump()</a> failed.</td><td>Check that ssrc and opts are valid and that the value at size is greater than 0. </td></tr>
 <tr>
 <td>CoreApi-9941-6003: Can't allocate JNI source object of u bytes [s:d]</td><td>The system was not able to allocate the amount of memory requested.</td><td>The physical memory on the machine may be over committed; try moving some applications to another machine. </td></tr>
 <tr>
@@ -4251,8 +4391,6 @@ UM SRS Log Messages&nbsp;&nbsp;<small><a href="#umsrslogmessages">&lt;-</a></sma
 <tr>
 <td>SRS-10563-12: Received duplicate SourceInformationRecord for topic[" + siRec.getComparisonSymbol() +                             "] source[" + siRec.getComparisonSource() + "] OTID[" + siRec.getDisplayOTID() + "]</td><td>Anrare internal state was encountered, but was handled. This state typically results from DROs briefly having more than one proxy source for a given originating source, usually due to a re-routing operation. This state normally resolves itself after a short time.</td><td>No resolution required. If this happens frequently, contact Informatica support. </td></tr>
 <tr>
-<td>SRS-10563-13: topic hasher received unexpected object: </td><td>An unexpected internal state was encountered, but was handled.</td><td>No resolution required. If this happens frequently, contact Informatica support. </td></tr>
-<tr>
 <td>SRS-10563-14: Got an unexpected message: {}</td><td>An unexpected internal state was encountered, but was handled.</td><td>No resolution required. If this happens frequently, contact Informatica support. </td></tr>
 <tr>
 <td>SRS-10563-15: attempting to set the ping interval for {} above the maximum of {}. Setting to the maximum</td><td>An attempt was made to configure ping-interval, which should typically not be modified by users except under direction and supervision of Informatica Support.</td><td>Remove the ping-interval configuration, or contact Informatica support. </td></tr>
@@ -4351,11 +4489,11 @@ UM SRS Log Messages&nbsp;&nbsp;<small><a href="#umsrslogmessages">&lt;-</a></sma
 <tr>
 <td>SRS-10704-12: Attempted to " + registerReceiver.toString() + " with null SymbolRecord</td><td>An internal error was encountered.</td><td>Contact Informatica support. </td></tr>
 <tr>
-<td>SRS-10704-1: Unable to establish connection for sessionID[" + srsRegistration.getSessionId() +                             "] due to unsupported interestMode[" + srsRegistration.getInterestMode() +                             "]. Only supported interestMode[" + SRSMessage.LBM_SRS_INTEREST_MODE_FLOOD +                             " or " + SRSMessage.LBM_SRS_INTEREST_MODE_FILTER + "]</td><td>A client with an unsupported interest mode attempted to establish a connection with the SRS.</td><td>Change to a supported interest mode and try again. </td></tr>
+<td>SRS-10704-1: Unable to establish connection for sessionID[" + srsRegistration.getSessionId() +                             "] due to unsupported interestMode[" + srsRegistration.getInterestMode() +                             "]. Only supported interestMode[0 - " + InterestModeBitMap.allInterestModeBits() + "]</td><td>A client with an unsupported interest mode attempted to establish a connection with the SRS.</td><td>Change to a supported interest mode and try again. </td></tr>
 <tr>
 <td>SRS-10704-2: Unable to establish connection for sessionID[" + srsMessage.registration_request.session_id +                             "] due to unsupported appType[" + srsMessage.registration_request.app_type +                             "]. Only supported appType[" + SRSMessage.LBM_SRS_APP_TYPE_APPLICATION +                             " or " + SRSMessage.LBM_SRS_APP_TYPE_TNWGD + " or " + SRSMessage.LBM_SRS_APP_TYPE_STORE + "]</td><td>A client with an unsupported application type attempted to establish a connection with the SRS.</td><td>Contact Informatica support. </td></tr>
 <tr>
-<td>SRS-10704-3: Establishing connection for client with sessionID[" + srsRegistration.getSessionId() +                     "] which is on an earlier protocolVersion[" + srsRegistration.getProtocolVersion() +                     "]. SRS is on protocolVersion[" + SRSMessage.LBM_SRS_PROTOCOL_VERSION + "]. Due to protocolVersion " +                     "mismatch, client will be connected in interestMode[" + SRSMessage.LBM_SRS_INTEREST_MODE_FLOOD + "]</td><td>A client with an earlier version is establishing a connection with the SRS.</td><td>If client uses earlier version by design, then no need to do anything. Otherwise, reconcile versions. </td></tr>
+<td>SRS-10704-3: Establishing connection for client with sessionID[" + srsRegistration.getSessionId() +                     "] which is on an earlier protocolVersion[" + srsRegistration.getProtocolVersion() +                     "]. SRS is on protocolVersion[" + SRSMessage.LBM_SRS_PROTOCOL_VERSION + "]. Due to protocolVersion " +                     "mismatch, client will be connected in interestMode[0]</td><td>A client with an earlier version is establishing a connection with the SRS.</td><td>If client uses earlier version by design, then no need to do anything. Otherwise, reconcile versions. </td></tr>
 <tr>
 <td>SRS-10704-4: Establishing connection for client with sessionID[" + srsRegistration.getSessionId() +                     "] which is on an earlier protocolVersion[" + srsRegistration.getProtocolVersion() +                     "]. SRS is on protocolVersion[" + SRSMessage.LBM_SRS_PROTOCOL_VERSION + "]</td><td>A client with an earlier version is establishing a connection with the SRS.</td><td>If client uses earlier version by design, then no need to do anything. Otherwise, reconcile versions. </td></tr>
 <tr>
@@ -4443,7 +4581,87 @@ UM SRS Log Messages&nbsp;&nbsp;<small><a href="#umsrslogmessages">&lt;-</a></sma
 <tr>
 <td>SRS-10848-7: Failed to schedule a " + CHECK_INACTIVE_WIRS +                             " timer. Reason: </td><td>Failed to schedule a "check inactive WIRs" timer.</td><td>Contact Informatica support. </td></tr>
 <tr>
-<td>SRS-10848-8: Failed to schedule a " + CHECK_INACTIVE_WIRS +                         " timer. Reason: </td><td>Failed to schedule a "check inactive WIRs" timer.</td><td><p class="starttd">Contact Informatica support.</p>
+<td>SRS-10848-8: Failed to schedule a " + CHECK_INACTIVE_WIRS +                         " timer. Reason: </td><td>Failed to schedule a "check inactive WIRs" timer.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>SRS-10943-100: Received duplicate </td><td>The SRS received a duplicate CNIR.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>SRS-10943-101: Received duplicate </td><td>The SRS received a duplicate CNQR.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>SRS-10943-110: Sent unexpected " + clientRecord.toString() +                     " for clientID[" + clientId + "]</td><td>The SRS sent an invalid SRS message.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>SRS-10943-120: " + existingContextNameInfoRecord.toString() +                                     " does not exist in the inactive CNIR list</td><td>An internal error was encountered.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>SRS-10943-121: Received a " + contextNameInfoRecord.toString() +                             " that does not match existing CNIR name </td><td>An internal error was encountered.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>SRS-10943-122: Received an update " + contextNameInfoRecord.toString() + " for " +                             "which there is no name map entry</td><td>An internal error was encountered.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>SRS-10943-123: Found an inactive " + inactiveContextNameInfoRecord.toString() + " for " +                                 "which there is no name map entry</td><td>An internal error was encountered.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>SRS-10943-124: Failed to remove " + inactiveOriginContextInstance + " mapping from CNIR map</td><td>An internal error was encountered.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>SRS-10943-125: Attempted to " + registerReceiver.toString() + " with an invalid registration type</td><td>An internal error was encountered.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>SRS-10943-126: Attempted to " + registerReceiver.toString() + " with null NameRecord</td><td>An internal error was encountered.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>SRS-10943-127: Attempted to " + deregisterReceiver.toString() + " with an invalid registration type</td><td>An internal error was encountered.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>SRS-10943-128: Attempted to " + deregisterReceiver.toString() + " with null NameRecord</td><td>An internal error was encountered.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>SRS-10943-129: Attempted to " + deregisterReceiver.toString() +                         " for which there is no name map entry</td><td>An internal error was encountered.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>SRS-10943-131: Received " + contextNameEndRecord.toString() + " for " +                         "which there is no name map entry</td><td>An internal error was encountered.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>SRS-10943-140: Failed to remove " + originContextInstance + " mapping from CNIR map</td><td>An internal error was encountered.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>SRS-10943-150: Received an unexpected </td><td>An internal error was encountered.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>SRS-10943-151: Failed to schedule a " + CHECK_INACTIVE_CNIRS +                             " timer. Reason: </td><td>Failed to schedule a "check inactive CNIRs" timer.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>SRS-10943-152: Expired an unexpected </td><td>An internal error was encountered.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>SRS-10943-153: Expired " + contextNameInfoRecord.toString() + " for " +                             "which there is no name map entry</td><td>An internal error was encountered.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>SRS-10943-155: Failed to schedule a " + CHECK_INACTIVE_CNIRS +                         " timer. Reason: </td><td>Failed to schedule a "check inactive CNIRs" timer.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>SRS-10943-1: Attempted to populate a message with an unknown ID </td><td>An internal error was encountered.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>SRS-10943-21: Failed to find domain " + domainId + " and " +                             routeInfoRecord.toString() + " in the domain ID map</td><td>An internal error was encountered.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>SRS-10943-22: Received a duplicate </td><td>An internal error was encountered.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>SRS-10943-23: Received a duplicate </td><td>An internal error was encountered.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>SRS-10943-24: Received a " + domainInfoRecord.toString() + " with a domain ID" +                         " that does not match the existing domain ID</td><td>The SRS received a subsequent domain information record with a domain ID that does not match the existing domain ID.</td><td>Check if the &lt;domain-id&gt; configuration value is the same for all DROs serviced by this SRS. </td></tr>
+<tr>
+<td>SRS-10943-25: Attempted to " + registerReceiver.toString() + " with an invalid registration type</td><td>An internal error was encountered.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>SRS-10943-26: Attempted to " + deregisterReceiver.toString() + " with an invalid registration type</td><td>An internal error was encountered.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>SRS-10943-27: Received a " + domainDisconnectRecord.toString() + " for which there is no " +                     "corresponding DIR map entry</td><td>An internal error was encountered.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>SRS-10943-28: Failed to schedule a " + CHECK_INACTIVE_DIRS +                             " timer. Reason: </td><td>Failed to schedule a "check inactive DIRs" timer.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>SRS-10943-2: Attempted to populate a message with an unknown ID </td><td>An internal error was encountered.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>SRS-10943-30: Expired a " + domainInfoRecord.toString() + " for which there is no " +                         "corresponding DIR_CAR map entry</td><td>An internal error was encountered.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>SRS-10943-31: Failed to remove " + domainInfoRecord.toString() + " from DIR_CAR map</td><td>An internal error was encountered.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>SRS-10943-32: Failed to schedule a " + CHECK_INACTIVE_DIRS +                         " timer. Reason: </td><td>Failed to schedule a "check inactive DIRs" timer.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>SRS-10943-3: Attempted to populate a message with an unknown ID </td><td>An internal error was encountered.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>SRS-10943-50: Received duplicate </td><td>The SRS received a duplicate RTIR.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>SRS-10943-60: Received a " + routeDisconnectRecord.toString() + " for which there is no " +                     "corresponding RTIR map entry</td><td>An internal error was encountered.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>SRS-10943-61: Received a " + routeDisconnectRecord.toString() + " which does not match " +                         "existing </td><td>An internal error was encountered.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>SRS-10943-62: Failed to schedule a " + CHECK_INACTIVE_RTIRS +                                 " timer. Reason: </td><td>Failed to schedule a "check inactive RTIRs" timer.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>SRS-10943-65: Expired a " + routeInfoRecord.toString() + " for which there is no " +                         "corresponding RTIR map entry</td><td>An internal error was encountered.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>SRS-10943-66: Failed to schedule a " + CHECK_INACTIVE_RTIRS +                         " timer. Reason: </td><td>Failed to schedule a "check inactive RTIRs" timer.</td><td><p class="starttd">Contact Informatica support.</p>
 <p class="endtd"></p>
 </td></tr>
 </table>
@@ -4523,7 +4741,7 @@ UM Dynamic Routing Log Messages&nbsp;&nbsp;<small><a href="#umdynamicroutinglogm
 <tr>
 <td>Gwd-10185-29: unknown portal type, d</td><td>Bad portal type specified in portal global structure</td><td></td></tr>
 <tr>
-<td>Gwd-10185-2: <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Operations/api.tag:../API/" href="../API/lbmaux_8h.html#ae7d92b1afb5b581a6b71a154448f89a7">lbmaux_context_attr_setopt_from_file()</a> failed, s</td><td>Failure while setting up extra config opts for DRO daemon monitor</td><td>Check attributes in "lbm-config" config file specified in the DRO's xml file </td></tr>
+<td>Gwd-10185-2: <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/Operations/api.tag:../API/" href="../API/lbmaux_8h.html#ae7d92b1afb5b581a6b71a154448f89a7">lbmaux_context_attr_setopt_from_file()</a> failed, s</td><td>Failure while setting up extra config opts for DRO daemon monitor</td><td>Check attributes in "lbm-config" config file specified in the DRO's xml file </td></tr>
 <tr>
 <td>Gwd-10185-30: error trying to retrieve endpoint portal stats data</td><td>Error trying to copy portal stats</td><td></td></tr>
 <tr>
@@ -4545,7 +4763,7 @@ UM Dynamic Routing Log Messages&nbsp;&nbsp;<small><a href="#umdynamicroutinglogm
 <tr>
 <td>Gwd-10185-39: tnwg_rm_info() returned an error</td><td>Failure accessing route manager info for route manager stat group</td><td></td></tr>
 <tr>
-<td>Gwd-10185-3: <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#ab67f641d5a0ad1a9fe53d415da58d961">lbm_context_attr_setopt()</a> failed, s</td><td>Failure setting up attributes for daemon monitor remote control handler</td><td></td></tr>
+<td>Gwd-10185-3: <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#ab67f641d5a0ad1a9fe53d415da58d961">lbm_context_attr_setopt()</a> failed, s</td><td>Failure setting up attributes for daemon monitor remote control handler</td><td></td></tr>
 <tr>
 <td>Gwd-10185-40: tnwg_rm_stat_grp_collect_portal_info() returned an error</td><td>Failure collecting portal info for route manager stat group</td><td></td></tr>
 <tr>
@@ -4579,27 +4797,27 @@ UM Dynamic Routing Log Messages&nbsp;&nbsp;<small><a href="#umdynamicroutinglogm
 <tr>
 <td>Gwd-10185-56: bad pointer to portal passed to tnwg_portalcfg_stat_grp_read()</td><td>Null pointer passed to tnwg_portalcfg_stat_grp_read()</td><td></td></tr>
 <tr>
-<td>Gwd-10185-57: <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a43f6029ad772e29b61c2a5c78f961073">lbm_context_attr_dump()</a> failed, s</td><td>Failure attempting to access portal config source context attributes from config tables</td><td></td></tr>
+<td>Gwd-10185-57: <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a43f6029ad772e29b61c2a5c78f961073">lbm_context_attr_dump()</a> failed, s</td><td>Failure attempting to access portal config source context attributes from config tables</td><td></td></tr>
 <tr>
-<td>Gwd-10185-58: <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a43f6029ad772e29b61c2a5c78f961073">lbm_context_attr_dump()</a> failed, s</td><td>Failure attempting to access portal config receiver context attributes from config tables</td><td></td></tr>
+<td>Gwd-10185-58: <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a43f6029ad772e29b61c2a5c78f961073">lbm_context_attr_dump()</a> failed, s</td><td>Failure attempting to access portal config receiver context attributes from config tables</td><td></td></tr>
 <tr>
-<td>Gwd-10185-59: <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a09bc0d170eadffe1eb1c30d421074125">lbm_event_queue_attr_dump()</a> failed, s</td><td>Failure attempting to access portal config event queue attributes from config tables</td><td></td></tr>
+<td>Gwd-10185-59: <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a09bc0d170eadffe1eb1c30d421074125">lbm_event_queue_attr_dump()</a> failed, s</td><td>Failure attempting to access portal config event queue attributes from config tables</td><td></td></tr>
 <tr>
 <td>Gwd-10185-5: unable to create src topic attributes: s</td><td>Error creating source attributes for daemon stats monitor</td><td></td></tr>
 <tr>
 <td>Gwd-10185-60: bad config type in tnwg_portalcfg_stat_grp_read() d</td><td>Invalid config type specified for Peer portal</td><td></td></tr>
 <tr>
-<td>Gwd-10185-61: <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a43f6029ad772e29b61c2a5c78f961073">lbm_context_attr_dump()</a> failed, s</td><td>Failure attempting to access portal config source context for endpoint portal</td><td></td></tr>
+<td>Gwd-10185-61: <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a43f6029ad772e29b61c2a5c78f961073">lbm_context_attr_dump()</a> failed, s</td><td>Failure attempting to access portal config source context for endpoint portal</td><td></td></tr>
 <tr>
-<td>Gwd-10185-62: <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a43f6029ad772e29b61c2a5c78f961073">lbm_context_attr_dump()</a> failed, s</td><td>Failure attempting to access endpoint portal config receiver context attributes from config table</td><td></td></tr>
+<td>Gwd-10185-62: <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a43f6029ad772e29b61c2a5c78f961073">lbm_context_attr_dump()</a> failed, s</td><td>Failure attempting to access endpoint portal config receiver context attributes from config table</td><td></td></tr>
 <tr>
-<td>Gwd-10185-63: <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a1d7722b39132940193205d6287c0a7f7">lbm_src_topic_attr_dump()</a> failed, s</td><td>Failure attempting to access endpoint portal config source attributes from config table</td><td></td></tr>
+<td>Gwd-10185-63: <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a1d7722b39132940193205d6287c0a7f7">lbm_src_topic_attr_dump()</a> failed, s</td><td>Failure attempting to access endpoint portal config source attributes from config table</td><td></td></tr>
 <tr>
-<td>Gwd-10185-64: <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a7a8f94b03c37c4481044d3c6b250bdb3">lbm_rcv_topic_attr_dump()</a> failed, s</td><td>Failure attempting to access endpoint portal config receiver attributes from config table</td><td></td></tr>
+<td>Gwd-10185-64: <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a7a8f94b03c37c4481044d3c6b250bdb3">lbm_rcv_topic_attr_dump()</a> failed, s</td><td>Failure attempting to access endpoint portal config receiver attributes from config table</td><td></td></tr>
 <tr>
-<td>Gwd-10185-65: <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a98dc9a9c6e5bfcf72222754f5179298d">lbm_wildcard_rcv_attr_dump()</a> failed, s</td><td>Failure attempting to access endpoint portal wildcard receiver attributes from config table</td><td></td></tr>
+<td>Gwd-10185-65: <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a98dc9a9c6e5bfcf72222754f5179298d">lbm_wildcard_rcv_attr_dump()</a> failed, s</td><td>Failure attempting to access endpoint portal wildcard receiver attributes from config table</td><td></td></tr>
 <tr>
-<td>Gwd-10185-66: <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a09bc0d170eadffe1eb1c30d421074125">lbm_event_queue_attr_dump()</a> failed, s</td><td>Failure attempting to access endpoint portal event queue attributes from config table</td><td></td></tr>
+<td>Gwd-10185-66: <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a09bc0d170eadffe1eb1c30d421074125">lbm_event_queue_attr_dump()</a> failed, s</td><td>Failure attempting to access endpoint portal event queue attributes from config table</td><td></td></tr>
 <tr>
 <td>Gwd-10185-67: bad portal type d</td><td>Invalid portal type</td><td></td></tr>
 <tr>
@@ -4679,6 +4897,60 @@ UM Dynamic Routing Log Messages&nbsp;&nbsp;<small><a href="#umdynamicroutinglogm
 <tr>
 <td>Gwd-10763-5: tnwg_dstat_send_thread_create() error creating send thread: s</td><td>Unable to create two-lock queue</td><td>Contact Informatica Support. </td></tr>
 <tr>
+<td>Gwd-10958-1: Using default LBM context and source configuration values for daemon stats</td><td>No Configuration file specified for daemon stats</td><td>Using Default LBM configuration values </td></tr>
+<tr>
+<td>Gwd-10995-11: could not start automonitoring for Gateway "%s" with Daemon Statistics enabled</td><td>Automonitoring failed to start for the gateway because Daemon Statistics is enabled.</td><td>Disable Daemon Statistics by removing the Daemon level &lt;daemon-monitor&gt; Element from the gateway configuration. </td></tr>
+<tr>
+<td>Gwd-10995-12: tnwg_retrieve_mon_stats_othergateway() failed</td><td>Failure from call to tnwg_retrieve_mon_stats_othergateway()</td><td></td></tr>
+<tr>
+<td>Gwd-10995-13: Failed to find the local stats in the RM stats</td><td>Failed to find the local stats in the RM stats</td><td></td></tr>
+<tr>
+<td>Gwd-10995-14: Failed to find the local stats in the RM stats</td><td>Failed to find the local stats in the RM stats</td><td></td></tr>
+<tr>
+<td>Gwd-10995-15: Failed to find portal stats in the RM stats</td><td>Failed to find portal stats in the RM stats</td><td></td></tr>
+<tr>
+<td>Gwd-10995-16: tnwg_retrieve_mon_stats_portal_peer() failed</td><td>Failure from call to tnwg_retrieve_mon_stats_portal_peer()</td><td></td></tr>
+<tr>
+<td>Gwd-10995-17: tnwg_retrieve_mon_stats_portal_endpoint() failed</td><td>Failure from call to tnwg_retrieve_mon_stats_portal_endpoint()</td><td></td></tr>
+<tr>
+<td>Gwd-10995-18: Failed to find other gateway stats in RM stats</td><td>Failed to find other gateway stats in RM stats</td><td></td></tr>
+<tr>
+<td>Gwd-10995-19: Failed to find other gateway portal stats in the RM stats</td><td>Failed to find other gateway portal stats in the RM stats</td><td></td></tr>
+<tr>
+<td>Gwd-10995-1: Errors detected while initializing PB Format stats monitor</td><td>Errors detected initilizaing PB format stats monitor for gateway</td><td>Verify all daemon monitor related attributes are correct in xml and config files </td></tr>
+<tr>
+<td>Gwd-10995-20: error from tnwg_portal_find() for portal number d</td><td>Null pointer returned when obtaining pointer to portal structure</td><td></td></tr>
+<tr>
+<td>Gwd-10995-21: unable to create portals stat group: </td><td>Failure while creating daemon monitor portal stats stat group</td><td></td></tr>
+<tr>
+<td>Gwd-10995-22: unable to create portal config stat group: s</td><td>Failure while creating daemon monitor portal config stats group</td><td></td></tr>
+<tr>
+<td>Gwd-10995-23: tnwg_retrieve_mon_stats_portal() failed</td><td>Failure from call to tnwg_retrieve_mon_stats_portal()</td><td></td></tr>
+<tr>
+<td>Gwd-10995-24: tnwg_retrieve_lbmmon_msg was called with a null pointer</td><td>tnwg_retrieve_lbmmon_msg was called with a null pointer</td><td></td></tr>
+<tr>
+<td>Gwd-10995-25: unable to create route manager stat group</td><td>Failure returned while creating daemon monitor route manager stats group</td><td></td></tr>
+<tr>
+<td>Gwd-10995-26: tnwg_retrieve_mon_stats_local() failed</td><td>Failure from call to tnwg_retrieve_mon_stats_local()</td><td></td></tr>
+<tr>
+<td>Gwd-10995-2: tnwg_retrieve_mon_config failed</td><td>Failure from call to tnwg_retrieve_mon_config()</td><td></td></tr>
+<tr>
+<td>Gwd-10995-3: tnwg_retrieve_stats_msg() failed</td><td>Failure from call to tnwg_retrieve_stats_msg()</td><td></td></tr>
+<tr>
+<td>Gwd-10995-5: tnwg_portalcfg_stat_grp_pb_snapshot() failed</td><td>Failure from call to tnwg_portalcfg_stat_grp_pb_snapshot()</td><td></td></tr>
+<tr>
+<td>Gwd-10995-6: tnwg_portalcfg_stat_grp_read() failed for portal number d</td><td>Failure from call to tnwg_portalcfg_stat_grp_read()</td><td></td></tr>
+<tr>
+<td>Gwd-10995-7: tnwg_pcfg_stat_to_pb() failed for portal number d</td><td>Failure from call to tnwg_pcfg_stat_to_pb()</td><td></td></tr>
+<tr>
+<td>Gwd-10995-8: tnwg_read_portal_record() failed for portal number d</td><td>Failure from call to tnwg_read_portal_record()</td><td></td></tr>
+<tr>
+<td>Gwd-10995-9: tnwg_rm_stat_grp_read() failed</td><td>Failure from call to tnwg_rm_stat_grp_read()</td><td></td></tr>
+<tr>
+<td>Gwd-11041-1: error starting portal [s] [d]: s</td><td>The error shown was detected while starting the given portal.</td><td>Please resolve the error shown or contact service. </td></tr>
+<tr>
+<td>Gwd-11041-2: error starting portal [s] [d]: s</td><td>The error shown was detected while starting the given portal.</td><td>Please resolve the error shown or contact service. </td></tr>
+<tr>
 <td>Gwd-5688-4813: could not allocate u bytes [s:d]</td><td>The system was not able to allocate the amount of memory requested.</td><td>If the amount requested was particularly large, the problem may be a misconfiguration; however if the amount requested was relatively small, the physical memory on the machine may be over committed; try moving some applications to another machine. </td></tr>
 <tr>
 <td>Gwd-5975-1: error in PCRE pattern offset d: s</td><td>UMS detected a malformed PCRE expression while handling a wildcard receiver pattern.</td><td>Contact Informatica support if this message occurs frequently or if topic resolution appears to be failing. </td></tr>
@@ -4701,9 +4973,9 @@ UM Dynamic Routing Log Messages&nbsp;&nbsp;<small><a href="#umdynamicroutinglogm
 <tr>
 <td>Gwd-6033-353: endpoint portal [s] received one or more UIM control messages with no stream information - these will be dropped</td><td>This gateway has received messages from a client using an earlier version of the library that does not include stream information.</td><td>If this is expected behavior, this message can be ignored; otherwise the client should have its library upgraded. </td></tr>
 <tr>
-<td>Gwd-6033-367: endpoint portal [s] source context <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#ad9416b1f0b474b5d4c4f39bb3c4bda77">lbm_context_process_events()</a> failed [d]: s</td><td>The call to <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#ad9416b1f0b474b5d4c4f39bb3c4bda77">lbm_context_process_events()</a> for the source context has returned an error. The LBM error number and message has been supplied in the output.</td><td>Use the LBM error number and message as a cross reference to determine cause and resolution. </td></tr>
+<td>Gwd-6033-367: endpoint portal [s] source context <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#ad9416b1f0b474b5d4c4f39bb3c4bda77">lbm_context_process_events()</a> failed [d]: s</td><td>The call to <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#ad9416b1f0b474b5d4c4f39bb3c4bda77">lbm_context_process_events()</a> for the source context has returned an error. The LBM error number and message has been supplied in the output.</td><td>Use the LBM error number and message as a cross reference to determine cause and resolution. </td></tr>
 <tr>
-<td>Gwd-6033-368: endpoint portal [s] receive context <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#ad9416b1f0b474b5d4c4f39bb3c4bda77">lbm_context_process_events()</a> failed [d]: s</td><td>The call to <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#ad9416b1f0b474b5d4c4f39bb3c4bda77">lbm_context_process_events()</a> for the receive context has returned an error. The LBM error number and message has been supplied in the output.</td><td>Use the LBM error number and message as a cross reference to determine cause and resolution. </td></tr>
+<td>Gwd-6033-368: endpoint portal [s] receive context <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#ad9416b1f0b474b5d4c4f39bb3c4bda77">lbm_context_process_events()</a> failed [d]: s</td><td>The call to <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#ad9416b1f0b474b5d4c4f39bb3c4bda77">lbm_context_process_events()</a> for the receive context has returned an error. The LBM error number and message has been supplied in the output.</td><td>Use the LBM error number and message as a cross reference to determine cause and resolution. </td></tr>
 <tr>
 <td>Gwd-6033-593: peer portal [s] received one or more UIM control messages with no stream information - these will be dropped</td><td>This gateway has received messages from a client using an earlier version of the library that does not include stream information.</td><td>If this is expected behavior, this message can be ignored; otherwise the client should have its library upgraded. </td></tr>
 <tr>
@@ -4867,7 +5139,7 @@ UM Dynamic Routing Log Messages&nbsp;&nbsp;<small><a href="#umdynamicroutinglogm
 <tr>
 <td>Gwd-6361-67: portal [s] failed to join psm evq thread, s</td><td>UM has failed to join an event queue dispatch thread.</td><td>Contact Informatica Support. </td></tr>
 <tr>
-<td>Gwd-6361-69: portal [s] psm evq <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#ac06b127bae882dd5fb68b7044fdceb5f">lbm_event_dispatch()</a> failed, s</td><td>An error occurred while attempting to process events off an internal event queue.</td><td>Contact Informatica Support. </td></tr>
+<td>Gwd-6361-69: portal [s] psm evq <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#ac06b127bae882dd5fb68b7044fdceb5f">lbm_event_dispatch()</a> failed, s</td><td>An error occurred while attempting to process events off an internal event queue.</td><td>Contact Informatica Support. </td></tr>
 <tr>
 <td>Gwd-6361-6: endpoint portal [s] failed to schedule remote domain topic check timer [d]: s</td><td>An error occurred while attempting to schedule an internal timer.</td><td>Contact Informatica Support </td></tr>
 <tr>
@@ -4875,7 +5147,7 @@ UM Dynamic Routing Log Messages&nbsp;&nbsp;<small><a href="#umdynamicroutinglogm
 <tr>
 <td>Gwd-6361-72: TNWG PRM processing failed [d]: s</td><td>An error occurred while attempting to process an internal interest notification.</td><td>Contact Informatica Support. </td></tr>
 <tr>
-<td>Gwd-6361-73: portal [s] prm evq <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#ac06b127bae882dd5fb68b7044fdceb5f">lbm_event_dispatch()</a> failed, s</td><td>An error occurred while attempting to process events off an internal event queue.</td><td>Contact Informatica Support. </td></tr>
+<td>Gwd-6361-73: portal [s] prm evq <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#ac06b127bae882dd5fb68b7044fdceb5f">lbm_event_dispatch()</a> failed, s</td><td>An error occurred while attempting to process events off an internal event queue.</td><td>Contact Informatica Support. </td></tr>
 <tr>
 <td>Gwd-6361-74: route recalculation took u.%06u seconds</td><td>Running route recalculations took the indicated amount of time to complete.</td><td>Nothing. This is purely informational. </td></tr>
 <tr>
@@ -4883,9 +5155,9 @@ UM Dynamic Routing Log Messages&nbsp;&nbsp;<small><a href="#umdynamicroutinglogm
 <tr>
 <td>Gwd-6361-77: loop count == d</td><td>You're running a build of the gateway with TNWG_RM_LOOP_COUNT defined in tnwgrm.c.</td><td>Contact Informatica Support </td></tr>
 <tr>
-<td>Gwd-6361-78: rm evq <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#ac06b127bae882dd5fb68b7044fdceb5f">lbm_event_dispatch()</a> failed, s</td><td>An error occurred while attempting to process events off an internal event queue.</td><td>Contact Informatica Support </td></tr>
+<td>Gwd-6361-78: rm evq <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#ac06b127bae882dd5fb68b7044fdceb5f">lbm_event_dispatch()</a> failed, s</td><td>An error occurred while attempting to process events off an internal event queue.</td><td>Contact Informatica Support </td></tr>
 <tr>
-<td>Gwd-6361-79: rm ctx <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#ad9416b1f0b474b5d4c4f39bb3c4bda77">lbm_context_process_events()</a> failed, s</td><td>An error occurred while attempting to process events on an internal context.</td><td>Contact Informatica Support </td></tr>
+<td>Gwd-6361-79: rm ctx <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#ad9416b1f0b474b5d4c4f39bb3c4bda77">lbm_context_process_events()</a> failed, s</td><td>An error occurred while attempting to process events on an internal context.</td><td>Contact Informatica Support </td></tr>
 <tr>
 <td>Gwd-6361-7: endpoint portal [s] failed to schedule remote domain pattern check timer [d]: s</td><td>An error occurred while attempting to schedule an internal timer.</td><td>Contact Informatica Support </td></tr>
 <tr>
@@ -5133,6 +5405,8 @@ UM Dynamic Routing Log Messages&nbsp;&nbsp;<small><a href="#umdynamicroutinglogm
 </table>
 </center><center> <table class="doxtable">
 <tr>
+<td>GwdApi-10995-10: unable to initialize monitoring [d]: s</td><td>Automonitoring failed to start for the gateway.</td><td>See the log files for other errors. </td></tr>
+<tr>
 <td>GwdApi-5688-4702: failed to set portal source option [s] to [s]: s</td><td>The portal was unable to set a source option</td><td></td></tr>
 <tr>
 <td>GwdApi-5688-4703: failed to set portal receiver option [s] to [s]: s</td><td>The portal was unable to set a receiver option</td><td></td></tr>
@@ -5235,7 +5509,7 @@ UM Lbmrd Log Messages&nbsp;&nbsp;<small><a href="#umlbmrdlogmessages">&lt;-</a><
 UM Persistent Store Log Messages&nbsp;&nbsp;<small><a href="#umpersistentstorelogmessages">&lt;-</a></small></h1>
 <center> <table class="doxtable">
 <tr>
-<td>Store-10184-08: dmon evq <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.13.1_RC1/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#ac06b127bae882dd5fb68b7044fdceb5f">lbm_event_dispatch()</a> failed, s</td><td>An error occurred while attempting to process events off an internal event queue.</td><td>Contact Informatica Support. </td></tr>
+<td>Store-10184-08: dmon evq <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#ac06b127bae882dd5fb68b7044fdceb5f">lbm_event_dispatch()</a> failed, s</td><td>An error occurred while attempting to process events off an internal event queue.</td><td>Contact Informatica Support. </td></tr>
 <tr>
 <td>Store-10184-100: failed to create dmon ctx attr: s</td><td>UM was unable to create context attributes.</td><td>Contact Informatica Support. </td></tr>
 <tr>
@@ -5328,6 +5602,54 @@ UM Persistent Store Log Messages&nbsp;&nbsp;<small><a href="#umpersistentstorelo
 <td>Store-10805-1: lbmaux_src_topic_attr_setopt_from_file: s error: s</td><td>UM was unable to set context attributes from specified file.</td><td>Verify the path to the configuration file. </td></tr>
 <tr>
 <td>Store-10807-100: store [s] PREG RESP s Session ID u RegID u SQN[u:u]</td><td>A PREG Response is being sent to a source or receiver.</td><td>No further action is required. </td></tr>
+<tr>
+<td>Store-10888-5544: could not start automonitoring for Store "%s": s</td><td>Automonitoring failed to start for the store.</td><td>See the log files for other errors. </td></tr>
+<tr>
+<td>Store-10888-5545: could not start automonitoring for Store "%s" with Daemon Statistics enabled</td><td>Automonitoring failed to start for the store because Daemon Statistics is enabled.</td><td>Disable Daemon Statistics by removing the Daemon level &lt;daemon-monitor&gt; UMP Element from the store configuration. </td></tr>
+<tr>
+<td>Store-10888-701: store [s] invalid automon filter option value exceeds the maximum line length [d] for field[s]</td><td>The specified value exceeds the maximum line length.</td><td>Please specify a valid value. </td></tr>
+<tr>
+<td>Store-10888-702: store [s] invalid automon filter option value [s] for field [s]</td><td>The specified value is either non-numeric or the value is out of range.</td><td>Please specify a valid value. </td></tr>
+<tr>
+<td>Store-10888-703: store [s] invalid automon filter option value [s] for field [s]</td><td>The specified value is either non-numeric or the value is out of range.</td><td>Please specify a valid value. </td></tr>
+<tr>
+<td>Store-10888-704: store [s] invalid automon filter option enumerated value [s] for field [s]</td><td>The specified enumerated value is either non-numeric or the value is out of range.</td><td>Please specify a valid value. </td></tr>
+<tr>
+<td>Store-10888-705: store [s] invalid automon filter option value [s] for field [s] is not ld bytes in length</td><td>The specified value must be the exact number of hexadecimal bytes as the field specification.</td><td>Please specify a valid value. </td></tr>
+<tr>
+<td>Store-10888-706: store [s] invalid automon filter option value [s] for field [s] is not a hexadecimal number</td><td>The specified value must be composed of contiguous hexadecimal numbers.</td><td>Please specify a valid value. </td></tr>
+<tr>
+<td>Store-10888-707: store [s] invalid automon filter option field [s] for qualifier [s] with filter option [d]</td><td>The specified field is invalid for the specified qualifier.</td><td>Please specify a valid field. </td></tr>
+<tr>
+<td>Store-10888-708: store [s] invalid automon filter option qualifier [s] and/or field [s] name</td><td>The specified qualifier and/or field is invalid.</td><td>Please specify a valid qualifier and field. </td></tr>
+<tr>
+<td>Store-10888-711: store [s] automon numeric filter option [s] does not apply to fields of type string</td><td>The specified numeric filter option does not apply to fields of type string.</td><td>Specify a numeric compatible filter option and try again. </td></tr>
+<tr>
+<td>Store-10888-712: store [s] automon string filter option [s] does not apply to numerical field types</td><td>The specified string filter option does not apply to numerical field types.</td><td>Specify a numeric compatible filter option and try again. </td></tr>
+<tr>
+<td>Store-10888-901: initialization did not complete</td><td>Attempted to retrieve lbmmon message for before initialization was complete.</td><td>Contact Informatica Support. </td></tr>
+<tr>
+<td>Store-10888-902: automon could not find store named[s]</td><td>Attempt to retrieve lbmmon message for named store failed.</td><td>Contact Informatica Support. </td></tr>
+<tr>
+<td>Store-10888-903: store [s] invalid automon regular expression [s] s for field [s] of qualifier [s]</td><td>Attempt to parse UME store automon filter failed due to illegal regular expression.</td><td>Specify a legal expression and try again. </td></tr>
+<tr>
+<td>Store-10888-904: store [s] invalid automon field option type[s]</td><td>Attempt to parse UME store automon filter failed due to invalid filter option type.</td><td>Specify a valid type and try again. </td></tr>
+<tr>
+<td>Store-10888-905: store [s] invalid automon qualifier[s]</td><td>Attempt to parse UME store automon filter failed due to invalid qualified field name.</td><td>Specify a valid dot separated qualifier and field name and try again. </td></tr>
+<tr>
+<td>Store-10888-906: store [s] missing automon numerical argument[s] for filter[s]</td><td>Attempt to parse UME store automon filter failed. Missing numerical argument.</td><td>Please provide a numerical argument and try again. </td></tr>
+<tr>
+<td>Store-10888-907: store [s] invalid automon hexadecimal argument[s] for filter[s]</td><td>Attempt to parse UME store automon filter failed. Invalid hexadecimal argument.</td><td>Please provide a valid hexadecimal argument and try again. </td></tr>
+<tr>
+<td>Store-10888-908: store [s] invalid automon numerical argument[s] for filter[s]</td><td>Attempt to parse UME store automon filter failed. Invalid decimal argument.</td><td>Please provide a valid decimal argument and try again. </td></tr>
+<tr>
+<td>Store-10888-909: could not create lbmmon event logging queue for store index [s]</td><td>Attempt to create queue for logging lbmmon events failed.</td><td>Contact Informatica Support. </td></tr>
+<tr>
+<td>Store-10888-911: store [s] automon filter [s] does not accept arguments</td><td>Attempt to parse UME store automon filter failed. Filter option does not accept arguments.</td><td>Please remove option argument and try again. </td></tr>
+<tr>
+<td>Store-10888-912: store [s] invalid automon filter option s for qualifier[s]</td><td>Attempt to parse UME store automon filter failed due to invalid filter option.</td><td>Specify a valid filter option and try again. </td></tr>
+<tr>
+<td>Store-10888-913: store [s] automon filter [s] requires a string argument</td><td>Attempt to parse UME store automon filter failed. Filter option requires a string argument.</td><td>Specify a string argument and try again. </td></tr>
 <tr>
 <td>Store-2179-1: store "%s" topic "%s" is dropping requests for retransmissions of messages persisted to disk. Increase the value of repository-disk-max-read-async-cbs to improve the rate of recovery.</td><td>A retransmit request at the store was dropped because the number of outstanding disk reads was greater than repository-disk-max-read-async-cbs.</td><td>Increase the value of repository-disk-max-read-async-cbs. </td></tr>
 <tr>
@@ -5815,6 +6137,48 @@ UM Persistent Store Log Messages&nbsp;&nbsp;<small><a href="#umpersistentstorelo
 <tr>
 <td>StoreApi-10184-48: could not enqueue rcv delete</td><td>UM could not enqueue rcv delete.</td><td>Contact Informatica Support. </td></tr>
 <tr>
+<td>StoreApi-10888-600: failed to create dmon event queue attr: s</td><td>UM was unable to create event queue attributes.</td><td>Contact Informatica Support. </td></tr>
+<tr>
+<td>StoreApi-10888-601: could not set dmon event queue monitor interval</td><td>UM could not set event queue attribute.</td><td>Contact Informatica Support. </td></tr>
+<tr>
+<td>StoreApi-10888-602: failed to delete dmon event queue attr: s</td><td>UM was unable to delete an internal context attributes structure. Some memory has been leaked.</td><td>Contact Informatica Support. </td></tr>
+<tr>
+<td>StoreApi-10888-800: could not enqueue store created event</td><td>UM could not enqueue store created event.</td><td>Contact Informatica Support. </td></tr>
+<tr>
+<td>StoreApi-10888-801: could not enqueue store deleted event</td><td>UM could not enqueue store deleted event.</td><td>Contact Informatica Support. </td></tr>
+<tr>
+<td>StoreApi-10888-802: could not enqueue source registered event</td><td>UM could not enqueue source registered event.</td><td>Contact Informatica Support. </td></tr>
+<tr>
+<td>StoreApi-10888-803: could not enqueue source reregistered event</td><td>UM could not enqueue source reregistered event.</td><td>Contact Informatica Support. </td></tr>
+<tr>
+<td>StoreApi-10888-804: could not enqueue source recreated event</td><td>UM could not enqueue source recreated event.</td><td>Contact Informatica Support. </td></tr>
+<tr>
+<td>StoreApi-10888-805: could not enqueue source deregistered event</td><td>UM could not enqueue source deregistered event.</td><td>Contact Informatica Support. </td></tr>
+<tr>
+<td>StoreApi-10888-806: could not enqueue source deleted event</td><td>UM could not enqueue source deleted event.</td><td>Contact Informatica Support. </td></tr>
+<tr>
+<td>StoreApi-10888-807: could not enqueue proxy source created event</td><td>UM could not enqueue proxy source created event.</td><td>Contact Informatica Support. </td></tr>
+<tr>
+<td>StoreApi-10888-808: could not enqueue proxy source deleted event</td><td>UM could not enqueue proxy source deleted event.</td><td>Contact Informatica Support. </td></tr>
+<tr>
+<td>StoreApi-10888-809: could not enqueue topic create event</td><td>UM could not enqueue topic create event.</td><td>Contact Informatica Support. </td></tr>
+<tr>
+<td>StoreApi-10888-810: could not enqueue rpp writing event</td><td>UM could not enqueue rpp writing event.</td><td>Contact Informatica Support. </td></tr>
+<tr>
+<td>StoreApi-10888-811: could not enqueue rpp repo empty event</td><td>UM could not enqueue rpp repo empty event.</td><td>Contact Informatica Support. </td></tr>
+<tr>
+<td>StoreApi-10888-812: could not enqueue receiver registered event</td><td>UM could not enqueue receiver registered event.</td><td>Contact Informatica Support. </td></tr>
+<tr>
+<td>StoreApi-10888-813: could not enqueue receiver reregistered event</td><td>UM could not enqueue receiver reregistered event.</td><td>Contact Informatica Support. </td></tr>
+<tr>
+<td>StoreApi-10888-814: could not enqueue receiver deregistered event</td><td>UM could not enqueue receiver deregistered event.</td><td>Contact Informatica Support. </td></tr>
+<tr>
+<td>StoreApi-10888-815: could not enqueue receiver recreated event</td><td>UM could not enqueue receiver recreated event.</td><td>Contact Informatica Support. </td></tr>
+<tr>
+<td>StoreApi-10888-816: could not enqueue receiver deleted event</td><td>UM could not enqueue receiver deleted event.</td><td>Contact Informatica Support. </td></tr>
+<tr>
+<td>StoreApi-10888-817: encountered an unknown event type</td><td>UM encountered an unknown automon event type.</td><td>Contact Informatica Support. </td></tr>
+<tr>
 <td>StoreApi-5867-6: could not insert umq_topic_appset_t skipped rcv list ASL [s:d]</td><td>An internal error occurred during ASL insertion</td><td>Look for previous error messages in the log such as a malloc error </td></tr>
 <tr>
 <td>StoreApi-5867-7: could not insert umq_topic_appset_t skipped rcv list ASL [s:d]</td><td>An internal error occurred during ASL insertion</td><td>Look for previous error messages in the log such as a malloc error </td></tr>
@@ -5941,7 +6305,101 @@ UM Persistent Store Log Messages&nbsp;&nbsp;<small><a href="#umpersistentstorelo
 <p class="endtd"></p>
 </td></tr>
 </table>
-</center> </div></div><!-- contents -->
+</center><p><br />
+ </p>
+<h1><a class="anchor" id="ummcslogmessages"></a>
+UM MCS Log Messages&nbsp;&nbsp;<small><a href="#ummcslogmessages">&lt;-</a></small></h1>
+<center> <table class="doxtable">
+<tr>
+<td>MCS-10995-100: Failed to initialize the Monitoring Collector Service: </td><td>The MCS failed to initialize.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>MCS-10995-120: Failed to load properties file " + APPLICATION_PROPERTIES_FILE_NAME + ". Reason: </td><td>The application properties file could not be found.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>MCS-10995-130: Error initializing LBM </td><td>The MCS was unable to initialize LBM.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>MCS-10995-150: Failed to create " + connector + ": </td><td>Caught exception trying to create to the specified connector.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>MCS-10995-152: Failed to set logger in " + connector + ": </td><td>Caught exception trying to set the logger in the connector.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>MCS-10995-155: Failed to connect to " + connector + ": </td><td>Caught exception trying to connect to the specified connector.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>MCS-10995-160: Failed to create a receiver on the monitoring transport: </td><td>MCS failed to create a monitor receiver.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>MCS-10995-200: The Monitoring Collector Service failed to start: </td><td>The MCS failed to start.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>MCS-10995-220: Received monitoring message had invalid format: </td><td>The received message contained an invalid monitoring format.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>MCS-10995-230: Failed to process incoming message: </td><td>Caught exception while processing incoming message.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>MCS-10995-240: Failed to process incoming message: </td><td>Caught exception while processing incoming message.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>MCS-10995-260: Failed to process incoming message: </td><td>Caught exception while processing incoming message.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>MCS-10995-300: Received monitoring message had invalid type: </td><td>The received message contained an unknown monitoring packet type.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>MCS-10995-310: Received monitoring message had invalid format: </td><td>The received message contained an invalid monitoring format.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>MCS-10995-400: The configuration file must be specified with -v option</td><td>The configuration file must be specified with -v option.</td><td>Specify the configuration file and try again. </td></tr>
+<tr>
+<td>MCS-10995-410: Failed to open MCS XSD file " + MCSConfig.getXsdFileName() + ". Reason: </td><td>The MCS XSD file could not be opened.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>MCS-10995-411: Failed to process MCS XML file " + configFilename.getAbsolutePath() + ". Reason: </td><td>The MCS user configuration XML file could not be processed.</td><td>The file may be missing, have inappropriate access privileges, or an error in the config file itself. </td></tr>
+<tr>
+<td>MCS-10995-420: Unable to load the receiver-transport-opts specified config-file " + transportFilename + ".</td><td>The transport options file could not be found.</td><td>Check the filename and path and try again. </td></tr>
+<tr>
+<td>MCS-10995-430: Unable to write pid file: </td><td>The MCS was unable to write the Processes ID file.</td><td>Check the Process ID path and directory access privileges. </td></tr>
+<tr>
+<td>MCS-10995-440: Unable to create a logger: </td><td>The MCS was unable to create the logger.</td><td>Fix any errors and try again. </td></tr>
+<tr>
+<td>MCS-10995-450: Warnings from XML file:</td><td>The MCS user configuration XML file generated warnings.</td><td>Fix any warnings that are listed. </td></tr>
+<tr>
+<td>MCS-10995-460: Failed to load properties file " + connectorPropsFile + ". Reason: </td><td>The connector properties file could not be loaded.</td><td><p class="starttd">The file may be missing, wrong path information or have inappropriate access privileges.</p>
+<p class="endtd"></p>
+</td></tr>
+</table>
+</center><p><br />
+<br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ </p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.8.11-->
 </body>

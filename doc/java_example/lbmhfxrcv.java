@@ -8,7 +8,7 @@ import verifiablemsg.*;
 import org.openmdx.uses.gnu.getopt.*;
 
 /*
-  Copyright (c) 2005-2020 Informatica Corporation  Permission is granted to licensees to use
+  Copyright (C) 2005-2021, Informatica Corporation  Permission is granted to licensees to use
   or alter this software for any purpose, including commercial applications,
   according to the terms laid out in the Software License Agreement.
 
@@ -64,7 +64,7 @@ class lbmhfxrcv
 "                              TRANS may be `lbm', `udp', or `lbmsnmp', default is `lbm'\n"+ 
 "  --monitor-transport-opts OPTS = use OPTS as transport module options\n"+ 
 "  --monitor-format FMT = use monitor format module FMT\n"+ 
-"                         FMT may be `csv'\n"+ 
+"                         FMT may be `csv' or `pb', default is `csv'\n"+ 
 "  --monitor-format-opts OPTS = use OPTS as format module options\n"+ 
 "  --monitor-appid ID = use ID as application ID string\n"
 ;
@@ -159,6 +159,8 @@ class lbmhfxrcv
 					case OPTION_MONITOR_FORMAT:
 						if (gopt.getOptarg().compareToIgnoreCase("csv") == 0)
 							mon_format = LBMMonitor.FORMAT_CSV;
+						else if (gopt.getOptarg().compareToIgnoreCase("pb") == 0)
+							mon_format = LBMMonitor.FORMAT_PB;
 						else
 							error = true;
 						break;
@@ -958,7 +960,8 @@ class LBMHFXRcvReceiver implements LBMReceiverCallback, LBMImmediateMessageCallb
 				}
 				break;
 			default:
-				System.out.println("Unknown lbm_msg_t type " + msg.type() + " [" + msg.topicName() + "][" + msg.source() + "]");
+
+				System.out.println("Unhandled receiver event [" + msg.type() + "] from source [" +  msg.source() + "] with topic [" + msg.topicName() + "]. Refer to https://ultramessaging.github.io/currdoc/doc/java_example/index.html#unhandledjavaevents for a detailed description.");
 				break;
 		}
 		msg.dispose();
