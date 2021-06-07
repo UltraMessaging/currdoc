@@ -74,7 +74,7 @@ $(document).ready(function(){initNavTree('index.html','');});
 <p>The information in this documentation is subject to change without notice. If you find any problems in this documentation, please report them to us in writing at Informatica LLC 2100 Seaport Blvd. Redwood City, CA 94063.</p>
 <p>Informatica products are warranted according to the terms and conditions of the agreements under which they are provided. <br />
 INFORMATICA LLC PROVIDES THE INFORMATION IN THIS DOCUMENT "AS IS" WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING WITHOUT ANY WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND ANY WARRANTY OR CONDITION OF NON-INFRINGEMENT.</p>
-<p>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/java_example/design.tag:../Design/" href="../Design/umglossary.html">UM Glossary</a> for Ultra Messaging terminology, abbreviations, and acronyms.</p>
+<p>See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/java_example/design.tag:../Design/" href="../Design/umglossary.html">UM Glossary</a> for Ultra Messaging terminology, abbreviations, and acronyms.</p>
 <p><br />
  </p>
 <h1><a class="anchor" id="javaexamplesintroduction"></a>
@@ -86,7 +86,7 @@ Java Examples Introduction&nbsp;&nbsp;<small><a href="#javaexamplesintroduction"
  </p>
 <h1><a class="anchor" id="configuringjavaexamples"></a>
 Configuring Java Examples&nbsp;&nbsp;<small><a href="#configuringjavaexamples">&lt;-</a></small></h1>
-<p>The example programs universally provide the "-c filename" command-line option. Using that option, the example application calls the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/java_example/javaapi.tag:../JavaAPI/" href="../JavaAPI/classcom_1_1latencybusters_1_1lbm_1_1LBM.html#a16611e3f888c3574327f5e1856341553">LBM.setConfiguration(String fileName)</a> API. However, note that this API is not recommended for use with XML-format LBM configuration files, largely because you are not able to specify an application name.</p>
+<p>The example programs universally provide the "-c filename" command-line option. Using that option, the example application calls the <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/java_example/javaapi.tag:../JavaAPI/" href="../JavaAPI/classcom_1_1latencybusters_1_1lbm_1_1LBM.html#a16611e3f888c3574327f5e1856341553">LBM.setConfiguration(String fileName)</a> API. However, note that this API is not recommended for use with XML-format LBM configuration files, largely because you are not able to specify an application name.</p>
 <p>To use an XML configuration file with a UM example application, set the environment variables: </p><ul>
 <li>
 LBM_XML_CONFIG_APPNAME - Desired name of application. </li>
@@ -98,15 +98,15 @@ LBM_XML_CONFIG_FILENAME - Path name of XML configuration file. </li>
  </p>
 <h1><a class="anchor" id="unhandledjavaevents"></a>
 Unhandled Java Events&nbsp;&nbsp;<small><a href="#unhandledjavaevents">&lt;-</a></small></h1>
-<p>Each of the example programs is written to demonstrate a subset of UM's total available functionality. For example, some programs are written to demonstrate <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/java_example/design.tag:../Design/" href="../Design/fundamentalconcepts.html#streaming">Streaming</a> functionality (e.g. lbmsrc), while other programs are written to demonstrate <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/java_example/design.tag:../Design/" href="../Design/fundamentalconcepts.html#persistence">Persistence</a> functionality (e.g. umesrc), while still other programs are written to demonstrate <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/java_example/design.tag:../Design/" href="../Design/fundamentalconcepts.html#queuing">Queuing</a> functionality (e.g. umqsrc).</p>
+<p>Each of the example programs is written to demonstrate a subset of UM's total available functionality. For example, some programs are written to demonstrate <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/java_example/design.tag:../Design/" href="../Design/fundamentalconcepts.html#streaming">Streaming</a> functionality (e.g. lbmsrc), while other programs are written to demonstrate <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/java_example/design.tag:../Design/" href="../Design/fundamentalconcepts.html#persistence">Persistence</a> functionality (e.g. umesrc), while still other programs are written to demonstrate <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/java_example/design.tag:../Design/" href="../Design/fundamentalconcepts.html#queuing">Queuing</a> functionality (e.g. umqsrc).</p>
 <p>UM is generally designed to be event-driven, with events being delivered to the programs through standard callbacks, like source callbacks and receiver callbacks. There are many events which are common across all streaming, persistence, and queuing. Other events are specific to persistence, and still other events are specific to queuing.</p>
 <p>This can lead to example programs reporting "unknown" or "unhandled" events. For example, if the "lbmsrc" streaming program is run with a configuration file that enables persistence, UM will deliver events that are specific to persistence to the "lbmsrc" program. But "lbmsrc" is designed for streaming, and does not include code cases for persistence or queuing events. Maybe you should change your configuration to disable persistence, or you should be using the "umesrc" example program.</p>
 <p>Similarly, the "umqsrc" program expects queuing functionality, and can report unhandled events if persistence is configured. Or "umesrc" can report unhandled events if queuing is configured.</p>
 <p>If you see an unhandled event, it is generally reported as a number. You can see which event this corresponds to by looking up the number in the C API document: </p><ul>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/java_example/api.tag:../API/" href="../API/creceiverevents.html">C Receiver Events</a> for subscribing programs and </li>
+<a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/java_example/api.tag:../API/" href="../API/creceiverevents.html">C Receiver Events</a> for subscribing programs and </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/java_example/api.tag:../API/" href="../API/csourceevents.html">C Source Events</a> for publishing programs. </li>
+<a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/java_example/api.tag:../API/" href="../API/csourceevents.html">C Source Events</a> for publishing programs. </li>
 </ul>
 <p>Note that Java uses the same numbering system.</p>
 <p>Once you understand the nature of the unhandled event, you can decide how to change your configuration or choose a different program.</p>

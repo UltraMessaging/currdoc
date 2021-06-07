@@ -15,6 +15,10 @@ var NAVTREE =
         [ "Persistence Fixed Problems and Limitations for 6.14", "index.html#persistencefixedlimitationsfor6_14", null ],
         [ "Queuing Fixed Problems and Limitations for 6.14", "index.html#queuingfixedlimitationsfor6_14", null ],
         [ "Dynamic Router Fixed Problems and Limitations for 6.14", "index.html#dynamicrouterfixedlimitationsfor6_14", null ]
+      ] ],
+      [ "Special Upgrade Instructions for 6.14", "index.html#specialupgradeinstructionsfor6_14", [
+        [ "Additional C Include Directive", "index.html#additionalcincludedirective", null ],
+        [ "UM 6.13.1 Special Instructions", "index.html#um6131specialinstructions", null ]
       ] ]
     ] ],
     [ "UM Version 6.13.1", "index.html#umversion6_13_1", [
@@ -357,7 +361,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "index.html",
-"index.html#um65specialinstructions"
+"index.html#um6131specialinstructions"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

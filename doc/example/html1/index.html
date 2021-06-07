@@ -75,7 +75,7 @@ Introduction&nbsp;&nbsp;<small><a href="#firstsect">&lt;-</a></small></h1>
 <p>The information in this documentation is subject to change without notice. If you find any problems in this documentation, please report them to us in writing at Informatica LLC 2100 Seaport Blvd. Redwood City, CA 94063.</p>
 <p>Informatica products are warranted according to the terms and conditions of the agreements under which they are provided. <br />
 INFORMATICA LLC PROVIDES THE INFORMATION IN THIS DOCUMENT "AS IS" WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING WITHOUT ANY WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND ANY WARRANTY OR CONDITION OF NON-INFRINGEMENT.</p>
-<p>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/example/design.tag:../../Design/" href="../../Design/umglossary.html">UM Glossary</a> for Ultra Messaging terminology, abbreviations, and acronyms.</p>
+<p>See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/example/design.tag:../../Design/" href="../../Design/umglossary.html">UM Glossary</a> for Ultra Messaging terminology, abbreviations, and acronyms.</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="cexamplesintroduction"></a>
@@ -87,7 +87,7 @@ C Examples Introduction&nbsp;&nbsp;<small><a href="#cexamplesintroduction">&lt;-
  </p>
 <h2><a class="anchor" id="configuringcexamples"></a>
 Configuring C Examples&nbsp;&nbsp;<small><a href="#configuringcexamples">&lt;-</a></small></h2>
-<p>The example programs universally provide the "-c filename" command-line option. Using that option, the example application calls the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/example/api.tag:../../API/" href="../../API/lbm_8h.html#aecac05969bba0d6057589ca03dfe60a2">lbm_config()</a> API. However, note that this API is not recommended for use with XML-format LBM configuration files, largely because you are not able to specify an application name.</p>
+<p>The example programs universally provide the "-c filename" command-line option. Using that option, the example application calls the <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/example/api.tag:../../API/" href="../../API/lbm_8h.html#aecac05969bba0d6057589ca03dfe60a2">lbm_config()</a> API. However, note that this API is not recommended for use with XML-format LBM configuration files, largely because you are not able to specify an application name.</p>
 <p>To use an XML configuration file with a UM example application, set the environment variables: </p><ul>
 <li>
 LBM_XML_CONFIG_APPNAME - Desired name of application. </li>
@@ -114,15 +114,15 @@ lbmsrc.exe:
  </p>
 <h2><a class="anchor" id="unhandledcevents"></a>
 Unhandled C Events&nbsp;&nbsp;<small><a href="#unhandledcevents">&lt;-</a></small></h2>
-<p>Each of the example programs is written to demonstrate a subset of UM's total available functionality. For example, some programs are written to demonstrate <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/example/design.tag:../../Design/" href="../../Design/fundamentalconcepts.html#streaming">Streaming</a> functionality (e.g. lbmsrc), while other programs are written to demonstrate <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/example/design.tag:../../Design/" href="../../Design/fundamentalconcepts.html#persistence">Persistence</a> functionality (e.g. umesrc), while still other programs are written to demonstrate <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/example/design.tag:../../Design/" href="../../Design/fundamentalconcepts.html#queuing">Queuing</a> functionality (e.g. umqsrc).</p>
+<p>Each of the example programs is written to demonstrate a subset of UM's total available functionality. For example, some programs are written to demonstrate <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/example/design.tag:../../Design/" href="../../Design/fundamentalconcepts.html#streaming">Streaming</a> functionality (e.g. lbmsrc), while other programs are written to demonstrate <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/example/design.tag:../../Design/" href="../../Design/fundamentalconcepts.html#persistence">Persistence</a> functionality (e.g. umesrc), while still other programs are written to demonstrate <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/example/design.tag:../../Design/" href="../../Design/fundamentalconcepts.html#queuing">Queuing</a> functionality (e.g. umqsrc).</p>
 <p>UM is generally designed to be event-driven, with events being delivered to the programs through standard callbacks, like source callbacks and receiver callbacks. There are many events which are common across all streaming, persistence, and queuing. Other events are specific to persistence, and still other events are specific to queuing.</p>
 <p>This can lead to example programs reporting "unknown" or "unhandled" events. For example, if the "lbmsrc" streaming program is run with a configuration file that enables persistence, UM will deliver events that are specific to persistence to the "lbmsrc" program. But "lbmsrc" is designed for streaming, and does not include code cases for persistence or queuing events. Maybe you should change your configuration to disable persistence, or you should be using the "umesrc" example program.</p>
 <p>Similarly, the "umqsrc" program expects queuing functionality, and can report unhandled events if persistence is configured. Or "umesrc" can report unhandled events if queuing is configured.</p>
 <p>If you see an unhandled event, it is generally reported as a number. You can see which event this corresponds to by looking up the number in: </p><ul>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/example/api.tag:../../API/" href="../../API/creceiverevents.html">C Receiver Events</a> for subscribing programs and </li>
+<a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/example/api.tag:../../API/" href="../../API/creceiverevents.html">C Receiver Events</a> for subscribing programs and </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/example/api.tag:../../API/" href="../../API/csourceevents.html">C Source Events</a> for publishing programs. </li>
+<a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/example/api.tag:../../API/" href="../../API/csourceevents.html">C Source Events</a> for publishing programs. </li>
 </ul>
 <p>Once you understand the nature of the unhandled event, you can decide how to change your configuration or choose a different program.</p>
 <p><br />
@@ -146,7 +146,7 @@ C Example Support Files&nbsp;&nbsp;<small><a href="#cexamplesupportfiles">&lt;-<
  </p>
 <h2><a class="anchor" id="persistencetutorialcfiles"></a>
 Persistence Tutorial C Files&nbsp;&nbsp;<small><a href="#persistencetutorialcfiles">&lt;-</a></small></h2>
-<p>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/example/ume.tag:../../UME/" href="../../UME/demonstratingpersistence.html">Demonstrating Persistence</a> for information on these files.</p>
+<p>See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/example/ume.tag:../../UME/" href="../../UME/demonstratingpersistence.html">Demonstrating Persistence</a> for information on these files.</p>
 <p><a href="ume-example-src.c"><b><code>ume-example-src.c</code></b></a> - Initial source application used in the tutorial.</p>
 <p><a href="ume-example-rcv.c"><b><code>ume-example-rcv.c</code></b></a> - Initial receiver application used in the tutorial.</p>
 <p><a href="ume-example-src-2.c"><b><code>ume-example-src-2.c</code></b></a> - Source application modified to use a UMP persistent store.</p>
@@ -1721,7 +1721,7 @@ See Persistence Guide document.
  </p>
 <h3><a class="anchor" id="exampleumedcmd_c"></a>
 Example umedcmd.c&nbsp;&nbsp;<small><a href="#exampleumedcmd_c">&lt;-</a></small></h3>
-<p>Source code: <a href="../../example/umedcmd.c">umedcmd.c</a> See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/example/ume.tag:../../UME/" href="../../UME/storedaemonstatistics.html#umedcmdmanpage">umedcmd Man Page</a> for usage information.</p>
+<p>Source code: <a href="../../example/umedcmd.c">umedcmd.c</a> See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/example/ume.tag:../../UME/" href="../../UME/storedaemonstatistics.html#umedcmdmanpage">umedcmd Man Page</a> for usage information.</p>
 <p><br />
  </p>
 <h3><a class="anchor" id="exampleumedmon_c"></a>
@@ -1768,7 +1768,7 @@ Available options:
  </p>
 <h3><a class="anchor" id="exampleumesnaprepo_c"></a>
 Example umesnaprepo.c&nbsp;&nbsp;<small><a href="#exampleumesnaprepo_c">&lt;-</a></small></h3>
-<p>Source code: <a href="../../example/umesnaprepo.c">umesnaprepo.c</a> See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/example/ume.tag:../../UME/" href="../../UME/storerepositoryprofilingsrp.html#umesnaprepomanpage">umesnaprepo Man Page</a> for usage information.</p>
+<p>Source code: <a href="../../example/umesnaprepo.c">umesnaprepo.c</a> See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/example/ume.tag:../../UME/" href="../../UME/storerepositoryprofilingsrp.html#umesnaprepomanpage">umesnaprepo Man Page</a> for usage information.</p>
 <p><br />
  </p>
 <h3><a class="anchor" id="exampleumesrc_c"></a>
@@ -1998,7 +1998,7 @@ Available options:
  </p>
 <h2><a class="anchor" id="exampleprotocolfiles"></a>
 Example Protocol Files&nbsp;&nbsp;<small><a href="#exampleprotocolfiles">&lt;-</a></small></h2>
-<p>Google protocol buffer definition files. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.14_RC6/doc/example/operations.tag:../../Operations/" href="../../Operations/monitoring.html#monitoringformats">Monitoring Formats</a>.</p>
+<p>Google protocol buffer definition files. See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/example/operations.tag:../../Operations/" href="../../Operations/monitoring.html#monitoringformats">Monitoring Formats</a>.</p>
 <p><br />
  </p>
 <h3><a class="anchor" id="exampledro_mon_proto"></a>

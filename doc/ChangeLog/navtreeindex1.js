@@ -1,5 +1,8 @@
 var NAVTREEINDEX1 =
 {
+"umversion6_9.html#queuingfixedlimitationsfor6_9":[13,1,2],
+"umversion6_9.html#streamingenhancementsfor6_9":[13,0,0],
+"umversion6_9.html#streamingfixedlimitationsfor6_9":[13,1,0],
 "umversion6_9_1.html":[12],
 "umversion6_9_1.html#dynamicrouterenhancementsfor6_9_1":[12,0,3],
 "umversion6_9_1.html#dynamicrouterfixedlimitationsfor6_9_1":[12,1,3],

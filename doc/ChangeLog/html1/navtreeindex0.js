@@ -1,6 +1,7 @@
 var NAVTREEINDEX0 =
 {
 "index.html":[],
+"index.html#additionalcincludedirective":[2,2,0],
 "index.html#addlbmrdinterface":[4,2,0],
 "index.html#deprecations":[22],
 "index.html#deprecationsfor60":[22,8],
@@ -196,6 +197,7 @@ var NAVTREEINDEX0 =
 "index.html#specialupgradeinstructionsfor6_12":[6,2],
 "index.html#specialupgradeinstructionsfor6_13":[4,2],
 "index.html#specialupgradeinstructionsfor6_13_1":[3,2],
+"index.html#specialupgradeinstructionsfor6_14":[2,2],
 "index.html#specialupgradeinstructionsfor6_5":[19,3],
 "index.html#specialupgradeinstructionsfor6_7":[18,2],
 "index.html#specialupgradeinstructionsfor6_8":[14,2],
@@ -247,7 +249,5 @@ var NAVTREEINDEX0 =
 "index.html#ultramessagingsystemmonitoringoption":[19,1],
 "index.html#um610improveddefaults":[10,2,0],
 "index.html#um610specialinstructions":[6,2,1],
-"index.html#um612specialinstructions":[4,2,5],
-"index.html#um613specialinstructions":[3,2,1],
-"index.html#um65contextstatsexpansion":[19,3,0]
+"index.html#um612specialinstructions":[4,2,5]
 };
