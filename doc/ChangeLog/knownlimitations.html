@@ -76,22 +76,6 @@ Streaming Known Problems and Limitations&nbsp;&nbsp;<small><a href="#streamingkn
 </td></tr>
 <tr>
 <td>11036 </td><td><p class="starttd">Request to officially support .NET Core on Windows. At the present time, UM's .NET Core implementation has only been tested on Linux.</p>
-<p class="endtd"><a class="anchor" id="bug11006"></a></p>
-</td></tr>
-<tr>
-<td>11006 </td><td><p class="starttd">Store can misbehave if a UM XML configuration file is supplied with settings that are invalid for the Store. Request that either the invalid settings be automatically corrected, or at least log a user-friendly error message.</p>
-<p><b>WORKAROUND</b>: Take care to omit the following options from the Store's UM configuration: </p><ul>
-<li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grpmajoroptions.html#ordereddeliveryreceiver">ordered_delivery (receiver)</a> </li>
-<li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grpultramessagingqueuing.html#umqqueueparticipationreceiver">umq_queue_participation (receiver)</a> </li>
-<li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grplatejoin.html#uselatejoinreceiver">use_late_join (receiver)</a> </li>
-<li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grpdeliverycontrol.html#nullchannelbehaviorreceiver">null_channel_behavior (receiver)</a> </li>
-<li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grpdeliverycontrol.html#unrecognizedchannelbehaviorreceiver">unrecognized_channel_behavior (receiver)</a> </li>
-</ul>
 <p class="endtd"><a class="anchor" id="bug11018"></a></p>
 </td></tr>
 <tr>
@@ -214,8 +198,24 @@ Persistence Known Problems and Limitations&nbsp;&nbsp;<small><a href="#persisten
 <table class="doxtable">
 <tr>
 <th>Change Request </th><th><p class="starttd">Description</p>
-<p class="endtd"><a class="anchor" id="bug9337"></a></p>
+<p class="endtd"><a class="anchor" id="bug11006"></a></p>
 </th></tr>
+<tr>
+<td>11006 </td><td><p class="starttd">Store can misbehave if a UM XML configuration file is supplied with settings that are invalid for the Store. Request that either the invalid settings be automatically corrected, or at least log a user-friendly error message.</p>
+<p><b>WORKAROUND</b>: Take care to omit the following options from the Store's LBM configuration: </p><ul>
+<li>
+<a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grpmajoroptions.html#ordereddeliveryreceiver">ordered_delivery (receiver)</a> </li>
+<li>
+<a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grpultramessagingqueuing.html#umqqueueparticipationreceiver">umq_queue_participation (receiver)</a> </li>
+<li>
+<a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grplatejoin.html#uselatejoinreceiver">use_late_join (receiver)</a> </li>
+<li>
+<a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grpdeliverycontrol.html#nullchannelbehaviorreceiver">null_channel_behavior (receiver)</a> </li>
+<li>
+<a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grpdeliverycontrol.html#unrecognizedchannelbehaviorreceiver">unrecognized_channel_behavior (receiver)</a> </li>
+</ul>
+<p class="endtd"><a class="anchor" id="bug9337"></a></p>
+</td></tr>
 <tr>
 <td>9337 </td><td><p class="starttd">It is requested that UM support running multiple instances of the Store as a Windows service on one host. Currently, service parameters are stored in the registry as fixed names, which prevents multiple instances from having different configuration files, CPU affinity, etc.</p>
 <p class="endtd"><a class="anchor" id="bug10504"></a></p>
