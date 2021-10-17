@@ -459,30 +459,6 @@ PB format options:
                          defaults to `off'
 </pre><p><br />
  </p>
-<h3><a class="anchor" id="examplelbmmon_cmd_c"></a>
-Example lbmmon_cmd.c&nbsp;&nbsp;<small><a href="#examplelbmmon_cmd_c">&lt;-</a></small></h3>
-<p>Source code: <a href="../../example/lbmmon_cmd.c">lbmmon_cmd.c</a> </p><pre class="fragment">Purpose: send unicast immediate control requests to an LBMMON publisher.
-Usage: lbmmon_cmd -T target_string -C command [options]
-Available options:
-  -c filename = Use LBM configuration file filename.
-                Multiple config files are allowed.
-                Example:  '-c file1.cfg -c file2.cfg'
-  -C command  = command to send [required]
-  -d          = dump default filter options to stdout
-  -D data     = data for command (either -D or -F, not both)
-                Example: '-C SET_INTERVAL -D 30' 
-  -F filename = filename for command (either -D or -F, not both) 
-                Example: '-C SET_FILTER_OPTIONS -F filter.cfg' 
-  -h          = help
-  -I id       = Application ID of node for command 
-                Example: '-C SNAP -N UMESTORE -I storeName' 
-  -L linger   = linger for linger seconds before closing context
-  -N node     = node type for command
-                Example: '-C SNAP -N CONTEXT' 
-  -P sec      = pause for sec seconds after sending request to wait for response
-  -T target   = target string for unicast immediate requests [required]
-</pre><p><br />
- </p>
 <h3><a class="anchor" id="examplelbmmoncache_c"></a>
 Example lbmmoncache.c&nbsp;&nbsp;<small><a href="#examplelbmmoncache_c">&lt;-</a></small></h3>
 <p>Source code: <a href="../../example/lbmmoncache.c">lbmmoncache.c</a> </p><pre class="fragment">Purpose: example LBM statistics monitoring application.
@@ -546,6 +522,30 @@ CSV format options:
 PB format options:
   passthrough=VAL        VAL may be `off', `on' or 'convert'
                          defaults to `off'
+</pre><p><br />
+ </p>
+<h3><a class="anchor" id="examplelbmmon_cmd_c"></a>
+Example lbmmon_cmd.c&nbsp;&nbsp;<small><a href="#examplelbmmon_cmd_c">&lt;-</a></small></h3>
+<p>Source code: <a href="../../example/lbmmon_cmd.c">lbmmon_cmd.c</a> </p><pre class="fragment">Purpose: send unicast immediate control requests to an LBMMON publisher.
+Usage: lbmmon_cmd -T target_string -C command [options]
+Available options:
+  -c filename = Use LBM configuration file filename.
+                Multiple config files are allowed.
+                Example:  '-c file1.cfg -c file2.cfg'
+  -C command  = command to send [required]
+  -d          = dump default filter options to stdout
+  -D data     = data for command (either -D or -F, not both)
+                Example: '-C SET_INTERVAL -D 30' 
+  -F filename = filename for command (either -D or -F, not both) 
+                Example: '-C SET_FILTER_OPTIONS -F filter.cfg' 
+  -h          = help
+  -I id       = Application ID of node for command 
+                Example: '-C SNAP -N UMESTORE -I storeName' 
+  -L linger   = linger for linger seconds before closing context
+  -N node     = node type for command
+                Example: '-C SNAP -N CONTEXT' 
+  -P sec      = pause for sec seconds after sending request to wait for response
+  -T target   = target string for unicast immediate requests [required]
 </pre><p><br />
  </p>
 <h3><a class="anchor" id="examplelbmmondata_c"></a>
@@ -1683,6 +1683,24 @@ Available options:
   -v, --verbose        be verbose about incoming messages (-v -v = be even more verbose)
 </pre><p><br />
  </p>
+<h3><a class="anchor" id="exampleumedcmd_c"></a>
+Example umedcmd.c&nbsp;&nbsp;<small><a href="#exampleumedcmd_c">&lt;-</a></small></h3>
+<p>Source code: <a href="../../example/umedcmd.c">umedcmd.c</a> See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/example/ume.tag:../../UME/" href="../../UME/storedaemonstatistics.html#umedcmdmanpage">umedcmd Man Page</a> for usage information.</p>
+<p><br />
+ </p>
+<h3><a class="anchor" id="exampleumedmon_c"></a>
+Example umedmon.c&nbsp;&nbsp;<small><a href="#exampleumedmon_c">&lt;-</a></small></h3>
+<p>Source code: <a href="../../example/umedmon.c">umedmon.c</a> </p><pre class="fragment">Purpose: application that receives umestore daemon messages on the specified publishing topic.
+Usage: umedmon [-Ehv] [-c filename] publishing_topic
+Available options:
+  -c, --config=FILE    Use LBM configuration file FILE.
+                       Multiple config files are allowed.
+                       Example:  '-c file1.cfg -c file2.cfg'
+  -E, --exit           exit when source stops sending
+  -h, --help           display this help and exit
+  -v, --verbose        be verbose about incoming messages (-v -v = be even more verbose)
+</pre><p><br />
+ </p>
 <h3><a class="anchor" id="exampleume-example-rcv-2_c"></a>
 Example ume-example-rcv-2.c&nbsp;&nbsp;<small><a href="#exampleume-example-rcv-2_c">&lt;-</a></small></h3>
 <p>Source code: <a href="../../example/ume-example-rcv-2.c">ume-example-rcv-2.c</a> </p><pre class="fragment">ume-example-rcv-2.c: - Persistent example receiver program.
@@ -1717,24 +1735,6 @@ See Persistence Guide document.
 Example ume-example-src.c&nbsp;&nbsp;<small><a href="#exampleume-example-src_c">&lt;-</a></small></h3>
 <p>Source code: <a href="../../example/ume-example-src.c">ume-example-src.c</a> </p><pre class="fragment">ume-example-src.c: - Persistent example receiver program.
 See Persistence Guide document.
-</pre><p><br />
- </p>
-<h3><a class="anchor" id="exampleumedcmd_c"></a>
-Example umedcmd.c&nbsp;&nbsp;<small><a href="#exampleumedcmd_c">&lt;-</a></small></h3>
-<p>Source code: <a href="../../example/umedcmd.c">umedcmd.c</a> See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/example/ume.tag:../../UME/" href="../../UME/storedaemonstatistics.html#umedcmdmanpage">umedcmd Man Page</a> for usage information.</p>
-<p><br />
- </p>
-<h3><a class="anchor" id="exampleumedmon_c"></a>
-Example umedmon.c&nbsp;&nbsp;<small><a href="#exampleumedmon_c">&lt;-</a></small></h3>
-<p>Source code: <a href="../../example/umedmon.c">umedmon.c</a> </p><pre class="fragment">Purpose: application that receives umestore daemon messages on the specified publishing topic.
-Usage: umedmon [-Ehv] [-c filename] publishing_topic
-Available options:
-  -c, --config=FILE    Use LBM configuration file FILE.
-                       Multiple config files are allowed.
-                       Example:  '-c file1.cfg -c file2.cfg'
-  -E, --exit           exit when source stops sending
-  -h, --help           display this help and exit
-  -v, --verbose        be verbose about incoming messages (-v -v = be even more verbose)
 </pre><p><br />
  </p>
 <h3><a class="anchor" id="exampleumercv_c"></a>

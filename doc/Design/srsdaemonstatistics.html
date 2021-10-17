@@ -286,10 +286,6 @@ Message Type: SRS_ERROR_STATS&nbsp;&nbsp;<small><a href="#messagetypesrserrorsta
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td><b>clients.invalid.CNER.no.CNIR.match.count</b> </td><td><p class="starttd">While not a fatal condition, Informatica support should be informed if this count increments frequently. (A context sent a context name end record for which the SRS has no matching context name info record, which should never happen.)</p>
-<p class="endtd"></p>
-</td></tr>
-<tr>
 <td><b>clients.invalid.DR.inactive.SIR.count</b> </td><td><p class="starttd">This counter should never be greater than zero. While not a fatal condition, Informatica support should be informed if this count increments frequently. (A context disconnected while it has SIRs that were inactive, which should never happen.)</p>
 <p class="endtd"></p>
 </td></tr>
@@ -446,15 +442,13 @@ Message Type: UM_CLIENT_STATS&nbsp;&nbsp;<small><a href="#messagetypeumclientsta
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td><b>client.CNQR.received.count</b> </td><td><p class="starttd">Number of Context Name Query records (CNQRs) received from the context. This should normally be 1.</p>
+<td><b>client.CNQR.received.count</b> </td><td><p class="starttd">Number of Context Name Query Records (CNQRs) received from the context. This should normally be 1.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td><b>client.CNER.sent.count</b> </td><td><p class="starttd">Number of Context Name End Records (CNERs) sent to the context.</p>
+<td><b>client.unexpected.CNER.received.count</b> </td><td><p class="starttd">Number of Context Name End Records (CNERs) received from the context. This should normally be 0, but if the client is UM version 6.14, this counter can increase.</p>
 <p class="endtd"></p>
 </td></tr>
-<tr>
-<td><b>client.CNER.received.count</b> </td><td>Number of Context Name End Records (CNERs) received from the Store. This should normally be 1. </td></tr>
 </table>
 </center><p><br />
  </p>

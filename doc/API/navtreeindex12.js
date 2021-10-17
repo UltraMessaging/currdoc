@@ -1,5 +1,9 @@
 var NAVTREEINDEX12 =
 {
+"struct__Lbmmon____UMSMonMsg____Stats____EventQueue.html#aa85e8c39c40a58d0bcd914f83c59aa12":[10,0,38,9],
+"struct__Lbmmon____UMSMonMsg____Stats____EventQueue.html#aa86f5ffce9ddd0ec5e224fb6b10f0283":[10,0,38,1],
+"struct__Lbmmon____UMSMonMsg____Stats____EventQueue.html#aaad0a4101d5b68a9ed5711e3ce4d3aad":[10,0,38,27],
+"struct__Lbmmon____UMSMonMsg____Stats____EventQueue.html#aaae2bcda3f9da625d7633c80dc03d239":[10,0,38,16],
 "struct__Lbmmon____UMSMonMsg____Stats____EventQueue.html#aaaf454b1d049b164ae683bed1f17b5f4":[10,0,38,38],
 "struct__Lbmmon____UMSMonMsg____Stats____EventQueue.html#ab03064002acf6f7736aa2dd8a954c9a2":[10,0,38,43],
 "struct__Lbmmon____UMSMonMsg____Stats____EventQueue.html#abba8ace8b604ffa6e7ef3f7922bd7f19":[10,0,38,7],
@@ -245,9 +249,5 @@ var NAVTREEINDEX12 =
 "structlbm__datagram__acceleration__func__t__stct.html#aaebf012eeb3ca971602c65a9e939e8ad":[10,0,62,8],
 "structlbm__datagram__acceleration__func__t__stct.html#ac825b1e2bbd83c04d760c673c46a431b":[10,0,62,4],
 "structlbm__datagram__acceleration__func__t__stct.html#ad54a21f87708100bcfb2290bf3c1d832":[10,0,62,11],
-"structlbm__datagram__acceleration__func__t__stct.html#af6662815bdfd38031bcfe9c63ac00ed6":[10,0,62,12],
-"structlbm__datagram__acceleration__func__t__stct.html#aff07f3b7ddb9c1dfb543fa646f3b3100":[10,0,62,5],
-"structlbm__datagram__acceleration__recv__info__t__stct.html":[10,0,63],
-"structlbm__datagram__acceleration__recv__info__t__stct.html#a4e300d97711e2c7018862fc60d498be9":[10,0,63,4],
-"structlbm__datagram__acceleration__recv__info__t__stct.html#a74f0670bfbe8e06ed04680fe56998a37":[10,0,63,1]
+"structlbm__datagram__acceleration__func__t__stct.html#af6662815bdfd38031bcfe9c63ac00ed6":[10,0,62,12]
 };
