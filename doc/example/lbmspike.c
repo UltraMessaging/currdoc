@@ -1,5 +1,5 @@
 /*
-  Copyright (C) 2005-2021, Informatica Corporation  Permission is granted to licensees to use
+  (C) Copyright 2005,2022 Informatica LLC  Permission is granted to licensees to use
   or alter this software for any purpose, including commercial applications,
   according to the terms laid out in the Software License Agreement.
 
@@ -157,7 +157,7 @@ void resprintf(const char *fmt, ...)
  */
 void print_bw(double sec, unsigned int msgs, unsigned int byts, int tot)
 {	
-	char scale[] = {'\0', 'K', 'M', 'G'};
+	char scale[] = {' ', 'K', 'M', 'G'};
 	int msg_scale_index = 0, bit_scale_index = 0, byte_scale_index = 0;
 	double KBscale = 1024.0, kscale = 1000.0;
 	double mps = 0.0, bps = 0.0, pct = 0.0;

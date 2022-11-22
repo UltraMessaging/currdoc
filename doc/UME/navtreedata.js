@@ -45,6 +45,11 @@ var NAVTREE =
       [ "Persistence Events", "operationalview.html#persistenceevents", [
         [ "Persistence Source Events", "operationalview.html#persistencesourceevents", null ],
         [ "Persistence Receiver Events", "operationalview.html#persistencereceiverevents", null ]
+      ] ],
+      [ "Store Monitoring", "operationalview.html#storemonitoring", [
+        [ "Store Monitoring: Logs", "operationalview.html#storemonitoringlogs", null ],
+        [ "Store Monitoring: UM Library Stats", "operationalview.html#storemonitoringumlibrarystats", null ],
+        [ "Store Monitoring: Daemon Stats", "operationalview.html#storemonitoringdaemonstats", null ]
       ] ]
     ] ],
     [ "Store Repository Profiling (SRP)", "storerepositoryprofilingsrp.html", [
@@ -99,6 +104,7 @@ var NAVTREE =
       [ "Object-free Explicit Acknowledgments", "designingpersistentreceivers.html#objectfreeexplicitacknowledgments", null ]
     ] ],
     [ "Designing Persistent Stores", "designingpersistentstores.html", [
+      [ "Limit Initial Restore with Restore-Last", "designingpersistentstores.html#limitinitialrestore", null ],
       [ "Store Log File", "designingpersistentstores.html#storelogfile", null ],
       [ "Store Rolling Logs", "designingpersistentstores.html#storerollinglogs", null ],
       [ "Quorum/Consensus Store Usage", "designingpersistentstores.html#quorumconsensusstoreusage", null ],
@@ -112,17 +118,27 @@ var NAVTREE =
     [ "Store Thread Affinity", "storethreadaffinity.html", null ],
     [ "Persistence Fault Tolerance", "persistencefaulttolerance.html", [
       [ "Message Loss Recovery", "persistencefaulttolerance.html#messagelossrecovery", null ],
-      [ "Configuring for Persistence and Recovery", "persistencefaulttolerance.html#configuringforpersistenceandrecovery", [
-        [ "Source Considerations", "persistencefaulttolerance.html#sourceconsiderations", null ],
-        [ "Receiver Considerations", "persistencefaulttolerance.html#receiverconsiderations", null ],
-        [ "Store Configuration Considerations", "persistencefaulttolerance.html#storeconfigurationconsiderations", null ]
-      ] ],
       [ "Persistence Proxy Sources", "persistencefaulttolerance.html#persistenceproxysources", [
         [ "How Proxy Sources Operate", "persistencefaulttolerance.html#howproxysourcesoperate", null ],
         [ "Activity Timeout and State Lifetimes", "persistencefaulttolerance.html#activitytimeoutandstatelifetimes", null ],
         [ "Enabling the Proxy Sources", "persistencefaulttolerance.html#enablingtheproxysources", null ],
         [ "Proxy Source Elections", "persistencefaulttolerance.html#proxysourceelections", null ],
         [ "Proactive Retransmissions", "persistencefaulttolerance.html#proactiveretransmissions", null ]
+      ] ]
+    ] ],
+    [ "Configuring for Persistence and Recovery", "configuringforpersistenceandrecovery.html", [
+      [ "Source Considerations", "configuringforpersistenceandrecovery.html#sourceconsiderations", null ],
+      [ "Receiver Considerations", "configuringforpersistenceandrecovery.html#receiverconsiderations", [
+        [ "Receiver Acknowledgement Generation", "configuringforpersistenceandrecovery.html#receiveracknowledgementgeneration", null ],
+        [ "Controlling Retransmission", "configuringforpersistenceandrecovery.html#controllingretransmission", null ],
+        [ "Receiver Recovery Process", "configuringforpersistenceandrecovery.html#receiverrecoveryprocess", null ]
+      ] ],
+      [ "Store Configuration Considerations", "configuringforpersistenceandrecovery.html#storeconfigurationconsiderations", [
+        [ "Configuring Store Usage per Source", "configuringforpersistenceandrecovery.html#configuringstoreusagepersource", null ],
+        [ "Memory Use by Stores", "configuringforpersistenceandrecovery.html#memoryusebystores", null ],
+        [ "Activity Timeouts", "configuringforpersistenceandrecovery.html#activitytimeouts", null ],
+        [ "Recommendations for Store Configuration", "configuringforpersistenceandrecovery.html#recommendationsforstoreconfiguration", null ],
+        [ "Store Configuration Practices to Avoid", "configuringforpersistenceandrecovery.html#storeconfigurationpracticestoavoid", null ]
       ] ]
     ] ],
     [ "Man Pages for Store", "manpagesforstore.html", [
@@ -138,6 +154,7 @@ var NAVTREE =
         [ "UMP Element \"<topic>\"", "configurationreferenceforumestored.html#umeelementtopic", null ],
         [ "UMP Element \"<ume-attributes>\"", "configurationreferenceforumestored.html#umeelementumeattributes", null ],
         [ "UMP Element \"<option>\"", "configurationreferenceforumestored.html#umeelementoption", null ],
+        [ "UMP Element \"<restore-last>\"", "configurationreferenceforumestored.html#umeelementrestorelast", null ],
         [ "UMP Element \"<publishing-interval>\"", "configurationreferenceforumestored.html#umeelementpublishinginterval", null ],
         [ "UMP Element \"<group>\"", "configurationreferenceforumestored.html#umeelementgroup", null ],
         [ "UMP Element \"<daemon>\"", "configurationreferenceforumestored.html#umeelementdaemon", null ],
@@ -162,6 +179,7 @@ var NAVTREE =
         [ "Store Option \"disk-cache-directory\"", "optionsforastoresumeattributeselement.html#umecfgdiskcachedirectory", null ],
         [ "Store Option \"disk-state-directory\"", "optionsforastoresumeattributeselement.html#umecfgdiskstatedirectory", null ],
         [ "Store Option \"allow-proxy-source\"", "optionsforastoresumeattributeselement.html#umecfgallowproxysource", null ],
+        [ "Store Option \"proxy-source-repo-quorum-required\"", "optionsforastoresumeattributeselement.html#umecfgproxysourcerepoquorumrequired", null ],
         [ "Store Option \"context-name\"", "optionsforastoresumeattributeselement.html#umecfgcontextname", null ],
         [ "Store Option \"retransmission-request-processing-rate\"", "optionsforastoresumeattributeselement.html#umecfgretransmissionrequestprocessingrate", null ]
       ] ],
@@ -195,9 +213,12 @@ var NAVTREE =
       ] ]
     ] ],
     [ "Special Configuration Topics", "specialconfigurationtopics.html", [
+      [ "Store Loss Repair", "specialconfigurationtopics.html#storelossrepair", null ],
+      [ "Persistence Buffer Sizes", "specialconfigurationtopics.html#persistencebuffersizes", null ],
+      [ "Calculating Options for SPP", "specialconfigurationtopics.html#calculatingoptionsforspp", null ],
       [ "RPP Configuration Specifics", "specialconfigurationtopics.html#rppconfigurationspecifics", null ]
     ] ],
-    [ "Store Daemon Statistics", "storedaemonstatistics.html", [
+    [ "Store Binary Daemon Statistics", "storedaemonstatistics.html", [
       [ "Store Daemon Statistics Structures", "storedaemonstatistics.html#storedaemonstatisticsstructures", [
         [ "Store Daemon Statistics Byte Swapping", "storedaemonstatistics.html#storedaemonstatisticsbyteswapping", null ],
         [ "Store Daemon Statistics String Buffers", "storedaemonstatistics.html#storedaemonstatisticsstructuresstringbuffers", null ],

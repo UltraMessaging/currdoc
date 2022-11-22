@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">UM Java API
-   &#160;<span id="projectnumber">6.14</span>
+   &#160;<span id="projectnumber">6.15</span>
    </div>
   </td>
  </tr>
@@ -127,6 +127,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a54662395878e87da4cd02c048c3f5aab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4a6738a996a4a44fb4de80358b30cf73"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBMSource.html#a4a6738a996a4a44fb4de80358b30cf73">resetStatistics</a> ()  throws LBMException 	</td></tr>
 <tr class="separator:a4a6738a996a4a44fb4de80358b30cf73"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a17eb9f398411b5cc160de844f98b126f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBMSource.html#a17eb9f398411b5cc160de844f98b126f">sendStatistics</a> (ByteBuffer message, int messageLength, int statsType)  throws LBMException 	</td></tr>
+<tr class="separator:a17eb9f398411b5cc160de844f98b126f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab2f7919b79f87d18beac4d26843afed7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBMSource.html#ab2f7919b79f87d18beac4d26843afed7">send</a> (byte[] message, int messageLength, int flags)  throws LBMException 	</td></tr>
 <tr class="separator:ab2f7919b79f87d18beac4d26843afed7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8d2f5820cd5c58ad2b42daedebe7da1e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBMSource.html#a8d2f5820cd5c58ad2b42daedebe7da1e">send</a> (byte[] message, int messageLength, int flags, Object cbArg)  throws LBMException 	</td></tr>
@@ -1787,6 +1789,72 @@ Protected Member Functions</h2></td></tr>
 <a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBM.html#afbb8a9ee8f1b5c98917feef2fd4e1fb0">LBM::SRC_NONBLOCK</a> </dd>
 <dd>
 <a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBM.html#ad829e34169ce720b3b0c1733da4c1b56">LBM::SRC_BLOCK</a> </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a17eb9f398411b5cc160de844f98b126f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void com.latencybusters.lbm.LBMSource.sendStatistics </td>
+          <td>(</td>
+          <td class="paramtype">ByteBuffer&#160;</td>
+          <td class="paramname"><em>message</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>messageLength</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>statsType</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> throws <a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBMException.html">LBMException</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Send a serialized PB message to the topic associated with the <a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBM.html">LBM</a> source. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">message</td><td>ByteBuffer that contains serialized PB stats to send. </td></tr>
+    <tr><td class="paramname">messageLength</td><td>Number of bytes in the ByteBuffer. </td></tr>
+    <tr><td class="paramname">statsType</td><td>Indicates the type of statistics being sent. See next section for set of possible values. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname"><a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBMException.html">LBMException</a></td><td>if any error occurred during sending. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBMMonitor.html#a4e99bc62e0c4184d115afb00d88aa94a">LBMMonitor::LBMMON_PACKET_TYPE_SOURCE</a> </dd>
+<dd>
+<a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBMMonitor.html#acd3ff66744c3c1133618ee5f3f39ab20">LBMMonitor::LBMMON_PACKET_TYPE_RECEIVER</a> </dd>
+<dd>
+<a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBMMonitor.html#a0646bfdce1337f9f647a44faae58d2e6">LBMMonitor::LBMMON_PACKET_TYPE_EVENT_QUEUE</a> </dd>
+<dd>
+<a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBMMonitor.html#ae5daa18554129c34f2e77d8ffb249708">LBMMonitor::LBMMON_PACKET_TYPE_CONTEXT</a> </dd>
+<dd>
+<a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBMMonitor.html#a9c505a4dc995622eb9c6e1fcf4e5a565">LBMMonitor::LBMMON_PACKET_TYPE_RECEIVER_TOPIC</a> </dd>
+<dd>
+<a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBMMonitor.html#af06efa1e46e5d1520b9504d2a2ec7df4">LBMMonitor::LBMMON_PACKET_TYPE_WILDCARD_RECEIVER</a> </dd>
+<dd>
+<a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBMMonitor.html#a2f810170fb3f24f8273e771d0db485b1">LBMMonitor::LBMMON_PACKET_TYPE_UMESTORE</a> </dd>
+<dd>
+<a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBMMonitor.html#a94044e72f41ccb20f5510afb9c512ee1">LBMMonitor::LBMMON_PACKET_TYPE_GATEWAY</a> </dd>
+<dd>
+<a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBMMonitor.html#a05c3d229e6e650982cc393a11788c44d">LBMMonitor::LBMMON_PACKET_TYPE_UMDS</a> </dd>
+<dd>
+<a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBMMonitor.html#a280fdf39b0f1c9f9ca7719119ed4a40f">LBMMonitor::LBMMON_PACKET_TYPE_SRS</a> </dd></dl>
 
 </div>
 </div>

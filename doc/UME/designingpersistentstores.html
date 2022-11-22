@@ -61,6 +61,19 @@ $(document).ready(function(){initNavTree('designingpersistentstores.html','');})
 <p>Receivers, on the other hand, do not need to be configured with Store information a priori. The source provides Store information to receivers via a Source Registration Information (SRI) message after the source registers with a Store. Thus the receivers learn about Stores from the source, without needing to be configured themselves. Because receivers learn about the Store or Stores with which they must register via a SRI record, the source must be available to receivers. However, the source does not have to be actively sending data to do this.</p>
 <p><br />
  </p>
+<h1><a class="anchor" id="limitinitialrestore"></a>
+Limit Initial Restore with Restore-Last&nbsp;&nbsp;<small><a href="#limitinitialrestore">&lt;-</a></small></h1>
+<p>The "restore-last" feature limits the initial message restore for a restarting Store.</p>
+<p>When a disk-based store is restarted, during its initialization it will open the state and cache files and restore the data. This makes previously saved message data available for recovering subscribers. Note that this message restoration takes some time. For small files of a few megabytes, it might take a few seconds. But for large files of many gigabytes, it could take minutes.</p>
+<p>Starting with UM version 6.15, you can configure a restarting Store to only restore a subset of the saved messages. This can greatly speed up the process of initialization.</p>
+<p>For example, you might direct the Store to only restore 8 hours' worth of message data when it is restarted. Doing this means that older messages are not available from this Store for recovering subscribers. But if only one Store of a Q/C group is restarted, one or more of the other Stores will continue to have the older messages available.</p>
+<p>The <a class="el" href="configurationreferenceforumestored.html#umeelementrestorelast">UMP Element "&lt;restore-last&gt;"</a> is used to enable this feature.</p>
+<p>When the restore-last feature is enabled, the Store will write an additional, per-source "cache index" file. It is written to the configured cache directory and is named the same as the source's normal message cache file with ".idx" appended. For example, your cache directory might contain: </p><pre class="fragment">3085235048-cache
+3085235048-cache.idx
+</pre><p>When the Store is restarted, the cache index file is used to quickly determine which messages are within the restore-last range. As a result of this algorithm, if a deployed Store is re-configured to enable the restore-last feature, the first time it is restarted will not be sped up. I.e. since the index file will not yet exist, the first startup after enabling the feature will restore the entire existing cache file.</p>
+<p>See <a class="el" href="configurationreferenceforumestored.html#umeelementrestorelast">UMP Element "&lt;restore-last&gt;"</a> for implementation details.</p>
+<p><br />
+ </p>
 <h1><a class="anchor" id="storelogfile"></a>
 Store Log File&nbsp;&nbsp;<small><a href="#storelogfile">&lt;-</a></small></h1>
 <p>The Store Process generates log messages that are used to monitor its health and operation. You can configure these to be directed to "console" (standard output) or a specified log "file", via the <a class="el" href="configurationreferenceforumestored.html#umeelementlog">UMP Element "&lt;log&gt;"</a>. Normally "console" is only used during testing, as a persistent log file is preferred for production use. The Store does not over-write log files on startup, but instead appends them.</p>
@@ -90,7 +103,7 @@ where: </p><ul>
 Quorum/Consensus Store Usage&nbsp;&nbsp;<small><a href="#quorumconsensusstoreusage">&lt;-</a></small></h1>
 <p>To provide the highest degree of resiliency in the face of failures, UM provides the Quorum/Consensus failover strategy which allows a source to provide UM with a number of Stores to be used at the same time. Multiple Stores can fail and messaging can continue operation unhindered as long as a majority of configured Stores are operational.</p>
 <p>Quorum/Consensus, also called QC, allows a source and the associated receivers to have their persisted state maintained at several Stores at the same time. Central to QC is the concept of a group of Stores, which is a logical grouping of Stores that are intended to signify a single entity of resilience. Within the group, individual Stores may fail but for the group as a whole to be viable and provide resiliency, a quorum must be available. In UM, a quorum is a simple majority. For example, in a group of five Stores, three Stores are required to maintain a quorum. One or two Stores may fail and the group continues to provide resiliency. UM requires a source to have a quorum of Stores available in the group in order to send messages. A group can consist of a single Store.</p>
-<p>QC also provides the ability to use multiple groups. However, multiple QC groups is deprecated and may be removed from a future version of UM. Users of multiple QC groups are encouraged to migrate their source configurations to use a single group of Stores for QC.</p>
+<p>QC also provides the ability to use multiple groups. The use of multiple QC groups is a special case and should be discussed with Informatica support before using.</p>
 <p><br />
  </p>
 <h1><a class="anchor" id="sourcesusingquorumconsensusstoreconfiguration"></a>
@@ -105,7 +118,6 @@ Sources Using Quorum/Consensus Store Configuration&nbsp;&nbsp;<small><a href="#s
 The intergroup behavior specifies the requirements needed to stabilize a message among groups of Stores. A message is stable among the groups if it is successfully stored at any group, a majority of groups, all groups, or all active groups. </li>
 </ul>
 <p>Notice that a message needs to meet intragroup stability requirements before it can meet intergroup stability requirements. These options provide a number of possibilities for retention of messages for the source.</p>
-<dl class="section note"><dt>Note</dt><dd>Multiple QC groups is deprecated and may be removed from a future version of UM. Users of multiple QC groups are encouraged to migrate their source configurations to use a single group of Stores for QC.</dd></dl>
 <p><br />
 <br />
  <br />

@@ -1,5 +1,5 @@
 /*
-  Copyright (C) 2005-2021, Informatica Corporation  Permission is granted to licensees to use
+  (C) Copyright 2005,2022 Informatica LLC  Permission is granted to licensees to use
   or alter this software for any purpose, including commercial applications,
   according to the terms laid out in the Software License Agreement.
 
@@ -218,7 +218,7 @@ lbm_event_queue_t *evq = NULL;
  */
 void print_bw(FILE *fp, struct timeval *tv, unsigned int msgs, unsigned int bytes, int unrec, lbm_ulong_t lost, int rx_msgs, int otr_msgs)
 {
-	char scale[] = {'\0', 'K', 'M', 'G'};
+	char scale[] = {' ', 'K', 'M', 'G'};
 	int msg_scale_index = 0, bit_scale_index = 0;
 	double sec = 0.0, mps = 0.0, bps = 0.0;
 	double kscale = 1000.0;

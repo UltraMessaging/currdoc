@@ -1,5 +1,5 @@
 /*
-  Copyright (C) 2005-2021, Informatica Corporation  Permission is granted to licensees to use
+  (C) Copyright 2005,2022 Informatica LLC  Permission is granted to licensees to use
   or alter this software for any purpose, including commercial applications,
   according to the terms laid out in the Software License Agreement.
 
@@ -93,6 +93,8 @@ const char usage[] =
 "  -i, --int-mprop=VAL,KEY     send integer message property value VAL with name KEY\n"
 "  -j, --late-join=NUM         enable Late Join with specified retention buffer count\n"
 "  -l, --length=NUM            send messages of NUM bytes\n"
+"                              NOTE: set LBM_SMART_SOURCE_CHECK=0xffffffff env variable \n"
+"                                    to check if the maximum message length is exceeded \n"
 "  -L, --linger=NUM            linger for NUM seconds before closing context\n"
 "  -M, --messages=NUM          send NUM messages\n"
 "  -N, --channel=NUM           send on channel NUM\n"
@@ -196,7 +198,7 @@ void current_time_hr(struct timeval *tv)
 /* For the elapsed time, calculate and print the msgs/sec and bits/sec */
 void print_bw(FILE *fp, struct timeval *tv, unsigned int msgs, unsigned long long bytes)
 {
-	char scale[] = {'\0', 'K', 'M', 'G'};
+	char scale[] = {' ', 'K', 'M', 'G'};
 	int msg_scale_index = 0, bit_scale_index = 0;
 	double sec = 0.0, mps = 0.0, bps = 0.0;
 	double kscale = 1000.0;
@@ -609,6 +611,7 @@ int main(int argc, char **argv)
 	unsigned long long bytes_sent = 0;
 	char *message = NULL;
 	char *user_supplied_buffer = NULL;
+	char *ssrc_buffer = NULL;
 	lbmmon_sctl_t * monctl;
 	lbm_ssrc_send_ex_info_t info;
 	char *key_ptrs[16];
@@ -891,7 +894,6 @@ int main(int argc, char **argv)
 			user_supplied_buffer = (char *)malloc(opts->msglen);
 			memset(user_supplied_buffer, 0, opts->msglen);
 			info.usr_supplied_buffer = user_supplied_buffer;
-			snprintf(user_supplied_buffer, opts->msglen, "User supplied buffer message... ");
 		} else {
 			info.usr_supplied_buffer = (char *)(&user_supplied_buffer);	/* initializing to a non-null address for zero-length message case */
 		}
@@ -901,10 +903,19 @@ int main(int argc, char **argv)
 	printf("lbmssrc - Sending %u messages of size %u bytes to topic [%s]\n",
 		   opts->msgs, (unsigned)opts->msglen, opts->topic);
 	current_tv(&starttv); /* Store the start time */
-	if (lbm_ssrc_buff_get(ssrc, &message, 0) == LBM_FAILURE) {
+	if (lbm_ssrc_buff_get(ssrc, &ssrc_buffer, 0) == LBM_FAILURE) {
 		fprintf(stderr, "lbm_ssrc_buff_get: %s\n", lbm_errmsg());
 		exit(1);
 	}
+
+	if (opts->user_supplied_buffer) {
+		/* Put message content in the user-supplied buffer. */
+		message = user_supplied_buffer;
+	} else {
+		/* Put message content in the pre-allocated buffer. */
+		message = ssrc_buffer;
+	}
+
 	for (count = 0; count < opts->msgs; ) {
 
 		/* Create a dummy message to send */
@@ -912,8 +923,13 @@ int main(int argc, char **argv)
 				construct_verifiable_msg((char *)message, opts->msglen);
 		} else {
 			/* Only put data in message if verbose since this is performance sensitive */
-			if (opts->verbose)
-				sprintf((char *)message, "message %u", count);
+			if (opts->verbose){
+				if (opts->user_supplied_buffer) {
+					snprintf(message, opts->msglen, "User supplied buffer message %u", count);
+				} else { 
+					snprintf(message, opts->msglen, "message %u", count);
+				}
+			}
 		}
 
 		if (opts->perf_stats) {
@@ -922,8 +938,11 @@ int main(int argc, char **argv)
 
 			current_time_hr(&begin);
 
-			/* Send message using allocated source */
-			err = lbm_ssrc_send_ex(ssrc, message, opts->msglen, 0, &info);
+			/* Send message using allocated source.
+			 * Note: With the user_supplied_buffer option, message content is in the info.usr_supplied_buffer structure
+			 *       and the pre-allocated ssrc_buffer is used as a "work area" for building the datagram. 
+			 */
+			err = lbm_ssrc_send_ex(ssrc, ssrc_buffer, opts->msglen, 0, &info);
 
 			current_time_hr(&end);
 			elapsed = ((signed long) (end.tv_sec - begin.tv_sec)) * 1000000;
@@ -931,8 +950,11 @@ int main(int argc, char **argv)
 			handle_elapsed_time(elapsed, opts);
 		}
 		else {
-			/* Send message using allocated source */
-			err = lbm_ssrc_send_ex(ssrc, message, opts->msglen, 0, &info);
+			/* Send message using allocated source.
+			 * Note: With the user_supplied_buffer option, message content is in the info.usr_supplied_buffer structure
+			 *       and the pre-allocated ssrc_buffer is used as a "work area" for building the datagram. 
+			 */
+			err = lbm_ssrc_send_ex(ssrc, ssrc_buffer, opts->msglen, 0, &info);
 			/* Uncomment to increment/update the message property integer values with each send 
 			if (opts->mprop_int_cnt > 0) {
 				int i;
@@ -971,7 +993,7 @@ int main(int argc, char **argv)
 	/* Stop rescheduling the stats timer */
 	timer_control.stop_timer = 1;
 
-	if (lbm_ssrc_buff_put(ssrc, message) == LBM_FAILURE) {
+	if (lbm_ssrc_buff_put(ssrc, ssrc_buffer) == LBM_FAILURE) {
 		fprintf(stderr, "lbm_ssrc_buff_put: %s\n", lbm_errmsg());
 		exit(1);
 	}

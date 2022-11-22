@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">UM Java API
-   &#160;<span id="projectnumber">6.14</span>
+   &#160;<span id="projectnumber">6.15</span>
    </div>
   </td>
  </tr>
@@ -183,6 +183,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a949ebaf7282fdac4aa439fbeecfc1ca6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a267884d5180236db1f59fad3c9afe503"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBMContext.html#a267884d5180236db1f59fad3c9afe503">resetImmediateMessageReceiverStatistics</a> ()  throws LBMException 	</td></tr>
 <tr class="separator:a267884d5180236db1f59fad3c9afe503"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abee0016c1de6b7b464f3c45f84b2e82c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBMContext.html#abee0016c1de6b7b464f3c45f84b2e82c">serializeLbmmonControlMessage</a> (ByteBuffer message, int command, String data, int nodeType, String applicationID)  throws LBMException 	</td></tr>
+<tr class="separator:abee0016c1de6b7b464f3c45f84b2e82c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a719abb5151a0b840e950148b40eb74a9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBMTimer.html">LBMTimer</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBMContext.html#a719abb5151a0b840e950148b40eb74a9">createTimer</a> (long milliseconds)  throws LBMException 	</td></tr>
 <tr class="separator:a719abb5151a0b840e950148b40eb74a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0cade91eb2e5953524b624fbf498f9b3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBMTimer.html">LBMTimer</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBMContext.html#a0cade91eb2e5953524b624fbf498f9b3">createTimer</a> (long milliseconds, <a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBMEventQueue.html">LBMEventQueue</a> lbmevq)  throws LBMException 	</td></tr>
@@ -2624,7 +2626,7 @@ Protected Member Functions</h2></td></tr>
 <li>
 "TCP:<em>ip</em>:<em>port</em>" - where <em>ip</em> is the IP address of the destination host and <em>port</em> is the request port for the context of the destination application. This usage assumes the destination is in the same topic resolution domain as the sender. </li>
 <li>
-"SOURCE:<em>source-string</em>" - where <em>source-string</em> is the string associated with a source's transport session. This allows a subscriber to send a unicast immediate message directly to a publishing application. See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/JavaAPI/design.tag:../Design/" href="../Design/umfeatures.html#sendingtosources">Sending to Sources</a> for details. </li>
+"SOURCE:<em>source-string</em>" - where <em>source-string</em> is the string associated with a source's transport session. This allows a subscriber to send a unicast immediate message directly to a publishing application. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/JavaAPI/design.tag:../Design/" href="../Design/umfeatures.html#sendingtosources">Sending to Sources</a> for details. </li>
 </ul>
 <p>Note that immediate messages are processed somewhat less efficiently than source-based messages.</p>
 <dl class="section note"><dt>Note</dt><dd>If called from a context thread callback, use the LBM_SRC_NONBLOCK flag and handle any LBM_EWOULDBLOCK errors internally. </dd></dl>
@@ -2717,7 +2719,7 @@ Protected Member Functions</h2></td></tr>
 <li>
 "TCP:<em>ip</em>:<em>port</em>" - where <em>ip</em> is the IP address of the destination host and <em>port</em> is the request port for the context of the destination application. This usage assumes the destination is in the same topic resolution domain as the sender. </li>
 <li>
-"SOURCE:<em>source-string</em>" - where <em>source-string</em> is the string associated with a source's transport session. This allows a subscriber to send a unicast immediate message directly to a publishing application. See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/JavaAPI/design.tag:../Design/" href="../Design/umfeatures.html#sendingtosources">Sending to Sources</a> for details. </li>
+"SOURCE:<em>source-string</em>" - where <em>source-string</em> is the string associated with a source's transport session. This allows a subscriber to send a unicast immediate message directly to a publishing application. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/JavaAPI/design.tag:../Design/" href="../Design/umfeatures.html#sendingtosources">Sending to Sources</a> for details. </li>
 </ul>
 <p>Note that immediate messages are processed somewhat less efficiently than source-based messages.</p>
 <dl class="section note"><dt>Note</dt><dd>If called from a context thread callback, use the LBM_SRC_NONBLOCK flag and handle any LBM_EWOULDBLOCK errors internally. </dd></dl>
@@ -2810,7 +2812,7 @@ Protected Member Functions</h2></td></tr>
 <li>
 "TCP:<em>ip</em>:<em>port</em>" - where <em>ip</em> is the IP address of the destination host and <em>port</em> is the request port for the context of the destination application. This usage assumes the destination is in the same topic resolution domain as the sender. </li>
 <li>
-"SOURCE:<em>source-string</em>" - where <em>source-string</em> is the string associated with a source's transport session. This allows a subscriber to send a unicast immediate message directly to a publishing application. See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/JavaAPI/design.tag:../Design/" href="../Design/umfeatures.html#sendingtosources">Sending to Sources</a> for details. </li>
+"SOURCE:<em>source-string</em>" - where <em>source-string</em> is the string associated with a source's transport session. This allows a subscriber to send a unicast immediate message directly to a publishing application. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/JavaAPI/design.tag:../Design/" href="../Design/umfeatures.html#sendingtosources">Sending to Sources</a> for details. </li>
 </ul>
 <p>Note that immediate messages are processed somewhat less efficiently than source-based messages.</p>
 <dl class="section note"><dt>Note</dt><dd>If called from a context thread callback, use the LBM_SRC_NONBLOCK flag and handle any LBM_EWOULDBLOCK errors internally. </dd></dl>
@@ -2890,7 +2892,7 @@ Protected Member Functions</h2></td></tr>
 <li>
 "TCP:<em>ip</em>:<em>port</em>" - where <em>ip</em> is the IP address of the destination host and <em>port</em> is the request port for the context of the destination application. This usage assumes the destination is in the same topic resolution domain as the sender. </li>
 <li>
-"SOURCE:<em>source-string</em>" - where <em>source-string</em> is the string associated with a source's transport session. This allows a subscriber to send a unicast immediate message directly to a publishing application. See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/JavaAPI/design.tag:../Design/" href="../Design/umfeatures.html#sendingtosources">Sending to Sources</a> for details. </li>
+"SOURCE:<em>source-string</em>" - where <em>source-string</em> is the string associated with a source's transport session. This allows a subscriber to send a unicast immediate message directly to a publishing application. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/JavaAPI/design.tag:../Design/" href="../Design/umfeatures.html#sendingtosources">Sending to Sources</a> for details. </li>
 </ul>
 <p>Note that immediate messages are processed somewhat less efficiently than source-based messages.</p>
 <dl class="section note"><dt>Note</dt><dd>If called from a context thread callback, use the LBM_SRC_NONBLOCK flag and handle any LBM_EWOULDBLOCK errors internally. </dd></dl>
@@ -2961,7 +2963,7 @@ Protected Member Functions</h2></td></tr>
 <li>
 "TCP:<em>ip</em>:<em>port</em>" - where <em>ip</em> is the IP address of the destination host and <em>port</em> is the request port for the context of the destination application. This usage assumes the destination is in the same topic resolution domain as the sender. </li>
 <li>
-"SOURCE:<em>source-string</em>" - where <em>source-string</em> is the string associated with a source's transport session. This allows a subscriber to send a unicast immediate message directly to a publishing application. See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/JavaAPI/design.tag:../Design/" href="../Design/umfeatures.html#sendingtosources">Sending to Sources</a> for details. </li>
+"SOURCE:<em>source-string</em>" - where <em>source-string</em> is the string associated with a source's transport session. This allows a subscriber to send a unicast immediate message directly to a publishing application. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/JavaAPI/design.tag:../Design/" href="../Design/umfeatures.html#sendingtosources">Sending to Sources</a> for details. </li>
 </ul>
 <p>Note that immediate messages are processed somewhat less efficiently than source-based messages.</p>
 <dl class="section note"><dt>Note</dt><dd>If called from a context thread callback, use the LBM_SRC_NONBLOCK flag and handle any LBM_EWOULDBLOCK errors internally. </dd></dl>
@@ -3458,7 +3460,7 @@ Protected Member Functions</h2></td></tr>
 <li>
 "TCP:<em>ip</em>:<em>port</em>" - where <em>ip</em> is the IP address of the destination host and <em>port</em> is the request port for the context of the destination application. This usage assumes the destination is in the same topic resolution domain as the sender. </li>
 <li>
-"SOURCE:<em>source-string</em>" - where <em>source-string</em> is the string associated with a source's transport session. This allows a subscriber to send a unicast immediate message directly to a publishing application. See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/JavaAPI/design.tag:../Design/" href="../Design/umfeatures.html#sendingtosources">Sending to Sources</a> for details. </li>
+"SOURCE:<em>source-string</em>" - where <em>source-string</em> is the string associated with a source's transport session. This allows a subscriber to send a unicast immediate message directly to a publishing application. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/JavaAPI/design.tag:../Design/" href="../Design/umfeatures.html#sendingtosources">Sending to Sources</a> for details. </li>
 </ul>
 <p>Note that immediate messages are processed somewhat less efficiently than source-based messages.</p>
 <dl class="section note"><dt>Note</dt><dd>If called from a context thread callback, use the LBM_SRC_NONBLOCK flag and handle any LBM_EWOULDBLOCK errors internally. </dd></dl>
@@ -3588,7 +3590,7 @@ Protected Member Functions</h2></td></tr>
 <li>
 "TCP:<em>ip</em>:<em>port</em>" - where <em>ip</em> is the IP address of the destination host and <em>port</em> is the request port for the context of the destination application. This usage assumes the destination is in the same topic resolution domain as the sender. </li>
 <li>
-"SOURCE:<em>source-string</em>" - where <em>source-string</em> is the string associated with a source's transport session. This allows a subscriber to send a unicast immediate message directly to a publishing application. See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/JavaAPI/design.tag:../Design/" href="../Design/umfeatures.html#sendingtosources">Sending to Sources</a> for details. </li>
+"SOURCE:<em>source-string</em>" - where <em>source-string</em> is the string associated with a source's transport session. This allows a subscriber to send a unicast immediate message directly to a publishing application. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/JavaAPI/design.tag:../Design/" href="../Design/umfeatures.html#sendingtosources">Sending to Sources</a> for details. </li>
 </ul>
 <p>Note that immediate messages are processed somewhat less efficiently than source-based messages.</p>
 <dl class="section note"><dt>Note</dt><dd>If called from a context thread callback, use the LBM_SRC_NONBLOCK flag and handle any LBM_EWOULDBLOCK errors internally. </dd></dl>
@@ -3656,7 +3658,7 @@ Protected Member Functions</h2></td></tr>
 <li>
 "TCP:<em>ip</em>:<em>port</em>" - where <em>ip</em> is the IP address of the destination host and <em>port</em> is the request port for the context of the destination application. This usage assumes the destination is in the same topic resolution domain as the sender. </li>
 <li>
-"SOURCE:<em>source-string</em>" - where <em>source-string</em> is the string associated with a source's transport session. This allows a subscriber to send a unicast immediate message directly to a publishing application. See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/JavaAPI/design.tag:../Design/" href="../Design/umfeatures.html#sendingtosources">Sending to Sources</a> for details. </li>
+"SOURCE:<em>source-string</em>" - where <em>source-string</em> is the string associated with a source's transport session. This allows a subscriber to send a unicast immediate message directly to a publishing application. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/JavaAPI/design.tag:../Design/" href="../Design/umfeatures.html#sendingtosources">Sending to Sources</a> for details. </li>
 </ul>
 <p>Note that immediate messages are processed somewhat less efficiently than source-based messages.</p>
 <dl class="section note"><dt>Note</dt><dd>If called from a context thread callback, use the LBM_SRC_NONBLOCK flag and handle any LBM_EWOULDBLOCK errors internally. </dd></dl>
@@ -3733,6 +3735,67 @@ Protected Member Functions</h2></td></tr>
 <a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBM.html#ad829e34169ce720b3b0c1733da4c1b56">LBM::SRC_BLOCK</a> </dd>
 <dd>
 <a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBM.html#a09fd2f63de2835600cad6d2df4ab19a3">LBM::MSG_FLUSH</a> </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="abee0016c1de6b7b464f3c45f84b2e82c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int com.latencybusters.lbm.LBMContext.serializeLbmmonControlMessage </td>
+          <td>(</td>
+          <td class="paramtype">ByteBuffer&#160;</td>
+          <td class="paramname"><em>message</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>command</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">String&#160;</td>
+          <td class="paramname"><em>data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>nodeType</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">String&#160;</td>
+          <td class="paramname"><em>applicationID</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> throws <a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBMException.html">LBMException</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Serialize the LBMMON control message </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">message</td><td>Direct Byte Buffer to hold serialized message </td></tr>
+    <tr><td class="paramname">command</td><td>LBMMON control command </td></tr>
+    <tr><td class="paramname">data</td><td>LBMMON control data </td></tr>
+    <tr><td class="paramname">nodeType</td><td>LBMMON node type for control message </td></tr>
+    <tr><td class="paramname">applicationID</td><td>LBMMON Application ID for control message </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>int Size of serialized message </dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname"><a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBMException.html">LBMException</a></td><td>if any error occurs serializing the message. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

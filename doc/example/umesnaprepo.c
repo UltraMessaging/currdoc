@@ -1,5 +1,5 @@
 /*
-  Copyright (C) 2005-2021, Informatica Corporation  Permission is granted to licensees to use
+  (C) Copyright 2005,2022 Informatica LLC  Permission is granted to licensees to use
   or alter this software for any purpose, including commercial applications,
   according to the terms laid out in the Software License Agreement.
 
@@ -65,8 +65,8 @@ const struct option OptionTable[] =
 };
 
 struct Options {
-	char cache_file_search_path[1024];	/* search path to repository cache files */
-	char state_file_search_path[1024];	/* search path to repository state files */
+	char cache_file_search_path[LBM_SRP_MAX_DIRECTORY_STRLEN];	/* search path to repository cache files */
+	char state_file_search_path[LBM_SRP_MAX_DIRECTORY_STRLEN];	/* search path to repository state files */
 	int truncate_length;				/* truncate length of displayed message body */
 	int truncate;						/* flag to control displayed message body length */
 	int check_checksum;					/* flag to control cache checksum checking */

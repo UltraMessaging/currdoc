@@ -1,5 +1,5 @@
 /*
- Copyright (C) 2005-2021, Informatica Corporation  Permission is granted to licensees to use
+ (C) Copyright 2005,2022 Informatica LLC  Permission is granted to licensees to use
  or alter this software for any purpose, including commercial applications,
  according to the terms laid out in the Software License Agreement.
  
@@ -64,7 +64,7 @@ usleep((x)*1000); \
 }while (0)
 #endif /* _WIN32 */
 
-const char purpose[] = "Purpose: receive SRS monitor info messages on the specified topic.";
+const char purpose[] = "Purpose: receive SRS monitor info messages on the specified topic.\n  Note: this tool is deprecated.\n  See https://ultramessaging.github.io/currdoc/doc/ChangeLog/deprecations.html#deprecationsfor615";
 const char usage[] =
 "Usage: srs_monitor_info_receiver [options] topic\n"
 "Available options:\n"

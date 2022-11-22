@@ -38,6 +38,7 @@ var classcom_1_1latencybusters_1_1lbm_1_1LBMSource =
     [ "send", "classcom_1_1latencybusters_1_1lbm_1_1LBMSource.html#ab39e7698f0f6e6c72c327d4ed27f8592", null ],
     [ "send", "classcom_1_1latencybusters_1_1lbm_1_1LBMSource.html#af134858acb8dabb5e4e4f23b7447195d", null ],
     [ "send", "classcom_1_1latencybusters_1_1lbm_1_1LBMSource.html#aab842b5335203f8dfb977cedb2e4b6a7", null ],
+    [ "sendStatistics", "classcom_1_1latencybusters_1_1lbm_1_1LBMSource.html#a17eb9f398411b5cc160de844f98b126f", null ],
     [ "setAttributeValue", "classcom_1_1latencybusters_1_1lbm_1_1LBMSource.html#a634bc707df7a386a3f1846b9ec75fcbe", null ],
     [ "setInflight", "classcom_1_1latencybusters_1_1lbm_1_1LBMSource.html#abd8766e77947c62b9ba02a5bc7e5359b", null ],
     [ "setInflightEx", "classcom_1_1latencybusters_1_1lbm_1_1LBMSource.html#a629b0929ac52f1fd7de391d964ea06e6", null ],

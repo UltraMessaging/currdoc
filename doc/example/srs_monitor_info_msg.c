@@ -1,5 +1,5 @@
 /*
- Copyright (C) 2005-2021, Informatica Corporation  Permission is granted to licensees to use
+ (C) Copyright 2005,2022 Informatica LLC  Permission is granted to licensees to use
  or alter this software for any purpose, including commercial applications,
  according to the terms laid out in the Software License Agreement.
  
@@ -15,6 +15,11 @@
  INDIRECT DAMAGES ARISING OUT OF OR RELATED TO THIS AGREEMENT OR THE
  TRANSACTIONS CONTEMPLATED HEREUNDER, EVEN IF INFORMATICA HAS BEEN APPRISED OF
  THE LIKELIHOOD OF SUCH DAMAGES.
+ */
+
+/* This module is referenced by srs_monitor_info_receiver_json.c.
+ * Note that this tool is deprecated.
+ * See https://ultramessaging.github.io/currdoc/doc/ChangeLog/deprecations.html#deprecationsfor615
  */
 
 #include "srs_monitor_info_msg.h"

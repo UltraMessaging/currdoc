@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">UM C API
-   &#160;<span id="projectnumber">6.14</span>
+   &#160;<span id="projectnumber">6.15</span>
    </div>
   </td>
  </tr>
@@ -76,7 +76,7 @@ $(document).ready(function(){initNavTree('lbmmon_8h.html','');});
 </div><!--header-->
 <div class="contents">
 
-<p>Ultra Messaging (UM) Monitoring API. The "lbmmon.h" header file defines APIs for UM application monitoring, both the send side (application being monitored) and the receive side (application doing the monitoring). The binary code is contained in the "lbm" library (dynamic on Unix: "liblbm.so", static on Unix: "liblbm.a", dynamic only on Windows: "lbm.dll"). See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/API/operations.tag:../Operations/" href="../Operations/monitoringumwiththelbmmonapi.html">Monitoring UM with the lbmmon API</a> for general information on UM monitoring. See <a class="el" href="index.html#umcapi">UM C API</a> for general information on the C API. See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/API/design.tag:../Design/" href="../Design/fundamentalconcepts.html">Fundamental Concepts</a> for an introduction to Ultra Messaging.  
+<p>Ultra Messaging (UM) Monitoring API. The "lbmmon.h" header file defines APIs for UM application monitoring, both the send side (application being monitored) and the receive side (application doing the monitoring). The binary code is contained in the "lbm" library (dynamic on Unix: "liblbm.so", static on Unix: "liblbm.a", dynamic only on Windows: "lbm.dll"). See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/API/operations.tag:../Operations/" href="../Operations/monitoringumwiththelbmmonapi.html">Monitoring UM with the lbmmon API</a> for general information on UM monitoring. See <a class="el" href="index.html#umcapi">UM C API</a> for general information on the C API. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/API/design.tag:../Design/" href="../Design/fundamentalconcepts.html">Fundamental Concepts</a> for an introduction to Ultra Messaging.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;stdlib.h&gt;</code><br />
 <code>#include &lt;lbm/lbm.h&gt;</code><br />
@@ -85,6 +85,7 @@ $(document).ready(function(){initNavTree('lbmmon_8h.html','');});
 <code>#include &lt;<a class="el" href="um__mon__control_8pb-c_8h_source.html">gen/um_mon_control.pb-c.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="ums__mon_8pb-c_8h_source.html">gen/ums_mon.pb-c.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="dro__mon_8pb-c_8h_source.html">gen/dro_mon.pb-c.h</a>&gt;</code><br />
+<code>#include &lt;gen/srs_mon.pb-c.h&gt;</code><br />
 <code>#include &lt;lbm/lbmmonfmtcsv.h&gt;</code><br />
 <code>#include &lt;lbm/lbmmonfmtpb.h&gt;</code><br />
 <code>#include &lt;lbm/lbmmontrlbm.h&gt;</code><br />
@@ -186,6 +187,12 @@ Macros</h2></td></tr>
 <tr class="separator:a6ac93894cca69b246fc6e35190d53084"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a94856f62e62748ab452035c8101c8bc5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lbmmon_8h.html#a94856f62e62748ab452035c8101c8bc5">LBMMON_PACKET_TYPE_CONTROL_MESSAGE</a>&#160;&#160;&#160;9</td></tr>
 <tr class="separator:a94856f62e62748ab452035c8101c8bc5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d2ff71aab1f7ee56e62ff64804c7a05"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lbmmon_8h.html#a4d2ff71aab1f7ee56e62ff64804c7a05">LBMMON_PACKET_TYPE_SRS</a>&#160;&#160;&#160;10</td></tr>
+<tr class="separator:a4d2ff71aab1f7ee56e62ff64804c7a05"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2ba1f10355713738155a20e3bc37dfaf"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lbmmon_8h.html#a2ba1f10355713738155a20e3bc37dfaf">LBMMON_SERIALIZE_PACK_MESSAGE</a>&#160;&#160;&#160;0</td></tr>
+<tr class="separator:a2ba1f10355713738155a20e3bc37dfaf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adc85949b7f53b2e3c88105d9d9c4df5d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lbmmon_8h.html#adc85949b7f53b2e3c88105d9d9c4df5d">LBMMON_SERIALIZE_CALC_SIZE_ONLY</a>&#160;&#160;&#160;1</td></tr>
+<tr class="separator:adc85949b7f53b2e3c88105d9d9c4df5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a10abeb0eb7791257e99cf8087a404a7d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lbmmon_8h.html#a10abeb0eb7791257e99cf8087a404a7d">LBMMON_ATTR_BLOCK_MAGIC</a>&#160;&#160;&#160;0xABCD</td></tr>
 <tr class="separator:a10abeb0eb7791257e99cf8087a404a7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa8410f3617618a9065e1a6b9d1624cb0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lbmmon_8h.html#aa8410f3617618a9065e1a6b9d1624cb0">LBMMON_ATTR_BLOCK_FORMAT_TABLE</a>&#160;&#160;&#160;0</td></tr>
@@ -348,9 +355,9 @@ typedef struct <a class="el" href="structlbmmon__attr__entry__t__stct.html">lbmm
 <tr class="memitem:a1f4451c5bac9e473fd440466d01b1e35"><td class="memItemLeft" align="right" valign="top">typedef int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lbmmon_8h.html#a1f4451c5bac9e473fd440466d01b1e35">lbmmon_wildcard_rcv_format_deserialize_t</a>) (<a class="el" href="structlbmmon__packet__attributes__t__stct.html">lbmmon_packet_attributes_t</a> *Attributes, <a class="el" href="lbm_8h.html#a5d1768dd4fdbcf6b6d415e0839622460">lbm_wildcard_rcv_stats_t</a> *Statistics, const char *Source, size_t Length, unsigned short ModuleID, void *FormatClientData)</td></tr>
 <tr class="memdesc:a1f4451c5bac9e473fd440466d01b1e35"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to deserialize a buffer into an <a class="el" href="lbm_8h.html#a5d1768dd4fdbcf6b6d415e0839622460" title="Structure that holds statistics for a wildcard receiver. ">lbm_wildcard_rcv_stats_t</a> structure.  <a href="#a1f4451c5bac9e473fd440466d01b1e35">More...</a><br /></td></tr>
 <tr class="separator:a1f4451c5bac9e473fd440466d01b1e35"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa457a0197e5f0602a4c6154a501fc114"><td class="memItemLeft" align="right" valign="top">typedef int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lbmmon_8h.html#aa457a0197e5f0602a4c6154a501fc114">lbmmon_umestore_format_serialize_t</a>) (char *Destination, size_t *Size, unsigned short *ModuleID, const <a class="el" href="structlbmmon__packet__attributes__t__stct.html">lbmmon_packet_attributes_t</a> *Attributes, Lbmmon__UMPMonMsg *StoreMsg, void *FormatClientData)</td></tr>
-<tr class="memdesc:aa457a0197e5f0602a4c6154a501fc114"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to serialize store statistics.  <a href="#aa457a0197e5f0602a4c6154a501fc114">More...</a><br /></td></tr>
-<tr class="separator:aa457a0197e5f0602a4c6154a501fc114"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1ea24d8d3bcdd1328190c10b7290d87f"><td class="memItemLeft" align="right" valign="top">typedef int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lbmmon_8h.html#a1ea24d8d3bcdd1328190c10b7290d87f">lbmmon_umestore_format_serialize_t</a>) (char *Destination, size_t *Size, unsigned short *ModuleID, const <a class="el" href="structlbmmon__packet__attributes__t__stct.html">lbmmon_packet_attributes_t</a> *Attributes, Lbmmon__UMPMonMsg *StoreMsg, int Action, void *FormatClientData)</td></tr>
+<tr class="memdesc:a1ea24d8d3bcdd1328190c10b7290d87f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to serialize store statistics.  <a href="#a1ea24d8d3bcdd1328190c10b7290d87f">More...</a><br /></td></tr>
+<tr class="separator:a1ea24d8d3bcdd1328190c10b7290d87f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac21e7f1ae89a368b57f1cdd3ade89e6c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac21e7f1ae89a368b57f1cdd3ade89e6c"></a>
 typedef int(*&#160;</td><td class="memItemRight" valign="bottom"><b>lbmmon_umestore_format_deserialize_t</b>) (<a class="el" href="structlbmmon__packet__attributes__t__stct.html">lbmmon_packet_attributes_t</a> *Attributes, Lbmmon__UMPMonMsg **StoreMsg, const char *Source, size_t Length, unsigned short ModuleID, void *FormatClientData)</td></tr>
 <tr class="separator:ac21e7f1ae89a368b57f1cdd3ade89e6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -608,9 +615,12 @@ Functions</h2></td></tr>
 <tr class="memitem:af9cd011da427110d5929a037e85e6fd0"><td class="memItemLeft" align="right" valign="top">LBMExpDLL const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lbmmon_8h.html#af9cd011da427110d5929a037e85e6fd0">lbmmon_control_errmsg</a> (void)</td></tr>
 <tr class="memdesc:af9cd011da427110d5929a037e85e6fd0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to return the last error message from lbmmon_control.  <a href="#af9cd011da427110d5929a037e85e6fd0">More...</a><br /></td></tr>
 <tr class="separator:af9cd011da427110d5929a037e85e6fd0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9b3cb40ee6417d3e470224b99e8da8c2"><td class="memItemLeft" align="right" valign="top">LBMExpDLL void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lbmmon_8h.html#a9b3cb40ee6417d3e470224b99e8da8c2">lbmmon_add_header</a> (char *Packet, const char *Data, size_t Length, int PacketType)</td></tr>
+<tr class="memdesc:a9b3cb40ee6417d3e470224b99e8da8c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add an LBMMON header to a serialized PB Buffer.  <a href="#a9b3cb40ee6417d3e470224b99e8da8c2">More...</a><br /></td></tr>
+<tr class="separator:a9b3cb40ee6417d3e470224b99e8da8c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Ultra Messaging (UM) Monitoring API. The "lbmmon.h" header file defines APIs for UM application monitoring, both the send side (application being monitored) and the receive side (application doing the monitoring). The binary code is contained in the "lbm" library (dynamic on Unix: "liblbm.so", static on Unix: "liblbm.a", dynamic only on Windows: "lbm.dll"). See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/API/operations.tag:../Operations/" href="../Operations/monitoringumwiththelbmmonapi.html">Monitoring UM with the lbmmon API</a> for general information on UM monitoring. See <a class="el" href="index.html#umcapi">UM C API</a> for general information on the C API. See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/API/design.tag:../Design/" href="../Design/fundamentalconcepts.html">Fundamental Concepts</a> for an introduction to Ultra Messaging. </p>
+<div class="textblock"><p>Ultra Messaging (UM) Monitoring API. The "lbmmon.h" header file defines APIs for UM application monitoring, both the send side (application being monitored) and the receive side (application doing the monitoring). The binary code is contained in the "lbm" library (dynamic on Unix: "liblbm.so", static on Unix: "liblbm.a", dynamic only on Windows: "lbm.dll"). See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/API/operations.tag:../Operations/" href="../Operations/monitoringumwiththelbmmonapi.html">Monitoring UM with the lbmmon API</a> for general information on UM monitoring. See <a class="el" href="index.html#umcapi">UM C API</a> for general information on the C API. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/API/design.tag:../Design/" href="../Design/fundamentalconcepts.html">Fundamental Concepts</a> for an introduction to Ultra Messaging. </p>
 </div><h2 class="groupheader">Macro Definition Documentation</h2>
 <a class="anchor" id="a7e199ec349fa476cac44840e97e9d126"></a>
 <div class="memitem">
@@ -1327,6 +1337,19 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a4d2ff71aab1f7ee56e62ff64804c7a05"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define LBMMON_PACKET_TYPE_SRS&#160;&#160;&#160;10</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Packet contains SRS statistics. </p>
+
+</div>
+</div>
 <a class="anchor" id="a6ac93894cca69b246fc6e35190d53084"></a>
 <div class="memitem">
 <div class="memproto">
@@ -1336,7 +1359,7 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Packet contains gateway statistics. </p>
+<p>Packet contains UMDS statistics. </p>
 
 </div>
 </div>
@@ -1480,6 +1503,32 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Receive controller attribute option: Wildcard receiver statistics callback. </p>
+
+</div>
+</div>
+<a class="anchor" id="adc85949b7f53b2e3c88105d9d9c4df5d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define LBMMON_SERIALIZE_CALC_SIZE_ONLY&#160;&#160;&#160;1</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Serialize function should only return the size of the packed message </p>
+
+</div>
+</div>
+<a class="anchor" id="a2ba1f10355713738155a20e3bc37dfaf"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define LBMMON_SERIALIZE_PACK_MESSAGE&#160;&#160;&#160;0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Serialize funtion should pack the message </p>
 
 </div>
 </div>
@@ -2470,12 +2519,12 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="aa457a0197e5f0602a4c6154a501fc114"></a>
+<a class="anchor" id="a1ea24d8d3bcdd1328190c10b7290d87f"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef int(* lbmmon_umestore_format_serialize_t) (char *Destination, size_t *Size, unsigned short *ModuleID, const <a class="el" href="structlbmmon__packet__attributes__t__stct.html">lbmmon_packet_attributes_t</a> *Attributes, Lbmmon__UMPMonMsg *StoreMsg, void *FormatClientData)</td>
+          <td class="memname">typedef int(* lbmmon_umestore_format_serialize_t) (char *Destination, size_t *Size, unsigned short *ModuleID, const <a class="el" href="structlbmmon__packet__attributes__t__stct.html">lbmmon_packet_attributes_t</a> *Attributes, Lbmmon__UMPMonMsg *StoreMsg, int Action, void *FormatClientData)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -2490,6 +2539,7 @@ Functions</h2></td></tr>
     <tr><td class="paramname">ModuleID</td><td>A pointer to an <code>unsigned</code> <code>short</code>, into which the module may write a module identification value. This value is included in the transmitted packet, and may be used by the receiver to verify and differentiate between different version of the module (and thus the format of the data it expects). </td></tr>
     <tr><td class="paramname">Attributes</td><td>A pointer to a lbmmon_packet_attributes_t structure from which to take packet attributes. </td></tr>
     <tr><td class="paramname">StoreMsg</td><td>A pointer to an Lbmmon__UMPMonMsg structure to be serialized. </td></tr>
+    <tr><td class="paramname">Action</td><td>If 1, return size of packed message only. If 0, pack the message and copy into the buffer. </td></tr>
     <tr><td class="paramname">FormatClientData</td><td>A pointer to format-specific client data as returned by the <a class="el" href="lbmmon_8h.html#a892e193659739d09c1f9e9d2749fc522" title="Function to initialize a format module. ">lbmmon_format_init_t</a> function. </td></tr>
   </table>
   </dd>
@@ -2650,6 +2700,55 @@ Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
+<a class="anchor" id="a9b3cb40ee6417d3e470224b99e8da8c2"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">LBMExpDLL void lbmmon_add_header </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>Packet</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>Data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>Length</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>PacketType</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Add an LBMMON header to a serialized PB Buffer. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Packet</td><td>A pointer to a buffer to receive the full packet. </td></tr>
+    <tr><td class="paramname">Data</td><td>A pointer to the serialized statistics data. </td></tr>
+    <tr><td class="paramname">Length</td><td>The length of the serialized statistics data. </td></tr>
+    <tr><td class="paramname">PacketType</td><td>Type of statistics. See LBMMON_PACKET_TYPE_*. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a class="anchor" id="a8d85d6ca99a27546ff88e09108044756"></a>
 <div class="memitem">
 <div class="memproto">
@@ -3073,7 +3172,7 @@ Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">Control</td><td>Pointer to an <a class="el" href="lbmmon_8h.html#a4fbc26b3a219f366dbdbeeb40638a437" title="LBM Monitoring Source Controller object (opaque). ">lbmmon_sctl_t</a> which is to be used to monitor the context. </td></tr>
-    <tr><td class="paramname">Context</td><td>Pointer to an <a class="el" href="lbm_8h.html#a9f6ec97839a8f264eb4059de01174f3c" title="Context object (opaque) for UM. ">lbm_context_t</a> which will be monitored. </td></tr>
+    <tr><td class="paramname">Context</td><td>Pointer to an <a class="el" href="lbm_8h.html#a9f6ec97839a8f264eb4059de01174f3c" title="Context object (opaque) for UM. See Context Object. ">lbm_context_t</a> which will be monitored. </td></tr>
     <tr><td class="paramname">ApplicationSourceID</td><td>Null-terminated string containing an application-specified source identifier. If a NULL pointer or an empty string is passed, the application name will be used. </td></tr>
     <tr><td class="paramname">Seconds</td><td>Interval (in seconds) at which monitoring information will be gathered and sent. If zero, the context will not be automatically monitored, but instead will be monitored upon a call to lbmmon_ctl_sample(). </td></tr>
   </table>
@@ -3112,7 +3211,7 @@ Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">Control</td><td>Pointer to an <a class="el" href="lbmmon_8h.html#a4fbc26b3a219f366dbdbeeb40638a437" title="LBM Monitoring Source Controller object (opaque). ">lbmmon_sctl_t</a> which is used to monitor the context. </td></tr>
-    <tr><td class="paramname">Context</td><td>Pointer to an previously registered <a class="el" href="lbm_8h.html#a9f6ec97839a8f264eb4059de01174f3c" title="Context object (opaque) for UM. ">lbm_context_t</a>. </td></tr>
+    <tr><td class="paramname">Context</td><td>Pointer to an previously registered <a class="el" href="lbm_8h.html#a9f6ec97839a8f264eb4059de01174f3c" title="Context object (opaque) for UM. See Context Object. ">lbm_context_t</a>. </td></tr>
   </table>
   </dd>
 </dl>
@@ -3465,7 +3564,7 @@ Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">Control</td><td>Pointer to an <a class="el" href="lbmmon_8h.html#a4fbc26b3a219f366dbdbeeb40638a437" title="LBM Monitoring Source Controller object (opaque). ">lbmmon_sctl_t</a> which is used to monitor the context. </td></tr>
-    <tr><td class="paramname">EventQueue</td><td>Pointer to an previously registered <a class="el" href="lbm_8h.html#a6897baf281a5b4729e05c873aacac420" title="Opaque structure that designates a UM event queue object. ">lbm_event_queue_t</a>. </td></tr>
+    <tr><td class="paramname">EventQueue</td><td>Pointer to an previously registered <a class="el" href="lbm_8h.html#a6897baf281a5b4729e05c873aacac420" title="Opaque structure that designates a UM event queue object. See Event Queue Object. ...">lbm_event_queue_t</a>. </td></tr>
   </table>
   </dd>
 </dl>
@@ -3861,7 +3960,7 @@ Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">Control</td><td>Pointer to an <a class="el" href="lbmmon_8h.html#a4fbc26b3a219f366dbdbeeb40638a437" title="LBM Monitoring Source Controller object (opaque). ">lbmmon_sctl_t</a> which is used to monitor the context. </td></tr>
-    <tr><td class="paramname">Receiver</td><td>Pointer to an previously registered <a class="el" href="lbm_8h.html#a0a4af6b8247cc5a0a24a8578fb6e83bd" title="Opaque structure that designates a UM receiver. ">lbm_rcv_t</a>. </td></tr>
+    <tr><td class="paramname">Receiver</td><td>Pointer to an previously registered <a class="el" href="lbm_8h.html#a0a4af6b8247cc5a0a24a8578fb6e83bd" title="Opaque structure that designates a UM receiver. See Receiver Object. ">lbm_rcv_t</a>. </td></tr>
   </table>
   </dd>
 </dl>
@@ -4056,7 +4155,7 @@ Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">Control</td><td>Pointer to an <a class="el" href="lbmmon_8h.html#a4fbc26b3a219f366dbdbeeb40638a437" title="LBM Monitoring Source Controller object (opaque). ">lbmmon_sctl_t</a> which is to be used to monitor the context. </td></tr>
-    <tr><td class="paramname">Source</td><td>Pointer to an <a class="el" href="lbm_8h.html#a717ff27bb10ae7800330c21d810dffb8" title="Opaque structure that designates a UM source. ">lbm_src_t</a> which will be monitored. </td></tr>
+    <tr><td class="paramname">Source</td><td>Pointer to an <a class="el" href="lbm_8h.html#a717ff27bb10ae7800330c21d810dffb8" title="Opaque structure that designates a UM source. See Source Object. ">lbm_src_t</a> which will be monitored. </td></tr>
     <tr><td class="paramname">ApplicationSourceID</td><td>Null-terminated string containing an application-specified source identifier. If a NULL pointer or an empty string is passed, the application name will be used. </td></tr>
     <tr><td class="paramname">Seconds</td><td>Interval (in seconds) at which monitoring information will be gathered and sent. If zero, the source will not be automatically monitored, but instead will be monitored upon a call to <a class="el" href="lbmmon_8h.html#a657d3c8a78ce6424254d4c04ea151dd1" title="Gather statistics for on-demand objects. ">lbmmon_sctl_sample()</a>. </td></tr>
   </table>
@@ -4095,7 +4194,7 @@ Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">Control</td><td>Pointer to an <a class="el" href="lbmmon_8h.html#a4fbc26b3a219f366dbdbeeb40638a437" title="LBM Monitoring Source Controller object (opaque). ">lbmmon_sctl_t</a> which is used to monitor the context. </td></tr>
-    <tr><td class="paramname">Source</td><td>Pointer to an previously registered <a class="el" href="lbm_8h.html#a717ff27bb10ae7800330c21d810dffb8" title="Opaque structure that designates a UM source. ">lbm_src_t</a>. </td></tr>
+    <tr><td class="paramname">Source</td><td>Pointer to an previously registered <a class="el" href="lbm_8h.html#a717ff27bb10ae7800330c21d810dffb8" title="Opaque structure that designates a UM source. See Source Object. ">lbm_src_t</a>. </td></tr>
   </table>
   </dd>
 </dl>

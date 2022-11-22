@@ -70,6 +70,7 @@ var NAVTREE =
       ] ],
       [ "Example Protocol Files", "index.html#exampleprotocolfiles", [
         [ "Example dro_mon.proto", "index.html#exampledro_mon_proto", null ],
+        [ "Example srs_mon.proto", "index.html#examplesrs_mon_proto", null ],
         [ "Example um_mon_attributes.proto", "index.html#exampleum_mon_attributes_proto", null ],
         [ "Example um_mon_control.proto", "index.html#exampleum_mon_control_proto", null ],
         [ "Example ump_mon.proto", "index.html#exampleump_mon_proto", null ],

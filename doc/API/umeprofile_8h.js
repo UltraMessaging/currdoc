@@ -5,6 +5,7 @@ var umeprofile_8h =
     [ "lbm_srp_repo_t_stct", "structlbm__srp__repo__t__stct.html", "structlbm__srp__repo__t__stct" ],
     [ "LBM_SRP_DISK_MAX_CKSUM_MSG_LEN", "umeprofile_8h.html#a959da8204a70fdfd0fcfc0b92259db2f", null ],
     [ "LBM_SRP_LBMC_HDR_SZ", "umeprofile_8h.html#aa79b3d79fa2de9ef50fc5239494418cf", null ],
+    [ "LBM_SRP_MAX_DIRECTORY_STRLEN", "umeprofile_8h.html#a382cd49b77c666bef4c2141776701bb7", null ],
     [ "LBM_SRP_MAX_PATH_STRLEN", "umeprofile_8h.html#a45b2f2f6bd7aada69ad890792e0825ab", null ],
     [ "LBM_SRP_TOPICNAME_MAX_LEN", "umeprofile_8h.html#a976985ff7576fa632066f966ebcf3bcb", null ],
     [ "UMEStoreExpDLL", "umeprofile_8h.html#a6ceef51ca8aa36a735ae7676e7ae318e", null ],

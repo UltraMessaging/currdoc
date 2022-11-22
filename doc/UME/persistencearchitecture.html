@@ -61,9 +61,9 @@ $(document).ready(function(){initNavTree('persistencearchitecture.html','');});
  <p>The highlights of this architecture are:</p>
 <ul>
 <li>
-Sources communicate with Store Instances </li>
+Sources communicate with Store instances </li>
 <li>
-Receivers communicate with Store Instances </li>
+Receivers communicate with Store instances </li>
 <li>
 Sources communicate with receivers </li>
 </ul>
@@ -72,7 +72,7 @@ Sources communicate with receivers </li>
  </p>
 <h1><a class="anchor" id="persistentstorearchitecture"></a>
 Persistent Store Architecture&nbsp;&nbsp;<small><a href="#persistentstorearchitecture">&lt;-</a></small></h1>
-<p>The <code>umestored</code> program runs the Store Process. You can configure multiple Store Instances per Store Process using the <a class="el" href="configurationreferenceforumestored.html#umeelementstore">UMP Element "&lt;store&gt;"</a> in the Store configuration file. See <a class="el" href="configurationreferenceforumestored.html">Configuration Reference for Umestored</a>. Individual Store Instances can use separate disk cache and disk state directories and be configured to persist messages for multiple sources (topics), which are referred to as "source repositories". Each Store Process has an optional Web Monitor for statistics monitoring. See <a class="el" href="storewebmonitor.html">Store Web Monitor</a>.</p>
+<p>The <code>umestored</code> program runs the Store Process. You can configure multiple Store instances per Store Process using the <a class="el" href="configurationreferenceforumestored.html#umeelementstore">UMP Element "&lt;store&gt;"</a> in the Store configuration file. See <a class="el" href="configurationreferenceforumestored.html">Configuration Reference for Umestored</a>. Individual Store instances can use separate disk cache and disk state directories and be configured to persist messages for multiple sources (topics), which are referred to as "source repositories". Each Store Process has an optional Web Monitor for statistics monitoring. See <a class="el" href="storewebmonitor.html">Store Web Monitor</a>.</p>
 <div class="image">
 <img src="store_architecture.png" alt="store_architecture.png"/>
 </div>
@@ -80,15 +80,15 @@ Persistent Store Architecture&nbsp;&nbsp;<small><a href="#persistentstorearchite
  </p>
 <h2><a class="anchor" id="storeprocessesandinstances"></a>
 Store Processes and Instances&nbsp;&nbsp;<small><a href="#storeprocessesandinstances">&lt;-</a></small></h2>
-<p>When the Store Process is started on a host, the process is known as the "Store Process". That Store Process contains one or more "Store Instances". A Store Instance is an independent, addressable, and configurable component. Each Store Instance is implemented with a set of interacting program threads. The threads of one Instance do not interact or contend with the threads of other Instances in the same Process.</p>
-<p>There is very little difference between running one Store Process with two Store Instances compared to two Store Processes with one Store Instance each. They function and perform mostly the same. The reasons for choosing one over the other have mostly to do with operational convenience. For example, running fewer processes on a host is sometimes easier to manage. So operational simplicity suggests combining multiple Store Instances into a single Store Process.</p>
-<p>On the other hand, there are times when it is desired to shut down a Store Instance. But Store Instances cannot be shut down individually; an entire Store Process must be shut down. For example: as message rates increase, you may find that the host's CPU consumption is getting too high. You might want to migrate half of the Store Instances to a different host. But if all your Store Instances are in one Store Process, it is more disruptive perform the migration since it requires shutting down the entire process and re-configuring. So operational flexibility suggests assigning each desired Store Instance to its own Store Process.</p>
+<p>When the Store Process is started on a host, the process is known as the "Store Process". That Store Process contains one or more "Store instances". A Store instance is an independent, addressable, and configurable component. Each Store instance is implemented with a set of interacting program threads. The threads of one Instance do not interact or contend with the threads of other Instances in the same Process.</p>
+<p>There is very little difference between running one Store Process with two Store instances compared to two Store Processes with one Store instance each. They function and perform mostly the same. The reasons for choosing one over the other have mostly to do with operational convenience. For example, running fewer processes on a host is sometimes easier to manage. So operational simplicity suggests combining multiple Store instances into a single Store Process.</p>
+<p>On the other hand, there are times when it is desired to shut down a Store instance. But Store instances cannot be shut down individually; an entire Store Process must be shut down. For example: as message rates increase, you may find that the host's CPU consumption is getting too high. You might want to migrate half of the Store instances to a different host. But if all your Store instances are in one Store Process, it is more disruptive perform the migration since it requires shutting down the entire process and re-configuring. So operational flexibility suggests assigning each desired Store instance to its own Store Process.</p>
 <p>One specific case where a single Store Process with multiple Store Instances is generally preferred: using the Store Process as a Windows Service. There is no simple way to run multiple copies of the Store Windows Service.</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="sourcerepositories"></a>
 Source Repositories&nbsp;&nbsp;<small><a href="#sourcerepositories">&lt;-</a></small></h2>
-<p>Within a Store Instance, you configure repositories for individual topics, and each can have their own set of <a class="el" href="configurationreferenceforumestored.html#umeelementtopic">&lt;topic&gt;</a> options that affect the repository's type, size, liveness behavior and much more. If you have multiple sources sending on the same topic, the Store Instance creates a separate repository for each source. UM uses the repository options configured for the topic to apply to each source's repository. If you specify 48 MB for the size of the repository and have 10 sources sending on the topic, the Store Instance requires 480 MB of storage for that topic.</p>
+<p>Within a Store instance, you configure repositories for individual topics, and each can have their own set of <a class="el" href="configurationreferenceforumestored.html#umeelementtopic">&lt;topic&gt;</a> options that affect the repository's type, size, liveness behavior and much more. If you have multiple sources sending on the same topic, the Store instance creates a separate repository for each source. UM uses the repository options configured for the topic to apply to each source's repository. If you specify 48 MB for the size of the repository and have 10 sources sending on the topic, the Store instance requires 480 MB of storage for that topic.</p>
 <p>A repository can be configured as one of the following types:</p>
 <ul>
 <li>
@@ -97,7 +97,7 @@ memory - the repository maintain both state and data only in memory </li>
 disk - the repository maintains state and data on disk, but also uses a memory cache. </li>
 </ul>
 <p>There are also repository types called "reduced-fd" and "no-cache", which are deprecated and will be removed in a future UM version. The "reduced-fd" repository is similar to <b>"disk"</b> but uses fewer OS File Descriptors. However, it is deprecated due to low performance. The "no-cache" repository maintains state (last sequence numbers published and consumed) but does not maintain message content. It is deprecated due to lack of compelling use cases.</p>
-<p>Note that the Store Instances within a Store Process can have different repository types.</p>
+<p>Note that the Store instances within a Store Process can have different repository types.</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="repositorythresholdsandlimits"></a>
@@ -117,6 +117,7 @@ Consumption by all required receivers (for receiver-paced persistence). </li>
 <p>The size configuration options differ depending on whether you are implementing a Memory Repository Store (<a class="el" href="optionsforastoresumeattributeselement.html#umecfgrepositorytype">repository-type</a> <b>"memory"</b>) or a Disk Repository Store (<a class="el" href="optionsforastoresumeattributeselement.html#umecfgrepositorytype">repository-type</a> <b>"disk"</b>).</p>
 <p><b>Memory Repository Size</b></p>
 <p>A memory type source repository has three configuration options that manage its size relative to its capacity.</p>
+<p>Note that the design of UM's persistence allows a maximum of 2,147,483,647 messages (2**31 - 1) to be persisted.</p>
 <ul>
 <li>
 <p class="startli"><a class="el" href="optionsforastoresumeattributeselement.html#umecfgrepositoryagethreshold">repository-age-threshold</a> - This value determines how long the memory repository retains messages. Messages in memory that exceed this time can be deleted from the memory cache.</p>
@@ -127,34 +128,64 @@ Consumption by all required receivers (for receiver-paced persistence). </li>
 <p class="endli"></p>
 </li>
 <li>
-<a class="el" href="optionsforastoresumeattributeselement.html#umecfgrepositorysizelimit">repository-size-limit</a> - The maximum size in bytes for the repository. Once this limit is reached, the repository stops accepting new messages. The age and size thresholds should be set at levels that guarantee the size limit is never met. You should consider how fast the source sends messages, the size of the messages and the reliability of the receivers. For example, more reliable receivers mean less recovery instances, which could mean a younger age threshold. </li>
+<a class="el" href="optionsforastoresumeattributeselement.html#umecfgrepositorysizelimit">repository-size-limit</a> - The maximum size in bytes for the repository. Once this limit is reached, the repository stops accepting new messages. The age and size thresholds should be set at levels that guarantee the size limit is never met. You should consider how fast the source sends messages, the size of the messages and the reliability of the receivers. For example, more reliable receivers mean less recovery instances, which could mean a younger age threshold. Do not specify a limit that would allow more than 2,147,483,647 messages to be stored. </li>
 </ul>
 <p><b>Disk Repository Size</b></p>
-<p>A disk type source repository maintains a memory cache in addition to the actual disk storage. It continually persists messages from the memory cache to the disk, and uses the memory cache for receiver recovery first before performing disk reads to access needed messages. It has four configuration options that manage its size relative to its capacity.</p>
+<p>A disk type source repository maintains a memory cache in addition to the actual disk storage. It continually persists messages from the memory cache to the disk, and uses the memory cache for receiver recovery first before performing disk reads to access needed messages.</p>
+<p>Note that the design of UM's persistence allows a maximum of 2,147,483,647 messages (2**31 - 1) to be persisted.</p>
+<p>The Store has four configuration options that manage its size relative to its capacity.</p>
 <ul>
 <li>
 <p class="startli"><a class="el" href="optionsforastoresumeattributeselement.html#umecfgrepositorysizethreshold">repository-size-threshold</a> - The size in bytes that a repository can reach before it begins to delete the oldest retained messages. These messages could have been persisted to disk and may be available for recovery. If the disk repository memory cache size falls below the threshold, it stops deleting old messages.</p>
 <p class="endli"></p>
 </li>
 <li>
-<p class="startli"><a class="el" href="optionsforastoresumeattributeselement.html#umecfgrepositorysizelimit">repository-size-limit</a> - The maximum size in bytes for the disk repository's memory cache. Once this limit is reached, the repository stops accepting new messages. The age and size thresholds should be set at levels that guarantee the size limit is never met. You should consider how fast the source sends messages, the size of the messages and the reliability of the receivers. For example, more reliable receivers mean less recovery instances, which could mean a younger age threshold.</p>
+<p class="startli"><a class="el" href="optionsforastoresumeattributeselement.html#umecfgrepositorysizelimit">repository-size-limit</a> - The maximum size in bytes for the disk repository's memory cache. Once this limit is reached, the repository stops accepting new messages. The age and size thresholds should be set at levels that guarantee the size limit is never met. You should consider how fast the source sends messages, the size of the messages and the reliability of the receivers. For example, more reliable receivers mean less recovery instances, which could mean a younger age threshold. Do not specify a limit that would allow more than 2,147,483,647 messages to be stored.</p>
 <p class="endli"></p>
 </li>
 <li>
-<a class="el" href="optionsforastoresumeattributeselement.html#umecfgrepositorydiskfilesizelimit">repository-disk-file-size-limit</a> - The maximum disk space (in bytes) for the disk repository. Once this limit is reached, the repository overwrites old messages with new messages. Overwriting old messages is not necessarily a negative situation provided you disk file size is adequate. However, if messages needed for recovery are not in either the memory cache or the disk file, you may need to increase the disk file size to ensure that overwritten messages are no longer needed for receiver recovery. </li>
+<a class="el" href="optionsforastoresumeattributeselement.html#umecfgrepositorydiskfilesizelimit">repository-disk-file-size-limit</a> - The maximum disk space (in bytes) for the disk repository. Once this limit is reached, the repository overwrites old messages with new messages. Overwriting old messages is not necessarily a negative situation provided you disk file size is adequate. However, if messages needed for recovery are not in either the memory cache or the disk file, you may need to increase the disk file size to ensure that overwritten messages are no longer needed for receiver recovery. Do not specify a limit that would allow more than 2,147,483,647 messages to be stored. </li>
 </ul>
 <p><br />
  </p>
 <h2><a class="anchor" id="persistentstorefault"></a>
 Persistent Store Fault Tolerance&nbsp;&nbsp;<small><a href="#persistentstorefault">&lt;-</a></small></h2>
-<p>Sources and receivers register with a Store Instance and use individual repositories within the Store. Sources can use redundant repositories configured in multiple Stores Instances in Quorum/Consensus (Q/C) arrangement for fault tolerance. Be aware that the arrangement of Store Instances into Quorum/Consensus groups is a function of the source. I.e. the individual Stores of a Q/C group are not aware of each other and do not coordinate their activities.</p>
-<p>Informatica strongly recommends that the Store Instances of a Q/C group run on separate physical hosts.</p>
+<p>Sources and receivers register with a Store instance and use individual repositories within the Store. Sources can use redundant repositories configured in multiple Stores Instances in Quorum/Consensus (QC) arrangement for fault tolerance. Be aware that the arrangement of Store instances into Quorum/Consensus groups is a function of the source. I.e. the individual Stores of a QC group are not aware of each other and do not coordinate their activities.</p>
+<p>Informatica strongly recommends that the Store instances of a QC group run on separate physical hosts.</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="identifyingpersistentstores"></a>
 Identifying Persistent Stores&nbsp;&nbsp;<small><a href="#identifyingpersistentstores">&lt;-</a></small></h2>
-<p>A persistent source must be configured to identify one or more Stores to provide persistence services. The source configuration can identify Store Instances with either a IP:port (using <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umestoresource">ume_store (source)</a>), domainID:IP:port (using <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umestoresource">ume_store (source)</a>), or the Store's context name (using <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umestorenamesource">ume_store_name (source)</a>).</p>
-<p>Using IP:port is feasible in deployments where there is no DRO; i.e. all components are in a single <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/UME/design.tag:../Design/" href="../Design/fundamentalconcepts.html#topicresolutiondomain">Topic Resolution Domain</a> (TRD). Deployments that include DRO and have multiple TRDs require that the domain ID be added: domainID:IP:port.</p>
+<p>A persistent source must be configured to identify one or more Stores to provide persistence services. The source configuration can identify Store instances with one of: </p><ul>
+<li>
+IP:port or domainID:IP:port using <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umestoresource">ume_store (source)</a>, see <a class="el" href="persistencearchitecture.html#ipstore">Store Address</a> </li>
+<li>
+Store's context name using <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umestorenamesource">ume_store_name (source)</a>, see <a class="el" href="persistencearchitecture.html#namedstores">Named Stores</a>). </li>
+</ul>
+<p>In either case, the store should be told which interface to bind to, which defines its IP address. This is done with the <a class="el" href="configurationreferenceforumestored.html#umeelementstore">UMP Element "&lt;store&gt;"</a> in the Store's configuration file. There is a shortcut available to simplify the Store configuration file; see <a class="el" href="persistencearchitecture.html#cidrstore">Using a CIDR Range of IP Addresses</a>.</p>
+<p><a class="anchor" id="ipstore"></a><b>Store Address: Identify Store with IP:Port</b></p>
+<p>Using IP:port is feasible in deployments where there is no DRO; i.e. all components are in a single <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/UME/design.tag:../Design/" href="../Design/fundamentalconcepts.html#topicresolutiondomain">Topic Resolution Domain</a> (TRD). Deployments that include DRO and have multiple TRDs require that the domain ID be added to the address: domainID:IP:port.</p>
+<p>Configure Store instance for a single IP:port.</p>
+<ol>
+<li>
+<p class="startli">Identify the Store with only the IP:port, specified with the <a class="el" href="configurationreferenceforumestored.html#umeelementstore">UMP Element "&lt;store&gt;"</a> in the Store's configuration file. For example: </p><div class="fragment"><div class="line">&lt;store name=<span class="stringliteral">&quot;newyork-1&quot;</span> port=<span class="stringliteral">&quot;14567&quot;</span> interface=<span class="stringliteral">&quot;10.29.3.16&quot;</span>&gt;</div></div><!-- fragment --><p class="endli"></p>
+</li>
+<li>
+Configure the source with the IP:port using the LBM configuration option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umestoresource">ume_store (source)</a> so sources can find and register with the Store instance. <pre class="fragment">source ume_store 10.29.3.16:14567
+</pre> </li>
+</ol>
+<p><a class="anchor" id="namedstores"></a><b>Named Stores: Identify Store with Context Name</b></p>
+<p>A Store is configured with a context name. Sources are then configured to specify the Stores by their names, instead of their IP:Port.</p>
+<ol>
+<li>
+<p class="startli">Give the Store's context a name using the <a class="el" href="optionsforastoresumeattributeselement.html#umecfgcontextname">context-name</a> option in the Store configuration file. For example: </p><div class="fragment"><div class="line">&lt;store name=<span class="stringliteral">&quot;newyork-1&quot;</span> port=<span class="stringliteral">&quot;14567&quot;</span> interface=<span class="stringliteral">&quot;10.29.3.0/24&quot;</span>&gt;</div><div class="line">&lt;ume-attributes&gt;</div><div class="line">   &lt;option type=<span class="stringliteral">&quot;store&quot;</span> name=<span class="stringliteral">&quot;context-name&quot;</span> value=<span class="stringliteral">&quot;NEWYORK-1&quot;</span>/&gt;</div><div class="line">&lt;/ume-attributes&gt;</div></div><!-- fragment --><p class="endli"></p>
+</li>
+<li>
+<p class="startli">Configure the source with the name of the Store's context using the LBM configuration option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umestorenamesource">ume_store_name (source)</a> so sources can find and register with the Store.</p>
+<pre class="fragment">source ume_store_name NEWYORK-1
+</pre><p class="endli">Note that you did not have to determine the full IP address of the store's host. </p>
+</li>
+</ol>
 <p>Store context names can be used with or without DROs. UM automatically resolves and maintains a mapping between a Store's context name and its domain ID, IP address and port, as follows: </p><ul>
 <li>
 Store advertises its context name at startup and in response to queries from sources. </li>
@@ -163,38 +194,19 @@ If a Store receives a context name advertisement that matches its own context na
 <li>
 Sources using Store context names issue an information message to the application every time a resolved context name changes its DomainID:IPaddress:port. </li>
 </ul>
-<p><b>Using a Single IP and Port</b></p>
-<p>Configure Store Instance for a single IP and port.</p>
+<p><a class="anchor" id="cidrstore"></a><b>Shortcut: Using a CIDR Range of IP Addresses</b></p>
+<p>Configure a Store with a CIDR range of IP addresses (see <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/UME/config.tag:../Config/" href="../Config/generalconfigurationguidelines.html#specifyinginterfaces">Specifying Interfaces</a>). This allows multiple Store daemon instances which only differ by their IP address to be configured the same. At initialization time, each Store daemon instance will determine its IP address using the CIDR specification. However, be aware that sources will need to use the full IP address.</p>
 <ol>
 <li>
-<p class="startli">Identify the Store with only the IP:port, specified with the <a class="el" href="configurationreferenceforumestored.html#umeelementstore">UMP Element "&lt;store&gt;"</a> in the Store's configuration file. For example: </p><div class="fragment"><div class="line">&lt;store name=<span class="stringliteral">&quot;newyork-1&quot;</span> port=<span class="stringliteral">&quot;14567&quot;</span> interface=<span class="stringliteral">&quot;10.29.3.16&quot;</span>&gt;</div></div><!-- fragment --><p class="endli"></p>
-</li>
-<li>
-Configure the source with the IP:port using the LBM configuration option <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umestoresource">ume_store (source)</a> so sources can find and register with the Store Instance. <pre class="fragment">source ume_store 10.29.3.16:14567
-</pre> </li>
-</ol>
-<p><b>Using a CIDR Range of IP Addresses</b></p>
-<p>Configure a Store with a CIDR range of IP addresses (see <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/UME/config.tag:../Config/" href="../Config/generalconfigurationguidelines.html#specifyinginterfaces">Specifying Interfaces</a>).</p>
-<ol>
-<li>
-<p class="startli">Identify the Store with a range of IP addresses specified in the Store configuration file. For example: </p><div class="fragment"><div class="line">&lt;store name=<span class="stringliteral">&quot;newyork-1&quot;</span> port=<span class="stringliteral">&quot;14567&quot;</span> interface=<span class="stringliteral">&quot;10.29.3.0/24&quot;</span>&gt;`</div></div><!-- fragment --><p> When the Store Process initializes, UM will choose a network interface within that IP address range (10.29.3.0 - 10.29.3.255). You will need to identify the full IP address of that interface. For example, 10.29.3.16.</p>
+<p class="startli">Identify the Store with a range of IP addresses specified in the Store configuration file. For example: </p><div class="fragment"><div class="line">&lt;store name=<span class="stringliteral">&quot;newyork-1&quot;</span> port=<span class="stringliteral">&quot;14567&quot;</span> interface=<span class="stringliteral">&quot;10.29.3.0/24&quot;</span>&gt;`</div></div><!-- fragment --><p> When the Store Process initializes, UM will choose a network interface within that IP address range (10.29.3.0 - 10.29.3.255).</p>
 <p class="endli"></p>
 </li>
 <li>
-Configure the source with the IP:port using the LBM configuration option <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umestoresource">ume_store (source)</a> so sources can find and register with the Store. You must specify the full IP address, not the CIDR range. <pre class="fragment">source ume_store 10.29.3.16:14567
-</pre> </li>
-</ol>
-<p><b>Using a Store Context Name</b></p>
-<p>Configure a Store as above.</p>
-<ol>
-<li>
-<p class="startli">Give the Store's context a name using the <a class="el" href="optionsforastoresumeattributeselement.html#umecfgcontextname">context-name</a> option in the Store configuration file. For example: </p><div class="fragment"><div class="line">&lt;store name=<span class="stringliteral">&quot;newyork-1&quot;</span> port=<span class="stringliteral">&quot;14567&quot;</span> interface=<span class="stringliteral">&quot;10.29.3.0/24&quot;</span>&gt;</div><div class="line">&lt;ume-attributes&gt;</div><div class="line">   &lt;option type=<span class="stringliteral">&quot;store&quot;</span> name=<span class="stringliteral">&quot;context-name&quot;</span> value=<span class="stringliteral">&quot;NEWYORK-1&quot;</span>/&gt;</div><div class="line">&lt;/ume-attributes&gt;</div></div><!-- fragment --><p class="endli"></p>
+<p class="startli">Configure the source with the IP:port using the LBM configuration option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umestoresource">ume_store (source)</a> so sources can find and register with the Store. <b>You must specify the full IP address, not the CIDR range.</b> </p><pre class="fragment">source ume_store 10.29.3.16:14567
+</pre><p class="endli"></p>
 </li>
 <li>
-<p class="startli">Configure the source with the name of the Store's context using the LBM configuration option <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umestorenamesource">ume_store_name (source)</a> so sources can find and register with the Store.</p>
-<pre class="fragment">source ume_store_name NEWYORK-1
-</pre><p class="endli">Note that you did not have to determine the full IP address of the store's host. </p>
-</li>
+Alternatively, you can use the <a class="el" href="persistencearchitecture.html#namedstores">Named Stores</a> feature so that the source doesn't need to specify the full IP. </li>
 </ol>
 <p><br />
 <br />

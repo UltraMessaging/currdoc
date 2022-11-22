@@ -1,5 +1,11 @@
 var NAVTREEINDEX20 =
 {
+"classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMFieldUnicode.html#aa3225af5d3be04a46d13b78b1ca4b7ff":[2,0,0,0,0,0,46,41],
+"classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMFieldUnicode.html#aa8ead9f09bc88014323532971d3e35b8":[2,0,0,0,0,0,46,1],
+"classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMFieldUnicode.html#aa92cfea2198a3e75fbb76b2f6940f360":[2,0,0,0,0,0,46,65],
+"classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMFieldUnicode.html#aabc17989328f892b2299d613a281de62":[2,0,0,0,0,0,46,55],
+"classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMFieldUnicode.html#aac9dbce5ce860e341645cdb26681be73":[2,0,0,0,0,0,46,69],
+"classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMFieldUnicode.html#aad6e34c53f01ebe17ffd3c5339710c74":[2,0,0,0,0,0,46,45],
 "classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMFieldUnicode.html#aadde6735f00454bfea1aeb1f5ed53e72":[2,0,0,0,0,0,46,31],
 "classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMFieldUnicode.html#ab190cf772230e5d5c02520e81e757bc9":[2,0,0,0,0,0,46,64],
 "classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMFieldUnicode.html#ab1ffba335ca691d38a0ccbf15f8045c2":[2,0,0,0,0,0,46,40],
@@ -243,11 +249,5 @@ var NAVTREEINDEX20 =
 "classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMRawUint64.html#afb2e193cf650f3e5841f24a755a87301":[2,0,0,0,0,0,60,13],
 "classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMRawUint64.html#aff5bd4c7ac7e4e493838eadceeab3a49":[2,0,0,0,0,0,60,17],
 "classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMTypeMismatchException.html":[2,0,0,0,0,0,61],
-"classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMTypeMismatchException.html#a128a553f6f0b68456e76c39fbfa38868":[2,0,0,0,0,0,61,1],
-"classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMTypeMismatchException.html#ad99bb9e80a744cf7a7c882d4ce569f10":[2,0,0,0,0,0,61,2],
-"classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMTypeMismatchException.html#ae662f97f0f0b2f8d91f8dcacf7de4537":[2,0,0,0,0,0,61,0],
-"classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMTypeNotSupportedException.html":[2,0,0,0,0,0,62],
-"classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMTypeNotSupportedException.html#a1355a6594bb3aa5880c90f948f8e36af":[2,0,0,0,0,0,62,0],
-"classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMTypeNotSupportedException.html#a67d033531a00f88bbcbe76cc9e319db4":[2,0,0,0,0,0,62,1],
-"classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMUnsignedException.html":[2,0,0,0,0,0,63]
+"classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMTypeMismatchException.html#a128a553f6f0b68456e76c39fbfa38868":[2,0,0,0,0,0,61,1]
 };

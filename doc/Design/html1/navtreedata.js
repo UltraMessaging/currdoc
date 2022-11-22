@@ -5,9 +5,9 @@ var NAVTREE =
     [ "Fundamental Concepts", "index.html#fundamentalconcepts", [
       [ "Messaging Paradigms", "index.html#messagingparadigms", [
         [ "Streaming", "index.html#streaming", null ],
-        [ "Persistence", "index.html#persistence", null ]
+        [ "Persistence", "index.html#persistence", null ],
+        [ "Queuing", "index.html#queuing", null ]
       ] ],
-      [ "Queuing", "index.html#queuing", null ],
       [ "Messages", "index.html#messages", [
         [ "Message Integrity", "index.html#messageintegrity", null ],
         [ "Message Metadata", "index.html#messagemetadata", null ]
@@ -21,7 +21,8 @@ var NAVTREE =
         [ "Unrecoverable Loss", "index.html#unrecoverableloss1", null ],
         [ "Head Loss", "index.html#headloss", null ],
         [ "Leading Loss", "index.html#leadingloss", null ],
-        [ "Tail Loss", "index.html#tailloss", null ]
+        [ "Tail Loss", "index.html#tailloss", null ],
+        [ "Burst Loss", "index.html#burstloss1", null ]
       ] ],
       [ "DRO", "index.html#umrouter", null ],
       [ "Late Join", "index.html#latejoin", null ],
@@ -47,32 +48,30 @@ var NAVTREE =
       [ "Source Object", "index.html#sourceobject", [
         [ "Source String", "index.html#sourcestring", null ],
         [ "Source Strings in a Routed Network", "index.html#sourcestringsinaroutednetwork", null ],
-        [ "Source Configuration and Transport Sessions", "index.html#sourceconfigurationandtransportsessions", null ],
-        [ "Zero Object Delivery (Source)", "index.html#zeroobjectdeliverysource", null ]
+        [ "Source Configuration and Transport Sessions", "index.html#sourceconfigurationandtransportsessions", null ]
       ] ],
       [ "Receiver Object", "index.html#receiverobject", [
         [ "Receiver Configuration and Transport Sessions", "index.html#receiverconfigurationandtransportsessions", null ],
         [ "UM Wildcard Receivers", "index.html#umwildcardreceivers", null ],
         [ "Transport Services Provider Object", "index.html#transportservicesproviderobject", null ],
-        [ "UM Hot Failover Across Contexts Objects", "index.html#umhotfailoveracrosscontextsobjects", null ],
-        [ "Zero Object Delivery", "index.html#zeroobjectdelivery", null ]
+        [ "UM Hot Failover Across Contexts Objects", "index.html#umhotfailoveracrosscontextsobjects", null ]
       ] ],
       [ "Event Queue Object", "index.html#eventqueueobject", [
         [ "Using an Event Queue", "index.html#usinganeventqueue", null ],
-        [ "Event Queue Timeout", "index.html#eventqueuetimeout", null ]
+        [ "Event Queue Efficiency", "index.html#eventqueueefficiency", null ],
+        [ "Event Queue Timeout", "index.html#eventqueuetimeout", null ],
+        [ "Event Queue Monitor", "index.html#eventqueuemonitor", null ]
       ] ],
       [ "Message Object", "index.html#messageobject", [
         [ "Message Object Deletion", "index.html#messageobjectdeletion", null ],
         [ "Message Object Retention", "index.html#messageobjectretention", null ]
       ] ],
-      [ "Attributes Object", "index.html#attributesobject", null ],
-      [ "Security Considerations", "index.html#securityconsiderations", [
-        [ "Webmon Security", "index.html#webmonsecurity", null ]
-      ] ],
-      [ "Configuration Introduction", "index.html#configurationintroduction", [
-        [ "xml:space Attribute", "index.html#xmlspaceattribute", null ]
-      ] ]
+      [ "Attributes Object", "index.html#attributesobject", null ]
     ] ],
+    [ "Security Considerations", "index.html#securityconsiderations", [
+      [ "Webmon Security", "index.html#webmonsecurity", null ]
+    ] ],
+    [ "Configuration Introduction", "index.html#configurationintroduction", null ],
     [ "Transport Types", "index.html#transporttypes", [
       [ "Transport TCP", "index.html#transporttcp", [
         [ "TCP Flow Control Restrictions", "index.html#tcpflowcontrolrestrictions", null ]
@@ -117,6 +116,19 @@ var NAVTREE =
         [ "Unicast UDP TR", "index.html#unicastudptr", null ],
         [ "TCP TR", "index.html#tcptr", null ]
       ] ],
+      [ "TCP-Based Topic Resolution Details", "index.html#tcpbasedtopicresolutiondetails", [
+        [ "TCP-Based TR and Fault Tolerance", "index.html#tcpbasedtrandfaulttolerance", null ],
+        [ "TCP-Based TR Interest", "index.html#tcpbasedtrinterest", null ],
+        [ "TCP-Based TR Version Interoperability", "index.html#tcpbasedtrversioninteroperability", null ],
+        [ "TCP-Based TR Configuration", "index.html#tcpbasedtrconfiguration", null ],
+        [ "SRS Service", "index.html#srsservice", null ]
+      ] ],
+      [ "SRS Monitoring", "index.html#srsmonitoring", [
+        [ "SRS Monitoring: Logs", "index.html#srsmonitoringlogs", null ],
+        [ "SRS Monitoring: Daemon Stats", "index.html#srsmonitoringdaemonstats", null ]
+      ] ]
+    ] ],
+    [ "Architecture", "index.html#architecture", [
       [ "UDP-Based Topic Resolution Details", "index.html#udpbasedtopicresolutiondetails", [
         [ "Sources Advertise", "index.html#sourcesadvertise", null ],
         [ "Receivers Query", "index.html#receiversquery", null ],
@@ -126,7 +138,7 @@ var NAVTREE =
         [ "Quiescent Phase", "index.html#quiescentphase", null ],
         [ "Store (context) Name Resolution", "index.html#storecontextnameresolution", null ],
         [ "UDP Topic Resolution Configuration Options", "index.html#udptopicresolutionconfigurationoptions", null ],
-        [ "Unicast Topic Resolution", "index.html#unicasttopicresolution", null ],
+        [ "Unicast UDP Topic Resolution", "index.html#unicasttopicresolution", null ],
         [ "Network Address Translation (NAT)", "index.html#networkaddresstranslationnat", null ],
         [ "Example NAT Configuration", "index.html#examplenatconfiguration", null ]
       ] ],
@@ -136,15 +148,6 @@ var NAVTREE =
         [ "Known Query Threshold TR", "index.html#knownquerythresholdtr", null ],
         [ "Advertise-Centric TR", "index.html#advertisecentrictr", null ]
       ] ],
-      [ "TCP-Based Topic Resolution Details", "index.html#tcpbasedtopicresolutiondetails", [
-        [ "TCP-Based TR and Fault Tolerance", "index.html#tcpbasedtrandfaulttolerance", null ],
-        [ "TCP-Based TR Interest", "index.html#tcpbasedtrinterest", null ],
-        [ "TCP-Based TR Version Interoperability", "index.html#tcpbasedtrversioninteroperability", null ],
-        [ "TCP-Based TR Configuration", "index.html#tcpbasedtrconfiguration", null ],
-        [ "SRS Service", "index.html#srsservice", null ]
-      ] ]
-    ] ],
-    [ "Architecture", "index.html#architecture", [
       [ "UM Software Stack", "index.html#umsoftwarestack", [
         [ "Delivery Controller", "index.html#deliverycontroller", null ]
       ] ],
@@ -179,6 +182,7 @@ var NAVTREE =
       ] ]
     ] ],
     [ "Application Design Principles", "index.html#applicationdesignprinciples", [
+      [ "UM Monitoring", "index.html#ummonitoring", null ],
       [ "Message Reception", "index.html#messagereception", [
         [ "C Message Reception", "index.html#cmessagereception", null ],
         [ "Java Message Reception", "index.html#javamessagereception", null ],
@@ -309,6 +313,7 @@ var NAVTREE =
         [ "IPC Transport Busy Waiting", "index.html#ipctransportbusywaiting", null ],
         [ "SMX Transport Busy Waiting", "index.html#smxtransportbusywaiting", null ]
       ] ],
+      [ "Zero Object Delivery", "index.html#zeroobjectdelivery", null ],
       [ "Receive Buffer Recycling", "index.html#receivebufferrecycling", [
         [ "Receive Buffer Recycling Restrictions", "index.html#receivebufferrecyclingrestrictions", null ]
       ] ],
@@ -339,6 +344,7 @@ var NAVTREE =
       ] ],
       [ "Comparison of Zero Copy and Smart Sources", "index.html#comparisonofzerocopyandsmartsources", null ],
       [ "XSP Latency Reduction", "index.html#xsplatencyreduction", null ],
+      [ "Receive-Side Batching", "index.html#receivesidebatching", null ],
       [ "Core Pinning", "index.html#corepinning", null ],
       [ "Memory Latency Reduction", "index.html#memorylatencyreduction", null ]
     ] ],
@@ -350,6 +356,7 @@ var NAVTREE =
       [ "SRS Configuration Elements", "index.html#srsconfigurationelements", [
         [ "SRS Element \"<um-srs>\"", "index.html#srselementumsrs", null ],
         [ "SRS Element \"<daemon-monitor>\"", "index.html#srselementdaemonmonitor", null ],
+        [ "SRS Element \"<monitor-format>\"", "index.html#srselementmonitorformat", null ],
         [ "SRS Element \"<remote-config-changes-request>\"", "index.html#srselementremoteconfigchangesrequest", null ],
         [ "SRS Element \"<remote-snapshot-request>\"", "index.html#srselementremotesnapshotrequest", null ],
         [ "SRS Element \"<publish-connection-events>\"", "index.html#srselementpublishconnectionevents", null ],
@@ -364,12 +371,13 @@ var NAVTREE =
         [ "SRS Element \"<um-client-stats>\"", "index.html#srselementumclientstats", null ],
         [ "SRS Element \"<srs-stats>\"", "index.html#srselementsrsstats", null ],
         [ "SRS Element \"<default>\"", "index.html#srselementdefault", null ],
+        [ "SRS Element \"<ping-interval>\"", "index.html#srselementpinginterval", null ],
         [ "SRS Element \"<debug-monitor>\"", "index.html#srselementdebugmonitor", null ],
         [ "SRS Element \"<enabled>\"", "index.html#srselementenabled", null ],
-        [ "SRS Element \"<ping-interval>\"", "index.html#srselementpinginterval", null ],
         [ "SRS Element \"<port>\"", "index.html#srselementport", null ],
         [ "SRS Element \"<interface>\"", "index.html#srselementinterface", null ],
         [ "SRS Element \"<srs>\"", "index.html#srselementsrs", null ],
+        [ "SRS Element \"<application-id>\"", "index.html#srselementapplicationid", null ],
         [ "SRS Element \"<clientactor>\"", "index.html#srselementclientactor", null ],
         [ "SRS Element \"<batch-frame-max-datagram-size>\"", "index.html#srselementbatchframemaxdatagramsize", null ],
         [ "SRS Element \"<batch-frame-max-record-count>\"", "index.html#srselementbatchframemaxrecordcount", null ],
@@ -436,6 +444,10 @@ var NAVTREE =
       [ "Lbmrd DTD file", "index.html#lbmrddtdfile", null ]
     ] ],
     [ "Packet Loss", "index.html#packetloss", [
+      [ "Design to Prevent Loss", "index.html#designtopreventloss", [
+        [ "Decrease Packet Flow through Loss Points", "index.html#decreasepacketflowthroughlosspoints", null ],
+        [ "Increase Efficiency of Packet Consumers", "index.html#increaseefficiencyofpacketconsumers", null ]
+      ] ],
       [ "UM Recovery of Lost Packets", "index.html#umrecoveryoflostpackets", null ],
       [ "Packet Loss Points", "index.html#packetlosspoints", [
         [ "Loss: Switch Egress Port", "index.html#lossswitchegressport", null ],
@@ -483,7 +495,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "index.html",
-"index.html#smartsourcesandmemorymanagement"
+"index.html#singlereceivingthreadrestrictions"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

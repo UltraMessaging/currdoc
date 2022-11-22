@@ -49,7 +49,6 @@ var umedmonmsgs_8h =
     [ "UMESTORE_DMON_REPO_TYPE_DISK", "umedmonmsgs_8h.html#ae54beebb7b6fc7cd0dcba389ce80c10d", null ],
     [ "UMESTORE_DMON_REPO_TYPE_MEMORY", "umedmonmsgs_8h.html#a869552c748c126d65e2f976f219bf1ca", null ],
     [ "UMESTORE_DMON_REPO_TYPE_NOCACHE", "umedmonmsgs_8h.html#a9d3a704736b65973a0b344ba328ee10a", null ],
-    [ "UMESTORE_DMON_REPO_TYPE_REDUCED_FD", "umedmonmsgs_8h.html#aec69f567c06adf9b5a3fd8785d071140", null ],
     [ "UMESTORE_DMON_TOPIC_TYPE_DIRECT", "umedmonmsgs_8h.html#a51bcf8e4b659239448591af2b696f66b", null ],
     [ "UMESTORE_DMON_TOPIC_TYPE_PCRE", "umedmonmsgs_8h.html#a478b382d5edd56ded40bd48aa5f3da49", null ],
     [ "UMESTORE_DMON_TOPIC_TYPE_REGEXP", "umedmonmsgs_8h.html#ab00006088f1336c75951416c2214226d", null ],

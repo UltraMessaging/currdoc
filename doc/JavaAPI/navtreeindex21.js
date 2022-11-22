@@ -1,5 +1,11 @@
 var NAVTREEINDEX21 =
 {
+"classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMTypeMismatchException.html#ad99bb9e80a744cf7a7c882d4ce569f10":[2,0,0,0,0,0,61,2],
+"classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMTypeMismatchException.html#ae662f97f0f0b2f8d91f8dcacf7de4537":[2,0,0,0,0,0,61,0],
+"classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMTypeNotSupportedException.html":[2,0,0,0,0,0,62],
+"classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMTypeNotSupportedException.html#a1355a6594bb3aa5880c90f948f8e36af":[2,0,0,0,0,0,62,0],
+"classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMTypeNotSupportedException.html#a67d033531a00f88bbcbe76cc9e319db4":[2,0,0,0,0,0,62,1],
+"classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMUnsignedException.html":[2,0,0,0,0,0,63],
 "classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMUnsignedException.html#a20a3d70c6a27e62b2af6370d0a16229d":[2,0,0,0,0,0,63,3],
 "classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMUnsignedException.html#a2db724821a1e164df5b228089233b715":[2,0,0,0,0,0,63,1],
 "classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMUnsignedException.html#a52505cfe2e62225f125394669975ba9e":[2,0,0,0,0,0,63,4],
@@ -243,11 +249,5 @@ var NAVTREEINDEX21 =
 "classcom_1_1latencybusters_1_1pdm_1_1PDMMessage.html#a057650d4f4fe82a55311923ea9547628":[2,0,0,0,1,9,62],
 "classcom_1_1latencybusters_1_1pdm_1_1PDMMessage.html#a08708cd7b032c473a695a82b13523ae8":[2,0,0,0,1,9,26],
 "classcom_1_1latencybusters_1_1pdm_1_1PDMMessage.html#a0a5261be62205a013f256d3882dc9f44":[2,0,0,0,1,9,76],
-"classcom_1_1latencybusters_1_1pdm_1_1PDMMessage.html#a0bb0ed313abd381a3f2db39150cc72cd":[2,0,0,0,1,9,37],
-"classcom_1_1latencybusters_1_1pdm_1_1PDMMessage.html#a0cfaf177111e1e3a33453e55e8c4796a":[2,0,0,0,1,9,90],
-"classcom_1_1latencybusters_1_1pdm_1_1PDMMessage.html#a0d234290744a01e06f54ec03e3b4806e":[2,0,0,0,1,9,71],
-"classcom_1_1latencybusters_1_1pdm_1_1PDMMessage.html#a0d66aa4de3486bcc8c77304b5513c689":[2,0,0,0,1,9,30],
-"classcom_1_1latencybusters_1_1pdm_1_1PDMMessage.html#a0dbed17030591c8494951972c8aac4f0":[2,0,0,0,1,9,45],
-"classcom_1_1latencybusters_1_1pdm_1_1PDMMessage.html#a1245e2b741f6e4bea43b0fcae5f00eda":[2,0,0,0,1,9,83],
-"classcom_1_1latencybusters_1_1pdm_1_1PDMMessage.html#a15ceb4e9bf5cb166e9086019635661c1":[2,0,0,0,1,9,78]
+"classcom_1_1latencybusters_1_1pdm_1_1PDMMessage.html#a0bb0ed313abd381a3f2db39150cc72cd":[2,0,0,0,1,9,37]
 };

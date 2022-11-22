@@ -147,7 +147,7 @@ UM Core Messages&nbsp;&nbsp;<small><a href="#umcoremessages">&lt;-</a></small></
 <tr>
 <td>Core-10403-09: SRS Controller Connection (p) is unable to request more data on the stream from the Server (s:u)</td><td>SRS Controller is unable to request more data on the data stream from the server.</td><td>Make sure the server is running. </td></tr>
 <tr>
-<td>Core-10403-120: resolver_service entry (s:u) already exist. Skipping but continuing.</td><td>The lbm_context_attr_setopt/str_setopt() detected duplicate resolver_service entries. The duplicate entries will be skipped.</td><td>Check the config file or code (if config set via code) for duplicate resolver_service entries. Also check if <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#aecac05969bba0d6057589ca03dfe60a2">lbm_config()</a> is loaded multiple times with the same resolver_service entries </td></tr>
+<td>Core-10403-120: resolver_service entry (s:u) already exist. Skipping but continuing.</td><td>The lbm_context_attr_setopt/str_setopt() detected duplicate resolver_service entries. The duplicate entries will be skipped.</td><td>Check the config file or code (if config set via code) for duplicate resolver_service entries. Also check if <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#aecac05969bba0d6057589ca03dfe60a2">lbm_config()</a> is loaded multiple times with the same resolver_service entries </td></tr>
 <tr>
 <td>Core-10403-150: Context (p) created with ContextID (u) and ContextName [s]</td><td>A Context was created with the given Context ID and name.</td><td>This is informational only and no action is required. </td></tr>
 <tr>
@@ -186,6 +186,8 @@ UM Core Messages&nbsp;&nbsp;<small><a href="#umcoremessages">&lt;-</a></small></
 <td>Core-10489-6: lbm_winevlog_setup() error creating TL queue: s</td><td>Unable to create two-lock queue</td><td>Contact Informatica Support. </td></tr>
 <tr>
 <td>Core-10528-3: The smart source p will fragment messages when the send message length plus configured message headers [d bytes] exceeds the transport's maximum datagram size [d bytes]</td><td>The configured smart_src_max_message_length plus LBM and application specified message headers exceeded the transport's datagram maximum size.</td><td>The smart source will fragment messages when the send message length plus headers exceeds the transport's maximum message length. </td></tr>
+<tr>
+<td>Core-10552-1: INFO: SRI request count exceeded maximum attempts. Retrying.</td><td>Exceeded the maximum number of requests for a Store Record Information (SRI).</td><td>Typically resolves itself after a store restart completes. Increase ume_sri_request_maximum and ume_sri_request_interval configuration option to reduce log message frequency </td></tr>
 <tr>
 <td>Core-10654-02: SRS Controller Connection (p) SID (0xx) got a disconnect from the Server (s:u) Local Addr (s:u)</td><td>The SRS Controller got a disconnect from the Server.</td><td>Check to make sure the correct server is running and the correct port is configured. </td></tr>
 <tr>
@@ -293,7 +295,13 @@ UM Core Messages&nbsp;&nbsp;<small><a href="#umcoremessages">&lt;-</a></small></
 <tr>
 <td>Core-10995-32: [LBMMON] Error d returned from format module wildcard receiver serialize function, s</td><td>Failed to convert a CSV wildcard receiver statistics message to PB format.</td><td>Contact Informatica support. </td></tr>
 <tr>
+<td>Core-10995-413: [LBMMON] An SRS statistics message was received but LBMMON_RCTL_PASSTHROUGH_CALLBACK not defined. SRS statistics require passthrough.</td><td>An SRS statistics message was received but LBMMON_RCTL_PASSTHROUGH_CALLBACK not defined.</td><td>Set option LBMMON_RCTL_PASSTHROUGH_CALLBACK in the LBMMON receiver controller. </td></tr>
+<tr>
 <td>Core-10995-432: [LBMMON] Invalid control message: s</td><td>An invalid LBMMON control message was received.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>Core-11087-1: ume_flight_size set to greater than 1,000,000 (d). This may result in delays creating internal structures.</td><td>The value of ume_flight_size has been set to greater than 1,000,000. This may cause large source create times initializing internal structures.</td><td>The ume_flight_size value is rather large. A smaller flight size is recommended. </td></tr>
+<tr>
+<td>Core-11087-2: ume_flight_size set to greater than 1,000,000 (d). This may result in delays creating internal structures.</td><td>The value of ume_flight_size has been set to greater than 1,000,000. This may cause large source create times initializing internal structures.</td><td>The ume_flight_size value is rather large. A smaller flight size is recommended. </td></tr>
 <tr>
 <td>Core-3398-1: Socket close timed out before receive buffer drain complete. lu bytes discarded from source (s).</td><td>Socket close timedout, but receive buffer has not been drained fully yet. On this close socket you may see connection resets.</td><td></td></tr>
 <tr>
@@ -401,7 +409,7 @@ UM Core Messages&nbsp;&nbsp;<small><a href="#umcoremessages">&lt;-</a></small></
 <tr>
 <td>Core-5688-1804: HF message receiver function returned -1</td><td>An error occurred processing a message received by a hot failover receiver. The message was discarded.</td><td>If this occurs frequently, contact Informatica support. </td></tr>
 <tr>
-<td>Core-5688-1807: LBM_DEBUG_MAXSIZE is greater than 4,294,967,295. Limiting to max.</td><td>Maximum rollover file size is capped at 4,294,967,295 (LBM_DEBUG_LOG_ROLLOVER_SIZE_MAX)</td><td>Set LBM_DEBUG_MAXSIZE and/or the parameter for <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#ac4410a1188555d16996be6b269bb0ef7">lbm_debugfile_maxsize()</a> to a lesser value to avoid this warning </td></tr>
+<td>Core-5688-1807: LBM_DEBUG_MAXSIZE is greater than 4,294,967,295. Limiting to max.</td><td>Maximum rollover file size is capped at 4,294,967,295 (LBM_DEBUG_LOG_ROLLOVER_SIZE_MAX)</td><td>Set LBM_DEBUG_MAXSIZE and/or the parameter for <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#ac4410a1188555d16996be6b269bb0ef7">lbm_debugfile_maxsize()</a> to a lesser value to avoid this warning </td></tr>
 <tr>
 <td>Core-5688-1811: FATAL: WSA startup error - d</td><td>FATAL: Error in starting Windows Socket. The specific Windows Sockets Error Code is returned in the error message.</td><td></td></tr>
 <tr>
@@ -953,19 +961,19 @@ UM Core Messages&nbsp;&nbsp;<small><a href="#umcoremessages">&lt;-</a></small></
 <tr>
 <td>Core-5688-605: IPC Error: Creating Receiver Thread (d)</td><td>An error occurred when the IPC receiver attempted to create a thread for internal processing. Please refer to the OS error number given.</td><td></td></tr>
 <tr>
-<td>Core-5688-614: LBT-IPC: failed to open shared memory (d)</td><td>The IPC shared memory region could not be opened for reading. This could occur if a receiver attempts to join an IPC transport after the source has been deleted. Please reference the OS error number given.</td><td></td></tr>
+<td>Core-5688-614: LBT-IPC: failed to open shared memory s (d)</td><td>The IPC shared memory region could not be opened for reading. This could occur if a receiver attempts to join an IPC transport after the source has been deleted. Please reference the OS error number given.</td><td></td></tr>
 <tr>
-<td>Core-5688-615: LBT-IPC: failed to map shared memory (d)</td><td>An error occurred trying to map a pointer to the IPC shared memory region. Please refer to the OS error number given.</td><td></td></tr>
+<td>Core-5688-615: LBT-IPC: failed to map shared memory s (d)</td><td>An error occurred trying to map a pointer to the IPC shared memory region. Please refer to the OS error number given.</td><td></td></tr>
 <tr>
-<td>Core-5688-617: LBT-IPC: failed to map shared memory (d)</td><td>An error occurred trying to map a pointer to the IPC shared memory region. Please refer to the OS error number given.</td><td></td></tr>
+<td>Core-5688-617: LBT-IPC: failed to map shared memory s (d)</td><td>An error occurred trying to map a pointer to the IPC shared memory region. Please refer to the OS error number given.</td><td></td></tr>
 <tr>
 <td>Core-5688-618: LBT-IPC: can not open shared semaphore (d)</td><td>The shared semaphore used to ensure mutual exclusion while accessing IPC shared resources could not be opened. This could occur if a receiver attempts to join an IPC transport after the source has been deleted. Please refer to the OS error number given.</td><td></td></tr>
 <tr>
-<td>Core-5688-619: LBT-IPC: failed to open shared memory (d)</td><td>The IPC shared memory region could not be opened for reading. This could occur if a receiver attempts to join an IPC transport after the source has been deleted. Please reference the OS error number given.</td><td></td></tr>
+<td>Core-5688-619: LBT-IPC: failed to open shared memory s (d)</td><td>The IPC shared memory region could not be opened for reading. This could occur if a receiver attempts to join an IPC transport after the source has been deleted. Please reference the OS error number given.</td><td></td></tr>
 <tr>
-<td>Core-5688-620: LBT-IPC: failed to map shared memory (d)</td><td>An error occurred trying to map a pointer to the IPC shared memory region. Please refer to the OS error number given.</td><td></td></tr>
+<td>Core-5688-620: LBT-IPC: failed to map shared memory s (d)</td><td>An error occurred trying to map a pointer to the IPC shared memory region. Please refer to the OS error number given.</td><td></td></tr>
 <tr>
-<td>Core-5688-622: LBT-IPC: failed to map shared memory (d)</td><td>An error occurred trying to map a pointer to the IPC shared memory region. Please refer to the OS error number given.</td><td></td></tr>
+<td>Core-5688-622: LBT-IPC: failed to map shared memory s (d)</td><td>An error occurred trying to map a pointer to the IPC shared memory region. Please refer to the OS error number given.</td><td></td></tr>
 <tr>
 <td>Core-5688-624: LBT-IPC: locking problem detected in lbtipc_txw_rcvr_node_alloc (d)</td><td>An error occurred with the shared object used to ensure mutual exclusion when accessing IPC shared resources. Please refer to the OS error number given.</td><td></td></tr>
 <tr>
@@ -1409,25 +1417,25 @@ UM Core Messages&nbsp;&nbsp;<small><a href="#umcoremessages">&lt;-</a></small></
 <tr>
 <td>Core-6976-125: LBT-SMX: locking problem detected in lbtsmx_txw_lock_rcvr_nodes (d)</td><td>An error occurred with the shared object used to ensure mutual exclusion when accessing SMX shared resources. Please refer to the OS error number given.</td><td></td></tr>
 <tr>
-<td>Core-6976-126: LBT-SMX: failed to open shared memory (d)</td><td>The SMX shared memory region could not be opened for reading. This could occur if a receiver attempts to join an SMX transport after the source has been deleted. Please reference the OS error number given.</td><td></td></tr>
+<td>Core-6976-126: LBT-SMX: failed to open shared memory s (d)</td><td>The SMX shared memory region could not be opened for reading. This could occur if a receiver attempts to join an SMX transport after the source has been deleted. Please reference the OS error number given.</td><td></td></tr>
 <tr>
-<td>Core-6976-127: LBT-SMX: failed to map shared memory (d)</td><td>An error occurred trying to map a pointer to the SMX shared memory region. Please refer to the OS error number given.</td><td></td></tr>
+<td>Core-6976-127: LBT-SMX: failed to map shared memory s (d)</td><td>An error occurred trying to map a pointer to the SMX shared memory region. Please refer to the OS error number given.</td><td></td></tr>
 <tr>
 <td>Core-6976-128: LBT-SMX: Transport Version Mismatch: Joining 0xx from version 0xx</td><td>The SMX shared memory region's version does not match our own; either the shared memory is corrupt or is not a version of LBT-SMX that we understand (it may be a newer or older version).</td><td>If different versions of the LBT-SMX transport have been used on the same machine, run their respective lbtsmx_resource_manager tools to reclaim and delete shared memory resources. Do not mix versions of LBT-SMX on the same machine. </td></tr>
 <tr>
-<td>Core-6976-129: LBT-SMX: failed to map shared memory (d)</td><td>An error occurred trying to map a pointer to the SMX shared memory region. Please refer to the OS error number given.</td><td></td></tr>
+<td>Core-6976-129: LBT-SMX: failed to map shared memory s (d)</td><td>An error occurred trying to map a pointer to the SMX shared memory region. Please refer to the OS error number given.</td><td></td></tr>
 <tr>
 <td>Core-6976-12: lbm_transport_lbtsmx_ctlr_delete: WFSO res=d, GLE=d</td><td>The WaitForSingleObject() Windows call return an error while waiting for the SMX Receiver thread to exit. Refer to the response and OS error number given.</td><td></td></tr>
 <tr>
 <td>Core-6976-130: LBT-SMX: can not open shared semaphore (d)</td><td>The shared semaphore used to ensure mutual exclusion while accessing SMX shared resources could not be opened. This could occur if a receiver attempts to join an SMX transport after the source has been deleted. Please refer to the OS error number given.</td><td></td></tr>
 <tr>
-<td>Core-6976-131: LBT-SMX: failed to open shared memory (d)</td><td>The SMX shared memory region could not be opened for reading. This could occur if a receiver attempts to join an SMX transport after the source has been deleted. Please reference the OS error number given.</td><td></td></tr>
+<td>Core-6976-131: LBT-SMX: failed to open shared memory s (d)</td><td>The SMX shared memory region could not be opened for reading. This could occur if a receiver attempts to join an SMX transport after the source has been deleted. Please reference the OS error number given.</td><td></td></tr>
 <tr>
-<td>Core-6976-132: LBT-SMX: failed to map shared memory (d)</td><td>An error occurred trying to map a pointer to the SMX shared memory region. Please refer to the OS error number given.</td><td></td></tr>
+<td>Core-6976-132: LBT-SMX: failed to map shared memory s (d)</td><td>An error occurred trying to map a pointer to the SMX shared memory region. Please refer to the OS error number given.</td><td></td></tr>
 <tr>
 <td>Core-6976-133: LBT-SMX: Transport Version Mismatch: Joining 0xx from version 0xx</td><td>The SMX shared memory region's version does not match our own; either the shared memory is corrupt or is not a version of LBT-SMX that we understand (it may be a newer or older version).</td><td>If different versions of the LBT-SMX transport have been used on the same machine, run their respective lbtsmx_resource_manager tools to reclaim and delete shared memory resources. Do not mix versions of LBT-SMX on the same machine. </td></tr>
 <tr>
-<td>Core-6976-134: LBT-SMX: failed to map shared memory (d)</td><td>An error occurred trying to map a pointer to the SMX shared memory region. Please refer to the OS error number given.</td><td></td></tr>
+<td>Core-6976-134: LBT-SMX: failed to map shared memory s (d)</td><td>An error occurred trying to map a pointer to the SMX shared memory region. Please refer to the OS error number given.</td><td></td></tr>
 <tr>
 <td>Core-6976-135: LBT-SMX: can not open shared Mutex (d)</td><td>An error occurred trying to open the mutex that protects the LBT-SMX shared memory region - see the OS error code for more information.</td><td></td></tr>
 <tr>
@@ -1841,13 +1849,13 @@ UM Core Messages&nbsp;&nbsp;<small><a href="#umcoremessages">&lt;-</a></small></
 <tr>
 <td>Core-9612-2: received lji request, but Late-Join not configured: from ip:port[s:d] for topic[u]</td><td>UMS received Late Join Request message however late-join is not configured for this source. This is not a serious problem but indicates that there is a mismatch between this process and another.</td><td>Check the system for port re-use on application restart and similar behavior. </td></tr>
 <tr>
-<td>Core-9625-1: WARNING: resovler_unicast_daemon entry (s:u) already exist. Skipping...</td><td>The lbm_context_attr_set/sset() detected duplicate unicast resolver entries. The duplicate entries will be skipped.</td><td>Check the config file or code (if config set via code) for duplicate resolver_unicast_daemon entries. Also check if <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#aecac05969bba0d6057589ca03dfe60a2">lbm_config()</a> is loaded multiple times with the same resolver_unicast_daemon entries </td></tr>
+<td>Core-9625-1: WARNING: resovler_unicast_daemon entry (s:u) already exist. Skipping...</td><td>The lbm_context_attr_set/sset() detected duplicate unicast resolver entries. The duplicate entries will be skipped.</td><td>Check the config file or code (if config set via code) for duplicate resolver_unicast_daemon entries. Also check if <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#aecac05969bba0d6057589ca03dfe60a2">lbm_config()</a> is loaded multiple times with the same resolver_unicast_daemon entries </td></tr>
 <tr>
-<td>Core-9626-1: WARNING: ume_store entry (u:s:u:u:u) already exist. Skipping...</td><td>The <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a96ea052dce2e6376684cbf2003407cbf">lbm_src_topic_attr_setopt()</a> detected duplicate ume_store entries. The duplicate entries will be skipped.</td><td>Check the config file or code (if config set via code) for duplicate ume_store entries. Also check if <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#aecac05969bba0d6057589ca03dfe60a2">lbm_config()</a> is loaded multiple times with the same ume_store entries </td></tr>
+<td>Core-9626-1: WARNING: ume_store entry (u:s:u:u:u) already exist. Skipping...</td><td>The <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a96ea052dce2e6376684cbf2003407cbf">lbm_src_topic_attr_setopt()</a> detected duplicate ume_store entries. The duplicate entries will be skipped.</td><td>Check the config file or code (if config set via code) for duplicate ume_store entries. Also check if <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#aecac05969bba0d6057589ca03dfe60a2">lbm_config()</a> is loaded multiple times with the same ume_store entries </td></tr>
 <tr>
-<td>Core-9626-2: WARNING: ume_store_name entry (s:u:u) already exist. Skipping...</td><td>The <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a96ea052dce2e6376684cbf2003407cbf">lbm_src_topic_attr_setopt()</a> detected duplicate ume_store_name entries. The duplicate entries will be skipped.</td><td>Check the config file or code (if config set via code) for duplicate ume_store_name entries. Also check if <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#aecac05969bba0d6057589ca03dfe60a2">lbm_config()</a> is loaded multiple times with the same ume_store_name entries </td></tr>
+<td>Core-9626-2: WARNING: ume_store_name entry (s:u:u) already exist. Skipping...</td><td>The <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a96ea052dce2e6376684cbf2003407cbf">lbm_src_topic_attr_setopt()</a> detected duplicate ume_store_name entries. The duplicate entries will be skipped.</td><td>Check the config file or code (if config set via code) for duplicate ume_store_name entries. Also check if <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#aecac05969bba0d6057589ca03dfe60a2">lbm_config()</a> is loaded multiple times with the same ume_store_name entries </td></tr>
 <tr>
-<td>Core-9640-1: WARNING: broker entry (s:u) already exist. Skipping...</td><td>The lbm_context_attr_setopt/str_setopt() detected duplicate broker entries. The duplicate entries will be skipped.</td><td>Check the config file or code (if config set via code) for duplicate broker entries. Also check if <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#aecac05969bba0d6057589ca03dfe60a2">lbm_config()</a> is loaded multiple times with the same broker entries </td></tr>
+<td>Core-9640-1: WARNING: broker entry (s:u) already exist. Skipping...</td><td>The lbm_context_attr_setopt/str_setopt() detected duplicate broker entries. The duplicate entries will be skipped.</td><td>Check the config file or code (if config set via code) for duplicate broker entries. Also check if <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#aecac05969bba0d6057589ca03dfe60a2">lbm_config()</a> is loaded multiple times with the same broker entries </td></tr>
 <tr>
 <td>Core-9709-1: epoll_ctl: EPOLL_CTL_DEL returned: errno:d:s</td><td>epoll returned an error during lbm_cancel_fd call</td><td></td></tr>
 <tr>
@@ -2217,7 +2225,7 @@ UM Core API Messages&nbsp;&nbsp;<small><a href="#umcoreapimessages">&lt;-</a></s
 <tr>
 <td>CoreApi-10347-35: optlen too small</td><td>Size of optlen was too small</td><td>Size of optlen must be at least 80 </td></tr>
 <tr>
-<td>CoreApi-10358-01: timeout (msec) must be zero when LBM_PROC_EVENT_EX_FLAG_USER_TIME is enabled</td><td>When setting the LBM_PROC_EVENT_EX_FLAG_USER_TIME flag, the user must set the timeout (msec) to zero to ensure that LBM gets needed time value updates.</td><td>Calls to <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a55b77c3057028116314fe5ff8e6afb25">lbm_context_process_events_ex()</a> need to set the timeout to zero when the LBM_PROC_EVENT_EX_FLAG_USER_TIME is set. </td></tr>
+<td>CoreApi-10358-01: timeout (msec) must be zero when LBM_PROC_EVENT_EX_FLAG_USER_TIME is enabled</td><td>When setting the LBM_PROC_EVENT_EX_FLAG_USER_TIME flag, the user must set the timeout (msec) to zero to ensure that LBM gets needed time value updates.</td><td>Calls to <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a55b77c3057028116314fe5ff8e6afb25">lbm_context_process_events_ex()</a> need to set the timeout to zero when the LBM_PROC_EVENT_EX_FLAG_USER_TIME is set. </td></tr>
 <tr>
 <td>CoreApi-10369-10: optlen incorrect size</td><td>Size of optlen was incorrect for setting integer option</td><td>optlen must be size of int </td></tr>
 <tr>
@@ -2317,7 +2325,7 @@ UM Core API Messages&nbsp;&nbsp;<small><a href="#umcoreapimessages">&lt;-</a></s
 <tr>
 <td>CoreApi-10571-5: Messages properties not supported</td><td>The Messages properties is not supported with smart source send request.</td><td>Do not set exinfo flags to LBM_SSRC_SEND_EX_FLAG_PROPERTIES. </td></tr>
 <tr>
-<td>CoreApi-10571-6: The message len (d) exceeds max length (d) bytes.</td><td>Message fragmentation is not supported with smart source send request.</td><td>Either reduce the message length or tune max datagram size and smart_src_max_message_length. See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/Operations/design.tag:../Design/" href="../Design/advancedoptimizations.html#smartsourcemessagebuffers">Smart Source Message Buffers</a> for more information on the smart source fragmentation </td></tr>
+<td>CoreApi-10571-6: The message len (d) exceeds max length (d) bytes.</td><td>Message fragmentation is not supported with smart source send request.</td><td>Either reduce the message length or tune max datagram size and smart_src_max_message_length. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Operations/design.tag:../Design/" href="../Design/advancedoptimizations.html#smartsourcemessagebuffers">Smart Source Message Buffers</a> for more information on the smart source fragmentation </td></tr>
 <tr>
 <td>CoreApi-10679-1: lbm_socket_send bad channel: p</td><td>A DBL call to get peer ip address and port was made with a bad channel specified.</td><td>Contact Informatica support. </td></tr>
 <tr>
@@ -2388,6 +2396,12 @@ UM Core API Messages&nbsp;&nbsp;<small><a href="#umcoreapimessages">&lt;-</a></s
 <td>CoreApi-10888-372: optlen incorrect size</td><td>The provided buffer is too small to hold the option value.</td><td>Provide a larger buffer. </td></tr>
 <tr>
 <td>CoreApi-10888-373: optlen incorrect size</td><td>The provided buffer is too small to hold the option value.</td><td>Provide a larger buffer. </td></tr>
+<tr>
+<td>CoreApi-10995-4300: Can't get address of ByteBuffer [s:d] - may not be a direct ByteBuffer</td><td>The ByteBuffer was not valid.</td><td>The ByteBuffer must be a direct ByteBuffer. </td></tr>
+<tr>
+<td>CoreApi-10995-4310: Can't allocate memory [s:d]</td><td>The system was not able to allocate the amount of memory requested.</td><td>The physical memory on the machine may be over committed; try moving some applications to another machine. </td></tr>
+<tr>
+<td>CoreApi-10995-4320: Can't allocate memory [s:d]</td><td>The system was not able to allocate the amount of memory requested.</td><td>The physical memory on the machine may be over committed; try moving some applications to another machine. </td></tr>
 <tr>
 <td>CoreApi-10996-1: resolver_disable_udp_topic_resolution optlen incorrect size</td><td>The option resolver_disable_udp_topic_resolution size is incorrect.</td><td>The expected size is sizeof(int) </td></tr>
 <tr>
@@ -2537,7 +2551,7 @@ UM Core API Messages&nbsp;&nbsp;<small><a href="#umcoreapimessages">&lt;-</a></s
 <tr>
 <td>CoreApi-5688-1390: session id not a number</td><td>The provided session ID was invalid.</td><td>Specify a session ID that fits one of the following formats: A hexadecimal value prefixed by 0x, an octal value prefixed by 0, or a decimal value. The value must be smaller than 0xFFFFFFFFFFFFFFFF regardless of representation. </td></tr>
 <tr>
-<td>CoreApi-5688-1885: opmode must be sequential</td><td>This is an invalid use of the <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#ad9416b1f0b474b5d4c4f39bb3c4bda77">lbm_context_process_events()</a> or lbmContextProcessEvents(). Calling <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#ad9416b1f0b474b5d4c4f39bb3c4bda77">lbm_context_process_events()</a> or lbmContextProcessEvents() for a context running in embedded mode. This will simply print the log message and return immediately.</td><td><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#ad9416b1f0b474b5d4c4f39bb3c4bda77">lbm_context_process_events()</a> or lbmContextProcessEvents() should get called only for sequential mode. See the UM Configuration Guide for high level guidance on configuring Ultra Messaging objects. </td></tr>
+<td>CoreApi-5688-1885: opmode must be sequential</td><td>This is an invalid use of the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#ad9416b1f0b474b5d4c4f39bb3c4bda77">lbm_context_process_events()</a> or lbmContextProcessEvents(). Calling <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#ad9416b1f0b474b5d4c4f39bb3c4bda77">lbm_context_process_events()</a> or lbmContextProcessEvents() for a context running in embedded mode. This will simply print the log message and return immediately.</td><td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#ad9416b1f0b474b5d4c4f39bb3c4bda77">lbm_context_process_events()</a> or lbmContextProcessEvents() should get called only for sequential mode. See the UM Configuration Guide for high level guidance on configuring Ultra Messaging objects. </td></tr>
 <tr>
 <td>CoreApi-5688-2014: optval not numeric</td><td>Value passed in for resolver_multicast_ttl was not numeric.</td><td>Review the configuration file and specify a valid numeric value for the option (0 - 255). </td></tr>
 <tr>
@@ -2549,7 +2563,7 @@ UM Core API Messages&nbsp;&nbsp;<small><a href="#umcoreapimessages">&lt;-</a></s
 <tr>
 <td>CoreApi-5688-2875: optval is malformed</td><td>The unicast resolver daemon specification string format is as follows: [Interface[:LocalPort]-&gt;]DaemonIP:RemotePort where Interface and LocalPort refer the local host interface and port, the DaemonIP refers to the resolver daemon's IP address, and the RemotePort refers to the resolver daemon's UDP port.</td><td>Provide a valid resolver daemon specification. </td></tr>
 <tr>
-<td>CoreApi-5688-3015: send would block</td><td>The application attempted a non-blocking send of a message on a transport that is blocked due to exceeding the transport's rate limit. The message was not sent, and was not queued for future sending.</td><td>The application can enable source events and wait for the LBM_SRC_EVENT_WAKEUP event, or it can use blocking sends, or it can simply retry the send after the rate limiter interval expires. Alternatively, consider increasing the rate limit and/or rate interval. See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/Operations/design.tag:../Design/" href="../Design/fundamentalconcepts.html#transportratecontrol">Transport Rate Control</a>. </td></tr>
+<td>CoreApi-5688-3015: send would block</td><td>The application attempted a non-blocking send of a message on a transport that is blocked due to exceeding the transport's rate limit. The message was not sent, and was not queued for future sending.</td><td>The application can enable source events and wait for the LBM_SRC_EVENT_WAKEUP event, or it can use blocking sends, or it can simply retry the send after the rate limiter interval expires. Alternatively, consider increasing the rate limit and/or rate interval. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Operations/design.tag:../Design/" href="../Design/fundamentalconcepts.html#transportratecontrol">Transport Rate Control</a>. </td></tr>
 <tr>
 <td>CoreApi-5688-3021: The LBM_MSG_END_BATCH was set before the LBM_MSG_START_BATCH flag. (Note:Explicit batching is deprecated as of UM 6.10).</td><td>The LBM_MSG_END_BATCH flag was set before the LBM_MSG_START_BATCH flag</td><td>Explicit batching is deprecated as of UM 6.10 </td></tr>
 <tr>
@@ -2617,15 +2631,15 @@ UM Core API Messages&nbsp;&nbsp;<small><a href="#umcoreapimessages">&lt;-</a></s
 <tr>
 <td>CoreApi-5688-4554: Can't allocate memory [s:d]</td><td>The LBM JNI library could not allocate a string object.</td><td>This usually indicates a severe out of memory condition. </td></tr>
 <tr>
-<td>CoreApi-5688-606: LBT-IPC: failed to allocate shared memory (d)</td><td>A shared memory object for the IPC transport could not be created. This could be caused by a permission error or no more resources. Please refer to the OS error number given.</td><td></td></tr>
+<td>CoreApi-5688-606: LBT-IPC: failed to allocate shared memory s (d)</td><td>A shared memory object for the IPC transport could not be created. This could be caused by a permission error or no more resources. Please refer to the OS error number given.</td><td></td></tr>
 <tr>
 <td>CoreApi-5688-608: LBT-IPC: failed to map shared memory (d)</td><td>An error occurred trying to map a pointer to the IPC shared memory region. Please refer to the OS error number given.</td><td></td></tr>
 <tr>
 <td>CoreApi-5688-610: LBT-IPC: can not initialize shared semaphore (d)</td><td>An error occurred when initializing the shared semaphore used to ensure mutual exclusion while accessing the IPC shared memory region. Please refer to the OS error number given.</td><td></td></tr>
 <tr>
-<td>CoreApi-5688-611: LBT-IPC: failed to allocate shared memory (d)</td><td>A shared memory object for the IPC transport could not be created. This could be caused by a permission error or no more resources. Please refer to the OS error number given.</td><td></td></tr>
+<td>CoreApi-5688-611: LBT-IPC: failed to allocate shared memory s (d)</td><td>A shared memory object for the IPC transport could not be created. This could be caused by a permission error or no more resources. Please refer to the OS error number given.</td><td></td></tr>
 <tr>
-<td>CoreApi-5688-612: LBT-IPC: failed to map shared memory (d)</td><td>An error occurred trying to map a pointer to the IPC shared memory region. Please refer to the OS error number given.</td><td></td></tr>
+<td>CoreApi-5688-612: LBT-IPC: failed to map shared memory s (d)</td><td>An error occurred trying to map a pointer to the IPC shared memory region. Please refer to the OS error number given.</td><td></td></tr>
 <tr>
 <td>CoreApi-5688-613: LBT-IPC: can not create shared Mutex (d)</td><td>The shared Mutex used to ensure mutual exclusion while accessing the IPC shared memory region could not be created. Please refer to the OS error number given.</td><td></td></tr>
 <tr>
@@ -3055,9 +3069,9 @@ UM Core API Messages&nbsp;&nbsp;<small><a href="#umcoreapimessages">&lt;-</a></s
 <tr>
 <td>CoreApi-6976-119: Configured LBT-SMX transport_lbtsmx_id_low (u) is greater than configured transport_lbtsmx_id_high (u)</td><td>The configured "context transport_lbtsmx_id_low" option is higher than the configured "context transport_lbtsmx_id_high" option, which is not allowed.</td><td></td></tr>
 <tr>
-<td>CoreApi-6976-152: LBT-SMX: failed to allocate shared memory (d)</td><td>A shared memory object for the SMX transport could not be created. This could be caused by a permission error or no more resources. Please refer to the OS error number given.</td><td></td></tr>
+<td>CoreApi-6976-152: LBT-SMX: failed to allocate shared memory s (d)</td><td>A shared memory object for the SMX transport could not be created. This could be caused by a permission error or no more resources. Please refer to the OS error number given.</td><td></td></tr>
 <tr>
-<td>CoreApi-6976-153: LBT-SMX: failed to allocate shared memory of size configured d, rcvrs: d (d)</td><td>A shared memory object for the SMX transport could not be created. This could be caused by a permission error or no more resources. Please refer to the OS error number given.</td><td></td></tr>
+<td>CoreApi-6976-153: LBT-SMX: failed to allocate shared memory s of size configured d, rcvrs: d (d)</td><td>A shared memory object for the SMX transport could not be created. This could be caused by a permission error or no more resources. Please refer to the OS error number given.</td><td></td></tr>
 <tr>
 <td>CoreApi-6976-154: LBT-SMX: failed to map shared memory (d)</td><td>An error occurred trying to map a pointer to the SMX shared memory region. Please refer to the OS error number given.</td><td></td></tr>
 <tr>
@@ -3065,9 +3079,9 @@ UM Core API Messages&nbsp;&nbsp;<small><a href="#umcoreapimessages">&lt;-</a></s
 <tr>
 <td>CoreApi-6976-156: LBT-SMX: can not initialize shared semaphore (d)</td><td>An error occurred when initializing the shared semaphore used to ensure mutual exclusion while accessing the SMX shared memory region. Please refer to the OS error number given.</td><td></td></tr>
 <tr>
-<td>CoreApi-6976-157: LBT-SMX: failed to allocate shared memory (d)</td><td>A shared memory object for the SMX transport could not be created. This could be caused by a permission error or no more resources. Please refer to the OS error number given.</td><td></td></tr>
+<td>CoreApi-6976-157: LBT-SMX: failed to allocate shared memory s (d)</td><td>A shared memory object for the SMX transport could not be created. This could be caused by a permission error or no more resources. Please refer to the OS error number given.</td><td></td></tr>
 <tr>
-<td>CoreApi-6976-158: LBT-SMX: failed to map shared memory (d)</td><td>An error occurred trying to map a pointer to the SMX shared memory region. Please refer to the OS error number given.</td><td></td></tr>
+<td>CoreApi-6976-158: LBT-SMX: failed to map shared memory s (d)</td><td>An error occurred trying to map a pointer to the SMX shared memory region. Please refer to the OS error number given.</td><td></td></tr>
 <tr>
 <td>CoreApi-6976-159: LBT-SMX: can not create shared Mutex (d)</td><td>The shared Mutex used to ensure mutual exclusion while accessing the SMX shared memory region could not be created. Please refer to the OS error number given.</td><td></td></tr>
 <tr>
@@ -3617,9 +3631,9 @@ UM Core API Messages&nbsp;&nbsp;<small><a href="#umcoreapimessages">&lt;-</a></s
 <tr>
 <td>CoreApi-9074-1: Queue deregistration is no longer allowed when using a brokered context</td><td>No longer allowed to deregister from a queue.</td><td>Remove function call. </td></tr>
 <tr>
-<td>CoreApi-9082-2: <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a6cd0c297e489e006ef5da83398184daa">lbm_umq_ctx_msg_stable()</a> API is deprecated</td><td>The lbm_umq_ctx_msg_stable is deprecated and no longer supported.</td><td>Remove this API call from the application. </td></tr>
+<td>CoreApi-9082-2: <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a6cd0c297e489e006ef5da83398184daa">lbm_umq_ctx_msg_stable()</a> API is deprecated</td><td>The lbm_umq_ctx_msg_stable is deprecated and no longer supported.</td><td>Remove this API call from the application. </td></tr>
 <tr>
-<td>CoreApi-9082-3: <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#aac6015a6a8e914c6e621e3b28940fe87">lbm_ctx_umq_get_inflight()</a> API is deprecated</td><td>The lbm_ctx_umq_get_inflight is deprecated and no longer supported.</td><td>Remove this API call from the application. </td></tr>
+<td>CoreApi-9082-3: <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#aac6015a6a8e914c6e621e3b28940fe87">lbm_ctx_umq_get_inflight()</a> API is deprecated</td><td>The lbm_ctx_umq_get_inflight is deprecated and no longer supported.</td><td>Remove this API call from the application. </td></tr>
 <tr>
 <td>CoreApi-9087-1: send would block because of flight size</td><td>This send would cause the configured flight size to exceed the configured value for this source.</td><td>Delay sending until the number inflight messages is reduced. </td></tr>
 <tr>
@@ -3975,15 +3989,15 @@ UM Core API Messages&nbsp;&nbsp;<small><a href="#umcoreapimessages">&lt;-</a></s
 <tr>
 <td>CoreApi-9721-2: usr_bufp cannot be NULL</td><td>A call to lbm_src_alloc_msg_buff was passed a NULL usr_bufp.</td><td>Pass a valid pointer that will contain the pointer to be used to fill in the caller's message data. </td></tr>
 <tr>
-<td>CoreApi-9721-3: lbm_hdl cannot be NULL</td><td>A call to lbm_src_alloc_msg_buff was passed a NULL lbm_hdl.</td><td>Pass a valid pointer that will contain the pointer to the returned lbm_hdl. This is what will be passed to a subsequent <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a91f4b9cb04fe1323ec56833211cc5cb7">lbm_src_send()</a> call. </td></tr>
+<td>CoreApi-9721-3: lbm_hdl cannot be NULL</td><td>A call to lbm_src_alloc_msg_buff was passed a NULL lbm_hdl.</td><td>Pass a valid pointer that will contain the pointer to the returned lbm_hdl. This is what will be passed to a subsequent <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a91f4b9cb04fe1323ec56833211cc5cb7">lbm_src_send()</a> call. </td></tr>
 <tr>
 <td>CoreApi-9721-4: transport for src must be LBTRM.</td><td>A call to lbm_src_alloc_msg_buff was passed a non LBTRM src.</td><td>Specify a valid LBTRM src. Only LBTRM sources are supported at this time. </td></tr>
 <tr>
 <td>CoreApi-9721-5: length (d) too long, must be less than d.</td><td>A call to lbm_src_alloc_msg_buff was passed a length that would cause fragmentation of a message.</td><td>Specify a length less than the maximum length shown in the message. </td></tr>
 <tr>
-<td>CoreApi-9721-6: Passed buffer invalid, sqn [d] invalid</td><td>The message buffer supplied to a source send call with the LBM_MSG_BUFF_ALLOC flag set, does not contain valid identifiers.</td><td>Check to make sure that the supplied message buffer was allocated with a call to <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#adf24bf7c4b07549d6a2f89d56e6c913a">lbm_src_alloc_msg_buff()</a> and is the handle to the buffer and not the actual message data pointer. See the documentation for the <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#adf24bf7c4b07549d6a2f89d56e6c913a">lbm_src_alloc_msg_buff()</a> call. </td></tr>
+<td>CoreApi-9721-6: Passed buffer invalid, sqn [d] invalid</td><td>The message buffer supplied to a source send call with the LBM_MSG_BUFF_ALLOC flag set, does not contain valid identifiers.</td><td>Check to make sure that the supplied message buffer was allocated with a call to <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#adf24bf7c4b07549d6a2f89d56e6c913a">lbm_src_alloc_msg_buff()</a> and is the handle to the buffer and not the actual message data pointer. See the documentation for the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#adf24bf7c4b07549d6a2f89d56e6c913a">lbm_src_alloc_msg_buff()</a> call. </td></tr>
 <tr>
-<td>CoreApi-9721-7: Passed buffer invalid, tidx [d] invalid</td><td>The message buffer supplied to a source send call with the LBM_MSG_BUFF_ALLOC flag set, does not contain valid identifiers.</td><td>Check to make sure that the supplied message buffer was allocated with a call to <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#adf24bf7c4b07549d6a2f89d56e6c913a">lbm_src_alloc_msg_buff()</a> and is the handle to the buffer and not the actual message data pointer. See the documentation for the <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#adf24bf7c4b07549d6a2f89d56e6c913a">lbm_src_alloc_msg_buff()</a> call. </td></tr>
+<td>CoreApi-9721-7: Passed buffer invalid, tidx [d] invalid</td><td>The message buffer supplied to a source send call with the LBM_MSG_BUFF_ALLOC flag set, does not contain valid identifiers.</td><td>Check to make sure that the supplied message buffer was allocated with a call to <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#adf24bf7c4b07549d6a2f89d56e6c913a">lbm_src_alloc_msg_buff()</a> and is the handle to the buffer and not the actual message data pointer. See the documentation for the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#adf24bf7c4b07549d6a2f89d56e6c913a">lbm_src_alloc_msg_buff()</a> call. </td></tr>
 <tr>
 <td>CoreApi-9721-8: Source [p] type [u] is not LBTRM. LBTRM is required with the LBM_MSG_BUFF_ALLOC flag.</td><td>The source supplied to a source send call with the LBM_MSG_BUFF_ALLOC flag set was not an LBTRM source.</td><td>At this time, only LBTRM sources are supported when using the LBM_MSG_BUFF_ALLOC flag. Use only LBTRM sources when specifying the LBM_MSG_BUFF_ALLOC flag. </td></tr>
 <tr>
@@ -4093,11 +4107,11 @@ UM Core API Messages&nbsp;&nbsp;<small><a href="#umcoreapimessages">&lt;-</a></s
 <tr>
 <td>CoreApi-9938-6: optlen too small</td><td>Attempted to set option compatibility_pre_um_6_0_context_ad_ivl with an incorrect optlen size.</td><td>Optlen must be greater than LBM_MIN_SGET_OPTLEN. </td></tr>
 <tr>
-<td>CoreApi-9941-115: usr_bufp offset is not valid.</td><td>A smart source call specified a user buffer with an invalid offset.</td><td>Supply the exact pointer supplied by <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a98c5450e9fb93f30bd80fa33a2380dfc">lbm_ssrc_buff_get()</a>. </td></tr>
+<td>CoreApi-9941-115: usr_bufp offset is not valid.</td><td>A smart source call specified a user buffer with an invalid offset.</td><td>Supply the exact pointer supplied by <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a98c5450e9fb93f30bd80fa33a2380dfc">lbm_ssrc_buff_get()</a>. </td></tr>
 <tr>
-<td>CoreApi-9941-116: usr_bufp base address is not valid.</td><td>A smart source call specified a user buffer with an invalid base address.</td><td>Return buffer with the exact pointer supplied by <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a98c5450e9fb93f30bd80fa33a2380dfc">lbm_ssrc_buff_get()</a>. </td></tr>
+<td>CoreApi-9941-116: usr_bufp base address is not valid.</td><td>A smart source call specified a user buffer with an invalid base address.</td><td>Return buffer with the exact pointer supplied by <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a98c5450e9fb93f30bd80fa33a2380dfc">lbm_ssrc_buff_get()</a>. </td></tr>
 <tr>
-<td>CoreApi-9941-117: user buffer is on the free list.</td><td>A smart source call specified a user buffer that is on the free list.</td><td>Don't be stupid! Invoke <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a98c5450e9fb93f30bd80fa33a2380dfc">lbm_ssrc_buff_get()</a> to allocate a user buffer. </td></tr>
+<td>CoreApi-9941-117: user buffer is on the free list.</td><td>A smart source call specified a user buffer that is on the free list.</td><td>Don't be stupid! Invoke <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a98c5450e9fb93f30bd80fa33a2380dfc">lbm_ssrc_buff_get()</a> to allocate a user buffer. </td></tr>
 <tr>
 <td>CoreApi-9941-118: corrupted user buffer pointer structure</td><td>A smart source call specified what appears to be a corrupted user buffer pointer structure.</td><td>Ensure that writes using the user buffer pointer do not exceed the range of addresses bounded by the source scoped smart_src_max_message_length configuration option. </td></tr>
 <tr>
@@ -4159,9 +4173,9 @@ UM Core API Messages&nbsp;&nbsp;<small><a href="#umcoreapimessages">&lt;-</a></s
 <tr>
 <td>CoreApi-9941-2: optval must be greater than 16</td><td>smart_src_max_message_length did not contain a positive integer</td><td>smart_src_max_message_length must be greater than 16 </td></tr>
 <tr>
-<td>CoreApi-9941-3000: <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a2f50f56536778332e9f5712b06546425">lbm_ssrc_send_ex()</a> thread does not match thread used by other smart source sends on this transport session</td><td>The smart source send call thread does not match the thread used by other smart source sends on this transport session.</td><td>The smart source send call thread must be the same thread used by all smart source sends on this transport session. </td></tr>
+<td>CoreApi-9941-3000: <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a2f50f56536778332e9f5712b06546425">lbm_ssrc_send_ex()</a> thread does not match thread used by other smart source sends on this transport session</td><td>The smart source send call thread does not match the thread used by other smart source sends on this transport session.</td><td>The smart source send call thread must be the same thread used by all smart source sends on this transport session. </td></tr>
 <tr>
-<td>CoreApi-9941-3001: <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a2f50f56536778332e9f5712b06546425">lbm_ssrc_send_ex()</a> thread does not match thread used by other smart source sends on this transport session</td><td>The smart source send call thread does not match the thread used by other smart source sends on this transport session.</td><td>The smart source send call thread must be the same thread used by all smart source sends on this transport session. </td></tr>
+<td>CoreApi-9941-3001: <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a2f50f56536778332e9f5712b06546425">lbm_ssrc_send_ex()</a> thread does not match thread used by other smart source sends on this transport session</td><td>The smart source send call thread does not match the thread used by other smart source sends on this transport session.</td><td>The smart source send call thread must be the same thread used by all smart source sends on this transport session. </td></tr>
 <tr>
 <td>CoreApi-9941-3025: ssrc must be valid</td><td>The Smart Source object is not valid.</td><td>Provide a valid Smart Source object. </td></tr>
 <tr>
@@ -4193,15 +4207,15 @@ UM Core API Messages&nbsp;&nbsp;<small><a href="#umcoreapimessages">&lt;-</a></s
 <tr>
 <td>CoreApi-9941-3: optval too large</td><td>smart_src_max_message_length is larger than the maximum allowed size</td><td>Decrease the size of smart_src_max_message_length </td></tr>
 <tr>
-<td>CoreApi-9941-4001: All d Smart Source [p] user buffers have been allocated.</td><td>A call to lbm_ssrc_buff_get failed due to user buffer exhaustion.</td><td>Return unused user buffers via <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#ab57120414bf92bd2f44de7aea97e3f1b">lbm_ssrc_buff_put()</a> or restart the application with a larger user buffer count. </td></tr>
+<td>CoreApi-9941-4001: All d Smart Source [p] user buffers have been allocated.</td><td>A call to lbm_ssrc_buff_get failed due to user buffer exhaustion.</td><td>Return unused user buffers via <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#ab57120414bf92bd2f44de7aea97e3f1b">lbm_ssrc_buff_put()</a> or restart the application with a larger user buffer count. </td></tr>
 <tr>
 <td>CoreApi-9941-4020: ssrc must be valid</td><td>ssrc parameter was NULL</td><td>ssrc must be a pointer to a valid lbm smart source. </td></tr>
 <tr>
 <td>CoreApi-9941-4021: usr_bufp must be valid</td><td>usr_bufp parameter was NULL</td><td>usr_bufp must be a pointer to a valid user buffer. </td></tr>
 <tr>
-<td>CoreApi-9941-4022: usr_bufp offset is not valid.</td><td>A call to lbm_ssrc_buff_put specified a user buffer with an invalid offset.</td><td>Return buffer with the exact pointer supplied by <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a98c5450e9fb93f30bd80fa33a2380dfc">lbm_ssrc_buff_get()</a>. </td></tr>
+<td>CoreApi-9941-4022: usr_bufp offset is not valid.</td><td>A call to lbm_ssrc_buff_put specified a user buffer with an invalid offset.</td><td>Return buffer with the exact pointer supplied by <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a98c5450e9fb93f30bd80fa33a2380dfc">lbm_ssrc_buff_get()</a>. </td></tr>
 <tr>
-<td>CoreApi-9941-4023: usr_bufp base address is not valid.</td><td>A call to lbm_ssrc_buff_put specified a user buffer with an invalid base address.</td><td>Return buffer with the exact pointer supplied by <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a98c5450e9fb93f30bd80fa33a2380dfc">lbm_ssrc_buff_get()</a>. </td></tr>
+<td>CoreApi-9941-4023: usr_bufp base address is not valid.</td><td>A call to lbm_ssrc_buff_put specified a user buffer with an invalid base address.</td><td>Return buffer with the exact pointer supplied by <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a98c5450e9fb93f30bd80fa33a2380dfc">lbm_ssrc_buff_get()</a>. </td></tr>
 <tr>
 <td>CoreApi-9941-4024: user buffer is already on the free list.</td><td>A call to lbm_ssrc_buff_put specified a user buffer the is already on the free list.</td><td>Don't be stupid! A buffer can only be returned once. </td></tr>
 <tr>
@@ -4241,7 +4255,7 @@ UM Core API Messages&nbsp;&nbsp;<small><a href="#umcoreapimessages">&lt;-</a></s
 <tr>
 <td>CoreApi-9941-6000: Can't allocate config options of u bytes [s:d]</td><td>The system was not able to allocate the amount of memory requested.</td><td>The physical memory on the machine may be over committed; try moving some applications to another machine. </td></tr>
 <tr>
-<td>CoreApi-9941-6001: Failed to call dump [s:d]</td><td>The call to <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a62e4da1cb793e25a249bada7202d2e88">lbm_ssrc_topic_dump()</a> failed.</td><td>Check that ssrc and opts are valid and that the value at size is greater than 0. </td></tr>
+<td>CoreApi-9941-6001: Failed to call dump [s:d]</td><td>The call to <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a62e4da1cb793e25a249bada7202d2e88">lbm_ssrc_topic_dump()</a> failed.</td><td>Check that ssrc and opts are valid and that the value at size is greater than 0. </td></tr>
 <tr>
 <td>CoreApi-9941-6003: Can't allocate JNI source object of u bytes [s:d]</td><td>The system was not able to allocate the amount of memory requested.</td><td>The physical memory on the machine may be over committed; try moving some applications to another machine. </td></tr>
 <tr>
@@ -4657,7 +4671,31 @@ UM SRS Log Messages&nbsp;&nbsp;<small><a href="#umsrslogmessages">&lt;-</a></sma
 <tr>
 <td>SRS-10943-66: Failed to schedule a " + CHECK_INACTIVE_RTIRS +                         " timer. Reason: </td><td>Failed to schedule a "check inactive RTIRs" timer.</td><td>Contact Informatica support. </td></tr>
 <tr>
-<td>SRS-11063-1: Received an unexpected ContextNameEndRecord message for clientID[" +                         clientId + "] with message id: </td><td>The SRS received an unexpected ContextNameEndRecord.</td><td><p class="starttd">Check the SRSs versions and make sure all SRSs are upgraded to the latest version.</p>
+<td>SRS-11063-1: Received an unexpected ContextNameEndRecord message for clientID[" +                         clientId + "] with message id: </td><td>The SRS received an unexpected ContextNameEndRecord.</td><td>Check the SRSs versions and make sure all SRSs are upgraded to the latest version. </td></tr>
+<tr>
+<td>SRS-11171-10: MonitorInfoCategoryName " + monitorInfoCategory.getName() + ": " +                             statName + " is not expected</td><td>An internal error was encountered.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>SRS-11171-11: MonitorInfoCategoryName " + monitorInfoCategory.getName() + ": " +                             statName + " is not expected</td><td>An internal error was encountered.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>SRS-11171-12: MonitorInfoCategoryName " + monitorInfoCategory.getName() + ": " +                         statName + " is not expected</td><td>An internal error was encountered.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>SRS-11171-13: MonitorInfoCategoryName " + monitorInfoCategory.getName() + ": " +                         statName + " is not expected</td><td>An internal error was encountered.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>SRS-11171-14: MonitorInfoCategoryName " + monitorInfoCategory.getName() + ": " +                     connectionEventType.getName() + " is not expected</td><td>An internal error was encountered.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>SRS-11171-15: ConnectionEventType " + connectionEventType.getName() + " is not expected</td><td>An internal error was encountered.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>SRS-11171-16: MonitorInfoCategoryName " + monitorInfoCategory.getName() + ": " +                             configOptionName + " has unexpected format</td><td>An internal error was encountered.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>SRS-11171-17: MonitorInfoCategoryName " + monitorInfoCategory.getName() + ": " +                         configOptionName + " is not expected</td><td>An internal error was encountered.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>SRS-11171-18: MonitorInfoCategoryName " + monitorInfoCategory.getName() + ": " +                         configOptionName + " is not expected</td><td>An internal error was encountered.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>SRS-11171-1: Failed to send a SRSMonMsg. Reason: </td><td>An internal error was encountered.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>SRS-11171-2: Failed to serialize a MonitorInfoMessage from category "                             + monitorInfoMessage.getMonitorInfoCategory().getName() + ". Reason: </td><td>An internal error was encountered.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>SRS-11195-1: Both the &lt;debug-monitor&gt;&lt;ping-interval&gt; and &lt;daemon-monitor&gt;&lt;ping-interval&gt;" +                         " are configured. The &lt;daemon-monitor&gt;&lt;ping-interval&gt; value of " +                         srsConfig.getDaemonMonitorPingInterval() + " will be used for both</td><td>The debug monitor is enabled and both &lt;debug-monitor&gt;&lt;ping-interval&gt; and &lt;daemon-monitor&gt;&lt;ping-interval&gt; are configured. The &lt;daemon-monitor&gt;&lt;ping-interval&gt; value takes precedence</td><td><p class="starttd">If the &lt;daemon-monitor&gt;&lt;ping-interval&gt; value is as intended, no resolution is needed. For more details, contact Informatica support.</p>
 <p class="endtd"></p>
 </td></tr>
 </table>
@@ -4737,7 +4775,7 @@ UM Dynamic Routing Log Messages&nbsp;&nbsp;<small><a href="#umdynamicroutinglogm
 <tr>
 <td>Gwd-10185-29: unknown portal type, d</td><td>Bad portal type specified in portal global structure</td><td></td></tr>
 <tr>
-<td>Gwd-10185-2: <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbmaux_8h.html#ae7d92b1afb5b581a6b71a154448f89a7">lbmaux_context_attr_setopt_from_file()</a> failed, s</td><td>Failure while setting up extra config opts for DRO daemon monitor</td><td>Check attributes in "lbm-config" config file specified in the DRO's xml file </td></tr>
+<td>Gwd-10185-2: <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Operations/api.tag:../API/" href="../API/lbmaux_8h.html#ae7d92b1afb5b581a6b71a154448f89a7">lbmaux_context_attr_setopt_from_file()</a> failed, s</td><td>Failure while setting up extra config opts for DRO daemon monitor</td><td>Check attributes in "lbm-config" config file specified in the DRO's xml file </td></tr>
 <tr>
 <td>Gwd-10185-30: error trying to retrieve endpoint portal stats data</td><td>Error trying to copy portal stats</td><td></td></tr>
 <tr>
@@ -4759,7 +4797,7 @@ UM Dynamic Routing Log Messages&nbsp;&nbsp;<small><a href="#umdynamicroutinglogm
 <tr>
 <td>Gwd-10185-39: tnwg_rm_info() returned an error</td><td>Failure accessing route manager info for route manager stat group</td><td></td></tr>
 <tr>
-<td>Gwd-10185-3: <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#ab67f641d5a0ad1a9fe53d415da58d961">lbm_context_attr_setopt()</a> failed, s</td><td>Failure setting up attributes for daemon monitor remote control handler</td><td></td></tr>
+<td>Gwd-10185-3: <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#ab67f641d5a0ad1a9fe53d415da58d961">lbm_context_attr_setopt()</a> failed, s</td><td>Failure setting up attributes for daemon monitor remote control handler</td><td></td></tr>
 <tr>
 <td>Gwd-10185-40: tnwg_rm_stat_grp_collect_portal_info() returned an error</td><td>Failure collecting portal info for route manager stat group</td><td></td></tr>
 <tr>
@@ -4793,27 +4831,27 @@ UM Dynamic Routing Log Messages&nbsp;&nbsp;<small><a href="#umdynamicroutinglogm
 <tr>
 <td>Gwd-10185-56: bad pointer to portal passed to tnwg_portalcfg_stat_grp_read()</td><td>Null pointer passed to tnwg_portalcfg_stat_grp_read()</td><td></td></tr>
 <tr>
-<td>Gwd-10185-57: <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a43f6029ad772e29b61c2a5c78f961073">lbm_context_attr_dump()</a> failed, s</td><td>Failure attempting to access portal config source context attributes from config tables</td><td></td></tr>
+<td>Gwd-10185-57: <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a43f6029ad772e29b61c2a5c78f961073">lbm_context_attr_dump()</a> failed, s</td><td>Failure attempting to access portal config source context attributes from config tables</td><td></td></tr>
 <tr>
-<td>Gwd-10185-58: <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a43f6029ad772e29b61c2a5c78f961073">lbm_context_attr_dump()</a> failed, s</td><td>Failure attempting to access portal config receiver context attributes from config tables</td><td></td></tr>
+<td>Gwd-10185-58: <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a43f6029ad772e29b61c2a5c78f961073">lbm_context_attr_dump()</a> failed, s</td><td>Failure attempting to access portal config receiver context attributes from config tables</td><td></td></tr>
 <tr>
-<td>Gwd-10185-59: <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a09bc0d170eadffe1eb1c30d421074125">lbm_event_queue_attr_dump()</a> failed, s</td><td>Failure attempting to access portal config event queue attributes from config tables</td><td></td></tr>
+<td>Gwd-10185-59: <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a09bc0d170eadffe1eb1c30d421074125">lbm_event_queue_attr_dump()</a> failed, s</td><td>Failure attempting to access portal config event queue attributes from config tables</td><td></td></tr>
 <tr>
 <td>Gwd-10185-5: unable to create src topic attributes: s</td><td>Error creating source attributes for daemon stats monitor</td><td></td></tr>
 <tr>
 <td>Gwd-10185-60: bad config type in tnwg_portalcfg_stat_grp_read() d</td><td>Invalid config type specified for Peer portal</td><td></td></tr>
 <tr>
-<td>Gwd-10185-61: <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a43f6029ad772e29b61c2a5c78f961073">lbm_context_attr_dump()</a> failed, s</td><td>Failure attempting to access portal config source context for endpoint portal</td><td></td></tr>
+<td>Gwd-10185-61: <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a43f6029ad772e29b61c2a5c78f961073">lbm_context_attr_dump()</a> failed, s</td><td>Failure attempting to access portal config source context for endpoint portal</td><td></td></tr>
 <tr>
-<td>Gwd-10185-62: <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a43f6029ad772e29b61c2a5c78f961073">lbm_context_attr_dump()</a> failed, s</td><td>Failure attempting to access endpoint portal config receiver context attributes from config table</td><td></td></tr>
+<td>Gwd-10185-62: <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a43f6029ad772e29b61c2a5c78f961073">lbm_context_attr_dump()</a> failed, s</td><td>Failure attempting to access endpoint portal config receiver context attributes from config table</td><td></td></tr>
 <tr>
-<td>Gwd-10185-63: <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a1d7722b39132940193205d6287c0a7f7">lbm_src_topic_attr_dump()</a> failed, s</td><td>Failure attempting to access endpoint portal config source attributes from config table</td><td></td></tr>
+<td>Gwd-10185-63: <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a1d7722b39132940193205d6287c0a7f7">lbm_src_topic_attr_dump()</a> failed, s</td><td>Failure attempting to access endpoint portal config source attributes from config table</td><td></td></tr>
 <tr>
-<td>Gwd-10185-64: <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a7a8f94b03c37c4481044d3c6b250bdb3">lbm_rcv_topic_attr_dump()</a> failed, s</td><td>Failure attempting to access endpoint portal config receiver attributes from config table</td><td></td></tr>
+<td>Gwd-10185-64: <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a7a8f94b03c37c4481044d3c6b250bdb3">lbm_rcv_topic_attr_dump()</a> failed, s</td><td>Failure attempting to access endpoint portal config receiver attributes from config table</td><td></td></tr>
 <tr>
-<td>Gwd-10185-65: <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a98dc9a9c6e5bfcf72222754f5179298d">lbm_wildcard_rcv_attr_dump()</a> failed, s</td><td>Failure attempting to access endpoint portal wildcard receiver attributes from config table</td><td></td></tr>
+<td>Gwd-10185-65: <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a98dc9a9c6e5bfcf72222754f5179298d">lbm_wildcard_rcv_attr_dump()</a> failed, s</td><td>Failure attempting to access endpoint portal wildcard receiver attributes from config table</td><td></td></tr>
 <tr>
-<td>Gwd-10185-66: <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a09bc0d170eadffe1eb1c30d421074125">lbm_event_queue_attr_dump()</a> failed, s</td><td>Failure attempting to access endpoint portal event queue attributes from config table</td><td></td></tr>
+<td>Gwd-10185-66: <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a09bc0d170eadffe1eb1c30d421074125">lbm_event_queue_attr_dump()</a> failed, s</td><td>Failure attempting to access endpoint portal event queue attributes from config table</td><td></td></tr>
 <tr>
 <td>Gwd-10185-67: bad portal type d</td><td>Invalid portal type</td><td></td></tr>
 <tr>
@@ -4935,10 +4973,6 @@ UM Dynamic Routing Log Messages&nbsp;&nbsp;<small><a href="#umdynamicroutinglogm
 <tr>
 <td>Gwd-10995-5: tnwg_portalcfg_stat_grp_pb_snapshot() failed</td><td>Failure from call to tnwg_portalcfg_stat_grp_pb_snapshot()</td><td></td></tr>
 <tr>
-<td>Gwd-10995-6: tnwg_portalcfg_stat_grp_read() failed for portal number d</td><td>Failure from call to tnwg_portalcfg_stat_grp_read()</td><td></td></tr>
-<tr>
-<td>Gwd-10995-7: tnwg_pcfg_stat_to_pb() failed for portal number d</td><td>Failure from call to tnwg_pcfg_stat_to_pb()</td><td></td></tr>
-<tr>
 <td>Gwd-10995-8: tnwg_read_portal_record() failed for portal number d</td><td>Failure from call to tnwg_read_portal_record()</td><td></td></tr>
 <tr>
 <td>Gwd-10995-9: tnwg_rm_stat_grp_read() failed</td><td>Failure from call to tnwg_rm_stat_grp_read()</td><td></td></tr>
@@ -4969,9 +5003,9 @@ UM Dynamic Routing Log Messages&nbsp;&nbsp;<small><a href="#umdynamicroutinglogm
 <tr>
 <td>Gwd-6033-353: endpoint portal [s] received one or more UIM control messages with no stream information - these will be dropped</td><td>This gateway has received messages from a client using an earlier version of the library that does not include stream information.</td><td>If this is expected behavior, this message can be ignored; otherwise the client should have its library upgraded. </td></tr>
 <tr>
-<td>Gwd-6033-367: endpoint portal [s] source context <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#ad9416b1f0b474b5d4c4f39bb3c4bda77">lbm_context_process_events()</a> failed [d]: s</td><td>The call to <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#ad9416b1f0b474b5d4c4f39bb3c4bda77">lbm_context_process_events()</a> for the source context has returned an error. The LBM error number and message has been supplied in the output.</td><td>Use the LBM error number and message as a cross reference to determine cause and resolution. </td></tr>
+<td>Gwd-6033-367: endpoint portal [s] source context <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#ad9416b1f0b474b5d4c4f39bb3c4bda77">lbm_context_process_events()</a> failed [d]: s</td><td>The call to <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#ad9416b1f0b474b5d4c4f39bb3c4bda77">lbm_context_process_events()</a> for the source context has returned an error. The LBM error number and message has been supplied in the output.</td><td>Use the LBM error number and message as a cross reference to determine cause and resolution. </td></tr>
 <tr>
-<td>Gwd-6033-368: endpoint portal [s] receive context <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#ad9416b1f0b474b5d4c4f39bb3c4bda77">lbm_context_process_events()</a> failed [d]: s</td><td>The call to <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#ad9416b1f0b474b5d4c4f39bb3c4bda77">lbm_context_process_events()</a> for the receive context has returned an error. The LBM error number and message has been supplied in the output.</td><td>Use the LBM error number and message as a cross reference to determine cause and resolution. </td></tr>
+<td>Gwd-6033-368: endpoint portal [s] receive context <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#ad9416b1f0b474b5d4c4f39bb3c4bda77">lbm_context_process_events()</a> failed [d]: s</td><td>The call to <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#ad9416b1f0b474b5d4c4f39bb3c4bda77">lbm_context_process_events()</a> for the receive context has returned an error. The LBM error number and message has been supplied in the output.</td><td>Use the LBM error number and message as a cross reference to determine cause and resolution. </td></tr>
 <tr>
 <td>Gwd-6033-593: peer portal [s] received one or more UIM control messages with no stream information - these will be dropped</td><td>This gateway has received messages from a client using an earlier version of the library that does not include stream information.</td><td>If this is expected behavior, this message can be ignored; otherwise the client should have its library upgraded. </td></tr>
 <tr>
@@ -5135,7 +5169,7 @@ UM Dynamic Routing Log Messages&nbsp;&nbsp;<small><a href="#umdynamicroutinglogm
 <tr>
 <td>Gwd-6361-67: portal [s] failed to join psm evq thread, s</td><td>UM has failed to join an event queue dispatch thread.</td><td>Contact Informatica Support. </td></tr>
 <tr>
-<td>Gwd-6361-69: portal [s] psm evq <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#ac06b127bae882dd5fb68b7044fdceb5f">lbm_event_dispatch()</a> failed, s</td><td>An error occurred while attempting to process events off an internal event queue.</td><td>Contact Informatica Support. </td></tr>
+<td>Gwd-6361-69: portal [s] psm evq <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#ac06b127bae882dd5fb68b7044fdceb5f">lbm_event_dispatch()</a> failed, s</td><td>An error occurred while attempting to process events off an internal event queue.</td><td>Contact Informatica Support. </td></tr>
 <tr>
 <td>Gwd-6361-6: endpoint portal [s] failed to schedule remote domain topic check timer [d]: s</td><td>An error occurred while attempting to schedule an internal timer.</td><td>Contact Informatica Support </td></tr>
 <tr>
@@ -5143,7 +5177,7 @@ UM Dynamic Routing Log Messages&nbsp;&nbsp;<small><a href="#umdynamicroutinglogm
 <tr>
 <td>Gwd-6361-72: TNWG PRM processing failed [d]: s</td><td>An error occurred while attempting to process an internal interest notification.</td><td>Contact Informatica Support. </td></tr>
 <tr>
-<td>Gwd-6361-73: portal [s] prm evq <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#ac06b127bae882dd5fb68b7044fdceb5f">lbm_event_dispatch()</a> failed, s</td><td>An error occurred while attempting to process events off an internal event queue.</td><td>Contact Informatica Support. </td></tr>
+<td>Gwd-6361-73: portal [s] prm evq <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#ac06b127bae882dd5fb68b7044fdceb5f">lbm_event_dispatch()</a> failed, s</td><td>An error occurred while attempting to process events off an internal event queue.</td><td>Contact Informatica Support. </td></tr>
 <tr>
 <td>Gwd-6361-74: route recalculation took u.%06u seconds</td><td>Running route recalculations took the indicated amount of time to complete.</td><td>Nothing. This is purely informational. </td></tr>
 <tr>
@@ -5151,9 +5185,9 @@ UM Dynamic Routing Log Messages&nbsp;&nbsp;<small><a href="#umdynamicroutinglogm
 <tr>
 <td>Gwd-6361-77: loop count == d</td><td>You're running a build of the gateway with TNWG_RM_LOOP_COUNT defined in tnwgrm.c.</td><td>Contact Informatica Support </td></tr>
 <tr>
-<td>Gwd-6361-78: rm evq <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#ac06b127bae882dd5fb68b7044fdceb5f">lbm_event_dispatch()</a> failed, s</td><td>An error occurred while attempting to process events off an internal event queue.</td><td>Contact Informatica Support </td></tr>
+<td>Gwd-6361-78: rm evq <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#ac06b127bae882dd5fb68b7044fdceb5f">lbm_event_dispatch()</a> failed, s</td><td>An error occurred while attempting to process events off an internal event queue.</td><td>Contact Informatica Support </td></tr>
 <tr>
-<td>Gwd-6361-79: rm ctx <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#ad9416b1f0b474b5d4c4f39bb3c4bda77">lbm_context_process_events()</a> failed, s</td><td>An error occurred while attempting to process events on an internal context.</td><td>Contact Informatica Support </td></tr>
+<td>Gwd-6361-79: rm ctx <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#ad9416b1f0b474b5d4c4f39bb3c4bda77">lbm_context_process_events()</a> failed, s</td><td>An error occurred while attempting to process events on an internal context.</td><td>Contact Informatica Support </td></tr>
 <tr>
 <td>Gwd-6361-7: endpoint portal [s] failed to schedule remote domain pattern check timer [d]: s</td><td>An error occurred while attempting to schedule an internal timer.</td><td>Contact Informatica Support </td></tr>
 <tr>
@@ -5505,7 +5539,7 @@ UM Lbmrd Log Messages&nbsp;&nbsp;<small><a href="#umlbmrdlogmessages">&lt;-</a><
 UM Persistent Store Log Messages&nbsp;&nbsp;<small><a href="#umpersistentstorelogmessages">&lt;-</a></small></h1>
 <center> <table class="doxtable">
 <tr>
-<td>Store-10184-08: dmon evq <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#ac06b127bae882dd5fb68b7044fdceb5f">lbm_event_dispatch()</a> failed, s</td><td>An error occurred while attempting to process events off an internal event queue.</td><td>Contact Informatica Support. </td></tr>
+<td>Store-10184-08: dmon evq <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#ac06b127bae882dd5fb68b7044fdceb5f">lbm_event_dispatch()</a> failed, s</td><td>An error occurred while attempting to process events off an internal event queue.</td><td>Contact Informatica Support. </td></tr>
 <tr>
 <td>Store-10184-100: failed to create dmon ctx attr: s</td><td>UM was unable to create context attributes.</td><td>Contact Informatica Support. </td></tr>
 <tr>
@@ -5520,8 +5554,6 @@ UM Persistent Store Log Messages&nbsp;&nbsp;<small><a href="#umpersistentstorelo
 <td>Store-10184-105: failed to delete dmon ctx: s</td><td>UM was unable to delete an internal context structure. Some memory has been leaked.</td><td>Contact Informatica Support. </td></tr>
 <tr>
 <td>Store-10184-10: failed to join dmon evq thread, s</td><td>UM failed to join an internal event queue dispatch thread.</td><td>Contact Informatica Support. </td></tr>
-<tr>
-<td>Store-10184-144: could not enqueue repo create</td><td>In a reduced-fd RPP repository, during the re-start( following a shutdown, or crash), UM could not enqueue repo create.</td><td>Contact customer support with the log file. </td></tr>
 <tr>
 <td>Store-10184-60: WARNING: store dmon message [s] from s [s]</td><td>UM dmon received an invalid/corrupted immediate message.</td><td>Verify that messages sent on the request port are valid. </td></tr>
 <tr>
@@ -5647,7 +5679,41 @@ UM Persistent Store Log Messages&nbsp;&nbsp;<small><a href="#umpersistentstorelo
 <tr>
 <td>Store-10888-913: store [s] automon filter [s] requires a string argument</td><td>Attempt to parse UME store automon filter failed. Filter option requires a string argument.</td><td>Specify a string argument and try again. </td></tr>
 <tr>
+<td>Store-11015-13: WARNING: msync EIO from umestore_cache_idx_sync</td><td>An operating system error was encountered when attempting to sync the cache index file</td><td>Check the log message for the system error code and investigate further </td></tr>
+<tr>
+<td>Store-11015-15: Unmap error: s</td><td>An operating system error was encountered when attempting to clean up the cache index file mapping</td><td>Check the log message for the system error code and investigate further. </td></tr>
+<tr>
+<td>Store-11015-19: WARNING: store "%s" existing Session ID u RegID u cache index file could not be recreated. Ignoring index.</td><td>Failure to recreate the index for the repository, possible data corruption or insufficient memory on the machine</td><td>Look at the Store log for additional information </td></tr>
+<tr>
+<td>Store-11015-20: While processing the &lt;restore_last&gt; option, an error was encountered opening the cache index file. &lt;restore_last&gt; option will be ignored.</td><td>An error ocurred trying to open the cache index file.</td><td>Check the specific error message for the cause and possible resolution. </td></tr>
+<tr>
+<td>Store-11015-24: cache index info creation failure: s. Ignoring index file s.</td><td>Failure to the information block for the repository's index file. Repository processing will continue without restore-last functionality.</td><td>Look at the Store log for additional information </td></tr>
+<tr>
+<td>Store-11015-2: WARNING: cache index file is too small</td><td>The file size for the cache index file was too small and may be corrupted.</td><td>The cache index file cannot be used and will be ignored. </td></tr>
+<tr>
+<td>Store-11015-4: WARNING: cache index file is too small</td><td>The file size for the cache index file was too small and may be corrupted.</td><td>The cache index file cannot be used and will be ignored. </td></tr>
+<tr>
 <td>Store-11082-100: store "%s" topic "%s" SRC Session ID u RegID u trail message cache SQN u was not sync'd with memory trail SQN u so cache was cleared.</td><td>The trail message cache was not pointing to the memory trail SQN.</td><td>The trail message cache was cleared so no further action is needed. </td></tr>
+<tr>
+<td>Store-11148-01: PostQueueCompletionStatus failed</td><td>An attempt to wake up the proactor thread failed.</td><td>Contact support if this error persists. </td></tr>
+<tr>
+<td>Store-11167-01: store "%s" topic "%s" (SID:u RID:u) does not match the SID (u) in the registration message.</td><td>The store is processing a registration message but the Session ID does not match the repository Session ID.</td><td>Please contact support. </td></tr>
+<tr>
+<td>Store-11191-01: store "%s" topic "%s" (SID:u RID:u) could not establish a quorum for the Proxy Source. No Proxy Source created. Retrying.</td><td>The store could not establish a quorum of stores with respositories for the Proxy Source election.</td><td>Usually the quorum cannot be establish when communications to other stores fail. It could also be that the other stores do not have a repository. </td></tr>
+<tr>
+<td>Store-11191-02: store "%s" topic "%s" Failed to schedule election timer, s</td><td>The store could not schedule a proxy source election timer due to an internal lbm error.</td><td>The error message of this log contains additional information as to the specific reason the timer schedule failed. </td></tr>
+<tr>
+<td>Store-11191-03: store "%s" topic "%s" (SID:u RID:u) could not establish a quorum for the Proxy Source and is giving up.</td><td>The store could not establish a quorum of stores with respositories for the Proxy Source election and after retrying, is giving up.</td><td>Usually the quorum cannot be establish when communications to other stores fail. It could also be that the other stores do not have a repository. </td></tr>
+<tr>
+<td>Store-11191-04: store "%s" topic "%s" Failed to schedule election timer, s</td><td>The store could not schedule a proxy source election timer due to an internal lbm error.</td><td>The error message of this log contains additional information as to the specific reason the timer schedule failed. </td></tr>
+<tr>
+<td>Store-11191-05: store "%s" topic "%s" (SID:u RID:u) restarting Proxy Source election. New registration received.</td><td>The store is restarting the Proxy Source election because a new Store registration was received.</td><td>No action is required. This is usually a result of an issue being repaired. </td></tr>
+<tr>
+<td>Store-11191-06: store "%s" topic "%s" (SID:u RID:u) lost quorum for the Proxy Source. Deleting Proxy Source. LBM message "%s"</td><td>The Proxy Source has lost quorum and will be deleted.</td><td>Usually the quorum cannot be maintained when communications to other stores fail. </td></tr>
+<tr>
+<td>Store-11191-07: store "%s" topic "%s" Failed to schedule election timer, s</td><td>The store could not schedule a proxy source election timer due to an internal lbm error.</td><td>The error message of this log contains additional information as to the specific reason the timer schedule failed. </td></tr>
+<tr>
+<td>Store-11191-08: store "%s" received a repo proxy election message that was not expected since proxy-source-repo-quorum-required is not enabled. s</td><td>The store received a message that is used only when the proxy-source-repo-quorum-required option is enabled but that option is disabled. The message will be dropped.</td><td>This is a misconfiguration and needs to be fixed. All stores need to be configured the same in regards to proxy-source-repo-quorum-required. Check the IP address of the originator if available. </td></tr>
 <tr>
 <td>Store-2179-1: store "%s" topic "%s" is dropping requests for retransmissions of messages persisted to disk. Increase the value of repository-disk-max-read-async-cbs to improve the rate of recovery.</td><td>A retransmit request at the store was dropped because the number of outstanding disk reads was greater than repository-disk-max-read-async-cbs.</td><td>Increase the value of repository-disk-max-read-async-cbs. </td></tr>
 <tr>
@@ -5739,9 +5805,9 @@ UM Persistent Store Log Messages&nbsp;&nbsp;<small><a href="#umpersistentstorelo
 <tr>
 <td>Store-5891-15: Store "%s" could not activate the s subsystem</td><td>Reduced-fd subsystem is initialized, but can not be activated due to failure activation message send error.</td><td>Contact customer support. </td></tr>
 <tr>
-<td>Store-5891-17: could not create disk_info_t for the repo[Session ID u RegID u]</td><td>If the log message is preceded by NULL ptr errors, Store is attempting to create a structure when it should not. Otherwise, system is out of memory.</td><td>Report a bug report if the message is preceded by NULL ptr error. Otherwise, root cause of memory problem should be investigated. </td></tr>
+<td>Store-5891-17: could not create disk_info_t for the repo[SesnID 0xx RegID u]</td><td>If the log message is preceded by NULL ptr errors, Store is attempting to create a structure when it should not. Otherwise, system is out of memory.</td><td>Report a bug report if the message is preceded by NULL ptr error. Otherwise, root cause of memory problem should be investigated. </td></tr>
 <tr>
-<td>Store-5891-18: WARNING: store "%s" existing Session ID u RegID u disk metadata and/or msgs in repository(for non-shutdown) can be removed in a clean way</td><td>Store can not delete reduced-fd repository from disk. Error occurred during the submission of delete requests of the messages that belong to repository being deleted to the thread responsible for deleting messages from the disk.</td><td>Contact customer support. </td></tr>
+<td>Store-5891-18: WARNING: store "%s" existing SesnID 0xx RegID u disk metadata and/or msgs in repository(for non-shutdown) can be removed in a clean way</td><td>Store can not delete reduced-fd repository from disk. Error occurred during the submission of delete requests of the messages that belong to repository being deleted to the thread responsible for deleting messages from the disk.</td><td>Contact customer support. </td></tr>
 <tr>
 <td>Store-5891-21: sanity check failed [s:d]</td><td>Function is called in state that is not expected by the function.</td><td>Contact customer support </td></tr>
 <tr>
@@ -5931,7 +5997,7 @@ UM Persistent Store Log Messages&nbsp;&nbsp;<small><a href="#umpersistentstorelo
 <tr>
 <td>Store-6395-116: Ack adjustment failed</td><td>In a reduced-fd RPP repository, during the re-start( following a shutdown, or crash), the function that calculates, for each message in the repository, number of receivers that need that message failed.</td><td>Contact customer support with the log file. </td></tr>
 <tr>
-<td>Store-6397-1: store "%s" source Session ID u [RegID u] [s repo] [message-sqn x] CKSUM failed x[cksum on recovered msg]</td><td>During the re-start ( following crash, or a re-start), for a reduced-fd repository message read from the disk, checksum failed. Message must have been corrupted.</td><td>Contact customer support with the store log file. </td></tr>
+<td>Store-6397-1: store "%s" source SesnID 0xx [RegID u] [s repo] [message-sqn x] CKSUM failed x[cksum on recovered msg]</td><td>During the re-start ( following crash, or a re-start), for a reduced-fd repository message read from the disk, checksum failed. Message must have been corrupted.</td><td>Contact customer support with the store log file. </td></tr>
 <tr>
 <td>Store-6397-2: Repository check-sum check function failed on src regid: u</td><td>The function resposible for check sum processing is called in a wrong state, i.e., one or many of the resource are missing (NULL). The checksum of the messages is not checked.</td><td>Contact customer support with the store log file. </td></tr>
 <tr>
@@ -5947,11 +6013,11 @@ UM Persistent Store Log Messages&nbsp;&nbsp;<small><a href="#umpersistentstorelo
 <tr>
 <td>Store-6417-7: INFO: Store "%s" RegID: u triggered late reduced-fd system initialization</td><td>This is an information message. Late initialization is triggered when a configuration file is changed such that all the reduced-fd repositories are deleted or changed to disk. If there is a state file for the repositories whose type is changed from reduced-fd to disk, then original repository type&ndash;reduced-fd&ndash; is enforced, and late initialization is triggered.</td><td>Remove the disk cache file or restore the configured repository type to reduced-fd </td></tr>
 <tr>
-<td>Store-6425-1: store "%s" Session ID u RegID u Configured repo type: u is different than the original type: u Forcing the original type</td><td>During the restart (following crash or shutdown), a repository type is changed, however, this is not allowed before the source deregistration. Store is going to enforce original repository type.</td><td>Remove the store's state and cache files or restore the configured repository type to the original value. </td></tr>
+<td>Store-6425-1: store "%s" SesnID 0xx RegID u Configured repo type: u is different than the original type: u Forcing the original type</td><td>During the restart ( following crash or shutdown), a repository type is changed, however, this is not allowed before the source deregistration. Store is going to enforce original repository type.</td><td>Remove the store's state and cache files or restore the configured repository type to the original value. </td></tr>
 <tr>
-<td>Store-6492-1: Store "%s" topic "%s" SRC Session ID u RegID u registering and trying to set the ume_repository_disk_file_size_limit when the repository is not a disk or reduced_fd repository.</td><td>registration setting disk size limit when you aren't a disk or a reduced_fd store</td><td>Check configuration. </td></tr>
+<td>Store-6492-1: Store "%s" topic "%s" SRC Session ID u RegID u registering and trying to set the ume_repository_disk_file_size_limit when the repository is not a disk repository.</td><td>registration setting disk size limit when you aren't a disk store</td><td>Check configuration. </td></tr>
 <tr>
-<td>Store-6492-2: Store "%s" topic "%s" SRC Session ID u RegID u registering and trying to set the ume_repository_disk_file_size_limit when the repository is not a disk or reduced_fd repository.</td><td>registration setting disk size limit when you aren't a disk or a reduced_fd store</td><td>Check configuration. </td></tr>
+<td>Store-6492-2: Store "%s" topic "%s" SRC Session ID u RegID u registering and trying to set the ume_repository_disk_file_size_limit when the repository is not a disk repository.</td><td>registration setting disk size limit when you aren't a disk store</td><td>Check configuration. </td></tr>
 <tr>
 <td>Store-6492-3: Store "%s" topic "%s" SRC Session ID u RegID u repository-size-threshold is greater than repository-size-limit</td><td>Repository size threshold is greater than repository size limit</td><td>Check config </td></tr>
 <tr>
@@ -5975,7 +6041,7 @@ UM Persistent Store Log Messages&nbsp;&nbsp;<small><a href="#umpersistentstorelo
 <tr>
 <td>Store-6607-2: queue "%s" receiver registration error: assign ID 0xx could not re-create receiver</td><td>A UMQ receiver could not be re-created - this probably means malloc failed or something else went terribly wrong.</td><td>Contact Informatica support. </td></tr>
 <tr>
-<td>Store-6620-1: INFO: Could not rename file [s] to [s]: s</td><td>The system failed to rename a corrupted cache or state file.</td><td>Review the system error string and resolve the system issue before restarting the store. </td></tr>
+<td>Store-6620-1: INFO: Could not rename file [s] to [s]: s</td><td>The system failed to rename a corrupted cache, state or index file.</td><td>Review the system error string and resolve the system issue before restarting the store. </td></tr>
 <tr>
 <td>Store-6652-1: umestore_retx_timer_check : retx_ctrl is not allocated</td><td>Retransmission Control Structure is not allocated</td><td>View Store log for errors </td></tr>
 <tr>
@@ -6011,6 +6077,12 @@ UM Persistent Store Log Messages&nbsp;&nbsp;<small><a href="#umpersistentstorelo
 <tr>
 <td>Store-7297-1: store "%s" topic "%s" Received proxy source PREG from self with invalid topic and transport indicies, ignoring.</td><td>A PREG request from a proxy source was received with an election token matching the proxy source hosted by this store. This PREG request is ignored.</td><td>This can occur if the store context thread has fallen behind in processing incoming PREG requests from the socket buffer, to the point where the store is processing PREG requests for proxy sources that no longer exist. Take steps to reduce the load on the store such as reducing the number of sources registered. </td></tr>
 <tr>
+<td>Store-7704-01: store "%s" SRC Session ID u RegID u disk-cache file contains duplicate sqn u</td><td>The cache file for the given Store, Session ID, and Registration ID contains a duplicate Sequence Number. Duplicate will be skipped.</td><td>If this problem continues, contact support. </td></tr>
+<tr>
+<td>Store-7704-03: Disk Cache loading: slow disk read detected regid(u)</td><td>The cache file containing the given Reg ID is slow. After 1 second, a read of 1,048,576 bytes did not complete.</td><td>Check the file/disk. </td></tr>
+<tr>
+<td>Store-7704-04: Disk Cache loading: slow disk read detected regid(u)</td><td>The cache file containing the given Reg ID is slow. After 1 second, a read of 1,048,576 bytes did not complete.</td><td>Check the file/disk. </td></tr>
+<tr>
 <td>Store-8000-100: store [s] PREG marker 0xx RegID u Session ID u Indices u.u [s.d] StoreID x L/T &lt;d - d&gt; s</td><td>A Source registered with the store.</td><td>No Further action is required. </td></tr>
 <tr>
 <td>Store-8000-101: store [s] PREG marker 0xx RegID u Session ID u idx u.u [s.d] StoreID x L/T &lt;d - d&gt; s</td><td>A Receiver registered with the store.</td><td>No further action is required. </td></tr>
@@ -6027,11 +6099,7 @@ UM Persistent Store Log Messages&nbsp;&nbsp;<small><a href="#umpersistentstorelo
 <tr>
 <td>Store-8079-5: Created blocked io thread: id[s]</td><td>The store created the blocked io thread with the reported thread id.</td><td>This is for informational purposes only and can be ignored. </td></tr>
 <tr>
-<td>Store-8079-6: Created level db thread: id[s]</td><td>The store created the level db dispatcher thread with the reported thread id.</td><td>This is for informational purposes only and can be ignored. </td></tr>
-<tr>
 <td>Store-8079-7: Created proactor thread: id[s]</td><td>The store created the proactor thread with the reported thread id.</td><td>This is for informational purposes only and can be ignored. </td></tr>
-<tr>
-<td>Store-8079-8: Created reduced-fd I/O thread: id[s]</td><td>The store created the reduced-fd I/O thread with the reported thread id.</td><td>This is for informational purposes only and can be ignored. </td></tr>
 <tr>
 <td>Store-8106-1: Store "%s" using port u from range context request_tcp_port_low (u) - request_tcp_port_high (u).</td><td>User specified 0 for the store port. This means that it will be started on a port selected from within the context request_tcp_port_low - request_tcp_port_high range.</td><td>Normal operation, no action needed. </td></tr>
 <tr>
@@ -6081,9 +6149,7 @@ UM Persistent Store Log Messages&nbsp;&nbsp;<small><a href="#umpersistentstorelo
 <tr>
 <td>Store-9689-1: Default application specified for LBM XML configuration file [s]</td><td>The application name for XML configuration files was set to NULL.</td><td>Log notification that NULL application name will be used </td></tr>
 <tr>
-<td>Store-9689-2: LBM XML configuration file [s] specified, but no application-name provided. Setting application name to "umestored" </td><td>The application name for XML configuration files defaults to "umestored" .</td><td>Specify the optional "application-name" sub-configuration to reference a different application in the XML file </td></tr>
-<tr>
-<td>Store-9753-01: Store "%s" leveldb delete event failed with return: d repo-&gt;trail_sqn: u repo-&gt;mem_trail_sqn: u</td><td>An attempt to delete messages from the LevelDB store repository failed.</td><td><p class="starttd">Contact customer support with the log file.</p>
+<td>Store-9689-2: LBM XML configuration file [s] specified, but no application-name provided. Setting application name to "umestored" </td><td>The application name for XML configuration files defaults to "umestored" .</td><td><p class="starttd">Specify the optional "application-name" sub-configuration to reference a different application in the XML file</p>
 <p class="endtd"></p>
 </td></tr>
 </table>
@@ -6106,8 +6172,6 @@ UM Persistent Store Log Messages&nbsp;&nbsp;<small><a href="#umpersistentstorelo
 <td>StoreApi-10184-107: failed to set dmon context option [operational_mode] to [embedded]: s</td><td>UM was unable to set specified daemon monitoring context attributes.</td><td>Contact Informatica Support. </td></tr>
 <tr>
 <td>StoreApi-10184-112: could not enqueue disk delete</td><td>UM could not enqueue disk delete.</td><td>Contact Informatica Support. </td></tr>
-<tr>
-<td>StoreApi-10184-143: could not create repo dmon block receiver list</td><td>UM could not create repo dmon block receiver list.</td><td>Contact Informatica Support. </td></tr>
 <tr>
 <td>StoreApi-10184-30: could not create topic dmon block repo list</td><td>UM could not create topic dmon block repo list.</td><td>Contact Informatica Support. </td></tr>
 <tr>
@@ -6176,6 +6240,40 @@ UM Persistent Store Log Messages&nbsp;&nbsp;<small><a href="#umpersistentstorelo
 <td>StoreApi-10888-816: could not enqueue receiver deleted event</td><td>UM could not enqueue receiver deleted event.</td><td>Contact Informatica Support. </td></tr>
 <tr>
 <td>StoreApi-10888-817: encountered an unknown event type</td><td>UM encountered an unknown automon event type.</td><td>Contact Informatica Support. </td></tr>
+<tr>
+<td>StoreApi-11015-10: umestore_cache_idx_map CreateFileMapping: s</td><td>An operating system error was encountered when attempting to map the cache index file</td><td>Check the log message for the system error code and investigate further </td></tr>
+<tr>
+<td>StoreApi-11015-11: umestore_cache_idx_map MapViewOfFile: s</td><td>An operating system error was encountered when attempting to map the cache index file</td><td>Check the log message for the system error code and investigate further </td></tr>
+<tr>
+<td>StoreApi-11015-12: umestore_cache_idx_sync FlushViewOfFile: s</td><td>An operating system error was encountered when attempting to flush the cache index file</td><td>Check the log message for the system error code and investigate further </td></tr>
+<tr>
+<td>StoreApi-11015-14: umestore_cache_idx_sync msync: s</td><td>An operating system error was encountered when attempting to sync the cache index file</td><td>Check the log message for the system error code and investigate further </td></tr>
+<tr>
+<td>StoreApi-11015-16: Could not open cache index file [s]: s</td><td>An operating system error was encountered when attempting to open the cache index file</td><td>Check the log message for the system error code and investigate further </td></tr>
+<tr>
+<td>StoreApi-11015-17: Existing cache index file [s] in use by another process</td><td>The cache index file is locked by another process</td><td>Ensure that other store processes are not running with the same configured state and cache directories. </td></tr>
+<tr>
+<td>StoreApi-11015-18: Could not open cache index file [s]: s</td><td>An operating system error was encountered when attempting to open the cache index file</td><td>Check the log message for the system error code and investigate further </td></tr>
+<tr>
+<td>StoreApi-11015-1: umestore_cache_idx_size fstat: s</td><td>An operating system error was encountered when attempting to fstat the cache index file</td><td>Check the log message for the system error code and investigate further </td></tr>
+<tr>
+<td>StoreApi-11015-21: Failed to unmap file. System error (d)</td><td>The operating system call to unmap the cache index file returned an error.</td><td>Check the system error code and determine why it would happen </td></tr>
+<tr>
+<td>StoreApi-11015-22: Failed to close cache index file mapping handle. System error (d)</td><td>The operating system call to close the cache index file mapping handle returned an error.</td><td>Check the system error code and determine why it would happen </td></tr>
+<tr>
+<td>StoreApi-11015-23: Failed to unmap state file. System error (d)</td><td>The operating system call to unmap the cache index file returned an error.</td><td>Check the system error code and determine why it would happen </td></tr>
+<tr>
+<td>StoreApi-11015-3: umestore_cache_idx_size GetFileSizeEx: s</td><td>An operating system error was encountered when attempting to get the file size of the cache index file</td><td>Check the log message for the system error code and investigate further </td></tr>
+<tr>
+<td>StoreApi-11015-5: umestore_cache_idx_setsize SetFilePointer: s</td><td>An operating system error was encountered when attempting to process the cache index file</td><td>Check the log message for the system error code and investigate further </td></tr>
+<tr>
+<td>StoreApi-11015-6: umestore_cache_idx_setsize SetEndOfFile: s</td><td>An operating system error was encountered when attempting to process the cache index file</td><td>Check the log message for the system error code and investigate further </td></tr>
+<tr>
+<td>StoreApi-11015-7: umestore_cache_idx_setsize lseek: s</td><td>An operating system error was encountered when attempting to process the cache index file</td><td>Check the log message for the system error code and investigate further </td></tr>
+<tr>
+<td>StoreApi-11015-8: umestore_cache_idx_setsize write: s</td><td>An operating system error was encountered when attempting to process the cache index file</td><td>Check the log message for the system error code and investigate further </td></tr>
+<tr>
+<td>StoreApi-11015-9: umestore_cache_idx_map mmap: s</td><td>An operating system error was encountered when attempting to map the cache index file</td><td>Check the log message for the system error code and investigate further </td></tr>
 <tr>
 <td>StoreApi-5867-6: could not insert umq_topic_appset_t skipped rcv list ASL [s:d]</td><td>An internal error occurred during ASL insertion</td><td>Look for previous error messages in the log such as a malloc error </td></tr>
 <tr>
@@ -6351,7 +6449,11 @@ UM MCS Log Messages&nbsp;&nbsp;<small><a href="#ummcslogmessages">&lt;-</a></sma
 <tr>
 <td>MCS-10995-450: Warnings from XML file:</td><td>The MCS user configuration XML file generated warnings.</td><td>Fix any warnings that are listed. </td></tr>
 <tr>
-<td>MCS-10995-460: Failed to load properties file " + connectorPropsFile + ". Reason: </td><td>The connector properties file could not be loaded.</td><td><p class="starttd">The file may be missing, wrong path information or have inappropriate access privileges.</p>
+<td>MCS-10995-460: Failed to load properties file " + connectorPropsFile + ". Reason: </td><td>The connector properties file could not be loaded.</td><td>The file may be missing, wrong path information or have inappropriate access privileges. </td></tr>
+<tr>
+<td>MCS-11077-1: Error setting LBM license: </td><td>An internal error was encountered. The server was unable to set the LBM license.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>MCS-11171-100: Failed to process incoming message: </td><td>Caught exception while processing incoming message.</td><td><p class="starttd">Contact Informatica support.</p>
 <p class="endtd"></p>
 </td></tr>
 </table>

@@ -3,6 +3,25 @@ var NAVTREE =
   [ "Release Notes", "index.html", [
     [ "Introduction", "index.html#firstsect", null ],
     [ "Important Corrections", "index.html#importantcorrections", null ],
+    [ "UM Version 6.15", "index.html#umversion6_15", [
+      [ "Enhancements for 6.15", "index.html#enhancementsfor6_15", [
+        [ "Streaming Enhancements for 6.15", "index.html#streamingenhancementsfor6_15", null ],
+        [ "Persistence Enhancements for 6.15", "index.html#persistenceenhancementsfor6_15", null ],
+        [ "Queuing Enhancements for 6.15", "index.html#queuingenhancementsfor6_15", null ],
+        [ "Dynamic Router Enhancements for 6.15", "index.html#dynamicrouterenhancementsfor6_15", null ]
+      ] ],
+      [ "Fixed Problems and Limitations for 6.15", "index.html#fixedlimitationsfor6_15", [
+        [ "Streaming Fixed Problems and Limitations for 6.15", "index.html#streamingfixedlimitationsfor6_15", null ],
+        [ "Persistence Fixed Problems and Limitations for 6.15", "index.html#persistencefixedlimitationsfor6_15", null ],
+        [ "Queuing Fixed Problems and Limitations for 6.15", "index.html#queuingfixedlimitationsfor6_15", null ],
+        [ "Dynamic Router Fixed Problems and Limitations for 6.15", "index.html#dynamicrouterfixedlimitationsfor6_15", null ]
+      ] ],
+      [ "Special Upgrade Instructions for 6.15", "index.html#specialupgradeinstructionsfor6_15", [
+        [ "Store Proxy Source Election", "index.html#storeproxysourceelection", null ],
+        [ "Store Protobuf Monitoring", "index.html#storeprotobufmonitoring", null ],
+        [ "Previous Special Instructions", "index.html#um6141specialinstructions", null ]
+      ] ]
+    ] ],
     [ "UM Version 6.14", "index.html#umversion6_14", [
       [ "Enhancements for 6.14", "index.html#enhancementsfor6_14", [
         [ "Streaming Enhancements for 6.14", "index.html#streamingenhancementsfor6_14", null ],
@@ -18,7 +37,7 @@ var NAVTREE =
       ] ],
       [ "Special Upgrade Instructions for 6.14", "index.html#specialupgradeinstructionsfor6_14", [
         [ "Additional C Include Directive", "index.html#additionalcincludedirective", null ],
-        [ "UM 6.13.1 Special Instructions", "index.html#um6131specialinstructions", null ]
+        [ "Previous Special Instructions", "index.html#um6131specialinstructions", null ]
       ] ]
     ] ],
     [ "UM Version 6.13.1", "index.html#umversion6_13_1", [
@@ -36,7 +55,7 @@ var NAVTREE =
       ] ],
       [ "Special Upgrade Instructions for 6.13.1", "index.html#specialupgradeinstructionsfor6_13_1", [
         [ "Minimum Required Glibc Version", "index.html#minimumrequiredglibcversion", null ],
-        [ "UM 6.13 Special Instructions", "index.html#um613specialinstructions", null ]
+        [ "Previous Special Instructions", "index.html#um613specialinstructions", null ]
       ] ]
     ] ],
     [ "UM Version 6.13", "index.html#umversion6_13", [
@@ -58,7 +77,7 @@ var NAVTREE =
         [ "repository-disk-max-read-async-cbs", "index.html#repositorydiskmaxreadasynccbs", null ],
         [ "SRS Daemon Statistics Change", "index.html#srsdaemonstatisticschange", null ],
         [ "Persistent Receiver and Duplicate Messages", "index.html#persistentreceiverandduplicatemessages", null ],
-        [ "UM 6.12 Special Instructions", "index.html#um612specialinstructions", null ]
+        [ "Previous Special Instructions", "index.html#um612specialinstructions", null ]
       ] ]
     ] ],
     [ "UM Version 6.12.1", "index.html#umversion6_12_1", [
@@ -90,7 +109,7 @@ var NAVTREE =
       ] ],
       [ "Special Upgrade Instructions for 6.12", "index.html#specialupgradeinstructionsfor6_12", [
         [ "Smart Source Header Size Change", "index.html#smartsourceheadersizechange", null ],
-        [ "UM 6.10 Special Instructions", "index.html#um610specialinstructions", null ]
+        [ "Previous Special Instructions", "index.html#um610specialinstructions", null ]
       ] ]
     ] ],
     [ "UM Version 6.11.1", "index.html#umversion6_11_1", [
@@ -150,7 +169,7 @@ var NAVTREE =
       ] ],
       [ "Special Upgrade Instructions for 6.10", "index.html#specialupgradeinstructionsfor6_10", [
         [ "UM 6.10 Improved Defaults", "index.html#um610improveddefaults", null ],
-        [ "UM 6.8 Special Instructions", "index.html#um68specialinstructions", null ]
+        [ "Previous Special Instructions", "index.html#um68specialinstructions", null ]
       ] ]
     ] ],
     [ "UM Version 6.9.2", "index.html#umversion6_9_2", [
@@ -209,8 +228,10 @@ var NAVTREE =
         [ "Dynamic Router Fixed Problems and Limitations for 6.8", "index.html#dynamicrouterfixedlimitationsfor6_8", null ]
       ] ],
       [ "Special Upgrade Instructions for 6.8", "index.html#specialupgradeinstructionsfor6_8", [
+        [ "UM 6.8 Improved Defaults", "index.html#um68improveddefaults", null ],
         [ "Upgrading Brokered Queuing and JMS", "index.html#upgradingbrokeredqueueingandjms", null ],
-        [ "UM 6.7 Special Instructions", "index.html#um67specialinstructions", null ]
+        [ "MIM Disabled by Default", "index.html#mimdisabledbydefault", null ],
+        [ "Previous Special Instructions", "index.html#um67specialinstructions", null ]
       ] ]
     ] ],
     [ "UM Version 6.7.3", "index.html#umversion6_7_3", [
@@ -264,7 +285,7 @@ var NAVTREE =
         [ "Remove lbm_reqs_rcved from SMX", "index.html#removelbmreqsrcvedfromsmx", null ],
         [ "Upgrading From Version Pre-6.0", "index.html#upgradingfromversionpre60", null ],
         [ "Log Messages During Upgrade", "index.html#logmessagesduringupgrade", null ],
-        [ "UM 6.5 Special Instructions", "index.html#um65specialinstructions", null ]
+        [ "Previous Special Instructions", "index.html#um65specialinstructions", null ]
       ] ]
     ] ],
     [ "UM Version 6.5", "index.html#umversion6_5", [
@@ -315,6 +336,7 @@ var NAVTREE =
       ] ]
     ] ],
     [ "Deprecations", "index.html#deprecations", [
+      [ "Deprecations for 6.15", "index.html#deprecationsfor615", null ],
       [ "Deprecations for 6.14", "index.html#deprecationsfor614", null ],
       [ "Deprecations for 6.13.1", "index.html#deprecationsfor6131", null ],
       [ "Deprecations for 6.13", "index.html#deprecationsfor613", [
@@ -361,7 +383,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "index.html",
-"index.html#um6131specialinstructions"
+"index.html#streamingfixedlimitationsfor6_14"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

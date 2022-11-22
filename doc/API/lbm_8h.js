@@ -1130,6 +1130,7 @@ var lbm_8h =
     [ "lbm_src_retrieve_transport_stats", "lbm_8h.html#a976eeac5bd741e2c320a1f341a22af1a", null ],
     [ "lbm_src_send", "lbm_8h.html#a91f4b9cb04fe1323ec56833211cc5cb7", null ],
     [ "lbm_src_send_ex", "lbm_8h.html#a091b5806bf18d10ebd0d9117e0c70229", null ],
+    [ "lbm_src_send_lbmmon_stats", "lbm_8h.html#ace587be4a3073480174150c95183692b", null ],
     [ "lbm_src_sendv", "lbm_8h.html#af28189e64ef0ee10d3444e418443aaa9", null ],
     [ "lbm_src_sendv_ex", "lbm_8h.html#a4d883eaaa22baf81abf21d495f471c8b", null ],
     [ "lbm_src_setopt", "lbm_8h.html#a561190e0b26353f112b3bcb499c057f7", null ],

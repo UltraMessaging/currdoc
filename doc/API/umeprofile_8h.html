@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">UM C API
-   &#160;<span id="projectnumber">6.14</span>
+   &#160;<span id="projectnumber">6.15</span>
    </div>
   </td>
  </tr>
@@ -77,7 +77,7 @@ $(document).ready(function(){initNavTree('umeprofile_8h.html','');});
 </div><!--header-->
 <div class="contents">
 
-<p>Ultra Messaging (UM) Store Repository Profiling (SRP) API. The "umeprofile.h" header file defines the APIs to extract information from a Persistent Store's cache and state files. The binary code is contained in the "umestore" library (static only on Unix: "libumestorelib.a", dynamic only on Windows: "umestore.dll"). See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/API/ume.tag:../UME/" href="../UME/storerepositoryprofilingsrp.html">Store Repository Profiling (SRP)</a> for general information on the SRP API. See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/API/design.tag:../Design/" href="../Design/fundamentalconcepts.html#persistence">Persistence</a> for general information on the Persistent Store. See <a class="el" href="index.html#umcapi">UM C API</a> for general information on the C API. See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/API/design.tag:../Design/" href="../Design/fundamentalconcepts.html">Fundamental Concepts</a> for an introduction to Ultra Messaging.  
+<p>Ultra Messaging (UM) Store Repository Profiling (SRP) API. The "umeprofile.h" header file defines the APIs to extract information from a Persistent Store's cache and state files. The binary code is contained in the "umestore" library (static only on Unix: "libumestorelib.a", dynamic only on Windows: "umestore.dll"). See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/API/ume.tag:../UME/" href="../UME/storerepositoryprofilingsrp.html">Store Repository Profiling (SRP)</a> for general information on the SRP API. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/API/design.tag:../Design/" href="../Design/fundamentalconcepts.html#persistence">Persistence</a> for general information on the Persistent Store. See <a class="el" href="index.html#umcapi">UM C API</a> for general information on the C API. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/API/design.tag:../Design/" href="../Design/fundamentalconcepts.html">Fundamental Concepts</a> for an introduction to Ultra Messaging.  
 <a href="#details">More...</a></p>
 
 <p><a href="umeprofile_8h_source.html">Go to the source code of this file.</a></p>
@@ -99,8 +99,11 @@ Macros</h2></td></tr>
 <tr class="memitem:a6ceef51ca8aa36a735ae7676e7ae318e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6ceef51ca8aa36a735ae7676e7ae318e"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>UMEStoreExpDLL</b></td></tr>
 <tr class="separator:a6ceef51ca8aa36a735ae7676e7ae318e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a382cd49b77c666bef4c2141776701bb7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a382cd49b77c666bef4c2141776701bb7"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>LBM_SRP_MAX_DIRECTORY_STRLEN</b>&#160;&#160;&#160;256</td></tr>
+<tr class="separator:a382cd49b77c666bef4c2141776701bb7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a45b2f2f6bd7aada69ad890792e0825ab"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a45b2f2f6bd7aada69ad890792e0825ab"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>LBM_SRP_MAX_PATH_STRLEN</b>&#160;&#160;&#160;260</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>LBM_SRP_MAX_PATH_STRLEN</b>&#160;&#160;&#160;(256 + 40)</td></tr>
 <tr class="separator:a45b2f2f6bd7aada69ad890792e0825ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a976985ff7576fa632066f966ebcf3bcb"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a976985ff7576fa632066f966ebcf3bcb"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>LBM_SRP_TOPICNAME_MAX_LEN</b>&#160;&#160;&#160;(256 + 8)</td></tr>
@@ -159,7 +162,7 @@ Functions</h2></td></tr>
 <tr class="separator:aefbd012de930c9c47172ee305e2ae8af"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Ultra Messaging (UM) Store Repository Profiling (SRP) API. The "umeprofile.h" header file defines the APIs to extract information from a Persistent Store's cache and state files. The binary code is contained in the "umestore" library (static only on Unix: "libumestorelib.a", dynamic only on Windows: "umestore.dll"). See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/API/ume.tag:../UME/" href="../UME/storerepositoryprofilingsrp.html">Store Repository Profiling (SRP)</a> for general information on the SRP API. See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/API/design.tag:../Design/" href="../Design/fundamentalconcepts.html#persistence">Persistence</a> for general information on the Persistent Store. See <a class="el" href="index.html#umcapi">UM C API</a> for general information on the C API. See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/API/design.tag:../Design/" href="../Design/fundamentalconcepts.html">Fundamental Concepts</a> for an introduction to Ultra Messaging. </p>
+<div class="textblock"><p>Ultra Messaging (UM) Store Repository Profiling (SRP) API. The "umeprofile.h" header file defines the APIs to extract information from a Persistent Store's cache and state files. The binary code is contained in the "umestore" library (static only on Unix: "libumestorelib.a", dynamic only on Windows: "umestore.dll"). See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/API/ume.tag:../UME/" href="../UME/storerepositoryprofilingsrp.html">Store Repository Profiling (SRP)</a> for general information on the SRP API. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/API/design.tag:../Design/" href="../Design/fundamentalconcepts.html#persistence">Persistence</a> for general information on the Persistent Store. See <a class="el" href="index.html#umcapi">UM C API</a> for general information on the C API. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/API/design.tag:../Design/" href="../Design/fundamentalconcepts.html">Fundamental Concepts</a> for an introduction to Ultra Messaging. </p>
 </div><h2 class="groupheader">Enumeration Type Documentation</h2>
 <a class="anchor" id="aca488c5ae2999982573d2a20613cd48f"></a>
 <div class="memitem">

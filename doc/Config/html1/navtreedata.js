@@ -10,11 +10,7 @@ var NAVTREE =
         [ "Configuration Error Handling", "index.html#configurationerrorhandling", null ],
         [ "Host Name Resolution", "index.html#hostnameresolution", null ],
         [ "Configuration Files", "index.html#configurationfiles", null ]
-      ] ],
-      [ "Plain Text Configuration Files", "index.html#plaintextconfigurationfiles", [
-        [ "Reading Plain Text Configuration Files", "index.html#readingplaintextconfigurationfiles", null ]
-      ] ],
-      [ "Plain Text Configuration File Format", "index.html#plaintextconfigurationfileformat", null ]
+      ] ]
     ] ],
     [ "XML Configuration Files", "index.html#xmlconfigurationfiles", [
       [ "XML Configuration Concepts", "index.html#xmlconfigurationconcepts", null ],
@@ -22,6 +18,7 @@ var NAVTREE =
         [ "XML Object Names", "index.html#xmlobjectnames", null ],
         [ "XML Application Names", "index.html#xmlapplicationnames", null ]
       ] ],
+      [ "xml:space Attribute", "index.html#xmlspaceattribute", null ],
       [ "Order and Rule Specifications", "index.html#orderandrulespecifications", [
         [ "Constraining Configuration Values", "index.html#constrainingconfigurationvalues", null ],
         [ "Restricting Topics", "index.html#restrictingtopics", null ],
@@ -31,7 +28,7 @@ var NAVTREE =
       [ "Reading XML Configuration Files", "index.html#readingxmlconfigurationfiles", null ],
       [ "Using XML Configuration Files With a UM Application", "index.html#usingxmlconfigurationfileswithaumapplication", null ],
       [ "XML Configuration File Format", "index.html#xmlconfigurationfileformat", null ],
-      [ "Merging Multiple XML Configuration Files", "index.html#mergingmultiplexmlconfigurationfiles", null ],
+      [ "Share/Merge XML Files with xi:include", "index.html#mergingmultiplexmlconfigurationfiles", null ],
       [ "XML Configuration File Elements", "index.html#xmlconfigurationfileelements", [
         [ "UM Element \"<um-configuration>\"", "index.html#umelementumconfiguration", null ],
         [ "UM Element \"<applications>\"", "index.html#umelementapplications", null ],
@@ -57,6 +54,10 @@ var NAVTREE =
       ] ],
       [ "XML Configuration File DTD", "index.html#xmlconfigurationfiledtd", null ],
       [ "Sample XML Configuration File", "index.html#samplexmlconfigurationfile", null ]
+    ] ],
+    [ "Plain Text Configuration Files", "index.html#plaintextconfigurationfiles", [
+      [ "Reading Plain Text Configuration Files", "index.html#readingplaintextconfigurationfiles", null ],
+      [ "Plain Text Configuration File Format", "index.html#plaintextconfigurationfileformat", null ]
     ] ],
     [ "Attributes Objects", "index.html#attributesobjects", [
       [ "Creating An Attributes Object", "index.html#creatinganattributesobject", null ],

@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">UM C API
-   &#160;<span id="projectnumber">6.14</span>
+   &#160;<span id="projectnumber">6.15</span>
    </div>
   </td>
  </tr>
@@ -61,12 +61,12 @@ $(document).ready(function(){initNavTree('index.html','');});
 <div id="doc-content">
 <div class="header">
   <div class="headertitle">
-<div class="title">Introduction </div>  </div>
+<div class="title"></div>  </div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p> 
 <img src="infa_logo.png" width="400" height="138" alt="Informatica"/><br/><br/>
-<big><b>Ultra Messaging</b></big> <small>(Version 6.14)</small><br/>
+<big><b>Ultra Messaging</b></big> <small>(Version 6.15)</small><br/>
 <br/><br/><br/>
 <center class="mytitle">Ultra Messaging C API</center>
 <br/><br/><br/>
@@ -74,7 +74,7 @@ $(document).ready(function(){initNavTree('index.html','');});
 </p>
 <p>This document provides detailed reference information for the UM C API.</p>
 <p>For policies and procedures related to Ultra Messaging Technical Support, see <a href="https://ultramessaging.github.io/UM_Support.html">UM Support</a>.</p>
-<p><b>(C) Copyright Informatica LLC 2004,2021. All Rights Reserved.</b></p>
+<p><b>(C) Copyright 2004,2022 Informatica LLC. All Rights Reserved.</b></p>
 <p>This software and documentation are provided only under a separate license agreement containing restrictions on use and disclosure. No part of this document may be reproduced or transmitted in any form, by any means (electronic, photocopying, recording or otherwise) without prior consent of Informatica LLC.</p>
 <p>A current list of Informatica trademarks is available on the web at <a href="https://www.informatica.com/trademarks.html">https://www.informatica.com/trademarks.html</a>.</p>
 <p>Portions of this software and/or documentation are subject to copyright held by third parties. Required third party notices are included with the product.</p>
@@ -88,14 +88,14 @@ INFORMATICA LLC PROVIDES THE INFORMATION IN THIS DOCUMENT "AS IS" WITHOUT WARRAN
 UM C API</h1>
 <p>To use the UM C API, you must access the UM headers (<code>".h"</code> files), and native libraries (dynamic or static). Note that these files are platform dependent and are contained in the platform-specific packages.</p>
 <p>For details on how data structures are used in UM, see <a class="el" href="cstructureusagepatterns.html">C Structure Usage Patterns</a>.</p>
-<p>Note that unlike C++, standard C does not support function overloading in which the same function name can have different numbers of parameters. It is fairly common for a C API function to have parameters that the user does not desire to use. For example, the timer scheduling function prototype is: </p><div class="fragment"><div class="line"><span class="keywordtype">int</span> <a class="code" href="lbm_8h.html#a6ddbee95ee1eb4e6b98b177f84157f8a">lbm_schedule_timer</a>(<a class="code" href="lbm_8h.html#a9f6ec97839a8f264eb4059de01174f3c">lbm_context_t</a> *ctx,</div><div class="line">                      <a class="code" href="lbm_8h.html#ae9bced3d5c7ad9c771c69bf58e74cb0b">lbm_timer_cb_proc</a> proc, <span class="keywordtype">void</span> *clientd,</div><div class="line">                      <a class="code" href="lbm_8h.html#a6897baf281a5b4729e05c873aacac420">lbm_event_queue_t</a> *evq, <a class="code" href="lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a> delay);</div></div><!-- fragment --><p> The "evq" parameter is for an <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/API/design.tag:../Design/" href="../Design/umobjects.html#eventqueueobject">Event Queue Object</a>, which is considered optional. Meaning that the user can design his application to either use or not use an event queue, depending on the application requirements. If the user chooses not to use an event queue, the timer schedule call should pass NULL as the evq: </p><div class="fragment"><div class="line">err = <a class="code" href="lbm_8h.html#a6ddbee95ee1eb4e6b98b177f84157f8a">lbm_schedule_timer</a>(ctx, my_timer_funct, NULL, NULL, 10);</div><div class="line">                      <a class="code" href="lbm_8h.html#a6897baf281a5b4729e05c873aacac420">lbm_event_queue_t</a> *evq, <a class="code" href="lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a> delay);</div></div><!-- fragment --><p> (In this example, the "clientd" parameter is also not used.)</p>
+<p>Note that unlike C++, standard C does not support function overloading in which the same function name can have different numbers of parameters. It is fairly common for a C API function to have parameters that the user does not desire to use. For example, the timer scheduling function prototype is: </p><div class="fragment"><div class="line"><span class="keywordtype">int</span> <a class="code" href="lbm_8h.html#a6ddbee95ee1eb4e6b98b177f84157f8a">lbm_schedule_timer</a>(<a class="code" href="lbm_8h.html#a9f6ec97839a8f264eb4059de01174f3c">lbm_context_t</a> *ctx,</div><div class="line">                      <a class="code" href="lbm_8h.html#ae9bced3d5c7ad9c771c69bf58e74cb0b">lbm_timer_cb_proc</a> proc, <span class="keywordtype">void</span> *clientd,</div><div class="line">                      <a class="code" href="lbm_8h.html#a6897baf281a5b4729e05c873aacac420">lbm_event_queue_t</a> *evq, <a class="code" href="lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a> delay);</div></div><!-- fragment --><p> The "evq" parameter is for an <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/API/design.tag:../Design/" href="../Design/umobjects.html#eventqueueobject">Event Queue Object</a>, which is considered optional. Meaning that the user can design his application to either use or not use an event queue, depending on the application requirements. If the user chooses not to use an event queue, the timer schedule call should pass NULL as the evq: </p><div class="fragment"><div class="line">err = <a class="code" href="lbm_8h.html#a6ddbee95ee1eb4e6b98b177f84157f8a">lbm_schedule_timer</a>(ctx, my_timer_funct, NULL, NULL, 10);</div><div class="line">                      <a class="code" href="lbm_8h.html#a6897baf281a5b4729e05c873aacac420">lbm_event_queue_t</a> *evq, <a class="code" href="lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a> delay);</div></div><!-- fragment --><p> (In this example, the "clientd" parameter is also not used.)</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="usingumconwindows"></a>
 Using UM C on Windows</h2>
 <p>To run C applications on Windows, the OS needs to be able to find the native UM library, <code>"lbm.dll"</code>. A typical way to accomplish this is to include the <code>"bin"</code> folder in the system PATH. For example: </p><div class="fragment"><div class="line">C:\Program Files\Informatica\UMS_6.12.1\Win2k-x86_64\bin</div></div><!-- fragment --><p> (Replace "UMS_6.12.1" with your UM version.)</p>
 <p><b>WSAStartup()</b></p>
-<p>The application needs to call WSAStartup() prior to the first UM call. See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/API/example.tag:../example/" href="../example/index.html#exampleminsrc_c">Example minsrc.c</a>.</p>
+<p>The application needs to call WSAStartup() prior to the first UM call. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/API/example.tag:../example/" href="../example/index.html#exampleminsrc_c">Example minsrc.c</a>.</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="usingumconunix"></a>

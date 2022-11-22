@@ -1,0 +1,307 @@
+/*
+	All of the documentation and software included in this and any
+	other Informatica Corporation Ultra Messaging Releases
+	Copyright (C) Informatica Corporation. All rights reserved.
+
+	Redistribution and use in source and binary forms, with or without
+	modification, are permitted only as covered by the terms of a
+	valid software license agreement with Informatica Corporation.
+
+	Copyright (C) 2004-2022, Informatica Corporation. All Rights Reserved.
+
+	THE SOFTWARE IS PROVIDED "AS IS" AND INFORMATICA DISCLAIMS ALL WARRANTIES
+	EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION, ANY IMPLIED WARRANTIES OF
+	NON-INFRINGEMENT, MERCHANTABILITY OR FITNESS FOR A PARTICULAR
+	PURPOSE.INFORMATICA DOES NOT WARRANT THAT USE OF THE SOFTWARE WILL BE
+	UNINTERRUPTED OR ERROR-FREE.INFORMATICA SHALL NOT, UNDER ANY CIRCUMSTANCES, BE
+	LIABLE TO LICENSEE FOR LOST PROFITS, CONSEQUENTIAL, INCIDENTAL, SPECIAL OR
+	INDIRECT DAMAGES ARISING OUT OF OR RELATED TO THIS AGREEMENT OR THE
+	TRANSACTIONS CONTEMPLATED HEREUNDER, EVEN IF INFORMATICA HAS BEEN APPRISED OF
+	THE LIKELIHOOD OF SUCH DAMAGES.
+*/
+
+syntax = "proto3";
+package lbmmon;
+
+option java_package = "com.latencybusters.lbm";
+option java_outer_classname = "SRSMonProtos";
+
+import "um_mon_attributes.proto";
+
+message SRSMonMsg {
+    message Configs {
+        string version = 1;
+
+        string daemon_log = 2;
+        string daemon_log_type = 3;
+        string daemon_log_frequency = 4;
+        string daemon_log_size = 5;
+        string daemon_log_max_history = 6;
+        string daemon_log_total_size_cap = 7;
+        string daemon_log_compression = 8;
+
+        string daemon_pid_file = 9;
+
+        string srs_interface = 10;
+        string srs_port = 11;
+        string srs_state_lifetime = 12;
+        string srs_source_state_lifetime = 13;
+        string srs_interest_state_lifetime = 14;
+        string srs_route_state_lifetime = 15;
+        string srs_context_name_state_lifetime = 16;
+        string srs_source_leave_backoff = 17;
+
+        string srs_clientactor_request_stream_max_msg_count = 18;
+        string srs_clientactor_record_queue_service_interval = 19;
+        string srs_clientactor_batch_frame_max_record_count = 20;
+        string srs_clientactor_batch_frame_max_datagram_size = 21;
+
+        string srs_application_id = 22;
+
+        string debug_monitor_interface = 23;
+        string debug_monitor_port = 24;
+        string debug_monitor_enabled = 25;
+        string debug_monitor_ping_interval = 26;
+
+        string daemon_monitor_topic = 27;
+        string daemon_monitor_ping_interval = 28;
+        string daemon_monitor_publishing_interval_default = 29;
+        string daemon_monitor_publishing_interval_srs_stats = 30;
+        string daemon_monitor_publishing_interval_um_client_stats = 31;
+        string daemon_monitor_publishing_interval_connection_events = 32;
+        string daemon_monitor_publishing_interval_srs_error_stats = 33;
+        string daemon_monitor_publishing_interval_um_client_error_stats = 34;
+        string daemon_monitor_publishing_interval_config_opts = 35;
+        string daemon_monitor_publishing_interval_internal_config_opts = 36;
+
+        string daemon_monitor_publish_connection_events_allow = 37;
+        string daemon_monitor_remote_snapshot_request_allow = 38;
+        string daemon_monitor_remote_config_changes_request_allow = 39;
+
+        string daemon_monitor_monitor_format = 40;
+
+        message DaemonMonitorLBMAttribute {
+            string scope =  1;
+            string name = 2;
+            string value = 3;
+        }
+
+        message Internal {
+            string srs_otidmap_shards = 1;
+            string srs_topicmap_shards = 2;
+            string srs_routemap_shards = 3;
+            string srs_namemap_shards = 4;
+        }
+
+        repeated DaemonMonitorLBMAttribute daemon_monitor_lbm_attributes = 41;
+        Internal internal = 42;
+    }
+
+    message UMClientInfo {
+        string ip = 1;
+        uint32 port = 2;
+        string session_id = 3;
+    }
+
+    message Stats {
+        message SRS {
+            uint64 clients_next_client_id = 1;
+            uint64 active_clients_count = 2;
+            uint64 clients_connects_count = 3;
+            uint64 clients_disconnects_count = 4;
+            uint64 clients_max_concurrent_connections_count = 5;
+
+            uint64 clients_active_sir_count = 6;
+            uint64 clients_active_rir_count = 7;
+            uint64 clients_active_wir_count = 8;
+            uint64 clients_inactive_sir_count = 9;
+            uint64 clients_inactive_rir_count = 10;
+            uint64 clients_inactive_wir_count = 11;
+            uint64 clients_expired_sir_count = 12;
+            uint64 clients_expired_rir_count = 13;
+            uint64 clients_expired_wir_count = 14;
+            uint64 clients_dr_inactive_sir_count = 15;
+            uint64 clients_slr_no_otid_match_count = 16;
+
+            uint64 clients_active_cnir_count = 17;
+            uint64 clients_inactive_cnir_count = 18;
+            uint64 clients_expired_cnir_count = 19;
+            uint64 clients_duplicate_cnir_count = 20;
+
+            uint64 clients_active_dir_count = 21;
+            uint64 clients_inactive_dir_count = 22;
+            uint64 clients_expired_dir_count = 23;
+            uint64 clients_active_rtir_count = 24;
+            uint64 clients_inactive_rtir_count = 25;
+            uint64 clients_expired_rtir_count = 26;
+        }
+
+        message SRSError {
+            uint64 clients_duplicate_sir_count = 1;
+            uint64 clients_duplicate_rir_count = 2;
+            uint64 clients_duplicate_wir_count = 3;
+            uint64 clients_invalid_sdr_no_topic_match_count = 4;
+            uint64 clients_invalid_sdr_no_otid_match_count = 5;
+            uint64 clients_invalid_sdr_no_transport_match_count = 6;
+            uint64 clients_invalid_dr_no_topic_match_count = 7;
+            uint64 clients_invalid_dr_no_otid_match_count = 8;
+            uint64 clients_invalid_dr_no_transport_match_count = 9;
+            uint64 clients_invalid_slr_no_topic_match_count = 10;
+
+            uint64 clients_invalid_cnir_name_mismatch_count = 11;
+
+            uint64 clients_duplicate_dir_count = 12;
+            uint64 clients_mismatched_dir_count = 13;
+            uint64 clients_duplicate_rtir_count = 14;
+        }
+
+        message UMClient {
+            UMClientInfo um_client_info = 1;
+
+            uint64 client_sir_received_count = 2;
+            uint64 client_sdr_received_count = 3;
+            uint64 client_rir_received_count = 4;
+            uint64 client_wir_received_count = 5;
+            uint64 client_rdr_received_count = 6;
+            uint64 client_wdr_received_count = 7;
+            uint64 client_slr_received_count = 8;
+            uint64 client_active_sir_count = 9;
+            uint64 client_max_concurrent_sir_count = 10;
+            uint64 client_rtir_received_count = 11;
+            uint64 client_cnir_received_count = 12;
+            uint64 client_cnqr_received_count = 13;
+            uint64 client_unexpected_cner_received_count = 14;
+
+            uint64 client_sir_sent_count = 15;
+            uint64 client_ser_sent_count = 16;
+            uint64 client_rir_sent_count = 17;
+            uint64 client_rer_sent_count = 18;
+            uint64 client_wir_sent_count = 19;
+            uint64 client_wer_sent_count = 20;
+            uint64 client_dir_sent_count = 21;
+            uint64 client_rtir_sent_count = 22;
+            uint64 client_rter_sent_count = 23;
+            uint64 client_cnir_sent_count = 24;
+
+            uint64 record_queue_depth = 25;
+        }
+
+        message UMClientError {
+            UMClientInfo um_client_info = 1;
+
+            uint64 client_duplicate_rir_received_count = 2;
+            uint64 client_duplicate_wir_received_count = 3;
+            uint64 client_invalid_srs_message_received_count = 4;
+            uint64 client_invalid_sdr_received_count = 5;
+            uint64 client_duplicate_rtir_received_count = 6;
+            uint64 client_duplicate_cnir_received_count = 7;
+            uint64 client_duplicate_cnqr_received_count = 8;
+
+            uint64 client_unexpected_srs_message_sent_count = 9;
+        }
+
+		SRS srs = 1;
+		SRSError srs_error = 2;
+		UMClient um_client = 3;
+		UMClientError um_client_error = 4;
+	}
+
+    message Events {
+        message UMClientConnect {
+            uint64 timestamp = 1;
+        }
+
+        message UMClientDisconnect {
+            uint64 timestamp = 1;
+        }
+
+        message SourceInfo {
+            string source = 1;
+            string topic = 2;
+            uint64 timestamp = 3;
+        }
+
+        message SourceInfoRecord {
+            SourceInfo source_info = 1;
+        }
+
+        message SourceDeleteRecord {
+            SourceInfo source_info = 1;
+        }
+
+        message SourceLeaveRecord {
+            SourceInfo source_info = 1;
+        }
+
+        message ReceiverInfo {
+            string topic = 1;
+            uint64 domain_id = 2;
+            uint64 timestamp = 3;
+        }
+
+        message ReceiverInfoRecord {
+            ReceiverInfo receiver_info = 1;
+        }
+
+        message ReceiverDeleteRecord {
+            ReceiverInfo receiver_info = 1;
+        }
+
+        message WildcardReceiverInfo {
+            string pattern = 1;
+            uint64 domain_id = 2;
+            uint64 timestamp = 3;
+        }
+
+        message WildcardReceiverInfoRecord {
+            WildcardReceiverInfo wildcard_receiver_info = 1;
+        }
+
+        message WildcardReceiverDeleteRecord {
+            WildcardReceiverInfo wildcard_receiver_info = 1;
+        }
+
+        message RouteInfoRecord {
+            string ip = 1;
+            uint32 port = 2;
+            repeated uint64 domain_ids = 3;
+            uint64 timestamp = 4;
+        }
+
+        message ContextNameInfoRecord {
+            string name = 1;
+            uint64 domain_id = 2;
+            string ip = 3;
+            uint32 port = 4;
+            string origin_context_instance = 5;
+            uint64 timestamp = 6;
+        }
+
+        message ContextNameQueryRecord {
+            string name = 1;
+            uint64 domain_id = 2;
+            uint64 timestamp = 3;
+        }
+
+        UMClientInfo um_client_info = 1;
+
+        UMClientConnect um_client_connect = 2;
+        UMClientDisconnect um_client_disconnect = 3;
+
+        repeated SourceInfoRecord source_info_records = 4;
+        repeated SourceDeleteRecord source_delete_records = 5;
+        repeated SourceLeaveRecord source_leave_records = 6;
+        repeated ReceiverInfoRecord receiver_info_records = 7;
+        repeated ReceiverDeleteRecord receiver_delete_records = 8;
+        repeated WildcardReceiverInfoRecord wildcard_receiver_info_records = 9;
+        repeated WildcardReceiverDeleteRecord wildcard_receiver_delete_records = 10;
+        repeated RouteInfoRecord route_info_records = 11;
+        repeated ContextNameInfoRecord context_name_info_records = 12;
+        repeated ContextNameQueryRecord context_name_query_records = 13;
+	}
+
+	UMMonAttributes attributes = 1;
+	Configs configs = 2;
+	Stats stats = 3;
+	Events events = 4;
+}

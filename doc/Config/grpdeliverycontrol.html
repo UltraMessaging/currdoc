@@ -73,17 +73,7 @@ Determines unrecoverable loss and burst loss events for the receiver's topic ove
  </p>
 <h1><a class="anchor" id="burstloss"></a>
 Burst Loss&nbsp;&nbsp;<small><a href="#burstloss">&lt;-</a></small></h1>
-<p>Normally, when the delivery controller detects a gap in topic sequence numbers of received message fragments, it waits for a NAK generation interval (defaults to 10 seconds) before declaring the missing message fragments unrecoverably lost. This wait time allows the underlying transport layer to attempt to retrieve the missing message fragments.</p>
-<p>The configuration options <a class="el" href="grpdeliverycontrol.html#deliverycontrolmaximumburstlossreceiver">delivery_control_maximum_burst_loss (receiver)</a> and <a class="el" href="grphotfailoveroperation.html#deliverycontrolmaximumburstlosshfx">delivery_control_maximum_burst_loss (hfx)</a> specify a size for a contiguous gap in topic sequence numbers beyond which the gap is defined to be a "burst loss". When this happens, the delivery controller <em>immediately</em> declares the entire gap to be unrecoverably lost and resets its loss-handling structures. Thus, even if the underlying transport layer is subsequently able to retrieve some or all of the missing message fragments, the delivery controller will discard them (since they are already declared unrecoverably lost).</p>
-<p>The purpose of this is to prevent long delays for large loss events for which the chances of successful recover are very small.</p>
-<p>The image below illustrates this.</p>
-<div class="image">
-<img src="Burst_Loss.png" alt="Burst_Loss.png"/>
-</div>
- <p>For burst loss, a single <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a6629139aaf902976c8df9de3f37d10db">LBM_MSG_UNRECOVERABLE_LOSS_BURST</a> event is delivered for the entire sequence number gap. (Contrast this with simple (not burst) loss events, where a separate <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a88920e0a4188081f9a14fc8f76c18578">LBM_MSG_UNRECOVERABLE_LOSS</a> event will be delivered to the receiver for each lost sequence number.)</p>
-<dl class="section note"><dt>Note</dt><dd>The burst loss control takes priority over all recovery methods. For example, if the receiver is reading a persistent stream and OTR is enabled, a gap longer than delivery_control_maximum_burst_loss will immediately declare the gap as unrecoverable without even trying to use OTR to recover. If gapless message delivery is a high priority, delivery_control_maximum_burst_loss should be set to a very large value.</dd>
-<dd>
-There is a possibility of successfully-received messages being discarded when a burst loss is detected. Let's say a minor loss event is followed by several successful message fragments. The delivery of those successfully-received message fragments will be delayed in hopes that the underlying transport layer can retrieve the missing data. However, if a burst loss is detected while the delivery controller is still waiting for recovery, the pending messages will be deleted as the loss-handling structures are cleaned up.</dd></dl>
+<p>This section is moved to the Concepts Guide. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Config/design.tag:../Design/" href="../Design/fundamentalconcepts.html#burstloss1">Burst Loss</a>.</p>
 <p><br />
  </p>
 <h1><a class="anchor" id="deliverycontrolref"></a>
@@ -94,7 +84,7 @@ Reference&nbsp;&nbsp;<small><a href="#deliverycontrolref">&lt;-</a></small></h1>
 channel_map_tablesz (receiver)&nbsp;&nbsp;<small><a href="#channelmaptableszreceiver">&lt;-</a></small></h2>
 <dl class="section user"><dt></dt><dd>The size of the hash table that the receiver uses to store channel subscriptions. </dd></dl>
 <dl class="section user"><dt></dt><dd>A larger table means more channels can be stored more efficiently, but takes up more memory. A smaller table uses less memory, but costs more CPU time for large numbers of channel subscriptions. </dd></dl>
-<dl class="section user"><dt></dt><dd>See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/Config/design.tag:../Design/" href="../Design/umfeatures.html#spectrum">Spectrum</a> for more information.</dd></dl>
+<dl class="section user"><dt></dt><dd>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Config/design.tag:../Design/" href="../Design/umfeatures.html#spectrum">Spectrum</a> for more information.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>receiver </td></tr>
@@ -116,7 +106,7 @@ delivery_control_loss_check_interval (receiver)&nbsp;&nbsp;<small><a href="#deli
 <tr>
 <td><em>Scope:</em> </td><td>receiver </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
 <tr>
 <td><em>Units:</em> </td><td>milliseconds </td></tr>
 <tr>
@@ -129,15 +119,17 @@ delivery_control_loss_check_interval (receiver)&nbsp;&nbsp;<small><a href="#deli
  </p>
 <h2><a class="anchor" id="deliverycontrolmaximumburstlossreceiver"></a>
 delivery_control_maximum_burst_loss (receiver)&nbsp;&nbsp;<small><a href="#deliverycontrolmaximumburstlossreceiver">&lt;-</a></small></h2>
-<dl class="section user"><dt></dt><dd>This controls the size of a topic sequence number gap past which the gap is declared a "burst loss". </dd></dl>
-<dl class="section user"><dt></dt><dd>See <a class="el" href="grpdeliverycontrol.html#burstloss">Burst Loss</a> for a detailed explanation of burst loss and its semantics. </dd></dl>
+<dl class="section user"><dt></dt><dd>This controls the size of a topic sequence number gap past which the gap is declared a "burst loss". The minimum usable value is 2. </dd></dl>
+<dl class="section user"><dt></dt><dd>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Config/design.tag:../Design/" href="../Design/fundamentalconcepts.html#burstloss1">Burst Loss</a> for a detailed explanation of burst loss and its semantics. </dd></dl>
+<dl class="section user"><dt></dt><dd></dd></dl>
+<dl class="section attention"><dt>Attention</dt><dd>Informatica recommends disabling "burst loss" by setting this option to a very large number, perhaps 1,000,000,000. </dd></dl>
 <dl class="section user"><dt></dt><dd></dd></dl>
 <dl class="section note"><dt>Note</dt><dd>the burst loss control takes priority over all recovery methods. For example, if the receiver is reading a persistent stream and OTR is enabled, a gap longer than delivery_control_maximum_burst_loss will immediately declare the gap as unrecoverable without even trying to use OTR to recover. If message integrity is a high priority, delivery_control_maximum_burst_loss should be set to a very large value.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>receiver </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#abdb96b55cc467a75e1f9ec0036dbc14b">lbm_uint_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#abdb96b55cc467a75e1f9ec0036dbc14b">lbm_uint_t</a></b> </td></tr>
 <tr>
 <td><em>Units:</em> </td><td>number of messages (fragments) </td></tr>
 <tr>
@@ -152,8 +144,8 @@ delivery_control_maximum_burst_loss (receiver)&nbsp;&nbsp;<small><a href="#deliv
 delivery_control_maximum_total_map_entries (context)&nbsp;&nbsp;<small><a href="#deliverycontrolmaximumtotalmapentriescontext">&lt;-</a></small></h2>
 <dl class="section user"><dt></dt><dd>The maximum number of messages that can be buffered in the Delivery Controller's Order Map. </dd></dl>
 <dl class="section user"><dt></dt><dd>When the number of messages stored in a Delivery Controller's Order Map is exceeded, unrecoverable loss is signaled for the oldest gaps and older data is delivered until the Order Map size is below delivery_control_maximum_total_map_entries. </dd></dl>
-<dl class="section user"><dt></dt><dd>A value of 0 implies no maximum value setting and allows unbounded growth of the Delivery Controller's Order Map. </dd></dl>
-<dl class="section user"><dt></dt><dd>See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/Config/design.tag:../Design/" href="../Design/architecture.html#deliverycontroller">Delivery Controller</a> for a description of the Order Map. Also see <a class="el" href="grpofftransportrecovery.html#otrmessagecachingthresholdreceiver">otr_message_caching_threshold (receiver)</a>. </dd></dl>
+<dl class="section user"><dt></dt><dd>A value of 0 implies no maximum and allows unbounded growth of the Delivery Controller's Order Map. </dd></dl>
+<dl class="section user"><dt></dt><dd>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Config/design.tag:../Design/" href="../Design/architecture.html#deliverycontroller">Delivery Controller</a> for a description of the Order Map. Also see <a class="el" href="grpofftransportrecovery.html#otrmessagecachingthresholdreceiver">otr_message_caching_threshold (receiver)</a>. </dd></dl>
 <dl class="section user"><dt></dt><dd>For a persistent receiver that has OTR enabled, this option is typically set to 0 (no limit). This is because the option <a class="el" href="grplatejoin.html#retransmitmessagecachingproximityreceiver">retransmit_message_caching_proximity (receiver)</a> prevents unbounded growth of the Order Map. </dd></dl>
 <dl class="section user"><dt></dt><dd></dd></dl>
 <dl class="section note"><dt>Note</dt><dd>Although this option is context scoped, understand that there is a separate Order Map for each Delivery Controller. Those Order Maps are sized independently.</dd></dl>
@@ -174,8 +166,10 @@ delivery_control_maximum_total_map_entries (context)&nbsp;&nbsp;<small><a href="
  </p>
 <h2><a class="anchor" id="deliverycontrolmessagebatchingcontext"></a>
 delivery_control_message_batching (context)&nbsp;&nbsp;<small><a href="#deliverycontrolmessagebatchingcontext">&lt;-</a></small></h2>
-<dl class="section user"><dt></dt><dd>Controls whether or not to use receive-side batching, which can improve receiver throughput when using event queues, but might add latency in other cases. </dd></dl>
-<dl class="section user"><dt></dt><dd>If you enable this option, and you use an event queue that is in polling mode, using lbm_event_dispatch(evq, LBM_EVENT_QUEUE_POLL), then rather than dispatching exactly one event per call to lbm_event_dispatch, you may get multiple events dispatched with a single call.</dd></dl>
+<dl class="section user"><dt></dt><dd>Controls whether or not to use receive-side batching, which can improve receiver throughput when using <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Config/design.tag:../Design/" href="../Design/umobjects.html#eventqueueobject">event queues</a> and/or Java, but might add latency in some cases. </dd></dl>
+<dl class="section user"><dt></dt><dd>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Config/design.tag:../Design/" href="../Design/advancedoptimizations.html#receivesidebatching">Receive-Side Batching</a>. </dd></dl>
+<dl class="section user"><dt></dt><dd></dd></dl>
+<dl class="section warning"><dt>Warning</dt><dd>This feature is incompatible with <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Config/design.tag:../Design/" href="../Design/umfeatures.html#transportservicesproviderxsp">XSP</a>.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>context </td></tr>
@@ -203,12 +197,12 @@ delivery_control_message_batching (context)&nbsp;&nbsp;<small><a href="#delivery
 mim_delivery_control_loss_check_interval (context)&nbsp;&nbsp;<small><a href="#mimdeliverycontrollosscheckintervalcontext">&lt;-</a></small></h2>
 <dl class="section user"><dt></dt><dd>This controls the interval between mandatory loss checks for MIM. </dd></dl>
 <dl class="section user"><dt></dt><dd>A value of 0 turns this loss check off. </dd></dl>
-<dl class="section user"><dt></dt><dd>See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/Config/design.tag:../Design/" href="../Design/umfeatures.html#multicastimmediatemessaging">Multicast Immediate Messaging</a> for general information about MIM.</dd></dl>
+<dl class="section user"><dt></dt><dd>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Config/design.tag:../Design/" href="../Design/umfeatures.html#multicastimmediatemessaging">Multicast Immediate Messaging</a> for general information about MIM.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>context </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
 <tr>
 <td><em>Units:</em> </td><td>milliseconds </td></tr>
 <tr>
@@ -224,7 +218,7 @@ mim_delivery_control_loss_check_interval (context)&nbsp;&nbsp;<small><a href="#m
 <h2><a class="anchor" id="nullchannelbehaviorreceiver"></a>
 null_channel_behavior (receiver)&nbsp;&nbsp;<small><a href="#nullchannelbehaviorreceiver">&lt;-</a></small></h2>
 <dl class="section user"><dt></dt><dd>Behavior desired when a message without channel information (i.e. a standard UM message) is received by UM. </dd></dl>
-<dl class="section user"><dt></dt><dd>See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/Config/design.tag:../Design/" href="../Design/umfeatures.html#spectrum">Spectrum</a> for more information.</dd></dl>
+<dl class="section user"><dt></dt><dd>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Config/design.tag:../Design/" href="../Design/umfeatures.html#spectrum">Spectrum</a> for more information.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>receiver </td></tr>
@@ -249,7 +243,7 @@ null_channel_behavior (receiver)&nbsp;&nbsp;<small><a href="#nullchannelbehavior
 <h2><a class="anchor" id="sourcenotificationfunctionreceiver"></a>
 source_notification_function (receiver)&nbsp;&nbsp;<small><a href="#sourcenotificationfunctionreceiver">&lt;-</a></small></h2>
 <dl class="section user"><dt></dt><dd>Callback functions (and associated client data pointer) that are called when a UM receiver creates or deletes a delivery controller associated with a source. </dd></dl>
-<dl class="section user"><dt></dt><dd>A receiver can have zero or more <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/Config/design.tag:../Design/" href="../Design/architecture.html#deliverycontroller">Delivery Controllers</a>. Each Delivery Controller maintains internal state for a specific source that the receiver has joined. The application callbacks associated with this configuration option allow the application to track the receiver joining and exiting of the individual source. </dd></dl>
+<dl class="section user"><dt></dt><dd>A receiver can have zero or more <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Config/design.tag:../Design/" href="../Design/architecture.html#deliverycontroller">Delivery Controllers</a>. Each Delivery Controller maintains internal state for a specific source that the receiver has joined. The application callbacks associated with this configuration option allow the application to track the receiver joining and exiting of the individual source. </dd></dl>
 <dl class="section user"><dt></dt><dd>For the creation function, the application has the ability to set the source client data pointer to be used in each message received from the source. </dd></dl>
 <dl class="section user"><dt></dt><dd>Contrast this with <a class="el" href="grpmajoroptions.html#resolversourcenotificationfunctioncontext">resolver_source_notification_function (context)</a>. </dd></dl>
 <dl class="section user"><dt></dt><dd>This callback is called by the context thread and can not use an event queue. Therefore the callback function used should not block or it will delay reception of latency-sensitive messages.</dd></dl>
@@ -257,7 +251,7 @@ source_notification_function (receiver)&nbsp;&nbsp;<small><a href="#sourcenotifi
 <tr>
 <td><em>Scope:</em> </td><td>receiver </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a45be527ef7ef03b53afd4b193558107f">lbm_rcv_src_notification_func_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a45be527ef7ef03b53afd4b193558107f">lbm_rcv_src_notification_func_t</a></b> </td></tr>
 <tr>
 <td><em>Default value:</em> </td><td>NULL </td></tr>
 <tr>
@@ -271,7 +265,7 @@ source_notification_function (receiver)&nbsp;&nbsp;<small><a href="#sourcenotifi
 <h2><a class="anchor" id="unrecognizedchannelbehaviorreceiver"></a>
 unrecognized_channel_behavior (receiver)&nbsp;&nbsp;<small><a href="#unrecognizedchannelbehaviorreceiver">&lt;-</a></small></h2>
 <dl class="section user"><dt></dt><dd>Behavior desired when a message with channel information for a channel not in the receiver's set of subscribed channels is received by UM. </dd></dl>
-<dl class="section user"><dt></dt><dd>See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/Config/design.tag:../Design/" href="../Design/umfeatures.html#spectrum">Spectrum</a> for more information.</dd></dl>
+<dl class="section user"><dt></dt><dd>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Config/design.tag:../Design/" href="../Design/umfeatures.html#spectrum">Spectrum</a> for more information.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>receiver </td></tr>

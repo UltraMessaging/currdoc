@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">UM Java API
-   &#160;<span id="projectnumber">6.14</span>
+   &#160;<span id="projectnumber">6.15</span>
    </div>
   </td>
  </tr>
@@ -59,12 +59,12 @@ $(document).ready(function(){initNavTree('index.html','');});
 <div id="doc-content">
 <div class="header">
   <div class="headertitle">
-<div class="title">Introduction </div>  </div>
+<div class="title"></div>  </div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p> 
 <img src="infa_logo.png" width="400" height="138" alt="Informatica"/><br/><br/>
-<big><b>Ultra Messaging</b></big> <small>(Version 6.14)</small><br/>
+<big><b>Ultra Messaging</b></big> <small>(Version 6.15)</small><br/>
 <br/><br/><br/>
 <center class="mytitle">Ultra Messaging Java API</center>
 <br/><br/><br/>
@@ -72,7 +72,7 @@ $(document).ready(function(){initNavTree('index.html','');});
 </p>
 <p>This document provides detailed reference information for the UM Java API.</p>
 <p>For policies and procedures related to Ultra Messaging Technical Support, see <a href="https://ultramessaging.github.io/UM_Support.html">UM Support</a>.</p>
-<p><b>(C) Copyright Informatica LLC 2004,2021. All Rights Reserved.</b></p>
+<p><b>(C) Copyright 2004,2022 Informatica LLC. All Rights Reserved.</b></p>
 <p>This software and documentation are provided only under a separate license agreement containing restrictions on use and disclosure. No part of this document may be reproduced or transmitted in any form, by any means (electronic, photocopying, recording or otherwise) without prior consent of Informatica LLC.</p>
 <p>A current list of Informatica trademarks is available on the web at <a href="https://www.informatica.com/trademarks.html">https://www.informatica.com/trademarks.html</a>.</p>
 <p>Portions of this software and/or documentation are subject to copyright held by third parties. Required third party notices are included with the product.</p>
@@ -92,6 +92,7 @@ UM Java API</h1>
 Application Callbacks in Java</h2>
 <p>There are a variety of UM features that include the UM library calling back into the application. The most common example of this is the Receiver callback (sometimes named "onReceive").</p>
 <p>It is important that the application callback not allow any unhandled exceptions to be thrown back into UM. For example, you might enclose your entire callback code in an enclosing try/catch. The application callback should always return normally into UM.</p>
+<p>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/JavaAPI/design.tag:../Design/" href="../Design/applicationdesignprinciples.html#javamessagereception">Java Message Reception</a> for more information, including code examples.</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="usingumjavaonwindows"></a>
@@ -107,52 +108,28 @@ Using UM Java on Unix</h2>
 <h1><a class="anchor" id="javanativeinterfacejni"></a>
 Java Native Interface (JNI)</h1>
 <p>The UM Java API makes use of the Java Native Interface (JNI) to bridge between the native Java code and the UM library (written in C). This interface provides for two different types of calls: "downcalls" from Java into C, and "upcalls" from C into Java.</p>
-<p>While still more expensive (in terms of CPU time) than a call from one Java method to another Java method, downcalls are relatively inexpensive. Upcalls, on the other hand, are significantly more expensive. Our experience (as well as anecdotal evidence from the Internet) indicates that upcalls are 10 to 20 times more expensive than downcalls. This expense translates directly to increased CPU time. In terms of UM, this translates to higher latency and lower throughput.</p>
-<p>In addition, an upcall must attach to a Java thread object in the JVM in order to obtain an environment in which to run. Attaching to a new Java thread object is significantly more expensive than re-attaching to an extant Java thread object.</p>
-<p>This discussion applies only to receivers. Sending in UM requires mostly downcalls. In fact, performance measurements show that the throughput from a Java sender is generally within a few percentage points of the throughput for a C sender.</p>
-<p>Receivers, on the other hand, receive data via callbacks from the UM library into the application code. Callbacks directly equate to JNI upcalls, which (as noted above) are significantly more expensive than JNI downcalls.</p>
+<p>Downcalls are relatively inexpensive, although not quite as efficient as a call from one Java method to another. Thus, a Java publisher does not suffer from significantly lower performance than a C publisher.</p>
+<p>However, upcalls have a greater expense associated with them. This expense translates directly to increased CPU utilization. This mostly affects subscribers, which have upcalls for received messages. This translates to slightly higher latency and a lower maximum-sustainable throughput.</p>
+<p>This Java receiver performance penalty can be mitigated using <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/JavaAPI/design.tag:../Design/" href="../Design/advancedoptimizations.html#receivesidebatching">Receive-Side Batching</a> and, for Linux, <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/JavaAPI/design.tag:../Design/" href="../Design/advancedoptimizations.html#receivemultipledatagrams">Receive Multiple Datagrams</a>.</p>
 <p><br />
  </p>
 <h1><a class="anchor" id="garbagecollection"></a>
 Garbage Collection</h1>
 <p>One significant problem with Java performance is garbage collection. While this makes the programmer's life easier, having your application periodically stop doing application-specific useful work to perform its housekeeping duties significantly degrades the overall performance of the application. This is not to imply that garbage collection is not useful work: in the context of Java, it certainly is. But it does nothing to further the goal of the application itself, namely to receive and process data.</p>
-<p>Thus, Java performance is inherently unpredictable and can vary significantly from one instant to the next. As an example, consider the lbmrcv example program supplied with UM. Running the C version will show a fairly steady data rate for each sample printed. Running the Java version will show wildly varying data rates for each sample printed. This is due in large part to the periodic interruption of the application to do garbage collection. See <a class="el" href="index.html#zeroobjectdeliveryzod">Zero Object Delivery (ZOD)</a> for a UM Java feature that reduces the need for garbage collection.</p>
+<p>Thus, Java performance is inherently unpredictable and can vary significantly from one instant to the next. As an example, consider the lbmrcv example program supplied with UM. Running the C version will show a fairly steady data rate for each sample printed. Running the Java version will show wildly varying data rates for each sample printed. This is due in large part to the periodic interruption of the application to do garbage collection.</p>
+<p>See <a class="el" href="index.html#zeroobjectdeliveryzod">Zero Object Delivery (ZOD)</a> for a UM Java feature that reduces the need for garbage collection.</p>
 <p><br />
  </p>
 <h1><a class="anchor" id="zeroobjectdeliveryzod"></a>
 Zero Object Delivery (ZOD)</h1>
 <p>UM's Zero Object Delivery (ZOD) feature for Java allows receivers to deliver messages, and sources/receivers deliver events, to an application with no per-message object creation. This lets you write Java sending/receiving applications that require little to no garbage collection at runtime, resulting in lower and more consistent message latencies and hence, better performance.</p>
-<p>To benefit from this feature, you must call .dispose() on a message to mark it as available for reuse. To access data from the message when using ZOD, use the following two methods in the <a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBMMessage.html">com::latencybusters::lbm::LBMMessage</a> class: </p><ul>
-<li>
-LBMMessage::dataBuffer </li>
-<li>
-LBMMessage::dataLength </li>
-</ul>
-<p>The .dataBuffer() method returns a reference to a thread-local direct ByteBuffer containing the message data. The ByteBuffer's capacity is probably larger than the message data length, so you must call .dataLength() for the actual data length. Discard/ignore the excess data in the ByteBuffer.</p>
-<p>See the lbmrcv.java sample applications for examples using these methods.</p>
+<p>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/JavaAPI/design.tag:../Design/" href="../Design/advancedoptimizations.html#zeroobjectdelivery">Zero Object Delivery</a> for details, including code examples.</p>
 <p><br />
  </p>
 <h1><a class="anchor" id="retainingmessages"></a>
 Retaining Messages</h1>
-<p>Note that calling LBMMessage.data() is another, valid way to access message data, but this method does create a new byte[] array object. JVM creates the byte[] array object returned by LBMMessage.data() once, on demand, the first time you call .data(), and returns a reference to the same byte[] array object on subsequent calls to .data().</p>
-<p>This method is a useful way to keep an LBMMessage object for processing outside of a receiver's callback. The byte[] array object returned by LBMMessage.data() is persistent, that is, the data it contains and any array references remain valid after the receiver's callback returns and until garbage collection. If you need only the message data for further processing, save the return from LBMMessage.data() within the receiver's callback.</p>
-<p>If instead you need to promote an entire LBMMessage to a full-fledged independent object for use outside of a receiver's callback, use the LBMMessage.promote() method. This can be beneficial to an application receiving a mix of message types; some requiring additional processing, and others not. receiver callback code can look similar to the following:</p>
-<div class="fragment"><div class="line"><span class="keywordflow">if</span> (msg.dataBuffer().getInt() == number_indicating_lots_of_work) {</div><div class="line">        <span class="comment">/* Promote this message to an object for handoff to a worker thread,</span></div><div class="line"><span class="comment">          * so it remains valid after the receiver callback returns. */</span></div><div class="line">        msg.promote();</div><div class="line">        workerThread.msgQueue.enqueue(msg);</div><div class="line">}</div><div class="line"><span class="keywordflow">else</span> {</div><div class="line">        <span class="comment">/* Use ZOD and just read out of msg.dataBuffer(),</span></div><div class="line"><span class="comment">          * entirely within the receiver callback. */</span></div><div class="line">        ...</div><div class="line">}</div></div><!-- fragment --><p>LBMMessages promoted to full objects also return their own independent ByteBuffer objects from a call to LBMMessage.dataBuffer(). This means that the ByteBuffer returned from a promoted LBMMessage's.dataBuffer() method is persistent in the same way as the byte[] array object returned from a call to .data() on any LBMMessage object.</p>
-<p>See the lbmresp.java sample application for another example of using LBMMessage.promote() to keep a message.</p>
-<p><br />
- </p>
-<h1><a class="anchor" id="messagesize"></a>
-Message Size</h1>
-<p>Message size has a significant effect on performance. Smaller messages mean more upcalls are required to receive and process a given amount of data. Larger messages result in fewer upcalls, resulting in better performance. Our tests have shown that smaller messages (64 bytes or smaller) yield approximately 25% of the performance of an equivalent C application, while larger messages (512 bytes and up) can yield 67% of the performance of an equivalent C application.</p>
-<p>Granted, the size of the message is beyond the control of the receiving application. But the sender <em>can</em> control the message size. If you can modify the sender, consider using larger (500 bytes or more) messages. If this is not possible, consider blocking multiple "logical" messages together into a single "physical" message. The receiver would then be responsible for deblocking into the constituent messages. Note that this is not the same as batching.</p>
-<p>Larger messages also have the advantage of making better use of the network bandwidth. For example, consider a TCP packet. A minimum of 54 bytes (14 for the Ethernet frame, 20 bytes for the IP header, 20 bytes for the TCP header) of overhead are required to send a one-byte message. A 512-byte message requires those same 54 bytes of overhead. On a 100 Mbps Ethernet network, at most 227,272 one-byte messages can be sent each second, resulting in 227,272 bytes of application data. With a 512-byte message, at most 22,084 message can be sent each second, resulting in 11,307,008 bytes of application data.</p>
-<p><br />
- </p>
-<h1><a class="anchor" id="javaperformance"></a>
-Java Performance</h1>
-<p>Our experience shows that Java applications are much more sensitive to CPU speed than C applications. In other words, increasing the CPU speed will have more benefit for a Java application than for a C application.</p>
-<p>No difference was seen between the 2.4 and 2.6 Linux kernels. In addition, later 2.6 kernels allow the timer frequency to be set to 100 (default), 250, or 1000 Hz. No measurable difference was seen by changing the timer frequency.</p>
-<p>Multiple CPUs have a negligible effect in embedded and sequential modes. Using an event queue yields a modest performance increase of approximately 15% over a single CPU.</p>
+<p>For lowest latency, received messages should be fully processed directly by the receiver callback. However, there are circumstances where an application needs to save a message for further processing after the receiver callback returns.</p>
+<p>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/JavaAPI/design.tag:../Design/" href="../Design/applicationdesignprinciples.html#javamessagereception">Java Message Reception</a> for details, including code examples.</p>
 <p><br />
 <br />
  <br />

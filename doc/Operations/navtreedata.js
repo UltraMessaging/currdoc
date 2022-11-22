@@ -16,21 +16,22 @@ var NAVTREE =
     ] ],
     [ "Monitoring", "monitoring.html", [
       [ "Monitoring Introduction", "monitoring.html#monitoringintroduction", [
-        [ "Network and Host Monitoring", "monitoring.html#networkandhostmonitoring", null ],
-        [ "UM Monitoring", "monitoring.html#ummonitoring", null ]
+        [ "Network and Host Equipment Monitoring", "monitoring.html#networkandhostmonitoring", null ],
+        [ "Monitoring UM", "monitoring.html#monitoringum", null ]
       ] ],
       [ "Monitoring UM Applications", "monitoring.html#monitoringumapplications", [
         [ "Application Log File", "monitoring.html#applicationlogfile", null ]
       ] ],
       [ "Monitoring UM Daemons", "monitoring.html#monitoringumdaemons", null ],
       [ "Automatic Monitoring", "monitoring.html#automaticmonitoring", [
-        [ "Automatic Monitoring Recommendations", "monitoring.html#automaticmonitoringrecommendations", null ]
+        [ "Automatic Monitoring Sample", "monitoring.html#automaticmonitoringsample", null ]
       ] ],
       [ "Centralized Collector", "monitoring.html#centralizedcollector", [
         [ "Monitoring Collector Service (MCS)", "monitoring.html#monitoringcollectorservicemcs", null ],
         [ "User-Developed Collector", "monitoring.html#userdevelopedcollector", null ]
       ] ],
-      [ "Monitoring Formats", "monitoring.html#monitoringformats", null ]
+      [ "Monitoring Formats", "monitoring.html#monitoringformats", null ],
+      [ "Protocol Buffer Format", "monitoring.html#protocolbufferformat", null ]
     ] ],
     [ "Man Pages for MCS", "manpagesformcs.html", [
       [ "MCS Man Page", "manpagesformcs.html#mcsmanpage", null ],

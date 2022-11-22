@@ -129,8 +129,11 @@ context transport_lbtrm_retransmit_rate_limit 1000000
  </p>
 <h1><a class="anchor" id="disablingaspectsoftopicresolution"></a>
 Disabling Aspects of Topic Resolution&nbsp;&nbsp;<small><a href="#disablingaspectsoftopicresolution">&lt;-</a></small></h1>
-<p>If you need to reduce the amount of Topic Resolution traffic on your network, use the following Configuration options and values in a Ultra Messaging Configuration file.</p>
-<dl class="section note"><dt>Note</dt><dd>Ultra Messaging does not recommend disabling both advertisements and queries because topics may not resolve at all.</dd></dl>
+<p>If you need to reduce the amount of <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Config/design.tag:../Design/" href="../Design/architecture.html#udpbasedtopicresolutiondetails">UDP-based Topic Resolution</a> traffic on your network, the best way to do it is to switch to <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Config/design.tag:../Design/" href="../Design/topicresolutiondescription.html#tcpbasedtopicresolutiondetails">TCP-based Topic Resolution</a> and turn off UDP-based TR.</p>
+<p>However, many users cannot switch fully to TCP TR (at least not quickly). Especially for users running multiple versions of UM in their network, they may need to run UDP TR for a significant period while components are upgraded.</p>
+<p>This section discusses methods for disabling various aspects of UDP-based TR, but this should be done only as part of a larger TR strategy; see <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Config/design.tag:../Design/" href="../Design/architecture.html#udpbasedtopicresolutionstrategies">UDP-Based Topic Resolution Strategies</a>.</p>
+<dl class="section note"><dt>Note</dt><dd>This section applies to UDP-based topic resolution. <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Config/design.tag:../Design/" href="../Design/topicresolutiondescription.html#tcpbasedtopicresolutiondetails">TCP-based Topic Resolution</a> is not affected by the configuration options described here.</dd></dl>
+<dl class="section attention"><dt>Attention</dt><dd>Ultra Messaging does not recommend disabling both advertisements and queries because topics may not resolve at all. Additionally, queries should not be fully disabled in a DRO environment (see <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Config/gateway.tag:../Gateway/" href="../Gateway/umrouterconcepts.html#interestandtopicresolution">Interest and Topic Resolution</a>) or if the <a class="el" href="grpudpbasedresolveroperation.html#resolutionnosourcenotificationthresholdreceiver">resolution_no_source_notification_threshold (receiver)</a> feature is used.</dd></dl>
 <p><br />
  </p>
 <h2><a class="anchor" id="disablingtopicadvertisements"></a>
@@ -155,32 +158,27 @@ receiver resolver_query_maximum_initial_interval 0
 </pre><p><b>Disabling Sustaining Phase Queries</b></p>
 <p>Use the following options to disable topic queries in only the Sustaining Phase.</p>
 <pre class="fragment">receiver resolver_query_sustain_interval 0
-receiver resolution_number_of_sources_query_threshold 0
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="disablingwildcardtopicqueries"></a>
 Disabling Wildcard Topic Queries&nbsp;&nbsp;<small><a href="#disablingwildcardtopicqueries">&lt;-</a></small></h2>
-<p>Use the following options to disable topic queries by wildcard receivers.</p>
+<p>Use the following options to disable topic queries by wildcard receivers. This can reduce CPU load and latency outliers under some circumstances, but can also slow down the process of a wildcard receiver discovering all matching sources. Be aware that wildcard receivers will only discover sources when those sources advertise.</p>
+<p>Additionally, queries should not be disabled in a DRO environment (see <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Config/gateway.tag:../Gateway/" href="../Gateway/umrouterconcepts.html#interestandtopicresolution">Interest and Topic Resolution</a>).</p>
 <pre class="fragment">wildcard_receiver resolver_query_minimum_interval 0
 wildcard_receiver resolver_query_maximum_interval 0
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="disablingstorecontextnamequeries"></a>
 Disabling Store (Context) Name Queries&nbsp;&nbsp;<small><a href="#disablingstorecontextnamequeries">&lt;-</a></small></h2>
-<p>When using Persistence, use the following options to disable context name queries by sources.</p>
+<p>When using Persistence, use the following options to disable context name queries by sources. This should only be done if numeric IP addresses are used to identify Stores.</p>
 <pre class="fragment">resolver_context_name_query_maximum_interval 0
 resolver_context_name_query_minimum_interval 0
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="Disabling"></a>
 All But the Minimum Topic Resolution Traffic&nbsp;&nbsp;<small><a href="#Disabling">&lt;-</a></small></h2>
-<p>A minimalist approach to topic resolution can take different forms based on you requirements. One approach is to disable all traffic except for queries in the sustaining phase. Add the following settings to your Ultra Messaging configuration file to implement this approach.</p>
-<pre class="fragment">source resolver_advertisement_minimum_initial_interval 0
-source resolver_advertisement_sustain_interval 0
-receiver resolver_query_minimum_initial_interval 0
-receiver resolution_number_of_sources_query_threshold 1
-wildcard_receiver resolver_query_minimum_interval 0
-</pre><p><br />
+<p><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Config/design.tag:../Design/" href="../Design/topicresolutiondescription.html#tcpbasedtopicresolutiondetails">TCP-based Topic Resolution</a> minimizes topic resolution traffic.</p>
+<p><br />
  </p>
 <h1><a class="anchor" id="unicastresolver"></a>
 Unicast Resolver&nbsp;&nbsp;<small><a href="#unicastresolver">&lt;-</a></small></h1>
@@ -195,7 +193,7 @@ context resolver_unicast_daemon 127.0.0.1:15380
  </p>
 <h1><a class="anchor" id="reestablishpre40topicresolution"></a>
 Re-establish Pre-4.0 Topic Resolution&nbsp;&nbsp;<small><a href="#reestablishpre40topicresolution">&lt;-</a></small></h1>
-<p>Ultra Messaging topic resolution prior to LBM Version 4.0 did not have resolution phases. To implement pre-4.0 topic resolution, include the following configuration option changes in your Ultra Messaging configuration file.</p>
+<p>Ultra Messaging topic resolution prior to LBM Version 4.0 did not have resolution phases. To implement pre-4.0 topic resolution, include the following configuration option changes in your Ultra Messaging configuration file. This is not recommended unless you have a mix of pre-4.0 and post-4.0 versions of UM that need to interoperate.</p>
 <pre class="fragment"># ----- Disable Advertisements in 4.0 Initial Phase
 source resolver_advertisement_minimum_initial_interval 0
 
@@ -239,9 +237,6 @@ context request_tcp_port_high 4395
 context request_tcp_port_low 4391
 context transport_tcp_port_high 4390
 context transport_tcp_port_low  4371
-source  ume_primary_store_port 4567
-source  ume_secondary_store_port 4567
-source  ume_tertiary_store_port 4567
 </pre><dl class="section note"><dt>Note</dt><dd>Alternatively, UM will use the early port settings when the environment variable <b>LBM_USE_ORIG_DEFAULT_PORTS</b> is set to <b>1</b>.</dd></dl>
 <p><br />
  </p>
@@ -268,9 +263,6 @@ context request_tcp_port_high 14395
 context request_tcp_port_low 14391
 context transport_tcp_port_high 14390
 context transport_tcp_port_low  14371
-source  ume_primary_store_port 14567
-source  ume_secondary_store_port 14567
-source  ume_tertiary_store_port 14567
 </pre><p><br />
 <br />
  <br />

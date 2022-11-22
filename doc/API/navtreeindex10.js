@@ -1,5 +1,10 @@
 var NAVTREEINDEX10 =
 {
+"struct__Lbmmon____DROMonMsg____Stats____Local.html#a001f85623176fcac37bfe424604beb5c":[10,0,5,6],
+"struct__Lbmmon____DROMonMsg____Stats____Local.html#a17c09c5da21def7193c08e635f46db01":[10,0,5,8],
+"struct__Lbmmon____DROMonMsg____Stats____Local.html#a26f9862c5f6fd973a662f18a5044d028":[10,0,5,3],
+"struct__Lbmmon____DROMonMsg____Stats____Local.html#a471e35862efea3f1e163c78a5d63c082":[10,0,5,9],
+"struct__Lbmmon____DROMonMsg____Stats____Local.html#a48f69f2d54595e9a701c9c549ab6159d":[10,0,5,1],
 "struct__Lbmmon____DROMonMsg____Stats____Local.html#a4f727de397d40a60a7c3441ed97adb5d":[10,0,5,7],
 "struct__Lbmmon____DROMonMsg____Stats____Local.html#a68fc8d5e2d92ac8d055801549e4dead4":[10,0,5,5],
 "struct__Lbmmon____DROMonMsg____Stats____Local.html#a71e561de0612c1c7913b873ab902f34a":[10,0,5,4],
@@ -244,10 +249,5 @@ var NAVTREEINDEX10 =
 "struct__Lbmmon____DROMonMsg____Stats____Portal____Peer____Send.html#ac7462487f06b7612b2740736a9eee994":[10,0,15,30],
 "struct__Lbmmon____DROMonMsg____Stats____Portal____Peer____Send.html#ad9c47a227cbf3452a31d711de6052050":[10,0,15,44],
 "struct__Lbmmon____DROMonMsg____Stats____Portal____Peer____Send.html#adced45333648250597a6cd5dbb8e8607":[10,0,15,39],
-"struct__Lbmmon____DROMonMsg____Stats____Portal____Peer____Send.html#aea001fa9b04f64fa2efdd80c6e910c35":[10,0,15,28],
-"struct__Lbmmon____DROMonMsg____Stats____Portal____Peer____Send.html#aee6367c468e38ea1911ab0e20ba711e8":[10,0,15,35],
-"struct__Lbmmon____DROMonMsg____Stats____Portal____Peer____Send.html#af947e9a3fdbdb136ed4e564b400ae5a4":[10,0,15,5],
-"struct__Lbmmon____UMMonAttributes.html":[10,0,16],
-"struct__Lbmmon____UMMonAttributes.html#a241b7317456b8243abba7d34d594ed4f":[10,0,16,0],
-"struct__Lbmmon____UMMonAttributes.html#a6ea8941dde7c2ef64b52b06f227a8fb5":[10,0,16,4]
+"struct__Lbmmon____DROMonMsg____Stats____Portal____Peer____Send.html#aea001fa9b04f64fa2efdd80c6e910c35":[10,0,15,28]
 };

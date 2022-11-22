@@ -54,10 +54,52 @@ $(document).ready(function(){initNavTree('packetloss.html','');});
 <div class="title">Packet Loss </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>This section is about packet loss. Packet loss is most-often caused when some part of the system is receiving packets at a higher rate than it is able to process them. This typically results in queuing of incoming packets, but queues do not have unlimited size. If the incoming packets exceed the processing speed for too long a period of time, the queue will fill and packets will be dropped.</p>
+<div class="textblock"><p>This section is about packet loss. It applies primarily to UDP-based network protocols used by UM: LBT-RM, LBT-RU, and UDP-based topic resolution.</p>
+<p>(Packet loss also affects TCP-based protocols, but UM has no control over how it is handled by the IP stack. "Packet" loss can also happen with the IPC transport type if source-pacing is selected, but most of this section's discussion doesn't apply to IPC.)</p>
+<p>Packet loss is almost always caused when some part of the system is receiving packets at a higher rate than it is able to process them. This might be a router, a switch, a subscribing host's kernel, or the subscribing process itself. This typically results in queuing of incoming packets within the router, switch, kernel, or socket buffer. But queues do not have unlimited size. If the incoming packets exceed the processing speed for too long a period of time, the queue will fill and packets will be dropped.</p>
 <p>Packet loss is a fact of life in networks. Some users are able to provision and tune their systems such that they might only lose a few packets per week. Other users routinely live with several lost packets per minute. Many users do not monitor their system for loss and have no idea how frequent it is.</p>
-<p>Packet loss is undesirable for many reasons. For reliable protocols (TCP, LBT-RM, etc), detection and retransmission of lost packets introduces significant latency. If packet rates are too high for too long a period of time, the reliability protocol can give up trying to recover the lost data. This can result in disconnects (for TCP) or delivery of "unrecoverable
-loss" events, where application messages can be lost forever.</p>
+<p>Packet loss is undesirable for many reasons. For reliable protocols (TCP, LBT-RM, etc), detection and retransmission of lost packets introduces significant latency. If packet rates are too high for too long a period of time, the transport protocol can give up trying to recover the lost data. For <a class="el" href="fundamentalconcepts.html#streaming">Streaming</a>, this can cause disconnects or <a class="el" href="fundamentalconcepts.html#unrecoverableloss1">Unrecoverable Loss</a>, where application messages can be lost forever.</p>
+<p>Informatica recommends that you: </p><ol>
+<li>
+Design your system to prevent packet loss. </li>
+<li>
+Configure UM for proper recovery from packet loss. </li>
+<li>
+Monitor your network for packet loss. </li>
+<li>
+Diagnose the cause of the observed packet loss and fine-tune your design and configuration to better prevent loss and optimize recovery from it. </li>
+</ol>
+<p><br />
+ </p>
+<h1><a class="anchor" id="designtopreventloss"></a>
+Design to Prevent Loss&nbsp;&nbsp;<small><a href="#designtopreventloss">&lt;-</a></small></h1>
+<p>There are two complementary methods of avoiding packet loss: </p><ul>
+<li>
+<a class="el" href="packetloss.html#decreasepacketflowthroughlosspoints">Decrease Packet Flow through Loss Points</a>. </li>
+<li>
+<a class="el" href="packetloss.html#increaseefficiencyofpacketconsumers">Increase Efficiency of Packet Consumers</a>. </li>
+</ul>
+<p><br />
+ </p>
+<h2><a class="anchor" id="decreasepacketflowthroughlosspoints"></a>
+Decrease Packet Flow through Loss Points&nbsp;&nbsp;<small><a href="#decreasepacketflowthroughlosspoints">&lt;-</a></small></h2>
+<ul>
+<li>
+<p class="startli"><b><a class="el" href="architecture.html#messagebatching">Message Batching</a></b>. At most loss points, the number of packets is usually more important than the sizes of the packets. 100 packets of 60 bytes each is <em>much</em> more burdensome to packet consumers than 10 packets of 600 bytes each. For latency-sensitive applications, consider implementing an <a class="el" href="architecture.html#intelligentbatching">Intelligent Batching</a> algorithm.</p>
+<p class="endli"></p>
+</li>
+<li>
+<p class="startli"><b>Reduce discards</b>. Due to the way publishers map topics to <a class="el" href="fundamentalconcepts.html#transportsessions">Transport Sessions</a>, it is often the case that the receiver will have to discard messages that it hasn't subscribed to. The <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Design/api.tag:../API/" href="../API/structlbm__rcv__transport__stats__t__stct.html">LBT-RM transport statistics</a> structure for each transport type contains the field "lbm_msgs_no_topic_rcved" which counts the number of data messages discarded. Also, the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Design/api.tag:../API/" href="../API/structlbm__context__stats__t__stct.html">context statistics</a> structure contains the field "lbtrm_unknown_msgs_rcved", which also counts data messages discarded.</p>
+<p>For the LBT-RU transport type, you can get similar discards. See the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Design/api.tag:../API/" href="../API/structlbm__rcv__transport__stats__lbtru__t__stct.html">LBT-RU transport statistics</a> structure field "lbm_msgs_no_topic_rcved", and the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Design/api.tag:../API/" href="../API/structlbm__context__stats__t__stct.html">context statistics</a> structure field "lbtru_unknown_msgs_rcved".</p>
+<p>For the TCP or LBT-RU transport types, you can often decrease discards by turning on <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Design/config.tag:../Config/" href="../Config/grpmajoroptions.html#transportsourcesidefilteringbehaviorsource">Source Side Filtering</a>.</p>
+<p class="endli">With Multicast, the Source Side Filtering feature is not possible. So it is usually necessary to change the topic-to-transport session mapping. Ideally, this can be done by taking into account the topic interests of the subscribers. But often it simply means increasing the number of transport sessions. In the case of LBT-RM, increasing the number of multicast groups is preferred, but is often limited by the network hardware. In that case, you can multiply the number of transport sessions by varying the destination port. </p>
+</li>
+</ul>
+<p><br />
+ </p>
+<h2><a class="anchor" id="increaseefficiencyofpacketconsumers"></a>
+Increase Efficiency of Packet Consumers&nbsp;&nbsp;<small><a href="#increaseefficiencyofpacketconsumers">&lt;-</a></small></h2>
+<p>Here are some methods for increasing the efficiency of subscribers: Use a <a class="el" href="umglossary.html#glossarykernelbypass">kernel-bypass driver</a>. For Linux, use <a class="el" href="advancedoptimizations.html#receivemultipledatagrams">Receive Multiple Datagrams</a>. Use <a class="el" href="advancedoptimizations.html#receivebufferrecycling">Receive Buffer Recycling</a>. For Java and .NET, use <a class="el" href="advancedoptimizations.html#zeroobjectdelivery">Zero Object Delivery</a>.</p>
 <p><br />
  </p>
 <h1><a class="anchor" id="umrecoveryoflostpackets"></a>
@@ -69,17 +111,17 @@ UM Recovery of Lost Packets&nbsp;&nbsp;<small><a href="#umrecoveryoflostpackets"
 <li>
 <b>OTR/Late Join</b> - independent of transport, OTR and Late Join will recover data, typically after the transport layer is unable to recover. </li>
 <li>
-<b>Persistence</b> - closely-associated with OTR and Late Join, the persistent Store provides a much greater capacity to recover lost data. </li>
+<b>Persistence</b> - closely-associated with OTR and Late Join, the persistent Store provides a much greater capacity to recover lost data. UM persistence provides a guarantee of message delivery, subject to a set of configurable constraints. </li>
 </ul>
-<p>One fundamental problem with most UM use cases is that users want the flow of new messages to continue unimpeded in parallel with recovery efforts of lost packets. Given that packet loss is almost always a result of high packet rates overloading one or more queuing points along a messaging path, the addition of packet recovery efforts can make the overload even worse. "Pouring gasoline on a fire" is an often-repeated metaphor.</p>
-<p>Fortunately, packet rate overload tends to be temporary, associated with short-term traffic bursts. That is one reason why the UM lost packet recovery algorithms use time delays. For example: <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grptransportlbtrmreliability.html#transportlbtrmnakinitialbackoffintervalreceiver">transport_lbtrm_nak_initial_backoff_interval (receiver)</a> and <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grpofftransportrecovery.html#otrrequestinitialdelayreceiver">otr_request_initial_delay (receiver)</a>. By waiting before requesting retransmissions, the burst is allowed some time to subside before we add retransmission to the normal traffic load. These delays do add to latency, but shortening the delay too much risks making the loss worse, which can make the overall latency worse than having a longer delay.</p>
+<p>One common goal for most UM use cases is that users want the flow of new messages to continue unimpeded in parallel with recovery efforts of lost packets. Given that packet loss is almost always a result of high packet rates overloading one or more queuing points along a messaging path, the addition of packet recovery efforts can make the overload even worse. "Pouring gasoline on a fire" is an often-repeated metaphor.</p>
+<p>Fortunately, packet rate overload tends to be temporary, associated with short-term traffic bursts. That is one reason why the UM lost packet recovery algorithms use time delays. For example: <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Design/config.tag:../Config/" href="../Config/grptransportlbtrmreliability.html#transportlbtrmnakinitialbackoffintervalreceiver">transport_lbtrm_nak_initial_backoff_interval (receiver)</a> and <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Design/config.tag:../Config/" href="../Config/grpofftransportrecovery.html#otrrequestinitialdelayreceiver">otr_request_initial_delay (receiver)</a>. By waiting before requesting retransmissions, the burst is allowed some time to subside before we add retransmission to the normal traffic load. These delays do add to latency, but shortening the delay too much risks making the loss worse, which can make the overall latency worse than having a longer delay.</p>
 <p>One limiting factor related to data recovery is UM's use of retransmission rate limits. After a short period of severe packet loss due to overload, many receivers will be requesting retransmission. It would make no sense for the initial request delay to successfully bypass the original traffic burst, only to create its own overloading burst of retransmissions. Older NAK-based systems can get into a positive feedback loop where loss leads to retransmission, which leads to more loss, which leads to more retransmission, etc. Even once new data rates return to normal, networks can be locked into this kind of NAK/Retransmission storm. UM's retransmission rate limiter throttles the retransmission of lost packets over time without worsening the loss.</p>
 <p>Another limiting factor related to data recovery is the amount of data which the sender buffers and is available for retransmission. Applications need to continue sending new data while recovery takes place. Since the buffer is of limited size, older buffered messages will eventually be overwritten with new messages.</p>
 <p>For streaming applications, these buffers are held in memory, and the sizes are usually measured in megabytes. For persistent applications, the Store writes its buffer to disk, allowing for buffer sizes orders of magnitude larger than memory-based buffers. But even the Store's disk-based buffer is of finite size, and is susceptible to being overwritten if it takes too long to recover data.</p>
-<p>Note that the <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/Design/ume.tag:../UME/" href="../UME/operationalview.html#rppnormaloperation">Receiver Paced Persistence (RPP)</a> feature seeks to maximize the reliability of messaging by allowing the publisher to be blocked from sending rather than overwriting unacknowledged data.</p>
+<p>Note that the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Design/ume.tag:../UME/" href="../UME/operationalview.html#rppnormaloperation">Receiver Paced Persistence (RPP)</a> feature seeks to maximize the reliability of messaging by allowing the publisher to be blocked from sending rather than overwriting unacknowledged data.</p>
 <p>Given these limiting factors for data recovery, a sufficiently-overloaded network can reach a point where lost data can no longer be recovered, a situation called "unrecoverable loss".</p>
 <p>Finally, it is very important for UM users to make use of UM's extensive monitoring capabilities. Since UM does a good job of recovering lost packets, you may be experiencing high latency spikes without knowing it. And recovered loss today can be a warning of unrecoverable loss tomorrow. User are strongly advised to monitor transport statistics and pay special attention to receivers that repeatedly experience loss. Even if that loss is successfully recovered, you should diagnose and treat the loss before it gets worse and becomes unrecoverable.</p>
-<p>See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/Design/operations.tag:../Operations/" href="../Operations/monitoring.html">Monitoring</a> for more information.</p>
+<p>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Design/operations.tag:../Operations/" href="../Operations/monitoring.html">Monitoring</a> for more information.</p>
 <p><br />
  </p>
 <h1><a class="anchor" id="packetlosspoints"></a>
@@ -97,8 +139,7 @@ Loss: Switch Egress Port&nbsp;&nbsp;<small><a href="#lossswitchegressport">&lt;-
 <p>It is easy to understand how loss can happen here. Suppose three remote hosts are sending UDP data streams at the destination host. If each stream is carrying 0.5 gigabit/sec of throughput, the switch needs to send 1.5 gigabit/sec over a 1 gigabit link, a clear overload. If this is a very short-term burst, the egress queue will hold the data until the incoming data flows subside and the outgoing port can get caught up. But if the burst lasts too long and the egress queue fills, the switch has no choice but to drop packets.</p>
 <p>Note that the switch will not count these drops as "errors". There is a separate drop counter which should be examined to diagnose switch egress port loss.</p>
 <p><a class="anchor" id="mitigateswitchegressport"></a><b>MITIGATION</b></p>
-<p>The only solution is to reduce the packet rate being sent to the destination host. Due to the way publishers map topics to <a class="el" href="fundamentalconcepts.html#transportsessions">Transport Sessions</a>, it is often the case that the receiver will be discarding messages that it hasn't subscribed to. For the LBT-RU transport type, this can often be accomplished by turning on <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grpmajoroptions.html#transportsourcesidefilteringbehaviorsource">Source Side Filtering</a>. With Multicast, the Source Side Filtering feature is not possible. So it is sometimes necessary to change the topic mapping, usually by increasing the number of multicast groups, and thus reducing the number of topics per session. By grouping topics with knowledge of receiver interest, you can reduce the number of unsubscribed topics being received.</p>
-<p>Another very helpful mitigator is to batch multiple application messages into a single datagram. See <a class="el" href="architecture.html#messagebatching">Message Batching</a>.</p>
+<p>The only solution is to reduce the packet rate being sent to the destination host. See <a class="el" href="packetloss.html#decreasepacketflowthroughlosspoints">Decrease Packet Flow through Loss Points</a>.</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="lossnicringbuffer"></a>
@@ -116,7 +157,7 @@ Loss: NIC Ring Buffer&nbsp;&nbsp;<small><a href="#lossnicringbuffer">&lt;-</a></
  </p>
 <h2><a class="anchor" id="losssocketbuffer"></a>
 Loss: Socket Buffer&nbsp;&nbsp;<small><a href="#losssocketbuffer">&lt;-</a></small></h2>
-<p>The Socket Buffer represents the interface between the OS kernel and the user process. Received data is transferred from the NIC Ring Buffer to the destination Socket Buffer(s). The Socket Buffers are then emptied by the application process (in this case, the UM Context Thread). Socket buffer sizes are configurable, according to the transport type. For example, see <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordmac_DEV_HF_6_14/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grptransportlbtrmreliability.html#transportlbtrmreceiversocketbuffercontext">transport_lbtrm_receiver_socket_buffer (context)</a>.</p>
+<p>The Socket Buffer represents the interface between the OS kernel and the user process. Received data is transferred from the NIC Ring Buffer to the destination Socket Buffer(s). The Socket Buffers are then emptied by the application process (in this case, the UM Context Thread). Socket buffer sizes are configurable, according to the transport type. For example, see <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Design/config.tag:../Config/" href="../Config/grptransportlbtrmreliability.html#transportlbtrmreceiversocketbuffercontext">transport_lbtrm_receiver_socket_buffer (context)</a>.</p>
 <p>The TCP protocol is designed to ensure that the socket buffer cannot be overflowed. However, UDP-based protocols (LBT-RU and LBT-RM) are susceptible to socket buffer overflow, which leads to datagram loss.</p>
 <p><a class="anchor" id="mitigatenicsocketbuffer"></a><b>MITIGATION</b></p>
 <p>All of the mitigators listed <a class="el" href="packetloss.html#lossnicringbuffer">Loss: NIC Ring Buffer</a> will help this problem by reducing the incoming packet rate.</p>

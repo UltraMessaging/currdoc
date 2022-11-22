@@ -1,5 +1,5 @@
 /*
-  Copyright (C) 2005-2021, Informatica Corporation  Permission is granted to licensees to use
+  (C) Copyright 2005,2022 Informatica LLC  Permission is granted to licensees to use
   or alter this software for any purpose, including commercial applications,
   according to the terms laid out in the Software License Agreement.
 
@@ -169,7 +169,7 @@ int blocked = 0;
 /* For the elapsed time, calculate and print the msgs/sec and bits/sec */
 void print_bw(FILE *fp, struct timeval *tv, unsigned int msgs, unsigned long long bytes)
 {
-	char scale[] = {'\0', 'K', 'M', 'G'};
+	char scale[] = {' ', 'K', 'M', 'G'};
 	int msg_scale_index = 0, bit_scale_index = 0;
 	double sec = 0.0, mps = 0.0, bps = 0.0;
 	double kscale = 1000.0;
@@ -590,6 +590,8 @@ int main(int argc, char **argv)
 	size_t transize = 4;
 	int smx_datagram_size = -1;
 	size_t smxdgssize = 4;
+	lbm_uint_t send_final_ads;
+	size_t send_final_ads_size;
 
 #if defined(_WIN32)
 	{
@@ -743,6 +745,13 @@ int main(int argc, char **argv)
 	/* Allocate the desired topic */
 	if (lbm_src_topic_alloc(&topic, ctx, opts->topic, tattr) == LBM_FAILURE) {
 		fprintf(stderr, "lbm_src_topic_alloc: %s\n", lbm_errmsg());
+		exit(1);
+	}
+
+	send_final_ads = 0;
+	send_final_ads_size = sizeof(send_final_ads);
+    if (lbm_src_topic_attr_getopt(tattr, "resolver_send_final_advertisements", &send_final_ads, &send_final_ads_size) == LBM_FAILURE) {
+		fprintf(stderr, "lbm_src_topic_attr_getopt(resolver_send_final_advertisements) error: %s\n", lbm_errmsg());
 		exit(1);
 	}
 
@@ -980,6 +989,11 @@ int main(int argc, char **argv)
 	/* Deallocate source and LBM context */
 	lbm_src_delete(src);
 	src = NULL;
+	if (send_final_ads) {
+		/* Wait for the final ads to complete. By default, they are sent for 10 seconds. */
+		printf("Waiting 11 seconds for final advertisements to be sent...\n");
+		SLEEP_SEC(11);
+	}
 	printf("Deleting context\n");
 	lbm_context_delete(ctx);
 	ctx = NULL;

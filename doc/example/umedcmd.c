@@ -1,5 +1,5 @@
 /*
-Copyright (C) 2005-2021, Informatica Corporation  Permission is granted to licensees to use
+(C) Copyright 2005,2022 Informatica LLC  Permission is granted to licensees to use
 or alter this software for any purpose, including commercial applications,
 according to the terms laid out in the Software License Agreement.
 
@@ -92,7 +92,8 @@ typedef enum {
 	NO_MODE = 0,			/* no specified mode */
 	PUBLISH_MODE = 1,		/* publish statistics mode */
 	MARK_MODE = 2,			/* mark message mode */
-	DEREGISTER_MODE = 3		/* deregister receiver mode */
+	DEREGISTER_MODE = 3,	/* deregister receiver mode */
+	ELECT_MODE = 4			/* Restart a Proxy Source Election */
 } daemon_mode_t;
 
 typedef struct daemon_command_options_stct {
@@ -125,15 +126,15 @@ int check_regid_string(char *sqn_string, list_t *rcvr_regid_list);
 
 char purpose[] = "Purpose: "
 "multi-mode application sends unicast immediate messages to umestore\n"
-"         daemon to publish statistics, mark message unusable or deregister\n"
-"         receivers."
+"         daemon to publish statistics, mark message unusable, deregister\n"
+"         receivers, or restart a failed proxy source election."
 ;
 char general_usage[] =
 "*******************************************************************************\n"
 "Usage: umedcmd -h -m mode\n"
 "Available options:\n"
 "  -h, --help         display mode-specific usage help message and exit\n"
-"  -m, --mode=TYPE    set command mode to TYPE 'publish', 'mark' or 'deregister'\n"
+"  -m, --mode=TYPE    set command mode to TYPE 'publish', 'mark', 'deregister' or 'elect'\n"
 "                     [required]\n"
 "*******************************************************************************\n"
 ;
@@ -174,6 +175,26 @@ char mark_usage[] =
 "                          '-S 54'       drop a single message\n"
 "                          '-S 312-315'  drops a range of messages\n"
 "                          '-S 2,5,7-9' drops two single and a range of messages\n"
+"  -T, --target=TARGET   TARGET string for unicast immediate messages\n"
+"                        [required]\n"
+"*******************************************************************************\n"
+;
+
+char elect_usage[] =
+"*******************************************************************************\n"
+"Usage: umedcmd -m elect [-c config_file] -i store_interface -p store_port\n"
+"       -s src_regid -T target_string [-L linger] [-h]\n"
+"Available options:\n"
+"  -c, --config=FILE     Use LBM configuration file FILE.\n"
+"                           Multiple config files are allowed.\n"
+"                           Example: '-c file1.cfg -c file2.cfg'\n"
+"  -h, --help            display this help and exit\n"
+"  -i, --store_interface store interface IPv4 address [required]\n"
+"  -p, --store_port      store port [required]\n"
+"  -L, --linger=NUM      linger for NUM seconds before closing context\n"
+"  -m, --mode=TYPE       set the command mode to TYPE 'elect' [required]\n"
+"  -s, --src_regid=ID    source registration ID associated with the store\n"
+"                        repository [required]\n"
 "  -T, --target=TARGET   TARGET string for unicast immediate messages\n"
 "                        [required]\n"
 "*******************************************************************************\n"
@@ -286,6 +307,9 @@ void print_help_exit(char **argv, int exit_value, daemon_command_options_t *opts
 	else if (opts->mode == MARK_MODE) {
 		fprintf(stderr, "%s\n%s\n%s\n%s", argv[0], lbm_version(), purpose, mark_usage);
 	}
+	else if (opts->mode == ELECT_MODE) {
+		fprintf(stderr, "%s\n%s\n%s\n%s", argv[0], lbm_version(), purpose, elect_usage);
+	}
 	else if (opts->mode == DEREGISTER_MODE) {
 		fprintf(stderr, "%s\n%s\n%s\n%s", argv[0], lbm_version(), purpose, deregister_usage);
 	}
@@ -384,6 +408,9 @@ void process_cmdline(int argc, char **argv, daemon_command_options_t *opts, list
 		else if (strncmp(mode_string, "mark", MAX_MODELEN) == 0) {
 			opts->mode = MARK_MODE;
 		}
+		else if (strncmp(mode_string, "elect", MAX_MODELEN) == 0) {
+			opts->mode = ELECT_MODE;
+		}
 		else if (strncmp(mode_string, "deregister", MAX_MODELEN) == 0) {
 			opts->mode = DEREGISTER_MODE;
 		}
@@ -431,7 +458,7 @@ void process_cmdline(int argc, char **argv, daemon_command_options_t *opts, list
 			fprintf(stderr, "Command line warning: the '-s src_regid' option is unused in publish mode\n");
 		}
 	}
-	if ((opts->mode == MARK_MODE) || (opts->mode == DEREGISTER_MODE)) {
+	if ((opts->mode == MARK_MODE) || (opts->mode == DEREGISTER_MODE) || (opts->mode == ELECT_MODE)) {
 		if (!opts->src_regid_set) {
 			fprintf(stderr, "Command line error: the '-s src_regid' option is required\n");
 			print_help_exit(argv, 1, opts);
@@ -687,6 +714,17 @@ void handle_mark_mode_requests(lbm_context_t *ctx, daemon_command_options_t *opt
 	}
 }
 
+void handle_elect_mode_requests(lbm_context_t *ctx, daemon_command_options_t *opts, list_t *sqn_list) {
+	char request_string[sizeof("elect ") + MAX_IPV4_ADDRLEN + 1 + sizeof(opts->store_port) + 1 + MAX_REGIDLEN + 1 + MAX_CMDLEN /* future expansion */ + 1];
+
+	wait_4_outstanding_request(1);
+
+	snprintf(request_string, sizeof(request_string), "elect %s %u %u", opts->store_interface_string, opts->store_port, opts->src_regid);
+
+	send_request(ctx, opts->target_string, request_string);
+	fprintf(stdout, "Sent proxy source election string [%s] to target [%s]\n", request_string, opts->target_string);
+}
+
 void handle_deregister_mode_requests(lbm_context_t *ctx, daemon_command_options_t *opts, list_t *rcvr_regid_list) {
 	char request_string[sizeof("deregister ") + MAX_IPV4_ADDRLEN + 1 + sizeof(opts->store_port) + 1 + (MAX_REGIDLEN * 2) + 2 + MAX_CMDLEN + 1];
 	lbm_uint32_t rcvr_regid;
@@ -786,6 +824,9 @@ int main(int argc, char **argv) {
 	}
 	else if (opts.mode == MARK_MODE) {
 		handle_mark_mode_requests(ctx, &opts, &sqn_list);
+	}
+	else if (opts.mode == ELECT_MODE) {
+		handle_elect_mode_requests(ctx, &opts, &sqn_list);
 	}
 	else {
 		handle_deregister_mode_requests(ctx, &opts, &rcvr_regid_list);

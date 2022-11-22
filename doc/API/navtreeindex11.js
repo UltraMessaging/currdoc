@@ -1,5 +1,10 @@
 var NAVTREEINDEX11 =
 {
+"struct__Lbmmon____DROMonMsg____Stats____Portal____Peer____Send.html#aee6367c468e38ea1911ab0e20ba711e8":[10,0,15,35],
+"struct__Lbmmon____DROMonMsg____Stats____Portal____Peer____Send.html#af947e9a3fdbdb136ed4e564b400ae5a4":[10,0,15,5],
+"struct__Lbmmon____UMMonAttributes.html":[10,0,16],
+"struct__Lbmmon____UMMonAttributes.html#a241b7317456b8243abba7d34d594ed4f":[10,0,16,0],
+"struct__Lbmmon____UMMonAttributes.html#a6ea8941dde7c2ef64b52b06f227a8fb5":[10,0,16,4],
 "struct__Lbmmon____UMMonAttributes.html#a750e6a65104e2db1b84a3d1cd07d7520":[10,0,16,7],
 "struct__Lbmmon____UMMonAttributes.html#aa418b8d4892d6c7517bd03d49e2771db":[10,0,16,1],
 "struct__Lbmmon____UMMonAttributes.html#aa51bc6e89c896721b92f568a58308fca":[10,0,16,3],
@@ -244,10 +249,5 @@ var NAVTREEINDEX11 =
 "struct__Lbmmon____UMSMonMsg____Stats____EventQueue.html#a7558a6cb75507e9d7992e5f39d84f308":[10,0,38,56],
 "struct__Lbmmon____UMSMonMsg____Stats____EventQueue.html#a8e50fd25ca559d0a97146f12a6fee51d":[10,0,38,0],
 "struct__Lbmmon____UMSMonMsg____Stats____EventQueue.html#a8ea2fc573ec92ace13d3f3f95928469a":[10,0,38,24],
-"struct__Lbmmon____UMSMonMsg____Stats____EventQueue.html#a930ed4f33cd1db92d55c6ea571f9bfc3":[10,0,38,23],
-"struct__Lbmmon____UMSMonMsg____Stats____EventQueue.html#a984a144afc25f8c58b6501475afd5a6d":[10,0,38,4],
-"struct__Lbmmon____UMSMonMsg____Stats____EventQueue.html#a9ca984f2082ee94b46e7b2be0d3173d0":[10,0,38,40],
-"struct__Lbmmon____UMSMonMsg____Stats____EventQueue.html#a9e7da962d9b8945c62ff6644792edb71":[10,0,38,32],
-"struct__Lbmmon____UMSMonMsg____Stats____EventQueue.html#a9f0c4b568fa87665a4b325289f185f2a":[10,0,38,15],
-"struct__Lbmmon____UMSMonMsg____Stats____EventQueue.html#aa7375cb3f457aa17084b570b69f11d02":[10,0,38,12]
+"struct__Lbmmon____UMSMonMsg____Stats____EventQueue.html#a930ed4f33cd1db92d55c6ea571f9bfc3":[10,0,38,23]
 };

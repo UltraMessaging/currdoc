@@ -1,5 +1,9 @@
 var NAVTREEINDEX23 =
 {
+"interfacecom_1_1latencybusters_1_1lbm_1_1LBMRegistrationIdCallback.html":[2,0,0,0,0,67],
+"interfacecom_1_1latencybusters_1_1lbm_1_1LBMRegistrationIdCallback.html#a47cc681616c283ddc7c0e79c17239f37":[2,0,0,0,0,67,0],
+"interfacecom_1_1latencybusters_1_1lbm_1_1LBMResolverEventCallback.html":[2,0,0,0,0,71],
+"interfacecom_1_1latencybusters_1_1lbm_1_1LBMResolverEventCallback.html#a11e73a3c067d4f082e8b498d4ceab5b9":[2,0,0,0,0,71,0],
 "interfacecom_1_1latencybusters_1_1lbm_1_1LBMResponseCallback.html":[2,0,0,0,0,72],
 "interfacecom_1_1latencybusters_1_1lbm_1_1LBMResponseCallback.html#ab5a91ee6bcc2bc9857bcce734c3014bd":[2,0,0,0,0,72,0],
 "interfacecom_1_1latencybusters_1_1lbm_1_1LBMSetInflightCallback.html":[2,0,0,0,0,75],

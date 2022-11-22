@@ -14,6 +14,7 @@ var NAVTREE =
     ] ],
     [ "DRO Concepts", "index.html#umrouterconcepts", [
       [ "Basic DRO Operation", "index.html#basicumrouteroperation", [
+        [ "Interest and Topic Resolution", "index.html#interestandtopicresolution", null ],
         [ "Interest and Use Queries", "index.html#interestandusequeries", null ],
         [ "DRO Keepalive", "index.html#umrouterkeepalive", null ],
         [ "Final Advertisements", "index.html#finaladvertisements", null ],
@@ -72,11 +73,28 @@ var NAVTREE =
       ] ],
       [ "Running the DRO Daemon", "index.html#runningtheumrouterdaemon", null ]
     ] ],
+    [ "DRO Monitoring", "index.html#umroutermonitoring", [
+      [ "DRO Monitoring: Logs", "index.html#dromonitoringlogs", null ],
+      [ "DRO Monitoring: UM Library Stats", "index.html#dromonitoringumlibrarystats", null ],
+      [ "DRO Monitoring: Daemon Stats", "index.html#dromonitoringdaemonstats", null ],
+      [ "DRO Web Monitor", "index.html#umrouterwebmonitor", [
+        [ "Main Page", "index.html#mainpage", null ],
+        [ "Endpoint Portal Page", "index.html#endpointportalpage", null ],
+        [ "Peer Portal Page", "index.html#peerportalpage", null ],
+        [ "Topology Info Page", "index.html#topologyinfopage", null ],
+        [ "Path Info", "index.html#pathinfo", null ]
+      ] ],
+      [ "DRO Log Messages", "index.html#umrouterlogmessages", [
+        [ "DRO Rolling Logs", "index.html#umrouterrollinglogs", null ],
+        [ "Important DRO Log Messages", "index.html#importantumrouterlogmessages", null ]
+      ] ],
+      [ "DRO Transport Stats", "index.html#umroutertransportstats", null ]
+    ] ],
     [ "Man Pages for DRO", "index.html#manpagesforumrouter", [
       [ "Tnwgd Man Page", "index.html#tnwgdmanpage", null ],
       [ "Tnwgds Man Page", "index.html#tnwgdsmanpage", null ]
     ] ],
-    [ "XML Configuration Reference", "index.html#xmlconfigurationreference", [
+    [ "DRO Configuration Reference", "index.html#xmlconfigurationreference", [
       [ "File Structure", "index.html#filestructure", null ],
       [ "Elements Reference", "index.html#elementsreference", [
         [ "Router Element \"<tnw-gateway>\"", "index.html#droelementtnwgateway", null ],
@@ -179,7 +197,7 @@ var NAVTREE =
       ] ],
       [ "DRO Configuration DTD", "index.html#umrouterconfigurationdtd", null ]
     ] ],
-    [ "DRO Daemon Statistics", "index.html#umrouterdaemonstatistics", [
+    [ "DRO Binary Daemon Statistics", "index.html#umrouterdaemonstatistics", [
       [ "DRO Daemon Statistics Structures", "index.html#umrouterdaemonstatisticsstructures", [
         [ "DRO Daemon Statistics Byte Swapping", "index.html#umrouterdaemonstatisticsbyteswapping", null ],
         [ "DRO Daemon Statistics String Buffers", "index.html#umrouterdaemonstatisticsstructuresstringbuffers", null ]
@@ -189,20 +207,6 @@ var NAVTREE =
         [ "DRO Daemon Control Request Addressing", "index.html#umrouterdaemoncontrolrequestaddressing", null ],
         [ "DRO Control Request Types", "index.html#umrouterdaemoncontrolrequesttypes", null ]
       ] ]
-    ] ],
-    [ "DRO Monitoring", "index.html#umroutermonitoring", [
-      [ "DRO Web Monitor", "index.html#umrouterwebmonitor", [
-        [ "Main Page", "index.html#mainpage", null ],
-        [ "Endpoint Portal Page", "index.html#endpointportalpage", null ],
-        [ "Peer Portal Page", "index.html#peerportalpage", null ],
-        [ "Topology Info Page", "index.html#topologyinfopage", null ],
-        [ "Path Info", "index.html#pathinfo", null ]
-      ] ],
-      [ "DRO Log Messages", "index.html#umrouterlogmessages", [
-        [ "DRO Rolling Logs", "index.html#umrouterrollinglogs", null ],
-        [ "Important DRO Log Messages", "index.html#importantumrouterlogmessages", null ]
-      ] ],
-      [ "DRO Transport Stats", "index.html#umroutertransportstats", null ]
     ] ],
     [ "DRO Glossary", "index.html#umrouterglossary", null ],
     [ "Comparison to Pre-6.0 UM Gateway", "index.html#comparisontopre60umgateway", [
