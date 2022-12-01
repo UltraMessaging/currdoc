@@ -146,6 +146,9 @@ var NAVTREE =
       [ "Umestoreds Man Page", "manpagesforstore.html#umestoredsmanpage", null ]
     ] ],
     [ "Configuration Reference for Umestored", "configurationreferenceforumestored.html", [
+      [ "Share/Merge Store XML Files with XInclude", "configurationreferenceforumestored.html#mergingmultiplestorexmlconfigurationfiles", [
+        [ "Common Store XInclude Use Case", "configurationreferenceforumestored.html#commonstorexincludeusecase", null ]
+      ] ],
       [ "Store XML Configuration File Elements", "configurationreferenceforumestored.html#storexmlconfigurationfileelements", [
         [ "UMP Element \"<ume-store>\"", "configurationreferenceforumestored.html#umeelementumestore", null ],
         [ "UMP Element \"<stores>\"", "configurationreferenceforumestored.html#umeelementstores", null ],

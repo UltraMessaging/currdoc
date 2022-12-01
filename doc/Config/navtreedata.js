@@ -28,7 +28,9 @@ var NAVTREE =
       [ "Reading XML Configuration Files", "xmlconfigurationfiles.html#readingxmlconfigurationfiles", null ],
       [ "Using XML Configuration Files With a UM Application", "xmlconfigurationfiles.html#usingxmlconfigurationfileswithaumapplication", null ],
       [ "XML Configuration File Format", "xmlconfigurationfiles.html#xmlconfigurationfileformat", null ],
-      [ "Share/Merge XML Files with xi:include", "xmlconfigurationfiles.html#mergingmultiplexmlconfigurationfiles", null ],
+      [ "Share/Merge XML Files with XInclude", "xmlconfigurationfiles.html#mergingmultiplexmlconfigurationfiles", [
+        [ "Common XInclude Use Case", "xmlconfigurationfiles.html#commonxincludeusecase", null ]
+      ] ],
       [ "XML Configuration File Elements", "xmlconfigurationfiles.html#xmlconfigurationfileelements", [
         [ "UM Element \"<um-configuration>\"", "xmlconfigurationfiles.html#umelementumconfiguration", null ],
         [ "UM Element \"<applications>\"", "xmlconfigurationfiles.html#umelementapplications", null ],

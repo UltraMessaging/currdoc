@@ -96,6 +96,9 @@ var NAVTREE =
     ] ],
     [ "DRO Configuration Reference", "index.html#xmlconfigurationreference", [
       [ "File Structure", "index.html#filestructure", null ],
+      [ "Share/Merge DRO XML Files with XInclude", "index.html#mergingmultipledroxmlconfigurationfiles", [
+        [ "Common DRO XInclude Use Case", "index.html#commondroxincludeusecase", null ]
+      ] ],
       [ "Elements Reference", "index.html#elementsreference", [
         [ "Router Element \"<tnw-gateway>\"", "index.html#droelementtnwgateway", null ],
         [ "Router Element \"<portals>\"", "index.html#droelementportals", null ],

@@ -28,7 +28,9 @@ var NAVTREE =
       [ "Reading XML Configuration Files", "index.html#readingxmlconfigurationfiles", null ],
       [ "Using XML Configuration Files With a UM Application", "index.html#usingxmlconfigurationfileswithaumapplication", null ],
       [ "XML Configuration File Format", "index.html#xmlconfigurationfileformat", null ],
-      [ "Share/Merge XML Files with xi:include", "index.html#mergingmultiplexmlconfigurationfiles", null ],
+      [ "Share/Merge XML Files with XInclude", "index.html#mergingmultiplexmlconfigurationfiles", [
+        [ "Common XInclude Use Case", "index.html#commonxincludeusecase", null ]
+      ] ],
       [ "XML Configuration File Elements", "index.html#xmlconfigurationfileelements", [
         [ "UM Element \"<um-configuration>\"", "index.html#umelementumconfiguration", null ],
         [ "UM Element \"<applications>\"", "index.html#umelementapplications", null ],
@@ -778,8 +780,8 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "index.html",
-"index.html#resolveractivesourceintervalcontext",
-"index.html#transporttcpnodelaysource"
+"index.html#resolutionnumberofsourcesquerythresholdreceiver",
+"index.html#transporttcpnetworkref"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

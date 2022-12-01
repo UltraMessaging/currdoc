@@ -144,6 +144,7 @@ var NAVTREEINDEX2 =
 "specialnotes.html#configuringmultihomedhosts":[8,0],
 "specialnotes.html#traversingafirewall":[8,1],
 "xmlconfigurationfiles.html":[1],
+"xmlconfigurationfiles.html#commonxincludeusecase":[1,8,0],
 "xmlconfigurationfiles.html#constrainingconfigurationvalues":[1,3,0],
 "xmlconfigurationfiles.html#mergingmultiplexmlconfigurationfiles":[1,8],
 "xmlconfigurationfiles.html#orderandrulespecifications":[1,3],

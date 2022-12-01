@@ -11,6 +11,7 @@ var NAVTREEINDEX0 =
 "index.html#burstloss":[36,0],
 "index.html#casesensitivity":[7,0],
 "index.html#channelmaptableszreceiver":[36,1,0],
+"index.html#commonxincludeusecase":[1,8,0],
 "index.html#compatibilityincludepreum60behaviorcontext":[9,0,1],
 "index.html#compressedtcpref":[27,0],
 "index.html#compressioncontext":[27,0,0],
@@ -248,6 +249,5 @@ var NAVTREEINDEX0 =
 "index.html#requesttcpporthighcontext":[33,0,3],
 "index.html#requesttcpportlowcontext":[33,0,4],
 "index.html#requesttcpreuseaddrcontext":[34,0,2],
-"index.html#resolutionnosourcenotificationthresholdreceiver":[10,1,1],
-"index.html#resolutionnumberofsourcesquerythresholdreceiver":[10,1,2]
+"index.html#resolutionnosourcenotificationthresholdreceiver":[10,1,1]
 };
