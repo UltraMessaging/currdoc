@@ -274,6 +274,8 @@ Gettimeofday Reduction Restrictions&nbsp;&nbsp;<small><a href="#gettimeofdayredu
 <ul>
 <li>
 <b>Monotonically Increasing Time</b> - The application is responsible for ensuring that each call to <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#a55b77c3057028116314fe5ff8e6afb25">lbm_context_process_events_ex()</a> has a <code>time_val</code> field value which is greater than or equal to the previous <code>time_val</code>. </li>
+<li>
+<b><code>"msec"</code> must be 0</b> - You must call <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#a55b77c3057028116314fe5ff8e6afb25">lbm_context_process_events_ex()</a> with the <code>"msec"</code> parameter set to zero. You can't tell <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#a55b77c3057028116314fe5ff8e6afb25">lbm_context_process_events_ex()</a> to loop for a period of time, and also tell it not to call gettimeofday(); UM won't see the passage of time. </li>
 </ul>
 <p><br />
  </p>
