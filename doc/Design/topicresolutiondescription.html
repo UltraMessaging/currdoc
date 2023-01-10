@@ -81,7 +81,7 @@ Redundancy. </li>
 <p>TCP-based TR (with "SRS" service) is a more recent addition to UM. It supports source discovery, and tracking of receivers.</p>
 <p>TCP-based TR is often paired with one of the UDP-based TR protocols (multicast or unicast). This is done to support interoperability with pre-6.12 versions of UM, and supply TR functionality not yet available in TCP TR. The TCP-based and UDP-based TR protocols run in parallel, with the UDP-based TR protocol supporting interoperability with pre-6.12 components, and supplying the functionality missing from TCP TR.</p>
 <p>When all of your UM components are upgraded to UM 6.14 and beyond, you can use the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Design/config.tag:../Config/" href="../Config/grpudpbasedresolveroperation.html#resolverdisableudptopicresolutioncontext">resolver_disable_udp_topic_resolution (context)</a> configuration option to turn off UDP-based TR.</p>
-<p>The advantage of TCP-based TR is greater reliability and reduced network and CPU load. UDP-based TR is susceptible to "deafness" issues due to transient network failures. Avoiding those deafness issues requires configuring UDP-based TR to use significant network and CPU resources. In contrast, TCP-based TR is designed to be reliable with much less network and CPU load, even in the face of transient network failures.</p>
+<p>The advantage of TCP-based TR is greater reliability and reduced network and CPU load. UDP-based TR is susceptible to <a class="el" href="umglossary.html#glossarydeafness">deafness</a> issues due to transient network failures. Avoiding those deafness issues requires configuring UDP-based TR to use significant network and CPU resources. In contrast, TCP-based TR is designed to be reliable with much less network and CPU load, even in the face of transient network failures.</p>
 <p><br />
  </p>
 <h1><a class="anchor" id="resolvercaches"></a>
@@ -130,7 +130,7 @@ As the number of topics grows, the speed of source discovery degrades and resour
 <li>
 Since UDP is not a reliable protocol, Multicast UDP TR relies on repetition to ensure delivery of TR information. </li>
 <li>
-To effectively avoid deafness issues, resources must be consumed over the long term (TR must be configured to run "forever"). Jitter can be a long-term problem. </li>
+To effectively avoid <a class="el" href="umglossary.html#glossarydeafness">deafness</a> issues, resources must be consumed over the long term (TR must be configured to run "forever"). Jitter can be a long-term problem. </li>
 <li>
 As deployments change and grow, TR performance should be monitored and analyzed for possible reconfiguration to strike the right balance between speed of source discovery vs. resource consumption. </li>
 <li>
@@ -168,7 +168,7 @@ Can allow UDP-based TR to be disabled or "dialed-back". I.e. its configuration c
 <li>
 Since TCP is a reliable protocol, TCP-based TR does not need to repeatedly send the same information to ensure its reception. </li>
 <li>
-It is not necessary to consume resources over the long term to avoid deafness issues. </li>
+It is not necessary to consume resources over the long term to avoid <a class="el" href="umglossary.html#glossarydeafness">deafness</a> issues. </li>
 <li>
 If a source is deleted, that deletion is reliably communicated to all contexts in the TRD. </li>
 </ul>
@@ -187,9 +187,7 @@ For UM version 6.12 and 6.13, TCP-based TR does not fulfill the TR functions of 
 TCP-Based Topic Resolution Details&nbsp;&nbsp;<small><a href="#tcpbasedtopicresolutiondetails">&lt;-</a></small></h1>
 <p>TCP-based TR was introduced in UM version 6.12 to address shortcomings in UDP-based TR: </p><ul>
 <li>
-<b>Limit on scaling.</b> It is difficult to configure UDP-based TR to scale to many hundreds of thousands of topics. Too many topics typically results in unacceptable CPU and network load, and latency outliers (<a class="el" href="umglossary.html#glossaryjitter">jitter</a>). Intense TR bursts can cause packet loss, retransmissions, and deafness. </li>
-<li>
-<b>Deafness issues.</b> As deployments grow in size and complexity, UDP-based TR typically requires greatly extended Sustaining Phases, often to infinity. This results in significant CPU and network resources over the long term, and introduces latency outliers (<a class="el" href="umglossary.html#glossaryjitter">jitter</a>). </li>
+<b>Limit on scaling.</b> It is difficult to configure UDP-based TR to scale to many hundreds of thousands of topics. Too many topics typically results in unacceptable CPU and network load, and latency outliers (<a class="el" href="umglossary.html#glossaryjitter">jitter</a>). Intense TR bursts can cause packet loss, retransmissions, and <a class="el" href="umglossary.html#glossarydeafness">deafness</a>. As deployments grow in size and complexity, UDP-based TR typically requires greatly extended Sustaining Phases, often to infinity. This results in significant CPU and network resources over the long term, and introduces latency outliers (<a class="el" href="umglossary.html#glossaryjitter">jitter</a>). </li>
 <li>
 <b>High time to resolve.</b> To reduce the CPU and network load, and to avoid packet loss, UDP-based TR is usually strongly rate limited. This can greatly extend the time required to resolve topics, sometimes into the tens of minutes. </li>
 </ul>
@@ -227,7 +225,7 @@ TCP-Based TR Interest&nbsp;&nbsp;<small><a href="#tcpbasedtrinterest">&lt;-</a><
 <h2><a class="anchor" id="tcpbasedtrversioninteroperability"></a>
 TCP-Based TR Version Interoperability&nbsp;&nbsp;<small><a href="#tcpbasedtrversioninteroperability">&lt;-</a></small></h2>
 <p>TCP-based TR was first introduced in UM version 6.12. To maintain interoperability with pre-6.12, applications can be configured to use both TCP and UDP-based TR, in parallel.</p>
-<p>This can make it difficult to gain all the benefits of TCP-based TR. Since pre-6.12 applications still need to avoid the problems of deafness, even applications that have upgraded to 6.12 and beyond need to enable UDP-based TR, usually with extended sustaining phases, often to infinity.</p>
+<p>This can make it difficult to gain all the benefits of TCP-based TR. Since pre-6.12 applications still need to avoid the problems of <a class="el" href="umglossary.html#glossarydeafness">deafness</a>, even applications that have upgraded to 6.12 and beyond need to enable UDP-based TR, usually with extended sustaining phases, often to infinity.</p>
 <p>Ideally, all applications within a TRD can be upgraded to 6.14 and beyond, eliminating the need for UDP-based TR, but this is often not practical. How can the TR load be reduced in a step-wise fashion while an organization is upgrading applications gradually, over a long period of time?</p>
 <p>Fortunately, You can set configuration options differently for individual topics, either by using <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Design/config.tag:../Config/" href="../Config/xmlconfigurationfiles.html">XML Configuration Files</a> (the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Design/config.tag:../Config/" href="../Config/xmlconfigurationfiles.html#umelementtopic">&lt;topic&gt;</a> element), or by using the API functions for setting configuration options programmatically (e.g. <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#a1afc75f0fb3601d072b3463e7acf16a6">lbm_rcv_topic_attr_setopt()</a> and <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#a96ea052dce2e6376684cbf2003407cbf">lbm_src_topic_attr_setopt()</a>).</p>
 <p>Some helpful strategies might be: </p><ul>

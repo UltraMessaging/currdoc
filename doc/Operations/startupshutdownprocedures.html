@@ -62,11 +62,11 @@ $(document).ready(function(){initNavTree('startupshutdownprocedures.html','');})
  </p>
 <h1><a class="anchor" id="topicresolution"></a>
 Topic Resolution&nbsp;&nbsp;<small><a href="#topicresolution">&lt;-</a></small></h1>
-<p>Your UM development or administration team should anticipate the time and bandwidth required to resolve all topics when all applications initially start. This team should also establish any restarting restrictions.</p>
-<p>Operations staff should not have any direct topic resolution tasks aside from monitoring the increased CPU and bandwidth usage.</p>
-<p>Topic resolution is the discovery of a topic's transport session information by a receiver to enable the receipt of topic messages. Although in a multicast environment, topic resolution does not need to be started or shutdown, it does use network resources and can cause deaf receivers and other problems if not operating properly. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Operations/design.tag:../Design/" href="../Design/fundamentalconcepts.html#topicresolutionoverview">Topic Resolution Overview</a> for more detailed information.</p>
-<p>Applications cannot deliver messages until topic resolution completes. UM monitoring statistics are active before all topics resolve. In a large topic space approximately 10,000 topics) topic resolution messages may be 'staggered' or rate controlled, taking potentially several seconds to complete.</p>
+<p>Topic Resolution (TR) is the process by which subscribers discover a topic's publisher's <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Operations/design.tag:../Design/" href="../Design/fundamentalconcepts.html#transportsessions">transport session</a> information. The subscriber uses this information to join the source's transport session, which then delivers published messages to the subscriber. With <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Operations/design.tag:../Design/" href="../Design/topicresolutiondescription.html#multicastudptr">Multicast UDP TR</a>, topic resolution does not need to be started or shutdown. But TR does require network resources, and if not configured properly can lead to temporary or permanent <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Operations/design.tag:../Design/" href="../Design/umglossary.html#glossarydeafness">deafness</a> in receivers, as well as other problems. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Operations/design.tag:../Design/" href="../Design/fundamentalconcepts.html#topicresolutionoverview">Topic Resolution Overview</a> for more detailed information.</p>
+<p>Applications cannot deliver messages until topic resolution completes. UM monitoring statistics are active before all topics resolve. In a large topic space (e.g. 10,000 topics) topic resolution messages may be 'staggered' or rate controlled, taking potentially several seconds to complete.</p>
 <p>For example, 10,000 topics at the default value of 1,000 for <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Operations/config.tag:../Config/" href="../Config/grpudpbasedresolveroperation.html#resolverinitialadvertisementspersecondcontext">resolver_initial_advertisements_per_second (context)</a> will take 10 seconds to send out an advertisement for every topic. If all receiving applications have been started first, fully resolving all topics may not take much more than 10 seconds. The rate of topic resolution can also be controlled with the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Operations/config.tag:../Config/" href="../Config/grpudpbasedresolveroperation.html#resolverinitialadvertisementbpscontext">resolver_initial_advertisement_bps (context)</a> configuration option. Topic advertisements contain the topic string and approximately 110 bytes overhead. Topic queries from receivers contain no overhead, only the topic string.</p>
+<p>Your UM development or administration team should anticipate the time and bandwidth required to resolve all topics when all applications initially start. This team should also establish any restarting restrictions.</p>
+<p>Operations staff typically don't have any operational tasks related to topic resolution aside from monitoring hosts' CPU and bandwidth usage.</p>
 <p><br />
  </p>
 <h1><a class="anchor" id="umapplications"></a>
@@ -122,8 +122,43 @@ Unicast Topic Resolver (lbmrd)&nbsp;&nbsp;<small><a href="#unicasttopicresolverl
 <p><br />
  </p>
 <h1><a class="anchor" id="persistentstoreumestored"></a>
-Persistent Store (umestored)&nbsp;&nbsp;<small><a href="#persistentstoreumestored">&lt;-</a></small></h1>
-<p>Stores can operate in disk-backed or memory-only mode specified in the Store's XML configuration file. Disk backed Stores are subject to the limitations of the disk hardware. Stores should not be run on virtual machines and each Store should have a dedicated disk. UM holds messages in memory until written to disk.</p>
+Running Persistent Stores (umestored)&nbsp;&nbsp;<small><a href="#persistentstoreumestored">&lt;-</a></small></h1>
+<p>Stores can operate in disk-backed or memory-only mode specified in the Store's XML configuration file. Disk backed Stores are subject to the limitations of the disk hardware. For high performance applications, Informatica recommends solid-state disks local to the physical host running the Store. Those solid-state disks should be optimized for writing and should be dedicated to UM Store usage only (don't share it with other databases or disk-intensive programs).</p>
+<p>There are a few scenarios where you need to start a Store: </p><ol>
+<li>
+Bringing a whole system up from scratch (applications, Stores, etc.). In this case, you typically want to <a class="el" href="startupshutdownprocedures.html#eliminatepaststate">Eliminate Past State</a>. </li>
+<li>
+Restarting a Store after a problem (unplanned shutdown, crash, power outage, etc.). In this case, you typically want to <a class="el" href="startupshutdownprocedures.html#retainpaststate">Retain Past State</a>. </li>
+<li>
+Restarting a Store after a planned maintenance window. In this case, you might <a class="el" href="startupshutdownprocedures.html#eliminatepaststate">Eliminate Past State</a> or <a class="el" href="startupshutdownprocedures.html#retainpaststate">Retain Past State</a>; the choice is yours. </li>
+</ol>
+<p>For details on starting a Store, see <a class="el" href="startupshutdownprocedures.html#startingastore">Starting a Store</a>.</p>
+<p>Similarly, there are a few scenarios where you need to shut down a Store: </p><ol>
+<li>
+Regular system shutdown, as for a planned maintenance window. </li>
+<li>
+A problem is detected and you have decided restarting the Stores will help. </li>
+</ol>
+<p>For details on shutting down a Store, see <a class="el" href="startupshutdownprocedures.html#restartingastore">Shutting Down a Store</a>.</p>
+<p>When you shut down a Store with the intention of restarting it, or if a Store fails, you should wait to restart for more than the time specified by the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Operations/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umestoreactivitytimeoutsource">ume_store_activity_timeout (source)</a> (defaults to 10 seconds). I.e. you should wait for the publishers to time out the old Store instance before you bring up the new instance.</p>
+<p><br />
+ </p>
+<h2><a class="anchor" id="eliminatepaststate"></a>
+Eliminate Past State&nbsp;&nbsp;<small><a href="#eliminatepaststate">&lt;-</a></small></h2>
+<p>Sometimes when you start a Store, you want to eliminate past state. That is, you don't want any subscribers to recover older messages. For example, if bringing a whole system up from scratch. Or many users do a clean start after every maintenance window.</p>
+<p>In this case, you must cleanly restart all publishers, subscribers, and Stores. It is recommended to have every component in the down state simultaneously before restarting any of them. Otherwise you risk having a newly restarted component learning old state from a not-yet-restarted component.</p>
+<p>Part of cleanly restarting all Stores is deleting their state and cache files. If you fail to delete the state and cache files from one or more Stores, subscribers might start up and recover (replay) old messages that it had already processed. Or subscribers can be temporarily <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Operations/design.tag:../Design/" href="../Design/umglossary.html#glossarydeafness">deaf</a> to some set (potentially large) set of newly published messages. Please ensure proper deletion of state and cache files prior to restarting Stores when you intend to eliminate past state.</p>
+<p><br />
+ </p>
+<h2><a class="anchor" id="retainpaststate"></a>
+Retain Past State&nbsp;&nbsp;<small><a href="#retainpaststate">&lt;-</a></small></h2>
+<p>Sometimes when you start a Store, you want to retain past state. That is, you want to restart Stores in such a way that applications can pick up where they left off, and recover lost messages if necessary. For example, if restarting a store after a problem.</p>
+<p>You should restart the Store with the state and cache files intact. When the Store restarts, it will read and restore the previous state. It will then attempt to recover as many missed messages from the sources, as possible. Then the Store resumes normal operation.</p>
+<p>Note that if the cache files are very large, it might take a significant amount of time for the Store to initialize. If this time is objectionable, you may choose a <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Operations/ume.tag:../UME/" href="../UME/designingpersistentstores.html#limitinitialrestore">Limit Initial Restore with Restore-Last</a>.</p>
+<p>There are times where it is not possible to retain the past state. For example, a failure of the disk holding the state and cache files. Or a failure of the Store's host, and the Store is restarted on a new host. In that case, care must be taken to ensure that the applications will properly restore as much of their previous state as possible.</p>
+<p>For example, let's say that two Stores out of a three-Store QC group fail and lose their state and cache files. You have no choice but to restart those Stores cleanly, without state and cache. Note that in this example, since only one Store is running (the "stateful" Store), the applications lose quorum and pause their execution until Quorum is restored.</p>
+<p>In this dual-failure case, it is important <em>*not*</em> to restart both failed Stores at the same time. To do so could result in applications registering with the two cleaned Stores first, and resetting their own internal states. This could lead to subscriber <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Operations/design.tag:../Design/" href="../Design/umglossary.html#glossarydeafness">deafness</a>, or replay of previously processed messages.</p>
+<p>Instead, you must restart one of the cleaned Stores and allow the applications to register with the clean Store and the stateful Store. Allow some time for the the cleaned Store to collect some state from the applications (typically requires several seconds). Then the other cleaned Store can be restarted.</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="startingastore"></a>
@@ -150,27 +185,18 @@ State file - contains information about the current state of each client connect
 <p><br />
  </p>
 <h2><a class="anchor" id="restartingastore"></a>
-Restarting a Store&nbsp;&nbsp;<small><a href="#restartingastore">&lt;-</a></small></h2>
-<p>Perform the following procedure to restart a Store.</p>
-<ol>
-<li>
-If the Store is running as a Windows service, use the Service Manager to stop the Windows service. Otherwise kill the PID. </li>
-<li>
-If you want a clean "start-of-day" start, delete the cache and state files. The location of these files is specified in the Store's XML configuration file. </li>
-<li>
-Wait 20-30 seconds to let timeouts expire. Due to its use of connectionless protocols, Persistence depends upon timeouts. Therefore, do not rapidly restart the Store. </li>
-<li>
-Run the command: "umestored config-file.xml". umestored automatically uses the existing cache and state files after a graceful shutdown and resumes as part of the current messaging stream at its last known position. </li>
-</ol>
+Shutting Down a Store&nbsp;&nbsp;<small><a href="#restartingastore">&lt;-</a></small></h2>
+<p>If the Store is running as a Windows service, use the Service Manager to stop the Windows service.</p>
+<p>Otherwise kill the PID. You can find the PID in the configured PID file; see <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Operations/ume.tag:../UME/" href="../UME/configurationreferenceforumestored.html#umeelementpidfile">UMP Element "&lt;pidfile&gt;"</a>.</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="commonstartupandshutdownissues"></a>
 Common Startup and Shutdown Issues&nbsp;&nbsp;<small><a href="#commonstartupandshutdownissues">&lt;-</a></small></h2>
 <ul>
 <li>
-Cache and state directories don't exist. </li>
+Cache and state directories don't exist. It is the user's responsibility to pre-create those directories. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Operations/ume.tag:../UME/" href="../UME/optionsforastoresumeattributeselement.html#umecfgdiskstatedirectory">Store Option "disk-state-directory"</a> and <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Operations/ume.tag:../UME/" href="../UME/optionsforastoresumeattributeselement.html#umecfgdiskcachedirectory">Store Option "disk-cache-directory"</a>. </li>
 <li>
-Disk space - Cache files contain the actual persisted messages, and can grow to be very large over time. It is important to ensure that there is enough disk space to record the appropriate amount of persisted data. </li>
+Disk space - Cache files contain the actual persisted messages, and can grow to be very large over time. It is important to ensure that there is enough disk space to record the appropriate amount of persisted data. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Operations/ume.tag:../UME/" href="../UME/optionsforastoresumeattributeselement.html#umecfgrepositorydiskfilesizelimit">Topic Option "repository-disk-file-size-limit"</a>. </li>
 <li>
 Configuration error - UM parses a Store's XML configuration file at startup, reporting errors to standard error. </li>
 <li>
@@ -205,7 +231,7 @@ Restarting a DRO&nbsp;&nbsp;<small><a href="#restartingaumrouter">&lt;-</a></sma
 <li>
 If the DRO is still running as a Windows service, use the Windows service control panel to stop the process. Otherwise, kill the PID. </li>
 <li>
-Wait 20-30 seconds to let timeouts expire. After a restart new proxy sources and receivers must be created on the DRO. Applications will not use the new proxies until the transport timeout setting expires for the old connections. Until this happens, applications may appear to be "deaf" since they are still considering themselves as connected to the "old" DRO proxies. Therefore, do not rapidly restart the DRO. </li>
+Wait 20-30 seconds to let timeouts expire. After a restart new proxy sources and receivers must be created on the DRO. Applications will not use the new proxies until the transport timeout setting expires for the old connections. Until this happens, applications may appear to be <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Operations/design.tag:../Design/" href="../Design/umglossary.html#glossarydeafness">deaf</a> since they are still considering themselves as connected to the "old" DRO proxies. Therefore, do not rapidly restart the DRO. </li>
 <li>
 Run the command: tnwgd config-file.xml </li>
 </ol>

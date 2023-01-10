@@ -78,9 +78,11 @@ var NAVTREE =
       [ "UM Applications", "startupshutdownprocedures.html#umapplications", null ],
       [ "Indications of Possible Application Shutdown", "startupshutdownprocedures.html#indicationsofpossibleapplicationshutdown", null ],
       [ "Unicast Topic Resolver (lbmrd)", "startupshutdownprocedures.html#unicasttopicresolverlbmrd", null ],
-      [ "Persistent Store (umestored)", "startupshutdownprocedures.html#persistentstoreumestored", [
+      [ "Running Persistent Stores (umestored)", "startupshutdownprocedures.html#persistentstoreumestored", [
+        [ "Eliminate Past State", "startupshutdownprocedures.html#eliminatepaststate", null ],
+        [ "Retain Past State", "startupshutdownprocedures.html#retainpaststate", null ],
         [ "Starting a Store", "startupshutdownprocedures.html#startingastore", null ],
-        [ "Restarting a Store", "startupshutdownprocedures.html#restartingastore", null ],
+        [ "Shutting Down a Store", "startupshutdownprocedures.html#restartingastore", null ],
         [ "Common Startup and Shutdown Issues", "startupshutdownprocedures.html#commonstartupandshutdownissues", null ]
       ] ],
       [ "DRO (tnwgd)", "startupshutdownprocedures.html#umroutertnwgd", [

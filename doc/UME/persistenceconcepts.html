@@ -75,9 +75,11 @@ Receiver-paced Persistence (RPP) - optional mode - the rate of message consumpti
 <h1><a class="anchor" id="persistentstoreconcept"></a>
 Persistent Store Concept&nbsp;&nbsp;<small><a href="#persistentstoreconcept">&lt;-</a></small></h1>
 <p>UM uses a daemon program known as the Store to persist source (publisher) and receiver (subscriber) state. A Store instance can persist state in memory as well as on disk. State is persisted on a per-topic, per-source basis by the Store. Along with each publisher's state is a message cache containing the full message contents of recently-sent messages by the source.</p>
-<p>The purpose of the Store is to allow receivers to recover messages that the receiver was not able to receive directly from the source.</p>
+<p>The purpose of the Store is to allow receivers to recover messages that the receiver was not able to get directly from the source.</p>
 <p>The Store is an independent component, not part of the source. If a persistent publisher fails, that source's messages are maintained by the Store according to configurable retention policies.</p>
 <p>Note that the design of UM's persistence allows a maximum of 2,147,483,647 messages (2**31 - 1) to be persisted.</p>
+<p>Stores can be <a class="el" href="optionsforastoresumeattributeselement.html#umecfgrepositorytype">configured</a> to be disk-based or memory-only. A disk-based Store uses memory as temporary storage while messages are written to disk. Memory-only Stores only hold messages in memory. The memory-only Stores have higher throughput, while disk-based Stores have greater message capacity.</p>
+<p>Note that most UM deployments only use disk-based Stores. Most of this document is written with that assumption.</p>
 <p><br />
  </p>
 <h1><a class="anchor" id="persistenceconfigurationconcept"></a>

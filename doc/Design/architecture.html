@@ -75,7 +75,7 @@ Initial Phase - Period that allows you to resolve a topic aggressively. This pha
 <li>
 Sustaining Phase - Period that allows new receivers to resolve a topic after the Initial Phase. Can also be the primary period of topic resolution if you disable the Initial Phase. This phase can also be configured to run differently from the defaults or completely disabled. </li>
 <li>
-Quiescent Phase - The quiet phase where Topic Resolution datagrams are no longer sent in an unsolicited way. This reduces the CPU and network resources consumed by TR, and also reduces latency outliers (<a class="el" href="umglossary.html#glossaryjitter">jitter</a>). However, in large deployments, especially those that include wide-area networks, the Quiescent Phase is sometimes disabled, by configuring the Sustaining Phase to continue forever. This is done to avoid deafness issues. </li>
+Quiescent Phase - The quiet phase where Topic Resolution datagrams are no longer sent in an unsolicited way. This reduces the CPU and network resources consumed by TR, and also reduces latency outliers (<a class="el" href="umglossary.html#glossaryjitter">jitter</a>). However, in large deployments, especially those that include wide-area networks, the Quiescent Phase is sometimes disabled, by configuring the Sustaining Phase to continue forever. This is done to avoid <a class="el" href="umglossary.html#glossarydeafness">deafness</a> issues. </li>
 </ul>
 <p>The phases of topic resolution are specific to individual topics. A single context can have some topics in each of the three phases running concurrently.</p>
 <p><br />
@@ -268,7 +268,7 @@ UDP-Based Topic Resolution Strategies&nbsp;&nbsp;<small><a href="#udpbasedtopicr
 <p>Configuring UDP-based TR frequently involves a process of weighing the costs and benefits of different goals. The most common goals involved are:</p>
 <ul>
 <li>
-<b>Avoid "deafness".</b> Deafness is when there is a source and a receiver for a topic, but the receiver does not discover the source. This is usually a very high priority goal. </li>
+<b>Avoid "deafness".</b> <a class="el" href="umglossary.html#glossarydeafness">deafness</a> is when there is a source and a receiver for a topic, but the receiver does not discover the source. This is usually a very high priority goal. </li>
 <li>
 <b>Minimize the delay before a transport session is joined.</b> This is especially important when a new source is created and the application wants to wait until all existing receivers have fully joined the transport session before sending messages. </li>
 <li>
@@ -276,7 +276,7 @@ UDP-Based Topic Resolution Strategies&nbsp;&nbsp;<small><a href="#udpbasedtopicr
 <li>
 <b>Maximizing scalability and flexibility.</b> Some deployments are tightly-coupled, carefully controlled, and well-defined. In those cases, scalability and flexibility might not be high-priority goals. Other deployments are loosely-coupled, and consist of many different application groups that do not necessarily coordinate their use of UM with each other. In those cases, scalability and flexibility can be important. </li>
 <li>
-<b>Fault tolerance.</b> Some environments, especially those that include Wide Area Networks, can have periodic degradation or loss of network connectivity. It is desired that after a given network problem is resolved, UM will quickly and automatically reestablish normal operation without deafness. </li>
+<b>Fault tolerance.</b> Some environments, especially those that include Wide Area Networks, can have periodic degradation or loss of network connectivity. It is desired that after a given network problem is resolved, UM will quickly and automatically reestablish normal operation without <a class="el" href="umglossary.html#glossarydeafness">deafness</a>. </li>
 </ul>
 <p>The right TR strategy for a given deployment can depend heavily on the relative importance of these and other goals. It is impossible to give a "one size fits all" solution. Most users work with Informatica engineers to design a custom configuration.</p>
 <p>Most users employ a variation on a few basic strategies. Note for the most part, these strategies do not depend on the specific UDP protocol (Multicast vs. Unicast). Normally Multicast is chosen, except where network or policy restrictions forbid it.</p>
@@ -299,7 +299,7 @@ In a network where sources and receivers are relatively static, the consumption 
 </ul>
 <p>Disadvantages: </p><ul>
 <li>
-As the numbers of contexts, sources, and receivers grow, the traffic load during the initial phase can be very intense, leading to packet loss and potential deafness issues. In these cases, the initial phase can be configured to be less aggressive, or disabled altogether. </li>
+As the numbers of contexts, sources, and receivers grow, the traffic load during the initial phase can be very intense, leading to packet loss and potential <a class="el" href="umglossary.html#glossarydeafness">deafness</a> issues. In these cases, the initial phase can be configured to be less aggressive, or disabled altogether. </li>
 <li>
 If a network outage lasts longer than 65 seconds, it is possible for new sources and receivers to be deaf to each other, due to entering their quiescent phases. In these cases, the sustaining phase can be configured for longer durations. </li>
 </ul>
@@ -321,7 +321,7 @@ For some deployments, can result in significantly reduced TR loading due to remo
 </ul>
 <p>Disadvantages: </p><ul>
 <li>
-To avoid deafness issues, the Query sustaining phase is usually extended, often to infinity. This consumes CPU and Network bandwidth, and can introduce latency outliers (<a class="el" href="umglossary.html#glossaryjitter">jitter</a>). </li>
+To avoid <a class="el" href="umglossary.html#glossarydeafness">deafness</a> issues, the Query sustaining phase is usually extended, often to infinity. This consumes CPU and Network bandwidth, and can introduce latency outliers (<a class="el" href="umglossary.html#glossaryjitter">jitter</a>). </li>
 <li>
 For topics that have receivers, both TQR and TIR traffic are present. (In contrast, a <a class="el" href="architecture.html#advertisecentrictr">Advertise-Centric TR</a> strategy removes the TQRs, but at the expense of advertising <em>all</em> sources, even those that have no receivers.) </li>
 </ul>
@@ -351,7 +351,7 @@ For some deployments, can result in moderate reduced TR loading due to reduction
 </ul>
 <p>Disadvantages: </p><ul>
 <li>
-To avoid deafness issues, the Advertising sustaining phase is usually extended, often to infinity. This consumes CPU and Network bandwidth, and can introduce latency outliers (<a class="el" href="umglossary.html#glossaryjitter">jitter</a>). </li>
+To avoid <a class="el" href="umglossary.html#glossarydeafness">deafness</a> issues, the Advertising sustaining phase is usually extended, often to infinity. This consumes CPU and Network bandwidth, and can introduce latency outliers (<a class="el" href="umglossary.html#glossaryjitter">jitter</a>). </li>
 <li>
 For topics that have no receivers, TIR traffic is present. (In contrast, a <a class="el" href="architecture.html#querycentrictr">Query-Centric TR</a> strategy removes the TIRs for topics that have no receivers, but at the expense of introducing both TQRs and TIRs.) </li>
 <li>
@@ -393,9 +393,10 @@ Embedded Mode&nbsp;&nbsp;<small><a href="#embeddedmode">&lt;-</a></small></h1>
 <h1><a class="anchor" id="sequentialmode"></a>
 Sequential Mode&nbsp;&nbsp;<small><a href="#sequentialmode">&lt;-</a></small></h1>
 <p>When you create a context (<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#a8058947690bd0995bc2c59d4a61b462f">lbm_context_create()</a>) with the UM configuration option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Design/config.tag:../Config/" href="../Config/grpmajoroptions.html#operationalmodecontext">operational_mode (context)</a> set to sequential, the context thread is NOT created. It becomes the application's responsibility to donate a thread to UM by calling <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#ad9416b1f0b474b5d4c4f39bb3c4bda77">lbm_context_process_events()</a> regularly, typically in a tight loop. Use Sequential mode for circumstances where your application wants control over the attributes of the context thread. For example, some applications raise the priority of the context thread so as to obtain more consistent latencies. In sequential mode, no separate thread is spawned when a context is created.</p>
-<p>You enable Sequential mode with the following configuration option.</p>
+<p>You enable Sequential mode by setting the configuration option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Design/config.tag:../Config/" href="../Config/grpmajoroptions.html#operationalmodecontext">operational_mode (context)</a> to the value "sequential". For example:</p>
 <pre class="fragment">context operational_mode sequential
-</pre><p>In addition to the context thread, there are other UM features which rely on specialized threads: </p><ul>
+</pre><dl class="section warning"><dt>Warning</dt><dd>If using sequential mode and <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Design/config.tag:../Config/" href="../Config/grpmajoroptions.html#fdmanagementtypecontext">fd_management_type</a> "wincompport", the thread that creates the context must not exit while the context is active. Furthermore, you gain a small performance improvement if the thread that creates the context is the same thread that calls <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#ad9416b1f0b474b5d4c4f39bb3c4bda77">lbm_context_process_events()</a>.</dd></dl>
+<p>In addition to the context thread, there are other UM features which rely on specialized threads: </p><ul>
 <li>
 The <a class="el" href="transporttypes.html#transportlbtipc">Transport LBT-IPC</a>, when used, creates its own specialized receive thread. Similar to the context thread, the creation of this thread can be suppressed by setting the option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Design/config.tag:../Config/" href="../Config/grptransportlbtipcoperation.html#transportlbtipcreceiveroperationalmodecontext">transport_lbtipc_receiver_operational_mode (context)</a> to sequential. The application must then call <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#a8729a284ef9f01f329fbf0edbc147227">lbm_context_process_lbtipc_messages()</a> regularly. </li>
 <li>

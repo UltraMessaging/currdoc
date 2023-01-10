@@ -1513,7 +1513,7 @@ Redundancy. </li>
 <p>TCP-based TR (with "SRS" service) is a more recent addition to UM. It supports source discovery, and tracking of receivers.</p>
 <p>TCP-based TR is often paired with one of the UDP-based TR protocols (multicast or unicast). This is done to support interoperability with pre-6.12 versions of UM, and supply TR functionality not yet available in TCP TR. The TCP-based and UDP-based TR protocols run in parallel, with the UDP-based TR protocol supporting interoperability with pre-6.12 components, and supplying the functionality missing from TCP TR.</p>
 <p>When all of your UM components are upgraded to UM 6.14 and beyond, you can use the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Design/config.tag:../../Config/" href="../../Config/grpudpbasedresolveroperation.html#resolverdisableudptopicresolutioncontext">resolver_disable_udp_topic_resolution (context)</a> configuration option to turn off UDP-based TR.</p>
-<p>The advantage of TCP-based TR is greater reliability and reduced network and CPU load. UDP-based TR is susceptible to "deafness" issues due to transient network failures. Avoiding those deafness issues requires configuring UDP-based TR to use significant network and CPU resources. In contrast, TCP-based TR is designed to be reliable with much less network and CPU load, even in the face of transient network failures.</p>
+<p>The advantage of TCP-based TR is greater reliability and reduced network and CPU load. UDP-based TR is susceptible to <a class="el" href="index.html#glossarydeafness">deafness</a> issues due to transient network failures. Avoiding those deafness issues requires configuring UDP-based TR to use significant network and CPU resources. In contrast, TCP-based TR is designed to be reliable with much less network and CPU load, even in the face of transient network failures.</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="resolvercaches"></a>
@@ -1562,7 +1562,7 @@ As the number of topics grows, the speed of source discovery degrades and resour
 <li>
 Since UDP is not a reliable protocol, Multicast UDP TR relies on repetition to ensure delivery of TR information. </li>
 <li>
-To effectively avoid deafness issues, resources must be consumed over the long term (TR must be configured to run "forever"). Jitter can be a long-term problem. </li>
+To effectively avoid <a class="el" href="index.html#glossarydeafness">deafness</a> issues, resources must be consumed over the long term (TR must be configured to run "forever"). Jitter can be a long-term problem. </li>
 <li>
 As deployments change and grow, TR performance should be monitored and analyzed for possible reconfiguration to strike the right balance between speed of source discovery vs. resource consumption. </li>
 <li>
@@ -1600,7 +1600,7 @@ Can allow UDP-based TR to be disabled or "dialed-back". I.e. its configuration c
 <li>
 Since TCP is a reliable protocol, TCP-based TR does not need to repeatedly send the same information to ensure its reception. </li>
 <li>
-It is not necessary to consume resources over the long term to avoid deafness issues. </li>
+It is not necessary to consume resources over the long term to avoid <a class="el" href="index.html#glossarydeafness">deafness</a> issues. </li>
 <li>
 If a source is deleted, that deletion is reliably communicated to all contexts in the TRD. </li>
 </ul>
@@ -1619,9 +1619,7 @@ For UM version 6.12 and 6.13, TCP-based TR does not fulfill the TR functions of 
 TCP-Based Topic Resolution Details&nbsp;&nbsp;<small><a href="#tcpbasedtopicresolutiondetails">&lt;-</a></small></h2>
 <p>TCP-based TR was introduced in UM version 6.12 to address shortcomings in UDP-based TR: </p><ul>
 <li>
-<b>Limit on scaling.</b> It is difficult to configure UDP-based TR to scale to many hundreds of thousands of topics. Too many topics typically results in unacceptable CPU and network load, and latency outliers (<a class="el" href="index.html#glossaryjitter">jitter</a>). Intense TR bursts can cause packet loss, retransmissions, and deafness. </li>
-<li>
-<b>Deafness issues.</b> As deployments grow in size and complexity, UDP-based TR typically requires greatly extended Sustaining Phases, often to infinity. This results in significant CPU and network resources over the long term, and introduces latency outliers (<a class="el" href="index.html#glossaryjitter">jitter</a>). </li>
+<b>Limit on scaling.</b> It is difficult to configure UDP-based TR to scale to many hundreds of thousands of topics. Too many topics typically results in unacceptable CPU and network load, and latency outliers (<a class="el" href="index.html#glossaryjitter">jitter</a>). Intense TR bursts can cause packet loss, retransmissions, and <a class="el" href="index.html#glossarydeafness">deafness</a>. As deployments grow in size and complexity, UDP-based TR typically requires greatly extended Sustaining Phases, often to infinity. This results in significant CPU and network resources over the long term, and introduces latency outliers (<a class="el" href="index.html#glossaryjitter">jitter</a>). </li>
 <li>
 <b>High time to resolve.</b> To reduce the CPU and network load, and to avoid packet loss, UDP-based TR is usually strongly rate limited. This can greatly extend the time required to resolve topics, sometimes into the tens of minutes. </li>
 </ul>
@@ -1659,7 +1657,7 @@ TCP-Based TR Interest&nbsp;&nbsp;<small><a href="#tcpbasedtrinterest">&lt;-</a><
 <h3><a class="anchor" id="tcpbasedtrversioninteroperability"></a>
 TCP-Based TR Version Interoperability&nbsp;&nbsp;<small><a href="#tcpbasedtrversioninteroperability">&lt;-</a></small></h3>
 <p>TCP-based TR was first introduced in UM version 6.12. To maintain interoperability with pre-6.12, applications can be configured to use both TCP and UDP-based TR, in parallel.</p>
-<p>This can make it difficult to gain all the benefits of TCP-based TR. Since pre-6.12 applications still need to avoid the problems of deafness, even applications that have upgraded to 6.12 and beyond need to enable UDP-based TR, usually with extended sustaining phases, often to infinity.</p>
+<p>This can make it difficult to gain all the benefits of TCP-based TR. Since pre-6.12 applications still need to avoid the problems of <a class="el" href="index.html#glossarydeafness">deafness</a>, even applications that have upgraded to 6.12 and beyond need to enable UDP-based TR, usually with extended sustaining phases, often to infinity.</p>
 <p>Ideally, all applications within a TRD can be upgraded to 6.14 and beyond, eliminating the need for UDP-based TR, but this is often not practical. How can the TR load be reduced in a step-wise fashion while an organization is upgrading applications gradually, over a long period of time?</p>
 <p>Fortunately, You can set configuration options differently for individual topics, either by using <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Design/config.tag:../../Config/" href="../../Config/xmlconfigurationfiles.html">XML Configuration Files</a> (the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Design/config.tag:../../Config/" href="../../Config/xmlconfigurationfiles.html#umelementtopic">&lt;topic&gt;</a> element), or by using the API functions for setting configuration options programmatically (e.g. <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Design/api.tag:../../API/" href="../../API/lbm_8h.html#a1afc75f0fb3601d072b3463e7acf16a6">lbm_rcv_topic_attr_setopt()</a> and <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Design/api.tag:../../API/" href="../../API/lbm_8h.html#a96ea052dce2e6376684cbf2003407cbf">lbm_src_topic_attr_setopt()</a>).</p>
 <p>Some helpful strategies might be: </p><ul>
@@ -1814,7 +1812,7 @@ Initial Phase - Period that allows you to resolve a topic aggressively. This pha
 <li>
 Sustaining Phase - Period that allows new receivers to resolve a topic after the Initial Phase. Can also be the primary period of topic resolution if you disable the Initial Phase. This phase can also be configured to run differently from the defaults or completely disabled. </li>
 <li>
-Quiescent Phase - The quiet phase where Topic Resolution datagrams are no longer sent in an unsolicited way. This reduces the CPU and network resources consumed by TR, and also reduces latency outliers (<a class="el" href="index.html#glossaryjitter">jitter</a>). However, in large deployments, especially those that include wide-area networks, the Quiescent Phase is sometimes disabled, by configuring the Sustaining Phase to continue forever. This is done to avoid deafness issues. </li>
+Quiescent Phase - The quiet phase where Topic Resolution datagrams are no longer sent in an unsolicited way. This reduces the CPU and network resources consumed by TR, and also reduces latency outliers (<a class="el" href="index.html#glossaryjitter">jitter</a>). However, in large deployments, especially those that include wide-area networks, the Quiescent Phase is sometimes disabled, by configuring the Sustaining Phase to continue forever. This is done to avoid <a class="el" href="index.html#glossarydeafness">deafness</a> issues. </li>
 </ul>
 <p>The phases of topic resolution are specific to individual topics. A single context can have some topics in each of the three phases running concurrently.</p>
 <p><br />
@@ -2007,7 +2005,7 @@ UDP-Based Topic Resolution Strategies&nbsp;&nbsp;<small><a href="#udpbasedtopicr
 <p>Configuring UDP-based TR frequently involves a process of weighing the costs and benefits of different goals. The most common goals involved are:</p>
 <ul>
 <li>
-<b>Avoid "deafness".</b> Deafness is when there is a source and a receiver for a topic, but the receiver does not discover the source. This is usually a very high priority goal. </li>
+<b>Avoid "deafness".</b> <a class="el" href="index.html#glossarydeafness">deafness</a> is when there is a source and a receiver for a topic, but the receiver does not discover the source. This is usually a very high priority goal. </li>
 <li>
 <b>Minimize the delay before a transport session is joined.</b> This is especially important when a new source is created and the application wants to wait until all existing receivers have fully joined the transport session before sending messages. </li>
 <li>
@@ -2015,7 +2013,7 @@ UDP-Based Topic Resolution Strategies&nbsp;&nbsp;<small><a href="#udpbasedtopicr
 <li>
 <b>Maximizing scalability and flexibility.</b> Some deployments are tightly-coupled, carefully controlled, and well-defined. In those cases, scalability and flexibility might not be high-priority goals. Other deployments are loosely-coupled, and consist of many different application groups that do not necessarily coordinate their use of UM with each other. In those cases, scalability and flexibility can be important. </li>
 <li>
-<b>Fault tolerance.</b> Some environments, especially those that include Wide Area Networks, can have periodic degradation or loss of network connectivity. It is desired that after a given network problem is resolved, UM will quickly and automatically reestablish normal operation without deafness. </li>
+<b>Fault tolerance.</b> Some environments, especially those that include Wide Area Networks, can have periodic degradation or loss of network connectivity. It is desired that after a given network problem is resolved, UM will quickly and automatically reestablish normal operation without <a class="el" href="index.html#glossarydeafness">deafness</a>. </li>
 </ul>
 <p>The right TR strategy for a given deployment can depend heavily on the relative importance of these and other goals. It is impossible to give a "one size fits all" solution. Most users work with Informatica engineers to design a custom configuration.</p>
 <p>Most users employ a variation on a few basic strategies. Note for the most part, these strategies do not depend on the specific UDP protocol (Multicast vs. Unicast). Normally Multicast is chosen, except where network or policy restrictions forbid it.</p>
@@ -2038,7 +2036,7 @@ In a network where sources and receivers are relatively static, the consumption 
 </ul>
 <p>Disadvantages: </p><ul>
 <li>
-As the numbers of contexts, sources, and receivers grow, the traffic load during the initial phase can be very intense, leading to packet loss and potential deafness issues. In these cases, the initial phase can be configured to be less aggressive, or disabled altogether. </li>
+As the numbers of contexts, sources, and receivers grow, the traffic load during the initial phase can be very intense, leading to packet loss and potential <a class="el" href="index.html#glossarydeafness">deafness</a> issues. In these cases, the initial phase can be configured to be less aggressive, or disabled altogether. </li>
 <li>
 If a network outage lasts longer than 65 seconds, it is possible for new sources and receivers to be deaf to each other, due to entering their quiescent phases. In these cases, the sustaining phase can be configured for longer durations. </li>
 </ul>
@@ -2060,7 +2058,7 @@ For some deployments, can result in significantly reduced TR loading due to remo
 </ul>
 <p>Disadvantages: </p><ul>
 <li>
-To avoid deafness issues, the Query sustaining phase is usually extended, often to infinity. This consumes CPU and Network bandwidth, and can introduce latency outliers (<a class="el" href="index.html#glossaryjitter">jitter</a>). </li>
+To avoid <a class="el" href="index.html#glossarydeafness">deafness</a> issues, the Query sustaining phase is usually extended, often to infinity. This consumes CPU and Network bandwidth, and can introduce latency outliers (<a class="el" href="index.html#glossaryjitter">jitter</a>). </li>
 <li>
 For topics that have receivers, both TQR and TIR traffic are present. (In contrast, a <a class="el" href="index.html#advertisecentrictr">Advertise-Centric TR</a> strategy removes the TQRs, but at the expense of advertising <em>all</em> sources, even those that have no receivers.) </li>
 </ul>
@@ -2090,7 +2088,7 @@ For some deployments, can result in moderate reduced TR loading due to reduction
 </ul>
 <p>Disadvantages: </p><ul>
 <li>
-To avoid deafness issues, the Advertising sustaining phase is usually extended, often to infinity. This consumes CPU and Network bandwidth, and can introduce latency outliers (<a class="el" href="index.html#glossaryjitter">jitter</a>). </li>
+To avoid <a class="el" href="index.html#glossarydeafness">deafness</a> issues, the Advertising sustaining phase is usually extended, often to infinity. This consumes CPU and Network bandwidth, and can introduce latency outliers (<a class="el" href="index.html#glossaryjitter">jitter</a>). </li>
 <li>
 For topics that have no receivers, TIR traffic is present. (In contrast, a <a class="el" href="index.html#querycentrictr">Query-Centric TR</a> strategy removes the TIRs for topics that have no receivers, but at the expense of introducing both TQRs and TIRs.) </li>
 <li>
@@ -2132,9 +2130,10 @@ Embedded Mode&nbsp;&nbsp;<small><a href="#embeddedmode">&lt;-</a></small></h2>
 <h2><a class="anchor" id="sequentialmode"></a>
 Sequential Mode&nbsp;&nbsp;<small><a href="#sequentialmode">&lt;-</a></small></h2>
 <p>When you create a context (<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Design/api.tag:../../API/" href="../../API/lbm_8h.html#a8058947690bd0995bc2c59d4a61b462f">lbm_context_create()</a>) with the UM configuration option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Design/config.tag:../../Config/" href="../../Config/grpmajoroptions.html#operationalmodecontext">operational_mode (context)</a> set to sequential, the context thread is NOT created. It becomes the application's responsibility to donate a thread to UM by calling <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Design/api.tag:../../API/" href="../../API/lbm_8h.html#ad9416b1f0b474b5d4c4f39bb3c4bda77">lbm_context_process_events()</a> regularly, typically in a tight loop. Use Sequential mode for circumstances where your application wants control over the attributes of the context thread. For example, some applications raise the priority of the context thread so as to obtain more consistent latencies. In sequential mode, no separate thread is spawned when a context is created.</p>
-<p>You enable Sequential mode with the following configuration option.</p>
+<p>You enable Sequential mode by setting the configuration option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Design/config.tag:../../Config/" href="../../Config/grpmajoroptions.html#operationalmodecontext">operational_mode (context)</a> to the value "sequential". For example:</p>
 <pre class="fragment">context operational_mode sequential
-</pre><p>In addition to the context thread, there are other UM features which rely on specialized threads: </p><ul>
+</pre><dl class="section warning"><dt>Warning</dt><dd>If using sequential mode and <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Design/config.tag:../../Config/" href="../../Config/grpmajoroptions.html#fdmanagementtypecontext">fd_management_type</a> "wincompport", the thread that creates the context must not exit while the context is active. Furthermore, you gain a small performance improvement if the thread that creates the context is the same thread that calls <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Design/api.tag:../../API/" href="../../API/lbm_8h.html#ad9416b1f0b474b5d4c4f39bb3c4bda77">lbm_context_process_events()</a>.</dd></dl>
+<p>In addition to the context thread, there are other UM features which rely on specialized threads: </p><ul>
 <li>
 The <a class="el" href="index.html#transportlbtipc">Transport LBT-IPC</a>, when used, creates its own specialized receive thread. Similar to the context thread, the creation of this thread can be suppressed by setting the option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Design/config.tag:../../Config/" href="../../Config/grptransportlbtipcoperation.html#transportlbtipcreceiveroperationalmodecontext">transport_lbtipc_receiver_operational_mode (context)</a> to sequential. The application must then call <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Design/api.tag:../../API/" href="../../API/lbm_8h.html#a8729a284ef9f01f329fbf0edbc147227">lbm_context_process_lbtipc_messages()</a> regularly. </li>
 <li>
@@ -7036,7 +7035,7 @@ Loss: Socket Buffer&nbsp;&nbsp;<small><a href="#losssocketbuffer">&lt;-</a></sma
 <h3><a class="anchor" id="lossother"></a>
 Loss: Other&nbsp;&nbsp;<small><a href="#lossother">&lt;-</a></small></h3>
 <p>The three loss locations described above are all related to high packet rates causing fixed-sized packet buffers to overflow. These represent by far the most common reasons for packet loss. However, it is possible that you will experience loss that cannot be diagnosed to those three causes.</p>
-<p>For example, we have seen reports of NIC hardware malfunctioning such that most packets are successfully received and delivered, but some percentage of packets fail. At least one user reported that a misconfigured router "flapped" a route, resulting in periodic, short-term loss of connectivity between two sub-networks. We have seen a case where the use of kernel bypass drivers for high-performance NICs (specifically Solarflare) can cause multicast deafness if both accelerated and non-accelerated processes are run on the same host. We have even seen a case where replacing the Ethernet cable between a host and the switch resolved packet loss.</p>
+<p>For example, we have seen reports of NIC hardware malfunctioning such that most packets are successfully received and delivered, but some percentage of packets fail. At least one user reported that a misconfigured router "flapped" a route, resulting in periodic, short-term loss of connectivity between two sub-networks. We have seen a case where the use of kernel bypass drivers for high-performance NICs (specifically Solarflare) can cause multicast <a class="el" href="index.html#glossarydeafness">deafness</a> if both accelerated and non-accelerated processes are run on the same host. We have even seen a case where replacing the Ethernet cable between a host and the switch resolved packet loss.</p>
 <p>It is not possible to have a step-by-step diagnostic procedure which will pinpoint every possible cause of packet loss. The techniques described in this document should successfully diagnose a large majority of packet loss causes, but nothing can replace your infrastructure network engineers expertise at tracking down problems.</p>
 <p><br />
  </p>
@@ -7172,6 +7171,7 @@ Glossary C&nbsp;&nbsp;<small><a href="#glossaryc">&lt;-</a></small></h2>
 <h2><a class="anchor" id="glossaryd"></a>
 Glossary D&nbsp;&nbsp;<small><a href="#glossaryd">&lt;-</a></small></h2>
 <p><a class="anchor" id="glossarydbl"></a></p><dl class="section user"><dt><b>DBL</b> - Datagram Bypass Layer</dt><dd>A kernel-bypass driver that accelerates sending and receiving UDP traffic and operates with Myricom 10-Gigabit Ethernet adapter cards for Linux and Windows. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Design/config.tag:../../Config/" href="../../Config/grptransportacceleration.html#myricomdatagrambypasslayerdbl">Myricom Datagram Bypass Layer (DBL)</a>.</dd></dl>
+<p><a class="anchor" id="glossarydeafness"></a></p><dl class="section user"><dt><b>Deafness</b> </dt><dd>An informal term for a problem where a subscriber for a topic is not receiving messages sent by a publisher for that topic.</dd></dl>
 <p><a class="anchor" id="glossarydeliveryconfirmation"></a></p><dl class="section user"><dt><b>Delivery</b> <b>Confirmation</b> </dt><dd>An optional event generated by a persistent subscriber's receiver and delivered to a persistent publisher's source to indicate that the subscriber has completed processing of a message. See <a class="el" href="index.html#persistence">Persistence</a>.</dd></dl>
 <p><a class="anchor" id="glossarydeliverycontroller"></a></p><dl class="section user"><dt><b>Delivery</b> <b>Controller</b> </dt><dd>An instance of the receive-side "topic layer" within the UM software stack. See <a class="el" href="index.html#umsoftwarestack">UM Software Stack</a>.</dd></dl>
 <p><a class="anchor" id="glossarydlq"></a></p><dl class="section user"><dt><b>DLQ</b> - Dead Letter Queue</dt><dd>With queuing, the Dead Letter Queue (DLQ) is a destination for messages that cannot be delivered to a receiver. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Design/umq.tag:../../UMQ/" href="../../UMQ/conceptsandfeatures.html#deadletterqueue">Dead Letter Queue</a>.</dd></dl>
