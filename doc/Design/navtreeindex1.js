@@ -1,5 +1,9 @@
 var NAVTREEINDEX1 =
 {
+"transporttypes.html#javacodeexamplesforlbtsmx":[5,4,7],
+"transporttypes.html#lbtipcconfigurationexample":[5,3,5],
+"transporttypes.html#lbtipcresourcemanager":[5,3,8],
+"transporttypes.html#lbtsmxconfigurationexample":[5,4,6],
 "transporttypes.html#lbtsmxresourcemanager":[5,4,9],
 "transporttypes.html#naksuppression":[5,2,0],
 "transporttypes.html#netcodeexamplesforlbtsmx":[5,4,8],

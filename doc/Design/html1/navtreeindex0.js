@@ -28,6 +28,7 @@ var NAVTREEINDEX0 =
 "index.html#contextlockreduction":[10,4,0],
 "index.html#contextlockreductionrestrictions":[10,4,1],
 "index.html#contextobject":[2,0],
+"index.html#contextsequentialmode":[7,4,0],
 "index.html#corepinning":[10,12],
 "index.html#daemoncontroller":[9,17,0],
 "index.html#daemoncontrolrequests":[9,17,4],
@@ -107,6 +108,7 @@ var NAVTREEINDEX0 =
 "index.html#increaseefficiencyofpacketconsumers":[16,0,1],
 "index.html#initialphase":[7,0,3],
 "index.html#intelligentbatching":[7,5,1],
+"index.html#ipcsequentialmode":[7,4,2],
 "index.html#ipctransportbusywaiting":[10,0,1],
 "index.html#javaandnet":[9,16,3],
 "index.html#javacodeexamplesforlbtsmx":[5,4,7],
@@ -194,6 +196,7 @@ var NAVTREEINDEX0 =
 "index.html#openssldependency":[9,3,9],
 "index.html#operationalstatistics":[1,10],
 "index.html#ordereddelivery":[7,7],
+"index.html#otherspecializedthreads":[7,4,3],
 "index.html#otherxspoperations":[9,0,3],
 "index.html#otroptionssummary":[9,2,2],
 "index.html#otrwithsequencenumberordereddelivery":[9,2,0],
@@ -246,8 +249,5 @@ var NAVTREEINDEX0 =
 "index.html#sendingtosourcereadiness":[9,14,2],
 "index.html#sendingtosources":[9,14],
 "index.html#sequencenumberorderfragmentsreassembleddefaultmode":[7,7,0],
-"index.html#sequentialmode":[7,4],
-"index.html#similaritiesbetweenlbtsmxandotherumtransports":[5,4,4],
-"index.html#similaritieswithotherumtransports":[5,3,2],
-"index.html#singlereceivingthread":[10,3]
+"index.html#sequentialmode":[7,4]
 };

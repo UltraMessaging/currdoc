@@ -163,31 +163,27 @@ Retain Past State&nbsp;&nbsp;<small><a href="#retainpaststate">&lt;-</a></small>
  </p>
 <h2><a class="anchor" id="startingastore"></a>
 Starting a Store&nbsp;&nbsp;<small><a href="#startingastore">&lt;-</a></small></h2>
-<p>Execute the following command on the appropriate machine to start a (umestored) from command line:</p>
-<div class="fragment"><div class="line">umestored config-file.xml</div></div><!-- fragment --><p>For more information on the umestored command-line, see <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Operations/ume.tag:../UME/" href="../UME/manpagesforstore.html#umestoredmanpage">Umestored Man Page</a>.</p>
+<p>Unix users can start a Store with following command from a shell prompt or script:</p>
+<div class="fragment"><div class="line">umestored config-file.xml</div></div><!-- fragment --><p>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Operations/ume.tag:../UME/" href="../UME/manpagesforstore.html#umestoredmanpage">Umestored Man Page</a> for details on the umestored command-line.</p>
+<p>Windows users typically install the Store as a Windows service (see <a class="el" href="startupshutdownprocedures.html#umdaemonsaswindowsservices">UM Daemons as Windows Services</a>). Windows has a control panel for starting services.</p>
+<p>Memory-only Stores do not save state in disk files; they always start up without past state.</p>
+<p>Disk-based Stores create two types of state files:</p>
 <ul>
 <li>
-Record umestored PID to monitor process presence for failure detection. </li>
+Cache file - contains the actual persisted messages, and can grow to be very large over time. Each cache file created corresponds to a specific publisher source. It is important to ensure that there is enough disk space to record the desired amount of persisted data. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Operations/ume.tag:../UME/" href="../UME/optionsforastoresumeattributeselement.html#umecfgrepositorydiskfilesizelimit">Topic Option "repository-disk-file-size-limit"</a>. </li>
 <li>
-On Microsoft Windows, monitor the umestored service. </li>
-<li>
-Observe the umestored logfile for errors and warnings </li>
+State file - contains information about the current state of each client connection. These files is much smaller. </li>
 </ul>
-<p>In disk mode, Stores create two types of files.</p>
-<ul>
-<li>
-Cache file - contains the actual persisted messages, and can grow to be very large over time. It is important to ensure that there is enough disk space to record the appropriate amount of persisted data. </li>
-<li>
-State file - contains information about the current state of each client connection and is much smaller. </li>
-</ul>
-<p>Stores do not create any files in memory-only mode.</p>
-<p>To make the Store a Windows Service, see <a class="el" href="startupshutdownprocedures.html#umdaemonsaswindowsservices">UM Daemons as Windows Services</a>.</p>
+<p>A Store signals it has completed initialization by logging a message of the form: </p><pre class="fragment">Store-5688-5546: Store "StoreName" ready to accept registrations
+</pre><p> If a Store process is configured to have more than one Store instance, this message will be logged for each configured Store instance (see <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Operations/ume.tag:../UME/" href="../UME/persistencearchitecture.html#storeprocessesandinstances">Store Processes and Instances</a>).</p>
+<p>The time required for a Store to complete initialization depends on the size of the cache file. For very large cache files, the initialization time can become objectionably long. see <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Operations/ume.tag:../UME/" href="../UME/designingpersistentstores.html#limitinitialrestore">Limit Initial Restore with Restore-Last</a> for a solution.</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="restartingastore"></a>
 Shutting Down a Store&nbsp;&nbsp;<small><a href="#restartingastore">&lt;-</a></small></h2>
 <p>If the Store is running as a Windows service, use the Service Manager to stop the Windows service.</p>
 <p>Otherwise kill the PID. You can find the PID in the configured PID file; see <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Operations/ume.tag:../UME/" href="../UME/configurationreferenceforumestored.html#umeelementpidfile">UMP Element "&lt;pidfile&gt;"</a>.</p>
+<dl class="section warning"><dt>Warning</dt><dd>Do not perform a "forced kill" (in Unix "kill -9"). This can cause corruption of the state and/or cache files.</dd></dl>
 <p><br />
  </p>
 <h2><a class="anchor" id="commonstartupandshutdownissues"></a>

@@ -152,7 +152,12 @@ var NAVTREE =
         [ "Delivery Controller", "index.html#deliverycontroller", null ]
       ] ],
       [ "Embedded Mode", "index.html#embeddedmode", null ],
-      [ "Sequential Mode", "index.html#sequentialmode", null ],
+      [ "Sequential Mode", "index.html#sequentialmode", [
+        [ "Context Sequential Mode", "index.html#contextsequentialmode", null ],
+        [ "XSP Sequential Mode", "index.html#xspsequentialmode", null ],
+        [ "IPC Sequential Mode", "index.html#ipcsequentialmode", null ],
+        [ "Other Specialized Threads", "index.html#otherspecializedthreads", null ]
+      ] ],
       [ "Message Batching", "index.html#messagebatching", [
         [ "Implicit Batching", "index.html#implicitbatching", null ],
         [ "Intelligent Batching", "index.html#intelligentbatching", null ],
@@ -495,7 +500,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "index.html",
-"index.html#singlereceivingthreadrestrictions"
+"index.html#similaritiesbetweenlbtsmxandotherumtransports"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

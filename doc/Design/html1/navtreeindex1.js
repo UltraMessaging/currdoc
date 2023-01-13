@@ -1,5 +1,8 @@
 var NAVTREEINDEX1 =
 {
+"index.html#similaritiesbetweenlbtsmxandotherumtransports":[5,4,4],
+"index.html#similaritieswithotherumtransports":[5,3,2],
+"index.html#singlereceivingthread":[10,3],
 "index.html#singlereceivingthreadrestrictions":[10,3,0],
 "index.html#smartsourceconfiguration":[10,7,2],
 "index.html#smartsourcedefensivechecks":[10,7,3],
@@ -161,6 +164,7 @@ var NAVTREEINDEX1 =
 "index.html#xsphandlestransportsessionsnottopics":[9,0,0],
 "index.html#xsplatencyreduction":[10,10],
 "index.html#xsplimitations":[9,0,4],
+"index.html#xspsequentialmode":[7,4,1],
 "index.html#xspthreadingconsiderations":[9,0,1],
 "index.html#xspusage":[9,0,2],
 "index.html#zerocopyrestrictions":[10,8,1],
