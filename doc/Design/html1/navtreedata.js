@@ -325,7 +325,7 @@ var NAVTREE =
       [ "Single Receiving Thread", "index.html#singlereceivingthread", [
         [ "Single Receiving Thread Restrictions", "index.html#singlereceivingthreadrestrictions", null ]
       ] ],
-      [ "lbm_context_process_events_ex", "index.html#lbmcontextprocesseventsex", [
+      [ "Extended Context Process Events", "index.html#lbmcontextprocesseventsex", [
         [ "Context Lock Reduction", "index.html#contextlockreduction", null ],
         [ "Context Lock Reduction Restrictions", "index.html#contextlockreductionrestrictions", null ],
         [ "Gettimeofday Reduction", "index.html#gettimeofdayreduction", null ],

@@ -624,7 +624,7 @@ The application's main processing phase consists of publishing messages using th
 <li>
 When the application is ready to shut down, Sources and Receivers should be deleted. </li>
 <li>
-Contexts are deleted after all Sources and Receivers are deleted. Note that if the event queue uses <a class="el" href="index.html#sequentialmode">Sequential Mode</a>, the event processing thread should be unblocked and joined prior to Context deletion. </li>
+Contexts are deleted after all Sources and Receivers are deleted. Note that if the context uses <a class="el" href="index.html#sequentialmode">Sequential Mode</a>, the event processing thread should be unblocked and joined prior to Context deletion. </li>
 <li>
 Event Queues, if used, are deleted last. Note that the Event Queue dispatching thread(s) should be unblocked and joined prior to deletion of the Event Queue. </li>
 </ol>
@@ -2771,7 +2771,7 @@ Transport Services Provider (XSP)&nbsp;&nbsp;<small><a href="#transportservicesp
 <p>The earlier feature, Multi-Transport Threads (MTT), is removed from UM in favor of XSP.</p>
 <p>By default, a UM context combines all network data reception into a single <em>context thread</em>. This thread is responsible for reception and processing of application messages, topic resolution, and immediate message traffic (UIM and MIM). The context thread is also used for processing timers. This single-threaded model conserves CPU core resources, and can simplify application design. However, it can also introduce significant latency outliers (<a class="el" href="index.html#glossaryjitter">jitter</a>) if a time-sensitive user message is waiting behind, say, a topic resolution message, or a timer callback.</p>
 <p>Using an XSP object, an application can reassign the processing of a subscribed <a class="el" href="index.html#transportsessions">Transport Session</a> to an independent thread. This allows concurrent processing of received messages with topic resolution and timers, and even allows different groups Transport Sessions to be processed concurrently with each other.</p>
-<p>By default, when an XSP object is created, UM creates a new thread associated with the XSP. Alternatively, the XSP can be created with operational mode "sequential", which gives the responsibility of thread creation to the application. Either way, the XSP uses its independent thread to read data from the sockets associated with one or more subscribed Transport Sessions. That thread then delivers received messages to the application via a normal receive application callback function.</p>
+<p>By default, when an XSP object is created, UM creates a new thread associated with the XSP. Alternatively, the XSP can be created with <a class="el" href="index.html#sequentialmode">Sequential Mode</a>, which gives the responsibility of thread creation to the application. Either way, the XSP uses its independent thread to read data from the sockets associated with one or more subscribed Transport Sessions. That thread then delivers received messages to the application via a normal receive application callback function.</p>
 <p>Creation of an XSP does not by itself cause any receiver Transport Sessions to be assigned to it. Central to the use of XSPs is an application-supplied mapping callback function which tells UM which XSP to associate with subscribed Transport Sessions as they are discovered and joined. This callback allows the application to examine the newly-joined Transport Session, if desired. Then the callback returns, informing UM which XSP, if any, to assign the receiver Transport Session to.</p>
 <p><br />
  </p>
@@ -4383,7 +4383,7 @@ Advanced Optimizations&nbsp;&nbsp;<small><a href="#advancedoptimizations">&lt;-<
 <li>
 <a class="el" href="index.html#singlereceivingthread">Single Receiving Thread</a> - not generally applicable. </li>
 <li>
-<a class="el" href="index.html#lbmcontextprocesseventsex">lbm_context_process_events_ex</a> - not generally applicable. </li>
+<a class="el" href="index.html#lbmcontextprocesseventsex">Extended Context Process Events</a> - not generally applicable. </li>
 <li>
 <a class="el" href="index.html#receivemultipledatagrams">Receive Multiple Datagrams</a>. </li>
 <li>
@@ -4529,7 +4529,7 @@ Single Receiving Thread Restrictions&nbsp;&nbsp;<small><a href="#singlereceiving
 <p><br />
  </p>
 <h2><a class="anchor" id="lbmcontextprocesseventsex"></a>
-lbm_context_process_events_ex&nbsp;&nbsp;<small><a href="#lbmcontextprocesseventsex">&lt;-</a></small></h2>
+Extended Context Process Events&nbsp;&nbsp;<small><a href="#lbmcontextprocesseventsex">&lt;-</a></small></h2>
 <p>Most developers of UM applications use a multi-threaded approach to their application design. For example, they typically have one or more application threads, and they create a UM context with <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Design/config.tag:../../Config/" href="../../Config/grpmajoroptions.html#operationalmodecontext">embedded mode</a>, which creates a separate <a class="el" href="index.html#contextobject">context thread</a>.</p>
 <p>However, there is a model of application design in which a single thread is used for the entire application. In this case, the UM context must be created with <a class="el" href="index.html#sequentialmode">Sequential Mode</a> and the application must regularly call the UM event processor API, usually with the <code>msec</code> parameter set to zero. In this design, there is no possibility that application code, UM API code, and/or UM context code will be executing concurrently.</p>
 <p>The <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Design/api.tag:../../API/" href="../../API/lbm_8h.html#a55b77c3057028116314fe5ff8e6afb25">lbm_context_process_events_ex()</a> API allows the application to enable specialized optimizations. (For Java and .NET use the context object's <code>"processEvents()"</code> method with 2 or more input parameters. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Design/javaapi.tag:../../JavaAPI/" href="../../JavaAPI/classcom_1_1latencybusters_1_1lbm_1_1LBMContext.html#a78125f80281b91950f0409a4caddc4e3">com::latencybusters::lbm::LBMContext::processEvents</a>.)</p>

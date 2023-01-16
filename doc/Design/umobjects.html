@@ -84,7 +84,7 @@ The application's main processing phase consists of publishing messages using th
 <li>
 When the application is ready to shut down, Sources and Receivers should be deleted. </li>
 <li>
-Contexts are deleted after all Sources and Receivers are deleted. Note that if the event queue uses <a class="el" href="architecture.html#sequentialmode">Sequential Mode</a>, the event processing thread should be unblocked and joined prior to Context deletion. </li>
+Contexts are deleted after all Sources and Receivers are deleted. Note that if the context uses <a class="el" href="architecture.html#sequentialmode">Sequential Mode</a>, the event processing thread should be unblocked and joined prior to Context deletion. </li>
 <li>
 Event Queues, if used, are deleted last. Note that the Event Queue dispatching thread(s) should be unblocked and joined prior to deletion of the Event Queue. </li>
 </ol>

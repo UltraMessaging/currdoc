@@ -6376,7 +6376,7 @@ LBMExpDLL int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" h
 </div><div class="memdoc">
 
 <p>Structure that holds information for the extended Process Events calls. </p>
-<p>A structure used with Sequential Mode that utilize the extended Process Events calls to pass options. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/API/design.tag:../Design/" href="../Design/advancedoptimizations.html#lbmcontextprocesseventsex">lbm_context_process_events_ex</a> for more information.</p>
+<p>A structure used with Sequential Mode that utilize the extended Process Events calls to pass options. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/API/design.tag:../Design/" href="../Design/advancedoptimizations.html#lbmcontextprocesseventsex">Extended Context Process Events</a> for more information.</p>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="lbm_8h.html#a55b77c3057028116314fe5ff8e6afb25">lbm_context_process_events_ex</a></dd></dl>
 <p>See <a class="el" href="structlbm__process__events__info__t__stct.html">lbm_process_events_info_t_stct</a> for field definitions. </p>
 
@@ -10214,7 +10214,7 @@ Once an operation has been canceled, any associated <a class="el" href="structlb
 <p>Extended process internal events in the given UM context object. </p>
 <p>When <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/API/config.tag:../Config/" href="../Config/grpmajoroptions.html#operationalmodecontext">operational_mode (context)</a> is set to <a class="el" href="lbm_8h.html#a486ff03da2f9986d7203adc1893cd673">LBM_CTX_ATTR_OP_SEQUENTIAL</a> (or "sequential"), then it is the responsibility of the application to explicitly process events for the UM context. This function will process timers and file descriptor/socket events for internal processing as well as API timer and file descriptor/socket events. The application thread that is processing events must remain active until the context is deleted.</p>
 <dl class="section note"><dt>Note</dt><dd>It is the responsibility of the application to "unblock" this function using <a class="el" href="lbm_8h.html#ad3d4137ff9ac0a1d4431c9d75ee3708c" title="Unblock a sequential mode UM context. ">lbm_context_unblock()</a> and cease further calls before deleting the UM context.</dd></dl>
-<p>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/API/design.tag:../Design/" href="../Design/advancedoptimizations.html#lbmcontextprocesseventsex">lbm_context_process_events_ex</a> for more information and restrictions.</p>
+<p>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/API/design.tag:../Design/" href="../Design/advancedoptimizations.html#lbmcontextprocesseventsex">Extended Context Process Events</a> for more information and restrictions.</p>
 <dl class="section warning"><dt>Warning</dt><dd>It is not safe to call this function from a context thread callback.</dd></dl>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="lbm_8h.html#ad9416b1f0b474b5d4c4f39bb3c4bda77">lbm_context_process_events</a></dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>

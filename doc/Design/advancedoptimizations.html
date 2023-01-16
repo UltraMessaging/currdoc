@@ -64,7 +64,7 @@ $(document).ready(function(){initNavTree('advancedoptimizations.html','');});
 <li>
 <a class="el" href="advancedoptimizations.html#singlereceivingthread">Single Receiving Thread</a> - not generally applicable. </li>
 <li>
-<a class="el" href="advancedoptimizations.html#lbmcontextprocesseventsex">lbm_context_process_events_ex</a> - not generally applicable. </li>
+<a class="el" href="advancedoptimizations.html#lbmcontextprocesseventsex">Extended Context Process Events</a> - not generally applicable. </li>
 <li>
 <a class="el" href="advancedoptimizations.html#receivemultipledatagrams">Receive Multiple Datagrams</a>. </li>
 <li>
@@ -210,7 +210,7 @@ Single Receiving Thread Restrictions&nbsp;&nbsp;<small><a href="#singlereceiving
 <p><br />
  </p>
 <h1><a class="anchor" id="lbmcontextprocesseventsex"></a>
-lbm_context_process_events_ex&nbsp;&nbsp;<small><a href="#lbmcontextprocesseventsex">&lt;-</a></small></h1>
+Extended Context Process Events&nbsp;&nbsp;<small><a href="#lbmcontextprocesseventsex">&lt;-</a></small></h1>
 <p>Most developers of UM applications use a multi-threaded approach to their application design. For example, they typically have one or more application threads, and they create a UM context with <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Design/config.tag:../Config/" href="../Config/grpmajoroptions.html#operationalmodecontext">embedded mode</a>, which creates a separate <a class="el" href="umobjects.html#contextobject">context thread</a>.</p>
 <p>However, there is a model of application design in which a single thread is used for the entire application. In this case, the UM context must be created with <a class="el" href="architecture.html#sequentialmode">Sequential Mode</a> and the application must regularly call the UM event processor API, usually with the <code>msec</code> parameter set to zero. In this design, there is no possibility that application code, UM API code, and/or UM context code will be executing concurrently.</p>
 <p>The <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#a55b77c3057028116314fe5ff8e6afb25">lbm_context_process_events_ex()</a> API allows the application to enable specialized optimizations. (For Java and .NET use the context object's <code>"processEvents()"</code> method with 2 or more input parameters. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Design/javaapi.tag:../JavaAPI/" href="../JavaAPI/classcom_1_1latencybusters_1_1lbm_1_1LBMContext.html#a78125f80281b91950f0409a4caddc4e3">com::latencybusters::lbm::LBMContext::processEvents</a>.)</p>
