@@ -166,8 +166,9 @@ var NAVTREE =
         [ "Adaptive Batching", "architecture.html#adaptivebatching", null ]
       ] ],
       [ "Message Fragmentation and Reassembly", "architecture.html#messagefragmentationandreassembly", [
+        [ "Datagram Max Sizes", "architecture.html#datagrammaxsizes", null ],
         [ "Datagram Max Size and Network MTU", "architecture.html#datagrammaxsizeandnetworkmtu", null ],
-        [ "Datagrams and Kernel Bypass Network Drivers", "architecture.html#datagramsandkernelbypassnetworkdrivers", null ],
+        [ "Setting Datagram Max Sizes High", "architecture.html#datagramsandkernelbypassnetworkdrivers", null ],
         [ "Dynamic Fragmentation Reduction", "architecture.html#dynamicfragmentationreduction", null ]
       ] ],
       [ "Ordered Delivery", "architecture.html#ordereddelivery", [
@@ -500,7 +501,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "advancedoptimizations.html",
-"transporttypes.html#javacodeexamplesforlbtsmx"
+"transporttypes.html#hostresourceusageandlimits"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

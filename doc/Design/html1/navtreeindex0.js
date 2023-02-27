@@ -36,8 +36,9 @@ var NAVTREEINDEX0 =
 "index.html#daemonstatisticsdetails":[9,17,6],
 "index.html#daemonstatisticsstructures":[9,17,1],
 "index.html#daemonstatisticsversioning":[9,17,3],
-"index.html#datagrammaxsizeandnetworkmtu":[7,6,0],
-"index.html#datagramsandkernelbypassnetworkdrivers":[7,6,1],
+"index.html#datagrammaxsizeandnetworkmtu":[7,6,1],
+"index.html#datagrammaxsizes":[7,6,0],
+"index.html#datagramsandkernelbypassnetworkdrivers":[7,6,2],
 "index.html#decreasepacketflowthroughlosspoints":[16,0,0],
 "index.html#defaulttr":[7,1,0],
 "index.html#deliverycontroller":[7,2,0],
@@ -45,7 +46,7 @@ var NAVTREEINDEX0 =
 "index.html#differencesbetweenlbtsmxandotherumtransports":[5,4,5],
 "index.html#differencesfromotherumtransports":[5,3,3],
 "index.html#dummylbmrdconfigurationfile":[15,1],
-"index.html#dynamicfragmentationreduction":[7,6,2],
+"index.html#dynamicfragmentationreduction":[7,6,3],
 "index.html#embeddedmode":[7,3],
 "index.html#encryptedtcp":[9,3],
 "index.html#eventdelivery":[1,8],
@@ -248,6 +249,5 @@ var NAVTREEINDEX0 =
 "index.html#sendingtobothlocalandremotereceivers":[5,3,4],
 "index.html#sendingtosourcereadiness":[9,14,2],
 "index.html#sendingtosources":[9,14],
-"index.html#sequencenumberorderfragmentsreassembleddefaultmode":[7,7,0],
-"index.html#sequentialmode":[7,4]
+"index.html#sequencenumberorderfragmentsreassembleddefaultmode":[7,7,0]
 };

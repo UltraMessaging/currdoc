@@ -46,11 +46,12 @@ var NAVTREEINDEX0 =
 "architecture.html#arrivalorderfragmentsnotreassembled":[7,7,2],
 "architecture.html#arrivalorderfragmentsreassembled":[7,7,1],
 "architecture.html#contextsequentialmode":[7,4,0],
-"architecture.html#datagrammaxsizeandnetworkmtu":[7,6,0],
-"architecture.html#datagramsandkernelbypassnetworkdrivers":[7,6,1],
+"architecture.html#datagrammaxsizeandnetworkmtu":[7,6,1],
+"architecture.html#datagrammaxsizes":[7,6,0],
+"architecture.html#datagramsandkernelbypassnetworkdrivers":[7,6,2],
 "architecture.html#defaulttr":[7,1,0],
 "architecture.html#deliverycontroller":[7,2,0],
-"architecture.html#dynamicfragmentationreduction":[7,6,2],
+"architecture.html#dynamicfragmentationreduction":[7,6,3],
 "architecture.html#embeddedmode":[7,3],
 "architecture.html#examplebatching":[7,10,1],
 "architecture.html#examplefirstmessage":[7,10,0],
@@ -248,6 +249,5 @@ var NAVTREEINDEX0 =
 "transporttypes.html":[5],
 "transporttypes.html#comparinglbtrmndpgm":[5,2,1],
 "transporttypes.html#differencesbetweenlbtsmxandotherumtransports":[5,4,5],
-"transporttypes.html#differencesfromotherumtransports":[5,3,3],
-"transporttypes.html#hostresourceusageandlimits":[5,3,7]
+"transporttypes.html#differencesfromotherumtransports":[5,3,3]
 };
