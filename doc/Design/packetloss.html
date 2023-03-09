@@ -153,6 +153,7 @@ Loss: NIC Ring Buffer&nbsp;&nbsp;<small><a href="#lossnicringbuffer">&lt;-</a></
 <p>The mitigators listed in <a class="el" href="packetloss.html#lossswitchegressport">Loss: Switch Egress Port</a> will also help this problem by reducing the incoming packet rate.</p>
 <p>Another solution is to spread processes across more physical hosts. This has the additional advantage of reducing latency, since multicast replication within a host must be done in software by the kernel and is serial in nature, whereas replication in the network is done by specialized hardware in parallel.</p>
 <p>Another possible solution involves the use of the DRO as the primary receiver of the multicast data, which then re-publishes it on the host using the IPC transport. This has the disadvantage of introducing some additional latency since the messages must be received by the DRO and then forwarded to the application receivers. It also requires separating the applications to their own <a class="el" href="fundamentalconcepts.html#topicresolutiondomain">Topic Resolution Domains</a> (TRDs).</p>
+<p><a class="el" href="umglossary.html#glossaryopenonload">Onload</a> users can get more information at <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Design/config.tag:../Config/" href="../Config/grptransportacceleration.html#solarflaretips">Solarflare Tips</a>.</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="losssocketbuffer"></a>

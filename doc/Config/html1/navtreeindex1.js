@@ -108,6 +108,7 @@ var NAVTREEINDEX1 =
 "index.html#smartsrcuserbuffercountsource":[25,0,5],
 "index.html#socketbuffersizes":[7,2],
 "index.html#solarflareonload":[24,2],
+"index.html#solarflaretips":[24,2,0],
 "index.html#sourcecostevaluationfunctioncontext":[43,0,22],
 "index.html#sourceeventfunctioncontext":[9,0,15],
 "index.html#sourceincludestopicindexcontext":[9,0,16],
@@ -248,6 +249,5 @@ var NAVTREEINDEX1 =
 "index.html#transporttcpinterfacesource":[14,1,1],
 "index.html#transporttcplistenbacklogsource":[15,0,8],
 "index.html#transporttcpmaximumportscontext":[14,1,2],
-"index.html#transporttcpmultiplereceiverbehaviorsource":[15,0,9],
-"index.html#transporttcpmultiplereceiversendordersource":[15,0,10]
+"index.html#transporttcpmultiplereceiverbehaviorsource":[15,0,9]
 };

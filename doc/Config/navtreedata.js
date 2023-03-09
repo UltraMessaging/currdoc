@@ -396,7 +396,9 @@ var NAVTREE =
         [ "dbl_mim_acceleration (context)", "grptransportacceleration.html#dblmimaccelerationcontext", null ],
         [ "dbl_resolver_acceleration (context)", "grptransportacceleration.html#dblresolveraccelerationcontext", null ]
       ] ],
-      [ "Solarflare Onload", "grptransportacceleration.html#solarflareonload", null ],
+      [ "Solarflare Onload", "grptransportacceleration.html#solarflareonload", [
+        [ "Solarflare Tips", "grptransportacceleration.html#solarflaretips", null ]
+      ] ],
       [ "Reference", "grptransportacceleration.html#transportaccelerationsolarflareref", [
         [ "onload_acceleration_stack_name (receiver)", "grptransportacceleration.html#onloadaccelerationstacknamereceiver", null ],
         [ "onload_acceleration_stack_name (source)", "grptransportacceleration.html#onloadaccelerationstacknamesource", null ]
@@ -781,7 +783,7 @@ var NAVTREEINDEX =
 [
 "accesstocurrentoperatingoptions.html",
 "grpmulticastimmediatemessagingreliability.html#mimtransmissionwindowsizecontext",
-"grpultramessagingpersistence.html#umeproactivekeepaliveintervalcontext"
+"grpultramessagingpersistence.html#umemessagestabilitytimeoutsource"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

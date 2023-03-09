@@ -396,7 +396,9 @@ var NAVTREE =
         [ "dbl_mim_acceleration (context)", "index.html#dblmimaccelerationcontext", null ],
         [ "dbl_resolver_acceleration (context)", "index.html#dblresolveraccelerationcontext", null ]
       ] ],
-      [ "Solarflare Onload", "index.html#solarflareonload", null ],
+      [ "Solarflare Onload", "index.html#solarflareonload", [
+        [ "Solarflare Tips", "index.html#solarflaretips", null ]
+      ] ],
       [ "Reference", "index.html#transportaccelerationsolarflareref", [
         [ "onload_acceleration_stack_name (receiver)", "index.html#onloadaccelerationstacknamereceiver", null ],
         [ "onload_acceleration_stack_name (source)", "index.html#onloadaccelerationstacknamesource", null ]
@@ -781,7 +783,7 @@ var NAVTREEINDEX =
 [
 "index.html",
 "index.html#resolutionnumberofsourcesquerythresholdreceiver",
-"index.html#transporttcpnetworkref"
+"index.html#transporttcpmultiplereceiversendordersource"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

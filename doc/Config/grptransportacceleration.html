@@ -57,11 +57,11 @@ $(document).ready(function(){initNavTree('grptransportacceleration.html','');});
 <div class="textblock"><p>Transport acceleration options enable kernel-bypass acceleration in conjunction with the following vendor solutions:</p>
 <ul>
 <li>
-Myricom Datagram Bypass Layer (DBL) </li>
+<a class="el" href="grptransportacceleration.html#myricomdatagrambypasslayerdbl">Myricom Datagram Bypass Layer (DBL)</a> </li>
 <li>
-Solarflare Onload </li>
+<a class="el" href="grptransportacceleration.html#solarflareonload">Solarflare Onload</a> </li>
 <li>
-Mellanox 10-Gigabit Ethernet or InfiniBand hardware </li>
+<a class="el" href="grptransportacceleration.html#mellanoxudacceleration">UD Acceleration for Mellanox Hardware Interfaces</a> </li>
 </ul>
 <p><br />
  </p>
@@ -262,6 +262,36 @@ Set option transport_*_datagram_max_size and option <a class="el" href="grpudpba
 </ol>
 <p>Users of Onload are advised to make use of <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Config/design.tag:../Design/" href="../Design/architecture.html#dynamicfragmentationreduction">Dynamic Fragmentation Reduction</a>.</p>
 <p>For detailed information about onload stack names, refer to the Solarflare Onload User Guide.</p>
+<p><br />
+ </p>
+<h2><a class="anchor" id="solarflaretips"></a>
+Solarflare Tips&nbsp;&nbsp;<small><a href="#solarflaretips">&lt;-</a></small></h2>
+<p>Solarflare NICs can be used with in-kernel device drivers, or with the kernel-bypass driver "Onload".</p>
+<p>Sometimes the kernel driver is less susceptible to packet loss than Onload. This is because the kernel driver is invoked as needed via interrupt, while Onload is dependent on the application to call the driver via a socket call (like "epoll()"). With the kernel driver, if the application is delayed in making a socket call, the socket buffer can be configured to hold large numbers of datagrams. In contrast, if using Onload, only the NICs rx ring buffer is available. Even short delays can lead to packet loss with Onload.</p>
+<p>Informatica is not an expert in tuning Solarflare NICs and Onload. We recommend using the <a href="https://docs.xilinx.com/r/en-US/ug1586-onload-user">Onload documentation</a> and discussing your use case with Onload support engineers.</p>
+<p>However, we can give a few tips based on our own experience and that of our customers.</p>
+<ol>
+<li>
+The number of receive descriptors (size of rx ring buffer) should always be set to the maximum value (probably 4096, but check to be sure). <ul>
+<li>
+For kernel driver, check the current and maximum settings with: <div class="fragment"><div class="line">ethtool -g sfdevicename</div></div><!-- fragment --> You can change it using ethtool: <div class="fragment"><div class="line">ethtool -G rx 4096 sfdevicename</div></div><!-- fragment --> but this will only stay in effect until the next reboot. Different versions of Linux have different methods for making the changes permanent. </li>
+<li>
+For Onload, set the environment variable: <div class="fragment"><div class="line">export EF_RXQ_SIZE=4096</div></div><!-- fragment --> </li>
+</ul>
+</li>
+<li>
+Set the maximum size of datagram that UM will generate. <ul>
+<li>
+If kernel drivers are used everywhere, set the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Config/design.tag:../Design/" href="../Design/architecture.html#datagrammaxsizes">Datagram Max Sizes</a> to 8192. This allows ip fragmentation, which improves efficiency. </li>
+<li>
+If Onload is being used anywhere, prevent IP fragmentation by enabling <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Config/design.tag:../Design/" href="../Design/architecture.html#dynamicfragmentationreduction">Dynamic Fragmentation Reduction</a> and setting the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Config/design.tag:../Design/" href="../Design/architecture.html#datagrammaxsizes">Datagram Max Sizes</a> to 1472. But see <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Config/design.tag:../Design/" href="../Design/architecture.html#datagrammaxsizeandnetworkmtu">Datagram Max Size and Network MTU</a> for a discussion of efficiency issues, especially for UM versions prior to 6.14. </li>
+</ul>
+</li>
+<li>
+If using Onload, you can get better performance if you configure sources on one stack using <a class="el" href="grptransportacceleration.html#onloadaccelerationstacknamesource">onload_acceleration_stack_name (source)</a> and receivers on a different stack using <a class="el" href="grptransportacceleration.html#onloadaccelerationstacknamereceiver">onload_acceleration_stack_name (receiver)</a>. </li>
+<li>
+For a wealth of additional information, see <a href="https://docs.xilinx.com/r/en-US/ug1586-onload-user">Onload documentation</a>, especially <a href="https://docs.xilinx.com/r/en-US/ug1586-onload-user/Tuning-Onload">Tuning Onload</a> and <a href="https://docs.xilinx.com/r/en-US/ug1586-onload-user/Eliminating-Drops">Eliminating Drops</a>. </li>
+</ol>
 <p><br />
  </p>
 <h1><a class="anchor" id="transportaccelerationsolarflareref"></a>

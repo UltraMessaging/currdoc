@@ -48,6 +48,7 @@ var NAVTREEINDEX1 =
 "grptransportacceleration.html#onloadaccelerationstacknamesource":[24,3,1],
 "grptransportacceleration.html#resolverudaccelerationcontext":[24,5,0],
 "grptransportacceleration.html#solarflareonload":[24,2],
+"grptransportacceleration.html#solarflaretips":[24,2,0],
 "grptransportacceleration.html#transportaccelerationmellanoxref":[24,5],
 "grptransportacceleration.html#transportaccelerationmyricomref":[24,1],
 "grptransportacceleration.html#transportaccelerationsolarflareref":[24,3],
@@ -248,6 +249,5 @@ var NAVTREEINDEX1 =
 "grpultramessagingpersistence.html#umeforcereclaimfunctionsource":[39,0,12],
 "grpultramessagingpersistence.html#umelatejoinsource":[39,0,13],
 "grpultramessagingpersistence.html#umemessagestabilitylifetimesource":[39,0,14],
-"grpultramessagingpersistence.html#umemessagestabilitynotificationsource":[39,0,15],
-"grpultramessagingpersistence.html#umemessagestabilitytimeoutsource":[39,0,16]
+"grpultramessagingpersistence.html#umemessagestabilitynotificationsource":[39,0,15]
 };
