@@ -110,6 +110,8 @@ var NAVTREEINDEX0 =
 "fundamentalconcepts.html#receiverbosandeosevents":[1,8,0],
 "fundamentalconcepts.html#requestresponse":[1,6],
 "fundamentalconcepts.html#sourceconnectanddisconnectevents":[1,8,1],
+"fundamentalconcepts.html#sourceflightnotificationevent":[1,8,3],
+"fundamentalconcepts.html#sourcewakeupevent":[1,8,2],
 "fundamentalconcepts.html#streaming":[1,0,0],
 "fundamentalconcepts.html#tailloss":[1,3,3],
 "fundamentalconcepts.html#topicresolutiondomain":[1,2,2],
@@ -247,7 +249,5 @@ var NAVTREEINDEX0 =
 "topicresolutiondescription.html#trprotocolcomparison":[6,1],
 "topicresolutiondescription.html#unicastudptr":[6,1,1],
 "transporttypes.html":[5],
-"transporttypes.html#comparinglbtrmndpgm":[5,2,1],
-"transporttypes.html#differencesbetweenlbtsmxandotherumtransports":[5,4,5],
-"transporttypes.html#differencesfromotherumtransports":[5,3,3]
+"transporttypes.html#comparinglbtrmndpgm":[5,2,1]
 };

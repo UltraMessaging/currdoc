@@ -33,7 +33,9 @@ var NAVTREE =
       ] ],
       [ "Event Delivery", "index.html#eventdelivery", [
         [ "Receiver BOS and EOS Events", "index.html#receiverbosandeosevents", null ],
-        [ "Source Connect and Disconnect Events", "index.html#sourceconnectanddisconnectevents", null ]
+        [ "Source Connect and Disconnect Events", "index.html#sourceconnectanddisconnectevents", null ],
+        [ "Source Wakeup Event", "index.html#sourcewakeupevent", null ],
+        [ "Source Flight Notification Event", "index.html#sourceflightnotificationevent", null ]
       ] ],
       [ "Rate Controls", "index.html#ratecontrols", [
         [ "Transport Rate Control", "index.html#transportratecontrol", null ],

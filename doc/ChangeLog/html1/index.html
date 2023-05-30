@@ -2223,7 +2223,7 @@ Special Upgrade Instructions for 6.10&nbsp;&nbsp;<small><a href="#specialupgrade
  </p>
 <h3><a class="anchor" id="um610improveddefaults"></a>
 UM 6.10 Improved Defaults&nbsp;&nbsp;<small><a href="#um610improveddefaults">&lt;-</a></small></h3>
-<p>The following configuration options have had their default values changed. The intention is for these values to be generally better for users, so you may benefit from them. However, some users may have tuned their applications and/or environments to conform to the old defaults. You should examine these options and compare them to values that you may have set, paying special attention to options that you do <em>not</em> set, since those may result in behavior changes in your system. <a href="https://ultramessaging.github.io/UM_Support.html">Contact support</a> for assistance.</p>
+<p>The following configuration options have had their default values changed. The intention is for these values to be generally better for users, so you may benefit from them. However, some users may have tuned their applications and/or environments to conform to the old defaults. You should examine these options and compare them to values that you may have set, paying special attention to options that you do <em>not</em> set, since those may result in behavior changes in your system. <a href="https://ultramessaging.github.io/UM_Support.html">Contact Informatica Support</a> for assistance.</p>
 <p><b>Streaming Defaults</b></p>
 <p>Note that these affect streaming, persistence, and queuing use cases.</p>
 <table class="doxtable">
@@ -3223,7 +3223,7 @@ Special Upgrade Instructions for 6.8&nbsp;&nbsp;<small><a href="#specialupgradei
  </p>
 <h3><a class="anchor" id="um68improveddefaults"></a>
 UM 6.8 Improved Defaults&nbsp;&nbsp;<small><a href="#um68improveddefaults">&lt;-</a></small></h3>
-<p>The following configuration options have had their default values changed. The intention is for these values to be generally better for users, so you may benefit from them. However, some users may have tuned their applications and/or environments to conform to the old defaults. You should examine these options and compare them to values that you may have set, paying special attention to options that you do <em>not</em> set, since those may result in behavior changes in your system. <a href="https://ultramessaging.github.io/UM_Support.html">Contact support</a> for assistance.</p>
+<p>The following configuration options have had their default values changed. The intention is for these values to be generally better for users, so you may benefit from them. However, some users may have tuned their applications and/or environments to conform to the old defaults. You should examine these options and compare them to values that you may have set, paying special attention to options that you do <em>not</em> set, since those may result in behavior changes in your system. <a href="https://ultramessaging.github.io/UM_Support.html">Contact Informatica Support</a> for assistance.</p>
 <p>The following configuration options default values are changed: </p><table class="doxtable">
 <tr>
 <th>Option </th><th>Old Default </th><th>New Default </th><th><p class="starttd">Notes</p>
@@ -4974,7 +4974,7 @@ Linux 32-bit </li>
 Windows 32-bit (except Dynamic Router "tnwgd", which will continue on 32-bit) </li>
 </ul>
 <p>User applications deployed on these platforms will fully interoperate with daemons running on the reduced set of platforms.</p>
-<p>Please <a href="https://ultramessaging.github.io/UM_Support.html">contact support</a> if any of these planned deprecations interfere with your existing or planned deployments.</p>
+<p><a href="https://ultramessaging.github.io/UM_Support.html">Contact Informatica Support</a> if any of these planned deprecations interfere with your existing or planned deployments.</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="deprecationsfor610"></a>
@@ -5191,11 +5191,18 @@ Known Problems and Limitations&nbsp;&nbsp;<small><a href="#knownlimitations">&lt
 <h2><a class="anchor" id="streamingknownlimitations"></a>
 Streaming Known Problems and Limitations&nbsp;&nbsp;<small><a href="#streamingknownlimitations">&lt;-</a></small></h2>
 <p>The following open limitations apply to UMS, UMP, and UMQ products.</p>
-<p><a class="anchor" id="bug11268"></a></p><table class="doxtable">
+<p><a class="anchor" id="bug11328"></a></p><table class="doxtable">
 <tr>
-<th>Change Request </th><th><p class="starttd">Description</p>
-<p class="endtd"></p>
-</th></tr>
+<th>Change Request </th><th>Description </th></tr>
+<tr>
+<td>11328</td><td><p class="starttd">The persistent source event <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/ChangeLog/api.tag:../../API/" href="../../API/lbm_8h.html#a6d75dfecae9635b61c289efa3a8aa017">LBM_SRC_EVENT_FLIGHT_SIZE_NOTIFICATION</a> can deliver notifications out of order. This behavior is not considered a bug; applications must handle this. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/ChangeLog/design.tag:../../Design/" href="../../Design/fundamentalconcepts.html#sourceflightnotificationevent">Source Flight Notification Event</a> for details and suggestions.</p>
+<p class="endtd"><a class="anchor" id="bug11327"></a></p>
+</td></tr>
+<tr>
+<td>11327</td><td><p class="starttd">When a subscriber joins an IPC source, the IPC thread can fail to initialize properly, resulting in receiver "deafness" to IPC sources. One symptom of this is "rolling EOS events" (repeated <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/ChangeLog/api.tag:../../API/" href="../../API/lbm_8h.html#a2647b87f92adb5a34ea129fbfeeed5a3">LBM_MSG_EOS</a> receiver events without any <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/ChangeLog/api.tag:../../API/" href="../../API/lbm_8h.html#ab5489080adc7157549a9930b30c68425">LBM_MSG_BOS</a> events and without any message reception).</p>
+<p><b>WORKAROUND</b>: use <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/ChangeLog/design.tag:../../Design/" href="../../Design/architecture.html#ipcsequentialmode">IPC Sequential Mode</a> (not available for Java or .NET).</p>
+<p class="endtd"><a class="anchor" id="bug11268"></a></p>
+</td></tr>
 <tr>
 <td>11268</td><td><p class="starttd">The Store operational tool "umedcmd" cannot be used on a Store that is configured for protobuf-based daemon monitoring.</p>
 <p class="endtd"><a class="anchor" id="bug11266"></a></p>
@@ -5516,7 +5523,7 @@ Order of Upgrades&nbsp;&nbsp;<small><a href="#orderofupgrades">&lt;-</a></small>
 </ul>
 <p>When upgrading to a new version, you should not have a newer application using an older UM daemon. (There is no particular recommended order among the daemon types.)</p>
 <p>When upgrading Persistent Stores from a pre-6.13 version to UM 6.13 and beyond, Informatica recommends upgrading any DROs <em>before</em> the Persistent Stores. See <a class="el" href="index.html#bug10833">bug 10833</a>.</p>
-<p>Users of the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/ChangeLog/design.tag:../../Design/" href="../../Design/umglossary.html#glossaryumds">UMDS</a> daemon (umdsd) should contact Informatica Support for advice on upgrading.</p>
+<p>Users of the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/ChangeLog/design.tag:../../Design/" href="../../Design/umglossary.html#glossaryumds">UMDS</a> daemon (umdsd) should <a href="https://ultramessaging.github.io/UM_Support.html">contact Informatica Support</a> for advice on upgrading.</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="rebuildingapplications"></a>
@@ -5528,7 +5535,7 @@ Rebuilding Applications&nbsp;&nbsp;<small><a href="#rebuildingapplications">&lt;
 <h2><a class="anchor" id="retestingapplications"></a>
 Retesting Applications&nbsp;&nbsp;<small><a href="#retestingapplications">&lt;-</a></small></h2>
 <p>Informatica has extensive automated regression test frameworks that generally do a good job of ensuring the quality of each new software version. However, no testing methodology can test all combinations of configurations across all possible use cases. So regressions are always possible.</p>
-<p>The user has a responsibility to test his application system after upgrading to a new version of UM. The degree of testing depends on the amount of change that that UM has undergone between the old and new versions. For example, there are generally very few changes when upgrading from a version to an Emergency Bug Fix (EBF) of that version. So minimal re-testing is needed. The release notes can provide an idea of how much testing should be done after an upgrade. The Support team is happy to assist in the analysis.</p>
+<p>The user has a responsibility to test his application system after upgrading to a new version of UM. The degree of testing depends on the amount of change that that UM has undergone between the old and new versions. For example, there are generally very few changes when upgrading from a version to an Emergency Bug Fix (EBF) of that version. So minimal re-testing is needed. The release notes can provide an idea of how much testing should be done after an upgrade. <a href="https://ultramessaging.github.io/UM_Support.html">Contact Informatica Support</a> for assistance in the analysis.</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="specialupgradeinstructions"></a>

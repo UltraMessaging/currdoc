@@ -1,5 +1,7 @@
 var NAVTREEINDEX1 =
 {
+"transporttypes.html#differencesbetweenlbtsmxandotherumtransports":[5,4,5],
+"transporttypes.html#differencesfromotherumtransports":[5,3,3],
 "transporttypes.html#hostresourceusageandlimits":[5,3,7],
 "transporttypes.html#javacodeexamplesforlbtsmx":[5,4,7],
 "transporttypes.html#lbtipcconfigurationexample":[5,3,5],

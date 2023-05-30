@@ -33,7 +33,9 @@ var NAVTREE =
       ] ],
       [ "Event Delivery", "fundamentalconcepts.html#eventdelivery", [
         [ "Receiver BOS and EOS Events", "fundamentalconcepts.html#receiverbosandeosevents", null ],
-        [ "Source Connect and Disconnect Events", "fundamentalconcepts.html#sourceconnectanddisconnectevents", null ]
+        [ "Source Connect and Disconnect Events", "fundamentalconcepts.html#sourceconnectanddisconnectevents", null ],
+        [ "Source Wakeup Event", "fundamentalconcepts.html#sourcewakeupevent", null ],
+        [ "Source Flight Notification Event", "fundamentalconcepts.html#sourceflightnotificationevent", null ]
       ] ],
       [ "Rate Controls", "fundamentalconcepts.html#ratecontrols", [
         [ "Transport Rate Control", "fundamentalconcepts.html#transportratecontrol", null ],
@@ -501,7 +503,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "advancedoptimizations.html",
-"transporttypes.html#hostresourceusageandlimits"
+"transporttypes.html#differencesbetweenlbtsmxandotherumtransports"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
