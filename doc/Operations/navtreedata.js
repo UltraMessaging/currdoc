@@ -14,6 +14,10 @@ var NAVTREE =
       ] ],
       [ "Application Installer", "uminstallation.html#applicationinstaller", null ]
     ] ],
+    [ "Virtualized Environments", "virtualizedenvironments.html", [
+      [ "Physical Network in a Virtualized Environment", "virtualizedenvironments.html#physicalnetworkinavirtualizedenvironment", null ],
+      [ "Shared Memory Between Containers", "virtualizedenvironments.html#sharedmemorybetweencontainers", null ]
+    ] ],
     [ "Monitoring", "monitoring.html", [
       [ "Monitoring Introduction", "monitoring.html#monitoringintroduction", [
         [ "Network and Host Equipment Monitoring", "monitoring.html#networkandhostmonitoring", null ],

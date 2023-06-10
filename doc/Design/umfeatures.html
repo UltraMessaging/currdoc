@@ -1133,6 +1133,7 @@ Establishing a linkage between a request and its response(s), allowing multiple 
 <li>
 Supporting multiple responses per request, both by allowing multiple servers to receive the request and each one responding, and by allowing a given server to respond with multiple messages. </li>
 </ul>
+<dl class="section attention"><dt>Attention</dt><dd>Although the response messages are sent by TCP, there are still failure scenarios where a response can be lost. The use of <a class="el" href="fundamentalconcepts.html#umrouter">DROs</a> can make it even more likely. Informatica recommends applications that use request/response implement timeout/retry logic.</dd></dl>
 <p><br />
  </p>
 <h2><a class="anchor" id="requestmessage"></a>

@@ -180,7 +180,7 @@ Streaming Fixed Problems and Limitations for 6.15&nbsp;&nbsp;<small><a href="#st
 <p class="endtd"></p>
 </th></tr>
 <tr>
-<td>11063</td><td><p class="starttd"><b>FIXED:</b> <em>A UM version 6.14 SRS can get into a state where control messages are sent and received at a very high rate. This is difficult to reproduce, and is related to a named Store being restarted. </em> SRS users with named Stores should upgrade to UM version 6.15.</p>
+<td>11063</td><td><p class="starttd"><b>FIXED:</b> <em>A UM version 6.14 SRS can get into a state where control messages are sent and received at a very high rate. This is difficult to reproduce, and is related to a named Store being restarted on a network containing a <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/ChangeLog/design.tag:../../Design/" href="../../Design/fundamentalconcepts.html#umrouter">DRO</a>. </em> SRS users with named Stores and DROs should upgrade at least their SRSes, DROs, and Stores to UM version 6.15.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
@@ -5191,13 +5191,9 @@ Known Problems and Limitations&nbsp;&nbsp;<small><a href="#knownlimitations">&lt
 <h2><a class="anchor" id="streamingknownlimitations"></a>
 Streaming Known Problems and Limitations&nbsp;&nbsp;<small><a href="#streamingknownlimitations">&lt;-</a></small></h2>
 <p>The following open limitations apply to UMS, UMP, and UMQ products.</p>
-<p><a class="anchor" id="bug11328"></a></p><table class="doxtable">
+<p><a class="anchor" id="bug11327"></a></p><table class="doxtable">
 <tr>
 <th>Change Request </th><th>Description </th></tr>
-<tr>
-<td>11328</td><td><p class="starttd">The persistent source event <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/ChangeLog/api.tag:../../API/" href="../../API/lbm_8h.html#a6d75dfecae9635b61c289efa3a8aa017">LBM_SRC_EVENT_FLIGHT_SIZE_NOTIFICATION</a> can deliver notifications out of order. This behavior is not considered a bug; applications must handle this. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/ChangeLog/design.tag:../../Design/" href="../../Design/fundamentalconcepts.html#sourceflightnotificationevent">Source Flight Notification Event</a> for details and suggestions.</p>
-<p class="endtd"><a class="anchor" id="bug11327"></a></p>
-</td></tr>
 <tr>
 <td>11327</td><td><p class="starttd">When a subscriber joins an IPC source, the IPC thread can fail to initialize properly, resulting in receiver "deafness" to IPC sources. One symptom of this is "rolling EOS events" (repeated <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/ChangeLog/api.tag:../../API/" href="../../API/lbm_8h.html#a2647b87f92adb5a34ea129fbfeeed5a3">LBM_MSG_EOS</a> receiver events without any <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/ChangeLog/api.tag:../../API/" href="../../API/lbm_8h.html#ab5489080adc7157549a9930b30c68425">LBM_MSG_BOS</a> events and without any message reception).</p>
 <p><b>WORKAROUND</b>: use <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/ChangeLog/design.tag:../../Design/" href="../../Design/architecture.html#ipcsequentialmode">IPC Sequential Mode</a> (not available for Java or .NET).</p>
@@ -5342,11 +5338,13 @@ No incorrect behavior results, and the log message can be ignored.</p>
 <h2><a class="anchor" id="persistenceknownlimitations"></a>
 Persistence Known Problems and Limitations&nbsp;&nbsp;<small><a href="#persistenceknownlimitations">&lt;-</a></small></h2>
 <p>The following open limitations fixes apply to UMP and UMQ products.</p>
-<table class="doxtable">
+<p><a class="anchor" id="bug11328"></a></p><table class="doxtable">
 <tr>
-<th>Change Request </th><th><p class="starttd">Description</p>
+<th>Change Request </th><th>Description </th></tr>
+<tr>
+<td>11328</td><td><p class="starttd">The persistent source event <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/ChangeLog/api.tag:../../API/" href="../../API/lbm_8h.html#a6d75dfecae9635b61c289efa3a8aa017">LBM_SRC_EVENT_FLIGHT_SIZE_NOTIFICATION</a> can deliver notifications out of order. This behavior is not considered a bug; applications must handle this. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/ChangeLog/design.tag:../../Design/" href="../../Design/fundamentalconcepts.html#sourceflightnotificationevent">Source Flight Notification Event</a> for details and suggestions.</p>
 <p class="endtd"><a class="anchor" id="bug11006"></a></p>
-</th></tr>
+</td></tr>
 <tr>
 <td>11006 </td><td><p class="starttd">Store can misbehave if a UM XML configuration file is supplied with settings that are invalid for the Store. Request that either the invalid settings be automatically corrected, or at least log a user-friendly error message.</p>
 <p><b>WORKAROUND</b>: Take care to omit the following options from the Store's LBM configuration: </p><ul>

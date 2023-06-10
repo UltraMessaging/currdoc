@@ -211,6 +211,25 @@ Application Installer&nbsp;&nbsp;<small><a href="#applicationinstaller">&lt;-</a
 <p>In the case of running UM daemons as Windows Services, there are some additional steps necessary; see <a class="el" href="index.html#copywindowsruntimefiles">Copy Windows Runtime Files</a>.</p>
 <p><br />
  </p><hr/>
+<h1><a class="anchor" id="virtualizedenvironments"></a>
+Virtualized Environments&nbsp;&nbsp;<small><a href="#virtualizedenvironments">&lt;-</a></small></h1>
+<p>UM can be used in virtualized environments. It can be heavy-weight virtualization, as with virtual machines using VMWare or Virtual Box, or it can be lighter-weight containers, as with Docker. Containers can be further enhanced via an orchestration layer, such as Kubernetes or OpenShift.</p>
+<p>For the most part, UM does not notice the virtualization. In particular, UM does not currently explicitly integrate with virtualization features. However, we have found that UM performance can be affected by choices made when setting up the virtualization.</p>
+<p><br />
+ </p>
+<h2><a class="anchor" id="physicalnetworkinavirtualizedenvironment"></a>
+Physical Network in a Virtualized Environment&nbsp;&nbsp;<small><a href="#physicalnetworkinavirtualizedenvironment">&lt;-</a></small></h2>
+<p>By default, a virtualized environment typically provides a virtual network interface with an IP address that is different than the physical interface provided by the host. The virtualization software then provides a virtual network to interconnect the virtual interfaces and the physical interface.</p>
+<p>However, this virtual network adds overhead to the exchange of message, adding latency and reducing throughput.</p>
+<p>Most UM users choose to provide the virtualized environments access to the physical interface(s). For example, with virtual machines, the physical server is typically installed with more than one network interface. Then each VM is given exclusive access to one interface. With Docker, it is more common to simply have each container use the <a href="https://docs.docker.com/network/drivers/host/">host</a> network.</p>
+<p><br />
+ </p>
+<h2><a class="anchor" id="sharedmemorybetweencontainers"></a>
+Shared Memory Between Containers&nbsp;&nbsp;<small><a href="#sharedmemorybetweencontainers">&lt;-</a></small></h2>
+<p>It is possible to use IPC or SMX transports across containers by using the <a href="https://docs.docker.com/engine/reference/run/#ipc-settings---ipc">&ndash;ipc</a> option.</p>
+<p>We do not know of any way to use IPC or SMX across virtual machines on the same physical server.</p>
+<p><br />
+ </p><hr/>
 <h1><a class="anchor" id="monitoring"></a>
 Monitoring&nbsp;&nbsp;<small><a href="#monitoring">&lt;-</a></small></h1>
 <p>For an Ultra Messaging deployment, "monitoring" is the process of overseeing the operation of UM and the resources it uses to determine its health and performance.</p>
