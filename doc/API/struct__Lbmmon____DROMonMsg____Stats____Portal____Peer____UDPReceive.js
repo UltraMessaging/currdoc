@@ -1,0 +1,28 @@
+var struct__Lbmmon____DROMonMsg____Stats____Portal____Peer____UDPReceive =
+[
+    [ "base", "struct__Lbmmon____DROMonMsg____Stats____Portal____Peer____UDPReceive.html#a70a45926226115c6b5955b971fd7753c", null ],
+    [ "bytes_rcved", "struct__Lbmmon____DROMonMsg____Stats____Portal____Peer____UDPReceive.html#af962ee7cd6b4cc7406bc4e611f525d0e", null ],
+    [ "dgrams_dropped_hdr", "struct__Lbmmon____DROMonMsg____Stats____Portal____Peer____UDPReceive.html#a63c7c25686f28599a9e4d4acee0e34fa", null ],
+    [ "dgrams_dropped_other", "struct__Lbmmon____DROMonMsg____Stats____Portal____Peer____UDPReceive.html#a038d38694c0926ff95c7f5845779604d", null ],
+    [ "dgrams_dropped_sid", "struct__Lbmmon____DROMonMsg____Stats____Portal____Peer____UDPReceive.html#a7822bc167000b6e1c1d1963c8739a836", null ],
+    [ "dgrams_dropped_size", "struct__Lbmmon____DROMonMsg____Stats____Portal____Peer____UDPReceive.html#add9fbb657f17b82a409c3e0856de5100", null ],
+    [ "dgrams_dropped_type", "struct__Lbmmon____DROMonMsg____Stats____Portal____Peer____UDPReceive.html#a0d286768598e1412bed3bb98f8ec3daf", null ],
+    [ "dgrams_dropped_version", "struct__Lbmmon____DROMonMsg____Stats____Portal____Peer____UDPReceive.html#ad51c6614994faea3fefea9bc4b8e08fc", null ],
+    [ "duplicate_data", "struct__Lbmmon____DROMonMsg____Stats____Portal____Peer____UDPReceive.html#a19e551fa3f86ab37365ba58e587da151", null ],
+    [ "lost", "struct__Lbmmon____DROMonMsg____Stats____Portal____Peer____UDPReceive.html#ab6f8938948eadf3256a79aa7437cc147", null ],
+    [ "msgs_rcved", "struct__Lbmmon____DROMonMsg____Stats____Portal____Peer____UDPReceive.html#ad5b7c046e1a8cfa6cc9ca603dc03f1e6", null ],
+    [ "nak_pckts_sent", "struct__Lbmmon____DROMonMsg____Stats____Portal____Peer____UDPReceive.html#af3cc3e74e19ec97505d25131bda7ee01", null ],
+    [ "nak_stm_max", "struct__Lbmmon____DROMonMsg____Stats____Portal____Peer____UDPReceive.html#a1044cdf5bbc95819275229d01e32e6be", null ],
+    [ "nak_stm_mean", "struct__Lbmmon____DROMonMsg____Stats____Portal____Peer____UDPReceive.html#a4000b4af2e860b2f4a75174bb85e41bc", null ],
+    [ "nak_stm_min", "struct__Lbmmon____DROMonMsg____Stats____Portal____Peer____UDPReceive.html#a8c5569f16789779ceb39701442373c7b", null ],
+    [ "nak_tx_max", "struct__Lbmmon____DROMonMsg____Stats____Portal____Peer____UDPReceive.html#a1b3e98fa4693eb73c6d1c10483c46bb4", null ],
+    [ "nak_tx_mean", "struct__Lbmmon____DROMonMsg____Stats____Portal____Peer____UDPReceive.html#afa003dd89afdb5fe19cfc0b8e91d7900", null ],
+    [ "nak_tx_min", "struct__Lbmmon____DROMonMsg____Stats____Portal____Peer____UDPReceive.html#aecfcb8ae3c7f2e29cd116b1e90264de4", null ],
+    [ "naks_sent", "struct__Lbmmon____DROMonMsg____Stats____Portal____Peer____UDPReceive.html#ab3b3451c5757aaef75be1bda80540d38", null ],
+    [ "ncfs_ignored", "struct__Lbmmon____DROMonMsg____Stats____Portal____Peer____UDPReceive.html#a85d0139bcf894db3df0749d8f3ecb370", null ],
+    [ "ncfs_rx_delay", "struct__Lbmmon____DROMonMsg____Stats____Portal____Peer____UDPReceive.html#a0c124b90628a7c078813f21828b4c81f", null ],
+    [ "ncfs_shed", "struct__Lbmmon____DROMonMsg____Stats____Portal____Peer____UDPReceive.html#ab58338763798706249e401f441ea5277", null ],
+    [ "ncfs_unknown", "struct__Lbmmon____DROMonMsg____Stats____Portal____Peer____UDPReceive.html#acaaed54c8b0cbfaa89384a0100d0ae00", null ],
+    [ "unrecovered_tmo", "struct__Lbmmon____DROMonMsg____Stats____Portal____Peer____UDPReceive.html#a18ca4c85f769cb2a342480da70696e2a", null ],
+    [ "unrecovered_txw", "struct__Lbmmon____DROMonMsg____Stats____Portal____Peer____UDPReceive.html#adb1f6d3a24861a787a5fa63bccc6bd68", null ]
+];

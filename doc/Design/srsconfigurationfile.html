@@ -89,7 +89,7 @@ SRS Element "&lt;daemon-monitor&gt;"&nbsp;&nbsp;<small><a href="#srselementdaemo
 <p>See child elements for details.</p>
 <ul>
 <li>
-<b>Cardinality:</b> 0 .. 1 </li>
+<b>Cardinality</b> (number of times element can be supplied): 0 .. 1 </li>
 <li>
 <b>Parent:</b> <a class="el" href="srsconfigurationfile.html#srselementumsrs">&lt;um-srs&gt;</a> </li>
 <li>
@@ -106,11 +106,11 @@ SRS Element "&lt;daemon-monitor&gt;"&nbsp;&nbsp;<small><a href="#srselementdaemo
  </p>
 <h2><a class="anchor" id="srselementmonitorformat"></a>
 SRS Element "&lt;monitor-format&gt;"&nbsp;&nbsp;<small><a href="#srselementmonitorformat">&lt;-</a></small></h2>
-<p>Specifies the desired format of monitoring data. For use with the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Design/operations.tag:../Operations/" href="../Operations/monitoring.html#monitoringcollectorservicemcs">Monitoring Collector Service (MCS)</a>, use the format "pb" (proto buff).</p>
+<p>Specifies the desired format of monitoring data. For use with the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16/doc/Design/operations.tag:../Operations/" href="../Operations/monitoring.html#monitoringcollectorservicemcs">Monitoring Collector Service (MCS)</a>, use the format "pb" (proto buff).</p>
 <p>Valid values are "pb" (recommended) or "json" (deprecated). See <a class="el" href="topicresolutiondescription.html#srsmonitoring">SRS Monitoring</a>.</p>
 <ul>
 <li>
-<b>Cardinality:</b> 0 .. 1 </li>
+<b>Cardinality</b> (number of times element can be supplied): 0 .. 1 </li>
 <li>
 <b>Parent:</b> <a class="el" href="srsconfigurationfile.html#srselementdaemonmonitor">&lt;daemon-monitor&gt;</a> </li>
 <li>
@@ -124,7 +124,7 @@ SRS Element "&lt;remote-config-changes-request&gt;"&nbsp;&nbsp;<small><a href="#
 <p>Controls whether the SRS daemon monitor accepts <a class="el" href="srsdaemonstatistics.html#requesttypesetpublishinginterval">Request Type: SET_PUBLISHING_INTERVAL</a>. This allows remote monitoring applications to change operational parameters of the SRS Daemon Monitoring feature.</p>
 <ul>
 <li>
-<b>Cardinality:</b> 0 .. 1 </li>
+<b>Cardinality</b> (number of times element can be supplied): 0 .. 1 </li>
 <li>
 <b>Parent:</b> <a class="el" href="srsconfigurationfile.html#srselementdaemonmonitor">&lt;daemon-monitor&gt;</a> </li>
 </ul>
@@ -143,7 +143,7 @@ SRS Element "&lt;remote-snapshot-request&gt;"&nbsp;&nbsp;<small><a href="#srsele
 <p>Controls whether the SRS daemon monitor accepts <a class="el" href="srsdaemonstatistics.html#requesttypereportmonitorinfo">Request Type: REPORT_MONITOR_INFO</a>. This allows remote monitoring applications to trigger immediate publishing of monitoring data.</p>
 <ul>
 <li>
-<b>Cardinality:</b> 0 .. 1 </li>
+<b>Cardinality</b> (number of times element can be supplied): 0 .. 1 </li>
 <li>
 <b>Parent:</b> <a class="el" href="srsconfigurationfile.html#srselementdaemonmonitor">&lt;daemon-monitor&gt;</a> </li>
 </ul>
@@ -162,7 +162,7 @@ SRS Element "&lt;publish-connection-events&gt;"&nbsp;&nbsp;<small><a href="#srse
 <p>Controls whether the SRS reports connection-oriented events from UM contexts as part of the daemon stats. See <a class="el" href="srsdaemonstatistics.html">SRS Daemon Statistics</a> for more information.</p>
 <ul>
 <li>
-<b>Cardinality:</b> 0 .. 1 </li>
+<b>Cardinality</b> (number of times element can be supplied): 0 .. 1 </li>
 <li>
 <b>Parent:</b> <a class="el" href="srsconfigurationfile.html#srselementdaemonmonitor">&lt;daemon-monitor&gt;</a> </li>
 </ul>
@@ -182,7 +182,7 @@ SRS Element "&lt;lbm-attributes&gt;"&nbsp;&nbsp;<small><a href="#srselementlbmat
 <p>See <a class="el" href="srsdaemonstatistics.html">SRS Daemon Statistics</a> for more information on daemon statistics.</p>
 <ul>
 <li>
-<b>Cardinality:</b> 0 .. 1 </li>
+<b>Cardinality</b> (number of times element can be supplied): 0 .. 1 </li>
 <li>
 <b>Parent:</b> <a class="el" href="srsconfigurationfile.html#srselementdaemonmonitor">&lt;daemon-monitor&gt;</a> </li>
 <li>
@@ -198,7 +198,7 @@ SRS Element "&lt;option&gt;"&nbsp;&nbsp;<small><a href="#srselementoption">&lt;-
 <p>See <a class="el" href="srsdaemonstatistics.html">SRS Daemon Statistics</a> for more information on daemon statistics.</p>
 <ul>
 <li>
-<b>Cardinality:</b> 0 .. unbounded </li>
+<b>Cardinality</b> (number of times element can be supplied): 0 .. unbounded </li>
 <li>
 <b>Parent:</b> <a class="el" href="srsconfigurationfile.html#srselementlbmattributes">&lt;lbm-attributes&gt;</a> </li>
 </ul>
@@ -225,7 +225,7 @@ SRS Element "&lt;publishing-interval&gt;"&nbsp;&nbsp;<small><a href="#srselement
 <p>Set how often the SRS publishes its daemon stats. See <a class="el" href="srsdaemonstatistics.html">SRS Daemon Statistics</a> for more information. The child elements set the intervals for each class of monitoring data. For any class of data omitted, the <a class="el" href="srsconfigurationfile.html#srselementdefault">&lt;default&gt;</a> element sets the interval.</p>
 <ul>
 <li>
-<b>Cardinality:</b> 0 .. 1 </li>
+<b>Cardinality</b> (number of times element can be supplied): 0 .. 1 </li>
 <li>
 <b>Parent:</b> <a class="el" href="srsconfigurationfile.html#srselementdaemonmonitor">&lt;daemon-monitor&gt;</a> </li>
 <li>
@@ -240,7 +240,7 @@ SRS Element "&lt;internal-config-opts&gt;"&nbsp;&nbsp;<small><a href="#srselemen
 <p>Valid range: 0, 200 .. 7776000000</p>
 <ul>
 <li>
-<b>Cardinality:</b> 0 .. 1 </li>
+<b>Cardinality</b> (number of times element can be supplied): 0 .. 1 </li>
 <li>
 <b>Parent:</b> <a class="el" href="srsconfigurationfile.html#srselementpublishinginterval">&lt;publishing-interval&gt;</a> </li>
 <li>
@@ -255,7 +255,7 @@ SRS Element "&lt;config-opts&gt;"&nbsp;&nbsp;<small><a href="#srselementconfigop
 <p>Valid range: 0, 200 .. 7776000000</p>
 <ul>
 <li>
-<b>Cardinality:</b> 0 .. 1 </li>
+<b>Cardinality</b> (number of times element can be supplied): 0 .. 1 </li>
 <li>
 <b>Parent:</b> <a class="el" href="srsconfigurationfile.html#srselementpublishinginterval">&lt;publishing-interval&gt;</a> </li>
 <li>
@@ -270,7 +270,7 @@ SRS Element "&lt;um-client-error-stats&gt;"&nbsp;&nbsp;<small><a href="#srseleme
 <p>Valid range: 0, 200 .. 7776000000</p>
 <ul>
 <li>
-<b>Cardinality:</b> 0 .. 1 </li>
+<b>Cardinality</b> (number of times element can be supplied): 0 .. 1 </li>
 <li>
 <b>Parent:</b> <a class="el" href="srsconfigurationfile.html#srselementpublishinginterval">&lt;publishing-interval&gt;</a> </li>
 <li>
@@ -286,7 +286,7 @@ SRS Element "&lt;srs-error-stats&gt;"&nbsp;&nbsp;<small><a href="#srselementsrse
 <p>Valid range: 0, 200 .. 7776000000</p>
 <ul>
 <li>
-<b>Cardinality:</b> 0 .. 1 </li>
+<b>Cardinality</b> (number of times element can be supplied): 0 .. 1 </li>
 <li>
 <b>Parent:</b> <a class="el" href="srsconfigurationfile.html#srselementpublishinginterval">&lt;publishing-interval&gt;</a> </li>
 <li>
@@ -301,7 +301,7 @@ SRS Element "&lt;connection-events&gt;"&nbsp;&nbsp;<small><a href="#srselementco
 <p>Valid range: 0, 200 .. 7776000000</p>
 <ul>
 <li>
-<b>Cardinality:</b> 0 .. 1 </li>
+<b>Cardinality</b> (number of times element can be supplied): 0 .. 1 </li>
 <li>
 <b>Parent:</b> <a class="el" href="srsconfigurationfile.html#srselementpublishinginterval">&lt;publishing-interval&gt;</a> </li>
 <li>
@@ -316,7 +316,7 @@ SRS Element "&lt;um-client-stats&gt;"&nbsp;&nbsp;<small><a href="#srselementumcl
 <p>Valid range: 0, 200 .. 7776000000</p>
 <ul>
 <li>
-<b>Cardinality:</b> 0 .. 1 </li>
+<b>Cardinality</b> (number of times element can be supplied): 0 .. 1 </li>
 <li>
 <b>Parent:</b> <a class="el" href="srsconfigurationfile.html#srselementpublishinginterval">&lt;publishing-interval&gt;</a> </li>
 <li>
@@ -331,7 +331,7 @@ SRS Element "&lt;srs-stats&gt;"&nbsp;&nbsp;<small><a href="#srselementsrsstats">
 <p>Valid range: 0, 200 .. 7776000000</p>
 <ul>
 <li>
-<b>Cardinality:</b> 0 .. 1 </li>
+<b>Cardinality</b> (number of times element can be supplied): 0 .. 1 </li>
 <li>
 <b>Parent:</b> <a class="el" href="srsconfigurationfile.html#srselementpublishinginterval">&lt;publishing-interval&gt;</a> </li>
 <li>
@@ -346,7 +346,7 @@ SRS Element "&lt;default&gt;"&nbsp;&nbsp;<small><a href="#srselementdefault">&lt
 <p>Valid range: 0, 200 .. 7776000000</p>
 <ul>
 <li>
-<b>Cardinality:</b> 0 .. 1 </li>
+<b>Cardinality</b> (number of times element can be supplied): 0 .. 1 </li>
 <li>
 <b>Parent:</b> <a class="el" href="srsconfigurationfile.html#srselementpublishinginterval">&lt;publishing-interval&gt;</a> </li>
 <li>
@@ -364,7 +364,7 @@ SRS Element "&lt;ping-interval&gt;"&nbsp;&nbsp;<small><a href="#srselementpingin
 <p>Valid range: 100 .. 3600000</p>
 <ul>
 <li>
-<b>Cardinality:</b> 0 .. 1 </li>
+<b>Cardinality</b> (number of times element can be supplied): 0 .. 1 </li>
 <li>
 <b>Parent:</b> <a class="el" href="srsconfigurationfile.html#srselementdebugmonitor">&lt;debug-monitor&gt;</a>, <a class="el" href="srsconfigurationfile.html#srselementdaemonmonitor">&lt;daemon-monitor&gt;</a> </li>
 <li>
@@ -380,7 +380,7 @@ SRS Element "&lt;debug-monitor&gt;"&nbsp;&nbsp;<small><a href="#srselementdebugm
 <p>See <a class="el" href="securityconsiderations.html#webmonsecurity">Webmon Security</a> for important security information.</p>
 <ul>
 <li>
-<b>Cardinality:</b> 0 .. 1 </li>
+<b>Cardinality</b> (number of times element can be supplied): 0 .. 1 </li>
 <li>
 <b>Parent:</b> <a class="el" href="srsconfigurationfile.html#srselementumsrs">&lt;um-srs&gt;</a> </li>
 <li>
@@ -395,7 +395,7 @@ SRS Element "&lt;enabled&gt;"&nbsp;&nbsp;<small><a href="#srselementenabled">&lt
 <p>Controls whether the debug monitor is active. Can be set to <code>true</code> or <code>false</code>. See <a class="el" href="srsconfigurationfile.html#srselementdebugmonitor">&lt;debug-monitor&gt;</a>.</p>
 <ul>
 <li>
-<b>Cardinality:</b> 0 .. 1 </li>
+<b>Cardinality</b> (number of times element can be supplied): 0 .. 1 </li>
 <li>
 <b>Parent:</b> <a class="el" href="srsconfigurationfile.html#srselementdebugmonitor">&lt;debug-monitor&gt;</a> </li>
 <li>
@@ -406,35 +406,35 @@ SRS Element "&lt;enabled&gt;"&nbsp;&nbsp;<small><a href="#srselementenabled">&lt
  </p>
 <h2><a class="anchor" id="srselementport"></a>
 SRS Element "&lt;port&gt;"&nbsp;&nbsp;<small><a href="#srselementport">&lt;-</a></small></h2>
-<p>Supplies network port to bind the socket required by the parent element. This is the port that a UM context should use when TCP-based TR is configured with the option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Design/config.tag:../Config/" href="../Config/grptcpbasedresolveroperation.html#resolverservicecontext">resolver_service (context)</a>. The value contained within the <code>&lt;port&gt;...&lt;/port&gt;</code> is an integer.</p>
+<p>Supplies network port to bind the socket required by the parent element. This is the port that a UM context should use when TCP-based TR is configured with the option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16/doc/Design/config.tag:../Config/" href="../Config/grptcpbasedresolveroperation.html#resolverservicecontext">resolver_service (context)</a>. The value contained within the <code>&lt;port&gt;...&lt;/port&gt;</code> is an integer.</p>
 <p>Valid range: 0 .. 65535</p>
 <ul>
 <li>
-<b>Cardinality:</b> 0 .. 1 </li>
+<b>Cardinality</b> (number of times element can be supplied): 0 .. 1 </li>
 <li>
 <b>Parent:</b> <a class="el" href="srsconfigurationfile.html#srselementdebugmonitor">&lt;debug-monitor&gt;</a>, <a class="el" href="srsconfigurationfile.html#srselementsrs">&lt;srs&gt;</a> </li>
 <li>
 <b>Default</b> <b>Value:</b> 27000 </li>
 </ul>
-<p><b>Example:</b> (UM clients use port 12000 with <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Design/config.tag:../Config/" href="../Config/grptcpbasedresolveroperation.html#resolverservicecontext">resolver_service (context)</a> option) </p><div class="fragment"><div class="line">&lt;?xml version=<span class="stringliteral">&quot;1.0&quot;</span> encoding=<span class="stringliteral">&quot;UTF-8&quot;</span> ?&gt;</div><div class="line">&lt;um-srs version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div><div class="line">  &lt;srs&gt;</div><div class="line">    &lt;port&gt;12000&lt;/port&gt;</div><div class="line">    ...</div><div class="line">  &lt;/srs&gt;</div><div class="line">  ...</div><div class="line">&lt;/um-srs&gt;</div></div><!-- fragment --><hr/>
+<p><b>Example:</b> (UM clients use port 12000 with <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16/doc/Design/config.tag:../Config/" href="../Config/grptcpbasedresolveroperation.html#resolverservicecontext">resolver_service (context)</a> option) </p><div class="fragment"><div class="line">&lt;?xml version=<span class="stringliteral">&quot;1.0&quot;</span> encoding=<span class="stringliteral">&quot;UTF-8&quot;</span> ?&gt;</div><div class="line">&lt;um-srs version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div><div class="line">  &lt;srs&gt;</div><div class="line">    &lt;port&gt;12000&lt;/port&gt;</div><div class="line">    ...</div><div class="line">  &lt;/srs&gt;</div><div class="line">  ...</div><div class="line">&lt;/um-srs&gt;</div></div><!-- fragment --><hr/>
 <p> <br />
  </p>
 <h2><a class="anchor" id="srselementinterface"></a>
 SRS Element "&lt;interface&gt;"&nbsp;&nbsp;<small><a href="#srselementinterface">&lt;-</a></small></h2>
 <p>Specifies the network interface to bind the socket required by the parent element.</p>
 <dl class="section attention"><dt>Attention</dt><dd>It is important to configure the SRS with <a class="el" href="srsconfigurationfile.html#srselementinterface">SRS Element "&lt;interface&gt;"</a>, even if the SRS is running on a single-homed host (i.e. one network connection).</dd></dl>
-<p>For the <a class="el" href="srsconfigurationfile.html#srselementsrs">&lt;srs&gt;</a> element, this is the IP address that a UM context should use when TCP-based TR is configured with the option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Design/config.tag:../Config/" href="../Config/grptcpbasedresolveroperation.html#resolverservicecontext">resolver_service (context)</a>. The value contained within the <code>&lt;interface&gt;...&lt;/interface&gt;</code> can be a fully-qualified dotted-decimal IP address or a DNS host name.</p>
+<p>For the <a class="el" href="srsconfigurationfile.html#srselementsrs">&lt;srs&gt;</a> element, this is the IP address that a UM context should use when TCP-based TR is configured with the option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16/doc/Design/config.tag:../Config/" href="../Config/grptcpbasedresolveroperation.html#resolverservicecontext">resolver_service (context)</a>. The value contained within the <code>&lt;interface&gt;...&lt;/interface&gt;</code> can be a fully-qualified dotted-decimal IP address or a DNS host name.</p>
 <dl class="section warning"><dt>Warning</dt><dd>Unlike UM library configurations, the SRS configuration does not support CIDR specification of an IP network to match an interface by network number. This interface specification must include the host number.</dd></dl>
 <p>For the <a class="el" href="srsconfigurationfile.html#srselementdebugmonitor">&lt;debug-monitor&gt;</a> element, this is the host for the URL that a web browser should use to display the debug monitor page.</p>
 <ul>
 <li>
-<b>Cardinality:</b> 0 .. 1 </li>
+<b>Cardinality</b> (number of times element can be supplied): 0 .. 1 </li>
 <li>
 <b>Parent:</b> <a class="el" href="srsconfigurationfile.html#srselementdebugmonitor">&lt;debug-monitor&gt;</a>, <a class="el" href="srsconfigurationfile.html#srselementsrs">&lt;srs&gt;</a> </li>
 <li>
 <b>Default</b> <b>Value:</b> localhost </li>
 </ul>
-<p><b>Example:</b> (UM clients use 10.12.34.56 with <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Design/config.tag:../Config/" href="../Config/grptcpbasedresolveroperation.html#resolverservicecontext">resolver_service (context)</a> option) </p><div class="fragment"><div class="line">&lt;?xml version=<span class="stringliteral">&quot;1.0&quot;</span> encoding=<span class="stringliteral">&quot;UTF-8&quot;</span> ?&gt;</div><div class="line">&lt;um-srs version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div><div class="line">  &lt;srs&gt;</div><div class="line">    &lt;interface&gt;10.12.34.56&lt;/interface&gt;</div><div class="line">    ...</div><div class="line">  &lt;/srs&gt;</div><div class="line">  ...</div><div class="line">&lt;/um-srs&gt;</div></div><!-- fragment --><hr/>
+<p><b>Example:</b> (UM clients use 10.12.34.56 with <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16/doc/Design/config.tag:../Config/" href="../Config/grptcpbasedresolveroperation.html#resolverservicecontext">resolver_service (context)</a> option) </p><div class="fragment"><div class="line">&lt;?xml version=<span class="stringliteral">&quot;1.0&quot;</span> encoding=<span class="stringliteral">&quot;UTF-8&quot;</span> ?&gt;</div><div class="line">&lt;um-srs version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div><div class="line">  &lt;srs&gt;</div><div class="line">    &lt;interface&gt;10.12.34.56&lt;/interface&gt;</div><div class="line">    ...</div><div class="line">  &lt;/srs&gt;</div><div class="line">  ...</div><div class="line">&lt;/um-srs&gt;</div></div><!-- fragment --><hr/>
 <p> <br />
  </p>
 <h2><a class="anchor" id="srselementsrs"></a>
@@ -442,7 +442,7 @@ SRS Element "&lt;srs&gt;"&nbsp;&nbsp;<small><a href="#srselementsrs">&lt;-</a></
 <p>Defines network and operational settings of the SRS service.</p>
 <ul>
 <li>
-<b>Cardinality:</b> 0 .. 1 </li>
+<b>Cardinality</b> (number of times element can be supplied): 0 .. 1 </li>
 <li>
 <b>Parent:</b> <a class="el" href="srsconfigurationfile.html#srselementumsrs">&lt;um-srs&gt;</a> </li>
 <li>
@@ -456,7 +456,7 @@ SRS Element "&lt;application-id&gt;"&nbsp;&nbsp;<small><a href="#srselementappli
 <p>Adds an "Application ID" for SRS monitoring statistics. Used with monitoring format "pb" (proto buff).</p>
 <ul>
 <li>
-<b>Cardinality:</b> 0 .. 1 </li>
+<b>Cardinality</b> (number of times element can be supplied): 0 .. 1 </li>
 <li>
 <b>Parent:</b> <a class="el" href="srsconfigurationfile.html#srselementsrs">&lt;srs&gt;</a> </li>
 <li>
@@ -470,7 +470,7 @@ SRS Element "&lt;clientactor&gt;"&nbsp;&nbsp;<small><a href="#srselementclientac
 <p>This is for Informatica internal use only. Do not set unless directed to do so by Informatica Support.</p>
 <ul>
 <li>
-<b>Cardinality:</b> 0 .. 1 </li>
+<b>Cardinality</b> (number of times element can be supplied): 0 .. 1 </li>
 <li>
 <b>Parent:</b> <a class="el" href="srsconfigurationfile.html#srselementsrs">&lt;srs&gt;</a> </li>
 <li>
@@ -484,7 +484,7 @@ SRS Element "&lt;batch-frame-max-datagram-size&gt;"&nbsp;&nbsp;<small><a href="#
 <p>This is for Informatica internal use only. Do not set unless directed to do so by Informatica Support.</p>
 <ul>
 <li>
-<b>Cardinality:</b> 0 .. 1 </li>
+<b>Cardinality</b> (number of times element can be supplied): 0 .. 1 </li>
 <li>
 <b>Parent:</b> <a class="el" href="srsconfigurationfile.html#srselementclientactor">&lt;clientactor&gt;</a> </li>
 </ul>
@@ -496,7 +496,7 @@ SRS Element "&lt;batch-frame-max-record-count&gt;"&nbsp;&nbsp;<small><a href="#s
 <p>This is for Informatica internal use only. Do not set unless directed to do so by Informatica Support.</p>
 <ul>
 <li>
-<b>Cardinality:</b> 0 .. 1 </li>
+<b>Cardinality</b> (number of times element can be supplied): 0 .. 1 </li>
 <li>
 <b>Parent:</b> <a class="el" href="srsconfigurationfile.html#srselementclientactor">&lt;clientactor&gt;</a> </li>
 </ul>
@@ -509,7 +509,7 @@ SRS Element "&lt;record-queue-service-interval&gt;"&nbsp;&nbsp;<small><a href="#
 <p>Valid range: 1 .. 1000</p>
 <ul>
 <li>
-<b>Cardinality:</b> 0 .. 1 </li>
+<b>Cardinality</b> (number of times element can be supplied): 0 .. 1 </li>
 <li>
 <b>Parent:</b> <a class="el" href="srsconfigurationfile.html#srselementclientactor">&lt;clientactor&gt;</a> </li>
 </ul>
@@ -521,7 +521,7 @@ SRS Element "&lt;request-stream-max-msg-count&gt;"&nbsp;&nbsp;<small><a href="#s
 <p>This is for Informatica internal use only. Do not set unless directed to do so by Informatica Support.</p>
 <ul>
 <li>
-<b>Cardinality:</b> 0 .. 1 </li>
+<b>Cardinality</b> (number of times element can be supplied): 0 .. 1 </li>
 <li>
 <b>Parent:</b> <a class="el" href="srsconfigurationfile.html#srselementclientactor">&lt;clientactor&gt;</a> </li>
 </ul>
@@ -533,7 +533,7 @@ SRS Element "&lt;namemap&gt;"&nbsp;&nbsp;<small><a href="#srselementnamemap">&lt
 <p>This is for Informatica internal use only. Do not set unless directed to do so by Informatica Support.</p>
 <ul>
 <li>
-<b>Cardinality:</b> 0 .. 1 </li>
+<b>Cardinality</b> (number of times element can be supplied): 0 .. 1 </li>
 <li>
 <b>Parent:</b> <a class="el" href="srsconfigurationfile.html#srselementsrs">&lt;srs&gt;</a> </li>
 <li>
@@ -547,7 +547,7 @@ SRS Element "&lt;shards&gt;"&nbsp;&nbsp;<small><a href="#srselementshards">&lt;-
 <p>This is for Informatica internal use only. Do not set unless directed to do so by Informatica Support.</p>
 <ul>
 <li>
-<b>Cardinality:</b> 0 .. 1 </li>
+<b>Cardinality</b> (number of times element can be supplied): 0 .. 1 </li>
 <li>
 <b>Parent:</b> <a class="el" href="srsconfigurationfile.html#srselementotidmap">&lt;otidmap&gt;</a>, <a class="el" href="srsconfigurationfile.html#srselementtopicmap">&lt;topicmap&gt;</a>, <a class="el" href="srsconfigurationfile.html#srselementroutemap">&lt;routemap&gt;</a>, <a class="el" href="srsconfigurationfile.html#srselementnamemap">&lt;namemap&gt;</a> </li>
 </ul>
@@ -559,7 +559,7 @@ SRS Element "&lt;routemap&gt;"&nbsp;&nbsp;<small><a href="#srselementroutemap">&
 <p>This is for Informatica internal use only. Do not set unless directed to do so by Informatica Support.</p>
 <ul>
 <li>
-<b>Cardinality:</b> 0 .. 1 </li>
+<b>Cardinality</b> (number of times element can be supplied): 0 .. 1 </li>
 <li>
 <b>Parent:</b> <a class="el" href="srsconfigurationfile.html#srselementsrs">&lt;srs&gt;</a> </li>
 <li>
@@ -573,7 +573,7 @@ SRS Element "&lt;topicmap&gt;"&nbsp;&nbsp;<small><a href="#srselementtopicmap">&
 <p>This is for Informatica internal use only. Do not set unless directed to do so by Informatica Support.</p>
 <ul>
 <li>
-<b>Cardinality:</b> 0 .. 1 </li>
+<b>Cardinality</b> (number of times element can be supplied): 0 .. 1 </li>
 <li>
 <b>Parent:</b> <a class="el" href="srsconfigurationfile.html#srselementsrs">&lt;srs&gt;</a> </li>
 <li>
@@ -587,7 +587,7 @@ SRS Element "&lt;otidmap&gt;"&nbsp;&nbsp;<small><a href="#srselementotidmap">&lt
 <p>This is for Informatica internal use only. Do not set unless directed to do so by Informatica Support.</p>
 <ul>
 <li>
-<b>Cardinality:</b> 0 .. 1 </li>
+<b>Cardinality</b> (number of times element can be supplied): 0 .. 1 </li>
 <li>
 <b>Parent:</b> <a class="el" href="srsconfigurationfile.html#srselementsrs">&lt;srs&gt;</a> </li>
 <li>
@@ -602,7 +602,7 @@ SRS Element "&lt;source-leave-backoff&gt;"&nbsp;&nbsp;<small><a href="#srselemen
 <p>Valid range: 0 .. 60000</p>
 <ul>
 <li>
-<b>Cardinality:</b> 0 .. 1 </li>
+<b>Cardinality</b> (number of times element can be supplied): 0 .. 1 </li>
 <li>
 <b>Parent:</b> <a class="el" href="srsconfigurationfile.html#srselementsrs">&lt;srs&gt;</a> </li>
 <li>
@@ -621,7 +621,7 @@ SRS Element "&lt;context-name-state-lifetime&gt;"&nbsp;&nbsp;<small><a href="#sr
 <p>Valid range: 0 .. 20736000</p>
 <ul>
 <li>
-<b>Cardinality:</b> 0 .. 1 </li>
+<b>Cardinality</b> (number of times element can be supplied): 0 .. 1 </li>
 <li>
 <b>Parent:</b> <a class="el" href="srsconfigurationfile.html#srselementsrs">&lt;srs&gt;</a> </li>
 <li>
@@ -640,7 +640,7 @@ SRS Element "&lt;route-state-lifetime&gt;"&nbsp;&nbsp;<small><a href="#srselemen
 <p>Valid range: 0 .. 20736000</p>
 <ul>
 <li>
-<b>Cardinality:</b> 0 .. 1 </li>
+<b>Cardinality</b> (number of times element can be supplied): 0 .. 1 </li>
 <li>
 <b>Parent:</b> <a class="el" href="srsconfigurationfile.html#srselementsrs">&lt;srs&gt;</a> </li>
 <li>
@@ -659,7 +659,7 @@ SRS Element "&lt;interest-state-lifetime&gt;"&nbsp;&nbsp;<small><a href="#srsele
 <p>Valid range: 0 .. 20736000</p>
 <ul>
 <li>
-<b>Cardinality:</b> 0 .. 1 </li>
+<b>Cardinality</b> (number of times element can be supplied): 0 .. 1 </li>
 <li>
 <b>Parent:</b> <a class="el" href="srsconfigurationfile.html#srselementsrs">&lt;srs&gt;</a> </li>
 <li>
@@ -678,7 +678,7 @@ SRS Element "&lt;source-state-lifetime&gt;"&nbsp;&nbsp;<small><a href="#srseleme
 <p>Valid range: 0 .. 20736000</p>
 <ul>
 <li>
-<b>Cardinality:</b> 0 .. 1 </li>
+<b>Cardinality</b> (number of times element can be supplied): 0 .. 1 </li>
 <li>
 <b>Parent:</b> <a class="el" href="srsconfigurationfile.html#srselementsrs">&lt;srs&gt;</a> </li>
 <li>
@@ -694,7 +694,7 @@ SRS Element "&lt;state-lifetime&gt;"&nbsp;&nbsp;<small><a href="#srselementstate
 <p>Valid range: 0 .. 20736000</p>
 <ul>
 <li>
-<b>Cardinality:</b> 0 .. 1 </li>
+<b>Cardinality</b> (number of times element can be supplied): 0 .. 1 </li>
 <li>
 <b>Parent:</b> <a class="el" href="srsconfigurationfile.html#srselementsrs">&lt;srs&gt;</a> </li>
 <li>
@@ -709,7 +709,7 @@ SRS Element "&lt;daemon&gt;"&nbsp;&nbsp;<small><a href="#srselementdaemon">&lt;-
 <p>See child elements for details.</p>
 <ul>
 <li>
-<b>Cardinality:</b> 0 .. 1 </li>
+<b>Cardinality</b> (number of times element can be supplied): 0 .. 1 </li>
 <li>
 <b>Parent:</b> <a class="el" href="srsconfigurationfile.html#srselementumsrs">&lt;um-srs&gt;</a> </li>
 <li>
@@ -723,7 +723,7 @@ SRS Element "&lt;pid-file&gt;"&nbsp;&nbsp;<small><a href="#srselementpidfile">&l
 <p>Supplies the desired name of file in which the SRS writes its Process ID (PID).</p>
 <ul>
 <li>
-<b>Cardinality:</b> 0 .. 1 </li>
+<b>Cardinality</b> (number of times element can be supplied): 0 .. 1 </li>
 <li>
 <b>Parent:</b> <a class="el" href="srsconfigurationfile.html#srselementdaemon">&lt;daemon&gt;</a> </li>
 </ul>
@@ -736,7 +736,7 @@ SRS Element "&lt;log&gt;"&nbsp;&nbsp;<small><a href="#srselementlog">&lt;-</a></
 <p>When the <code>type</code> attribute is set to <code>"file"</code>, the SRS supports "rolling" the log file, which consists a series of files over time so that no one file grows too large.</p>
 <ul>
 <li>
-<b>Cardinality:</b> 0 .. 1 </li>
+<b>Cardinality</b> (number of times element can be supplied): 0 .. 1 </li>
 <li>
 <b>Parent:</b> <a class="el" href="srsconfigurationfile.html#srselementdaemon">&lt;daemon&gt;</a> </li>
 </ul>

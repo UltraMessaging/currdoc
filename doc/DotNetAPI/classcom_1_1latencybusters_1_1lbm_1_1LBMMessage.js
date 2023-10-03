@@ -17,6 +17,8 @@ var classcom_1_1latencybusters_1_1lbm_1_1LBMMessage =
     [ "fragmentOffset", "classcom_1_1latencybusters_1_1lbm_1_1LBMMessage.html#aeb2c7ab9cba5eb8da50815fca2d87ef4", null ],
     [ "hfSequenceNumber32", "classcom_1_1latencybusters_1_1lbm_1_1LBMMessage.html#ae68c13e6f7105fca8a6f5ad01c13171f", null ],
     [ "hfSequenceNumber64", "classcom_1_1latencybusters_1_1lbm_1_1LBMMessage.html#a53001485d8514c5b3907cd1f3dcd1b11", null ],
+    [ "hrTimestampNanoseconds", "classcom_1_1latencybusters_1_1lbm_1_1LBMMessage.html#a03ee84aa3f91fa92868e280cfa27f654", null ],
+    [ "hrTimestampSeconds", "classcom_1_1latencybusters_1_1lbm_1_1LBMMessage.html#afd6df787c1878ed5838d946fe11e4ab2", null ],
     [ "isFragment", "classcom_1_1latencybusters_1_1lbm_1_1LBMMessage.html#a86d96147b5d0f37c0d9b7fbc4959550e", null ],
     [ "isFromGateway", "classcom_1_1latencybusters_1_1lbm_1_1LBMMessage.html#af6da9c387bfc2071f5f3c0eea507bd51", null ],
     [ "length", "classcom_1_1latencybusters_1_1lbm_1_1LBMMessage.html#a26ee9e9a8fa76302a91bcf77a60a9d26", null ],

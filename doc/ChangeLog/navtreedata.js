@@ -3,6 +3,22 @@ var NAVTREE =
   [ "Release Notes", "index.html", [
     [ "Introduction", "index.html", null ],
     [ "Important Corrections", "importantcorrections.html", null ],
+    [ "UM Version 6.16", "umversion6_16.html", [
+      [ "Enhancements for 6.16", "umversion6_16.html#enhancementsfor6_16", [
+        [ "Streaming Enhancements for 6.16", "umversion6_16.html#streamingenhancementsfor6_16", null ],
+        [ "Persistence Enhancements for 6.16", "umversion6_16.html#persistenceenhancementsfor6_16", null ],
+        [ "Queuing Enhancements for 6.16", "umversion6_16.html#queuingenhancementsfor6_16", null ]
+      ] ],
+      [ "Fixed Problems and Limitations for 6.16", "umversion6_16.html#fixedlimitationsfor6_16", [
+        [ "Streaming Fixed Problems and Limitations for 6.16", "umversion6_16.html#streamingfixedlimitationsfor6_16", null ],
+        [ "Persistence Fixed Problems and Limitations for 6.16", "umversion6_16.html#persistencefixedlimitationsfor6_16", null ],
+        [ "Queuing Fixed Problems and Limitations for 6.16", "umversion6_16.html#queuingfixedlimitationsfor6_16", null ]
+      ] ],
+      [ "Special Upgrade Instructions for 6.16", "umversion6_16.html#specialupgradeinstructionsfor6_16", [
+        [ "Eliminate 32-bit", "umversion6_16.html#eliminate32bit", null ],
+        [ "Previous Special Instructions", "umversion6_16.html#um6151specialinstructions", null ]
+      ] ]
+    ] ],
     [ "UM Version 6.15", "umversion6_15.html", [
       [ "Enhancements for 6.15", "umversion6_15.html#enhancementsfor6_15", [
         [ "Streaming Enhancements for 6.15", "umversion6_15.html#streamingenhancementsfor6_15", null ],
@@ -17,6 +33,7 @@ var NAVTREE =
         [ "Dynamic Router Fixed Problems and Limitations for 6.15", "umversion6_15.html#dynamicrouterfixedlimitationsfor6_15", null ]
       ] ],
       [ "Special Upgrade Instructions for 6.15", "umversion6_15.html#specialupgradeinstructionsfor6_15", [
+        [ "Reduced FD Store Discontinued", "umversion6_15.html#reducedfdstorediscontinued", null ],
         [ "Store Proxy Source Election", "umversion6_15.html#storeproxysourceelection", null ],
         [ "Store Protobuf Monitoring", "umversion6_15.html#storeprotobufmonitoring", null ],
         [ "Previous Special Instructions", "umversion6_15.html#um6141specialinstructions", null ]
@@ -77,6 +94,7 @@ var NAVTREE =
         [ "repository-disk-max-read-async-cbs", "umversion6_13.html#repositorydiskmaxreadasynccbs", null ],
         [ "SRS Daemon Statistics Change", "umversion6_13.html#srsdaemonstatisticschange", null ],
         [ "Persistent Receiver and Duplicate Messages", "umversion6_13.html#persistentreceiverandduplicatemessages", null ],
+        [ "Platform Reduction for 6.13", "umversion6_13.html#platformreductionfor613", null ],
         [ "Previous Special Instructions", "umversion6_13.html#um612specialinstructions", null ]
       ] ]
     ] ],
@@ -168,6 +186,7 @@ var NAVTREE =
         [ "Dynamic Router Fixed Problems and Limitations for 6.10", "umversion6_10.html#dynamicrouterfixedlimitationsfor6_10", null ]
       ] ],
       [ "Special Upgrade Instructions for 6.10", "umversion6_10.html#specialupgradeinstructionsfor6_10", [
+        [ "DRO (Dual) TCP Peer Link", "umversion6_10.html#drodualtcppeerlInk", null ],
         [ "UM 6.10 Improved Defaults", "umversion6_10.html#um610improveddefaults", null ],
         [ "Previous Special Instructions", "umversion6_10.html#um68specialinstructions", null ]
       ] ]
@@ -336,6 +355,7 @@ var NAVTREE =
       ] ]
     ] ],
     [ "Deprecations", "deprecations.html", [
+      [ "Deprecations for 6.16", "deprecations.html#deprecationsfor616", null ],
       [ "Deprecations for 6.15", "deprecations.html#deprecationsfor615", null ],
       [ "Deprecations for 6.14", "deprecations.html#deprecationsfor614", null ],
       [ "Deprecations for 6.13.1", "deprecations.html#deprecationsfor6131", null ],
@@ -383,7 +403,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "deprecations.html",
-"umversion6_8.html#persistenceenhancementsfor6_8"
+"umversion6_7_3.html#dynamicrouterenhancementsfor6_7_3"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

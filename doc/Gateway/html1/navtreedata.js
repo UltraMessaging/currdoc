@@ -5,7 +5,9 @@ var NAVTREE =
       [ "DRO Features", "index.html#drofeatures", null ]
     ] ],
     [ "DRO Architecture", "index.html#droarchitecture", [
-      [ "DRO Portals", "index.html#umrouterportals", null ],
+      [ "DRO Portals", "index.html#umrouterportals", [
+        [ "UDP Peer Link", "index.html#udppeerlink", null ]
+      ] ],
       [ "Topic Resolution Domains", "index.html#topicresolutiondomains", null ],
       [ "Proxy Sources and Proxy Receivers", "index.html#proxysourcesandproxyreceivers", [
         [ "DRO and Transport Sessions", "index.html#umrouterandtransportsessions", null ]
@@ -142,11 +144,21 @@ var NAVTREE =
         [ "Router Element \"<smart-batch>\"", "index.html#droelementsmartbatch", null ],
         [ "Router Element \"<max-queue>\"", "index.html#droelementmaxqueue", null ],
         [ "Router Element \"<source-deletion-delay>\"", "index.html#droelementsourcedeletiondelay", null ],
+        [ "Router Element \"<udp>\"", "index.html#droelementudp", null ],
+        [ "Router Element \"<connect>\"", "index.html#droelementconnect", null ],
+        [ "Router Element \"<session-message>\"", "index.html#droelementsessionmessage", null ],
+        [ "Router Element \"<nak-handling>\"", "index.html#droelementnakhandling", null ],
+        [ "Router Element \"<peer-rate-limit>\"", "index.html#droelementpeerratelimit", null ],
+        [ "Router Element \"<transmission-window>\"", "index.html#droelementtransmissionwindow", null ],
+        [ "Router Element \"<coalesce-threshold>\"", "index.html#droelementcoalescethreshold", null ],
+        [ "Router Element \"<multiple-receive-max-datagrams>\"", "index.html#droelementmultiplereceivemaxdatagrams", null ],
+        [ "Router Element \"<send-buffer>\"", "index.html#droelementsendbuffer", null ],
+        [ "Router Element \"<receive-buffer>\"", "index.html#droelementreceivebuffer", null ],
+        [ "Router Element \"<port>\"", "index.html#droelementport", null ],
         [ "Router Element \"<single-tcp>\"", "index.html#droelementsingletcp", null ],
         [ "Router Element \"<acceptor>\"", "index.html#droelementacceptor", null ],
         [ "Router Element \"<listen-port>\"", "index.html#droelementlistenport", null ],
         [ "Router Element \"<initiator>\"", "index.html#droelementinitiator", null ],
-        [ "Router Element \"<port>\"", "index.html#droelementport", null ],
         [ "Router Element \"<address>\"", "index.html#droelementaddress", null ],
         [ "Router Element \"<tls>\"", "index.html#droelementtls", null ],
         [ "Router Element \"<cipher-suites>\"", "index.html#droelementciphersuites", null ],
@@ -157,8 +169,6 @@ var NAVTREE =
         [ "Router Element \"<compression>\"", "index.html#droelementcompression", null ],
         [ "Router Element \"<nodelay>\"", "index.html#droelementnodelay", null ],
         [ "Router Element \"<keepalive>\"", "index.html#droelementkeepalive", null ],
-        [ "Router Element \"<send-buffer>\"", "index.html#droelementsendbuffer", null ],
-        [ "Router Element \"<receive-buffer>\"", "index.html#droelementreceivebuffer", null ],
         [ "Router Element \"<interface>\"", "index.html#droelementinterface", null ],
         [ "Router Element \"<tcp>\"", "index.html#droelementtcp", null ],
         [ "Router Element \"<companion>\"", "index.html#droelementcompanion", null ],

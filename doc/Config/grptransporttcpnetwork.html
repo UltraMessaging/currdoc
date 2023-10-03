@@ -63,8 +63,9 @@ TCP Transport Session Management&nbsp;&nbsp;<small><a href="#tcptransportsession
 <img src="TCP-Net.png" alt="TCP-Net.png"/>
 </div>
  <p>When a source is created, the application can explicitly map it to a transport session by setting the <a class="el" href="grptransporttcpnetwork.html#transporttcpportsource">transport_tcp_port (source)</a> option. If a previous source was created on the same context with the same port number, this new source will be mapped to the same transport session. However, two different contexts on the same host may not share the same port number. If a source is created with a port number that is already in use, UM will return an error.</p>
-<p>Alternatively, if the application does not explicitly specify a source port, UM will implicitly assign the new source to a pool of transport sessions defined when the context was created. The pool is defined as a range of port numbers specified by the options <a class="el" href="grptransporttcpnetwork.html#transporttcpportlowcontext">transport_tcp_port_low (context)</a> and <a class="el" href="grptransporttcpnetwork.html#transporttcpporthighcontext">transport_tcp_port_high (context)</a>. In addition, the option <a class="el" href="grptransporttcpnetwork.html#transporttcpmaximumportscontext">transport_tcp_maximum_ports (context)</a> defines the number of transport sessions in the pool.</p>
+<p>Alternatively, if the application does not explicitly specify a source port, UM will implicitly assign the new source to the default pool of transport sessions defined when the context was created. The pool is defined as a range of port numbers specified by the options <a class="el" href="grptransporttcpnetwork.html#transporttcpportlowcontext">transport_tcp_port_low (context)</a> and <a class="el" href="grptransporttcpnetwork.html#transporttcpporthighcontext">transport_tcp_port_high (context)</a>. In addition, the option <a class="el" href="grptransporttcpnetwork.html#transporttcpmaximumportscontext">transport_tcp_maximum_ports (context)</a> defines the number of transport sessions in the pool.</p>
 <p>When a new source is created and the source port is not explicitly defined, UM will check to see how many transport sessions are currently active from the pool within the context. If it is less than <a class="el" href="grptransporttcpnetwork.html#transporttcpmaximumportscontext">transport_tcp_maximum_ports (context)</a> then UM will attempt to use the next port in the range <a class="el" href="grptransporttcpnetwork.html#transporttcpportlowcontext">transport_tcp_port_low (context)</a> to <a class="el" href="grptransporttcpnetwork.html#transporttcpporthighcontext">transport_tcp_port_high (context)</a>. If that port is already in use, UM continues along the range until it finds an unused port, then it uses that port to create the transport session. However, if the context already has activated all transport sessions in the pool, then the new topic is mapped to one of the existing transport sessions, in round-robin fashion.</p>
+<p>Note that if you intend to do both explicit mapping and implicit mapping to the default pool of transport sessions, the TCP transport behaves differently than some of the other transport types (e.g. LBT-RM). Any explicitly given port will be added to the default pool. This means that subsequent implicit mappings to the default pool can include this newly added port.</p>
 <p>Notice that the default range of ports, 14371 to 14390, is 30 ports. But the default number of transport sessions in the pool is 10. This allows three contexts to be created on the same host and use the same configuration. If more than 3 contexts are intended to co-exist on the same host, the port range and number of transport session per context must be managed to give a unique port number to every transport session.</p>
 <p>The option <a class="el" href="grptransporttcpnetwork.html#transporttcpinterfacesource">transport_tcp_interface (source)</a> may be used on TCP sources to choose particular interface, overriding the default INADDR_ANY which accepts connections on all interfaces. Similarly, <a class="el" href="grptransporttcpnetwork.html#transporttcpinterfacereceiver">transport_tcp_interface (receiver)</a> may be used on receivers to choose a particular interface.</p>
 <p><br />
@@ -83,7 +84,7 @@ transport_tcp_interface (receiver)&nbsp;&nbsp;<small><a href="#transporttcpinter
 <tr>
 <td><em>Scope:</em> </td><td>receiver </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a0b66a5b33839617b2a822e4a20a8d535">lbm_ipv4_address_mask_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a0b66a5b33839617b2a822e4a20a8d535">lbm_ipv4_address_mask_t</a></b> </td></tr>
 <tr>
 <td><em>Default value:</em> </td><td>0.0.0.0 (INADDR_ANY) </td></tr>
 <tr>
@@ -103,7 +104,7 @@ transport_tcp_interface (source)&nbsp;&nbsp;<small><a href="#transporttcpinterfa
 <tr>
 <td><em>Scope:</em> </td><td>source </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a0b66a5b33839617b2a822e4a20a8d535">lbm_ipv4_address_mask_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a0b66a5b33839617b2a822e4a20a8d535">lbm_ipv4_address_mask_t</a></b> </td></tr>
 <tr>
 <td><em>Default value:</em> </td><td>0.0.0.0 (INADDR_ANY) </td></tr>
 <tr>
@@ -114,13 +115,13 @@ transport_tcp_interface (source)&nbsp;&nbsp;<small><a href="#transporttcpinterfa
  </p>
 <h2><a class="anchor" id="transporttcpmaximumportscontext"></a>
 transport_tcp_maximum_ports (context)&nbsp;&nbsp;<small><a href="#transporttcpmaximumportscontext">&lt;-</a></small></h2>
-<dl class="section user"><dt></dt><dd>Maximum size of TCP source transport session pool. </dd></dl>
+<dl class="section user"><dt></dt><dd>Maximum size of TCP source transport session default pool. </dd></dl>
 <dl class="section user"><dt></dt><dd>See <a class="el" href="grptransporttcpnetwork.html#tcptransportsessionmanagement">TCP Transport Session Management</a> for how TCP source transport sessions are managed.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>context </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a86897f2fdd66aa7021683a4e72a4537b">lbm_uint16_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a86897f2fdd66aa7021683a4e72a4537b">lbm_uint16_t</a></b> </td></tr>
 <tr>
 <td><em>Units:</em> </td><td>number of ports </td></tr>
 <tr>
@@ -134,16 +135,18 @@ transport_tcp_maximum_ports (context)&nbsp;&nbsp;<small><a href="#transporttcpma
 <h2><a class="anchor" id="transporttcpportsource"></a>
 transport_tcp_port (source)&nbsp;&nbsp;<small><a href="#transporttcpportsource">&lt;-</a></small></h2>
 <dl class="section user"><dt></dt><dd>The TCP port to be used for the source transport session. </dd></dl>
-<dl class="section user"><dt></dt><dd>Setting this option to non-zero overrides the use of the pool of TCP source transport sessions. </dd></dl>
+<dl class="section user"><dt></dt><dd>Setting this option to non-zero overrides the use of the default pool of TCP source transport sessions. </dd></dl>
 <dl class="section user"><dt></dt><dd>The UM source listens on this port. Receivers that join the source's transport session connect to this port, and the source sends message data across that connection. </dd></dl>
 <dl class="section user"><dt></dt><dd>See <a class="el" href="grptransporttcpnetwork.html#tcptransportsessionmanagement">TCP Transport Session Management</a> for how TCP source transport sessions are managed. </dd></dl>
 <dl class="section user"><dt></dt><dd>See <a class="el" href="generalconfigurationguidelines.html#portassignments">Port Assignments</a> for more information about configuring ports. </dd></dl>
-<dl class="section user"><dt></dt><dd>Note that this port is only used by TCP sources. Receiver port numbers are taken from the host's <a class="el" href="generalconfigurationguidelines.html#ephemeralports">Ephemeral Ports</a> and are not configurable.</dd></dl>
+<dl class="section user"><dt></dt><dd>Note that this port is only used by TCP sources. Receiver port numbers are taken from the host's <a class="el" href="generalconfigurationguidelines.html#ephemeralports">Ephemeral Ports</a> and are not configurable. </dd></dl>
+<dl class="section user"><dt></dt><dd></dd></dl>
+<dl class="section attention"><dt>Attention</dt><dd>If a source is configured for a port that is not currently part of the transport session default pool, UM will create a new transport session for this port and add it to the default pool. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16/doc/Config/design.tag:../Design/" href="../Design/fundamentalconcepts.html#transportsessiondifferences">Transport Session Differences</a>.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>source </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a86897f2fdd66aa7021683a4e72a4537b">lbm_uint16_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a86897f2fdd66aa7021683a4e72a4537b">lbm_uint16_t</a></b> </td></tr>
 <tr>
 <td><em>Default value:</em> </td><td>0 (pick open port) </td></tr>
 <tr>
@@ -156,7 +159,7 @@ transport_tcp_port (source)&nbsp;&nbsp;<small><a href="#transporttcpportsource">
  </p>
 <h2><a class="anchor" id="transporttcpporthighcontext"></a>
 transport_tcp_port_high (context)&nbsp;&nbsp;<small><a href="#transporttcpporthighcontext">&lt;-</a></small></h2>
-<dl class="section user"><dt></dt><dd>High TCP port number of range for pool of TCP source transport sessions. </dd></dl>
+<dl class="section user"><dt></dt><dd>High TCP port number of range for the default pool of TCP source transport sessions. </dd></dl>
 <dl class="section user"><dt></dt><dd>When <a class="el" href="grptransporttcpnetwork.html#transporttcpportsource">transport_tcp_port (source)</a> is not specified, a newly-created transport session will use an unused port from this range. The UM source listens on this port. Receivers that join the source's transport session connect to this port, and the source sends message data across that connection. </dd></dl>
 <dl class="section user"><dt></dt><dd>See also <a class="el" href="grptransporttcpnetwork.html#transporttcpporthighcontext">transport_tcp_port_high (context)</a>. </dd></dl>
 <dl class="section user"><dt></dt><dd>See <a class="el" href="grptransporttcpnetwork.html#tcptransportsessionmanagement">TCP Transport Session Management</a> for how TCP source transport sessions are managed. </dd></dl>
@@ -166,7 +169,7 @@ transport_tcp_port_high (context)&nbsp;&nbsp;<small><a href="#transporttcpporthi
 <tr>
 <td><em>Scope:</em> </td><td>context </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a86897f2fdd66aa7021683a4e72a4537b">lbm_uint16_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a86897f2fdd66aa7021683a4e72a4537b">lbm_uint16_t</a></b> </td></tr>
 <tr>
 <td><em>Default value:</em> </td><td>14390 </td></tr>
 <tr>
@@ -179,7 +182,7 @@ transport_tcp_port_high (context)&nbsp;&nbsp;<small><a href="#transporttcpporthi
  </p>
 <h2><a class="anchor" id="transporttcpportlowcontext"></a>
 transport_tcp_port_low (context)&nbsp;&nbsp;<small><a href="#transporttcpportlowcontext">&lt;-</a></small></h2>
-<dl class="section user"><dt></dt><dd>Low TCP port number of range for pool of TCP source transport sessions. </dd></dl>
+<dl class="section user"><dt></dt><dd>Low TCP port number of range for the default pool of TCP source transport sessions. </dd></dl>
 <dl class="section user"><dt></dt><dd>When <a class="el" href="grptransporttcpnetwork.html#transporttcpportsource">transport_tcp_port (source)</a> is not specified, a newly-created transport session will use an unused port from this range. The UM source listens on this port. Receivers that join the source's transport session connect to this port, and the source sends message data across that connection. </dd></dl>
 <dl class="section user"><dt></dt><dd>See also <a class="el" href="grptransporttcpnetwork.html#transporttcpporthighcontext">transport_tcp_port_high (context)</a>. </dd></dl>
 <dl class="section user"><dt></dt><dd>See <a class="el" href="grptransporttcpnetwork.html#tcptransportsessionmanagement">TCP Transport Session Management</a> for how TCP source transport sessions are managed. </dd></dl>
@@ -189,7 +192,7 @@ transport_tcp_port_low (context)&nbsp;&nbsp;<small><a href="#transporttcpportlow
 <tr>
 <td><em>Scope:</em> </td><td>context </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a86897f2fdd66aa7021683a4e72a4537b">lbm_uint16_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a86897f2fdd66aa7021683a4e72a4537b">lbm_uint16_t</a></b> </td></tr>
 <tr>
 <td><em>Default value:</em> </td><td>14371 </td></tr>
 <tr>

@@ -1,13 +1,13 @@
 /*
   All of the documentation and software included in this and any
-  other Informatica Corporation Ultra Messaging Releases
-  Copyright (C) Informatica Corporation. All rights reserved.
+  other Informatica Inc. Ultra Messaging Releases
+  Copyright (C) Informatica Inc. All rights reserved.
 
   Redistribution and use in source and binary forms, with or without
   modification, are permitted only as covered by the terms of a
-  valid software license agreement with Informatica Corporation.
+  valid software license agreement with Informatica Inc.
 
-  (C) Copyright 2004,2022 Informatica LLC. All Rights Reserved.
+  (C) Copyright 2004,2023 Informatica Inc. All Rights Reserved.
 
   THE SOFTWARE IS PROVIDED "AS IS" AND INFORMATICA DISCLAIMS ALL WARRANTIES
   EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION, ANY IMPLIED WARRANTIES OF
@@ -506,6 +506,78 @@ message DROMonMsg {
 					uint64 unicast_msg_bytes_enqueued_limit = 50;
 				} /* Send */
 
+				message UDPReceive {
+					/*! \brief Number of UDP datagrams received. */
+					uint64 msgs_rcved = 1;
+					/*! \brief Number of UDP datagram bytes received. */
+					uint64 bytes_rcved = 2;
+					/*! \brief Number of NAK packets sent. */
+					uint64 nak_pckts_sent = 3;
+					/*! \brief Number of individual NAKs sent. */
+					uint64 naks_sent = 4;
+					/*! \brief Number of datagrams detected as lost. */
+					uint64 lost = 5;
+					/*! \brief NCFs received with reason code "ignored". */
+					uint64 ncfs_ignored = 6;
+					/*! \brief NCFs received with reason code "shed". */
+					uint64 ncfs_shed = 7;
+					/*! \brief NCFs received with reason code "rx_delay". */
+					uint64 ncfs_rx_delay = 8;
+					/*! \brief NCFs received with reason code "unknown". */
+					uint64 ncfs_unknown = 9;
+					/*! \brief Minimun time (in milliseconds) for a lost packet to be recovered. */
+					uint64 nak_stm_min = 10;
+					/*! \brief Mean time (in milliseconds) for packet loss recovery. */
+					uint64 nak_stm_mean = 11;
+					/*! \brief Maximun time (in milliseconds) for a lost packet to be recovered. */
+					uint64 nak_stm_max = 12;
+					/*! \brief Minimun number of times a NAK was sent for a lost packet. */
+					uint64 nak_tx_min = 13;
+					/*! \brief Mean number of times a NAK was sent for a lost packet. */
+					uint64 nak_tx_mean = 14;
+					/*! \brief Maximum number of times a NAK was sent for a lost packet. */
+					uint64 nak_tx_max = 15;
+					/*! \brief Number of duplicate datagrams received. */
+					uint64 duplicate_data = 16;
+					/*! \brief Number of datagrams unrecovered due to transmission windows advance. */
+					uint64 unrecovered_txw = 17;
+					/*! \brief Number of datagrams unrecovered due to retransmission not received within the NAK generation-interval. */
+					uint64 unrecovered_tmo = 18;
+					/*! \brief Number of datagrams dropped due to being smaller than the size designated in the datagram's size field. */
+					uint64 dgrams_dropped_size = 19;
+					/*! \brief Number of datagrams dropped due to bad packet type. */
+					uint64 dgrams_dropped_type = 20;
+					/*! \brief Number of datagrams dropped due to protocol version mismatch. */
+					uint64 dgrams_dropped_version = 21;
+					/*! \brief Number of datagrams dropped due to bad protocol header type. */
+					uint64 dgrams_dropped_hdr = 22;
+					/*! \brief Number of datagrams dropped due to Session ID mismatch. */
+					uint64 dgrams_dropped_sid = 23;
+					/*! \brief Number of datagrams dropped due to reasons other than those described above. */
+					uint64 dgrams_dropped_other = 24;
+				} /* UDPReceive */
+
+				message UDPSend {
+					/*! \brief Number of UDP datagrams sent. */
+					uint64 msgs_sent = 1;
+					/*! \brief Number of UDP datagram bytes sent. */
+					uint64 bytes_sent = 2;
+					/*! \brief Number of NAK packets received. */
+					uint64 nak_pckts_rcved = 3;
+					/*! \brief Number of individual NAKs received. */
+					uint64 naks_rcved = 4;
+					/*! \brief Number of NAKs ignored. NCF sent with reason code "ignored". */
+					uint64 naks_ignored = 5;
+					/*! \brief Number of NAKs shed. NCF sent with reason code "shed". */
+					uint64 naks_shed = 6;
+					/*! \brief Number of NAKs not yet processed due to rate limit. NCF sent with reason code "rx_delay". */
+					uint64 naks_rx_delay_ignored = 7;
+					/*! \brief Number of UDP datagrams retransmitted. */
+					uint64 rxs_sent = 8;
+					/*! \brief Number of UDP datagram bytes retransmitted. */
+					uint64 rx_bytes_sent = 9;
+				} /* UDPSend */
+
 				/*! ID of adjacent DRO. */
 				uint64 adjacent_gateway_id = 1;
 				/*! Interest topics. */
@@ -518,6 +590,10 @@ message DROMonMsg {
 				Receive receive = 10;
 				/*! Send statistics. */
 				Send send = 11;
+				/*! UDP Receive statistics. */
+				UDPReceive udp_receive = 12;
+				/*! UDP Send statistics. */
+				UDPSend udp_send = 13;
 			} /* Peer */
 
 			/*! Portal name. */

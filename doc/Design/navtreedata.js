@@ -27,9 +27,19 @@ var NAVTREE =
       [ "DRO", "fundamentalconcepts.html#umrouter", null ],
       [ "Late Join", "fundamentalconcepts.html#latejoin", null ],
       [ "Request/Response", "fundamentalconcepts.html#requestresponse", null ],
-      [ "UM Transports", "fundamentalconcepts.html#umtransports", [
-        [ "Transport Sessions", "fundamentalconcepts.html#transportsessions", null ],
-        [ "Transport Pacing", "fundamentalconcepts.html#transportpacing", null ]
+      [ "UM Transports", "fundamentalconcepts.html#umtransports", null ],
+      [ "Transport Sessions", "fundamentalconcepts.html#transportsessions", [
+        [ "Subscribing to a Transport Session", "fundamentalconcepts.html#subscribingtoatransportsession", null ],
+        [ "Transport Session Differences", "fundamentalconcepts.html#transportsessiondifferences", null ]
+      ] ],
+      [ "Transport Pacing", "fundamentalconcepts.html#transportpacing", [
+        [ "Source Pacing", "fundamentalconcepts.html#sourcepacing", null ],
+        [ "Receiver Pacing", "fundamentalconcepts.html#receiverpacing", null ],
+        [ "Receiver Queuing", "fundamentalconcepts.html#receiverqueuing", null ],
+        [ "Pacing and DRO", "fundamentalconcepts.html#pacinganddro", null ],
+        [ "Pacing and Queuing", "fundamentalconcepts.html#pacingandqueuing", null ],
+        [ "Pacing and Persistence", "fundamentalconcepts.html#pacingandpersistence", null ],
+        [ "Suspended Receiver Problem", "fundamentalconcepts.html#suspendedreceiverproblem", null ]
       ] ],
       [ "Event Delivery", "fundamentalconcepts.html#eventdelivery", [
         [ "Receiver BOS and EOS Events", "fundamentalconcepts.html#receiverbosandeosevents", null ],
@@ -272,6 +282,8 @@ var NAVTREE =
       [ "Request/Response Model", "umfeatures.html#requestresponsemodel", [
         [ "Request Message", "umfeatures.html#requestmessage", null ],
         [ "Response Message", "umfeatures.html#responsemessage", null ],
+        [ "Response Size", "umfeatures.html#responsesize", null ],
+        [ "Response Deletion", "umfeatures.html#responsedeletion", null ],
         [ "TCP Management", "umfeatures.html#tcpmanagement", null ],
         [ "Request/Response Configuration", "umfeatures.html#requestresponseconfiguration", null ],
         [ "Request/Response Example Applications", "umfeatures.html#requestresponseexampleapplications", null ]
@@ -468,7 +480,8 @@ var NAVTREE =
         [ "Verifying Switch Loss", "packetloss.html#verifyingswitchloss", null ],
         [ "Verifying NIC Loss", "packetloss.html#verifyingnicloss", null ],
         [ "Verifying Socket Buffer Loss", "packetloss.html#verifyingsocketbufferloss", null ]
-      ] ]
+      ] ],
+      [ "TCP Disconnections", "packetloss.html#tcpdisconnections", null ]
     ] ],
     [ "UM Glossary", "umglossary.html", [
       [ "Glossary A", "umglossary.html#glossarya", null ],
@@ -503,7 +516,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "advancedoptimizations.html",
-"transporttypes.html#differencesbetweenlbtsmxandotherumtransports"
+"topicresolutiondescription.html#tcpbasedtopicresolutiondetails"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

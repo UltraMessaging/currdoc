@@ -13,5 +13,8 @@ var structtnwg__portal__peer__dstat__record__t__stct =
     [ "remote_interest_pcre_patterns", "structtnwg__portal__peer__dstat__record__t__stct.html#a6115e023024f55fc6c0e86495787cee7", null ],
     [ "remote_interest_regex_patterns", "structtnwg__portal__peer__dstat__record__t__stct.html#ab9d67b31a39bb553e5fbe63ab0052fb6", null ],
     [ "remote_interest_topics", "structtnwg__portal__peer__dstat__record__t__stct.html#a7b248f219806cb7d61b0c4c872ae683b", null ],
-    [ "send_stats", "structtnwg__portal__peer__dstat__record__t__stct.html#acc7893c56b609e69466cd68ed6030927", null ]
+    [ "send_stats", "structtnwg__portal__peer__dstat__record__t__stct.html#acc7893c56b609e69466cd68ed6030927", null ],
+    [ "udp_peer", "structtnwg__portal__peer__dstat__record__t__stct.html#a84bb3ee7523a622769cd1a61b453b7d9", null ],
+    [ "udp_receive_stats", "structtnwg__portal__peer__dstat__record__t__stct.html#a8dc3a6ecb9b9086827822e8ec5f52d23", null ],
+    [ "udp_send_stats", "structtnwg__portal__peer__dstat__record__t__stct.html#ab5330eb545fbd19f4c49cd3afff265ab", null ]
 ];

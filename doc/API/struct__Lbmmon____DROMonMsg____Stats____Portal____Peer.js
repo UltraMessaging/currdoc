@@ -6,5 +6,7 @@ var struct__Lbmmon____DROMonMsg____Stats____Portal____Peer =
     [ "interest_regex_patterns", "struct__Lbmmon____DROMonMsg____Stats____Portal____Peer.html#a8dc2168e5fc8fe75c2902cd2145983a9", null ],
     [ "interest_topics", "struct__Lbmmon____DROMonMsg____Stats____Portal____Peer.html#ad44d2fd22d83ae19415950ac16dc8b48", null ],
     [ "receive", "struct__Lbmmon____DROMonMsg____Stats____Portal____Peer.html#a2c6c74b1e6f72b5a5e18ef0b5e4e6284", null ],
-    [ "send", "struct__Lbmmon____DROMonMsg____Stats____Portal____Peer.html#a73ce0aa1ea5b32b8f0e25aed616cbcd0", null ]
+    [ "send", "struct__Lbmmon____DROMonMsg____Stats____Portal____Peer.html#a73ce0aa1ea5b32b8f0e25aed616cbcd0", null ],
+    [ "udp_receive", "struct__Lbmmon____DROMonMsg____Stats____Portal____Peer.html#a684eb700897bb785180451ce4ec4b43d", null ],
+    [ "udp_send", "struct__Lbmmon____DROMonMsg____Stats____Portal____Peer.html#a3774adb126e1adbac8d1fc5d3da3846b", null ]
 ];

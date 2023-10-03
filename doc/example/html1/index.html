@@ -56,7 +56,7 @@ $(document).ready(function(){initNavTree('index.html','');});
 <div class="contents">
 <div class="textblock"><p> 
 <img src="infa_logo.png" width="400" height="138" alt="Informatica"/><br/><br/>
-<big><b>Ultra Messaging</b></big> <small>(Version 6.15)</small><br/>
+<big><b>Ultra Messaging</b></big> <small>(Version 6.16)</small><br/>
 <br/><br/><br/>
 <center class="mytitle">C Examples</center>
 <br/><br/><br/>
@@ -67,7 +67,7 @@ $(document).ready(function(){initNavTree('index.html','');});
 Introduction&nbsp;&nbsp;<small><a href="#firstsect">&lt;-</a></small></h1>
 <p>This document lists and gives some background information on the C-language example UM programs.</p>
 <p>For policies and procedures related to Ultra Messaging Technical Support, see <a href="https://ultramessaging.github.io/UM_Support.html">UM Support</a>.</p>
-<p><b>(C) Copyright 2004,2022 Informatica LLC. All Rights Reserved.</b></p>
+<p><b>(C) Copyright 2004,2023 Informatica Inc. All Rights Reserved.</b></p>
 <p>This software and documentation are provided only under a separate license agreement containing restrictions on use and disclosure. No part of this document may be reproduced or transmitted in any form, by any means (electronic, photocopying, recording or otherwise) without prior consent of Informatica LLC.</p>
 <p>A current list of Informatica trademarks is available on the web at <a href="https://www.informatica.com/trademarks.html">https://www.informatica.com/trademarks.html</a>.</p>
 <p>Portions of this software and/or documentation are subject to copyright held by third parties. Required third party notices are included with the product.</p>
@@ -75,7 +75,7 @@ Introduction&nbsp;&nbsp;<small><a href="#firstsect">&lt;-</a></small></h1>
 <p>The information in this documentation is subject to change without notice. If you find any problems in this documentation, please report them to us in writing at Informatica LLC 2100 Seaport Blvd. Redwood City, CA 94063.</p>
 <p>Informatica products are warranted according to the terms and conditions of the agreements under which they are provided. <br />
 INFORMATICA LLC PROVIDES THE INFORMATION IN THIS DOCUMENT "AS IS" WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING WITHOUT ANY WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND ANY WARRANTY OR CONDITION OF NON-INFRINGEMENT.</p>
-<p>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/example/design.tag:../../Design/" href="../../Design/umglossary.html">UM Glossary</a> for Ultra Messaging terminology, abbreviations, and acronyms.</p>
+<p>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16/doc/example/design.tag:../../Design/" href="../../Design/umglossary.html">UM Glossary</a> for Ultra Messaging terminology, abbreviations, and acronyms.</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="cexamplesintroduction"></a>
@@ -87,7 +87,7 @@ C Examples Introduction&nbsp;&nbsp;<small><a href="#cexamplesintroduction">&lt;-
  </p>
 <h2><a class="anchor" id="configuringcexamples"></a>
 Configuring C Examples&nbsp;&nbsp;<small><a href="#configuringcexamples">&lt;-</a></small></h2>
-<p>The example programs universally provide the "-c filename" command-line option. Using that option, the example application calls the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/example/api.tag:../../API/" href="../../API/lbm_8h.html#aecac05969bba0d6057589ca03dfe60a2">lbm_config()</a> API. However, note that this API is not recommended for use with XML-format LBM configuration files, largely because you are not able to specify an application name.</p>
+<p>The example programs universally provide the "-c filename" command-line option. Using that option, the example application calls the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16/doc/example/api.tag:../../API/" href="../../API/lbm_8h.html#aecac05969bba0d6057589ca03dfe60a2">lbm_config()</a> API. However, note that this API is not recommended for use with XML-format LBM configuration files, largely because you are not able to specify an application name.</p>
 <p>To use an XML configuration file with a UM example application, set the environment variables: </p><ul>
 <li>
 LBM_XML_CONFIG_APPNAME - Desired name of application. </li>
@@ -100,29 +100,22 @@ LBM_XML_CONFIG_FILENAME - Path name of XML configuration file. </li>
 <h2><a class="anchor" id="buildingcexamples"></a>
 Building C Examples&nbsp;&nbsp;<small><a href="#buildingcexamples">&lt;-</a></small></h2>
 <p>Most users are not interested in compiling these sources in their current form, but instead use them for "spare parts", extracting fragments of code as appropriate. For users who wish to build the tools, and especially for users who may want to modify the tools, we recommend creating a new directory and copying all of the doc/example directory contents into that new directory.</p>
-<p>The "Makefile.unix" is designed to be used by making a copy of the example directory under your binary package. For example, after installing the UMP 6.13 binary and documentation packages on your Linux system, you should have two directories named "UMP_6.13" and "UM_6.13_doc". To copy and build: </p><pre>
-$ mkdir UMP_6.13/doc
-$ cp -r UM_6.13_doc/doc/example UMP_6.13/doc/example
-$ cd UMP_6.13/doc/example
-$ make -f Makefile.unix TARGET_PLATFORM=Linux-glibc-2.17-x86_64 PRODUCT=UMP
-</pre><dl class="section note"><dt>Note</dt><dd>For UM versions prior to 6.14, the above command might fail on versions of Linux that do not have the "libnsl.so" library pre-installed. For example, CentOS 8. An easy workaround is to edit "Makefile.unix" and remove "-lnsl" from the LINUX_LIBS definition.</dd></dl>
-<p>The Windows "nmake" file "Makefile.windows" is based on older versions of Visual Studio and may not be straight-forward to make work as-is. It is still included for reference purposes. For example: </p><pre>
-LBMSRC_OBJS = lbmsrc.obj verifymsg.obj getopt.obj
-lbmsrc.exe: 
-</pre><p> indicates that the "lbmsrc.exe" program requires 3 source files: "lbmsrc.c", "verifymsg.c", and "getopt.c".</p>
+<p>The documentation below includes example build commands that have been tested on Linux. Note that the environment variable "LBM" should be set to the platform-specific UM directory that contains the "include" and "lib" directories. For example: </p><pre>
+LBM=$HOME/UMP_6.15/Linux-glibc-2.17-x86_64
+</pre><p>For windows builds, use the Unix build line to show the required libraries for each application.</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="unhandledcevents"></a>
 Unhandled C Events&nbsp;&nbsp;<small><a href="#unhandledcevents">&lt;-</a></small></h2>
-<p>Each of the example programs is written to demonstrate a subset of UM's total available functionality. For example, some programs are written to demonstrate <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/example/design.tag:../../Design/" href="../../Design/fundamentalconcepts.html#streaming">Streaming</a> functionality (e.g. lbmsrc), while other programs are written to demonstrate <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/example/design.tag:../../Design/" href="../../Design/fundamentalconcepts.html#persistence">Persistence</a> functionality (e.g. umesrc), while still other programs are written to demonstrate <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/example/design.tag:../../Design/" href="../../Design/fundamentalconcepts.html#queuing">Queuing</a> functionality (e.g. umqsrc).</p>
+<p>Each of the example programs is written to demonstrate a subset of UM's total available functionality. For example, some programs are written to demonstrate <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16/doc/example/design.tag:../../Design/" href="../../Design/fundamentalconcepts.html#streaming">Streaming</a> functionality (e.g. lbmsrc), while other programs are written to demonstrate <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16/doc/example/design.tag:../../Design/" href="../../Design/fundamentalconcepts.html#persistence">Persistence</a> functionality (e.g. umesrc), while still other programs are written to demonstrate <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16/doc/example/design.tag:../../Design/" href="../../Design/fundamentalconcepts.html#queuing">Queuing</a> functionality (e.g. umqsrc).</p>
 <p>UM is generally designed to be event-driven, with events being delivered to the programs through standard callbacks, like source callbacks and receiver callbacks. There are many events which are common across all streaming, persistence, and queuing. Other events are specific to persistence, and still other events are specific to queuing.</p>
 <p>This can lead to example programs reporting "unknown" or "unhandled" events. For example, if the "lbmsrc" streaming program is run with a configuration file that enables persistence, UM will deliver events that are specific to persistence to the "lbmsrc" program. But "lbmsrc" is designed for streaming, and does not include code cases for persistence or queuing events. Maybe you should change your configuration to disable persistence, or you should be using the "umesrc" example program.</p>
 <p>Similarly, the "umqsrc" program expects queuing functionality, and can report unhandled events if persistence is configured. Or "umesrc" can report unhandled events if queuing is configured.</p>
 <p>If you see an unhandled event, it is generally reported as a number. You can see which event this corresponds to by looking up the number in: </p><ul>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/example/api.tag:../../API/" href="../../API/creceiverevents.html">C Receiver Events</a> for subscribing programs and </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16/doc/example/api.tag:../../API/" href="../../API/creceiverevents.html">C Receiver Events</a> for subscribing programs and </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/example/api.tag:../../API/" href="../../API/csourceevents.html">C Source Events</a> for publishing programs. </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16/doc/example/api.tag:../../API/" href="../../API/csourceevents.html">C Source Events</a> for publishing programs. </li>
 </ul>
 <p>Once you understand the nature of the unhandled event, you can decide how to change your configuration or choose a different program.</p>
 <p><br />
@@ -138,15 +131,14 @@ C Example Support Files&nbsp;&nbsp;<small><a href="#cexamplesupportfiles">&lt;-<
 <p><a href="srs_monitor_info_msg.c"><b><code>srs_monitor_info_msg.c</code></b></a> - Module used by the srs_monitor_info_receiver program.</p>
 <p><a href="srs_monitor_info_msg.h"><b><code>srs_monitor_info_msg.h</code></b></a> - Definitions for srs_monitor_info_msg.c module.</p>
 <p><a href="srs_cmd_msg.c"><b><code>srs_cmd_msg.c</code></b></a> - Module used by the srs_cmd program.</p>
+<p><a href="status.c"><b><code>status.c</code></b></a> - Module used by the "lbmlatping" and "lbmlatpong" programs.</p>
 <p><a href="srs_cmd_msg.h"><b><code>srs_cmd_msg.h</code></b></a> - Definitions for srs_cmd_msg.c module.</p>
-<p><a href="Makefile.unix"><b><code>Makefile.unix</code></b></a> - see contents for instructions of setting up environment variables.</p>
-<p><a href="Makefile.windows"><b><code>Makefile.windows</code></b></a> - see contents for instructions of setting up make variables.</p>
 <p><a href="lbmmondiag.pl"><b><code>lbmmondiag.pl</code></b></a> - Reads UDP packets and process statistics. See <a href="../Operations/monitoringumwiththelbmmonapi.html#lbmmonudpcandlbmmondiagpl">lbmmonudp.c and lbmmondiag.pl</a> in the UM Operations Guide.</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="persistencetutorialcfiles"></a>
 Persistence Tutorial C Files&nbsp;&nbsp;<small><a href="#persistencetutorialcfiles">&lt;-</a></small></h2>
-<p>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/example/ume.tag:../../UME/" href="../../UME/demonstratingpersistence.html">Demonstrating Persistence</a> for information on these files.</p>
+<p>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16/doc/example/ume.tag:../../UME/" href="../../UME/demonstratingpersistence.html">Demonstrating Persistence</a> for information on these files.</p>
 <p><a href="ume-example-src.c"><b><code>ume-example-src.c</code></b></a> - Initial source application used in the tutorial.</p>
 <p><a href="ume-example-rcv.c"><b><code>ume-example-rcv.c</code></b></a> - Initial receiver application used in the tutorial.</p>
 <p><a href="ume-example-src-2.c"><b><code>ume-example-src-2.c</code></b></a> - Source application modified to use a UMP persistent store.</p>
@@ -162,7 +154,9 @@ C Examples&nbsp;&nbsp;<small><a href="#cexamples">&lt;-</a></small></h2>
  </p>
 <h3><a class="anchor" id="examplelbmhfrcv_c"></a>
 Example lbmhfrcv.c&nbsp;&nbsp;<small><a href="#examplelbmhfrcv_c">&lt;-</a></small></h3>
-<p>Source code: <a href="../../example/lbmhfrcv.c">lbmhfrcv.c</a> </p><pre class="fragment">Purpose: application that receives messages from a given topic using a single
+<p>Example build:<br />
+ </p><pre class="fragment">gcc lbmhfrcv.c verifymsg.c -o lbmhfrcv -I$LBM/include -I$LBM/include/lbm -L$LBM/lib -lpthread -llbm -lm -lrsock -lprotobuf-c
+</pre><p>Source code: <a href="../../example/lbmhfrcv.c">lbmhfrcv.c</a> </p><pre class="fragment">Purpose: application that receives messages from a given topic using a single
     hot-failover receiver.
 Usage: lbmhfrcv [-AEhsvV] [-c filename] [-r msgs] [-U losslev] topic
        -A = display messages as ASCII text
@@ -181,7 +175,9 @@ Usage: lbmhfrcv [-AEhsvV] [-c filename] [-r msgs] [-U losslev] topic
  </p>
 <h3><a class="anchor" id="examplelbmhfrcvq_c"></a>
 Example lbmhfrcvq.c&nbsp;&nbsp;<small><a href="#examplelbmhfrcvq_c">&lt;-</a></small></h3>
-<p>Source code: <a href="../../example/lbmhfrcvq.c">lbmhfrcvq.c</a> </p><pre class="fragment">Purpose: lbmhfrcv.c: application that receives messages from a given topic
+<p>Example build:<br />
+ </p><pre class="fragment">gcc lbmhfrcvq.c verifymsg.c -o lbmhfrcvq -I$LBM/include -I$LBM/include/lbm -L$LBM/lib -lpthread -llbm -lm -lrsock -lprotobuf-c
+</pre><p>Source code: <a href="../../example/lbmhfrcvq.c">lbmhfrcvq.c</a> </p><pre class="fragment">Purpose: lbmhfrcv.c: application that receives messages from a given topic
     using a single hot-failover receiver and an event queue.
 Usage: lbmhfrcvq [-EhsvV] [-c filename] [-r msgs] [-U losslev] topic
        -c filename = Use LBM configuration file filename.
@@ -199,7 +195,9 @@ Usage: lbmhfrcvq [-EhsvV] [-c filename] [-r msgs] [-U losslev] topic
  </p>
 <h3><a class="anchor" id="examplelbmhfsrc_c"></a>
 Example lbmhfsrc.c&nbsp;&nbsp;<small><a href="#examplelbmhfsrc_c">&lt;-</a></small></h3>
-<p>Source code: <a href="../../example/lbmhfsrc.c">lbmhfsrc.c</a> </p><pre class="fragment">Purpose: application that sends to a given topic using a single hot-failover
+<p>Example build:<br />
+ </p><pre class="fragment">gcc lbmhfsrc.c verifymsg.c -o lbmhfsrc -I$LBM/include -I$LBM/include/lbm -L$LBM/lib -lpthread -llbm -lm -lrsock -lprotobuf-c
+</pre><p>Source code: <a href="../../example/lbmhfsrc.c">lbmhfsrc.c</a> </p><pre class="fragment">Purpose: application that sends to a given topic using a single hot-failover
     source.
 Usage: lbmhfsrc [options] topic
 Available options:
@@ -227,7 +225,9 @@ Available options:
  </p>
 <h3><a class="anchor" id="examplelbmhfxrcv_c"></a>
 Example lbmhfxrcv.c&nbsp;&nbsp;<small><a href="#examplelbmhfxrcv_c">&lt;-</a></small></h3>
-<p>Source code: <a href="../../example/lbmhfxrcv.c">lbmhfxrcv.c</a> </p><pre class="fragment">Purpose: application that receives messages from a given topic using a single
+<p>Example build:<br />
+ </p><pre class="fragment">gcc lbmhfxrcv.c verifymsg.c -o lbmhfxrcv -I$LBM/include -I$LBM/include/lbm -L$LBM/lib -lpthread -llbm -lm -lrsock -lprotobuf-c
+</pre><p>Source code: <a href="../../example/lbmhfxrcv.c">lbmhfxrcv.c</a> </p><pre class="fragment">Purpose: application that receives messages from a given topic using a single
     hot-failover receiver across contexts (HFX).
 Usage: lbmhfxrcv [-aACdEfhqsSvV] [-I interface] [-c filename] [-r msgs] [-U losslev] topic
 Available options:
@@ -307,7 +307,9 @@ PB format options:
  </p>
 <h3><a class="anchor" id="examplelbmhtrcv_c"></a>
 Example lbmhtrcv.c&nbsp;&nbsp;<small><a href="#examplelbmhtrcv_c">&lt;-</a></small></h3>
-<p>Source code: <a href="../../example/lbmhtrcv.c">lbmhtrcv.c</a> </p><pre class="fragment">Purpose: application that receives from a collection of HyperTopic patterns.
+<p>Example build:<br />
+ </p><pre class="fragment">gcc lbmhtrcv.c -o lbmhtrcv -I$LBM/include -I$LBM/include/lbm -L$LBM/lib -lpthread -llbm -lm -lrsock -lprotobuf-c
+</pre><p>Source code: <a href="../../example/lbmhtrcv.c">lbmhtrcv.c</a> </p><pre class="fragment">Purpose: application that receives from a collection of HyperTopic patterns.
 Usage: lbmhtrcv [options] &lt;patterns_file
 Where 'patterns_file' is a simple text file, supplied as standard input,
       containing one pattern per line.
@@ -323,7 +325,9 @@ Available options:
  </p>
 <h3><a class="anchor" id="examplelbmimsg_c"></a>
 Example lbmimsg.c&nbsp;&nbsp;<small><a href="#examplelbmimsg_c">&lt;-</a></small></h3>
-<p>Source code: <a href="../../example/lbmimsg.c">lbmimsg.c</a> </p><pre class="fragment">Purpose: application that sends immediate messages (either unicast or multicsat)
+<p>Example build:<br />
+ </p><pre class="fragment">gcc lbmimsg.c -o lbmimsg -I$LBM/include -I$LBM/include/lbm -L$LBM/lib -lpthread -llbm -lm -lrsock -lprotobuf-c
+</pre><p>Source code: <a href="../../example/lbmimsg.c">lbmimsg.c</a> </p><pre class="fragment">Purpose: application that sends immediate messages (either unicast or multicsat)
     as fast as possible, either to a topic, or send topicless.
 Usage: lbmimsg [options] topic
        lbmimsg [options] -o
@@ -349,7 +353,9 @@ Available options:
  </p>
 <h3><a class="anchor" id="examplelbmireq_c"></a>
 Example lbmireq.c&nbsp;&nbsp;<small><a href="#examplelbmireq_c">&lt;-</a></small></h3>
-<p>Source code: <a href="../../example/lbmireq.c">lbmireq.c</a> </p><pre class="fragment">Purpose: application that sends immediate message requests (multicast or unicast)
+<p>Example build:<br />
+ </p><pre class="fragment">gcc lbmireq.c -o lbmireq -I$LBM/include -I$LBM/include/lbm -L$LBM/lib -lpthread -llbm -lm -lrsock -lprotobuf-c
+</pre><p>Source code: <a href="../../example/lbmireq.c">lbmireq.c</a> </p><pre class="fragment">Purpose: application that sends immediate message requests (multicast or unicast)
     to a given topic and waits for responses.
 Usage: lbmireq [-hv] [-c filename] [-l len] [-L linger] [-P sec] [-r rate/pct]
        [-R requests] [-T target] [topic]
@@ -372,7 +378,9 @@ Usage: lbmireq [-hv] [-c filename] [-l len] [-L linger] [-P sec] [-r rate/pct]
  </p>
 <h3><a class="anchor" id="examplelbmlatping_c"></a>
 Example lbmlatping.c&nbsp;&nbsp;<small><a href="#examplelbmlatping_c">&lt;-</a></small></h3>
-<p>Source code: <a href="../../example/lbmlatping.c">lbmlatping.c</a> </p><pre class="fragment">Purpose: application to measure round-trip latency of SMX.  Use with lbmlatpong.
+<p>Example build:<br />
+ </p><pre class="fragment">gcc lbmlatping.c stats.c -o lbmlatping -I$LBM/include -I$LBM/include/lbm -L$LBM/lib -lpthread -llbm -lm -lrsock -lprotobuf-c
+</pre><p>Source code: <a href="../../example/lbmlatping.c">lbmlatping.c</a> </p><pre class="fragment">Purpose: application to measure round-trip latency of SMX.  Use with lbmlatpong.
 Usage: lbmlatping [-h] [-c filename] [-l len] [-P msec] 
        -c filename = Use LBM configuration file filename.
                      Multiple config files are allowed.
@@ -385,7 +393,9 @@ Usage: lbmlatping [-h] [-c filename] [-l len] [-P msec]
  </p>
 <h3><a class="anchor" id="examplelbmlatpong_c"></a>
 Example lbmlatpong.c&nbsp;&nbsp;<small><a href="#examplelbmlatpong_c">&lt;-</a></small></h3>
-<p>Source code: <a href="../../example/lbmlatpong.c">lbmlatpong.c</a> </p><pre class="fragment">Purpose: application to measure round-trip latency of SMX.  Use with lbmlatping.
+<p>Example build:<br />
+ </p><pre class="fragment">gcc lbmlatpong.c stats.c -o lbmlatpong -I$LBM/include -I$LBM/include/lbm -L$LBM/lib -lpthread -llbm -lm -lrsock -lprotobuf-c
+</pre><p>Source code: <a href="../../example/lbmlatpong.c">lbmlatpong.c</a> </p><pre class="fragment">Purpose: application to measure round-trip latency of SMX.  Use with lbmlatping.
 Usage: lbmlatpong [-h] [-c filename] 
        -c filename = Use LBM configuration file filename.
                      Multiple config files are allowed.
@@ -395,7 +405,10 @@ Usage: lbmlatpong [-h] [-c filename]
  </p>
 <h3><a class="anchor" id="examplelbmmon_c"></a>
 Example lbmmon.c&nbsp;&nbsp;<small><a href="#examplelbmmon_c">&lt;-</a></small></h3>
-<p>Source code: <a href="../../example/lbmmon.c">lbmmon.c</a> </p><pre class="fragment">Purpose: example LBM statistics monitoring application.
+<p>Example build:<br />
+ </p><pre class="fragment">gcc lbmmon.c -o lbmmon -I$LBM/include -I$LBM/include/lbm -L$LBM/lib -lpthread -llbm -lm -lrsock -lprotobuf-c
+gcc lbmmon_cmd.c -o lbmmon_cmd -I$LBM/include -I$LBM/include/lbm -L$LBM/lib -lpthread -llbm -lm -lrsock -lprotobuf-c
+</pre><p>Source code: <a href="../../example/lbmmon.c">lbmmon.c</a> </p><pre class="fragment">Purpose: example LBM statistics monitoring application.
 Usage: lbmmon [options]
 Available options:
   -c, --config=FILE          Use LBM configuration file FILE.
@@ -461,7 +474,9 @@ PB format options:
  </p>
 <h3><a class="anchor" id="examplelbmmoncache_c"></a>
 Example lbmmoncache.c&nbsp;&nbsp;<small><a href="#examplelbmmoncache_c">&lt;-</a></small></h3>
-<p>Source code: <a href="../../example/lbmmoncache.c">lbmmoncache.c</a> </p><pre class="fragment">Purpose: example LBM statistics monitoring application.
+<p>Example build:<br />
+ </p><pre class="fragment">gcc lbmmoncache.c -o lbmmoncache -I$LBM/include -I$LBM/include/lbm -L$LBM/lib -lpthread -llbm -lm -lrsock -lprotobuf-c
+</pre><p>Source code: <a href="../../example/lbmmoncache.c">lbmmoncache.c</a> </p><pre class="fragment">Purpose: example LBM statistics monitoring application.
 Usage: lbmmoncache [options]
 Available options:
   -c, --config=FILE          Use LBM configuration file FILE.
@@ -526,7 +541,9 @@ PB format options:
  </p>
 <h3><a class="anchor" id="examplelbmmon_cmd_c"></a>
 Example lbmmon_cmd.c&nbsp;&nbsp;<small><a href="#examplelbmmon_cmd_c">&lt;-</a></small></h3>
-<p>Source code: <a href="../../example/lbmmon_cmd.c">lbmmon_cmd.c</a> </p><pre class="fragment">Purpose: send unicast immediate control requests to an LBMMON publisher.
+<p>Example build:<br />
+ </p><pre class="fragment">gcc lbmmon_cmd.c -o lbmmon_cmd -I$LBM/include -I$LBM/include/lbm -L$LBM/lib -lpthread -llbm -lm -lrsock -lprotobuf-c
+</pre><p>Source code: <a href="../../example/lbmmon_cmd.c">lbmmon_cmd.c</a> </p><pre class="fragment">Purpose: send unicast immediate control requests to an LBMMON publisher.
 Usage: lbmmon_cmd -T target_string -C command [options]
 Available options:
   -c filename = Use LBM configuration file filename.
@@ -550,7 +567,9 @@ Available options:
  </p>
 <h3><a class="anchor" id="examplelbmmondata_c"></a>
 Example lbmmondata.c&nbsp;&nbsp;<small><a href="#examplelbmmondata_c">&lt;-</a></small></h3>
-<p>Source code: <a href="../../example/lbmmondata.c">lbmmondata.c</a> </p><pre class="fragment">Purpose: example LBM statistics monitoring application.
+<p>Example build:<br />
+ </p><pre class="fragment">gcc lbmmondata.c -o lbmmondata -I$LBM/include -I$LBM/include/lbm -L$LBM/lib -lpthread -llbm -lm -lrsock -lprotobuf-c
+</pre><p>Source code: <a href="../../example/lbmmondata.c">lbmmondata.c</a> </p><pre class="fragment">Purpose: example LBM statistics monitoring application.
 Usage: lbmmondata [-c filename] [-t topicname]
        -c filename = Use LBM configuration file filename.
                      Multiple config files are allowed.
@@ -560,7 +579,9 @@ Usage: lbmmondata [-c filename] [-t topicname]
  </p>
 <h3><a class="anchor" id="examplelbmmonudp_c"></a>
 Example lbmmonudp.c&nbsp;&nbsp;<small><a href="#examplelbmmonudp_c">&lt;-</a></small></h3>
-<p>Source code: <a href="../../example/lbmmonudp.c">lbmmonudp.c</a> </p><pre class="fragment">Purpose: application that receives LBM statistics and forwards as CSV over UDP.
+<p>Example build:<br />
+ </p><pre class="fragment">gcc lbmmonudp.c -o lbmmonudp -I$LBM/include -I$LBM/include/lbm -L$LBM/lib -lpthread -llbm -lm -lrsock -lprotobuf-c
+</pre><p>Source code: <a href="../../example/lbmmonudp.c">lbmmonudp.c</a> </p><pre class="fragment">Purpose: application that receives LBM statistics and forwards as CSV over UDP.
 Usage: lbmmonudp [options]
 Available options:
   -3, --force-32bit          force all data values to fit within 32 bits
@@ -632,7 +653,9 @@ PB format options:
  </p>
 <h3><a class="anchor" id="examplelbmmrcv_c"></a>
 Example lbmmrcv.c&nbsp;&nbsp;<small><a href="#examplelbmmrcv_c">&lt;-</a></small></h3>
-<p>Source code: <a href="../../example/lbmmrcv.c">lbmmrcv.c</a> </p><pre class="fragment">Purpose: application that receives messages from a set of one or more topics.
+<p>Example build:<br />
+ </p><pre class="fragment">gcc lbmmrcv.c verifymsg.c -o lbmmrcv -I$LBM/include -I$LBM/include/lbm -L$LBM/lib -lpthread -llbm -lm -lrsock -lprotobuf-c
+</pre><p>Source code: <a href="../../example/lbmmrcv.c">lbmmrcv.c</a> </p><pre class="fragment">Purpose: application that receives messages from a set of one or more topics.
 Usage: lbmmrcv [options]
   -B, --bufsize=#          Set receive socket buffer size to # (in MB)
   -c, --config=FILE        Use LBM configuration file FILE.
@@ -707,7 +730,9 @@ PB format options:
  </p>
 <h3><a class="anchor" id="examplelbmmrcvq_c"></a>
 Example lbmmrcvq.c&nbsp;&nbsp;<small><a href="#examplelbmmrcvq_c">&lt;-</a></small></h3>
-<p>Source code: <a href="../../example/lbmmrcvq.c">lbmmrcvq.c</a> </p><pre class="fragment">Purpose: application that receives messages from a set of one or more topics
+<p>Example build:<br />
+ </p><pre class="fragment">gcc lbmmrcvq.c -o lbmmrcvq -I$LBM/include -I$LBM/include/lbm -L$LBM/lib -lpthread -llbm -lm -lrsock -lprotobuf-c
+</pre><p>Source code: <a href="../../example/lbmmrcvq.c">lbmmrcvq.c</a> </p><pre class="fragment">Purpose: application that receives messages from a set of one or more topics
     using event queues.
 Usage: lbmmrcvq [options]
   -B, --bufsize=#          Set receive socket buffer size to # (in MB)
@@ -778,7 +803,9 @@ PB format options:
  </p>
 <h3><a class="anchor" id="examplelbmmreq_c"></a>
 Example lbmmreq.c&nbsp;&nbsp;<small><a href="#examplelbmmreq_c">&lt;-</a></small></h3>
-<p>Source code: <a href="../../example/lbmmreq.c">lbmmreq.c</a> </p><pre class="fragment">Purpose: application that sends request messages to a single topic
+<p>Example build:<br />
+ </p><pre class="fragment">gcc lbmmreq.c -o lbmmreq -I$LBM/include -I$LBM/include/lbm -L$LBM/lib -lpthread -llbm -lm -lrsock -lprotobuf-c
+</pre><p>Source code: <a href="../../example/lbmmreq.c">lbmmreq.c</a> </p><pre class="fragment">Purpose: application that sends request messages to a single topic
     and processes responses.
 Usage: lbmmreq [options] topic
 Available options:
@@ -795,7 +822,9 @@ Available options:
  </p>
 <h3><a class="anchor" id="examplelbmmsrc_c"></a>
 Example lbmmsrc.c&nbsp;&nbsp;<small><a href="#examplelbmmsrc_c">&lt;-</a></small></h3>
-<p>Source code: <a href="../../example/lbmmsrc.c">lbmmsrc.c</a> </p><pre class="fragment">Purpose: send messages on multiple topics, optionally by multiple threads.
+<p>Example build:<br />
+ </p><pre class="fragment">gcc lbmmsrc.c verifymsg.c -o lbmmsrc -I$LBM/include -I$LBM/include/lbm -L$LBM/lib -lpthread -llbm -lm -lrsock -lprotobuf-c
+</pre><p>Source code: <a href="../../example/lbmmsrc.c">lbmmsrc.c</a> </p><pre class="fragment">Purpose: send messages on multiple topics, optionally by multiple threads.
     Topic names generated as a root, a dot, and by an integer.
     By default, the first topic created will be '29west.example.multi.0'
 Usage: lbmmsrc [options]
@@ -878,7 +907,9 @@ PB format options:
  </p>
 <h3><a class="anchor" id="examplelbmpong_c"></a>
 Example lbmpong.c&nbsp;&nbsp;<small><a href="#examplelbmpong_c">&lt;-</a></small></h3>
-<p>Source code: <a href="../../example/lbmpong.c">lbmpong.c</a> </p><pre class="fragment">Purpose: application that measures round trip message latency.
+<p>Example build:<br />
+ </p><pre class="fragment">gcc lbmpong.c -o lbmpong -I$LBM/include -I$LBM/include/lbm -L$LBM/lib -lpthread -llbm -lm -lrsock -lprotobuf-c
+</pre><p>Source code: <a href="../../example/lbmpong.c">lbmpong.c</a> </p><pre class="fragment">Purpose: application that measures round trip message latency.
 Usage: lbmpong [-ChIqRv] [-c filename] [-i msgs] [-l len] [-M msgs] [-P msec] [-r rate/pct] [-s seed] [-t secs] [-T topic] id
        -c filename = Use LBM configuration file filename.
                      Multiple config files are allowed.
@@ -909,7 +940,9 @@ Usage: lbmpong [-ChIqRv] [-c filename] [-i msgs] [-l len] [-M msgs] [-P msec] [-
  </p>
 <h3><a class="anchor" id="examplelbmprice_c"></a>
 Example lbmprice.c&nbsp;&nbsp;<small><a href="#examplelbmprice_c">&lt;-</a></small></h3>
-<p>Source code: <a href="../../example/lbmprice.c">lbmprice.c</a> </p><pre class="fragment">Purpose: simulated price source and receiver for demonstration.
+<p>Example build:<br />
+ </p><pre class="fragment">gcc lbmprice.c -o lbmprice -I$LBM/include -I$LBM/include/lbm -L$LBM/lib -lpthread -llbm -lm -lrsock -lprotobuf-c -llbmsdm -llbmutl
+</pre><p>Source code: <a href="../../example/lbmprice.c">lbmprice.c</a> </p><pre class="fragment">Purpose: simulated price source and receiver for demonstration.
 Usage: lbmprice -s [-h] [-c filename]
        -c filename = Use LBM configuration file filename.
                      Multiple config files are allowed.
@@ -935,7 +968,9 @@ Alternate usage: lbmprice [-h] [-c filename]
  </p>
 <h3><a class="anchor" id="examplelbmrcv_c"></a>
 Example lbmrcv.c&nbsp;&nbsp;<small><a href="#examplelbmrcv_c">&lt;-</a></small></h3>
-<p>Source code: <a href="../../example/lbmrcv.c">lbmrcv.c</a> </p><pre class="fragment">Purpose: application that receives messages from a given topic.
+<p>Example build:<br />
+ </p><pre class="fragment">gcc lbmrcv.c verifymsg.c -o lbmrcv -I$LBM/include -I$LBM/include/lbm -L$LBM/lib -lpthread -llbm -lm -lrsock -lprotobuf-c
+</pre><p>Source code: <a href="../../example/lbmrcv.c">lbmrcv.c</a> </p><pre class="fragment">Purpose: application that receives messages from a given topic.
 Usage: lbmrcv [-ACEfhqsSvV] [-c filename] [-r msgs] [-U losslev] topic
 Available options:
   -A, --ascii          display messages as ASCII text (-A -A = newlines after each msg)
@@ -1011,7 +1046,9 @@ PB format options:
  </p>
 <h3><a class="anchor" id="examplelbmrcvq_c"></a>
 Example lbmrcvq.c&nbsp;&nbsp;<small><a href="#examplelbmrcvq_c">&lt;-</a></small></h3>
-<p>Source code: <a href="../../example/lbmrcvq.c">lbmrcvq.c</a> </p><pre class="fragment">Purpose: application that receives messages from a given topic using an event
+<p>Example build:<br />
+ </p><pre class="fragment">gcc lbmrcvq.c verifymsg.c -o lbmrcvq -I$LBM/include -I$LBM/include/lbm -L$LBM/lib -lpthread -llbm -lm -lrsock -lprotobuf-c
+</pre><p>Source code: <a href="../../example/lbmrcvq.c">lbmrcvq.c</a> </p><pre class="fragment">Purpose: application that receives messages from a given topic using an event
     queue.
 Usage: lbmrcvq [options] topic
 Available options:
@@ -1082,7 +1119,9 @@ PB format options:
  </p>
 <h3><a class="anchor" id="examplelbmrcvxsp_c"></a>
 Example lbmrcvxsp.c&nbsp;&nbsp;<small><a href="#examplelbmrcvxsp_c">&lt;-</a></small></h3>
-<p>Source code: <a href="../../example/lbmrcvxsp.c">lbmrcvxsp.c</a> </p><pre class="fragment">Purpose: application that receives messages from a given topic, mapping transports to various XSPs.
+<p>Example build:<br />
+ </p><pre class="fragment">gcc lbmrcvxsp.c verifymsg.c -o lbmrcvxsp -I$LBM/include -I$LBM/include/lbm -L$LBM/lib -lpthread -llbm -lm -lrsock -lprotobuf-c
+</pre><p>Source code: <a href="../../example/lbmrcvxsp.c">lbmrcvxsp.c</a> </p><pre class="fragment">Purpose: application that receives messages from a given topic, mapping transports to various XSPs.
 Usage: lbmrcv [-ACdDEhPrRsSv] [-c filename] [-r msgs] topic
 Available options:
   -A, --ascii                     display messages as ASCII text (-A -A = newlines after each msg)
@@ -1107,7 +1146,9 @@ Available options:
  </p>
 <h3><a class="anchor" id="examplelbmreq_c"></a>
 Example lbmreq.c&nbsp;&nbsp;<small><a href="#examplelbmreq_c">&lt;-</a></small></h3>
-<p>Source code: <a href="../../example/lbmreq.c">lbmreq.c</a> </p><pre class="fragment">Purpose: application that sends requests on a single topic and waits for
+<p>Example build:<br />
+ </p><pre class="fragment">gcc lbmreq.c -o lbmreq -I$LBM/include -I$LBM/include/lbm -L$LBM/lib -lpthread -llbm -lm -lrsock -lprotobuf-c
+</pre><p>Source code: <a href="../../example/lbmreq.c">lbmreq.c</a> </p><pre class="fragment">Purpose: application that sends requests on a single topic and waits for
     responses.
 Usage: lbmreq [options] topic
 Available options:
@@ -1131,7 +1172,9 @@ Available options:
  </p>
 <h3><a class="anchor" id="examplelbmresp_c"></a>
 Example lbmresp.c&nbsp;&nbsp;<small><a href="#examplelbmresp_c">&lt;-</a></small></h3>
-<p>Source code: <a href="../../example/lbmresp.c">lbmresp.c</a> </p><pre class="fragment">Purpose: application that receives request messages on a single topic and
+<p>Example build:<br />
+ </p><pre class="fragment">gcc lbmresp.c -o lbmresp -I$LBM/include -I$LBM/include/lbm -L$LBM/lib -lpthread -llbm -lm -lrsock -lprotobuf-c
+</pre><p>Source code: <a href="../../example/lbmresp.c">lbmresp.c</a> </p><pre class="fragment">Purpose: application that receives request messages on a single topic and
     and sends responses back
 Usage: lbmresp [-Ehsv] [-c filename] [-l len] [-r responses] [-f topic] topic
        -c filename = Use LBM configuration file filename.
@@ -1148,7 +1191,9 @@ Usage: lbmresp [-Ehsv] [-c filename] [-l len] [-r responses] [-f topic] topic
  </p>
 <h3><a class="anchor" id="examplelbmresping_c"></a>
 Example lbmresping.c&nbsp;&nbsp;<small><a href="#examplelbmresping_c">&lt;-</a></small></h3>
-<p>Source code: <a href="../../example/lbmresping.c">lbmresping.c</a> </p><pre class="fragment">Purpose: Application that tests the operation of lbm topic resolution by creating
+<p>Example build:<br />
+ </p><pre class="fragment">gcc lbmresping.c -o lbmresping -I$LBM/include -I$LBM/include/lbm -L$LBM/lib -lpthread -llbm -lm -lrsock -lprotobuf-c
+</pre><p>Source code: <a href="../../example/lbmresping.c">lbmresping.c</a> </p><pre class="fragment">Purpose: Application that tests the operation of lbm topic resolution by creating
     a source and reporting time required for it to resolve and join the
     source.
 Usage: lbmresping [-h] [-c filename] [unicast_resolver_host]
@@ -1160,7 +1205,9 @@ Usage: lbmresping [-h] [-c filename] [unicast_resolver_host]
  </p>
 <h3><a class="anchor" id="examplelbmrespq_c"></a>
 Example lbmrespq.c&nbsp;&nbsp;<small><a href="#examplelbmrespq_c">&lt;-</a></small></h3>
-<p>Source code: <a href="../../example/lbmrespq.c">lbmrespq.c</a> </p><pre class="fragment">Purpose: application that receives request messages on a single topic and
+<p>Example build:<br />
+ </p><pre class="fragment">gcc lbmrespq.c -o lbmrespq -I$LBM/include -I$LBM/include/lbm -L$LBM/lib -lpthread -llbm -lm -lrsock -lprotobuf-c
+</pre><p>Source code: <a href="../../example/lbmrespq.c">lbmrespq.c</a> </p><pre class="fragment">Purpose: application that receives request messages on a single topic and
     and sends responses back, using an event queue.
 Usage: lbmrespq [-hs] [-c filename] [-r msgs] topic
        -c filename = Use LBM configuration file filename.
@@ -1175,7 +1222,9 @@ Usage: lbmrespq [-hs] [-c filename] [-r msgs] topic
  </p>
 <h3><a class="anchor" id="examplelbmspike_c"></a>
 Example lbmspike.c&nbsp;&nbsp;<small><a href="#examplelbmspike_c">&lt;-</a></small></h3>
-<p>Source code: <a href="../../example/lbmspike.c">lbmspike.c</a> </p><pre class="fragment">Purpose: application that generates &amp; receives message spikes for
+<p>Example build:<br />
+ </p><pre class="fragment">gcc lbmspike.c -o lbmspike -I$LBM/include -I$LBM/include/lbm -L$LBM/lib -lpthread -llbm -lm -lrsock -lprotobuf-c
+</pre><p>Source code: <a href="../../example/lbmspike.c">lbmspike.c</a> </p><pre class="fragment">Purpose: application that generates &amp; receives message spikes for
     performance testing.
 Usage: lbmspike -R [-dhq] [-c filename] [-o ord] [-u bufsiz] [topic]
        -c filename = Use LBM configuration file filename.
@@ -1207,7 +1256,9 @@ Alternate usage: lbmspike [-dhLn] [-B bghumms] [-c filename] [-l len] [-M msgs] 
  </p>
 <h3><a class="anchor" id="examplelbmsrc_c"></a>
 Example lbmsrc.c&nbsp;&nbsp;<small><a href="#examplelbmsrc_c">&lt;-</a></small></h3>
-<p>Source code: <a href="../../example/lbmsrc.c">lbmsrc.c</a> </p><pre class="fragment">Purpose: application that sends to a single topic as fast possible.
+<p>Example build:<br />
+ </p><pre class="fragment">gcc lbmsrc.c verifymsg.c -o lbmsrc -I$LBM/include -I$LBM/include/lbm -L$LBM/lib -lpthread -llbm -lm -lrsock -lprotobuf-c
+</pre><p>Source code: <a href="../../example/lbmsrc.c">lbmsrc.c</a> </p><pre class="fragment">Purpose: application that sends to a single topic as fast possible.
 Usage: lbmsrc [options] topic
 Available options:
   -c, --config=FILE         Use LBM configuration file FILE.
@@ -1285,7 +1336,9 @@ PB format options:
  </p>
 <h3><a class="anchor" id="examplelbmssrc_c"></a>
 Example lbmssrc.c&nbsp;&nbsp;<small><a href="#examplelbmssrc_c">&lt;-</a></small></h3>
-<p>Source code: <a href="../../example/lbmssrc.c">lbmssrc.c</a> </p><pre class="fragment">Purpose: application that uses Smart Source to send to a single topic.
+<p>Example build:<br />
+ </p><pre class="fragment">gcc lbmssrc.c verifymsg.c -o lbmssrc -I$LBM/include -I$LBM/include/lbm -L$LBM/lib -lpthread -llbm -lm -lrsock -lprotobuf-c
+</pre><p>Source code: <a href="../../example/lbmssrc.c">lbmssrc.c</a> </p><pre class="fragment">Purpose: application that uses Smart Source to send to a single topic.
 Usage: lbmssrc [options] topic
 Available options:
   -a, --available-data-space  print the length of available data space
@@ -1364,7 +1417,9 @@ PB format options:
  </p>
 <h3><a class="anchor" id="examplelbmssrcreq_c"></a>
 Example lbmssrcreq.c&nbsp;&nbsp;<small><a href="#examplelbmssrcreq_c">&lt;-</a></small></h3>
-<p>Source code: <a href="../../example/lbmssrcreq.c">lbmssrcreq.c</a> </p><pre class="fragment">Purpose: application that sends requests on a single topic and waits for
+<p>Example build:<br />
+ </p><pre class="fragment">gcc lbmssrcreq.c -o lbmssrcreq -I$LBM/include -I$LBM/include/lbm -L$LBM/lib -lpthread -llbm -lm -lrsock -lprotobuf-c
+</pre><p>Source code: <a href="../../example/lbmssrcreq.c">lbmssrcreq.c</a> </p><pre class="fragment">Purpose: application that sends requests on a single topic and waits for
     responses.
 Usage: lbmssrcreq [options] topic
 Available options:
@@ -1389,7 +1444,9 @@ Available options:
  </p>
 <h3><a class="anchor" id="examplelbmstrm_c"></a>
 Example lbmstrm.c&nbsp;&nbsp;<small><a href="#examplelbmstrm_c">&lt;-</a></small></h3>
-<p>Source code: <a href="../../example/lbmstrm.c">lbmstrm.c</a> </p><pre class="fragment">Purpose: application that sends messages to one or more topics at a
+<p>Example build:<br />
+ </p><pre class="fragment">gcc lbmstrm.c verifymsg.c -o lbmstrm -I$LBM/include -I$LBM/include/lbm -L$LBM/lib -lpthread -llbm -lm -lrsock -lprotobuf-c
+</pre><p>Source code: <a href="../../example/lbmstrm.c">lbmstrm.c</a> </p><pre class="fragment">Purpose: application that sends messages to one or more topics at a
     specified rate.
 Usage: lbmstrm [options]
   Topic names generated as a root, followed by a dot, followed by an integer.
@@ -1420,7 +1477,9 @@ Available options:
  </p>
 <h3><a class="anchor" id="examplelbmtrreq_c"></a>
 Example lbmtrreq.c&nbsp;&nbsp;<small><a href="#examplelbmtrreq_c">&lt;-</a></small></h3>
-<p>Source code: <a href="../../example/lbmtrreq.c">lbmtrreq.c</a> </p><pre class="fragment">Purpose: application that invokes the Topic Resolution Request API.
+<p>Example build:<br />
+ </p><pre class="fragment">gcc lbmtrreq.c verifymsg.c -o lbmtrreq -I$LBM/include -I$LBM/include/lbm -L$LBM/lib -lpthread -llbm -lm -lrsock -lprotobuf-c
+</pre><p>Source code: <a href="../../example/lbmtrreq.c">lbmtrreq.c</a> </p><pre class="fragment">Purpose: application that invokes the Topic Resolution Request API.
 Usage: lbmtrreq [options]
 Available options:
   -c, --config=FILE     Use LBM configuration file FILE.
@@ -1439,7 +1498,9 @@ Available options:
  </p>
 <h3><a class="anchor" id="examplelbmwrcv_c"></a>
 Example lbmwrcv.c&nbsp;&nbsp;<small><a href="#examplelbmwrcv_c">&lt;-</a></small></h3>
-<p>Source code: <a href="../../example/lbmwrcv.c">lbmwrcv.c</a> </p><pre class="fragment">Purpose: application that receives messages from a wildcard receiver.
+<p>Example build:<br />
+ </p><pre class="fragment">gcc lbmwrcv.c -o lbmwrcv -I$LBM/include -I$LBM/include/lbm -L$LBM/lib -lpthread -llbm -lm -lrsock -lprotobuf-c
+</pre><p>Source code: <a href="../../example/lbmwrcv.c">lbmwrcv.c</a> </p><pre class="fragment">Purpose: application that receives messages from a wildcard receiver.
 Usage: lbmwrcv [options] pattern
 Available options:
   -c, --config=FILE     Use LBM configuration file FILE.
@@ -1507,7 +1568,9 @@ PB format options:
  </p>
 <h3><a class="anchor" id="examplelbmwrcvq_c"></a>
 Example lbmwrcvq.c&nbsp;&nbsp;<small><a href="#examplelbmwrcvq_c">&lt;-</a></small></h3>
-<p>Source code: <a href="../../example/lbmwrcvq.c">lbmwrcvq.c</a> </p><pre class="fragment">Purpose: application that receives messages from a wildcard receiver, using an
+<p>Example build:<br />
+ </p><pre class="fragment">gcc lbmwrcvq.c -o lbmwrcvq -I$LBM/include -I$LBM/include/lbm -L$LBM/lib -lpthread -llbm -lm -lrsock -lprotobuf-c
+</pre><p>Source code: <a href="../../example/lbmwrcvq.c">lbmwrcvq.c</a> </p><pre class="fragment">Purpose: application that receives messages from a wildcard receiver, using an
     event queue.
 Usage: lbmwrcvq [options] pattern
 Available options:
@@ -1574,22 +1637,29 @@ PB format options:
  </p>
 <h3><a class="anchor" id="exampleminrcv_c"></a>
 Example minrcv.c&nbsp;&nbsp;<small><a href="#exampleminrcv_c">&lt;-</a></small></h3>
-<p>Source code: <a href="../../example/minrcv.c">minrcv.c</a> </p><pre class="fragment">minrcv.c: minimal application that receives messages from a given topic.
+<p>Example build:<br />
+ </p><pre class="fragment">gcc minrcv.c -o minrcv -I$LBM/include -I$LBM/include/lbm -L$LBM/lib -lpthread -llbm -lm -lrsock -lprotobuf-c
+</pre><p>Source code: <a href="../../example/minrcv.c">minrcv.c</a> </p><pre class="fragment">minrcv.c: minimal application that receives messages from a given topic.
 </pre><p><br />
  </p>
 <h3><a class="anchor" id="exampleminrcv_cpp"></a>
 Example minrcv.cpp&nbsp;&nbsp;<small><a href="#exampleminrcv_cpp">&lt;-</a></small></h3>
-<p>Source code: <a href="../../example/minrcv.cpp">minrcv.cpp</a> </p><pre class="fragment"> minimal C++ application that receives messages from a given topic.
+<p>Example build:<br />
+ </p><pre class="fragment"></pre><p>Source code: <a href="../../example/minrcv.cpp">minrcv.cpp</a> </p><pre class="fragment"> minimal C++ application that receives messages from a given topic.
 </pre><p><br />
  </p>
 <h3><a class="anchor" id="exampleminsrc_c"></a>
 Example minsrc.c&nbsp;&nbsp;<small><a href="#exampleminsrc_c">&lt;-</a></small></h3>
-<p>Source code: <a href="../../example/minsrc.c">minsrc.c</a> </p><pre class="fragment">minsrc.c: minimal application that sends to a given topic.
+<p>Example build:<br />
+ </p><pre class="fragment">gcc minsrc.c -o minsrc -I$LBM/include -I$LBM/include/lbm -L$LBM/lib -lpthread -llbm -lm -lrsock -lprotobuf-c
+</pre><p>Source code: <a href="../../example/minsrc.c">minsrc.c</a> </p><pre class="fragment">minsrc.c: minimal application that sends to a given topic.
 </pre><p><br />
  </p>
 <h3><a class="anchor" id="examplesrs_cmd_c"></a>
 Example srs_cmd.c&nbsp;&nbsp;<small><a href="#examplesrs_cmd_c">&lt;-</a></small></h3>
-<p>Source code: <a href="../../example/srs_cmd.c">srs_cmd.c</a> </p><pre class="fragment">Purpose: send unicast immediate command messages to an SRS daemon.
+<p>Example build:<br />
+ </p><pre class="fragment">gcc srs_cmd.c srs_cmd_msg.c -o srs_cmd -I$LBM/include -I$LBM/include/lbm -L$LBM/lib -lpthread -llbm -lm -lrsock -lprotobuf-c
+</pre><p>Source code: <a href="../../example/srs_cmd.c">srs_cmd.c</a> </p><pre class="fragment">Purpose: send unicast immediate command messages to an SRS daemon.
 Usage: srs_cmd [options] [command_string]
 Available options:
   -c filename = Use LBM configuration file filename.
@@ -1620,7 +1690,9 @@ Available options:
  </p>
 <h3><a class="anchor" id="examplesrs_monitor_info_receiver_c"></a>
 Example srs_monitor_info_receiver.c&nbsp;&nbsp;<small><a href="#examplesrs_monitor_info_receiver_c">&lt;-</a></small></h3>
-<p>Source code: <a href="../../example/srs_monitor_info_receiver.c">srs_monitor_info_receiver.c</a> </p><pre class="fragment">Purpose: receive SRS monitor info messages on the specified topic.
+<p>Example build:<br />
+ </p><pre class="fragment">gcc srs_monitor_info_receiver.c -o srs_monitor_info_receiver -I$LBM/include -I$LBM/include/lbm -L$LBM/lib -lpthread -llbm -lm -lrsock -lprotobuf-c
+</pre><p>Source code: <a href="../../example/srs_monitor_info_receiver.c">srs_monitor_info_receiver.c</a> </p><pre class="fragment">Purpose: receive SRS monitor info messages on the specified topic.
   Note: this tool is deprecated.
   See https://ultramessaging.github.io/currdoc/doc/ChangeLog/deprecations.html#deprecationsfor615
 Usage: srs_monitor_info_receiver [options] topic
@@ -1633,24 +1705,11 @@ Available options:
   -L, --linger         linger for linger seconds before closing context
 </pre><p><br />
  </p>
-<h3><a class="anchor" id="examplesrs_monitor_info_receiver_json_c"></a>
-Example srs_monitor_info_receiver_json.c&nbsp;&nbsp;<small><a href="#examplesrs_monitor_info_receiver_json_c">&lt;-</a></small></h3>
-<p>Source code: <a href="../../example/srs_monitor_info_receiver_json.c">srs_monitor_info_receiver_json.c</a> </p><pre class="fragment">Purpose: receive and decode JSON SRS monitor info messages on the specified topic.
-  Note: this tool is not shipped in binary form and is deprecated.
-  See https://ultramessaging.github.io/currdoc/doc/ChangeLog/deprecations.html#deprecationsfor615
-Usage: srs_monitor_info_receiver_json [options] topic
-Available options:
-  -c, --config=FILE    Use LBM configuration file filename.
-                       Multiple config files are allowed.
-                       Example:  '-c file1.cfg -c file2.cfg'
-  -E, --exit           exit upon EOS reception
-  -h, --help           help
-  -L, --linger         linger for linger seconds before closing context
-</pre><p><br />
- </p>
 <h3><a class="anchor" id="exampletnwgdcmd_c"></a>
 Example tnwgdcmd.c&nbsp;&nbsp;<small><a href="#exampletnwgdcmd_c">&lt;-</a></small></h3>
-<p>Source code: <a href="../../example/tnwgdcmd.c">tnwgdcmd.c</a> </p><pre class="fragment">Purpose: application sends unicast immediate command messages to a tnwgd publishing daemon.
+<p>Example build:<br />
+ </p><pre class="fragment">gcc tnwgdcmd.c -o tnwgdcmd -I$LBM/include -I$LBM/include/lbm -L$LBM/lib -lpthread -llbm -lm -lrsock -lprotobuf-c
+</pre><p>Source code: <a href="../../example/tnwgdcmd.c">tnwgdcmd.c</a> </p><pre class="fragment">Purpose: application sends unicast immediate command messages to a tnwgd publishing daemon.
 Usage: tnwgdcmd -T target_string -c config_file [command_string]
 Available options:
   -c filename = Use LBM configuration file filename.
@@ -1678,7 +1737,9 @@ Available options:
  </p>
 <h3><a class="anchor" id="exampletnwgdmon_c"></a>
 Example tnwgdmon.c&nbsp;&nbsp;<small><a href="#exampletnwgdmon_c">&lt;-</a></small></h3>
-<p>Source code: <a href="../../example/tnwgdmon.c">tnwgdmon.c</a> </p><pre class="fragment">Purpose: application that receives DRO daemon messages on the specified publishing topic.
+<p>Example build:<br />
+ </p><pre class="fragment">gcc tnwgdmon.c -o tnwgdmon -I$LBM/include -I$LBM/include/lbm -L$LBM/lib -lpthread -llbm -lm -lrsock -lprotobuf-c
+</pre><p>Source code: <a href="../../example/tnwgdmon.c">tnwgdmon.c</a> </p><pre class="fragment">Purpose: application that receives DRO daemon messages on the specified publishing topic.
 Usage: tnwgdmon [-Ehv] [-c filename] publishing_topic
 Available options:
   -c, --config=FILE    Use LBM configuration file FILE.
@@ -1691,12 +1752,16 @@ Available options:
  </p>
 <h3><a class="anchor" id="exampleumedcmd_c"></a>
 Example umedcmd.c&nbsp;&nbsp;<small><a href="#exampleumedcmd_c">&lt;-</a></small></h3>
-<p>Source code: <a href="../../example/umedcmd.c">umedcmd.c</a> See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/example/ume.tag:../../UME/" href="../../UME/storedaemonstatistics.html#umedcmdmanpage">umedcmd Man Page</a> for usage information.</p>
+<p>Example build:<br />
+ </p><pre class="fragment">gcc umedcmd.c -o umedcmd -I$LBM/include -I$LBM/include/lbm -L$LBM/lib -lpthread -llbm -lm -lrsock -lprotobuf-c
+</pre><p>Source code: <a href="../../example/umedcmd.c">umedcmd.c</a> See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16/doc/example/ume.tag:../../UME/" href="../../UME/storedaemonstatistics.html#umedcmdmanpage">umedcmd Man Page</a> for usage information.</p>
 <p><br />
  </p>
 <h3><a class="anchor" id="exampleumedmon_c"></a>
 Example umedmon.c&nbsp;&nbsp;<small><a href="#exampleumedmon_c">&lt;-</a></small></h3>
-<p>Source code: <a href="../../example/umedmon.c">umedmon.c</a> </p><pre class="fragment">Purpose: application that receives umestore daemon messages on the specified publishing topic.
+<p>Example build:<br />
+ </p><pre class="fragment">gcc umedmon.c -o umedmon -I$LBM/include -I$LBM/include/lbm -L$LBM/lib -lpthread -llbm -lm -lrsock -lprotobuf-c
+</pre><p>Source code: <a href="../../example/umedmon.c">umedmon.c</a> </p><pre class="fragment">Purpose: application that receives umestore daemon messages on the specified publishing topic.
 Usage: umedmon [-Ehv] [-c filename] publishing_topic
 Available options:
   -c, --config=FILE    Use LBM configuration file FILE.
@@ -1709,43 +1774,57 @@ Available options:
  </p>
 <h3><a class="anchor" id="exampleume-example-rcv-2_c"></a>
 Example ume-example-rcv-2.c&nbsp;&nbsp;<small><a href="#exampleume-example-rcv-2_c">&lt;-</a></small></h3>
-<p>Source code: <a href="../../example/ume-example-rcv-2.c">ume-example-rcv-2.c</a> </p><pre class="fragment">ume-example-rcv-2.c: - Persistent example receiver program.
+<p>Example build:<br />
+ </p><pre class="fragment">gcc ume-example-rcv-2.c -o ume-example-rcv-2 -I$LBM/include -I$LBM/include/lbm -L$LBM/lib -lpthread -llbm -lm -lrsock -lprotobuf-c
+</pre><p>Source code: <a href="../../example/ume-example-rcv-2.c">ume-example-rcv-2.c</a> </p><pre class="fragment">ume-example-rcv-2.c: - Persistent example receiver program.
 See Persistence Guide document.
 </pre><p><br />
  </p>
 <h3><a class="anchor" id="exampleume-example-rcv-3_c"></a>
 Example ume-example-rcv-3.c&nbsp;&nbsp;<small><a href="#exampleume-example-rcv-3_c">&lt;-</a></small></h3>
-<p>Source code: <a href="../../example/ume-example-rcv-3.c">ume-example-rcv-3.c</a> </p><pre class="fragment">ume-example-rcv-3.c: - Persistent example receiver program.
+<p>Example build:<br />
+ </p><pre class="fragment">gcc ume-example-rcv-3.c -o ume-example-rcv-3 -I$LBM/include -I$LBM/include/lbm -L$LBM/lib -lpthread -llbm -lm -lrsock -lprotobuf-c
+</pre><p>Source code: <a href="../../example/ume-example-rcv-3.c">ume-example-rcv-3.c</a> </p><pre class="fragment">ume-example-rcv-3.c: - Persistent example receiver program.
 See Persistence Guide document.
 </pre><p><br />
  </p>
 <h3><a class="anchor" id="exampleume-example-rcv_c"></a>
 Example ume-example-rcv.c&nbsp;&nbsp;<small><a href="#exampleume-example-rcv_c">&lt;-</a></small></h3>
-<p>Source code: <a href="../../example/ume-example-rcv.c">ume-example-rcv.c</a> </p><pre class="fragment">ume-example-rcv.c: - Persistent example receiver program.
+<p>Example build:<br />
+ </p><pre class="fragment">gcc ume-example-rcv.c -o ume-example-rcv -I$LBM/include -I$LBM/include/lbm -L$LBM/lib -lpthread -llbm -lm -lrsock -lprotobuf-c
+</pre><p>Source code: <a href="../../example/ume-example-rcv.c">ume-example-rcv.c</a> </p><pre class="fragment">ume-example-rcv.c: - Persistent example receiver program.
 See Persistence Guide document.
 </pre><p><br />
  </p>
 <h3><a class="anchor" id="exampleume-example-src-2_c"></a>
 Example ume-example-src-2.c&nbsp;&nbsp;<small><a href="#exampleume-example-src-2_c">&lt;-</a></small></h3>
-<p>Source code: <a href="../../example/ume-example-src-2.c">ume-example-src-2.c</a> </p><pre class="fragment">ume-example-src-2.c: - Persistent example source program.
+<p>Example build:<br />
+ </p><pre class="fragment">gcc ume-example-src-2.c -o ume-example-src-2 -I$LBM/include -I$LBM/include/lbm -L$LBM/lib -lpthread -llbm -lm -lrsock -lprotobuf-c
+</pre><p>Source code: <a href="../../example/ume-example-src-2.c">ume-example-src-2.c</a> </p><pre class="fragment">ume-example-src-2.c: - Persistent example source program.
 See Persistence Guide document.
 </pre><p><br />
  </p>
 <h3><a class="anchor" id="exampleume-example-src-3_c"></a>
 Example ume-example-src-3.c&nbsp;&nbsp;<small><a href="#exampleume-example-src-3_c">&lt;-</a></small></h3>
-<p>Source code: <a href="../../example/ume-example-src-3.c">ume-example-src-3.c</a> </p><pre class="fragment">ume-example-src-3.c: - Persistent example source program.
+<p>Example build:<br />
+ </p><pre class="fragment">gcc ume-example-src-3.c -o ume-example-src-3 -I$LBM/include -I$LBM/include/lbm -L$LBM/lib -lpthread -llbm -lm -lrsock -lprotobuf-c
+</pre><p>Source code: <a href="../../example/ume-example-src-3.c">ume-example-src-3.c</a> </p><pre class="fragment">ume-example-src-3.c: - Persistent example source program.
 See Persistence Guide document.
 </pre><p><br />
  </p>
 <h3><a class="anchor" id="exampleume-example-src_c"></a>
 Example ume-example-src.c&nbsp;&nbsp;<small><a href="#exampleume-example-src_c">&lt;-</a></small></h3>
-<p>Source code: <a href="../../example/ume-example-src.c">ume-example-src.c</a> </p><pre class="fragment">ume-example-src.c: - Persistent example receiver program.
+<p>Example build:<br />
+ </p><pre class="fragment">gcc ume-example-src.c -o ume-example-src -I$LBM/include -I$LBM/include/lbm -L$LBM/lib -lpthread -llbm -lm -lrsock -lprotobuf-c
+</pre><p>Source code: <a href="../../example/ume-example-src.c">ume-example-src.c</a> </p><pre class="fragment">ume-example-src.c: - Persistent example receiver program.
 See Persistence Guide document.
 </pre><p><br />
  </p>
 <h3><a class="anchor" id="exampleumercv_c"></a>
 Example umercv.c&nbsp;&nbsp;<small><a href="#exampleumercv_c">&lt;-</a></small></h3>
-<p>Source code: <a href="../../example/umercv.c">umercv.c</a> </p><pre class="fragment">Purpose: application that receives persisted messages from a given topic.
+<p>Example build:<br />
+ </p><pre class="fragment">gcc umercv.c verifymsg.c -o umercv -I$LBM/include -I$LBM/include/lbm -L$LBM/lib -lpthread -llbm -lm -lrsock -lprotobuf-c
+</pre><p>Source code: <a href="../../example/umercv.c">umercv.c</a> </p><pre class="fragment">Purpose: application that receives persisted messages from a given topic.
 Usage: umercv [options] topic
 Available options:
   -A, --ascii                 display messages as ASCII text (-A -A for newlines after each msg)
@@ -1774,12 +1853,16 @@ Available options:
  </p>
 <h3><a class="anchor" id="exampleumesnaprepo_c"></a>
 Example umesnaprepo.c&nbsp;&nbsp;<small><a href="#exampleumesnaprepo_c">&lt;-</a></small></h3>
-<p>Source code: <a href="../../example/umesnaprepo.c">umesnaprepo.c</a> See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/example/ume.tag:../../UME/" href="../../UME/storerepositoryprofilingsrp.html#umesnaprepomanpage">umesnaprepo Man Page</a> for usage information.</p>
+<p>Example build:<br />
+ </p><pre class="fragment">gcc umesnaprepo.c -o umesnaprepo -I$LBM/include -I$LBM/include/lbm -L$LBM/lib -lpthread -llbm -lm -lrsock -lprotobuf-c -llbmutl -lumestorelib -lrt -lsmartheap_smp64
+</pre><p>Source code: <a href="../../example/umesnaprepo.c">umesnaprepo.c</a> See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16/doc/example/ume.tag:../../UME/" href="../../UME/storerepositoryprofilingsrp.html#umesnaprepomanpage">umesnaprepo Man Page</a> for usage information.</p>
 <p><br />
  </p>
 <h3><a class="anchor" id="exampleumesrc_c"></a>
 Example umesrc.c&nbsp;&nbsp;<small><a href="#exampleumesrc_c">&lt;-</a></small></h3>
-<p>Source code: <a href="../../example/umesrc.c">umesrc.c</a> </p><pre class="fragment">Purpose: application that sends persisted messages to a given topic at a
+<p>Example build:<br />
+ </p><pre class="fragment">gcc umesrc.c verifymsg.c -o umesrc -I$LBM/include -I$LBM/include/lbm -L$LBM/lib -lpthread -llbm -lm -lrsock -lprotobuf-c
+</pre><p>Source code: <a href="../../example/umesrc.c">umesrc.c</a> </p><pre class="fragment">Purpose: application that sends persisted messages to a given topic at a
     specified rate.
 Usage: umesrc [options] topic
 Available options:
@@ -1811,7 +1894,9 @@ Available options:
  </p>
 <h3><a class="anchor" id="exampleumessrc_c"></a>
 Example umessrc.c&nbsp;&nbsp;<small><a href="#exampleumessrc_c">&lt;-</a></small></h3>
-<p>Source code: <a href="../../example/umessrc.c">umessrc.c</a> </p><pre class="fragment">Purpose: application that uses Smart Source sends to a given topic. Understands persistence.
+<p>Example build:<br />
+ </p><pre class="fragment">gcc umessrc.c verifymsg.c -o umessrc -I$LBM/include -I$LBM/include/lbm -L$LBM/lib -lpthread -llbm -lm -lrsock -lprotobuf-c
+</pre><p>Source code: <a href="../../example/umessrc.c">umessrc.c</a> </p><pre class="fragment">Purpose: application that uses Smart Source sends to a given topic. Understands persistence.
 Usage: umessrc [options] topic
 Available options:
   -a, --available-data-space  print the length of available data space
@@ -1893,13 +1978,17 @@ PB format options:
  </p>
 <h3><a class="anchor" id="exampleumestored_example_c"></a>
 Example umestored_example.c&nbsp;&nbsp;<small><a href="#exampleumestored_example_c">&lt;-</a></small></h3>
-<p>Source code: <a href="../../example/umestored_example.c">umestored_example.c</a> </p><pre class="fragment">umestored_example.c: application that shows how to call the
+<p>Example build:<br />
+ </p><pre class="fragment">gcc umestored_example.c -o umestored_example -I$LBM/include -I$LBM/include/lbm -L$LBM/lib -lpthread -llbm -lm -lrsock -lprotobuf-c -llbmutl -lumestorelib -lrt -lsmartheap_smp64
+</pre><p>Source code: <a href="../../example/umestored_example.c">umestored_example.c</a> </p><pre class="fragment">umestored_example.c: application that shows how to call the
   umestored_main API to start a UMP store daemon.
 </pre><p><br />
  </p>
 <h3><a class="anchor" id="exampleumqrcv_c"></a>
 Example umqrcv.c&nbsp;&nbsp;<small><a href="#exampleumqrcv_c">&lt;-</a></small></h3>
-<p>Source code: <a href="../../example/umqrcv.c">umqrcv.c</a> </p><pre class="fragment">Purpose: application that receives brokered queuing messages from a single topic.
+<p>Example build:<br />
+ </p><pre class="fragment">gcc umqrcv.c verifymsg.c -o umqrcv -I$LBM/include -I$LBM/include/lbm -L$LBM/lib -lpthread -llbm -lm -lrsock -lprotobuf-c
+</pre><p>Source code: <a href="../../example/umqrcv.c">umqrcv.c</a> </p><pre class="fragment">Purpose: application that receives brokered queuing messages from a single topic.
 Usage: umqrcv [options] topic
 Available options:
   -A, --ascii           display messages as ASCII text (-A -A for newlines after each msg)
@@ -1973,7 +2062,9 @@ PB format options:
  </p>
 <h3><a class="anchor" id="exampleumqsrc_c"></a>
 Example umqsrc.c&nbsp;&nbsp;<small><a href="#exampleumqsrc_c">&lt;-</a></small></h3>
-<p>Source code: <a href="../../example/umqsrc.c">umqsrc.c</a> </p><pre class="fragment">Purpose: umqsrc.c: application that sends brokered queuing messages to a single
+<p>Example build:<br />
+ </p><pre class="fragment">gcc umqsrc.c verifymsg.c -o umqsrc -I$LBM/include -I$LBM/include/lbm -L$LBM/lib -lpthread -llbm -lm -lrsock -lprotobuf-c
+</pre><p>Source code: <a href="../../example/umqsrc.c">umqsrc.c</a> </p><pre class="fragment">Purpose: umqsrc.c: application that sends brokered queuing messages to a single
     topic at a specified rate.
 Usage: umqsrc [options] topic
 Available options:
@@ -2004,7 +2095,7 @@ Available options:
  </p>
 <h2><a class="anchor" id="exampleprotocolfiles"></a>
 Example Protocol Files&nbsp;&nbsp;<small><a href="#exampleprotocolfiles">&lt;-</a></small></h2>
-<p>Google protocol buffer definition files. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/example/operations.tag:../../Operations/" href="../../Operations/monitoring.html#monitoringformats">Monitoring Formats</a>.</p>
+<p>Google protocol buffer definition files. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16/doc/example/operations.tag:../../Operations/" href="../../Operations/monitoring.html#monitoringformats">Monitoring Formats</a>.</p>
 <p><br />
  </p>
 <h3><a class="anchor" id="exampledro_mon_proto"></a>

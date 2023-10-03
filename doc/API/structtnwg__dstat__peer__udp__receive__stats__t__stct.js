@@ -1,0 +1,27 @@
+var structtnwg__dstat__peer__udp__receive__stats__t__stct =
+[
+    [ "bytes_rcved", "structtnwg__dstat__peer__udp__receive__stats__t__stct.html#a883d1394ba5f05c042486c38cd9308da", null ],
+    [ "dgrams_dropped_hdr", "structtnwg__dstat__peer__udp__receive__stats__t__stct.html#a4619c61cf9bd36416fe316503a9c5f61", null ],
+    [ "dgrams_dropped_other", "structtnwg__dstat__peer__udp__receive__stats__t__stct.html#a48ef39e5bcffce3efc6ce2a756bb0576", null ],
+    [ "dgrams_dropped_sid", "structtnwg__dstat__peer__udp__receive__stats__t__stct.html#aeeaa7e48ce76387f7f65592d78141fab", null ],
+    [ "dgrams_dropped_size", "structtnwg__dstat__peer__udp__receive__stats__t__stct.html#ab2f84eedf6416971c8b97e13ee790e87", null ],
+    [ "dgrams_dropped_type", "structtnwg__dstat__peer__udp__receive__stats__t__stct.html#a18defe99170f92e756e0b408e0111da1", null ],
+    [ "dgrams_dropped_version", "structtnwg__dstat__peer__udp__receive__stats__t__stct.html#ac8becbb747a6f199438e45dcaabe069e", null ],
+    [ "duplicate_data", "structtnwg__dstat__peer__udp__receive__stats__t__stct.html#a3cccf0c541065a8845cc2e7188b0d294", null ],
+    [ "lost", "structtnwg__dstat__peer__udp__receive__stats__t__stct.html#afcd37ceaede6b106e266555781df7bb4", null ],
+    [ "msgs_rcved", "structtnwg__dstat__peer__udp__receive__stats__t__stct.html#a09f8aaba3c282f75a265b4807ef41ed3", null ],
+    [ "nak_pckts_sent", "structtnwg__dstat__peer__udp__receive__stats__t__stct.html#a495e3d428390827d25be43a3994b29e2", null ],
+    [ "nak_stm_max", "structtnwg__dstat__peer__udp__receive__stats__t__stct.html#a06ba1e8b388d472ea55621743a6de723", null ],
+    [ "nak_stm_mean", "structtnwg__dstat__peer__udp__receive__stats__t__stct.html#a2b27ce9015e0aad27793f24e6ba66bad", null ],
+    [ "nak_stm_min", "structtnwg__dstat__peer__udp__receive__stats__t__stct.html#af233f118a08d3cc4ac30ba0cdefdf580", null ],
+    [ "nak_tx_max", "structtnwg__dstat__peer__udp__receive__stats__t__stct.html#a404036f7c0b6dae82934499d26b52490", null ],
+    [ "nak_tx_mean", "structtnwg__dstat__peer__udp__receive__stats__t__stct.html#ab8228fac450c3ceb923839a2374264ee", null ],
+    [ "nak_tx_min", "structtnwg__dstat__peer__udp__receive__stats__t__stct.html#a448a05146d68f3d9eb638745ca0098cc", null ],
+    [ "naks_sent", "structtnwg__dstat__peer__udp__receive__stats__t__stct.html#a2fbc95052645719d53e518c6be797a3c", null ],
+    [ "ncfs_ignored", "structtnwg__dstat__peer__udp__receive__stats__t__stct.html#ab0634cb297d88e1447804a8f5b5dc232", null ],
+    [ "ncfs_rx_delay", "structtnwg__dstat__peer__udp__receive__stats__t__stct.html#a38ae8e3561c01abe0179d904092665f5", null ],
+    [ "ncfs_shed", "structtnwg__dstat__peer__udp__receive__stats__t__stct.html#a974723b72e4a017421d335a1f7100946", null ],
+    [ "ncfs_unknown", "structtnwg__dstat__peer__udp__receive__stats__t__stct.html#a75e4e900c9f244f60b16d3c86439fb13", null ],
+    [ "unrecovered_tmo", "structtnwg__dstat__peer__udp__receive__stats__t__stct.html#ae3243078e8f6bb9c71b87c64da5da098", null ],
+    [ "unrecovered_txw", "structtnwg__dstat__peer__udp__receive__stats__t__stct.html#a7aa0d8ad68f9583d26d5e7459bb64979", null ]
+];

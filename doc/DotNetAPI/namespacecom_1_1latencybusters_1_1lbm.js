@@ -75,6 +75,7 @@ var namespacecom_1_1latencybusters_1_1lbm =
     [ "LBMSourceEventObjectDisposer", "classcom_1_1latencybusters_1_1lbm_1_1LBMSourceEventObjectDisposer.html", "classcom_1_1latencybusters_1_1lbm_1_1LBMSourceEventObjectDisposer" ],
     [ "LBMSourceEventObjectFactory", "classcom_1_1latencybusters_1_1lbm_1_1LBMSourceEventObjectFactory.html", "classcom_1_1latencybusters_1_1lbm_1_1LBMSourceEventObjectFactory" ],
     [ "LBMSourceEventSequenceNumberInfo", "classcom_1_1latencybusters_1_1lbm_1_1LBMSourceEventSequenceNumberInfo.html", "classcom_1_1latencybusters_1_1lbm_1_1LBMSourceEventSequenceNumberInfo" ],
+    [ "LBMSourceEventTimestampInfo", "classcom_1_1latencybusters_1_1lbm_1_1LBMSourceEventTimestampInfo.html", "classcom_1_1latencybusters_1_1lbm_1_1LBMSourceEventTimestampInfo" ],
     [ "LBMSourceEventWakeupInfo", "classcom_1_1latencybusters_1_1lbm_1_1LBMSourceEventWakeupInfo.html", "classcom_1_1latencybusters_1_1lbm_1_1LBMSourceEventWakeupInfo" ],
     [ "LBMSourceSendExInfo", "classcom_1_1latencybusters_1_1lbm_1_1LBMSourceSendExInfo.html", "classcom_1_1latencybusters_1_1lbm_1_1LBMSourceSendExInfo" ],
     [ "LBMSourceStatistics", "classcom_1_1latencybusters_1_1lbm_1_1LBMSourceStatistics.html", "classcom_1_1latencybusters_1_1lbm_1_1LBMSourceStatistics" ],

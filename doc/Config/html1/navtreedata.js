@@ -331,6 +331,7 @@ var NAVTREE =
         [ "transport_lbtru_nak_initial_backoff_interval (receiver)", "index.html#transportlbtrunakinitialbackoffintervalreceiver", null ],
         [ "transport_lbtru_nak_suppress_interval (receiver)", "index.html#transportlbtrunaksuppressintervalreceiver", null ],
         [ "transport_lbtru_receiver_socket_buffer (context)", "index.html#transportlbtrureceiversocketbuffercontext", null ],
+        [ "transport_lbtru_send_naks (receiver)", "index.html#transportlbtrusendnaksreceiver", null ],
         [ "transport_lbtru_source_socket_buffer (context)", "index.html#transportlbtrusourcesocketbuffercontext", null ],
         [ "transport_lbtru_transmission_window_limit (source)", "index.html#transportlbtrutransmissionwindowlimitsource", null ],
         [ "transport_lbtru_transmission_window_size (source)", "index.html#transportlbtrutransmissionwindowsizesource", null ]
@@ -397,9 +398,12 @@ var NAVTREE =
         [ "dbl_resolver_acceleration (context)", "index.html#dblresolveraccelerationcontext", null ]
       ] ],
       [ "Solarflare Onload", "index.html#solarflareonload", [
+        [ "Onload Stack Names", "index.html#onloadstacknames", null ],
+        [ "Using Onload with UM", "index.html#usingonloadwithum", null ],
         [ "Solarflare Tips", "index.html#solarflaretips", null ]
       ] ],
       [ "Reference", "index.html#transportaccelerationsolarflareref", [
+        [ "onload_acceleration_stack_name (context)", "index.html#onloadaccelerationstacknamecontext", null ],
         [ "onload_acceleration_stack_name (receiver)", "index.html#onloadaccelerationstacknamereceiver", null ],
         [ "onload_acceleration_stack_name (source)", "index.html#onloadaccelerationstacknamesource", null ]
       ] ],
@@ -520,11 +524,13 @@ var NAVTREE =
     ] ],
     [ "Unicast Immediate Messaging Operation Options", "index.html#grpunicastimmediatemessagingoperation", [
       [ "Reference", "index.html#requestoperationref", [
+        [ "request_tcp_activity_timeout (context)", "index.html#requesttcpactivitytimeoutcontext", null ],
         [ "request_tcp_exclusiveaddr (context)", "index.html#requesttcpexclusiveaddrcontext", null ],
         [ "request_tcp_listen_backlog (context)", "index.html#requesttcplistenbacklogcontext", null ],
         [ "request_tcp_reuseaddr (context)", "index.html#requesttcpreuseaddrcontext", null ],
         [ "response_session_maximum_buffer (context)", "index.html#responsesessionmaximumbuffercontext", null ],
         [ "response_session_sender_socket_buffer (context)", "index.html#responsesessionsendersocketbuffercontext", null ],
+        [ "response_tcp_activity_timeout (context)", "index.html#responsetcpactivitytimeoutcontext", null ],
         [ "response_tcp_deletion_timeout (context)", "index.html#responsetcpdeletiontimeoutcontext", null ],
         [ "response_tcp_interface (context)", "index.html#responsetcpinterfacecontext", null ],
         [ "response_tcp_nodelay (context)", "index.html#responsetcpnodelaycontext", null ]
@@ -782,8 +788,8 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "index.html",
-"index.html#resolutionnumberofsourcesquerythresholdreceiver",
-"index.html#transporttcpmultiplereceiversendordersource"
+"index.html#requesttcpportlowcontext",
+"index.html#transporttcpinterfacereceiver"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

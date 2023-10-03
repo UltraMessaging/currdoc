@@ -3,6 +3,7 @@ var NAVTREE =
   [ "UM .NET API", "index.html", [
     [ "Introduction", "index.html", [
       [ "UM .NET API", "index.html#umnetapi", [
+        [ ".NET Standard", "index.html#dotnetstandard", null ],
         [ "Application Callbacks in .NET", "index.html#applicationcallbacksinnet", null ],
         [ "Using UM .NET on Windows", "index.html#usingumnetonwindows", null ],
         [ "Using UM .NET on Linux", "index.html#usingumnetonlinux", null ]
@@ -31,26 +32,26 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"classcom_1_1latencybusters_1_1lbm_1_1LBM.html#adda9e1ac033156d2ac9d943bd600b138",
-"classcom_1_1latencybusters_1_1lbm_1_1LBMEventQueue.html#a96b8ad0d97d96be5fa734e7675b4c785",
-"classcom_1_1latencybusters_1_1lbm_1_1LBMImmediateMessageReceiverStatistics.html#acb962215aaeb20d2d8ccbf9048d6943e",
-"classcom_1_1latencybusters_1_1lbm_1_1LBMNewTransportInfo.html#a995d6c0bfecc8915f1a4761e6f7e9b93",
-"classcom_1_1latencybusters_1_1lbm_1_1LBMResolverEventAdvertisement.html#ad5f4955f425c8f0e613890ebb031a7d9",
-"classcom_1_1latencybusters_1_1lbm_1_1LBMWildcardReceiver.html#ae6ca629ec35010775f230236f6ced5d2",
-"classcom_1_1latencybusters_1_1lbm_1_1UMQSourceEventULBMessageInfo.html",
-"classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMArrayDecimal.html#abfdab70130ee20f479e666955befaaee",
-"classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMArrayInt16.html#adfb487730b85b2585e2297383dc3fee0",
-"classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMArrayInt8.html#ae79802145cd49ef0324918e25fd00984",
-"classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMArrayUint16.html#a0386a17cf3f54337dfebef61b46cac8f",
-"classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMArrayUint8.html#a0cf932eb36099d8991ec2247c965b75b",
-"classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMFieldBlob.html#a1d57f99dc7b116414372376df345e24f",
-"classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMFieldDouble.html#a8dbe1c12c86b80d8476e72a61197e4a9",
-"classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMFieldInt64.html",
-"classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMFieldString.html#a47e759185c748e0c1114da82aa56696a",
-"classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMFieldUint32.html#aa9552f87313230db05488b6f990c5cd4",
-"classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMFields.html#a5385943298807b324d25eab6b67d447d",
-"classcom_1_1latencybusters_1_1pdm_1_1PDMDefinition.html#a3d7fcaa5f9340bead5b858ca48e6eeca",
-"classcom_1_1latencybusters_1_1pdm_1_1PDMMessage.html#a68f50bfd0fdf292d5d6c490f20cf3235"
+"classcom_1_1latencybusters_1_1lbm_1_1LBM.html#adc5dc7a0719d62fef8433aa54c3268c0",
+"classcom_1_1latencybusters_1_1lbm_1_1LBMEventQueue.html#a7ab8e8a3b6cc2c82843acbd549f03b0b",
+"classcom_1_1latencybusters_1_1lbm_1_1LBMImmediateMessageReceiverStatistics.html#ac623136382611404fc69c61becab1495",
+"classcom_1_1latencybusters_1_1lbm_1_1LBMNewTransportInfo.html#a0be5fe76933b16d81037600dc57b810b",
+"classcom_1_1latencybusters_1_1lbm_1_1LBMResolverEventAdvertisement.html#a8d282cc4ed12650b50ddfdd2f9dd0a98",
+"classcom_1_1latencybusters_1_1lbm_1_1LBMWildcardReceiver.html#a93510f0a80a0c7c6d7fcec09e1307afe",
+"classcom_1_1latencybusters_1_1lbm_1_1UMQSourceEventMessageIdInfo.html",
+"classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMArrayDecimal.html#aa3373548eac00f814d909b5549977985",
+"classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMArrayInt16.html#abfdab70130ee20f479e666955befaaee",
+"classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMArrayInt8.html#acce0716641e47e6afffd824f8bdc98f9",
+"classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMArrayTimestamp.html#ae9fe0cbffd643ff7f8b93a55b1f84fa2",
+"classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMArrayUint64.html#aeb19f314931ec7452384dd2182a43ab7",
+"classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMFieldBlob.html#a01b2444790ec3bdcc3322e341be1d065",
+"classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMFieldDouble.html#a65c63e9067aac6304b485eef4f0133f2",
+"classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMFieldInt32.html#adadee445665d484d90980bbd2372dc78",
+"classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMFieldString.html#a172e890790cd41f318a3ab2f4c388953",
+"classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMFieldUint32.html#a816bb235ac9882256dee4c377ca56a0b",
+"classcom_1_1latencybusters_1_1lbm_1_1sdm_1_1LBMSDMFieldUnicode.html#ae6da2bde576a9178cddda2935f592e90",
+"classcom_1_1latencybusters_1_1pdm_1_1PDMDecimal.html#a706d10aafdfe6120bb3e74375351330e",
+"classcom_1_1latencybusters_1_1pdm_1_1PDMMessage.html#a4b5947d21f71e88b7ea17bc3636bda74"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

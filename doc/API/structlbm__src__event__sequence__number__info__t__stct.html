@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">UM C API
-   &#160;<span id="projectnumber">6.15</span>
+   &#160;<span id="projectnumber">6.16</span>
    </div>
   </td>
  </tr>
@@ -99,7 +99,7 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Structure that holds sequence number information for a message sent by a source. </p>
-<p>A structure used with UM sources that informs the application the sequence numbers used with a message. This structure is delivered by the <a class="el" href="lbm_8h.html#a350c2cab7f6f029276ebc323b7d73795">LBM_SRC_EVENT_SEQUENCE_NUMBER_INFO</a> source event, which is enabled by sending the message using the <a class="el" href="lbm_8h.html#a091b5806bf18d10ebd0d9117e0c70229">lbm_src_send_ex()</a> function and setting the <a class="el" href="lbm_8h.html#ab99586b3f3b469aa6f2e2da632fa5be0">LBM_SRC_SEND_EX_FLAG_SEQUENCE_NUMBER_INFO</a> flag or <a class="el" href="lbm_8h.html#ae2b7b029ca6a3fcfc2cd67d809930a95">LBM_SRC_SEND_EX_FLAG_SEQUENCE_NUMBER_INFO_FRAGONLY</a> flag.</p>
+<p>This structure signals to the source the assignment of sequence numbers to an outgoing message. It indicates the starting and ending sequence numbers assigned to the message. Delivered as a source event <a class="el" href="lbm_8h.html#a350c2cab7f6f029276ebc323b7d73795">LBM_SRC_EVENT_SEQUENCE_NUMBER_INFO</a> via callbacks <a class="el" href="lbm_8h.html#a0fe745a748ae36759c312737d9f127f7">lbm_src_cb_proc</a> and <a class="el" href="lbm_8h.html#aabf33a13236fde0595e1d1c13e4622b3">lbm_ssrc_cb_proc</a>, but only when enabled by sending the message using the <a class="el" href="lbm_8h.html#a091b5806bf18d10ebd0d9117e0c70229" title="Extended send of a message to the topic associated with a UM source. ">lbm_src_send_ex()</a> function and setting the <a class="el" href="lbm_8h.html#ab99586b3f3b469aa6f2e2da632fa5be0">LBM_SRC_SEND_EX_FLAG_SEQUENCE_NUMBER_INFO</a> flag or <a class="el" href="lbm_8h.html#ae2b7b029ca6a3fcfc2cd67d809930a95">LBM_SRC_SEND_EX_FLAG_SEQUENCE_NUMBER_INFO_FRAGONLY</a> flag.</p>
 <p>See <a class="el" href="structlbm__src__event__sequence__number__info__t__stct.html">lbm_src_event_sequence_number_info_t_stct</a> for field definitions. </p>
 </div><hr/>The documentation for this struct was generated from the following file:<ul>
 <li><a class="el" href="lbm_8h_source.html">lbm.h</a></li>

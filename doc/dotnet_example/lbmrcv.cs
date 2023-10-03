@@ -1,6 +1,6 @@
 
 /*
-  (C) Copyright 2005,2022 Informatica LLC  Permission is granted to licensees to use
+  (C) Copyright 2005,2023 Informatica Inc.  Permission is granted to licensees to use
   or alter this software for any purpose, including commercial applications,
   according to the terms laid out in the Software License Agreement.
 
@@ -820,6 +820,13 @@ namespace LBMApplication
                     {
                         otr_msgs++;
                     }
+
+					if (msg.hrTimestampSeconds() != 0)
+					{
+						String tsmsg = String.Format("HR@{0}.{1}[SQN {2}]\n", msg.hrTimestampSeconds(),
+                         msg.hrTimestampNanoseconds(), sqn);
+                    	System.Console.Out.WriteLine(tsmsg);
+					}
 
                     if (_verbose)
                     {

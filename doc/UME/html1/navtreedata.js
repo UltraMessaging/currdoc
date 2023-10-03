@@ -8,7 +8,7 @@ var NAVTREE =
       [ "Persistence Configuration Concept", "index.html#persistenceconfigurationconcept", null ],
       [ "Registration Identifier Concept", "index.html#registrationidentifierconcept", null ],
       [ "Delivery Confirmation Concept", "index.html#deliveryconfirmationconcept", null ],
-      [ "Release Policy", "index.html#releasepolicy", null ],
+      [ "Retention Policy", "index.html#releasepolicy", null ],
       [ "Message Stability Concept", "index.html#messagestabilityconcept", null ],
       [ "Quorum/Consensus Store Failover", "index.html#quorumconsensusstorefailover", null ]
     ] ],
@@ -82,7 +82,7 @@ var NAVTREE =
       [ "Sources Must Be Able to Resume Sending", "index.html#sourcesmustbeabletoresumesending", null ],
       [ "Source Message Retention and Release", "index.html#sourcemessageretentionandrelease", null ],
       [ "Forced Reclaims", "index.html#forcedreclaims", null ],
-      [ "Source Release Policy Options", "index.html#sourcereleasepolicyoptions", null ],
+      [ "Source Retention Policy Options", "index.html#sourcereleasepolicyoptions", null ],
       [ "Confirmed Delivery", "index.html#confirmeddelivery", null ],
       [ "Source Event Handler", "index.html#sourceeventhandler", null ],
       [ "Source Event Handler - Stability, Confirmation and Release", "index.html#sourceeventhandlerstabilityconfirmationandrelease", null ],

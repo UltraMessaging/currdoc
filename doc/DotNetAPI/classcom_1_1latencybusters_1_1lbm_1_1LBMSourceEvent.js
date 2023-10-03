@@ -17,6 +17,7 @@ var classcom_1_1latencybusters_1_1lbm_1_1LBMSourceEvent =
     [ "sequenceNumber", "classcom_1_1latencybusters_1_1lbm_1_1LBMSourceEvent.html#af18e45cbf2f3434c0398711676656099", null ],
     [ "sequenceNumberInfo", "classcom_1_1latencybusters_1_1lbm_1_1LBMSourceEvent.html#ae672c588332bf9b298f15759bf51994c", null ],
     [ "sourceWakeupInfo", "classcom_1_1latencybusters_1_1lbm_1_1LBMSourceEvent.html#ad158594579bd9bf52cc636e81aabfabc", null ],
+    [ "timestampInfo", "classcom_1_1latencybusters_1_1lbm_1_1LBMSourceEvent.html#a17301f2ee2cbd0989f94381185341c2a", null ],
     [ "type", "classcom_1_1latencybusters_1_1lbm_1_1LBMSourceEvent.html#a4559328a48adbc4577f1a25cae8b5c57", null ],
     [ "ulbMessageInfo", "classcom_1_1latencybusters_1_1lbm_1_1LBMSourceEvent.html#a65458c1994830cd86efedcf0b6f25c01", null ],
     [ "ulbReceiverInfo", "classcom_1_1latencybusters_1_1lbm_1_1LBMSourceEvent.html#a2a5363799b40817474f02165783fab99", null ]

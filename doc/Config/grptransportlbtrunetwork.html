@@ -65,6 +65,7 @@ LBT-RU Transport Session Management&nbsp;&nbsp;<small><a href="#lbtrutransportse
  <p>When a source is created, the application can explicitly map it to a transport session by setting the <a class="el" href="grptransportlbtrunetwork.html#transportlbtruportsource">transport_lbtru_port (source)</a> option. If a previous source was created on the same context with the same port, this new source will be mapped to the same transport session. However, two different contexts on the same host may not share the same port number. If a source is created with a port number that is already in use, UM will return an error.</p>
 <p>Alternatively, if the application does not explicitly specify a source port, UM will implicitly assign the new source to a pool of transport sessions defined when the context was created. The pool is defined as a range of port numbers specified by the options <a class="el" href="grptransportlbtrunetwork.html#transportlbtruportlowcontext">transport_lbtru_port_low (context)</a> and <a class="el" href="grptransportlbtrunetwork.html#transportlbtruporthighcontext">transport_lbtru_port_high (context)</a>. In addition, the option <a class="el" href="grptransportlbtrunetwork.html#transportlbtrumaximumportscontext">transport_lbtru_maximum_ports (context)</a> defines the number of transport sessions in the pool.</p>
 <p>When a new source is created and the source port is not explicitly defined, UM will check to see how many transport sessions are currently active from the pool within the context. If it is less than the number in the pool, then UM will activate the next transport session in the range. However, if the context already has activated all transport sessions in the pool, then the new topic is mapped to one of the existing transport sessions, in round-robin fashion.</p>
+<p>Note that if you intend to do both explicit mapping and implicit mapping to the default pool of transport sessions, the LBT-RU transport behaves differently than some of the other transport types (e.g. LBT-RM). Any explicitly given port will be added to the default pool. This means that subsequent implicit mappings to the default pool can include this newly added port.</p>
 <p>Notice that the default range of ports, 14380 to 14389, is 10 ports. But the default number of transport sessions in the pool is 5. This allows two contexts to be created on the same host and use the same configuration. If more than 2 contexts are intended to co-exist on the same host, the port range and number of transport session per context must be managed to give a unique port number to every transport session.</p>
 <p>The option <a class="el" href="grptransportlbtrunetwork.html#transportlbtruinterfacesource">transport_lbtru_interface (source)</a> may be used on LBT-RU sources to choose particular interface, overriding the default INADDR_ANY which accepts connections on all interfaces. Similarly, <a class="el" href="grptransportlbtrunetwork.html#transportlbtruinterfacereceiver">transport_lbtru_interface (receiver)</a> may be used on receivers to choose a particular interface for outgoing connections.</p>
 <p><br />
@@ -83,7 +84,7 @@ transport_lbtru_interface (receiver)&nbsp;&nbsp;<small><a href="#transportlbtrui
 <tr>
 <td><em>Scope:</em> </td><td>receiver </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a0b66a5b33839617b2a822e4a20a8d535">lbm_ipv4_address_mask_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a0b66a5b33839617b2a822e4a20a8d535">lbm_ipv4_address_mask_t</a></b> </td></tr>
 <tr>
 <td><em>Default value:</em> </td><td>0.0.0.0 (INADDR_ANY) </td></tr>
 <tr>
@@ -103,7 +104,7 @@ transport_lbtru_interface (source)&nbsp;&nbsp;<small><a href="#transportlbtruint
 <tr>
 <td><em>Scope:</em> </td><td>source </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a0b66a5b33839617b2a822e4a20a8d535">lbm_ipv4_address_mask_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a0b66a5b33839617b2a822e4a20a8d535">lbm_ipv4_address_mask_t</a></b> </td></tr>
 <tr>
 <td><em>Default value:</em> </td><td>0.0.0.0 (INADDR_ANY) </td></tr>
 <tr>
@@ -114,13 +115,13 @@ transport_lbtru_interface (source)&nbsp;&nbsp;<small><a href="#transportlbtruint
  </p>
 <h2><a class="anchor" id="transportlbtrumaximumportscontext"></a>
 transport_lbtru_maximum_ports (context)&nbsp;&nbsp;<small><a href="#transportlbtrumaximumportscontext">&lt;-</a></small></h2>
-<dl class="section user"><dt></dt><dd>Maximum size of LBT-RU source transport session pool. </dd></dl>
+<dl class="section user"><dt></dt><dd>Maximum size of LBT-RU source transport session default pool. </dd></dl>
 <dl class="section user"><dt></dt><dd>See <a class="el" href="grptransportlbtrunetwork.html#lbtrutransportsessionmanagement">LBT-RU Transport Session Management</a> for how LBT-RU source transport sessions are managed.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>context </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a86897f2fdd66aa7021683a4e72a4537b">lbm_uint16_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a86897f2fdd66aa7021683a4e72a4537b">lbm_uint16_t</a></b> </td></tr>
 <tr>
 <td><em>Units:</em> </td><td>number of ports </td></tr>
 <tr>
@@ -135,14 +136,17 @@ transport_lbtru_maximum_ports (context)&nbsp;&nbsp;<small><a href="#transportlbt
 transport_lbtru_port (source)&nbsp;&nbsp;<small><a href="#transportlbtruportsource">&lt;-</a></small></h2>
 <dl class="section user"><dt></dt><dd>The UDP port to be used for the source transport session. </dd></dl>
 <dl class="section user"><dt></dt><dd>This is the source-side option. For receive-side ports, see <a class="el" href="grptransportlbtrunetwork.html#transportlbtruportlowreceiver">transport_lbtru_port_low (receiver)</a>. </dd></dl>
-<dl class="section user"><dt></dt><dd>Setting this option to non-zero overrides the use of the pool of LBT-RU source transport sessions. </dd></dl>
+<dl class="section user"><dt></dt><dd>Setting this option to non-zero overrides the use of the default pool of LBT-RU source transport sessions. </dd></dl>
 <dl class="section user"><dt></dt><dd>See <a class="el" href="grptransportlbtrunetwork.html#lbtrutransportsessionmanagement">LBT-RU Transport Session Management</a> for how LBT-RU source transport sessions are managed. </dd></dl>
-<dl class="section user"><dt></dt><dd>See <a class="el" href="generalconfigurationguidelines.html#portassignments">Port Assignments</a> for more information about configuring ports.</dd></dl>
+<dl class="section user"><dt></dt><dd>See <a class="el" href="generalconfigurationguidelines.html#portassignments">Port Assignments</a> for more information about configuring ports. </dd></dl>
+<dl class="section user"><dt></dt><dd>Note that this port is only used by LBT-RU sources, not receivers. </dd></dl>
+<dl class="section user"><dt></dt><dd></dd></dl>
+<dl class="section attention"><dt>Attention</dt><dd>If a source is configured for a port that is not currently part of the transport session default pool, UM will create a new transport session for this port and add it to the default pool. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16/doc/Config/design.tag:../Design/" href="../Design/fundamentalconcepts.html#transportsessiondifferences">Transport Session Differences</a>.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>source </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a86897f2fdd66aa7021683a4e72a4537b">lbm_uint16_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a86897f2fdd66aa7021683a4e72a4537b">lbm_uint16_t</a></b> </td></tr>
 <tr>
 <td><em>Default value:</em> </td><td>0 (use open port) </td></tr>
 <tr>
@@ -155,7 +159,7 @@ transport_lbtru_port (source)&nbsp;&nbsp;<small><a href="#transportlbtruportsour
  </p>
 <h2><a class="anchor" id="transportlbtruporthighcontext"></a>
 transport_lbtru_port_high (context)&nbsp;&nbsp;<small><a href="#transportlbtruporthighcontext">&lt;-</a></small></h2>
-<dl class="section user"><dt></dt><dd>High UDP port number of range for pool of LBT-RU source transport sessions. </dd></dl>
+<dl class="section user"><dt></dt><dd>High UDP port number of range for default pool of LBT-RU source transport sessions. </dd></dl>
 <dl class="section user"><dt></dt><dd>When <a class="el" href="grptransportlbtrunetwork.html#transportlbtruportsource">transport_lbtru_port (source)</a> is not specified, a newly-created transport session will use an unused port from this range. Receivers that join the source's transport session send connection requests, acknowledgements, and NAKs to the source port. </dd></dl>
 <dl class="section user"><dt></dt><dd>See also <a class="el" href="grptransportlbtrunetwork.html#transportlbtruporthighcontext">transport_lbtru_port_high (context)</a>. </dd></dl>
 <dl class="section user"><dt></dt><dd>This is the source-side option. For the corresponding receiver option, see <a class="el" href="grptransportlbtrunetwork.html#transportlbtruporthighreceiver">transport_lbtru_port_high (receiver)</a>. </dd></dl>
@@ -165,7 +169,7 @@ transport_lbtru_port_high (context)&nbsp;&nbsp;<small><a href="#transportlbtrupo
 <tr>
 <td><em>Scope:</em> </td><td>context </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a86897f2fdd66aa7021683a4e72a4537b">lbm_uint16_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a86897f2fdd66aa7021683a4e72a4537b">lbm_uint16_t</a></b> </td></tr>
 <tr>
 <td><em>Default value:</em> </td><td>14389 </td></tr>
 <tr>
@@ -187,7 +191,7 @@ transport_lbtru_port_high (receiver)&nbsp;&nbsp;<small><a href="#transportlbtrup
 <tr>
 <td><em>Scope:</em> </td><td>receiver </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a86897f2fdd66aa7021683a4e72a4537b">lbm_uint16_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a86897f2fdd66aa7021683a4e72a4537b">lbm_uint16_t</a></b> </td></tr>
 <tr>
 <td><em>Default value:</em> </td><td>14379 </td></tr>
 <tr>
@@ -200,7 +204,7 @@ transport_lbtru_port_high (receiver)&nbsp;&nbsp;<small><a href="#transportlbtrup
  </p>
 <h2><a class="anchor" id="transportlbtruportlowcontext"></a>
 transport_lbtru_port_low (context)&nbsp;&nbsp;<small><a href="#transportlbtruportlowcontext">&lt;-</a></small></h2>
-<dl class="section user"><dt></dt><dd>Low UDP port number of range for pool of LBT-RU source transport sessions. </dd></dl>
+<dl class="section user"><dt></dt><dd>Low UDP port number of range for default pool of LBT-RU source transport sessions. </dd></dl>
 <dl class="section user"><dt></dt><dd>When <a class="el" href="grptransportlbtrunetwork.html#transportlbtruportsource">transport_lbtru_port (source)</a> is not specified, a newly-created transport session will use an unused port from this range. Receivers that join the source's transport session send connection requests, acknowledgements, and NAKs to the source port. </dd></dl>
 <dl class="section user"><dt></dt><dd>See also <a class="el" href="grptransportlbtrunetwork.html#transportlbtruporthighcontext">transport_lbtru_port_high (context)</a>. </dd></dl>
 <dl class="section user"><dt></dt><dd>This is the source-side option. For the corresponding receiver option, see <a class="el" href="grptransportlbtrunetwork.html#transportlbtruportlowreceiver">transport_lbtru_port_low (receiver)</a>. </dd></dl>
@@ -210,7 +214,7 @@ transport_lbtru_port_low (context)&nbsp;&nbsp;<small><a href="#transportlbtrupor
 <tr>
 <td><em>Scope:</em> </td><td>context </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a86897f2fdd66aa7021683a4e72a4537b">lbm_uint16_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a86897f2fdd66aa7021683a4e72a4537b">lbm_uint16_t</a></b> </td></tr>
 <tr>
 <td><em>Default value:</em> </td><td>14380 </td></tr>
 <tr>
@@ -232,7 +236,7 @@ transport_lbtru_port_low (receiver)&nbsp;&nbsp;<small><a href="#transportlbtrupo
 <tr>
 <td><em>Scope:</em> </td><td>receiver </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a86897f2fdd66aa7021683a4e72a4537b">lbm_uint16_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a86897f2fdd66aa7021683a4e72a4537b">lbm_uint16_t</a></b> </td></tr>
 <tr>
 <td><em>Default value:</em> </td><td>14360 </td></tr>
 <tr>

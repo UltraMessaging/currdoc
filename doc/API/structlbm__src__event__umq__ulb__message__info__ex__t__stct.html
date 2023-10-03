@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">UM C API
-   &#160;<span id="projectnumber">6.15</span>
+   &#160;<span id="projectnumber">6.16</span>
    </div>
   </td>
  </tr>
@@ -80,9 +80,8 @@ $(document).ready(function(){initNavTree('structlbm__src__event__umq__ulb__messa
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Data Fields</h2></td></tr>
-<tr class="memitem:aaae281f78a6a5bb7e08f2137eac8c8cd"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aaae281f78a6a5bb7e08f2137eac8c8cd"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlbm__src__event__umq__ulb__message__info__ex__t__stct.html#aaae281f78a6a5bb7e08f2137eac8c8cd">flags</a></td></tr>
-<tr class="memdesc:aaae281f78a6a5bb7e08f2137eac8c8cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bitmap set of flags reserved for future use. Currently set to 0. <br /></td></tr>
+<tr class="memitem:aaae281f78a6a5bb7e08f2137eac8c8cd"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlbm__src__event__umq__ulb__message__info__ex__t__stct.html#aaae281f78a6a5bb7e08f2137eac8c8cd">flags</a></td></tr>
+<tr class="memdesc:aaae281f78a6a5bb7e08f2137eac8c8cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bit map of flag bits ORed together.  <a href="#aaae281f78a6a5bb7e08f2137eac8c8cd">More...</a><br /></td></tr>
 <tr class="separator:aaae281f78a6a5bb7e08f2137eac8c8cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a51a9caf55a4736c5b918393cf39623b6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a51a9caf55a4736c5b918393cf39623b6"></a>
 <a class="el" href="lbm_8h.html#a6a09e48df4c9dc0df449988b57375c6d">lbm_umq_msgid_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlbm__src__event__umq__ulb__message__info__ex__t__stct.html#a51a9caf55a4736c5b918393cf39623b6">msg_id</a></td></tr>
@@ -119,9 +118,30 @@ char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="stru
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Structure that holds UMQ ULB message information in an extended form. </p>
-<p>A structure used with UMQ ULB source applications to indicate message events.</p>
+<p>This structure signals to the source a variety of message-oriented events. Delivered as source events <a class="el" href="lbm_8h.html#a9cfe28e7621da64e7c4a0cadd87314fa">LBM_SRC_EVENT_UMQ_ULB_MESSAGE_ASSIGNED_EX</a>, <a class="el" href="lbm_8h.html#af5f5b23502005a15f3baa56ef898deff">LBM_SRC_EVENT_UMQ_ULB_MESSAGE_REASSIGNED_EX</a>, <a class="el" href="lbm_8h.html#a6defdca03dccc09650911b703601e532">LBM_SRC_EVENT_UMQ_ULB_MESSAGE_TIMEOUT_EX</a>, <a class="el" href="lbm_8h.html#a4a7db539dc44a3ea20b28221a760d1ab">LBM_SRC_EVENT_UMQ_ULB_MESSAGE_COMPLETE_EX</a>, and <a class="el" href="lbm_8h.html#a9b09c5d3c47ada94e65653cdc8e3084f">LBM_SRC_EVENT_UMQ_ULB_MESSAGE_CONSUMED_EX</a> via callback <a class="el" href="lbm_8h.html#a0fe745a748ae36759c312737d9f127f7">lbm_src_cb_proc</a>.</p>
 <p>See <a class="el" href="structlbm__src__event__umq__ulb__message__info__ex__t__stct.html">lbm_src_event_umq_ulb_message_info_ex_t_stct</a> for field definitions. </p>
-</div><hr/>The documentation for this struct was generated from the following file:<ul>
+</div><h2 class="groupheader">Field Documentation</h2>
+<a class="anchor" id="aaae281f78a6a5bb7e08f2137eac8c8cd"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int lbm_src_event_umq_ulb_message_info_ex_t_stct::flags</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Bit map of flag bits ORed together. </p>
+<ul>
+<li>
+For event type <a class="el" href="lbm_8h.html#a6defdca03dccc09650911b703601e532">LBM_SRC_EVENT_UMQ_ULB_MESSAGE_TIMEOUT_EX</a> bits are: LBM_SRC_EVENT_UMQ_ULB_MESSAGE_TIMEOUT_EX_FLAG_* (i.e. <a class="el" href="lbm_8h.html#a8f49499d793faf9a36a19a4a522f4ff2">LBM_SRC_EVENT_UMQ_ULB_MESSAGE_TIMEOUT_EX_FLAG_TOTAL_LIFETIME_EXPIRED</a>, <a class="el" href="lbm_8h.html#a10c3f354a4cd9d2ff3b03f58558d6b97">LBM_SRC_EVENT_UMQ_ULB_MESSAGE_TIMEOUT_EX_FLAG_EXPLICIT</a>, <a class="el" href="lbm_8h.html#a7f795726e8119ace7fb061a1afea47e2">LBM_SRC_EVENT_UMQ_ULB_MESSAGE_TIMEOUT_EX_FLAG_DISCARD</a>, <a class="el" href="lbm_8h.html#af22450a211ef86eaa83aaa0f4c41876a">LBM_SRC_EVENT_UMQ_ULB_MESSAGE_TIMEOUT_EX_FLAG_MAX_REASSIGNS</a>) </li>
+<li>
+For event type <a class="el" href="lbm_8h.html#af5f5b23502005a15f3baa56ef898deff">LBM_SRC_EVENT_UMQ_ULB_MESSAGE_REASSIGNED_EX</a> bits are: LBM_SRC_EVENT_UMQ_ULB_MESSAGE_REASSIGNED_EX_FLAG_* (i.e. <a class="el" href="lbm_8h.html#ad1e214f4a013bcf2244772618c3ce44e">LBM_SRC_EVENT_UMQ_ULB_MESSAGE_REASSIGNED_EX_FLAG_EXPLICIT</a>) </li>
+</ul>
+
+</div>
+</div>
+<hr/>The documentation for this struct was generated from the following file:<ul>
 <li><a class="el" href="lbm_8h_source.html">lbm.h</a></li>
 </ul>
 </div><!-- contents -->

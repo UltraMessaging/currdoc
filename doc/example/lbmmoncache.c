@@ -2,11 +2,11 @@
   lbmmoncache.c: example LBM monitoring application.
 
 >>>> ORIGINAL //UMprod/DEV_MAIN_GCS/29West/lbm/src/example/lbmmoncache.c#2
-  (C) Copyright 2005,2022 Informatica LLC  Permission is granted to licensees to use
+  (C) Copyright 2005,2023 Informatica Inc.  Permission is granted to licensees to use
 ==== THEIRS //UMprod/DEV_MAIN_GCS/29West/lbm/src/example/lbmmoncache.c#3
-  (C) Copyright 2005,2022 Informatica LLC  Permission is granted to licensees to use
+  (C) Copyright 2005,2023 Informatica Inc.  Permission is granted to licensees to use
 ==== YOURS //ssawalsk_DEV_MAIN_NEW_LINUX/29West/lbm/src/example/lbmmoncache.c
-  (C) Copyright 2005,2022 Informatica LLC  Permission is granted to licensees to use
+  (C) Copyright 2005,2023 Informatica Inc.  Permission is granted to licensees to use
 <<<<
   or alter this software for any purpose, including commercial applications,
   according to the terms laid out in the Software License Agreement.

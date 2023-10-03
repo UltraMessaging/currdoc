@@ -1,5 +1,4 @@
 import com.latencybusters.lbm.*;
-import com.latencybusters.lbm.*;
 import com.latencybusters.lbm.UMSMonProtos.*;
 import com.latencybusters.lbm.UMSMonProtos.UMSMonMsg.*;
 import com.latencybusters.lbm.UMSMonProtos.UMSMonMsg.Stats.*;
@@ -7,15 +6,15 @@ import com.latencybusters.lbm.UMSMonProtos.UMSMonMsg.Events.*;
 import com.latencybusters.lbm.UMMonAttributesProtos.*;
 import com.latencybusters.lbm.UMPMonProtos.*;
 import com.latencybusters.lbm.DROMonProtos.*;
+import com.latencybusters.lbm.SRSMonProtos.*;
 import com.google.protobuf.TextFormat;
 import java.nio.ByteBuffer;
 import java.util.Date;
-
-// See https://communities.informatica.com/infakb/faq/5/Pages/80008.aspx
-import org.openmdx.uses.gnu.getopt.*;
+import gnu.getopt.Getopt;
+import gnu.getopt.LongOpt;
 
 /*
-  (C) Copyright 2005,2022 Informatica LLC  Permission is granted to licensees to use
+  (C) Copyright 2005,2023 Informatica Inc.  Permission is granted to licensees to use
   or alter this software for any purpose, including commercial applications,
   according to the terms laid out in the Software License Agreement.
 
@@ -89,11 +88,6 @@ class lbmmon
 			System.err.println("Error initializing LBM: " + ex.toString());
 			System.exit(1);
 		}
-		org.apache.log4j.Logger logger;
-		logger = org.apache.log4j.Logger.getLogger("lbmmon");
-		org.apache.log4j.BasicConfigurator.configure();
-		log4jLogger lbmlogger = new log4jLogger(logger);
-		lbm.setLogger(lbmlogger);
 
 		LBMObjectRecyclerBase objRec = new LBMObjectRecycler();
 		int transport = LBMMonitor.TRANSPORT_LBM;
@@ -309,7 +303,7 @@ class LBMMonCallbacks extends LBMMonitorStatisticsCallbackObject
 						System.err.println("Wildcard Receiver statistics received");
 						break;
 					default:
-						System.err.println("Error: unknown statistics packet type received." + type);
+						System.err.println("Error: unknown CSV statistics packet type received." + type);
 						break;
 				}
 			} else if (format == LBMMonitor.FORMAT_PB) {
@@ -399,7 +393,7 @@ class LBMMonCallbacks extends LBMMonitorStatisticsCallbackObject
 						UMPMonMsg umpMessage = UMPMonMsg.parseFrom(statsMsg);
 						attrMsg = umpMessage.getAttributes();
 						attributes = new LBMStatistics(attrMsg);
-						sb.append(attributes.displayString("UME store statistics received"));
+						sb.append(attributes.displayString("Store statistics received"));
 						sb.append("\n");
 						if (umpMessage.hasConfigs()) {
 							TextFormat.printer().print(umpMessage.getConfigs(), sb);
@@ -426,8 +420,22 @@ class LBMMonCallbacks extends LBMMonitorStatisticsCallbackObject
 						}
                         System.err.println(sb.toString());
                         break;
+                    case LBMMonitor.LBMMON_PACKET_TYPE_SRS:
+						SRSMonMsg srsMessage = SRSMonMsg.parseFrom(statsMsg);
+						attrMsg = srsMessage.getAttributes();
+						attributes = new LBMStatistics(attrMsg);
+						sb.append(attributes.displayString("SRS statistics received"));
+						sb.append("\n");
+						if (srsMessage.hasConfigs()) {
+							TextFormat.printer().print(srsMessage.getConfigs(), sb);
+						}
+						if (srsMessage.hasStats()) {
+							TextFormat.printer().print(srsMessage.getStats(), sb);
+						}
+                        System.err.println(sb.toString());
+                        break;
 					default:
-						System.err.println("Error: unknown statistics packet type received." + type);
+						System.err.println("Error: unknown PB statistics packet type received." + type);
 						break;
 				}
 			} else {

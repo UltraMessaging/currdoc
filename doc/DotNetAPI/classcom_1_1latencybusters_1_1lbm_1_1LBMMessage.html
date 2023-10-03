@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">UM .NET API
-   &#160;<span id="projectnumber">6.15</span>
+   &#160;<span id="projectnumber">6.16</span>
    </div>
   </td>
  </tr>
@@ -153,7 +153,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a2c07ab0c3908260df39ecd08e05bae54"><td class="mdescLeft">&#160;</td><td class="mdescRight">Total message size.  <a href="#a2c07ab0c3908260df39ecd08e05bae54">More...</a><br /></td></tr>
 <tr class="separator:a2c07ab0c3908260df39ecd08e05bae54"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a86d96147b5d0f37c0d9b7fbc4959550e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBMMessage.html#a86d96147b5d0f37c0d9b7fbc4959550e">isFragment</a> ()</td></tr>
-<tr class="memdesc:a86d96147b5d0f37c0d9b7fbc4959550e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns true if the current object is actually a message fragment.  <a href="#a86d96147b5d0f37c0d9b7fbc4959550e">More...</a><br /></td></tr>
+<tr class="memdesc:a86d96147b5d0f37c0d9b7fbc4959550e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determine if the current message is a single fragment of a larger, multi-fragment message.  <a href="#a86d96147b5d0f37c0d9b7fbc4959550e">More...</a><br /></td></tr>
 <tr class="separator:a86d96147b5d0f37c0d9b7fbc4959550e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0bf078cc31b8b43bd74946660352f77d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1UMEDeregistrationSuccessInfo.html">UMEDeregistrationSuccessInfo</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBMMessage.html#a0bf078cc31b8b43bd74946660352f77d">deregistrationSuccessInfo</a> ()</td></tr>
 <tr class="memdesc:a0bf078cc31b8b43bd74946660352f77d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get an extended deregistration success info object from the message (only for <a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBM.html#a5faa633acc99f209ec3712d3fa03be0c" title="UME receiver deregistration successful for a store (extended form). ">LBM.MSG_UME_DEREGISTRATION_SUCCESS_EX</a> messages).  <a href="#a0bf078cc31b8b43bd74946660352f77d">More...</a><br /></td></tr>
@@ -197,6 +197,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ab597a7a1dc45d4f952f78b271e9e2f35"><td class="memItemLeft" align="right" valign="top">UInt32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBMMessage.html#ab597a7a1dc45d4f952f78b271e9e2f35">timestampMicroseconds</a> ()</td></tr>
 <tr class="memdesc:ab597a7a1dc45d4f952f78b271e9e2f35"><td class="mdescLeft">&#160;</td><td class="mdescRight">Microsecondseconds portion of the timestamp indicating when the message was received.  <a href="#ab597a7a1dc45d4f952f78b271e9e2f35">More...</a><br /></td></tr>
 <tr class="separator:ab597a7a1dc45d4f952f78b271e9e2f35"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afd6df787c1878ed5838d946fe11e4ab2"><td class="memItemLeft" align="right" valign="top">UInt64&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBMMessage.html#afd6df787c1878ed5838d946fe11e4ab2">hrTimestampSeconds</a> ()</td></tr>
+<tr class="memdesc:afd6df787c1878ed5838d946fe11e4ab2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Seconds portion of the high resolution timestamp indicating when the message was received. Note: Supported on Linux only.  <a href="#afd6df787c1878ed5838d946fe11e4ab2">More...</a><br /></td></tr>
+<tr class="separator:afd6df787c1878ed5838d946fe11e4ab2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a03ee84aa3f91fa92868e280cfa27f654"><td class="memItemLeft" align="right" valign="top">UInt64&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBMMessage.html#a03ee84aa3f91fa92868e280cfa27f654">hrTimestampNanoseconds</a> ()</td></tr>
+<tr class="memdesc:a03ee84aa3f91fa92868e280cfa27f654"><td class="mdescLeft">&#160;</td><td class="mdescRight">Nanosecond portion of the high resolution timestamp indicating when the message was received. Note: Supported on Linux only.  <a href="#a03ee84aa3f91fa92868e280cfa27f654">More...</a><br /></td></tr>
+<tr class="separator:a03ee84aa3f91fa92868e280cfa27f654"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6b6bc61fa585ce68140d0ea5d65bb406"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBMMessageProperties.html">LBMMessageProperties</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBMMessage.html#a6b6bc61fa585ce68140d0ea5d65bb406">properties</a> ()</td></tr>
 <tr class="memdesc:a6b6bc61fa585ce68140d0ea5d65bb406"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve the properties associated with this message.  <a href="#a6b6bc61fa585ce68140d0ea5d65bb406">More...</a><br /></td></tr>
 <tr class="separator:a6b6bc61fa585ce68140d0ea5d65bb406"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -253,9 +259,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Encapsulates all <a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBM.html" title="LBM Utility class. ">LBM</a> messages. </p>
-<p>Messages are delivered via the receiver callback. It is possible to retain a message for further processing after the receiver callback returns by calling <a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBMMessage.html#a2cda69ee0b33fe294d46761401e451ca" title="Inform UM that the application is going to retain ownership of a UM message object after the receiver...">promote()</a> and saving the message. The application must call <a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBMMessage.html#a963d0f07751ed176a97f3eff84740fb9" title="Dispose of memory associated with this message. ">dispose()</a> for each and every message when processing is completed. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/DotNetAPI/design.tag:../Design/" href="../Design/applicationdesignprinciples.html#netmessagereception">.NET Message Reception</a>. </p>
+<p>Messages are delivered via the receiver callback. It is possible to retain a message for further processing after the receiver callback returns by calling <a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBMMessage.html#a2cda69ee0b33fe294d46761401e451ca" title="Inform UM that the application is going to retain ownership of a UM message object after the receiver...">promote()</a> and saving the message. The application must call <a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBMMessage.html#a963d0f07751ed176a97f3eff84740fb9" title="Dispose of memory associated with this message. ">dispose()</a> for each and every message when processing is completed. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16/doc/DotNetAPI/design.tag:../Design/" href="../Design/applicationdesignprinciples.html#netmessagereception">.NET Message Reception</a>. </p>
 <p>Access message data via dataBuffer() and dataLength() to preserve "Zero
-Object Delivery" (ZOD). See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/DotNetAPI/design.tag:../Design/" href="../Design/advancedoptimizations.html#zeroobjectdelivery">Zero Object Delivery</a>. </p>
+Object Delivery" (ZOD). See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16/doc/DotNetAPI/design.tag:../Design/" href="../Design/advancedoptimizations.html#zeroobjectdelivery">Zero Object Delivery</a>. </p>
 <p>For older, object-based delivery (non-ZOD), you may access message data via <a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBMMessage.html#a1b8ece5390b7345ef052752281712426" title="Message data. Calling this method causes the data to be copied to a new byte array. For better performance, use the dataPointer() method to access the data directly. ">data()</a>, which creates a byte array object that contains the message data. This method has lower performance. </p>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
@@ -406,8 +412,8 @@ Object Delivery" (ZOD). See <a class="elRef" doxygen="/29W/Amun/home/jenkins/bac
 </div><div class="memdoc">
 
 <p>Dispose of memory associated with this message. </p>
-<p>Every received message must be disposed after processing is complete. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/DotNetAPI/design.tag:../Design/" href="../Design/applicationdesignprinciples.html#netmessagereception">.NET Message Reception</a>.</p>
-<p>If this message is delivered from a persistent receiver, deleting the message might signal consumption of the message, depending on the use case. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/DotNetAPI/ume.tag:../UME/" href="../UME/designingpersistentreceivers.html#persistencemessageconsumption">Persistence Message Consumption</a> for a full explanation of consumption acknowledgements.</p>
+<p>Every received message must be disposed after processing is complete. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16/doc/DotNetAPI/design.tag:../Design/" href="../Design/applicationdesignprinciples.html#netmessagereception">.NET Message Reception</a>.</p>
+<p>If this message is delivered from a persistent receiver, deleting the message might signal consumption of the message, depending on the use case. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16/doc/DotNetAPI/ume.tag:../UME/" href="../UME/designingpersistentreceivers.html#persistencemessageconsumption">Persistence Message Consumption</a> for a full explanation of consumption acknowledgements.</p>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBMMessage.html#ae0f560b27b0eb707870f2ff52242749b" title="Dispose of this message immediately. ">Dispose</a> </dd></dl>
 
 </div>
@@ -529,6 +535,42 @@ Object Delivery" (ZOD). See <a class="elRef" doxygen="/29W/Amun/home/jenkins/bac
 
 </div>
 </div>
+<a class="anchor" id="a03ee84aa3f91fa92868e280cfa27f654"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">UInt64 com.latencybusters.lbm.LBMMessage.hrTimestampNanoseconds </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Nanosecond portion of the high resolution timestamp indicating when the message was received. Note: Supported on Linux only. </p>
+<dl class="section return"><dt>Returns</dt><dd>Linux only: Number of fractional seconds since Midnight, January 1st 1970 UTC. All other platforms: returns 0 </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="afd6df787c1878ed5838d946fe11e4ab2"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">UInt64 com.latencybusters.lbm.LBMMessage.hrTimestampSeconds </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Seconds portion of the high resolution timestamp indicating when the message was received. Note: Supported on Linux only. </p>
+<dl class="section return"><dt>Returns</dt><dd>Linux only: Number of whole seconds since Midnight, January 1st 1970 UTC. All other platforms: returns 0 </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="a86d96147b5d0f37c0d9b7fbc4959550e"></a>
 <div class="memitem">
 <div class="memproto">
@@ -542,7 +584,13 @@ Object Delivery" (ZOD). See <a class="elRef" doxygen="/29W/Amun/home/jenkins/bac
       </table>
 </div><div class="memdoc">
 
-<p>Returns true if the current object is actually a message fragment. </p>
+<p>Determine if the current message is a single fragment of a larger, multi-fragment message. </p>
+<p>Note that this method will not return true unless: </p><ul>
+<li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16/doc/DotNetAPI/config.tag:../Config/" href="../Config/grpmajoroptions.html#ordereddeliveryreceiver">ordered_delivery (receiver)</a> is set to "0" (zero), and </li>
+<li>
+the application message required UM fragmentation. </li>
+</ul>
 <dl class="section return"><dt>Returns</dt><dd>true if the current object is a message fragment; otherwise, false. </dd></dl>
 
 </div>
@@ -670,7 +718,7 @@ Object Delivery" (ZOD). See <a class="elRef" doxygen="/29W/Amun/home/jenkins/bac
 
 <p>Inform UM that the application is going to retain ownership of a UM message object after the receiver callback returns. </p>
 <p>This function should be called from inside a receiver callback function to prevent UM from automatically deleting the message when the callback function returns. This allows the message to be passed to a different part of the application, perhaps a different thread, for processing after the receiver callback returns.</p>
-<p>Once promoted, the application has the responsibility to dispose of the message when it is finished with it by calling <a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBMMessage.html#a963d0f07751ed176a97f3eff84740fb9" title="Dispose of memory associated with this message. ">dispose()</a>. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/DotNetAPI/design.tag:../Design/" href="../Design/applicationdesignprinciples.html#netmessagereception">.NET Message Reception</a>.</p>
+<p>Once promoted, the application has the responsibility to dispose of the message when it is finished with it by calling <a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBMMessage.html#a963d0f07751ed176a97f3eff84740fb9" title="Dispose of memory associated with this message. ">dispose()</a>. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16/doc/DotNetAPI/design.tag:../Design/" href="../Design/applicationdesignprinciples.html#netmessagereception">.NET Message Reception</a>.</p>
 <p>Note that this creates a new object, so delivery is no longer "zero object".</p>
 <dl class="section note"><dt>Note</dt><dd>the message must be promoted <em>before</em> being made available to the other parts of the application. For example, it would not be legal for a separate thread to start processing the message before the receiver callback called promote.</dd></dl>
 <dl class="section warning"><dt>Warning</dt><dd><a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBMMessage.html#a2cda69ee0b33fe294d46761401e451ca" title="Inform UM that the application is going to retain ownership of a UM message object after the receiver...">promote()</a> is NOT thread safe; do not call it on the same message from multiple threads at the same time.</dd></dl>
@@ -995,9 +1043,9 @@ Object Delivery" (ZOD). See <a class="elRef" doxygen="/29W/Amun/home/jenkins/bac
 </div><div class="memdoc">
 
 <p>Send a consumption acknowledgement to the persistent Store. </p>
-<p>This function is used in the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/DotNetAPI/ume.tag:../UME/" href="../UME/designingpersistentreceivers.html#explicitacknowledgments">Explicit Acknowledgments</a> use case to signal consumption of the supplied message, and all unacknowledged messages sent before it. <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/DotNetAPI/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeexplicitackonlyreceiver">ume_explicit_ack_only (receiver)</a> must be set to <b>1</b>.</p>
-<dl class="section warning"><dt>Warning</dt><dd>If explicit ACKs are used, the application must ensure that messages are ACKed in the order received. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/DotNetAPI/ume.tag:../UME/" href="../UME/designingpersistentreceivers.html#ackordering">ACK Ordering</a>.</dd></dl>
-<p>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/DotNetAPI/ume.tag:../UME/" href="../UME/designingpersistentreceivers.html#persistencemessageconsumption">Persistence Message Consumption</a> for a full explanation of consumption acknowledgements.</p>
+<p>This function is used in the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16/doc/DotNetAPI/ume.tag:../UME/" href="../UME/designingpersistentreceivers.html#explicitacknowledgments">Explicit Acknowledgments</a> use case to signal consumption of the supplied message, and all unacknowledged messages sent before it. <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16/doc/DotNetAPI/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeexplicitackonlyreceiver">ume_explicit_ack_only (receiver)</a> must be set to <b>1</b>.</p>
+<dl class="section warning"><dt>Warning</dt><dd>If explicit ACKs are used, the application must ensure that messages are ACKed in the order received. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16/doc/DotNetAPI/ume.tag:../UME/" href="../UME/designingpersistentreceivers.html#ackordering">ACK Ordering</a>.</dd></dl>
+<p>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16/doc/DotNetAPI/ume.tag:../UME/" href="../UME/designingpersistentreceivers.html#persistencemessageconsumption">Persistence Message Consumption</a> for a full explanation of consumption acknowledgements.</p>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
     <tr><td class="paramname"><a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBMException.html" title="Base LBM Exception class. ">com.latencybusters.lbm.LBMException</a></td><td>Invalid argument or unexpected operational behavior has been encountered by unmanaged <a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBM.html" title="LBM Utility class. ">LBM</a> C layer function. </td></tr>

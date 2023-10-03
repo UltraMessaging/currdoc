@@ -1,5 +1,5 @@
 /*
-  (C) Copyright 2005,2022 Informatica LLC  Permission is granted to licensees to use
+  (C) Copyright 2005,2023 Informatica Inc.  Permission is granted to licensees to use
   or alter this software for any purpose, including commercial applications,
   according to the terms laid out in the Software License Agreement.
 
@@ -745,6 +745,13 @@ namespace LBMApplication
 				case LBM.SRC_EVENT_WAKEUP:
 					blocked = false;
 					break;
+				case LBM.SRC_EVENT_TIMESTAMP:
+					LBMSourceEventTimestampInfo tsInfo = sourceEvent.timestampInfo();
+					String tsmsg = String.Format("HR@{0}.{1}[SQN {2}]\n", tsInfo.tvSec(),
+                   	     tsInfo.tvNsec(), tsInfo.sequenceNumber());
+					System.Console.Out.WriteLine(tsmsg);
+					break;
+
 				default:
 					System.Console.Out.WriteLine("Unhandled source event [" + sourceEvent.type() + "]. Refer to https://ultramessaging.github.io/currdoc/doc/dotnet_example/index.html#unhandledcsevents for a detailed description.");
 					break;

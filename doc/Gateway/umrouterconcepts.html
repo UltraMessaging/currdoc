@@ -83,8 +83,8 @@ E1's AAA proxy receiver sees the TIR and requests that E2 (and any other interes
 <h2><a class="anchor" id="interestandtopicresolution"></a>
 Interest and Topic Resolution&nbsp;&nbsp;<small><a href="#interestandtopicresolution">&lt;-</a></small></h2>
 <p>As mentioned in <a class="el" href="umrouterconcepts.html#basicumrouteroperation">Basic DRO Operation</a>, the DRO's routing algorithm is "interest-based". The DRO uses UM's Topic Resolution (TR) protocol to discover and maintain the interest tables.</p>
-<p>For <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Gateway/design.tag:../Design/" href="../Design/topicresolutiondescription.html#tcpbasedtopicresolutiondetails">TCP-based TR</a>, the SRS informs DROs of receiver topics and wildcard receiver patterns.</p>
-<p>For <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Gateway/design.tag:../Design/" href="../Design/architecture.html#udpbasedtopicresolutiondetails">UDP-based TR</a>, the application's TR queries are used to inform DROs of its receiver topics and wildcard receiver patterns.</p>
+<p>For <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16/doc/Gateway/design.tag:../Design/" href="../Design/topicresolutiondescription.html#tcpbasedtopicresolutiondetails">TCP-based TR</a>, the SRS informs DROs of receiver topics and wildcard receiver patterns.</p>
+<p>For <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16/doc/Gateway/design.tag:../Design/" href="../Design/architecture.html#udpbasedtopicresolutiondetails">UDP-based TR</a>, the application's TR queries are used to inform DROs of its receiver topics and wildcard receiver patterns.</p>
 <dl class="section attention"><dt>Attention</dt><dd>If using UDP-based TR, do not disable querying, as that would prevent the DRO from discovering topic and pattern interest.</dd></dl>
 <p><br />
  </p>
@@ -125,17 +125,17 @@ More About Proxy Sources and Receivers&nbsp;&nbsp;<small><a href="#moreaboutprox
 <h2><a class="anchor" id="protocolconversion"></a>
 Protocol Conversion&nbsp;&nbsp;<small><a href="#protocolconversion">&lt;-</a></small></h2>
 <p>When an application creates a source, it is configured to use one of the UM transport types. When a DRO is deployed, the proxy sources are also configured to use one of the UM transport types. Although users often use the same transport type for sources and proxy sources, this is not necessary. When different transport types are configured for source and proxy source, the DRO is performing a protocol conversion.</p>
-<p>When this is done, it is very important to configure the transports to use the same maximum datagram size. If you don't, the DRO can drop messages which cannot be recovered through normal means. For example, a source in <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Gateway/design.tag:../Design/" href="../Design/fundamentalconcepts.html#topicresolutiondomain">Topic Resolution Domain</a> 1 might be configured for TCP, which has a default maximum datagram size of 65536. If a DRO's remote portal is configured to create LBT-RU proxy sources, that has a default maximum datagram size of 8192. If the source sends a user message of 10K, the TCP source will send it as a single fragment. The DRO will receive it and will attempt to forward it on an LBT-RU proxy source, but the 10K fragment is too large for LBT-RU's maximum datagram size, so the message will be dropped.</p>
-<p>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Gateway/design.tag:../Design/" href="../Design/architecture.html#messagefragmentationandreassembly">Message Fragmentation and Reassembly</a>.</p>
+<p>When this is done, it is very important to configure the transports to use the same maximum datagram size. If you don't, the DRO can drop messages which cannot be recovered through normal means. For example, a source in <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16/doc/Gateway/design.tag:../Design/" href="../Design/fundamentalconcepts.html#topicresolutiondomain">Topic Resolution Domain</a> 1 might be configured for TCP, which has a default maximum datagram size of 65536. If a DRO's remote portal is configured to create LBT-RU proxy sources, that has a default maximum datagram size of 8192. If the source sends a user message of 10K, the TCP source will send it as a single fragment. The DRO will receive it and will attempt to forward it on an LBT-RU proxy source, but the 10K fragment is too large for LBT-RU's maximum datagram size, so the message will be dropped.</p>
+<p>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16/doc/Gateway/design.tag:../Design/" href="../Design/architecture.html#messagefragmentationandreassembly">Message Fragmentation and Reassembly</a>.</p>
 <p>The solution is to override the default maximum datagram sizes to be the same. Informatica generally does not recommend configuring UDP-based transports for datagram sizes above 8K, so it is advisable to set the maximum datagram sizes of all transport types to 8192, like this:</p>
 <pre class="fragment">context transport_tcp_datagram_max_size 8192
 context transport_lbtrm_datagram_max_size 8192
 context transport_lbtru_datagram_max_size 8192
 context transport_lbtipc_datagram_max_size 8192
 source transport_lbtsmx_datagram_max_size 8192
-</pre><p>Note that users of a <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Gateway/design.tag:../Design/" href="../Design/umglossary.html#glossarykernelbypass">kernel bypass</a> network driver (e.g. Solarflare's Onload) frequently want to avoid all IP fragmentation, and therefore want to set their datagram max sizes to an MTU. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Gateway/design.tag:../Design/" href="../Design/architecture.html#datagrammaxsizeandnetworkmtu">Datagram Max Size and Network MTU</a> and <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Gateway/design.tag:../Design/" href="../Design/architecture.html#dynamicfragmentationreduction">Dynamic Fragmentation Reduction</a>.</p>
-<p>Configuration options: <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Gateway/config.tag:../Config/" href="../Config/grptransporttcpoperation.html#transporttcpdatagrammaxsizecontext">transport_tcp_datagram_max_size (context)</a>, <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Gateway/config.tag:../Config/" href="../Config/grptransportlbtrmoperation.html#transportlbtrmdatagrammaxsizecontext">transport_lbtrm_datagram_max_size (context)</a>, <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Gateway/config.tag:../Config/" href="../Config/grptransportlbtruoperation.html#transportlbtrudatagrammaxsizecontext">transport_lbtru_datagram_max_size (context)</a>, <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Gateway/config.tag:../Config/" href="../Config/grptransportlbtipcoperation.html#transportlbtipcdatagrammaxsizecontext">transport_lbtipc_datagram_max_size (context)</a>, and <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Gateway/config.tag:../Config/" href="../Config/grptransportlbtsmxoperation.html#transportlbtsmxdatagrammaxsizesource">transport_lbtsmx_datagram_max_size (source)</a>.</p>
-<p>Final note: the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Gateway/config.tag:../Config/" href="../Config/grpudpbasedresolveroperation.html#resolverdatagrammaxsizecontext">resolver_datagram_max_size (context)</a> option also needs to be made the same in all instances of UM, including DROs.</p>
+</pre><p>Note that users of a <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16/doc/Gateway/design.tag:../Design/" href="../Design/umglossary.html#glossarykernelbypass">kernel bypass</a> network driver (e.g. Solarflare's Onload) frequently want to avoid all IP fragmentation, and therefore want to set their datagram max sizes to an MTU. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16/doc/Gateway/design.tag:../Design/" href="../Design/architecture.html#datagrammaxsizeandnetworkmtu">Datagram Max Size and Network MTU</a> and <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16/doc/Gateway/design.tag:../Design/" href="../Design/architecture.html#dynamicfragmentationreduction">Dynamic Fragmentation Reduction</a>.</p>
+<p>Configuration options: <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16/doc/Gateway/config.tag:../Config/" href="../Config/grptransporttcpoperation.html#transporttcpdatagrammaxsizecontext">transport_tcp_datagram_max_size (context)</a>, <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16/doc/Gateway/config.tag:../Config/" href="../Config/grptransportlbtrmoperation.html#transportlbtrmdatagrammaxsizecontext">transport_lbtrm_datagram_max_size (context)</a>, <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16/doc/Gateway/config.tag:../Config/" href="../Config/grptransportlbtruoperation.html#transportlbtrudatagrammaxsizecontext">transport_lbtru_datagram_max_size (context)</a>, <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16/doc/Gateway/config.tag:../Config/" href="../Config/grptransportlbtipcoperation.html#transportlbtipcdatagrammaxsizecontext">transport_lbtipc_datagram_max_size (context)</a>, and <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16/doc/Gateway/config.tag:../Config/" href="../Config/grptransportlbtsmxoperation.html#transportlbtsmxdatagrammaxsizesource">transport_lbtsmx_datagram_max_size (source)</a>.</p>
+<p>Final note: the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16/doc/Gateway/config.tag:../Config/" href="../Config/grpudpbasedresolveroperation.html#resolverdatagrammaxsizecontext">resolver_datagram_max_size (context)</a> option also needs to be made the same in all instances of UM, including DROs.</p>
 <p><br />
  </p>
 <h1><a class="anchor" id="multihopforwarding"></a>
@@ -215,7 +215,7 @@ Direct Link&nbsp;&nbsp;<small><a href="#directlink">&lt;-</a></small></h2>
  </p>
 <h2><a class="anchor" id="singlelink"></a>
 Single Link&nbsp;&nbsp;<small><a href="#singlelink">&lt;-</a></small></h2>
-<p>A Single Link configuration connects two TRDs using a DRO on each end of an intermediate link. The intermediate link can be a "peer" link, or a transit TRD. For configuration examples, see <a class="el" href="umrouterimplementation.html#peerlinkconfiguration">Peer Link Configuration</a> and <a class="el" href="umrouterimplementation.html#transittrdlinkconfiguration">Transit TRD Link Configuration</a>.</p>
+<p>A Single Link configuration connects two TRDs using a DRO on each end of an intermediate link. The intermediate link can be a "peer" link, or a <a class="el" href="umrouterimplementation.html#transittrdlinkconfiguration">transit TRD</a>. For configuration examples, see <a class="el" href="umrouterimplementation.html#peerlinkconfiguration">Peer Link Configuration</a> and <a class="el" href="umrouterimplementation.html#transittrdlinkconfiguration">Transit TRD Link Configuration</a>.</p>
 <div class="image">
 <img src="single_link.png" alt="single_link.png"/>
 </div>
@@ -317,69 +317,69 @@ UM Feature Compatibility&nbsp;&nbsp;<small><a href="#umfeaturecompatibility">&lt
 <tr>
 <th>UM Feature </th><th>DRO Compatible? </th><th>Notes </th></tr>
 <tr>
-<td>Connect and Disconnect Source Events </td><td>Yes, but see <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Gateway/design.tag:../Design/" href="../Design/fundamentalconcepts.html#sourceconnectanddisconnectevents">Source Connect and Disconnect Events</a> </td><td></td></tr>
+<td>Connect and Disconnect Source Events </td><td>Yes, but see <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16/doc/Gateway/design.tag:../Design/" href="../Design/fundamentalconcepts.html#sourceconnectanddisconnectevents">Source Connect and Disconnect Events</a> </td><td></td></tr>
 <tr>
-<td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Gateway/design.tag:../Design/" href="../Design/umfeatures.html#hotfailoverhf">Hot Failover (HF)</a> </td><td>Yes </td><td>The DRO can pass messages sent by HF publishers to HF receivers, however the DRO itself cannot be configured to originate or terminate HF data streams. </td></tr>
+<td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16/doc/Gateway/design.tag:../Design/" href="../Design/umfeatures.html#hotfailoverhf">Hot Failover (HF)</a> </td><td>Yes </td><td>The DRO can pass messages sent by HF publishers to HF receivers, however the DRO itself cannot be configured to originate or terminate HF data streams. </td></tr>
 <tr>
-<td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Gateway/design.tag:../Design/" href="../Design/umfeatures.html#hotfailoveracrossmultiplecontexts">Hot Failover Across Multiple Contexts (HFX)</a> </td><td>Yes </td><td></td></tr>
+<td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16/doc/Gateway/design.tag:../Design/" href="../Design/umfeatures.html#hotfailoveracrossmultiplecontexts">Hot Failover Across Multiple Contexts (HFX)</a> </td><td>Yes </td><td></td></tr>
 <tr>
-<td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Gateway/design.tag:../Design/" href="../Design/fundamentalconcepts.html#latejoin">Late Join</a> </td><td>Yes </td><td></td></tr>
+<td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16/doc/Gateway/design.tag:../Design/" href="../Design/fundamentalconcepts.html#latejoin">Late Join</a> </td><td>Yes </td><td></td></tr>
 <tr>
-<td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Gateway/design.tag:../Design/" href="../Design/architecture.html#messagebatching">Message Batching</a> </td><td>Yes </td><td></td></tr>
+<td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16/doc/Gateway/design.tag:../Design/" href="../Design/architecture.html#messagebatching">Message Batching</a> </td><td>Yes </td><td></td></tr>
 <tr>
 <td>Monitoring/Statistics </td><td>Yes </td><td></td></tr>
 <tr>
-<td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Gateway/design.tag:../Design/" href="../Design/umfeatures.html#multicastimmediatemessaging">Multicast Immediate Messaging</a> (MIM) </td><td>Yes </td><td></td></tr>
+<td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16/doc/Gateway/design.tag:../Design/" href="../Design/umfeatures.html#multicastimmediatemessaging">Multicast Immediate Messaging</a> (MIM) </td><td>Yes </td><td></td></tr>
 <tr>
-<td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Gateway/design.tag:../Design/" href="../Design/umfeatures.html#offtransportrecoveryotr">Off-Transport Recovery (OTR)</a> </td><td>Yes </td><td></td></tr>
+<td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16/doc/Gateway/design.tag:../Design/" href="../Design/umfeatures.html#offtransportrecoveryotr">Off-Transport Recovery (OTR)</a> </td><td>Yes </td><td></td></tr>
 <tr>
-<td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Gateway/design.tag:../Design/" href="../Design/architecture.html#ordereddelivery">Ordered Delivery</a> </td><td>Yes </td><td></td></tr>
+<td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16/doc/Gateway/design.tag:../Design/" href="../Design/architecture.html#ordereddelivery">Ordered Delivery</a> </td><td>Yes </td><td></td></tr>
 <tr>
-<td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Gateway/design.tag:../Design/" href="../Design/umfeatures.html#predefinedmessages">Pre-Defined Messages</a> (PDM) </td><td>Yes </td><td></td></tr>
+<td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16/doc/Gateway/design.tag:../Design/" href="../Design/umfeatures.html#predefinedmessages">Pre-Defined Messages</a> (PDM) </td><td>Yes </td><td></td></tr>
 <tr>
-<td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Gateway/design.tag:../Design/" href="../Design/fundamentalconcepts.html#requestresponse">Request/Response</a> </td><td>Yes </td><td></td></tr>
+<td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16/doc/Gateway/design.tag:../Design/" href="../Design/fundamentalconcepts.html#requestresponse">Request/Response</a> </td><td>Yes </td><td></td></tr>
 <tr>
-<td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Gateway/design.tag:../Design/" href="../Design/umfeatures.html#selfdescribingmessaging">Self Describing Messaging</a> (SDM) </td><td>Yes </td><td></td></tr>
+<td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16/doc/Gateway/design.tag:../Design/" href="../Design/umfeatures.html#selfdescribingmessaging">Self Describing Messaging</a> (SDM) </td><td>Yes </td><td></td></tr>
 <tr>
-<td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Gateway/design.tag:../Design/" href="../Design/advancedoptimizations.html#smartsources">Smart Sources</a> </td><td>Partial </td><td>The DRO does not support proxy sources sending data via Smart Sources. The DRO does accept ingress traffic to proxy receivers sent by Smart Sources. </td></tr>
+<td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16/doc/Gateway/design.tag:../Design/" href="../Design/advancedoptimizations.html#smartsources">Smart Sources</a> </td><td>Partial </td><td>The DRO does not support proxy sources sending data via Smart Sources. The DRO does accept ingress traffic to proxy receivers sent by Smart Sources. </td></tr>
 <tr>
 <td>Source Side Filtering </td><td>Yes </td><td>The DRO supports transport source side filtering. You can activate this either at the originating TRD source, or at a downstream proxy source. </td></tr>
 <tr>
-<td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Gateway/design.tag:../Design/" href="../Design/umobjects.html#sourcestring">Source String</a> </td><td>Yes, but see <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Gateway/design.tag:../Design/" href="../Design/umobjects.html#sourcestringsinaroutednetwork">Source Strings in a Routed Network</a> </td><td></td></tr>
+<td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16/doc/Gateway/design.tag:../Design/" href="../Design/umobjects.html#sourcestring">Source String</a> </td><td>Yes, but see <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16/doc/Gateway/design.tag:../Design/" href="../Design/umobjects.html#sourcestringsinaroutednetwork">Source Strings in a Routed Network</a> </td><td></td></tr>
 <tr>
-<td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Gateway/config.tag:../Config/" href="../Config/grptransportacceleration.html">Transport Acceleration</a> </td><td>Yes </td><td></td></tr>
+<td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16/doc/Gateway/config.tag:../Config/" href="../Config/grptransportacceleration.html">Transport Acceleration</a> </td><td>Yes </td><td></td></tr>
 <tr>
-<td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Gateway/design.tag:../Design/" href="../Design/transporttypes.html#transportlbtipc">Transport LBT-IPC</a> </td><td>Yes </td><td></td></tr>
+<td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16/doc/Gateway/design.tag:../Design/" href="../Design/transporttypes.html#transportlbtipc">Transport LBT-IPC</a> </td><td>Yes </td><td></td></tr>
 <tr>
-<td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Gateway/design.tag:../Design/" href="../Design/transporttypes.html#transportlbtrm">Transport LBT-RM</a> </td><td>Yes </td><td></td></tr>
+<td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16/doc/Gateway/design.tag:../Design/" href="../Design/transporttypes.html#transportlbtrm">Transport LBT-RM</a> </td><td>Yes </td><td></td></tr>
 <tr>
-<td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Gateway/design.tag:../Design/" href="../Design/transporttypes.html#transportlbtru">Transport LBT-RU</a> </td><td>Yes </td><td></td></tr>
+<td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16/doc/Gateway/design.tag:../Design/" href="../Design/transporttypes.html#transportlbtru">Transport LBT-RU</a> </td><td>Yes </td><td></td></tr>
 <tr>
-<td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Gateway/design.tag:../Design/" href="../Design/transporttypes.html#transportlbtsmx">Transport LBT-SMX</a> </td><td>Partial </td><td>The DRO does not support proxy sources sending data via LBT-SMX. Any proxy sources configured for LBT-SMX will be converted to TCP, with a log message warning of the transport change. The DRO does accept LBT-SMX ingress traffic to proxy receivers. </td></tr>
+<td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16/doc/Gateway/design.tag:../Design/" href="../Design/transporttypes.html#transportlbtsmx">Transport LBT-SMX</a> </td><td>Partial </td><td>The DRO does not support proxy sources sending data via LBT-SMX. Any proxy sources configured for LBT-SMX will be converted to TCP, with a log message warning of the transport change. The DRO does accept LBT-SMX ingress traffic to proxy receivers. </td></tr>
 <tr>
-<td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Gateway/design.tag:../Design/" href="../Design/transporttypes.html#transporttcp">Transport TCP</a> </td><td>Yes </td><td></td></tr>
+<td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16/doc/Gateway/design.tag:../Design/" href="../Design/transporttypes.html#transporttcp">Transport TCP</a> </td><td>Yes </td><td></td></tr>
 <tr>
-<td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Gateway/design.tag:../Design/" href="../Design/umfeatures.html#transportservicesproviderxsp">Transport Services Provider (XSP)</a> </td><td>No </td><td></td></tr>
+<td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16/doc/Gateway/design.tag:../Design/" href="../Design/umfeatures.html#transportservicesproviderxsp">Transport Services Provider (XSP)</a> </td><td>No </td><td></td></tr>
 <tr>
 <td>JMS, via UMQ broker </td><td>No </td><td></td></tr>
 <tr>
-<td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Gateway/design.tag:../Design/" href="../Design/umfeatures.html#spectrum">Spectrum</a> </td><td>Yes </td><td>The DRO supports UM Spectrum traffic, but you cannot implement Spectrum channels in DRO proxy sources or receivers. </td></tr>
+<td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16/doc/Gateway/design.tag:../Design/" href="../Design/umfeatures.html#spectrum">Spectrum</a> </td><td>Yes </td><td>The DRO supports UM Spectrum traffic, but you cannot implement Spectrum channels in DRO proxy sources or receivers. </td></tr>
 <tr>
-<td>UMP Implicit and <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Gateway/ume.tag:../UME/" href="../UME/designingpersistentreceivers.html#explicitacknowledgments">Explicit Acknowledgments</a> </td><td>Yes </td><td></td></tr>
+<td>UMP Implicit and <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16/doc/Gateway/ume.tag:../UME/" href="../UME/designingpersistentreceivers.html#explicitacknowledgments">Explicit Acknowledgments</a> </td><td>Yes </td><td></td></tr>
 <tr>
 <td>UMP Persistent Store </td><td>Yes </td><td></td></tr>
 <tr>
-<td>UMP <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Gateway/ume.tag:../UME/" href="../UME/persistencefaulttolerance.html#persistenceproxysources">Persistence Proxy Sources</a> </td><td>Yes </td><td></td></tr>
+<td>UMP <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16/doc/Gateway/ume.tag:../UME/" href="../UME/persistencefaulttolerance.html#persistenceproxysources">Persistence Proxy Sources</a> </td><td>Yes </td><td></td></tr>
 <tr>
-<td>UMP <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Gateway/ume.tag:../UME/" href="../UME/persistenceconcepts.html#quorumconsensusstorefailover">Quorum/Consensus Store Failover</a> </td><td>Yes </td><td></td></tr>
+<td>UMP <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16/doc/Gateway/ume.tag:../UME/" href="../UME/persistenceconcepts.html#quorumconsensusstorefailover">Quorum/Consensus Store Failover</a> </td><td>Yes </td><td></td></tr>
 <tr>
-<td>UMP <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Gateway/ume.tag:../UME/" href="../UME/registrationidentifiers.html#managingregidswithsessionids">Managing RegIDs with Session IDs</a> </td><td>Yes </td><td></td></tr>
+<td>UMP <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16/doc/Gateway/ume.tag:../UME/" href="../UME/registrationidentifiers.html#managingregidswithsessionids">Managing RegIDs with Session IDs</a> </td><td>Yes </td><td></td></tr>
 <tr>
-<td>UMP <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Gateway/ume.tag:../UME/" href="../UME/operationalview.html#receiverpacedpersistenceoperations">RPP: Receiver-Paced Persistence</a> (RPP) </td><td>Yes </td><td></td></tr>
+<td>UMP <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16/doc/Gateway/ume.tag:../UME/" href="../UME/operationalview.html#receiverpacedpersistenceoperations">RPP: Receiver-Paced Persistence</a> (RPP) </td><td>Yes </td><td></td></tr>
 <tr>
-<td>UMQ <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Gateway/umq.tag:../UMQ/" href="../UMQ/index.html#umqoverview">Brokered Queuing</a> </td><td>No </td><td></td></tr>
+<td>UMQ <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16/doc/Gateway/umq.tag:../UMQ/" href="../UMQ/index.html#umqoverview">Brokered Queuing</a> </td><td>No </td><td></td></tr>
 <tr>
-<td>UMQ <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Gateway/umq.tag:../UMQ/" href="../UMQ/ultraloadbalancingulb.html">Ultra Load Balancing (ULB)</a> </td><td>No </td><td></td></tr>
+<td>UMQ <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16/doc/Gateway/umq.tag:../UMQ/" href="../UMQ/ultraloadbalancingulb.html">Ultra Load Balancing (ULB)</a> </td><td>No </td><td></td></tr>
 <tr>
 <td>Ultra Messaging Desktop Services (UMDS) </td><td>Not for client connectivity to the UMDS server </td><td></td></tr>
 <tr>
@@ -389,7 +389,7 @@ UM Feature Compatibility&nbsp;&nbsp;<small><a href="#umfeaturecompatibility">&lt
 <tr>
 <td>UMCache </td><td>No </td><td></td></tr>
 <tr>
-<td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.15/doc/Gateway/design.tag:../Design/" href="../Design/umobjects.html#umwildcardreceivers">UM Wildcard Receivers</a> </td><td>Yes </td><td></td></tr>
+<td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16/doc/Gateway/design.tag:../Design/" href="../Design/umobjects.html#umwildcardreceivers">UM Wildcard Receivers</a> </td><td>Yes </td><td></td></tr>
 <tr>
 <td>Zero Object Delivery (ZOD) </td><td>Yes </td><td></td></tr>
 </table>

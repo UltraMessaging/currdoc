@@ -292,6 +292,7 @@ var hierarchy =
     ] ],
     [ "com.latencybusters.lbm.LBMSourceEventFlightSizeNotification", "classcom_1_1latencybusters_1_1lbm_1_1LBMSourceEventFlightSizeNotification.html", null ],
     [ "com.latencybusters.lbm.LBMSourceEventSequenceNumberInfo", "classcom_1_1latencybusters_1_1lbm_1_1LBMSourceEventSequenceNumberInfo.html", null ],
+    [ "com.latencybusters.lbm.LBMSourceEventTimestampInfo", "classcom_1_1latencybusters_1_1lbm_1_1LBMSourceEventTimestampInfo.html", null ],
     [ "com.latencybusters.lbm.LBMSourceEventWakeupInfo", "classcom_1_1latencybusters_1_1lbm_1_1LBMSourceEventWakeupInfo.html", null ],
     [ "com.latencybusters.lbm.LBMSourceSendExInfo", "classcom_1_1latencybusters_1_1lbm_1_1LBMSourceSendExInfo.html", null ],
     [ "com.latencybusters.lbm.LBMStatistics", "classcom_1_1latencybusters_1_1lbm_1_1LBMStatistics.html", [

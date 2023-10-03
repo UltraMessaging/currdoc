@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">UM C API
-   &#160;<span id="projectnumber">6.15</span>
+   &#160;<span id="projectnumber">6.16</span>
    </div>
   </td>
  </tr>
@@ -80,9 +80,8 @@ $(document).ready(function(){initNavTree('structlbm__src__event__ume__ack__ex__i
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Data Fields</h2></td></tr>
-<tr class="memitem:a207c8b76a154b24274700279bba95600"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a207c8b76a154b24274700279bba95600"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlbm__src__event__ume__ack__ex__info__t__stct.html#a207c8b76a154b24274700279bba95600">flags</a></td></tr>
-<tr class="memdesc:a207c8b76a154b24274700279bba95600"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bitmap indicating extra information about the acknowledgement. Zero or more flag bits ORed together: LBM_SRC_EVENT_UME_MESSAGE_RECLAIMED_EX_FLAG_* (i.e. <a class="el" href="lbm_8h.html#a6407f37e7d8b600732408d1ae4d0e9a5">LBM_SRC_EVENT_UME_MESSAGE_RECLAIMED_EX_FLAG_FORCED</a>) <br /></td></tr>
+<tr class="memitem:a207c8b76a154b24274700279bba95600"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlbm__src__event__ume__ack__ex__info__t__stct.html#a207c8b76a154b24274700279bba95600">flags</a></td></tr>
+<tr class="memdesc:a207c8b76a154b24274700279bba95600"><td class="mdescLeft">&#160;</td><td class="mdescRight">Zero or more flag bits ORed together indicating extra information about the acknowledgement.  <a href="#a207c8b76a154b24274700279bba95600">More...</a><br /></td></tr>
 <tr class="separator:a207c8b76a154b24274700279bba95600"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8b7e4d03232bb81a0629497ac7b8c2fe"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8b7e4d03232bb81a0629497ac7b8c2fe"></a>
 <a class="el" href="lbm_8h.html#abdb96b55cc467a75e1f9ec0036dbc14b">lbm_uint_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlbm__src__event__ume__ack__ex__info__t__stct.html#a8b7e4d03232bb81a0629497ac7b8c2fe">sequence_number</a></td></tr>
@@ -107,9 +106,34 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Structure that holds ACK information for a given message in an extended form. </p>
-<p>A structure used with UMP sources to indicate message acknowledgment by the Store and UMP receivers or message stability information (extended form).</p>
+<p>This structure contains information about a message for a variety of UM events: <a class="el" href="lbm_8h.html#acf1cedd5755e63083db63f3d45e45df6">LBM_SRC_EVENT_UME_MESSAGE_STABLE_EX</a>, <a class="el" href="lbm_8h.html#ae7124621f7cab5925ed8354690d736f9">LBM_SRC_EVENT_UME_DELIVERY_CONFIRMATION_EX</a>, <a class="el" href="lbm_8h.html#a91689d8826be0160f64358ccfcff2877">LBM_SRC_EVENT_UME_MESSAGE_RECLAIMED_EX</a>, and <a class="el" href="lbm_8h.html#a0d66ad81998e457acd6f37c2c312469f">LBM_SRC_EVENT_UME_MESSAGE_NOT_STABLE</a> via callbacks <a class="el" href="lbm_8h.html#a0fe745a748ae36759c312737d9f127f7">lbm_src_cb_proc</a> and <a class="el" href="lbm_8h.html#aabf33a13236fde0595e1d1c13e4622b3">lbm_ssrc_cb_proc</a>.</p>
 <p>See <a class="el" href="structlbm__src__event__ume__ack__ex__info__t__stct.html">lbm_src_event_ume_ack_ex_info_t_stct</a> for field definitions. </p>
-</div><hr/>The documentation for this struct was generated from the following file:<ul>
+</div><h2 class="groupheader">Field Documentation</h2>
+<a class="anchor" id="a207c8b76a154b24274700279bba95600"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int lbm_src_event_ume_ack_ex_info_t_stct::flags</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Zero or more flag bits ORed together indicating extra information about the acknowledgement. </p>
+<ul>
+<li>
+For event type <a class="el" href="lbm_8h.html#acf1cedd5755e63083db63f3d45e45df6">LBM_SRC_EVENT_UME_MESSAGE_STABLE_EX</a>, bits are: LBM_SRC_EVENT_UME_MESSAGE_STABLE_EX_FLAG_* (i.e. <a class="el" href="lbm_8h.html#a4e0b6021726c4981d2e75ad11853af7a">LBM_SRC_EVENT_UME_MESSAGE_STABLE_EX_FLAG_INTRAGROUP_STABLE</a>, <a class="el" href="lbm_8h.html#a5209ab197cba9f57f03b8ae6a5f48585">LBM_SRC_EVENT_UME_MESSAGE_STABLE_EX_FLAG_INTERGROUP_STABLE</a>, <a class="el" href="lbm_8h.html#a379b0fa6121126b2f0e2d10904654142">LBM_SRC_EVENT_UME_MESSAGE_STABLE_EX_FLAG_STABLE</a>, <a class="el" href="lbm_8h.html#a1a5d30c2598d27caf11355d276ea7d8c">LBM_SRC_EVENT_UME_MESSAGE_STABLE_EX_FLAG_STORE</a>, <a class="el" href="lbm_8h.html#a5b5f204996c14a67f0e96847c3c49121">LBM_SRC_EVENT_UME_MESSAGE_STABLE_EX_FLAG_WHOLE_MESSAGE_STABLE</a>, <a class="el" href="lbm_8h.html#a6432918a0f748a74ca565e1bfc90c5e6">LBM_SRC_EVENT_UME_MESSAGE_STABLE_EX_FLAG_USER</a>) </li>
+<li>
+For event type <a class="el" href="lbm_8h.html#a0d66ad81998e457acd6f37c2c312469f">LBM_SRC_EVENT_UME_MESSAGE_NOT_STABLE</a> bits are: LBM_SRC_EVENT_UME_MESSAGE_NOT_STABLE_FLAG_* (i.e. <a class="el" href="lbm_8h.html#af5dd45e7b79f2c608509fae09e9f9bc4">LBM_SRC_EVENT_UME_MESSAGE_NOT_STABLE_FLAG_STORE</a>, <a class="el" href="lbm_8h.html#af43cc242fc539d6673b34267444162b0">LBM_SRC_EVENT_UME_MESSAGE_NOT_STABLE_FLAG_LOSS</a>, <a class="el" href="lbm_8h.html#a12cf925a33d5e1f5c00680a005f6147c">LBM_SRC_EVENT_UME_MESSAGE_NOT_STABLE_FLAG_TIMEOUT</a>) </li>
+<li>
+For event type <a class="el" href="lbm_8h.html#ae7124621f7cab5925ed8354690d736f9">LBM_SRC_EVENT_UME_DELIVERY_CONFIRMATION_EX</a> bits are: LBM_SRC_EVENT_UME_DELIVERY_CONFIRMATION_EX_FLAG_* (i.e. <a class="el" href="lbm_8h.html#a07588ef8b95c9af845bdf5293961d23d">LBM_SRC_EVENT_UME_DELIVERY_CONFIRMATION_EX_FLAG_UNIQUEACKS</a>, <a class="el" href="lbm_8h.html#ad88a2ca8fd310da45f4eb38cc5c77d9f">LBM_SRC_EVENT_UME_DELIVERY_CONFIRMATION_EX_FLAG_UREGID</a>, <a class="el" href="lbm_8h.html#ab669fba2eefaf6754ac963df27902099">LBM_SRC_EVENT_UME_DELIVERY_CONFIRMATION_EX_FLAG_OOD</a>, <a class="el" href="lbm_8h.html#a149eecc4bad8748ef9a5a834e1272f5a">LBM_SRC_EVENT_UME_DELIVERY_CONFIRMATION_EX_FLAG_EXACK</a>, <a class="el" href="lbm_8h.html#a7f14767a9e7acac796f11ab829ddd7d0">LBM_SRC_EVENT_UME_DELIVERY_CONFIRMATION_EX_FLAG_WHOLE_MESSAGE_CONFIRMED</a>) </li>
+<li>
+For event type <a class="el" href="lbm_8h.html#a91689d8826be0160f64358ccfcff2877">LBM_SRC_EVENT_UME_MESSAGE_RECLAIMED_EX</a> bits are: LBM_SRC_EVENT_UME_MESSAGE_RECLAIMED_EX_FLAG_* (i.e. <a class="el" href="lbm_8h.html#a6407f37e7d8b600732408d1ae4d0e9a5">LBM_SRC_EVENT_UME_MESSAGE_RECLAIMED_EX_FLAG_FORCED</a>) </li>
+</ul>
+
+</div>
+</div>
+<hr/>The documentation for this struct was generated from the following file:<ul>
 <li><a class="el" href="lbm_8h_source.html">lbm.h</a></li>
 </ul>
 </div><!-- contents -->

@@ -49,7 +49,6 @@ var NAVTREE =
         [ "Example minsrc.c", "index.html#exampleminsrc_c", null ],
         [ "Example srs_cmd.c", "index.html#examplesrs_cmd_c", null ],
         [ "Example srs_monitor_info_receiver.c", "index.html#examplesrs_monitor_info_receiver_c", null ],
-        [ "Example srs_monitor_info_receiver_json.c", "index.html#examplesrs_monitor_info_receiver_json_c", null ],
         [ "Example tnwgdcmd.c", "index.html#exampletnwgdcmd_c", null ],
         [ "Example tnwgdmon.c", "index.html#exampletnwgdmon_c", null ],
         [ "Example umedcmd.c", "index.html#exampleumedcmd_c", null ],

@@ -3,6 +3,22 @@ var NAVTREE =
   [ "Release Notes", "index.html", [
     [ "Introduction", "index.html#firstsect", null ],
     [ "Important Corrections", "index.html#importantcorrections", null ],
+    [ "UM Version 6.16", "index.html#umversion6_16", [
+      [ "Enhancements for 6.16", "index.html#enhancementsfor6_16", [
+        [ "Streaming Enhancements for 6.16", "index.html#streamingenhancementsfor6_16", null ],
+        [ "Persistence Enhancements for 6.16", "index.html#persistenceenhancementsfor6_16", null ],
+        [ "Queuing Enhancements for 6.16", "index.html#queuingenhancementsfor6_16", null ]
+      ] ],
+      [ "Fixed Problems and Limitations for 6.16", "index.html#fixedlimitationsfor6_16", [
+        [ "Streaming Fixed Problems and Limitations for 6.16", "index.html#streamingfixedlimitationsfor6_16", null ],
+        [ "Persistence Fixed Problems and Limitations for 6.16", "index.html#persistencefixedlimitationsfor6_16", null ],
+        [ "Queuing Fixed Problems and Limitations for 6.16", "index.html#queuingfixedlimitationsfor6_16", null ]
+      ] ],
+      [ "Special Upgrade Instructions for 6.16", "index.html#specialupgradeinstructionsfor6_16", [
+        [ "Eliminate 32-bit", "index.html#eliminate32bit", null ],
+        [ "Previous Special Instructions", "index.html#um6151specialinstructions", null ]
+      ] ]
+    ] ],
     [ "UM Version 6.15", "index.html#umversion6_15", [
       [ "Enhancements for 6.15", "index.html#enhancementsfor6_15", [
         [ "Streaming Enhancements for 6.15", "index.html#streamingenhancementsfor6_15", null ],
@@ -17,6 +33,7 @@ var NAVTREE =
         [ "Dynamic Router Fixed Problems and Limitations for 6.15", "index.html#dynamicrouterfixedlimitationsfor6_15", null ]
       ] ],
       [ "Special Upgrade Instructions for 6.15", "index.html#specialupgradeinstructionsfor6_15", [
+        [ "Reduced FD Store Discontinued", "index.html#reducedfdstorediscontinued", null ],
         [ "Store Proxy Source Election", "index.html#storeproxysourceelection", null ],
         [ "Store Protobuf Monitoring", "index.html#storeprotobufmonitoring", null ],
         [ "Previous Special Instructions", "index.html#um6141specialinstructions", null ]
@@ -77,6 +94,7 @@ var NAVTREE =
         [ "repository-disk-max-read-async-cbs", "index.html#repositorydiskmaxreadasynccbs", null ],
         [ "SRS Daemon Statistics Change", "index.html#srsdaemonstatisticschange", null ],
         [ "Persistent Receiver and Duplicate Messages", "index.html#persistentreceiverandduplicatemessages", null ],
+        [ "Platform Reduction for 6.13", "index.html#platformreductionfor613", null ],
         [ "Previous Special Instructions", "index.html#um612specialinstructions", null ]
       ] ]
     ] ],
@@ -168,6 +186,7 @@ var NAVTREE =
         [ "Dynamic Router Fixed Problems and Limitations for 6.10", "index.html#dynamicrouterfixedlimitationsfor6_10", null ]
       ] ],
       [ "Special Upgrade Instructions for 6.10", "index.html#specialupgradeinstructionsfor6_10", [
+        [ "DRO (Dual) TCP Peer Link", "index.html#drodualtcppeerlInk", null ],
         [ "UM 6.10 Improved Defaults", "index.html#um610improveddefaults", null ],
         [ "Previous Special Instructions", "index.html#um68specialinstructions", null ]
       ] ]
@@ -336,6 +355,7 @@ var NAVTREE =
       ] ]
     ] ],
     [ "Deprecations", "index.html#deprecations", [
+      [ "Deprecations for 6.16", "index.html#deprecationsfor616", null ],
       [ "Deprecations for 6.15", "index.html#deprecationsfor615", null ],
       [ "Deprecations for 6.14", "index.html#deprecationsfor614", null ],
       [ "Deprecations for 6.13.1", "index.html#deprecationsfor6131", null ],
@@ -383,7 +403,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "index.html",
-"index.html#streamingfixedlimitationsfor6_14"
+"index.html#streamingenhancementsfor6_9"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

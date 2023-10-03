@@ -1,5 +1,5 @@
 /*
-  (C) Copyright 2005,2022 Informatica LLC  Permission is granted to licensees to use
+  (C) Copyright 2005,2023 Informatica Inc.  Permission is granted to licensees to use
   or alter this software for any purpose, including commercial applications,
   according to the terms laid out in the Software License Agreement.
 
@@ -17,7 +17,11 @@
   THE LIKELIHOOD OF SUCH DAMAGES.
 */
 #ifdef _WIN32
+#if (_MSC_VER < 1900)
 #define snprintf _snprintf
+#else
+#pragma warning(disable:6387 6386)
+#endif
 #endif
 
 #include "srs_cmd_msg.h"

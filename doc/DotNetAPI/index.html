@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">UM .NET API
-   &#160;<span id="projectnumber">6.15</span>
+   &#160;<span id="projectnumber">6.16</span>
    </div>
   </td>
  </tr>
@@ -65,7 +65,7 @@ $(document).ready(function(){initNavTree('index.html','');});
 <div class="contents">
 <div class="textblock"><p> 
 <img src="infa_logo.png" width="400" height="138" alt="Informatica"/><br/><br/>
-<big><b>Ultra Messaging</b></big> <small>(Version 6.15)</small><br/>
+<big><b>Ultra Messaging</b></big> <small>(Version 6.16)</small><br/>
 <br/><br/><br/>
 <center class="mytitle">Ultra Messaging .NET API</center>
 <br/><br/><br/>
@@ -73,7 +73,7 @@ $(document).ready(function(){initNavTree('index.html','');});
 </p>
 <p>This document provides detailed reference information for the UM .NET API.</p>
 <p>For policies and procedures related to Ultra Messaging Technical Support, see <a href="https://ultramessaging.github.io/UM_Support.html">UM Support</a>.</p>
-<p><b>(C) Copyright 2004,2022 Informatica LLC. All Rights Reserved.</b></p>
+<p><b>(C) Copyright 2004,2023 Informatica Inc. All Rights Reserved.</b></p>
 <p>This software and documentation are provided only under a separate license agreement containing restrictions on use and disclosure. No part of this document may be reproduced or transmitted in any form, by any means (electronic, photocopying, recording or otherwise) without prior consent of Informatica LLC.</p>
 <p>A current list of Informatica trademarks is available on the web at <a href="https://www.informatica.com/trademarks.html">https://www.informatica.com/trademarks.html</a>.</p>
 <p>Portions of this software and/or documentation are subject to copyright held by third parties. Required third party notices are included with the product.</p>
@@ -86,6 +86,15 @@ INFORMATICA LLC PROVIDES THE INFORMATION IN THIS DOCUMENT "AS IS" WITHOUT WARRAN
 <h1><a class="anchor" id="umnetapi"></a>
 UM .NET API</h1>
 <p>To use the UM .NET API, you must access the UM C sharp library. This library accesses the UM native libraries. Note that the UM C sharp and native libraries are platform dependent and are contained in the platform-specific package.</p>
+<p><br />
+ </p>
+<h2><a class="anchor" id="dotnetstandard"></a>
+.NET Standard</h2>
+<p>Prior to UM version 6.16, the UM .NET DLL was build as .NET Core for the Linux library and .NET Framework for the Windows library.</p>
+<p>Starting with 6.16, both libraries are built as .NET Standard. This reduces the dependencies of the UM library, making it easier to integrate into a wider variety of applications.</p>
+<p>This should not affect how the UM DLL can be used. I.e. the Windows DLL should still work with a .NET Framework application as well as a .NET Core application.</p>
+<p>For a description of what is meant by .NET Standard, .NET Core, and .NET Framework, see the Microsoft article <a href="https://learn.microsoft.com/en-us/archive/msdn-magazine/2017/september/net-standard-demystifying-net-core-and-net-standard">Demystifying .NET Core and .NET Standard</a>.</p>
+<p>Note that due to the differences in interpretation of a "long" integer between Linux and Windows, we are not able to provide a single, platform-independent DLL.</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="applicationcallbacksinnet"></a>
