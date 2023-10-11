@@ -54,7 +54,7 @@ $(document).ready(function(){initNavTree('umroutermonitoring.html','');});
 <div class="title">DRO Monitoring </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16/doc/Gateway/operations.tag:../Operations/" href="../Operations/monitoring.html">Monitoring</a> for an overview of monitoring an Ultra Messaging network.</p>
+<div class="textblock"><p>See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Gateway/operations.tag:../Operations/" href="../Operations/monitoring.html">Monitoring</a> for an overview of monitoring an Ultra Messaging network.</p>
 <p>It is important to the health and stability of a UM network to monitor the operation of DROs (if any). This monitoring should include real-time automated detection of problems that will produce a timely alert to operations staff.</p>
 <p>Three types of data should be monitored: </p><ul>
 <li>
@@ -64,7 +64,7 @@ $(document).ready(function(){initNavTree('umroutermonitoring.html','');});
 <li>
 <a class="el" href="umroutermonitoring.html#dromonitoringdaemonstats">Daemon statistics</a> (similar data to the <a class="el" href="umroutermonitoring.html#umrouterwebmonitor">DRO Web Monitor</a>). </li>
 </ul>
-<p>For UM library stats and daemon stats, the monitoring messages contain an "application ID". For UM applications, this is a user-specified name intended to identify the individual component/instance, and is supplied by the option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16/doc/Gateway/config.tag:../Config/" href="../Config/grpautomaticmonitoring.html#monitorappidcontext">monitor_appid (context)</a>.</p>
+<p>For UM library stats and daemon stats, the monitoring messages contain an "application ID". For UM applications, this is a user-specified name intended to identify the individual component/instance, and is supplied by the option <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Gateway/config.tag:../Config/" href="../Config/grpautomaticmonitoring.html#monitorappidcontext">monitor_appid (context)</a>.</p>
 <p>However, in the DRO, the application ID is NOT controlled by the "monitor-appid" option, and is instead used to identify not only the specific DRO, but also the portal within the DRO that is supplying the stats.</p>
 <p>In the case of the DRO's daemon stats, the application ID is set to the <a class="el" href="xmlconfigurationreference.html#droelementname">Router Element "&lt;name&gt;"</a> located within the <a class="el" href="xmlconfigurationreference.html#droelementdaemon">Router Element "&lt;daemon&gt;"</a>. For example, a DRO configured with: </p><div class="fragment"><div class="line">&lt;tnw-gateway version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div><div class="line">  &lt;daemon&gt;</div><div class="line">    &lt;name&gt;dro1&lt;/name&gt;</div><div class="line">    ...</div></div><!-- fragment --><p> The daemon stats will have the application ID "dro1".</p>
 <p>In the case of UM library stats (context, transport, event queue), the application ID is constructed as follows: <br />
@@ -104,7 +104,7 @@ CSV - deprecated. Informatica recommends migrating to protobufs. </li>
 <p class="endli"></p>
 </li>
 <li>
-<p class="startli">For a list of possible protobuf messages for the DRO, see the "dro_mon.proto" file at <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16/doc/Gateway/example.tag:../example/" href="../example/index.html#exampledro_mon_proto">Example dro_mon.proto</a>.</p>
+<p class="startli">For a list of possible protobuf messages for the DRO, see the "dro_mon.proto" file at <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Gateway/example.tag:../example/" href="../example/index.html#exampledro_mon_proto">Example dro_mon.proto</a>.</p>
 <p class="endli"></p>
 </li>
 <li>
@@ -112,11 +112,11 @@ CSV - deprecated. Informatica recommends migrating to protobufs. </li>
 <p class="endli"></p>
 </li>
 <li>
-<p class="startli">When automatic monitoring is enabled, it creates a context named "29west_statistics_context". It is configured with the "mon_ctx" template, which sets options for the monitoring data TRD. (Alternatively, you can configure the monitoring context using <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16/doc/Gateway/config.tag:../Config/" href="../Config/grpautomaticmonitoring.html#monitortransportoptscontext">monitor_transport_opts (context)</a>.) When possible, Informatica recommends directing monitoring data to an administrative network, separate from the application data network. This prevents monitoring data from interfering with application data latency or throughput. In this example, the monitoring context is configured to use an interface matching <code>10.29.3.0/24</code>.</p>
+<p class="startli">When automatic monitoring is enabled, it creates a context named "29west_statistics_context". It is configured with the "mon_ctx" template, which sets options for the monitoring data TRD. (Alternatively, you can configure the monitoring context using <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Gateway/config.tag:../Config/" href="../Config/grpautomaticmonitoring.html#monitortransportoptscontext">monitor_transport_opts (context)</a>.) When possible, Informatica recommends directing monitoring data to an administrative network, separate from the application data network. This prevents monitoring data from interfering with application data latency or throughput. In this example, the monitoring context is configured to use an interface matching <code>10.29.3.0/24</code>.</p>
 <p class="endli"></p>
 </li>
 <li>
-<p class="startli">In this example, the monitoring data <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16/doc/Gateway/design.tag:../Design/" href="../Design/topicresolutiondescription.html">TRD</a> uses <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16/doc/Gateway/design.tag:../Design/" href="../Design/architecture.html#unicasttopicresolution">Unicast UDP Topic Resolution</a>. The <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16/doc/Gateway/design.tag:../Design/" href="../Design/manpagesforlbmrd.html#lbmrdmanpage">lbmrd</a> daemon is running on host 10.29.3.101, port 12001.</p>
+<p class="startli">In this example, the monitoring data <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Gateway/design.tag:../Design/" href="../Design/topicresolutiondescription.html">TRD</a> uses <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Gateway/design.tag:../Design/" href="../Design/architecture.html#unicasttopicresolution">Unicast UDP Topic Resolution</a>. The <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Gateway/design.tag:../Design/" href="../Design/manpagesforlbmrd.html#lbmrdmanpage">lbmrd</a> daemon is running on host 10.29.3.101, port 12001.</p>
 <p class="endli"></p>
 </li>
 <li>
@@ -124,7 +124,7 @@ CSV - deprecated. Informatica recommends migrating to protobufs. </li>
 <p class="endli"></p>
 </li>
 <li>
-<p class="startli">These settings were chosen to conform to the recommendations in <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16/doc/Gateway/operations.tag:../Operations/" href="../Operations/monitoring.html#automaticmonitoring">Automatic Monitoring</a>.</p>
+<p class="startli">These settings were chosen to conform to the recommendations in <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Gateway/operations.tag:../Operations/" href="../Operations/monitoring.html#automaticmonitoring">Automatic Monitoring</a>.</p>
 <p class="endli"></p>
 </li>
 </ol>
@@ -144,18 +144,18 @@ DRO Monitoring: Daemon Stats&nbsp;&nbsp;<small><a href="#dromonitoringdaemonstat
       &lt;transport-module module="lbm"/&gt;
       &lt;format-module module="pb"/&gt;
     &lt;/monitor&gt;
-</pre><p>The protobufs format is accepted by the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16/doc/Gateway/operations.tag:../Operations/" href="../Operations/monitoring.html#monitoringcollectorservicemcs">Monitoring Collector Service (MCS)</a> and the "lbmmon" example applications: <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16/doc/Gateway/example.tag:../example/" href="../example/index.html#examplelbmmon_c">Example lbmmon.c</a> and <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16/doc/Gateway/java_example.tag:../java_example/" href="../java_example/index.html#examplelbmmon_java">Example lbmmon.java</a>.</p>
-<p>For a list of possible protobuf messages for the DRO, see the "dro_mon.proto" file at <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16/doc/Gateway/example.tag:../example/" href="../example/index.html#exampledro_mon_proto">Example dro_mon.proto</a>.</p>
+</pre><p>The protobufs format is accepted by the <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Gateway/operations.tag:../Operations/" href="../Operations/monitoring.html#monitoringcollectorservicemcs">Monitoring Collector Service (MCS)</a> and the "lbmmon" example applications: <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Gateway/example.tag:../example/" href="../example/index.html#examplelbmmon_c">Example lbmmon.c</a> and <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Gateway/java_example.tag:../java_example/" href="../java_example/index.html#examplelbmmon_java">Example lbmmon.java</a>.</p>
+<p>For a list of possible protobuf messages for the DRO, see the "dro_mon.proto" file at <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Gateway/example.tag:../example/" href="../example/index.html#exampledro_mon_proto">Example dro_mon.proto</a>.</p>
 <p>For a full demonstration of monitoring, including DRO daemon stats, see: <a href="https://github.com/UltraMessaging/mcs_demo">https://github.com/UltraMessaging/mcs_demo</a></p>
 <p>See also <a class="el" href="umroutermonitoring.html#dromonitoringumlibrarystats">DRO Monitoring: UM Library Stats</a>.</p>
 <p><br />
  </p>
 <h1><a class="anchor" id="umrouterwebmonitor"></a>
 DRO Web Monitor&nbsp;&nbsp;<small><a href="#umrouterwebmonitor">&lt;-</a></small></h1>
-<dl class="section note"><dt>Note</dt><dd>The DRO web monitor functionality is deprecated in favor of <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16/doc/Gateway/operations.tag:../Operations/" href="../Operations/monitoring.html#monitoringcollectorservicemcs">MCS</a>. We do not plan to remove existing web monitor functionality, and will continue to support it in its current state. But we do not plan to enhance the web monitor in the future.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>The DRO web monitor functionality is deprecated in favor of <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Gateway/operations.tag:../Operations/" href="../Operations/monitoring.html#monitoringcollectorservicemcs">MCS</a>. We do not plan to remove existing web monitor functionality, and will continue to support it in its current state. But we do not plan to enhance the web monitor in the future.</dd></dl>
 <p>The built-in web monitor (configured in the <code>tnwgd</code> XML configuration file; see <a class="el" href="xmlconfigurationreference.html">DRO Configuration Reference</a>) provides valuable statistics about the DRO and its portals, for which, the Web Monitor separates into receive statistics and send statistics. The Web Monitor provides a page for each endpoint and peer portal.</p>
 <dl class="section warning"><dt>Warning</dt><dd>The DRO's web monitor is not designed to be a highly-secure feature. Anybody with access to the network can access the web monitor pages.</dd></dl>
-<p>Users are expected to prevent unauthorized access to the web monitor through normal firewalling methods. Users who are unable to limit access to a level consistent with their overall security needs should disable the DRO web monitor (using <a class="el" href="xmlconfigurationreference.html#droelementwebmonitor">&lt;web-monitor&gt;</a>). See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16/doc/Gateway/design.tag:../Design/" href="../Design/securityconsiderations.html#webmonsecurity">Webmon Security</a> for more information.</p>
+<p>Users are expected to prevent unauthorized access to the web monitor through normal firewalling methods. Users who are unable to limit access to a level consistent with their overall security needs should disable the DRO web monitor (using <a class="el" href="xmlconfigurationreference.html#droelementwebmonitor">&lt;web-monitor&gt;</a>). See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Gateway/design.tag:../Design/" href="../Design/securityconsiderations.html#webmonsecurity">Webmon Security</a> for more information.</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="mainpage"></a>

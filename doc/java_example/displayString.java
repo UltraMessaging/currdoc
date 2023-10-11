@@ -3,102 +3,6 @@
 " statistics classes, and is provided for reference purposes."
 
 
-Class: LBMEventQueueStatistics
-
-	public String displayString(String aString) {
-		StringBuilder sb = new StringBuilder(super.displayString(aString));
-		try {
-			sb.append("\n\tData messages enqueued                                        : ").append(this.dataMessages());
-			sb.append("\n\tTotal data messages enqueued                                  : ").append(this.dataMessagesTotal());
-			sb.append("\n\tData messages min service time (microseconds)                 : ").append(this.dataMessagesMinimumServiceTime());
-			sb.append("\n\tData messages mean service time (microseconds)                : ").append(this.dataMessagesMeanServiceTime());
-			sb.append("\n\tData messages max service time (microseconds)                 : ").append(this.dataMessagesMaximumServiceTime());
-			sb.append("\n\tResponse messages enqueued                                    : ").append(this.responseMessages());
-			sb.append("\n\tTotal response messages enqueued                              : ").append(this.responseMessagesTotal());
-			sb.append("\n\tResponse messages min service time (microseconds)             : ").append(this.responseMessagesMinimumServiceTime());
-			sb.append("\n\tResponse messages mean service time (microseconds)            : ").append(this.responseMessagesMeanServiceTime());
-			sb.append("\n\tResponse messages max service time (microseconds)             : ").append(this.responseMessagesMaximumServiceTime());
-			sb.append("\n\tTopicless immediate messages enqueued                         : ").append(this.topiclessImmediateMessages());
-			sb.append("\n\tTotal topicless immediate messages enqueued                   : ").append(this.topiclessImmediateMessagesTotal());
-			sb.append("\n\tTopicless immediate messages min service time (microseconds)  : ").append(this.topiclessImmediateMessagesMinimumServiceTime());
-			sb.append("\n\tTopicless immediate messages mean service time (microseconds) : ").append(this.topiclessImmediateMessagesMeanServiceTime());
-			sb.append("\n\tTopicless immediate messages max service time (microseconds)  : ").append(this.topiclessImmediateMessagesMaximumServiceTime());
-			sb.append("\n\tWildcard receiver messages enqueued                           : ").append(this.wildcardReceiverMessages());
-			sb.append("\n\tTotal wildcard receiver messages enqueued                     : ").append(this.wildcardReceiverMessagesTotal());
-			sb.append("\n\tWildcard receiver messages min service time (microseconds)    : ").append(this.wildcardReceiverMessagesMinimumServiceTime());
-			sb.append("\n\tWildcard receiver messages mean service time (microseconds)   : ").append(this.wildcardReceiverMessagesMeanServiceTime());
-			sb.append("\n\tWildcard receiver messages max service time (microseconds)    : ").append(this.wildcardReceiverMessagesMaximumServiceTime());
-			sb.append("\n\tI/O events enqueued                                           : ").append(this.ioEvents());
-			sb.append("\n\tTotal I/O events enqueued                                     : ").append(this.ioEventsTotal());
-			sb.append("\n\tI/O events min service time (microseconds)                    : ").append(this.ioEventsMinimumServiceTime());
-			sb.append("\n\tI/O events mean service time (microseconds)                   : ").append(this.ioEventsMeanServiceTime());
-			sb.append("\n\tI/O events max service time (microseconds)                    : ").append(this.ioEventsMaximumServiceTime());
-			sb.append("\n\tTimer events enqueued                                         : ").append(this.timerEvents());
-			sb.append("\n\tTotal timer events enqueued                                   : ").append(this.timerEventsTotal());
-			sb.append("\n\tTimer events min service time (microseconds)                  : ").append(this.timerEventsMinimumServiceTime());
-			sb.append("\n\tTimer events mean service time (microseconds)                 : ").append(this.timerEventsMeanServiceTime());
-			sb.append("\n\tTimer events max service time (microseconds)                  : ").append(this.timerEventsMaximumServiceTime());
-			sb.append("\n\tSource events enqueued                                        : ").append(this.sourceEvents());
-			sb.append("\n\tTotal source events enqueued                                  : ").append(this.sourceEventsTotal());
-			sb.append("\n\tSource events min service time (microseconds)                 : ").append(this.sourceEventsMinimumServiceTime());
-			sb.append("\n\tSource events mean service time (microseconds)                : ").append(this.sourceEventsMeanServiceTime());
-			sb.append("\n\tSource events max service time (microseconds)                 : ").append(this.sourceEventsMaximumServiceTime());
-			sb.append("\n\tUnblock events enqueued                                       : ").append(this.unblockEvents());
-			sb.append("\n\tTotal unblock events enqueued                                 : ").append(this.unblockEventsTotal());
-			sb.append("\n\tCancel events enqueued                                        : ").append(this.cancelEvents());
-			sb.append("\n\tTotal cancel events enqueued                                  : ").append(this.cancelEventsTotal());
-			sb.append("\n\tCancel events min service time (microseconds)                 : ").append(this.cancelEventsMinimumServiceTime());
-			sb.append("\n\tCancel events mean service time (microseconds)                : ").append(this.cancelEventsMeanServiceTime());
-			sb.append("\n\tCancel events max service time (microseconds)                 : ").append(this.cancelEventsMaximumServiceTime());
-			sb.append("\n\tCallback events enqueued                                      : ").append(this.callbackEvents());
-			sb.append("\n\tTotal callback events enqueued                                : ").append(this.callbackEventsTotal());
-			sb.append("\n\tCallback events min service time (microseconds)               : ").append(this.callbackEventsMinimumServiceTime());
-			sb.append("\n\tCallback events mean service time (microseconds)              : ").append(this.callbackEventsMeanServiceTime());
-			sb.append("\n\tCallback events max service time (microseconds)               : ").append(this.callbackEventsMaximumServiceTime());
-			sb.append("\n\tContext source events enqueued                                : ").append(this.contextSourceEvents());
-			sb.append("\n\tTotal context source events enqueued                          : ").append(this.contextSourceEventsTotal());
-			sb.append("\n\tContext source events min service time (microseconds)         : ").append(this.contextSourceEventsMinimumServiceTime());
-			sb.append("\n\tContext source events mean service time (microseconds)        : ").append(this.contextSourceEventsMeanServiceTime());
-			sb.append("\n\tContext source events max service time (microseconds)         : ").append(this.contextSourceEventsMaximumServiceTime());
-			sb.append("\n\tEvents currently enqueued                                     : ").append(this.events());
-			sb.append("\n\tTotal events enqueued                                         : ").append(this.eventsTotal());
-			sb.append("\n\tMinimum age of events enqueued (microseconds)                 : ").append(this.minimumAge());
-			sb.append("\n\tMean age of events enqueued (microseconds)                    : ").append(this.meanAge());
-			sb.append("\n\tMax age of events enqueued (microseconds)                     : ").append(this.maximumAge());
-			sb.append("\n");
-		} catch (Exception ex) {
-			sb.append("\nError displaying event queue statistics: " + ex.toString());
-		}
-		return sb.toString();
-	}
-
-
-Class: LBMStatistics
-
-	public String displayString(String aString) {
-		StringBuilder sb = new StringBuilder();
-		try {
-			sb.append(aString);
-			sb.append(" from ").append(this.getApplicationSourceId());
-			sb.append(" at ").append(this.getSender().getHostAddress());
-			if (_processid != 0) {
-				sb.append(", process ID=").append(Long.toHexString(this.getProcessId()));
-			}
-			if (_contextid != 0) {
-				sb.append(", object ID=").append(Long.toHexString(this.getContextId()));
-			}
-			if ((_contextinstance != null) && (!_contextinstance.isEmpty())) {
-				sb.append(", context instance=").append(this.getContextInstance());
-			}
-			sb.append(", domain ID=").append(this.getDomainId());
-			sb.append(", sent ").append(this.getTimestamp());
-		} catch (Exception ex) {
-			sb.append("\nError displaying statistics: ").append(ex.toString());
-		}
-		return sb.toString();
-	}
-
-
 Class: LBMReceiverStatistics
 
 	public String displayString(String aString) {
@@ -248,62 +152,6 @@ Class: LBMImmediateMessageSourceStatistics
 	}
 
 
-Class: LBMImmediateMessageReceiverStatistics
-
-	public String displayString(String aString) {
-		StringBuilder sb = new StringBuilder(super.displayString(aString));
-		try {
-			sb.append("\nSource: ").append(this.source());
-			sb.append("\nTransport: ").append(this.typeName());
-			switch (this.type())
-			{
-				case LBM.TRANSPORT_STAT_TCP:
-					sb.append("\n\tLBT-TCP bytes received                                    : ").append(this.bytesReceived());
-					sb.append("\n\tLBM messages received                                     : ").append(this.lbmMessagesReceived());
-					sb.append("\n\tLBM messages received with uninteresting topic            : ").append(this.noTopicMessagesReceived());
-					sb.append("\n\tLBM requests received                                     : ").append(this.lbmRequestsReceived());
-					break;
-				case LBM.TRANSPORT_STAT_LBTRM:
-					sb.append("\n\tLBT-RM datagrams received                                 : ").append(this.messagesReceived());
-					sb.append("\n\tLBT-RM datagram bytes received                            : ").append(this.bytesReceived());
-					sb.append("\n\tLBT-RM NAK packets sent                                   : ").append(this.nakPacketsSent());
-					sb.append("\n\tLBT-RM NAKs sent                                          : ").append(this.naksSent());
-					sb.append("\n\tLost LBT-RM datagrams detected                            : ").append(this.lost());
-					sb.append("\n\tNCFs received (ignored)                                   : ").append(this.ncfsIgnored());
-					sb.append("\n\tNCFs received (shed)                                      : ").append(this.ncfsShed());
-					sb.append("\n\tNCFs received (retransmit delay)                          : ").append(this.ncfsRetransmissionDelay());
-					sb.append("\n\tNCFs received (unknown)                                   : ").append(this.ncfsUnknown());
-					sb.append("\n\tLoss recovery minimum time                                : ").append(this.minimumRecoveryTime() + "ms");
-					sb.append("\n\tLoss recovery mean time                                   : ").append(this.meanRecoveryTime() + "ms");
-					sb.append("\n\tLoss recovery maximum time                                : ").append(this.maximumRecoveryTime() + "ms");
-					sb.append("\n\tMinimum transmissions per individual NAK                  : ").append(this.minimumNakTransmissions());
-					sb.append("\n\tMean transmissions per individual NAK                     : ").append(this.meanNakTransmissions());
-					sb.append("\n\tMaximum transmissions per individual NAK                  : ").append(this.maximumNakTransmissions());
-					sb.append("\n\tDuplicate LBT-RM datagrams received                       : ").append(this.duplicateMessages());
-					sb.append("\n\tLBT-RM datagrams unrecoverable (window advance)           : ").append(this.unrecoveredMessagesWindowAdvance());
-					sb.append("\n\tLBT-RM datagrams unrecoverable (NAK generation expiration): ").append(this.unrecoveredMessagesNakGenerationTimeout());
-					sb.append("\n\tLBT-RM LBM messages received                              : ").append(this.lbmMessagesReceived());
-					sb.append("\n\tLBT-RM LBM messages received with uninteresting topic     : ").append(this.noTopicMessagesReceived());
-					sb.append("\n\tLBT-RM LBM requests received                              : ").append(this.lbmRequestsReceived());
-					sb.append("\n\tLBT-RM datagrams dropped (size)                           : ").append(this.datagramsDroppedIncorrectSize());
-					sb.append("\n\tLBT-RM datagrams dropped (type)                           : ").append(this.datagramsDroppedType());
-					sb.append("\n\tLBT-RM datagrams dropped (version)                        : ").append(this.datagramsDroppedVersion());
-					sb.append("\n\tLBT-RM datagrams dropped (header)                         : ").append(this.datagramsDroppedHeader());
-					sb.append("\n\tLBT-RM datagrams dropped (other)                          : ").append(this.datagramsDroppedOther());
-					sb.append("\n\tLBT-RM datagrams received out of order                    : ").append(this.outOfOrder());
-					break;
-				default:
-					sb.append("\nError: unknown transport type received.").append(this.type());
-					break;
-			}
-			sb.append("\n");
-		} catch (Exception ex) {
-			sb.append("\nError displaying immediate message receiver statistics: ").append(ex.toString());
-		}
-		return sb.toString();
-	}
-
-
 Class: LBMContextStatistics
 
 	public String displayString(String aString) {
@@ -407,6 +255,158 @@ Class: LBMSourceStatistics
 			sb.append("\n");
 		} catch (Exception ex) {
 			sb.append("\nError displaying source statistics: ").append(ex.toString());
+		}
+		return sb.toString();
+	}
+
+
+Class: LBMImmediateMessageReceiverStatistics
+
+	public String displayString(String aString) {
+		StringBuilder sb = new StringBuilder(super.displayString(aString));
+		try {
+			sb.append("\nSource: ").append(this.source());
+			sb.append("\nTransport: ").append(this.typeName());
+			switch (this.type())
+			{
+				case LBM.TRANSPORT_STAT_TCP:
+					sb.append("\n\tLBT-TCP bytes received                                    : ").append(this.bytesReceived());
+					sb.append("\n\tLBM messages received                                     : ").append(this.lbmMessagesReceived());
+					sb.append("\n\tLBM messages received with uninteresting topic            : ").append(this.noTopicMessagesReceived());
+					sb.append("\n\tLBM requests received                                     : ").append(this.lbmRequestsReceived());
+					break;
+				case LBM.TRANSPORT_STAT_LBTRM:
+					sb.append("\n\tLBT-RM datagrams received                                 : ").append(this.messagesReceived());
+					sb.append("\n\tLBT-RM datagram bytes received                            : ").append(this.bytesReceived());
+					sb.append("\n\tLBT-RM NAK packets sent                                   : ").append(this.nakPacketsSent());
+					sb.append("\n\tLBT-RM NAKs sent                                          : ").append(this.naksSent());
+					sb.append("\n\tLost LBT-RM datagrams detected                            : ").append(this.lost());
+					sb.append("\n\tNCFs received (ignored)                                   : ").append(this.ncfsIgnored());
+					sb.append("\n\tNCFs received (shed)                                      : ").append(this.ncfsShed());
+					sb.append("\n\tNCFs received (retransmit delay)                          : ").append(this.ncfsRetransmissionDelay());
+					sb.append("\n\tNCFs received (unknown)                                   : ").append(this.ncfsUnknown());
+					sb.append("\n\tLoss recovery minimum time                                : ").append(this.minimumRecoveryTime() + "ms");
+					sb.append("\n\tLoss recovery mean time                                   : ").append(this.meanRecoveryTime() + "ms");
+					sb.append("\n\tLoss recovery maximum time                                : ").append(this.maximumRecoveryTime() + "ms");
+					sb.append("\n\tMinimum transmissions per individual NAK                  : ").append(this.minimumNakTransmissions());
+					sb.append("\n\tMean transmissions per individual NAK                     : ").append(this.meanNakTransmissions());
+					sb.append("\n\tMaximum transmissions per individual NAK                  : ").append(this.maximumNakTransmissions());
+					sb.append("\n\tDuplicate LBT-RM datagrams received                       : ").append(this.duplicateMessages());
+					sb.append("\n\tLBT-RM datagrams unrecoverable (window advance)           : ").append(this.unrecoveredMessagesWindowAdvance());
+					sb.append("\n\tLBT-RM datagrams unrecoverable (NAK generation expiration): ").append(this.unrecoveredMessagesNakGenerationTimeout());
+					sb.append("\n\tLBT-RM LBM messages received                              : ").append(this.lbmMessagesReceived());
+					sb.append("\n\tLBT-RM LBM messages received with uninteresting topic     : ").append(this.noTopicMessagesReceived());
+					sb.append("\n\tLBT-RM LBM requests received                              : ").append(this.lbmRequestsReceived());
+					sb.append("\n\tLBT-RM datagrams dropped (size)                           : ").append(this.datagramsDroppedIncorrectSize());
+					sb.append("\n\tLBT-RM datagrams dropped (type)                           : ").append(this.datagramsDroppedType());
+					sb.append("\n\tLBT-RM datagrams dropped (version)                        : ").append(this.datagramsDroppedVersion());
+					sb.append("\n\tLBT-RM datagrams dropped (header)                         : ").append(this.datagramsDroppedHeader());
+					sb.append("\n\tLBT-RM datagrams dropped (other)                          : ").append(this.datagramsDroppedOther());
+					sb.append("\n\tLBT-RM datagrams received out of order                    : ").append(this.outOfOrder());
+					break;
+				default:
+					sb.append("\nError: unknown transport type received.").append(this.type());
+					break;
+			}
+			sb.append("\n");
+		} catch (Exception ex) {
+			sb.append("\nError displaying immediate message receiver statistics: ").append(ex.toString());
+		}
+		return sb.toString();
+	}
+
+
+Class: LBMEventQueueStatistics
+
+	public String displayString(String aString) {
+		StringBuilder sb = new StringBuilder(super.displayString(aString));
+		try {
+			sb.append("\n\tData messages enqueued                                        : ").append(this.dataMessages());
+			sb.append("\n\tTotal data messages enqueued                                  : ").append(this.dataMessagesTotal());
+			sb.append("\n\tData messages min service time (microseconds)                 : ").append(this.dataMessagesMinimumServiceTime());
+			sb.append("\n\tData messages mean service time (microseconds)                : ").append(this.dataMessagesMeanServiceTime());
+			sb.append("\n\tData messages max service time (microseconds)                 : ").append(this.dataMessagesMaximumServiceTime());
+			sb.append("\n\tResponse messages enqueued                                    : ").append(this.responseMessages());
+			sb.append("\n\tTotal response messages enqueued                              : ").append(this.responseMessagesTotal());
+			sb.append("\n\tResponse messages min service time (microseconds)             : ").append(this.responseMessagesMinimumServiceTime());
+			sb.append("\n\tResponse messages mean service time (microseconds)            : ").append(this.responseMessagesMeanServiceTime());
+			sb.append("\n\tResponse messages max service time (microseconds)             : ").append(this.responseMessagesMaximumServiceTime());
+			sb.append("\n\tTopicless immediate messages enqueued                         : ").append(this.topiclessImmediateMessages());
+			sb.append("\n\tTotal topicless immediate messages enqueued                   : ").append(this.topiclessImmediateMessagesTotal());
+			sb.append("\n\tTopicless immediate messages min service time (microseconds)  : ").append(this.topiclessImmediateMessagesMinimumServiceTime());
+			sb.append("\n\tTopicless immediate messages mean service time (microseconds) : ").append(this.topiclessImmediateMessagesMeanServiceTime());
+			sb.append("\n\tTopicless immediate messages max service time (microseconds)  : ").append(this.topiclessImmediateMessagesMaximumServiceTime());
+			sb.append("\n\tWildcard receiver messages enqueued                           : ").append(this.wildcardReceiverMessages());
+			sb.append("\n\tTotal wildcard receiver messages enqueued                     : ").append(this.wildcardReceiverMessagesTotal());
+			sb.append("\n\tWildcard receiver messages min service time (microseconds)    : ").append(this.wildcardReceiverMessagesMinimumServiceTime());
+			sb.append("\n\tWildcard receiver messages mean service time (microseconds)   : ").append(this.wildcardReceiverMessagesMeanServiceTime());
+			sb.append("\n\tWildcard receiver messages max service time (microseconds)    : ").append(this.wildcardReceiverMessagesMaximumServiceTime());
+			sb.append("\n\tI/O events enqueued                                           : ").append(this.ioEvents());
+			sb.append("\n\tTotal I/O events enqueued                                     : ").append(this.ioEventsTotal());
+			sb.append("\n\tI/O events min service time (microseconds)                    : ").append(this.ioEventsMinimumServiceTime());
+			sb.append("\n\tI/O events mean service time (microseconds)                   : ").append(this.ioEventsMeanServiceTime());
+			sb.append("\n\tI/O events max service time (microseconds)                    : ").append(this.ioEventsMaximumServiceTime());
+			sb.append("\n\tTimer events enqueued                                         : ").append(this.timerEvents());
+			sb.append("\n\tTotal timer events enqueued                                   : ").append(this.timerEventsTotal());
+			sb.append("\n\tTimer events min service time (microseconds)                  : ").append(this.timerEventsMinimumServiceTime());
+			sb.append("\n\tTimer events mean service time (microseconds)                 : ").append(this.timerEventsMeanServiceTime());
+			sb.append("\n\tTimer events max service time (microseconds)                  : ").append(this.timerEventsMaximumServiceTime());
+			sb.append("\n\tSource events enqueued                                        : ").append(this.sourceEvents());
+			sb.append("\n\tTotal source events enqueued                                  : ").append(this.sourceEventsTotal());
+			sb.append("\n\tSource events min service time (microseconds)                 : ").append(this.sourceEventsMinimumServiceTime());
+			sb.append("\n\tSource events mean service time (microseconds)                : ").append(this.sourceEventsMeanServiceTime());
+			sb.append("\n\tSource events max service time (microseconds)                 : ").append(this.sourceEventsMaximumServiceTime());
+			sb.append("\n\tUnblock events enqueued                                       : ").append(this.unblockEvents());
+			sb.append("\n\tTotal unblock events enqueued                                 : ").append(this.unblockEventsTotal());
+			sb.append("\n\tCancel events enqueued                                        : ").append(this.cancelEvents());
+			sb.append("\n\tTotal cancel events enqueued                                  : ").append(this.cancelEventsTotal());
+			sb.append("\n\tCancel events min service time (microseconds)                 : ").append(this.cancelEventsMinimumServiceTime());
+			sb.append("\n\tCancel events mean service time (microseconds)                : ").append(this.cancelEventsMeanServiceTime());
+			sb.append("\n\tCancel events max service time (microseconds)                 : ").append(this.cancelEventsMaximumServiceTime());
+			sb.append("\n\tCallback events enqueued                                      : ").append(this.callbackEvents());
+			sb.append("\n\tTotal callback events enqueued                                : ").append(this.callbackEventsTotal());
+			sb.append("\n\tCallback events min service time (microseconds)               : ").append(this.callbackEventsMinimumServiceTime());
+			sb.append("\n\tCallback events mean service time (microseconds)              : ").append(this.callbackEventsMeanServiceTime());
+			sb.append("\n\tCallback events max service time (microseconds)               : ").append(this.callbackEventsMaximumServiceTime());
+			sb.append("\n\tContext source events enqueued                                : ").append(this.contextSourceEvents());
+			sb.append("\n\tTotal context source events enqueued                          : ").append(this.contextSourceEventsTotal());
+			sb.append("\n\tContext source events min service time (microseconds)         : ").append(this.contextSourceEventsMinimumServiceTime());
+			sb.append("\n\tContext source events mean service time (microseconds)        : ").append(this.contextSourceEventsMeanServiceTime());
+			sb.append("\n\tContext source events max service time (microseconds)         : ").append(this.contextSourceEventsMaximumServiceTime());
+			sb.append("\n\tEvents currently enqueued                                     : ").append(this.events());
+			sb.append("\n\tTotal events enqueued                                         : ").append(this.eventsTotal());
+			sb.append("\n\tMinimum age of events enqueued (microseconds)                 : ").append(this.minimumAge());
+			sb.append("\n\tMean age of events enqueued (microseconds)                    : ").append(this.meanAge());
+			sb.append("\n\tMax age of events enqueued (microseconds)                     : ").append(this.maximumAge());
+			sb.append("\n");
+		} catch (Exception ex) {
+			sb.append("\nError displaying event queue statistics: " + ex.toString());
+		}
+		return sb.toString();
+	}
+
+
+Class: LBMStatistics
+
+	public String displayString(String aString) {
+		StringBuilder sb = new StringBuilder();
+		try {
+			sb.append(aString);
+			sb.append(" from ").append(this.getApplicationSourceId());
+			sb.append(" at ").append(this.getSender().getHostAddress());
+			if (_processid != 0) {
+				sb.append(", process ID=").append(Long.toHexString(this.getProcessId()));
+			}
+			if (_contextid != 0) {
+				sb.append(", object ID=").append(Long.toHexString(this.getContextId()));
+			}
+			if ((_contextinstance != null) && (!_contextinstance.isEmpty())) {
+				sb.append(", context instance=").append(this.getContextInstance());
+			}
+			sb.append(", domain ID=").append(this.getDomainId());
+			sb.append(", sent ").append(this.getTimestamp());
+		} catch (Exception ex) {
+			sb.append("\nError displaying statistics: ").append(ex.toString());
 		}
 		return sb.toString();
 	}

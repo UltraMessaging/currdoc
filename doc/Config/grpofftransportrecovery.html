@@ -54,7 +54,7 @@ $(document).ready(function(){initNavTree('grpofftransportrecovery.html','');});
 <div class="title">Off-Transport Recovery Options </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>See also <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16/doc/Config/design.tag:../Design/" href="../Design/umfeatures.html#offtransportrecoveryotr">Off-Transport Recovery (OTR)</a> for general information on OTR.</p>
+<div class="textblock"><p>See also <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Config/design.tag:../Design/" href="../Design/umfeatures.html#offtransportrecoveryotr">Off-Transport Recovery (OTR)</a> for general information on OTR.</p>
 <p><br />
  </p>
 <h1><a class="anchor" id="offtransportrecoveryref"></a>
@@ -64,14 +64,14 @@ Reference&nbsp;&nbsp;<small><a href="#offtransportrecoveryref">&lt;-</a></small>
 <h2><a class="anchor" id="otrmessagecachingthresholdreceiver"></a>
 otr_message_caching_threshold (receiver)&nbsp;&nbsp;<small><a href="#otrmessagecachingthresholdreceiver">&lt;-</a></small></h2>
 <dl class="section user"><dt></dt><dd>Number of messages in the Delivery Controller's Order Map above which UM will trigger OTR to try to recover the messages. </dd></dl>
-<dl class="section user"><dt></dt><dd>This option only applies for receivers that are enabled for <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16/doc/Config/design.tag:../Design/" href="../Design/umfeatures.html#offtransportrecoveryotr">Off-Transport Recovery (OTR)</a>. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16/doc/Config/design.tag:../Design/" href="../Design/architecture.html#deliverycontroller">Delivery Controller</a> for a description of the Order Map. </dd></dl>
+<dl class="section user"><dt></dt><dd>This option only applies for receivers that are enabled for <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Config/design.tag:../Design/" href="../Design/umfeatures.html#offtransportrecoveryotr">Off-Transport Recovery (OTR)</a>. See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Config/design.tag:../Design/" href="../Design/architecture.html#deliverycontroller">Delivery Controller</a> for a description of the Order Map. </dd></dl>
 <dl class="section user"><dt></dt><dd>The purpose for this option is to speed up recovery in the presence of loss. The delivery controller normally delays for <a class="el" href="grpofftransportrecovery.html#otrrequestinitialdelayreceiver">otr_request_initial_delay (receiver)</a> before initiating OTR. This is to give the transport layer time to recover the lost datagram through its more efficient protocol. However, if the number of datagrams waiting for recovery grows too large, it might indicate that the transport layer is unable to recover the datagrams. In this case, it can be helpful to bypass the normal OTR initial delay and immediately initiate OTR. </dd></dl>
 <dl class="section user"><dt></dt><dd>For environments that are subject to severe loss events, and has expanded the source's transport transmission windows to accommodate, this option should typically be increased above its default to prevent premature OTR.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>receiver </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
 <tr>
 <td><em>Units:</em> </td><td>messages </td></tr>
 <tr>
@@ -88,13 +88,13 @@ otr_message_caching_threshold (receiver)&nbsp;&nbsp;<small><a href="#otrmessagec
 otr_request_initial_delay (receiver)&nbsp;&nbsp;<small><a href="#otrrequestinitialdelayreceiver">&lt;-</a></small></h2>
 <dl class="section user"><dt></dt><dd>The length of time a receiver waits before initiating OTR to recover lost datagrams. </dd></dl>
 <dl class="section user"><dt></dt><dd>Note that unlike transport-level NAKing, this option is not specific to each lost datagram. Rather the Delivery Controller is either "in" OTR mode or it is not. This delay time controls the entry into OTR mode. Once that happens, the OTR feature will request individual datagrams according to its internal algorithms. </dd></dl>
-<dl class="section user"><dt></dt><dd>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16/doc/Config/design.tag:../Design/" href="../Design/umfeatures.html#offtransportrecoveryotr">Off-Transport Recovery (OTR)</a>. </dd></dl>
+<dl class="section user"><dt></dt><dd>See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Config/design.tag:../Design/" href="../Design/umfeatures.html#offtransportrecoveryotr">Off-Transport Recovery (OTR)</a>. </dd></dl>
 <dl class="section user"><dt></dt><dd>Some conditions can initiate OTR without delay, like the Delivery Controller's Order Map growing too large (see <a class="el" href="grpofftransportrecovery.html#otrmessagecachingthresholdreceiver">otr_message_caching_threshold (receiver)</a>). Another case is when the <a class="el" href="grpultramessagingpersistence.html#umeapplicationoutstandingmaximumreceiver">ume_application_outstanding_maximum (receiver)</a> option is set to a non-zero value, then a burst of live messages arriving faster than the application can consume them will put the Delivery Controller into OTR mode. In these cases, OTR can begin prior to the configured initial delay time.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>receiver </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
 <tr>
 <td><em>Units:</em> </td><td>milliseconds </td></tr>
 <tr>
@@ -110,12 +110,12 @@ otr_request_initial_delay (receiver)&nbsp;&nbsp;<small><a href="#otrrequestiniti
 <h2><a class="anchor" id="otrrequestlogalertcooldownreceiver"></a>
 otr_request_log_alert_cooldown (receiver)&nbsp;&nbsp;<small><a href="#otrrequestlogalertcooldownreceiver">&lt;-</a></small></h2>
 <dl class="section user"><dt></dt><dd>Each OTR request generates a log message, subject to log message throttling. The first request's log message is a WARNING-level log message, and subsequent requests that quickly follow generate INFO-level log messages. After a time interval defined by this option, the next request leading a new burst of requests again generates a WARNING-level log message. </dd></dl>
-<dl class="section user"><dt></dt><dd>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16/doc/Config/design.tag:../Design/" href="../Design/umfeatures.html#offtransportrecoveryotr">Off-Transport Recovery (OTR)</a>.</dd></dl>
+<dl class="section user"><dt></dt><dd>See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Config/design.tag:../Design/" href="../Design/umfeatures.html#offtransportrecoveryotr">Off-Transport Recovery (OTR)</a>.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>receiver </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
 <tr>
 <td><em>Units:</em> </td><td>seconds </td></tr>
 <tr>
@@ -134,12 +134,12 @@ otr_request_maximum_interval (receiver)&nbsp;&nbsp;<small><a href="#otrrequestma
 <dl class="section user"><dt></dt><dd>After the receiver initiates OTR and is waiting to receive the retransmission, the initial interval (set by <a class="el" href="grpofftransportrecovery.html#otrrequestminimumintervalreceiver">otr_request_minimum_interval (receiver)</a>) doubles in length for each request until it reaches this option's value, then continues at this interval (until timeout or UM recovers messages). </dd></dl>
 <dl class="section user"><dt></dt><dd></dd></dl>
 <dl class="section note"><dt>Note</dt><dd>When using TCP Request/Response, this value must be shorter than <a class="el" href="grpunicastimmediatemessagingoperation.html#responsetcpdeletiontimeoutcontext">response_tcp_deletion_timeout (context)</a>. </dd></dl>
-<dl class="section user"><dt></dt><dd>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16/doc/Config/design.tag:../Design/" href="../Design/umfeatures.html#offtransportrecoveryotr">Off-Transport Recovery (OTR)</a>.</dd></dl>
+<dl class="section user"><dt></dt><dd>See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Config/design.tag:../Design/" href="../Design/umfeatures.html#offtransportrecoveryotr">Off-Transport Recovery (OTR)</a>.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>receiver </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
 <tr>
 <td><em>Units:</em> </td><td>milliseconds </td></tr>
 <tr>
@@ -155,12 +155,12 @@ otr_request_maximum_interval (receiver)&nbsp;&nbsp;<small><a href="#otrrequestma
 <h2><a class="anchor" id="otrrequestmessagetimeoutreceiver"></a>
 otr_request_message_timeout (receiver)&nbsp;&nbsp;<small><a href="#otrrequestmessagetimeoutreceiver">&lt;-</a></small></h2>
 <dl class="section user"><dt></dt><dd>The maximum time from when a receiver first sends an OTR lost-message request to when the receiver gives up on receiving the retransmitted message and reports loss. </dd></dl>
-<dl class="section user"><dt></dt><dd>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16/doc/Config/design.tag:../Design/" href="../Design/umfeatures.html#offtransportrecoveryotr">Off-Transport Recovery (OTR)</a>.</dd></dl>
+<dl class="section user"><dt></dt><dd>See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Config/design.tag:../Design/" href="../Design/umfeatures.html#offtransportrecoveryotr">Off-Transport Recovery (OTR)</a>.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>receiver </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
 <tr>
 <td><em>Units:</em> </td><td>milliseconds </td></tr>
 <tr>
@@ -177,12 +177,12 @@ otr_request_message_timeout (receiver)&nbsp;&nbsp;<small><a href="#otrrequestmes
 otr_request_minimum_interval (receiver)&nbsp;&nbsp;<small><a href="#otrrequestminimumintervalreceiver">&lt;-</a></small></h2>
 <dl class="section user"><dt></dt><dd>The initial time interval between a receiver's OTR lost-message requests. </dd></dl>
 <dl class="section user"><dt></dt><dd>While the receiver is waiting to receive the retransmission, the interval doubles in length for each request until it reaches the maximum interval set by <a class="el" href="grpofftransportrecovery.html#otrrequestmaximumintervalreceiver">otr_request_maximum_interval (receiver)</a>. </dd></dl>
-<dl class="section user"><dt></dt><dd>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16/doc/Config/design.tag:../Design/" href="../Design/umfeatures.html#offtransportrecoveryotr">Off-Transport Recovery (OTR)</a>.</dd></dl>
+<dl class="section user"><dt></dt><dd>See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Config/design.tag:../Design/" href="../Design/umfeatures.html#offtransportrecoveryotr">Off-Transport Recovery (OTR)</a>.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>receiver </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
 <tr>
 <td><em>Units:</em> </td><td>milliseconds </td></tr>
 <tr>
@@ -199,12 +199,12 @@ otr_request_minimum_interval (receiver)&nbsp;&nbsp;<small><a href="#otrrequestmi
 otr_request_outstanding_maximum (receiver)&nbsp;&nbsp;<small><a href="#otrrequestoutstandingmaximumreceiver">&lt;-</a></small></h2>
 <dl class="section user"><dt></dt><dd>The maximum number of OTR lost-message requests outstanding at any given time. Each message specifies an individual lost message. </dd></dl>
 <dl class="section user"><dt></dt><dd>A value of 0 indicates no maximum (not recommended). </dd></dl>
-<dl class="section user"><dt></dt><dd>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16/doc/Config/design.tag:../Design/" href="../Design/umfeatures.html#offtransportrecoveryotr">Off-Transport Recovery (OTR)</a>.</dd></dl>
+<dl class="section user"><dt></dt><dd>See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Config/design.tag:../Design/" href="../Design/umfeatures.html#offtransportrecoveryotr">Off-Transport Recovery (OTR)</a>.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>receiver </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
 <tr>
 <td><em>Units:</em> </td><td>messages </td></tr>
 <tr>
@@ -220,7 +220,7 @@ otr_request_outstanding_maximum (receiver)&nbsp;&nbsp;<small><a href="#otrreques
 <h2><a class="anchor" id="useotrreceiver"></a>
 use_otr (receiver)&nbsp;&nbsp;<small><a href="#useotrreceiver">&lt;-</a></small></h2>
 <dl class="section user"><dt></dt><dd>Flag indicating if the receiver can use OTR or not. </dd></dl>
-<dl class="section user"><dt></dt><dd>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16/doc/Config/design.tag:../Design/" href="../Design/umfeatures.html#offtransportrecoveryotr">Off-Transport Recovery (OTR)</a>. </dd></dl>
+<dl class="section user"><dt></dt><dd>See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Config/design.tag:../Design/" href="../Design/umfeatures.html#offtransportrecoveryotr">Off-Transport Recovery (OTR)</a>. </dd></dl>
 <dl class="section user"><dt></dt><dd></dd></dl>
 <dl class="section warning"><dt>Warning</dt><dd>The persistent Store uses a UM receiver to receive messages from a persistent source. However, the Store's receiver is NOT considered a "persistent" receiver, and therefore will not use OTR by the default setting. To achieve a high level of guarantee, Informatica recommends persistence users to set "use_otr" to 1 in the Store's LBM configuration.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
