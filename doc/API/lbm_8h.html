@@ -5379,7 +5379,10 @@ LBMExpDLL int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" h
 <p>Structure that holds statistics for a context. </p>
 <p>This structure holds general context statistics for things like topic resolution and interaction with transports and applications.</p>
 <p>Note that when stats are sampled, the fields in the structure are not necessarily from the same instant in time. The structure might be updated concurrently with it being sampled, and while each structure field is atomically read, the field values can be skewed slightly across time.</p>
-<p>See <a class="el" href="structlbm__context__stats__t__stct.html">lbm_context_stats_t_stct</a> for field definitions. </p>
+<p>See <a class="el" href="structlbm__context__stats__t__stct.html">lbm_context_stats_t_stct</a> for field definitions.</p>
+<p><b>Cumulative vs Snapshot</b></p>
+<p>Most UM statistics are cumulative. For example, tr_dgrams_sent starts at zero and grows over time as more and more topic resolution datagrams are sent.</p>
+<p>But some statistics are snapshots, meaning that they represent the value at a moment in time. These values can go up and down. For example, tr_src_topics indicates the number of sources at the time of the snapshot. </p>
 
 </div>
 </div>
@@ -5846,7 +5849,10 @@ LBMExpDLL int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" h
 <p>Structure that holds statistics for an event queue. </p>
 <p>This structure holds statistics for messages and other events that enter and exit the event queue. NOTE: Specific count-enable options must sometimes be enabled for these statistics to populate.</p>
 <p>Note that when stats are sampled, the fields in the structure are not necessarily from the same instant in time. The structure might be updated concurrently with it being sampled, and while each structure field is atomically read, the field values can be skewed slightly across time.</p>
-<p>See <a class="el" href="structlbm__event__queue__stats__t__stct.html">lbm_event_queue_stats_t_stct</a> for field definitions. </p>
+<p>See <a class="el" href="structlbm__event__queue__stats__t__stct.html">lbm_event_queue_stats_t_stct</a> for field definitions.</p>
+<p><b>Cumulative vs Sample</b></p>
+<p>Most UM statistics are cumulative. For example, tr_dgrams_sent starts at zero and grows over time as more and more topic resolution datagrams are sent.</p>
+<p>But some statistics are samples, meaning that they represent the value at a moment in time. These values can go up and down. For example, tr_src_topics indicates the number of sources at the time of the sample. </p>
 
 </div>
 </div>
@@ -6557,7 +6563,9 @@ LBMExpDLL int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" h
 
 <p>Structure that holds message statistics for receiver BROKER transports. </p>
 <p>Note that when stats are sampled, the fields in the structure are not necessarily from the same instant in time. The structure might be updated concurrently with it being sampled, and while each structure field is atomically read, the field values can be skewed slightly across time.</p>
-<p>See <a class="el" href="structlbm__rcv__transport__stats__broker__t__stct.html">lbm_rcv_transport_stats_broker_t_stct</a> for field definitions. </p>
+<p>See <a class="el" href="structlbm__rcv__transport__stats__broker__t__stct.html">lbm_rcv_transport_stats_broker_t_stct</a> for field definitions.</p>
+<p><b>Cumulative vs Snapshot</b></p>
+<p>These UM statistics are cumulative. For example, msgs_rcved starts at zero and grows over time as more and more messages are sent. </p>
 
 </div>
 </div>
@@ -6588,7 +6596,9 @@ LBMExpDLL int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" h
 
 <p>Structure that holds datagram statistics for receiver LBT-IPC transports. </p>
 <p>Note that when stats are sampled, the fields in the structure are not necessarily from the same instant in time. The structure might be updated concurrently with it being sampled, and while each structure field is atomically read, the field values can be skewed slightly across time.</p>
-<p>See <a class="el" href="structlbm__rcv__transport__stats__lbtipc__t__stct.html">lbm_rcv_transport_stats_lbtipc_t_stct</a> for field definitions. </p>
+<p>See <a class="el" href="structlbm__rcv__transport__stats__lbtipc__t__stct.html">lbm_rcv_transport_stats_lbtipc_t_stct</a> for field definitions.</p>
+<p><b>Cumulative vs Snapshot</b></p>
+<p>These UM statistics are cumulative. For example, msgs_rcved starts at zero and grows over time as more and more messages are sent. </p>
 
 </div>
 </div>
@@ -6619,7 +6629,9 @@ LBMExpDLL int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" h
 
 <p>Structure that holds datagram statistics for receiver LBT-RM transports. </p>
 <p>Note that when stats are sampled, the fields in the structure are not necessarily from the same instant in time. The structure might be updated concurrently with it being sampled, and while each structure field is atomically read, the field values can be skewed slightly across time.</p>
-<p>See <a class="el" href="structlbm__rcv__transport__stats__lbtrm__t__stct.html">lbm_rcv_transport_stats_lbtrm_t_stct</a> for field definitions. </p>
+<p>See <a class="el" href="structlbm__rcv__transport__stats__lbtrm__t__stct.html">lbm_rcv_transport_stats_lbtrm_t_stct</a> for field definitions.</p>
+<p><b>Cumulative vs Snapshot</b></p>
+<p>These UM statistics are cumulative. For example, msgs_rcved starts at zero and grows over time as more and more messages are sent. </p>
 
 </div>
 </div>
@@ -6635,7 +6647,9 @@ LBMExpDLL int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" h
 
 <p>Structure that holds datagram statistics for receiver LBT-RU transports. </p>
 <p>Note that when stats are sampled, the fields in the structure are not necessarily from the same instant in time. The structure might be updated concurrently with it being sampled, and while each structure field is atomically read, the field values can be skewed slightly across time.</p>
-<p>See <a class="el" href="structlbm__rcv__transport__stats__lbtru__t__stct.html">lbm_rcv_transport_stats_lbtru_t_stct</a> for field definitions. </p>
+<p>See <a class="el" href="structlbm__rcv__transport__stats__lbtru__t__stct.html">lbm_rcv_transport_stats_lbtru_t_stct</a> for field definitions.</p>
+<p><b>Cumulative vs Snapshot</b></p>
+<p>These UM statistics are cumulative. For example, msgs_rcved starts at zero and grows over time as more and more messages are sent. </p>
 
 </div>
 </div>
@@ -6651,7 +6665,9 @@ LBMExpDLL int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" h
 
 <p>Structure that holds datagram statistics for receiver LBT-SMX transports. </p>
 <p>Note that when stats are sampled, the fields in the structure are not necessarily from the same instant in time. The structure might be updated concurrently with it being sampled, and while each structure field is atomically read, the field values can be skewed slightly across time.</p>
-<p>See <a class="el" href="structlbm__rcv__transport__stats__lbtsmx__t__stct.html">lbm_rcv_transport_stats_lbtsmx_t_stct</a> for field definitions. </p>
+<p>See <a class="el" href="structlbm__rcv__transport__stats__lbtsmx__t__stct.html">lbm_rcv_transport_stats_lbtsmx_t_stct</a> for field definitions.</p>
+<p><b>Cumulative vs Snapshot</b></p>
+<p>These UM statistics are cumulative. For example, msgs_rcved starts at zero and grows over time as more and more messages are sent. </p>
 
 </div>
 </div>
@@ -6684,7 +6700,9 @@ LBMExpDLL int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" h
 
 <p>Structure that holds datagram statistics for receiver TCP transports. </p>
 <p>Note that when stats are sampled, the fields in the structure are not necessarily from the same instant in time. The structure might be updated concurrently with it being sampled, and while each structure field is atomically read, the field values can be skewed slightly across time.</p>
-<p>See <a class="el" href="structlbm__rcv__transport__stats__tcp__t__stct.html">lbm_rcv_transport_stats_tcp_t_stct</a> for field definitions. </p>
+<p>See <a class="el" href="structlbm__rcv__transport__stats__tcp__t__stct.html">lbm_rcv_transport_stats_tcp_t_stct</a> for field definitions.</p>
+<p><b>Cumulative vs Snapshot</b></p>
+<p>These UM statistics are cumulative. For example, msgs_rcved starts at zero and grows over time as more and more messages are sent. </p>
 
 </div>
 </div>
@@ -7171,7 +7189,9 @@ LBMExpDLL int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" h
 
 <p>Structure that holds datagram statistics for source BROKER transports. </p>
 <p>Note that when stats are sampled, the fields in the structure are not necessarily from the same instant in time. The structure might be updated concurrently with it being sampled, and while each structure field is atomically read, the field values can be skewed slightly across time.</p>
-<p>See <a class="el" href="structlbm__src__transport__stats__broker__t__stct.html">lbm_src_transport_stats_broker_t_stct</a> for field definitions. </p>
+<p>See <a class="el" href="structlbm__src__transport__stats__broker__t__stct.html">lbm_src_transport_stats_broker_t_stct</a> for field definitions.</p>
+<p><b>Cumulative vs Snapshot</b></p>
+<p>These UM statistics are cumulative. For example, msgs_sent starts at zero and grows over time as more and more messages are sent. </p>
 
 </div>
 </div>
@@ -7202,7 +7222,10 @@ LBMExpDLL int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" h
 
 <p>Structure that holds datagram statistics for source LBT-IPC transports. </p>
 <p>Note that when stats are sampled, the fields in the structure are not necessarily from the same instant in time. The structure might be updated concurrently with it being sampled, and while each structure field is atomically read, the field values can be skewed slightly across time.</p>
-<p>See <a class="el" href="structlbm__src__transport__stats__lbtipc__t__stct.html">lbm_src_transport_stats_lbtipc_t_stct</a> for field definitions. </p>
+<p>See <a class="el" href="structlbm__src__transport__stats__lbtipc__t__stct.html">lbm_src_transport_stats_lbtipc_t_stct</a> for field definitions.</p>
+<p><b>Cumulative vs Snapshot</b></p>
+<p>Most UM statistics are cumulative. For example, msgs_sent starts at zero and grows over time as more and more messages are sent.</p>
+<p>But some statistics are snapshots, meaning that they represent the value at a moment in time. These values can go up and down. For example, num_clients indicates the number of subscribers connected at the time of the snapshot. </p>
 
 </div>
 </div>
@@ -7233,7 +7256,10 @@ LBMExpDLL int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" h
 
 <p>Structure that holds datagram statistics for source LBT-RM transports. </p>
 <p>Note that when stats are sampled, the fields in the structure are not necessarily from the same instant in time. The structure might be updated concurrently with it being sampled, and while each structure field is atomically read, the field values can be skewed slightly across time.</p>
-<p>See <a class="el" href="structlbm__src__transport__stats__lbtrm__t__stct.html">lbm_src_transport_stats_lbtrm_t_stct</a> for field definitions. </p>
+<p>See <a class="el" href="structlbm__src__transport__stats__lbtrm__t__stct.html">lbm_src_transport_stats_lbtrm_t_stct</a> for field definitions.</p>
+<p><b>Cumulative vs Snapshot</b></p>
+<p>Most UM statistics are cumulative. For example, msgs_sent starts at zero and grows over time as more and more messages are sent.</p>
+<p>But some statistics are snapshots, meaning that they represent the value at a moment in time. These values can go up and down. For example, txw_msgs indicates the number of bytes in the transmission window at the time of the snapshot. </p>
 
 </div>
 </div>
@@ -7265,7 +7291,10 @@ LBMExpDLL int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" h
 
 <p>Structure that holds datagram statistics for source LBT-SMX transports. </p>
 <p>Note that when stats are sampled, the fields in the structure are not necessarily from the same instant in time. The structure might be updated concurrently with it being sampled, and while each structure field is atomically read, the field values can be skewed slightly across time.</p>
-<p>See <a class="el" href="structlbm__src__transport__stats__lbtsmx__t__stct.html">lbm_src_transport_stats_lbtsmx_t_stct</a> for field definitions. </p>
+<p>See <a class="el" href="structlbm__src__transport__stats__lbtsmx__t__stct.html">lbm_src_transport_stats_lbtsmx_t_stct</a> for field definitions.</p>
+<p><b>Cumulative vs Snapshot</b></p>
+<p>Most UM statistics are cumulative. For example, msgs_sent starts at zero and grows over time as more and more messages are sent.</p>
+<p>But some statistics are snapshots, meaning that they represent the value at a moment in time. These values can go up and down. For example, num_clients indicates the number of subscribers connected at the time of the snapshot. </p>
 
 </div>
 </div>
@@ -7298,7 +7327,9 @@ LBMExpDLL int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" h
 
 <p>Structure that holds datagram statistics for source TCP transports. </p>
 <p>Note that when stats are sampled, the fields in the structure are not necessarily from the same instant in time. The structure might be updated concurrently with it being sampled, and while each structure field is atomically read, the field values can be skewed slightly across time.</p>
-<p>See <a class="el" href="structlbm__src__transport__stats__tcp__t__stct.html">lbm_src_transport_stats_tcp_t_stct</a> for field definitions. </p>
+<p>See <a class="el" href="structlbm__src__transport__stats__tcp__t__stct.html">lbm_src_transport_stats_tcp_t_stct</a> for field definitions.</p>
+<p><b>Cumulative vs Snapshot</b></p>
+<p>These statistics are snapshots, meaning that they represent the value at a moment in time. These values can go up and down. For example, num_clients indicates the number of subscribers connected at the time of the snapshot. </p>
 
 </div>
 </div>

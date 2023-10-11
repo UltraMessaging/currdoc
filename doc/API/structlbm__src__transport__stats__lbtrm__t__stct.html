@@ -80,64 +80,208 @@ $(document).ready(function(){initNavTree('structlbm__src__transport__stats__lbtr
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Data Fields</h2></td></tr>
-<tr class="memitem:afdb40daed5c3da97e44b495649d063be"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afdb40daed5c3da97e44b495649d063be"></a>
-<a class="el" href="lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlbm__src__transport__stats__lbtrm__t__stct.html#afdb40daed5c3da97e44b495649d063be">msgs_sent</a></td></tr>
-<tr class="memdesc:afdb40daed5c3da97e44b495649d063be"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of LBT-RM datagrams sent. Depending on batching settings, a single LBT-RM datagram may contain one or more messages, or a fragment of a larger message. With LBT-RM, larger messages are split into fragment sizes limited by configuration option <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/API/config.tag:../Config/" href="../Config/grptransportlbtrmoperation.html#transportlbtrmdatagrammaxsizecontext">transport_lbtrm_datagram_max_size (context)</a> (default 8KB). <br /></td></tr>
+<tr class="memitem:afdb40daed5c3da97e44b495649d063be"><td class="memItemLeft" align="right" valign="top"><a class="el" href="lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlbm__src__transport__stats__lbtrm__t__stct.html#afdb40daed5c3da97e44b495649d063be">msgs_sent</a></td></tr>
+<tr class="memdesc:afdb40daed5c3da97e44b495649d063be"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of LBT-RM datagrams sent. (Cumulative)  <a href="#afdb40daed5c3da97e44b495649d063be">More...</a><br /></td></tr>
 <tr class="separator:afdb40daed5c3da97e44b495649d063be"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac9e8875bb28fa479cc3425a69b821fae"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac9e8875bb28fa479cc3425a69b821fae"></a>
 <a class="el" href="lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlbm__src__transport__stats__lbtrm__t__stct.html#ac9e8875bb28fa479cc3425a69b821fae">bytes_sent</a></td></tr>
-<tr class="memdesc:ac9e8875bb28fa479cc3425a69b821fae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of LBT-RM datagram bytes sent, i.e., the total of lengths of all LBT-RM packets including UM header information. <br /></td></tr>
+<tr class="memdesc:ac9e8875bb28fa479cc3425a69b821fae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of LBT-RM datagram bytes sent, i.e., the total of lengths of all LBT-RM packets including UM header information. (Cumulative) <br /></td></tr>
 <tr class="separator:ac9e8875bb28fa479cc3425a69b821fae"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a523f274dc1a3c9d8ab2f8cf5761f89f6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a523f274dc1a3c9d8ab2f8cf5761f89f6"></a>
-<a class="el" href="lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlbm__src__transport__stats__lbtrm__t__stct.html#a523f274dc1a3c9d8ab2f8cf5761f89f6">txw_msgs</a></td></tr>
-<tr class="memdesc:a523f274dc1a3c9d8ab2f8cf5761f89f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of LBT-RM datagrams currently in the transmission window. Each source transport session maintains a transmission window buffer (the size of which is set by <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/API/config.tag:../Config/" href="../Config/grptransportlbtrmreliability.html#transportlbtrmtransmissionwindowsizesource">transport_lbtrm_transmission_window_size (source)</a>, default 24MB). When the source transport receives a NAK, the corresponding message for retransmission must be found in this transmission window. <br /></td></tr>
+<tr class="memitem:a523f274dc1a3c9d8ab2f8cf5761f89f6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlbm__src__transport__stats__lbtrm__t__stct.html#a523f274dc1a3c9d8ab2f8cf5761f89f6">txw_msgs</a></td></tr>
+<tr class="memdesc:a523f274dc1a3c9d8ab2f8cf5761f89f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of LBT-RM datagrams currently in the transmission window. (Snapshot)  <a href="#a523f274dc1a3c9d8ab2f8cf5761f89f6">More...</a><br /></td></tr>
 <tr class="separator:a523f274dc1a3c9d8ab2f8cf5761f89f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afeaeca726b303f4f70fa5e5c016c6a1a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afeaeca726b303f4f70fa5e5c016c6a1a"></a>
 <a class="el" href="lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlbm__src__transport__stats__lbtrm__t__stct.html#afeaeca726b303f4f70fa5e5c016c6a1a">txw_bytes</a></td></tr>
-<tr class="memdesc:afeaeca726b303f4f70fa5e5c016c6a1a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of bytes currently in the transmission window. See txw_msgs (above) for a description of the transmission window. Typically, this count approaches its window size or exceeds it by a small amount. <br /></td></tr>
+<tr class="memdesc:afeaeca726b303f4f70fa5e5c016c6a1a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of bytes currently in the transmission window. See txw_msgs (above) for a description of the transmission window. Typically, this count approaches its window size or exceeds it by a small amount. (Snapshot) <br /></td></tr>
 <tr class="separator:afeaeca726b303f4f70fa5e5c016c6a1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a274fbe52a206df04a56e4011dc43f3b5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a274fbe52a206df04a56e4011dc43f3b5"></a>
 <a class="el" href="lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlbm__src__transport__stats__lbtrm__t__stct.html#a274fbe52a206df04a56e4011dc43f3b5">nak_pckts_rcved</a></td></tr>
-<tr class="memdesc:a274fbe52a206df04a56e4011dc43f3b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of NAK packets received by this source transport. UM batches NAKs into NAK packets to save network bandwidth. This should always be less than or equal to naks_rcved (below). <br /></td></tr>
+<tr class="memdesc:a274fbe52a206df04a56e4011dc43f3b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of NAK packets received by this source transport. UM batches NAKs into NAK packets to save network bandwidth. This should always be less than or equal to naks_rcved (below). (Cumulative) <br /></td></tr>
 <tr class="separator:a274fbe52a206df04a56e4011dc43f3b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a363c5c9c4b5a44e1eced9ad7a2892473"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a363c5c9c4b5a44e1eced9ad7a2892473"></a>
-<a class="el" href="lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlbm__src__transport__stats__lbtrm__t__stct.html#a363c5c9c4b5a44e1eced9ad7a2892473">naks_rcved</a></td></tr>
-<tr class="memdesc:a363c5c9c4b5a44e1eced9ad7a2892473"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of individual NAKs received by the source transport. When a source transport receives a NAK from a receiver transport, it may respond by re-transmitting the requested LBT-RM datagram, or it may send an NCF. The NAKing receiver transport responds to the NCF by waiting (timeout set by <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/API/config.tag:../Config/" href="../Config/grptransportlbtrmreliability.html#transportlbtrmnaksuppressintervalreceiver">transport_lbtrm_nak_suppress_interval (receiver)</a>, default 1000 ms), then re-sending the NAK. <br /></td></tr>
+<tr class="memitem:a363c5c9c4b5a44e1eced9ad7a2892473"><td class="memItemLeft" align="right" valign="top"><a class="el" href="lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlbm__src__transport__stats__lbtrm__t__stct.html#a363c5c9c4b5a44e1eced9ad7a2892473">naks_rcved</a></td></tr>
+<tr class="memdesc:a363c5c9c4b5a44e1eced9ad7a2892473"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of individual NAKs received by the source transport. (Cumulative)  <a href="#a363c5c9c4b5a44e1eced9ad7a2892473">More...</a><br /></td></tr>
 <tr class="separator:a363c5c9c4b5a44e1eced9ad7a2892473"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2ce4464adca5085460282d5f24e824e5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2ce4464adca5085460282d5f24e824e5"></a>
-<a class="el" href="lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlbm__src__transport__stats__lbtrm__t__stct.html#a2ce4464adca5085460282d5f24e824e5">naks_ignored</a></td></tr>
-<tr class="memdesc:a2ce4464adca5085460282d5f24e824e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of NAKs this source transport ignored and sent an NCF with reason code "ignored". A source transport ignores a NAK for a datagram it has already recently retransmitted. How "recently" is determined by the configuration option source <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/API/config.tag:../Config/" href="../Config/grptransportlbtrmreliability.html#transportlbtrmignoreintervalsource">transport_lbtrm_ignore_interval (source)</a> (default 500ms). If this count is high, a receiver transport may be having trouble receiving retransmissions, or the ignore interval may be set too long. <br /></td></tr>
+<tr class="memitem:a2ce4464adca5085460282d5f24e824e5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlbm__src__transport__stats__lbtrm__t__stct.html#a2ce4464adca5085460282d5f24e824e5">naks_ignored</a></td></tr>
+<tr class="memdesc:a2ce4464adca5085460282d5f24e824e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of NAKs this source transport ignored and sent an NCF with reason code "ignored". (Cumulative)  <a href="#a2ce4464adca5085460282d5f24e824e5">More...</a><br /></td></tr>
 <tr class="separator:a2ce4464adca5085460282d5f24e824e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:accf51bbd30c14ed1c88582aa6f0400b6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="accf51bbd30c14ed1c88582aa6f0400b6"></a>
-<a class="el" href="lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlbm__src__transport__stats__lbtrm__t__stct.html#accf51bbd30c14ed1c88582aa6f0400b6">naks_shed</a></td></tr>
-<tr class="memdesc:accf51bbd30c14ed1c88582aa6f0400b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of NAKs this source transport has shed by sending an NCF with reason code "shed". When a source transport's retransmit rate limiter and retransmit queue are both at maximum, it responds to a NAK by sending an "NCF shed", and does not retransmit. The receiver transport should wait, then send another NAK. If this count is high, one or more crybaby receiver transports may be clogging the source transport's retransmit queue. <br /></td></tr>
+<tr class="memitem:accf51bbd30c14ed1c88582aa6f0400b6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlbm__src__transport__stats__lbtrm__t__stct.html#accf51bbd30c14ed1c88582aa6f0400b6">naks_shed</a></td></tr>
+<tr class="memdesc:accf51bbd30c14ed1c88582aa6f0400b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of NAKs this source transport has shed by sending an NCF with reason code "shed". (Cumulative)  <a href="#accf51bbd30c14ed1c88582aa6f0400b6">More...</a><br /></td></tr>
 <tr class="separator:accf51bbd30c14ed1c88582aa6f0400b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a93605cc2dcfac90aecd4736439c3bdea"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a93605cc2dcfac90aecd4736439c3bdea"></a>
-<a class="el" href="lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlbm__src__transport__stats__lbtrm__t__stct.html#a93605cc2dcfac90aecd4736439c3bdea">naks_rx_delay_ignored</a></td></tr>
-<tr class="memdesc:a93605cc2dcfac90aecd4736439c3bdea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of NAKs this source transport has not yet processed because doing so would exceed its retransmit rate limit (set by configuration option <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/API/config.tag:../Config/" href="../Config/grptransportlbtrmoperation.html#transportlbtrmretransmitratelimitcontext">transport_lbtrm_retransmit_rate_limit (context)</a>, default 5Mbps). For each of these NAKs, the source transport immediately sends an NFC rx_delay, then queues the retransmission for a later send within the rate limit. If this count is high, one or more crybaby receiver transports may be clogging the source transport's retransmit queue. <br /></td></tr>
+<tr class="memitem:a93605cc2dcfac90aecd4736439c3bdea"><td class="memItemLeft" align="right" valign="top"><a class="el" href="lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlbm__src__transport__stats__lbtrm__t__stct.html#a93605cc2dcfac90aecd4736439c3bdea">naks_rx_delay_ignored</a></td></tr>
+<tr class="memdesc:a93605cc2dcfac90aecd4736439c3bdea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of NAKs this source transport has not yet processed because doing so would exceed its retransmit rate limit (set by configuration option <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/API/config.tag:../Config/" href="../Config/grptransportlbtrmoperation.html#transportlbtrmretransmitratelimitcontext">transport_lbtrm_retransmit_rate_limit (context)</a>, default 5Mbps). (Cumulative)  <a href="#a93605cc2dcfac90aecd4736439c3bdea">More...</a><br /></td></tr>
 <tr class="separator:a93605cc2dcfac90aecd4736439c3bdea"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa422cfe9a6d2943554a5bcac082e267a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa422cfe9a6d2943554a5bcac082e267a"></a>
-<a class="el" href="lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlbm__src__transport__stats__lbtrm__t__stct.html#aa422cfe9a6d2943554a5bcac082e267a">rxs_sent</a></td></tr>
-<tr class="memdesc:aa422cfe9a6d2943554a5bcac082e267a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of LBT-RM datagrams retransmitted by this source transport (incremented under the same circumstances as rx_bytes_sent, below). In a normal, light-loss scenario, most NAKs induce a retransmission. When losses becomes heavy and/or many receiver transports begin losing the same LBT-RM datagrams, NCF-related no-retransmit counts (naks_ignored, naks_shed and naks_rx_delay_ignored) may begin to inflate, and retransmissions (rxs_sent/rx_bytes_sent counts) may become significantly lower than NAKS received (naks_rcved). <br /></td></tr>
+<tr class="memitem:aa422cfe9a6d2943554a5bcac082e267a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlbm__src__transport__stats__lbtrm__t__stct.html#aa422cfe9a6d2943554a5bcac082e267a">rxs_sent</a></td></tr>
+<tr class="memdesc:aa422cfe9a6d2943554a5bcac082e267a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of LBT-RM datagrams retransmitted by this source transport (incremented under the same circumstances as rx_bytes_sent, below). (Cumulative)  <a href="#aa422cfe9a6d2943554a5bcac082e267a">More...</a><br /></td></tr>
 <tr class="separator:aa422cfe9a6d2943554a5bcac082e267a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1b06028d9780a5c230ccb9daf51c2a13"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1b06028d9780a5c230ccb9daf51c2a13"></a>
-<a class="el" href="lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlbm__src__transport__stats__lbtrm__t__stct.html#a1b06028d9780a5c230ccb9daf51c2a13">rctlr_data_msgs</a></td></tr>
-<tr class="memdesc:a1b06028d9780a5c230ccb9daf51c2a13"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of LBT-RM datagrams currently queued by the data rate limiter. When a source transport attempts to send messages (any type) faster than its data rate limiter allows (set by configuration option <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/API/config.tag:../Config/" href="../Config/grptransportlbtrmoperation.html#transportlbtrmdataratelimitcontext">transport_lbtrm_data_rate_limit (context)</a>, default 10Mbps), the data rate limiter queues the messages until they can be sent within the data rate limit. <br /></td></tr>
+<tr class="memitem:a1b06028d9780a5c230ccb9daf51c2a13"><td class="memItemLeft" align="right" valign="top"><a class="el" href="lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlbm__src__transport__stats__lbtrm__t__stct.html#a1b06028d9780a5c230ccb9daf51c2a13">rctlr_data_msgs</a></td></tr>
+<tr class="memdesc:a1b06028d9780a5c230ccb9daf51c2a13"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of LBT-RM datagrams currently queued by the data rate limiter. (Snapshot)  <a href="#a1b06028d9780a5c230ccb9daf51c2a13">More...</a><br /></td></tr>
 <tr class="separator:a1b06028d9780a5c230ccb9daf51c2a13"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac872c31f04d67e7bcd833e185697c378"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac872c31f04d67e7bcd833e185697c378"></a>
-<a class="el" href="lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlbm__src__transport__stats__lbtrm__t__stct.html#ac872c31f04d67e7bcd833e185697c378">rctlr_rx_msgs</a></td></tr>
-<tr class="memdesc:ac872c31f04d67e7bcd833e185697c378"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of LBT-RM transport retransmission datagrams currently queued by the retransmit rate limiter. When a source transport attempts to send retransmissions faster that its retransmit rate limiter allows (set by configuration option <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/API/config.tag:../Config/" href="../Config/grptransportlbtrmoperation.html#transportlbtrmretransmitratelimitcontext">transport_lbtrm_retransmit_rate_limit (context)</a>, default 5Mbps), the retransmit rate limiter queues retransmissions until they can be sent within the rate limit. naks_rx_delay_ignored (above) will generally also rise if this count is high. <br /></td></tr>
+<tr class="memitem:ac872c31f04d67e7bcd833e185697c378"><td class="memItemLeft" align="right" valign="top"><a class="el" href="lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlbm__src__transport__stats__lbtrm__t__stct.html#ac872c31f04d67e7bcd833e185697c378">rctlr_rx_msgs</a></td></tr>
+<tr class="memdesc:ac872c31f04d67e7bcd833e185697c378"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of LBT-RM transport retransmission datagrams currently queued by the retransmit rate limiter. (Snapshot)  <a href="#ac872c31f04d67e7bcd833e185697c378">More...</a><br /></td></tr>
 <tr class="separator:ac872c31f04d67e7bcd833e185697c378"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7fac3436d89273a06a810e79fc482cd5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7fac3436d89273a06a810e79fc482cd5"></a>
-<a class="el" href="lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlbm__src__transport__stats__lbtrm__t__stct.html#a7fac3436d89273a06a810e79fc482cd5">rx_bytes_sent</a></td></tr>
-<tr class="memdesc:a7fac3436d89273a06a810e79fc482cd5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of LBT-RM transport total bytes retransmitted by this source transport (triggered under the same circumstances as rxs_sent, above). In a normal, light-loss scenario, most NAKs induce a retransmission. When losses becomes heavy and/or many receiver transports begin losing the same LBT-RM datagrams, NCF-related no-retransmit counts (naks_ignored, naks_shed and naks_rx_delay_ignored) may begin to inflate, and retransmissions (rxs_sent/rx_bytes_sent counts) may become significantly lower than NAKS received (naks_rcved). <br /></td></tr>
+<tr class="memitem:a7fac3436d89273a06a810e79fc482cd5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlbm__src__transport__stats__lbtrm__t__stct.html#a7fac3436d89273a06a810e79fc482cd5">rx_bytes_sent</a></td></tr>
+<tr class="memdesc:a7fac3436d89273a06a810e79fc482cd5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of LBT-RM transport total bytes retransmitted by this source transport (triggered under the same circumstances as rxs_sent, above). (Cumulative)  <a href="#a7fac3436d89273a06a810e79fc482cd5">More...</a><br /></td></tr>
 <tr class="separator:a7fac3436d89273a06a810e79fc482cd5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Structure that holds datagram statistics for source LBT-RM transports. </p>
 <p>Note that when stats are sampled, the fields in the structure are not necessarily from the same instant in time. The structure might be updated concurrently with it being sampled, and while each structure field is atomically read, the field values can be skewed slightly across time.</p>
-<p>See <a class="el" href="structlbm__src__transport__stats__lbtrm__t__stct.html">lbm_src_transport_stats_lbtrm_t_stct</a> for field definitions. </p>
-</div><hr/>The documentation for this struct was generated from the following file:<ul>
+<p>See <a class="el" href="structlbm__src__transport__stats__lbtrm__t__stct.html">lbm_src_transport_stats_lbtrm_t_stct</a> for field definitions.</p>
+<p><b>Cumulative vs Snapshot</b></p>
+<p>Most UM statistics are cumulative. For example, msgs_sent starts at zero and grows over time as more and more messages are sent.</p>
+<p>But some statistics are snapshots, meaning that they represent the value at a moment in time. These values can go up and down. For example, txw_msgs indicates the number of bytes in the transmission window at the time of the snapshot. </p>
+</div><h2 class="groupheader">Field Documentation</h2>
+<a class="anchor" id="afdb40daed5c3da97e44b495649d063be"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a> lbm_src_transport_stats_lbtrm_t_stct::msgs_sent</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Number of LBT-RM datagrams sent. (Cumulative) </p>
+<p>Depending on batching settings, a single LBT-RM datagram may contain one or more messages, or a fragment of a larger message. With LBT-RM, larger messages are split into fragment sizes limited by configuration option <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/API/config.tag:../Config/" href="../Config/grptransportlbtrmoperation.html#transportlbtrmdatagrammaxsizecontext">transport_lbtrm_datagram_max_size (context)</a> (default 8KB). </p>
+
+</div>
+</div>
+<a class="anchor" id="a2ce4464adca5085460282d5f24e824e5"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a> lbm_src_transport_stats_lbtrm_t_stct::naks_ignored</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Number of NAKs this source transport ignored and sent an NCF with reason code "ignored". (Cumulative) </p>
+<p>A source transport ignores a NAK for a datagram it has already recently retransmitted. How "recently" is determined by the configuration option source <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/API/config.tag:../Config/" href="../Config/grptransportlbtrmreliability.html#transportlbtrmignoreintervalsource">transport_lbtrm_ignore_interval (source)</a> (default 500ms). If this count is high, a receiver transport may be having trouble receiving retransmissions, or the ignore interval may be set too long. </p>
+
+</div>
+</div>
+<a class="anchor" id="a363c5c9c4b5a44e1eced9ad7a2892473"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a> lbm_src_transport_stats_lbtrm_t_stct::naks_rcved</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Number of individual NAKs received by the source transport. (Cumulative) </p>
+<p>When a source transport receives a NAK from a receiver transport, it may respond by re-transmitting the requested LBT-RM datagram, or it may send an NCF. The NAKing receiver transport responds to the NCF by waiting (timeout set by <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/API/config.tag:../Config/" href="../Config/grptransportlbtrmreliability.html#transportlbtrmnaksuppressintervalreceiver">transport_lbtrm_nak_suppress_interval (receiver)</a>, default 1000 ms), then re-sending the NAK. </p>
+
+</div>
+</div>
+<a class="anchor" id="a93605cc2dcfac90aecd4736439c3bdea"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a> lbm_src_transport_stats_lbtrm_t_stct::naks_rx_delay_ignored</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Number of NAKs this source transport has not yet processed because doing so would exceed its retransmit rate limit (set by configuration option <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/API/config.tag:../Config/" href="../Config/grptransportlbtrmoperation.html#transportlbtrmretransmitratelimitcontext">transport_lbtrm_retransmit_rate_limit (context)</a>, default 5Mbps). (Cumulative) </p>
+<p>For each of these NAKs, the source transport immediately sends an NFC rx_delay, then queues the retransmission for a later send within the rate limit. If this count is high, one or more crybaby receiver transports may be clogging the source transport's retransmit queue. </p>
+
+</div>
+</div>
+<a class="anchor" id="accf51bbd30c14ed1c88582aa6f0400b6"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a> lbm_src_transport_stats_lbtrm_t_stct::naks_shed</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Number of NAKs this source transport has shed by sending an NCF with reason code "shed". (Cumulative) </p>
+<p>When a source transport's retransmit rate limiter and retransmit queue are both at maximum, it responds to a NAK by sending an "NCF shed", and does not retransmit. The receiver transport should wait, then send another NAK. If this count is high, one or more crybaby receiver transports may be clogging the source transport's retransmit queue. </p>
+
+</div>
+</div>
+<a class="anchor" id="a1b06028d9780a5c230ccb9daf51c2a13"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a> lbm_src_transport_stats_lbtrm_t_stct::rctlr_data_msgs</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Number of LBT-RM datagrams currently queued by the data rate limiter. (Snapshot) </p>
+<p>When a source transport attempts to send messages (any type) faster than its data rate limiter allows (set by configuration option <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/API/config.tag:../Config/" href="../Config/grptransportlbtrmoperation.html#transportlbtrmdataratelimitcontext">transport_lbtrm_data_rate_limit (context)</a>, default 10Mbps), the data rate limiter queues the messages until they can be sent within the data rate limit. </p>
+
+</div>
+</div>
+<a class="anchor" id="ac872c31f04d67e7bcd833e185697c378"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a> lbm_src_transport_stats_lbtrm_t_stct::rctlr_rx_msgs</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Number of LBT-RM transport retransmission datagrams currently queued by the retransmit rate limiter. (Snapshot) </p>
+<p>When a source transport attempts to send retransmissions faster that its retransmit rate limiter allows (set by configuration option <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/API/config.tag:../Config/" href="../Config/grptransportlbtrmoperation.html#transportlbtrmretransmitratelimitcontext">transport_lbtrm_retransmit_rate_limit (context)</a>, default 5Mbps), the retransmit rate limiter queues retransmissions until they can be sent within the rate limit. naks_rx_delay_ignored (above) will generally also rise if this count is high. </p>
+
+</div>
+</div>
+<a class="anchor" id="a7fac3436d89273a06a810e79fc482cd5"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a> lbm_src_transport_stats_lbtrm_t_stct::rx_bytes_sent</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Number of LBT-RM transport total bytes retransmitted by this source transport (triggered under the same circumstances as rxs_sent, above). (Cumulative) </p>
+<p>In a normal, light-loss scenario, most NAKs induce a retransmission. When losses becomes heavy and/or many receiver transports begin losing the same LBT-RM datagrams, NCF-related no-retransmit counts (naks_ignored, naks_shed and naks_rx_delay_ignored) may begin to inflate, and retransmissions (rxs_sent/rx_bytes_sent counts) may become significantly lower than NAKS received (naks_rcved). </p>
+
+</div>
+</div>
+<a class="anchor" id="aa422cfe9a6d2943554a5bcac082e267a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a> lbm_src_transport_stats_lbtrm_t_stct::rxs_sent</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Number of LBT-RM datagrams retransmitted by this source transport (incremented under the same circumstances as rx_bytes_sent, below). (Cumulative) </p>
+<p>In a normal, light-loss scenario, most NAKs induce a retransmission. When losses becomes heavy and/or many receiver transports begin losing the same LBT-RM datagrams, NCF-related no-retransmit counts (naks_ignored, naks_shed and naks_rx_delay_ignored) may begin to inflate, and retransmissions (rxs_sent/rx_bytes_sent counts) may become significantly lower than NAKS received (naks_rcved). </p>
+
+</div>
+</div>
+<a class="anchor" id="a523f274dc1a3c9d8ab2f8cf5761f89f6"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a> lbm_src_transport_stats_lbtrm_t_stct::txw_msgs</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Number of LBT-RM datagrams currently in the transmission window. (Snapshot) </p>
+<p>Each source transport session maintains a transmission window buffer (the size of which is set by <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/API/config.tag:../Config/" href="../Config/grptransportlbtrmreliability.html#transportlbtrmtransmissionwindowsizesource">transport_lbtrm_transmission_window_size (source)</a>, default 24MB). When the source transport receives a NAK, the corresponding message for retransmission must be found in this transmission window. </p>
+
+</div>
+</div>
+<hr/>The documentation for this struct was generated from the following file:<ul>
 <li><a class="el" href="lbm_8h_source.html">lbm.h</a></li>
 </ul>
 </div><!-- contents -->

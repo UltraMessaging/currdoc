@@ -82,17 +82,19 @@ $(document).ready(function(){initNavTree('structlbm__rcv__transport__stats__brok
 Data Fields</h2></td></tr>
 <tr class="memitem:ae93b7d7565dc68783ee6d13b9b0c2619"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae93b7d7565dc68783ee6d13b9b0c2619"></a>
 <a class="el" href="lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlbm__rcv__transport__stats__broker__t__stct.html#ae93b7d7565dc68783ee6d13b9b0c2619">msgs_rcved</a></td></tr>
-<tr class="memdesc:ae93b7d7565dc68783ee6d13b9b0c2619"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of BROKER messages received. Messages received from a broker always map to an <a class="el" href="lbm_8h.html#aaa7a945411e63884f12918417e8d117c">lbm_msg_t</a> unless there is an error. <br /></td></tr>
+<tr class="memdesc:ae93b7d7565dc68783ee6d13b9b0c2619"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of BROKER messages received. Messages received from a broker always map to an <a class="el" href="lbm_8h.html#aaa7a945411e63884f12918417e8d117c">lbm_msg_t</a> unless there is an error. (Cumulative) <br /></td></tr>
 <tr class="separator:ae93b7d7565dc68783ee6d13b9b0c2619"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8b24b2cf283cc51b0e4c663fd9005d46"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8b24b2cf283cc51b0e4c663fd9005d46"></a>
 <a class="el" href="lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlbm__rcv__transport__stats__broker__t__stct.html#a8b24b2cf283cc51b0e4c663fd9005d46">bytes_rcved</a></td></tr>
-<tr class="memdesc:a8b24b2cf283cc51b0e4c663fd9005d46"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of BROKER message bytes received. This does not include overhead for the AMQP protocol. <br /></td></tr>
+<tr class="memdesc:a8b24b2cf283cc51b0e4c663fd9005d46"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of BROKER message bytes received. This does not include overhead for the AMQP protocol. (Cumulative) <br /></td></tr>
 <tr class="separator:a8b24b2cf283cc51b0e4c663fd9005d46"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Structure that holds message statistics for receiver BROKER transports. </p>
 <p>Note that when stats are sampled, the fields in the structure are not necessarily from the same instant in time. The structure might be updated concurrently with it being sampled, and while each structure field is atomically read, the field values can be skewed slightly across time.</p>
-<p>See <a class="el" href="structlbm__rcv__transport__stats__broker__t__stct.html">lbm_rcv_transport_stats_broker_t_stct</a> for field definitions. </p>
+<p>See <a class="el" href="structlbm__rcv__transport__stats__broker__t__stct.html">lbm_rcv_transport_stats_broker_t_stct</a> for field definitions.</p>
+<p><b>Cumulative vs Snapshot</b></p>
+<p>These UM statistics are cumulative. For example, msgs_rcved starts at zero and grows over time as more and more messages are sent. </p>
 </div><hr/>The documentation for this struct was generated from the following file:<ul>
 <li><a class="el" href="lbm_8h_source.html">lbm.h</a></li>
 </ul>

@@ -80,32 +80,63 @@ $(document).ready(function(){initNavTree('structlbm__rcv__transport__stats__lbti
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Data Fields</h2></td></tr>
-<tr class="memitem:a57eb8d53386d3ba41f9edaccfd2ffa76"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a57eb8d53386d3ba41f9edaccfd2ffa76"></a>
-<a class="el" href="lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlbm__rcv__transport__stats__lbtipc__t__stct.html#a57eb8d53386d3ba41f9edaccfd2ffa76">msgs_rcved</a></td></tr>
-<tr class="memdesc:a57eb8d53386d3ba41f9edaccfd2ffa76"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of LBT-IPC datagrams received. Depending on batching settings, a single LBT-IPC datagram may contain one or more messages, or a fragment of a larger message. With LBT-IPC, larger messages are split into fragment sizes limited by configuration option <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/API/config.tag:../Config/" href="../Config/grptransportlbtipcoperation.html#transportlbtipcdatagrammaxsizecontext">transport_lbtipc_datagram_max_size (context)</a> (default 64KB). <br /></td></tr>
+<tr class="memitem:a57eb8d53386d3ba41f9edaccfd2ffa76"><td class="memItemLeft" align="right" valign="top"><a class="el" href="lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlbm__rcv__transport__stats__lbtipc__t__stct.html#a57eb8d53386d3ba41f9edaccfd2ffa76">msgs_rcved</a></td></tr>
+<tr class="memdesc:a57eb8d53386d3ba41f9edaccfd2ffa76"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of LBT-IPC datagrams received. (Cumulative)  <a href="#a57eb8d53386d3ba41f9edaccfd2ffa76">More...</a><br /></td></tr>
 <tr class="separator:a57eb8d53386d3ba41f9edaccfd2ffa76"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab6a6d8204a7b58550836838b6746229d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab6a6d8204a7b58550836838b6746229d"></a>
 <a class="el" href="lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlbm__rcv__transport__stats__lbtipc__t__stct.html#ab6a6d8204a7b58550836838b6746229d">bytes_rcved</a></td></tr>
-<tr class="memdesc:ab6a6d8204a7b58550836838b6746229d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of LBT-IPC datagram bytes received, i.e., the total of lengths of all LBT-IPC packets including UM header information. <br /></td></tr>
+<tr class="memdesc:ab6a6d8204a7b58550836838b6746229d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of LBT-IPC datagram bytes received, i.e., the total of lengths of all LBT-IPC packets including UM header information. (Cumulative) <br /></td></tr>
 <tr class="separator:ab6a6d8204a7b58550836838b6746229d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaff870f9a054a44765d715e0a2d06097"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aaff870f9a054a44765d715e0a2d06097"></a>
-<a class="el" href="lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlbm__rcv__transport__stats__lbtipc__t__stct.html#aaff870f9a054a44765d715e0a2d06097">lbm_msgs_rcved</a></td></tr>
-<tr class="memdesc:aaff870f9a054a44765d715e0a2d06097"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of messages or message fragments received over an LBT-IPC transport. A single datagram may contain one or more messages or a fragment of a larger message. For fragmented messages larger than configuration option <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/API/config.tag:../Config/" href="../Config/grptransportlbtipcoperation.html#transportlbtipcdatagrammaxsizecontext">transport_lbtipc_datagram_max_size (context)</a> (default 64KB), this count reflects the number of datagrams used to constitute those messages. Thus, this number is equal to or greater than the datagram counter (msgs_rcved, above). This number also includes messages received for which there was no interested receiver, which is tallied in the lbm_msgs_no_topic_rcved counter (below). <br /></td></tr>
+<tr class="memitem:aaff870f9a054a44765d715e0a2d06097"><td class="memItemLeft" align="right" valign="top"><a class="el" href="lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlbm__rcv__transport__stats__lbtipc__t__stct.html#aaff870f9a054a44765d715e0a2d06097">lbm_msgs_rcved</a></td></tr>
+<tr class="memdesc:aaff870f9a054a44765d715e0a2d06097"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of messages or message fragments received over an LBT-IPC transport. (Cumulative)  <a href="#aaff870f9a054a44765d715e0a2d06097">More...</a><br /></td></tr>
 <tr class="separator:aaff870f9a054a44765d715e0a2d06097"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a553ed8203a547d1749bfe69a75264e38"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a553ed8203a547d1749bfe69a75264e38"></a>
 <a class="el" href="lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlbm__rcv__transport__stats__lbtipc__t__stct.html#a553ed8203a547d1749bfe69a75264e38">lbm_msgs_no_topic_rcved</a></td></tr>
-<tr class="memdesc:a553ed8203a547d1749bfe69a75264e38"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of messages received that were not for a topic of interest to the receiver. A high value (relative to, or approaching lbm_msgs_rcved above) indicates more CPU time required to filter out uninteresting topics, in which case, consider reconfiguring sources to filter more aggressively at the transport layer. <br /></td></tr>
+<tr class="memdesc:a553ed8203a547d1749bfe69a75264e38"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of messages received that were not for a topic of interest to the receiver. (Cumulative) A high value (relative to, or approaching lbm_msgs_rcved above) indicates more CPU time required to filter out uninteresting topics, in which case, consider reconfiguring sources to filter more aggressively at the transport layer. <br /></td></tr>
 <tr class="separator:a553ed8203a547d1749bfe69a75264e38"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a00f50ab6cfa952436b8d378cbe303879"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a00f50ab6cfa952436b8d378cbe303879"></a>
 <a class="el" href="lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlbm__rcv__transport__stats__lbtipc__t__stct.html#a00f50ab6cfa952436b8d378cbe303879">lbm_reqs_rcved</a></td></tr>
-<tr class="memdesc:a00f50ab6cfa952436b8d378cbe303879"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of UM request messages received (message type LBM_MSG_REQUEST). <br /></td></tr>
+<tr class="memdesc:a00f50ab6cfa952436b8d378cbe303879"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of UM request messages received (message type <a class="el" href="lbm_8h.html#ab83f7de50ce32f69651a7252d84ea828">LBM_MSG_REQUEST</a>). (Cumulative) <br /></td></tr>
 <tr class="separator:a00f50ab6cfa952436b8d378cbe303879"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Structure that holds datagram statistics for receiver LBT-IPC transports. </p>
 <p>Note that when stats are sampled, the fields in the structure are not necessarily from the same instant in time. The structure might be updated concurrently with it being sampled, and while each structure field is atomically read, the field values can be skewed slightly across time.</p>
-<p>See <a class="el" href="structlbm__rcv__transport__stats__lbtipc__t__stct.html">lbm_rcv_transport_stats_lbtipc_t_stct</a> for field definitions. </p>
-</div><hr/>The documentation for this struct was generated from the following file:<ul>
+<p>See <a class="el" href="structlbm__rcv__transport__stats__lbtipc__t__stct.html">lbm_rcv_transport_stats_lbtipc_t_stct</a> for field definitions.</p>
+<p><b>Cumulative vs Snapshot</b></p>
+<p>These UM statistics are cumulative. For example, msgs_rcved starts at zero and grows over time as more and more messages are sent. </p>
+</div><h2 class="groupheader">Field Documentation</h2>
+<a class="anchor" id="aaff870f9a054a44765d715e0a2d06097"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a> lbm_rcv_transport_stats_lbtipc_t_stct::lbm_msgs_rcved</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Number of messages or message fragments received over an LBT-IPC transport. (Cumulative) </p>
+<p>A single datagram may contain one or more messages or a fragment of a larger message. For fragmented messages larger than configuration option <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/API/config.tag:../Config/" href="../Config/grptransportlbtipcoperation.html#transportlbtipcdatagrammaxsizecontext">transport_lbtipc_datagram_max_size (context)</a> (default 64KB), this count reflects the number of datagrams used to constitute those messages. Thus, this number is equal to or greater than the datagram counter (msgs_rcved, above). This number also includes messages received for which there was no interested receiver, which is tallied in the lbm_msgs_no_topic_rcved counter (below). </p>
+
+</div>
+</div>
+<a class="anchor" id="a57eb8d53386d3ba41f9edaccfd2ffa76"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a> lbm_rcv_transport_stats_lbtipc_t_stct::msgs_rcved</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Number of LBT-IPC datagrams received. (Cumulative) </p>
+<p>Depending on batching settings, a single LBT-IPC datagram may contain one or more messages, or a fragment of a larger message. With LBT-IPC, larger messages are split into fragment sizes limited by configuration option <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/API/config.tag:../Config/" href="../Config/grptransportlbtipcoperation.html#transportlbtipcdatagrammaxsizecontext">transport_lbtipc_datagram_max_size (context)</a> (default 64KB). </p>
+
+</div>
+</div>
+<hr/>The documentation for this struct was generated from the following file:<ul>
 <li><a class="el" href="lbm_8h_source.html">lbm.h</a></li>
 </ul>
 </div><!-- contents -->
