@@ -82,17 +82,19 @@ $(document).ready(function(){initNavTree('structlbm__src__transport__stats__brok
 Data Fields</h2></td></tr>
 <tr class="memitem:a0d87e31562d0161580fc77041bb13618"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0d87e31562d0161580fc77041bb13618"></a>
 <a class="el" href="lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlbm__src__transport__stats__broker__t__stct.html#a0d87e31562d0161580fc77041bb13618">msgs_sent</a></td></tr>
-<tr class="memdesc:a0d87e31562d0161580fc77041bb13618"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of BROKER messages sent. Each LBM message maps to a BROKER transport message. <br /></td></tr>
+<tr class="memdesc:a0d87e31562d0161580fc77041bb13618"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of BROKER messages sent. Each LBM message maps to a BROKER transport message. (Cumulative) <br /></td></tr>
 <tr class="separator:a0d87e31562d0161580fc77041bb13618"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0cdd755fc7a6e719c998af3378aa1a53"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0cdd755fc7a6e719c998af3378aa1a53"></a>
 <a class="el" href="lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlbm__src__transport__stats__broker__t__stct.html#a0cdd755fc7a6e719c998af3378aa1a53">bytes_sent</a></td></tr>
-<tr class="memdesc:a0cdd755fc7a6e719c998af3378aa1a53"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of BROKER message bytes sent. This does not include overhead for the AMQP protocol. <br /></td></tr>
+<tr class="memdesc:a0cdd755fc7a6e719c998af3378aa1a53"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of BROKER message bytes sent. This does not include overhead for the AMQP protocol. (Cumulative) <br /></td></tr>
 <tr class="separator:a0cdd755fc7a6e719c998af3378aa1a53"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Structure that holds datagram statistics for source BROKER transports. </p>
 <p>Note that when stats are sampled, the fields in the structure are not necessarily from the same instant in time. The structure might be updated concurrently with it being sampled, and while each structure field is atomically read, the field values can be skewed slightly across time.</p>
-<p>See <a class="el" href="structlbm__src__transport__stats__broker__t__stct.html">lbm_src_transport_stats_broker_t_stct</a> for field definitions. </p>
+<p>See <a class="el" href="structlbm__src__transport__stats__broker__t__stct.html">lbm_src_transport_stats_broker_t_stct</a> for field definitions.</p>
+<p><b>Cumulative vs Snapshot</b></p>
+<p>These UM statistics are cumulative. For example, msgs_sent starts at zero and grows over time as more and more messages are sent. </p>
 </div><hr/>The documentation for this struct was generated from the following file:<ul>
 <li><a class="el" href="lbm_8h_source.html">lbm.h</a></li>
 </ul>

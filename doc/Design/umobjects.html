@@ -140,13 +140,12 @@ Source Object&nbsp;&nbsp;<small><a href="#sourceobject">&lt;-</a></small></h1>
  </p>
 <h2><a class="anchor" id="sourcestring"></a>
 Source String&nbsp;&nbsp;<small><a href="#sourcestring">&lt;-</a></small></h2>
-<p>Every source that a publishing application creates has associated with it a unique <em>source string</em>. Note that if multiple publishing UM contexts (applications) create sources for the same topic, each context's source will have its own unique source string. Similarly, if one publishing UM context (application) creates multiple sources for different topics, each topic's source will have its own unique source string. So a source string identifies one specific instance of a topic within a UM context.</p>
+<p>Every source that a publishing application creates has associated with it a unique "source string". Note that if multiple publishing UM contexts (applications) create sources for the same topic, each context's source will have its own unique source string. Similarly, if one publishing UM context (application) creates multiple sources for different topics, each topic's source will have its own unique source string. So a source string identifies one specific instance of a topic within a UM context.</p>
 <p>The source string is used in a few different ways in the UM API, for example to identify which <a class="el" href="fundamentalconcepts.html#transportsessions">Transport Session</a> to retrieve statistics for in <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#a4094c703f97a7ebe340b985b2ed1ac2b">lbm_rcv_retrieve_transport_stats()</a>. The source string is made available to the application in several callbacks, for example <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#a20d2e77507380a39c081a95462acb995">lbm_src_notify_function_cb</a>, or the "source" field of <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Design/api.tag:../API/" href="../API/structlbm__msg__t__stct.html">lbm_msg_t_stct</a> of a received message. See also <a class="el" href="umfeatures.html#sendingtosources">Sending to Sources</a>.</p>
 <p>The format of a source string depends on the transport type: </p><ul>
 <li>
 <p class="startli">TCP:src_ip:src_port:session_id[topic_idx] <br />
- session_id is optional, per configuration option <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grptransporttcpoperation.html#transporttcpusesessionidsource">transport_tcp_use_session_id (source)</a> <br />
- example: <code>TCP:192.168.0.4:45789:f1789bcc[1539853954]</code></p>
+ example: <code>TCP:10.29.3.88:45789:f1789bcc[1539853954]</code></p>
 <p class="endli"></p>
 </li>
 <li>
@@ -156,8 +155,7 @@ Source String&nbsp;&nbsp;<small><a href="#sourcestring">&lt;-</a></small></h2>
 </li>
 <li>
 <p class="startli">LBT-RU:src_ip:src_port:session_id[topic_idx] <br />
- session_id is optional, per configuration option <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grptransportlbtruoperation.html#transportlbtruusesessionidsource">transport_lbtru_use_session_id (source)</a> <br />
- example: <code>LBT-RU:192.168.3.189:34678[1539853954]</code></p>
+ example: <code>LBT-RU:10.29.3.88:14382:263170a3[1539853954]</code></p>
 <p class="endli"></p>
 </li>
 <li>
@@ -174,7 +172,7 @@ Source String&nbsp;&nbsp;<small><a href="#sourcestring">&lt;-</a></small></h2>
 BROKER <br />
  example: <code>BROKER</code> </li>
 </ul>
-<p>Please note that the topic index field (topic_idx) may or may not be present depending on your version of UM and/or the setting for configuration option <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grpmajoroptions.html#sourceincludestopicindexcontext">source_includes_topic_index (context)</a>.</p>
+<p>Please note that the topic index field (topic_idx) may or may not be included, depending on the context in which it is presented, your version of UM, and the setting for configuration option <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Design/config.tag:../Config/" href="../Config/grpmajoroptions.html#sourceincludestopicindexcontext">source_includes_topic_index (context)</a>. For example, a receiver callback probably will include the topic index since the callback is specific to a topic, while <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Design/operations.tag:../Operations/" href="../Operations/monitoring.html">Monitoring</a> output will not, since it is referring to a transport session, not an individual topic.</p>
 <p>See also <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#afa35ad2c7d5d473ffeda6727022f9b94">lbm_transport_source_format()</a> and <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Design/api.tag:../API/" href="../API/lbm_8h.html#a30bf33dce2021f6ea8915b45f511af56">lbm_transport_source_parse()</a>.</p>
 <p><br />
  </p>

@@ -82,21 +82,24 @@ $(document).ready(function(){initNavTree('structlbm__src__transport__stats__lbts
 Data Fields</h2></td></tr>
 <tr class="memitem:a23f7ba1e7a44b9223ef29f8bdfe0c570"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a23f7ba1e7a44b9223ef29f8bdfe0c570"></a>
 <a class="el" href="lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlbm__src__transport__stats__lbtsmx__t__stct.html#a23f7ba1e7a44b9223ef29f8bdfe0c570">num_clients</a></td></tr>
-<tr class="memdesc:a23f7ba1e7a44b9223ef29f8bdfe0c570"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of receiver transports that are currently connected to this source transport. <br /></td></tr>
+<tr class="memdesc:a23f7ba1e7a44b9223ef29f8bdfe0c570"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of receiver transports that are currently connected to this source transport. (Snapshot) <br /></td></tr>
 <tr class="separator:a23f7ba1e7a44b9223ef29f8bdfe0c570"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa5a75358d3fa9f713bbf231dd8b9bc3d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa5a75358d3fa9f713bbf231dd8b9bc3d"></a>
 <a class="el" href="lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlbm__src__transport__stats__lbtsmx__t__stct.html#aa5a75358d3fa9f713bbf231dd8b9bc3d">msgs_sent</a></td></tr>
-<tr class="memdesc:aa5a75358d3fa9f713bbf231dd8b9bc3d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of LBT-SMX datagrams sent. <br /></td></tr>
+<tr class="memdesc:aa5a75358d3fa9f713bbf231dd8b9bc3d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of LBT-SMX datagrams sent. (Cumulative) <br /></td></tr>
 <tr class="separator:aa5a75358d3fa9f713bbf231dd8b9bc3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a94b73c843dee38fa088cef85d86defb5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a94b73c843dee38fa088cef85d86defb5"></a>
 <a class="el" href="lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlbm__src__transport__stats__lbtsmx__t__stct.html#a94b73c843dee38fa088cef85d86defb5">bytes_sent</a></td></tr>
-<tr class="memdesc:a94b73c843dee38fa088cef85d86defb5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of LBT-SMX datagram bytes sent, i.e., the total of lengths of all LBT-SMX packets including UM header information. <br /></td></tr>
+<tr class="memdesc:a94b73c843dee38fa088cef85d86defb5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of LBT-SMX datagram bytes sent, i.e., the total of lengths of all LBT-SMX packets including UM header information. (Cumulative) <br /></td></tr>
 <tr class="separator:a94b73c843dee38fa088cef85d86defb5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Structure that holds datagram statistics for source LBT-SMX transports. </p>
 <p>Note that when stats are sampled, the fields in the structure are not necessarily from the same instant in time. The structure might be updated concurrently with it being sampled, and while each structure field is atomically read, the field values can be skewed slightly across time.</p>
-<p>See <a class="el" href="structlbm__src__transport__stats__lbtsmx__t__stct.html">lbm_src_transport_stats_lbtsmx_t_stct</a> for field definitions. </p>
+<p>See <a class="el" href="structlbm__src__transport__stats__lbtsmx__t__stct.html">lbm_src_transport_stats_lbtsmx_t_stct</a> for field definitions.</p>
+<p><b>Cumulative vs Snapshot</b></p>
+<p>Most UM statistics are cumulative. For example, msgs_sent starts at zero and grows over time as more and more messages are sent.</p>
+<p>But some statistics are snapshots, meaning that they represent the value at a moment in time. These values can go up and down. For example, num_clients indicates the number of subscribers connected at the time of the snapshot. </p>
 </div><hr/>The documentation for this struct was generated from the following file:<ul>
 <li><a class="el" href="lbm_8h_source.html">lbm.h</a></li>
 </ul>
