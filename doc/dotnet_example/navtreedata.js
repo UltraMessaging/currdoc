@@ -6,11 +6,7 @@ var NAVTREE =
       [ "Configuring .NET Examples", "index.html#configuringdotnetexamples", null ],
       [ "Unhandled C# Events", "index.html#unhandledcsevents", null ],
       [ "C# Examples", "index.html#csexamples", [
-        [ "Example MinRcv.cs", "index.html#exampleMinRcv_cs", null ],
-        [ "Example MinSrc.cs", "index.html#exampleMinSrc_cs", null ],
-        [ "Example VerifiableMessage.cs", "index.html#exampleVerifiableMessage_cs", null ],
         [ "Example lbmExampleUtil.cs", "index.html#examplelbmExampleUtil_cs", null ],
-        [ "Example lbmStatistics.cs", "index.html#examplelbmStatistics_cs", null ],
         [ "Example lbmhfxrcv.cs", "index.html#examplelbmhfxrcv_cs", null ],
         [ "Example lbmimsg.cs", "index.html#examplelbmimsg_cs", null ],
         [ "Example lbmlatping.cs", "index.html#examplelbmlatping_cs", null ],
@@ -24,12 +20,16 @@ var NAVTREE =
         [ "Example lbmreq.cs", "index.html#examplelbmreq_cs", null ],
         [ "Example lbmresp.cs", "index.html#examplelbmresp_cs", null ],
         [ "Example lbmsrc.cs", "index.html#examplelbmsrc_cs", null ],
+        [ "Example lbmStatistics.cs", "index.html#examplelbmStatistics_cs", null ],
         [ "Example lbmtrreq.cs", "index.html#examplelbmtrreq_cs", null ],
         [ "Example lbmwrcv.cs", "index.html#examplelbmwrcv_cs", null ],
+        [ "Example MinRcv.cs", "index.html#exampleMinRcv_cs", null ],
+        [ "Example MinSrc.cs", "index.html#exampleMinSrc_cs", null ],
         [ "Example umercv.cs", "index.html#exampleumercv_cs", null ],
         [ "Example umesrc.cs", "index.html#exampleumesrc_cs", null ],
         [ "Example umqrcv.cs", "index.html#exampleumqrcv_cs", null ],
-        [ "Example umqsrc.cs", "index.html#exampleumqsrc_cs", null ]
+        [ "Example umqsrc.cs", "index.html#exampleumqsrc_cs", null ],
+        [ "Example VerifiableMessage.cs", "index.html#exampleVerifiableMessage_cs", null ]
       ] ]
     ] ]
   ] ]

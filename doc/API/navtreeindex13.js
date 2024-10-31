@@ -1,5 +1,8 @@
 var NAVTREEINDEX13 =
 {
+"structlbm__context__event__umq__registration__complete__ex__t__stct.html#aea6bb2e47fb3cfdb8f23ff606b311d7b":[10,0,58,1],
+"structlbm__context__event__umq__registration__ex__t__stct.html":[10,0,59],
+"structlbm__context__event__umq__registration__ex__t__stct.html#a2cc66037aa8b46b83b2a3e831c54a39f":[10,0,59,5],
 "structlbm__context__event__umq__registration__ex__t__stct.html#a3d5b2656409424e73738e5d9d5da8d7b":[10,0,59,0],
 "structlbm__context__event__umq__registration__ex__t__stct.html#abb69bdf41181ae57829e9576c0e41731":[10,0,59,3],
 "structlbm__context__event__umq__registration__ex__t__stct.html#ad26d2aaf707d0cdf4bff941fd755de7e":[10,0,59,4],
@@ -246,8 +249,5 @@ var NAVTREEINDEX13 =
 "structlbm__process__events__info__t__stct.html#a116d754d9c09199b75d24606b706ca10":[10,0,91,0],
 "structlbm__process__events__info__t__stct.html#a211b8ce8a0d9d92052b6f2fc14f4b8fb":[10,0,91,1],
 "structlbm__rcv__batch__notify__func__t__stct.html":[10,0,92],
-"structlbm__rcv__batch__notify__func__t__stct.html#a6f5ea73924e7160ff2f23166dda440d5":[10,0,92,2],
-"structlbm__rcv__batch__notify__func__t__stct.html#acd7974dfa589bd339a3dd3cd6fce3caf":[10,0,92,1],
-"structlbm__rcv__batch__notify__func__t__stct.html#ae4905df4b5c72a3871657abfc347eb19":[10,0,92,0],
-"structlbm__rcv__src__notification__func__t__stct.html":[10,0,93]
+"structlbm__rcv__batch__notify__func__t__stct.html#a6f5ea73924e7160ff2f23166dda440d5":[10,0,92,2]
 };

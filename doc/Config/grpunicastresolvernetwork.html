@@ -59,7 +59,7 @@ $(document).ready(function(){initNavTree('grpunicastresolvernetwork.html','');})
 <img src="Resolver-Unicast.png" alt="Resolver-Unicast.png"/>
 </div>
  <p>If using multiple lbmrd instances with a single context, you can configure <b>resolver_unicast_interface</b> and <b>resolver_unicast_port_low/high</b> and omit the <b>Interface:LocalPort</b> section of <b>resolver_unicast_daemon</b>.</p>
-<p>See also <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Config/design.tag:../Design/" href="../Design/architecture.html#unicasttopicresolution">Unicast UDP Topic Resolution</a> for general information on Unicast Topic Resolution.</p>
+<p>See also <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/Config/design.tag:../Design/" href="../Design/architecture.html#unicasttopicresolution">Unicast UDP Topic Resolution</a> for general information on Unicast Topic Resolution.</p>
 <p><br />
  </p>
 <h1><a class="anchor" id="unicastresolvernetworkref"></a>
@@ -68,8 +68,8 @@ Reference&nbsp;&nbsp;<small><a href="#unicastresolvernetworkref">&lt;-</a></smal
  </p>
 <h2><a class="anchor" id="resolverunicastdaemoncontext"></a>
 resolver_unicast_daemon (context)&nbsp;&nbsp;<small><a href="#resolverunicastdaemoncontext">&lt;-</a></small></h2>
-<dl class="section user"><dt></dt><dd>Enable Unicast <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Config/design.tag:../Design/" href="../Design/architecture.html#udpbasedtopicresolutiondetails">UDP-based Topic Resolution</a> and add one or more unicast resolver daemon (lbmrd) specifications to the current lbmrd list. Unlike most other UM options, every time this option is supplied, it adds one or more daemon specifications to the list, and does NOT overwrite previous specifications. </dd></dl>
-<dl class="section user"><dt></dt><dd>Setting this option Disables Multicast UDP-based TR, but does not affect whether <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Config/design.tag:../Design/" href="../Design/topicresolutiondescription.html#tcpbasedtopicresolutiondetails">TCP-based TR</a> is enabled or disabled. See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Config/design.tag:../Design/" href="../Design/architecture.html#udpbasedtopicresolutiondetails">UDP-Based Topic Resolution Details</a>. </dd></dl>
+<dl class="section user"><dt></dt><dd>Enable Unicast <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/Config/design.tag:../Design/" href="../Design/architecture.html#udpbasedtopicresolutiondetails">UDP-based Topic Resolution</a> and add one or more unicast resolver daemon (lbmrd) specifications to the current lbmrd list. Unlike most other UM options, every time this option is supplied, it adds one or more daemon specifications to the list, and does NOT overwrite previous specifications. </dd></dl>
+<dl class="section user"><dt></dt><dd>Setting this option Disables Multicast UDP-based TR, but does not affect whether <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/Config/design.tag:../Design/" href="../Design/topicresolutiondescription.html#tcpbasedtopicresolutiondetails">TCP-based TR</a> is enabled or disabled. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/Config/design.tag:../Design/" href="../Design/architecture.html#udpbasedtopicresolutiondetails">UDP-Based Topic Resolution Details</a>. </dd></dl>
 <dl class="section user"><dt></dt><dd>For the configuration file as well as string API method of setting this option, the string value consists of one or more lbmrd specifications separated by commas or semicolons, formatted as follows: </dd></dl>
 <dl class="section user"><dt></dt><dd><pre class="fragment">[Iface[:Src_Port]-&gt;]IP:Dest_Port[,...]
 </pre> </dd></dl>
@@ -87,13 +87,13 @@ Interface-&gt;DaemonIP:RemotePort
 DaemonIP:RemotePort
 </pre> </dd></dl>
 <dl class="section user"><dt></dt><dd>You can specify <b><code>Interface</code></b> in any of the ways described in <a class="el" href="generalconfigurationguidelines.html#specifyinginterfaces">Specifying Interfaces</a>. </dd></dl>
-<dl class="section user"><dt></dt><dd>When the binary form of option setting is used, UM does NOT expect an array of structures. Instead, only one lbmrd specification can be supplied for each call to <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#ab67f641d5a0ad1a9fe53d415da58d961">lbm_context_attr_setopt()</a>. However, when the binary form of option retrieval <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a0e578b4f0005589f6558d15e55be8483">lbm_context_attr_getopt()</a> is used, the list of lbmrds is returned as an array, and the <b><code>optlen</code></b> parameter should be set as: <pre class="fragment">optlen = (max_num_lbmrds * sizeof(lbm_ucast_resolver_entry_t));
+<dl class="section user"><dt></dt><dd>When the binary form of option setting is used, UM does NOT expect an array of structures. Instead, only one lbmrd specification can be supplied for each call to <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#ab67f641d5a0ad1a9fe53d415da58d961">lbm_context_attr_setopt()</a>. However, when the binary form of option retrieval <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a0e578b4f0005589f6558d15e55be8483">lbm_context_attr_getopt()</a> is used, the list of lbmrds is returned as an array, and the <b><code>optlen</code></b> parameter should be set as: <pre class="fragment">optlen = (max_num_lbmrds * sizeof(lbm_ucast_resolver_entry_t));
 </pre></dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>context </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a3ce940fe5841daa6e761bc1e9b0a7c6f">lbm_ucast_resolver_entry_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a3ce940fe5841daa6e761bc1e9b0a7c6f">lbm_ucast_resolver_entry_t</a></b> </td></tr>
 <tr>
 <td><em>When to Set:</em> </td><td>Can only be set during object initialization.</td></tr>
 <tr>
@@ -112,7 +112,7 @@ resolver_unicast_interface (context)&nbsp;&nbsp;<small><a href="#resolverunicast
 <tr>
 <td><em>Scope:</em> </td><td>context </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a0b66a5b33839617b2a822e4a20a8d535">lbm_ipv4_address_mask_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a0b66a5b33839617b2a822e4a20a8d535">lbm_ipv4_address_mask_t</a></b> </td></tr>
 <tr>
 <td><em>Default value:</em> </td><td>0.0.0.0 (INADDR_ANY) </td></tr>
 <tr>
@@ -130,7 +130,7 @@ resolver_unicast_port_high (context)&nbsp;&nbsp;<small><a href="#resolverunicast
 <tr>
 <td><em>Scope:</em> </td><td>context </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a86897f2fdd66aa7021683a4e72a4537b">lbm_uint16_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a86897f2fdd66aa7021683a4e72a4537b">lbm_uint16_t</a></b> </td></tr>
 <tr>
 <td><em>Default value:</em> </td><td>14406 </td></tr>
 <tr>
@@ -150,7 +150,7 @@ resolver_unicast_port_low (context)&nbsp;&nbsp;<small><a href="#resolverunicastp
 <tr>
 <td><em>Scope:</em> </td><td>context </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a86897f2fdd66aa7021683a4e72a4537b">lbm_uint16_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a86897f2fdd66aa7021683a4e72a4537b">lbm_uint16_t</a></b> </td></tr>
 <tr>
 <td><em>Default value:</em> </td><td>14402 </td></tr>
 <tr>
@@ -170,7 +170,7 @@ resolver_unicast_receiver_socket_buffer (context)&nbsp;&nbsp;<small><a href="#re
 <tr>
 <td><em>Scope:</em> </td><td>context </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
 <tr>
 <td><em>Units:</em> </td><td>bytes </td></tr>
 <tr>

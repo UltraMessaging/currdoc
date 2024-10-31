@@ -3,6 +3,10 @@ var NAVTREE =
   [ "Concepts Guide", "index.html", [
     [ "Introduction", "index.html", null ],
     [ "Fundamental Concepts", "fundamentalconcepts.html", [
+      [ "License Key", "fundamentalconcepts.html#licensekey", [
+        [ "License Via XML Configuration File", "fundamentalconcepts.html#licenseviaxmlconfigurationfile", null ],
+        [ "License Via Environment", "fundamentalconcepts.html#licenseviaenvironment", null ]
+      ] ],
       [ "Messaging Paradigms", "fundamentalconcepts.html#messagingparadigms", [
         [ "Streaming", "fundamentalconcepts.html#streaming", null ],
         [ "Persistence", "fundamentalconcepts.html#persistence", null ],
@@ -24,9 +28,26 @@ var NAVTREE =
         [ "Tail Loss", "fundamentalconcepts.html#tailloss", null ],
         [ "Burst Loss", "fundamentalconcepts.html#burstloss1", null ]
       ] ],
+      [ "UM Software Stack", "fundamentalconcepts.html#umsoftwarestack", [
+        [ "Delivery Controller", "fundamentalconcepts.html#deliverycontroller", null ]
+      ] ],
+      [ "UM Threading", "fundamentalconcepts.html#umthreading", [
+        [ "Embedded Mode", "fundamentalconcepts.html#embeddedmode", null ],
+        [ "Sequential Mode", "fundamentalconcepts.html#sequentialmode", null ],
+        [ "Context Sequential Mode", "fundamentalconcepts.html#contextsequentialmode", null ],
+        [ "XSP Sequential Mode", "fundamentalconcepts.html#xspsequentialmode", null ],
+        [ "IPC Sequential Mode", "fundamentalconcepts.html#ipcsequentialmode", null ],
+        [ "Other Specialized Threads", "fundamentalconcepts.html#otherspecializedthreads", null ]
+      ] ],
+      [ "Deleting UM Objects", "fundamentalconcepts.html#deletingumobjects", [
+        [ "Callback After Delete", "fundamentalconcepts.html#callbackafterdelete", null ],
+        [ "Event Sync", "fundamentalconcepts.html#eventsync", null ],
+        [ "C API Extended Delete", "fundamentalconcepts.html#capiextendeddelete", null ]
+      ] ],
       [ "DRO", "fundamentalconcepts.html#umrouter", null ],
       [ "Late Join", "fundamentalconcepts.html#latejoin", null ],
       [ "Request/Response", "fundamentalconcepts.html#requestresponse", null ],
+      [ "Registered File Descriptors", "fundamentalconcepts.html#registeredfiledescriptors", null ],
       [ "UM Transports", "fundamentalconcepts.html#umtransports", null ],
       [ "Transport Sessions", "fundamentalconcepts.html#transportsessions", [
         [ "Subscribing to a Transport Session", "fundamentalconcepts.html#subscribingtoatransportsession", null ],
@@ -70,6 +91,7 @@ var NAVTREE =
       ] ],
       [ "Event Queue Object", "umobjects.html#eventqueueobject", [
         [ "Using an Event Queue", "umobjects.html#usinganeventqueue", null ],
+        [ "\"Deleting an Event Queue\"", "umobjects.html#deletinganeventqueue", null ],
         [ "Event Queue Efficiency", "umobjects.html#eventqueueefficiency", null ],
         [ "Event Queue Timeout", "umobjects.html#eventqueuetimeout", null ],
         [ "Event Queue Monitor", "umobjects.html#eventqueuemonitor", null ]
@@ -78,7 +100,8 @@ var NAVTREE =
         [ "Message Object Deletion", "umobjects.html#messageobjectdeletion", null ],
         [ "Message Object Retention", "umobjects.html#messageobjectretention", null ]
       ] ],
-      [ "Attributes Object", "umobjects.html#attributesobject", null ]
+      [ "Attributes Object", "umobjects.html#attributesobject", null ],
+      [ "UM Timers", "umobjects.html#umtimers", null ]
     ] ],
     [ "Security Considerations", "securityconsiderations.html", [
       [ "Webmon Security", "securityconsiderations.html#webmonsecurity", null ]
@@ -159,16 +182,6 @@ var NAVTREE =
         [ "Query-Centric TR", "architecture.html#querycentrictr", null ],
         [ "Known Query Threshold TR", "architecture.html#knownquerythresholdtr", null ],
         [ "Advertise-Centric TR", "architecture.html#advertisecentrictr", null ]
-      ] ],
-      [ "UM Software Stack", "architecture.html#umsoftwarestack", [
-        [ "Delivery Controller", "architecture.html#deliverycontroller", null ]
-      ] ],
-      [ "Embedded Mode", "architecture.html#embeddedmode", null ],
-      [ "Sequential Mode", "architecture.html#sequentialmode", [
-        [ "Context Sequential Mode", "architecture.html#contextsequentialmode", null ],
-        [ "XSP Sequential Mode", "architecture.html#xspsequentialmode", null ],
-        [ "IPC Sequential Mode", "architecture.html#ipcsequentialmode", null ],
-        [ "Other Specialized Threads", "architecture.html#otherspecializedthreads", null ]
       ] ],
       [ "Message Batching", "architecture.html#messagebatching", [
         [ "Implicit Batching", "architecture.html#implicitbatching", null ],
@@ -316,6 +329,11 @@ var NAVTREE =
         [ "Hot Failover Optional Messages", "umfeatures.html#hotfailoveroptionalmessages", null ],
         [ "Using Hot Failover with Ordered Delivery", "umfeatures.html#usinghotfailoverwithordereddelivery", null ],
         [ "Hot Failover Across Multiple Contexts (HFX)", "umfeatures.html#hotfailoveracrossmultiplecontexts", null ]
+      ] ],
+      [ "NAK Cutoff", "umfeatures.html#nakcutoff", [
+        [ "Why NAK Cutoff?", "umfeatures.html#whynakcutoff", null ],
+        [ "What Is a NAK Storm?", "umfeatures.html#whatisanakstorm", null ],
+        [ "NAK Storm Prevention", "umfeatures.html#nakstormprevention", null ]
       ] ],
       [ "Binary Daemon Statistics", "umfeatures.html#binarydaemonstatistics", [
         [ "Daemon Controller", "umfeatures.html#daemoncontroller", null ],
@@ -516,7 +534,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "advancedoptimizations.html",
-"topicresolutiondescription.html#tcpbasedtopicresolutiondetails"
+"topicresolutiondescription.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

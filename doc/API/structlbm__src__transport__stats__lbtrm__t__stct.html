@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">UM C API
-   &#160;<span id="projectnumber">6.16</span>
+   &#160;<span id="projectnumber">6.16.1</span>
    </div>
   </td>
  </tr>
@@ -108,7 +108,7 @@ Data Fields</h2></td></tr>
 <tr class="memdesc:accf51bbd30c14ed1c88582aa6f0400b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of NAKs this source transport has shed by sending an NCF with reason code "shed". (Cumulative)  <a href="#accf51bbd30c14ed1c88582aa6f0400b6">More...</a><br /></td></tr>
 <tr class="separator:accf51bbd30c14ed1c88582aa6f0400b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a93605cc2dcfac90aecd4736439c3bdea"><td class="memItemLeft" align="right" valign="top"><a class="el" href="lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlbm__src__transport__stats__lbtrm__t__stct.html#a93605cc2dcfac90aecd4736439c3bdea">naks_rx_delay_ignored</a></td></tr>
-<tr class="memdesc:a93605cc2dcfac90aecd4736439c3bdea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of NAKs this source transport has not yet processed because doing so would exceed its retransmit rate limit (set by configuration option <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/API/config.tag:../Config/" href="../Config/grptransportlbtrmoperation.html#transportlbtrmretransmitratelimitcontext">transport_lbtrm_retransmit_rate_limit (context)</a>, default 5Mbps). (Cumulative)  <a href="#a93605cc2dcfac90aecd4736439c3bdea">More...</a><br /></td></tr>
+<tr class="memdesc:a93605cc2dcfac90aecd4736439c3bdea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of NAKs this source transport has not yet processed because doing so would exceed its retransmit rate limit (set by configuration option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/API/config.tag:../Config/" href="../Config/grptransportlbtrmoperation.html#transportlbtrmretransmitratelimitcontext">transport_lbtrm_retransmit_rate_limit (context)</a>, default 5Mbps). (Cumulative)  <a href="#a93605cc2dcfac90aecd4736439c3bdea">More...</a><br /></td></tr>
 <tr class="separator:a93605cc2dcfac90aecd4736439c3bdea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa422cfe9a6d2943554a5bcac082e267a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlbm__src__transport__stats__lbtrm__t__stct.html#aa422cfe9a6d2943554a5bcac082e267a">rxs_sent</a></td></tr>
 <tr class="memdesc:aa422cfe9a6d2943554a5bcac082e267a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of LBT-RM datagrams retransmitted by this source transport (incremented under the same circumstances as rx_bytes_sent, below). (Cumulative)  <a href="#aa422cfe9a6d2943554a5bcac082e267a">More...</a><br /></td></tr>
@@ -142,7 +142,7 @@ Data Fields</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Number of LBT-RM datagrams sent. (Cumulative) </p>
-<p>Depending on batching settings, a single LBT-RM datagram may contain one or more messages, or a fragment of a larger message. With LBT-RM, larger messages are split into fragment sizes limited by configuration option <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/API/config.tag:../Config/" href="../Config/grptransportlbtrmoperation.html#transportlbtrmdatagrammaxsizecontext">transport_lbtrm_datagram_max_size (context)</a> (default 8KB). </p>
+<p>Depending on batching settings, a single LBT-RM datagram may contain one or more messages, or a fragment of a larger message. With LBT-RM, larger messages are split into fragment sizes limited by configuration option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/API/config.tag:../Config/" href="../Config/grptransportlbtrmoperation.html#transportlbtrmdatagrammaxsizecontext">transport_lbtrm_datagram_max_size (context)</a> (default 8KB). </p>
 
 </div>
 </div>
@@ -157,7 +157,7 @@ Data Fields</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Number of NAKs this source transport ignored and sent an NCF with reason code "ignored". (Cumulative) </p>
-<p>A source transport ignores a NAK for a datagram it has already recently retransmitted. How "recently" is determined by the configuration option source <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/API/config.tag:../Config/" href="../Config/grptransportlbtrmreliability.html#transportlbtrmignoreintervalsource">transport_lbtrm_ignore_interval (source)</a> (default 500ms). If this count is high, a receiver transport may be having trouble receiving retransmissions, or the ignore interval may be set too long. </p>
+<p>A source transport ignores a NAK for a datagram it has already recently retransmitted. How "recently" is determined by the configuration option source <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/API/config.tag:../Config/" href="../Config/grptransportlbtrmreliability.html#transportlbtrmignoreintervalsource">transport_lbtrm_ignore_interval (source)</a> (default 500ms). If this count is high, a receiver transport may be having trouble receiving retransmissions, or the ignore interval may be set too long. </p>
 
 </div>
 </div>
@@ -172,7 +172,7 @@ Data Fields</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Number of individual NAKs received by the source transport. (Cumulative) </p>
-<p>When a source transport receives a NAK from a receiver transport, it may respond by re-transmitting the requested LBT-RM datagram, or it may send an NCF. The NAKing receiver transport responds to the NCF by waiting (timeout set by <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/API/config.tag:../Config/" href="../Config/grptransportlbtrmreliability.html#transportlbtrmnaksuppressintervalreceiver">transport_lbtrm_nak_suppress_interval (receiver)</a>, default 1000 ms), then re-sending the NAK. </p>
+<p>When a source transport receives a NAK from a receiver transport, it may respond by re-transmitting the requested LBT-RM datagram, or it may send an NCF. The NAKing receiver transport responds to the NCF by waiting (timeout set by <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/API/config.tag:../Config/" href="../Config/grptransportlbtrmreliability.html#transportlbtrmnaksuppressintervalreceiver">transport_lbtrm_nak_suppress_interval (receiver)</a>, default 1000 ms), then re-sending the NAK. </p>
 
 </div>
 </div>
@@ -186,7 +186,7 @@ Data Fields</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Number of NAKs this source transport has not yet processed because doing so would exceed its retransmit rate limit (set by configuration option <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/API/config.tag:../Config/" href="../Config/grptransportlbtrmoperation.html#transportlbtrmretransmitratelimitcontext">transport_lbtrm_retransmit_rate_limit (context)</a>, default 5Mbps). (Cumulative) </p>
+<p>Number of NAKs this source transport has not yet processed because doing so would exceed its retransmit rate limit (set by configuration option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/API/config.tag:../Config/" href="../Config/grptransportlbtrmoperation.html#transportlbtrmretransmitratelimitcontext">transport_lbtrm_retransmit_rate_limit (context)</a>, default 5Mbps). (Cumulative) </p>
 <p>For each of these NAKs, the source transport immediately sends an NFC rx_delay, then queues the retransmission for a later send within the rate limit. If this count is high, one or more crybaby receiver transports may be clogging the source transport's retransmit queue. </p>
 
 </div>
@@ -217,7 +217,7 @@ Data Fields</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Number of LBT-RM datagrams currently queued by the data rate limiter. (Snapshot) </p>
-<p>When a source transport attempts to send messages (any type) faster than its data rate limiter allows (set by configuration option <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/API/config.tag:../Config/" href="../Config/grptransportlbtrmoperation.html#transportlbtrmdataratelimitcontext">transport_lbtrm_data_rate_limit (context)</a>, default 10Mbps), the data rate limiter queues the messages until they can be sent within the data rate limit. </p>
+<p>When a source transport attempts to send messages (any type) faster than its data rate limiter allows (set by configuration option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/API/config.tag:../Config/" href="../Config/grptransportlbtrmoperation.html#transportlbtrmdataratelimitcontext">transport_lbtrm_data_rate_limit (context)</a>, default 10Mbps), the data rate limiter queues the messages until they can be sent within the data rate limit. </p>
 
 </div>
 </div>
@@ -232,7 +232,7 @@ Data Fields</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Number of LBT-RM transport retransmission datagrams currently queued by the retransmit rate limiter. (Snapshot) </p>
-<p>When a source transport attempts to send retransmissions faster that its retransmit rate limiter allows (set by configuration option <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/API/config.tag:../Config/" href="../Config/grptransportlbtrmoperation.html#transportlbtrmretransmitratelimitcontext">transport_lbtrm_retransmit_rate_limit (context)</a>, default 5Mbps), the retransmit rate limiter queues retransmissions until they can be sent within the rate limit. naks_rx_delay_ignored (above) will generally also rise if this count is high. </p>
+<p>When a source transport attempts to send retransmissions faster that its retransmit rate limiter allows (set by configuration option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/API/config.tag:../Config/" href="../Config/grptransportlbtrmoperation.html#transportlbtrmretransmitratelimitcontext">transport_lbtrm_retransmit_rate_limit (context)</a>, default 5Mbps), the retransmit rate limiter queues retransmissions until they can be sent within the rate limit. naks_rx_delay_ignored (above) will generally also rise if this count is high. </p>
 
 </div>
 </div>
@@ -277,7 +277,7 @@ Data Fields</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Number of LBT-RM datagrams currently in the transmission window. (Snapshot) </p>
-<p>Each source transport session maintains a transmission window buffer (the size of which is set by <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/API/config.tag:../Config/" href="../Config/grptransportlbtrmreliability.html#transportlbtrmtransmissionwindowsizesource">transport_lbtrm_transmission_window_size (source)</a>, default 24MB). When the source transport receives a NAK, the corresponding message for retransmission must be found in this transmission window. </p>
+<p>Each source transport session maintains a transmission window buffer (the size of which is set by <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/API/config.tag:../Config/" href="../Config/grptransportlbtrmreliability.html#transportlbtrmtransmissionwindowsizesource">transport_lbtrm_transmission_window_size (source)</a>, default 24MB). When the source transport receives a NAK, the corresponding message for retransmission must be found in this transmission window. </p>
 
 </div>
 </div>

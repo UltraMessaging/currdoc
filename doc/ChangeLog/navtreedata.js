@@ -3,6 +3,18 @@ var NAVTREE =
   [ "Release Notes", "index.html", [
     [ "Introduction", "index.html", null ],
     [ "Important Corrections", "importantcorrections.html", null ],
+    [ "UM Version 6.16.1", "umversion6_16_1.html", [
+      [ "Enhancements for 6.16.1", "umversion6_16_1.html#enhancementsfor6_16_1", [
+        [ "Streaming Enhancements for 6.16.1", "umversion6_16_1.html#streamingenhancementsfor6_16_1", null ],
+        [ "Persistence Enhancements for 6.16.1", "umversion6_16_1.html#persistenceenhancementsfor6_16_1", null ],
+        [ "Queuing Enhancements for 6.16.1", "umversion6_16_1.html#queuingenhancementsfor6_16_1", null ]
+      ] ],
+      [ "Fixed Problems and Limitations for 6.16.1", "umversion6_16_1.html#fixedlimitationsfor6_16_1", [
+        [ "Streaming Fixed Problems and Limitations for 6.16.1", "umversion6_16_1.html#streamingfixedlimitationsfor6_16_1", null ],
+        [ "Persistence Fixed Problems and Limitations for 6.16.1", "umversion6_16_1.html#persistencefixedlimitationsfor6_16_1", null ],
+        [ "Queuing Fixed Problems and Limitations for 6.16.1", "umversion6_16_1.html#queuingfixedlimitationsfor6_16_1", null ]
+      ] ]
+    ] ],
     [ "UM Version 6.16", "umversion6_16.html", [
       [ "Enhancements for 6.16", "umversion6_16.html#enhancementsfor6_16", [
         [ "Streaming Enhancements for 6.16", "umversion6_16.html#streamingenhancementsfor6_16", null ],
@@ -403,7 +415,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "deprecations.html",
-"umversion6_7_3.html#dynamicrouterenhancementsfor6_7_3"
+"umversion6_7_1.html#persistencefixedlimitationsfor6_7_1"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

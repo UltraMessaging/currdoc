@@ -1,5 +1,8 @@
 var NAVTREEINDEX17 =
 {
+"structtnwg__dstat__peer__receive__stats__t__stct.html#ac462a3b93e99a4334c5ebb2b070444e9":[10,0,202,29],
+"structtnwg__dstat__peer__receive__stats__t__stct.html#ac5929dd99ca1c05a402c086bdc7b6453":[10,0,202,34],
+"structtnwg__dstat__peer__receive__stats__t__stct.html#ac6d91ac1113de68a5a03177a01f5f0c2":[10,0,202,4],
 "structtnwg__dstat__peer__receive__stats__t__stct.html#ac771c33856544e397983786cf4d18b27":[10,0,202,32],
 "structtnwg__dstat__peer__receive__stats__t__stct.html#ad2a3b604199ee4e5ee7cd5b59fbc188e":[10,0,202,38],
 "structtnwg__dstat__peer__receive__stats__t__stct.html#ad4a232888dd499048ab8ed442fe3d885":[10,0,202,17],
@@ -246,8 +249,5 @@ var NAVTREEINDEX17 =
 "structumestore__repo__dmon__config__msg__t__stct.html#a085305d6222f495bdaee5de8978cbbe2":[10,0,224,9],
 "structumestore__repo__dmon__config__msg__t__stct.html#a158aeaaae72752677f71be98ea57c2e1":[10,0,224,11],
 "structumestore__repo__dmon__config__msg__t__stct.html#a2e8ce78938aea93d06da591645774574":[10,0,224,2],
-"structumestore__repo__dmon__config__msg__t__stct.html#a46b249c6226447afad6d01d2dcde8974":[10,0,224,1],
-"structumestore__repo__dmon__config__msg__t__stct.html#a8574c8ed5ca74262443c2652e96707dc":[10,0,224,3],
-"structumestore__repo__dmon__config__msg__t__stct.html#a883cf0e70b3b99844e2368a229e5f0bd":[10,0,224,0],
-"structumestore__repo__dmon__config__msg__t__stct.html#a8a191f2386854efbd28befd2a5c0d904":[10,0,224,14]
+"structumestore__repo__dmon__config__msg__t__stct.html#a46b249c6226447afad6d01d2dcde8974":[10,0,224,1]
 };

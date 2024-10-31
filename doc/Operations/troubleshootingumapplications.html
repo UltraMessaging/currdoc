@@ -124,13 +124,13 @@ Datagram size mismatches&nbsp;&nbsp;<small><a href="#datagramsizemismatches">&lt
 <tr>
 <td>Log message: endpoint portal [s] unable to send: datagram size mismatch. transport_XXX_datagram_max_size must be properly configured. </td><td>Datagram sizes are inconsistently configured across the system. </td><td>Coordinate the maximum datagram size among the following configuration options. <ul>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Operations/config.tag:../Config/" href="../Config/grptransporttcpoperation.html#transporttcpdatagrammaxsizecontext">transport_tcp_datagram_max_size (context)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/Operations/config.tag:../Config/" href="../Config/grptransporttcpoperation.html#transporttcpdatagrammaxsizecontext">transport_tcp_datagram_max_size (context)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Operations/config.tag:../Config/" href="../Config/grptransportlbtrmoperation.html#transportlbtrmdatagrammaxsizecontext">transport_lbtrm_datagram_max_size (context)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/Operations/config.tag:../Config/" href="../Config/grptransportlbtrmoperation.html#transportlbtrmdatagrammaxsizecontext">transport_lbtrm_datagram_max_size (context)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Operations/config.tag:../Config/" href="../Config/grptransportlbtruoperation.html#transportlbtrudatagrammaxsizecontext">transport_lbtru_datagram_max_size (context)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/Operations/config.tag:../Config/" href="../Config/grptransportlbtruoperation.html#transportlbtrudatagrammaxsizecontext">transport_lbtru_datagram_max_size (context)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Operations/config.tag:../Config/" href="../Config/grptransportlbtipcoperation.html#transportlbtipcdatagrammaxsizecontext">transport_lbtipc_datagram_max_size (context)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/Operations/config.tag:../Config/" href="../Config/grptransportlbtipcoperation.html#transportlbtipcdatagrammaxsizecontext">transport_lbtipc_datagram_max_size (context)</a> </li>
 <li>
 <b>&lt;max-datagram&gt;</b> for the DRO's Peer portal. </li>
 </ul>
@@ -248,7 +248,7 @@ Message Loss </li>
 </ul>
 </td><td><ol>
 <li>
-Check implicit batching settings. If you desire the lowest latency at all times - which can bring a penalty of higher CPU utilization and increased probability for receivers to experience UDP buffer overflows - set implicit_batching_minimum_lengthh to 1. The same effect can be achieved by using the LBM_MSG_FLUSH flag inside the <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a91f4b9cb04fe1323ec56833211cc5cb7">lbm_src_send()</a> call. </li>
+Check implicit batching settings. If you desire the lowest latency at all times - which can bring a penalty of higher CPU utilization and increased probability for receivers to experience UDP buffer overflows - set implicit_batching_minimum_lengthh to 1. The same effect can be achieved by using the LBM_MSG_FLUSH flag inside the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a91f4b9cb04fe1323ec56833211cc5cb7">lbm_src_send()</a> call. </li>
 <li>
 Check for loss in receiver statistics. If loss is occurring, refer to "Message Loss" on page 68. </li>
 </ol>
@@ -261,7 +261,7 @@ Check for loss in receiver statistics. If loss is occurring, refer to "Message L
  </p>
 <h1><a class="anchor" id="deafreceivers"></a>
 Deaf Receivers&nbsp;&nbsp;<small><a href="#deafreceivers">&lt;-</a></small></h1>
-<p>Receiver <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Operations/design.tag:../Design/" href="../Design/umglossary.html#glossarydeafness">deafness</a> is a general term that means a subscriber is not getting messages, even though the publisher is sending messages. Awareness of this condition can come from many sources, such as business people complaining that they are not receiving expected data or from your own monitoring of statistics, application logs or the liveness of processes.</p>
+<p>Receiver <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/Operations/design.tag:../Design/" href="../Design/umglossary.html#glossarydeafness">deafness</a> is a general term that means a subscriber is not getting messages, even though the publisher is sending messages. Awareness of this condition can come from many sources, such as business people complaining that they are not receiving expected data or from your own monitoring of statistics, application logs or the liveness of processes.</p>
 <p>Use the following table to help detect topic or receiver deafness.</p>
 <center> <table class="doxtable">
 <tr>
@@ -288,9 +288,9 @@ Deaf Receivers&nbsp;&nbsp;<small><a href="#deafreceivers">&lt;-</a></small></h1>
 <tr>
 <td>Wildcard receivers are not receiving messages. </td><td>&mdash; </td><td><ul>
 <li>
-Be sure the <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Operations/config.tag:../Config/" href="../Config/grpudpbasedresolveroperation.html#resolvercachecontext">resolver_cache (context)</a> is enabled (set to 1, which is the default. </li>
+Be sure the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/Operations/config.tag:../Config/" href="../Config/grpudpbasedresolveroperation.html#resolvercachecontext">resolver_cache (context)</a> is enabled (set to 1, which is the default. </li>
 <li>
-Be sure wildcard queries are enabled by setting <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Operations/config.tag:../Config/" href="../Config/grpwildcardreceiver.html#resolverqueryminimumintervalwildcardreceiver">resolver_query_minimum_interval (wildcard_receiver)</a> is set to the default of 50 ms. </li>
+Be sure wildcard queries are enabled by setting <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/Operations/config.tag:../Config/" href="../Config/grpwildcardreceiver.html#resolverqueryminimumintervalwildcardreceiver">resolver_query_minimum_interval (wildcard_receiver)</a> is set to the default of 50 ms. </li>
 </ul>
 </td></tr>
 </table>
@@ -310,7 +310,7 @@ Flight Size&nbsp;&nbsp;<small><a href="#flightsize">&lt;-</a></small></h2>
 <tr>
 <td>Monitoring statistics show a lower level of activity for a Persistence application than expected. </td><td>Source not sending because it is blocked by flight size </td><td><ul>
 <li>
-Increase flight size by increasing the allowable number of messages in flight with the configuration option, <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Operations/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeflightsizesource">ume_flight_size (source)</a>. </li>
+Increase flight size by increasing the allowable number of messages in flight with the configuration option, <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/Operations/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeflightsizesource">ume_flight_size (source)</a>. </li>
 <li>
 Slow down sources. </li>
 <li>
@@ -326,7 +326,7 @@ Persistent Store Connectivity&nbsp;&nbsp;<small><a href="#persistentstoreconnect
 <tr>
 <td>Symptom</td><td>Cause</td><td>Resolution </td></tr>
 <tr>
-<td>Store log contains message, LBM_SRC_EVENT_UME_STORE_ UNRESPONSIVE </td><td>Unresponsive store </td><td>The receiver can track the inability to complete registration by correlating the receipt of a new source notification with a LBM_MSG_UME_REGISTRATION_COMPLETE_EX event. The new source notification is defined by the option receiver <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Operations/config.tag:../Config/" href="../Config/grpmajoroptions.html#resolversourcenotificationfunctioncontext">resolver_source_notification_function (context)</a>. A timer should be set to log a message or trigger an alarm if the completion message is not received after multiple seconds. To match the source in the callback to the completion event, a string comparison should be used on the lbm_msg-&gt;source field. The timer for each source should be canceled when its registration complete event is received. </td></tr>
+<td>Store log contains message, LBM_SRC_EVENT_UME_STORE_ UNRESPONSIVE </td><td>Unresponsive store </td><td>The receiver can track the inability to complete registration by correlating the receipt of a new source notification with a LBM_MSG_UME_REGISTRATION_COMPLETE_EX event. The new source notification is defined by the option receiver <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/Operations/config.tag:../Config/" href="../Config/grpmajoroptions.html#resolversourcenotificationfunctioncontext">resolver_source_notification_function (context)</a>. A timer should be set to log a message or trigger an alarm if the completion message is not received after multiple seconds. To match the source in the callback to the completion event, a string comparison should be used on the lbm_msg-&gt;source field. The timer for each source should be canceled when its registration complete event is received. </td></tr>
 <tr>
 <td><p class="starttd">The source can detect a loss of quorum by checking the error string passed in for the event LBM_SRC_EVENT_UME_STORE_UNRESPONSIVE.</p>
 <p class="endtd">The string will contain "(quorum lost)". </p>
