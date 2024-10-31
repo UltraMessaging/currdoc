@@ -3,6 +3,18 @@ var NAVTREE =
   [ "Release Notes", "index.html", [
     [ "Introduction", "index.html#firstsect", null ],
     [ "Important Corrections", "index.html#importantcorrections", null ],
+    [ "UM Version 6.16.1", "index.html#umversion6_16_1", [
+      [ "Enhancements for 6.16.1", "index.html#enhancementsfor6_16_1", [
+        [ "Streaming Enhancements for 6.16.1", "index.html#streamingenhancementsfor6_16_1", null ],
+        [ "Persistence Enhancements for 6.16.1", "index.html#persistenceenhancementsfor6_16_1", null ],
+        [ "Queuing Enhancements for 6.16.1", "index.html#queuingenhancementsfor6_16_1", null ]
+      ] ],
+      [ "Fixed Problems and Limitations for 6.16.1", "index.html#fixedlimitationsfor6_16_1", [
+        [ "Streaming Fixed Problems and Limitations for 6.16.1", "index.html#streamingfixedlimitationsfor6_16_1", null ],
+        [ "Persistence Fixed Problems and Limitations for 6.16.1", "index.html#persistencefixedlimitationsfor6_16_1", null ],
+        [ "Queuing Fixed Problems and Limitations for 6.16.1", "index.html#queuingfixedlimitationsfor6_16_1", null ]
+      ] ]
+    ] ],
     [ "UM Version 6.16", "index.html#umversion6_16", [
       [ "Enhancements for 6.16", "index.html#enhancementsfor6_16", [
         [ "Streaming Enhancements for 6.16", "index.html#streamingenhancementsfor6_16", null ],
@@ -403,7 +415,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "index.html",
-"index.html#streamingenhancementsfor6_9"
+"index.html#streamingenhancementsfor6_16_1"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

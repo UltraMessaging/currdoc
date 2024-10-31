@@ -58,8 +58,8 @@ $(document).ready(function(){initNavTree('specialconfigurationtopics.html','');}
  </p>
 <h1><a class="anchor" id="storelossrepair"></a>
 Store Loss Repair&nbsp;&nbsp;<small><a href="#storelossrepair">&lt;-</a></small></h1>
-<p>The persistent Store uses a normal UM receiver to get messages from the source. The Store is subject to the same potential <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/UME/design.tag:../Design/" href="../Design/packetloss.html">Packet Loss</a> scenarios as an application subscriber, and uses the same loss repair techniques as a subscriber.</p>
-<p>Informatica recommends enabling <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/UME/design.tag:../Design/" href="../Design/umfeatures.html#offtransportrecoveryotr">Off-Transport Recovery (OTR)</a> on the Store and application subscribers.</p>
+<p>The persistent Store uses a normal UM receiver to get messages from the source. The Store is subject to the same potential <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/UME/design.tag:../Design/" href="../Design/packetloss.html">Packet Loss</a> scenarios as an application subscriber, and uses the same loss repair techniques as a subscriber.</p>
+<p>Informatica recommends enabling <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/UME/design.tag:../Design/" href="../Design/umfeatures.html#offtransportrecoveryotr">Off-Transport Recovery (OTR)</a> on the Store and application subscribers.</p>
 <p><br />
  </p>
 <h1><a class="anchor" id="persistencebuffersizes"></a>
@@ -111,11 +111,11 @@ Store configuration option <a class="el" href="optionsforastoresumeattributesele
 <li>
 Store configuration option <a class="el" href="optionsforastoresumeattributeselement.html#umecfgrepositorydiskwritedelay">repository-disk-write-delay</a>, </li>
 <li>
-Source LBM configuration option <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umerepositoryackonreceptionsource">ume_repository_ack_on_reception (source)</a>, </li>
+Source LBM configuration option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umerepositoryackonreceptionsource">ume_repository_ack_on_reception (source)</a>, </li>
 <li>
-Source LBM configuration options <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeflightsizebytessource">ume_flight_size_bytes (source)</a> and <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeflightsizesource">ume_flight_size (source)</a>. </li>
+Source LBM configuration options <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeflightsizebytessource">ume_flight_size_bytes (source)</a> and <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeflightsizesource">ume_flight_size (source)</a>. </li>
 <li>
-Receiver LBM configuration option <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeackbatchingintervalcontext">ume_ack_batching_interval (context)</a>. </li>
+Receiver LBM configuration option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeackbatchingintervalcontext">ume_ack_batching_interval (context)</a>. </li>
 <li>
 Store LBM configuration options <a class="el" href="optionsforastoresumeattributeselement.html#umecfgstabilityackinterval">stability-ack-interval</a> and <a class="el" href="optionsforastoresumeattributeselement.html#umecfgstabilityackminimumnumber">stability-ack-minimum-number</a>. </li>
 </ul>
@@ -126,7 +126,7 @@ avg_msg_size - The source's average size of application messages, in bytes. </li
 <li>
 avg_msg_rate - The source's average message send rate, in datagrams per second. </li>
 </ul>
-<p>Next you need to decide how long you want to set <a class="el" href="optionsforastoresumeattributeselement.html#umecfgrepositorydiskwritedelay">repository-disk-write-delay</a>. The idea is that you want to avoid writing to disk during normal operation, so you should set it long enough that all normally-operating receivers have a chance to acknowledge consumption of the messages during the write delay time. Remember that when a receiver gets a message, it might delay sending consumption for <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeackbatchingintervalcontext">ume_ack_batching_interval (context)</a> milliseconds (defaults to 100).</p>
+<p>Next you need to decide how long you want to set <a class="el" href="optionsforastoresumeattributeselement.html#umecfgrepositorydiskwritedelay">repository-disk-write-delay</a>. The idea is that you want to avoid writing to disk during normal operation, so you should set it long enough that all normally-operating receivers have a chance to acknowledge consumption of the messages during the write delay time. Remember that when a receiver gets a message, it might delay sending consumption for <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeackbatchingintervalcontext">ume_ack_batching_interval (context)</a> milliseconds (defaults to 100).</p>
 <p>You also need to take into account heavy bursts of traffic, where receivers might store significant numbers of messages in their socket buffers, and it can take time for the receivers to work their way through all of them.</p>
 <p>But you don't want to make the repository-disk-write-delay larger than necessary because it can lead to very high memory usage in the Store. We generally see repository-disk-write-delay being set to values as low as 1000 (1 sec) and as high as 5000 (5 sec).</p>
 <p>The following formulas calculate minimum recommended values of some configuration options: </p><pre class="fragment">ume_flight_size = 3 * (ume_ack_batching_interval/1,000) * avg_msg_rate

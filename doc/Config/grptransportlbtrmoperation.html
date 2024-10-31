@@ -60,7 +60,7 @@ $(document).ready(function(){initNavTree('grptransportlbtrmoperation.html','');}
 <div class="image">
 <img src="LBT-RM-SM.png" alt="LBT-RM-SM.png"/>
 </div>
- <p>No session messages are generated as long as the interval between <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a91f4b9cb04fe1323ec56833211cc5cb7">lbm_src_send()</a> calls that generate writes to LBT-RM is less than <a class="el" href="grptransportlbtrmoperation.html#transportlbtrmsmminimumintervalsource">transport_lbtrm_sm_minimum_interval (source)</a> option. The interval between session messages starts at <a class="el" href="grptransportlbtrmoperation.html#transportlbtrmsmminimumintervalsource">transport_lbtrm_sm_minimum_interval (source)</a> and doubles till it reaches <a class="el" href="grptransportlbtrmoperation.html#transportlbtrmsmmaximumintervalsource">transport_lbtrm_sm_maximum_interval (source)</a> at which point the interval continues at that level.</p>
+ <p>No session messages are generated as long as the interval between <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a91f4b9cb04fe1323ec56833211cc5cb7">lbm_src_send()</a> calls that generate writes to LBT-RM is less than <a class="el" href="grptransportlbtrmoperation.html#transportlbtrmsmminimumintervalsource">transport_lbtrm_sm_minimum_interval (source)</a> option. The interval between session messages starts at <a class="el" href="grptransportlbtrmoperation.html#transportlbtrmsmminimumintervalsource">transport_lbtrm_sm_minimum_interval (source)</a> and doubles till it reaches <a class="el" href="grptransportlbtrmoperation.html#transportlbtrmsmmaximumintervalsource">transport_lbtrm_sm_maximum_interval (source)</a> at which point the interval continues at that level.</p>
 <p>The absence of activity on a transport session is the only indication receivers get that a source is gone or no longer available through any network path. LBT-RM receivers reset a session activity timer for each data message or session message that arrives. If the activity timer ever expires, all receivers on the transport session receive an LBM_MSG_EOS event. This is illustrated in the following timeline:</p>
 <div class="image">
 <img src="LBT-RM-Activity.png" alt="LBT-RM-Activity.png"/>
@@ -76,12 +76,12 @@ Reference&nbsp;&nbsp;<small><a href="#transportlbtrmoperationref">&lt;-</a></sma
 transport_lbtrm_activity_timeout (receiver)&nbsp;&nbsp;<small><a href="#transportlbtrmactivitytimeoutreceiver">&lt;-</a></small></h2>
 <dl class="section user"><dt></dt><dd>The maximum time that an LBT-RM session may be quiescent before it is deleted and an EOS event is delivered for all topics using this transport session. </dd></dl>
 <dl class="section user"><dt></dt><dd>For LBT-RM transport sessions only. This option affects the transport session underlying the receiver rather than the receiver itself. The transport session uses the value from the first receiver created on the session and ignores subsequent receivers' configuration. </dd></dl>
-<dl class="section user"><dt></dt><dd>Refer to <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Config/design.tag:../Design/" href="../Design/umobjects.html#receiverobject">Receiver Object</a> for additional information.</dd></dl>
+<dl class="section user"><dt></dt><dd>Refer to <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/Config/design.tag:../Design/" href="../Design/umobjects.html#receiverobject">Receiver Object</a> for additional information.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>receiver </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
 <tr>
 <td><em>Units:</em> </td><td>milliseconds </td></tr>
 <tr>
@@ -96,7 +96,7 @@ transport_lbtrm_activity_timeout (receiver)&nbsp;&nbsp;<small><a href="#transpor
 transport_lbtrm_coalesce_threshold (source)&nbsp;&nbsp;<small><a href="#transportlbtrmcoalescethresholdsource">&lt;-</a></small></h2>
 <dl class="section user"><dt></dt><dd>UM passes implicitly batched messages to the Operating System sendmsg() as a set unless the size of the set exceeds the coalescing threshold at which point the messages are coalesced and passed to the O/S as one copy. </dd></dl>
 <dl class="section user"><dt></dt><dd>This option accommodates the different number of iovecs supported by different O/Ss. Tuning this option balances the efficiency of less iovecs handled by the OS vs. the expense of an additional copy operation of the messages before sending. The default value is also the maximum allowable value for Solaris, AIX and HPUX. For Linux and Microsoft Windows and Darwin, the maximum allowable value is 1023. These maximum allowable values are one less than what the O/S provides. This option affects the transport session underlying the source rather than the source itself. The transport session uses the value from the first source created on the session and ignores subsequent sources' configuration. </dd></dl>
-<dl class="section user"><dt></dt><dd>Refer to <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Config/design.tag:../Design/" href="../Design/umobjects.html#sourceobject">Source Object</a> for additional information.</dd></dl>
+<dl class="section user"><dt></dt><dd>Refer to <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/Config/design.tag:../Design/" href="../Design/umobjects.html#sourceobject">Source Object</a> for additional information.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>source </td></tr>
@@ -115,13 +115,13 @@ transport_lbtrm_coalesce_threshold (source)&nbsp;&nbsp;<small><a href="#transpor
 <h2><a class="anchor" id="transportlbtrmdataratelimitcontext"></a>
 transport_lbtrm_data_rate_limit (context)&nbsp;&nbsp;<small><a href="#transportlbtrmdataratelimitcontext">&lt;-</a></small></h2>
 <dl class="section user"><dt></dt><dd>Maximum aggregate transmission rate of all LBT-RM sessions' original data plus retransmissions for this particular context. </dd></dl>
-<dl class="section user"><dt></dt><dd>Refer to <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Config/design.tag:../Design/" href="../Design/fundamentalconcepts.html#ratecontrols">Rate Controls</a> for additional information about the UM rate limiting algorithm. </dd></dl>
-<dl class="section user"><dt></dt><dd>Note: For backwards compatibility with earlier versions, the <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#ab67f641d5a0ad1a9fe53d415da58d961">lbm_context_attr_setopt()</a> function will accept both 32 and 64 bit values for this option. Note however that a 32-bit value can only specify a rate limit a little larger than 4 Gbps.</dd></dl>
+<dl class="section user"><dt></dt><dd>Refer to <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/Config/design.tag:../Design/" href="../Design/fundamentalconcepts.html#ratecontrols">Rate Controls</a> for additional information about the UM rate limiting algorithm. </dd></dl>
+<dl class="section user"><dt></dt><dd>Note: For backwards compatibility with earlier versions, the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#ab67f641d5a0ad1a9fe53d415da58d961">lbm_context_attr_setopt()</a> function will accept both 32 and 64 bit values for this option. Note however that a 32-bit value can only specify a rate limit a little larger than 4 Gbps.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>context </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a1e4dea682eee7238dec2b64989449abc">lbm_uint64_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a1e4dea682eee7238dec2b64989449abc">lbm_uint64_t</a></b> </td></tr>
 <tr>
 <td><em>Units:</em> </td><td>bits per second </td></tr>
 <tr>
@@ -135,16 +135,16 @@ transport_lbtrm_data_rate_limit (context)&nbsp;&nbsp;<small><a href="#transportl
 <h2><a class="anchor" id="transportlbtrmdatagrammaxsizecontext"></a>
 transport_lbtrm_datagram_max_size (context)&nbsp;&nbsp;<small><a href="#transportlbtrmdatagrammaxsizecontext">&lt;-</a></small></h2>
 <dl class="section user"><dt></dt><dd>The maximum UDP datagram payload size that can be generated for a LBT-RM transport session. Note that this does not include UDP, IP, or packet overhead added by the network stack. The default value is 8192, the minimum is 500 bytes, and the maximum is 65535. </dd></dl>
-<dl class="section user"><dt></dt><dd>See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Config/design.tag:../Design/" href="../Design/architecture.html#messagefragmentationandreassembly">Message Fragmentation and Reassembly</a> for more information. </dd></dl>
-<dl class="section user"><dt></dt><dd>Informatica does not recommend setting datagram max size options to the network MTU. See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Config/design.tag:../Design/" href="../Design/architecture.html#datagrammaxsizeandnetworkmtu">Datagram Max Size and Network MTU</a>. </dd></dl>
+<dl class="section user"><dt></dt><dd>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/Config/design.tag:../Design/" href="../Design/architecture.html#messagefragmentationandreassembly">Message Fragmentation and Reassembly</a> for more information. </dd></dl>
+<dl class="section user"><dt></dt><dd>Informatica does not recommend setting datagram max size options to the network MTU. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/Config/design.tag:../Design/" href="../Design/architecture.html#datagrammaxsizeandnetworkmtu">Datagram Max Size and Network MTU</a>. </dd></dl>
 <dl class="section user"><dt></dt><dd></dd></dl>
-<dl class="section warning"><dt>Warning</dt><dd>When the DRO is in use, it is recommended that all UM applications and components (including the DRO and Persistent Store) share the same maximum datagram size setting. See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Config/gateway.tag:../Gateway/" href="../Gateway/umrouterconcepts.html#protocolconversion">Protocol Conversion</a>. </dd></dl>
-<dl class="section user"><dt></dt><dd>Users of <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Config/design.tag:../Design/" href="../Design/umglossary.html#glossarykernelbypass">kernel-bypass drivers</a> should also see <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Config/design.tag:../Design/" href="../Design/architecture.html#dynamicfragmentationreduction">Dynamic Fragmentation Reduction</a>.</dd></dl>
+<dl class="section warning"><dt>Warning</dt><dd>When the DRO is in use, it is recommended that all UM applications and components (including the DRO and Persistent Store) share the same maximum datagram size setting. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/Config/gateway.tag:../Gateway/" href="../Gateway/umrouterconcepts.html#protocolconversion">Protocol Conversion</a>. </dd></dl>
+<dl class="section user"><dt></dt><dd>Users of <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/Config/design.tag:../Design/" href="../Design/umglossary.html#glossarykernelbypass">kernel-bypass drivers</a> should also see <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/Config/design.tag:../Design/" href="../Design/architecture.html#dynamicfragmentationreduction">Dynamic Fragmentation Reduction</a>.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>context </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#abdb96b55cc467a75e1f9ec0036dbc14b">lbm_uint_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#abdb96b55cc467a75e1f9ec0036dbc14b">lbm_uint_t</a></b> </td></tr>
 <tr>
 <td><em>Units:</em> </td><td>bytes </td></tr>
 <tr>
@@ -170,7 +170,7 @@ transport_lbtrm_preactivity_timeout (receiver)&nbsp;&nbsp;<small><a href="#trans
 <tr>
 <td><em>Scope:</em> </td><td>receiver </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
 <tr>
 <td><em>Units:</em> </td><td>milliseconds </td></tr>
 <tr>
@@ -187,13 +187,13 @@ transport_lbtrm_preactivity_timeout (receiver)&nbsp;&nbsp;<small><a href="#trans
 transport_lbtrm_rate_interval (context)&nbsp;&nbsp;<small><a href="#transportlbtrmrateintervalcontext">&lt;-</a></small></h2>
 <dl class="section user"><dt></dt><dd>Period that LBT-RM rate limiter runs. </dd></dl>
 <dl class="section user"><dt></dt><dd>When a source is constrained by the rate limiter, the traffic can become very "bursty", with periods of intense traffic alternating with idle periods of no traffic. These periods average to the setting of the rate limiter. </dd></dl>
-<dl class="section user"><dt></dt><dd>Reducing the rate interval increases the frequency of the bursts while reducing the intensity of those bursts, resulting in the same average. The reduction in burst intensity can reduce the risk of loss, but can also increase average latency and CPU load. Refer to <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Config/design.tag:../Design/" href="../Design/fundamentalconcepts.html#ratecontrols">Rate Controls</a> for additional information about the UM rate limiting algorithm. </dd></dl>
+<dl class="section user"><dt></dt><dd>Reducing the rate interval increases the frequency of the bursts while reducing the intensity of those bursts, resulting in the same average. The reduction in burst intensity can reduce the risk of loss, but can also increase average latency and CPU load. Refer to <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/Config/design.tag:../Design/" href="../Design/fundamentalconcepts.html#ratecontrols">Rate Controls</a> for additional information about the UM rate limiting algorithm. </dd></dl>
 <dl class="section user"><dt></dt><dd>Note: technically, any value which divides evenly into 1000 is accepted by UM for a rate interval. However, values other than those listed below should not be used except as directed by Informatica Support.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>context </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
 <tr>
 <td><em>Units:</em> </td><td>milliseconds </td></tr>
 <tr>
@@ -232,7 +232,7 @@ transport_lbtrm_rate_interval (context)&nbsp;&nbsp;<small><a href="#transportlbt
 transport_lbtrm_receiver_timestamp (context)&nbsp;&nbsp;<small><a href="#transportlbtrmreceivertimestampcontext">&lt;-</a></small></h2>
 <dl class="section user"><dt></dt><dd>Controls whether high-resolution timestamps for received packets are delivered to the receiver callback. </dd></dl>
 <dl class="section user"><dt></dt><dd>For LBT-RM transport sessions only. </dd></dl>
-<dl class="section user"><dt></dt><dd>Refer to <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Config/design.tag:../Design/" href="../Design/umfeatures.html#highresolutiontimestamps">High-resolution Timestamps</a> for additional information.</dd></dl>
+<dl class="section user"><dt></dt><dd>Refer to <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/Config/design.tag:../Design/" href="../Design/umfeatures.html#highresolutiontimestamps">High-resolution Timestamps</a> for additional information.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>context </td></tr>
@@ -249,7 +249,7 @@ transport_lbtrm_receiver_timestamp (context)&nbsp;&nbsp;<small><a href="#transpo
 <tr>
 <th>Value </th><th>Description </th></tr>
 <tr>
-<td>1 </td><td><p class="starttd">Receive timestamps delivered to receive callback (in C: <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#ac8dd91be561ad6262ccf3f7f94771cfd">lbm_rcv_cb_proc</a>) via <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Config/api.tag:../API/" href="../API/structlbm__msg__t__stct.html#a4e0fab1c6a59636b0b996a6070c32a9b">lbm_msg_t_stct::hr_timestamp</a>.</p>
+<td>1 </td><td><p class="starttd">Receive timestamps delivered to receive callback (in C: <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#ac8dd91be561ad6262ccf3f7f94771cfd">lbm_rcv_cb_proc</a>) via <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/Config/api.tag:../API/" href="../API/structlbm__msg__t__stct.html#a4e0fab1c6a59636b0b996a6070c32a9b">lbm_msg_t_stct::hr_timestamp</a>.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
@@ -261,7 +261,7 @@ transport_lbtrm_receiver_timestamp (context)&nbsp;&nbsp;<small><a href="#transpo
 <h2><a class="anchor" id="transportlbtrmrecyclereceivebufferscontext"></a>
 transport_lbtrm_recycle_receive_buffers (context)&nbsp;&nbsp;<small><a href="#transportlbtrmrecyclereceivebufferscontext">&lt;-</a></small></h2>
 <dl class="section user"><dt></dt><dd>Enables the use of buffer recycling for socket operations. </dd></dl>
-<dl class="section user"><dt></dt><dd>See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Config/design.tag:../Design/" href="../Design/advancedoptimizations.html#receivebufferrecycling">Receive Buffer Recycling</a> for more information, including restrictions on the use of this feature.</dd></dl>
+<dl class="section user"><dt></dt><dd>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/Config/design.tag:../Design/" href="../Design/advancedoptimizations.html#receivebufferrecycling">Receive Buffer Recycling</a> for more information, including restrictions on the use of this feature.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>context </td></tr>
@@ -290,13 +290,13 @@ transport_lbtrm_recycle_receive_buffers (context)&nbsp;&nbsp;<small><a href="#tr
 <h2><a class="anchor" id="transportlbtrmretransmitratelimitcontext"></a>
 transport_lbtrm_retransmit_rate_limit (context)&nbsp;&nbsp;<small><a href="#transportlbtrmretransmitratelimitcontext">&lt;-</a></small></h2>
 <dl class="section user"><dt></dt><dd>Maximum aggregate transmission rate of all LBT-RM sessions' retransmissions for this particular context. </dd></dl>
-<dl class="section user"><dt></dt><dd>This should always be less than the value used for original data. Refer to <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Config/design.tag:../Design/" href="../Design/fundamentalconcepts.html#ratecontrols">Rate Controls</a> for additional information about the UM rate limiting algorithm. </dd></dl>
-<dl class="section user"><dt></dt><dd>Note: For backwards compatibility with earlier versions, the <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#ab67f641d5a0ad1a9fe53d415da58d961">lbm_context_attr_setopt()</a> function will accept both 32 and 64 bit values for this option. Note however that a 32-bit value can only specify a rate limit a little larger than 4 Gbps.</dd></dl>
+<dl class="section user"><dt></dt><dd>This should always be less than the value used for original data. Refer to <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/Config/design.tag:../Design/" href="../Design/fundamentalconcepts.html#ratecontrols">Rate Controls</a> for additional information about the UM rate limiting algorithm. </dd></dl>
+<dl class="section user"><dt></dt><dd>Note: For backwards compatibility with earlier versions, the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#ab67f641d5a0ad1a9fe53d415da58d961">lbm_context_attr_setopt()</a> function will accept both 32 and 64 bit values for this option. Note however that a 32-bit value can only specify a rate limit a little larger than 4 Gbps.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>context </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a1e4dea682eee7238dec2b64989449abc">lbm_uint64_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a1e4dea682eee7238dec2b64989449abc">lbm_uint64_t</a></b> </td></tr>
 <tr>
 <td><em>Units:</em> </td><td>bits per second </td></tr>
 <tr>
@@ -311,12 +311,12 @@ transport_lbtrm_retransmit_rate_limit (context)&nbsp;&nbsp;<small><a href="#tran
 transport_lbtrm_sm_maximum_interval (source)&nbsp;&nbsp;<small><a href="#transportlbtrmsmmaximumintervalsource">&lt;-</a></small></h2>
 <dl class="section user"><dt></dt><dd>The maximum interval between LBT-RM session messages. </dd></dl>
 <dl class="section user"><dt></dt><dd>In lieu of data being sent, LBT-RM sends session messages to inform receivers of sequence numbers and to let receivers know that the sender is still transmitting. This option affects the transport session underlying the source rather than the source itself. The transport session uses the value from the first source created on the session and ignores subsequent sources' configuration. </dd></dl>
-<dl class="section user"><dt></dt><dd>Refer to <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Config/design.tag:../Design/" href="../Design/umobjects.html#sourceobject">Source Object</a> for additional information.</dd></dl>
+<dl class="section user"><dt></dt><dd>Refer to <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/Config/design.tag:../Design/" href="../Design/umobjects.html#sourceobject">Source Object</a> for additional information.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>source </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
 <tr>
 <td><em>Units:</em> </td><td>milliseconds </td></tr>
 <tr>
@@ -331,12 +331,12 @@ transport_lbtrm_sm_maximum_interval (source)&nbsp;&nbsp;<small><a href="#transpo
 transport_lbtrm_sm_minimum_interval (source)&nbsp;&nbsp;<small><a href="#transportlbtrmsmminimumintervalsource">&lt;-</a></small></h2>
 <dl class="section user"><dt></dt><dd>The minimum interval between LBT-RM session messages. </dd></dl>
 <dl class="section user"><dt></dt><dd>In lieu of data being sent, LBT-RM sends session messages to inform receivers of sequence numbers and to let receivers know that the sender is still transmitting. This option affects the transport session underlying the source rather than the source itself. The transport session uses the value from the first source created on the session and ignores subsequent sources' configuration. </dd></dl>
-<dl class="section user"><dt></dt><dd>Refer to <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Config/design.tag:../Design/" href="../Design/umobjects.html#sourceobject">Source Object</a> for additional information.</dd></dl>
+<dl class="section user"><dt></dt><dd>Refer to <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/Config/design.tag:../Design/" href="../Design/umobjects.html#sourceobject">Source Object</a> for additional information.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>source </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
 <tr>
 <td><em>Units:</em> </td><td>milliseconds </td></tr>
 <tr>
@@ -350,7 +350,7 @@ transport_lbtrm_sm_minimum_interval (source)&nbsp;&nbsp;<small><a href="#transpo
 <h2><a class="anchor" id="transportlbtrmsourcetimestampcontext"></a>
 transport_lbtrm_source_timestamp (context)&nbsp;&nbsp;<small><a href="#transportlbtrmsourcetimestampcontext">&lt;-</a></small></h2>
 <dl class="section user"><dt></dt><dd>Controls whether high-resolution timestamps for transmitted packets are delivered to the source event callback. </dd></dl>
-<dl class="section user"><dt></dt><dd>For LBT-RM transport sessions only. Refer to <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Config/design.tag:../Design/" href="../Design/umfeatures.html#highresolutiontimestamps">High-resolution Timestamps</a> for additional information.</dd></dl>
+<dl class="section user"><dt></dt><dd>For LBT-RM transport sessions only. Refer to <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/Config/design.tag:../Design/" href="../Design/umfeatures.html#highresolutiontimestamps">High-resolution Timestamps</a> for additional information.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>context </td></tr>
@@ -367,7 +367,7 @@ transport_lbtrm_source_timestamp (context)&nbsp;&nbsp;<small><a href="#transport
 <tr>
 <th>Value </th><th>Description </th></tr>
 <tr>
-<td>1 </td><td><p class="starttd">Transmit timestamps delivered to the source event callback (in C: <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a0fe745a748ae36759c312737d9f127f7">lbm_src_cb_proc</a>) via event <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a60f509e2b54daf79f54cc992c0fed6fa">LBM_SRC_EVENT_TIMESTAMP</a>.</p>
+<td>1 </td><td><p class="starttd">Transmit timestamps delivered to the source event callback (in C: <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a0fe745a748ae36759c312737d9f127f7">lbm_src_cb_proc</a>) via event <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a60f509e2b54daf79f54cc992c0fed6fa">LBM_SRC_EVENT_TIMESTAMP</a>.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
@@ -380,12 +380,12 @@ transport_lbtrm_source_timestamp (context)&nbsp;&nbsp;<small><a href="#transport
 transport_lbtrm_tgsz (source)&nbsp;&nbsp;<small><a href="#transportlbtrmtgszsource">&lt;-</a></small></h2>
 <dl class="section user"><dt></dt><dd>The transmission group size used for this Topic when LBT-RM is used. </dd></dl>
 <dl class="section user"><dt></dt><dd>This value must be greater than 0 and must be a power of 2 no greater than 32K. This option affects the transport session underlying the source rather than the source itself. The transport session uses the value from the first source created on the session and ignores subsequent sources' configuration. </dd></dl>
-<dl class="section user"><dt></dt><dd>Refer to <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Config/design.tag:../Design/" href="../Design/umobjects.html#sourceobject">Source Object</a> for additional information.</dd></dl>
+<dl class="section user"><dt></dt><dd>Refer to <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/Config/design.tag:../Design/" href="../Design/umobjects.html#sourceobject">Source Object</a> for additional information.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>source </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a86897f2fdd66aa7021683a4e72a4537b">lbm_uint16_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a86897f2fdd66aa7021683a4e72a4537b">lbm_uint16_t</a></b> </td></tr>
 <tr>
 <td><em>Units:</em> </td><td>packets </td></tr>
 <tr>

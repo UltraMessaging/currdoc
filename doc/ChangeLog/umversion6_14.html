@@ -68,24 +68,24 @@ Streaming Enhancements for 6.14&nbsp;&nbsp;<small><a href="#streamingenhancement
 <p>The following new features and enhancements apply to UMS, UMP, and UMQ products.</p>
 <ul>
 <li>
-<p class="startli"><b>SRS and DRO</b>. TCP-based Topic Resolution now has full functionality (except lbmrd-based <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/ChangeLog/design.tag:../Design/" href="../Design/architecture.html#networkaddresstranslationnat">Network Address Translation (NAT)</a>, which is not planned at this time). Users of DRO can now use the SRS instead of UDP-based TR. See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/ChangeLog/design.tag:../Design/" href="../Design/topicresolutiondescription.html#tcpbasedtopicresolutiondetails">TCP-Based Topic Resolution Details</a>. Includes the introduction of a new configuration option: <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grpudpbasedresolveroperation.html#resolverdisableudptopicresolutioncontext">resolver_disable_udp_topic_resolution (context)</a>.</p>
+<p class="startli"><b>SRS and DRO</b>. TCP-based Topic Resolution now has full functionality (except lbmrd-based <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/ChangeLog/design.tag:../Design/" href="../Design/architecture.html#networkaddresstranslationnat">Network Address Translation (NAT)</a>, which is not planned at this time). Users of DRO can now use the SRS instead of UDP-based TR. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/ChangeLog/design.tag:../Design/" href="../Design/topicresolutiondescription.html#tcpbasedtopicresolutiondetails">TCP-Based Topic Resolution Details</a>. Includes the introduction of a new configuration option: <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/ChangeLog/config.tag:../Config/" href="../Config/grpudpbasedresolveroperation.html#resolverdisableudptopicresolutioncontext">resolver_disable_udp_topic_resolution (context)</a>.</p>
 <p class="endli"></p>
 </li>
 <li>
-<p class="startli"><b>Monitoring</b>. A new monitoring infrastructure is available which unifies transport statistics with Store and DRO statistics. As part of this, automatic monitoring now supports reporting of topic-to-transport mappings. See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/ChangeLog/operations.tag:../Operations/" href="../Operations/monitoring.html">Monitoring</a> and <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/ChangeLog/operations.tag:../Operations/" href="../Operations/monitoring.html#monitoringcollectorservicemcs">Monitoring Collector Service (MCS)</a>.</p>
+<p class="startli"><b>Monitoring</b>. A new monitoring infrastructure is available which unifies transport statistics with Store and DRO statistics. As part of this, automatic monitoring now supports reporting of topic-to-transport mappings. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/ChangeLog/operations.tag:../Operations/" href="../Operations/monitoring.html">Monitoring</a> and <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/ChangeLog/operations.tag:../Operations/" href="../Operations/monitoring.html#monitoringcollectorservicemcs">Monitoring Collector Service (MCS)</a>.</p>
 <p class="endli"></p>
 </li>
 <li>
-<p class="startli"><b>Fragmentation and MTU</b>. Dynamic Fragmentation Reduction allows users of kernel bypass drivers (like Solarflare's Onload) to avoid premature UM fragmentation of messages into multiple datagrams that should fit in a single MTU, while also avoiding IP fragmentation that can happen if datagram max size is set above 1472. See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/ChangeLog/design.tag:../Design/" href="../Design/architecture.html#dynamicfragmentationreduction">Dynamic Fragmentation Reduction</a>.</p>
+<p class="startli"><b>Fragmentation and MTU</b>. Dynamic Fragmentation Reduction allows users of kernel bypass drivers (like Solarflare's Onload) to avoid premature UM fragmentation of messages into multiple datagrams that should fit in a single MTU, while also avoiding IP fragmentation that can happen if datagram max size is set above 1472. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/ChangeLog/design.tag:../Design/" href="../Design/architecture.html#dynamicfragmentationreduction">Dynamic Fragmentation Reduction</a>.</p>
 <p>Note: this enhancement should address <a class="el" href="knownlimitations.html#bug10985">known issue 10985</a>.</p>
 <p class="endli"></p>
 </li>
 <li>
-<p class="startli">The .NET API now supports XSP. See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/ChangeLog/dotnet_example.tag:../dotnet_example/" href="../dotnet_example/index.html#examplelbmrcvxsp_cs">Example lbmrcvxsp.cs</a>.</p>
+<p class="startli">The .NET API now supports XSP. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/ChangeLog/dotnet_example.tag:../dotnet_example/" href="../dotnet_example/index.html#examplelbmrcvxsp_cs">Example lbmrcvxsp.cs</a>.</p>
 <p class="endli"></p>
 </li>
 <li>
-<p class="startli"><b>Smart Source Requests</b>. The Smart Source C API now supports the sending of UM requests. Note that this enhancement does not support Java, .NET, UM fragmentation, message properties, or spectrum channels. See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/ChangeLog/design.tag:../Design/" href="../Design/fundamentalconcepts.html#requestresponse">Request/Response</a>, <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/ChangeLog/api.tag:../API/" href="../API/lbm_8h.html#af20577a5adf4b621a74eb7cb89ad2c16">lbm_ssrc_send_request_ex()</a> and <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/ChangeLog/example.tag:../example/" href="../example/index.html#examplelbmssrcreq_c">Example lbmssrcreq.c</a>.</p>
+<p class="startli"><b>Smart Source Requests</b>. The Smart Source C API now supports the sending of UM requests. Note that this enhancement does not support Java, .NET, UM fragmentation, message properties, or spectrum channels. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/ChangeLog/design.tag:../Design/" href="../Design/fundamentalconcepts.html#requestresponse">Request/Response</a>, <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/ChangeLog/api.tag:../API/" href="../API/lbm_8h.html#af20577a5adf4b621a74eb7cb89ad2c16">lbm_ssrc_send_request_ex()</a> and <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/ChangeLog/example.tag:../example/" href="../example/index.html#examplelbmssrcreq_c">Example lbmssrcreq.c</a>.</p>
 <p class="endli"></p>
 </li>
 <li>
@@ -183,7 +183,7 @@ Persistence Fixed Problems and Limitations for 6.14&nbsp;&nbsp;<small><a href="#
 <p class="endtd"></p>
 </th></tr>
 <tr>
-<td>11019, 11053</td><td><p class="starttd"><b>FIXED:</b> <em>A change in UM version 6.13 resulted in SPP-configured persistent sources experiencing periodic latency outliers and hitting flight size (<a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/ChangeLog/api.tag:../API/" href="../API/lbm_8h.html#a75f0f83b8684df30d9816210cc20b4b0">LBM_EWOULDBLOCK</a> send failures). </em></p>
+<td>11019, 11053</td><td><p class="starttd"><b>FIXED:</b> <em>A change in UM version 6.13 resulted in SPP-configured persistent sources experiencing periodic latency outliers and hitting flight size (<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/ChangeLog/api.tag:../API/" href="../API/lbm_8h.html#a75f0f83b8684df30d9816210cc20b4b0">LBM_EWOULDBLOCK</a> send failures). </em></p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
@@ -203,7 +203,7 @@ Persistence Fixed Problems and Limitations for 6.14&nbsp;&nbsp;<small><a href="#
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>11005</td><td><p class="starttd"><b>FIXED:</b> <em>If an SPP store experiences <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/ChangeLog/api.tag:../API/" href="../API/lbm_8h.html#a6629139aaf902976c8df9de3f37d10db">unrecoverable burst loss</a>, it can lead to significant memory growth. </em></p>
+<td>11005</td><td><p class="starttd"><b>FIXED:</b> <em>If an SPP store experiences <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/ChangeLog/api.tag:../API/" href="../API/lbm_8h.html#a6629139aaf902976c8df9de3f37d10db">unrecoverable burst loss</a>, it can lead to significant memory growth. </em></p>
 <p class="endtd"></p>
 </td></tr>
 <tr>

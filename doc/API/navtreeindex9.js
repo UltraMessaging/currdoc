@@ -1,5 +1,8 @@
 var NAVTREEINDEX9 =
 {
+"lbmpdm_8h.html#a351a868702ecd10ab53be7de79e1e919":[11,0,5,59],
+"lbmpdm_8h.html#a3925e00dbcf9d9b3c397ca8a8ffeacdb":[11,0,5,31],
+"lbmpdm_8h.html#a394341b0b4063203f2c41339202aa8ae":[11,0,5,123],
 "lbmpdm_8h.html#a3b86e2290dbf0021238aebe6c5808c63":[11,0,5,72],
 "lbmpdm_8h.html#a3db1a18d363280b1c36d6f7d3616c717":[11,0,5,64],
 "lbmpdm_8h.html#a4318969d42542bd45aa992cc0d624660":[11,0,5,56],
@@ -246,8 +249,5 @@ var NAVTREEINDEX9 =
 "struct__Lbmmon____DROMonMsg____Configs.html#a870df0f21eac0a5266f5c082b212cf15":[10,0,1,3],
 "struct__Lbmmon____DROMonMsg____Configs____Gateway.html":[10,0,2],
 "struct__Lbmmon____DROMonMsg____Configs____Gateway.html#a06802c692402c6b533c0260518c967ca":[10,0,2,1],
-"struct__Lbmmon____DROMonMsg____Configs____Gateway.html#a90219d45fa609a3f9576b91079598527":[10,0,2,0],
-"struct__Lbmmon____DROMonMsg____Configs____Portal.html":[10,0,3],
-"struct__Lbmmon____DROMonMsg____Configs____Portal.html#a0a28865a00cbd72ff83428905045fcfb":[10,0,3,0],
-"struct__Lbmmon____DROMonMsg____Configs____Portal.html#a741842633413f80b483dab9d0177c40d":[10,0,3,1]
+"struct__Lbmmon____DROMonMsg____Configs____Gateway.html#a90219d45fa609a3f9576b91079598527":[10,0,2,0]
 };

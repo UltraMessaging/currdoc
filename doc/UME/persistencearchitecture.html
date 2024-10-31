@@ -159,20 +159,20 @@ Persistent Store Fault Tolerance&nbsp;&nbsp;<small><a href="#persistentstorefaul
 Identifying Persistent Stores&nbsp;&nbsp;<small><a href="#identifyingpersistentstores">&lt;-</a></small></h2>
 <p>A persistent source must be configured to identify one or more Stores to provide persistence services. The source configuration can identify Store instances with one of: </p><ul>
 <li>
-IP:port or domainID:IP:port using <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umestoresource">ume_store (source)</a>, see <a class="el" href="persistencearchitecture.html#ipstore">Store Address</a> </li>
+IP:port or domainID:IP:port using <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umestoresource">ume_store (source)</a>, see <a class="el" href="persistencearchitecture.html#ipstore">Store Address</a> </li>
 <li>
-Store's context name using <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umestorenamesource">ume_store_name (source)</a>, see <a class="el" href="persistencearchitecture.html#namedstores">Named Stores</a>). </li>
+Store's context name using <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umestorenamesource">ume_store_name (source)</a>, see <a class="el" href="persistencearchitecture.html#namedstores">Named Stores</a>). </li>
 </ul>
 <p>In either case, the store should be told which interface to bind to, which defines its IP address. This is done with the <a class="el" href="configurationreferenceforumestored.html#umeelementstore">UMP Element "&lt;store&gt;"</a> in the Store's configuration file. There is a shortcut available to simplify the Store configuration file; see <a class="el" href="persistencearchitecture.html#cidrstore">Using a CIDR Range of IP Addresses</a>.</p>
 <p><a class="anchor" id="ipstore"></a><b>Store Address: Identify Store with IP:Port</b></p>
-<p>Using IP:port is feasible in deployments where there is no DRO; i.e. all components are in a single <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/UME/design.tag:../Design/" href="../Design/fundamentalconcepts.html#topicresolutiondomain">Topic Resolution Domain</a> (TRD). Deployments that include DRO and have multiple TRDs require that the domain ID be added to the address: domainID:IP:port.</p>
+<p>Using IP:port is feasible in deployments where there is no DRO; i.e. all components are in a single <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/UME/design.tag:../Design/" href="../Design/fundamentalconcepts.html#topicresolutiondomain">Topic Resolution Domain</a> (TRD). Deployments that include DRO and have multiple TRDs require that the domain ID be added to the address: domainID:IP:port.</p>
 <p>Configure Store instance for a single IP:port.</p>
 <ol>
 <li>
 <p class="startli">Identify the Store with only the IP:port, specified with the <a class="el" href="configurationreferenceforumestored.html#umeelementstore">UMP Element "&lt;store&gt;"</a> in the Store's configuration file. For example: </p><div class="fragment"><div class="line">&lt;store name=<span class="stringliteral">&quot;newyork-1&quot;</span> port=<span class="stringliteral">&quot;14567&quot;</span> interface=<span class="stringliteral">&quot;10.29.3.16&quot;</span>&gt;</div></div><!-- fragment --><p class="endli"></p>
 </li>
 <li>
-Configure the source with the IP:port using the LBM configuration option <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umestoresource">ume_store (source)</a> so sources can find and register with the Store instance. <pre class="fragment">source ume_store 10.29.3.16:14567
+Configure the source with the IP:port using the LBM configuration option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umestoresource">ume_store (source)</a> so sources can find and register with the Store instance. <pre class="fragment">source ume_store 10.29.3.16:14567
 </pre> </li>
 </ol>
 <p><a class="anchor" id="namedstores"></a><b>Named Stores: Identify Store with Context Name</b></p>
@@ -182,7 +182,7 @@ Configure the source with the IP:port using the LBM configuration option <a clas
 <p class="startli">Give the Store's context a name using the <a class="el" href="optionsforastoresumeattributeselement.html#umecfgcontextname">context-name</a> option in the Store configuration file. For example: </p><div class="fragment"><div class="line">&lt;store name=<span class="stringliteral">&quot;newyork-1&quot;</span> port=<span class="stringliteral">&quot;14567&quot;</span> interface=<span class="stringliteral">&quot;10.29.3.0/24&quot;</span>&gt;</div><div class="line">&lt;ume-attributes&gt;</div><div class="line">   &lt;option type=<span class="stringliteral">&quot;store&quot;</span> name=<span class="stringliteral">&quot;context-name&quot;</span> value=<span class="stringliteral">&quot;NEWYORK-1&quot;</span>/&gt;</div><div class="line">&lt;/ume-attributes&gt;</div></div><!-- fragment --><p class="endli"></p>
 </li>
 <li>
-<p class="startli">Configure the source with the name of the Store's context using the LBM configuration option <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umestorenamesource">ume_store_name (source)</a> so sources can find and register with the Store.</p>
+<p class="startli">Configure the source with the name of the Store's context using the LBM configuration option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umestorenamesource">ume_store_name (source)</a> so sources can find and register with the Store.</p>
 <pre class="fragment">source ume_store_name NEWYORK-1
 </pre><p class="endli">Note that you did not have to determine the full IP address of the store's host. </p>
 </li>
@@ -196,14 +196,14 @@ If a Store receives a context name advertisement that matches its own context na
 Sources using Store context names issue an information message to the application every time a resolved context name changes its DomainID:IPaddress:port. </li>
 </ul>
 <p><a class="anchor" id="cidrstore"></a><b>Shortcut: Using a CIDR Range of IP Addresses</b></p>
-<p>Configure a Store with a CIDR range of IP addresses (see <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/UME/config.tag:../Config/" href="../Config/generalconfigurationguidelines.html#specifyinginterfaces">Specifying Interfaces</a>). This allows multiple Store daemon instances which only differ by their IP address to be configured the same. At initialization time, each Store daemon instance will determine its IP address using the CIDR specification. However, be aware that sources will need to use the full IP address.</p>
+<p>Configure a Store with a CIDR range of IP addresses (see <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/UME/config.tag:../Config/" href="../Config/generalconfigurationguidelines.html#specifyinginterfaces">Specifying Interfaces</a>). This allows multiple Store daemon instances which only differ by their IP address to be configured the same. At initialization time, each Store daemon instance will determine its IP address using the CIDR specification. However, be aware that sources will need to use the full IP address.</p>
 <ol>
 <li>
 <p class="startli">Identify the Store with a range of IP addresses specified in the Store configuration file. For example: </p><div class="fragment"><div class="line">&lt;store name=<span class="stringliteral">&quot;newyork-1&quot;</span> port=<span class="stringliteral">&quot;14567&quot;</span> interface=<span class="stringliteral">&quot;10.29.3.0/24&quot;</span>&gt;`</div></div><!-- fragment --><p> When the Store Process initializes, UM will choose a network interface within that IP address range (10.29.3.0 - 10.29.3.255).</p>
 <p class="endli"></p>
 </li>
 <li>
-<p class="startli">Configure the source with the IP:port using the LBM configuration option <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umestoresource">ume_store (source)</a> so sources can find and register with the Store. <b>You must specify the full IP address, not the CIDR range.</b> </p><pre class="fragment">source ume_store 10.29.3.16:14567
+<p class="startli">Configure the source with the IP:port using the LBM configuration option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umestoresource">ume_store (source)</a> so sources can find and register with the Store. <b>You must specify the full IP address, not the CIDR range.</b> </p><pre class="fragment">source ume_store 10.29.3.16:14567
 </pre><p class="endli"></p>
 </li>
 <li>

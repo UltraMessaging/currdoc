@@ -66,13 +66,13 @@ broker (context)&nbsp;&nbsp;<small><a href="#brokercontext">&lt;-</a></small></h
 <dl class="section user"><dt></dt><dd>Add a broker specification to the list of brokers. Unlike most other UM options, every time this option is supplied, it adds one or more service specifications to the list, and does NOT overwrite previous specifications. </dd></dl>
 <dl class="section user"><dt></dt><dd>For the configuration file as well as string API method of setting this option, you can specify multiple brokers with a comma or semicolon-separated list on a single line. Each entry contains the broker IP address (or domain name of the IP address) and destination port in the format <code>IP:Dest_Port[,IP:Dest_Port]</code>. </dd></dl>
 <dl class="section user"><dt></dt><dd>An entry or string with the IP address of 0.0.0.0 and port 0 removes all previous broker specifications. </dd></dl>
-<dl class="section user"><dt></dt><dd>When the binary form of option setting is used, UM does NOT expect an array of structures. Instead, only one broker specification can be supplied for each call to <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#ab67f641d5a0ad1a9fe53d415da58d961">lbm_context_attr_setopt()</a>. However, when the binary form of option retrieval <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a0e578b4f0005589f6558d15e55be8483">lbm_context_attr_getopt()</a> is used, the list of brokers is returned as an array, and the <b><code>optlen</code></b> parameter should be set as: <pre class="fragment">optlen = (max_num_brokers * sizeof(lbm_transport_broker_entry_t));
+<dl class="section user"><dt></dt><dd>When the binary form of option setting is used, UM does NOT expect an array of structures. Instead, only one broker specification can be supplied for each call to <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#ab67f641d5a0ad1a9fe53d415da58d961">lbm_context_attr_setopt()</a>. However, when the binary form of option retrieval <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a0e578b4f0005589f6558d15e55be8483">lbm_context_attr_getopt()</a> is used, the list of brokers is returned as an array, and the <b><code>optlen</code></b> parameter should be set as: <pre class="fragment">optlen = (max_num_brokers * sizeof(lbm_transport_broker_entry_t));
 </pre></dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>context </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a75ce20a96b97620fb7f6fcecdbed4b8a">lbm_transport_broker_entry_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a75ce20a96b97620fb7f6fcecdbed4b8a">lbm_transport_broker_entry_t</a></b> </td></tr>
 <tr>
 <td><em>When to Set:</em> </td><td>Can only be set during object initialization.</td></tr>
 <tr>
@@ -113,12 +113,12 @@ compatibility_include_pre_um_6_0_behavior (context)&nbsp;&nbsp;<small><a href="#
 <h2><a class="anchor" id="contexteventfunctioncontext"></a>
 context_event_function (context)&nbsp;&nbsp;<small><a href="#contexteventfunctioncontext">&lt;-</a></small></h2>
 <dl class="section user"><dt></dt><dd>Callback function (and associated client data pointer) that is called when a context event occurs. This callback may be called inline or from an event queue, if one is given. </dd></dl>
-<dl class="section user"><dt></dt><dd>If called inline, the callback function used should not block or it will block the context thread processing. See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a39c06705a1144ec9d2fc1af6bd033bac">lbm_context_event_cb_proc</a>.</dd></dl>
+<dl class="section user"><dt></dt><dd>If called inline, the callback function used should not block or it will block the context thread processing. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a39c06705a1144ec9d2fc1af6bd033bac">lbm_context_event_cb_proc</a>.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>context </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a2ad9c4d58e9129102d7d780b611c58b4">lbm_context_event_func_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a2ad9c4d58e9129102d7d780b611c58b4">lbm_context_event_func_t</a></b> </td></tr>
 <tr>
 <td><em>When to Set:</em> </td><td>Can only be set during object initialization.</td></tr>
 <tr>
@@ -154,7 +154,7 @@ default_interface (context)&nbsp;&nbsp;<small><a href="#defaultinterfacecontext"
 <tr>
 <td><em>Scope:</em> </td><td>context </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a0b66a5b33839617b2a822e4a20a8d535">lbm_ipv4_address_mask_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a0b66a5b33839617b2a822e4a20a8d535">lbm_ipv4_address_mask_t</a></b> </td></tr>
 <tr>
 <td><em>Default value:</em> </td><td>0.0.0.0 (INADDR_ANY) </td></tr>
 <tr>
@@ -167,9 +167,9 @@ default_interface (context)&nbsp;&nbsp;<small><a href="#defaultinterfacecontext"
  </p>
 <h2><a class="anchor" id="dynamicfragmentationreductioncontext"></a>
 dynamic_fragmentation_reduction (context)&nbsp;&nbsp;<small><a href="#dynamicfragmentationreductioncontext">&lt;-</a></small></h2>
-<dl class="section user"><dt></dt><dd>Reduce UM and/or IP <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Config/design.tag:../Design/" href="../Design/architecture.html#messagefragmentationandreassembly">fragmentation</a> by dynamically calculating the header size per message datagram. </dd></dl>
-<dl class="section user"><dt></dt><dd>Enabling this option makes UM's transport protocols more-fully utilize the configured datagram max size. This option is typically only of interest to users of LBT-RM and/or LBT-RU who need to avoid IP fragmentation, such as users of a <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Config/design.tag:../Design/" href="../Design/umglossary.html#glossarykernelbypass">kernel-bypass driver</a>. </dd></dl>
-<dl class="section user"><dt></dt><dd>See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Config/design.tag:../Design/" href="../Design/architecture.html#dynamicfragmentationreduction">Dynamic Fragmentation Reduction</a> for details. </dd></dl>
+<dl class="section user"><dt></dt><dd>Reduce UM and/or IP <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/Config/design.tag:../Design/" href="../Design/architecture.html#messagefragmentationandreassembly">fragmentation</a> by dynamically calculating the header size per message datagram. </dd></dl>
+<dl class="section user"><dt></dt><dd>Enabling this option makes UM's transport protocols more-fully utilize the configured datagram max size. This option is typically only of interest to users of LBT-RM and/or LBT-RU who need to avoid IP fragmentation, such as users of a <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/Config/design.tag:../Design/" href="../Design/umglossary.html#glossarykernelbypass">kernel-bypass driver</a>. </dd></dl>
+<dl class="section user"><dt></dt><dd>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/Config/design.tag:../Design/" href="../Design/architecture.html#dynamicfragmentationreduction">Dynamic Fragmentation Reduction</a> for details. </dd></dl>
 <dl class="section user"><dt></dt><dd>Enabling this option should be done in conjunction with setting the datagram max size options to 1472.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
@@ -201,7 +201,7 @@ fd_management_type (context)&nbsp;&nbsp;<small><a href="#fdmanagementtypecontext
 <dl class="section user"><dt></dt><dd>Define the mechanism UM uses for socket file descriptor (FD) management. </dd></dl>
 <dl class="section user"><dt></dt><dd>For more information, search on "file descriptors" in the Informatica Knowledge Base. </dd></dl>
 <dl class="section user"><dt></dt><dd></dd></dl>
-<dl class="section warning"><dt>Warning</dt><dd>If using <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Config/design.tag:../Design/" href="../Design/architecture.html#sequentialmode">Sequential Mode</a> and fd_management_type "wincompport", the thread that creates the context must not exit while the context is active. Furthermore, you gain a small performance improvement if the thread that creates the context is the same thread that calls <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#ad9416b1f0b474b5d4c4f39bb3c4bda77">lbm_context_process_events()</a>.</dd></dl>
+<dl class="section warning"><dt>Warning</dt><dd>If using <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/Config/design.tag:../Design/" href="../Design/fundamentalconcepts.html#sequentialmode">Sequential Mode</a> and fd_management_type "wincompport", the thread that creates the context must not exit while the context is active. Furthermore, you gain a small performance improvement if the thread that creates the context is the same thread that calls <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#ad9416b1f0b474b5d4c4f39bb3c4bda77">lbm_context_process_events()</a>.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>context </td></tr>
@@ -236,7 +236,7 @@ file_descriptor_management_behavior (context)&nbsp;&nbsp;<small><a href="#filede
 <dl class="section user"><dt></dt><dd>Set how the context monitors file descriptors (sockets) for events. </dd></dl>
 <dl class="section user"><dt></dt><dd>The "busy_wait" selection can reduce latency and especially latency outliers (jitter), at the expense of the thread consuming 100% CPU. </dd></dl>
 <dl class="section user"><dt></dt><dd>Only use "busy_wait" if there are enough cores to allocate a core exclusively to each receive thread. If there are too few cores, enabling "busy_wait" can actually increase latencies due to threads time-sharing CPU resources. Also, pinning threads to cores is highly recommended to prevent thread migration across cores. </dd></dl>
-<dl class="section user"><dt></dt><dd>See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Config/design.tag:../Design/" href="../Design/advancedoptimizations.html#receivethreadbusywaiting">Receive Thread Busy Waiting</a> for more information.</dd></dl>
+<dl class="section user"><dt></dt><dd>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/Config/design.tag:../Design/" href="../Design/advancedoptimizations.html#receivethreadbusywaiting">Receive Thread Busy Waiting</a> for more information.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>context </td></tr>
@@ -253,7 +253,7 @@ file_descriptor_management_behavior (context)&nbsp;&nbsp;<small><a href="#filede
 <tr>
 <th>String value </th><th>Integer value </th><th>Description </th></tr>
 <tr>
-<td>"pend" </td><td>LBM_CTX_ATTR_FD_MANAGEMENT_BEHAVIOR_PEND </td><td>Causes the context or <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Config/design.tag:../Design/" href="../Design/umfeatures.html#transportservicesproviderxsp">XSP thread</a> to go to sleep waiting for socket events to happen. <b>Default for all.</b> </td></tr>
+<td>"pend" </td><td>LBM_CTX_ATTR_FD_MANAGEMENT_BEHAVIOR_PEND </td><td>Causes the context or <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/Config/design.tag:../Design/" href="../Design/umfeatures.html#transportservicesproviderxsp">XSP thread</a> to go to sleep waiting for socket events to happen. <b>Default for all.</b> </td></tr>
 <tr>
 <td>"busy_wait" </td><td>LBM_CTX_ATTR_FD_MANAGEMENT_BEHAVIOR_BUSY_WAIT </td><td><p class="starttd">The context or XSP thread will check repeatedly in a tight loop (busy waiting) for socket events to happen.</p>
 <p class="endtd"></p>
@@ -286,14 +286,14 @@ multiple_receive_maximum_datagrams (context)&nbsp;&nbsp;<small><a href="#multipl
 <dl class="section user"><dt></dt><dd>The number of datagrams requested to be read at a time from a UDP-based transport socket. </dd></dl>
 <dl class="section user"><dt></dt><dd>Normally, UM reads one datagram at a time from each socket that has data. This option allows the reading of multiple datagrams in a single read (using recvmmsg()), and processing them in a tight loop. This improves efficiency and can reduce average latency. </dd></dl>
 <dl class="section user"><dt></dt><dd>Value of 0 means do NOT use recvmmsg(). </dd></dl>
-<dl class="section user"><dt></dt><dd>Only supported for LBT-RM and LBT-RU transport types. The multiple_receive_maximum_datagrams option does not apply to <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Config/design.tag:../Design/" href="../Design/umfeatures.html#multicastimmediatemessaging">MIM</a> or Topic Resolution. </dd></dl>
+<dl class="section user"><dt></dt><dd>Only supported for LBT-RM and LBT-RU transport types. The multiple_receive_maximum_datagrams option does not apply to <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/Config/design.tag:../Design/" href="../Design/umfeatures.html#multicastimmediatemessaging">MIM</a> or Topic Resolution. </dd></dl>
 <dl class="section user"><dt></dt><dd>Requires glibc 2.12 or later. This option is ignored for non-Linux platforms. </dd></dl>
-<dl class="section user"><dt></dt><dd>See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Config/design.tag:../Design/" href="../Design/advancedoptimizations.html#receivemultipledatagrams">Receive Multiple Datagrams</a> for more information.</dd></dl>
+<dl class="section user"><dt></dt><dd>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/Config/design.tag:../Design/" href="../Design/advancedoptimizations.html#receivemultipledatagrams">Receive Multiple Datagrams</a> for more information.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>context </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a5dfd61ade99cd24213125c293b15ef4a">lbm_uint32_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a5dfd61ade99cd24213125c293b15ef4a">lbm_uint32_t</a></b> </td></tr>
 <tr>
 <td><em>Units:</em> </td><td>datagrams </td></tr>
 <tr>
@@ -309,9 +309,9 @@ multiple_receive_maximum_datagrams (context)&nbsp;&nbsp;<small><a href="#multipl
 <h2><a class="anchor" id="operationalmodecontext"></a>
 operational_mode (context)&nbsp;&nbsp;<small><a href="#operationalmodecontext">&lt;-</a></small></h2>
 <dl class="section user"><dt></dt><dd>The mode in which UM's context thread operates to process events. </dd></dl>
-<dl class="section user"><dt></dt><dd>See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Config/design.tag:../Design/" href="../Design/architecture.html#embeddedmode">Embedded Mode</a> and <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Config/design.tag:../Design/" href="../Design/architecture.html#sequentialmode">Sequential Mode</a> for more information. </dd></dl>
+<dl class="section user"><dt></dt><dd>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/Config/design.tag:../Design/" href="../Design/fundamentalconcepts.html#embeddedmode">Embedded Mode</a> and <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/Config/design.tag:../Design/" href="../Design/fundamentalconcepts.html#sequentialmode">Sequential Mode</a> for more information. </dd></dl>
 <dl class="section user"><dt></dt><dd></dd></dl>
-<dl class="section warning"><dt>Warning</dt><dd>If using sequential mode and <a class="el" href="grpmajoroptions.html#fdmanagementtypecontext">fd_management_type</a> "wincompport", the thread that creates the context must not exit while the context is active. Furthermore, you gain a small performance improvement if the thread that creates the context is the same thread that calls <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#ad9416b1f0b474b5d4c4f39bb3c4bda77">lbm_context_process_events()</a>.</dd></dl>
+<dl class="section warning"><dt>Warning</dt><dd>If using sequential mode and <a class="el" href="grpmajoroptions.html#fdmanagementtypecontext">fd_management_type</a> "wincompport", the thread that creates the context must not exit while the context is active. Furthermore, you gain a small performance improvement if the thread that creates the context is the same thread that calls <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#ad9416b1f0b474b5d4c4f39bb3c4bda77">lbm_context_process_events()</a>.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>context </td></tr>
@@ -328,7 +328,7 @@ operational_mode (context)&nbsp;&nbsp;<small><a href="#operationalmodecontext">&
 <tr>
 <td>"embedded" </td><td>LBM_CTX_ATTR_OP_EMBEDDED </td><td>A thread is spawned within UM to handle processing of events (timers and socket events). <b>Default for all.</b> </td></tr>
 <tr>
-<td>"sequential" </td><td>LBM_CTX_ATTR_OP_SEQUENTIAL </td><td>The application is responsible for calling <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#ad9416b1f0b474b5d4c4f39bb3c4bda77">lbm_context_process_events()</a> to process events. Sequential mode does not support Multi-Transport Threads. </td></tr>
+<td>"sequential" </td><td>LBM_CTX_ATTR_OP_SEQUENTIAL </td><td>The application is responsible for calling <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#ad9416b1f0b474b5d4c4f39bb3c4bda77">lbm_context_process_events()</a> to process events. Sequential mode does not support Multi-Transport Threads. </td></tr>
 </table>
 </dd></dl>
 <p><br />
@@ -336,9 +336,9 @@ operational_mode (context)&nbsp;&nbsp;<small><a href="#operationalmodecontext">&
 <h2><a class="anchor" id="operationalmodexsp"></a>
 operational_mode (xsp)&nbsp;&nbsp;<small><a href="#operationalmodexsp">&lt;-</a></small></h2>
 <dl class="section user"><dt></dt><dd>The mode in which UM operates to process events. </dd></dl>
-<dl class="section user"><dt></dt><dd>See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Config/design.tag:../Design/" href="../Design/architecture.html#embeddedmode">Embedded Mode</a> and <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Config/design.tag:../Design/" href="../Design/architecture.html#sequentialmode">Sequential Mode</a> for more information. </dd></dl>
+<dl class="section user"><dt></dt><dd>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/Config/design.tag:../Design/" href="../Design/fundamentalconcepts.html#embeddedmode">Embedded Mode</a> and <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/Config/design.tag:../Design/" href="../Design/fundamentalconcepts.html#sequentialmode">Sequential Mode</a> for more information. </dd></dl>
 <dl class="section user"><dt></dt><dd></dd></dl>
-<dl class="section warning"><dt>Warning</dt><dd>If using sequential mode and <a class="el" href="grpmajoroptions.html#fdmanagementtypecontext">fd_management_type</a> "wincompport", the thread that creates the context must not exit while the context is active. Furthermore, you gain a small performance improvement if the thread that creates the context is the same thread that calls <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a6bd865fcdeee4e0ec2bb31748ee76164">lbm_xsp_process_events()</a>.</dd></dl>
+<dl class="section warning"><dt>Warning</dt><dd>If using sequential mode and <a class="el" href="grpmajoroptions.html#fdmanagementtypecontext">fd_management_type</a> "wincompport", the thread that creates the context must not exit while the context is active. Furthermore, you gain a small performance improvement if the thread that creates the context is the same thread that calls <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a6bd865fcdeee4e0ec2bb31748ee76164">lbm_xsp_process_events()</a>.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>xsp </td></tr>
@@ -357,7 +357,7 @@ operational_mode (xsp)&nbsp;&nbsp;<small><a href="#operationalmodexsp">&lt;-</a>
 <tr>
 <td>"embedded" </td><td>LBM_CTX_ATTR_OP_EMBEDDED </td><td>A thread is spawned within UM to handle processing of events (timers and socket events). <b>Default for all.</b> </td></tr>
 <tr>
-<td>"sequential" </td><td>LBM_CTX_ATTR_OP_SEQUENTIAL </td><td><p class="starttd">The application is responsible for calling <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a6bd865fcdeee4e0ec2bb31748ee76164">lbm_xsp_process_events()</a> to process events.</p>
+<td>"sequential" </td><td>LBM_CTX_ATTR_OP_SEQUENTIAL </td><td><p class="starttd">The application is responsible for calling <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a6bd865fcdeee4e0ec2bb31748ee76164">lbm_xsp_process_events()</a> to process events.</p>
 <p class="endtd"></p>
 </td></tr>
 </table>
@@ -370,7 +370,7 @@ ordered_delivery (receiver)&nbsp;&nbsp;<small><a href="#ordereddeliveryreceiver"
 <dl class="section user"><dt></dt><dd>For LBT-RM, LBT-RU, TCP-LB or LBT-IPC transport sessions only. (This option also applies to TCP when using Late Join because the Late Join messages are not part of the TCP message stream.) </dd></dl>
 <dl class="section user"><dt></dt><dd>Changing this option from the default value to a value of 0 (zero) results in message fragments being delivered as soon as they fully arrive. Value -1 allows arrival order delivery after the reassembly of large messages. </dd></dl>
 <dl class="section user"><dt></dt><dd>Note that ordering only applies to a specific topic from a single publisher. UM does not ensure ordering across topics, or on a single topic across different publishers. </dd></dl>
-<dl class="section user"><dt></dt><dd>See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Config/design.tag:../Design/" href="../Design/fundamentalconcepts.html#messageordering">Message Ordering</a> and <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Config/design.tag:../Design/" href="../Design/architecture.html#messagefragmentationandreassembly">Message Fragmentation and Reassembly</a> for more information.</dd></dl>
+<dl class="section user"><dt></dt><dd>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/Config/design.tag:../Design/" href="../Design/fundamentalconcepts.html#messageordering">Message Ordering</a> and <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/Config/design.tag:../Design/" href="../Design/architecture.html#messagefragmentationandreassembly">Message Fragmentation and Reassembly</a> for more information.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>receiver </td></tr>
@@ -393,7 +393,7 @@ ordered_delivery (receiver)&nbsp;&nbsp;<small><a href="#ordereddeliveryreceiver"
 <tr>
 <td>"0" </td><td>0 </td><td><p class="starttd">UM delivers topic messages to a receiver as they arrive and may be out of order.</p>
 <p>WARNING: This mode of operation is deprecated and may be removed in a future UM version. The user is advised to use mode -1.</p>
-<p>UM delivers large messages as individual fragments of less than the maximum datagram size for the transport in use. Duplicate delivery is possible. This mode is incompatible with <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Config/design.tag:../Design/" href="../Design/umfeatures.html#messageproperties">Message Properties</a>.</p>
+<p>UM delivers large messages as individual fragments of less than the maximum datagram size for the transport in use. Duplicate delivery is possible. This mode is incompatible with <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/Config/design.tag:../Design/" href="../Design/umfeatures.html#messageproperties">Message Properties</a>.</p>
 <p class="endtd"></p>
 </td></tr>
 </table>
@@ -436,12 +436,12 @@ resolver_source_notification_function (context)&nbsp;&nbsp;<small><a href="#reso
 <dl class="section user"><dt></dt><dd>Application callback function (and associated client data pointer) that is called when a new source is discovered for any topic, even if the application does not have a matching receiver. </dd></dl>
 <dl class="section user"><dt></dt><dd>Contrast this with <a class="el" href="grpdeliverycontrol.html#sourcenotificationfunctionreceiver">source_notification_function (receiver)</a>. </dd></dl>
 <dl class="section user"><dt></dt><dd>This callback is called by the context thread and can not use an event queue. Therefore the callback function used should not block or it will delay reception of latency-sensitive messages. </dd></dl>
-<dl class="section user"><dt></dt><dd>If this feature is used with a context that is connected to an SRS for Topic Resolution, <a class="el" href="grptcpbasedresolveroperation.html#resolverserviceinterestmodecontext">resolver_service_interest_mode (context)</a> may need to be set to "flood". See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Config/design.tag:../Design/" href="../Design/topicresolutiondescription.html#tcpbasedtrinterest">TCP-Based TR Interest</a>.</dd></dl>
+<dl class="section user"><dt></dt><dd>If this feature is used with a context that is connected to an SRS for Topic Resolution, <a class="el" href="grptcpbasedresolveroperation.html#resolverserviceinterestmodecontext">resolver_service_interest_mode (context)</a> may need to be set to "flood". See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/Config/design.tag:../Design/" href="../Design/topicresolutiondescription.html#tcpbasedtrinterest">TCP-Based TR Interest</a>.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>context </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a6fd5cb88fa3780abcb236951d236ffce">lbm_src_notify_func_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a6fd5cb88fa3780abcb236951d236ffce">lbm_src_notify_func_t</a></b> </td></tr>
 <tr>
 <td><em>Default value:</em> </td><td>NULL </td></tr>
 <tr>
@@ -460,7 +460,7 @@ source_event_function (context)&nbsp;&nbsp;<small><a href="#sourceeventfunctionc
 <tr>
 <td><em>Scope:</em> </td><td>context </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a9b7832bd627106205ba58ac151917b18">lbm_context_src_event_func_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a9b7832bd627106205ba58ac151917b18">lbm_context_src_event_func_t</a></b> </td></tr>
 <tr>
 <td><em>Default value:</em> </td><td>NULL </td></tr>
 <tr>
@@ -506,9 +506,9 @@ source_includes_topic_index (context)&nbsp;&nbsp;<small><a href="#sourceincludes
 transport (source)&nbsp;&nbsp;<small><a href="#transportsource">&lt;-</a></small></h2>
 <dl class="section user"><dt></dt><dd>The transport type to be used for created sources. </dd></dl>
 <dl class="section user"><dt></dt><dd></dd></dl>
-<dl class="section note"><dt>Note</dt><dd>With <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Config/design.tag:../Design/" href="../Design/advancedoptimizations.html#smartsources">Smart Sources</a>, only LBT-RM and LBT-RU are supported. </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>With <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/Config/design.tag:../Design/" href="../Design/advancedoptimizations.html#smartsources">Smart Sources</a>, only LBT-RM and LBT-RU are supported. </dd></dl>
 <dl class="section user"><dt></dt><dd></dd></dl>
-<dl class="section note"><dt>Note</dt><dd>With <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Config/design.tag:../Design/" href="../Design/umfeatures.html#transportservicesproviderxsp">Transport Services Provider (XSP)</a>, only LBT-RM, LBT-RU, and TCP are supported.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>With <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/Config/design.tag:../Design/" href="../Design/umfeatures.html#transportservicesproviderxsp">Transport Services Provider (XSP)</a>, only LBT-RM, LBT-RU, and TCP are supported.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>source </td></tr>
@@ -546,7 +546,7 @@ transport (source)&nbsp;&nbsp;<small><a href="#transportsource">&lt;-</a></small
 transport_demux_tablesz (receiver)&nbsp;&nbsp;<small><a href="#transportdemuxtableszreceiver">&lt;-</a></small></h2>
 <dl class="section user"><dt></dt><dd>Specifies the size of the table used for storing receiver delivery controllers used by UM for message delivery. </dd></dl>
 <dl class="section user"><dt></dt><dd>Must be a power of two (1, 2, 4, 8, 16, etc.). If not a power of two, UM generates a log warning and uses the next highest power of two. For most use cases with low to moderate numbers of topics per transport session, the default suffices. For large numbers of topics and in cases where the lowest latency is desired, set the option to the next higher power of two than the number of topics expected on the transport session. </dd></dl>
-<dl class="section user"><dt></dt><dd>See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Config/design.tag:../Design/" href="../Design/advancedoptimizations.html#transportdemultiplexertablesize">Transport Demultiplexer Table Size</a> for more information.</dd></dl>
+<dl class="section user"><dt></dt><dd>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/Config/design.tag:../Design/" href="../Design/advancedoptimizations.html#transportdemultiplexertablesize">Transport Demultiplexer Table Size</a> for more information.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>receiver </td></tr>
@@ -571,7 +571,7 @@ transport_mapping_function (context)&nbsp;&nbsp;<small><a href="#transportmappin
 <tr>
 <td><em>Scope:</em> </td><td>context </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a90dde1ea00f12038cff7195c76d47a46">lbm_transport_mapping_func_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a90dde1ea00f12038cff7195c76d47a46">lbm_transport_mapping_func_t</a></b> </td></tr>
 <tr>
 <td><em>Default value:</em> </td><td>NULL </td></tr>
 <tr>
@@ -589,7 +589,7 @@ transport_session_multiple_sending_threads (context)&nbsp;&nbsp;<small><a href="
 <dl class="section user"><dt></dt><dd>Flag that indicates the application intends to use multiple sending threads per transport session. </dd></dl>
 <dl class="section user"><dt></dt><dd>Setting this flag to 0 provides a very small efficiency improvement to the process of waking up a sleeping sending thread which is blocked on a send call, but renders the send functions thread-unsafe. </dd></dl>
 <dl class="section user"><dt></dt><dd>Do not use this option unless directed by UM Support. </dd></dl>
-<dl class="section user"><dt></dt><dd>For the most-efficient sending method, see <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Config/design.tag:../Design/" href="../Design/advancedoptimizations.html#smartsources">Smart Sources</a>.</dd></dl>
+<dl class="section user"><dt></dt><dd>For the most-efficient sending method, see <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/Config/design.tag:../Design/" href="../Design/advancedoptimizations.html#smartsources">Smart Sources</a>.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>context </td></tr>
@@ -617,7 +617,7 @@ transport_session_multiple_sending_threads (context)&nbsp;&nbsp;<small><a href="
 transport_session_single_receiving_thread (context)&nbsp;&nbsp;<small><a href="#transportsessionsinglereceivingthreadcontext">&lt;-</a></small></h2>
 <dl class="section user"><dt></dt><dd>Flag that indicates the application intends to use only a single thread for receiving. </dd></dl>
 <dl class="section user"><dt></dt><dd>This improves message reception latency and outliers by converting certain thread-safe operations to more-efficient thread-unsafe operations. For example, certain bus-locked operations (e.g. atomic increment) are replaced by non-bus-locked equivalents (e.g. non-atomic increment). </dd></dl>
-<dl class="section user"><dt></dt><dd>See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Config/design.tag:../Design/" href="../Design/advancedoptimizations.html#singlereceivingthread">Single Receiving Thread</a> for more information and restrictions.</dd></dl>
+<dl class="section user"><dt></dt><dd>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/Config/design.tag:../Design/" href="../Design/advancedoptimizations.html#singlereceivingthread">Single Receiving Thread</a> for more information and restrictions.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>context </td></tr>
@@ -647,7 +647,7 @@ transport_session_single_receiving_thread (context)&nbsp;&nbsp;<small><a href="#
 transport_source_side_filtering_behavior (source)&nbsp;&nbsp;<small><a href="#transportsourcesidefilteringbehaviorsource">&lt;-</a></small></h2>
 <dl class="section user"><dt></dt><dd>Enable and set the behavior for UM sources to filter out topics prior to sending to clients. </dd></dl>
 <dl class="section user"><dt></dt><dd>This option is not applicable for multicast-based sources (LBT-RM). These control messages are sent to the TCP UIM port (also known as the "request port") of the senders context and processed internally. </dd></dl>
-<dl class="section user"><dt></dt><dd>This option affects the transport session underlying the source rather than the source itself. See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Config/design.tag:../Design/" href="../Design/umobjects.html#sourceobject">Source Object</a> for additional information.</dd></dl>
+<dl class="section user"><dt></dt><dd>This option affects the transport session underlying the source rather than the source itself. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/Config/design.tag:../Design/" href="../Design/umobjects.html#sourceobject">Source Object</a> for additional information.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>source </td></tr>
@@ -666,7 +666,7 @@ transport_source_side_filtering_behavior (source)&nbsp;&nbsp;<small><a href="#tr
 <tr>
 <td>"inclusion" </td><td>LBM_SRC_TOPIC_ATTR_SSF_INCLUSION </td><td>The source sends only that data to a client that the client specifically requests. </td></tr>
 <tr>
-<td>"ulb" </td><td>LBM_SRC_TOPIC_ATTR_SSF_ULB </td><td><p class="starttd">The ULB source sends control and data only to the ULB client that the source has specifically assigned for a given message. See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Config/umq.tag:../UMQ/" href="../UMQ/ultraloadbalancingulb.html#ulbperformance">ULB Performance</a> for more information. This selection was added in UM version 6.12.</p>
+<td>"ulb" </td><td>LBM_SRC_TOPIC_ATTR_SSF_ULB </td><td><p class="starttd">The ULB source sends control and data only to the ULB client that the source has specifically assigned for a given message. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/Config/umq.tag:../UMQ/" href="../UMQ/ultraloadbalancingulb.html#ulbperformance">ULB Performance</a> for more information. This selection was added in UM version 6.12.</p>
 <p class="endtd"></p>
 </td></tr>
 </table>
@@ -683,7 +683,7 @@ transport_topic_sequence_number_info_active_threshold (source)&nbsp;&nbsp;<small
 <tr>
 <td><em>Scope:</em> </td><td>source </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
 <tr>
 <td><em>Units:</em> </td><td>seconds </td></tr>
 <tr>
@@ -705,7 +705,7 @@ transport_topic_sequence_number_info_interval (source)&nbsp;&nbsp;<small><a href
 <tr>
 <td><em>Scope:</em> </td><td>source </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
 <tr>
 <td><em>Units:</em> </td><td>milliseconds </td></tr>
 <tr>
@@ -726,7 +726,7 @@ transport_topic_sequence_number_info_request_interval (receiver)&nbsp;&nbsp;<sma
 <tr>
 <td><em>Scope:</em> </td><td>receiver </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
 <tr>
 <td><em>Units:</em> </td><td>milliseconds </td></tr>
 <tr>
@@ -747,7 +747,7 @@ transport_topic_sequence_number_info_request_maximum (receiver)&nbsp;&nbsp;<smal
 <tr>
 <td><em>Scope:</em> </td><td>receiver </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
 <tr>
 <td><em>Default value:</em> </td><td>60 </td></tr>
 <tr>
@@ -761,7 +761,7 @@ transport_topic_sequence_number_info_request_maximum (receiver)&nbsp;&nbsp;<smal
 <h2><a class="anchor" id="useextendedreclaimnotificationssource"></a>
 use_extended_reclaim_notifications (source)&nbsp;&nbsp;<small><a href="#useextendedreclaimnotificationssource">&lt;-</a></small></h2>
 <dl class="section user"><dt></dt><dd>Specifies which reclaim notification your application receives. </dd></dl>
-<dl class="section user"><dt></dt><dd>The older <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#ad1821a408b0feaf8c28893ee79816dab">LBM_SRC_EVENT_UME_MESSAGE_RECLAIMED</a> source event delivered the structure <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#acedfa758947867f55085a48150f9a17d">lbm_src_event_ume_ack_info_t</a>. The newer <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a91689d8826be0160f64358ccfcff2877">LBM_SRC_EVENT_UME_MESSAGE_RECLAIMED_EX</a> source event delivers the structure <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a7b945939b994bf1e7163d55b2256f3fb">lbm_src_event_ume_ack_ex_info_t</a>, which contains additional information.</dd></dl>
+<dl class="section user"><dt></dt><dd>The older <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#ad1821a408b0feaf8c28893ee79816dab">LBM_SRC_EVENT_UME_MESSAGE_RECLAIMED</a> source event delivered the structure <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#acedfa758947867f55085a48150f9a17d">lbm_src_event_ume_ack_info_t</a>. The newer <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a91689d8826be0160f64358ccfcff2877">LBM_SRC_EVENT_UME_MESSAGE_RECLAIMED_EX</a> source event delivers the structure <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a7b945939b994bf1e7163d55b2256f3fb">lbm_src_event_ume_ack_ex_info_t</a>, which contains additional information.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>source </td></tr>
@@ -796,7 +796,7 @@ zero_transports_function (xsp)&nbsp;&nbsp;<small><a href="#zerotransportsfunctio
 <tr>
 <td><em>Scope:</em> </td><td>xsp </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_DEV_HF_6_16/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a746a181601f6c1c81895dcdf67de3da9">lbm_xsp_zero_transports_func_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a746a181601f6c1c81895dcdf67de3da9">lbm_xsp_zero_transports_func_t</a></b> </td></tr>
 <tr>
 <td><em>Default value:</em> </td><td>NULL </td></tr>
 <tr>
