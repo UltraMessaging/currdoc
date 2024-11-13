@@ -232,7 +232,7 @@ Data Fields</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Number of datagrams received that do not belong to a currently-subscribed LBT-RU transport session. This is typically due to improper or suboptimal UM configuration, or to interference from non-UM network applications. Steady increases in this statistic indicate a waste in CPU resources to read and discard the datagrams. (Cumulative) </p>
-<p>One possible cause is if a subscribing application exits and a new application starts with the same IP address and port for reception of LBT-RU traffic. The source can continue to send messages to that IP:port until the source times out the previous receiver (10 seconds by default; see source option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/API/config.tag:../Config/" href="../Config/grptransportlbtruoperation.html#transportlbtruclientactivitytimeoutsource">transport_lbtru_client_activity_timeout (source)</a>). </p>
+<p>One possible cause is if a subscribing application exits and a new application starts with the same IP address and port for reception of LBT-RU traffic. The source can continue to send messages to that IP:port until the source times out the previous receiver (10 seconds by default; see source option <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/API/config.tag:../Config/" href="../Config/grptransportlbtruoperation.html#transportlbtruclientactivitytimeoutsource">transport_lbtru_client_activity_timeout (source)</a>). </p>
 
 </div>
 </div>
@@ -247,7 +247,7 @@ Data Fields</h2></td></tr>
 </div><div class="memdoc">
 
 <p>The maximum time in microseconds used to call user receive callbacks of type <a class="el" href="lbm_8h.html#ac8dd91be561ad6262ccf3f7f94771cfd">lbm_rcv_cb_proc</a> for wildcard, hot-failover, and regular receivers. (Cumulative) </p>
-<p>Does not include SMX receivers. Does not include minimum times for any other context thread callbacks, such as timer callback or immediate message callbacks. The initial value before any data has been reported is zero. UM computes the maximum value as the larger of the current measured value and the current statistic value. A value of zero equates to no measurement. For the Java and .NET APIs, includes the overhead time spent crossing the managed/jni boundaries. You must set the configuration option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/API/config.tag:../Config/" href="../Config/grpmajoroptions.html#receivercallbackservicetimeenabledcontext">receiver_callback_service_time_enabled (context)</a> to populate this statistic. </p>
+<p>Does not include SMX receivers. Does not include minimum times for any other context thread callbacks, such as timer callback or immediate message callbacks. The initial value before any data has been reported is zero. UM computes the maximum value as the larger of the current measured value and the current statistic value. A value of zero equates to no measurement. For the Java and .NET APIs, includes the overhead time spent crossing the managed/jni boundaries. You must set the configuration option <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/API/config.tag:../Config/" href="../Config/grpmajoroptions.html#receivercallbackservicetimeenabledcontext">receiver_callback_service_time_enabled (context)</a> to populate this statistic. </p>
 
 </div>
 </div>
@@ -262,7 +262,7 @@ Data Fields</h2></td></tr>
 </div><div class="memdoc">
 
 <p>The mean time in microseconds used to call user receive callbacks of type <a class="el" href="lbm_8h.html#ac8dd91be561ad6262ccf3f7f94771cfd">lbm_rcv_cb_proc</a> for wildcard, hot-failover, and regular receivers. (Cumulative) </p>
-<p>Does not include SMX receivers. Does not include minimum times for any other context thread callbacks, such as timer callback or immediate message callbacks. For the Java and .NET APIs, includes the overhead time spent crossing the managed/jni boundaries. You must set the configuration option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/API/config.tag:../Config/" href="../Config/grpmajoroptions.html#receivercallbackservicetimeenabledcontext">receiver_callback_service_time_enabled (context)</a> to populate this statistic. </p>
+<p>Does not include SMX receivers. Does not include minimum times for any other context thread callbacks, such as timer callback or immediate message callbacks. For the Java and .NET APIs, includes the overhead time spent crossing the managed/jni boundaries. You must set the configuration option <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/API/config.tag:../Config/" href="../Config/grpmajoroptions.html#receivercallbackservicetimeenabledcontext">receiver_callback_service_time_enabled (context)</a> to populate this statistic. </p>
 
 </div>
 </div>
@@ -277,7 +277,7 @@ Data Fields</h2></td></tr>
 </div><div class="memdoc">
 
 <p>The minimum time in microseconds used to call user receive callbacks of type <a class="el" href="lbm_8h.html#ac8dd91be561ad6262ccf3f7f94771cfd">lbm_rcv_cb_proc</a> for wildcard, hot-failover, and regular receivers. (Cumulative) </p>
-<p>Does not include SMX receivers. Does not include minimum times for any other context thread callbacks, such as timer callback or immediate message callbacks. The initial value before UM Monitoring reports any data is the largest possible unsigned integer, which is 4294967295 for 32-bit system and 18446744073709551615 for 64-bit system. Ultra Messaging computes the minimum value as the smaller of the current measured value and the current statistic value. The largest possible value equates to no measurement. For the Java and .NET APIs, includes the overhead time spent crossing the managed/jni boundaries. You must set the configuration option <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/API/config.tag:../Config/" href="../Config/grpmajoroptions.html#receivercallbackservicetimeenabledcontext">receiver_callback_service_time_enabled (context)</a> to populate this statistic.</p>
+<p>Does not include SMX receivers. Does not include minimum times for any other context thread callbacks, such as timer callback or immediate message callbacks. The initial value before UM Monitoring reports any data is the largest possible unsigned integer, which is 4294967295 for 32-bit system and 18446744073709551615 for 64-bit system. Ultra Messaging computes the minimum value as the smaller of the current measured value and the current statistic value. The largest possible value equates to no measurement. For the Java and .NET APIs, includes the overhead time spent crossing the managed/jni boundaries. You must set the configuration option <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/API/config.tag:../Config/" href="../Config/grpmajoroptions.html#receivercallbackservicetimeenabledcontext">receiver_callback_service_time_enabled (context)</a> to populate this statistic.</p>
 <p>This field is initialized to all 1s (-1 if printed signed). </p>
 
 </div>
@@ -293,8 +293,8 @@ Data Fields</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Total number of topics in the receiver topic resolver cache (also referred to as the topic map). (Snapshot) </p>
-<p>Entries are inserted in this map as sources are discovered. Note that in typical configurations, an application's own sources will be included. Also note that creating a receiver object will insert an entry in the resolver cache to assist internally in joining subscribed topics. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/API/design.tag:../Design/" href="../Design/topicresolutiondescription.html#resolvercaches">Resolver Caches</a> for more details.</p>
-<p>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/API/design.tag:../Design/" href="../Design/topicresolutiondescription.html">Topic Resolution Description</a> for more information on TR. </p>
+<p>Entries are inserted in this map as sources are discovered. Note that in typical configurations, an application's own sources will be included. Also note that creating a receiver object will insert an entry in the resolver cache to assist internally in joining subscribed topics. See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/API/design.tag:../Design/" href="../Design/topicresolutiondescription.html#resolvercaches">Resolver Caches</a> for more details.</p>
+<p>See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/API/design.tag:../Design/" href="../Design/topicresolutiondescription.html">Topic Resolution Description</a> for more information on TR. </p>
 
 </div>
 </div>
@@ -324,8 +324,8 @@ Data Fields</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Number of topics in the source topic resolver cache (also referred to as the topic map). (Snapshot) </p>
-<p>Entries are inserted in the source topic resolver cache as sources are created in the context by the application. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/API/design.tag:../Design/" href="../Design/topicresolutiondescription.html#resolvercaches">Resolver Caches</a> for more details.</p>
-<p>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/API/design.tag:../Design/" href="../Design/topicresolutiondescription.html">Topic Resolution Description</a> for more information on TR. </p>
+<p>Entries are inserted in the source topic resolver cache as sources are created in the context by the application. See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/API/design.tag:../Design/" href="../Design/topicresolutiondescription.html#resolvercaches">Resolver Caches</a> for more details.</p>
+<p>See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/API/design.tag:../Design/" href="../Design/topicresolutiondescription.html">Topic Resolution Description</a> for more information on TR. </p>
 
 </div>
 </div>

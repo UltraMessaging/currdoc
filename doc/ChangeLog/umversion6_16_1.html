@@ -67,7 +67,7 @@ Streaming Enhancements for 6.16.1&nbsp;&nbsp;<small><a href="#streamingenhanceme
 <p>The following new features and enhancements apply to UMS, UMP, and UMQ products.</p>
 <ul>
 <li>
-<b>NAK Cutoff</b>. Feature by which subscribing applications can dynamically instruct their context(s) to stop sending NAKs for LBT-RM transports, even if packet loss is detected. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.areas/builds/UMQ_6.16.1/doc/ChangeLog/design.tag:../Design/" href="../Design/umfeatures.html#nakcutoff">NAK Cutoff</a>. </li>
+<b>NAK Cutoff</b>. The "NAK cutoff" feature allows an application to force its context(s) to stop sending NAKs (LBT-RM only), even if packet loss is detected. See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/ChangeLog/design.tag:../Design/" href="../Design/umfeatures.html#nakcutoff">NAK Cutoff</a>. </li>
 </ul>
 <p><br />
  </p>
@@ -102,7 +102,11 @@ Streaming Fixed Problems and Limitations for 6.16.1&nbsp;&nbsp;<small><a href="#
 <p class="endtd"></p>
 </th></tr>
 <tr>
-<td>TBD</td><td><p class="starttd"><b>FIXED:</b> <em>TBD. </em></p>
+<td>11468, 11457, 11396</td><td><p class="starttd"><b>FIXED:</b> <em>When UM is configured for TCP-based topic resolution with the SRS, the monitoring data does not include SRS connection event statistics. </em></p>
+<p class="endtd"></p>
+</td></tr>
+<tr>
+<td>11467, 11433</td><td><p class="starttd"><b>FIXED:</b> <em>A publisher can get the warning assert "[new_duration!=0]" when resolver_query_minimum_sustain_duration is 0. </em></p>
 <p class="endtd"></p>
 </td></tr>
 </table>
@@ -113,7 +117,15 @@ Persistence Fixed Problems and Limitations for 6.16.1&nbsp;&nbsp;<small><a href=
 <p>The following bug fixes apply to UMP and UMQ products.</p>
 <table class="doxtable">
 <tr>
-<td>TBD</td><td><p class="starttd"><b>FIXED:</b> <em>TBD. </em></p>
+<td>11483, 11439, 11338</td><td><p class="starttd"><b>FIXED:</b> <em>A persistent receiver that experiences unrecoverable loss before the first successfully-received message will not deliver an unrecoverable loss event. </em></p>
+<p class="endtd"></p>
+</td></tr>
+<tr>
+<td>11466, 11444</td><td><p class="starttd"><b>FIXED:</b> <em>When a persistent and a non-persistent source are created for the same topic, the Store will send SRI requests to the non-persistent source, resulting in perpetual log messages for the non-persistent source. </em></p>
+<p class="endtd"></p>
+</td></tr>
+<tr>
+<td>11465, 11437</td><td><p class="starttd"><b>FIXED:</b> <em>A persistent publisher can get the fatal assert "[rctxinfo-&gt;rctx==NULL]" during the deletion of a context if final advertisements are configured. </em></p>
 <p class="endtd"></p>
 </td></tr>
 </table>
