@@ -2,11 +2,11 @@ import com.latencybusters.lbm.*;
 import java.text.NumberFormat;
 import java.util.*;
 
-// See https://communities.informatica.com/infakb/faq/5/Pages/80008.aspx
-import org.openmdx.uses.gnu.getopt.*;
+import gnu.getopt.Getopt;
+import gnu.getopt.LongOpt;
 
 /*
- (C) Copyright 2005,2023 Informatica Inc.  Permission is granted to licensees to use
+ (C) Copyright 2005,2025 Informatica Inc.  Permission is granted to licensees to use
  or alter this software for any purpose, including commercial applications,
  according to the terms laid out in the Software License Agreement.
 
@@ -41,7 +41,6 @@ class umercv {
 	private static String usage =
 "Usage: umercv [options] topic\n"+ 
 "Available options:\n"+ 
-//+ "  -A display messages as ASCII text\n" // TODO:  implement ASCII option+ 
 "  -c filename = Use LBM configuration file filename.\n"+
 "                Multiple config files are allowed.\n"+
 "                Example:  '-c file1.cfg -c file2.cfg'\n"+
@@ -60,7 +59,6 @@ class umercv {
 "  -q = use an LBM event queue\n"+ 
 "  -r msgs = delete receiver after msgs messages\n"+ 
 "  -v = be verbose about each message\n"+ 
-//+ "  -V = verify message contents\n" // TODO:  implement verified messages+ 
 "\nMonitoring options:\n"+ 
 "  --monitor-ctx NUM = monitor context every NUM seconds\n"+ 
 "  --monitor-rcv NUM = monitor receiver every NUM seconds\n"+ 
@@ -102,11 +100,15 @@ class umercv {
 			System.err.println("Error initializing LBM: " + ex.toString());
 			System.exit(1);
 		}
-		org.apache.log4j.Logger logger;
-		logger = org.apache.log4j.Logger.getLogger("umercv");
-		org.apache.log4j.BasicConfigurator.configure();
-		log4jLogger lbmlogger = new log4jLogger(logger);
-		lbm.setLogger(lbmlogger);
+
+		// Set up a logger here. Without setting a logger, UM defaults to printing logs to standard out.
+		// Most users have their own logging infrastructure they integrate with.
+		// Some users include log4j. Here's an example of setting it up:
+		// org.apache.log4j.Logger logger;
+		// logger = org.apache.log4j.Logger.getLogger("lbmhfxrcv");
+		// org.apache.log4j.BasicConfigurator.configure();
+		// log4jLogger lbmlogger = new log4jLogger(logger);
+		// lbm.setLogger(lbmlogger);
 
 		LongOpt[] longopts = new LongOpt[7];
 		final int OPTION_MONITOR_CTX = 2;

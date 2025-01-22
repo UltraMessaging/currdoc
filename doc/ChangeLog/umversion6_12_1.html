@@ -71,11 +71,11 @@ Streaming Enhancements for 6.12.1&nbsp;&nbsp;<small><a href="#streamingenhanceme
 <p class="endli"></p>
 </li>
 <li>
-<p class="startli"><b>Busy Looping</b>. The <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/ChangeLog/design.tag:../Design/" href="../Design/advancedoptimizations.html#networksocketbusywaiting">Network Socket Busy Waiting</a> feature can be used to prevent a context or XSP thread from sleeping while waiting for network events, such as received packets. This can reduce latency and especially latency outliers (jitter).</p>
+<p class="startli"><b>Busy Looping</b>. The <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/ChangeLog/design.tag:../Design/" href="../Design/advancedoptimizations.html#networksocketbusywaiting">Network Socket Busy Waiting</a> feature can be used to prevent a context or XSP thread from sleeping while waiting for network events, such as received packets. This can reduce latency and especially latency outliers (jitter).</p>
 <p class="endli"></p>
 </li>
 <li>
-<b>OpenSSL optional</b>. The dependency between UM and the OpenSSL libraries is now optional. If the libraries are not used, then they do not need to be present on the system. See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/ChangeLog/design.tag:../Design/" href="../Design/umfeatures.html#openssldependency">OpenSSL Dependency</a> for more information. </li>
+<b>OpenSSL optional</b>. The dependency between UM and the OpenSSL libraries is now optional. If the libraries are not used, then they do not need to be present on the system. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/ChangeLog/design.tag:../Design/" href="../Design/umfeatures.html#openssldependency">OpenSSL Dependency</a> for more information. </li>
 </ul>
 <p><br />
  </p>
@@ -120,16 +120,19 @@ Streaming Fixed Problems and Limitations for 6.12.1&nbsp;&nbsp;<small><a href="#
 </th></tr>
 <tr>
 <td>10702, 10713, 10741</td><td><p class="starttd"><b>FIXED:</b> <em>UM has a load-time dependency on a specific version of OpenSSL. If the expected version is not present, the application can be unable to load and run, or it can write warning messages to the log file (Core-9565-109 and Core-9728-14), even if encryption services are not configured for use.</em></p>
-<p>For more information, see <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/ChangeLog/design.tag:../Design/" href="../Design/umfeatures.html#openssldependency">OpenSSL Dependency</a>.</p>
+<p></p>
+<p>For more information, see <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/ChangeLog/design.tag:../Design/" href="../Design/umfeatures.html#openssldependency">OpenSSL Dependency</a>.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
 <td>10792, 10793 </td><td><p class="starttd"><b>FIXED:</b> <em>When an application is built with the UM 6.12 static library, diagnostic error information might not be properly communicated from a failed API call. A bad status will be returned, but the error code and message will be empty. To our knowledge, there will be no adverse behavior, but the loss of error information makes problem diagnosis very difficult.</em></p>
+<p></p>
 <p>This problem is fixed in UM version 6.12.1 and beyond.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
 <td>none </td><td><p class="starttd"><b>FIXED:</b> <em>The UM documentation main page does not render correctly in some environments, possibly due to the use of deprecated HTML frames.</em></p>
+<p></p>
 <p>The UM documentation main page is now simplified.</p>
 <p class="endtd"></p>
 </td></tr>
@@ -173,6 +176,12 @@ Dynamic Router Fixed Problems and Limitations for 6.12.1&nbsp;&nbsp;<small><a hr
 <li>
 None. </li>
 </ul>
+<p><br />
+ </p>
+<h1><a class="anchor" id="specialupgradeinstructionsfor6_12_1"></a>
+Special Upgrade Instructions for 6.12.1&nbsp;&nbsp;<small><a href="#specialupgradeinstructionsfor6_12_1">&lt;-</a></small></h1>
+<p>There are no upgrade instructions specific to 6.12.1. However, if you are upgrading from a version prior to 6.12, then you must examine the <a class="el" href="umversion6_12.html#specialupgradeinstructionsfor6_12">Special Upgrade Instructions for 6.12</a>.</p>
+<p>Also see <a class="el" href="deprecations.html">Deprecations</a>.</p>
 <p><br />
 <br />
  <br />

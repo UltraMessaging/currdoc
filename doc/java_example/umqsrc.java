@@ -4,12 +4,11 @@ import java.util.*;
 import java.text.NumberFormat;
 import java.util.concurrent.Semaphore;
 
-
-// See https://communities.informatica.com/infakb/faq/5/Pages/80008.aspx
-import org.openmdx.uses.gnu.getopt.*;
+import gnu.getopt.Getopt;
+import gnu.getopt.LongOpt;
 
 /*
-  (C) Copyright 2005,2023 Informatica Inc.  Permission is granted to licensees to use
+  (C) Copyright 2005,2025 Informatica Inc.  Permission is granted to licensees to use
   or alter this software for any purpose, including commercial applications,
   according to the terms laid out in the Software License Agreement.
 
@@ -31,7 +30,6 @@ import java.io.*;
 
 class umqsrc
 {
-//	private static String pcid = "";
 	private static int msgs = 10000000;
 	private static int stats_sec = 0;
 	private static int verbose = 0;
@@ -121,11 +119,16 @@ class umqsrc
 			System.err.println("Error initializing LBM: " + ex.toString());
 			System.exit(1);
 		}
-		org.apache.log4j.Logger logger;
-		logger = org.apache.log4j.Logger.getLogger("umqsrc");
-		org.apache.log4j.BasicConfigurator.configure();
-		log4jLogger lbmlogger = new log4jLogger(logger);
-		lbm.setLogger(lbmlogger);
+
+		// Set up a logger here. Without setting a logger, UM defaults to printing logs to standard out.
+		// Most users have their own logging infrastructure they integrate with.
+		// Some users include log4j. Here's an example of setting it up:
+		// org.apache.log4j.Logger logger;
+		// logger = org.apache.log4j.Logger.getLogger("lbmhfxrcv");
+		// org.apache.log4j.BasicConfigurator.configure();
+		// log4jLogger lbmlogger = new log4jLogger(logger);
+		// lbm.setLogger(lbmlogger);
+
 		String cconffname = null;
 
 		LongOpt[] longopts = new LongOpt[10];

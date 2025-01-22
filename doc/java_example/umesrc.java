@@ -1,4 +1,5 @@
 import com.latencybusters.lbm.*;
+import static com.latencybusters.lbm.LBM.FLIGHT_SIZE_TYPE_UME;
 
 import java.util.*;
 import java.text.NumberFormat;
@@ -7,11 +8,11 @@ import java.net.InetSocketAddress;
 import java.net.UnknownHostException;
 import java.util.concurrent.Semaphore;
 
-// See https://communities.informatica.com/infakb/faq/5/Pages/80008.aspx
-import org.openmdx.uses.gnu.getopt.*;
+import gnu.getopt.Getopt;
+import gnu.getopt.LongOpt;
 
 /*
-  (C) Copyright 2005,2023 Informatica Inc.  Permission is granted to licensees to use
+  (C) Copyright 2005,2025 Informatica Inc.  Permission is granted to licensees to use
   or alter this software for any purpose, including commercial applications,
   according to the terms laid out in the Software License Agreement.
 
@@ -33,7 +34,6 @@ import java.io.*;
 
 class umesrc
 {
-//	private static String pcid = "";
 	private static int msgs = 10000000;
 	private static int stats_sec = 0;
 	private static int verbose = 0;
@@ -126,11 +126,16 @@ class umesrc
 			System.err.println("Error initializing LBM: " + ex.toString());
 			System.exit(1);
 		}
-		org.apache.log4j.Logger logger;
-		logger = org.apache.log4j.Logger.getLogger("umesrc");
-		org.apache.log4j.BasicConfigurator.configure();
-		log4jLogger lbmlogger = new log4jLogger(logger);
-		lbm.setLogger(lbmlogger);
+
+		// Set up a logger here. Without setting a logger, UM defaults to printing logs to standard out.
+		// Most users have their own logging infrastructure they integrate with.
+		// Some users include log4j. Here's an example of setting it up:
+		// org.apache.log4j.Logger logger;
+		// logger = org.apache.log4j.Logger.getLogger("lbmhfxrcv");
+		// org.apache.log4j.BasicConfigurator.configure();
+		// log4jLogger lbmlogger = new log4jLogger(logger);
+		// lbm.setLogger(lbmlogger);
+
 		String conffname = null;
 		String cconffname = null;
 
@@ -609,6 +614,20 @@ class umesrc
 			System.exit(1);
 		}
 
+		@SuppressWarnings("unused")                                                           
+	    UMESrcStatsTimer stats = null;
+    	if (stats_sec > 0)
+	    {
+		    try                                                                               
+		    {                                                                                 
+			    stats = new UMESrcStatsTimer(ctx, src, stats_sec * 1000, objRec);
+		    }                                                                                 
+		    catch (LBMException ex)                                                           
+		    {                                                                                 
+			    System.err.println("Error creating timer: " + ex.toString());                 
+			    System.exit(1);                                                               
+		    }                                                                                 
+	    }
 		try
 		{
 			Thread.sleep(1000);
@@ -1264,6 +1283,123 @@ class UMESrcCB implements LBMSourceEventCallback, LBMMessageReclamationCallback
 				System.err.println("WARNING: source for topic \"" + topic + "\" forced reclaim. Total " + force_reclaim_total);
 				t.value = System.currentTimeMillis();
 			}
+		}
+	}
+}
+
+class UMESrcStatsTimer extends LBMTimer
+{
+	LBMSource _src;
+	boolean _done = false;
+	long _tmo;
+	LBMObjectRecyclerBase _recycler = null;
+	int inflight = 0;
+
+	public UMESrcStatsTimer(LBMContext ctx, LBMSource src, long tmo, LBMObjectRecyclerBase objRec) throws LBMException
+	{
+		super(ctx, tmo, null);
+		_src = src;
+		_tmo = tmo;
+		_recycler = objRec;
+	}
+
+	public void done()
+	{
+		_done = true;
+	}
+
+	private void onExpiration()
+	{
+		print_stats();
+		if (!_done)
+		{
+			try
+			{
+				this.reschedule(_tmo);
+			}
+			catch (LBMException ex)
+			{
+				System.err.println("Error rescheduling timer: " + ex.toString());
+			}
+		}
+	}
+
+	private void print_stats()
+	{
+		int inflight = 0;
+		try
+		{
+			inflight = _src.getInflight(FLIGHT_SIZE_TYPE_UME);
+		}
+		catch (LBMException ex)
+		{
+			System.err.println("Error getting inflight: " + ex.toString());
+		}
+		try
+		{
+			LBMSourceStatistics stats = _src.getStatistics();
+			switch (stats.type())
+			{
+				case LBM.TRANSPORT_STAT_TCP:
+					System.out.println("TCP, buffered " + stats.bytesBuffered()
+							   			+ ", clients " + stats.numberOfClients()
+										+ ", app sent " + umesrc.appsent
+									    + ", stable " + umesrc.stablerecv
+									    + ", inflight " + inflight);
+					break;
+				case LBM.TRANSPORT_STAT_LBTRU:
+					System.out.println("LBT-RU, sent " + stats.messagesSent()  + "/" + stats.bytesSent()
+									+ ", naks " + stats.naksReceived() + "/" + stats.nakPacketsReceived()
+									+ ", ignored " + stats.naksIgnored() + "/" + stats.naksIgnoredRetransmitDelay()
+									+ ", shed " + stats.naksShed()
+									+ ", rxs " + stats.retransmissionsSent()
+									+ ", clients " + stats.numberOfClients()
+									+ ", app sent " + umesrc.appsent
+									+ ", stable " + umesrc.stablerecv
+									+ ", inflight " + inflight);
+					break;
+				case LBM.TRANSPORT_STAT_LBTRM:
+					System.out.println("LBT-RM, sent " + stats.messagesSent() + "/" + stats.bytesSent()
+									+ ", txw " + stats.transmissionWindowMessages() + "/" + stats.transmissionWindowBytes()
+									+ ", naks " + stats.naksReceived() + "/" + stats.nakPacketsReceived()
+									+ ", ignored " + stats.naksIgnored() + "/" + stats.naksIgnoredRetransmitDelay()
+									+ ", shed " + stats.naksShed()
+									+ ", rxs " + stats.retransmissionsSent()
+									+ ", rctl " + stats.messagesQueued() + "/" + stats.retransmissionsQueued()
+									+ ", app sent " + umesrc.appsent
+									+ ", stable " + umesrc.stablerecv
+									+ ", inflight " + inflight);
+					break;
+				case LBM.TRANSPORT_STAT_LBTIPC:
+					System.out.println("LBT-IPC, clients " + stats.numberOfClients()
+									+ ", sent " + stats.messagesSent() + "/" + stats.bytesSent()
+									+ ", app sent " + umesrc.appsent
+									+ ", stable " + umesrc.stablerecv
+									+ ", inflight " + inflight);
+					break;
+				case LBM.TRANSPORT_STAT_LBTSMX:
+					System.out.println("LBT-SMX, clients " + stats.numberOfClients()
+									+ ", sent " + stats.messagesSent() + "/" + stats.bytesSent()
+									+ ", app sent " + umesrc.appsent
+									+ ", stable " + umesrc.stablerecv
+									+ ", inflight " + inflight);
+					break;
+				case LBM.TRANSPORT_STAT_LBTRDMA:
+					System.out.println("LBT-RDMA, clients " + stats.numberOfClients()
+									+ ", sent "  + stats.messagesSent() + "/" + stats.bytesSent()
+									+ ", app sent " + umesrc.appsent
+									+ ", stable " + umesrc.stablerecv
+									+ ", inflight " + inflight);
+					break;
+			}
+			if(_recycler != null) {
+				_recycler.doneWithSourceStatistics(stats);
+			}
+			System.out.flush();
+		}
+		catch (LBMException ex)
+		{
+			System.err.println("Error getting source statistics: " + ex.toString());
 		}
 	}
 }

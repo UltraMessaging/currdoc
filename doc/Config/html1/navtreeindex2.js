@@ -1,5 +1,12 @@
 var NAVTREEINDEX2 =
 {
+"index.html#transporttcpactivitymethodreceiver":[15,0,1],
+"index.html#transporttcpactivitytimeoutreceiver":[15,0,2],
+"index.html#transporttcpactivitytimeoutsource":[15,0,3],
+"index.html#transporttcpcoalescethresholdsource":[15,0,4],
+"index.html#transporttcpdatagrammaxsizecontext":[15,0,5],
+"index.html#transporttcpdrolossrecoverytimeoutreceiver":[15,0,6],
+"index.html#transporttcpexclusiveaddrsource":[15,0,7],
 "index.html#transporttcpinterfacereceiver":[14,1,0],
 "index.html#transporttcpinterfacesource":[14,1,1],
 "index.html#transporttcplistenbacklogsource":[15,0,8],
@@ -171,6 +178,8 @@ var NAVTREEINDEX2 =
 "index.html#unicastresolvernetworkref":[12,0],
 "index.html#unrecognizedchannelbehaviorreceiver":[36,1,8],
 "index.html#useextendedreclaimnotificationssource":[9,0,27],
+"index.html#usehotlinkreceiver":[9,0,28],
+"index.html#usehotlinksource":[9,0,29],
 "index.html#uselatejoinreceiver":[31,1,12],
 "index.html#useotrreceiver":[32,0,7],
 "index.html#usetlscontext":[26,0,6],
@@ -188,6 +197,6 @@ var NAVTREEINDEX2 =
 "index.html#xmlobjectnames":[1,1,0],
 "index.html#xmlreferencenames":[1,1],
 "index.html#xmlspaceattribute":[1,2],
-"index.html#zerotransportsfunctionxsp":[9,0,28],
+"index.html#zerotransportsfunctionxsp":[9,0,30],
 "pages.html":[]
 };

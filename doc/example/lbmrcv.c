@@ -1,5 +1,5 @@
 /*
-  (C) Copyright 2005,2023 Informatica Inc.  Permission is granted to licensees to use
+  (C) Copyright 2005,2025 Informatica Inc.  Permission is granted to licensees to use
   or alter this software for any purpose, including commercial applications,
   according to the terms laid out in the Software License Agreement.
 
@@ -22,8 +22,8 @@
 #include <sys/time.h>
 #endif
 #if defined(__TANDEM) && defined(HAVE_TANDEM_SPT)
-	#include <ktdmtyp.h>
-	#include <spthread.h>
+#include <ktdmtyp.h>
+#include <spthread.h>
 #endif
 
 #include <stdio.h>
@@ -31,18 +31,18 @@
 #include <stdlib.h>
 #include <time.h>
 #ifdef _WIN32
-	#include <winsock2.h>
-	#include <sys/timeb.h>
-	#define strcasecmp stricmp
+#include <winsock2.h>
+#include <sys/timeb.h>
+#define strcasecmp stricmp
 #else
-	#include <unistd.h>
-	#include <netinet/in.h>
-	#include <arpa/inet.h>
-	#include <signal.h>
-	#include <sys/time.h>
-	#if defined(__TANDEM)
-		#include <strings.h>
-	#endif
+#include <unistd.h>
+#include <netinet/in.h>
+#include <arpa/inet.h>
+#include <signal.h>
+#include <sys/time.h>
+#if defined(__TANDEM)
+#include <strings.h>
+#endif
 #endif
 #include <lbm/lbm.h>
 #include <lbm/lbmmon.h>
@@ -95,10 +95,11 @@ const char usage[] =
 "  -U, --losslev=NUM    exit after NUM% unrecoverable loss\n"
 "  -v, --verbose        be verbose about incoming messages (-v -v = be even more verbose)\n"
 "  -V, --verify         verify message contents\n"
+"  -G, --datagram=[UM]NUM   Set transport type to LBT-R[UM], set receiver datagram max size to NUM bytes\n"
 MONOPTS_RECEIVER
 MONMODULEOPTS_SENDER;
 
-const char * OptionString = "Ac:CEfhOqr:N:s:SU:vV";
+const char* OptionString = "Ac:CEfhOqr:N:s:SU:vVG:";
 #define OPTION_MONITOR_RCV 0
 #define OPTION_MONITOR_CTX 1
 #define OPTION_MONITOR_TRANSPORT 2
@@ -123,6 +124,7 @@ const struct option OptionTable[] = {
 	{ "orderchecks", required_argument, NULL, 'O' },
 	{ "verbose", no_argument, NULL, 'v' },
 	{ "verify", no_argument, NULL, 'V' },
+	{ "datagram", required_argument, NULL, 'G' },
 	{ "max-sources", required_argument, NULL, OPTION_MAX_SOURCES },
 	{ "monitor-rcv", required_argument, NULL, OPTION_MONITOR_RCV },
 	{ "monitor-ctx", required_argument, NULL, OPTION_MONITOR_CTX },
@@ -146,7 +148,9 @@ struct Options {
 	int losslev;                  /* If nonzero, end if % lost to rcv'd msgs > losslev */
 	int verbose;                  /* Flag to control program verbosity */
 	int verify_msgs;              /* Flag to use message verification (verifymsg.h) */
-	char *topic;                  /* The topic on which to receive messages */
+	unsigned int datagram_max_size;/* Receiver datagram max size */
+	char rm_protocol;			  /* Rate control protocol */
+	char* topic;                  /* The topic on which to receive messages */
 	long channel_number;	      /* The channel number to subscribe to */
 	int orderchecks;              /* Flag to turn on order checks */
 
@@ -159,8 +163,8 @@ struct Options {
 	int monitor_context_ivl;             /* Interval for context level monitoring */
 	int monitor_receiver;                /* Flag to control receiver level monitoring */
 	int monitor_receiver_ivl;            /* Interval for receiver level monitoring */
-	lbmmon_transport_func_t * transport; /* Function pointer to chosen transport module */
-	lbmmon_format_func_t * format;       /* Function pointer to chosen format module  */
+	lbmmon_transport_func_t* transport; /* Function pointer to chosen transport module */
+	lbmmon_format_func_t* format;       /* Function pointer to chosen format module  */
 } options;
 
 
@@ -185,7 +189,7 @@ int total_unrec_count = 0;
 int burst_loss = 0;
 int close_recv = 0;
 int opmode;								/* operational mode of LBM: sequential or embedded */
-lbm_context_t *ctx;					/* ptr to context object */
+lbm_context_t* ctx;					/* ptr to context object */
 
 struct timeval data_start_tv, data_end_tv; /* to track time since first message rcv'd */
 struct timeval starttv, endtv; 	/* to track time between printing bandwidth stats */
@@ -194,34 +198,34 @@ int timer_id = -1;
 int verbose = 0;
 lbm_uint_t expected_sqn = 0;
 lbm_ulong_t lost = 0, last_lost = 0;
-lbm_rcv_transport_stats_t *stats = NULL;
+lbm_rcv_transport_stats_t* stats = NULL;
 int nstats;
 
 char saved_source[LBM_MSG_MAX_SOURCE_LEN] = "";
-lbm_event_queue_t *evq = NULL;
+lbm_event_queue_t* evq = NULL;
 
 
 /*
  * For the elapsed time, calculate and print the msgs/sec, bits/sec, and
  * loss stats
  */
-void print_bw(FILE *fp, struct timeval *tv, unsigned int msgs, unsigned int bytes, int unrec, lbm_ulong_t lost, int rx_msgs, int otr_msgs)
+void print_bw(FILE* fp, struct timeval* tv, unsigned int msgs, unsigned int bytes, int unrec, lbm_ulong_t lost, int rx_msgs, int otr_msgs)
 {
-	char scale[] = {' ', 'K', 'M', 'G'};
+	char scale[] = { ' ', 'K', 'M', 'G' };
 	int msg_scale_index = 0, bit_scale_index = 0;
 	double sec = 0.0, mps = 0.0, bps = 0.0;
 	double kscale = 1000.0;
-	
+
 	if (tv->tv_sec == 0 && tv->tv_usec == 0) return;/* avoid div by 0 */
 	sec = (double)tv->tv_sec + (double)tv->tv_usec / 1000000.0;
-	mps = (double)msgs/sec;
-	bps = (double)bytes*8/sec;
-		
+	mps = (double)msgs / sec;
+	bps = (double)bytes * 8 / sec;
+
 	while (mps >= kscale) {
 		mps /= kscale;
 		msg_scale_index++;
 	}
-	
+
 	while (bps >= kscale) {
 		bps /= kscale;
 		bit_scale_index++;
@@ -243,136 +247,136 @@ void print_bw(FILE *fp, struct timeval *tv, unsigned int msgs, unsigned int byte
 }
 
 /* Print transport statistics */
-void print_stats(FILE *fp, lbm_rcv_transport_stats_t stats)
+void print_stats(FILE* fp, lbm_rcv_transport_stats_t stats)
 {
 	switch (stats.type) {
 	case LBM_TRANSPORT_STAT_TCP:
 		fprintf(fp, " [%s] received %lu msgs/%lu bytes, %lu no topics, %lu requests\n",
-				stats.source,
-				stats.transport.tcp.lbm_msgs_rcved,
-				stats.transport.tcp.bytes_rcved,
-				stats.transport.tcp.lbm_msgs_no_topic_rcved,
-				stats.transport.tcp.lbm_reqs_rcved);
+			stats.source,
+			stats.transport.tcp.lbm_msgs_rcved,
+			stats.transport.tcp.bytes_rcved,
+			stats.transport.tcp.lbm_msgs_no_topic_rcved,
+			stats.transport.tcp.lbm_reqs_rcved);
 		break;
 	case LBM_TRANSPORT_STAT_LBTRM:
-		{
-			char stmstr[256] = "", txstr[256] = "";
+	{
+		char stmstr[256] = "", txstr[256] = "";
 
-			if (stats.transport.lbtrm.nak_tx_max > 0) {
-				/* we usually don't use sprintf, but should be OK here for the moment. */
-				sprintf(stmstr, "Recovery time: %lu min/%lu mean/%lu max. ",
-						stats.transport.lbtrm.nak_stm_min,
-						stats.transport.lbtrm.nak_stm_mean,
-						stats.transport.lbtrm.nak_stm_max);
-				sprintf(txstr, "Tx per NAK: %lu min/%lu mean/%lu max. ",
-						stats.transport.lbtrm.nak_tx_min,
-						stats.transport.lbtrm.nak_tx_mean,
-						stats.transport.lbtrm.nak_tx_max);
-			}
-			fprintf(fp, " [%s] Received %lu msgs/%lu bytes/%lu dups/%lu lost. "
-						"Unrecovered: %lu (window advance) + %lu (timeout). "
-						"%s"
-						"NAKs: %lu (%lu packets). "
-						"%s"
-						"NCFs: %lu ignored/%lu shed/%lu rx delay/%lu unknown. "
-						"%lu LBM msgs, %lu no topics, %lu requests.\n",
-						stats.source,
-						stats.transport.lbtrm.msgs_rcved,
-						stats.transport.lbtrm.bytes_rcved,
-						stats.transport.lbtrm.duplicate_data,
-						stats.transport.lbtrm.lost,
-						stats.transport.lbtrm.unrecovered_txw,
-						stats.transport.lbtrm.unrecovered_tmo,
-						stmstr,
-						stats.transport.lbtrm.naks_sent,
-						stats.transport.lbtrm.nak_pckts_sent,
-						txstr,
-						stats.transport.lbtrm.ncfs_ignored,
-						stats.transport.lbtrm.ncfs_shed,
-						stats.transport.lbtrm.ncfs_rx_delay,
-						stats.transport.lbtrm.ncfs_unknown,
-						stats.transport.lbtrm.lbm_msgs_rcved,
-						stats.transport.lbtrm.lbm_msgs_no_topic_rcved,
-						stats.transport.lbtrm.lbm_reqs_rcved);
+		if (stats.transport.lbtrm.nak_tx_max > 0) {
+			/* we usually don't use sprintf, but should be OK here for the moment. */
+			sprintf(stmstr, "Recovery time: %lu min/%lu mean/%lu max. ",
+				stats.transport.lbtrm.nak_stm_min,
+				stats.transport.lbtrm.nak_stm_mean,
+				stats.transport.lbtrm.nak_stm_max);
+			sprintf(txstr, "Tx per NAK: %lu min/%lu mean/%lu max. ",
+				stats.transport.lbtrm.nak_tx_min,
+				stats.transport.lbtrm.nak_tx_mean,
+				stats.transport.lbtrm.nak_tx_max);
 		}
-		break;
+		fprintf(fp, " [%s] Received %lu msgs/%lu bytes/%lu dups/%lu lost. "
+			"Unrecovered: %lu (window advance) + %lu (timeout). "
+			"%s"
+			"NAKs: %lu (%lu packets). "
+			"%s"
+			"NCFs: %lu ignored/%lu shed/%lu rx delay/%lu unknown. "
+			"%lu LBM msgs, %lu no topics, %lu requests.\n",
+			stats.source,
+			stats.transport.lbtrm.msgs_rcved,
+			stats.transport.lbtrm.bytes_rcved,
+			stats.transport.lbtrm.duplicate_data,
+			stats.transport.lbtrm.lost,
+			stats.transport.lbtrm.unrecovered_txw,
+			stats.transport.lbtrm.unrecovered_tmo,
+			stmstr,
+			stats.transport.lbtrm.naks_sent,
+			stats.transport.lbtrm.nak_pckts_sent,
+			txstr,
+			stats.transport.lbtrm.ncfs_ignored,
+			stats.transport.lbtrm.ncfs_shed,
+			stats.transport.lbtrm.ncfs_rx_delay,
+			stats.transport.lbtrm.ncfs_unknown,
+			stats.transport.lbtrm.lbm_msgs_rcved,
+			stats.transport.lbtrm.lbm_msgs_no_topic_rcved,
+			stats.transport.lbtrm.lbm_reqs_rcved);
+	}
+	break;
 	case LBM_TRANSPORT_STAT_LBTRU:
-		{
-			char stmstr[256] = "", txstr[256] = "";
+	{
+		char stmstr[256] = "", txstr[256] = "";
 
-			if (stats.transport.lbtru.nak_tx_max > 0) {
-				/* we usually don't use sprintf, but should be OK here for the moment. */
-				sprintf(stmstr, "Recovery time: %lu min/%lu mean/%lu max. ",
-						stats.transport.lbtru.nak_stm_min,
-						stats.transport.lbtru.nak_stm_mean,
-						stats.transport.lbtru.nak_stm_max);
-				sprintf(txstr, "Tx per NAK: %lu min/%lu mean/%lu max. ",
-						stats.transport.lbtru.nak_tx_min,
-						stats.transport.lbtru.nak_tx_mean,
-						stats.transport.lbtru.nak_tx_max);
-			}
-			fprintf(fp, " [%s] Received %lu msgs/%lu bytes/%lu dups/%lu lost. "
-						"Unrecovered: %lu (window advance) + %lu (timeout). "
-						"%s"
-						"NAKs: %lu (%lu packets). "
-						"%s"
-						"NCFs: %lu ignored/%lu shed/%lu rx delay/%lu unknown. "
-						"%lu LBM msgs, %lu no topics, %lu requests.\n",
-						stats.source,
-						stats.transport.lbtru.msgs_rcved,
-						stats.transport.lbtru.bytes_rcved,
-						stats.transport.lbtru.duplicate_data,
-						stats.transport.lbtru.lost,
-						stats.transport.lbtru.unrecovered_txw,
-						stats.transport.lbtru.unrecovered_tmo,
-						stmstr,
-						stats.transport.lbtru.naks_sent,
-						stats.transport.lbtru.nak_pckts_sent,
-						txstr,
-						stats.transport.lbtru.ncfs_ignored,
-						stats.transport.lbtru.ncfs_shed,
-						stats.transport.lbtru.ncfs_rx_delay,
-						stats.transport.lbtru.ncfs_unknown,
-						stats.transport.lbtru.lbm_msgs_rcved,
-						stats.transport.lbtru.lbm_msgs_no_topic_rcved,
-						stats.transport.lbtru.lbm_reqs_rcved);
+		if (stats.transport.lbtru.nak_tx_max > 0) {
+			/* we usually don't use sprintf, but should be OK here for the moment. */
+			sprintf(stmstr, "Recovery time: %lu min/%lu mean/%lu max. ",
+				stats.transport.lbtru.nak_stm_min,
+				stats.transport.lbtru.nak_stm_mean,
+				stats.transport.lbtru.nak_stm_max);
+			sprintf(txstr, "Tx per NAK: %lu min/%lu mean/%lu max. ",
+				stats.transport.lbtru.nak_tx_min,
+				stats.transport.lbtru.nak_tx_mean,
+				stats.transport.lbtru.nak_tx_max);
 		}
-		break;
+		fprintf(fp, " [%s] Received %lu msgs/%lu bytes/%lu dups/%lu lost. "
+			"Unrecovered: %lu (window advance) + %lu (timeout). "
+			"%s"
+			"NAKs: %lu (%lu packets). "
+			"%s"
+			"NCFs: %lu ignored/%lu shed/%lu rx delay/%lu unknown. "
+			"%lu LBM msgs, %lu no topics, %lu requests.\n",
+			stats.source,
+			stats.transport.lbtru.msgs_rcved,
+			stats.transport.lbtru.bytes_rcved,
+			stats.transport.lbtru.duplicate_data,
+			stats.transport.lbtru.lost,
+			stats.transport.lbtru.unrecovered_txw,
+			stats.transport.lbtru.unrecovered_tmo,
+			stmstr,
+			stats.transport.lbtru.naks_sent,
+			stats.transport.lbtru.nak_pckts_sent,
+			txstr,
+			stats.transport.lbtru.ncfs_ignored,
+			stats.transport.lbtru.ncfs_shed,
+			stats.transport.lbtru.ncfs_rx_delay,
+			stats.transport.lbtru.ncfs_unknown,
+			stats.transport.lbtru.lbm_msgs_rcved,
+			stats.transport.lbtru.lbm_msgs_no_topic_rcved,
+			stats.transport.lbtru.lbm_reqs_rcved);
+	}
+	break;
 	case LBM_TRANSPORT_STAT_LBTIPC:
-		{
-			fprintf(fp, " [%s] Received %lu msgs/%lu bytes. "
-						"%lu LBM msgs, %lu no topics, %lu requests.\n",
-						stats.source,
-						stats.transport.lbtipc.msgs_rcved,
-						stats.transport.lbtipc.bytes_rcved,
-						stats.transport.lbtipc.lbm_msgs_rcved,
-						stats.transport.lbtipc.lbm_msgs_no_topic_rcved,
-						stats.transport.lbtipc.lbm_reqs_rcved);
-		}
-		break;
+	{
+		fprintf(fp, " [%s] Received %lu msgs/%lu bytes. "
+			"%lu LBM msgs, %lu no topics, %lu requests.\n",
+			stats.source,
+			stats.transport.lbtipc.msgs_rcved,
+			stats.transport.lbtipc.bytes_rcved,
+			stats.transport.lbtipc.lbm_msgs_rcved,
+			stats.transport.lbtipc.lbm_msgs_no_topic_rcved,
+			stats.transport.lbtipc.lbm_reqs_rcved);
+	}
+	break;
 	case LBM_TRANSPORT_STAT_LBTSMX:
-		{
-			fprintf(fp, " [%s] Received %lu msgs/%lu bytes. "
-					"%lu LBM msgs, %lu no topics.\n",
-					stats.source,
-					stats.transport.lbtsmx.msgs_rcved,
-					stats.transport.lbtsmx.bytes_rcved,
-					stats.transport.lbtsmx.lbm_msgs_rcved,
-					stats.transport.lbtsmx.lbm_msgs_no_topic_rcved);
-		}
-		break;
+	{
+		fprintf(fp, " [%s] Received %lu msgs/%lu bytes. "
+			"%lu LBM msgs, %lu no topics.\n",
+			stats.source,
+			stats.transport.lbtsmx.msgs_rcved,
+			stats.transport.lbtsmx.bytes_rcved,
+			stats.transport.lbtsmx.lbm_msgs_rcved,
+			stats.transport.lbtsmx.lbm_msgs_no_topic_rcved);
+	}
+	break;
 	case LBM_TRANSPORT_STAT_LBTRDMA:
-		{
-			fprintf(fp, " [%s] Received %lu msgs/%lu bytes. "
-						"%lu LBM msgs, %lu no topics, %lu requests.\n",
-						stats.source,
-						stats.transport.lbtrdma.msgs_rcved,
-						stats.transport.lbtrdma.bytes_rcved,
-						stats.transport.lbtrdma.lbm_msgs_rcved,
-						stats.transport.lbtrdma.lbm_msgs_no_topic_rcved,
-						stats.transport.lbtrdma.lbm_reqs_rcved);
-		}
-		break;
+	{
+		fprintf(fp, " [%s] Received %lu msgs/%lu bytes. "
+			"%lu LBM msgs, %lu no topics, %lu requests.\n",
+			stats.source,
+			stats.transport.lbtrdma.msgs_rcved,
+			stats.transport.lbtrdma.bytes_rcved,
+			stats.transport.lbtrdma.lbm_msgs_rcved,
+			stats.transport.lbtrdma.lbm_msgs_no_topic_rcved,
+			stats.transport.lbtrdma.lbm_reqs_rcved);
+	}
+	break;
 	default:
 		break;
 	}
@@ -380,36 +384,36 @@ void print_stats(FILE *fp, lbm_rcv_transport_stats_t stats)
 }
 
 /* Utility to print the contents of a buffer in hex/ASCII format */
-void dump(const char *buffer, int size)
+void dump(const char* buffer, int size)
 {
-	int i,j;
+	int i, j;
 	unsigned char c;
 	char textver[20];
 
-	for (i=0;i<(size >> 4);i++) {
-		for (j=0;j<16;j++) {
-			c = buffer[(i << 4)+j];
-			printf("%02x ",c);
-			textver[j] = ((c<0x20)||(c>0x7e))?'.':c;
+	for (i = 0;i < (size >> 4);i++) {
+		for (j = 0;j < 16;j++) {
+			c = buffer[(i << 4) + j];
+			printf("%02x ", c);
+			textver[j] = ((c < 0x20) || (c > 0x7e)) ? '.' : c;
 		}
 		textver[j] = 0;
-		printf("\t%s\n",textver);
+		printf("\t%s\n", textver);
 	}
-	for (i=0;i<size%16;i++) {
-		c = buffer[size-size%16+i];
-		printf("%02x ",c);
-		textver[i] = ((c<0x20)||(c>0x7e))?'.':c;
+	for (i = 0;i < size % 16;i++) {
+		c = buffer[size - size % 16 + i];
+		printf("%02x ", c);
+		textver[i] = ((c < 0x20) || (c > 0x7e)) ? '.' : c;
 	}
-	for (i=size%16;i<16;i++) {
+	for (i = size % 16;i < 16;i++) {
 		printf("   ");
 		textver[i] = ' ';
 	}
 	textver[i] = 0;
-	printf("\t%s\n",textver);
+	printf("\t%s\n", textver);
 }
 
 /* Logging handler passed into lbm_log() */
-int lbm_log_msg(int level, const char *message, void *clientd)
+int lbm_log_msg(int level, const char* message, void* clientd)
 {
 	printf("LOG Level %d: %s\n", level, message);
 	return 0;
@@ -418,7 +422,7 @@ int lbm_log_msg(int level, const char *message, void *clientd)
 /* Helper function for rcv_handle_msg callback */
 int check_optional_end_conditions()
 {
-	struct Options *opts = &options;
+	struct Options* opts = &options;
 
 	if ((opts->reap_msgs > 0 && total_msg_count >= opts->reap_msgs) || close_recv) {
 		/*
@@ -433,7 +437,7 @@ int check_optional_end_conditions()
 		return 1;
 	}
 	if ((opts->losslev > 0) && (total_msg_count > 0) &&
-	   ((100 * total_unrec_count) / total_msg_count) >= opts->losslev) {
+		((100 * total_unrec_count) / total_msg_count) >= opts->losslev) {
 		/*
 		 * Close receiver if unrecoverable loss reaches or exceeds losslev %
 		 */
@@ -450,9 +454,9 @@ int check_optional_end_conditions()
 }
 
 /* Handler for unrecoverable loss from multicast immediate messages */
-int rcv_handle_mim_unrecloss(const char *source_name, lbm_uint_t sqn, void *clientd)
+int rcv_handle_mim_unrecloss(const char* source_name, lbm_uint_t sqn, void* clientd)
 {
-	struct Options *opts = &options;
+	struct Options* opts = &options;
 
 	unrec_count++;
 	total_unrec_count++;
@@ -466,9 +470,9 @@ int rcv_handle_mim_unrecloss(const char *source_name, lbm_uint_t sqn, void *clie
  * Handler for immediate messages directed to NULL topic
  * callback is set as a parameter of lbm_context_rcv_immediate_msgs()
  */
-int rcv_handle_immediate_msg(lbm_context_t *ctx, lbm_msg_t *msg, void *clientd)
+int rcv_handle_immediate_msg(lbm_context_t* ctx, lbm_msg_t* msg, void* clientd)
 {
-	struct Options *opts = &options;
+	struct Options* opts = &options;
 
 	if (close_recv)
 		return 0; /* skip any new messages if we're just waiting to exit */
@@ -482,7 +486,7 @@ int rcv_handle_immediate_msg(lbm_context_t *ctx, lbm_msg_t *msg, void *clientd)
 		byte_count += msg->len;
 		if (opts->ascii) {
 			int n = msg->len;
-			const char *p = msg->data;
+			const char* p = msg->data;
 			while (n--)
 			{
 				putchar(*p++);
@@ -493,7 +497,7 @@ int rcv_handle_immediate_msg(lbm_context_t *ctx, lbm_msg_t *msg, void *clientd)
 
 		if (opts->verbose) {
 			printf("IM [%s][%u], %lu bytes\n",
-					msg->source, msg->sequence_number, (unsigned long) msg->len);
+				msg->source, msg->sequence_number, (unsigned long)msg->len);
 			if (opts->verbose > 1)
 				dump(msg->data, msg->len);
 		}
@@ -506,7 +510,7 @@ int rcv_handle_immediate_msg(lbm_context_t *ctx, lbm_msg_t *msg, void *clientd)
 		byte_count += msg->len;
 		if (opts->ascii) {
 			int n = msg->len;
-			const char *p = msg->data;
+			const char* p = msg->data;
 			while (n--)
 			{
 				putchar(*p++);
@@ -516,13 +520,13 @@ int rcv_handle_immediate_msg(lbm_context_t *ctx, lbm_msg_t *msg, void *clientd)
 		}
 		if (opts->verbose) {
 			printf("IM Request [%s][%u], %lu bytes\n",
-					msg->source, msg->sequence_number, (unsigned long) msg->len);
+				msg->source, msg->sequence_number, (unsigned long)msg->len);
 			if (opts->verbose > 1)
 				dump(msg->data, msg->len);
 		}
 		break;
 	default:
-		printf( "Unhandled receiver event [%d] for immediate_msg from source [%s]. Refer to https://ultramessaging.github.io/currdoc/doc/example/index.html#unhandledcevents for a detailed description.\n", msg->type, msg->source);
+		printf("Unhandled receiver event [%d] for immediate_msg from source [%s]. Refer to https://ultramessaging.github.io/currdoc/doc/example/index.html#unhandledcevents for a detailed description.\n", msg->type, msg->source);
 		break;
 	}
 	/* LBM automatically deletes the lbm_msg_t object unless we retain it. */
@@ -530,23 +534,23 @@ int rcv_handle_immediate_msg(lbm_context_t *ctx, lbm_msg_t *msg, void *clientd)
 }
 
 /* Received message handler (passed into lbm_rcv_create()) */
-int rcv_handle_msg(lbm_rcv_t *rcv, lbm_msg_t *msg, void *clientd)
+int rcv_handle_msg(lbm_rcv_t* rcv, lbm_msg_t* msg, void* clientd)
 {
 	static int lastseq = -1;
-	struct Options *opts = &options;
-	lbm_msg_properties_iter_t * iter;
+	struct Options* opts = &options;
+	lbm_msg_properties_iter_t* iter;
 
 	if (close_recv)
 		return 0; /* skip any new messages if we're just waiting to exit */
 
 	switch (msg->type) {
 	case LBM_MSG_DATA:
-		if(options.orderchecks && msg->sequence_number != lastseq + 1 && lastseq != -1)
-			printf("*** Warning - misordered seq num %d %d\n",lastseq,msg->sequence_number);
+		if (options.orderchecks && msg->sequence_number != lastseq + 1 && lastseq != -1)
+			printf("*** Warning - misordered seq num %d %d\n", lastseq, msg->sequence_number);
 		lastseq = msg->sequence_number;
-		
+
 		/* Data message received */
-		if (stotal_msg_count == 0) current_tv (&data_start_tv);
+		if (stotal_msg_count == 0) current_tv(&data_start_tv);
 		msg_count++;
 		total_msg_count++;
 		stotal_msg_count++;
@@ -567,25 +571,25 @@ int rcv_handle_msg(lbm_rcv_t *rcv, lbm_msg_t *msg, void *clientd)
 				printf("name[%s] type[%d] size[%lu]", iter->name, iter->type, (unsigned long)iter->size);
 				switch (iter->type) {
 				case LBM_MSG_PROPERTY_BOOLEAN:
-					printf(" data[%s]\n", *((lbm_uint8_t *)(iter->data)) ? "true" : "false");
+					printf(" data[%s]\n", *((lbm_uint8_t*)(iter->data)) ? "true" : "false");
 					break;
 				case LBM_MSG_PROPERTY_BYTE:
-					printf(" data[%"PRId8"]\n", *((lbm_uint8_t *)(iter->data)));
+					printf(" data[%"PRId8"]\n", *((lbm_uint8_t*)(iter->data)));
 					break;
 				case LBM_MSG_PROPERTY_SHORT:
-					printf(" data[%"PRId16"]\n", *((lbm_uint16_t *)(iter->data)));
+					printf(" data[%"PRId16"]\n", *((lbm_uint16_t*)(iter->data)));
 					break;
 				case LBM_MSG_PROPERTY_INT:
-					printf(" data[%"PRId32"]\n", *((lbm_uint32_t *)(iter->data)));
+					printf(" data[%"PRId32"]\n", *((lbm_uint32_t*)(iter->data)));
 					break;
 				case LBM_MSG_PROPERTY_LONG:
-					printf(" data[%"PRId64"]\n", *((lbm_uint64_t *)(iter->data)));
+					printf(" data[%"PRId64"]\n", *((lbm_uint64_t*)(iter->data)));
 					break;
 				case LBM_MSG_PROPERTY_FLOAT:
-					printf(" data[%f]\n", *((float *)(iter->data)));
+					printf(" data[%f]\n", *((float*)(iter->data)));
 					break;
 				case LBM_MSG_PROPERTY_DOUBLE:
-					printf(" data[%f]\n", *((double *)(iter->data)));
+					printf(" data[%f]\n", *((double*)(iter->data)));
 					break;
 				case LBM_MSG_PROPERTY_STRING:
 					printf(" data[%s]\n", iter->data);
@@ -606,13 +610,13 @@ int rcv_handle_msg(lbm_rcv_t *rcv, lbm_msg_t *msg, void *clientd)
 		if (msg->flags & LBM_MSG_FLAG_OTR)
 			otr_msg_count++;
 
-		if(msg->channel_info != NULL)
+		if (msg->channel_info != NULL)
 		{
 			channel_msg_count++;
 		}
 		if (opts->ascii) {
 			int n = msg->len;
-			const char *p = msg->data;
+			const char* p = msg->data;
 			while (n--)
 			{
 				putchar(*p++);
@@ -624,10 +628,11 @@ int rcv_handle_msg(lbm_rcv_t *rcv, lbm_msg_t *msg, void *clientd)
 		{
 			if (msg->hr_timestamp.tv_sec != 0) {
 				printf("HR[@%ld.%09ld]", (long int)msg->hr_timestamp.tv_sec, (long int)msg->hr_timestamp.tv_nsec);
-			} else {
+			}
+			else {
 				printf("[@%ld.%06ld]", (long int)msg->tsp.tv_sec, (long int)msg->tsp.tv_usec);
 			}
-			if(msg->channel_info != NULL) {
+			if (msg->channel_info != NULL) {
 				printf("[%s:%u][%s][%u]%s%s%s%s, %lu bytes\n",
 					msg->topic_name, msg->channel_info->channel_number,
 					msg->source, msg->sequence_number,
@@ -635,15 +640,16 @@ int rcv_handle_msg(lbm_rcv_t *rcv, lbm_msg_t *msg, void *clientd)
 					((msg->flags & LBM_MSG_FLAG_HF_DUPLICATE) ? "-HFDUP-" : ""),
 					((msg->flags & LBM_MSG_FLAG_HF_PASS_THROUGH) ? "-PASS-" : ""),
 					((msg->flags & LBM_MSG_FLAG_OTR) ? "-OTR-" : ""),
-					(unsigned long) msg->len);
-			} else {
+					(unsigned long)msg->len);
+			}
+			else {
 				printf("[%s][%s][%u]%s%s%s%s, %lu bytes\n",
 					msg->topic_name, msg->source, msg->sequence_number,
 					((msg->flags & LBM_MSG_FLAG_RETRANSMIT) ? "-RX-" : ""),
 					((msg->flags & LBM_MSG_FLAG_HF_DUPLICATE) ? "-HFDUP-" : ""),
 					((msg->flags & LBM_MSG_FLAG_HF_PASS_THROUGH) ? "-PASS-" : ""),
 					((msg->flags & LBM_MSG_FLAG_OTR) ? "-OTR-" : ""),
-					(unsigned long) msg->len);
+					(unsigned long)msg->len);
 			}
 
 			if (opts->verbose > 1)
@@ -676,19 +682,19 @@ int rcv_handle_msg(lbm_rcv_t *rcv, lbm_msg_t *msg, void *clientd)
 		total_unrec_count++;
 		if (opts->verbose) {
 			printf("[%s][%s][%u], LOST\n",
-					msg->topic_name, msg->source, msg->sequence_number);
+				msg->topic_name, msg->source, msg->sequence_number);
 		}
 		break;
 	case LBM_MSG_UNRECOVERABLE_LOSS_BURST:
 		burst_loss++;
 		if (opts->verbose) {
 			printf("[%s][%s][%u], LOSS BURST\n",
-					msg->topic_name, msg->source, msg->sequence_number);
+				msg->topic_name, msg->source, msg->sequence_number);
 		}
 		break;
 	case LBM_MSG_REQUEST:
 		/* Request message received (no response processed here) */
-		(stotal_msg_count == 0) ? current_tv (&data_start_tv) : current_tv(&data_end_tv);
+		(stotal_msg_count == 0) ? current_tv(&data_start_tv) : current_tv(&data_end_tv);
 		msg_count++;
 		total_msg_count++;
 		stotal_msg_count++;
@@ -697,7 +703,7 @@ int rcv_handle_msg(lbm_rcv_t *rcv, lbm_msg_t *msg, void *clientd)
 		total_byte_count += msg->len;
 		if (opts->verbose) {
 			printf("[%s][%s][%u], Request\n",
-					msg->topic_name, msg->source, msg->sequence_number);
+				msg->topic_name, msg->source, msg->sequence_number);
 		}
 		break;
 	case LBM_MSG_BOS:
@@ -724,7 +730,7 @@ int rcv_handle_msg(lbm_rcv_t *rcv, lbm_msg_t *msg, void *clientd)
 		printf("[%s], no sources found for topic\n", msg->topic_name);
 		break;
 	default:
-		printf( "Unhandled receiver event [%d] from source[%s] with topic [%s]. Refer to https://ultramessaging.github.io/currdoc/doc/example/index.html#unhandledcevents for a detailed description.\n", msg->type, msg->source, msg->topic_name);
+		printf("Unhandled receiver event [%d] from source[%s] with topic [%s]. Refer to https://ultramessaging.github.io/currdoc/doc/example/index.html#unhandledcevents for a detailed description.\n", msg->type, msg->source, msg->topic_name);
 		break;
 	}
 	if (check_optional_end_conditions()) {
@@ -738,7 +744,8 @@ int rcv_handle_msg(lbm_rcv_t *rcv, lbm_msg_t *msg, void *clientd)
 				fprintf(stderr, "lbm_event_dispatch_unblock: %s\n", lbm_errmsg());
 				exit(1);
 			}
-		} else { /* we have to wait for the sleep in the main thread */
+		}
+		else { /* we have to wait for the sleep in the main thread */
 			close_recv = 1; /* so stop processing new messages until then */
 		}
 	}
@@ -751,11 +758,11 @@ int rcv_handle_msg(lbm_rcv_t *rcv, lbm_msg_t *msg, void *clientd)
 
 
 /* Event queue monitor callback (passed into lbm_event_queue_create()) */
-int evq_monitor(lbm_event_queue_t *evq, int event, size_t evq_size,
-				lbm_ulong_t event_delay_usec, void *clientd)
+int evq_monitor(lbm_event_queue_t* evq, int event, size_t evq_size,
+	lbm_ulong_t event_delay_usec, void* clientd)
 {
 	printf("event queue threshold exceeded - event %x, sz %lu, delay %lu\n",
-		   event, (unsigned long) evq_size, event_delay_usec);
+		event, (unsigned long)evq_size, event_delay_usec);
 	return 0;
 }
 
@@ -763,10 +770,10 @@ int evq_monitor(lbm_event_queue_t *evq, int event, size_t evq_size,
  * Timer handler (passed into lbm_schedule_timer()) used to print bandwidth
  * usage stats once per second and LBM stats every opts->stat_ivl seconds.
  */
-int rcv_handle_tmo(lbm_context_t *ctx, const void *clientd)
+int rcv_handle_tmo(lbm_context_t* ctx, const void* clientd)
 {
-	lbm_rcv_t *rcv = (lbm_rcv_t *) clientd; /* passed from main as client (i.e. user) data */
-	struct Options *opts = &options;
+	lbm_rcv_t* rcv = (lbm_rcv_t*)clientd; /* passed from main as client (i.e. user) data */
+	struct Options* opts = &options;
 	lbm_ulong_t lost_tmp;
 	int flPrintStats = 0;
 	int count = 0;
@@ -777,52 +784,52 @@ int rcv_handle_tmo(lbm_context_t *ctx, const void *clientd)
 	timer_id = -1;
 	current_tv(&endtv);
 
-	if ( opts->stats_ivl ) {
-		flPrintStats = ( ( endtv.tv_sec > stattv.tv_sec ) ||
-			 ( endtv.tv_sec == stattv.tv_sec && endtv.tv_usec >= stattv.tv_usec ) ) ? 1 : 0;
+	if (opts->stats_ivl) {
+		flPrintStats = ((endtv.tv_sec > stattv.tv_sec) ||
+			(endtv.tv_sec == stattv.tv_sec && endtv.tv_usec >= stattv.tv_usec)) ? 1 : 0;
 	}
 
 	/* Retrieve either context or receiver stats */
 	if (opts->context_stats)
 	{
-		while (!have_stats){
+		while (!have_stats) {
 			set_nstats = nstats;
-			if (lbm_context_retrieve_rcv_transport_stats(ctx, &set_nstats, stats) == LBM_FAILURE){
+			if (lbm_context_retrieve_rcv_transport_stats(ctx, &set_nstats, stats) == LBM_FAILURE) {
 				/* Double the number of stats passed to the API to be retrieved */
 				/* Do so until we retrieve stats successfully or hit the max limit */
 				nstats *= 2;
-				if (nstats > DEFAULT_MAX_NUM_SRCS){
+				if (nstats > DEFAULT_MAX_NUM_SRCS) {
 					fprintf(stderr, "Cannot retrieve all context stats (%s).  Maximum number of sources = %d.\n",
-							lbm_errmsg(), DEFAULT_MAX_NUM_SRCS);
+						lbm_errmsg(), DEFAULT_MAX_NUM_SRCS);
 					exit(1);
 				}
-				stats = (lbm_rcv_transport_stats_t *)realloc(stats,  nstats * sizeof(lbm_rcv_transport_stats_t));
+				stats = (lbm_rcv_transport_stats_t*)realloc(stats, nstats * sizeof(lbm_rcv_transport_stats_t));
 			}
-			else{
+			else {
 				have_stats = 1;
 			}
 		}
 	}
 	else
 	{
-		while (!have_stats){
+		while (!have_stats) {
 			set_nstats = nstats;
-			if (lbm_rcv_retrieve_all_transport_stats(rcv, &set_nstats, stats) == LBM_FAILURE){
+			if (lbm_rcv_retrieve_all_transport_stats(rcv, &set_nstats, stats) == LBM_FAILURE) {
 				/* Double the number of stats passed to the API to be retrieved */
 				/* Do so until we retrieve stats successfully or hit the max limit */
 				nstats *= 2;
-				if (nstats > DEFAULT_MAX_NUM_SRCS){
+				if (nstats > DEFAULT_MAX_NUM_SRCS) {
 					fprintf(stderr, "Cannot retrieve all receiver stats (%s).  Maximum number of sources = %d.\n",
-							lbm_errmsg(), DEFAULT_MAX_NUM_SRCS);
+						lbm_errmsg(), DEFAULT_MAX_NUM_SRCS);
 					exit(1);
 				}
-				stats = (lbm_rcv_transport_stats_t *)realloc(stats,  nstats * sizeof(lbm_rcv_transport_stats_t));
-				if (stats == NULL){
+				stats = (lbm_rcv_transport_stats_t*)realloc(stats, nstats * sizeof(lbm_rcv_transport_stats_t));
+				if (stats == NULL) {
 					fprintf(stderr, "Cannot reallocate statistics array\n");
 					exit(1);
 				}
 			}
-			else{
+			else {
 				have_stats = 1;
 			}
 		}
@@ -830,9 +837,9 @@ int rcv_handle_tmo(lbm_context_t *ctx, const void *clientd)
 
 	for (lost = 0, count = 0; count < set_nstats; count++)
 	{
-		if ( flPrintStats ) {
+		if (flPrintStats) {
 			if (nstats > 1)
-				fprintf(stdout, "source %u/%u:", count+1, set_nstats);
+				fprintf(stdout, "source %u/%u:", count + 1, set_nstats);
 			print_stats(stdout, stats[count]);
 		}
 
@@ -867,8 +874,8 @@ int rcv_handle_tmo(lbm_context_t *ctx, const void *clientd)
 	byte_count = 0;
 	unrec_count = 0;
 
-	if ( flPrintStats ) {
-		current_tv ( &stattv );
+	if (flPrintStats) {
+		current_tv(&stattv);
 		stattv.tv_sec += opts->stats_ivl;
 	}
 
@@ -928,18 +935,19 @@ SigUsr2Handler(int signo)
 }
 #endif
 
-void process_cmdline(int argc, char **argv, struct Options *opts)
+void process_cmdline(int argc, char** argv, struct Options* opts)
 {
 	int c, errflag = 0;
 
 	memset(opts, 0, sizeof(*opts));
- 	opts->max_sources = DEFAULT_NUM_SRCS;
+	opts->max_sources = DEFAULT_NUM_SRCS;
 	opts->transport_options_string[0] = '\0';
 	opts->format_options_string[0] = '\0';
 	opts->application_id_string[0] = '\0';
-	opts->transport = (lbmmon_transport_func_t *) lbmmon_transport_lbm_module();
-	opts->format = (lbmmon_format_func_t *) lbmmon_format_csv_module();
+	opts->transport = (lbmmon_transport_func_t*)lbmmon_transport_lbm_module();
+	opts->format = (lbmmon_format_func_t*)lbmmon_format_csv_module();
 	opts->channel_number = -1;
+	opts->rm_protocol = 'M';
 
 	while ((c = getopt_long(argc, argv, OptionString, OptionTable, NULL)) != EOF) {
 		switch (c) {
@@ -996,6 +1004,9 @@ void process_cmdline(int argc, char **argv, struct Options *opts)
 		case 'N':
 			opts->channel_number = atol(optarg);
 			break;
+		case 'G':
+			errflag += parse_datagram(optarg, &opts->rm_protocol, &opts->datagram_max_size);
+			break;
 		case OPTION_MAX_SOURCES:
 			opts->max_sources = atoi(optarg);
 			break;
@@ -1012,15 +1023,15 @@ void process_cmdline(int argc, char **argv, struct Options *opts)
 			{
 				if (strcasecmp(optarg, "lbm") == 0)
 				{
-					opts->transport = (lbmmon_transport_func_t *) lbmmon_transport_lbm_module();
+					opts->transport = (lbmmon_transport_func_t*)lbmmon_transport_lbm_module();
 				}
 				else if (strcasecmp(optarg, "udp") == 0)
 				{
-					opts->transport = (lbmmon_transport_func_t *) lbmmon_transport_udp_module();
+					opts->transport = (lbmmon_transport_func_t*)lbmmon_transport_udp_module();
 				}
 				else if (strcasecmp(optarg, "lbmsnmp") == 0)
 				{
-					opts->transport = (lbmmon_transport_func_t *) lbmmon_transport_lbmsnmp_module();
+					opts->transport = (lbmmon_transport_func_t*)lbmmon_transport_lbmsnmp_module();
 				}
 				else
 				{
@@ -1047,11 +1058,11 @@ void process_cmdline(int argc, char **argv, struct Options *opts)
 			{
 				if (strcasecmp(optarg, "csv") == 0)
 				{
-					opts->format = (lbmmon_format_func_t *) lbmmon_format_csv_module();
+					opts->format = (lbmmon_format_func_t*)lbmmon_format_csv_module();
 				}
 				else if (strcasecmp(optarg, "pb") == 0)
 				{
-					opts->format = (lbmmon_format_func_t *)lbmmon_format_pb_module();
+					opts->format = (lbmmon_format_func_t*)lbmmon_format_pb_module();
 				}
 				else
 				{
@@ -1090,29 +1101,29 @@ void process_cmdline(int argc, char **argv, struct Options *opts)
 	}
 
 	if (opts->losslev > 100 || opts->losslev < 0) {
-		fprintf(stderr,"Loss level percentage must be a number between 0 and 100.\n");
+		fprintf(stderr, "Loss level percentage must be a number between 0 and 100.\n");
 		errflag++;
 	}
 
 	if (errflag || (optind == argc)) {
 		/* An error occurred processing the command line - dump the LBM version, usage and exit */
- 		fprintf(stderr, "%s\n%s\n%s", argv[0], lbm_version(), usage);
+		fprintf(stderr, "%s\n%s\n%s", argv[0], lbm_version(), usage);
 		exit(1);
 	}
 
 	opts->topic = argv[optind];
 }
 
-int main(int argc, char **argv)
+int main(int argc, char** argv)
 {
-	struct Options *opts = &options;
-	lbm_context_attr_t * ctx_attr; /* ptr to attributes for creating context */
-	lbm_topic_t *topic; /* ptr to topic info structure for creating receiver */
-	lbm_rcv_t *rcv; /* ptr to a LBM receiver object */
-	lbm_hf_rcv_t *hfrcv; /* ptr to Hot Failover object (for -f cmdline option) */
+	struct Options* opts = &options;
+	lbm_context_attr_t* ctx_attr; /* ptr to attributes for creating context */
+	lbm_topic_t* topic; /* ptr to topic info structure for creating receiver */
+	lbm_rcv_t* rcv; /* ptr to a LBM receiver object */
+	lbm_hf_rcv_t* hfrcv; /* ptr to Hot Failover object (for -f cmdline option) */
 	size_t optlen; /* to be set to length of retrieved data in LBM getopt calls */
 	/* following variables are for gathering and displaying statistics */
-	lbmmon_sctl_t * monctl = NULL;
+	lbmmon_sctl_t* monctl = NULL;
 
 	double total_time = 0.0;
 	double total_mps = 0.0;
@@ -1129,8 +1140,8 @@ int main(int argc, char **argv)
 		int status;
 
 		/* Windows socket setup code */
-		if ((status = WSAStartup(MAKEWORD(2,2),&wsadata)) != 0) {
-			fprintf(stderr,"%s: WSA startup error - %d\n",argv[0],status);
+		if ((status = WSAStartup(MAKEWORD(2, 2), &wsadata)) != 0) {
+			fprintf(stderr, "%s: WSA startup error - %d\n", argv[0], status);
 			exit(1);
 		}
 	}
@@ -1147,7 +1158,7 @@ int main(int argc, char **argv)
 
 	nstats = opts->max_sources;
 	/* Allocate array for statistics */
-	stats = (lbm_rcv_transport_stats_t *)malloc(nstats * sizeof(lbm_rcv_transport_stats_t));
+	stats = (lbm_rcv_transport_stats_t*)malloc(nstats * sizeof(lbm_rcv_transport_stats_t));
 	if (stats == NULL)
 	{
 		fprintf(stderr, "can't allocate statistics array\n");
@@ -1180,7 +1191,7 @@ int main(int argc, char **argv)
 			fprintf(stderr, "lbm_context_attr_set_from_xml - context_name: %s\n", lbm_errmsg());
 			exit(1);
 		}
-	}	
+	}
 	/*
 	 * Check if operational mode is set to "sequential" meaning that all
 	 * LBM processing will be done on this thread rather than on a separate
@@ -1201,7 +1212,7 @@ int main(int argc, char **argv)
 		}
 	}
 
-	
+
 
 	/* Set handler for unrecoverable loss from a MIM source */
 	{
@@ -1210,9 +1221,9 @@ int main(int argc, char **argv)
 		unrecloss.func = rcv_handle_mim_unrecloss;
 		unrecloss.clientd = NULL;
 		if (lbm_context_attr_setopt(ctx_attr, "mim_unrecoverable_loss_function",
-									&unrecloss, sizeof(unrecloss)) == LBM_FAILURE) {
+			&unrecloss, sizeof(unrecloss)) == LBM_FAILURE) {
 			fprintf(stderr, "lbm_context_attr_setopt - mim_unrecoverable_loss_function: %s\n",
-					lbm_errmsg());
+				lbm_errmsg());
 			exit(1);
 		}
 	}
@@ -1225,6 +1236,39 @@ int main(int argc, char **argv)
 		}
 	}
 
+	/* If the user specified a source datagram max size, set the transport to LBM-RM in the topic attribute structure and the requested source datagram m values in the context attribute structure
+*/
+	if (opts->datagram_max_size != 0) {
+		if (opts->rm_protocol == 'M' || opts->rm_protocol == 'U') {
+			printf("Receiving with LBT-R%c receiver datagram max size %u\n",
+				opts->rm_protocol, opts->datagram_max_size);
+		}
+		switch (opts->rm_protocol) {
+		case 'M':
+			/* Set LBT-RM source datagram max size attribute */
+			if (lbm_context_attr_setopt(ctx_attr, "transport_lbtrm_receiver_datagram_max_size", &opts->datagram_max_size, sizeof(opts->datagram_max_size)) != 0) {
+				fprintf(stderr, "lbm_context_attr_setopt:transport_lbtrm_receiver_datagram_max_size: %s\n", lbm_errmsg());
+				exit(1);
+			}
+			break;
+		case 'U':
+			/* Set LBT-RU source datagram max size attribute */
+			if (lbm_context_attr_setopt(ctx_attr, "transport_lbtru_receiver_datagram_max_size", &opts->datagram_max_size, sizeof(opts->datagram_max_size)) != 0) {
+				fprintf(stderr, "lbm_context_attr_setopt:transport_lbtru_receiver_datagram_max_size: %s\n", lbm_errmsg());
+				exit(1);
+			}
+			break;
+		case 'S':
+			printf("Receiving with resolver receiver datagram max size %u\n", opts->datagram_max_size);
+			/* Set Resolver source datagram max size attribute */
+			if (lbm_context_attr_setopt(ctx_attr, "resolver_receiver_datagram_max_size", &opts->datagram_max_size, sizeof(opts->datagram_max_size)) != 0) {
+				fprintf(stderr, "lbm_context_attr_setopt:resolver_receiver_datagram_max_size: %s\n", lbm_errmsg());
+				exit(1);
+			}
+			break;
+		}
+	}
+
 	/* Initialize immediate message handler (for topicless immediate sends) */
 	{
 		lbm_context_rcv_immediate_msgs_func_t topicless_im_rcv_func;
@@ -1233,7 +1277,7 @@ int main(int argc, char **argv)
 		topicless_im_rcv_func.evq = evq;
 		topicless_im_rcv_func.func = rcv_handle_immediate_msg;
 		if (lbm_context_attr_setopt(ctx_attr, "immediate_message_receiver_function",
-				&topicless_im_rcv_func, sizeof(topicless_im_rcv_func)) == LBM_FAILURE) {
+			&topicless_im_rcv_func, sizeof(topicless_im_rcv_func)) == LBM_FAILURE) {
 			fprintf(stderr, "lbm_context_rcv_immediate_msgs: %s\n", lbm_errmsg());
 			exit(1);
 		}
@@ -1256,49 +1300,50 @@ int main(int argc, char **argv)
 	 */
 	optlen = sizeof(request_port_bound);
 	if (lbm_context_getopt(ctx,
-				"request_tcp_bind_request_port",
-				&request_port_bound,
-				&optlen) == LBM_FAILURE)
+		"request_tcp_bind_request_port",
+		&request_port_bound,
+		&optlen) == LBM_FAILURE)
 	{
 		fprintf(stderr, "lbm_context_getopt(request_tcp_bind_request_port): %s\n",
-				lbm_errmsg());
+			lbm_errmsg());
 		exit(1);
 	}
 	if (request_port_bound == 1) {
-		
+
 		optlen = sizeof(request_port);
 		if (lbm_context_getopt(ctx,
-				       "request_tcp_port",
-				       &request_port,
-				       &optlen) == LBM_FAILURE) {
+			"request_tcp_port",
+			&request_port,
+			&optlen) == LBM_FAILURE) {
 			fprintf(stderr, "lbm_context_getopt(request_tcp_port): %s\n",
-					lbm_errmsg());
+				lbm_errmsg());
 			exit(1);
 		}
 		optlen = sizeof(unicast_target_iface);
 		if (lbm_context_getopt(ctx,
-				       "request_tcp_interface",
-				       &unicast_target_iface,
-				       &optlen) == LBM_FAILURE) {
+			"request_tcp_interface",
+			&unicast_target_iface,
+			&optlen) == LBM_FAILURE) {
 			fprintf(stderr, "lbm_context_getopt(request_tcp_interface): %s\n",
-					lbm_errmsg());
+				lbm_errmsg());
 			exit(1);
 		}
 		/* if the request_tcp_interface is INADDR_ANY, get one we know is good. */
-		if(unicast_target_iface.addr == INADDR_ANY) {
+		if (unicast_target_iface.addr == INADDR_ANY) {
 			if (lbm_context_getopt(ctx,
-					       "resolver_multicast_interface",
-					       &unicast_target_iface,
-					       &optlen) == LBM_FAILURE) {
+				"resolver_multicast_interface",
+				&unicast_target_iface,
+				&optlen) == LBM_FAILURE) {
 				fprintf(stderr, "lbm_context_getopt(resolver_multicast_interface): %s\n",
-						lbm_errmsg());
+					lbm_errmsg());
 				exit(1);
 			}
 		}
 		inaddr.s_addr = unicast_target_iface.addr;
 		printf("Immediate messaging target: TCP:%s:%d\n", inet_ntoa(inaddr),
-			   ntohs(request_port));
-	} else {
+			ntohs(request_port));
+	}
+	else {
 		printf("Request port binding disabled, no immediate messaging target.\n");
 	}
 
@@ -1324,10 +1369,10 @@ int main(int argc, char **argv)
 	 * Create receiver object passing in the looked up topic info and the message
 	 * handler callback.
 	 */
-    if (opts->failover) {
+	if (opts->failover) {
 		/* Create a Hot Failover receiver (with event queue if desired) */
 		if (lbm_hf_rcv_create(&hfrcv, ctx, topic, rcv_handle_msg, NULL, opts->eventq ? evq : NULL)
-				== LBM_FAILURE) {
+			== LBM_FAILURE) {
 			fprintf(stderr, "lbm_hf_rcv_create: %s\n", lbm_errmsg());
 			exit(1);
 		}
@@ -1335,16 +1380,17 @@ int main(int argc, char **argv)
 
 		/* An HF receiver is associated with an automatically created LBM receiver */
 		rcv = lbm_rcv_from_hf_rcv(hfrcv);
-	} else {
+	}
+	else {
 		/* Create a non-HF receiver (with event queue if desired) */
 		if (lbm_rcv_create(&rcv, ctx, topic, rcv_handle_msg, NULL, opts->eventq ? evq : NULL)
-				== LBM_FAILURE) {
+			== LBM_FAILURE) {
 			fprintf(stderr, "lbm_rcv_create: %s\n", lbm_errmsg());
 			exit(1);
 		}
 	}
 
-	if(opts->channel_number >= 0)
+	if (opts->channel_number >= 0)
 	{
 		printf("Listening for messages on channel %ld\n", opts->channel_number);
 		lbm_rcv_subscribe_channel(rcv, opts->channel_number, NULL, NULL);
@@ -1360,9 +1406,9 @@ int main(int argc, char **argv)
 
 	if (opts->monitor_context || opts->monitor_receiver)
 	{
-		char * transport_options = NULL;
-		char * format_options = NULL;
-		char * application_id = NULL;
+		char* transport_options = NULL;
+		char* format_options = NULL;
+		char* application_id = NULL;
 
 		if (strlen(opts->transport_options_string) > 0)
 		{
@@ -1377,7 +1423,7 @@ int main(int argc, char **argv)
 			application_id = opts->application_id_string;
 		}
 		if (lbmmon_sctl_create(&monctl, opts->format, format_options,
-										opts->transport, transport_options) == -1)
+			opts->transport, transport_options) == -1)
 		{
 			fprintf(stderr, "lbmmon_sctl_create() failed, %s\n", lbmmon_errmsg());
 			exit(1);
@@ -1403,8 +1449,8 @@ int main(int argc, char **argv)
 		}
 	}
 
-	if ( opts->stats_ivl ) {
-		current_tv ( &stattv );
+	if (opts->stats_ivl) {
+		current_tv(&stattv);
 		stattv.tv_sec += opts->stats_ivl;
 	}
 
@@ -1415,7 +1461,8 @@ int main(int argc, char **argv)
 			 * function to do LBM processing (including invoking callbacks).
 			 */
 			lbm_context_process_events(ctx, 1000);
-		} else if (opts->eventq) { /* embedded mode */
+		}
+		else if (opts->eventq) { /* embedded mode */
 			/*
 			 * Dispatch event queue indefinitely (only return upon error or when
 			 * unblocked with lbm_event_dispatch_unblock() in one of our callbacks).
@@ -1424,7 +1471,8 @@ int main(int argc, char **argv)
 				fprintf(stderr, "lbm_event_dispatch returned error: %s\n", lbm_errmsg());
 				break;
 			}
-		} else { /* embedded mode, no event queue */
+		}
+		else { /* embedded mode, no event queue */
 			/*
 			 * Just sleep for 1 second. LBM processing is
 			 * done in its own thread.
@@ -1439,20 +1487,20 @@ int main(int argc, char **argv)
 
 	if (opts->summary) {
 		total_time = ((double)data_end_tv.tv_sec + (double)data_end_tv.tv_usec / 1000000.0)
-					- ((double)data_start_tv.tv_sec + (double)data_start_tv.tv_usec / 1000000.0);
-		printf ("\nTotal time        : %-5.4g sec\n", total_time);
-		printf ("Messages received : %u\n", stotal_msg_count);
+			- ((double)data_start_tv.tv_sec + (double)data_start_tv.tv_usec / 1000000.0);
+		printf("\nTotal time        : %-5.4g sec\n", total_time);
+		printf("Messages received : %u\n", stotal_msg_count);
 #if defined(_WIN32)
-		printf ("Bytes received    : %I64d\n", total_byte_count);
+		printf("Bytes received    : %I64d\n", total_byte_count);
 #else
-		printf ("Bytes received    : %lld\n", total_byte_count);
+		printf("Bytes received    : %lld\n", total_byte_count);
 #endif
 
 		if (total_time > 0) {
-			total_mps = (double)total_msg_count/total_time;
-			total_bps = (double)total_byte_count*8/total_time;
-			printf ("Avg. throughput   : %-5.4g Kmsgs/sec, %-5.4g Mbps\n\n",
-									total_mps/1000.0, total_bps/1000000.0);
+			total_mps = (double)total_msg_count / total_time;
+			total_bps = (double)total_byte_count * 8 / total_time;
+			printf("Avg. throughput   : %-5.4g Kmsgs/sec, %-5.4g Mbps\n\n",
+				total_mps / 1000.0, total_bps / 1000000.0);
 		}
 
 	}
@@ -1495,14 +1543,15 @@ int main(int argc, char **argv)
 		}
 	}
 
-        	
+
 	if (timer_id != -1) {
 		lbm_cancel_timer(ctx, timer_id, NULL);
 	}
-	
+
 	if (opts->failover) {
 		lbm_hf_rcv_delete(hfrcv); /* this takes care of the associated LBM receiver */
-	} else {
+	}
+	else {
 		lbm_rcv_delete(rcv);
 	}
 

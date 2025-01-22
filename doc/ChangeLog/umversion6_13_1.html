@@ -67,7 +67,7 @@ Streaming Enhancements for 6.13.1&nbsp;&nbsp;<small><a href="#streamingenhanceme
 <p>The following new features and enhancements apply to UMS, UMP, and UMQ products.</p>
 <ul>
 <li>
-<b>OpenSSL 1.1.1g</b>. UM's <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/ChangeLog/design.tag:../Design/" href="../Design/umfeatures.html#encryptedtcp">Encrypted TCP</a> feature has been upgraded to use OpenSSL version 1.1.1g. </li>
+<b>OpenSSL 1.1.1g</b>. UM's <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/ChangeLog/design.tag:../Design/" href="../Design/umfeatures.html#encryptedtcp">Encrypted TCP</a> feature has been upgraded to use OpenSSL version 1.1.1g. </li>
 </ul>
 <p><br />
  </p>
@@ -116,11 +116,12 @@ Streaming Fixed Problems and Limitations for 6.13.1&nbsp;&nbsp;<small><a href="#
 </td></tr>
 <tr>
 <td>10932, 10970</td><td><p class="starttd"><b>FIXED:</b> <em>UM versions 6.12, 6.12.1, and 6.13 on Linux suffered a minor speed degradation, visible in certain minimal ping/pong tests. No degradation has been reported during testing of production applications. </em></p>
+<p></p>
 <p>As part of fixing this, the Linux 64-bit UM versions 6.13.1 and beyond must have access to a glibc of version 2.14 or higher. See <a class="el" href="umversion6_13_1.html#minimumrequiredglibcversion">Minimum Required Glibc Version</a>.</p>
 <p class="endtd"><a class="anchor" id="bug10979"></a></p>
 </td></tr>
 <tr>
-<td>10979, 10980</td><td><b>FIXED:</b> <em>Enabling <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/ChangeLog/design.tag:../Design/" href="../Design/umfeatures.html#compressedtcp">Compressed TCP</a> on the Solaris X86 64-bit platform can result in a segmentation fault inside "LZ4_copy8()". </em> </td></tr>
+<td>10979, 10980</td><td><b>FIXED:</b> <em>Enabling <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/ChangeLog/design.tag:../Design/" href="../Design/umfeatures.html#compressedtcp">Compressed TCP</a> on the Solaris X86 64-bit platform can result in a segmentation fault inside "LZ4_copy8()". </em> </td></tr>
 </table>
 <p><br />
  </p>
@@ -130,7 +131,7 @@ Persistence Fixed Problems and Limitations for 6.13.1&nbsp;&nbsp;<small><a href=
 <p><a class="anchor" id="bug10911"></a></p><table class="doxtable">
 <tr>
 <td>10911, 10934</td><td><p class="starttd"><b>FIXED:</b> <em>The Store can fail with a segmentation fault or a fatal assert ("info-&gt;sqn == DMON_GET(repo,
-mem_trail_sqn)" when it is configured to use <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/ChangeLog/design.tag:../Design/" href="../Design/topicresolutiondescription.html#tcpbasedtopicresolutiondetails">TCP-based Topic Resolution</a> and it is restarted while the persistent source is actively sending. </em></p>
+mem_trail_sqn)" when it is configured to use <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/ChangeLog/design.tag:../Design/" href="../Design/topicresolutiondescription.html#tcpbasedtopicresolutiondetails">TCP-based Topic Resolution</a> and it is restarted while the persistent source is actively sending. </em></p>
 <p class="endtd"><a class="anchor" id="bug10976"></a></p>
 </td></tr>
 <tr>
@@ -182,7 +183,8 @@ To run an application with UM version 6.13.1 or beyond, set the environment vari
  </p>
 <h2><a class="anchor" id="um613specialinstructions"></a>
 Previous Special Instructions&nbsp;&nbsp;<small><a href="#um613specialinstructions">&lt;-</a></small></h2>
-<p>If you are upgrading from a UM version prior to 6.13.1, you must also examine the <a class="el" href="umversion6_13.html#specialupgradeinstructionsfor6_13">Special Upgrade Instructions for 6.13</a>.</p>
+<p>If you are upgrading from a UM version prior to 6.13, you must also examine the <a class="el" href="umversion6_13.html#specialupgradeinstructionsfor6_13">Special Upgrade Instructions for 6.13</a>.</p>
+<p>Also see <a class="el" href="deprecations.html">Deprecations</a>.</p>
 <p><br />
 <br />
  <br />

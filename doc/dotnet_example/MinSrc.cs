@@ -2,7 +2,7 @@
 "MinSrc.cs - Minimal source program.
 "See Quick Start document.
 
- * (C) Copyright 2005,2023 Informatica Inc. All Rights Reserved.
+ * (C) Copyright 2005,2025 Informatica Inc. All Rights Reserved.
  * Permission is granted to licensees to use
  * or alter this software for any purpose, including commercial applications,
  * according to the terms laid out in the Software License Agreement.

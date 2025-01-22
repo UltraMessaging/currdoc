@@ -72,7 +72,7 @@ Streaming Enhancements for 6.5&nbsp;&nbsp;<small><a href="#streamingenhancements
 <p class="endtd"></p>
 </th></tr>
 <tr>
-<td>7911 </td><td><p class="starttd">You can now configure Ultra Messaging to use Solarflare Onload to select transport sockets for acceleration. Onload is a kernel-bypass technology that accelerates message traffic and operates with Solarflare 10GbE Ethernet NICs. See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grptransportacceleration.html#solarflareonload">Solarflare Onload</a> for more information.</p>
+<td>7911 </td><td><p class="starttd">You can now configure Ultra Messaging to use Solarflare Onload to select transport sockets for acceleration. Onload is a kernel-bypass technology that accelerates message traffic and operates with Solarflare 10GbE Ethernet NICs. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/ChangeLog/config.tag:../Config/" href="../Config/grptransportacceleration.html#solarflareonload">Solarflare Onload</a> for more information.</p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
@@ -125,12 +125,12 @@ Ultra Messaging System Monitoring Option&nbsp;&nbsp;<small><a href="#ultramessag
 <li>
 Aggregate number of topic-level sequence numbers received out of order. </li>
 <li>
-Aggregate number of topic-level sequence numbers declared unrecoverably lost by the delivery of either an <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/ChangeLog/api.tag:../API/" href="../API/lbm_8h.html#a88920e0a4188081f9a14fc8f76c18578">LBM_MSG_UNRECOVERABLE_LOSS</a> or <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/ChangeLog/api.tag:../API/" href="../API/lbm_8h.html#a6629139aaf902976c8df9de3f37d10db">LBM_MSG_UNRECOVERABLE_LOSS_BURST</a> event to the receiving application. </li>
+Aggregate number of topic-level sequence numbers declared unrecoverably lost by the delivery of either an <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/ChangeLog/api.tag:../API/" href="../API/lbm_8h.html#a88920e0a4188081f9a14fc8f76c18578">LBM_MSG_UNRECOVERABLE_LOSS</a> or <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/ChangeLog/api.tag:../API/" href="../API/lbm_8h.html#a6629139aaf902976c8df9de3f37d10db">LBM_MSG_UNRECOVERABLE_LOSS_BURST</a> event to the receiving application. </li>
 <li>
 Receiver callback service time statistics. Ultra Messaging tracks the mean time, maximum time, and minimum time to service receiver callbacks. </li>
 </ul>
-<p>As the collection of aggregated statistics can increase the latency of message delivery, Ultra Messaging does not collect them by default. You can enable UMSM to collect the aggregated message loss statistics with the UM configuration options, <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grpautomaticmonitoring.html#monitorintervalreceiver">monitor_interval (receiver)</a> and <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grpautomaticmonitoring.html#monitorintervalwildcardreceiver">monitor_interval (wildcard_receiver)</a>. You can access the aggregated receiver statistics with UMSM. The lbmmon API does not provide access to the aggregated receiver statistics.</p>
-<p>The Ultra Messaging 6.5 release contains a third new UM configuration option, <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/ChangeLog/config.tag:../Config/" href="../Config/grpmajoroptions.html#receivercallbackservicetimeenabledcontext">receiver_callback_service_time_enabled (context)</a>, which enables UMSM to maintain receiver callback service times. The lbmmon API does not provide access to the receiver callback service times.</p>
+<p>As the collection of aggregated statistics can increase the latency of message delivery, Ultra Messaging does not collect them by default. You can enable UMSM to collect the aggregated message loss statistics with the UM configuration options, <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/ChangeLog/config.tag:../Config/" href="../Config/grpautomaticmonitoring.html#monitorintervalreceiver">monitor_interval (receiver)</a> and <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/ChangeLog/config.tag:../Config/" href="../Config/grpautomaticmonitoring.html#monitorintervalwildcardreceiver">monitor_interval (wildcard_receiver)</a>. You can access the aggregated receiver statistics with UMSM. The lbmmon API does not provide access to the aggregated receiver statistics.</p>
+<p>The Ultra Messaging 6.5 release contains a third new UM configuration option, <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/ChangeLog/config.tag:../Config/" href="../Config/grpmajoroptions.html#receivercallbackservicetimeenabledcontext">receiver_callback_service_time_enabled (context)</a>, which enables UMSM to maintain receiver callback service times. The lbmmon API does not provide access to the receiver callback service times.</p>
 <p><br />
  </p>
 <h1><a class="anchor" id="fixedlimitationsfor6_5"></a>
@@ -147,6 +147,7 @@ Streaming Fixed Problems and Limitations for 6.5&nbsp;&nbsp;<small><a href="#str
 </th></tr>
 <tr>
 <td>7103 </td><td><p class="starttd"><b>FIXED:</b> <em>The lbmsrc.java example application throws an exception if the application sent SDM messages or variable message lengths.</em></p>
+<p></p>
 <p>lbmsrc.java now correctly adjusts the message buffers as needed.</p>
 <p class="endtd"></p>
 </td></tr>
@@ -157,6 +158,7 @@ send(byte[] message, int messageLength, int flags, java.lang.Object cbArg) </li>
 <li>
 send(java.nio.ByteBuffer message, int startPosition, int messageLength, int flags,java.lang.Object cbArg) </li>
 </ul>
+<p></p>
 <p>These methods are now deprecated. Use the send method that accepts an LBMSourceSendExInfo object instead.</p>
 <p class="endtd"></p>
 </td></tr>
@@ -215,21 +217,27 @@ Special Upgrade Instructions for 6.5&nbsp;&nbsp;<small><a href="#specialupgradei
  </p>
 <h2><a class="anchor" id="um65contextstatsexpansion"></a>
 UM 6.5 Context Stats Expansion&nbsp;&nbsp;<small><a href="#um65contextstatsexpansion">&lt;-</a></small></h2>
-<p>In UM version 6.5, the data structure <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/ChangeLog/api.tag:../API/" href="../API/lbm_8h.html#ab86e72a3f715d7c8ddc49c6431455839">lbm_context_stats_t</a> was expanded with the addition of five fields: </p><ul>
+<p>In UM version 6.5, the data structure <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/ChangeLog/api.tag:../API/" href="../API/lbm_8h.html#ab86e72a3f715d7c8ddc49c6431455839">lbm_context_stats_t</a> was expanded with the addition of five fields: </p><ul>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/ChangeLog/api.tag:../API/" href="../API/structlbm__context__stats__t__stct.html#ad80f9f30910a7468de9863238cdf126d">lbm_context_stats_t::fragments_lost</a>, </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/ChangeLog/api.tag:../API/" href="../API/structlbm__context__stats__t__stct.html#ad80f9f30910a7468de9863238cdf126d">lbm_context_stats_t::fragments_lost</a>, </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/ChangeLog/api.tag:../API/" href="../API/structlbm__context__stats__t__stct.html#a368bb93a5038b98e6e59b62c34a3d5b4">lbm_context_stats_t::fragments_unrecoverably_lost</a>, </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/ChangeLog/api.tag:../API/" href="../API/structlbm__context__stats__t__stct.html#a368bb93a5038b98e6e59b62c34a3d5b4">lbm_context_stats_t::fragments_unrecoverably_lost</a>, </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/ChangeLog/api.tag:../API/" href="../API/structlbm__context__stats__t__stct.html#ad6dc0c61916512a1d385501d8d635fe3">lbm_context_stats_t::rcv_cb_svc_time_min</a>, </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/ChangeLog/api.tag:../API/" href="../API/structlbm__context__stats__t__stct.html#ad6dc0c61916512a1d385501d8d635fe3">lbm_context_stats_t::rcv_cb_svc_time_min</a>, </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/ChangeLog/api.tag:../API/" href="../API/structlbm__context__stats__t__stct.html#a6e7fd17516ad5bd894bd47b1c506d91f">lbm_context_stats_t::rcv_cb_svc_time_max</a>, and </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/ChangeLog/api.tag:../API/" href="../API/structlbm__context__stats__t__stct.html#a6e7fd17516ad5bd894bd47b1c506d91f">lbm_context_stats_t::rcv_cb_svc_time_max</a>, and </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/ChangeLog/api.tag:../API/" href="../API/structlbm__context__stats__t__stct.html#a7773f35c817502bbb33acac04a197715">lbm_context_stats_t::rcv_cb_svc_time_mean</a>. </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/ChangeLog/api.tag:../API/" href="../API/structlbm__context__stats__t__stct.html#a7773f35c817502bbb33acac04a197715">lbm_context_stats_t::rcv_cb_svc_time_mean</a>. </li>
 </ul>
 <p>This broke ABI compatibility.</p>
-<p>If your application uses the lbm_context_stats_t structure and was originally built with a UM version prior to 6.5, it will have to be recompiled to work with UM 6.5 and beyond. This is because the application allocates the smaller pre-6.5 size. But if that binary is executed with UM 6.5 or beyond, the <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/ChangeLog/api.tag:../API/" href="../API/lbm_8h.html#aa8f2d2e5b28e2c97911117acb099c48e">lbm_context_retrieve_stats()</a> function will assume that it is the larger 6.5-and-beyond size, and will write past the end of the application's structure allocation. This can produce program crashes and corrupted data.</p>
+<p>If your application uses the lbm_context_stats_t structure and was originally built with a UM version prior to 6.5, it will have to be recompiled to work with UM 6.5 and beyond. This is because the application allocates the smaller pre-6.5 size. But if that binary is executed with UM 6.5 or beyond, the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/ChangeLog/api.tag:../API/" href="../API/lbm_8h.html#aa8f2d2e5b28e2c97911117acb099c48e">lbm_context_retrieve_stats()</a> function will assume that it is the larger 6.5-and-beyond size, and will write past the end of the application's structure allocation. This can produce program crashes and corrupted data.</p>
 <p>If your program does not use the lbm_context_stats_t structure, then recompiling is not necessary.</p>
+<p><br />
+ </p>
+<h2><a class="anchor" id="um60specialinstructions"></a>
+Previous Special Instructions&nbsp;&nbsp;<small><a href="#um60specialinstructions">&lt;-</a></small></h2>
+<p>If you are upgrading from a UM version prior to 6.0, you must also examine the <a class="el" href="umversion6_0.html#specialupgradeinstructionsfor6_0">Special Upgrade Instructions for 6.0</a>.</p>
+<p>Also see <a class="el" href="deprecations.html">Deprecations</a>.</p>
 <p><br />
 <br />
  <br />

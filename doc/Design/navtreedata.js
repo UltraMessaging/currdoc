@@ -51,7 +51,8 @@ var NAVTREE =
       [ "UM Transports", "fundamentalconcepts.html#umtransports", null ],
       [ "Transport Sessions", "fundamentalconcepts.html#transportsessions", [
         [ "Subscribing to a Transport Session", "fundamentalconcepts.html#subscribingtoatransportsession", null ],
-        [ "Transport Session Differences", "fundamentalconcepts.html#transportsessiondifferences", null ]
+        [ "Transport Session Differences", "fundamentalconcepts.html#transportsessiondifferences", null ],
+        [ "Flexible LBT-RU Topic Assignment", "fundamentalconcepts.html#flexiblelbtrutopicassignment", null ]
       ] ],
       [ "Transport Pacing", "fundamentalconcepts.html#transportpacing", [
         [ "Source Pacing", "fundamentalconcepts.html#sourcepacing", null ],
@@ -87,7 +88,7 @@ var NAVTREE =
         [ "Receiver Configuration and Transport Sessions", "umobjects.html#receiverconfigurationandtransportsessions", null ],
         [ "UM Wildcard Receivers", "umobjects.html#umwildcardreceivers", null ],
         [ "Transport Services Provider Object", "umobjects.html#transportservicesproviderobject", null ],
-        [ "UM Hot Failover Across Contexts Objects", "umobjects.html#umhotfailoveracrosscontextsobjects", null ]
+        [ "UM Hot Failover Across Contexts Objects (HFX)", "umobjects.html#umhotfailoveracrosscontextsobjects", null ]
       ] ],
       [ "Event Queue Object", "umobjects.html#eventqueueobject", [
         [ "Using an Event Queue", "umobjects.html#usinganeventqueue", null ],
@@ -174,8 +175,9 @@ var NAVTREE =
         [ "Store (context) Name Resolution", "architecture.html#storecontextnameresolution", null ],
         [ "UDP Topic Resolution Configuration Options", "architecture.html#udptopicresolutionconfigurationoptions", null ],
         [ "Unicast UDP Topic Resolution", "architecture.html#unicasttopicresolution", null ],
-        [ "Network Address Translation (NAT)", "architecture.html#networkaddresstranslationnat", null ],
-        [ "Example NAT Configuration", "architecture.html#examplenatconfiguration", null ]
+        [ "LBMRD NAT Transit", "architecture.html#networkaddresstranslationnat", null ],
+        [ "Example NAT Configuration", "architecture.html#examplenatconfiguration", null ],
+        [ "Lbmrd NAT Restrictions", "architecture.html#lbmrdnatrestrictions", null ]
       ] ],
       [ "UDP-Based Topic Resolution Strategies", "architecture.html#udpbasedtopicresolutionstrategies", [
         [ "Default TR", "architecture.html#defaulttr", null ],
@@ -194,6 +196,7 @@ var NAVTREE =
         [ "Datagram Max Sizes", "architecture.html#datagrammaxsizes", null ],
         [ "Datagram Max Size and Network MTU", "architecture.html#datagrammaxsizeandnetworkmtu", null ],
         [ "Setting Datagram Max Sizes High", "architecture.html#datagramsandkernelbypassnetworkdrivers", null ],
+        [ "Changing Datagram Max Size", "architecture.html#changingdatagrammaxsize", null ],
         [ "Dynamic Fragmentation Reduction", "architecture.html#dynamicfragmentationreduction", null ]
       ] ],
       [ "Ordered Delivery", "architecture.html#ordereddelivery", [
@@ -226,7 +229,7 @@ var NAVTREE =
         [ "XSP Threading Considerations", "umfeatures.html#xspthreadingconsiderations", null ],
         [ "XSP Usage", "umfeatures.html#xspusage", null ],
         [ "Other XSP Operations", "umfeatures.html#otherxspoperations", null ],
-        [ "XSP Limitations", "umfeatures.html#xsplimitations", null ]
+        [ "XSP Restrictions", "umfeatures.html#xsplimitations", null ]
       ] ],
       [ "Using Late Join", "umfeatures.html#usinglatejoin", [
         [ "Late Join With Persistence", "umfeatures.html#latejoinwithump", null ],
@@ -323,11 +326,12 @@ var NAVTREE =
         [ "Implementing Hot Failover Sources", "umfeatures.html#implementinghotfailoversources", null ],
         [ "Implementing Hot Failover Receivers", "umfeatures.html#implementinghotfailoverreceivers", null ],
         [ "Implementing Hot Failover Wildcard Receivers", "umfeatures.html#implementinghotfailoverwildcardreceivers", null ],
-        [ "Java and .NET", "umfeatures.html#javaandnet", null ],
+        [ "HF with Java and .NET", "umfeatures.html#javaandnet", null ],
         [ "Using Hot Failover with Persistence", "umfeatures.html#usinghotfailoverwithpersistence", null ],
         [ "Hot Failover Intentional Gap Support", "umfeatures.html#hotfailoverintentionalgapsupport", null ],
         [ "Hot Failover Optional Messages", "umfeatures.html#hotfailoveroptionalmessages", null ],
         [ "Using Hot Failover with Ordered Delivery", "umfeatures.html#usinghotfailoverwithordereddelivery", null ],
+        [ "Hot Failover Restrictions", "umfeatures.html#hotfailoverrestrictions", null ],
         [ "Hot Failover Across Multiple Contexts (HFX)", "umfeatures.html#hotfailoveracrossmultiplecontexts", null ]
       ] ],
       [ "NAK Cutoff", "umfeatures.html#nakcutoff", [
@@ -382,7 +386,9 @@ var NAVTREE =
       ] ],
       [ "Comparison of Zero Copy and Smart Sources", "advancedoptimizations.html#comparisonofzerocopyandsmartsources", null ],
       [ "XSP Latency Reduction", "advancedoptimizations.html#xsplatencyreduction", null ],
-      [ "Receive-Side Batching", "advancedoptimizations.html#receivesidebatching", null ],
+      [ "Receive-Side Batching", "advancedoptimizations.html#receivesidebatching", [
+        [ "Receive-Side Batching Restrictions", "advancedoptimizations.html#receivesidebatchingrestrictions", null ]
+      ] ],
       [ "Core Pinning", "advancedoptimizations.html#corepinning", null ],
       [ "Memory Latency Reduction", "advancedoptimizations.html#memorylatencyreduction", null ]
     ] ],
@@ -534,7 +540,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "advancedoptimizations.html",
-"topicresolutiondescription.html"
+"srsdaemonstatistics.html#messagetypeumclientstats"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

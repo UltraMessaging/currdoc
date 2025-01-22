@@ -1,5 +1,9 @@
 var NAVTREEINDEX1 =
 {
+"srsdaemonstatistics.html#messagetypeumclientstats":[13,2],
+"srsdaemonstatistics.html#requesttypereportmonitorinfo":[13,8],
+"srsdaemonstatistics.html#requesttypereportsrsversion":[13,7],
+"srsdaemonstatistics.html#requesttypesetpublishinginterval":[13,9],
 "topicresolutiondescription.html":[6],
 "topicresolutiondescription.html#multicastudptr":[6,1,0],
 "topicresolutiondescription.html#receiverresolvercache":[6,0,1],
@@ -66,10 +70,11 @@ var NAVTREEINDEX1 =
 "umfeatures.html#encryptedtcp":[9,3],
 "umfeatures.html#gettingstartedwithpdm":[9,13,1],
 "umfeatures.html#highresolutiontimestamps":[9,5],
-"umfeatures.html#hotfailoveracrossmultiplecontexts":[9,16,8],
+"umfeatures.html#hotfailoveracrossmultiplecontexts":[9,16,9],
 "umfeatures.html#hotfailoverhf":[9,16],
 "umfeatures.html#hotfailoverintentionalgapsupport":[9,16,5],
 "umfeatures.html#hotfailoveroptionalmessages":[9,16,6],
+"umfeatures.html#hotfailoverrestrictions":[9,16,8],
 "umfeatures.html#hypertopics":[9,8],
 "umfeatures.html#implementinghotfailoverreceivers":[9,16,1],
 "umfeatures.html#implementinghotfailoversources":[9,16,0],

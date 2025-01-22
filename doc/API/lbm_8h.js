@@ -1214,6 +1214,7 @@ var lbm_8h =
     [ "lbm_wrcv_ume_deregister", "lbm_8h.html#adc9f1b15ab516bed8556e7a20666770c", null ],
     [ "lbm_xsp_attr_create", "lbm_8h.html#a9ab709766b50d510266901f961341a00", null ],
     [ "lbm_xsp_attr_delete", "lbm_8h.html#adfc416faf8fbc79cfd16a1485341f469", null ],
+    [ "lbm_xsp_attr_dump", "lbm_8h.html#ad530a6532200d0b8363a032243e64e39", null ],
     [ "lbm_xsp_attr_getopt", "lbm_8h.html#a62363973a939a8555eac38846492dbb2", null ],
     [ "lbm_xsp_attr_option_size", "lbm_8h.html#aca2c86475493e69240df30d7e06483ae", null ],
     [ "lbm_xsp_attr_setopt", "lbm_8h.html#ae52cbac6a22b495a3b48a70bf23fc118", null ],
@@ -1222,6 +1223,7 @@ var lbm_8h =
     [ "lbm_xsp_cancel_fd", "lbm_8h.html#aa8d3582b9bb8126a34924063ed00b8c4", null ],
     [ "lbm_xsp_create", "lbm_8h.html#ae38035c6036a84f07f9ba7cee1747dbf", null ],
     [ "lbm_xsp_delete", "lbm_8h.html#ac61812a1c86eb9d240054f9d3ba32ac5", null ],
+    [ "lbm_xsp_dump", "lbm_8h.html#aafc6d1e802f9ffed9d6e9293a5f1773d", null ],
     [ "lbm_xsp_process_events", "lbm_8h.html#a6bd865fcdeee4e0ec2bb31748ee76164", null ],
     [ "lbm_xsp_register_fd", "lbm_8h.html#ae289a20cdc857feeda3eaba9f286b946", null ],
     [ "lbm_xsp_unblock", "lbm_8h.html#a10fac6080617755671fe9743c5964168", null ]

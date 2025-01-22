@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">UM C API
-   &#160;<span id="projectnumber">6.16.1</span>
+   &#160;<span id="projectnumber">6.17</span>
    </div>
   </td>
  </tr>
@@ -76,15 +76,15 @@ $(document).ready(function(){initNavTree('lbmmon_8h.html','');});
 </div><!--header-->
 <div class="contents">
 
-<p>Ultra Messaging (UM) Monitoring API. The "lbmmon.h" header file defines APIs for UM application monitoring, both the send side (application being monitored) and the receive side (application doing the monitoring). The binary code is contained in the "lbm" library (dynamic on Unix: "liblbm.so", static on Unix: "liblbm.a", dynamic only on Windows: "lbm.dll"). See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/API/operations.tag:../Operations/" href="../Operations/monitoringumwiththelbmmonapi.html">Monitoring UM with the lbmmon API</a> for general information on UM monitoring. See <a class="el" href="index.html#umcapi">UM C API</a> for general information on the C API. See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/API/design.tag:../Design/" href="../Design/fundamentalconcepts.html">Fundamental Concepts</a> for an introduction to Ultra Messaging.  
+<p>Ultra Messaging (UM) Monitoring API. The "lbmmon.h" header file defines APIs for UM application monitoring, both the send side (application being monitored) and the receive side (application doing the monitoring). The binary code is contained in the "lbm" library (dynamic on Unix: "liblbm.so", static on Unix: "liblbm.a", dynamic only on Windows: "lbm.dll"). See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/API/operations.tag:../Operations/" href="../Operations/monitoringumwiththelbmmonapi.html">Monitoring UM with the lbmmon API</a> for general information on UM monitoring. See <a class="el" href="index.html#umcapi">UM C API</a> for general information on the C API. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/API/design.tag:../Design/" href="../Design/fundamentalconcepts.html">Fundamental Concepts</a> for an introduction to Ultra Messaging.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;stdlib.h&gt;</code><br />
 <code>#include &lt;lbm/lbm.h&gt;</code><br />
-<code>#include &lt;<a class="el" href="um__mon__attributes_8pb-c_8h_source.html">gen/um_mon_attributes.pb-c.h</a>&gt;</code><br />
-<code>#include &lt;<a class="el" href="ump__mon_8pb-c_8h_source.html">gen/ump_mon.pb-c.h</a>&gt;</code><br />
-<code>#include &lt;<a class="el" href="um__mon__control_8pb-c_8h_source.html">gen/um_mon_control.pb-c.h</a>&gt;</code><br />
-<code>#include &lt;<a class="el" href="ums__mon_8pb-c_8h_source.html">gen/ums_mon.pb-c.h</a>&gt;</code><br />
-<code>#include &lt;<a class="el" href="dro__mon_8pb-c_8h_source.html">gen/dro_mon.pb-c.h</a>&gt;</code><br />
+<code>#include &lt;gen/um_mon_attributes.pb-c.h&gt;</code><br />
+<code>#include &lt;gen/ump_mon.pb-c.h&gt;</code><br />
+<code>#include &lt;gen/um_mon_control.pb-c.h&gt;</code><br />
+<code>#include &lt;gen/ums_mon.pb-c.h&gt;</code><br />
+<code>#include &lt;gen/dro_mon.pb-c.h&gt;</code><br />
 <code>#include &lt;gen/srs_mon.pb-c.h&gt;</code><br />
 <code>#include &lt;lbm/lbmmonfmtcsv.h&gt;</code><br />
 <code>#include &lt;lbm/lbmmonfmtpb.h&gt;</code><br />
@@ -470,9 +470,9 @@ typedef struct <a class="el" href="structlbmmon__format__func__t__stct.html">lbm
 <tr class="memitem:ad55a6080ae8b949dce5b1223162d3587"><td class="memItemLeft" align="right" valign="top">typedef int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lbmmon_8h.html#ad55a6080ae8b949dce5b1223162d3587">lbmmon_transport_ctrlmsg_response_t</a>) (const char *Data, size_t Length, void *TransportClientData)</td></tr>
 <tr class="memdesc:ad55a6080ae8b949dce5b1223162d3587"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to send response to control message requests.  <a href="#ad55a6080ae8b949dce5b1223162d3587">More...</a><br /></td></tr>
 <tr class="separator:ad55a6080ae8b949dce5b1223162d3587"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a77ac57d9f956f2b6a384985e1e9da227"><td class="memItemLeft" align="right" valign="top">typedef const int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lbmmon_8h.html#a77ac57d9f956f2b6a384985e1e9da227">lbmmon_transport_allow_debug_t</a>) (void *TransportClientData)</td></tr>
-<tr class="memdesc:a77ac57d9f956f2b6a384985e1e9da227"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to return the allow debug indicator from a transport module.  <a href="#a77ac57d9f956f2b6a384985e1e9da227">More...</a><br /></td></tr>
-<tr class="separator:a77ac57d9f956f2b6a384985e1e9da227"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad4e22984a9220105966ee6c6186ff8dd"><td class="memItemLeft" align="right" valign="top">typedef int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lbmmon_8h.html#ad4e22984a9220105966ee6c6186ff8dd">lbmmon_transport_allow_debug_t</a>) (void *TransportClientData)</td></tr>
+<tr class="memdesc:ad4e22984a9220105966ee6c6186ff8dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to return the allow debug indicator from a transport module.  <a href="#ad4e22984a9220105966ee6c6186ff8dd">More...</a><br /></td></tr>
+<tr class="separator:ad4e22984a9220105966ee6c6186ff8dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad974f47e2c238886dad834dcdf318df1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad974f47e2c238886dad834dcdf318df1"></a>
 typedef struct <a class="el" href="structlbmmon__transport__func__t__stct.html">lbmmon_transport_func_t_stct</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lbmmon_8h.html#ad974f47e2c238886dad834dcdf318df1">lbmmon_transport_func_t</a></td></tr>
 <tr class="memdesc:ad974f47e2c238886dad834dcdf318df1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Transport module function pointer container. <br /></td></tr>
@@ -620,7 +620,7 @@ Functions</h2></td></tr>
 <tr class="separator:a9b3cb40ee6417d3e470224b99e8da8c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Ultra Messaging (UM) Monitoring API. The "lbmmon.h" header file defines APIs for UM application monitoring, both the send side (application being monitored) and the receive side (application doing the monitoring). The binary code is contained in the "lbm" library (dynamic on Unix: "liblbm.so", static on Unix: "liblbm.a", dynamic only on Windows: "lbm.dll"). See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/API/operations.tag:../Operations/" href="../Operations/monitoringumwiththelbmmonapi.html">Monitoring UM with the lbmmon API</a> for general information on UM monitoring. See <a class="el" href="index.html#umcapi">UM C API</a> for general information on the C API. See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/API/design.tag:../Design/" href="../Design/fundamentalconcepts.html">Fundamental Concepts</a> for an introduction to Ultra Messaging. </p>
+<div class="textblock"><p>Ultra Messaging (UM) Monitoring API. The "lbmmon.h" header file defines APIs for UM application monitoring, both the send side (application being monitored) and the receive side (application doing the monitoring). The binary code is contained in the "lbm" library (dynamic on Unix: "liblbm.so", static on Unix: "liblbm.a", dynamic only on Windows: "lbm.dll"). See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/API/operations.tag:../Operations/" href="../Operations/monitoringumwiththelbmmonapi.html">Monitoring UM with the lbmmon API</a> for general information on UM monitoring. See <a class="el" href="index.html#umcapi">UM C API</a> for general information on the C API. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/API/design.tag:../Design/" href="../Design/fundamentalconcepts.html">Fundamental Concepts</a> for an introduction to Ultra Messaging. </p>
 </div><h2 class="groupheader">Macro Definition Documentation</h2>
 <a class="anchor" id="a7e199ec349fa476cac44840e97e9d126"></a>
 <div class="memitem">
@@ -2274,12 +2274,12 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a77ac57d9f956f2b6a384985e1e9da227"></a>
+<a class="anchor" id="ad4e22984a9220105966ee6c6186ff8dd"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef const int(* lbmmon_transport_allow_debug_t) (void *TransportClientData)</td>
+          <td class="memname">typedef int(* lbmmon_transport_allow_debug_t) (void *TransportClientData)</td>
         </tr>
       </table>
 </div><div class="memdoc">

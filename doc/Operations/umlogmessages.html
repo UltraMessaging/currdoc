@@ -149,11 +149,11 @@ UM Core Messages&nbsp;&nbsp;<small><a href="#umcoremessages">&lt;-</a></small></
 <tr>
 <td>Core-10403-09: SRS Controller Connection (p) is unable to request more data on the stream from the Server (s:u)</td><td>SRS Controller is unable to request more data on the data stream from the server.</td><td>Make sure the server is running. </td></tr>
 <tr>
-<td>Core-10403-120: resolver_service entry (s:u) already exist. Skipping but continuing.</td><td>The lbm_context_attr_setopt/str_setopt() detected duplicate resolver_service entries. The duplicate entries will be skipped.</td><td>Check the config file or code (if config set via code) for duplicate resolver_service entries. Also check if <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#aecac05969bba0d6057589ca03dfe60a2">lbm_config()</a> is loaded multiple times with the same resolver_service entries </td></tr>
+<td>Core-10403-120: resolver_service entry (s:u) already exist. Skipping entry but continuing parsing.</td><td>The lbm_context_attr_setopt/str_setopt() detected duplicate resolver_service entries. The duplicate entries will be skipped.</td><td>Check the config file or code (if config set via code) for duplicate resolver_service entries. Also check if <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#aecac05969bba0d6057589ca03dfe60a2">lbm_config()</a> is loaded multiple times with the same resolver_service entries </td></tr>
 <tr>
-<td>Core-10403-150: Context (p) created with ContextID (u) and ContextName [s]</td><td>A Context was created with the given Context ID and name.</td><td>This is informational only and no action is required. </td></tr>
+<td>Core-10403-150: Context (p) created: ContextID (0xx), ContextName [s], Context Instance (0xs)</td><td>A Context was created. Parameters are 1. context address (LBMMON_ATTR_OBJECTID), 2. ContextID (used internally), 3. configured context_name attribute, 4. Context Instance ID (LBMMON_ATTR_CTXINST or Source ID option).</td><td>This is informational only and no action is required. </td></tr>
 <tr>
-<td>Core-10403-151: Reactor Only Context (p) created with ContextID (u) and ContextName [s]</td><td>A Reactor Only Context was created with the given Context ID and name.</td><td>This is informational only and no action is required. </td></tr>
+<td>Core-10403-151: Reactor Only Context (p) created with ContextID (0xx) and ContextName [s]</td><td>A Reactor Only Context was created with the given Context ID and name.</td><td>This is informational only and no action is required. </td></tr>
 <tr>
 <td>Core-10403-200: LBM SRS CTLR (p) received a log msg from RSock library (Level d: s)</td><td>SRS Controller got a log message from the RSock library.</td><td>Check the RSock message for more information. </td></tr>
 <tr>
@@ -247,9 +247,9 @@ UM Core Messages&nbsp;&nbsp;<small><a href="#umcoremessages">&lt;-</a></small></
 <tr>
 <td>Core-10824-2: malformed Application Header, dropping application data. (s:u)</td><td>LBM received a message with applications headers but there was not enough data to support application headers.</td><td>This packet is suspicious. Please check the source of the data. </td></tr>
 <tr>
-<td>Core-10960-01: SRS Remote Domain Route packet malformed (contains Domain ID 0). Dropping. Origin: s:u Route: s:u</td><td>SRS Data received contains invalid Domain ID.</td><td>Check the source (IP:Port) for possible version mismatch or service attack. </td></tr>
+<td>Core-10960-01: SRS Remote Domain Route packet malformed (contains Domain ID 0). Dropping. Origin: s:u Route: s:u index: u</td><td>SRS Data received contains invalid Domain ID.</td><td>Check the source (IP:Port) for possible version mismatch or service attack. </td></tr>
 <tr>
-<td>Core-10960-02: SRS Remote Domain Route End packet malformed (contains Domain ID 0). Dropping. Origin: s:u Route: s:u</td><td>SRS Data received contains invalid Domain ID.</td><td>Check the source (IP:Port) for possible version mismatch or service attack. </td></tr>
+<td>Core-10960-02: SRS Remote Domain Route End packet malformed (contains Domain ID 0). Dropping. Origin: s:u Route: s:u index: u</td><td>SRS Data received contains invalid Domain ID.</td><td>Check the source (IP:Port) for possible version mismatch or service attack. </td></tr>
 <tr>
 <td>Core-10960-100: unable to schedule interest update handling timer: ctx[p] s</td><td>Route info is handled asyncronously via a scheduled timer. An error occurred while trying to schedule this timer.</td><td>Please contact Informatica support. </td></tr>
 <tr>
@@ -309,11 +309,47 @@ UM Core Messages&nbsp;&nbsp;<small><a href="#umcoremessages">&lt;-</a></small></
 <tr>
 <td>Core-11187-2: Default value 's' invalid: s.</td><td>The LBM error message and message number associated with Core-11187-1.</td><td>Refer to the error message number to help correct the problem. </td></tr>
 <tr>
+<td>Core-11342-1: error trying to resolve SRS Service host name "%s"</td><td>An error occurred resolving the given SRS Service host name.</td><td>Check the resolver_service host name in the configuration to make sure it is valid. </td></tr>
+<tr>
 <td>Core-11416-3: NAK cutoff - disabling sending NAKs</td><td>A call was made to set the NAK cutoff switch to disable sending naks</td><td>Nothing needs to be done, this is an informational message </td></tr>
 <tr>
 <td>Core-11416-4: NAK cutoff - enabling sending NAKs</td><td>A call was made to set the NAK cutoff switch to enable sending naks</td><td>Nothing needs to be done, this is an informational message </td></tr>
 <tr>
 <td>Core-11416-5: Invalid flags value x</td><td>A call was made to set the NAK cutoff switch with an invalid flags value</td><td>See the API guide for correct values </td></tr>
+<tr>
+<td>Core-11438-01: could not bind bidirectional unicast socket to an ephemeral port: s</td><td>An error was returned while trying to bind to an ephemeral port.</td><td>Refer to the OS error message given. </td></tr>
+<tr>
+<td>Core-11442-1: error trying to Resolve Daemon host name "%s"</td><td>An error occurred resolving the given Resolver Daemon host name.</td><td>Check the resolver_unicast_daemon host name in the configuration to make sure it is valid. </td></tr>
+<tr>
+<td>Core-11442-2: error from CreateThread error(d)</td><td>An error occurred creating a thread for Host Name resolution.</td><td>Check the CreateThread error given. </td></tr>
+<tr>
+<td>Core-11442-3: error from pthread_create error(d)</td><td>An error occurred creating a thread for Host Name resolution.</td><td>Check the CreateThread error given. </td></tr>
+<tr>
+<td>Core-11442-4: timeout trying to delete Host Name resolution thread</td><td>An timeout occurred trying to delete the Host Name resolution thread.</td><td>Check processor allocation and load. </td></tr>
+<tr>
+<td>Core-11446-01: could not set SO_REUSEADDR on bidirectional unicast socket: s</td><td>An error was returned from the OS while trying to set the socket option SO_REUSEADDR.</td><td>Refer to the OS error message given. </td></tr>
+<tr>
+<td>Core-11446-03: could not set SO_REUSEPORT on bidirectional unicast socket: s</td><td>An error was returned from the OS while trying to set the socket option SO_REUSEPORT.</td><td>Refer to the OS error message given. </td></tr>
+<tr>
+<td>Core-11446-05: SSL_write was unable to write any data [s:d]. Disconnected?</td><td>The Dgram TLS UDP socket SSL_write failed.</td><td>This is likely due to a remote end disconnect. See the IP and Port given. </td></tr>
+<tr>
+<td>Core-11446-06: SSL_write was unable to write any data [s:d]. Disconnected?</td><td>The Dgram TLS UDP socket SSL_write failed.</td><td>This is likely due to a remote end disconnect. See the IP and Port given. </td></tr>
+<tr>
+<td>Core-11458-10: Route discovered to Domain ID u through s:d route index: d</td><td>A new route to the given Domain ID was discovered.</td><td>This is normal upon startup of Gateways. </td></tr>
+<tr>
+<td>Core-11458-11: Route to Domain ID u through s:d has resulted in exceeding the Route Index limit of d...dropping</td><td>A new indexed route to the given Domain ID was discovered but the number of indexed routes has been reached.</td><td>Check the configured indexed routes and make sure there are no more than the limit given. </td></tr>
+<tr>
+<td>Core-11476-2: lbm_fd_register_internal returned error u [s]</td><td>Internal error while handling socket.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>Core-11476-3: lbm_fd_register_internal returned error u [s]</td><td>Internal error while handling socket.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>Core-11476-4: lbm_fd_register_internal returned error u [s]</td><td>Internal error while handling socket.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>Core-11476-5: lbm_fd_register_internal returned error u [s]</td><td>Internal error while handling socket.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>Core-11476-6: unrecognized node action (d)</td><td>Internal error while handling socket.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>Core-11476-7: Too many errors while processing file descriptors (d, max_errors=d)</td><td>Internal error while handling socket.</td><td>Contact Informatica support. </td></tr>
 <tr>
 <td>Core-3398-1: Socket close timed out before receive buffer drain complete. lu bytes discarded from source (s).</td><td>Socket close timedout, but receive buffer has not been drained fully yet. On this close socket you may see connection resets.</td><td></td></tr>
 <tr>
@@ -421,7 +457,7 @@ UM Core Messages&nbsp;&nbsp;<small><a href="#umcoremessages">&lt;-</a></small></
 <tr>
 <td>Core-5688-1804: HF message receiver function returned -1</td><td>An error occurred processing a message received by a hot failover receiver. The message was discarded.</td><td>If this occurs frequently, contact Informatica support. </td></tr>
 <tr>
-<td>Core-5688-1807: LBM_DEBUG_MAXSIZE is greater than 4,294,967,295. Limiting to max.</td><td>Maximum rollover file size is capped at 4,294,967,295 (LBM_DEBUG_LOG_ROLLOVER_SIZE_MAX)</td><td>Set LBM_DEBUG_MAXSIZE and/or the parameter for <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#ac4410a1188555d16996be6b269bb0ef7">lbm_debugfile_maxsize()</a> to a lesser value to avoid this warning </td></tr>
+<td>Core-5688-1807: LBM_DEBUG_MAXSIZE is greater than 4,294,967,295. Limiting to max.</td><td>Maximum rollover file size is capped at 4,294,967,295 (LBM_DEBUG_LOG_ROLLOVER_SIZE_MAX)</td><td>Set LBM_DEBUG_MAXSIZE and/or the parameter for <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#ac4410a1188555d16996be6b269bb0ef7">lbm_debugfile_maxsize()</a> to a lesser value to avoid this warning </td></tr>
 <tr>
 <td>Core-5688-1811: FATAL: WSA startup error - d</td><td>FATAL: Error in starting Windows Socket. The specific Windows Sockets Error Code is returned in the error message.</td><td></td></tr>
 <tr>
@@ -909,8 +945,6 @@ UM Core Messages&nbsp;&nbsp;<small><a href="#umcoremessages">&lt;-</a></small></
 <tr>
 <td>Core-5688-410: failed to allocate hypertopic callback vector of u bytes [s:d]</td><td>There was a memory allocation failure while creating the vector of callbacks associated with a received message destined for a HyperTopic receiver. This means that a message will not be delivered to some subset of registered HyperTopic receivers.</td><td></td></tr>
 <tr>
-<td>Core-5688-428: INFO: realloced max rate controller srcs to u</td><td>This occurs when a lbtru source has a larger than expected number of clients (10*number of transports configured). This may be expected, in which case this can be ignored. It could also indicate a misconfiguration.</td><td>Verify that the number of clients for the source in question is correct. </td></tr>
-<tr>
 <td>Core-5688-429: WARNING: realloced max rate controller srcs to u</td><td>This occurs when a lbtru source has a larger than expected number of clients (10*number of transports configured). This may be expected, in which case this can be ignored. It could also indicate a misconfiguration.</td><td>Verify that the number of clients for the source in question is correct. </td></tr>
 <tr>
 <td>Core-5688-434: received read indication on daemon connection - unknown socket</td><td>This message is used for internal purpose.</td><td>Contact Informatica support. </td></tr>
@@ -1213,7 +1247,7 @@ UM Core Messages&nbsp;&nbsp;<small><a href="#umcoremessages">&lt;-</a></small></
 <tr>
 <td>Core-6259-19: LBMC Topic Index header size incorrect. Dropping. Origin: s:d.</td><td>Topic Index message header contains incorrect size.</td><td>Check source (IP:Port) for possible version mismatch or service attack. </td></tr>
 <tr>
-<td>Core-6259-1: Re-routing Domain ID u: old: s:d new: s:d</td><td>There was a change in the route to the given host. This can happen at startup, when a Gateway goes down, or when there is connectivity problem.</td><td>This is normal on occasion. Persistent messages could indicate a network or Gateway issue. </td></tr>
+<td>Core-6259-1: Re-routing Domain ID u: old: s:d new: s:d route index: d</td><td>There was a change in the route to the given host. This can happen at startup, when a Gateway goes down, or when there is connectivity problem.</td><td>This is normal on occasion. Persistent messages could indicate a network or Gateway issue. </td></tr>
 <tr>
 <td>Core-6259-20: Domain ID discovered; context resides in Domain ID u</td><td>Log message indicates a Domain ID discovery.</td><td>This is not an error. </td></tr>
 <tr>
@@ -1227,7 +1261,7 @@ UM Core Messages&nbsp;&nbsp;<small><a href="#umcoremessages">&lt;-</a></small></
 <tr>
 <td>Core-6259-25: Deserialize Response: Context in domain u received response with no domain: s:d</td><td>A context that knows it's domain deserialized a response that contained no Domain ID. The response will likely not get back to the sender. This could happen momentarily as an LBM contexts learn their domain routes at startup.</td><td>If the warning persists, the Gateway configuration should be examined for inconsistencies. </td></tr>
 <tr>
-<td>Core-6259-26: Route discovered to Domain ID u through s:d</td><td>A new route to the given Domain ID was discovered.</td><td>This is normal upon startup of Gateways. </td></tr>
+<td>Core-6259-26: Route discovered to Domain ID u through s:d route index: d</td><td>A new route to the given Domain ID was discovered.</td><td>This is normal upon startup of Gateways. </td></tr>
 <tr>
 <td>Core-6259-27: Unicast message arrived at Gateway from Local Domain via direct path. Source: s:u</td><td>A Unicast Message arrived at a Gateway destined for the local Domain.</td><td>A user has likely unicast a message directly to the Gateway. The user needs to Unicast the message to the final application. UMS will take care of the routing. </td></tr>
 <tr>
@@ -1235,7 +1269,7 @@ UM Core Messages&nbsp;&nbsp;<small><a href="#umcoremessages">&lt;-</a></small></
 <tr>
 <td>Core-6259-29: Unicast message arrived at Gateway from Local Domain via direct path. Source: s:u</td><td>A Unicast Message arrived at a Gateway destined for the local Domain.</td><td>A user has likely unicast a message directly to the Gateway. The user needs to Unicast the message to the final application. UMS will take care of the routing. </td></tr>
 <tr>
-<td>Core-6259-2: Route discovered to Domain ID u through s:d</td><td>A new route to the given Domain ID was discovered.</td><td>This is normal upon startup of Gateways. </td></tr>
+<td>Core-6259-2: Route discovered to Domain ID u through s:d route index: d</td><td>A new route to the given Domain ID was discovered.</td><td>This is normal upon startup of Gateways. </td></tr>
 <tr>
 <td>Core-6259-30: Unicast message arrived from Remote Domain (u) via direct path. Source: s:u</td><td>A Unicast Message arrived with the destination domain different that the local domain (unicast direct).</td><td>A user has likely unicast a message directly to an application in a different domain. If this is desired, either specify a zero Domain ID or don't supply a Domain ID. Using the local Domain ID will not suffice. </td></tr>
 <tr>
@@ -1861,13 +1895,13 @@ UM Core Messages&nbsp;&nbsp;<small><a href="#umcoremessages">&lt;-</a></small></
 <tr>
 <td>Core-9612-2: received lji request, but Late-Join not configured: from ip:port[s:d] for topic[u]</td><td>UMS received Late Join Request message however late-join is not configured for this source. This is not a serious problem but indicates that there is a mismatch between this process and another.</td><td>Check the system for port re-use on application restart and similar behavior. </td></tr>
 <tr>
-<td>Core-9625-1: WARNING: resovler_unicast_daemon entry (s:u) already exist. Skipping...</td><td>The lbm_context_attr_set/sset() detected duplicate unicast resolver entries. The duplicate entries will be skipped.</td><td>Check the config file or code (if config set via code) for duplicate resolver_unicast_daemon entries. Also check if <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#aecac05969bba0d6057589ca03dfe60a2">lbm_config()</a> is loaded multiple times with the same resolver_unicast_daemon entries </td></tr>
+<td>Core-9625-1: WARNING: resovler_unicast_daemon entry (s:u) already exist. Skipping...</td><td>The lbm_context_attr_set/sset() detected duplicate unicast resolver entries. The duplicate entries will be skipped.</td><td>Check the config file or code (if config set via code) for duplicate resolver_unicast_daemon entries. Also check if <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#aecac05969bba0d6057589ca03dfe60a2">lbm_config()</a> is loaded multiple times with the same resolver_unicast_daemon entries </td></tr>
 <tr>
-<td>Core-9626-1: WARNING: ume_store entry (u:s:u:u:u) already exist. Skipping...</td><td>The <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a96ea052dce2e6376684cbf2003407cbf">lbm_src_topic_attr_setopt()</a> detected duplicate ume_store entries. The duplicate entries will be skipped.</td><td>Check the config file or code (if config set via code) for duplicate ume_store entries. Also check if <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#aecac05969bba0d6057589ca03dfe60a2">lbm_config()</a> is loaded multiple times with the same ume_store entries </td></tr>
+<td>Core-9626-1: WARNING: ume_store entry (u:s:u:u:u) already exist. Skipping...</td><td>The <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a96ea052dce2e6376684cbf2003407cbf">lbm_src_topic_attr_setopt()</a> detected duplicate ume_store entries. The duplicate entries will be skipped.</td><td>Check the config file or code (if config set via code) for duplicate ume_store entries. Also check if <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#aecac05969bba0d6057589ca03dfe60a2">lbm_config()</a> is loaded multiple times with the same ume_store entries </td></tr>
 <tr>
-<td>Core-9626-2: WARNING: ume_store_name entry (s:u:u) already exist. Skipping...</td><td>The <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a96ea052dce2e6376684cbf2003407cbf">lbm_src_topic_attr_setopt()</a> detected duplicate ume_store_name entries. The duplicate entries will be skipped.</td><td>Check the config file or code (if config set via code) for duplicate ume_store_name entries. Also check if <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#aecac05969bba0d6057589ca03dfe60a2">lbm_config()</a> is loaded multiple times with the same ume_store_name entries </td></tr>
+<td>Core-9626-2: WARNING: ume_store_name entry (s:u:u) already exist. Skipping...</td><td>The <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a96ea052dce2e6376684cbf2003407cbf">lbm_src_topic_attr_setopt()</a> detected duplicate ume_store_name entries. The duplicate entries will be skipped.</td><td>Check the config file or code (if config set via code) for duplicate ume_store_name entries. Also check if <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#aecac05969bba0d6057589ca03dfe60a2">lbm_config()</a> is loaded multiple times with the same ume_store_name entries </td></tr>
 <tr>
-<td>Core-9640-1: WARNING: broker entry (s:u) already exist. Skipping...</td><td>The lbm_context_attr_setopt/str_setopt() detected duplicate broker entries. The duplicate entries will be skipped.</td><td>Check the config file or code (if config set via code) for duplicate broker entries. Also check if <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#aecac05969bba0d6057589ca03dfe60a2">lbm_config()</a> is loaded multiple times with the same broker entries </td></tr>
+<td>Core-9640-1: WARNING: broker entry (s:u) already exist. Skipping...</td><td>The lbm_context_attr_setopt/str_setopt() detected duplicate broker entries. The duplicate entries will be skipped.</td><td>Check the config file or code (if config set via code) for duplicate broker entries. Also check if <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#aecac05969bba0d6057589ca03dfe60a2">lbm_config()</a> is loaded multiple times with the same broker entries </td></tr>
 <tr>
 <td>Core-9709-1: epoll_ctl: EPOLL_CTL_DEL returned: errno:d:s</td><td>epoll returned an error during lbm_cancel_fd call</td><td></td></tr>
 <tr>
@@ -2259,7 +2293,7 @@ UM Core API Messages&nbsp;&nbsp;<small><a href="#umcoreapimessages">&lt;-</a></s
 <tr>
 <td>CoreApi-10347-35: optlen too small</td><td>Size of optlen was too small</td><td>Size of optlen must be at least 80 </td></tr>
 <tr>
-<td>CoreApi-10358-01: timeout (msec) must be zero when LBM_PROC_EVENT_EX_FLAG_USER_TIME is enabled</td><td>When setting the LBM_PROC_EVENT_EX_FLAG_USER_TIME flag, the user must set the timeout (msec) to zero to ensure that LBM gets needed time value updates.</td><td>Calls to <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a55b77c3057028116314fe5ff8e6afb25">lbm_context_process_events_ex()</a> need to set the timeout to zero when the LBM_PROC_EVENT_EX_FLAG_USER_TIME is set. </td></tr>
+<td>CoreApi-10358-01: timeout (msec) must be zero when LBM_PROC_EVENT_EX_FLAG_USER_TIME is enabled</td><td>When setting the LBM_PROC_EVENT_EX_FLAG_USER_TIME flag, the user must set the timeout (msec) to zero to ensure that LBM gets needed time value updates.</td><td>Calls to <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a55b77c3057028116314fe5ff8e6afb25">lbm_context_process_events_ex()</a> need to set the timeout to zero when the LBM_PROC_EVENT_EX_FLAG_USER_TIME is set. </td></tr>
 <tr>
 <td>CoreApi-10369-10: optlen incorrect size</td><td>Size of optlen was incorrect for setting integer option</td><td>optlen must be size of int </td></tr>
 <tr>
@@ -2359,7 +2393,7 @@ UM Core API Messages&nbsp;&nbsp;<small><a href="#umcoreapimessages">&lt;-</a></s
 <tr>
 <td>CoreApi-10571-5: Messages properties not supported</td><td>The Messages properties is not supported with smart source send request.</td><td>Do not set exinfo flags to LBM_SSRC_SEND_EX_FLAG_PROPERTIES. </td></tr>
 <tr>
-<td>CoreApi-10571-6: The message len (d) exceeds max length (d) bytes.</td><td>Message fragmentation is not supported with smart source send request.</td><td>Either reduce the message length or tune max datagram size and smart_src_max_message_length. See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/Operations/design.tag:../Design/" href="../Design/advancedoptimizations.html#smartsourcemessagebuffers">Smart Source Message Buffers</a> for more information on the smart source fragmentation </td></tr>
+<td>CoreApi-10571-6: The message len (d) exceeds max length (d) bytes.</td><td>Message fragmentation is not supported with smart source send request.</td><td>Either reduce the message length or tune max datagram size and smart_src_max_message_length. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/Operations/design.tag:../Design/" href="../Design/advancedoptimizations.html#smartsourcemessagebuffers">Smart Source Message Buffers</a> for more information on the smart source fragmentation </td></tr>
 <tr>
 <td>CoreApi-10679-1: lbm_socket_send bad channel: p</td><td>A DBL call to get peer ip address and port was made with a bad channel specified.</td><td>Contact Informatica support. </td></tr>
 <tr>
@@ -2497,9 +2531,157 @@ UM Core API Messages&nbsp;&nbsp;<small><a href="#umcoreapimessages">&lt;-</a></s
 <tr>
 <td>CoreApi-11325-2: Request send bytes (d) exceeds flight size bytes maximum, unable to send.</td><td>Attempted to send a single message with length greater than the maximum limit while using UMP flight size blocking behavior. The length includes customer payload but might also include additional data such as message properties.</td><td>Send smaller messages or increase source ume_flight_size_bytes option. </td></tr>
 <tr>
+<td>CoreApi-11390-1: value at size must be greater than 0</td><td>An error occurs when the value of *size is less than 1.</td><td>size must be greater than 0 for the function to proceed. </td></tr>
+<tr>
+<td>CoreApi-11390-2: attr must be valid</td><td>This error occurs if attr is NULL. The function requires attr to be a valid, non-NULL pointer.</td><td>Validate that attr is not NULL in the code to avoid passing an invalid pointer. </td></tr>
+<tr>
+<td>CoreApi-11390-3: opts must be valid</td><td>This error occurs if opts is NULL. The function checks whether the opts pointer is NULL and requires it to be a valid, non-NULL pointer to proceed.</td><td>Verify in your code that opts is not NULL before the function call to avoid this error. If necessary, allocate memory for opts and check the allocation was successful. </td></tr>
+<tr>
+<td>CoreApi-11390-4: xspi must be valid</td><td>This error indicates that the xspi pointer is NULL. The function checks if xspi is NULL and requires it to be a valid, non-NULL pointer to continue.</td><td>Check that xspi is not NULL in your code to avoid passing an invalid pointer. If necessary, allocate memory for xspi and verify that the allocation was successful. </td></tr>
+<tr>
 <td>CoreApi-11416-1: ctx must be valid</td><td>lbm_context_set_nak_cutoff called with a NULL context pointer</td><td>Specify a valid context pointer </td></tr>
 <tr>
 <td>CoreApi-11416-2: ctx is reactor only</td><td>lbm_context_set_nak_cutoff called with a reactor only context pointer</td><td>Specify a valid context pointer </td></tr>
+<tr>
+<td>CoreApi-11438-02: transport_lbtru_allow_ephemeral optlen incorrect size</td><td>Setting transport_lbtru_allow_ephemeral with the incorrect option size. Size is lbm_uint16_t.</td><td>Correct the size given when setting the config option. </td></tr>
+<tr>
+<td>CoreApi-11438-03: transport_lbtru_allow_ephemeral optval must be 0 or 1</td><td>Setting transport_lbtru_allow_ephemeral with a value out of range. Only 0 and 1 are allowed.</td><td>Correct the value given when setting the config option. </td></tr>
+<tr>
+<td>CoreApi-11438-04: transport_lbtru_allow_ephemeral optval not numeric</td><td>Setting transport_lbtru_allow_ephemeral with a non-numeric string.</td><td>Correct the string given when setting the config option. </td></tr>
+<tr>
+<td>CoreApi-11438-05: transport_lbtru_allow_ephemeral optval must be 0 or 1</td><td>Setting transport_lbtru_allow_ephemeral with a value out of range. Only 0 and 1 are allowed.</td><td>Correct the value given when setting the config option. </td></tr>
+<tr>
+<td>CoreApi-11438-06: transport_lbtru_allow_ephemeral optlen incorrect size</td><td>Getting transport_lbtru_allow_ephemeral with the incorrect option size. Size is lbm_uint16_t.</td><td>Correct the size given when getting the config option. </td></tr>
+<tr>
+<td>CoreApi-11438-07: transport_lbtru_allow_ephemeral optlen too small</td><td>Getting transport_lbtru_allow_ephemeral with a string that is too short. Minimum size is 80 bytes.</td><td>Correct the size given when getting the config option string. </td></tr>
+<tr>
+<td>CoreApi-11446-02: could not set SO_REUSEADDR on bidirectional unicast socket: s</td><td>An error was returned from the OS while trying to set the socket option SO_REUSEADDR.</td><td>Refer to the OS error message given. </td></tr>
+<tr>
+<td>CoreApi-11446-04: could not set SO_REUSEPORT on bidirectional unicast socket: s</td><td>An error was returned from the OS while trying to set the socket option SO_REUSEPORT.</td><td>Refer to the OS error message given. </td></tr>
+<tr>
+<td>CoreApi-11453-10: value not equal to 0 must be greater than or equal to d</td><td>The option lbtrm_receiver_datagram_max_size size is too small.</td><td>The expected size is 0 or at least the value of 500. </td></tr>
+<tr>
+<td>CoreApi-11453-11: value must be less than or equal to d</td><td>The option lbtrm_receiver_datagram_max_size size is too large.</td><td>The expected size is less than or equal to 65535. </td></tr>
+<tr>
+<td>CoreApi-11453-12: datagram size not a number</td><td>The option lbtrm_receiver_datagram_max_size is not set to a numeric value.</td><td>Set the option to a numeric value. </td></tr>
+<tr>
+<td>CoreApi-11453-13: value not equal to 0 must be greater than or equal to d</td><td>The option lbtrm_receiver_datagram_max_size size is too small.</td><td>The expected size is 0 or at least the value of 500. </td></tr>
+<tr>
+<td>CoreApi-11453-14: value must be less than or equal to d</td><td>The option lbtrm_receiver_datagram_max_size size is too large.</td><td>The expected size is less than or equal to 65535. </td></tr>
+<tr>
+<td>CoreApi-11453-15: optlen incorrect size</td><td>The option lbtrm_receiver_datagram_max_size size is incorrect.</td><td>The expected size is sizeof(lbm_uint_t). </td></tr>
+<tr>
+<td>CoreApi-11453-16: optlen too small</td><td>The option lbtrm_receiver_datagram_max_size string length is too small.</td><td>The expected string length is at least 80. </td></tr>
+<tr>
+<td>CoreApi-11453-17: optlen incorrect size</td><td>The option lbtru_source_datagram_max_size size is incorrect.</td><td>The expected size is sizeof(lbm_uint_t). </td></tr>
+<tr>
+<td>CoreApi-11453-18: value not equal to 0 must be greater than or equal to d</td><td>The option lbtru_source_datagram_max_size size is too small.</td><td>The expected size is 0 or at least the value of 500. </td></tr>
+<tr>
+<td>CoreApi-11453-19: value must be less than or equal to d</td><td>The option lbtru_source_datagram_max_size size is too large.</td><td>The expected size is less than or equal to 65535. </td></tr>
+<tr>
+<td>CoreApi-11453-1: optlen incorrect size</td><td>The option lbtrm_source_datagram_max_size size is incorrect.</td><td>The expected size is sizeof(lbm_uint_t). </td></tr>
+<tr>
+<td>CoreApi-11453-20: datagram size not a number</td><td>The option lbtru_source_datagram_max_size is not set to a numeric value.</td><td>Set the option to a numeric value. </td></tr>
+<tr>
+<td>CoreApi-11453-21: value not equal to 0 must be greater than or equal to d</td><td>The option lbtru_source_datagram_max_size size is too small.</td><td>The expected size is 0 or at least the value of 500. </td></tr>
+<tr>
+<td>CoreApi-11453-22: value must be less than or equal to d</td><td>The option lbtru_source_datagram_max_size size is too large.</td><td>The expected size is less than or equal to 65535. </td></tr>
+<tr>
+<td>CoreApi-11453-23: optlen incorrect size</td><td>The option lbtru_source_datagram_max_size size is incorrect.</td><td>The expected size is sizeof(lbm_uint_t). </td></tr>
+<tr>
+<td>CoreApi-11453-24: optlen too small</td><td>The option lbtru_source_datagram_max_size string length is too small.</td><td>The expected string length is at least 80. </td></tr>
+<tr>
+<td>CoreApi-11453-25: optlen incorrect size</td><td>The option lbtru_receiver_datagram_max_size size is incorrect.</td><td>The expected size is sizeof(lbm_uint_t). </td></tr>
+<tr>
+<td>CoreApi-11453-26: value not eaual to 0 must be greater than or equal to d</td><td>The option lbtru_receiver_datagram_max_size size is too small.</td><td>The expected size is 0 or at least the value of 500. </td></tr>
+<tr>
+<td>CoreApi-11453-27: value must be less than or equal to d</td><td>The option lbtru_receiver_datagram_max_size size is too large.</td><td>The expected size is less than or equal to 65535. </td></tr>
+<tr>
+<td>CoreApi-11453-28: datagram size not a number</td><td>The option lbtru_receiver_datagram_max_size is not set to a numeric value.</td><td>Set the option to a numeric value. </td></tr>
+<tr>
+<td>CoreApi-11453-29: value not equal to 0 must be greater than or equal to d</td><td>The option lbtru_receiver_datagram_max_size size is too small.</td><td>The expected size is 0 or at least the value of 500. </td></tr>
+<tr>
+<td>CoreApi-11453-2: value not equal to 0 must be greater than or equal to d</td><td>The option lbtrm_source_datagram_max_size size is too small.</td><td>The expected size is 0 or at least the value of 500. </td></tr>
+<tr>
+<td>CoreApi-11453-30: value must be less than or equal to d</td><td>The option lbtru_receiver_datagram_max_size size is too large.</td><td>The expected size is less than or equal to 65535. </td></tr>
+<tr>
+<td>CoreApi-11453-31: optlen incorrect size</td><td>The option lbtru_receiver_datagram_max_size size is incorrect.</td><td>The expected size is sizeof(lbm_uint_t). </td></tr>
+<tr>
+<td>CoreApi-11453-32: optlen too small</td><td>The option lbtru_receiver_datagram_max_size string length is too small.</td><td>The expected string length is at least 80. </td></tr>
+<tr>
+<td>CoreApi-11453-3: value must be less than or equal to d</td><td>The option lbtrm_source_datagram_max_size size is too large.</td><td>The expected size is less than or equal to 65535. </td></tr>
+<tr>
+<td>CoreApi-11453-49: optlen incorrect size</td><td>The option res_source_datagram_max_size size is incorrect.</td><td>The expected size is sizeof(lbm_uint_t). </td></tr>
+<tr>
+<td>CoreApi-11453-4: datagram size not a number</td><td>The option lbtrm_source_datagram_max_size is not set to a numeric value.</td><td>Set the option to a numeric value. </td></tr>
+<tr>
+<td>CoreApi-11453-50: value must be greater than or equal to d</td><td>The option res_source_datagram_max_size size is too small.</td><td>The expected size is 0 or at least the value of 500. </td></tr>
+<tr>
+<td>CoreApi-11453-51: value must be less than or equal to d</td><td>The option res_source_datagram_max_size size is too large.</td><td>The expected size is less than or equal to 65535. </td></tr>
+<tr>
+<td>CoreApi-11453-52: datagram size not a number</td><td>The option res_source_datagram_max_size is not set to a numeric value.</td><td>Set the option to a numeric value. </td></tr>
+<tr>
+<td>CoreApi-11453-53: value must be greater than or equal to d</td><td>The option res_source_datagram_max_size size is too small.</td><td>The expected size is 0 or at least the value of 500. </td></tr>
+<tr>
+<td>CoreApi-11453-54: value must be less than or equal to d</td><td>The option res_source_datagram_max_size size is too large.</td><td>The expected size is less than or equal to 65535. </td></tr>
+<tr>
+<td>CoreApi-11453-55: optlen incorrect size</td><td>The option res_source_datagram_max_size size is incorrect.</td><td>The expected size is sizeof(lbm_uint_t). </td></tr>
+<tr>
+<td>CoreApi-11453-56: optlen too small</td><td>The option res_source_datagram_max_size string length is too small.</td><td>The expected string length is at least 80. </td></tr>
+<tr>
+<td>CoreApi-11453-57: optlen incorrect size</td><td>The option res_receiver_datagram_max_size size is incorrect.</td><td>The expected size is sizeof(lbm_uint_t). </td></tr>
+<tr>
+<td>CoreApi-11453-58: value must be greater than or equal to d</td><td>The option res_receiver_datagram_max_size size is too small.</td><td>The expected size is 0 or at least the value of 500. </td></tr>
+<tr>
+<td>CoreApi-11453-59: value must be less than or equal to d</td><td>The option res_receiver_datagram_max_size size is too large.</td><td>The expected size is less than or equal to 65535. </td></tr>
+<tr>
+<td>CoreApi-11453-5: value not equal to 0 must be greater than or equal to d</td><td>The option lbtrm_source_datagram_max_size size is too small.</td><td>The expected size is 0 or at least the value of 500. </td></tr>
+<tr>
+<td>CoreApi-11453-60: datagram size not a number</td><td>The option res_receiver_datagram_max_size is not set to a numeric value.</td><td>Set the option to a numeric value. </td></tr>
+<tr>
+<td>CoreApi-11453-61: value must be greater than or equal to d</td><td>The option res_receiver_datagram_max_size size is too small.</td><td>The expected size is 0 or at least the value of 500. </td></tr>
+<tr>
+<td>CoreApi-11453-62: value must be less than or equal to d</td><td>The option res_receiver_datagram_max_size size is too large.</td><td>The expected size is less than or equal to 65535. </td></tr>
+<tr>
+<td>CoreApi-11453-63: optlen incorrect size</td><td>The option res_receiver_datagram_max_size size is incorrect.</td><td>The expected size is sizeof(lbm_uint_t). </td></tr>
+<tr>
+<td>CoreApi-11453-64: optlen too small</td><td>The option res_receiver_datagram_max_size string length is too small.</td><td>The expected string length is at least 80. </td></tr>
+<tr>
+<td>CoreApi-11453-6: value must be less than or equal to d</td><td>The option lbtrm_source_datagram_max_size size is too large.</td><td>The expected size is less than or equal to 65535. </td></tr>
+<tr>
+<td>CoreApi-11453-7: optlen incorrect size</td><td>The option lbtrm_source_datagram_max_size size is incorrect.</td><td>The expected size is sizeof(lbm_uint_t). </td></tr>
+<tr>
+<td>CoreApi-11453-8: optlen too small</td><td>The option lbtrm_source_datagram_max_size string length is too small.</td><td>The expected string length is at least 80. </td></tr>
+<tr>
+<td>CoreApi-11453-9: optlen incorrect size</td><td>The option lbtrm_receiver_datagram_max_size size is incorrect.</td><td>The expected size is sizeof(lbm_uint_t). </td></tr>
+<tr>
+<td>CoreApi-11458-100: use_hotlink not allowed with lbm_hf_rcv_create</td><td>The function lbm_hf_rcv_create is not allowed when receiver attribute use_hotlink is enabled.</td><td>Change the configuration accordingly. </td></tr>
+<tr>
+<td>CoreApi-11458-101: use_hotlink not allowed with lbm_hf_src_create</td><td>The function lbm_hf_src_create is not allowed when source attribute use_hotlink is enabled.</td><td>Change the configuration accordingly. </td></tr>
+<tr>
+<td>CoreApi-11458-20: optlen for use_hotlink incorrect size</td><td>The optlen parameter for use_hotlink is not the correct size.</td><td>The optlen needs to be sizeof(int). </td></tr>
+<tr>
+<td>CoreApi-11458-21: optval for use_hotlink must be 0 or 1</td><td>The optval parameter for use_hotlink is out of range.</td><td>The optval needs to be 0 or 1. </td></tr>
+<tr>
+<td>CoreApi-11458-22: optval for use_hotlink not numeric</td><td>The optval parameter for use_hotlink is not numeric.</td><td>The optlen needs to be a numeric value. </td></tr>
+<tr>
+<td>CoreApi-11458-23: optval for use_hotlink must be 0 or 1</td><td>The optval parameter for use_hotlink is out of range.</td><td>The optval needs to be 0 or 1. </td></tr>
+<tr>
+<td>CoreApi-11458-24: optlen for use_hotlink incorrect size</td><td>The optlen parameter for use_hotlink is not the correct size.</td><td>The optlen needs to be sizeof(int). </td></tr>
+<tr>
+<td>CoreApi-11458-25: optlen too small</td><td>The optlen parameter for use_hotlink is not the correct size.</td><td>The optlen for getting string value at leastt 80 bytes. </td></tr>
+<tr>
+<td>CoreApi-11458-30: optlen for use_hotlink incorrect size</td><td>The optlen parameter for use_hotlink is not the correct size.</td><td>The optlen needs to be sizeof(int). </td></tr>
+<tr>
+<td>CoreApi-11458-31: optval for use_hotlink must be 0 or 1</td><td>The optval parameter for use_hotlink is out of range.</td><td>The optval needs to be 0 or 1. </td></tr>
+<tr>
+<td>CoreApi-11458-32: optval for use_hotlink not numeric</td><td>The optval parameter for use_hotlink is not numeric.</td><td>The optlen needs to be a numeric value. </td></tr>
+<tr>
+<td>CoreApi-11458-33: optval for use_hotlink must be 0 or 1</td><td>The optval parameter for use_hotlink is out of range.</td><td>The optval needs to be 0 or 1. </td></tr>
+<tr>
+<td>CoreApi-11458-34: optlen for use_hotlink incorrect size</td><td>The optlen parameter for use_hotlink is not the correct size.</td><td>The optlen needs to be sizeof(int). </td></tr>
+<tr>
+<td>CoreApi-11458-35: optlen too small</td><td>The optlen parameter for use_hotlink is not the correct size.</td><td>The optlen for getting string value at leastt 80 bytes. </td></tr>
 <tr>
 <td>CoreApi-3288-1: optlen incorrect size</td><td>Attempted to set wildcard receiver attribute "hf_receiver" using the wrong size optlen.</td><td>The parameter "optlen" must be the size of an integer. </td></tr>
 <tr>
@@ -2543,7 +2725,7 @@ UM Core API Messages&nbsp;&nbsp;<small><a href="#umcoreapimessages">&lt;-</a></s
 <tr>
 <td>CoreApi-5243-1: TCP server socket: s</td><td>An error was returned from the OS while trying to create a socket (TCP). Refer to the OS error number and message given after the UMS message "TCP server socket".</td><td></td></tr>
 <tr>
-<td>CoreApi-5243-2: TCP server listen: s</td><td>An error was returned from the OS while trying to listen to a socket (TCP). Refer to the OS error number and message given after the UMS message "TCP server listen".</td><td></td></tr>
+<td>CoreApi-5243-2: TCP server listen: s</td><td>An error was returned from the OS while trying to listen to a socket (TCP).</td><td>Refer to the OS error number and message given after the UMS message "TCP server listen". </td></tr>
 <tr>
 <td>CoreApi-5243-3: TCP server getsockname: s</td><td>An error was returned from the OS while trying to get the name of a socket (TCP). Refer to the OS error number and message given after the UMS message "TCP server getsockname".</td><td></td></tr>
 <tr>
@@ -2625,7 +2807,7 @@ UM Core API Messages&nbsp;&nbsp;<small><a href="#umcoreapimessages">&lt;-</a></s
 <tr>
 <td>CoreApi-5688-1390: session id not a number</td><td>The provided session ID was invalid.</td><td>Specify a session ID that fits one of the following formats: A hexadecimal value prefixed by 0x, an octal value prefixed by 0, or a decimal value. The value must be smaller than 0xFFFFFFFFFFFFFFFF regardless of representation. </td></tr>
 <tr>
-<td>CoreApi-5688-1885: opmode must be sequential</td><td>This is an invalid use of the <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#ad9416b1f0b474b5d4c4f39bb3c4bda77">lbm_context_process_events()</a> or lbmContextProcessEvents(). Calling <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#ad9416b1f0b474b5d4c4f39bb3c4bda77">lbm_context_process_events()</a> or lbmContextProcessEvents() for a context running in embedded mode. This will simply print the log message and return immediately.</td><td><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#ad9416b1f0b474b5d4c4f39bb3c4bda77">lbm_context_process_events()</a> or lbmContextProcessEvents() should get called only for sequential mode. See the UM Configuration Guide for high level guidance on configuring Ultra Messaging objects. </td></tr>
+<td>CoreApi-5688-1885: opmode must be sequential</td><td>This is an invalid use of the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#ad9416b1f0b474b5d4c4f39bb3c4bda77">lbm_context_process_events()</a> or lbmContextProcessEvents(). Calling <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#ad9416b1f0b474b5d4c4f39bb3c4bda77">lbm_context_process_events()</a> or lbmContextProcessEvents() for a context running in embedded mode. This will simply print the log message and return immediately.</td><td><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#ad9416b1f0b474b5d4c4f39bb3c4bda77">lbm_context_process_events()</a> or lbmContextProcessEvents() should get called only for sequential mode. See the UM Configuration Guide for high level guidance on configuring Ultra Messaging objects. </td></tr>
 <tr>
 <td>CoreApi-5688-2014: optval not numeric</td><td>Value passed in for resolver_multicast_ttl was not numeric.</td><td>Review the configuration file and specify a valid numeric value for the option (0 - 255). </td></tr>
 <tr>
@@ -2637,7 +2819,7 @@ UM Core API Messages&nbsp;&nbsp;<small><a href="#umcoreapimessages">&lt;-</a></s
 <tr>
 <td>CoreApi-5688-2875: optval is malformed</td><td>The unicast resolver daemon specification string format is as follows: [Interface[:LocalPort]-&gt;]DaemonIP:RemotePort where Interface and LocalPort refer the local host interface and port, the DaemonIP refers to the resolver daemon's IP address, and the RemotePort refers to the resolver daemon's UDP port.</td><td>Provide a valid resolver daemon specification. </td></tr>
 <tr>
-<td>CoreApi-5688-3015: send would block</td><td>The application attempted a non-blocking send of a message on a transport that is blocked due to exceeding the transport's rate limit. The message was not sent, and was not queued for future sending.</td><td>The application can enable source events and wait for the LBM_SRC_EVENT_WAKEUP event, or it can use blocking sends, or it can simply retry the send after the rate limiter interval expires. Alternatively, consider increasing the rate limit and/or rate interval. See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/Operations/design.tag:../Design/" href="../Design/fundamentalconcepts.html#transportratecontrol">Transport Rate Control</a>. </td></tr>
+<td>CoreApi-5688-3015: send would block</td><td>The application attempted a non-blocking send of a message on a transport that is blocked due to exceeding the transport's rate limit. The message was not sent, and was not queued for future sending.</td><td>The application can enable source events and wait for the LBM_SRC_EVENT_WAKEUP event, or it can use blocking sends, or it can simply retry the send after the rate limiter interval expires. Alternatively, consider increasing the rate limit and/or rate interval. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/Operations/design.tag:../Design/" href="../Design/fundamentalconcepts.html#transportratecontrol">Transport Rate Control</a>. </td></tr>
 <tr>
 <td>CoreApi-5688-3021: The LBM_MSG_END_BATCH was set before the LBM_MSG_START_BATCH flag. (Note:Explicit batching is deprecated as of UM 6.10).</td><td>The LBM_MSG_END_BATCH flag was set before the LBM_MSG_START_BATCH flag</td><td>Explicit batching is deprecated as of UM 6.10 </td></tr>
 <tr>
@@ -2668,6 +2850,8 @@ UM Core API Messages&nbsp;&nbsp;<small><a href="#umcoreapimessages">&lt;-</a></s
 <td>CoreApi-5688-3233: TCP server listen: s</td><td>An error was returned from the OS while trying to listen to a socket (TCP). Refer to the OS error number and message given after the UMS message "TCP server listen".</td><td></td></tr>
 <tr>
 <td>CoreApi-5688-3268: multicast receive bind (port = d, multicast group = s): s</td><td>An error occurred while trying to bind to the requested ip and port. The last part of this message contains the OS error code and associated text.</td><td>Consult your OS documentation for resolutions based on the error code. </td></tr>
+<tr>
+<td>CoreApi-5688-3279: unicast source bind (port=d): s</td><td>Attempt to bind to given UDP port failed. The error string is given.</td><td>Use the error string to further diagnose the issue. </td></tr>
 <tr>
 <td>CoreApi-5688-3287: could not find open unicast source port in range [d-d]</td><td>Could not bind to a unicast port due to ports already being used in the given range.</td><td>Update the UM configuration file to modify or include different ports for the options transport_lbtrm_source_port_low and/or transport_lbtrm_source_port high. </td></tr>
 <tr>
@@ -3705,9 +3889,9 @@ UM Core API Messages&nbsp;&nbsp;<small><a href="#umcoreapimessages">&lt;-</a></s
 <tr>
 <td>CoreApi-9074-1: Queue deregistration is no longer allowed when using a brokered context</td><td>No longer allowed to deregister from a queue.</td><td>Remove function call. </td></tr>
 <tr>
-<td>CoreApi-9082-2: <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a6cd0c297e489e006ef5da83398184daa">lbm_umq_ctx_msg_stable()</a> API is deprecated</td><td>The lbm_umq_ctx_msg_stable is deprecated and no longer supported.</td><td>Remove this API call from the application. </td></tr>
+<td>CoreApi-9082-2: <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a6cd0c297e489e006ef5da83398184daa">lbm_umq_ctx_msg_stable()</a> API is deprecated</td><td>The lbm_umq_ctx_msg_stable is deprecated and no longer supported.</td><td>Remove this API call from the application. </td></tr>
 <tr>
-<td>CoreApi-9082-3: <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#aac6015a6a8e914c6e621e3b28940fe87">lbm_ctx_umq_get_inflight()</a> API is deprecated</td><td>The lbm_ctx_umq_get_inflight is deprecated and no longer supported.</td><td>Remove this API call from the application. </td></tr>
+<td>CoreApi-9082-3: <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#aac6015a6a8e914c6e621e3b28940fe87">lbm_ctx_umq_get_inflight()</a> API is deprecated</td><td>The lbm_ctx_umq_get_inflight is deprecated and no longer supported.</td><td>Remove this API call from the application. </td></tr>
 <tr>
 <td>CoreApi-9087-1: send would block because of flight size</td><td>This send would cause the configured flight size to exceed the configured value for this source.</td><td>Delay sending until the number inflight messages is reduced. </td></tr>
 <tr>
@@ -4063,15 +4247,15 @@ UM Core API Messages&nbsp;&nbsp;<small><a href="#umcoreapimessages">&lt;-</a></s
 <tr>
 <td>CoreApi-9721-2: usr_bufp cannot be NULL</td><td>A call to lbm_src_alloc_msg_buff was passed a NULL usr_bufp.</td><td>Pass a valid pointer that will contain the pointer to be used to fill in the caller's message data. </td></tr>
 <tr>
-<td>CoreApi-9721-3: lbm_hdl cannot be NULL</td><td>A call to lbm_src_alloc_msg_buff was passed a NULL lbm_hdl.</td><td>Pass a valid pointer that will contain the pointer to the returned lbm_hdl. This is what will be passed to a subsequent <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a91f4b9cb04fe1323ec56833211cc5cb7">lbm_src_send()</a> call. </td></tr>
+<td>CoreApi-9721-3: lbm_hdl cannot be NULL</td><td>A call to lbm_src_alloc_msg_buff was passed a NULL lbm_hdl.</td><td>Pass a valid pointer that will contain the pointer to the returned lbm_hdl. This is what will be passed to a subsequent <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a91f4b9cb04fe1323ec56833211cc5cb7">lbm_src_send()</a> call. </td></tr>
 <tr>
 <td>CoreApi-9721-4: transport for src must be LBTRM.</td><td>A call to lbm_src_alloc_msg_buff was passed a non LBTRM src.</td><td>Specify a valid LBTRM src. Only LBTRM sources are supported at this time. </td></tr>
 <tr>
 <td>CoreApi-9721-5: length (d) too long, must be less than d.</td><td>A call to lbm_src_alloc_msg_buff was passed a length that would cause fragmentation of a message.</td><td>Specify a length less than the maximum length shown in the message. </td></tr>
 <tr>
-<td>CoreApi-9721-6: Passed buffer invalid, sqn [d] invalid</td><td>The message buffer supplied to a source send call with the LBM_MSG_BUFF_ALLOC flag set, does not contain valid identifiers.</td><td>Check to make sure that the supplied message buffer was allocated with a call to <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#adf24bf7c4b07549d6a2f89d56e6c913a">lbm_src_alloc_msg_buff()</a> and is the handle to the buffer and not the actual message data pointer. See the documentation for the <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#adf24bf7c4b07549d6a2f89d56e6c913a">lbm_src_alloc_msg_buff()</a> call. </td></tr>
+<td>CoreApi-9721-6: Passed buffer invalid, sqn [d] invalid</td><td>The message buffer supplied to a source send call with the LBM_MSG_BUFF_ALLOC flag set, does not contain valid identifiers.</td><td>Check to make sure that the supplied message buffer was allocated with a call to <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#adf24bf7c4b07549d6a2f89d56e6c913a">lbm_src_alloc_msg_buff()</a> and is the handle to the buffer and not the actual message data pointer. See the documentation for the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#adf24bf7c4b07549d6a2f89d56e6c913a">lbm_src_alloc_msg_buff()</a> call. </td></tr>
 <tr>
-<td>CoreApi-9721-7: Passed buffer invalid, tidx [d] invalid</td><td>The message buffer supplied to a source send call with the LBM_MSG_BUFF_ALLOC flag set, does not contain valid identifiers.</td><td>Check to make sure that the supplied message buffer was allocated with a call to <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#adf24bf7c4b07549d6a2f89d56e6c913a">lbm_src_alloc_msg_buff()</a> and is the handle to the buffer and not the actual message data pointer. See the documentation for the <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#adf24bf7c4b07549d6a2f89d56e6c913a">lbm_src_alloc_msg_buff()</a> call. </td></tr>
+<td>CoreApi-9721-7: Passed buffer invalid, tidx [d] invalid</td><td>The message buffer supplied to a source send call with the LBM_MSG_BUFF_ALLOC flag set, does not contain valid identifiers.</td><td>Check to make sure that the supplied message buffer was allocated with a call to <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#adf24bf7c4b07549d6a2f89d56e6c913a">lbm_src_alloc_msg_buff()</a> and is the handle to the buffer and not the actual message data pointer. See the documentation for the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#adf24bf7c4b07549d6a2f89d56e6c913a">lbm_src_alloc_msg_buff()</a> call. </td></tr>
 <tr>
 <td>CoreApi-9721-8: Source [p] type [u] is not LBTRM. LBTRM is required with the LBM_MSG_BUFF_ALLOC flag.</td><td>The source supplied to a source send call with the LBM_MSG_BUFF_ALLOC flag set was not an LBTRM source.</td><td>At this time, only LBTRM sources are supported when using the LBM_MSG_BUFF_ALLOC flag. Use only LBTRM sources when specifying the LBM_MSG_BUFF_ALLOC flag. </td></tr>
 <tr>
@@ -4181,11 +4365,11 @@ UM Core API Messages&nbsp;&nbsp;<small><a href="#umcoreapimessages">&lt;-</a></s
 <tr>
 <td>CoreApi-9938-6: optlen too small</td><td>Attempted to set option compatibility_pre_um_6_0_context_ad_ivl with an incorrect optlen size.</td><td>Optlen must be greater than LBM_MIN_SGET_OPTLEN. </td></tr>
 <tr>
-<td>CoreApi-9941-115: usr_bufp offset is not valid.</td><td>A smart source call specified a user buffer with an invalid offset.</td><td>Supply the exact pointer supplied by <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a98c5450e9fb93f30bd80fa33a2380dfc">lbm_ssrc_buff_get()</a>. </td></tr>
+<td>CoreApi-9941-115: usr_bufp offset is not valid.</td><td>A smart source call specified a user buffer with an invalid offset.</td><td>Supply the exact pointer supplied by <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a98c5450e9fb93f30bd80fa33a2380dfc">lbm_ssrc_buff_get()</a>. </td></tr>
 <tr>
-<td>CoreApi-9941-116: usr_bufp base address is not valid.</td><td>A smart source call specified a user buffer with an invalid base address.</td><td>Return buffer with the exact pointer supplied by <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a98c5450e9fb93f30bd80fa33a2380dfc">lbm_ssrc_buff_get()</a>. </td></tr>
+<td>CoreApi-9941-116: usr_bufp base address is not valid.</td><td>A smart source call specified a user buffer with an invalid base address.</td><td>Return buffer with the exact pointer supplied by <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a98c5450e9fb93f30bd80fa33a2380dfc">lbm_ssrc_buff_get()</a>. </td></tr>
 <tr>
-<td>CoreApi-9941-117: user buffer is on the free list.</td><td>A smart source call specified a user buffer that is on the free list.</td><td>Invoke <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a98c5450e9fb93f30bd80fa33a2380dfc">lbm_ssrc_buff_get()</a> to allocate a user buffer. </td></tr>
+<td>CoreApi-9941-117: user buffer is on the free list.</td><td>A smart source call specified a user buffer that is on the free list.</td><td>Invoke <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a98c5450e9fb93f30bd80fa33a2380dfc">lbm_ssrc_buff_get()</a> to allocate a user buffer. </td></tr>
 <tr>
 <td>CoreApi-9941-118: corrupted user buffer pointer structure</td><td>A smart source call specified what appears to be a corrupted user buffer pointer structure.</td><td>Ensure that writes using the user buffer pointer do not exceed the range of addresses bounded by the source scoped smart_src_max_message_length configuration option. </td></tr>
 <tr>
@@ -4247,9 +4431,9 @@ UM Core API Messages&nbsp;&nbsp;<small><a href="#umcoreapimessages">&lt;-</a></s
 <tr>
 <td>CoreApi-9941-2: optval must be greater than 16</td><td>smart_src_max_message_length did not contain a positive integer</td><td>smart_src_max_message_length must be greater than 16 </td></tr>
 <tr>
-<td>CoreApi-9941-3000: <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a2f50f56536778332e9f5712b06546425">lbm_ssrc_send_ex()</a> thread does not match thread used by other smart source sends on this transport session</td><td>The smart source send call thread does not match the thread used by other smart source sends on this transport session.</td><td>The smart source send call thread must be the same thread used by all smart source sends on this transport session. </td></tr>
+<td>CoreApi-9941-3000: <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a2f50f56536778332e9f5712b06546425">lbm_ssrc_send_ex()</a> thread does not match thread used by other smart source sends on this transport session</td><td>The smart source send call thread does not match the thread used by other smart source sends on this transport session.</td><td>The smart source send call thread must be the same thread used by all smart source sends on this transport session. </td></tr>
 <tr>
-<td>CoreApi-9941-3001: <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a2f50f56536778332e9f5712b06546425">lbm_ssrc_send_ex()</a> thread does not match thread used by other smart source sends on this transport session</td><td>The smart source send call thread does not match the thread used by other smart source sends on this transport session.</td><td>The smart source send call thread must be the same thread used by all smart source sends on this transport session. </td></tr>
+<td>CoreApi-9941-3001: <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a2f50f56536778332e9f5712b06546425">lbm_ssrc_send_ex()</a> thread does not match thread used by other smart source sends on this transport session</td><td>The smart source send call thread does not match the thread used by other smart source sends on this transport session.</td><td>The smart source send call thread must be the same thread used by all smart source sends on this transport session. </td></tr>
 <tr>
 <td>CoreApi-9941-3025: ssrc must be valid</td><td>The Smart Source object is not valid.</td><td>Provide a valid Smart Source object. </td></tr>
 <tr>
@@ -4281,15 +4465,15 @@ UM Core API Messages&nbsp;&nbsp;<small><a href="#umcoreapimessages">&lt;-</a></s
 <tr>
 <td>CoreApi-9941-3: optval too large</td><td>smart_src_max_message_length is larger than the maximum allowed size</td><td>Decrease the size of smart_src_max_message_length </td></tr>
 <tr>
-<td>CoreApi-9941-4001: All d Smart Source [p] user buffers have been allocated.</td><td>A call to lbm_ssrc_buff_get failed due to user buffer exhaustion.</td><td>Return unused user buffers via <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#ab57120414bf92bd2f44de7aea97e3f1b">lbm_ssrc_buff_put()</a> or restart the application with a larger user buffer count. </td></tr>
+<td>CoreApi-9941-4001: All d Smart Source [p] user buffers have been allocated.</td><td>A call to lbm_ssrc_buff_get failed due to user buffer exhaustion.</td><td>Return unused user buffers via <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#ab57120414bf92bd2f44de7aea97e3f1b">lbm_ssrc_buff_put()</a> or restart the application with a larger user buffer count. </td></tr>
 <tr>
 <td>CoreApi-9941-4020: ssrc must be valid</td><td>ssrc parameter was NULL</td><td>ssrc must be a pointer to a valid lbm smart source. </td></tr>
 <tr>
 <td>CoreApi-9941-4021: usr_bufp must be valid</td><td>usr_bufp parameter was NULL</td><td>usr_bufp must be a pointer to a valid user buffer. </td></tr>
 <tr>
-<td>CoreApi-9941-4022: usr_bufp offset is not valid.</td><td>A call to lbm_ssrc_buff_put specified a user buffer with an invalid offset.</td><td>Return buffer with the exact pointer supplied by <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a98c5450e9fb93f30bd80fa33a2380dfc">lbm_ssrc_buff_get()</a>. </td></tr>
+<td>CoreApi-9941-4022: usr_bufp offset is not valid.</td><td>A call to lbm_ssrc_buff_put specified a user buffer with an invalid offset.</td><td>Return buffer with the exact pointer supplied by <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a98c5450e9fb93f30bd80fa33a2380dfc">lbm_ssrc_buff_get()</a>. </td></tr>
 <tr>
-<td>CoreApi-9941-4023: usr_bufp base address is not valid.</td><td>A call to lbm_ssrc_buff_put specified a user buffer with an invalid base address.</td><td>Return buffer with the exact pointer supplied by <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a98c5450e9fb93f30bd80fa33a2380dfc">lbm_ssrc_buff_get()</a>. </td></tr>
+<td>CoreApi-9941-4023: usr_bufp base address is not valid.</td><td>A call to lbm_ssrc_buff_put specified a user buffer with an invalid base address.</td><td>Return buffer with the exact pointer supplied by <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a98c5450e9fb93f30bd80fa33a2380dfc">lbm_ssrc_buff_get()</a>. </td></tr>
 <tr>
 <td>CoreApi-9941-4024: user buffer is already on the free list.</td><td>A call to lbm_ssrc_buff_put specified a user buffer the is already on the free list.</td><td>A buffer can only be returned once. </td></tr>
 <tr>
@@ -4329,7 +4513,7 @@ UM Core API Messages&nbsp;&nbsp;<small><a href="#umcoreapimessages">&lt;-</a></s
 <tr>
 <td>CoreApi-9941-6000: Can't allocate config options of u bytes [s:d]</td><td>The system was not able to allocate the amount of memory requested.</td><td>The physical memory on the machine may be over committed; try moving some applications to another machine. </td></tr>
 <tr>
-<td>CoreApi-9941-6001: Failed to call dump [s:d]</td><td>The call to <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a62e4da1cb793e25a249bada7202d2e88">lbm_ssrc_topic_dump()</a> failed.</td><td>Check that ssrc and opts are valid and that the value at size is greater than 0. </td></tr>
+<td>CoreApi-9941-6001: Failed to call dump [s:d]</td><td>The call to <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a62e4da1cb793e25a249bada7202d2e88">lbm_ssrc_topic_dump()</a> failed.</td><td>Check that ssrc and opts are valid and that the value at size is greater than 0. </td></tr>
 <tr>
 <td>CoreApi-9941-6003: Can't allocate JNI source object of u bytes [s:d]</td><td>The system was not able to allocate the amount of memory requested.</td><td>The physical memory on the machine may be over committed; try moving some applications to another machine. </td></tr>
 <tr>
@@ -4707,7 +4891,7 @@ UM SRS Log Messages&nbsp;&nbsp;<small><a href="#umsrslogmessages">&lt;-</a></sma
 <tr>
 <td>SRS-10943-1: Attempted to populate a message with an unknown ID </td><td>An internal error was encountered.</td><td>Contact Informatica support. </td></tr>
 <tr>
-<td>SRS-10943-21: Failed to find domain " + domainId + " and " +                             routeInfoRecord.toString() + " in the domain ID map</td><td>An internal error was encountered.</td><td>Contact Informatica support. </td></tr>
+<td>SRS-10943-21: Failed to find domain " + domainId + " and " +                                      routeInfoRecord.toString() + " in the domain ID map</td><td>An internal error was encountered.</td><td>Contact Informatica support. </td></tr>
 <tr>
 <td>SRS-10943-22: Received a duplicate </td><td>An internal error was encountered.</td><td>Contact Informatica support. </td></tr>
 <tr>
@@ -4769,7 +4953,9 @@ UM SRS Log Messages&nbsp;&nbsp;<small><a href="#umsrslogmessages">&lt;-</a></sma
 <tr>
 <td>SRS-11171-2: Failed to serialize a MonitorInfoMessage from category "                             + monitorInfoMessage.getMonitorInfoCategory().getName() + ". Reason: </td><td>An internal error was encountered.</td><td>Contact Informatica support. </td></tr>
 <tr>
-<td>SRS-11195-1: Both the &lt;debug-monitor&gt;&lt;ping-interval&gt; and &lt;daemon-monitor&gt;&lt;ping-interval&gt;" +                         " are configured. The &lt;daemon-monitor&gt;&lt;ping-interval&gt; value of " +                         srsConfig.getDaemonMonitorPingInterval() + " will be used for both</td><td>The debug monitor is enabled and both &lt;debug-monitor&gt;&lt;ping-interval&gt; and &lt;daemon-monitor&gt;&lt;ping-interval&gt; are configured. The &lt;daemon-monitor&gt;&lt;ping-interval&gt; value takes precedence</td><td><p class="starttd">If the &lt;daemon-monitor&gt;&lt;ping-interval&gt; value is as intended, no resolution is needed. For more details, contact Informatica support.</p>
+<td>SRS-11195-1: Both the &lt;debug-monitor&gt;&lt;ping-interval&gt; and &lt;daemon-monitor&gt;&lt;ping-interval&gt;" +                         " are configured. The &lt;daemon-monitor&gt;&lt;ping-interval&gt; value of " +                         srsConfig.getDaemonMonitorPingInterval() + " will be used for both</td><td>The debug monitor is enabled and both &lt;debug-monitor&gt;&lt;ping-interval&gt; and &lt;daemon-monitor&gt;&lt;ping-interval&gt; are configured. The &lt;daemon-monitor&gt;&lt;ping-interval&gt; value takes precedence</td><td>If the &lt;daemon-monitor&gt;&lt;ping-interval&gt; value is as intended, no resolution is needed. For more details, contact Informatica support. </td></tr>
+<tr>
+<td>SRS-11458-1: Failed to find route index " + routeIndex + " with the routeInfoRecord " +                                          routeInfoRecord.toString() + " in the routeIndex map</td><td>An internal error was encountered.</td><td><p class="starttd">Contact Informatica support.</p>
 <p class="endtd"></p>
 </td></tr>
 </table>
@@ -4849,7 +5035,7 @@ UM Dynamic Routing Log Messages&nbsp;&nbsp;<small><a href="#umdynamicroutinglogm
 <tr>
 <td>Gwd-10185-29: unknown portal type, d</td><td>Bad portal type specified in portal global structure</td><td></td></tr>
 <tr>
-<td>Gwd-10185-2: <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbmaux_8h.html#ae7d92b1afb5b581a6b71a154448f89a7">lbmaux_context_attr_setopt_from_file()</a> failed, s</td><td>Failure while setting up extra config opts for DRO daemon monitor</td><td>Check attributes in "lbm-config" config file specified in the DRO's xml file </td></tr>
+<td>Gwd-10185-2: <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/Operations/api.tag:../API/" href="../API/lbmaux_8h.html#ae7d92b1afb5b581a6b71a154448f89a7">lbmaux_context_attr_setopt_from_file()</a> failed, s</td><td>Failure while setting up extra config opts for DRO daemon monitor</td><td>Check attributes in "lbm-config" config file specified in the DRO's xml file </td></tr>
 <tr>
 <td>Gwd-10185-30: error trying to retrieve endpoint portal stats data</td><td>Error trying to copy portal stats</td><td></td></tr>
 <tr>
@@ -4871,7 +5057,7 @@ UM Dynamic Routing Log Messages&nbsp;&nbsp;<small><a href="#umdynamicroutinglogm
 <tr>
 <td>Gwd-10185-39: tnwg_rm_info() returned an error</td><td>Failure accessing route manager info for route manager stat group</td><td></td></tr>
 <tr>
-<td>Gwd-10185-3: <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#ab67f641d5a0ad1a9fe53d415da58d961">lbm_context_attr_setopt()</a> failed, s</td><td>Failure setting up attributes for daemon monitor remote control handler</td><td></td></tr>
+<td>Gwd-10185-3: <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#ab67f641d5a0ad1a9fe53d415da58d961">lbm_context_attr_setopt()</a> failed, s</td><td>Failure setting up attributes for daemon monitor remote control handler</td><td></td></tr>
 <tr>
 <td>Gwd-10185-40: tnwg_rm_stat_grp_collect_portal_info() returned an error</td><td>Failure collecting portal info for route manager stat group</td><td></td></tr>
 <tr>
@@ -4905,27 +5091,27 @@ UM Dynamic Routing Log Messages&nbsp;&nbsp;<small><a href="#umdynamicroutinglogm
 <tr>
 <td>Gwd-10185-56: bad pointer to portal passed to tnwg_portalcfg_stat_grp_read()</td><td>Null pointer passed to tnwg_portalcfg_stat_grp_read()</td><td></td></tr>
 <tr>
-<td>Gwd-10185-57: <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a43f6029ad772e29b61c2a5c78f961073">lbm_context_attr_dump()</a> failed, s</td><td>Failure attempting to access portal config source context attributes from config tables</td><td></td></tr>
+<td>Gwd-10185-57: <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a43f6029ad772e29b61c2a5c78f961073">lbm_context_attr_dump()</a> failed, s</td><td>Failure attempting to access portal config source context attributes from config tables</td><td></td></tr>
 <tr>
-<td>Gwd-10185-58: <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a43f6029ad772e29b61c2a5c78f961073">lbm_context_attr_dump()</a> failed, s</td><td>Failure attempting to access portal config receiver context attributes from config tables</td><td></td></tr>
+<td>Gwd-10185-58: <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a43f6029ad772e29b61c2a5c78f961073">lbm_context_attr_dump()</a> failed, s</td><td>Failure attempting to access portal config receiver context attributes from config tables</td><td></td></tr>
 <tr>
-<td>Gwd-10185-59: <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a09bc0d170eadffe1eb1c30d421074125">lbm_event_queue_attr_dump()</a> failed, s</td><td>Failure attempting to access portal config event queue attributes from config tables</td><td></td></tr>
+<td>Gwd-10185-59: <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a09bc0d170eadffe1eb1c30d421074125">lbm_event_queue_attr_dump()</a> failed, s</td><td>Failure attempting to access portal config event queue attributes from config tables</td><td></td></tr>
 <tr>
 <td>Gwd-10185-5: unable to create src topic attributes: s</td><td>Error creating source attributes for daemon stats monitor</td><td></td></tr>
 <tr>
 <td>Gwd-10185-60: bad config type in tnwg_portalcfg_stat_grp_read() d</td><td>Invalid config type specified for Peer portal</td><td></td></tr>
 <tr>
-<td>Gwd-10185-61: <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a43f6029ad772e29b61c2a5c78f961073">lbm_context_attr_dump()</a> failed, s</td><td>Failure attempting to access portal config source context for endpoint portal</td><td></td></tr>
+<td>Gwd-10185-61: <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a43f6029ad772e29b61c2a5c78f961073">lbm_context_attr_dump()</a> failed, s</td><td>Failure attempting to access portal config source context for endpoint portal</td><td></td></tr>
 <tr>
-<td>Gwd-10185-62: <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a43f6029ad772e29b61c2a5c78f961073">lbm_context_attr_dump()</a> failed, s</td><td>Failure attempting to access endpoint portal config receiver context attributes from config table</td><td></td></tr>
+<td>Gwd-10185-62: <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a43f6029ad772e29b61c2a5c78f961073">lbm_context_attr_dump()</a> failed, s</td><td>Failure attempting to access endpoint portal config receiver context attributes from config table</td><td></td></tr>
 <tr>
-<td>Gwd-10185-63: <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a1d7722b39132940193205d6287c0a7f7">lbm_src_topic_attr_dump()</a> failed, s</td><td>Failure attempting to access endpoint portal config source attributes from config table</td><td></td></tr>
+<td>Gwd-10185-63: <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a1d7722b39132940193205d6287c0a7f7">lbm_src_topic_attr_dump()</a> failed, s</td><td>Failure attempting to access endpoint portal config source attributes from config table</td><td></td></tr>
 <tr>
-<td>Gwd-10185-64: <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a7a8f94b03c37c4481044d3c6b250bdb3">lbm_rcv_topic_attr_dump()</a> failed, s</td><td>Failure attempting to access endpoint portal config receiver attributes from config table</td><td></td></tr>
+<td>Gwd-10185-64: <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a7a8f94b03c37c4481044d3c6b250bdb3">lbm_rcv_topic_attr_dump()</a> failed, s</td><td>Failure attempting to access endpoint portal config receiver attributes from config table</td><td></td></tr>
 <tr>
-<td>Gwd-10185-65: <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a98dc9a9c6e5bfcf72222754f5179298d">lbm_wildcard_rcv_attr_dump()</a> failed, s</td><td>Failure attempting to access endpoint portal wildcard receiver attributes from config table</td><td></td></tr>
+<td>Gwd-10185-65: <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a98dc9a9c6e5bfcf72222754f5179298d">lbm_wildcard_rcv_attr_dump()</a> failed, s</td><td>Failure attempting to access endpoint portal wildcard receiver attributes from config table</td><td></td></tr>
 <tr>
-<td>Gwd-10185-66: <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a09bc0d170eadffe1eb1c30d421074125">lbm_event_queue_attr_dump()</a> failed, s</td><td>Failure attempting to access endpoint portal event queue attributes from config table</td><td></td></tr>
+<td>Gwd-10185-66: <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#a09bc0d170eadffe1eb1c30d421074125">lbm_event_queue_attr_dump()</a> failed, s</td><td>Failure attempting to access endpoint portal event queue attributes from config table</td><td></td></tr>
 <tr>
 <td>Gwd-10185-67: bad portal type d</td><td>Invalid portal type</td><td></td></tr>
 <tr>
@@ -5125,6 +5311,42 @@ UM Dynamic Routing Log Messages&nbsp;&nbsp;<small><a href="#umdynamicroutinglogm
 <tr>
 <td>Gwd-11254-9: coalesce-threshold must not be blank</td><td>Element &lt;coalesce-threshold&gt; in &lt;udp&gt; must contain a valid number.</td><td>Check the configuration file. </td></tr>
 <tr>
+<td>Gwd-11383-1: error trying to resolve host name "%s"</td><td>An error occurred resolving the given host name.</td><td>Check the initiator host name in the configuration to make sure it is valid. </td></tr>
+<tr>
+<td>Gwd-11446-100: max-datagram value (s) exceeds the Datagram TLS limit (d)</td><td>The max-datagram value in the peer configuration exceeds the limit of 16348 for Datagram TLS.</td><td>Adjust the configuration to use values within the limit. </td></tr>
+<tr>
+<td>Gwd-11446-10: Datagram TLS: Peer certificate verification failed; error d ("%s"), depth d, s, s</td><td>A peer certificate failed a verification check.</td><td>Check SSL certificate chain for errors. </td></tr>
+<tr>
+<td>Gwd-11446-11: Datagram TLS: Peer certificate verification failed; error d ("%s"), depth d, s</td><td>A peer certificate failed a verification check.</td><td>Check SSL certificate chain for errors. </td></tr>
+<tr>
+<td>Gwd-11446-13: failed to connect UDP socket (s:d)</td><td>A Peer failed to connect the UDP socket</td><td>Check port availabiltiy or configuration. </td></tr>
+<tr>
+<td>Gwd-11446-14: failed to accept UDP socket (ld)</td><td>A Peer failed to accept the UDP socket</td><td>Check error given. </td></tr>
+<tr>
+<td>Gwd-11446-15: failed to connect on the UDP socket (s:d)</td><td>A Peer failed to connect on the UDP socket.</td><td>Check the configured ports. </td></tr>
+<tr>
+<td>Gwd-11446-16: failed to SSL_connect UDP socket (d)</td><td>A Peer failed to SSL_connect to the UDP socket</td><td>Check error code given. </td></tr>
+<tr>
+<td>Gwd-11446-17: failed to load the certificate file (s)</td><td>A Peer failed to load the certificate file.</td><td>Check the configured certificate file shown in message. </td></tr>
+<tr>
+<td>Gwd-11446-18: failed to load the certificate-key file (s)</td><td>A Peer failed to load the certificate key file.</td><td>Check the configured certificate-key file shown in message. </td></tr>
+<tr>
+<td>Gwd-11446-19: failed to load the trusted-certificates file (s)</td><td>A Peer failed to load the trusted certificates file.</td><td>Check the configured trusted trusted-certificates file shown in message. </td></tr>
+<tr>
+<td>Gwd-11446-20: failed to verify certificate files</td><td>A Peer failed on the check of the certificate key.</td><td>Check the configured certificate files. </td></tr>
+<tr>
+<td>Gwd-11446-21: failed to set the cipher-suites list (s)</td><td>A Peer failed to set the cipher-suites list.</td><td>Check the configured cipher-suites. </td></tr>
+<tr>
+<td>Gwd-11447-02: failed to create buffer for compression</td><td>A UDP peer failed to create a buffer prior to compression.</td><td>Check memory usage. </td></tr>
+<tr>
+<td>Gwd-11447-03: compression failed (d)</td><td>A UDP peer failed to compress the data.</td><td>Check memory usage. </td></tr>
+<tr>
+<td>Gwd-11447-04: decompression failed d; compressed len(d)</td><td>A UDP peer failed to decompress the message.</td><td>Check memory usage or compressed size. </td></tr>
+<tr>
+<td>Gwd-11447-05: compressed buffer size of (d) exceeds maximun of (d)</td><td>A UDP peer compressed the data resulting in a size that exceeds the maximum.</td><td>It is suggested to reduce the max-datagram. </td></tr>
+<tr>
+<td>Gwd-11458-2: invalid hotlink-index value [s]</td><td>The hotlink-index option value shown is invalid.</td><td>Check the hotlink-index setting. </td></tr>
+<tr>
 <td>Gwd-5688-4813: could not allocate u bytes [s:d]</td><td>The system was not able to allocate the amount of memory requested.</td><td>If the amount requested was particularly large, the problem may be a misconfiguration; however if the amount requested was relatively small, the physical memory on the machine may be over committed; try moving some applications to another machine. </td></tr>
 <tr>
 <td>Gwd-5975-1: error in PCRE pattern offset d: s</td><td>UMS detected a malformed PCRE expression while handling a wildcard receiver pattern.</td><td>Contact Informatica support if this message occurs frequently or if topic resolution appears to be failing. </td></tr>
@@ -5147,9 +5369,9 @@ UM Dynamic Routing Log Messages&nbsp;&nbsp;<small><a href="#umdynamicroutinglogm
 <tr>
 <td>Gwd-6033-353: endpoint portal [s] received one or more UIM control messages with no stream information - these will be dropped</td><td>This gateway has received messages from a client using an earlier version of the library that does not include stream information.</td><td>If this is expected behavior, this message can be ignored; otherwise the client should have its library upgraded. </td></tr>
 <tr>
-<td>Gwd-6033-367: endpoint portal [s] source context <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#ad9416b1f0b474b5d4c4f39bb3c4bda77">lbm_context_process_events()</a> failed [d]: s</td><td>The call to <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#ad9416b1f0b474b5d4c4f39bb3c4bda77">lbm_context_process_events()</a> for the source context has returned an error. The LBM error number and message has been supplied in the output.</td><td>Use the LBM error number and message as a cross reference to determine cause and resolution. </td></tr>
+<td>Gwd-6033-367: endpoint portal [s] source context <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#ad9416b1f0b474b5d4c4f39bb3c4bda77">lbm_context_process_events()</a> failed [d]: s</td><td>The call to <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#ad9416b1f0b474b5d4c4f39bb3c4bda77">lbm_context_process_events()</a> for the source context has returned an error. The LBM error number and message has been supplied in the output.</td><td>Use the LBM error number and message as a cross reference to determine cause and resolution. </td></tr>
 <tr>
-<td>Gwd-6033-368: endpoint portal [s] receive context <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#ad9416b1f0b474b5d4c4f39bb3c4bda77">lbm_context_process_events()</a> failed [d]: s</td><td>The call to <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#ad9416b1f0b474b5d4c4f39bb3c4bda77">lbm_context_process_events()</a> for the receive context has returned an error. The LBM error number and message has been supplied in the output.</td><td>Use the LBM error number and message as a cross reference to determine cause and resolution. </td></tr>
+<td>Gwd-6033-368: endpoint portal [s] receive context <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#ad9416b1f0b474b5d4c4f39bb3c4bda77">lbm_context_process_events()</a> failed [d]: s</td><td>The call to <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#ad9416b1f0b474b5d4c4f39bb3c4bda77">lbm_context_process_events()</a> for the receive context has returned an error. The LBM error number and message has been supplied in the output.</td><td>Use the LBM error number and message as a cross reference to determine cause and resolution. </td></tr>
 <tr>
 <td>Gwd-6033-593: peer portal [s] received one or more UIM control messages with no stream information - these will be dropped</td><td>This gateway has received messages from a client using an earlier version of the library that does not include stream information.</td><td>If this is expected behavior, this message can be ignored; otherwise the client should have its library upgraded. </td></tr>
 <tr>
@@ -5313,7 +5535,7 @@ UM Dynamic Routing Log Messages&nbsp;&nbsp;<small><a href="#umdynamicroutinglogm
 <tr>
 <td>Gwd-6361-67: portal [s] failed to join psm evq thread, s</td><td>UM has failed to join an event queue dispatch thread.</td><td>Contact Informatica Support. </td></tr>
 <tr>
-<td>Gwd-6361-69: portal [s] psm evq <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#ac06b127bae882dd5fb68b7044fdceb5f">lbm_event_dispatch()</a> failed, s</td><td>An error occurred while attempting to process events off an internal event queue.</td><td>Contact Informatica Support. </td></tr>
+<td>Gwd-6361-69: portal [s] psm evq <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#ac06b127bae882dd5fb68b7044fdceb5f">lbm_event_dispatch()</a> failed, s</td><td>An error occurred while attempting to process events off an internal event queue.</td><td>Contact Informatica Support. </td></tr>
 <tr>
 <td>Gwd-6361-6: endpoint portal [s] failed to schedule remote domain topic check timer [d]: s</td><td>An error occurred while attempting to schedule an internal timer.</td><td>Contact Informatica Support </td></tr>
 <tr>
@@ -5321,7 +5543,7 @@ UM Dynamic Routing Log Messages&nbsp;&nbsp;<small><a href="#umdynamicroutinglogm
 <tr>
 <td>Gwd-6361-72: TNWG PRM processing failed [d]: s</td><td>An error occurred while attempting to process an internal interest notification.</td><td>Contact Informatica Support. </td></tr>
 <tr>
-<td>Gwd-6361-73: portal [s] prm evq <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#ac06b127bae882dd5fb68b7044fdceb5f">lbm_event_dispatch()</a> failed, s</td><td>An error occurred while attempting to process events off an internal event queue.</td><td>Contact Informatica Support. </td></tr>
+<td>Gwd-6361-73: portal [s] prm evq <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#ac06b127bae882dd5fb68b7044fdceb5f">lbm_event_dispatch()</a> failed, s</td><td>An error occurred while attempting to process events off an internal event queue.</td><td>Contact Informatica Support. </td></tr>
 <tr>
 <td>Gwd-6361-74: route recalculation took u.%06u seconds</td><td>Running route recalculations took the indicated amount of time to complete.</td><td>Nothing. This is purely informational. </td></tr>
 <tr>
@@ -5329,9 +5551,9 @@ UM Dynamic Routing Log Messages&nbsp;&nbsp;<small><a href="#umdynamicroutinglogm
 <tr>
 <td>Gwd-6361-77: loop count == d</td><td>You're running a build of the gateway with TNWG_RM_LOOP_COUNT defined in tnwgrm.c.</td><td>Contact Informatica Support </td></tr>
 <tr>
-<td>Gwd-6361-78: rm evq <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#ac06b127bae882dd5fb68b7044fdceb5f">lbm_event_dispatch()</a> failed, s</td><td>An error occurred while attempting to process events off an internal event queue.</td><td>Contact Informatica Support </td></tr>
+<td>Gwd-6361-78: rm evq <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#ac06b127bae882dd5fb68b7044fdceb5f">lbm_event_dispatch()</a> failed, s</td><td>An error occurred while attempting to process events off an internal event queue.</td><td>Contact Informatica Support </td></tr>
 <tr>
-<td>Gwd-6361-79: rm ctx <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#ad9416b1f0b474b5d4c4f39bb3c4bda77">lbm_context_process_events()</a> failed, s</td><td>An error occurred while attempting to process events on an internal context.</td><td>Contact Informatica Support </td></tr>
+<td>Gwd-6361-79: rm ctx <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#ad9416b1f0b474b5d4c4f39bb3c4bda77">lbm_context_process_events()</a> failed, s</td><td>An error occurred while attempting to process events on an internal context.</td><td>Contact Informatica Support </td></tr>
 <tr>
 <td>Gwd-6361-7: endpoint portal [s] failed to schedule remote domain pattern check timer [d]: s</td><td>An error occurred while attempting to schedule an internal timer.</td><td>Contact Informatica Support </td></tr>
 <tr>
@@ -5581,7 +5803,7 @@ UM Dynamic Routing Log Messages&nbsp;&nbsp;<small><a href="#umdynamicroutinglogm
 <tr>
 <td>GwdApi-10995-10: unable to initialize monitoring [d]: s</td><td>Automonitoring failed to start for the gateway.</td><td>See the log files for other errors. </td></tr>
 <tr>
-<td>GwdApi-11254-201: peer portal [s] is configured for both udp and either encryption and/or compression. This is not supported.</td><td>When using udp peer links, neither encryption nor compression is supported.</td><td>Please check the configuration. </td></tr>
+<td>GwdApi-11446-22: SSL_read was unable to read any data from [s:d]. Disconnected?</td><td>The Dgram TLS UDP socket received no data from SSL_read.</td><td>This is likely due to a remote end disconnect. See the IP and Port given. </td></tr>
 <tr>
 <td>GwdApi-5688-4702: failed to set portal source option [s] to [s]: s</td><td>The portal was unable to set a source option</td><td></td></tr>
 <tr>
@@ -5685,7 +5907,7 @@ UM Lbmrd Log Messages&nbsp;&nbsp;<small><a href="#umlbmrdlogmessages">&lt;-</a><
 UM Persistent Store Log Messages&nbsp;&nbsp;<small><a href="#umpersistentstorelogmessages">&lt;-</a></small></h1>
 <center> <table class="doxtable">
 <tr>
-<td>Store-10184-08: dmon evq <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#ac06b127bae882dd5fb68b7044fdceb5f">lbm_event_dispatch()</a> failed, s</td><td>An error occurred while attempting to process events off an internal event queue.</td><td>Contact Informatica Support. </td></tr>
+<td>Store-10184-08: dmon evq <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/Operations/api.tag:../API/" href="../API/lbm_8h.html#ac06b127bae882dd5fb68b7044fdceb5f">lbm_event_dispatch()</a> failed, s</td><td>An error occurred while attempting to process events off an internal event queue.</td><td>Contact Informatica Support. </td></tr>
 <tr>
 <td>Store-10184-100: failed to create dmon ctx attr: s</td><td>UM was unable to create context attributes.</td><td>Contact Informatica Support. </td></tr>
 <tr>
@@ -5824,6 +6046,8 @@ UM Persistent Store Log Messages&nbsp;&nbsp;<small><a href="#umpersistentstorelo
 <td>Store-10888-912: store [s] invalid automon filter option s for qualifier[s]</td><td>Attempt to parse UME store automon filter failed due to invalid filter option.</td><td>Specify a valid filter option and try again. </td></tr>
 <tr>
 <td>Store-10888-913: store [s] automon filter [s] requires a string argument</td><td>Attempt to parse UME store automon filter failed. Filter option requires a string argument.</td><td>Specify a string argument and try again. </td></tr>
+<tr>
+<td>Store-11011-01: Using UTC time format </td><td>The store will print timestamps in UTC format</td><td>No action is required. </td></tr>
 <tr>
 <td>Store-11015-13: WARNING: msync EIO from umestore_cache_idx_sync</td><td>An operating system error was encountered when attempting to sync the cache index file</td><td>Check the log message for the system error code and investigate further </td></tr>
 <tr>
@@ -6599,7 +6823,11 @@ UM MCS Log Messages&nbsp;&nbsp;<small><a href="#ummcslogmessages">&lt;-</a></sma
 <tr>
 <td>MCS-11077-1: Error setting LBM license: </td><td>An internal error was encountered. The server was unable to set the LBM license.</td><td>Contact Informatica support. </td></tr>
 <tr>
-<td>MCS-11171-100: Failed to process incoming message: </td><td>Caught exception while processing incoming message.</td><td><p class="starttd">Contact Informatica support.</p>
+<td>MCS-11171-100: Failed to process incoming message: </td><td>Caught exception while processing incoming message.</td><td>Contact Informatica support. </td></tr>
+<tr>
+<td>MCS-11287-1: MCS Shutting down</td><td>Informational message noting that MCS is shutting down</td><td>No action is required. </td></tr>
+<tr>
+<td>MCS-11287-2: Error during DB disconnect. </td><td>An error was encountered trying to disconnect from the MCS database.</td><td><p class="starttd">Contact Informatica support.</p>
 <p class="endtd"></p>
 </td></tr>
 </table>

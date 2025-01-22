@@ -3,7 +3,7 @@ import com.latencybusters.lbm.*;
 import Utilities.GetOpt;  // See https://communities.informatica.com/infakb/faq/5/Pages/80008.aspx
 
 /*
-  (C) Copyright 2005,2023 Informatica Inc.  Permission is granted to licensees to use
+  (C) Copyright 2005,2025 Informatica Inc.  Permission is granted to licensees to use
   or alter this software for any purpose, including commercial applications,
   according to the terms laid out in the Software License Agreement.
 
@@ -59,11 +59,16 @@ class lbmpong1
 			System.err.println("Error initializing LBM: " + ex.toString());
 			System.exit(1);
 		}
-		org.apache.log4j.Logger logger;
-		logger = org.apache.log4j.Logger.getLogger("lbmpong1");
-		org.apache.log4j.BasicConfigurator.configure();
-		log4jLogger lbmlogger = new log4jLogger(logger);
-		lbm.setLogger(lbmlogger);
+
+		// Set up a logger here. Without setting a logger, UM defaults to printing logs to standard out.
+		// Most users have their own logging infrastructure they integrate with.
+		// Some users include log4j. Here's an example of setting it up:
+		// org.apache.log4j.Logger logger;
+		// logger = org.apache.log4j.Logger.getLogger("lbmhfxrcv");
+		// org.apache.log4j.BasicConfigurator.configure();
+		// log4jLogger lbmlogger = new log4jLogger(logger);
+		// lbm.setLogger(lbmlogger);
+
 		GetOpt gopt = new GetOpt(args, "c:Eehi:M:qt:v");
 		gopt.optErr = true;
 		int c = -1;

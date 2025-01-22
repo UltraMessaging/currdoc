@@ -7,6 +7,7 @@ var files =
     [ "lbmmon.h", "lbmmon_8h.html", "lbmmon_8h" ],
     [ "lbmpdm.h", "lbmpdm_8h.html", "lbmpdm_8h" ],
     [ "lbmsdm.h", "lbmsdm_8h.html", "lbmsdm_8h" ],
+    [ "srs_mon.pb-c.h", "srs__mon_8pb-c_8h.html", "srs__mon_8pb-c_8h" ],
     [ "tnwgdmonmsgs.h", "tnwgdmonmsgs_8h.html", "tnwgdmonmsgs_8h" ],
     [ "um_mon_attributes.pb-c.h", "um__mon__attributes_8pb-c_8h.html", "um__mon__attributes_8pb-c_8h" ],
     [ "um_mon_control.pb-c.h", "um__mon__control_8pb-c_8h.html", "um__mon__control_8pb-c_8h" ],

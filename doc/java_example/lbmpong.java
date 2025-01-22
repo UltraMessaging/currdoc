@@ -2,11 +2,12 @@ import com.latencybusters.lbm.*;
 
 import java.text.NumberFormat;
 import java.nio.ByteBuffer;
-// See https://communities.informatica.com/infakb/faq/5/Pages/80008.aspx
-import org.openmdx.uses.gnu.getopt.*;
+
+import gnu.getopt.Getopt;
+import gnu.getopt.LongOpt;
 
 /*
-  (C) Copyright 2005,2023 Informatica Inc.  Permission is granted to licensees to use
+  (C) Copyright 2005,2025 Informatica Inc.  Permission is granted to licensees to use
   or alter this software for any purpose, including commercial applications,
   according to the terms laid out in the Software License Agreement.
 
@@ -257,11 +258,15 @@ class lbmpong
 			System.err.println("Error initializing LBM: " + ex.toString());
 			System.exit(1);
 		}
-		org.apache.log4j.Logger logger;
-		logger = org.apache.log4j.Logger.getLogger("lbmpong");
-		org.apache.log4j.BasicConfigurator.configure();
-		log4jLogger lbmlogger = new log4jLogger(logger);
-		lbm.setLogger(lbmlogger);
+
+		// Set up a logger here. Without setting a logger, UM defaults to printing logs to standard out.
+		// Most users have their own logging infrastructure they integrate with.
+		// Some users include log4j. Here's an example of setting it up:
+		// org.apache.log4j.Logger logger;
+		// logger = org.apache.log4j.Logger.getLogger("lbmhfxrcv");
+		// org.apache.log4j.BasicConfigurator.configure();
+		// log4jLogger lbmlogger = new log4jLogger(logger);
+		// lbm.setLogger(lbmlogger);
 
 		process_cmdline(args);
 
@@ -520,16 +525,6 @@ class lbmpong
 		System.err.println("Quitting....");
 	}
 
-	/* Convert a signed byte to an unsigned int so it can be or'd */
-//	private static int convert(byte b) {
-//
-//		if(b > 0) return (int) b;
-//
-//		if(b < 0) return 128 + (b & 0x7f);
-//
-//		return 0;
-//	}
-	
 	public static int print_stats(LBMReceiver rcv, LBMSource src) throws LBMException
 	{
 		LBMReceiverStatistics rcv_stats = null;
@@ -902,17 +897,6 @@ class PongLBMReceiver extends LBMReceiver
 			System.exit(0);
 		}
 	}
-
-//	private long ba2l(byte[] b, int offset)
-//	{
-//		long value = 0;
-//		for (int i = 0; i < 4; i++)
-//		{
-//			int shift = (3-i) * 8;
-//			value += (b[i+offset] & 0x000000ff) << shift;
-//		}
-//		return value;
-//	}
 }
 
 class PongRegistrationId implements UMERegistrationIdExCallback {

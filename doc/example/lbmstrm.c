@@ -1,5 +1,5 @@
 /*
-  (C) Copyright 2005,2023 Informatica Inc.  Permission is granted to licensees to use
+  (C) Copyright 2005,2025 Informatica Inc.  Permission is granted to licensees to use
   or alter this software for any purpose, including commercial applications,
   according to the terms laid out in the Software License Agreement.
 
@@ -406,10 +406,10 @@ void *sending_thread_main(void *arg)
 				hfexinfo.hf_sqn.u64 = count;
 			else 
 				hfexinfo.hf_sqn.u32 = (lbm_uint32_t)count;
-			rc = lbm_hf_src_send_ex(srcs[i], message, options.msglen, 0, LBM_SRC_NONBLOCK, &hfexinfo) == LBM_FAILURE;
+			rc = lbm_hf_src_send_ex(srcs[i], message, options.msglen, 0, LBM_SRC_NONBLOCK, &hfexinfo);
 		}
 		else {
-			rc = lbm_src_send(srcs[i], message, options.msglen, LBM_SRC_NONBLOCK) == LBM_FAILURE;
+			rc = lbm_src_send(srcs[i], message, options.msglen, LBM_SRC_NONBLOCK);
 		}
 
 		if (rc == LBM_FAILURE) {
@@ -950,6 +950,8 @@ int main(int argc, char **argv)
 		if (i > 1 && (i % 1000) == 0)
 			printf("Deleted %d sources\n",i);
 	}
+	printf("Lingering an additional %d seconds for final advertisements...\n",opts->linger);
+	SLEEP_SEC(opts->linger);
 	lbm_context_delete(ctx);
 	ctx = NULL;
 	printf("Quitting....\n");

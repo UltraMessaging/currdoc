@@ -4,7 +4,7 @@ using com.latencybusters.lbm;
 
 
 /*
-(C) Copyright 2005,2022 Informatica Inc.  Permission is granted to licensees to use
+(C) Copyright 2005,2025 Informatica Inc.  Permission is granted to licensees to use
 or alter this software for any purpose, including commercial applications,
 according to the terms laid out in the Software License Agreement.
 

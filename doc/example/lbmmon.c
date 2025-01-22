@@ -1,7 +1,7 @@
 /*
   lbmmon.c: example LBM monitoring application.
 
-  (C) Copyright 2005,2023 Informatica Inc.  Permission is granted to licensees to use
+  (C) Copyright 2005,2025 Informatica Inc.  Permission is granted to licensees to use
   or alter this software for any purpose, including commercial applications,
   according to the terms laid out in the Software License Agreement.
 
@@ -794,6 +794,51 @@ void tnwg_show_lbmmon_stats_othergwstatsblock(Lbmmon__DROMonMsg__Stats__OtherGat
 	DECT();
 }
 
+void tnwg_show_lbmmon_stats_portalstats_peerstats_udp_send( Lbmmon__DROMonMsg__Stats__Portal__Peer__UDPSend *peer_udp_send)
+{
+	INCT();
+	printf("%sUDP datagrams sent                                        : %ld\n",PRTT(), peer_udp_send->msgs_sent);
+	printf("%sUDP datagram bytes sent                                   : %ld\n",PRTT(), peer_udp_send->bytes_sent);
+	printf("%sUDP NAK packets received                                  : %ld\n",PRTT(), peer_udp_send->nak_pckts_rcved);
+	printf("%sUDP NAKs received                                         : %ld\n",PRTT(), peer_udp_send->naks_rcved);
+	printf("%sUDP NAKs ignored                                          : %ld\n",PRTT(), peer_udp_send->naks_ignored);
+	printf("%sUDP NAKs shed                                             : %ld\n",PRTT(), peer_udp_send->naks_shed);
+	printf("%sUDP NAKs ignored (retransmit delay)                       : %ld\n",PRTT(), peer_udp_send->naks_rx_delay_ignored);
+	printf("%sUDP retransmission datagrams sent                         : %ld\n",PRTT(), peer_udp_send->rxs_sent);
+	printf("%sUDP retransmission bytes sent                             : %ld\n",PRTT(), peer_udp_send->rx_bytes_sent);
+	DECT();
+}
+
+void tnwg_show_lbmmon_stats_portalstats_peerstats_udp_receive( Lbmmon__DROMonMsg__Stats__Portal__Peer__UDPReceive *peer_udp_receive)
+{
+	INCT();
+	printf("%sUDP datagrams received                                    : %ld\n",PRTT(), peer_udp_receive->msgs_rcved);
+    printf("%sUDP datagram bytes received                               : %lu\n",PRTT(), peer_udp_receive->bytes_rcved);
+    printf("%sUDP NAK packets sent                                      : %lu\n",PRTT(), peer_udp_receive->nak_pckts_sent);
+    printf("%sUDP NAKs sent                                             : %lu\n",PRTT(), peer_udp_receive->naks_sent);
+    printf("%sUDP Lost LBT-RU datagrams detected                        : %lu\n",PRTT(), peer_udp_receive->lost);
+    printf("%sUDP NCFs received (ignored)                               : %lu\n",PRTT(), peer_udp_receive->ncfs_ignored);
+    printf("%sUDP NCFs received (shed)                                  : %lu\n",PRTT(), peer_udp_receive->ncfs_shed);
+    printf("%sUDP NCFs received (retransmit delay)                      : %lu\n",PRTT(), peer_udp_receive->ncfs_rx_delay);
+    printf("%sUDP NCFs received (unknown)                               : %lu\n",PRTT(), peer_udp_receive->ncfs_unknown);
+    printf("%sUDP Loss recovery minimum time                            : %lu\n",PRTT(), peer_udp_receive->nak_stm_min);
+    printf("%sUDP Loss recovery mean time                               : %lu\n",PRTT(), peer_udp_receive->nak_stm_mean);
+    printf("%sUDP Loss recovery maximum time                            : %lu\n",PRTT(), peer_udp_receive->nak_stm_max);
+    printf("%sUDP Minimum transmissions per individual NAK              : %lu\n",PRTT(), peer_udp_receive->nak_tx_min);
+    printf("%sUDP Mean transmissions per individual NAK                 : %lu\n",PRTT(), peer_udp_receive->nak_tx_mean);
+    printf("%sUDP Maximum transmissions per individual NAK              : %lu\n",PRTT(), peer_udp_receive->nak_tx_max);
+    printf("%sUDP Duplicate LBT-RU datagrams received                   : %lu\n",PRTT(), peer_udp_receive->duplicate_data);
+    printf("%sUDP datagrams unrecoverable (window advance)              : %lu\n",PRTT(), peer_udp_receive->unrecovered_txw);
+    printf("%sUDP datagrams unrecoverable (NAK generation expiration)   : %lu\n",PRTT(), peer_udp_receive->unrecovered_tmo);
+    printf("%sUDP datagrams dropped (size)                              : %lu\n",PRTT(), peer_udp_receive->dgrams_dropped_size);
+    printf("%sUDP datagrams dropped (type)                              : %lu\n",PRTT(), peer_udp_receive->dgrams_dropped_type);
+    printf("%sUDP datagrams dropped (version)                           : %lu\n",PRTT(), peer_udp_receive->dgrams_dropped_version);
+    printf("%sUDP datagrams dropped (hdr)                               : %lu\n",PRTT(), peer_udp_receive->dgrams_dropped_hdr);
+    printf("%sUDP LBT-RU datagrams dropped (SID)                        : %lu\n",PRTT(), peer_udp_receive->dgrams_dropped_sid);
+    printf("%sUDP datagrams dropped (other)                             : %lu\n",PRTT(), peer_udp_receive->dgrams_dropped_other);
+	DECT();
+}
+
 void tnwg_show_lbmmon_stats_portalstats_peerstats_receive( Lbmmon__DROMonMsg__Stats__Portal__Peer__Receive *peer_receive)
 {
 	INCT();
@@ -916,11 +961,23 @@ void tnwg_show_lbmmon_stats_portalstats_peerstats(Lbmmon__DROMonMsg__Stats__Port
 		DECT();
 		tnwg_show_lbmmon_stats_portalstats_peerstats_receive(peer->receive);
 	}
+	if (peer->udp_receive != NULL) {
+		INCT();
+		printf("%s--- Peer UDP Receive Stats ---\n", PRTT());
+		DECT();
+		tnwg_show_lbmmon_stats_portalstats_peerstats_udp_receive(peer->udp_receive);
+	}
 	if (peer->send != NULL) {
 		INCT();
 		printf("%s--- Peer Send Stats ---\n", PRTT());
 		DECT();
 		tnwg_show_lbmmon_stats_portalstats_peerstats_send(peer->send);
+	}
+	if (peer->udp_send != NULL) {
+		INCT();
+		printf("%s--- Peer UDP Send Stats ---\n", PRTT());
+		DECT();
+		tnwg_show_lbmmon_stats_portalstats_peerstats_udp_send(peer->udp_send);
 	}
 }
 
@@ -1530,8 +1587,8 @@ int main(int argc, char **argv)
 	{
 		SLEEP_SEC(2);
 	}
-	csv_format->mFinish(&csv_format_data);
-	pb_format->mFinish(&pb_format_data);
+	csv_format->mFinish(csv_format_data);
+	pb_format->mFinish(pb_format_data);
 
 	lbmmon_rctl_destroy(monctl);
 	return (0);

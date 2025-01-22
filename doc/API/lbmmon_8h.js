@@ -129,7 +129,7 @@ var lbmmon_8h =
     [ "lbmmon_src_format_serialize_t", "lbmmon_8h.html#a5b2f6e7028c8ed07c22e7942908ade44", null ],
     [ "lbmmon_src_statistics_cb", "lbmmon_8h.html#a9ac739b189b6e7aa6f60d09de6ba525e", null ],
     [ "lbmmon_src_statistics_func_t", "lbmmon_8h.html#ae4f001f74f2448fa9eb22613176e2ad9", null ],
-    [ "lbmmon_transport_allow_debug_t", "lbmmon_8h.html#a77ac57d9f956f2b6a384985e1e9da227", null ],
+    [ "lbmmon_transport_allow_debug_t", "lbmmon_8h.html#ad4e22984a9220105966ee6c6186ff8dd", null ],
     [ "lbmmon_transport_ctrlmsg_receive_t", "lbmmon_8h.html#a8c565335a25b51c625c7aa01e0a41562", null ],
     [ "lbmmon_transport_ctrlmsg_response_t", "lbmmon_8h.html#ad55a6080ae8b949dce5b1223162d3587", null ],
     [ "lbmmon_transport_ctrlmsgtarget_t", "lbmmon_8h.html#a69f3ef26c79ad43d35b8b4759e11b9d6", null ],

@@ -80,7 +80,7 @@ transport_lbtsmx_activity_timeout (receiver)&nbsp;&nbsp;<small><a href="#transpo
 <tr>
 <td><em>Scope:</em> </td><td>receiver </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
 <tr>
 <td><em>Units:</em> </td><td>milliseconds </td></tr>
 <tr>
@@ -100,16 +100,16 @@ transport_lbtsmx_datagram_max_size (source)&nbsp;&nbsp;<small><a href="#transpor
 <dl class="section user"><dt></dt><dd>This option imposes a hard limit on message size because the LBT-SMX transport does not support datagram fragmentation or reassembly. Unlike other transports that do support fragmentation, attempts to send messages larger than the datagram size configured by this option fail. </dd></dl>
 <dl class="section user"><dt></dt><dd>The minimum value for this option is 32 bytes. Unlike other transports, there is no hard-coded maximum value; the maximum is limited only by the amount of memory available. </dd></dl>
 <dl class="section user"><dt></dt><dd>Note: The source's configured <a class="el" href="grptransportlbtsmxoperation.html#transportlbtsmxtransmissionwindowsizesource">transport_lbtsmx_transmission_window_size (source)</a> must be at least twice as large as the source's configured transport_lbtsmx_datagram_max_size. If the transmission window has not been configured to be large enough to hold at least two maximum-sized SMX datagrams, then a warning will be issued and the source's transport_lbtsmx_transmission_window_size option will be automatically adjusted upwards to the nearest power-of-2 size in bytes that can fit at least two maximum-sized datagrams. </dd></dl>
-<dl class="section user"><dt></dt><dd>See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/Config/design.tag:../Design/" href="../Design/architecture.html#messagefragmentationandreassembly">Message Fragmentation and Reassembly</a> for more information. </dd></dl>
-<dl class="section user"><dt></dt><dd>Informatica does not recommend setting datagram max size options to the network MTU. See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/Config/design.tag:../Design/" href="../Design/architecture.html#datagrammaxsizeandnetworkmtu">Datagram Max Size and Network MTU</a>. </dd></dl>
+<dl class="section user"><dt></dt><dd>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/Config/design.tag:../Design/" href="../Design/architecture.html#messagefragmentationandreassembly">Message Fragmentation and Reassembly</a> for more information. </dd></dl>
+<dl class="section user"><dt></dt><dd>Informatica does not recommend setting datagram max size options to the network MTU. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/Config/design.tag:../Design/" href="../Design/architecture.html#datagrammaxsizeandnetworkmtu">Datagram Max Size and Network MTU</a>. </dd></dl>
 <dl class="section user"><dt></dt><dd></dd></dl>
-<dl class="section warning"><dt>Warning</dt><dd>When the DRO is in use, it is recommended that all UM applications and components (including the DRO and Persistent Store) share the same maximum datagram size setting. See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/Config/gateway.tag:../Gateway/" href="../Gateway/umrouterconcepts.html#protocolconversion">Protocol Conversion</a>. </dd></dl>
-<dl class="section user"><dt></dt><dd>Users of <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/Config/design.tag:../Design/" href="../Design/umglossary.html#glossarykernelbypass">kernel-bypass drivers</a> should see <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/Config/design.tag:../Design/" href="../Design/architecture.html#dynamicfragmentationreduction">Dynamic Fragmentation Reduction</a>.</dd></dl>
+<dl class="section warning"><dt>Warning</dt><dd>When the DRO is in use, it is recommended that all UM applications and components (including the DRO and Persistent Store) share the same maximum datagram size setting. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/Config/gateway.tag:../Gateway/" href="../Gateway/umrouterconcepts.html#protocolconversion">Protocol Conversion</a>. </dd></dl>
+<dl class="section user"><dt></dt><dd>Users of <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/Config/design.tag:../Design/" href="../Design/umglossary.html#glossarykernelbypass">kernel-bypass drivers</a> should see <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/Config/design.tag:../Design/" href="../Design/architecture.html#dynamicfragmentationreduction">Dynamic Fragmentation Reduction</a>.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>source </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#abdb96b55cc467a75e1f9ec0036dbc14b">lbm_uint_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#abdb96b55cc467a75e1f9ec0036dbc14b">lbm_uint_t</a></b> </td></tr>
 <tr>
 <td><em>Units:</em> </td><td>bytes </td></tr>
 <tr>
@@ -126,12 +126,12 @@ transport_lbtsmx_datagram_max_size (source)&nbsp;&nbsp;<small><a href="#transpor
 transport_lbtsmx_id (source)&nbsp;&nbsp;<small><a href="#transportlbtsmxidsource">&lt;-</a></small></h2>
 <dl class="section user"><dt></dt><dd>The preferred Transport ID for a specific source's LBT-SMX session. </dd></dl>
 <dl class="section user"><dt></dt><dd>To use this option, configure a non-zero value. For the default value of 0 (zero), the UM context selects the next available Transport ID in the Transport ID range of <a class="el" href="grptransportlbtsmxoperation.html#transportlbtsmxidlowcontext">transport_lbtsmx_id_low (context)</a> and <a class="el" href="grptransportlbtsmxoperation.html#transportlbtsmxidhighcontext">transport_lbtsmx_id_high (context)</a>. </dd></dl>
-<dl class="section user"><dt></dt><dd>See <a class="el" href="grptransportlbtsmxoperation.html#lbtsmxtransportsessionmanagement">LBT-SMX Transport Session Management</a> and <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/Config/design.tag:../Design/" href="../Design/transporttypes.html#sourcesandlbtsmx">Sources and LBT-SMX</a> for more information.</dd></dl>
+<dl class="section user"><dt></dt><dd>See <a class="el" href="grptransportlbtsmxoperation.html#lbtsmxtransportsessionmanagement">LBT-SMX Transport Session Management</a> and <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/Config/design.tag:../Design/" href="../Design/transporttypes.html#sourcesandlbtsmx">Sources and LBT-SMX</a> for more information.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>source </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a86897f2fdd66aa7021683a4e72a4537b">lbm_uint16_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a86897f2fdd66aa7021683a4e72a4537b">lbm_uint16_t</a></b> </td></tr>
 <tr>
 <td><em>Default value:</em> </td><td>0 (select next ID in range) </td></tr>
 <tr>
@@ -145,12 +145,12 @@ transport_lbtsmx_id (source)&nbsp;&nbsp;<small><a href="#transportlbtsmxidsource
 <h2><a class="anchor" id="transportlbtsmxidhighcontext"></a>
 transport_lbtsmx_id_high (context)&nbsp;&nbsp;<small><a href="#transportlbtsmxidhighcontext">&lt;-</a></small></h2>
 <dl class="section user"><dt></dt><dd>Highest transport ID in the range of available LBT-SMX Transport IDs. </dd></dl>
-<dl class="section user"><dt></dt><dd>See <a class="el" href="grptransportlbtsmxoperation.html#lbtsmxtransportsessionmanagement">LBT-SMX Transport Session Management</a> and <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/Config/design.tag:../Design/" href="../Design/transporttypes.html#sourcesandlbtsmx">Sources and LBT-SMX</a> for more information.</dd></dl>
+<dl class="section user"><dt></dt><dd>See <a class="el" href="grptransportlbtsmxoperation.html#lbtsmxtransportsessionmanagement">LBT-SMX Transport Session Management</a> and <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/Config/design.tag:../Design/" href="../Design/transporttypes.html#sourcesandlbtsmx">Sources and LBT-SMX</a> for more information.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>context </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a86897f2fdd66aa7021683a4e72a4537b">lbm_uint16_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a86897f2fdd66aa7021683a4e72a4537b">lbm_uint16_t</a></b> </td></tr>
 <tr>
 <td><em>Default value:</em> </td><td>30,005 </td></tr>
 <tr>
@@ -164,12 +164,12 @@ transport_lbtsmx_id_high (context)&nbsp;&nbsp;<small><a href="#transportlbtsmxid
 <h2><a class="anchor" id="transportlbtsmxidlowcontext"></a>
 transport_lbtsmx_id_low (context)&nbsp;&nbsp;<small><a href="#transportlbtsmxidlowcontext">&lt;-</a></small></h2>
 <dl class="section user"><dt></dt><dd>Lowest transport ID in the range of available LBT-SMX Transport IDs. </dd></dl>
-<dl class="section user"><dt></dt><dd>See <a class="el" href="grptransportlbtsmxoperation.html#lbtsmxtransportsessionmanagement">LBT-SMX Transport Session Management</a> and <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/Config/design.tag:../Design/" href="../Design/transporttypes.html#sourcesandlbtsmx">Sources and LBT-SMX</a> for more information.</dd></dl>
+<dl class="section user"><dt></dt><dd>See <a class="el" href="grptransportlbtsmxoperation.html#lbtsmxtransportsessionmanagement">LBT-SMX Transport Session Management</a> and <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/Config/design.tag:../Design/" href="../Design/transporttypes.html#sourcesandlbtsmx">Sources and LBT-SMX</a> for more information.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>context </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a86897f2fdd66aa7021683a4e72a4537b">lbm_uint16_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a86897f2fdd66aa7021683a4e72a4537b">lbm_uint16_t</a></b> </td></tr>
 <tr>
 <td><em>Default value:</em> </td><td>30,001 </td></tr>
 <tr>
@@ -188,7 +188,7 @@ transport_lbtsmx_maximum_receivers_per_transport (source)&nbsp;&nbsp;<small><a h
 <tr>
 <td><em>Scope:</em> </td><td>source </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a46699a1cfc611df32e6cce3fb5100aae">lbm_ushort_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a46699a1cfc611df32e6cce3fb5100aae">lbm_ushort_t</a></b> </td></tr>
 <tr>
 <td><em>Default value:</em> </td><td>64 </td></tr>
 <tr>
@@ -234,12 +234,12 @@ transport_lbtsmx_message_statistics_enabled (context)&nbsp;&nbsp;<small><a href=
 transport_lbtsmx_sm_interval (source)&nbsp;&nbsp;<small><a href="#transportlbtsmxsmintervalsource">&lt;-</a></small></h2>
 <dl class="section user"><dt></dt><dd>Time period between updates to an LBT-SMX source's shared activity counter, which enables connected receivers to determine the source's liveness. </dd></dl>
 <dl class="section user"><dt></dt><dd>You should configure this option to a value less than the receivers' corresponding <a class="el" href="grptransportlbtsmxoperation.html#transportlbtsmxactivitytimeoutreceiver">transport_lbtsmx_activity_timeout (receiver)</a> setting so receivers do not time out sources too early. </dd></dl>
-<dl class="section user"><dt></dt><dd>Refer to <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/Config/design.tag:../Design/" href="../Design/umobjects.html#sourceobject">Source Object</a> for additional information.</dd></dl>
+<dl class="section user"><dt></dt><dd>Refer to <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/Config/design.tag:../Design/" href="../Design/umobjects.html#sourceobject">Source Object</a> for additional information.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>source </td></tr>
 <tr>
-<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
+<td><em>Type:</em> </td><td><b><a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/Config/api.tag:../API/" href="../API/lbm_8h.html#a72438fab15bf500af58d2a8a521e470d">lbm_ulong_t</a></b> </td></tr>
 <tr>
 <td><em>Units:</em> </td><td>milliseconds </td></tr>
 <tr>
@@ -256,7 +256,7 @@ transport_lbtsmx_sm_interval (source)&nbsp;&nbsp;<small><a href="#transportlbtsm
 transport_lbtsmx_transmission_window_size (source)&nbsp;&nbsp;<small><a href="#transportlbtsmxtransmissionwindowsizesource">&lt;-</a></small></h2>
 <dl class="section user"><dt></dt><dd>Size of an LBT-SMX transport's shared memory area. </dd></dl>
 <dl class="section user"><dt></dt><dd>Must be a power of two and be at least twice a large as the source's <a class="el" href="grptransportlbtsmxoperation.html#transportlbtsmxdatagrammaxsizesource">transport_lbtsmx_datagram_max_size (source)</a>. If you configure a value that is not a power of 2 or is less than twice the size of the maximum datagram size, UM issues a warning log message and automatically rounds up the value of this option to the next power of 2 window size that can fit at least two maximum-sized datagrams. The minimum value for this option is 64 bytes. </dd></dl>
-<dl class="section user"><dt></dt><dd>Refer to <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/Config/design.tag:../Design/" href="../Design/umobjects.html#sourceobject">Source Object</a> for additional information.</dd></dl>
+<dl class="section user"><dt></dt><dd>Refer to <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/Config/design.tag:../Design/" href="../Design/umobjects.html#sourceobject">Source Object</a> for additional information.</dd></dl>
 <dl class="section user"><dt></dt><dd><table class="doxtable">
 <tr>
 <td><em>Scope:</em> </td><td>source </td></tr>

@@ -3,7 +3,7 @@
 " statistics classes, and is provided for reference purposes."
 
 
-Class: LBMSourceStatistics
+Class: LBMImmediateMessageSourceStatistics
 
 	public String displayString(String aString) {
 		StringBuilder sb = new StringBuilder(super.displayString(aString));
@@ -17,7 +17,7 @@ Class: LBMSourceStatistics
 					break;
 				case LBM.TRANSPORT_STAT_LBTRM:
 					sb.append("\n\tLBT-RM datagrams sent                                 : ").append(this.messagesSent());
-					sb.append("\n\tLBT-RM datagram bytes sent                            : ").append(this.bytesSent());
+					sb.append("\n\tLBT-RM datagrams bytes sent                           : ").append(this.bytesSent());
 					sb.append("\n\tLBT-RM datagrams in transmission window               : ").append(this.transmissionWindowMessages());
 					sb.append("\n\tLBT-RM datagram bytes in transmission window          : ").append(this.transmissionWindowBytes());
 					sb.append("\n\tLBT-RM NAK packets received                           : ").append(this.nakPacketsReceived());
@@ -26,40 +26,9 @@ Class: LBMSourceStatistics
 					sb.append("\n\tLBT-RM NAKs shed                                      : ").append(this.naksShed());
 					sb.append("\n\tLBT-RM NAKs ignored (retransmit delay)                : ").append(this.naksIgnoredRetransmitDelay());
 					sb.append("\n\tLBT-RM retransmission datagrams sent                  : ").append(this.retransmissionsSent());
-					sb.append("\n\tLBT-RM retransmission datagrams bytes sent            : ").append(this.retransmissionBytesSent());
+					sb.append("\n\tLBT-RM retransmission datagram bytes sent             : ").append(this.retransmissionBytesSent());
 					sb.append("\n\tLBT-RM datagrams queued by rate control               : ").append(this.messagesQueued());
 					sb.append("\n\tLBT-RM retransmission datagrams queued by rate control: ").append(this.retransmissionsQueued());
-					break;
-				case LBM.TRANSPORT_STAT_LBTRU:
-					sb.append("\n\tLBT-RU datagrams sent                    : ").append(this.messagesSent());
-					sb.append("\n\tLBT-RU datagram bytes sent               : ").append(this.bytesSent());
-					sb.append("\n\tLBT-RU NAK packets received              : ").append(this.nakPacketsReceived());
-					sb.append("\n\tLBT-RU NAKs received                     : ").append(this.naksReceived());
-					sb.append("\n\tLBT-RU NAKs ignored                      : ").append(this.naksIgnored());
-					sb.append("\n\tLBT-RU NAKs shed                         : ").append(this.naksShed());
-					sb.append("\n\tLBT-RU NAKs ignored (retransmit delay)   : ").append(this.naksIgnoredRetransmitDelay());
-					sb.append("\n\tLBT-RU retransmission datagrams sent     : ").append(this.retransmissionsSent());
-					sb.append("\n\tLBT-RU retransmission datagram bytes sent: ").append(this.retransmissionBytesSent());
-					sb.append("\n\tClients                                  : ").append(this.numberOfClients());
-					break;
-				case LBM.TRANSPORT_STAT_LBTIPC:
-					sb.append("\n\tClients                    :").append(this.numberOfClients());
-					sb.append("\n\tLBT-IPC datagrams sent     :").append(this.messagesSent());
-					sb.append("\n\tLBT-IPC datagram bytes sent:").append(this.bytesSent());
-					break;
-				case LBM.TRANSPORT_STAT_LBTSMX:
-					sb.append("\n\tClients                    :").append(this.numberOfClients());
-					sb.append("\n\tLBT-SMX datagrams sent     :").append(this.messagesSent());
-					sb.append("\n\tLBT-SMX datagram bytes sent:").append(this.bytesSent());
-					break;
-				case LBM.TRANSPORT_STAT_LBTRDMA:
-					sb.append("\n\tClients                    :").append(this.numberOfClients());
-					sb.append("\n\tLBT-RDMA datagrams sent     :").append(this.messagesSent());
-					sb.append("\n\tLBT-RDMA datagram bytes sent:").append(this.bytesSent());
-					break;
-				case LBM.TRANSPORT_STAT_BROKER:
-					sb.append("\n\tBROKER messages sent       : ").append(this.messagesSent());
-					sb.append("\n\tBROKER message bytes sent  : ").append(this.bytesSent());
 					break;
 				default:
 					sb.append("\nError: unknown transport type received.").append(this.type());
@@ -67,7 +36,33 @@ Class: LBMSourceStatistics
 			}
 			sb.append("\n");
 		} catch (Exception ex) {
-			sb.append("\nError displaying source statistics: ").append(ex.toString());
+			sb.append("\nError displaying immediate message source statistics: ").append(ex.toString());
+		}
+		return sb.toString();
+	}
+
+
+Class: LBMStatistics
+
+	public String displayString(String aString) {
+		StringBuilder sb = new StringBuilder();
+		try {
+			sb.append(aString);
+			sb.append(" from ").append(this.getApplicationSourceId());
+			sb.append(" at ").append(this.getSender().getHostAddress());
+			if (_processid != 0) {
+				sb.append(", process ID=").append(Long.toHexString(this.getProcessId()));
+			}
+			if (_contextid != 0) {
+				sb.append(", object ID=").append(Long.toHexString(this.getContextId()));
+			}
+			if ((_contextinstance != null) && (!_contextinstance.isEmpty())) {
+				sb.append(", context instance=").append(this.getContextInstance());
+			}
+			sb.append(", domain ID=").append(this.getDomainId());
+			sb.append(", sent ").append(this.getTimestamp());
+		} catch (Exception ex) {
+			sb.append("\nError displaying statistics: ").append(ex.toString());
 		}
 		return sb.toString();
 	}
@@ -138,32 +133,6 @@ Class: LBMEventQueueStatistics
 			sb.append("\n");
 		} catch (Exception ex) {
 			sb.append("\nError displaying event queue statistics: " + ex.toString());
-		}
-		return sb.toString();
-	}
-
-
-Class: LBMStatistics
-
-	public String displayString(String aString) {
-		StringBuilder sb = new StringBuilder();
-		try {
-			sb.append(aString);
-			sb.append(" from ").append(this.getApplicationSourceId());
-			sb.append(" at ").append(this.getSender().getHostAddress());
-			if (_processid != 0) {
-				sb.append(", process ID=").append(Long.toHexString(this.getProcessId()));
-			}
-			if (_contextid != 0) {
-				sb.append(", object ID=").append(Long.toHexString(this.getContextId()));
-			}
-			if ((_contextinstance != null) && (!_contextinstance.isEmpty())) {
-				sb.append(", context instance=").append(this.getContextInstance());
-			}
-			sb.append(", domain ID=").append(this.getDomainId());
-			sb.append(", sent ").append(this.getTimestamp());
-		} catch (Exception ex) {
-			sb.append("\nError displaying statistics: ").append(ex.toString());
 		}
 		return sb.toString();
 	}
@@ -279,6 +248,76 @@ Class: LBMReceiverStatistics
 	}
 
 
+Class: LBMSourceStatistics
+
+	public String displayString(String aString) {
+		StringBuilder sb = new StringBuilder(super.displayString(aString));
+		try {
+			sb.append("\nSource: ").append(this.source());
+			sb.append("\nTransport: ").append(this.typeName());
+			switch (this.type()) {
+				case LBM.TRANSPORT_STAT_TCP:
+					sb.append("\n\tClients       : ").append(this.numberOfClients());
+					sb.append("\n\tBytes buffered: ").append(this.bytesBuffered());
+					break;
+				case LBM.TRANSPORT_STAT_LBTRM:
+					sb.append("\n\tLBT-RM datagrams sent                                 : ").append(this.messagesSent());
+					sb.append("\n\tLBT-RM datagram bytes sent                            : ").append(this.bytesSent());
+					sb.append("\n\tLBT-RM datagrams in transmission window               : ").append(this.transmissionWindowMessages());
+					sb.append("\n\tLBT-RM datagram bytes in transmission window          : ").append(this.transmissionWindowBytes());
+					sb.append("\n\tLBT-RM NAK packets received                           : ").append(this.nakPacketsReceived());
+					sb.append("\n\tLBT-RM NAKs received                                  : ").append(this.naksReceived());
+					sb.append("\n\tLBT-RM NAKs ignored                                   : ").append(this.naksIgnored());
+					sb.append("\n\tLBT-RM NAKs shed                                      : ").append(this.naksShed());
+					sb.append("\n\tLBT-RM NAKs ignored (retransmit delay)                : ").append(this.naksIgnoredRetransmitDelay());
+					sb.append("\n\tLBT-RM retransmission datagrams sent                  : ").append(this.retransmissionsSent());
+					sb.append("\n\tLBT-RM retransmission datagrams bytes sent            : ").append(this.retransmissionBytesSent());
+					sb.append("\n\tLBT-RM datagrams queued by rate control               : ").append(this.messagesQueued());
+					sb.append("\n\tLBT-RM retransmission datagrams queued by rate control: ").append(this.retransmissionsQueued());
+					break;
+				case LBM.TRANSPORT_STAT_LBTRU:
+					sb.append("\n\tLBT-RU datagrams sent                    : ").append(this.messagesSent());
+					sb.append("\n\tLBT-RU datagram bytes sent               : ").append(this.bytesSent());
+					sb.append("\n\tLBT-RU NAK packets received              : ").append(this.nakPacketsReceived());
+					sb.append("\n\tLBT-RU NAKs received                     : ").append(this.naksReceived());
+					sb.append("\n\tLBT-RU NAKs ignored                      : ").append(this.naksIgnored());
+					sb.append("\n\tLBT-RU NAKs shed                         : ").append(this.naksShed());
+					sb.append("\n\tLBT-RU NAKs ignored (retransmit delay)   : ").append(this.naksIgnoredRetransmitDelay());
+					sb.append("\n\tLBT-RU retransmission datagrams sent     : ").append(this.retransmissionsSent());
+					sb.append("\n\tLBT-RU retransmission datagram bytes sent: ").append(this.retransmissionBytesSent());
+					sb.append("\n\tClients                                  : ").append(this.numberOfClients());
+					break;
+				case LBM.TRANSPORT_STAT_LBTIPC:
+					sb.append("\n\tClients                    :").append(this.numberOfClients());
+					sb.append("\n\tLBT-IPC datagrams sent     :").append(this.messagesSent());
+					sb.append("\n\tLBT-IPC datagram bytes sent:").append(this.bytesSent());
+					break;
+				case LBM.TRANSPORT_STAT_LBTSMX:
+					sb.append("\n\tClients                    :").append(this.numberOfClients());
+					sb.append("\n\tLBT-SMX datagrams sent     :").append(this.messagesSent());
+					sb.append("\n\tLBT-SMX datagram bytes sent:").append(this.bytesSent());
+					break;
+				case LBM.TRANSPORT_STAT_LBTRDMA:
+					sb.append("\n\tClients                    :").append(this.numberOfClients());
+					sb.append("\n\tLBT-RDMA datagrams sent     :").append(this.messagesSent());
+					sb.append("\n\tLBT-RDMA datagram bytes sent:").append(this.bytesSent());
+					break;
+				case LBM.TRANSPORT_STAT_BROKER:
+					sb.append("\n\tBROKER messages sent       : ").append(this.messagesSent());
+					sb.append("\n\tBROKER message bytes sent  : ").append(this.bytesSent());
+					break;
+				default:
+					sb.append("\nError: unknown transport type received.").append(this.type());
+					break;
+			}
+			sb.append("\n");
+		} catch (Exception ex) {
+			sb.append("\nError displaying source statistics: ").append(ex.toString());
+		}
+		return sb.toString();
+	}
+
+
 Class: LBMContextStatistics
 
 	public String displayString(String aString) {
@@ -368,45 +407,6 @@ Class: LBMImmediateMessageReceiverStatistics
 			sb.append("\n");
 		} catch (Exception ex) {
 			sb.append("\nError displaying immediate message receiver statistics: ").append(ex.toString());
-		}
-		return sb.toString();
-	}
-
-
-Class: LBMImmediateMessageSourceStatistics
-
-	public String displayString(String aString) {
-		StringBuilder sb = new StringBuilder(super.displayString(aString));
-		try {
-			sb.append("\nSource: ").append(this.source());
-			sb.append("\nTransport: ").append(this.typeName());
-			switch (this.type()) {
-				case LBM.TRANSPORT_STAT_TCP:
-					sb.append("\n\tClients       : ").append(this.numberOfClients());
-					sb.append("\n\tBytes buffered: ").append(this.bytesBuffered());
-					break;
-				case LBM.TRANSPORT_STAT_LBTRM:
-					sb.append("\n\tLBT-RM datagrams sent                                 : ").append(this.messagesSent());
-					sb.append("\n\tLBT-RM datagrams bytes sent                           : ").append(this.bytesSent());
-					sb.append("\n\tLBT-RM datagrams in transmission window               : ").append(this.transmissionWindowMessages());
-					sb.append("\n\tLBT-RM datagram bytes in transmission window          : ").append(this.transmissionWindowBytes());
-					sb.append("\n\tLBT-RM NAK packets received                           : ").append(this.nakPacketsReceived());
-					sb.append("\n\tLBT-RM NAKs received                                  : ").append(this.naksReceived());
-					sb.append("\n\tLBT-RM NAKs ignored                                   : ").append(this.naksIgnored());
-					sb.append("\n\tLBT-RM NAKs shed                                      : ").append(this.naksShed());
-					sb.append("\n\tLBT-RM NAKs ignored (retransmit delay)                : ").append(this.naksIgnoredRetransmitDelay());
-					sb.append("\n\tLBT-RM retransmission datagrams sent                  : ").append(this.retransmissionsSent());
-					sb.append("\n\tLBT-RM retransmission datagram bytes sent             : ").append(this.retransmissionBytesSent());
-					sb.append("\n\tLBT-RM datagrams queued by rate control               : ").append(this.messagesQueued());
-					sb.append("\n\tLBT-RM retransmission datagrams queued by rate control: ").append(this.retransmissionsQueued());
-					break;
-				default:
-					sb.append("\nError: unknown transport type received.").append(this.type());
-					break;
-			}
-			sb.append("\n");
-		} catch (Exception ex) {
-			sb.append("\nError displaying immediate message source statistics: ").append(ex.toString());
 		}
 		return sb.toString();
 	}

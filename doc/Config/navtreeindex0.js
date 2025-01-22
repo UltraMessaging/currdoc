@@ -215,7 +215,9 @@ var NAVTREEINDEX0 =
 "grpmajoroptions.html#transporttopicsequencenumberinforequestintervalreceiver":[9,0,25],
 "grpmajoroptions.html#transporttopicsequencenumberinforequestmaximumreceiver":[9,0,26],
 "grpmajoroptions.html#useextendedreclaimnotificationssource":[9,0,27],
-"grpmajoroptions.html#zerotransportsfunctionxsp":[9,0,28],
+"grpmajoroptions.html#usehotlinkreceiver":[9,0,28],
+"grpmajoroptions.html#usehotlinksource":[9,0,29],
+"grpmajoroptions.html#zerotransportsfunctionxsp":[9,0,30],
 "grpmulticastimmediatemessagingnetwork.html":[28],
 "grpmulticastimmediatemessagingnetwork.html#mimaddresscontext":[28,0,0],
 "grpmulticastimmediatemessagingnetwork.html#mimdestinationportcontext":[28,0,1],
@@ -247,7 +249,5 @@ var NAVTREEINDEX0 =
 "grpmulticastimmediatemessagingreliability.html#mimnakbackoffintervalcontext":[29,0,1],
 "grpmulticastimmediatemessagingreliability.html#mimnakgenerationintervalcontext":[29,0,2],
 "grpmulticastimmediatemessagingreliability.html#mimnakinitialbackoffintervalcontext":[29,0,3],
-"grpmulticastimmediatemessagingreliability.html#mimnaksuppressintervalcontext":[29,0,4],
-"grpmulticastimmediatemessagingreliability.html#mimsendnakscontext":[29,0,5],
-"grpmulticastimmediatemessagingreliability.html#mimtransmissionwindowlimitcontext":[29,0,6]
+"grpmulticastimmediatemessagingreliability.html#mimnaksuppressintervalcontext":[29,0,4]
 };

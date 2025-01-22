@@ -58,10 +58,10 @@ $(document).ready(function(){initNavTree('startingultramessagingdaemons.html',''
  </p>
 <h1><a class="anchor" id="startingultramessagingdynamicroutingoption"></a>
 Starting Ultra Messaging Dynamic Routing Option&nbsp;&nbsp;<small><a href="#startingultramessagingdynamicroutingoption">&lt;-</a></small></h1>
-<p>The <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/QuickStart/design.tag:../Design/" href="../Design/fundamentalconcepts.html#umrouter">DRO</a> bridges disjoint topic resolution domains by forwarding multicast and/or unicast topic resolution traffic. Before installing and starting a DRO daemon (tnwgd) clear objectives and proper planning are very important. Approach this planning with the consideration that a DRO condenses your network into a single process. You must be clear about the traffic you expect to forward through a DRO. The following highlights some other specifics.</p>
+<p>The <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/QuickStart/design.tag:../Design/" href="../Design/fundamentalconcepts.html#umrouter">DRO</a> bridges disjoint topic resolution domains by forwarding multicast and/or unicast topic resolution traffic. Before installing and starting a DRO daemon (tnwgd) clear objectives and proper planning are very important. Approach this planning with the consideration that a DRO condenses your network into a single process. You must be clear about the traffic you expect to forward through a DRO. The following highlights some other specifics.</p>
 <ul>
 <li>
-<p class="startli">Know your Topic Resolution Domains. See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/QuickStart/gateway.tag:../Gateway/" href="../Gateway/droarchitecture.html#topicresolutiondomains">Topic Resolution Domains</a>.</p>
+<p class="startli">Know your Topic Resolution Domains. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/QuickStart/gateway.tag:../Gateway/" href="../Gateway/droarchitecture.html#topicresolutiondomains">Topic Resolution Domains</a>.</p>
 <p class="endli"></p>
 </li>
 <li>
@@ -71,73 +71,6 @@ Starting Ultra Messaging Dynamic Routing Option&nbsp;&nbsp;<small><a href="#star
 <li>
 Fully examine any use of Late Join, taking care to configure retransmission options correctly. </li>
 </ul>
-<p><br />
- </p>
-<h1><a class="anchor" id="startingummdaemon"></a>
-Starting UMM Daemon&nbsp;&nbsp;<small><a href="#startingummdaemon">&lt;-</a></small></h1>
-<p>The UMM Daemon manages UM XML configuration information defined in the GUI as well as user and license information. It serves license and configuration information to UM applications. The UMM Daemon requires either a MySQL or Oracle database installation. Informatica does not supply MySQL or Oracle nor any licensing to use them. For additional information about the steps in this process, see the <a href="../UMM/index.html">Ultra Messaging Manager Guide</a>.</p>
-<ol>
-<li>
-<p class="startli">Install MySQL or Oracle according to the user documentation.</p>
-<p class="endli"></p>
-</li>
-<li>
-<p class="startli">Create a database. (You provide the UMM Daemon with the database name, username and password at start up. This user name and password should be kept secure.)</p>
-<p class="endli"></p>
-</li>
-<li>
-<p class="startli">Log into the database.</p>
-<p class="endli"></p>
-</li>
-<li>
-<p class="startli">From the database's command line or home page, execute the /UMM/install_tables_oracle.sql or source /UMM/install_tables_mysql.sql script. (This script installs the tables required by UMM.)</p>
-<p class="endli"></p>
-</li>
-<li>
-<p class="startli">From the database's command line or home page, load /UMM/oracle_templates.txt or /UMM/mysql_templates.txt. (This script loads the example configuration templates for low latency and high throughput. These templates appear in the UMM GUI under Templates in the object tree in the left pane.</p>
-<ul>
-<li>
-<p class="startli">For Oracle, load /UMM/oracle_templates.txt.</p>
-<p class="endli"></p>
-</li>
-<li>
-For MySQL, run `LOAD DATA INFILE 'mysql_templates.txt' INTO TABLE TEMPLATE;`. </li>
-</ul>
-<p class="endli"></p>
-</li>
-<li>
-<p class="startli">Modify the /UMM/umm.properties to indicate the database username, password and driver to reflect your configuration database.</p>
-<p class="endli"></p>
-</li>
-<li>
-<p class="startli">Edit the ummd.bat or ummd.sh file that starts UMM Daemon. The appropriate driver jar file name must be added to the classpath. Specify your certificate file or Java keystore information if using SSL certificates. The ummd.bat or ummd.sh provided with installation appears below. <br />
-<code>java -cp .;mysql-connector-java-5.0.8-bin.jar;UMMD_1.6.0_02.jar -Xms512m -Xmx1024m umm.ummd.Server</code></p>
-<p class="endli"></p>
-</li>
-<li>
-<p class="startli">Start the UMM Daemon with /UMM/ummd.bat or /UMM/ummd.sh.</p>
-<p class="endli"></p>
-</li>
-<li>
-<p class="startli">Edit the umm.bat or umm.sh file that starts the UMM GUI. The appropriate driver jar file name must be added to the classpath. The umm.bat or umm.sh provided with installation appears below. <br />
-<code>java -cp .;mysql-connector-java-5.0.8-bin.jar;UMM_1.jar; -Xms256m -Xmx1024m umm.gui.MainFrame</code></p>
-<p class="endli"></p>
-</li>
-<li>
-<p class="startli">Start the UMM GUI with /UMM/umm.bat or /UMM/umm.sh.</p>
-<p class="endli"></p>
-</li>
-<li>
-<p class="startli">Log into the UMM GUI with username, default and password default. Either change the default user's password or create new administrative user and delete the default user. See the <a href="../UMM/index.html">Ultra Messaging Manager Guide</a>.</p>
-<p class="endli"></p>
-</li>
-<li>
-<p class="startli">To enable your UM applications to be served configuration information by UMM Daemon, set the following environment variable for every application/user combination. <br />
-<code>export LBM_UMM_INFO=</code><em>application_name</em><code>:</code><em>user_name</em><code>:</code><em>password</em><code>@</code><em>ip</em><code>:</code><em>port</em></p>
-<p class="endli">For example: <br />
-<code>export LBM_UMM_INFO=lbmrcv:lbmrcv:default:default@10.29.3.95:21273</code> </p>
-</li>
-</ol>
 <p><br />
  </p>
 <h1><a class="anchor" id="persistentstoredaemon"></a>
@@ -157,7 +90,7 @@ Persistent Store Daemon&nbsp;&nbsp;<small><a href="#persistentstoredaemon">&lt;-
 Start the daemon. <br />
 <code>$ umestored config.xml</code> </li>
 </ol>
-<p>See also <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/QuickStart/ume.tag:../UME/" href="../UME/manpagesforstore.html#umestoredmanpage">Umestored Man Page</a>.</p>
+<p>See also <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/QuickStart/ume.tag:../UME/" href="../UME/manpagesforstore.html#umestoredmanpage">Umestored Man Page</a>.</p>
 <p><br />
 <br />
  <br />

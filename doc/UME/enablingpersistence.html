@@ -101,8 +101,8 @@ Modified the receiver to not exit on unexpected receiver events. </li>
  </p>
 <h1><a class="anchor" id="addingthestoretoasource"></a>
 Adding the Store to a Source&nbsp;&nbsp;<small><a href="#addingthestoretoasource">&lt;-</a></small></h1>
-<p>The fundamental component of a persistence solution is the Persistent Store. To use a Store, a source needs to be configured to use one by setting <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umestoresource">ume_store (source)</a> for the source. We can do that with the following piece of code.</p>
-<div class="fragment"><div class="line">err = <a class="codeRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/UME/api.tag:../API/" href="../API/lbm_8h.html#a422f330bf7ef3efdd7a9f17caabccb24">lbm_src_topic_attr_str_setopt</a>(&amp;attr, <span class="stringliteral">&quot;ume_store&quot;</span>, <span class="stringliteral">&quot;127.0.0.1:14567&quot;</span>);</div></div><!-- fragment --><p>This sets the Persistent Store for the source to the Store running at 127.0.0.1 on port 14567.</p>
+<p>The fundamental component of a persistence solution is the Persistent Store. To use a Store, a source needs to be configured to use one by setting <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umestoresource">ume_store (source)</a> for the source. We can do that with the following piece of code.</p>
+<div class="fragment"><div class="line">err = <a class="codeRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/UME/api.tag:../API/" href="../API/lbm_8h.html#a422f330bf7ef3efdd7a9f17caabccb24">lbm_src_topic_attr_str_setopt</a>(&amp;attr, <span class="stringliteral">&quot;ume_store&quot;</span>, <span class="stringliteral">&quot;127.0.0.1:14567&quot;</span>);</div></div><!-- fragment --><p>This sets the Persistent Store for the source to the Store running at 127.0.0.1 on port 14567.</p>
 <p>Example files for our exercise are: </p><table class="doxtable">
 <tr>
 <th>Filename </th><th>Content </th></tr>
@@ -149,7 +149,7 @@ Adding Fault Recovery with Registration IDs&nbsp;&nbsp;<small><a href="#addingfa
 <li>
 Inform the LBM configuration for the receiver to use this callback function. That is accomplished by setting the ume_registration_extended_function() similar to example code below. </li>
 </ol>
-<div class="fragment"><div class="line"><a class="codeRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/UME/api.tag:../API/" href="../API/structlbm__ume__rcv__regid__ex__func__t__stct.html">lbm_ume_rcv_regid_ex_func_t</a> id;      <span class="comment">/* structure to hold registration function information */</span></div><div class="line"><span class="keywordtype">id</span>.<a class="codeRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/UME/api.tag:../API/" href="../API/structlbm__ume__rcv__regid__ex__func__t__stct.html#aa182b9c694a4d71b8a30487dd8eed8ea">func</a> = app_rcv_regid_callback;    <span class="comment">/* the callback function to call */</span></div><div class="line"><span class="keywordtype">id</span>.clientd = NULL;                   <span class="comment">/* the value to pass in the clientd to the function */</span></div><div class="line">err = <a class="codeRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/UME/api.tag:../API/" href="../API/lbm_8h.html#a1afc75f0fb3601d072b3463e7acf16a6">lbm_rcv_topic_attr_setopt</a>(&amp;attr, <span class="stringliteral">&quot;ume_registration_extended_function&quot;</span>, &amp;<span class="keywordtype">id</span>, <span class="keyword">sizeof</span>(<span class="keywordtype">id</span>));</div></div><!-- fragment --><p>Once this is done, the receiver has the ability to control what RegID it will use. This yields the source code in <a href="../example/ume-example-rcv-2.c">ume-example-rcv-2.c</a>.</p>
+<div class="fragment"><div class="line"><a class="codeRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/UME/api.tag:../API/" href="../API/structlbm__ume__rcv__regid__ex__func__t__stct.html">lbm_ume_rcv_regid_ex_func_t</a> id;      <span class="comment">/* structure to hold registration function information */</span></div><div class="line"><span class="keywordtype">id</span>.<a class="codeRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/UME/api.tag:../API/" href="../API/structlbm__ume__rcv__regid__ex__func__t__stct.html#aa182b9c694a4d71b8a30487dd8eed8ea">func</a> = app_rcv_regid_callback;    <span class="comment">/* the callback function to call */</span></div><div class="line"><span class="keywordtype">id</span>.clientd = NULL;                   <span class="comment">/* the value to pass in the clientd to the function */</span></div><div class="line">err = <a class="codeRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/UME/api.tag:../API/" href="../API/lbm_8h.html#a1afc75f0fb3601d072b3463e7acf16a6">lbm_rcv_topic_attr_setopt</a>(&amp;attr, <span class="stringliteral">&quot;ume_registration_extended_function&quot;</span>, &amp;<span class="keywordtype">id</span>, <span class="keyword">sizeof</span>(<span class="keywordtype">id</span>));</div></div><!-- fragment --><p>Once this is done, the receiver has the ability to control what RegID it will use. This yields the source code in <a href="../example/ume-example-rcv-2.c">ume-example-rcv-2.c</a>.</p>
 <p>With these in place, you can experiment with killing the receiver and bringing it back (as long as you bring it back before the source is finished), as well as killing the source and bringing it back.</p>
 <p>The restriction to this initial approach to RegIDs is that the RegIDs 1000 and 1100 may not be used by any other objects at the same time. If you run additional sources or receivers, they must be assigned new RegIDs, not 1000 or 1100. Let's now take a more sophisticated approach to RegIDs that will allow much more flexibility.</p>
 <p><br />
@@ -166,7 +166,7 @@ Enabling Persistence in the Source&nbsp;&nbsp;<small><a href="#enablingpersisten
 <p>With the above mentioned behaviors in mind, let's turn to looking at how they may be implemented with persistence, starting with the source. We can summarize the changes we need by the following list.</p>
 <ol>
 <li>
-At source startup, use any saved RegID information found in the file by setting information in the <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umestoresource">ume_store (source)</a> configuration variable. </li>
+At source startup, use any saved RegID information found in the file by setting information in the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umestoresource">ume_store (source)</a> configuration variable. </li>
 <li>
 After the Store registration is successful, if a new RegID was assigned to the source, save the RegID to the file. </li>
 <li>
@@ -181,35 +181,35 @@ After message 20 has been sent, delete the saved RegID file. </li>
  </p>
 <h2><a class="anchor" id="smartsourcesandpersistence"></a>
 Smart Sources and Persistence&nbsp;&nbsp;<small><a href="#smartsourcesandpersistence">&lt;-</a></small></h2>
-<p>When using the <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/UME/design.tag:../Design/" href="../Design/advancedoptimizations.html#smartsources">Smart Sources</a> feature to send persistent messages, there are a few restrictions: </p><ul>
+<p>When using the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/UME/design.tag:../Design/" href="../Design/advancedoptimizations.html#smartsources">Smart Sources</a> feature to send persistent messages, there are a few restrictions: </p><ul>
 <li>
 No support for source-side delivery confirmation. Neither of the forms described in <a class="el" href="persistenceconcepts.html#deliveryconfirmationconcept">Delivery Confirmation Concept</a> are allowed. </li>
 <li>
 No support for <a class="el" href="designingpersistentsources.html#receiverlivenessdetection">Receiver Liveness Detection</a>. </li>
 <li>
-Application stability notification is only supported per-message. See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umemessagestabilitynotificationsource">ume_message_stability_notification (source)</a>. </li>
+Application stability notification is only supported per-message. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umemessagestabilitynotificationsource">ume_message_stability_notification (source)</a>. </li>
 <li>
 The following configuration options have limited or no support with Smart Sources: <ul>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeconfirmeddeliverynotificationsource">ume_confirmed_delivery_notification (source)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeconfirmeddeliverynotificationsource">ume_confirmed_delivery_notification (source)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeretentionuniqueconfirmationssource">ume_retention_unique_confirmations (source)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeretentionuniqueconfirmationssource">ume_retention_unique_confirmations (source)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umesriflushsrirequestresponsesource">ume_sri_flush_sri_request_response (source)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umesriflushsrirequestresponsesource">ume_sri_flush_sri_request_response (source)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umesrirequestresponselatencysource">ume_sri_request_response_latency (source)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umesrirequestresponselatencysource">ume_sri_request_response_latency (source)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umemessagestabilitynotificationsource">ume_message_stability_notification (source)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umemessagestabilitynotificationsource">ume_message_stability_notification (source)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/UME/config.tag:../Config/" href="../Config/grplatejoin.html#retransmitretentionsizethresholdsource">retransmit_retention_size_threshold (source)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/UME/config.tag:../Config/" href="../Config/grplatejoin.html#retransmitretentionsizethresholdsource">retransmit_retention_size_threshold (source)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeretentionsizethresholdsource">ume_retention_size_threshold (source)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeretentionsizethresholdsource">ume_retention_size_threshold (source)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/UME/config.tag:../Config/" href="../Config/grplatejoin.html#retransmitretentionsizelimitsource">retransmit_retention_size_limit (source)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/UME/config.tag:../Config/" href="../Config/grplatejoin.html#retransmitretentionsizelimitsource">retransmit_retention_size_limit (source)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeretentionsizelimitsource">ume_retention_size_limit (source)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/UME/config.tag:../Config/" href="../Config/grpultramessagingpersistence.html#umeretentionsizelimitsource">ume_retention_size_limit (source)</a> </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/UME/config.tag:../Config/" href="../Config/grplatejoin.html#retransmitretentionagethresholdsource">retransmit_retention_age_threshold (source)</a> </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/UME/config.tag:../Config/" href="../Config/grplatejoin.html#retransmitretentionagethresholdsource">retransmit_retention_age_threshold (source)</a> </li>
 </ul>
 </li>
 </ul>

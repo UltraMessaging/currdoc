@@ -7,7 +7,7 @@
   modification, are permitted only as covered by the terms of a
   valid software license agreement with Informatica Inc.
 
-  (C) Copyright 2004,2023 Informatica Inc. All Rights Reserved.
+  (C) Copyright 2004,2025 Informatica Inc. All Rights Reserved.
 
   THE SOFTWARE IS PROVIDED "AS IS" AND INFORMATICA DISCLAIMS ALL WARRANTIES
   EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION, ANY IMPLIED WARRANTIES OF
@@ -44,56 +44,60 @@
 
 #include <time.h>
 #ifdef _WIN32
-	#include <sys/timeb.h>
+#include <sys/timeb.h>
 #if (_MSC_VER > 1800)
-	#include <inttypes.h>
+#include <inttypes.h>
 #endif
 #else
-	#include <sys/time.h>
+#include <sys/time.h>
 #endif
 
 #define USECS_IN_SECOND 1000000
 #define UMS_EXAMPLE_ERROR 1
 
-int calc_rate(lbm_uint64_t *, char[], char[]);
+int calc_rate(lbm_uint64_t*, char[], char[]);
 
 /* Taken from ACE */
-void normalize_tv(struct timeval *tv)
+void normalize_tv(struct timeval* tv)
 {
 	if (tv->tv_usec >= USECS_IN_SECOND) {
-			/* if more than 5 trips through loop required, then do divide and mod */
-			if (tv->tv_usec >= (USECS_IN_SECOND*5)) {
-				tv->tv_sec += (tv->tv_usec / USECS_IN_SECOND);
-				tv->tv_usec = (tv->tv_usec % USECS_IN_SECOND);
-			} else {
-				do {
-					tv->tv_sec++;
-					tv->tv_usec -= USECS_IN_SECOND;
-				} while (tv->tv_usec >= USECS_IN_SECOND);
-			}
-	} else if (tv->tv_usec <= -USECS_IN_SECOND) {
-			/* if more than 5 trips through loop required, then do divide and mod */
-			if (tv->tv_usec <= (-USECS_IN_SECOND*5)) {
-				tv->tv_sec -= (tv->tv_usec / -USECS_IN_SECOND); /* neg / neg = pos so subtract */
-				tv->tv_usec = (tv->tv_usec % -USECS_IN_SECOND); /* neg % neg = neg */
-			} else {
-				do {
-					tv->tv_sec--;
-					tv->tv_usec += USECS_IN_SECOND;
-				} while (tv->tv_usec <= -USECS_IN_SECOND);
-			}
+		/* if more than 5 trips through loop required, then do divide and mod */
+		if (tv->tv_usec >= (USECS_IN_SECOND * 5)) {
+			tv->tv_sec += (tv->tv_usec / USECS_IN_SECOND);
+			tv->tv_usec = (tv->tv_usec % USECS_IN_SECOND);
+		}
+		else {
+			do {
+				tv->tv_sec++;
+				tv->tv_usec -= USECS_IN_SECOND;
+			} while (tv->tv_usec >= USECS_IN_SECOND);
+		}
+	}
+	else if (tv->tv_usec <= -USECS_IN_SECOND) {
+		/* if more than 5 trips through loop required, then do divide and mod */
+		if (tv->tv_usec <= (-USECS_IN_SECOND * 5)) {
+			tv->tv_sec -= (tv->tv_usec / -USECS_IN_SECOND); /* neg / neg = pos so subtract */
+			tv->tv_usec = (tv->tv_usec % -USECS_IN_SECOND); /* neg % neg = neg */
+		}
+		else {
+			do {
+				tv->tv_sec--;
+				tv->tv_usec += USECS_IN_SECOND;
+			} while (tv->tv_usec <= -USECS_IN_SECOND);
+		}
 	}
 	if (tv->tv_sec >= 1 && tv->tv_usec < 0) {
 		tv->tv_sec--;
 		tv->tv_usec += USECS_IN_SECOND;
-	} else if (tv->tv_sec < 0 && tv->tv_usec > 0) {
-			tv->tv_sec++;
-			tv->tv_usec -= USECS_IN_SECOND;
+	}
+	else if (tv->tv_sec < 0 && tv->tv_usec > 0) {
+		tv->tv_sec++;
+		tv->tv_usec -= USECS_IN_SECOND;
 	}
 }
 
 /* Utility to return the current time of day */
-void current_tv(struct timeval *tv)
+void current_tv(struct timeval* tv)
 {
 #if defined(_WIN32) && !defined(WIN32_HIGHRES_TIME)
 	struct _timeb tb;
@@ -114,15 +118,15 @@ void current_tv(struct timeval *tv)
 	tv->tv_usec = (1000000 * ticks.QuadPart / freq.QuadPart);
 	normalize_tv(tv);
 #else
-	gettimeofday(tv,NULL);
+	gettimeofday(tv, NULL);
 #endif /* _WIN32 */
 }
 
-int parse_rate(char *arg,char *rm_protocol, lbm_uint64_t *rm_rate, lbm_uint64_t *rm_retrans)
+int parse_rate(char* arg, char* rm_protocol, lbm_uint64_t* rm_rate, lbm_uint64_t* rm_retrans)
 {
 	char rate[50], retr_rate[50], mult[2];
-	int rc; 
-	
+	int rc;
+
 	rc = sscanf(arg, "%[a-zA-Z]%50[^/]/%50s", rm_protocol, rate, retr_rate);
 	if (rc == 3) {
 		if (rm_protocol[1] != '\0') {	/* Invalid character after protocol */
@@ -130,68 +134,95 @@ int parse_rate(char *arg,char *rm_protocol, lbm_uint64_t *rm_rate, lbm_uint64_t 
 		}
 		switch (*rm_protocol)
 		{
-			case 'u': case 'U':
-				*rm_protocol = 'U';
-				break;
-			case 'm': case 'M':
-				*rm_protocol = 'M';
-				break;
-			default:				
-				return UMS_EXAMPLE_ERROR;
-		}	
-	} else {
+		case 'u': case 'U':
+			*rm_protocol = 'U';
+			break;
+		case 'm': case 'M':
+			*rm_protocol = 'M';
+			break;
+		default:
+			return UMS_EXAMPLE_ERROR;
+		}
+	}
+	else {
 		*rm_protocol = 'M';		/* default protocol */
 		rc = sscanf(arg, "%50[^/]/%50s", rate, retr_rate);
-      if (rc != 2) {
-      	return UMS_EXAMPLE_ERROR;
-      }
+		if (rc != 2) {
+			return UMS_EXAMPLE_ERROR;
+		}
 	}
-				
+
 	/* Calculate transmisison rate */
 	if (calc_rate(rm_rate, rate, mult) == UMS_EXAMPLE_ERROR) {
 		return UMS_EXAMPLE_ERROR;
 	}
-	
+
 	/* Calculate retransmission rate */
 	if (calc_rate(rm_retrans, retr_rate, mult) == UMS_EXAMPLE_ERROR) {
 		return UMS_EXAMPLE_ERROR;
 	}
-		
+
 	return 0;
 }
 
-int calc_rate(lbm_uint64_t *rate, char val[], char mult[]) {
+int calc_rate(lbm_uint64_t* rate, char val[], char mult[]) {
 	int rc = sscanf(val, "%" SCNu64 "%2s", rate, mult);
-	
-	if (rc == 2){
+
+	if (rc == 2) {
 		if (mult[1] != '\0') { /* Invalid character after mult */
 			return UMS_EXAMPLE_ERROR;
 		}
 		switch (mult[0])
 		{
-			case 'k': case 'K':
-				*rate *= (lbm_uint64_t)1000;
-				break;
-			case 'm': case 'M':
-				*rate *= (lbm_uint64_t)1000000;
-				break;
-			case 'g': case 'G':
-				*rate *= (lbm_uint64_t)1000000000;
-				break;
-			case '%':
-				fprintf(stderr, "\n** ERROR - Please reference the updated usage. " 
-								"Retransmission \n           rate no longer allows "
-								"%% symbol as a shortcut.\n\n");	
-				return UMS_EXAMPLE_ERROR;
-			default:
-				return UMS_EXAMPLE_ERROR;
-		}		
-	} else if (rc == 0) { 		/* Invalid character in front */
+		case 'k': case 'K':
+			*rate *= (lbm_uint64_t)1000;
+			break;
+		case 'm': case 'M':
+			*rate *= (lbm_uint64_t)1000000;
+			break;
+		case 'g': case 'G':
+			*rate *= (lbm_uint64_t)1000000000;
+			break;
+		case '%':
+			fprintf(stderr, "\n** ERROR - Please reference the updated usage. "
+				"Retransmission \n           rate no longer allows "
+				"%% symbol as a shortcut.\n\n");
+			return UMS_EXAMPLE_ERROR;
+		default:
+			return UMS_EXAMPLE_ERROR;
+		}
+	}
+	else if (rc == 0) { 		/* Invalid character in front */
 		return UMS_EXAMPLE_ERROR;
 	} /* Else 1 implies a number without abbreviation */
 
 	return 0;
 }
+
+int parse_datagram(char* arg, char* rm_protocol, unsigned int* datagram_max_size) {
+	char protocol[10];
+	char datagram_size_str[50];
+	int rc;
+
+	// Attempt to parse protocol and datagram size
+	rc = sscanf(arg, "%[a-zA-Z]%50s", protocol, datagram_size_str);
+	if (rc != 2) {
+		return UMS_EXAMPLE_ERROR; // Parsing failed
+	}
+
+	// Validate and store the protocol
+	if (strlen(protocol) == 1 && (protocol[0] == 'U' || protocol[0] == 'M' || protocol[0] == 'S')) {
+		*rm_protocol = protocol[0];
+	}
+	else {
+		return UMS_EXAMPLE_ERROR; // Invalid protocol
+	}
+
+	*datagram_max_size = atoi(datagram_size_str);
+
+	return 0;
+}
+
 
 #endif
 

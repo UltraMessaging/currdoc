@@ -1,7 +1,7 @@
 /*
 "MinRcv.java - Minimal receiver program.
  *
- * (C) Copyright 2005,2023 Informatica Inc. All Rights Reserved.
+ * (C) Copyright 2005,2025 Informatica Inc. All Rights Reserved.
  * Permission is granted to licensees to use
  * or alter this software for any purpose, including commercial applications,
  * according to the terms laid out in the Software License Agreement.
@@ -73,7 +73,8 @@ public class MinRcv {
     private static int messagesReceived = 0;
 
     public static void main(String[] args) throws LBMException{
-
+        /* Create a LBM object so that logged messages from the Java API will be logged. */
+        LBM lbm = new LBM();
         /*
          * First, create a set of attributes for an LBM context.  Attributes
          * allow you to control programmatically most of the same LBM options
@@ -114,7 +115,7 @@ public class MinRcv {
          * Create the receiver object and bind it to a topic.  Receivers must be
          * associated with a context.
          */
-	LBMReceiver myReceiver = new LBMReceiver(myContext, myTopic, myReceiverCallback, null);
+         LBMReceiver myReceiver = new LBMReceiver(myContext, myTopic, myReceiverCallback, null);
 		
         /*
          * Wait until we've received some messages. While the main thread of the

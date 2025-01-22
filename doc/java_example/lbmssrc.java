@@ -2,12 +2,13 @@ import com.latencybusters.lbm.*;
 import java.util.*;
 import java.text.NumberFormat;
 import java.math.BigInteger;
-// See https://communities.informatica.com/infakb/faq/5/Pages/80008.aspx
-import org.openmdx.uses.gnu.getopt.*;
 import verifiablemsg.*;
 
+import gnu.getopt.Getopt;
+import gnu.getopt.LongOpt;
+
 /*
-  (C) Copyright 2005,2023 Informatica Inc.  Permission is granted to licensees to use
+  (C) Copyright 2005,2025 Informatica Inc.  Permission is granted to licensees to use
   or alter this software for any purpose, including commercial applications,
   according to the terms laid out in the Software License Agreement.
 
@@ -30,7 +31,6 @@ import java.nio.ByteBuffer;
 
 class lbmssrc
 {
-//	private static String pcid = "";
 	private static int maxmsglength = 65536;
 	private static long msgs = 10000000;
 	private static int stats_sec = 0;
@@ -291,11 +291,15 @@ class lbmssrc
 			System.err.println("Error initializing LBM: " + ex.toString());
 			System.exit(1);
 		}
-		org.apache.log4j.Logger logger;
-		logger = org.apache.log4j.Logger.getLogger("lbmssrc");
-		org.apache.log4j.BasicConfigurator.configure();
-		log4jLogger lbmlogger = new log4jLogger(logger);
-		lbm.setLogger(lbmlogger);
+
+		// Set up a logger here. Without setting a logger, UM defaults to printing logs to standard out.
+		// Most users have their own logging infrastructure they integrate with.
+		// Some users include log4j. Here's an example of setting it up:
+		// org.apache.log4j.Logger logger;
+		// logger = org.apache.log4j.Logger.getLogger("lbmhfxrcv");
+		// org.apache.log4j.BasicConfigurator.configure();
+		// log4jLogger lbmlogger = new log4jLogger(logger);
+		// lbm.setLogger(lbmlogger);
 
 		process_cmdline(args);
 

@@ -62,8 +62,8 @@ $(document).ready(function(){initNavTree('manpagesforsrs.html','');});
 <li>
 <a class="el" href="manpagesforsrs.html#srsdsmanpage">Srsds Man Page</a> - Windows Service interface. </li>
 </ul>
-<p>Note that these executables are not in the same "bin" directory as the platform native UM executables. Since it is a Java program, it has its own directory sub-tree, "SRS", with sub-directories "bin" and "lib". For example, the UMS SRS executables are under "UMS_6.16.1/SRS/bin".</p>
-<p>However, SRS does use the underlying platform-specific UM library, so your proper paths should be set up.</p>
+<p>Note that these executables are not in the same "bin" directory as the platform native UM executables. Since it is a Java program, it has its own directory sub-tree, "SRS", with sub-directories "bin" and "lib". For example, the UMS SRS executables are under "UMS_6.17/SRS/bin". For instructions on using a different directory structure, see the "Usage Notes" sections in <a class="el" href="manpagesforsrs.html#srsmanpage">SRS Man Page</a> and <a class="el" href="manpagesforsrs.html#srsdsmanpage">Srsds Man Page</a>.</p>
+<p>Note also that the SRS uses the underlying platform-specific UM library, so your proper paths should be set up.</p>
 <p><br />
  </p>
 <h1><a class="anchor" id="srsmanpage"></a>
@@ -86,14 +86,25 @@ Available options:
 <dl class="section user"><dt></dt><dd>Note that valid XML structure does not guarantee that the configuration file is completely correct. It must be tested on a running SRS.</dd></dl>
 <dl class="section user"><dt></dt><dd>The <b>"-h"</b> option prints the man page and exits.</dd></dl>
 <dl class="section user"><dt><b>Exit</b> <b>Status</b> </dt><dd>The exit status from SRS is 0 for success and some non-zero value for failure.</dd></dl>
+<dl class="section user"><dt><b>Usage</b> <b>Notes</b> </dt><dd></dd></dl>
+<ul>
+<li>
+<p class="startli">When shutting down a Unix-based SRS Process, use a SIGINT to trigger a clean shutdown, which attempts to cleanly finish outstanding IO requests before shutting down.</p>
+<p class="endli"></p>
+</li>
+<li>
+<p class="startli">Given how the SRS was implemented, there are scripts, binary executables, and Java JAR files associated with the service. By default, the scripts and executables assume a certain directory structure, with the scripts and executables stored in a "bin" sub-directory, and JAR files stored in a "lib" sub-directory. This corresponds to how the UM package installation structures the files.</p>
+<p class="endli">Starting with UM version 6.17, the user can adopt a different directory structure. To assist the scripts and executables in finding the JAR files, the user can define an environment variable, "UM_SRS_DIR", which contains the full path for the directory containing the JAR files. </p>
+</li>
+</ul>
 <p><br />
  </p>
 <h1><a class="anchor" id="srsdsmanpage"></a>
 Srsds Man Page&nbsp;&nbsp;<small><a href="#srsdsmanpage">&lt;-</a></small></h1>
 <p>Windows Service interface.</p>
-<p>See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/Design/operations.tag:../Operations/" href="../Operations/startupshutdownprocedures.html#umdaemonsaswindowsservices">UM Daemons as Windows Services</a> for general information about UM daemons as Windows Services.</p>
+<p>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/Design/operations.tag:../Operations/" href="../Operations/startupshutdownprocedures.html#umdaemonsaswindowsservices">UM Daemons as Windows Services</a> for general information about UM daemons as Windows Services.</p>
 <dl class="section note"><dt>Note</dt><dd>In the descriptions below, three different log files are referenced: "service log", "process log", and "SRS log". It is important that all three of these be specified, and that they be separate files. In normal use, only the "SRS log" will be written to; the other two are only necessary to record unusual error conditions.</dd></dl>
-<pre class="fragment">Usage: srsds [options] srs_cfgfile_name
+<pre class="fragment">Usage: srsds [options] srs_cfgfile_name 
 Available options:
   -h, --help                  display this help and exit
   -l, --service-log=FILE      set a logfile name for the service log.
@@ -109,9 +120,13 @@ Available options:
                                 INFO
                                 WARN - default
                                 ERROR
-  -E, --env_var_file          update/set the environment Variable File</pre><dl class="section user"><dt><b>Description</b> </dt><dd>The <code>srsds</code> command has two functions: <ul>
+  -E, --env_var_file          update/set the environment Variable File
+  -f, --flatdir               specify that binaries and java libraries are in the same directory
+                                Note: This sets UM_SRS_DIR environment variable to the directory path of this executable
+  -U, --noenv_var_file        unset env_var_file (-E) entry
+                                Note: -U and -E are not supported on the same command line</pre><dl class="section user"><dt><b>Description</b> </dt><dd>The <code>srsds</code> command has two functions: <ul>
 <li>
-First, it lets the user supply Windows Service operating parameters, which the command saves into the Windows registry. Those operating parameters are subsequently used by the SRS Service. See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/Design/operations.tag:../Operations/" href="../Operations/startupshutdownprocedures.html#configurethewindowsservice">Configure the Windows Service</a>. </li>
+First, it lets the user supply Windows Service operating parameters, which the command saves into the Windows registry. Those operating parameters are subsequently used by the SRS Service. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/Design/operations.tag:../Operations/" href="../Operations/startupshutdownprocedures.html#configurethewindowsservice">Configure the Windows Service</a>. </li>
 <li>
 Second, it provides Windows with the SRS daemon executable to run as a Service. </li>
 </ul>
@@ -120,11 +135,29 @@ Second, it provides Windows with the SRS daemon executable to run as a Service. 
 <dl class="section user"><dt></dt><dd>The <b>"-l"</b> option specifies a "service" log file path, which is saved in the Windows registry and subsequently by the Windows Service. Under normal circumstances, this log file will never be written to. It will be written if the SRS is unsuccessful in starting up as a service. (The normal SRS log file is configured differently, using the <a class="el" href="srsconfigurationfile.html#srselementlog">&lt;log&gt;</a> element in the configuration file.)</dd></dl>
 <dl class="section user"><dt></dt><dd>The <b>"-p"</b> option specifies a "process" log file path, which is saved in the Windows registry and subsequently by the Windows Service. Under normal circumstances, this log file will never be written to. It will be written if the Java JVM writes to standard out or standard error, of if the SRS is not able to write to its configured log file.</dd></dl>
 <dl class="section warning"><dt>Warning</dt><dd>By default, the SRS's configuration file uses <a class="el" href="srsconfigurationfile.html#srselementlog">&lt;log type="console"&gt;</a>. In this case, normal SRS logs are written to standard out and will be captured in the "process" log file. <b>This is not recommended as it leads to unbounded growth of the log file.</b> Users should set <a class="el" href="srsconfigurationfile.html#srselementlog">&lt;log type="file"&gt;</a> and related attributes to control the log file sizes.</dd></dl>
-<dl class="section user"><dt></dt><dd>For <b>"-s install"</b> see <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/Design/operations.tag:../Operations/" href="../Operations/startupshutdownprocedures.html#installthewindowsservice">Install the Windows Service</a>.</dd></dl>
-<dl class="section user"><dt></dt><dd>For <b>"-s remove"</b> see <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/Design/operations.tag:../Operations/" href="../Operations/startupshutdownprocedures.html#removethewindowsservice">Remove the Windows Service</a>.</dd></dl>
-<dl class="section user"><dt></dt><dd>For <b>"-s config"</b> and <b>"-e"</b>, see <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/Design/operations.tag:../Operations/" href="../Operations/startupshutdownprocedures.html#configurethewindowsservice">Configure the Windows Service</a>.</dd></dl>
+<dl class="section user"><dt></dt><dd>For <b>"-s install"</b> see <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/Design/operations.tag:../Operations/" href="../Operations/startupshutdownprocedures.html#installthewindowsservice">Install the Windows Service</a>.</dd></dl>
+<dl class="section user"><dt></dt><dd>For <b>"-s remove"</b> see <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/Design/operations.tag:../Operations/" href="../Operations/startupshutdownprocedures.html#removethewindowsservice">Remove the Windows Service</a>.</dd></dl>
+<dl class="section user"><dt></dt><dd>For <b>"-s config"</b> and <b>"-e"</b>, see <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/Design/operations.tag:../Operations/" href="../Operations/startupshutdownprocedures.html#configurethewindowsservice">Configure the Windows Service</a>.</dd></dl>
 <dl class="section user"><dt></dt><dd>The <b>"-h"</b> option prints the man page and exits.</dd></dl>
+<dl class="section user"><dt></dt><dd>The <b>"-E env_var_file"</b> option provides a convenient method to specify environment variables for the service without having to modify the system-level environment. The SRS service will read this file and define variables in its own environment.</dd></dl>
+<dl class="section user"><dt></dt><dd>The <b>"-U"</b> option removes a previously set "env_var_file" ("-E") so that the next time the Windows service is started, that file will not be read. (New in UM version 6.17)</dd></dl>
+<dl class="section user"><dt></dt><dd>The <b>"-f"</b> option is a short cut for telling the SRS that its JAR files are in the same directory as the executables, without the need to define the "UM_SRS_DIR" environment variable. (New in UM version 6.17)</dd></dl>
 <dl class="section user"><dt><b>Exit</b> <b>Status</b> </dt><dd>The exit status from SRS is 0 for success and some non-zero value for failure.</dd></dl>
+<dl class="section user"><dt><b>Usage</b> <b>Notes</b> </dt><dd></dd></dl>
+<ul>
+<li>
+<p class="startli">When installing the SRS as a Microsoft Windows service, use only local disk devices and fully qualified path names for all filenames. This is because Windows services run by default under a Local System account, which has reduced privileges and is not allowed access to network devices.</p>
+<p class="endli"></p>
+</li>
+<li>
+<p class="startli">Given how the SRS Windows service was implemented, there are binary executables and Java JAR files associated with the service. By default, the executables assume a certain directory structure, with the executables stored in a "bin" sub-directory, and JAR files stored in a "lib" sub-directory. This corresponds to how the UM package installation structures the files.</p>
+<p>Starting with UM version 6.17, the user can use their own directory structure. To assist the executables in finding the JAR files, the user can define an environment variable, "UM_SRS_DIR", which contains the full path for the directory containing the JAR files. This environment variable can either be made at the system level, or can be defined in a disk file, specified by the "-E" command-line option to <code>mcsds</code>.</p>
+<p>Alternatively, if you plan to store the executables in the same directory as the JAR files, you can instead use the "-f" command-line option to <code>mcsds</code>.</p>
+<p class="endli"></p>
+</li>
+<li>
+Stopping the SRS service triggers a clean shutdown, which attempts to cleanly finish outstanding IO requests before shutting down. </li>
+</ul>
 <dl class="section attention"><dt>Attention</dt><dd>Do not use the task manager or the "kill" command to stop a UM daemon running as a Windows service. Use the Windows service control panel to stop the service.</dd></dl>
 <p><br />
 <br />

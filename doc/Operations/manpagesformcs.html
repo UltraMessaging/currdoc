@@ -63,8 +63,8 @@ $(document).ready(function(){initNavTree('manpagesformcs.html','');});
 <li>
 <a class="el" href="manpagesformcs.html#mcsdsmanpage">Mcsds Man Page</a> - Windows Service interface. </li>
 </ul>
-<p>Note that these executables are not in the same "bin" directory as the platform native UM executables. Since it is a Java program, it has its own directory sub-tree, "MCS", with sub-directories "bin" and "lib". For example, the UMS version 6.14 MCS executables are under "UMS_6.14/MCS/bin".</p>
-<p>However, MCS does use the underlying platform-specific UM library, so your proper paths should be set up.</p>
+<p>Note that these executables are not in the same "bin" directory as the platform native UM executables. Since it is a Java program, it has its own directory sub-tree, "MCS", with sub-directories "bin" and "lib". For example, the MCS executables are under "UMS_6.17/MCS/bin". For instructions on using a different directory structure, see the "Usage Notes" sections in <a class="el" href="manpagesformcs.html#mcsmanpage">MCS Man Page</a> and <a class="el" href="manpagesformcs.html#mcsdsmanpage">Mcsds Man Page</a>.</p>
+<p>Note also that the MCS uses the underlying platform-specific UM library, so your proper paths should be set up.</p>
 <p><br />
  </p>
 <h1><a class="anchor" id="mcsmanpage"></a>
@@ -78,6 +78,17 @@ Available options:
   -V, --verbose              be verbose about each message
   -x, --xsd                  dump the configuration XSD to stdout and exit</pre><dl class="section user"><dt><b>Description</b> </dt><dd>The <code>MCS</code> command runs the Monitoring Collector Service (MCS). It can be run interactively from a shell or command prompt, or from a script or batch file. (For use as a Windows Service, see <a class="el" href="manpagesformcs.html#mcsdsmanpage">Mcsds Man Page</a>.)</dd></dl>
 <dl class="section user"><dt><b>Exit</b> <b>Status</b> </dt><dd>The exit status from MCS is 0 for success and some non-zero value for failure.</dd></dl>
+<dl class="section user"><dt><b>Usage</b> <b>Notes</b> </dt><dd></dd></dl>
+<ul>
+<li>
+<p class="startli">When shutting down a Unix-based MCS Process, use a SIGINT to trigger a clean shutdown, which attempts to cleanly finish outstanding IO requests before shutting down.</p>
+<p class="endli"></p>
+</li>
+<li>
+<p class="startli">Given how the MCS was implemented, there are scripts, binary executables, and Java JAR files associated with the service. By default, the scripts and executables assume a certain directory structure, with the scripts and executables stored in a "bin" sub-directory, and JAR files stored in a "lib" sub-directory. This corresponds to how the UM package installation structures the files.</p>
+<p class="endli">Starting with UM version 6.17, the user can use their own directory structure. To assist the scripts and executables in finding the JAR files, the user can define an environment variable, "UM_MCS_DIR", which contains the full path for the directory containing the JAR files. </p>
+</li>
+</ul>
 <p><br />
  </p>
 <h1><a class="anchor" id="mcsdsmanpage"></a>
@@ -100,7 +111,11 @@ Available options:
                                 INFO
                                 WARN - default
                                 ERROR
-  -E, --env_var_file          update/set the environment Variable File</pre><dl class="section user"><dt><b>Description</b> </dt><dd>The <code>mcsds</code> command has two functions: <ul>
+  -E, --env_var_file          update/set the environment Variable File
+  -f, --flatdir               specify that binaries and java libraries are in the same directory
+                                Note: This sets UM_MCS_DIR environment variable to the directory path of this executable
+  -U, --noenv_var_file        unset env_var_file (-E) entry
+                                Note: -U and -E are not supported on the same command line</pre><dl class="section user"><dt><b>Description</b> </dt><dd>The <code>mcsds</code> command has two functions: <ul>
 <li>
 First, it lets the user supply Windows Service operating parameters, which the command saves into the Windows registry. Those operating parameters are subsequently used by the MCS Service. See <a class="el" href="startupshutdownprocedures.html#configurethewindowsservice">Configure the Windows Service</a>. </li>
 <li>
@@ -115,7 +130,25 @@ Second, it provides Windows with the MCS daemon executable to run as a Service. 
 <dl class="section user"><dt></dt><dd>For <b>"-s remove"</b> see <a class="el" href="startupshutdownprocedures.html#removethewindowsservice">Remove the Windows Service</a>.</dd></dl>
 <dl class="section user"><dt></dt><dd>For <b>"-s config"</b> and <b>"-e"</b>, see <a class="el" href="startupshutdownprocedures.html#configurethewindowsservice">Configure the Windows Service</a>.</dd></dl>
 <dl class="section user"><dt></dt><dd>The <b>"-h"</b> option prints the man page and exits.</dd></dl>
+<dl class="section user"><dt></dt><dd>The <b>"-E env_var_file"</b> option provides a convenient method to specify environment variables for the service without having to modify the system-level environment. The MCS service will read this file and define variables in its own environment.</dd></dl>
+<dl class="section user"><dt></dt><dd>The <b>"-U"</b> option removes a previously set "env_var_file" ("-E") so that the next time the Windows service is started, that file will not be read. (New in UM version 6.17)</dd></dl>
+<dl class="section user"><dt></dt><dd>The <b>"-f"</b> option is a short cut for telling the MCS that its JAR files are in the same directory as the executables, without the need to define the "UM_MCS_DIR" environment variable. (New in UM version 6.17)</dd></dl>
 <dl class="section user"><dt><b>Exit</b> <b>Status</b> </dt><dd>The exit status from MCS is 0 for success and some non-zero value for failure.</dd></dl>
+<dl class="section user"><dt><b>Usage</b> <b>Notes</b> </dt><dd></dd></dl>
+<ul>
+<li>
+<p class="startli">When installing the MCS as a Microsoft Windows service, use only local disk devices and fully qualified path names for all filenames. This is because Windows services run by default under a Local System account, which has reduced privileges and is not allowed access to network devices.</p>
+<p class="endli"></p>
+</li>
+<li>
+<p class="startli">Given how the MCS Windows service was implemented, there are binary executables and Java JAR files associated with the service. By default, the executables assume a certain directory structure, with the executables stored in a "bin" sub-directory, and JAR files stored in a "lib" sub-directory. This corresponds to how the UM package installation structures the files.</p>
+<p>Starting with UM version 6.17, the user can use their own directory structure. To assist the executables in finding the JAR files, the user can define an environment variable, "UM_MCS_DIR", which contains the full path for the directory containing the JAR files. This environment variable can either be made at the system level, or can be defined in a disk file, specified by the "-E" command-line option to <code>mcsds</code>.</p>
+<p>Alternatively, if you plan to store the executables in the same directory as the JAR files, you can instead use the "-f" command-line option to <code>mcsds</code>.</p>
+<p class="endli"></p>
+</li>
+<li>
+Stopping the MCS service triggers a clean shutdown, which attempts to cleanly finish outstanding IO requests before shutting down. </li>
+</ul>
 <dl class="section attention"><dt>Attention</dt><dd>Do not use the task manager or the "kill" command to stop a UM daemon running as a Windows service. Use the Windows service control panel to stop the service.</dd></dl>
 <p><br />
 <br />

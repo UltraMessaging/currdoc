@@ -1,7 +1,7 @@
 /*
 "MinSrc.java - Minimal source program.
  *
- * (C) Copyright 2005,2023 Informatica Inc. All Rights Reserved.
+ * (C) Copyright 2005,2025 Informatica Inc. All Rights Reserved.
  * Permission is granted to licensees to use
  * or alter this software for any purpose, including commercial applications,
  * according to the terms laid out in the Software License Agreement.
@@ -57,7 +57,8 @@ import com.latencybusters.lbm.*;
 public class MinSrc {
 
     public static void main(String[] args) throws LBMException{
-
+        /* Create a LBM object so that logged messages from the Java API will be logged. */
+        LBM lbm = new LBM();
         /*
          * First, create a set of attributes for an LBM context.  Attributes
          * allow you to control programmatically most of the same LBM options

@@ -73,6 +73,7 @@ Available options:
   -d, --dump-dtd                 dump DTD to stdout
   -f, --detach                   detach from terminal (not supported on Windows)
   -v, --validate                 validate config, but do not run
+  -u, --use-utc                  Use UTC time format for log messages
   -a, --affinitize=PCPU[,RRLIST] assign CPU process affinity to PCPU. If optional RRLIST is given
                                  assigns CPU affinity in a round-robin sequence as key processing
                                  threads are created, example: -a 1,3,5 assigns CPU 1 to the process
@@ -81,17 +82,18 @@ Available options:
 <dl class="section user"><dt></dt><dd>The <b>"-f"</b> option directs a Unix-based <code>umestored</code> to fork a child process which detaches from the controlling terminal. The <code>umestored</code> command normally remains attached to the controlling terminal and runs until interrupted. With <b>"-f"</b>, the <code>umestored</code> command exits back to the shell, and the forked child continues running in the background.</dd></dl>
 <dl class="section user"><dt></dt><dd>The <b>"-a"</b> option provides the CPU core affinity for Store threads. This "pins" the threads to one or more desired CPU cores, which can provide a significant improvement in throughput. See <a class="el" href="storethreadaffinity.html">Store Thread Affinity</a> for details.</dd></dl>
 <dl class="section user"><dt></dt><dd>The <b>"-d"</b> option dumps (prints) the Store's XML DTD to standard output. After dumping the DTD, <code>umestored</code> exits.</dd></dl>
+<dl class="section user"><dt></dt><dd>The <b>"-u"</b> option tells the Store to format its log file timestamps as UTC.</dd></dl>
 <dl class="section user"><dt></dt><dd>The <b>"-v"</b> option validates the XML structure of the given configuration file against the Store's XML DTD. After validating the configuration file's XML structure, <code>umestored</code> exits with status 0 for no errors, or non-zero if errors were found. For example: <pre class="fragment">umestored -v /um/store1_cfg.xml
 </pre></dd></dl>
 <dl class="section user"><dt></dt><dd>Note that valid XML structure does not guarantee that the configuration file is completely correct. It must be tested on a running Store.</dd></dl>
 <dl class="section user"><dt></dt><dd>The <b>"-h"</b> option prints the man page and exits.</dd></dl>
 <dl class="section user"><dt><b>Exit</b> <b>Status</b> </dt><dd>The exit status from <code>umestored</code> is 0 for success and some non-zero value for failure.</dd></dl>
-<dl class="section user"><dt><b>Usage</b> <b>Notes</b> </dt><dd>When shutting down a Unix-based UM Persistent Store Process, use a SIGINT to trigger a clean shutdown, which attempts to cleanly finish outstanding IO requests before shutting down. Two successive SIGINTs force an immediate shutdown (not recommended unless absolutely necessary).</dd></dl>
+<dl class="section user"><dt><b>Usage</b> <b>Notes</b> </dt><dd>When shutting down a Unix-based UM Persistent Store process, use a SIGINT to trigger a clean shutdown, which attempts to cleanly finish outstanding IO requests before shutting down. Two successive SIGINTs force an immediate shutdown (not recommended unless absolutely necessary).</dd></dl>
 <p><br />
  </p>
 <h1><a class="anchor" id="umestoredsmanpage"></a>
 Umestoreds Man Page&nbsp;&nbsp;<small><a href="#umestoredsmanpage">&lt;-</a></small></h1>
-<p>Windows Service interface. See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/UME/operations.tag:../Operations/" href="../Operations/startupshutdownprocedures.html#umdaemonsaswindowsservices">UM Daemons as Windows Services</a> for general information about UM daemons as Windows Services.</p>
+<p>Windows Service interface. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/UME/operations.tag:../Operations/" href="../Operations/startupshutdownprocedures.html#umdaemonsaswindowsservices">UM Daemons as Windows Services</a> for general information about UM daemons as Windows Services.</p>
 <pre class="fragment">UMP Store service
 Usage: umestoreds [options] [configfile]
 Available options:
@@ -99,6 +101,7 @@ Available options:
   -U, --unset_env_var_file       unset the environment variable file
   -h, --help                     display this help and exit
   -d, --dump-dtd                 dump DTD to stdout
+  -u, --use-utc                  Use UTC time format for log messages
   -s, --service=install          install the service passing configfile
   -s, --service=remove           delete/remove the service
   -s, --service=config           update configfile info to use configfile passed
@@ -115,15 +118,15 @@ Available options:
                                  and CPUs 3, 5, 3, ... to created threads in a repeating sequence
   configfile                     XML config file (if not present, looks in registry)</pre><dl class="section user"><dt><b>Description</b> </dt><dd>The <code>umestoreds</code> command has two functions: <ul>
 <li>
-First, it lets the user supply Windows Service operating parameters, which the command saves into the Windows registry. Those operating parameters are subsequently used by the Store Service. See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/UME/operations.tag:../Operations/" href="../Operations/startupshutdownprocedures.html#configurethewindowsservice">Configure the Windows Service</a>. </li>
+First, it lets the user supply Windows Service operating parameters, which the command saves into the Windows registry. Those operating parameters are subsequently used by the Store Service. See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/UME/operations.tag:../Operations/" href="../Operations/startupshutdownprocedures.html#configurethewindowsservice">Configure the Windows Service</a>. </li>
 <li>
 Second, it provides Windows with the Store Process executable to run as a Service. </li>
 </ul>
 </dd></dl>
 <dl class="section user"><dt></dt><dd>The <b>"configfile"</b> parameter provides the file path for the Store configuration file. It is supplied in conjunction with the <b>"-v"</b> option or the <b>"-s config"</b> option (see below). See <a class="el" href="configurationreferenceforumestored.html">Configuration Reference for Umestored</a> for configuration details.</dd></dl>
-<dl class="section user"><dt></dt><dd>For <b>"-s install"</b> see <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/UME/operations.tag:../Operations/" href="../Operations/startupshutdownprocedures.html#installthewindowsservice">Install the Windows Service</a>.</dd></dl>
-<dl class="section user"><dt></dt><dd>For <b>"-s remove"</b> see <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/UME/operations.tag:../Operations/" href="../Operations/startupshutdownprocedures.html#removethewindowsservice">Remove the Windows Service</a>.</dd></dl>
-<dl class="section user"><dt></dt><dd>For <b>"-s config"</b>, <b>"-e"</b>, <b>"-E"</b>, and <b>"-U"</b>, see <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/UME/operations.tag:../Operations/" href="../Operations/startupshutdownprocedures.html#configurethewindowsservice">Configure the Windows Service</a>.</dd></dl>
+<dl class="section user"><dt></dt><dd>For <b>"-s install"</b> see <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/UME/operations.tag:../Operations/" href="../Operations/startupshutdownprocedures.html#installthewindowsservice">Install the Windows Service</a>.</dd></dl>
+<dl class="section user"><dt></dt><dd>For <b>"-s remove"</b> see <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/UME/operations.tag:../Operations/" href="../Operations/startupshutdownprocedures.html#removethewindowsservice">Remove the Windows Service</a>.</dd></dl>
+<dl class="section user"><dt></dt><dd>For <b>"-s config"</b>, <b>"-e"</b>, <b>"-E"</b>, and <b>"-U"</b>, see <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/UME/operations.tag:../Operations/" href="../Operations/startupshutdownprocedures.html#configurethewindowsservice">Configure the Windows Service</a>.</dd></dl>
 <dl class="section user"><dt></dt><dd>The <b>"-a"</b> option specifies the CPU core affinity for Store threads, which is saved in the Windows registry and subsequently by the Windows Service. This "pins" the threads to one or more desired CPU cores, which can provide a significant improvement in throughput. See <a class="el" href="storethreadaffinity.html">Store Thread Affinity</a> for details.</dd></dl>
 <dl class="section user"><dt></dt><dd>The <b>"-d"</b> option dumps (prints) the Store's XML DTD to standard output. After dumping the DTD, <code>umestoreds</code> exits.</dd></dl>
 <dl class="section user"><dt></dt><dd>The <b>"-v"</b> option validates the XML structure of the given configuration file against the Store's XML DTD. After validating the configuration file's XML structure, <code>umestoreds</code> exits with status 0 for no errors, or non-zero if errors were found. For example: <pre class="fragment">umestoreds -v c:\um\store1_cfg.xml

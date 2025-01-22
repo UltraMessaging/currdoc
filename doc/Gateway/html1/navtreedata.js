@@ -27,6 +27,13 @@ var NAVTREE =
       [ "Routing Wildcard Receivers", "index.html#routingwildcardreceivers", null ],
       [ "Forwarding Costs", "index.html#forwardingcosts", null ],
       [ "DRO Routing", "index.html#umrouterrouting", null ],
+      [ "DRO Hotlinks", "index.html#drohotlinks", [
+        [ "Hotlinks: Logical Interpretation", "index.html#hotlinkslogicalinterpretation", null ],
+        [ "Hotlinks: Physical Interpretation", "index.html#hotlinksphysicalinterpretation", null ],
+        [ "Mixing Regular and Hotlinked DROs", "index.html#mixingregularandhotlinkeddros", null ],
+        [ "Implementing DRO Hotlinks", "index.html#implementingdrohotlinks", null ],
+        [ "DRO Hotlink Restrictions", "index.html#drohotlinkrestrictions", null ]
+      ] ],
       [ "Routing Topologies", "index.html#routingtopologies", [
         [ "Direct Link", "index.html#directlink", null ],
         [ "Single Link", "index.html#singlelink", null ],
@@ -34,7 +41,7 @@ var NAVTREE =
         [ "Loops", "index.html#loops", null ],
         [ "Loop and Spur", "index.html#loopandspur", null ],
         [ "Loop with Centralized TRD", "index.html#loopwithcentralizedtrd", null ],
-        [ "with centralized TRD", "index.html#Star", null ],
+        [ "Star with centralized TRD", "index.html#Star", null ],
         [ "Star with Centralized DRO", "index.html#starwithcentralizedumrouter", null ],
         [ "Mesh", "index.html#mesh", null ],
         [ "Palm Tree", "index.html#palmtree", null ],
@@ -73,7 +80,11 @@ var NAVTREE =
         [ "XML UM Configuration File", "index.html#xmlumconfigurationfile", null ],
         [ "XML DRO Configuration File", "index.html#xmlumrouterconfigurationfile", null ]
       ] ],
-      [ "Running the DRO Daemon", "index.html#runningtheumrouterdaemon", null ]
+      [ "Running the DRO Daemon", "index.html#runningtheumrouterdaemon", null ],
+      [ "DRO NAT Transit", "index.html#dronattransit", [
+        [ "DRO NAT: TCP Peer", "index.html#dronattcppeer", null ],
+        [ "DRO NAT: UDP Peer", "index.html#dronattcpudppeer", null ]
+      ] ]
     ] ],
     [ "DRO Monitoring", "index.html#umroutermonitoring", [
       [ "DRO Monitoring: Logs", "index.html#dromonitoringlogs", null ],
@@ -187,6 +198,7 @@ var NAVTREE =
         [ "Router Element \"<remote-topic-interest>\"", "index.html#droelementremotetopicinterest", null ],
         [ "Router Element \"<pattern-use-query>\"", "index.html#droelementpatternusequery", null ],
         [ "Router Element \"<topic-use-query>\"", "index.html#droelementtopicusequery", null ],
+        [ "Router Element \"<hotlink-index>\"", "index.html#droelementhotlinkindex", null ],
         [ "Router Element \"<domain-id>\"", "index.html#droelementdomainid", null ],
         [ "Router Element \"<daemon>\"", "index.html#droelementdaemon", null ],
         [ "Router Element \"<route-recalculation>\"", "index.html#droelementrouterecalculation", null ],

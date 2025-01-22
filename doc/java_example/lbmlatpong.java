@@ -2,11 +2,11 @@ import java.nio.ByteBuffer;
 
 import com.latencybusters.lbm.*;
 
-// See https://communities.informatica.com/infakb/faq/5/Pages/80008.aspx
-import org.openmdx.uses.gnu.getopt.*;
+import gnu.getopt.Getopt;
+import gnu.getopt.LongOpt;
 
 /*
-  (C) Copyright 2005,2023 Informatica Inc.  Permission is granted to licensees to use
+  (C) Copyright 2005,2025 Informatica Inc.  Permission is granted to licensees to use
   or alter this software for any purpose, including commercial applications,
   according to the terms laid out in the Software License Agreement.
 
@@ -97,7 +97,27 @@ public class lbmlatpong implements LBMSourceCreationCallback, LBMSourceDeletionC
 	}
 
 	public static void main(String[] args) {
+        /* Create a LBM object so that logged messages from the Java API will be logged. */
+        LBM lbm = null;
+		try
+		{
+			lbm = new LBM();
+		}
+		catch (LBMException ex)
+		{
+			System.err.println("Error initializing LBM: " + ex.toString());
+			System.exit(1);
+		}
 		lbmlatpong latpong = null;
+
+		// Set up a logger here. Without setting a logger, UM defaults to printing logs to standard out.
+		// Most users have their own logging infrastructure they integrate with.
+		// Some users include log4j. Here's an example of setting it up:
+		// org.apache.log4j.Logger logger;
+		// logger = org.apache.log4j.Logger.getLogger("lbmhfxrcv");
+		// org.apache.log4j.BasicConfigurator.configure();
+		// log4jLogger lbmlogger = new log4jLogger(logger);
+		// lbm.setLogger(lbmlogger);
 
 		LBMContext ctx = null;
 		LBMContextAttributes ctx_attr = null;

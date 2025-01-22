@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">UM Java API
-   &#160;<span id="projectnumber">6.16.1</span>
+   &#160;<span id="projectnumber">6.17</span>
    </div>
   </td>
  </tr>
@@ -64,7 +64,7 @@ $(document).ready(function(){initNavTree('index.html','');});
 <div class="contents">
 <div class="textblock"><p> 
 <img src="infa_logo.png" width="400" height="138" alt="Informatica"/><br/><br/>
-<big><b>Ultra Messaging</b></big> <small>(Version 6.16.1)</small><br/>
+<big><b>Ultra Messaging</b></big> <small>(Version 6.17)</small><br/>
 <br/><br/><br/>
 <center class="mytitle">Ultra Messaging Java API</center>
 <br/><br/><br/>
@@ -72,7 +72,7 @@ $(document).ready(function(){initNavTree('index.html','');});
 </p>
 <p>This document provides detailed reference information for the UM Java API.</p>
 <p>For policies and procedures related to Ultra Messaging Technical Support, see <a href="https://ultramessaging.github.io/UM_Support.html">UM Support</a>.</p>
-<p><b>(C) Copyright 2004,2023 Informatica Inc. All Rights Reserved.</b></p>
+<p><b>(C) Copyright 2004,2025 Informatica Inc. All Rights Reserved.</b></p>
 <p>This software and documentation are provided only under a separate license agreement containing restrictions on use and disclosure. No part of this document may be reproduced or transmitted in any form, by any means (electronic, photocopying, recording or otherwise) without prior consent of Informatica LLC.</p>
 <p>A current list of Informatica trademarks is available on the web at <a href="https://www.informatica.com/trademarks.html">https://www.informatica.com/trademarks.html</a>.</p>
 <p>Portions of this software and/or documentation are subject to copyright held by third parties. Required third party notices are included with the product.</p>
@@ -84,7 +84,8 @@ INFORMATICA LLC PROVIDES THE INFORMATION IN THIS DOCUMENT "AS IS" WITHOUT WARRAN
  </p>
 <h1><a class="anchor" id="umjavaapi"></a>
 UM Java API</h1>
-<p>To use the UM Java API, you must access the UM Jar file. It is not included in the the normal UM package file, it is a separate file named: <code>UMS_</code><em>(um_vers)</em><code>.jar</code>. For example: </p><div class="fragment"><div class="line">UMS_6.12.1.jar</div></div><!-- fragment --><dl class="section note"><dt>Note</dt><dd>Although the jar file contains the product name "UMS", this file is intended to be used across all UM products, UMS, UMP, and UMQ. Users of UMP and UMQ should use the UMS jar file.</dd></dl>
+<p>To use the UM Java API, you must access the UM Jar file. It is not included in the the normal UM package file, it is a separate file named: <code>UMS_6.17.jar</code>.</p>
+<dl class="section note"><dt>Note</dt><dd>Although the jar file contains the product name "UMS", this file is intended to be used across all UM products, UMS, UMP, and UMQ. Users of UMP and UMQ should use the UMS jar file.</dd></dl>
 <p>This jar file uses the <a class="el" href="index.html#javanativeinterfacejni">Java Native Interface (JNI)</a> to access the UM native libraries. Note that the native libraries are platform dependent and are contained in the platform-specific packages.</p>
 <p><br />
  </p>
@@ -92,17 +93,16 @@ UM Java API</h1>
 Application Callbacks in Java</h2>
 <p>There are a variety of UM features that include the UM library calling back into the application. The most common example of this is the Receiver callback (sometimes named "onReceive").</p>
 <p>It is important that the application callback not allow any unhandled exceptions to be thrown back into UM. For example, you might enclose your entire callback code in an enclosing try/catch. The application callback should always return normally into UM.</p>
-<p>See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/JavaAPI/design.tag:../Design/" href="../Design/applicationdesignprinciples.html#javamessagereception">Java Message Reception</a> for more information, including code examples.</p>
+<p>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/JavaAPI/design.tag:../Design/" href="../Design/applicationdesignprinciples.html#javamessagereception">Java Message Reception</a> for more information, including code examples.</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="usingumjavaonwindows"></a>
 Using UM Java on Windows</h2>
-<p>To run Java applications on Windows, the UM jar file needs to be able to find the native UM library, <code>"lbm.dll"</code>. A typical way to accomplish this is to include the <code>"bin"</code> folder in the system PATH. For example: </p><div class="fragment"><div class="line">C:\Program Files\Informatica\UMS_6.12.1\Win2k-x86_64\bin</div></div><!-- fragment --><p> (Replace "UMS_6.12.1" with your UM version.)</p>
-<p><br />
+<p>To run Java applications on Windows, the UM jar file needs to be able to find the native UM library, <code>"lbm.dll"</code>. A typical way to accomplish this is to include the <code>"bin"</code> folder in the system PATH. For example: </p><div class="fragment"><div class="line">C:\Program Files\Informatica\UMS_6.17\Win2k-x86_64\bin</div></div><!-- fragment --><p><br />
  </p>
 <h2><a class="anchor" id="usingumjavaonunix"></a>
 Using UM Java on Unix</h2>
-<p>To run Java applications on Unix, the UM jar file needs to be able to find the native UM dynamic library, <code>"liblbm.so"</code>. A typical way to accomplish this is to set the environment variable <code>"LD_LIBRARY_PATH"</code> to point at the UM library directory. For example: </p><div class="fragment"><div class="line">LD_LIBRARY_PATH=/um_home/UMS_6.12.1/Linux-glibc-2.17-x86_64/lib</div><div class="line">export LD_LIBRARY_PATH</div></div><!-- fragment --><p> (Replace <code>"/um_home/UMS_6.12.1/Linux-glibc-2.17-x86_64"</code> with the path where your version of UM is installed.) In there you will find the UM native libraries.</p>
+<p>To run Java applications on Unix, the UM jar file needs to be able to find the native UM dynamic library, <code>"liblbm.so"</code>. A typical way to accomplish this is to set the environment variable <code>"LD_LIBRARY_PATH"</code> to point at the UM library directory. For example: </p><div class="fragment"><div class="line">LD_LIBRARY_PATH=/um_home/UMS_6.17/Linux-glibc-2.17-x86_64/lib</div><div class="line">export LD_LIBRARY_PATH</div></div><!-- fragment --><p> In there you will find the UM native libraries.</p>
 <p><br />
  </p>
 <h1><a class="anchor" id="javanativeinterfacejni"></a>
@@ -110,7 +110,7 @@ Java Native Interface (JNI)</h1>
 <p>The UM Java API makes use of the Java Native Interface (JNI) to bridge between the native Java code and the UM library (written in C). This interface provides for two different types of calls: "downcalls" from Java into C, and "upcalls" from C into Java.</p>
 <p>Downcalls are relatively inexpensive, although not quite as efficient as a call from one Java method to another. Thus, a Java publisher does not suffer from significantly lower performance than a C publisher.</p>
 <p>However, upcalls have a greater expense associated with them. This expense translates directly to increased CPU utilization. This mostly affects subscribers, which have upcalls for received messages. This translates to slightly higher latency and a lower maximum-sustainable throughput.</p>
-<p>This Java receiver performance penalty can be mitigated using <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/JavaAPI/design.tag:../Design/" href="../Design/advancedoptimizations.html#receivesidebatching">Receive-Side Batching</a> and, for Linux, <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/JavaAPI/design.tag:../Design/" href="../Design/advancedoptimizations.html#receivemultipledatagrams">Receive Multiple Datagrams</a>.</p>
+<p>This Java receiver performance penalty can be mitigated using <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/JavaAPI/design.tag:../Design/" href="../Design/advancedoptimizations.html#receivesidebatching">Receive-Side Batching</a> and, for Linux, <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/JavaAPI/design.tag:../Design/" href="../Design/advancedoptimizations.html#receivemultipledatagrams">Receive Multiple Datagrams</a>.</p>
 <p><br />
  </p>
 <h1><a class="anchor" id="garbagecollection"></a>
@@ -123,13 +123,13 @@ Garbage Collection</h1>
 <h1><a class="anchor" id="zeroobjectdeliveryzod"></a>
 Zero Object Delivery (ZOD)</h1>
 <p>UM's Zero Object Delivery (ZOD) feature for Java allows receivers to deliver messages, and sources/receivers deliver events, to an application with no per-message object creation. This lets you write Java sending/receiving applications that require little to no garbage collection at runtime, resulting in lower and more consistent message latencies and hence, better performance.</p>
-<p>See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/JavaAPI/design.tag:../Design/" href="../Design/advancedoptimizations.html#zeroobjectdelivery">Zero Object Delivery</a> for details, including code examples.</p>
+<p>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/JavaAPI/design.tag:../Design/" href="../Design/advancedoptimizations.html#zeroobjectdelivery">Zero Object Delivery</a> for details, including code examples.</p>
 <p><br />
  </p>
 <h1><a class="anchor" id="retainingmessages"></a>
 Retaining Messages</h1>
 <p>For lowest latency, received messages should be fully processed directly by the receiver callback. However, there are circumstances where an application needs to save a message for further processing after the receiver callback returns.</p>
-<p>See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/JavaAPI/design.tag:../Design/" href="../Design/applicationdesignprinciples.html#javamessagereception">Java Message Reception</a> for details, including code examples.</p>
+<p>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/JavaAPI/design.tag:../Design/" href="../Design/applicationdesignprinciples.html#javamessagereception">Java Message Reception</a> for details, including code examples.</p>
 <p><br />
 <br />
  <br />

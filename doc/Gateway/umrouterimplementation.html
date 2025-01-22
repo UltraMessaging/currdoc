@@ -171,7 +171,7 @@ Timers and Intervals&nbsp;&nbsp;<small><a href="#timersandintervals">&lt;-</a></
  </p>
 <h2><a class="anchor" id="multicastimmediatemessagingconsiderations"></a>
 Multicast Immediate Messaging Considerations&nbsp;&nbsp;<small><a href="#multicastimmediatemessagingconsiderations">&lt;-</a></small></h2>
-<p>Multicast Immediate Messages (MIMs) may pass through the DRO. You cannot filter MIMs with Access Control Lists (ACL)-MIMs are forwarded to all TRDs. Informatica does not recommend using MIM for messaging traffic across the DRO. MIM is intended for short-lived topics and applications that cannot tolerate a delay between source creation and the sending of the first message. See also <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/Gateway/design.tag:../Design/" href="../Design/umfeatures.html#multicastimmediatemessaging">Multicast Immediate Messaging</a>.</p>
+<p>Multicast Immediate Messages (MIMs) may pass through the DRO. You cannot filter MIMs with Access Control Lists (ACL)-MIMs are forwarded to all TRDs. Informatica does not recommend using MIM for messaging traffic across the DRO. MIM is intended for short-lived topics and applications that cannot tolerate a delay between source creation and the sending of the first message. See also <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/Gateway/design.tag:../Design/" href="../Design/umfeatures.html#multicastimmediatemessaging">Multicast Immediate Messaging</a>.</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="persistenceovertheumrouter"></a>
@@ -197,9 +197,9 @@ Topic Resolution Reliability&nbsp;&nbsp;<small><a href="#topicresolutionreliabil
 <p>Topic resolution can sometimes remain in a quiescent phase due to link interruption, preventing needed re-subscription topic resolution activity. Two ways you can address this are:</p>
 <ul>
 <li>
-For isolated incidents, call <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/Gateway/api.tag:../API/" href="../API/lbm_8h.html#ae6dd7c56acf916ef66658cc1ebc7a525">lbm_context_topic_resolution_request()</a> (see example lbmtrreq.c). This restarts the sustaining phase. </li>
+For isolated incidents, call <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/Gateway/api.tag:../API/" href="../API/lbm_8h.html#ae6dd7c56acf916ef66658cc1ebc7a525">lbm_context_topic_resolution_request()</a> (see example lbmtrreq.c). This restarts the sustaining phase. </li>
 <li>
-For more chronic problems, such as a DRO link (especially an endpoint link) over a WAN of questionable reliability, consider configuring Topic resolution to stay in the sustaining phase (options <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/Gateway/config.tag:../Config/" href="../Config/grpudpbasedresolveroperation.html#resolveradvertisementminimumsustaindurationsource">resolver_advertisement_minimum_sustain_duration (source)</a> and <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/Gateway/config.tag:../Config/" href="../Config/grpudpbasedresolveroperation.html#resolverqueryminimumsustaindurationreceiver">resolver_query_minimum_sustain_duration (receiver)</a>). </li>
+For more chronic problems, such as a DRO link (especially an endpoint link) over a WAN of questionable reliability, consider configuring Topic resolution to stay in the sustaining phase (options <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/Gateway/config.tag:../Config/" href="../Config/grpudpbasedresolveroperation.html#resolveradvertisementminimumsustaindurationsource">resolver_advertisement_minimum_sustain_duration (source)</a> and <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/Gateway/config.tag:../Config/" href="../Config/grpudpbasedresolveroperation.html#resolverqueryminimumsustaindurationreceiver">resolver_query_minimum_sustain_duration (receiver)</a>). </li>
 </ul>
 <p><br />
  </p>
@@ -212,7 +212,7 @@ BOS and EOS Behavior Over the DRO&nbsp;&nbsp;<small><a href="#bosandeosbehavioro
 DRO Reliable Loss&nbsp;&nbsp;<small><a href="#umrouterreliableloss">&lt;-</a></small></h2>
 <p>The DRO can create a situation where a "reliable" transport (TCP or LBT-IPC) can experience out-of-order message delivery.</p>
 <p>The DRO can perform a "protocol conversion" function. I.e. an originating source can use a UDP-based protocol (LBT-RM or LBT-RU), but the proxy source for a remote receiver can use a "reliable" protocol (TCP or LBT-IPC). With a UDP-based protocol, messages can arrive to the DRO network out of order, usually due to packet loss and recovery. However, when those out-of-order messages are forwarded across a "reliable" protocol (TCP or LBT-IPC), the receiver does not expect the sequence number gap, and immediately declares the out-of-order messages as unrecoverable loss. This, in spite of the fact that the missing message arrives shortly thereafter.</p>
-<p>Starting in UM version 6.12, there are two new configuration options: <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/Gateway/config.tag:../Config/" href="../Config/grptransporttcpoperation.html#transporttcpdrolossrecoverytimeoutreceiver">transport_tcp_dro_loss_recovery_timeout (receiver)</a> and <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/Gateway/config.tag:../Config/" href="../Config/grptransportlbtipcoperation.html#transportlbtipcdrolossrecoverytimeoutreceiver">transport_lbtipc_dro_loss_recovery_timeout (receiver)</a>, which modify the receiver's behavior. Instead of declaring a gap immediately unrecoverable, a delay is introduced which is similar to what a UDP-based receiver uses to wait for lost and retransmitted datagrams. If the missing message arrives within the delay time, the messages are delivered to application without loss.</p>
+<p>Starting in UM version 6.12, there are two new configuration options: <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/Gateway/config.tag:../Config/" href="../Config/grptransporttcpoperation.html#transporttcpdrolossrecoverytimeoutreceiver">transport_tcp_dro_loss_recovery_timeout (receiver)</a> and <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/Gateway/config.tag:../Config/" href="../Config/grptransportlbtipcoperation.html#transportlbtipcdrolossrecoverytimeoutreceiver">transport_lbtipc_dro_loss_recovery_timeout (receiver)</a>, which modify the receiver's behavior. Instead of declaring a gap immediately unrecoverable, a delay is introduced which is similar to what a UDP-based receiver uses to wait for lost and retransmitted datagrams. If the missing message arrives within the delay time, the messages are delivered to application without loss.</p>
 <p>Be aware that this functionality is only used with "reliable" protocols published by a DRO's proxy source. If this delay feature is enabled, it will <em>not</em> apply to a "reliable" protocol that is received directly from the originating source.</p>
 <p>Note however that you can get genuine gaps in the "reliable" data stream <em>without</em> recovery. For example, an overloaded DRO can drop messages. Or a DRO's proxy receiver can experience unrecoverable loss. In that case, the delay will have to expire before the missing messages are declared unrecoverable and subsequent data is delivered.</p>
 <dl class="section attention"><dt>Attention</dt><dd>The delay times default to 0, which retains the pre-6.12 behavior of immediately declaring sequence number gaps unrecoverable. If you want this new behavior, you must configure the appropriate option.</dd></dl>
@@ -223,7 +223,7 @@ Topology Configuration Examples&nbsp;&nbsp;<small><a href="#topologyconfiguratio
 <p>Following are example configurations for a variety of DRO topologies. These are the topology examples presented <a class="el" href="umrouterconcepts.html#routingtopologies">Routing Topologies</a>.</p>
 <p>In a real-world situation, you would have DRO XML configuration files with their portal interfaces referencing complete UM configuration files. However, for these examples, the referred domain configuration files are simplified to contain only information relevant to the applicable DRO. As part of this simplification, domain configuration files show interfaces for only one or two transport types.</p>
 <p>Also, IP addresses are provided in some cases and omitted in other cases. This is because initiator peer portals need to know the IP addresses (and port numbers) of their corresponding acceptor portals to establish connections, whereas endpoint portals communicate via topic resolution and thus, do not need to know IP addresses.</p>
-<dl class="section note"><dt>Note</dt><dd>Before designing any DRO implementations based on configurations or examples other than the types presented in this document, please <a href="https://ultramessaging.github.io/UM_Support.html">contact Informatica Support</a>.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Before designing any DRO implementations based on configurations or examples other than the types presented in this document, please <a href="https://ultramessaging.github.io/UM_Support.html">contact UM Support</a>.</dd></dl>
 <p><br />
  </p>
 <h2><a class="anchor" id="directlinkconfiguration"></a>
@@ -386,6 +386,47 @@ The configuration file is error free. </li>
 <div class="fragment"><div class="line">tnwgd gw1-config.xml</div></div><!-- fragment --><p> (FYI: "tnwgd" stands for "Twenty Nine West Gateway Daemon", a historical name for the DRO.)</p>
 <p>The DRO logs version information on startup. The following is an example of this information:</p>
 <div class="fragment"><div class="line">Version 6.0 Build: Sep 26 2012, 00:31:33 (UMS 6.0 [UMP-6.0] [UMQ-6.0] [64-bit] Build: Sep 26 2012, 00:27:17 ( DEBUG license LBT-RM LBT-RU LBT-IPC LBT-RDMA ) WC[PCRE 7.4 2007-09-21, regex, appcb] HRT[gettimeofday()])</div></div><!-- fragment --><p><br />
+ </p>
+<h1><a class="anchor" id="dronattransit"></a>
+DRO NAT Transit&nbsp;&nbsp;<small><a href="#dronattransit">&lt;-</a></small></h1>
+<p>Some networks make use of a <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/Gateway/design.tag:../Design/" href="../Design/umglossary.html#glossarynat">NAT router</a> to map one IP address space onto another. If your network architecture includes LANs that are bridged with a NAT device, UM receivers will usually not be able to connect directly to UM sources across the NAT. Sources send Topic Resolution advertisements containing their local IP addresses and ports, but receivers on the other side of the NAT cannot access those sources using those local addresses/ports. They must use alternate addresses/ports, which the NAT forwards according to the NAT's configuration.</p>
+<p>The recommended method of transiting a NAT is using two DROs connected via a <a class="el" href="umrouterimplementation.html#peerlinkconfiguration">peer link</a>. The UM components in one network are organized as one <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/Gateway/design.tag:../Design/" href="../Design/fundamentalconcepts.html#topicresolutiondomain">TRD</a> and the components in the other network are organized as a separate TRD.</p>
+<p>There is an alternative method of transiting a NAT with UM <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/Gateway/design.tag:../Design/" href="../Design/architecture.html#networkaddresstranslationnat">using an lbmrd</a>. This method reduces latency but has significant <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/Gateway/design.tag:../Design/" href="../Design/architecture.html#lbmrdnatrestrictions">restrictions</a>.</p>
+<p><br />
+ </p>
+<h2><a class="anchor" id="dronattcppeer"></a>
+DRO NAT: TCP Peer&nbsp;&nbsp;<small><a href="#dronattcppeer">&lt;-</a></small></h2>
+<p>The simplest way to transit a NAT is to configure the DROs with <a class="el" href="xmlconfigurationreference.html#droelementsingletcp">Router Element "&lt;single-tcp&gt;"</a>. One DRO is configured to be the <a class="el" href="xmlconfigurationreference.html#droelementinitiator">initiator</a> and the other is the <a class="el" href="xmlconfigurationreference.html#droelementacceptor">acceptor</a>.</p>
+<p>Many NAT designs restrict which network can initiate TCP connections across the NAT. The initiator DRO should be placed on the side that supports outgoing connections and configured for the IP address and port that the NAT router recognizes and forwards to the acceptor DRO. This may or may not be the IP address and port of the actual host running the acceptor DRO; contact your network support group for details.</p>
+<p><br />
+ </p>
+<h2><a class="anchor" id="dronattcpudppeer"></a>
+DRO NAT: UDP Peer&nbsp;&nbsp;<small><a href="#dronattcpudppeer">&lt;-</a></small></h2>
+<p>DROs are sometimes configured to add <a class="el" href="droarchitecture.html#udppeerlink">UDP-based data transport</a>. The TCP link is still used for command and control, so all the points made <a class="el" href="umrouterimplementation.html#dronattcppeer">above</a> still apply. In addition, the NAT must allow forwarding of bi-directional UDP traffic without modifying the destination port numbers.</p>
+<p>Here's the sequence of events UM uses to establish communication: </p><ol>
+<li>
+<p class="startli">The initiator DRO uses the configured address:port to initiate its TCP connection. Once established, the initiator sends DRO the UDP port it's accepting data on.</p>
+<p class="endli"></p>
+</li>
+<li>
+<p class="startli">The acceptor DRO accepts the TCP connection, saves the UDP port of the initiator, and sends back it's own UDP port. The acceptor also examines the established TCP connection to determine the IP address of the initiator, and saves that. But note that due to the NAT, the IP address it determines will typically not be the initiator's host IP. Rather, it's an IP address of the NAT device, and the NAT will forward packets to the actual host running the initiator.</p>
+<p class="endli"></p>
+</li>
+<li>
+<p class="startli">The initiator receives the acceptor's UDP port and saves it.</p>
+<p class="endli"></p>
+</li>
+<li>
+<p class="startli">Now, when the initiator wants to send UDP data to the acceptor, it uses the configured IP and the saved UDP port as the UDP packet's destination IP/port.</p>
+<p class="endli"></p>
+</li>
+<li>
+When the acceptor wants to send UDP data to the initiator, it uses the saved IP and UDP port. </li>
+</ol>
+<p>Thus, for both the initiator and the acceptor, the configured UDP port is both used to locally bind the UDP socket, and used by the remote DRO as the UDP destination port. Thus, the NAT must not modify the destination port of UDP packets.</p>
+<p>Some NAT designs do not expect this UDP behavior. Rather they perform a similar form of dynamic port allocation where a packet's source port is modified, and the networking software is expected to examine the source port and use it for outgoing packets. UM does not do that.</p>
+<p>The NAT should be configured with static port mappings for all DRO peer links expected. If this is not practical, then UDP peer links may not be usable. <a href="https://ultramessaging.github.io/UM_Support.html">Contact UM Support</a>.</p>
+<p><br />
 <br />
  <br />
  <br />

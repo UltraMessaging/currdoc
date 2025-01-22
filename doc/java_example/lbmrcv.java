@@ -4,11 +4,11 @@ import java.util.*;
 import java.text.NumberFormat;
 import verifiablemsg.*;
 
-// See https://communities.informatica.com/infakb/faq/5/Pages/80008.aspx
-import org.openmdx.uses.gnu.getopt.*;
+import gnu.getopt.Getopt;
+import gnu.getopt.LongOpt;
 
 /*
-  (C) Copyright 2005,2023 Informatica Inc.  Permission is granted to licensees to use
+  (C) Copyright 2005,2025 Informatica Inc.  Permission is granted to licensees to use
   or alter this software for any purpose, including commercial applications,
   according to the terms laid out in the Software License Agreement.
 
@@ -31,7 +31,6 @@ class lbmrcv
 	private static final int DEFAULT_MAX_NUM_SRCS = 10000;
 	private static int nstats = 10;
 	private static int reap_msgs = 0;
-//	private static int msgs = 200;
 	private static boolean eventq = false;
 	private static boolean sequential = true;
 	public static boolean verbose = false;
@@ -270,12 +269,16 @@ class lbmrcv
 			System.err.println("Error initializing LBM: " + ex.toString());
 			System.exit(1);
 		}
-		org.apache.log4j.Logger logger;
-		logger = org.apache.log4j.Logger.getLogger("lbmrcv");
-		org.apache.log4j.BasicConfigurator.configure();
-		log4jLogger lbmlogger = new log4jLogger(logger);
-		lbm.setLogger(lbmlogger);
-		
+
+		// Set up a logger here. Without setting a logger, UM defaults to printing logs to standard out.
+		// Most users have their own logging infrastructure they integrate with.
+		// Some users include log4j. Here's an example of setting it up:
+		// org.apache.log4j.Logger logger;
+		// logger = org.apache.log4j.Logger.getLogger("lbmhfxrcv");
+		// org.apache.log4j.BasicConfigurator.configure();
+		// log4jLogger lbmlogger = new log4jLogger(logger);
+		// lbm.setLogger(lbmlogger);
+
 		channels = new ArrayList<Integer>();
 
 		process_cmdline(args);
@@ -556,8 +559,6 @@ class lbmrcv
 			if (reap_msgs != 0 && rcv.total_msg_count >= reap_msgs){
 			    break;
 			}
-			// recycle stats object when finished so it can be reused by LBM
-//			objRec.doneWithReceiverStatistics(stats);
 		}
 		if (ctxthread != null)
 		{

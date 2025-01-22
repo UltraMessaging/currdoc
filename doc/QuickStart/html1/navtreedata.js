@@ -18,7 +18,6 @@ var NAVTREE =
     [ "Unicast-Only Operation", "index.html#unicastonlyoperation", null ],
     [ "Starting Ultra Messaging Daemons", "index.html#startingultramessagingdaemons", [
       [ "Starting Ultra Messaging Dynamic Routing Option", "index.html#startingultramessagingdynamicroutingoption", null ],
-      [ "Starting UMM Daemon", "index.html#startingummdaemon", null ],
       [ "Persistent Store Daemon", "index.html#persistentstoredaemon", null ]
     ] ],
     [ "Next Steps", "index.html#nextsteps", null ]

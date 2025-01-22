@@ -56,7 +56,7 @@ $(document).ready(function(){initNavTree('index.html','');});
 <div class="contents">
 <div class="textblock"><p> 
 <img src="infa_logo.png" width="400" height="138" alt="Informatica"/><br/><br/>
-<big><b>Ultra Messaging</b></big> <small>(Version 6.16.1)</small><br/>
+<big><b>Ultra Messaging</b></big> <small>(Version 6.17)</small><br/>
 <br/><br/><br/>
 <center class="mytitle">.NET Examples</center>
 <br/><br/><br/>
@@ -66,7 +66,7 @@ $(document).ready(function(){initNavTree('index.html','');});
 </p>
 <p>This document lists and gives some background information on the C#-language example UM programs.</p>
 <p>For policies and procedures related to Ultra Messaging Technical Support, see <a href="https://ultramessaging.github.io/UM_Support.html">UM Support</a>.</p>
-<p><b>(C) Copyright 2004,2023 Informatica Inc. All Rights Reserved.</b></p>
+<p><b>(C) Copyright 2004,2025 Informatica Inc. All Rights Reserved.</b></p>
 <p>This software and documentation are provided only under a separate license agreement containing restrictions on use and disclosure. No part of this document may be reproduced or transmitted in any form, by any means (electronic, photocopying, recording or otherwise) without prior consent of Informatica LLC.</p>
 <p>A current list of Informatica trademarks is available on the web at <a href="https://www.informatica.com/trademarks.html">https://www.informatica.com/trademarks.html</a>.</p>
 <p>Portions of this software and/or documentation are subject to copyright held by third parties. Required third party notices are included with the product.</p>
@@ -74,7 +74,7 @@ $(document).ready(function(){initNavTree('index.html','');});
 <p>The information in this documentation is subject to change without notice. If you find any problems in this documentation, please report them to us in writing at Informatica LLC 2100 Seaport Blvd. Redwood City, CA 94063.</p>
 <p>Informatica products are warranted according to the terms and conditions of the agreements under which they are provided. <br />
 INFORMATICA LLC PROVIDES THE INFORMATION IN THIS DOCUMENT "AS IS" WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING WITHOUT ANY WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND ANY WARRANTY OR CONDITION OF NON-INFRINGEMENT.</p>
-<p>See <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/dotnet_example/design.tag:../Design/" href="../Design/umglossary.html">UM Glossary</a> for Ultra Messaging terminology, abbreviations, and acronyms.</p>
+<p>See <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/dotnet_example/design.tag:../Design/" href="../Design/umglossary.html">UM Glossary</a> for Ultra Messaging terminology, abbreviations, and acronyms.</p>
 <p><br />
  </p>
 <h1><a class="anchor" id="csexamplesintroduction"></a>
@@ -86,7 +86,7 @@ INFORMATICA LLC PROVIDES THE INFORMATION IN THIS DOCUMENT "AS IS" WITHOUT WARRAN
  </p>
 <h1><a class="anchor" id="configuringdotnetexamples"></a>
 Configuring .NET Examples&nbsp;&nbsp;<small><a href="#configuringdotnetexamples">&lt;-</a></small></h1>
-<p>The example programs universally provide the "-c filename" command-line option. Using that option, the example application calls the <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/dotnet_example/dotnetapi.tag:../DotNetAPI/" href="../DotNetAPI/classcom_1_1latencybusters_1_1lbm_1_1LBM.html#adda9e1ac033156d2ac9d943bd600b138">LBM.setConfiguration(string fileName)</a> API. However, note that this API is not recommended for use with XML-format LBM configuration files, largely because you are not able to specify an application name.</p>
+<p>The example programs universally provide the "-c filename" command-line option. Using that option, the example application calls the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/dotnet_example/dotnetapi.tag:../DotNetAPI/" href="../DotNetAPI/classcom_1_1latencybusters_1_1lbm_1_1LBM.html#adda9e1ac033156d2ac9d943bd600b138">LBM.setConfiguration(string fileName)</a> API. However, note that this API is not recommended for use with XML-format LBM configuration files, largely because you are not able to specify an application name.</p>
 <p>To use an XML configuration file with a UM example application, set the environment variables: </p><ul>
 <li>
 LBM_XML_CONFIG_APPNAME - Desired name of application. </li>
@@ -98,15 +98,15 @@ LBM_XML_CONFIG_FILENAME - Path name of XML configuration file. </li>
  </p>
 <h1><a class="anchor" id="unhandledcsevents"></a>
 Unhandled C# Events&nbsp;&nbsp;<small><a href="#unhandledcsevents">&lt;-</a></small></h1>
-<p>Each of the example programs is written to demonstrate a subset of UM's total available functionality. For example, some programs are written to demonstrate <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/dotnet_example/design.tag:../Design/" href="../Design/fundamentalconcepts.html#streaming">Streaming</a> functionality (e.g. lbmsrc), while other programs are written to demonstrate <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/dotnet_example/design.tag:../Design/" href="../Design/fundamentalconcepts.html#persistence">Persistence</a> functionality (e.g. umesrc), while still other programs are written to demonstrate <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/dotnet_example/design.tag:../Design/" href="../Design/fundamentalconcepts.html#queuing">Queuing</a> functionality (e.g. umqsrc).</p>
+<p>Each of the example programs is written to demonstrate a subset of UM's total available functionality. For example, some programs are written to demonstrate <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/dotnet_example/design.tag:../Design/" href="../Design/fundamentalconcepts.html#streaming">Streaming</a> functionality (e.g. lbmsrc), while other programs are written to demonstrate <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/dotnet_example/design.tag:../Design/" href="../Design/fundamentalconcepts.html#persistence">Persistence</a> functionality (e.g. umesrc), while still other programs are written to demonstrate <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/dotnet_example/design.tag:../Design/" href="../Design/fundamentalconcepts.html#queuing">Queuing</a> functionality (e.g. umqsrc).</p>
 <p>UM is generally designed to be event-driven, with events being delivered to the programs through standard callbacks, like source callbacks and receiver callbacks. There are many events which are common across all streaming, persistence, and queuing. Other events are specific to persistence, and still other events are specific to queuing.</p>
 <p>This can lead to example programs reporting "unknown" or "unhandled" events. For example, if the "lbmsrc" streaming program is run with a configuration file that enables persistence, UM will deliver events that are specific to persistence to the "lbmsrc" program. But "lbmsrc" is designed for streaming, and does not include code cases for persistence or queuing events. Maybe you should change your configuration to disable persistence, or you should be using the "umesrc" example program.</p>
 <p>Similarly, the "umqsrc" program expects queuing functionality, and can report unhandled events if persistence is configured. Or "umesrc" can report unhandled events if queuing is configured.</p>
 <p>If you see an unhandled event, it is generally reported as a number. You can see which event this corresponds to by looking up the number in the C API document: </p><ul>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/dotnet_example/api.tag:../API/" href="../API/creceiverevents.html">C Receiver Events</a> for subscribing programs and </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/dotnet_example/api.tag:../API/" href="../API/creceiverevents.html">C Receiver Events</a> for subscribing programs and </li>
 <li>
-<a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/dotnet_example/api.tag:../API/" href="../API/csourceevents.html">C Source Events</a> for publishing programs. </li>
+<a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/dotnet_example/api.tag:../API/" href="../API/csourceevents.html">C Source Events</a> for publishing programs. </li>
 </ul>
 <p>Note that C# uses the same numbering system.</p>
 <p>Once you understand the nature of the unhandled event, you can decide how to change your configuration or choose a different program.</p>
@@ -116,36 +116,9 @@ Unhandled C# Events&nbsp;&nbsp;<small><a href="#unhandledcsevents">&lt;-</a></sm
 C# Examples&nbsp;&nbsp;<small><a href="#csexamples">&lt;-</a></small></h1>
 <p><br />
  </p>
-<h2><a class="anchor" id="exampleMinRcv_cs"></a>
-Example MinRcv.cs&nbsp;&nbsp;<small><a href="#exampleMinRcv_cs">&lt;-</a></small></h2>
-<p>Source code: <a href="../dotnet_example/MinRcv.cs">MinRcv.cs</a>: </p><pre class="fragment">Purpose: minimal subscriber application.
-
-MinRcv.cs - Minimal receiver program.
-See Quick Start document.
-</pre><p><br />
- </p>
-<h2><a class="anchor" id="exampleMinSrc_cs"></a>
-Example MinSrc.cs&nbsp;&nbsp;<small><a href="#exampleMinSrc_cs">&lt;-</a></small></h2>
-<p>Source code: <a href="../dotnet_example/MinSrc.cs">MinSrc.cs</a>: </p><pre class="fragment">Purpose: minimal publisher application.
-
-MinSrc.cs - Minimal source program.
-See Quick Start document.
-</pre><p><br />
- </p>
-<h2><a class="anchor" id="exampleVerifiableMessage_cs"></a>
-Example VerifiableMessage.cs&nbsp;&nbsp;<small><a href="#exampleVerifiableMessage_cs">&lt;-</a></small></h2>
-<p>Source code: <a href="../dotnet_example/VerifiableMessage.cs">VerifiableMessage.cs</a>: </p><pre class="fragment">Utility functions to produce randomized messages whose contents
-can be checked.
-</pre><p><br />
- </p>
 <h2><a class="anchor" id="examplelbmExampleUtil_cs"></a>
 Example lbmExampleUtil.cs&nbsp;&nbsp;<small><a href="#examplelbmExampleUtil_cs">&lt;-</a></small></h2>
 <p>Source code: <a href="../dotnet_example/lbmExampleUtil.cs">lbmExampleUtil.cs</a>: </p><pre class="fragment">General utility functions for UM example programs.
-</pre><p><br />
- </p>
-<h2><a class="anchor" id="examplelbmStatistics_cs"></a>
-Example lbmStatistics.cs&nbsp;&nbsp;<small><a href="#examplelbmStatistics_cs">&lt;-</a></small></h2>
-<p>Source code: <a href="../dotnet_example/lbmStatistics.cs">lbmStatistics.cs</a>: </p><pre class="fragment">General utility functions for UM example programs.
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="examplelbmhfxrcv_cs"></a>
@@ -522,6 +495,11 @@ Monitoring options:\n
   --monitor-appid ID = use ID as application ID string
 </pre><p><br />
  </p>
+<h2><a class="anchor" id="examplelbmStatistics_cs"></a>
+Example lbmStatistics.cs&nbsp;&nbsp;<small><a href="#examplelbmStatistics_cs">&lt;-</a></small></h2>
+<p>Source code: <a href="../dotnet_example/lbmStatistics.cs">lbmStatistics.cs</a>: </p><pre class="fragment">General utility functions for UM example programs.
+</pre><p><br />
+ </p>
 <h2><a class="anchor" id="examplelbmtrreq_cs"></a>
 Example lbmtrreq.cs&nbsp;&nbsp;<small><a href="#examplelbmtrreq_cs">&lt;-</a></small></h2>
 <p>Source code: <a href="../dotnet_example/lbmtrreq.cs">lbmtrreq.cs</a>: </p><pre class="fragment">Purpose: Request topic resolution for quiescent components.
@@ -565,6 +543,22 @@ Monitoring options:\n
                          FMT may be `csv'
   --monitor-format-opts OPTS = use OPTS as format module options
   --monitor-appid ID = use ID as application ID string
+</pre><p><br />
+ </p>
+<h2><a class="anchor" id="exampleMinRcv_cs"></a>
+Example MinRcv.cs&nbsp;&nbsp;<small><a href="#exampleMinRcv_cs">&lt;-</a></small></h2>
+<p>Source code: <a href="../dotnet_example/MinRcv.cs">MinRcv.cs</a>: </p><pre class="fragment">Purpose: minimal subscriber application.
+
+MinRcv.cs - Minimal receiver program.
+See Quick Start document.
+</pre><p><br />
+ </p>
+<h2><a class="anchor" id="exampleMinSrc_cs"></a>
+Example MinSrc.cs&nbsp;&nbsp;<small><a href="#exampleMinSrc_cs">&lt;-</a></small></h2>
+<p>Source code: <a href="../dotnet_example/MinSrc.cs">MinSrc.cs</a>: </p><pre class="fragment">Purpose: minimal publisher application.
+
+MinSrc.cs - Minimal source program.
+See Quick Start document.
 </pre><p><br />
  </p>
 <h2><a class="anchor" id="exampleumercv_cs"></a>
@@ -726,6 +720,12 @@ Monitoring options:\n
   --monitor-appid ID = use ID as application ID string
   --flight-size = See -f above
   --message-rate = See -m above
+</pre><p><br />
+ </p>
+<h2><a class="anchor" id="exampleVerifiableMessage_cs"></a>
+Example VerifiableMessage.cs&nbsp;&nbsp;<small><a href="#exampleVerifiableMessage_cs">&lt;-</a></small></h2>
+<p>Source code: <a href="../dotnet_example/VerifiableMessage.cs">VerifiableMessage.cs</a>: </p><pre class="fragment">Utility functions to produce randomized messages whose contents
+can be checked.
 </pre><p><br />
 <br />
  <br />

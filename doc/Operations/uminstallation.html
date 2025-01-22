@@ -62,7 +62,7 @@ UMP_<em>version</em>.zip - Persistence Edition. </li>
 <li>
 UMQ_<em>version</em>.zip - Queuing Edition. </li>
 <li>
-UMDRO_<em>version</em>.zip - <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/Operations/design.tag:../Design/" href="../Design/fundamentalconcepts.html#umrouter">DRO</a>. </li>
+UMDRO_<em>version</em>.zip - <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/Operations/design.tag:../Design/" href="../Design/fundamentalconcepts.html#umrouter">DRO</a>. </li>
 <li>
 UM_<em>version</em>_doc.zip - Documentation package. </li>
 </ul>
@@ -81,7 +81,7 @@ UM_<em>version</em>_doc.zip - Documentation package. </li>
 <h1><a class="anchor" id="umpackageinstaller"></a>
 UM Package Installer&nbsp;&nbsp;<small><a href="#umpackageinstaller">&lt;-</a></small></h1>
 <p>Running the UM package installer is typically only done for hosts being prepared for development use. Once an application system is developed, UM is usually installed by the user's own <a class="el" href="uminstallation.html#applicationinstaller">Application Installer</a>.</p>
-<p>Note that the <a class="elRef" doxygen="/29W/Amun/home/sford/backup_exclude/labbox/sfordw_REL_6_16_1/29West/lbm/doc/Operations/design.tag:../Design/" href="../Design/fundamentalconcepts.html#umrouter">DRO</a> package installer needs the corresponding version of UM to be already installed and accessible in the current working directory before it can be installed.</p>
+<p>Note that the <a class="elRef" doxygen="/29W/Amun/home/jenkins/backup_exclude.1/rc/UMQ_6.17_RC3/doc/Operations/design.tag:../Design/" href="../Design/fundamentalconcepts.html#umrouter">DRO</a> package installer needs the corresponding version of UM to be already installed and accessible in the current working directory before it can be installed.</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="unixpackageinstaller"></a>
@@ -89,7 +89,7 @@ Unix Package Installer&nbsp;&nbsp;<small><a href="#unixpackageinstaller">&lt;-</
 <p>A product's Unix Package Installer is an executable file with the file suffix <code>".sh"</code>. It is in the form of a <a href="https://en.wikipedia.org/wiki/Self-extracting_archive">self-extracting archive</a>, sometimes called a "shell archive".</p>
 <p>It is often necessary to set the file permissions to allow execution of the file.</p>
 <p>Running the UM Package Installer on a Unix host does nothing more than copy the files under the current working directory. The installer does not perform any other installation actions.</p>
-<p>For example, to install the UMQ base product: </p><div class="fragment"><div class="line">$ chmod +x UMQ_6.12_Linux-glibc-2.17-x86_64.sh</div><div class="line">$ ./UMQ_6.12_Linux-glibc-2.17-x86_64.sh</div></div><!-- fragment --><p> This creates a directory named "UMQ_6.12" which contains all the files and sub-directories needed to develop and test UM-based applications. It does not contain the documentation, which is shipped in its own zip file.</p>
+<p>For example, to install the UMQ base product: </p><div class="fragment"><div class="line">$ chmod +x UMQ_6.17_Linux-glibc-2.17-x86_64.sh</div><div class="line">$ ./UMQ_6.17_Linux-glibc-2.17-x86_64.sh</div></div><!-- fragment --><p> This creates a directory named "UMQ_6.17" which contains all the files and sub-directories needed to develop and test UM-based applications. It does not contain the documentation, which is shipped in its own zip file.</p>
 <p><br />
  </p>
 <h2><a class="anchor" id="windowspackageinstaller"></a>
@@ -161,7 +161,7 @@ Copy UM Runtime Files&nbsp;&nbsp;<small><a href="#copyumruntimefiles">&lt;-</a><
  </p>
 <h2><a class="anchor" id="copyunixruntimefiles"></a>
 Copy Unix Runtime Files&nbsp;&nbsp;<small><a href="#copyunixruntimefiles">&lt;-</a></small></h2>
-<p>Informatica generally recommends that UM runtime files be stored in the <code>"lib"</code> and <code>"bin"</code> sub-directories in the structure that the installer creates. If the brokered queuing feature is used, then the <code>"broker"</code> sub-directory should also be included. For example: </p><div class="fragment"><div class="line">$ ls ~/UMQ_6.12/Linux-glibc-2.12-x86_64/</div><div class="line">bin/  broker/  lib/</div></div><!-- fragment --><p> Notice that the <code>"include"</code> sub-directory is missing. Those files are only needed for development, not for production runtime.</p>
+<p>Informatica generally recommends that UM runtime files be stored in the <code>"lib"</code> and <code>"bin"</code> sub-directories in the structure that the installer creates. If the brokered queuing feature is used, then the <code>"broker"</code> sub-directory should also be included. For example: </p><div class="fragment"><div class="line">$ ls ~/UMQ_6.17/Linux-glibc-2.17-x86_64/</div><div class="line">bin/  broker/  lib/</div></div><!-- fragment --><p> Notice that the <code>"include"</code> sub-directory is missing. Those files are only needed for development, not for production runtime.</p>
 <p>For ease of use, users typically include <code>"lib"</code> in their library search path (e.g. <code>"LD_LIBRARY_PATH"</code> environment variable), and include <code>"bin"</code> in their <code>"PATH"</code>.</p>
 <p>No other specialized installation steps are needed for UM.</p>
 <p>Alternatively, the contents of <code>"bin"</code> can be copied to wherever you already store your application executables, and the contents of <code>"lib"</code> can be copied to wherever you store your application dynamic libraries.</p>
@@ -169,7 +169,7 @@ Copy Unix Runtime Files&nbsp;&nbsp;<small><a href="#copyunixruntimefiles">&lt;-<
  </p>
 <h2><a class="anchor" id="copywindowsruntimefiles"></a>
 Copy Windows Runtime Files&nbsp;&nbsp;<small><a href="#copywindowsruntimefiles">&lt;-</a></small></h2>
-<p>Informatica generally recommends that UM runtime files be stored in the <code>"bin"</code> sub-folder in the structure that the installer creates. If the brokered queuing feature is used, then the <code>"broker"</code> sub-directory should also be included. For example: </p><div class="fragment"><div class="line">&gt; dir <span class="stringliteral">&quot;c:\Program Files\Informatica\UMQ_6.12\Win2k-x86_64&quot;</span></div><div class="line">... &lt;DIR&gt;   bin</div><div class="line">... &lt;DIR&gt;   broker</div></div><!-- fragment --><p> Notice that the <code>"include"</code> and <code>"lib"</code> sub-folders are missing. Those files are only needed for development, not for production runtime.</p>
+<p>Informatica generally recommends that UM runtime files be stored in the <code>"bin"</code> sub-folder in the structure that the installer creates. If the brokered queuing feature is used, then the <code>"broker"</code> sub-directory should also be included. For example: </p><div class="fragment"><div class="line">&gt; dir <span class="stringliteral">&quot;c:\Program Files\Informatica\UMQ_6.17\Win2k-x86_64&quot;</span></div><div class="line">... &lt;DIR&gt;   bin</div><div class="line">... &lt;DIR&gt;   broker</div></div><!-- fragment --><p> Notice that the <code>"include"</code> and <code>"lib"</code> sub-folders are missing. Those files are only needed for development, not for production runtime.</p>
 <p>For ease of use, users typically include <code>"bin"</code> in their <code>"PATH"</code> environment variable.</p>
 <p>No other specialized installation steps are needed for UM applications. However, if you want to run one or more UM daemons as Windows Services, then there are some additional steps necessary, described in <a class="el" href="startupshutdownprocedures.html#umdaemonsaswindowsservices">UM Daemons as Windows Services</a>.</p>
 <p>Alternatively, the contents of <code>"bin"</code> can be copied to wherever you already store your application executables.</p>
