@@ -82,6 +82,7 @@ var classcom_1_1latencybusters_1_1lbm_1_1LBMContext =
     [ "serializeLbmmonControlMessage", "classcom_1_1latencybusters_1_1lbm_1_1LBMContext.html#abee0016c1de6b7b464f3c45f84b2e82c", null ],
     [ "setAttributeValue", "classcom_1_1latencybusters_1_1lbm_1_1LBMContext.html#ad49a05c240c39c85667e59878b7b267e", null ],
     [ "setAuthCredentials", "classcom_1_1latencybusters_1_1lbm_1_1LBMContext.html#a1bc6a2f7f2d1341f0058f63edb4f17a6", null ],
+    [ "setNakCutoff", "classcom_1_1latencybusters_1_1lbm_1_1LBMContext.html#a387cca15d4eb3d88f8d27f0d7dbb398d", null ],
     [ "setProperty", "classcom_1_1latencybusters_1_1lbm_1_1LBMContext.html#ada6f15f69d2cee82175d437a4e81e529", null ],
     [ "setUMQInflight", "classcom_1_1latencybusters_1_1lbm_1_1LBMContext.html#ac23d334473d76ee42c91f3722a4720b0", null ],
     [ "setUMQMessageStable", "classcom_1_1latencybusters_1_1lbm_1_1LBMContext.html#a80cc6de0516ae7b2fcbc7ff730aaf744", null ],

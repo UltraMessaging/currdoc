@@ -30,9 +30,11 @@ var NAVTREE =
       [ "DRO Hotlinks", "index.html#drohotlinks", [
         [ "Hotlinks: Logical Interpretation", "index.html#hotlinkslogicalinterpretation", null ],
         [ "Hotlinks: Physical Interpretation", "index.html#hotlinksphysicalinterpretation", null ],
+        [ "Example DRO Configuration", "index.html#exampledroconfiguration", null ],
+        [ "Hotlink Source Strings", "index.html#hotlinksourcestrings", null ],
         [ "Mixing Regular and Hotlinked DROs", "index.html#mixingregularandhotlinkeddros", null ],
         [ "Implementing DRO Hotlinks", "index.html#implementingdrohotlinks", null ],
-        [ "DRO Hotlink Restrictions", "index.html#drohotlinkrestrictions", null ]
+        [ "DRO Hotlinks Restrictions", "index.html#drohotlinkrestrictions", null ]
       ] ],
       [ "Routing Topologies", "index.html#routingtopologies", [
         [ "Direct Link", "index.html#directlink", null ],
@@ -153,6 +155,7 @@ var NAVTREE =
         [ "Router Element \"<min-length>\"", "index.html#droelementminlength", null ],
         [ "Router Element \"<max-datagram>\"", "index.html#droelementmaxdatagram", null ],
         [ "Router Element \"<smart-batch>\"", "index.html#droelementsmartbatch", null ],
+        [ "Router Element \"<uim-max-queue>\"", "index.html#droelementuimmaxqueue", null ],
         [ "Router Element \"<max-queue>\"", "index.html#droelementmaxqueue", null ],
         [ "Router Element \"<source-deletion-delay>\"", "index.html#droelementsourcedeletiondelay", null ],
         [ "Router Element \"<udp>\"", "index.html#droelementudp", null ],
@@ -198,6 +201,7 @@ var NAVTREE =
         [ "Router Element \"<remote-topic-interest>\"", "index.html#droelementremotetopicinterest", null ],
         [ "Router Element \"<pattern-use-query>\"", "index.html#droelementpatternusequery", null ],
         [ "Router Element \"<topic-use-query>\"", "index.html#droelementtopicusequery", null ],
+        [ "Router Element \"<route-group>\"", "index.html#droelementroutegroup", null ],
         [ "Router Element \"<hotlink-index>\"", "index.html#droelementhotlinkindex", null ],
         [ "Router Element \"<domain-id>\"", "index.html#droelementdomainid", null ],
         [ "Router Element \"<daemon>\"", "index.html#droelementdaemon", null ],

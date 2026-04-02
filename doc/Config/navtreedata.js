@@ -562,6 +562,7 @@ var NAVTREE =
         [ "mim_delivery_control_loss_check_interval (context)", "grpdeliverycontrol.html#mimdeliverycontrollosscheckintervalcontext", null ],
         [ "null_channel_behavior (receiver)", "grpdeliverycontrol.html#nullchannelbehaviorreceiver", null ],
         [ "source_notification_function (receiver)", "grpdeliverycontrol.html#sourcenotificationfunctionreceiver", null ],
+        [ "source_notification_function_ex (receiver)", "grpdeliverycontrol.html#sourcenotificationfunctionexreceiver", null ],
         [ "unrecognized_channel_behavior (receiver)", "grpdeliverycontrol.html#unrecognizedchannelbehaviorreceiver", null ]
       ] ]
     ] ],
@@ -797,8 +798,8 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "accesstocurrentoperatingoptions.html",
-"grpmulticastimmediatemessagingreliability.html#mimsendnakscontext",
-"grpultramessagingpersistence.html#umeallowconfirmeddeliveryreceiver"
+"grpmulticastimmediatemessagingreliability.html#mimnaksuppressintervalcontext",
+"grpultramessagingpersistence.html#umeactivitytimeoutsource"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

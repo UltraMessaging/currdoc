@@ -3,6 +3,24 @@ var NAVTREE =
   [ "Release Notes", "index.html", [
     [ "Introduction", "index.html#firstsect", null ],
     [ "Important Corrections", "index.html#importantcorrections", null ],
+    [ "UM Version 6.17.1", "index.html#umversion6_17_1", [
+      [ "Enhancements for 6.17.1", "index.html#enhancementsfor6_17_1", [
+        [ "Streaming Enhancements for 6.17.1", "index.html#streamingenhancementsfor6_17_1", null ],
+        [ "Persistence Enhancements for 6.17.1", "index.html#persistenceenhancementsfor6_17_1", null ],
+        [ "Queuing Enhancements for 6.17.1", "index.html#queuingenhancementsfor6_17_1", null ]
+      ] ],
+      [ "Fixed Problems and Limitations for 6.17.1", "index.html#fixedlimitationsfor6_17_1", [
+        [ "Streaming Fixed Problems and Limitations for 6.17.1", "index.html#streamingfixedlimitationsfor6_17_1", null ],
+        [ "Persistence Fixed Problems and Limitations for 6.17.1", "index.html#persistencefixedlimitationsfor6_17_1", null ],
+        [ "Queuing Fixed Problems and Limitations for 6.17.1", "index.html#queuingfixedlimitationsfor6_17_1", null ]
+      ] ],
+      [ "Special Upgrade Instructions for 6.17.1", "index.html#specialupgradeinstructionsfor6_17_1", [
+        [ "Hotlinks and Source Strings", "index.html#hotlinksandsourcestrings", null ],
+        [ "Data Hotlinks and Per-Source Client Data", "index.html#hotlinksandpersourceclient", null ],
+        [ "LBT-RU Explicit Port Use", "index.html#lbtruexplicitportuse", null ],
+        [ "Previous Special Instructions", "index.html#um617specialinstructions", null ]
+      ] ]
+    ] ],
     [ "UM Version 6.17", "index.html#umversion6_17", [
       [ "Enhancements for 6.17", "index.html#enhancementsfor6_17", [
         [ "Streaming Enhancements for 6.17", "index.html#streamingenhancementsfor6_17", null ],
@@ -443,7 +461,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "index.html",
-"index.html#specialupgradeinstructionsfor6_9_2"
+"index.html#specialupgradeinstructionsfor6_17"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

@@ -18,6 +18,7 @@ var structlbm__msg__t__stct =
     [ "pdata", "structlbm__msg__t__stct.html#af2d986db10fad363e5c091a584236d77", null ],
     [ "plen", "structlbm__msg__t__stct.html#ae1619e3a9382792e15704ce8a1b730c1", null ],
     [ "properties", "structlbm__msg__t__stct.html#ae494fd38e1139a128d58616fa9d2e439", null ],
+    [ "proxy_source", "structlbm__msg__t__stct.html#ae0683034b2aa4ec8611b52144f4f0628", null ],
     [ "refcnt", "structlbm__msg__t__stct.html#a37c456bd571f110e3428950ffff2a846", null ],
     [ "response", "structlbm__msg__t__stct.html#af96152f594427bf4bf520e9a8e022aae", null ],
     [ "sequence_number", "structlbm__msg__t__stct.html#a414eaced619e9dfafbcb2c7608af8e7e", null ],

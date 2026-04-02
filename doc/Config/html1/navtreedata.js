@@ -562,6 +562,7 @@ var NAVTREE =
         [ "mim_delivery_control_loss_check_interval (context)", "index.html#mimdeliverycontrollosscheckintervalcontext", null ],
         [ "null_channel_behavior (receiver)", "index.html#nullchannelbehaviorreceiver", null ],
         [ "source_notification_function (receiver)", "index.html#sourcenotificationfunctionreceiver", null ],
+        [ "source_notification_function_ex (receiver)", "index.html#sourcenotificationfunctionexreceiver", null ],
         [ "unrecognized_channel_behavior (receiver)", "index.html#unrecognizedchannelbehaviorreceiver", null ]
       ] ]
     ] ],
@@ -798,7 +799,7 @@ var NAVTREEINDEX =
 [
 "index.html",
 "index.html#requesttcpportlowcontext",
-"index.html#transporttcpactivitymethodreceiver"
+"index.html#transportsourcesidefilteringbehaviorsource"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

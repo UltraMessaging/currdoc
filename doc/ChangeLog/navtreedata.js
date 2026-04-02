@@ -3,6 +3,24 @@ var NAVTREE =
   [ "Release Notes", "index.html", [
     [ "Introduction", "index.html", null ],
     [ "Important Corrections", "importantcorrections.html", null ],
+    [ "UM Version 6.17.1", "umversion6_17_1.html", [
+      [ "Enhancements for 6.17.1", "umversion6_17_1.html#enhancementsfor6_17_1", [
+        [ "Streaming Enhancements for 6.17.1", "umversion6_17_1.html#streamingenhancementsfor6_17_1", null ],
+        [ "Persistence Enhancements for 6.17.1", "umversion6_17_1.html#persistenceenhancementsfor6_17_1", null ],
+        [ "Queuing Enhancements for 6.17.1", "umversion6_17_1.html#queuingenhancementsfor6_17_1", null ]
+      ] ],
+      [ "Fixed Problems and Limitations for 6.17.1", "umversion6_17_1.html#fixedlimitationsfor6_17_1", [
+        [ "Streaming Fixed Problems and Limitations for 6.17.1", "umversion6_17_1.html#streamingfixedlimitationsfor6_17_1", null ],
+        [ "Persistence Fixed Problems and Limitations for 6.17.1", "umversion6_17_1.html#persistencefixedlimitationsfor6_17_1", null ],
+        [ "Queuing Fixed Problems and Limitations for 6.17.1", "umversion6_17_1.html#queuingfixedlimitationsfor6_17_1", null ]
+      ] ],
+      [ "Special Upgrade Instructions for 6.17.1", "umversion6_17_1.html#specialupgradeinstructionsfor6_17_1", [
+        [ "Hotlinks and Source Strings", "umversion6_17_1.html#hotlinksandsourcestrings", null ],
+        [ "Data Hotlinks and Per-Source Client Data", "umversion6_17_1.html#hotlinksandpersourceclient", null ],
+        [ "LBT-RU Explicit Port Use", "umversion6_17_1.html#lbtruexplicitportuse", null ],
+        [ "Previous Special Instructions", "umversion6_17_1.html#um617specialinstructions", null ]
+      ] ]
+    ] ],
     [ "UM Version 6.17", "umversion6_17.html", [
       [ "Enhancements for 6.17", "umversion6_17.html#enhancementsfor6_17", [
         [ "Streaming Enhancements for 6.17", "umversion6_17.html#streamingenhancementsfor6_17", null ],
@@ -443,7 +461,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "deprecations.html",
-"umversion6_7.html#enhancementsfor6_7"
+"umversion6_5.html#persistenceenhancementsfor6_5"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

@@ -1,5 +1,9 @@
 var NAVTREEINDEX3 =
 {
+"classcom_1_1latencybusters_1_1lbm_1_1LBMHFXAttributes.html#a4ec46b1d44ddb67559b95fa64a2ce0b9":[2,0,0,0,0,33,5],
+"classcom_1_1latencybusters_1_1lbm_1_1LBMHFXAttributes.html#a5611c479bb5a70e6d0f14a8f0f161fed":[2,0,0,0,0,33,9],
+"classcom_1_1latencybusters_1_1lbm_1_1LBMHFXAttributes.html#a5ba6a6845ea1560124980aba44837f92":[2,0,0,0,0,33,3],
+"classcom_1_1latencybusters_1_1lbm_1_1LBMHFXAttributes.html#a6cf4017c20054cf556d82ccafaf76f0b":[2,0,0,0,0,33,7],
 "classcom_1_1latencybusters_1_1lbm_1_1LBMHFXAttributes.html#a7960d6f46eefe421f8bac3ad39f4f4a2":[2,0,0,0,0,33,10],
 "classcom_1_1latencybusters_1_1lbm_1_1LBMHFXAttributes.html#a7dc0ab5708f4631d41d8aa32bdfb9dda":[2,0,0,0,0,33,1],
 "classcom_1_1latencybusters_1_1lbm_1_1LBMHFXAttributes.html#aa7d4364a9853c1c4c5b74ddd17c8dc87":[2,0,0,0,0,33,4],
@@ -245,9 +249,5 @@ var NAVTREEINDEX3 =
 "classcom_1_1latencybusters_1_1lbm_1_1LBMImmediateMessageSourceStatistics.html#aa9d008e7d7e920da3aac0cd1a9d410ce":[2,0,0,0,0,39,6],
 "classcom_1_1latencybusters_1_1lbm_1_1LBMImmediateMessageSourceStatistics.html#ab3091a23cbfc21da87c00e72c7adedb3":[2,0,0,0,0,39,8],
 "classcom_1_1latencybusters_1_1lbm_1_1LBMImmediateMessageSourceStatistics.html#ab6703b23cefb67ec5fbf2b29a5771b7c":[2,0,0,0,0,39,21],
-"classcom_1_1latencybusters_1_1lbm_1_1LBMImmediateMessageSourceStatistics.html#abed23f661f1e51516a4c625eb3d73844":[2,0,0,0,0,39,5],
-"classcom_1_1latencybusters_1_1lbm_1_1LBMImmediateMessageSourceStatistics.html#aca0ce8f56cfdc8c0f80c6ad76fc8be2c":[2,0,0,0,0,39,0],
-"classcom_1_1latencybusters_1_1lbm_1_1LBMImmediateMessageSourceStatistics.html#acd2bc3f42ef31eb6ff8a951ef8e381e0":[2,0,0,0,0,39,31],
-"classcom_1_1latencybusters_1_1lbm_1_1LBMImmediateMessageSourceStatistics.html#ace7d39eebcd2d8ec320949ab37b235f1":[2,0,0,0,0,39,30],
-"classcom_1_1latencybusters_1_1lbm_1_1LBMImmediateMessageSourceStatistics.html#ae77ebadfde569265d26968ce7a8bd535":[2,0,0,0,0,39,37]
+"classcom_1_1latencybusters_1_1lbm_1_1LBMImmediateMessageSourceStatistics.html#abed23f661f1e51516a4c625eb3d73844":[2,0,0,0,0,39,5]
 };

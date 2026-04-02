@@ -30,9 +30,11 @@ var NAVTREE =
       [ "DRO Hotlinks", "umrouterconcepts.html#drohotlinks", [
         [ "Hotlinks: Logical Interpretation", "umrouterconcepts.html#hotlinkslogicalinterpretation", null ],
         [ "Hotlinks: Physical Interpretation", "umrouterconcepts.html#hotlinksphysicalinterpretation", null ],
+        [ "Example DRO Configuration", "umrouterconcepts.html#exampledroconfiguration", null ],
+        [ "Hotlink Source Strings", "umrouterconcepts.html#hotlinksourcestrings", null ],
         [ "Mixing Regular and Hotlinked DROs", "umrouterconcepts.html#mixingregularandhotlinkeddros", null ],
         [ "Implementing DRO Hotlinks", "umrouterconcepts.html#implementingdrohotlinks", null ],
-        [ "DRO Hotlink Restrictions", "umrouterconcepts.html#drohotlinkrestrictions", null ]
+        [ "DRO Hotlinks Restrictions", "umrouterconcepts.html#drohotlinkrestrictions", null ]
       ] ],
       [ "Routing Topologies", "umrouterconcepts.html#routingtopologies", [
         [ "Direct Link", "umrouterconcepts.html#directlink", null ],
@@ -153,6 +155,7 @@ var NAVTREE =
         [ "Router Element \"<min-length>\"", "xmlconfigurationreference.html#droelementminlength", null ],
         [ "Router Element \"<max-datagram>\"", "xmlconfigurationreference.html#droelementmaxdatagram", null ],
         [ "Router Element \"<smart-batch>\"", "xmlconfigurationreference.html#droelementsmartbatch", null ],
+        [ "Router Element \"<uim-max-queue>\"", "xmlconfigurationreference.html#droelementuimmaxqueue", null ],
         [ "Router Element \"<max-queue>\"", "xmlconfigurationreference.html#droelementmaxqueue", null ],
         [ "Router Element \"<source-deletion-delay>\"", "xmlconfigurationreference.html#droelementsourcedeletiondelay", null ],
         [ "Router Element \"<udp>\"", "xmlconfigurationreference.html#droelementudp", null ],
@@ -198,6 +201,7 @@ var NAVTREE =
         [ "Router Element \"<remote-topic-interest>\"", "xmlconfigurationreference.html#droelementremotetopicinterest", null ],
         [ "Router Element \"<pattern-use-query>\"", "xmlconfigurationreference.html#droelementpatternusequery", null ],
         [ "Router Element \"<topic-use-query>\"", "xmlconfigurationreference.html#droelementtopicusequery", null ],
+        [ "Router Element \"<route-group>\"", "xmlconfigurationreference.html#droelementroutegroup", null ],
         [ "Router Element \"<hotlink-index>\"", "xmlconfigurationreference.html#droelementhotlinkindex", null ],
         [ "Router Element \"<domain-id>\"", "xmlconfigurationreference.html#droelementdomainid", null ],
         [ "Router Element \"<daemon>\"", "xmlconfigurationreference.html#droelementdaemon", null ],

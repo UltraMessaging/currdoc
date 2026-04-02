@@ -31,6 +31,8 @@ var classcom_1_1latencybusters_1_1lbm_1_1LBMMessage =
     [ "osqn", "classcom_1_1latencybusters_1_1lbm_1_1LBMMessage.html#a880ad2f704bcc68ef3bab62edf9a2485", null ],
     [ "promote", "classcom_1_1latencybusters_1_1lbm_1_1LBMMessage.html#a2cda69ee0b33fe294d46761401e451ca", null ],
     [ "properties", "classcom_1_1latencybusters_1_1lbm_1_1LBMMessage.html#a6b6bc61fa585ce68140d0ea5d65bb406", null ],
+    [ "proxySource", "classcom_1_1latencybusters_1_1lbm_1_1LBMMessage.html#aa2f42be74f990378245735150e015f27", null ],
+    [ "proxySourceAsCharArray", "classcom_1_1latencybusters_1_1lbm_1_1LBMMessage.html#afb816bcb1d4008a7927bc7900ae3e3f9", null ],
     [ "queueDeregistrationCompleteInfo", "classcom_1_1latencybusters_1_1lbm_1_1LBMMessage.html#a2dec1bf1c56952112fe250cbae6b9e3e", null ],
     [ "queueIndexAssignedInfo", "classcom_1_1latencybusters_1_1lbm_1_1LBMMessage.html#acb8847a5b68bd7f51ef92ecb061472e5", null ],
     [ "queueIndexAssignmentEligibilityStartCompleteInfo", "classcom_1_1latencybusters_1_1lbm_1_1LBMMessage.html#a0b17307735486818daa08499077fdd9b", null ],

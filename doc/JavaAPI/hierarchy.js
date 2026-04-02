@@ -217,8 +217,12 @@ var hierarchy =
     [ "com.latencybusters.lbm.LBMSetInflightCallbackEx", "interfacecom_1_1latencybusters_1_1lbm_1_1LBMSetInflightCallbackEx.html", null ],
     [ "com.latencybusters.lbm.LBMSourceChannelInfo", "classcom_1_1latencybusters_1_1lbm_1_1LBMSourceChannelInfo.html", null ],
     [ "com.latencybusters.lbm.LBMSourceCostCallback", "interfacecom_1_1latencybusters_1_1lbm_1_1LBMSourceCostCallback.html", null ],
+    [ "com.latencybusters.lbm.LBMSourceCreateExInfo", "classcom_1_1latencybusters_1_1lbm_1_1LBMSourceCreateExInfo.html", null ],
     [ "com.latencybusters.lbm.LBMSourceCreationCallback", "interfacecom_1_1latencybusters_1_1lbm_1_1LBMSourceCreationCallback.html", null ],
+    [ "com.latencybusters.lbm.LBMSourceCreationExCallback", "interfacecom_1_1latencybusters_1_1lbm_1_1LBMSourceCreationExCallback.html", null ],
+    [ "com.latencybusters.lbm.LBMSourceDeleteExInfo", "classcom_1_1latencybusters_1_1lbm_1_1LBMSourceDeleteExInfo.html", null ],
     [ "com.latencybusters.lbm.LBMSourceDeletionCallback", "interfacecom_1_1latencybusters_1_1lbm_1_1LBMSourceDeletionCallback.html", null ],
+    [ "com.latencybusters.lbm.LBMSourceDeletionExCallback", "interfacecom_1_1latencybusters_1_1lbm_1_1LBMSourceDeletionExCallback.html", null ],
     [ "com.latencybusters.lbm.LBMSourceEvent", "classcom_1_1latencybusters_1_1lbm_1_1LBMSourceEvent.html", [
       [ "com.latencybusters.lbm.LBMContextSourceEvent", "classcom_1_1latencybusters_1_1lbm_1_1LBMContextSourceEvent.html", null ]
     ] ],

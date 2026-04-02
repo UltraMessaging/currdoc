@@ -67,8 +67,9 @@ var NAVTREEINDEX0 =
 "grpdeliverycontrol.html#deliverycontrolref":[36,1],
 "grpdeliverycontrol.html#mimdeliverycontrollosscheckintervalcontext":[36,1,5],
 "grpdeliverycontrol.html#nullchannelbehaviorreceiver":[36,1,6],
+"grpdeliverycontrol.html#sourcenotificationfunctionexreceiver":[36,1,8],
 "grpdeliverycontrol.html#sourcenotificationfunctionreceiver":[36,1,7],
-"grpdeliverycontrol.html#unrecognizedchannelbehaviorreceiver":[36,1,8],
+"grpdeliverycontrol.html#unrecognizedchannelbehaviorreceiver":[36,1,9],
 "grpdeprecated.html":[43],
 "grpdeprecated.html#datagramaccelerationfunctionscontext":[43,0,0],
 "grpdeprecated.html#deliverycontrollosstableszreceiver":[43,0,1],
@@ -248,6 +249,5 @@ var NAVTREEINDEX0 =
 "grpmulticastimmediatemessagingreliability.html#mimignoreintervalcontext":[29,0,0],
 "grpmulticastimmediatemessagingreliability.html#mimnakbackoffintervalcontext":[29,0,1],
 "grpmulticastimmediatemessagingreliability.html#mimnakgenerationintervalcontext":[29,0,2],
-"grpmulticastimmediatemessagingreliability.html#mimnakinitialbackoffintervalcontext":[29,0,3],
-"grpmulticastimmediatemessagingreliability.html#mimnaksuppressintervalcontext":[29,0,4]
+"grpmulticastimmediatemessagingreliability.html#mimnakinitialbackoffintervalcontext":[29,0,3]
 };

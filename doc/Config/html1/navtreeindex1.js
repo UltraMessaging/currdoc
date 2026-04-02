@@ -118,6 +118,7 @@ var NAVTREEINDEX1 =
 "index.html#sourcecostevaluationfunctioncontext":[43,0,22],
 "index.html#sourceeventfunctioncontext":[9,0,15],
 "index.html#sourceincludestopicindexcontext":[9,0,16],
+"index.html#sourcenotificationfunctionexreceiver":[36,1,8],
 "index.html#sourcenotificationfunctionreceiver":[36,1,7],
 "index.html#specialnotes":[8],
 "index.html#specifyinginterfaces":[7,1],
@@ -248,6 +249,5 @@ var NAVTREEINDEX1 =
 "index.html#transportsessionmaximumbuffersource":[15,0,0],
 "index.html#transportsessionmultiplesendingthreadscontext":[9,0,20],
 "index.html#transportsessionsinglereceivingthreadcontext":[9,0,21],
-"index.html#transportsource":[9,0,17],
-"index.html#transportsourcesidefilteringbehaviorsource":[9,0,22]
+"index.html#transportsource":[9,0,17]
 };

@@ -15,5 +15,6 @@ var classcom_1_1latencybusters_1_1lbm_1_1LBMReceiverAttributes =
     [ "setRegistrationIdCallback", "classcom_1_1latencybusters_1_1lbm_1_1LBMReceiverAttributes.html#a0d38f72f0801b3aad59d9a7f4374aceb", null ],
     [ "setRegistrationIdCallback", "classcom_1_1latencybusters_1_1lbm_1_1LBMReceiverAttributes.html#a1ac948c363b65ad4ed9f2ff7edd56dc3", null ],
     [ "setSourceNotificationCallbacks", "classcom_1_1latencybusters_1_1lbm_1_1LBMReceiverAttributes.html#ada8450c3e6c34d298256279418f026a4", null ],
+    [ "setSourceNotificationExCallbacks", "classcom_1_1latencybusters_1_1lbm_1_1LBMReceiverAttributes.html#a65cb9500cd60c11a8e9e9789dc3cc94b", null ],
     [ "setValue", "classcom_1_1latencybusters_1_1lbm_1_1LBMReceiverAttributes.html#abf84dc9ebdc767eeace27b2f96523821", null ]
 ];

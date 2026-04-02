@@ -1,5 +1,10 @@
 var NAVTREEINDEX11 =
 {
+"struct__Lbmmon____DROMonMsg____Stats____Portal____Endpoint____Receive.html#af235425a50d73ca36c16e7105914420c":[10,0,11,8],
+"struct__Lbmmon____DROMonMsg____Stats____Portal____Endpoint____Receive.html#af35bc8e44629057f742be62ad6267120":[10,0,11,16],
+"struct__Lbmmon____DROMonMsg____Stats____Portal____Endpoint____Send.html":[10,0,12],
+"struct__Lbmmon____DROMonMsg____Stats____Portal____Endpoint____Send.html#a0161fd74187f894991579fa9a4a6791b":[10,0,12,45],
+"struct__Lbmmon____DROMonMsg____Stats____Portal____Endpoint____Send.html#a01a8da9ed67e3c5bc321a6e8192722dd":[10,0,12,40],
 "struct__Lbmmon____DROMonMsg____Stats____Portal____Endpoint____Send.html#a063d63a2bd6eb5eb95fe8e95407bd813":[10,0,12,9],
 "struct__Lbmmon____DROMonMsg____Stats____Portal____Endpoint____Send.html#a0dd196ed6571774ddeb3cc1d691286f4":[10,0,12,26],
 "struct__Lbmmon____DROMonMsg____Stats____Portal____Endpoint____Send.html#a0f76007b7ba6905bb92ef3874cb71cf0":[10,0,12,5],
@@ -244,10 +249,5 @@ var NAVTREEINDEX11 =
 "struct__Lbmmon____SRSMonMsg____Configs.html#af516ca6d1ffb0f65c67d4e36a12bec87":[10,0,19,41],
 "struct__Lbmmon____SRSMonMsg____Configs.html#af69f9c1b4e19df242882d2f5949dba27":[10,0,19,2],
 "struct__Lbmmon____SRSMonMsg____Configs.html#af8b7267e4ee250a05ef80c191599c423":[10,0,19,16],
-"struct__Lbmmon____SRSMonMsg____Configs____DaemonMonitorLBMAttribute.html":[10,0,20],
-"struct__Lbmmon____SRSMonMsg____Configs____DaemonMonitorLBMAttribute.html#a81d2ae69021c707945f0f8652d6a3bb7":[10,0,20,1],
-"struct__Lbmmon____SRSMonMsg____Configs____DaemonMonitorLBMAttribute.html#a8534695f75a6527134f0d5a3ce82417e":[10,0,20,3],
-"struct__Lbmmon____SRSMonMsg____Configs____DaemonMonitorLBMAttribute.html#a910fd1bde08e5109ddacd6f99ad33e18":[10,0,20,2],
-"struct__Lbmmon____SRSMonMsg____Configs____DaemonMonitorLBMAttribute.html#adda689aacba2788dedb838078787ce89":[10,0,20,0],
-"struct__Lbmmon____SRSMonMsg____Configs____Internal.html":[10,0,21]
+"struct__Lbmmon____SRSMonMsg____Configs____DaemonMonitorLBMAttribute.html":[10,0,20]
 };

@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">UM Java API
-   &#160;<span id="projectnumber">6.17</span>
+   &#160;<span id="projectnumber">6.17.1</span>
    </div>
   </td>
  </tr>
@@ -112,6 +112,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a7eea3a67e29e682f6c60a57115ff4fda"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ada8450c3e6c34d298256279418f026a4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBMReceiverAttributes.html#ada8450c3e6c34d298256279418f026a4">setSourceNotificationCallbacks</a> (<a class="el" href="interfacecom_1_1latencybusters_1_1lbm_1_1LBMSourceCreationCallback.html">LBMSourceCreationCallback</a> creationCb, <a class="el" href="interfacecom_1_1latencybusters_1_1lbm_1_1LBMSourceDeletionCallback.html">LBMSourceDeletionCallback</a> deletionCb, Object cbArg)  throws LBMException </td></tr>
 <tr class="separator:ada8450c3e6c34d298256279418f026a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a65cb9500cd60c11a8e9e9789dc3cc94b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBMReceiverAttributes.html#a65cb9500cd60c11a8e9e9789dc3cc94b">setSourceNotificationExCallbacks</a> (<a class="el" href="interfacecom_1_1latencybusters_1_1lbm_1_1LBMSourceCreationExCallback.html">LBMSourceCreationExCallback</a> creationCb, <a class="el" href="interfacecom_1_1latencybusters_1_1lbm_1_1LBMSourceDeletionExCallback.html">LBMSourceDeletionExCallback</a> deletionCb, Object cbArg)  throws LBMException </td></tr>
+<tr class="separator:a65cb9500cd60c11a8e9e9789dc3cc94b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a86cd8541b3b013ed7c05908bdf56c3d8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBMReceiverAttributes.html#a86cd8541b3b013ed7c05908bdf56c3d8">enableSingleReceiverCallback</a> (boolean enable)</td></tr>
 <tr class="separator:a86cd8541b3b013ed7c05908bdf56c3d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -600,6 +602,53 @@ Protected Member Functions</h2></td></tr>
 </dl>
 <dl class="section since"><dt>Since</dt><dd><a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBM.html">LBM</a> 3.3, UME 2.0 </dd></dl>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="interfacecom_1_1latencybusters_1_1lbm_1_1LBMWildcardReceiverCreateCallback.html">LBMWildcardReceiverCreateCallback</a> </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a65cb9500cd60c11a8e9e9789dc3cc94b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void com.latencybusters.lbm.LBMReceiverAttributes.setSourceNotificationExCallbacks </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="interfacecom_1_1latencybusters_1_1lbm_1_1LBMSourceCreationExCallback.html">LBMSourceCreationExCallback</a>&#160;</td>
+          <td class="paramname"><em>creationCb</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="interfacecom_1_1latencybusters_1_1lbm_1_1LBMSourceDeletionExCallback.html">LBMSourceDeletionExCallback</a>&#160;</td>
+          <td class="paramname"><em>deletionCb</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Object&#160;</td>
+          <td class="paramname"><em>cbArg</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> throws <a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBMException.html">LBMException</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Register extended callbacks for new source notifications and source deletion notifications for sources on the topic a receiver is listening to. Both callbacks must be set. This API may not be called from a wildcard receiver create callback. Doing so will not result in the callbacks being called. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">creationCb</td><td>Extended Callback for new source notifications. </td></tr>
+    <tr><td class="paramname">deletionCb</td><td>Extended Callback for source deletions. </td></tr>
+    <tr><td class="paramname">cbArg</td><td>Client-supplied callback object that will be passed into both the new sourceex and source deletion ex callbacks. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname"><a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBMException.html">LBMException</a></td><td>if both source creation and source deletion extended callbacks are not specified at once. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section since"><dt>Since</dt><dd><a class="el" href="classcom_1_1latencybusters_1_1lbm_1_1LBM.html">LBM</a> 6.17.1 </dd></dl>
 
 </div>
 </div>
