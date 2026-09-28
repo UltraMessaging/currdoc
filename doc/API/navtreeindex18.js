@@ -1,5 +1,6 @@
 var NAVTREEINDEX18 =
 {
+"structlbmmon__wildcard__rcv__statistics__func__t__stct.html#aab151a4fde1c1a7293cf9e5daa2c5958":[10,0,220,0],
 "structlbmpdm__decimal__t.html":[10,0,221],
 "structlbmpdm__decimal__t.html#aa30802e106436a6c56f5a883b98d84df":[10,0,221,1],
 "structlbmpdm__decimal__t.html#aa495671a8c0604575091afafda56cb9c":[10,0,221,0],
@@ -248,6 +249,5 @@ var NAVTREEINDEX18 =
 "structtnwg__dstat__peer__udp__send__stats__t__stct.html#a76f8f69917cab22ecfc261f1e1c89efa":[10,0,234,0],
 "structtnwg__dstat__peer__udp__send__stats__t__stct.html#aa76546d2b1fe43beee8e94b8c0aeb9a1":[10,0,234,1],
 "structtnwg__dstat__peer__udp__send__stats__t__stct.html#ab908c52c789c232a43cd3ec2b6349e7f":[10,0,234,6],
-"structtnwg__dstat__peer__udp__send__stats__t__stct.html#adbacf2db300f713f8b8209f5d02d824f":[10,0,234,5],
-"structtnwg__dstat__peer__udp__send__stats__t__stct.html#addb3870e5015d0aa1b37b00b5d2811ef":[10,0,234,3]
+"structtnwg__dstat__peer__udp__send__stats__t__stct.html#adbacf2db300f713f8b8209f5d02d824f":[10,0,234,5]
 };

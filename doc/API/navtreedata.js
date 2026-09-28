@@ -63,12 +63,12 @@ var NAVTREEINDEX =
 "struct__Lbmmon____UMPMonMsg____Configs____TopicConfig____RepoConfig.html#a8d0ef5eb370cba774592d0e7a4a3195b",
 "struct__Lbmmon____UMSMonMsg____Stats____ReceiverTransport____LBTRM.html#aa01f3cb4f8d29b899d63ce93f7881488",
 "structlbm__event__queue__stats__t__stct.html#ac642c3796cd2fa665e773d051570151f",
-"structlbm__rcv__transport__stats__tcp__t__stct.html#ab0b34db08c2e2021958f893b5c113f36",
-"structlbm__srp__repo__t__stct.html#a8755ee0f5350fb5ca54f08063b1f48c4",
-"structlbmpdm__decimal__t.html",
-"structtnwg__dstat__portalstats__msg__t__stct.html",
-"tnwgdmonmsgs_8h.html#aa26fe74646eef784437cf4a47ae4f690",
-"ump__mon_8pb-c_8h.html#a8c8ecc43d0a4040dc7c8454ab5c98604"
+"structlbm__rcv__transport__stats__tcp__t__stct.html#a8ec5b29d4398555010cd1c2f86f8ee7b",
+"structlbm__srp__repo__t__stct.html#a87469bd0265a076cab8d0dab338c2094",
+"structlbmmon__wildcard__rcv__statistics__func__t__stct.html#aab151a4fde1c1a7293cf9e5daa2c5958",
+"structtnwg__dstat__peer__udp__send__stats__t__stct.html#addb3870e5015d0aa1b37b00b5d2811ef",
+"tnwgdmonmsgs_8h.html#a9d9ec1a3f772ba37b376ace807eb5fb5",
+"ump__mon_8pb-c_8h.html#a8867975d6c61b03371d4a8aa35f2c78c"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

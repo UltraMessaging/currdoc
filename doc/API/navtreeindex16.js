@@ -1,5 +1,6 @@
 var NAVTREEINDEX16 =
 {
+"structlbm__rcv__transport__stats__tcp__t__stct.html#a8ec5b29d4398555010cd1c2f86f8ee7b":[10,0,130,0],
 "structlbm__rcv__transport__stats__tcp__t__stct.html#ab0b34db08c2e2021958f893b5c113f36":[10,0,130,3],
 "structlbm__rcv__transport__stats__tcp__t__stct.html#abc3f6d30390080f692d039313413f3cb":[10,0,130,1],
 "structlbm__rcv__umq__queue__msg__list__info__t.html":[10,0,131],
@@ -248,6 +249,5 @@ var NAVTREEINDEX16 =
 "structlbm__srp__repo__t__stct.html#a70a06f4dd42e507a83345e85aa6bc0d8":[10,0,169,1],
 "structlbm__srp__repo__t__stct.html#a734a3b8f4532eb672b696df90b40a14f":[10,0,169,23],
 "structlbm__srp__repo__t__stct.html#a761502779fef368d217308cc5a81fed1":[10,0,169,34],
-"structlbm__srp__repo__t__stct.html#a8614beba06f82f50c18e81bcd5fe585e":[10,0,169,14],
-"structlbm__srp__repo__t__stct.html#a87469bd0265a076cab8d0dab338c2094":[10,0,169,2]
+"structlbm__srp__repo__t__stct.html#a8614beba06f82f50c18e81bcd5fe585e":[10,0,169,14]
 };

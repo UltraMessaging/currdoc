@@ -1,5 +1,6 @@
 var NAVTREEINDEX17 =
 {
+"structlbm__srp__repo__t__stct.html#a87469bd0265a076cab8d0dab338c2094":[10,0,169,2],
 "structlbm__srp__repo__t__stct.html#a8755ee0f5350fb5ca54f08063b1f48c4":[10,0,169,11],
 "structlbm__srp__repo__t__stct.html#a891e191e005b1a20034f5af778fb0e14":[10,0,169,36],
 "structlbm__srp__repo__t__stct.html#a8c9d774e8cefb779b1d7db682ed4600c":[10,0,169,31],
@@ -248,6 +249,5 @@ var NAVTREEINDEX17 =
 "structlbmmon__transport__func__t__stct.html#afa4a8503fad268dcbce9c1deacfef52d":[10,0,218,3],
 "structlbmmon__umestore__statistics__func__t__stct.html":[10,0,219],
 "structlbmmon__umestore__statistics__func__t__stct.html#a1cbcf3c149fe35e8b5c8fe2aa13a1ff8":[10,0,219,0],
-"structlbmmon__wildcard__rcv__statistics__func__t__stct.html":[10,0,220],
-"structlbmmon__wildcard__rcv__statistics__func__t__stct.html#aab151a4fde1c1a7293cf9e5daa2c5958":[10,0,220,0]
+"structlbmmon__wildcard__rcv__statistics__func__t__stct.html":[10,0,220]
 };

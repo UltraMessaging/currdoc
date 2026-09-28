@@ -12,6 +12,7 @@ var structlbm__msg__t__stct =
     [ "fragment_info", "structlbm__msg__t__stct.html#a86b60281b3bcd311ec9789c6d549835f", null ],
     [ "hdrlen", "structlbm__msg__t__stct.html#a0a010040f0e639dc24f54d2a75ee34be", null ],
     [ "hf_sequence_number", "structlbm__msg__t__stct.html#a6b315b516a36327ef0aacc051c27df8c", null ],
+    [ "hf_src_cd", "structlbm__msg__t__stct.html#a6eddcbb9d9eebe499b6093bb47af6f27", null ],
     [ "hr_timestamp", "structlbm__msg__t__stct.html#a4e0fab1c6a59636b0b996a6070c32a9b", null ],
     [ "len", "structlbm__msg__t__stct.html#ab9f3f61c570287caafa36f1297d73473", null ],
     [ "osqn", "structlbm__msg__t__stct.html#a65e9bdf3cd33fbe81353896a2427666f", null ],

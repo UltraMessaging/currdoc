@@ -3,6 +3,19 @@ var NAVTREE =
   [ "Release Notes", "index.html", [
     [ "Introduction", "index.html", null ],
     [ "Important Corrections", "importantcorrections.html", null ],
+    [ "UM Version 6.17.2", "umversion6_17_2.html", [
+      [ "Enhancements for 6.17.2", "umversion6_17_2.html#enhancementsfor6_17_2", [
+        [ "Streaming Enhancements for 6.17.2", "umversion6_17_2.html#streamingenhancementsfor6_17_2", null ],
+        [ "Persistence Enhancements for 6.17.2", "umversion6_17_2.html#persistenceenhancementsfor6_17_2", null ],
+        [ "Queuing Enhancements for 6.17.2", "umversion6_17_2.html#queuingenhancementsfor6_17_2", null ]
+      ] ],
+      [ "Fixed Problems and Limitations for 6.17.2", "umversion6_17_2.html#fixedlimitationsfor6_17_2", [
+        [ "Streaming Fixed Problems and Limitations for 6.17.2", "umversion6_17_2.html#streamingfixedlimitationsfor6_17_2", null ],
+        [ "Persistence Fixed Problems and Limitations for 6.17.2", "umversion6_17_2.html#persistencefixedlimitationsfor6_17_2", null ],
+        [ "Queuing Fixed Problems and Limitations for 6.17.2", "umversion6_17_2.html#queuingfixedlimitationsfor6_17_2", null ]
+      ] ],
+      [ "Special Upgrade Instructions for 6.17.2", "umversion6_17_2.html#specialupgradeinstructionsfor6_17_2", null ]
+    ] ],
     [ "UM Version 6.17.1", "umversion6_17_1.html", [
       [ "Enhancements for 6.17.1", "umversion6_17_1.html#enhancementsfor6_17_1", [
         [ "Streaming Enhancements for 6.17.1", "umversion6_17_1.html#streamingenhancementsfor6_17_1", null ],
@@ -412,6 +425,7 @@ var NAVTREE =
       [ "Special Upgrade Instructions for 6.0", "umversion6_0.html#specialupgradeinstructionsfor6_0", null ]
     ] ],
     [ "Deprecations", "deprecations.html", [
+      [ "Deprecations for 6.17.2", "deprecations.html#deprecationsfor6172", null ],
       [ "Deprecations for 6.17", "deprecations.html#deprecationsfor617", null ],
       [ "Deprecations for 6.16", "deprecations.html#deprecationsfor616", null ],
       [ "Deprecations for 6.15", "deprecations.html#deprecationsfor615", null ],
@@ -461,7 +475,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "deprecations.html",
-"umversion6_5.html#persistenceenhancementsfor6_5"
+"umversion6_17_2.html#persistencefixedlimitationsfor6_17_2"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

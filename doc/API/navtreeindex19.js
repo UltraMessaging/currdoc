@@ -1,5 +1,6 @@
 var NAVTREEINDEX19 =
 {
+"structtnwg__dstat__peer__udp__send__stats__t__stct.html#addb3870e5015d0aa1b37b00b5d2811ef":[10,0,234,3],
 "structtnwg__dstat__portalstats__msg__t__stct.html":[10,0,235],
 "structtnwg__dstat__portalstats__msg__t__stct.html#a48224a7bcafab7356df65e0aad891589":[10,0,235,2],
 "structtnwg__dstat__portalstats__msg__t__stct.html#a9f1e4b48cd4261d4f60fef342097a9ac":[10,0,235,1],
@@ -248,6 +249,5 @@ var NAVTREEINDEX19 =
 "tnwgdmonmsgs_8h.html#a7a5cbf4cf63c2cad889ccb73e209211a":[11,0,8,61],
 "tnwgdmonmsgs_8h.html#a8f8364505ea12a843de27bd08f781742":[11,0,8,39],
 "tnwgdmonmsgs_8h.html#a93460aa3dc2f9b0337226dab0333d3a6":[11,0,8,57],
-"tnwgdmonmsgs_8h.html#a99ab9d52d9752998e521e1b001f857f0":[11,0,8,44],
-"tnwgdmonmsgs_8h.html#a9d9ec1a3f772ba37b376ace807eb5fb5":[11,0,8,45]
+"tnwgdmonmsgs_8h.html#a99ab9d52d9752998e521e1b001f857f0":[11,0,8,44]
 };

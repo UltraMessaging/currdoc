@@ -3,6 +3,19 @@ var NAVTREE =
   [ "Release Notes", "index.html", [
     [ "Introduction", "index.html#firstsect", null ],
     [ "Important Corrections", "index.html#importantcorrections", null ],
+    [ "UM Version 6.17.2", "index.html#umversion6_17_2", [
+      [ "Enhancements for 6.17.2", "index.html#enhancementsfor6_17_2", [
+        [ "Streaming Enhancements for 6.17.2", "index.html#streamingenhancementsfor6_17_2", null ],
+        [ "Persistence Enhancements for 6.17.2", "index.html#persistenceenhancementsfor6_17_2", null ],
+        [ "Queuing Enhancements for 6.17.2", "index.html#queuingenhancementsfor6_17_2", null ]
+      ] ],
+      [ "Fixed Problems and Limitations for 6.17.2", "index.html#fixedlimitationsfor6_17_2", [
+        [ "Streaming Fixed Problems and Limitations for 6.17.2", "index.html#streamingfixedlimitationsfor6_17_2", null ],
+        [ "Persistence Fixed Problems and Limitations for 6.17.2", "index.html#persistencefixedlimitationsfor6_17_2", null ],
+        [ "Queuing Fixed Problems and Limitations for 6.17.2", "index.html#queuingfixedlimitationsfor6_17_2", null ]
+      ] ],
+      [ "Special Upgrade Instructions for 6.17.2", "index.html#specialupgradeinstructionsfor6_17_2", null ]
+    ] ],
     [ "UM Version 6.17.1", "index.html#umversion6_17_1", [
       [ "Enhancements for 6.17.1", "index.html#enhancementsfor6_17_1", [
         [ "Streaming Enhancements for 6.17.1", "index.html#streamingenhancementsfor6_17_1", null ],
@@ -412,6 +425,7 @@ var NAVTREE =
       [ "Special Upgrade Instructions for 6.0", "index.html#specialupgradeinstructionsfor6_0", null ]
     ] ],
     [ "Deprecations", "index.html#deprecations", [
+      [ "Deprecations for 6.17.2", "index.html#deprecationsfor6172", null ],
       [ "Deprecations for 6.17", "index.html#deprecationsfor617", null ],
       [ "Deprecations for 6.16", "index.html#deprecationsfor616", null ],
       [ "Deprecations for 6.15", "index.html#deprecationsfor615", null ],
@@ -461,7 +475,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "index.html",
-"index.html#specialupgradeinstructionsfor6_17"
+"index.html#specialupgradeinstructionsfor6_12_1"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
